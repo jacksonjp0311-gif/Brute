@@ -1,0 +1,148 @@
+{
+  "criterion": "R4_drift_stress_replay (reported, not gated; design data)",
+  "schema": "brute.drift-stress.v1",
+  "seeds": [
+    990001,
+    990024
+  ],
+  "summary": {
+    "ablation_logloss_post": 1.296595,
+    "baselines_logloss_post": {
+      "suffix1": 1.175006,
+      "suffix2": 1.323978,
+      "suffix4": 1.379601,
+      "uniform": 1.386294
+    },
+    "cases": 72,
+    "forecast_source_steps_post": {
+      "margin_n5": 467,
+      "suffix1": 1093,
+      "uniform": 0,
+      "v090": 1032
+    },
+    "retracted_wrong": 6,
+    "retraction_reasons": {
+      "falsified_by_observation": 6,
+      "scope_withdrawn": 11,
+      "unverifiable_masked": 2
+    },
+    "v0.1.0": {
+      "alarm_steps_post": 14,
+      "budget_exhausted_family": 0,
+      "budget_exhausted_margin": 0,
+      "cases_with_alarm": 46,
+      "certificates_retracted": 19,
+      "certs_all": 19,
+      "coverage_post": 0.006559,
+      "false_certs_all": 6,
+      "false_certs_drift_steps": 6,
+      "false_certs_non_drift_steps": 0,
+      "logloss_post": 1.33195,
+      "min_probability_any_step": 0.005,
+      "peak_rows_family": 1743,
+      "peak_rows_margin": 23076,
+      "public_certs_all": 0,
+      "public_false_certs_all": 0,
+      "selective_risk_post": 0.352941,
+      "status_breakdown_post": {
+        "ABSTAIN/BOUND_SATURATED": 52,
+        "ABSTAIN/BUDGET_EXHAUSTED": 0,
+        "ABSTAIN/MARGIN_DISAGREES": 209,
+        "CERTIFIED": 17,
+        "ERROR/INTERNAL": 0,
+        "OUT_OF_FAMILY/FAMILY_CONTRADICTED": 1560,
+        "OUT_OF_FAMILY/RESIDUAL_SURPRISE": 14,
+        "POSSIBLE_SET": 740
+      }
+    },
+    "v0.1.1": {
+      "alarm_steps_post": 14,
+      "budget_exhausted_family": 0,
+      "budget_exhausted_margin": 0,
+      "cases_with_alarm": 40,
+      "certificates_retracted": 19,
+      "certs_all": 19,
+      "coverage_post": 0.006559,
+      "false_certs_all": 6,
+      "false_certs_drift_steps": 6,
+      "false_certs_non_drift_steps": 0,
+      "logloss_post": 1.163555,
+      "min_probability_any_step": 0.005,
+      "peak_rows_family": 1743,
+      "peak_rows_margin": 23076,
+      "public_certs_all": 0,
+      "public_false_certs_all": 0,
+      "selective_risk_post": 0.352941,
+      "status_breakdown_post": {
+        "ABSTAIN/BOUND_SATURATED": 52,
+        "ABSTAIN/BUDGET_EXHAUSTED": 0,
+        "ABSTAIN/MARGIN_DISAGREES": 209,
+        "CERTIFIED": 17,
+        "ERROR/INTERNAL": 0,
+        "OUT_OF_FAMILY/FAMILY_CONTRADICTED": 1560,
+        "OUT_OF_FAMILY/RESIDUAL_SURPRISE": 14,
+        "POSSIBLE_SET": 740
+      }
+    },
+    "v0.90": {
+      "certs_all": 293,
+      "coverage_post": 0.109568,
+      "false_certs_all": 76,
+      "false_certs_drift_steps": 36,
+      "logloss_post": 2.188867
+    },
+    "wrong_certs_in_never_contradicted_cases": 0
+  },
+  "tau": 1.433141502274,
+  "tau_source_sha256": "6ebe33af7d9b1dfd9410141a501c5c08ffc40296a6ddea552a14eb8d5b08e384",
+  "wrong_certificates": [
+    {
+      "actual": 0,
+      "certificate": 2,
+      "drift_step": true,
+      "mask_rate": 0.1,
+      "seed": 990002,
+      "step": 12
+    },
+    {
+      "actual": 1,
+      "certificate": 3,
+      "drift_step": true,
+      "mask_rate": 0.1,
+      "seed": 990005,
+      "step": 12
+    },
+    {
+      "actual": 1,
+      "certificate": 3,
+      "drift_step": true,
+      "mask_rate": 0.35,
+      "seed": 990005,
+      "step": 12
+    },
+    {
+      "actual": 1,
+      "certificate": 3,
+      "drift_step": true,
+      "mask_rate": 0.6,
+      "seed": 990005,
+      "step": 12
+    },
+    {
+      "actual": 1,
+      "certificate": 3,
+      "drift_step": true,
+      "mask_rate": 0.1,
+      "seed": 990006,
+      "step": 12
+    },
+    {
+      "actual": 2,
+      "certificate": 1,
+      "drift_step": true,
+      "mask_rate": 0.35,
+      "seed": 990008,
+      "step": 23
+    }
+  ]
+}
