@@ -1,0 +1,730 @@
+{
+  "criterion": "R3_witness_audit_F14 (reported, not gated)",
+  "families": {
+    "cycle3": {
+      "certified_steps": 511,
+      "certified_with_witness": 0,
+      "margin_disagrees_steps": 863,
+      "margin_disagrees_with_witness": 863,
+      "unchecked": 0,
+      "witness_examples": [
+        {
+          "certified_or_family_code": 0,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              1,
+              0,
+              1,
+              0,
+              0
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              1,
+              0,
+              0,
+              2,
+              0,
+              3,
+              0,
+              4,
+              4,
+              3
+            ]
+          },
+          "mask_rate": 0.1,
+          "seed": 1230001,
+          "step": 9,
+          "witness_code": 1
+        },
+        {
+          "certified_or_family_code": 0,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              1,
+              0,
+              1,
+              0,
+              0
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              1,
+              0,
+              0,
+              2,
+              4,
+              3,
+              2,
+              4,
+              3,
+              0
+            ]
+          },
+          "mask_rate": 0.1,
+          "seed": 1230001,
+          "step": 16,
+          "witness_code": 1
+        },
+        {
+          "certified_or_family_code": 1,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              1,
+              0,
+              1,
+              0,
+              0
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              1,
+              1,
+              1,
+              2,
+              4,
+              3,
+              2,
+              4,
+              3,
+              0
+            ]
+          },
+          "mask_rate": 0.1,
+          "seed": 1230001,
+          "step": 17,
+          "witness_code": 0
+        }
+      ]
+    },
+    "drift4": {
+      "certified_steps": 24,
+      "certified_with_witness": 0,
+      "margin_disagrees_steps": 241,
+      "margin_disagrees_with_witness": 241,
+      "unchecked": 0,
+      "witness_examples": [
+        {
+          "certified_or_family_code": 3,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              0,
+              0,
+              1,
+              3,
+              0
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              0,
+              1,
+              2,
+              3,
+              0,
+              2,
+              4,
+              0,
+              4,
+              0
+            ]
+          },
+          "mask_rate": 0.35,
+          "seed": 1290001,
+          "step": 13,
+          "witness_code": 0
+        },
+        {
+          "certified_or_family_code": 0,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              0,
+              0,
+              3,
+              0,
+              1
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              0,
+              1,
+              1,
+              2,
+              3,
+              0,
+              0,
+              4,
+              4,
+              0
+            ]
+          },
+          "mask_rate": 0.35,
+          "seed": 1290001,
+          "step": 16,
+          "witness_code": 1
+        },
+        {
+          "certified_or_family_code": 3,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              0,
+              2,
+              1,
+              3,
+              3
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              0,
+              1,
+              2,
+              3,
+              0,
+              2,
+              2,
+              4,
+              0,
+              0
+            ]
+          },
+          "mask_rate": 0.35,
+          "seed": 1290001,
+          "step": 20,
+          "witness_code": 0
+        }
+      ]
+    },
+    "ood4": {
+      "certified_steps": 15,
+      "certified_with_witness": 0,
+      "margin_disagrees_steps": 774,
+      "margin_disagrees_with_witness": 774,
+      "unchecked": 0,
+      "witness_examples": [
+        {
+          "certified_or_family_code": 1,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              1,
+              1,
+              0,
+              1,
+              1
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              0,
+              1,
+              2,
+              2,
+              4,
+              3,
+              0,
+              0,
+              0,
+              2
+            ]
+          },
+          "mask_rate": 0.1,
+          "seed": 1270001,
+          "step": 18,
+          "witness_code": 0
+        },
+        {
+          "certified_or_family_code": 1,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              1,
+              1,
+              0,
+              1,
+              1
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              0,
+              1,
+              1,
+              2,
+              4,
+              3,
+              0,
+              0,
+              0,
+              2
+            ]
+          },
+          "mask_rate": 0.1,
+          "seed": 1270001,
+          "step": 19,
+          "witness_code": 0
+        },
+        {
+          "certified_or_family_code": 1,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              1,
+              1,
+              0,
+              1,
+              1
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              2,
+              1,
+              3,
+              2,
+              4,
+              3,
+              0,
+              0,
+              0,
+              2
+            ]
+          },
+          "mask_rate": 0.1,
+          "seed": 1270001,
+          "step": 20,
+          "witness_code": 0
+        }
+      ]
+    },
+    "ood5": {
+      "certified_steps": 2,
+      "certified_with_witness": 0,
+      "margin_disagrees_steps": 172,
+      "margin_disagrees_with_witness": 172,
+      "unchecked": 0,
+      "witness_examples": [
+        {
+          "certified_or_family_code": 1,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              0,
+              3,
+              1,
+              0,
+              3
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              0,
+              1,
+              2,
+              0,
+              3,
+              0,
+              0,
+              4,
+              0,
+              0
+            ]
+          },
+          "mask_rate": 0.1,
+          "seed": 1280001,
+          "step": 5,
+          "witness_code": 0
+        },
+        {
+          "certified_or_family_code": 1,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              0,
+              3,
+              1,
+              1,
+              3
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              2,
+              1,
+              2,
+              0,
+              3,
+              2,
+              0,
+              4,
+              0,
+              3
+            ]
+          },
+          "mask_rate": 0.6,
+          "seed": 1280001,
+          "step": 16,
+          "witness_code": 0
+        },
+        {
+          "certified_or_family_code": 0,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              0,
+              3,
+              1,
+              1,
+              3
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              1,
+              1,
+              2,
+              2,
+              3,
+              0,
+              0,
+              4,
+              1,
+              3
+            ]
+          },
+          "mask_rate": 0.6,
+          "seed": 1280001,
+          "step": 17,
+          "witness_code": 1
+        }
+      ]
+    },
+    "switch3": {
+      "certified_steps": 427,
+      "certified_with_witness": 0,
+      "margin_disagrees_steps": 758,
+      "margin_disagrees_with_witness": 758,
+      "unchecked": 0,
+      "witness_examples": [
+        {
+          "certified_or_family_code": 1,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              1,
+              1,
+              2,
+              1,
+              2
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              2,
+              1,
+              0,
+              2,
+              4,
+              3,
+              1,
+              1,
+              4,
+              0
+            ]
+          },
+          "mask_rate": 0.1,
+          "seed": 1240001,
+          "step": 14,
+          "witness_code": 2
+        },
+        {
+          "certified_or_family_code": 1,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              1,
+              1,
+              2,
+              1,
+              2
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              3,
+              1,
+              0,
+              2,
+              2,
+              0,
+              0,
+              4,
+              2,
+              2
+            ]
+          },
+          "mask_rate": 0.1,
+          "seed": 1240001,
+          "step": 16,
+          "witness_code": 2
+        },
+        {
+          "certified_or_family_code": 1,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              1,
+              1,
+              2,
+              1,
+              2
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              3,
+              1,
+              0,
+              2,
+              2,
+              0,
+              2,
+              4,
+              2,
+              3
+            ]
+          },
+          "mask_rate": 0.1,
+          "seed": 1240001,
+          "step": 17,
+          "witness_code": 2
+        }
+      ]
+    },
+    "unaliased2": {
+      "certified_steps": 231,
+      "certified_with_witness": 0,
+      "margin_disagrees_steps": 676,
+      "margin_disagrees_with_witness": 676,
+      "unchecked": 0,
+      "witness_examples": [
+        {
+          "certified_or_family_code": 2,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              3,
+              3,
+              2,
+              2,
+              2
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              0,
+              1,
+              1,
+              2,
+              0,
+              3,
+              0,
+              4,
+              0,
+              0
+            ]
+          },
+          "mask_rate": 0.1,
+          "seed": 1260001,
+          "step": 6,
+          "witness_code": 3
+        },
+        {
+          "certified_or_family_code": 2,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              3,
+              3,
+              2,
+              3,
+              2
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              0,
+              1,
+              2,
+              3,
+              1,
+              2,
+              3,
+              4,
+              0,
+              0
+            ]
+          },
+          "mask_rate": 0.1,
+          "seed": 1260001,
+          "step": 19,
+          "witness_code": 3
+        },
+        {
+          "certified_or_family_code": 2,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              3,
+              3,
+              3,
+              2,
+              2
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              0,
+              1,
+              2,
+              2,
+              3,
+              3,
+              2,
+              4,
+              1,
+              3
+            ]
+          },
+          "mask_rate": 0.1,
+          "seed": 1260001,
+          "step": 22,
+          "witness_code": 3
+        }
+      ]
+    },
+    "unstructured3": {
+      "certified_steps": 246,
+      "certified_with_witness": 0,
+      "margin_disagrees_steps": 742,
+      "margin_disagrees_with_witness": 742,
+      "unchecked": 0,
+      "witness_examples": [
+        {
+          "certified_or_family_code": 2,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              3,
+              2,
+              2,
+              2,
+              0
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              0,
+              1,
+              0,
+              2,
+              2,
+              3,
+              1,
+              4,
+              2,
+              0
+            ]
+          },
+          "mask_rate": 0.1,
+          "seed": 1250001,
+          "step": 18,
+          "witness_code": 0
+        },
+        {
+          "certified_or_family_code": 2,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              3,
+              2,
+              2,
+              2,
+              0
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              0,
+              1,
+              0,
+              2,
+              2,
+              3,
+              1,
+              4,
+              2,
+              4
+            ]
+          },
+          "mask_rate": 0.1,
+          "seed": 1250001,
+          "step": 19,
+          "witness_code": 0
+        },
+        {
+          "certified_or_family_code": 2,
+          "kind": "margin_disagrees",
+          "machine": {
+            "emissions": [
+              3,
+              2,
+              2,
+              2,
+              2
+            ],
+            "start": 0,
+            "states": 5,
+            "transitions": [
+              0,
+              1,
+              0,
+              2,
+              4,
+              3,
+              2,
+              1,
+              2,
+              0
+            ]
+          },
+          "mask_rate": 0.1,
+          "seed": 1250001,
+          "step": 23,
+          "witness_code": 3
+        }
+      ]
+    }
+  },
+  "method": "search <=5-state margin rows for a complete machine that explains all evidence and emits a different next code; every witness re-verified by replay from the start state",
+  "schema": "brute.witness-audit.v1",
+  "seeds_per_family": null,
+  "study": "BRUTE-011-FALLBACK-003",
+  "totals": {
+    "certified_steps": 1456,
+    "certified_with_witness": 0,
+    "margin_disagrees_steps": 4226,
+    "margin_disagrees_with_witness": 4226,
+    "unchecked": 0
+  }
+}
