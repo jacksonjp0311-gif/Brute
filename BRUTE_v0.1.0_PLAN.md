@@ -2,7 +2,7 @@
 
 **Base:** tag `bgr-v0.90.0-fork` (the unmodified BGR v0.90.0 source; see `FORK.md`)
 **Goal:** the reasoner **abstains on anything it cannot verify** instead of certifying it. Every fix below is ordered, surgical, and testable.
-**Status of this document:** this is a plan only. Nothing in it is implemented yet. Every number cites `results/study-001/` (frozen study `BGR-090-OPEN-SCOPE-AND-PREDICTIVE-QUOTIENT-001`: 7 families × 72 seeds × 3 mask rates, 44 actions per case, burn-in 8) or a re-analysis of `results/study-001/SCIENTIFIC.json` done on 2026-10-24 (America/New_York). Proposed new names are marked **(new)**. All other names already exist in the code.
+**Status of this document:** this is a plan only. Nothing in it is implemented yet. Every number cites `results/study-001/` (frozen study `BGR-090-OPEN-SCOPE-AND-PREDICTIVE-QUOTIENT-001`: 7 families × 24 held-out seeds × 3 mask rates = 504 cases, 72 per family, 44 actions per case = 22,176 observations, burn-in 8) or a re-analysis of `results/study-001/SCIENTIFIC.json` done on 2026-10-24 (America/New_York). Proposed new names are marked **(new)**. All other names already exist in the code.
 
 **Freeze rule.** `experiments/run_study.py` checks `experiments/SOURCE_FREEZE.json` before it runs, so editing `bgr90/*` in place invalidates study-001 reproduction. v0.1.0 therefore:
 1. keeps study-001 reproducible from the git tag `bgr-v0.90.0-fork` (`git worktree add ../brute-v090 bgr-v0.90.0-fork`) rather than from nested zips;
