@@ -1,0 +1,40 @@
+{
+  "argmax": {
+    "family": "ood4",
+    "mask_rate": 0.6,
+    "seed": 970017,
+    "step": 8
+  },
+  "argmax_study002": {
+    "family": "ood4",
+    "mask_rate": 0.6,
+    "seed": 970017,
+    "step": 8
+  },
+  "calibration_cases": 360,
+  "freeze_sha256": "54bb579f5a8298e2ddaff185be8b99249b24116ffb437b7df44e6dd0c2663f47",
+  "out_of_family_data_used": false,
+  "per_family_max_R": {
+    "cycle3": 1.19939943064,
+    "ood4": 1.433141502274,
+    "switch3": 1.159700785107,
+    "unaliased2": 0.732001484178,
+    "unstructured3": 1.06595762113
+  },
+  "per_family_max_R_study002": {
+    "cycle3": 1.19939943064,
+    "ood4": 1.433141502274,
+    "switch3": 1.159700785107,
+    "unaliased2": 0.732001484178,
+    "unstructured3": 1.06595762113
+  },
+  "plan_sha256": "2f39506c97b60bea265b7e462dcfdf610c53415fbfccc1d4a914113d077ade00",
+  "schema": "brute.calibration-check.v1",
+  "study": "BRUTE-011-FALLBACK-003",
+  "study002_calibration_sha256": "6ebe33af7d9b1dfd9410141a501c5c08ffc40296a6ddea552a14eb8d5b08e384",
+  "tau": 1.433141502274,
+  "tau_reproduced": true,
+  "tau_study002": 1.433141502274,
+  "tau_v010_control": 1.433141502274,
+  "window_W": 8
+}
