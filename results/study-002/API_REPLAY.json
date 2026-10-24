@@ -1,0 +1,75 @@
+{
+  "api_version": "brute.api/1.0",
+  "core_source_sha256": "e45d8819ad2342a7c9a9a7e99fb30fa9f42065d6c9a26399e8add8d1a888f220",
+  "schema": "brute.api-replay.v1",
+  "study001_false_certification_outcomes": {
+    "drift4:ABSTAIN/BOUND_SATURATED": 12,
+    "drift4:ABSTAIN/MARGIN_DISAGREES": 54,
+    "drift4:CERTIFIED+RETRACTED_NEXT_OBSERVE": 6,
+    "drift4:OUT_OF_FAMILY/RESIDUAL_SURPRISE": 4,
+    "ood5:ABSTAIN/MARGIN_DISAGREES": 53,
+    "ood5:OUT_OF_FAMILY/RESIDUAL_SURPRISE": 11
+  },
+  "study001_false_certifications_replayed": 140,
+  "study001_scientific_sha256": "3b5e95b1358bbc9fee4a242ef07fa05dcfd2f58cb6cf7506a8bd5594fc933f5a",
+  "study002_by_family": {
+    "cycle3": {
+      "certified": 522,
+      "certified_wrong": 0,
+      "disagreements_with_core_evaluator": 0,
+      "public": 522,
+      "public_wrong": 0,
+      "retraction_responses": 0
+    },
+    "drift4": {
+      "certified": 10,
+      "certified_wrong": 0,
+      "disagreements_with_core_evaluator": 0,
+      "public": 0,
+      "public_wrong": 0,
+      "retraction_responses": 7
+    },
+    "ood4": {
+      "certified": 6,
+      "certified_wrong": 0,
+      "disagreements_with_core_evaluator": 0,
+      "public": 6,
+      "public_wrong": 0,
+      "retraction_responses": 0
+    },
+    "ood5": {
+      "certified": 2,
+      "certified_wrong": 0,
+      "disagreements_with_core_evaluator": 0,
+      "public": 0,
+      "public_wrong": 0,
+      "retraction_responses": 1
+    },
+    "switch3": {
+      "certified": 525,
+      "certified_wrong": 0,
+      "disagreements_with_core_evaluator": 0,
+      "public": 525,
+      "public_wrong": 0,
+      "retraction_responses": 0
+    },
+    "unaliased2": {
+      "certified": 140,
+      "certified_wrong": 0,
+      "disagreements_with_core_evaluator": 0,
+      "public": 140,
+      "public_wrong": 0,
+      "retraction_responses": 0
+    },
+    "unstructured3": {
+      "certified": 250,
+      "certified_wrong": 0,
+      "disagreements_with_core_evaluator": 0,
+      "public": 250,
+      "public_wrong": 0,
+      "retraction_responses": 0
+    }
+  },
+  "study002_scientific_sha256": "2513684dec0fafc890e10a44b85b3c01d916ac57523e2f5e6e6f457fbffb29ae",
+  "tau": 1.433141502274
+}
