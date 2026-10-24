@@ -1,9 +1,9 @@
 {
  "schema": "brute.registered-plan.v1",
- "status": "DRAFT - NOT FROZEN. Not a pre-registration. Becomes binding only when renamed to experiments/BRUTE_PLAN_003.json and committed, with owner decisions resolved, BEFORE any v0.1.1 code is written.",
+ "status": "FROZEN pre-registration. Committed 2026-10-24 (America/New_York) before any v0.1.1 code; the git commit that adds this file is the pre-registration record. Owner decisions D1-D2 and pre-freeze amendments A1-A6 (BRUTE_v0.1.1_PLAN.md section 7) are included. Later changes go only to docs/research/BRUTE_DEVIATIONS_003.md and the ledger.",
  "study": "BRUTE-011-FALLBACK-003",
  "version_under_test": "0.1.1",
- "freeze_rule": "criteria, thresholds, seeds, tau, epsilon, caps and arms are fixed by the commit that adds BRUTE_PLAN_003.json; that commit must precede every commit touching brute/core/fallback.py, brute/api/service_v011.py, experiments/brute_study_003.py or experiments/v011_independent_reference.py (checked by git log order in verify_release_011)",
+ "freeze_rule": "criteria, thresholds, seeds, tau, epsilon, caps and arms are fixed by the commit that adds experiments/BRUTE_PLAN_003.json; that commit must precede (be an ancestor of) every commit touching brute/fallback.py, brute/version.py, brute/api/service_v011.py, experiments/brute_study_003.py or experiments/v011_independent_reference.py (checked by git log order in scripts/verify_release_011.py). Amendment A1: the learner lives in brute/fallback.py, not brute/core/fallback.py, because brute/api/service.py SOURCE_SHA256 hashes brute/core/*.py and results/study-002/API_REPLAY.json must keep regenerating.",
  "parent_study": {
   "id": "BRUTE-010-ABSTENTION-002",
   "reproducible_from": "git tag v0.1.0",
@@ -67,7 +67,7 @@
  "prediction_smoothing": 0.08,
  "open_world_reserve_epsilon": 0.02,
  "arms": {
-  "v0.1.1": "brute.core.fallback.FallbackBruteLearner (F1 fallback + F3 retraction bookkeeping), tau below",
+  "v0.1.1": "brute.fallback.FallbackBruteLearner (F1 fallback + F3 retraction bookkeeping), tau below",
   "v0.1.0_control": "frozen brute.core.learner.BruteLearner with the same tau, run on the same cases",
   "v0.90_control": "bgr90 AdequacyLearner expanded certificate and forecast (as in study-002)",
   "v0.89_reference": "n<=3 catalogue on its valid steps (paired)",
@@ -92,15 +92,11 @@
    "gated": true,
    "threshold": "conditional false certificates on ood5 = 0, all steps"
   },
-  "G3_drift4_false_certs_zero": {
+  "G3_prime_drift4": {
    "gated": true,
-   "threshold": "conditional false certificates on drift4 = 0, all steps",
-   "pre_registered_risk": "Inferred: likely to fail on some seed blocks. On study-001 drift4 seeds the v0.1.0 learner issues 19 certs, 6 wrong, all exactly at drift perturbation steps (12, 23) with margin agreeing and residual < tau; any causal certifier with in-family coverage on those histories issues them. F1 does not change certification, so v0.1.1 has the same exposure. A failure is reported as a failure; no post-hoc relaxation.",
-   "owner_decision_before_freeze": "RESOLVED 2026-10-24 18:20 EDT: replaced by G3_prime (owner choice)"
-  },
-  "G3_prime_alternative": {
-   "gated": "only if chosen instead of G3",
-   "threshold": "drift4 false certificates at non-perturbation steps (step not in {12,23,34}) = 0 AND total drift4 false certificates <= 0.5 x v0.90 control on the same cases; total drift4 false certs reported with target 0"
+   "threshold": "drift4 conditional false certificates at non-perturbation steps (step not in {12,23,34}) = 0 AND total drift4 conditional false certificates (all steps) <= 0.5 x the v0.90 control false certificates on the same cases",
+   "reported": "drift4 false certificates at perturbation steps {12,23,34} (target 0) and total",
+   "decision": "owner (James) chose G3_prime instead of G3, 2026-10-24 18:20 EDT"
   },
   "G4_public_safety": {
    "gated": true,
@@ -114,7 +110,7 @@
    "gated": true,
    "threshold": {
     "ood5_mean_post_burn_in": "<= ln 4 = 1.386294",
-    "drift4_mean_post_burn_in": "<= ln 4 AND <= v0.1.0_control on the same cases (no regression)",
+    "drift4_mean_post_burn_in": "<= ln 4 AND <= the v0.1.0_control mean post-burn-in log-loss on the same cases (no regression)",
     "min_probability_every_step_every_family": ">= epsilon/4 = 0.005"
    },
    "reported_targets": {
@@ -126,11 +122,12 @@
   },
   "G7_in_family_no_change": {
    "gated": true,
-   "threshold": "(a) mean post-burn-in log-loss per in_family family <= v0.90 control + 0.05 nats; (b) on every in_family step before any contradiction, v0.1.1 probabilities, status, reason and certificate are identical (exact equality) to the v0.1.0_control arm; (c) tau reproduces byte-for-byte"
+   "threshold": "(a) mean post-burn-in log-loss per in_family family <= v0.90 control + 0.05 nats; (b) on every in_family step before any contradiction, v0.1.1 probabilities, status, reason and certificate are identical (exact equality) to the v0.1.0_control arm; (c) tau reproduces byte-for-byte",
+   "reported": "(b) is also reported (not gated) for ood5 and drift4 steps before contradiction"
   },
   "G8_retraction_semantics": {
    "gated": true,
-   "threshold": "every retraction reason equals the evaluator truth: falsified_by_observation iff the cert's own observed bits contradict it; scope_withdrawn iff compatible and fully observed; unverifiable_masked otherwise. Count of falsified_by_observation equals the count of wrong certs whose bits were observed"
+   "threshold": "(amendment A4) a certificate bit is observed when its channel is unmasked at the certificate step. Every retraction reason equals the evaluator truth: falsified_by_observation iff some unmasked bit contradicts the certified code; scope_withdrawn iff both bits are unmasked and agree with it; unverifiable_masked otherwise. The count of falsified_by_observation equals the count of retracted wrong certificates with a contradicting unmasked bit. Wrong certificates in cases that are never contradicted are counted and reported."
   },
   "G9_compute_budget": {
    "gated": true,
@@ -139,7 +136,7 @@
   },
   "G10_independent_audit": {
    "gated": true,
-   "threshold": "experiments/v011_independent_reference.py (new, no import of brute) recomputes every <=4 and <=5 support, every decision, every fallback probability and forecast_source, every residual and alarm, and every retraction reason; 0 mismatches"
+   "threshold": "(amendment A5) experiments/v011_independent_reference.py (new, no import of brute) recomputes for both the v0.1.1 and v0.1.0_control arms every <=4 and <=5 support, every decision, saturation, surprise, residual and alarm; for v0.1.1 it recomputes every post-contradiction probability and forecast_source (margin support, suffix-1 rebuilt from its definition, uniform) and every retraction reason; pre-contradiction v0.1.1 probabilities must equal the v0.1.0_control arm exactly (the v0.89 catalogue term is checked for sum and floor only, as in study-002); 0 mismatches"
   },
   "G11_reproducibility": {
    "gated": true,
@@ -159,7 +156,7 @@
   },
   "R4_drift_stress_replay": {
    "gated": false,
-   "report": "v0.1.1 on the study-001 drift4 seeds (design data): certs, wrong certs, wrong certs at perturbation steps, retraction reasons"
+   "report": "v0.1.1 on the study-001 drift4 seeds (design data): certs, wrong certs, wrong certs at perturbation steps, retraction reasons (amendment A6: tau from results/study-002/CALIBRATION.json)"
   },
   "R5_out_of_scope_margin": {
    "gated": false,
@@ -168,6 +165,13 @@
   "R6_v089_paired": {
    "gated": false,
    "report": "v0.89 vs v0.1.1 on v0.89-valid steps"
+  },
+  "G3_original_not_gated": {
+   "gated": false,
+   "threshold": "conditional false certificates on drift4 = 0, all steps",
+   "pre_registered_risk": "Inferred: likely to fail on some seed blocks. On study-001 drift4 seeds the v0.1.0 learner issues 19 certs, 6 wrong, all exactly at drift perturbation steps (12, 23) with margin agreeing and residual < tau; any causal certifier with in-family coverage on those histories issues them. F1 does not change certification, so v0.1.1 has the same exposure. A failure is reported as a failure; no post-hoc relaxation.",
+   "owner_decision_before_freeze": "RESOLVED 2026-10-24 18:20 EDT: replaced by G3_prime (owner choice)",
+   "superseded_by": "G3_prime (owner decision D1, 2026-10-24 18:20 EDT); not gated, not reported as a gate"
   }
  },
  "scoring": {
@@ -176,15 +180,17 @@
   "loss": "-ln max(1e-12, p[actual]) on the full code"
  },
  "deviation_policy": "after freeze, any change is a ledger 'deviation' entry with reason; the original criterion is still reported. Study-003 seeds are never used to tune v0.1.1; a failed gate is published as failed.",
- "independent_audit_rule": "the reference implementation is written from this plan text, not from brute/core/fallback.py, and must not import brute",
+ "independent_audit_rule": "the reference implementation is written from this plan text, not from brute/fallback.py, and must not import brute",
  "limitations": [
   "F1 assumes the world has <=5 states after contradiction; it is a forecast, never a certificate.",
-  "Drift-step false certificates are unavoidable for a causal certifier with in-family coverage (see G3 risk).",
+  "Drift-step false certificates are unavoidable for a causal certifier with in-family coverage (see G3_original_not_gated pre_registered_risk); G3_prime gates the rest.",
   "Synthetic two-action, two-bit worlds only."
  ],
  "owner_decisions": {
   "recorded_at": "2026-10-24 18:20 EDT",
   "D1": "owner (James) chose G3_prime instead of G3",
   "D2": "owner approved implementation, study-003 and release"
- }
+ },
+ "release_version_note": "(amendment A3) brute/__init__.py (__version__ 0.1.0) stays frozen; brute/version.py RELEASE_VERSION=0.1.1; RELEASE.json says 0.1.1. Exact consequence: the frozen v0.1.0 scripts/verify_release.py and tests/test_brute_repro.py::test_verify_fails_under_tampered_results fail on the v0.1.1 tree at the version check only; scripts/verify_release_011.py replaces them and also requires the frozen v0.1.0 verifier to pass on an archive of tag v0.1.0.",
+ "pre_freeze_amendments": "A1 fallback path brute/fallback.py; A2 FM9 note in docs/research/BRUTE_DEVIATIONS_003.md; A3 version string; A4 G8 wording; A5 G10 scope; A6 R4 tau. Recorded 2026-10-24 18:20 EDT in BRUTE_v0.1.1_PLAN.md section 7."
 }

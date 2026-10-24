@@ -11,7 +11,7 @@ Evidence labels used on every claim:
 - **Rejected**: considered and dropped, with the reason given.
 - **Open**: not known yet.
 
-Study-002 traces are now **design data**. Every claim about v0.1.1 performance must be re-earned on study-003's new seeds (`experiments/BRUTE_PLAN_003.DRAFT.json`).
+Study-002 traces are now **design data**. Every claim about v0.1.1 performance must be re-earned on study-003's new seeds (`experiments/BRUTE_PLAN_003.json`, frozen).
 
 ## 0. Correction: drift4 passes C6, ood5 fails it
 
@@ -187,7 +187,7 @@ This is the same pattern v0.90 used for `bgr*/` (Inferred: it is the least risky
 
 ## 3. Study-003 criteria (DRAFT, not frozen)
 
-Full text: `experiments/BRUTE_PLAN_003.json` (frozen; renamed from the DRAFT).
+Full text: `experiments/BRUTE_PLAN_003.json` (frozen; renamed from the DRAFT; G3_prime gated, G3 not gated).
 
 **Rule:** the criteria are frozen by renaming the file to `BRUTE_PLAN_003.json` and committing it **before any v0.1.1 code**. Any later change is a ledger `deviation`.
 
@@ -236,7 +236,7 @@ Further rules:
 ## 6. Files on this branch
 
 - `BRUTE_v0.1.1_PLAN.md` (this file).
-- `experiments/BRUTE_PLAN_003.DRAFT.json` (DRAFT, not frozen).
+- `experiments/BRUTE_PLAN_003.json` (FROZEN; renamed from the DRAFT at the freeze commit).
 - `scripts/explore_v011.py` (new, read-only post-hoc).
 - `docs/research/v0.1.1/POSTHOC_V011.json`, all labelled Observed-post-hoc or Simulated.
 - `MANIFEST.sha256`, regenerated.
