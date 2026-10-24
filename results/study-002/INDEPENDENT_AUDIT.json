@@ -1,0 +1,68 @@
+{
+  "cases": 504,
+  "per_family": {
+    "cycle3": {
+      "certs": 522,
+      "public": 522,
+      "public_wrong": 0,
+      "steps": 3168,
+      "v090_wrong": 0,
+      "wrong": 0
+    },
+    "drift4": {
+      "certs": 10,
+      "public": 0,
+      "public_wrong": 0,
+      "steps": 3168,
+      "v090_wrong": 77,
+      "wrong": 0
+    },
+    "ood4": {
+      "certs": 6,
+      "public": 6,
+      "public_wrong": 0,
+      "steps": 3168,
+      "v090_wrong": 0,
+      "wrong": 0
+    },
+    "ood5": {
+      "certs": 2,
+      "public": 0,
+      "public_wrong": 0,
+      "steps": 3168,
+      "v090_wrong": 79,
+      "wrong": 0
+    },
+    "switch3": {
+      "certs": 525,
+      "public": 525,
+      "public_wrong": 0,
+      "steps": 3168,
+      "v090_wrong": 0,
+      "wrong": 0
+    },
+    "unaliased2": {
+      "certs": 140,
+      "public": 140,
+      "public_wrong": 0,
+      "steps": 3168,
+      "v090_wrong": 0,
+      "wrong": 0
+    },
+    "unstructured3": {
+      "certs": 250,
+      "public": 250,
+      "public_wrong": 0,
+      "steps": 3168,
+      "v090_wrong": 0,
+      "wrong": 0
+    }
+  },
+  "schema": "brute.independent-audit.v1",
+  "scope": "independent solver rebuilt <=4 and <=5 supports, saturation, decisions, surprise, residual, alarms and public certificates; v0.89 catalogue probabilities are not recomputed here (audited in study-001)",
+  "source_results_sha256": "e83caf66a99f81c39b09298be3783e8ee2665dc1a7f3c8f717259f88f76519e9",
+  "status": "passed",
+  "steps_replayed": 22176,
+  "study": "BRUTE-010-ABSTENTION-002",
+  "tau": 1.433141502274
+}
