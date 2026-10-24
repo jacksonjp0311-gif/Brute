@@ -1,0 +1,77 @@
+{
+  "schema": "brute.registered-plan.v1",
+  "study": "BRUTE-010-ABSTENTION-002",
+  "version_under_test": "0.1.0",
+  "registered": "2026-10-24 (America/New_York), committed before any Brute v0.1.0 core code; the git commit containing this file is the pre-registration record",
+  "mission": "research toward general intelligence by making the reasoner refuse what it cannot verify; no AGI claim",
+  "parent_study": {"id": "BGR-090-OPEN-SCOPE-AND-PREDICTIVE-QUOTIENT-001", "reproducible_from": "git tag bgr-v0.90.0-fork", "files_left_frozen": "experiments/PLAN.json, experiments/SOURCE_FREEZE.json, all bgr*/ packages and the v0.90 experiment scripts stay byte-identical so study-001 still audits in-tree"},
+  "heldout_ranges": {
+    "cycle3": [1130001, 1130024], "switch3": [1140001, 1140024],
+    "unstructured3": [1150001, 1150024], "unaliased2": [1160001, 1160024],
+    "ood4": [1170001, 1170024], "ood5": [1180001, 1180024],
+    "drift4": [1190001, 1190024]
+  },
+  "heldout_note": "new seed blocks; disjoint from study-001 (930001..990024) and from the calibration set",
+  "in_family": ["cycle3", "switch3", "unstructured3", "unaliased2", "ood4"],
+  "out_of_family": ["ood5", "drift4"],
+  "mask_rates": [0.1, 0.35, 0.6],
+  "actions_per_case": 44,
+  "burn_in": 8,
+  "declared_family": "deterministic-moore<=4/stationary",
+  "family_state_cap": 4,
+  "margin_state_cap": 5,
+  "row_budget_family": 160000,
+  "row_budget_margin": 160000,
+  "prediction_smoothing": 0.08,
+  "open_world_reserve_epsilon": 0.02,
+  "probability_rule": "p = (1-epsilon)*p_v090 + epsilon/4, where p_v090 is the v0.90 AdequacyLearner forecast; uniform when the declared family is contradicted. No evaluator floor is needed or used for Brute.",
+  "certification_rule": {
+    "order": [
+      "family contradicted -> OUT_OF_FAMILY / FAMILY_CONTRADICTED (all earlier certificates in the case are counted as retracted)",
+      "residual alarm active -> OUT_OF_FAMILY / RESIDUAL_SURPRISE",
+      "family row budget exhausted -> ABSTAIN / BUDGET_EXHAUSTED",
+      "family support has more than one code -> POSSIBLE_SET",
+      "margin row budget exhausted -> ABSTAIN / BUDGET_EXHAUSTED",
+      "margin (<=5 state) support is not exactly the same singleton -> ABSTAIN / MARGIN_DISAGREES",
+      "every surviving <=4 row uses all 4 states -> ABSTAIN / BOUND_SATURATED",
+      "otherwise CERTIFIED (conditional on the declared family)"
+    ],
+    "public_certificate": "CERTIFIED and a valid ScopeAttestation naming the declared family is present and has not been revoked (revoked by retry, contradiction or residual alarm)",
+    "attestation_in_study": "the evaluator attests the five in_family families by construction; ood5 and drift4 are never attested"
+  },
+  "residual_surprise": {
+    "statistic": "s_t = -ln(sum of the published forecast probabilities over the codes compatible with the masked observation at step t); R_t = mean of s over the last W observed steps, defined once W steps are observed",
+    "window_W": 8,
+    "threshold_rule": "tau = max R_t over every step of every calibration case, computed with the alarm disabled; alarm when R_t > tau; the alarm is sticky for the rest of the case; it suppresses certification and public certificates but does not change probabilities",
+    "calibration_set": {"families": ["cycle3", "switch3", "unstructured3", "unaliased2", "ood4"], "seed_ranges": "the study-001 heldout ranges for these five families (930001..930024, 940001..940024, 950001..950024, 960001..960024, 970001..970024)", "mask_rates": [0.1, 0.35, 0.6], "out_of_family_data_used": false},
+    "calibration_output": "results/study-002/CALIBRATION.json, written and committed before the held-out study is run"
+  },
+  "criteria": {
+    "C1_in_family_soundness": "Brute conditional false certificates = 0 on every in_family case, all 44 steps including burn-in; public false certificates = 0",
+    "C2_ood5_false_certs_zero": "Brute conditional false certificates on ood5 = 0, all steps including burn-in (v0.90 control on the same cases reported alongside)",
+    "C3_drift4_reduction": "Brute conditional false certificates on drift4 <= 0.5 x the v0.90 control false certificates on the same cases, all steps; zero is reported as a stretch target, not a gate",
+    "C4_public_safety": "zero public certificates on ood5 and drift4; zero wrong public certificates anywhere",
+    "C5_false_alarm_limit": "fraction of in_family held-out cases with at least one RESIDUAL_SURPRISE alarm <= 0.05; step-level alarm rate also reported",
+    "C6_open_world_logloss": "no published forecast gives any code probability < epsilon/4 (exact check over every step); mean post-burn-in log-loss on ood5 and on drift4 each <= ln 4 = 1.386294",
+    "C7_in_family_logloss_cost": "mean post-burn-in log-loss of Brute on each in_family family <= v0.90 control on the same cases + 0.05 nats",
+    "C8_coverage_reported": "report (no gate) post-burn-in coverage and selective risk for v0.89 legacy, v0.90 control and Brute, plus the abstention breakdown by status and reason",
+    "C9_row_budgets_reported": "report (no gate) peak rows for the <=4 and <=5 learners and the count of budget exhaustions; any exhaustion must produce abstention",
+    "C10_independent_audit": "an independent reference (experiments/v90_independent_reference.py, no import of brute) recomputes every <=4 and <=5 support, every Brute decision, every residual statistic and every alarm",
+    "C11_reproducibility": "a second run to a new path gives a byte-identical SCIENTIFIC.json (all timing keys stripped)"
+  },
+  "scoring": {
+    "soundness_counts": "all steps including burn-in",
+    "coverage_logloss_alarm_rates": "post-burn-in steps only (steps 9..44)",
+    "v089_logloss": "recorded on every step where the v0.89 n<=3 catalogue is still consistent; compared pairwise on those steps",
+    "baselines": "uniform (ln 4) and v0.89 suffix-frequency contexts 1/2/4 (alpha 0.7) on every post-burn-in step",
+    "bootstrap": "paired, clustered by world seed, 2000 resamples, seed 20261024"
+  },
+  "deviation_policy": "criteria, thresholds, seeds, W, epsilon and caps are fixed by this commit. Any change after results are seen is recorded as a ledger 'deviation' entry with reason, and the original criterion is still reported.",
+  "pre_registration_disclosure": "before writing this plan a timing probe ran the stock bgr90 SymbolicLearner(5,160000) on six study-001 cases (no test seeds) and looked only at status, peak rows and seconds (max 12809 rows, 0.32 s per case). No certificate or loss numbers were looked at.",
+  "limitations": [
+    "Exactness of the margin gate holds only for worlds with at most 5 states; drift4 is nonstationary and has no such guarantee.",
+    "The residual threshold is a calibrated heuristic, not a proof of out-of-family detection.",
+    "Scope attestation is a laboratory statement by the evaluator, not secure authorization.",
+    "Synthetic two-action, two-bit worlds only; no language, images or open-ended programs."
+  ]
+}
