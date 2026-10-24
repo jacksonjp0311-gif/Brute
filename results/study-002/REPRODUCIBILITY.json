@@ -1,0 +1,17 @@
+{
+  "all_byte_identical": true,
+  "files": {
+    "CALIBRATION.json": {
+      "byte_identical": true,
+      "committed_sha256": "6ebe33af7d9b1dfd9410141a501c5c08ffc40296a6ddea552a14eb8d5b08e384",
+      "rerun_sha256": "6ebe33af7d9b1dfd9410141a501c5c08ffc40296a6ddea552a14eb8d5b08e384"
+    },
+    "SCIENTIFIC.json": {
+      "byte_identical": true,
+      "committed_sha256": "2513684dec0fafc890e10a44b85b3c01d916ac57523e2f5e6e6f457fbffb29ae",
+      "rerun_sha256": "2513684dec0fafc890e10a44b85b3c01d916ac57523e2f5e6e6f457fbffb29ae"
+    }
+  },
+  "note": "RESULTS.json carries timing fields and is not expected to be byte-identical; SCIENTIFIC.json is RESULTS minus *_informational keys.",
+  "schema": "brute.reproducibility.v1"
+}
