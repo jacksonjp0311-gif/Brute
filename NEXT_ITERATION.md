@@ -1,68 +1,42 @@
-# Brute v0.2.0: next iteration
+# Brute v0.2.0: next iteration (proposal, not pre-registered)
 
-Brute v0.1.0 met its safety goal on study-002 (0 false conditional certificates in all 7 families; v0.90 control: 79 on
-ood5, 77 on drift4) but **failed C6**: on 5-state worlds (ood5) post-burn-in log-loss is 1.504767, worse than uniform
-(1.386294). It also certifies far less: in-family coverage fell from 0.32–0.52 (v0.90) to 0.05–0.20.
-The BGR v0.90 next-iteration note is kept at `docs/research/bgr-v0.90.0/NEXT_ITERATION.md`.
+The v0.1.0 note is kept at `docs/research/v0.1.0/NEXT_ITERATION.md`. Labels are the same as in the README.
 
-## Where the loss comes from (Observed, study-002)
+## Where v0.1.1 leaves things (Observed, study-003)
 
-| ood5, post burn-in | steps | mean log-loss |
-| --- | ---: | ---: |
-| before the n≤4 family is contradicted | 583 | 1.4836 |
-| the contradiction step (ε/4 floor, ln 200) | 64 | 5.2983 |
-| after contradiction (uniform fallback) | 1945 | 1.3863 |
+- **Safety holds.** There are 0 false certificates in family and on ood5. The only errors are 4 on drift4, all at
+  perturbation steps, and each was withdrawn and falsified at the next observation.
+- **Open-world forecasting is fixed for n≤5 worlds:** ood5 0.6245, down from 1.4808. On drift4 it only matches the
+  suffix-1 baseline: 1.1556 against 1.1679, with a paired interval that includes 0. At mask 0.6 it is slightly worse
+  than v0.1.0 (1.3713 against 1.3631).
+- **Coverage is the main cost:**
+  - in family 0.09–0.20, against 0.34–0.52 for v0.90;
+  - ood4 0.006, against 0.581;
+  - ood5 and drift4 0.001 and 0.006.
+- **Every margin abstention is real.** Each of the 4,226 MARGIN_DISAGREES abstentions has a replay-verified n≤5 machine
+  that predicts differently. Loosening the gate would be unsound.
+- **The largest per-step loss is the contradiction step:** 126 steps at ln 200 = 5.298.
 
-drift4 shows the same pattern (1270 / 60 / 1262 steps; 0.8312 / 5.2983 / 1.3863). Most out-of-family steps are spent in
-the uniform fallback.
+## Recommendation for v0.2.0
 
-## Exploratory evidence (post hoc, not a criterion: `results/study-002/EXPLORATORY_V020.json`)
+1. **Choose actions that disambiguate** (the primary coverage lever). The action sequence is fixed today. When the
+   margin disagrees, choose the action whose next reading splits the surviving n≤4 and n≤5 explanations. Certification
+   rules stay the same, so soundness carries over by construction (*Inferred*). Measure coverage against a fixed-action
+   arm.
+2. **Restart at a change point after contradiction** (drift4). When the margin is also contradicted (R5: 60 of 442
+   drift4 margin steps were outside its support), rebuild the n≤4/n≤5 supports from a trailing window, with no known
+   schedule. Encoding the generator's period of 11 stays *Rejected* as leakage. Target: drift4 log-loss below suffix-1
+   with an interval that excludes 0. The first wrong certificate right after an unannounced change cannot be prevented
+   by a causal learner (*Inferred*). G3′ stays the gate, and the target is fast withdrawal.
+3. **Grow the family to n≤5 certification behind an n≤6 margin**, only if the cost of 1 fits the 160,000-row budget.
+   The current peak is 102,806 margin rows, and n≤6 is likely to exceed it (*Inferred*). Measure before planning.
+4. **Keep the discipline:**
+   - pre-register study-004 on new seed blocks before any code;
+   - keep τ fixed, or calibrate it only on in-family calibration seeds;
+   - run v0.1.1 as the control arm;
+   - keep the independent reference and byte reproducibility.
 
-On post-burn-in steps where the n≤4 family was contradicted:
+## Not recommended
 
-| | ood5 | drift4 |
-| --- | ---: | ---: |
-| steps | 1951 | 1262 |
-| n≤5 margin learner still supported | 1951 (100%) | 439 (35%) |
-| margin support contained the actual reading | 1951 | 427 |
-| margin singleton predictions, correct / total | 1435 / 1435 | 223 / 267 |
-| log-loss: Brute (uniform) | 1.386294 | 1.386294 |
-| log-loss: predicting from the margin support with the ε reserve | 0.269114 | 1.211903 |
-| log-loss: suffix-1 baseline | 1.278843 | 1.064114 |
-
-(These step counts come from this script's filter and differ slightly from the sealed status breakdown.)
-
-## Candidates
-
-| | Direction | What the data says |
-| --- | --- | --- |
-| (a) | Out-of-family detection | Contradiction already catches 72/72 ood5 and 60/72 drift4 cases. The residual alarm fired in 48 ood5 cases and on 0 in-family cases. Detection is not the bottleneck; the response is. |
-| (b) | Self-growing families | On ood5 the next-larger family was never contradicted and its singletons were 1435/1435 correct. Growing would replace 1.386 with about 0.27 on those steps and restore coverage. On drift4, growth alone is unsafe: 44 of 267 singletons were wrong and the margin was contradicted on 823 steps. |
-| (c) | Active experimentation | Could cut MARGIN_DISAGREES abstentions (in-family: 607–837 steps per family). Needs an action-choice protocol and a new study design first. |
-| (d) | Transfer | No current evidence; needs (b) first so that there is something to transfer. |
-| (e) | Richer alphabets | Multiplies row cost. Peak margin rows are already 99,818 of the 160,000 budget at n≤5. Premature. |
-
-## Recommended single step: (b) self-growing families, gated by the next-larger margin
-
-On contradiction of the n≤k family, re-scope to n≤k+1 instead of falling back to uniform. Keep the existing certify rule:
-certify only when the grown family and an n≤k+2 margin agree, and the grown family is unsaturated and unalarmed. Keep
-uniform when the grown margin is also contradicted (the drift4 case). Every re-scope is a receipt, and no earlier certificate
-is reused.
-
-Why this one:
-1. It targets the only failed criterion (C6 on ood5). The exploratory upper bound is 0.27 against 1.39.
-2. It addresses the largest loss block (3,207 uniform post-contradiction steps across ood5 and drift4).
-3. It is the first step from a fixed model class to a learner that grows its own model class, which (d) and (e) depend on.
-
-Main risk, to measure and not assume: margin row cost at n≤6. The n≤5 margin peaked at 99,818 rows. If the n≤6 margin
-exhausts its budget, the result must be ABSTAIN/BUDGET_EXHAUSTED, never a certificate.
-
-## Study-003 pre-registration sketch (to freeze before any code)
-
-- The same 7 families plus a 6-state family; new seeds; the same masks.
-- **Keep** C1–C5 and C7 unchanged.
-- **C6:** ood5 post-burn-in log-loss ≤ ln 4 **and** ≤ the suffix-1 baseline.
-- **New:** zero false certificates after any re-scope; drift4 false certificates ≤ the v0.1.0 level (0).
-- **New:** row budget exhaustion is reported per family.
-
-Not claimed: general intelligence. This is still a bounded deterministic Moore domain with 2 actions and 2 bits.
+- Raising ε to soften the contradiction step. *Rejected* in the v0.1.1 plan, R1.
+- Mixing the margin forecast into the forecast before contradiction. *Rejected*, R2: Simulated gain, in-family cost.

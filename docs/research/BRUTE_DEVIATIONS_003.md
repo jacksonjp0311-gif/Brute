@@ -33,4 +33,23 @@ freeze commit. Criteria are never changed here; an original criterion is always 
 
 ## Deviations after the freeze
 
-(none yet)
+- **D1: audit binding key name (G10 tooling, after the audit output existed).** `scripts/make_gates_003.py` (committed at
+  `807d25b`, before results were inspected) read the independent audit's binding hash as `scientific_sha256`. The audit
+  record names it `source_results_sha256`, and it binds the sealed `RESULTS.json`. The first gate run failed on the
+  missing key. The key was renamed in `make_gates_003.py` and `verify_release_011.py` (committed at `4ac3fc2`). No
+  threshold, metric or data changed. G10 still requires `status == passed`, 0 mismatches, and the bound hash equal to the
+  SEAL's `results_sha256`.
+- **D2: frozen v0.1.0 release checks fail by construction (pre-registered, amendment A3).** The `RELEASE.json` bump to
+  0.1.1 makes the frozen `scripts/verify_release.py` and `tests/test_brute_repro.py::test_verify_fails_under_tampered_results`
+  fail against the working tree. They are not edited. `verify_release_011 --frozen-v010` runs the unmodified v0.1.0
+  verifier on `git archive v0.1.0` instead.
+- **D3: version check source.** `verify_release_011` checks `brute.version.RELEASE_VERSION`, not `brute.__version__`.
+  `brute/__init__.py` is in the study-002 freeze and stays `0.1.0` (A3). This was fixed in the verifier before
+  `BRUTE_RELEASE_FREEZE_011` was written.
+- **D4: `NEXT_ITERATION.md`.** The v0.1.0 note moved to `docs/research/v0.1.0/NEXT_ITERATION.md`, and the root file now
+  holds the v0.2.0 proposal. The file is documentation and is not frozen.
+- **D5: how `--frozen-v010` extracts v0.1.0.** The first draft extracted the tag with `git archive`. That applies the
+  `*.ps1 text eol=crlf` attribute, which changes `BGR-All-One.ps1` (sha `a81c40d9…` against `41899831…` as committed).
+  The frozen v0.1.0 manifest check then fails. A `git worktree` checkout fails the same way. The verifier now writes
+  the raw blobs of `v0.1.0` (`git cat-file blob`), and the unmodified v0.1.0 verifier passes on them. This was fixed
+  before `BRUTE_RELEASE_FREEZE_011` was committed.

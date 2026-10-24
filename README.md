@@ -3,7 +3,7 @@
 </p>
 
 <p align="center"><b>A reasoner that abstains on what it cannot verify.</b><br>
-<sub>Brute v0.1.0 · forked from BGR v0.90.0 · research preview · not AGI</sub></p>
+<sub>Brute v0.1.1 · forked from BGR v0.90.0 · research preview · not AGI</sub></p>
 
 ---
 
@@ -11,7 +11,7 @@
 
 Brute is a small, exact reasoner for hidden finite-state worlds. It watches actions and masked sensor readings, keeps every hidden machine that is still consistent with the evidence, and predicts the next reading **only** when every surviving explanation agrees.
 
-v0.1.0 has one goal: **when Brute cannot verify a prediction, it must say so instead of certifying it.** On the pre-registered study-002 it made **zero** false certificates in all 7 world families. The control (BGR v0.90 logic on the same worlds) made 156. The price is that Brute certifies far less often. One pre-registered criterion, **C6, failed**.
+v0.1.0 made Brute abstain when it could not verify a prediction, but it then forecast *worse than guessing* on 5-state worlds (study-002, C6 failed: ood5 1.504767 > ln 4). **v0.1.1 fixes the forecast without loosening certification:** after the n≤4 family is contradicted it forecasts from the n≤5 margin support when that is still consistent, else from a one-step suffix-frequency table. Before a contradiction it is byte-for-byte the v0.1.0 learner. On the pre-registered study-003 **all 11 gated criteria pass**, with G3′ (the owner-chosen drift criterion) in place of the original G3, which would have failed.
 
 Brute is a fork of **BGR (Bitwork Geometric Reasoning) v0.90.0**, and that research is credited in full ([`FORK.md`](FORK.md)).
 
@@ -19,87 +19,78 @@ Brute is a fork of **BGR (Bitwork Geometric Reasoning) v0.90.0**, and that resea
 
 | | |
 | --- | --- |
-| Version | 0.1.0 (`RELEASE.json`, `brute.__version__`) |
-| Tests | `python -m unittest discover -s tests`: **104 tests** (69 inherited, 35 new) |
-| Study | `BRUTE-010-ABSTENTION-002`: pre-registered at commit `d402c75` before any code. 7 families × 24 held-out seeds × 3 mask rates = 504 cases |
-| Gates | 8 of 9 gated criteria pass; **C6 fails** ([`results/study-002/GATES.json`](results/study-002/GATES.json)) |
-| Verifier | `python -m scripts.verify_release` (full: re-runs both independent audits) or `--fast` |
-| Interface | `brute.api` (JSON request/response v1) and a template-only language adapter (`adapters/language`). No language model is connected |
+| Version | 0.1.1 (`RELEASE.json`, `brute.version.RELEASE_VERSION`). `brute.__version__` stays `0.1.0` because `brute/__init__.py` is in the study-002 freeze (amendment A3) |
+| Tests | `python -m unittest discover -s tests`: **127 tests: 126 pass, 1 expected error** (the frozen v0.1.0 `test_verify_fails_under_tampered_results`, which fails on the RELEASE.json bump by construction, amendment A3; see deviation D2) |
+| Study | `BRUTE-011-FALLBACK-003`: pre-registered at commit `1585a77` before any v0.1.1 code. 7 families × 24 new held-out seeds × 3 mask rates = 504 cases, v0.1.1 and a v0.1.0 control run in lockstep |
+| Gates | **11 of 11 gated criteria pass** ([`results/study-003/GATES.json`](results/study-003/GATES.json)). The original G3 (drift4 false certificates = 0) was not gated and would fail: 4 |
+| Verifier | `python -m scripts.verify_release_011` (full: re-runs the independent reference) or `--fast`; `--frozen-v010` also runs the frozen v0.1.0 verifier on `git archive v0.1.0` |
+| Interface | `brute.api` 1.0 (unchanged) and 1.1 (`BruteServiceV011`: `forecast_source`, retraction reasons). Template-only language adapter. No language model is connected |
 
 Every claim in this README carries a label:
 
 - **Exact**: proved or verified by the tests or by exact computation in this repository.
-- **Observed**: measured in study-002 (`results/study-002/SCIENTIFIC.json`, sealed), or in study-001 where stated.
-- **Exploratory**: a post-hoc analysis that is not a criterion.
+- **Observed**: measured in study-003 (`results/study-003/SCIENTIFIC.json`, sealed), or in study-002 / study-001 where stated.
+- **Simulated**: a counterfactual predictor rescored on earlier sealed traces (design evidence, not pre-registered evidence).
+- **Inferred**: reasoning, not measured.
+- **Rejected**: considered and dropped, with the reason given (see [`BRUTE_v0.1.1_PLAN.md`](BRUTE_v0.1.1_PLAN.md) §2).
 - **Open**: unresolved.
 
-## Study-002 against the pre-registered criteria
+## Study-003 against the pre-registered criteria (*Observed*)
 
-| Criterion | Result | Observed |
+Arms on the same 504 cases: **v0.1.1**, **v0.1.0** control (frozen learner), **v0.90** control.
+
+| Criterion | Result | v0.1.1 | v0.1.0 | v0.90 |
+| --- | --- | --- | --- | --- |
+| G1 in-family soundness (cycle3, switch3, unstructured3, unaliased2, ood4) | PASS | 0 false of 1,430 certificates; 0 public false | 0 of 1,430 | 0 of 5,962 |
+| G2 ood5 false certificates = 0 | PASS | 0 of 2 | 0 of 2 | 83 of 218 |
+| G3′ drift4: 0 wrong at non-perturbation steps and total ≤ 50% of v0.90 | PASS | 4 of 24, all at perturbation steps 12/34; 0 elsewhere; limit 35.5 | 4 of 24 | 71 of 307 (23 at perturbation steps) |
+| G4 public safety | PASS | 0 public certificates on ood5/drift4; 0 public false anywhere | | |
+| G5 in-family false-alarm cases ≤ 5% | PASS | max 3 of 72 (ood4, 4.2%); 0 in the other four | | |
+| **G6 open-world log-loss** ≤ ln 4 = 1.386294; drift4 ≤ v0.1.0; min p ≥ 0.005 | PASS | **ood5 0.624547; drift4 1.155589**; min p 0.005 | ood5 1.480828; drift4 1.298329 | ood5 2.294628; drift4 2.164106 |
+| G7 in-family unchanged: (a) ≤ v0.90 + 0.05, (b) identical to v0.1.0 before contradiction, (c) τ reproduces | PASS | largest cost +0.0140 (unaliased2); 15,840 in-family steps identical; τ = 1.433141502274 | | |
+| G8 retraction semantics | PASS | 26 retractions: 4 falsified (= 4 wrong), 18 scope withdrawn, 4 unverifiable (masked); 0 wrong certificates in never-contradicted cases | | |
+| G9 compute budget | PASS | peak 102,806 of 160,000 rows; 0 exhaustions; wall clock 0.994 × v0.1.0 | | |
+| G10 independent audit | PASS | 504 cases, 22,176 steps, 0 mismatches (no `brute` import) | | |
+| G11 reproducibility | PASS | rerun `CALIBRATION_CHECK.json` and `SCIENTIFIC.json` byte-identical | | |
+
+Paired, seed-clustered bootstrap (2,000 resamples, seed 20261024; [`PAIRED_ANALYSIS.json`](results/study-003/PAIRED_ANALYSIS.json)), post-burn-in log-loss differences with 95% intervals:
+
+| | ood5 | drift4 |
 | --- | --- | --- |
-| C1 in-family soundness (cycle3, switch3, unstructured3, unaliased2, ood4) | PASS | 0 false of 1,443 conditional certificates; 0 public false |
-| C2 ood5 false certificates = 0 | PASS | Brute 0 of 2. v0.90 control 79 of 212; v0.89 74 of 130 |
-| C3 drift4 false certificates ≤ 50% of control | PASS | Brute 0 of 10, against a limit of 38.5. v0.90 77 of 376; v0.89 80 of 400. The zero stretch goal is also met |
-| C4 public safety | PASS | 0 public certificates out of family; 0 public false anywhere |
-| C5 in-family false-alarm rate ≤ 5% | PASS | 0 of 360 in-family cases alarmed |
-| **C6 open-world log-loss ≤ ln 4 (1.386294)** | **FAIL** | probability floor 0.005 met. drift4 1.204857 passes; **ood5 1.504767 fails** |
-| C7 in-family log-loss ≤ v0.90 + 0.05 | PASS | the largest cost is +0.0140 (unaliased2) |
-| C8 coverage | reported | see below |
-| C9 row budgets | reported | peak family rows 3,996; peak margin rows 99,818 of a 160,000 budget; 0 exhaustions |
-| C10 independent audit | PASS | 504 cases, 22,176 steps replayed by a separate implementation |
-| C11 reproducibility | PASS | rerun `CALIBRATION.json` and `SCIENTIFIC.json` are byte-identical |
+| v0.1.1 − v0.1.0 | −0.8563 [−0.9052, −0.8058] | −0.1427 [−0.1905, −0.0988] |
+| v0.1.1 − uniform | −0.7617 [−0.8087, −0.7134] | −0.2307 [−0.4137, −0.0794] |
+| v0.1.1 − suffix-1 baseline | −0.6602 [−0.7081, −0.6130] | −0.0123 [−0.1533, +0.1071] (not distinguishable) |
 
 ### Coverage and log-loss after burn-in (*Observed*)
 
-| Family | Coverage: Brute | Coverage: v0.90 | Log-loss: Brute | Log-loss: v0.90 | Log-loss: v0.89 (valid steps) |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| cycle3 | 0.201 | 0.524 | 0.1858 | 0.1736 | 0.1729 |
-| switch3 | 0.201 | 0.480 | 0.2097 | 0.1990 | 0.2137 |
-| unstructured3 | 0.096 | 0.331 | 0.1055 | 0.0916 | 0.0635 |
-| unaliased2 | 0.052 | 0.320 | 0.1116 | 0.0976 | 0.0670 |
-| ood4 | 0.002 | 0.618 | 0.3982 | 0.3926 | 5.777 vs Brute 1.169 |
-| ood5 | 0.001 | 0.076 | **1.5048** | 2.5082 | 9.220 vs Brute 1.873 |
-| drift4 | 0.001 | 0.139 | 1.2049 | 2.0174 | 4.243 vs Brute 0.937 |
-
-Uniform log-loss is 1.386294. The v0.89 score is computed only on steps where v0.89 produced a valid prediction, so that column is not comparable across rows. Selective risk (the error rate among certificates) is 0 for Brute in every family. For v0.90 it is 0.378 on ood5 and 0.213 on drift4. Paired, seed-clustered bootstrap intervals are in [`results/study-002/PAIRED_ANALYSIS.json`](results/study-002/PAIRED_ANALYSIS.json).
-
-### Abstentions by reason after burn-in, 2,592 steps per family (*Observed*)
-
-| Family | Certified | Possible set | Margin disagrees | Bound saturated | Residual alarm | Family contradicted |
+| Family | Coverage v0.1.1 (= v0.1.0) | Coverage v0.90 | Log-loss v0.1.1 | Log-loss v0.1.0 | Log-loss v0.90 | Suffix-1 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| cycle3 | 522 | 1233 | 837 | 0 | 0 | 0 |
-| switch3 | 522 | 1349 | 721 | 0 | 0 | 0 |
-| unstructured3 | 250 | 1735 | 607 | 0 | 0 | 0 |
-| unaliased2 | 134 | 1762 | 696 | 0 | 0 | 0 |
-| ood4 | 6 | 991 | 836 | 759 | 0 | 0 |
-| ood5 | 2 | 427 | 119 | 23 | 76 | 1945 |
-| drift4 | 3 | 969 | 316 | 42 | 0 | 1262 |
+| cycle3 | 0.197 | 0.524 | 0.1930 | 0.1930 | 0.1815 | 1.2340 |
+| switch3 | 0.164 | 0.456 | 0.2327 | 0.2327 | 0.2224 | 1.1896 |
+| unstructured3 | 0.094 | 0.375 | 0.1395 | 0.1395 | 0.1258 | 1.0687 |
+| unaliased2 | 0.088 | 0.344 | 0.1131 | 0.1131 | 0.0991 | 1.1312 |
+| ood4 | 0.006 | 0.581 | 0.4137 | 0.4137 | 0.4088 | 1.2437 |
+| ood5 | 0.001 | 0.075 | **0.6245** | 1.4808 | 2.2946 | 1.2848 |
+| drift4 | 0.006 | 0.109 | **1.1556** | 1.2983 | 2.1641 | 1.1679 |
 
-On replay through the API, the 140 study-001 v0.90 false certificates (64 on ood5, 76 on drift4) become:
+Coverage did not change, by design: v0.1.1 changes only forecasts after a contradiction. Per mask rate, ood5 is 0.3233 / 0.5494 / 1.0009 and drift4 0.9456 / 1.1499 / **1.3713** at mask 0.1 / 0.35 / 0.6. Study-002 numbers for v0.1.0 are in [`results/study-002/GATES.json`](results/study-002/GATES.json).
 
-| Outcome | Count |
-| --- | ---: |
-| abstentions, margin disagrees | 107 |
-| out-of-family responses, residual surprise | 15 |
-| abstentions, bound saturated | 12 |
-| conditional certificates on drift4, each withdrawn at the next observation | 6 |
-
-Source: [`results/study-002/API_REPLAY.json`](results/study-002/API_REPLAY.json). *Observed.*
+Reported, not gated: R3 found 0 n≤5 divergent witnesses on 1,456 CERTIFIED steps and a witness on all 4,226 MARGIN_DISAGREES steps ([`WITNESS_AUDIT.json`](results/study-003/WITNESS_AUDIT.json)). R4, replaying the study-001 drift4 design seeds, gives 6 of 19 wrong, all at perturbation steps, log-loss 1.163555 against 1.331950 for v0.1.0 ([`DRIFT_STRESS_R4.json`](results/study-003/DRIFT_STRESS_R4.json)).
 
 ## What Brute can't do yet
 
-- **It is worse than guessing on 5-state worlds.** Its ood5 post-burn-in log-loss is 1.5048, above uniform (1.3863) and above a one-step suffix-frequency baseline (1.2985). This is the C6 failure. Brute pays the ε/4 floor (ln 200 = 5.298) on the 64 steps where the 4-state family is contradicted, and then predicts uniform for the remaining 1,945 steps instead of learning. *Observed.*
-- **It certifies much less than v0.90.** In-family coverage is 0.05–0.20, against 0.32–0.52 for v0.90. Across the in-family families it issued 1,443 certificates where v0.90 issued 5,936. The main cause is the n≤5 margin gate: 607–837 MARGIN_DISAGREES abstentions per family. On ood4 it also hits 759 BOUND_SATURATED abstentions and certifies on only 0.2% of steps. *Observed.*
-- **It pays a small in-family accuracy cost.** Its log-loss is 0.006–0.014 above v0.90 in every in-family family, with all bootstrap intervals above 0 (inside the C7 allowance). *Observed.*
-- **It can still issue a wrong-scope conditional certificate briefly.** When the study-001 drift4 cases are replayed, 6 conditional certificates are issued and then withdrawn at the next observation. Withdrawal is guaranteed; prevention is not. *Observed.*
-- **It does not grow its own model class.** After a contradiction it falls back to uniform. Post hoc, the n≤5 margin learner stayed consistent on every ood5 contradicted step, and its single-value predictions were 1,435/1,435 correct. That is unused information. *Exploratory* ([`results/study-002/EXPLORATORY_V020.json`](results/study-002/EXPLORATORY_V020.json)).
-- **It does not handle rules that change.** On drift4 the n≤5 margin is itself contradicted on 823 of 1,262 post-contradiction steps. *Exploratory.*
-- **Public certificates need an outside attestation.** Brute cannot validate its own scope. A public certificate requires an attestation passed to `initialize` or `retry`. *Exact.*
-- **It only works on a toy domain:** 2 actions, 2 binary sensors, a family of n≤4 hidden states with an n≤5 margin, and deterministic Moore machines only. *Exact.*
-- **The language adapter is templates only.** It renders fixed sentences from API fields and checks that every claim points at an evidence field. It cannot answer free-form questions. *Exact.*
+- **It cannot prevent wrong certificates when the rules change.** On drift4 it issued 24 certificates and 4 were wrong (selective risk 0.27). All 4 came at the moment the world changed (steps 12 and 34), with both learners agreeing and no alarm. Each one was withdrawn at the next observation, falsified by it. The study-001 replay gives 6 of 19. The original zero-error drift criterion G3 would fail. *Observed.*
+- **It certifies far less than v0.90.** In-family coverage is 0.09–0.20, against 0.34–0.52 for v0.90. On ood4 it is 0.006 against 0.581. That is 1,430 in-family certificates where v0.90 issued 5,962, unchanged from v0.1.0. Across all 7 families, every one of the 4,226 MARGIN_DISAGREES abstentions has a verified n≤5 machine that predicts differently, so the gate is doing its job. Getting coverage back needs a larger model class, not a looser gate. *Observed.*
+- **Its forecasts after a drift are only as good as a frequency table.** drift4 log-loss is 1.1556 against 1.1679 for suffix-1; the paired interval [−0.153, +0.107] includes 0. At mask 0.6 it is 1.3713: slightly *worse* than v0.1.0 (1.3631) and close to uniform (1.3863). On drift4, 60 of 442 margin-forecast steps had a reading outside the margin support. *Observed.*
+- **It gets 5-state worlds right only up to 5 states.** The ood5 gain (0.6245, against 1.4808 for v0.1.0) comes from the n≤5 margin, which here is never contradicted and always contains the actual reading. Beyond 5 states it falls back to suffix-1. That case was not tested. *Observed* for ood5, *Inferred* beyond it.
+- **It still pays ln 200 = 5.298 on every contradiction step:** 61 steps on ood5 and 65 on drift4, which together are the single largest loss term per step. *Observed.*
+- **It does not grow its own model class.** The n≤5 margin is used only as a forecast, never promoted to a certificate. *Exact.*
+- **Public certificates need an outside attestation.** Brute cannot validate its own scope. *Exact.*
+- **It only works on a toy domain:** 2 actions, 2 binary sensors, deterministic Moore machines, an n≤4 family with an n≤5 margin. *Exact.*
+- **The language adapter is templates only.** No free-form questions. *Exact.*
 - **It is not AGI,** and nothing here shows general intelligence. *Open.*
 
-The plan for v0.2.0 is in [`NEXT_ITERATION.md`](NEXT_ITERATION.md): self-growing families gated by the next-larger margin, chosen from the data above.
+The plan for v0.2.0 is in [`NEXT_ITERATION.md`](NEXT_ITERATION.md).
 
 ## Quickstart
 
@@ -108,9 +99,9 @@ Requires Python 3.11+ and NumPy. No GPU, network, or model weights.
 ```bash
 git clone https://github.com/jacksonjp0311-gif/Brute.git && cd Brute
 python -m pip install -r requirements.txt
-python -m unittest discover -s tests            # 104 tests
-python -m scripts.verify_release --fast          # seals, freezes, regenerated gates, ledger, manifest
-python -m scripts.verify_release                 # also re-runs both independent audits (minutes)
+python -m unittest discover -s tests            # see Status for the count
+python -m scripts.verify_release_011 --fast      # seals, freezes, regenerated gates, ledger, manifest, git order
+python -m scripts.verify_release_011             # also re-runs the study-003 independent reference (minutes)
 ```
 
 A minimal API session:
@@ -125,10 +116,10 @@ s.handle({"api_version": "brute.api/1.0", "session_id": "demo", "op": "observe",
 print(s.handle({"api_version": "brute.api/1.0", "session_id": "demo", "op": "predict", "action": "b"}))
 ```
 
-To rerun calibration and study-002 in a scratch directory and compare bytes with the sealed files (long-running):
+To rerun the calibration check and study-003 in a scratch directory and compare bytes with the sealed files (long-running):
 
 ```bash
-python -m scripts.make_reproducibility --check
+python -m scripts.make_reproducibility_003 --check
 ```
 
 ## How it works
@@ -137,10 +128,11 @@ python -m scripts.make_reproducibility --check
 2. **Margin gate:** an n≤5 support must agree before Brute certifies. If the two disagree, it abstains with MARGIN_DISAGREES.
 3. **Saturation check:** if every surviving explanation uses all 4 states, the bound may be the reason they agree, so Brute abstains with BOUND_SATURATED.
 4. **Residual surprise:** a windowed (W=8) surprise test, with τ = 1.433141502274 calibrated on separate seeds (`CALIBRATION.json`), raises OUT_OF_FAMILY.
-5. **Contradiction and retraction:** when no machine fits, Brute answers OUT_OF_FAMILY, withdraws any certificate the observation falsified, and predicts uniform.
-6. **Open-world reserve:** ε = 0.02 is spread over all readings, so no probability falls below 0.005.
-7. **`brute.api`:** versioned JSON request and response schemas (`brute/api/schema/*.v1.json`) and a service that never raises.
-8. **Language adapter:** template rendering plus a checker that rejects any sentence not grounded in a response field.
+5. **Contradiction and retraction:** when no machine fits, Brute answers OUT_OF_FAMILY and withdraws issued certificates with a reason (falsified by observation, scope withdrawn, or unverifiable because masked).
+6. **Fallback forecast (v0.1.1, `brute/fallback.py`):** after contradiction it forecasts from the n≤5 margin support (uniform over it, with the ε reserve) while that support is consistent, otherwise from a one-step suffix-frequency table. `forecast_source` names which.
+7. **Open-world reserve:** ε = 0.02 is spread over all readings, so no probability falls below 0.005.
+8. **`brute.api`:** versioned JSON request and response schemas (`brute/api/schema/*.v1.json`) and a service that never raises.
+9. **Language adapter:** template rendering plus a checker that rejects any sentence not grounded in a response field.
 
 ## Repository
 
@@ -148,11 +140,13 @@ python -m scripts.make_reproducibility --check
 | --- | --- |
 | `brute/core`, `brute/evaluation.py` | The v0.1.0 learner and evaluator (study-002 freeze) |
 | `brute/api`, `adapters/language` | The API contract, service, and template language adapter (release freeze) |
-| `experiments/BRUTE_PLAN_002.json` | The pre-registration; `BRUTE_SOURCE_FREEZE_002.json` and `BRUTE_RELEASE_FREEZE_010.json` are the source locks |
+| `brute/fallback.py`, `brute/api/service_v011.py` | v0.1.1 learner and API 1.1 (study-003 freeze) |
+| `experiments/BRUTE_PLAN_003.json` | The study-003 pre-registration; `BRUTE_SOURCE_FREEZE_003.json` and `BRUTE_RELEASE_FREEZE_011.json` lock v0.1.1 code. Earlier plans and locks are kept |
+| `results/study-003/` | Sealed results, calibration check, independent audit, gates, paired analysis, reproducibility, witness audit, drift stress |
 | `results/study-002/` | Sealed results, calibration, audit, gates, paired analysis, reproducibility, API replay, exploratory |
 | `results/study-001/`, `bgr*/` | Inherited BGR v0.90 evidence and code, byte-identical |
 | `results/RESEARCH_LEDGER.jsonl` | Local unsigned SHA chain of research events |
-| `docs/research/` | Inherited research record and [`BRUTE_DEVIATIONS_002.md`](docs/research/BRUTE_DEVIATIONS_002.md) |
+| `docs/research/` | Inherited research record, [`BRUTE_DEVIATIONS_002.md`](docs/research/BRUTE_DEVIATIONS_002.md), [`BRUTE_DEVIATIONS_003.md`](docs/research/BRUTE_DEVIATIONS_003.md) |
 
 ## Credit and provenance
 
