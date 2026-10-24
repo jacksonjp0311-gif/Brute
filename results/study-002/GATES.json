@@ -1,0 +1,450 @@
+{
+  "all_gated_pass": false,
+  "failed": [
+    "C6_open_world_logloss"
+  ],
+  "gates": {
+    "C10_independent_audit": {
+      "criterion": "an independent reference (experiments/v90_independent_reference.py, no import of brute) recomputes every <=4 and <=5 support, every Brute decision, every residual statistic and every alarm",
+      "gated": true,
+      "observed": {
+        "cases": 504,
+        "per_family": {
+          "cycle3": {
+            "certs": 522,
+            "public": 522,
+            "public_wrong": 0,
+            "steps": 3168,
+            "v090_wrong": 0,
+            "wrong": 0
+          },
+          "drift4": {
+            "certs": 10,
+            "public": 0,
+            "public_wrong": 0,
+            "steps": 3168,
+            "v090_wrong": 77,
+            "wrong": 0
+          },
+          "ood4": {
+            "certs": 6,
+            "public": 6,
+            "public_wrong": 0,
+            "steps": 3168,
+            "v090_wrong": 0,
+            "wrong": 0
+          },
+          "ood5": {
+            "certs": 2,
+            "public": 0,
+            "public_wrong": 0,
+            "steps": 3168,
+            "v090_wrong": 79,
+            "wrong": 0
+          },
+          "switch3": {
+            "certs": 525,
+            "public": 525,
+            "public_wrong": 0,
+            "steps": 3168,
+            "v090_wrong": 0,
+            "wrong": 0
+          },
+          "unaliased2": {
+            "certs": 140,
+            "public": 140,
+            "public_wrong": 0,
+            "steps": 3168,
+            "v090_wrong": 0,
+            "wrong": 0
+          },
+          "unstructured3": {
+            "certs": 250,
+            "public": 250,
+            "public_wrong": 0,
+            "steps": 3168,
+            "v090_wrong": 0,
+            "wrong": 0
+          }
+        },
+        "schema": "brute.independent-audit.v1",
+        "scope": "independent solver rebuilt <=4 and <=5 supports, saturation, decisions, surprise, residual, alarms and public certificates; v0.89 catalogue probabilities are not recomputed here (audited in study-001)",
+        "source_results_sha256": "e83caf66a99f81c39b09298be3783e8ee2665dc1a7f3c8f717259f88f76519e9",
+        "status": "passed",
+        "steps_replayed": 22176,
+        "study": "BRUTE-010-ABSTENTION-002",
+        "tau": 1.433141502274
+      },
+      "pass": true
+    },
+    "C11_reproducibility": {
+      "criterion": "a second run to a new path gives a byte-identical SCIENTIFIC.json (all timing keys stripped)",
+      "gated": true,
+      "observed": {
+        "CALIBRATION.json": {
+          "byte_identical": true,
+          "committed_sha256": "6ebe33af7d9b1dfd9410141a501c5c08ffc40296a6ddea552a14eb8d5b08e384",
+          "rerun_sha256": "6ebe33af7d9b1dfd9410141a501c5c08ffc40296a6ddea552a14eb8d5b08e384"
+        },
+        "SCIENTIFIC.json": {
+          "byte_identical": true,
+          "committed_sha256": "2513684dec0fafc890e10a44b85b3c01d916ac57523e2f5e6e6f457fbffb29ae",
+          "rerun_sha256": "2513684dec0fafc890e10a44b85b3c01d916ac57523e2f5e6e6f457fbffb29ae"
+        }
+      },
+      "pass": true
+    },
+    "C1_in_family_soundness": {
+      "criterion": "Brute conditional false certificates = 0 on every in_family case, all 44 steps including burn-in; public false certificates = 0",
+      "gated": true,
+      "observed": {
+        "cycle3": {
+          "brute_certs": 522,
+          "brute_false": 0,
+          "public_certs": 522,
+          "public_false": 0
+        },
+        "ood4": {
+          "brute_certs": 6,
+          "brute_false": 0,
+          "public_certs": 6,
+          "public_false": 0
+        },
+        "switch3": {
+          "brute_certs": 525,
+          "brute_false": 0,
+          "public_certs": 525,
+          "public_false": 0
+        },
+        "unaliased2": {
+          "brute_certs": 140,
+          "brute_false": 0,
+          "public_certs": 140,
+          "public_false": 0
+        },
+        "unstructured3": {
+          "brute_certs": 250,
+          "brute_false": 0,
+          "public_certs": 250,
+          "public_false": 0
+        }
+      },
+      "pass": true
+    },
+    "C2_ood5_false_certs_zero": {
+      "criterion": "Brute conditional false certificates on ood5 = 0, all steps including burn-in (v0.90 control on the same cases reported alongside)",
+      "gated": true,
+      "observed": {
+        "brute_certs": 2,
+        "brute_false": 0,
+        "v089_false": 74,
+        "v090_control_false": 79
+      },
+      "pass": true
+    },
+    "C3_drift4_reduction": {
+      "criterion": "Brute conditional false certificates on drift4 <= 0.5 x the v0.90 control false certificates on the same cases, all steps; zero is reported as a stretch target, not a gate",
+      "gated": true,
+      "observed": {
+        "brute_false": 0,
+        "limit": 38.5,
+        "stretch_zero_met": true,
+        "v090_control_false": 77
+      },
+      "pass": true
+    },
+    "C4_public_safety": {
+      "criterion": "zero public certificates on ood5 and drift4; zero wrong public certificates anywhere",
+      "gated": true,
+      "observed": {
+        "public_certs_out_of_family": 0,
+        "public_false_anywhere": 0
+      },
+      "pass": true
+    },
+    "C5_false_alarm_limit": {
+      "criterion": "fraction of in_family held-out cases with at least one RESIDUAL_SURPRISE alarm <= 0.05; step-level alarm rate also reported",
+      "gated": true,
+      "observed": {
+        "cases_with_alarm": 0,
+        "fraction": 0.0,
+        "in_family_cases": 360,
+        "limit": 0.05,
+        "step_level_alarm_rate": 0.0
+      },
+      "pass": true
+    },
+    "C6_open_world_logloss": {
+      "criterion": "no published forecast gives any code probability < epsilon/4 (exact check over every step); mean post-burn-in log-loss on ood5 and on drift4 each <= ln 4 = 1.386294",
+      "gated": true,
+      "observed": {
+        "floor": 0.005,
+        "floor_pass": true,
+        "limit_ln4": 1.386294,
+        "mean_post_logloss": {
+          "drift4": 1.204857,
+          "ood5": 1.504767
+        },
+        "min_probability_any_step": 0.005,
+        "per_family_pass": {
+          "drift4": true,
+          "ood5": false
+        }
+      },
+      "pass": false
+    },
+    "C7_in_family_logloss_cost": {
+      "criterion": "mean post-burn-in log-loss of Brute on each in_family family <= v0.90 control on the same cases + 0.05 nats",
+      "gated": true,
+      "observed": {
+        "cycle3": {
+          "brute": 0.185798,
+          "limit": 0.223636,
+          "pass": true,
+          "v090": 0.173636
+        },
+        "ood4": {
+          "brute": 0.398164,
+          "limit": 0.442647,
+          "pass": true,
+          "v090": 0.392647
+        },
+        "switch3": {
+          "brute": 0.209745,
+          "limit": 0.248959,
+          "pass": true,
+          "v090": 0.198959
+        },
+        "unaliased2": {
+          "brute": 0.111583,
+          "limit": 0.147559,
+          "pass": true,
+          "v090": 0.097559
+        },
+        "unstructured3": {
+          "brute": 0.105546,
+          "limit": 0.141611,
+          "pass": true,
+          "v090": 0.091611
+        }
+      },
+      "pass": true
+    },
+    "C8_coverage_reported": {
+      "criterion": "report (no gate) post-burn-in coverage and selective risk for v0.89 legacy, v0.90 control and Brute, plus the abstention breakdown by status and reason",
+      "gated": false,
+      "observed": {
+        "cycle3": {
+          "coverage_post": {
+            "brute": 0.201389,
+            "v089": 0.831019,
+            "v090": 0.524306
+          },
+          "selective_risk_post": {
+            "brute": 0.0,
+            "v089": 0.0,
+            "v090": 0.0
+          },
+          "status_breakdown_post": {
+            "ABSTAIN/BOUND_SATURATED": 0,
+            "ABSTAIN/BUDGET_EXHAUSTED": 0,
+            "ABSTAIN/MARGIN_DISAGREES": 837,
+            "CERTIFIED": 522,
+            "ERROR/INTERNAL": 0,
+            "OUT_OF_FAMILY/FAMILY_CONTRADICTED": 0,
+            "OUT_OF_FAMILY/RESIDUAL_SURPRISE": 0,
+            "POSSIBLE_SET": 1233
+          }
+        },
+        "drift4": {
+          "coverage_post": {
+            "brute": 0.001157,
+            "v089": 0.130787,
+            "v090": 0.139275
+          },
+          "selective_risk_post": {
+            "brute": 0.0,
+            "v089": 0.235988,
+            "v090": 0.213296
+          },
+          "status_breakdown_post": {
+            "ABSTAIN/BOUND_SATURATED": 42,
+            "ABSTAIN/BUDGET_EXHAUSTED": 0,
+            "ABSTAIN/MARGIN_DISAGREES": 316,
+            "CERTIFIED": 3,
+            "ERROR/INTERNAL": 0,
+            "OUT_OF_FAMILY/FAMILY_CONTRADICTED": 1262,
+            "OUT_OF_FAMILY/RESIDUAL_SURPRISE": 0,
+            "POSSIBLE_SET": 969
+          }
+        },
+        "ood4": {
+          "coverage_post": {
+            "brute": 0.002315,
+            "v089": 0.086806,
+            "v090": 0.61767
+          },
+          "selective_risk_post": {
+            "brute": 0.0,
+            "v089": 0.324444,
+            "v090": 0.0
+          },
+          "status_breakdown_post": {
+            "ABSTAIN/BOUND_SATURATED": 759,
+            "ABSTAIN/BUDGET_EXHAUSTED": 0,
+            "ABSTAIN/MARGIN_DISAGREES": 836,
+            "CERTIFIED": 6,
+            "ERROR/INTERNAL": 0,
+            "OUT_OF_FAMILY/FAMILY_CONTRADICTED": 0,
+            "OUT_OF_FAMILY/RESIDUAL_SURPRISE": 0,
+            "POSSIBLE_SET": 991
+          }
+        },
+        "ood5": {
+          "coverage_post": {
+            "brute": 0.000772,
+            "v089": 0.035494,
+            "v090": 0.075617
+          },
+          "selective_risk_post": {
+            "brute": 0.0,
+            "v089": 0.565217,
+            "v090": 0.377551
+          },
+          "status_breakdown_post": {
+            "ABSTAIN/BOUND_SATURATED": 23,
+            "ABSTAIN/BUDGET_EXHAUSTED": 0,
+            "ABSTAIN/MARGIN_DISAGREES": 119,
+            "CERTIFIED": 2,
+            "ERROR/INTERNAL": 0,
+            "OUT_OF_FAMILY/FAMILY_CONTRADICTED": 1945,
+            "OUT_OF_FAMILY/RESIDUAL_SURPRISE": 76,
+            "POSSIBLE_SET": 427
+          }
+        },
+        "switch3": {
+          "coverage_post": {
+            "brute": 0.201389,
+            "v089": 0.806327,
+            "v090": 0.479552
+          },
+          "selective_risk_post": {
+            "brute": 0.0,
+            "v089": 0.0,
+            "v090": 0.0
+          },
+          "status_breakdown_post": {
+            "ABSTAIN/BOUND_SATURATED": 0,
+            "ABSTAIN/BUDGET_EXHAUSTED": 0,
+            "ABSTAIN/MARGIN_DISAGREES": 721,
+            "CERTIFIED": 522,
+            "ERROR/INTERNAL": 0,
+            "OUT_OF_FAMILY/FAMILY_CONTRADICTED": 0,
+            "OUT_OF_FAMILY/RESIDUAL_SURPRISE": 0,
+            "POSSIBLE_SET": 1349
+          }
+        },
+        "unaliased2": {
+          "coverage_post": {
+            "brute": 0.051698,
+            "v089": 0.707562,
+            "v090": 0.320216
+          },
+          "selective_risk_post": {
+            "brute": 0.0,
+            "v089": 0.0,
+            "v090": 0.0
+          },
+          "status_breakdown_post": {
+            "ABSTAIN/BOUND_SATURATED": 0,
+            "ABSTAIN/BUDGET_EXHAUSTED": 0,
+            "ABSTAIN/MARGIN_DISAGREES": 696,
+            "CERTIFIED": 134,
+            "ERROR/INTERNAL": 0,
+            "OUT_OF_FAMILY/FAMILY_CONTRADICTED": 0,
+            "OUT_OF_FAMILY/RESIDUAL_SURPRISE": 0,
+            "POSSIBLE_SET": 1762
+          }
+        },
+        "unstructured3": {
+          "coverage_post": {
+            "brute": 0.096451,
+            "v089": 0.70679,
+            "v090": 0.330633
+          },
+          "selective_risk_post": {
+            "brute": 0.0,
+            "v089": 0.0,
+            "v090": 0.0
+          },
+          "status_breakdown_post": {
+            "ABSTAIN/BOUND_SATURATED": 0,
+            "ABSTAIN/BUDGET_EXHAUSTED": 0,
+            "ABSTAIN/MARGIN_DISAGREES": 607,
+            "CERTIFIED": 250,
+            "ERROR/INTERNAL": 0,
+            "OUT_OF_FAMILY/FAMILY_CONTRADICTED": 0,
+            "OUT_OF_FAMILY/RESIDUAL_SURPRISE": 0,
+            "POSSIBLE_SET": 1735
+          }
+        }
+      },
+      "pass": null
+    },
+    "C9_row_budgets_reported": {
+      "criterion": "report (no gate) peak rows for the <=4 and <=5 learners and the count of budget exhaustions; any exhaustion must produce abstention",
+      "gated": false,
+      "observed": {
+        "budget": 160000,
+        "exhaustions": 0,
+        "peak_rows_family": 3996,
+        "peak_rows_margin": 99818,
+        "per_family": {
+          "cycle3": [
+            1818,
+            19907
+          ],
+          "drift4": [
+            1397,
+            21630
+          ],
+          "ood4": [
+            3345,
+            62910
+          ],
+          "ood5": [
+            928,
+            12280
+          ],
+          "switch3": [
+            3036,
+            61623
+          ],
+          "unaliased2": [
+            1353,
+            19898
+          ],
+          "unstructured3": [
+            3996,
+            99818
+          ]
+        }
+      },
+      "pass": null
+    }
+  },
+  "passed": [
+    "C1_in_family_soundness",
+    "C2_ood5_false_certs_zero",
+    "C3_drift4_reduction",
+    "C4_public_safety",
+    "C5_false_alarm_limit",
+    "C7_in_family_logloss_cost",
+    "C10_independent_audit",
+    "C11_reproducibility"
+  ],
+  "plan_sha256": "dd0d6f049689c95756f1e29fa15910b6109bd1d2f8f9fdb4c30cf35a6b997f21",
+  "schema": "brute.gates.v1",
+  "scientific_sha256": "2513684dec0fafc890e10a44b85b3c01d916ac57523e2f5e6e6f457fbffb29ae",
+  "study": "BRUTE-010-ABSTENTION-002"
+}
