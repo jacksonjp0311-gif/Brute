@@ -1,0 +1,40 @@
+{
+  "gates": {
+    "G1_in_scope_soundness": {
+      "evidence": "0 false conditional certificates in 360 in-grammar cases",
+      "status": "PASSED_BOUNDED"
+    },
+    "G2_ood_public_safety": {
+      "evidence": "0 public certificates for 504 unattested cases; this does NOT demonstrate anomaly detection",
+      "status": "PASSED_BY_ABSTENTION_ONLY"
+    },
+    "G3_four_state_expansion": {
+      "evidence": "n<=3 failed in 71/72 four-state cases; n<=4 consistent in 72/72; incorrect conditional: 78 -> 0",
+      "status": "PASSED_BOUNDED"
+    },
+    "G4_work_budget": {
+      "evidence": "Budget exhaustion, contradiction and explicit evidence replay covered by tests, no heldout budget-exhaustion",
+      "status": "PASSED_UNIT_TESTED"
+    },
+    "G5_predictive_quotient": {
+      "evidence": "120 full reference machines, independently checked by future-word enumeration; 17 with smaller quotient",
+      "status": "PASSED_COMPLETE_MODEL_ONLY"
+    },
+    "G6_independent_audit": {
+      "evidence": "22176 events and 6103 certificates reconstructed",
+      "status": "PASSED"
+    },
+    "G7_reproducibility": {
+      "evidence": "504 case records exact; one total_elapsed_informational field leaked into scientific projection; initial hash precheck preserved",
+      "status": "PASSED_WITH_RECORDED_REPORTING_DEFECT"
+    },
+    "G8_broad_intelligence": {
+      "evidence": "140 false conditional certificates outside grammar, no learned unrestricted adequacy, no language/cross-domain AGI",
+      "status": "NOT_PASSED"
+    }
+  },
+  "global_conditional_errors_outside_model": 140,
+  "overall": "bounded_inference_verified_public_safety_by_abstention_broad_generality_not_proved",
+  "schema": "bgr90.gates.v1",
+  "supported_class_conditional_errors": 0
+}

@@ -1,0 +1,14 @@
+{
+  "defect": "Original run_study.no_time() failed to remove top-level total_elapsed_informational. Source frozen and unchanged; normalization only in this checking report.",
+  "exact_case_records": 504,
+  "excluded": [
+    "elapsed_informational",
+    "time_informational_seconds",
+    "total_elapsed_informational"
+  ],
+  "normalization_sha256": "0127c30dd96a782ceac3114959a270be7c9228b7b6bc9cf13b86c13ffdf5c18b",
+  "reproduction_raw_sha256": "d1ba16a215f55fc1c70a4b7105777bdd410a06353beed853d8666c941ca7e829",
+  "schema": "bgr90.reproducibility.v1",
+  "source_raw_sha256": "3b5e95b1358bbc9fee4a242ef07fa05dcfd2f58cb6cf7506a8bd5594fc933f5a",
+  "status": "passed_after_excluding_total_wall_clock"
+}

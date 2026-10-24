@@ -1,0 +1,38 @@
+{
+  "schema":"bgr90.registered-plan.v1",
+  "study":"BGR-090-OPEN-SCOPE-AND-PREDICTIVE-QUOTIENT-001",
+  "mission":"research general intelligence, without claiming AGI",
+  "heldout_ranges":{
+    "cycle3":[930001,930024],"switch3":[940001,940024],
+    "unstructured3":[950001,950024],"unaliased2":[960001,960024],
+    "ood4":[970001,970024],"ood5":[980001,980024],
+    "drift4":[990001,990024]
+  },
+  "mask_rates":[0.1,0.35,0.6],
+  "actions_per_case":44,
+  "burn_in":8,
+  "symbolic_state_cap":4,
+  "symbolic_partial_row_cap":160000,
+  "prediction_smoothing":0.08,
+  "model_scope_external_attestation":false,
+  "frozen_control":"v0.89 1..3 full-catalog conditional certificates",
+  "registered_gates":{
+    "G1_in_scope_soundness":"Zero false conditional certifications in 1..4 hidden-state deterministic stationary in-grammar worlds",
+    "G2_ood_public_safety":"Zero public (unconditional) certificates in unattested worlds, including 5-state and nonstationary stress",
+    "G3_four_state_expansion":"At least one 4-state case contradicts v0.89 1..3 grammar while expanded 4-state symbolic model remains consistent, with reduced conditional false certifications",
+    "G4_work_budget":"Budget exhaustion and contradictions must preserve observations and cause abstention; recoverable replay with larger state/row budget",
+    "G5_predictive_quotient":"Moore minimization agrees with an independently implemented all-future-word equivalence test and is invariant to state-label permutations",
+    "G6_independent_audit":"Independently regenerate candidate supports, true emission outcomes and every conditional certificate, with exact frozen ledger and source verification",
+    "G7_reproducibility":"Repeat all original scientific case fields on new output paths with wall-clock timings excluded",
+    "G8_broad_intelligence":"UNPASSED until out-of-grammar adaptation and positive independent cross-domain transfer outperform strong baselines without a supplied state grammar"
+  },
+  "limitations":[
+    "An unattested grammar cannot yield sound universal certifications from finite data, no matter how long it has not contradicted observations.",
+    "Symbolic 4-state existential support does not imply calibrated model probabilities; smoothed numerical scores are heuristic.",
+    "The 4-state support may falsely certify before a 5-state or nonstationary contradiction. All such claims remain tagged conditional and are withheld from the public certification API.",
+    "External scope attestation is a laboratory flag, not cryptographic or production-safe authorization.",
+    "State quotient is calculated for complete reference Moore machines; extracting the exact minimal quotient from incomplete evidence remains research.",
+    "Finite fully observed action IDs and two binary sensor channels are supplied; no image, language, or arbitrary program induction.",
+    "No language-model integration, changes to other projects, or physical electrical energy measurement."
+  ]
+}
