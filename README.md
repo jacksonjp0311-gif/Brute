@@ -1,130 +1,107 @@
-# BITWORK — Geometric Reasoning v0.90.0
+<p align="center">
+  <img src="assets/brand/lockup.png" alt="Brute" width="520">
+</p>
 
-**Long-term objective: General Intelligence**  
-**Present research contribution:** exact finite-prefix constraint inference for hidden causal machines with up to four states, independently checked predictive-state minimization, and an explicit boundary between model-conditional and externally justified knowledge.  
-**Status:** bounded finite-state research checkpoint. **Not AGI.**
+<p align="center"><b>A reasoner that abstains on what it cannot verify.</b><br>
+<sub>Brute v0.1.0 (planning) · forked from BGR v0.90.0 · research preview · not AGI</sub></p>
 
-> **The scientific turning point:** v0.89 incorrectly certified 261 observations in four-state environments outside its three-state hypothesis family. In v0.90's new held-out cohort, the *same prior three-state implementation* made **78 false conditional certificates** on 72 four-state cases; the expanded four-state symbolic support solver made **zero**. However, it still made **140 false conditional certificates** in five-state or nonstationary stress worlds. We cannot make those errors disappear by assuming our largest enumerated model is always correct.
+---
 
-**No language model or language subsystem has been added. Only Bitwork/BGR was changed.** BitWatts electrical measurement remains deferred.
+## Overview
 
-## Contents
+Brute is a small, exact reasoner for hidden finite-state worlds. It watches actions and masked sensor readings, keeps every hidden machine that is still consistent with the evidence, and predicts the next reading **only** when every surviving explanation agrees.
 
-[Research question](#research-question) · [New abilities](#new-abilities) · [Frozen results](#frozen-results) · [Run and verify](#run-and-verify) · [Directory](#full-directory) · [Limits and future](#scientific-limits-and-future)
+Brute's goal for v0.1.0 is narrow: **when it cannot verify a prediction, it must say so instead of certifying it.**
 
-## Research question
+Brute is a fork of **BGR (Bitwork Geometric Reasoning) v0.90.0**, and that research is credited in full. The code in this repository is currently BGR v0.90.0 unchanged (tag `bgr-v0.90.0-fork`). Provenance is in [`FORK.md`](FORK.md), and the fixes are planned in [`BRUTE_v0.1.0_PLAN.md`](BRUTE_v0.1.0_PLAN.md).
 
-How can a learner reason over hidden action/observation dynamics beyond the original enumerated finite grammar without claiming that its current grammar is universally adequate? How can it collapse redundant hidden states *only when every future action sequence preserves predictions*?
+## Status
 
-Bitwork v0.90 addresses these **separate** questions with two algorithms and an explicit scope gate. The teacher emits **two anonymous nullable binary sensor channels** after each of two actions; no true latent labels or hidden state count are supplied to the learner.
+| | |
+| --- | --- |
+| Code | BGR v0.90.0, unmodified. **No Brute fixes are implemented yet** |
+| Tests | `python -m unittest discover -s tests`: 69 tests pass in this fork |
+| Release verifier | `python -m scripts.verify_release` **fails in this fork** because the nested baseline zip was intentionally left out (`FORK.md`; plan F12) |
+| Evidence base | BGR study-001: 7 families × 24 held-out seeds × 3 mask rates = 504 cases and 22,176 observations ([`docs/research/`](docs/research/README.md)) |
 
-## New abilities
+Every claim in this README carries a label:
 
-1. **Symbolic four-state expansion** (`bgr90/symbolic.py`): represent only states and transition/emission constraints actually reached by the observation history, naming hidden states in order of first appearance. Unknown edges/emissions remain free. No complete catalog of 16,777,216 labeled four-state machines is built. Fully enumerated n=1/2 reference experiments and independent replay validate next-observation *support*, not calibrated Bayesian probabilities.
-2. **Evidence-preserving expansion**: contradictions or exhausted work budgets make the learner abstain. Original observations remain durable in memory and can be replayed with a higher model-state or row budget; scope attestation is revoked on expansion.
-3. **Explicit model adequacy boundary** (`bgr90/adequacy.py`): distinguish model-conditional unanimity from an outward-facing certificate. In the study, no externally validated grammar attestation is supplied. Public certifications are therefore **always withheld**, even if the candidate set agrees. This conservative refusal prevents unsupported public assertions; **it does not automatically detect all out-of-family worlds**.
-4. **Exact minimal predictive-state quotient** (`bgr90/quotient.py`): standard finite Moore automaton partition refinement merges two fully specified reachable hidden states **only** when all possible future action sequences produce the same sensor outputs. Verified against brute-force distinguishability words and hidden-state label permutations. No claim to infer the minimal quotient directly from limited real-world observations.
-5. **Constructive finite-data impossibility witness** (`scripts/open_world_counterexample.py`): after any finite masked observation history, two larger causal machines can agree with every observation and disagree on the next output. Thus no universally sound next-output certificate exists without a bound or external assumption on possible worlds.
+- **Exact**: proved or verified by the tests or by exact computation in this repository.
+- **Observed**: measured in study-001. The numbers come from `results/study-001/RESULTS.json`, or from a re-analysis of `SCIENTIFIC.json`.
+- **Open**: unresolved.
 
-## Frozen results
+## What Brute can't do yet
 
-Study `BGR-090-OPEN-SCOPE-AND-PREDICTIVE-QUOTIENT-001`: **7 task families × 24 unseen worlds × 3 sensor-mask rates** = **504 cases** and **22,176 original action observations**. All support sets and conditional certificates were reconstructed by a separately written Python reference. The benchmark compares the original frozen v0.89 three-state controller to the new four-state support with the same observations.
+- **It certifies wrong answers outside its family.** It made 140 false certifications on worlds outside its 4-state model: 64 of 213 certificates on 5-state worlds (about 30%) and 76 of 293 on rule-changing worlds (about 26%). *Observed.*
+- **It can't detect that it is out of family.** It has no misspecification check and doesn't abstain when its model class is wrong. 102 of the 140 wrong certificates were issued on the very step whose observation then ruled out every 4-state machine. *Observed.*
+- **It never issues a public certificate.** `scope_verified=False` is hard-coded, so the zero public certificates in the study come from a switch, not from verification. *Exact.*
+- **It certifies less often than v0.89 on in-family worlds.** It issued about 48% fewer certificates on the 1–3 state families: 4,068 vs 7,860. *Observed.*
+- **It scores worse than guessing on 5-state and rule-changing worlds.** Mean log-loss is 2.289 and 2.189 against 1.386 for uniform. The cause is a 1e-12 probability floor: 95 and 99 steps put almost no probability on what actually happened. *Observed.*
+- **There is no predictive-score comparison with v0.89.** The per-step v0.89 score is never recorded. *Exact.*
+- **Some reported numbers can't be regenerated.** `PAIRED_ANALYSIS.json` and `GATES.json` have no generator scripts, and the release verifier checks hard-coded values. *Exact.*
+- **It only works on a toy domain:** 2 actions, 2 binary sensors, up to 4 hidden states (6 at most in code). *Exact.*
+- **There is no language interface.** An API and adapter are specified in the plan but not built. *Exact.*
+- **It is not AGI,** and nothing here shows progress toward it. *Open.*
 
-| Test family | Cases | Old three-state false conditional certificates | New four-state false conditional certificates | Public certificates (unattested) |
-| --- | ---: | ---: | ---: | ---: |
-| Three-state / two-state in-grammar families | 288 | 0 | 0 | 0 |
-| **Four-state, formerly out-of-family** | **72** | **78** | **0** | **0** |
-| Five-state, still outside grammar | 72 | 65 | 64 | 0 |
-| Changing-rule four-state worlds | 72 | 106 | 76 | 0 |
-| **All families** | **504** | **249** | **140** | **0** |
+How these get fixed is in [`BRUTE_v0.1.0_PLAN.md`](BRUTE_v0.1.0_PLAN.md).
 
-**New in-family soundness passed. Universal model-family adequacy did not.** Zero public certifications are the result of refusing to grant scope attestation, not of learning to identify all possible invalid models. Conditional mistakes in the five-state and nonstationary experiments are preserved and visible.
+## What it does do
 
-The expanded four-state model remained consistent in all 72 four-state cases, while the legacy three-state learner rejected evidence in **71/72**. Four-state examples needed at most **2,997 partial hypothesis rows** in this cohort, versus a catalog of 16,777,216 complete labeled four-state machines. Those quantities count different representations and do not establish an exact memory-speedup factor.
+| Claim | Label | Evidence |
+| --- | --- | --- |
+| Zero false conditional certifications on the 1–3-state in-family worlds (288 cases), and zero on the 72 four-state worlds that the v0.89 three-state learner got wrong 78 times | Observed | `results/study-001/RESULTS.json`; independently replayed by `experiments/independent_audit.py` |
+| The four-state symbolic support stayed consistent on 72/72 four-state cases; the v0.89 three-state family was contradicted on 71/72 | Observed | same |
+| An independent reference replayed all 22,176 observations and reconstructed all 6,103 conditional certificates | Observed / Exact replay | `results/study-001/INDEPENDENT_AUDIT.json` |
+| Moore minimization matches an independent all-future-word equivalence check and is invariant to state relabelling (17 of 120 reference worlds had fewer predictive states than labels) | Exact | `bgr90/quotient.py`, `tests/test90.py` |
+| After any finite masked history, two larger machines exist that agree with every observation yet disagree on the next one. No finite evidence certifies without a bound. `open_world_counterexample` **passes** | Exact | `scripts/open_world_counterexample.py`, `tests/test90_limit.py` |
+| Budget exhaustion and contradictions preserve the evidence and cause abstention, with replay at a larger budget | Exact | `tests/test90.py` |
 
-The complete-machine predictive quotient was independently verified on **120 reference worlds**, and **17** had fewer predictively distinct states than nominal hidden-state labels.
+## Quickstart
 
-The descriptive paired bootstrap over 24 four-state world seeds (mask repetitions clustered) estimates **68–88 fewer false conditional certificates** for the new model over this fixed cohort design (unadjusted 95% interval). This is not a guarantee outside the finite grammar.
-
-### Audit and reproducibility
-
-- The reference replayed all **22,176 action observations** and reconstructed all **6,103 conditional certificates**, including all **140** deliberately out-of-family failures.
-- Source and original study are SHA-256 frozen; a full second run matched **all 504 scientific case records**.
-- **Preserved reporting defect:** the original `SCIENTIFIC.json` projection mistakenly retained top-level `total_elapsed_informational`. The raw reproduced files therefore had different hashes. After excluding that one timing field, every scientific datum matched exactly. Both the failed precheck and corrected normalization are retained in `results/`—the learner and held-out seed cohort were not altered.
-- The historical `BGR-v0.89.0.zip` is included unchanged and hash-verified.
-
-![Conditional certificate errors by family](assets/BGR-v0.90.0-conditional-errors.png)
-
-## Run and verify
-
-Requirements: Python 3.11+, NumPy 1.24+. Matplotlib and Playwright are **optional** developer-only tools for rebuilding included plots and browser acceptance. No GPU, internet service, language API or model weights are required.
-
-Windows (from the extracted root):
-
-```powershell
-python -m pip install -r requirements.txt
-.\BGR-All-One.ps1 -Action Verify
-.\BGR-All-One.ps1 -Action Demo
-.\BGR-All-One.ps1 -Action UI
-```
-
-Read-only evidence viewer: `http://127.0.0.1:8078/ui/`. **Native Windows execution has not been tested in this environment.**
-
-Cross-platform:
+Requires Python 3.11+ and NumPy (`requirements.txt`). No GPU, network, or model weights.
 
 ```bash
-python -m unittest discover -s tests -v
-python -m scripts.verify_release
+git clone https://github.com/jacksonjp0311-gif/Brute.git && cd Brute
+python -m pip install -r requirements.txt
+python -m unittest discover -s tests -v          # 69 tests
+python -m scripts.open_world_counterexample      # impossibility witness
+python -m scripts.demo                           # one four-state run
 python -m experiments.independent_audit --results-dir results/study-001
-python -m scripts.open_world_counterexample
-python -m scripts.demo
-python -m http.server 8078 --bind 127.0.0.1
 ```
 
-To rerun without overwriting frozen results:
+To reproduce study-001 without touching the frozen results:
 
 ```bash
 python -m experiments.run_study --output runs/reproduction-001
 python -m experiments.independent_audit --results-dir runs/reproduction-001
 ```
 
-## Full directory
+## How it works
+
+1. **Symbolic support** (`bgr90/symbolic.py`, `SymbolicLearner`): it represents only the states and transitions the evidence has touched, naming states in first-visit order, up to `max_states`. It certifies the next reading when the surviving support is a singleton.
+2. **Adequacy boundary** (`bgr90/adequacy.py`, `AdequacyLearner`): it separates *conditional* certificates, which are true if the world is in the family, from *public* ones, which need external scope attestation (not yet possible; see above).
+3. **Predictive quotient** (`bgr90/quotient.py`, `minimize_moore`): it merges hidden states only when every future action sequence predicts the same readings.
+4. **Impossibility witness** (`scripts/open_world_counterexample.py`): the limit any finite-evidence reasoner faces.
+
+## Roadmap
+
+[`BRUTE_v0.1.0_PLAN.md`](BRUTE_v0.1.0_PLAN.md) covers:
+
+- the ordered fixes F1–F14 (contradiction and retraction, a margin-family gate, a saturation check, a residual-surprise test, coverage reporting, the probability reserve, the v0.89 comparison, generators, the timing fix, an attested public path, and hygiene);
+- the architecture changes needed before language;
+- the `brute.api` contract for a strictly grounded language adapter.
+
+## Repository
 
 | Path | Contents |
 | --- | --- |
-| `bgr90/symbolic.py` | Four-state symbolic support, evidence preservation, contradiction and resource-safe replay |
-| `bgr90/adequacy.py` | Three-state probability model plus four-state conditional support and external-scope gate |
-| `bgr90/quotient.py` | Exact complete-machine predictive equivalence and canonical minimal quotient |
-| `bgr90/worlds.py` | **Evaluator-only** five-state and changing-rule stress worlds |
-| `bgr90/evaluation.py` | Source-frozen no-reset masked-observation study |
-| `bgr60/` through `bgr89/` | Prior core algorithms, finite-world research and compatibility source |
-| `baseline/BGR-v0.89.0.zip` | Original complete predecessor release with its historical archive lineage |
-| `experiments/PLAN.json` | Frozen seed blocks, masks, scientific promotion gates and limitations |
-| `experiments/SOURCE_FREEZE.json` | SHA-256 fingerprints of all frozen study source and inherited tests |
-| `experiments/v90_independent_reference.py` | Separate non-vectorized path-constraint filter and future-word equivalence checker |
-| `experiments/independent_audit.py` | Independent replay and complete-machine quotient audit |
-| `experiments/run_study.py` | Frozen evaluation runner and sealed JSON scientific records |
-| `experiments/independent_reference.py`, `v89_independent_reference.py`, `v86_independent_audit.py` | Preserved original regression references used by previous tests |
-| `results/study-001/` | Original study trace, scientific projection, seals and independent audit |
-| `results/REPRODUCIBILITY*.json` | Successful matched rerun and preserved timing-field export precheck failure |
-| `results/PAIRED_ANALYSIS.json` | World-clustered unadjusted descriptive uncertainty estimates |
-| `results/GATES.json` | Explicit passed, failed and untested scientific gates |
-| `results/RESEARCH_LEDGER.jsonl` | Local hash-linked research receipts, not external signatures |
-| `scripts/open_world_counterexample.py` | Constructive arbitrary-finite-history indistinguishability test |
-| `tests/test90.py`, `tests/test90_limit.py` | New model support, quotient, safety, exactness and impossibility tests |
-| `tests/test85.py` through `tests/test89.py` | Preserved historical regression tests |
-| `assets/` | Frozen-study statistical charts and browser acceptance screenshot |
-| `ui/` | Read-only browser viewer using real recorded observations |
-| `docs/` | BitWatts, claim boundaries, experiment protocol, file directory |
-| `WHITEPAPER.md`, `NEXT_ITERATION.md`, `AGENT_CONTEXT.md` | Formal argument, next scientific roadmap, continuation instructions |
-| `BGR-All-One.ps1` | One root-anchored PowerShell entry for tests, demo, UI and reproduction |
+| `bgr90/`, `bgr89/` … `bgr60/` | Core algorithms (inherited, unchanged) |
+| `experiments/`, `scripts/`, `tests/` | Frozen study runner, independent references, tools, 69 tests |
+| `results/` | Study-001 evidence, gates, ledger (unchanged) |
+| `docs/research/` | Brute index of the inherited BGR research record |
+| `assets/brand/` | Brute symbol, lockup, OG card ([`BRAND.md`](assets/brand/BRAND.md)) |
+| `FORK.md`, `BRUTE_v0.1.0_PLAN.md` | Provenance and plan |
 
-## Scientific limits and future
+## Credit and provenance
 
-This learner does **not** discover arbitrary causal world grammars, handle stochastic models exactly, prove it knows the true hidden-state bound, independently validate model-scope attestations, or achieve positive transfer across fully new perception modalities. The transfer result from v0.88 remains a separate experiment; it was **not** merged into the v0.90 hidden-model learner or revalidated under changing emissions.
-
-The public scope gate protects downstream certainty by **abstaining without attestation**. When a user-supplied laboratory flag is set, the model remains conditionally sound only if the attested assumption is *actually true*—a Boolean flag is not secure validation.
-
-The next research priority is adaptive model-family invention and validation under stochastic/delayed dynamics, using the smallest predictive representation consistent with observed data, and then independent task environments. [NEXT_ITERATION.md](NEXT_ITERATION.md) has a specific falsifiable plan.
-
-**BitWatts:** candidate rows and transitions examined are measured. Physical watts and joules remain unmeasured and intentionally deferred. Software version `0.90.0` is **not** “90% of AGI.”
+Brute is derived from BGR v0.90.0 (Bitwork Geometric Reasoning). The original README is preserved byte-for-byte at [`docs/research/bgr-v0.90.0/README.md`](docs/research/bgr-v0.90.0/README.md). The whitepaper, docs, results and ledger stay at their original paths with their contents unchanged; see [`docs/research/README.md`](docs/research/README.md).
