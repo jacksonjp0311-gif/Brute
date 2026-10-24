@@ -1,6 +1,6 @@
 # Brute v0.1.1 plan (scoping only, no code)
 
-Status: **DRAFT plan**, branch `plan/v0.1.1`, written 2026-10-24 (EDT). Nothing under `brute/`, `adapters/`, `experiments/brute_*.py` or `tests/` has been changed. No gated study was run.
+Status: **APPROVED plan**, branch `plan/v0.1.1`, written 2026-10-24 (EDT). Scoping commit bce8969 (no code). Owner decisions and pre-freeze amendments are recorded in §7; the criteria are frozen in `experiments/BRUTE_PLAN_003.json` (§3).
 
 Evidence labels used on every claim:
 - **Exact**: read straight from sealed files or code, or follows by construction.
@@ -187,16 +187,14 @@ This is the same pattern v0.90 used for `bgr*/` (Inferred: it is the least risky
 
 ## 3. Study-003 criteria (DRAFT, not frozen)
 
-Full text: `experiments/BRUTE_PLAN_003.DRAFT.json`.
+Full text: `experiments/BRUTE_PLAN_003.json` (frozen; renamed from the DRAFT).
 
 **Rule:** the criteria are frozen by renaming the file to `BRUTE_PLAN_003.json` and committing it **before any v0.1.1 code**. Any later change is a ledger `deviation`.
 
 Summary of the criteria (G = gated, R = reported):
 - G1 in-family 0 false certs, conditional and public.
 - G2 ood5 0 false certs.
-- G3 drift4 0 false certs.
-  - Gated as requested, with a pre-registered risk: Inferred, it is likely to fail on some seed blocks, because FM5 is unavoidable for a causal certifier.
-  - An alternative is listed for the owner to choose before freezing: G3′, which gates non-drift-step false certs = 0 and total ≤ 0.5 × v0.90, and reports drift-step certs.
+- ~~G3 drift4 0 false certs~~ **replaced by G3′ (owner decision, §7 D1)**: drift4 false certs at non-perturbation steps (step ∉ {12, 23, 34}) = 0 **and** total drift4 false certs ≤ 0.5 × the v0.90 control on the same cases. Drift-step false certs are reported, with target 0.
 - G4 public safety.
 - G5 in-family false-alarm case rate ≤ 0.05.
 - G6 ood5 ≤ ln 4 (target 1.0 reported), drift4 ≤ the v0.1.0 arm on the same cases and ≤ ln 4, and minimum probability ≥ ε/4.
@@ -225,9 +223,7 @@ Further rules:
 
 ## 5. Recommended order of work
 
-1. Owner review of this plan.
-   - Decide G3 vs G3′.
-   - Approve pushing `plan/v0.1.1`.
+1. Owner review of this plan. **Done** (§7): G3′ chosen; `plan/v0.1.1` pushed by the owner at bce8969.
 2. **F2 cleanup.** It does not touch science.
 3. **Freeze criteria:** commit `experiments/BRUTE_PLAN_003.json`, the DRAFT renamed with the owner's decisions and a pre-registration disclosure. Do this **before any v0.1.1 code**.
 4. **F0 + F1:** `brute/core/fallback.py` and `tests/test_brute_fallback.py`.
@@ -244,3 +240,47 @@ Further rules:
 - `scripts/explore_v011.py` (new, read-only post-hoc).
 - `docs/research/v0.1.1/POSTHOC_V011.json`, all labelled Observed-post-hoc or Simulated.
 - `MANIFEST.sha256`, regenerated.
+
+## 7. Owner decisions and pre-freeze amendments
+
+Recorded 2026-10-24 18:20 EDT, **before** `experiments/BRUTE_PLAN_003.json` was frozen. They are part of the
+pre-registration, not deviations. Anything changed after the freeze commit goes to `docs/research/BRUTE_DEVIATIONS_003.md`.
+
+**D1 (owner, James, 2026-10-24 18:20 EDT): G3′ instead of G3.** Gated: drift4 false certificates at non-perturbation
+steps = 0, and total drift4 false certificates ≤ 0.5 × the v0.90 control arm on the same cases. Reported: drift-step
+false certificates (target 0). G3 as originally written is not gated and is not reported as a gate.
+
+**D2 (owner): proceed with v0.1.1** implementation, study-003, release (merge `--no-ff`, tag `v0.1.1`, push).
+
+**F2 done (Exact).**
+- Local branch `v0.1.0` renamed to `release-branch/v0.1.0` (still 4e26104). `v0.1.0` now resolves only to the tag (3c26f69).
+- `scripts/package_release.py --ref v0.1.0` → `Brute-v0.1.0.zip`, sha256 `dd13ef9c167383a3a77ac85069e9f98e3677602194a060c91df0aa3bbfbcba77`,
+  5,247,863 bytes, verify passed; a second `git archive` gave the same hash. Record: `docs/research/v0.1.1/PACKAGE_V010.json`
+  (ledger receipt). The zip is **not** committed (the plan did not ask for it).
+
+**Pre-freeze amendments (Exact, found while preparing the freeze; none changes a threshold).**
+- **A1 F1 file target.** `brute/api/service.py::SOURCE_SHA256` hashes every `brute/core/*.py`. A new file in `brute/core/`
+  would change that value and stop `results/study-002/API_REPLAY.json` (field `core_source_sha256`) from regenerating.
+  So the learner goes in **`brute/fallback.py::FallbackBruteLearner`**, not `brute/core/fallback.py`. The freeze-order
+  rule applies to this path.
+- **A2 FM9 note.** `docs/research/BRUTE_DEVIATIONS_002.md` is a ledger source (sha-locked), so it cannot take an addendum.
+  The FM9 note goes in the new `docs/research/BRUTE_DEVIATIONS_003.md`.
+- **A3 version string.** `brute/__init__.py` (`__version__='0.1.0'`) is in the study-002 source freeze. v0.1.1's
+  version lives in the new `brute/version.py` (`RELEASE_VERSION='0.1.1'`), and `RELEASE.json` says `0.1.1`.
+  Exact consequence: at the v0.1.1 release commit the **frozen v0.1.0** verifier `scripts/verify_release.py` and its frozen test
+  `tests/test_brute_repro.py::test_verify_fails_under_tampered_results` fail at exactly one check
+  (`RELEASE.json version != brute.__version__`). That is the v0.1.0 verifier refusing a non-v0.1.0 tree, which is correct
+  behaviour. `scripts/verify_release_011.py` replaces it for v0.1.1. It also runs the frozen v0.1.0 verifier on an archive
+  of tag `v0.1.0` and requires it to pass.
+- **A4 G8 wording.** A certificate's bits are "observed" when neither channel is masked. `falsified_by_observation` iff some
+  unmasked bit contradicts the certified code; `scope_withdrawn` iff both bits are unmasked and agree; otherwise
+  `unverifiable_masked`. Wrong certificates in cases that are never contradicted are counted and reported (they have no
+  retraction).
+- **A5 G10 scope.** The independent reference checks the following:
+  - It recomputes, with no `brute` import, the ≤4 and ≤5 supports, decisions, saturation, surprise, residual and alarm for
+    **both** arms.
+  - It recomputes v0.1.1's post-contradiction probabilities and `forecast_source` (margin, suffix-1 rebuilt from its
+    definition, uniform) and every retraction reason.
+  - Pre-contradiction v0.1.1 probabilities must equal the v0.1.0 arm exactly. Like study-002, the v0.89 catalogue term
+    inside those probabilities is not recomputed: it is checked for sum and floor only.
+- **A6 R4.** The study-001 drift4 stress replay uses τ from `results/study-002/CALIBRATION.json` (the same τ).

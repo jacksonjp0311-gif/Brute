@@ -96,7 +96,7 @@
    "gated": true,
    "threshold": "conditional false certificates on drift4 = 0, all steps",
    "pre_registered_risk": "Inferred: likely to fail on some seed blocks. On study-001 drift4 seeds the v0.1.0 learner issues 19 certs, 6 wrong, all exactly at drift perturbation steps (12, 23) with margin agreeing and residual < tau; any causal certifier with in-family coverage on those histories issues them. F1 does not change certification, so v0.1.1 has the same exposure. A failure is reported as a failure; no post-hoc relaxation.",
-   "owner_decision_before_freeze": "keep G3 as written, OR replace by G3_prime"
+   "owner_decision_before_freeze": "RESOLVED 2026-10-24 18:20 EDT: replaced by G3_prime (owner choice)"
   },
   "G3_prime_alternative": {
    "gated": "only if chosen instead of G3",
@@ -181,5 +181,10 @@
   "F1 assumes the world has <=5 states after contradiction; it is a forecast, never a certificate.",
   "Drift-step false certificates are unavoidable for a causal certifier with in-family coverage (see G3 risk).",
   "Synthetic two-action, two-bit worlds only."
- ]
+ ],
+ "owner_decisions": {
+  "recorded_at": "2026-10-24 18:20 EDT",
+  "D1": "owner (James) chose G3_prime instead of G3",
+  "D2": "owner approved implementation, study-003 and release"
+ }
 }

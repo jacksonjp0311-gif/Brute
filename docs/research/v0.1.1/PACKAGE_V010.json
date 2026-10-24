@@ -1,0 +1,14 @@
+{
+  "schema": "brute.package-check.v1",
+  "ref": "v0.1.0",
+  "ref_commit": "3c26f69cee46b751e6a3ebb374f2d44fe81e4c35",
+  "command": "PYTHONPATH=. python scripts/package_release.py --ref v0.1.0",
+  "archive_name": "Brute-v0.1.0.zip",
+  "archive_committed": false,
+  "sha256": "dd13ef9c167383a3a77ac85069e9f98e3677602194a060c91df0aa3bbfbcba77",
+  "bytes": 5247863,
+  "verify": "passed",
+  "deterministic_check": "a second `git archive --format=zip --prefix=Brute-v0.1.0/ v0.1.0` gave the same sha256",
+  "run_at": "2026-10-24 (EDT), F2 cleanup for v0.1.1",
+  "note": "local branch v0.1.0 (4e26104, fully merged into main) renamed to release-branch/v0.1.0 before packaging, so ref v0.1.0 resolves only to the tag"
+}
