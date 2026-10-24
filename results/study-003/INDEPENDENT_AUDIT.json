@@ -1,0 +1,178 @@
+{
+  "cases": 504,
+  "mismatches": 0,
+  "per_family": {
+    "cycle3": {
+      "forecast_sources_post": {
+        "v090": 2592
+      },
+      "post_contradiction_probabilities_recomputed": 0,
+      "pre_contradiction_probabilities_equal": 3168,
+      "retracted_wrong": 0,
+      "retraction_reasons": {
+        "falsified_by_observation": 0,
+        "scope_withdrawn": 0,
+        "unverifiable_masked": 0
+      },
+      "retractions": 0,
+      "steps": 3168,
+      "v010_certs": 511,
+      "v010_wrong": 0,
+      "v011_certs": 511,
+      "v011_public": 511,
+      "v011_public_wrong": 0,
+      "v011_wrong": 0,
+      "v090_wrong": 0,
+      "wrong_never_contradicted": 0
+    },
+    "drift4": {
+      "forecast_sources_post": {
+        "margin_n5": 442,
+        "suffix1": 1019,
+        "v090": 1131
+      },
+      "post_contradiction_probabilities_recomputed": 1461,
+      "pre_contradiction_probabilities_equal": 1707,
+      "retracted_wrong": 4,
+      "retraction_reasons": {
+        "falsified_by_observation": 4,
+        "scope_withdrawn": 17,
+        "unverifiable_masked": 3
+      },
+      "retractions": 24,
+      "steps": 3168,
+      "v010_certs": 24,
+      "v010_wrong": 4,
+      "v011_certs": 24,
+      "v011_public": 0,
+      "v011_public_wrong": 0,
+      "v011_wrong": 4,
+      "v090_wrong": 71,
+      "wrong_never_contradicted": 0
+    },
+    "ood4": {
+      "forecast_sources_post": {
+        "v090": 2592
+      },
+      "post_contradiction_probabilities_recomputed": 0,
+      "pre_contradiction_probabilities_equal": 3168,
+      "retracted_wrong": 0,
+      "retraction_reasons": {
+        "falsified_by_observation": 0,
+        "scope_withdrawn": 0,
+        "unverifiable_masked": 0
+      },
+      "retractions": 0,
+      "steps": 3168,
+      "v010_certs": 15,
+      "v010_wrong": 0,
+      "v011_certs": 15,
+      "v011_public": 15,
+      "v011_public_wrong": 0,
+      "v011_wrong": 0,
+      "v090_wrong": 0,
+      "wrong_never_contradicted": 0
+    },
+    "ood5": {
+      "forecast_sources_post": {
+        "margin_n5": 1986,
+        "v090": 606
+      },
+      "post_contradiction_probabilities_recomputed": 2003,
+      "pre_contradiction_probabilities_equal": 1165,
+      "retracted_wrong": 0,
+      "retraction_reasons": {
+        "falsified_by_observation": 0,
+        "scope_withdrawn": 1,
+        "unverifiable_masked": 1
+      },
+      "retractions": 2,
+      "steps": 3168,
+      "v010_certs": 2,
+      "v010_wrong": 0,
+      "v011_certs": 2,
+      "v011_public": 0,
+      "v011_public_wrong": 0,
+      "v011_wrong": 0,
+      "v090_wrong": 83,
+      "wrong_never_contradicted": 0
+    },
+    "switch3": {
+      "forecast_sources_post": {
+        "v090": 2592
+      },
+      "post_contradiction_probabilities_recomputed": 0,
+      "pre_contradiction_probabilities_equal": 3168,
+      "retracted_wrong": 0,
+      "retraction_reasons": {
+        "falsified_by_observation": 0,
+        "scope_withdrawn": 0,
+        "unverifiable_masked": 0
+      },
+      "retractions": 0,
+      "steps": 3168,
+      "v010_certs": 427,
+      "v010_wrong": 0,
+      "v011_certs": 427,
+      "v011_public": 427,
+      "v011_public_wrong": 0,
+      "v011_wrong": 0,
+      "v090_wrong": 0,
+      "wrong_never_contradicted": 0
+    },
+    "unaliased2": {
+      "forecast_sources_post": {
+        "v090": 2592
+      },
+      "post_contradiction_probabilities_recomputed": 0,
+      "pre_contradiction_probabilities_equal": 3168,
+      "retracted_wrong": 0,
+      "retraction_reasons": {
+        "falsified_by_observation": 0,
+        "scope_withdrawn": 0,
+        "unverifiable_masked": 0
+      },
+      "retractions": 0,
+      "steps": 3168,
+      "v010_certs": 231,
+      "v010_wrong": 0,
+      "v011_certs": 231,
+      "v011_public": 231,
+      "v011_public_wrong": 0,
+      "v011_wrong": 0,
+      "v090_wrong": 0,
+      "wrong_never_contradicted": 0
+    },
+    "unstructured3": {
+      "forecast_sources_post": {
+        "v090": 2592
+      },
+      "post_contradiction_probabilities_recomputed": 0,
+      "pre_contradiction_probabilities_equal": 3168,
+      "retracted_wrong": 0,
+      "retraction_reasons": {
+        "falsified_by_observation": 0,
+        "scope_withdrawn": 0,
+        "unverifiable_masked": 0
+      },
+      "retractions": 0,
+      "steps": 3168,
+      "v010_certs": 246,
+      "v010_wrong": 0,
+      "v011_certs": 246,
+      "v011_public": 246,
+      "v011_public_wrong": 0,
+      "v011_wrong": 0,
+      "v090_wrong": 0,
+      "wrong_never_contradicted": 0
+    }
+  },
+  "probability_tolerance": 1e-11,
+  "schema": "brute.independent-audit.v1_1",
+  "scope": "independent solver (experiments/v90_independent_reference.py) rebuilt <=4 and <=5 supports and saturation; decisions, public certificates, surprise, residual and alarms recomputed for both the v0.1.1 and v0.1.0 arms; v0.1.1 post-contradiction probabilities, forecast_source and ablation log-loss recomputed (suffix-1 rebuilt from its definition); retraction lists and G8 reasons recomputed against evaluator truth; pre-contradiction v0.1.1 probabilities checked equal to the v0.1.0 arm exactly; v0.89 catalogue term checked for sum and floor only",
+  "source_results_sha256": "cac8729cfa92524b7ddda3ad5ab5e628c68b1a9c1c41825cf79aa0bf189b4be0",
+  "status": "passed",
+  "steps_replayed": 22176,
+  "study": "BRUTE-011-FALLBACK-003",
+  "tau": 1.433141502274
+}

@@ -98,7 +98,7 @@ def build():
          {'peak_rows_any_arm':peak,'limit':160000,'new_exhaustion_cases':new_exh,'exhaustion_steps_not_budget_abstain':bad_exh,
           'per_family':{f:{arm:[A(f,arm)['peak_rows_family'],A(f,arm)['peak_rows_margin']] for arm in ('v0.1.1','v0.1.0')} for f in S},
           'wall_clock_informational':{'v0.1.1_seconds':round(tv,2),'v0.1.0_seconds':round(tc,2),'ratio':round(tv/tc,3),'target_ratio_le':2.0}})
-    gate('G10_independent_audit',audit.get('status')=='passed' and audit.get('cases')==len(cases) and audit.get('scientific_sha256')==seal['scientific_sha256'],
+    gate('G10_independent_audit',audit.get('status')=='passed' and audit.get('cases')==len(cases) and audit.get('source_results_sha256')==seal['results_sha256'],
          {k:audit[k] for k in audit if k!='per_family'})
     gate('G11_reproducibility',repro['all_byte_identical'],repro['files'])
     gate('R1_coverage',None,{f:{'v0.1.1':A(f)['coverage_post'],'v0.1.0':A(f,'v0.1.0')['coverage_post'],'v0.90':S[f]['v0.90']['coverage_post'],
