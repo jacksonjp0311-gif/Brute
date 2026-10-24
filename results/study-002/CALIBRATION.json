@@ -1,0 +1,23 @@
+{
+  "argmax": {
+    "family": "ood4",
+    "mask_rate": 0.6,
+    "seed": 970017,
+    "step": 8
+  },
+  "calibration_cases": 360,
+  "freeze_sha256": "bec7e4982a9001e955f1570b8f8b361ce7d8a08bb5241277f77aaa54f6b711ff",
+  "out_of_family_data_used": false,
+  "per_family_max_R": {
+    "cycle3": 1.19939943064,
+    "ood4": 1.433141502274,
+    "switch3": 1.159700785107,
+    "unaliased2": 0.732001484178,
+    "unstructured3": 1.06595762113
+  },
+  "plan_sha256": "dd0d6f049689c95756f1e29fa15910b6109bd1d2f8f9fdb4c30cf35a6b997f21",
+  "schema": "brute.calibration.v1",
+  "study": "BRUTE-010-ABSTENTION-002",
+  "tau": 1.433141502274,
+  "window_W": 8
+}
