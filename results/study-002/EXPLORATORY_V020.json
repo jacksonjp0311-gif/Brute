@@ -1,0 +1,37 @@
+{
+  "families": {
+    "drift4": {
+      "margin_contradicted": 823,
+      "margin_singletons": 267,
+      "margin_singletons_correct": 223,
+      "margin_support_contains_actual": 427,
+      "margin_supported": 439,
+      "mean_logloss": {
+        "brute": 1.386294,
+        "margin_eps_reserve": 1.211903,
+        "suffix1": 1.064114,
+        "suffix2": 1.28032
+      },
+      "steps": 1262
+    },
+    "ood5": {
+      "margin_contradicted": 0,
+      "margin_singletons": 1435,
+      "margin_singletons_correct": 1435,
+      "margin_support_contains_actual": 1951,
+      "margin_supported": 1951,
+      "mean_logloss": {
+        "brute": 1.386294,
+        "margin_eps_reserve": 0.269114,
+        "suffix1": 1.278843,
+        "suffix2": 1.334172
+      },
+      "steps": 1951
+    }
+  },
+  "label": "EXPLORATORY post-hoc analysis; not pre-registered; not a criterion",
+  "margin_eps_reserve": "uniform over margin support with mass 1-eps plus eps/4 on every code (eps from plan)",
+  "question": "On post-burn-in steps where the n<=4 family is contradicted, would the n<=5 margin support have predicted well?",
+  "schema": "brute.exploratory.v1",
+  "scientific_sha256": "2513684dec0fafc890e10a44b85b3c01d916ac57523e2f5e6e6f457fbffb29ae"
+}

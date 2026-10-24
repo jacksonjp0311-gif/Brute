@@ -1,29 +1,19 @@
-"""Assemble one full-root portable archive with unchanged historical baseline."""
-import json,hashlib,zipfile
+"""Build a portable archive of exactly the tagged tree with git archive, after verification. No overwrite."""
+import argparse,json,subprocess,sys
 from pathlib import Path
-from scripts.verify_release import ROOT,sha,listed,verify
-TARGET=ROOT.parent/(ROOT.name+'.zip')
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
+from experiments.brute_common import sha
+from scripts.verify_release import verify
 
-def pack():
-    manifest=ROOT/'MANIFEST.sha256'
-    if manifest.exists():raise RuntimeError('manifest exists; refuse overwriting earlier archive')
-    paths=listed()
-    manifest.write_text(''.join(f'{sha(p)}  {rel}\n' for rel,p in sorted(paths.items())))
-    record=verify()
-    if TARGET.exists():raise RuntimeError('release already exists; refuse overwrite')
-    with zipfile.ZipFile(TARGET,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=7,allowZip64=True) as z:
-        for rel,p in sorted({**paths,'MANIFEST.sha256':manifest}.items()):
-            z.write(p,arcname=ROOT.name+'/'+rel)
-    with zipfile.ZipFile(TARGET) as z:
-        assert z.testzip() is None
-        for rel,p in sorted({**paths,'MANIFEST.sha256':manifest}.items()):
-            assert hashlib.sha256(z.read(ROOT.name+'/'+rel)).hexdigest()==sha(p)
-    report={'schema':'bgr90.package-check.v1','status':'passed','name':TARGET.name,
-            'sha256':sha(TARGET),'bytes':TARGET.stat().st_size,'files':len(paths)+1,
-            'contained_root':ROOT.name+'/','manifest':'passed','zip_crc':'passed',
-            'local_release_checks':record,'native_windows':'not tested'}
-    (ROOT.parent/(ROOT.name+'-package-verification.json')).write_text(json.dumps(report,indent=2)+'\n')
-    print(json.dumps(report,indent=2))
-    return report
 
-if __name__=='__main__':pack()
+def pack(ref='v0.1.0',out_dir=ROOT.parent):
+    target=Path(out_dir)/f'Brute-{ref}.zip'
+    if target.exists():raise RuntimeError('refusing overwrite '+str(target))
+    record=verify(fast=True)
+    subprocess.run(['git','-C',str(ROOT),'archive','--format=zip',f'--prefix=Brute-{ref}/','-o',str(target),ref],check=True)
+    return {'schema':'brute.package-check.v1','ref':ref,'archive':str(target),'sha256':sha(target),'bytes':target.stat().st_size,
+            'verify':record['status']}
+
+
+if __name__=='__main__':
+    ap=argparse.ArgumentParser();ap.add_argument('--ref',default='v0.1.0');print(json.dumps(pack(ap.parse_args().ref),indent=2))
