@@ -33,7 +33,7 @@ _Kept current on the working branch during a release and on `main` at release. L
    >6 min). Fix before the freeze: `ConstraintRegion(conf_budget=None)` stays exact by default (GR1/GR1b unchanged);
    GR2 only uses `GR2_CONF_BUDGET=20000` conflicts per query and counts `unknown_steps/queries` (excluded from
    enum-vs-SAT agreement). Smoke after fix: 12 cases in 13 s, 0 disagreements, 1 case with unknowns at n=10 and n=12.
-5. TODO: `experiments/exactness_006.py` (GR1/GR1b/GR2), API 1.4 (`service_v040.py`, schemas v1_4), storage, tests,
+5. DONE: source freeze 70a3c43 (ledgered). TODO: scoring scripts (separate commit), then runs. Original list: exactness, API 1.4, storage, tests,
    pins → `BRUTE_SOURCE_FREEZE_006.json` → scoring scripts in a separate commit ≥ 10 min before the run → ledger
    `run_start` → calibrate (twice, G13) → run → seal → `run_end` → gates/paired/count/repro/GR → docs → release freeze,
    MANIFEST, fresh-clone verify → `--no-ff` merge, tag v0.4.0 on the merge commit, gh release.
