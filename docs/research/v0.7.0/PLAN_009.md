@@ -9,7 +9,7 @@ The ledger entry `preregistration_009` records the JSON's sha256 and the canonic
 | Target | Hypothesis (short) | Gate |
 |---|---|---|
 | (a0) why the v0.6.0 event is late | The event is a window **mean**: from a calm window one maximally surprising step cannot cross τ/2, so the certificate issued one step after a drift is stale. Diagnostic on sealed study-008 drift4 traces, **Observed on seen data, exploratory, not gated**. | none (R_diag_lag_008) |
-| (a) surprise timing fix | A rule with **synchronous** events (at the very step that is surprising or falsifies a certificate) passes G1, G2, G3′ and G6b on the same held-out run | **GA1″** (conjunction) |
+| (a) surprise timing fix | A rule with **synchronous** events (at the very step that is surprising or falsifies a certificate) passes G1, G2, G3′ and G6b on the same held-out run | **GA1′ (JSON key GA1_prime)** (conjunction) |
 | (b) incremental cross-check | The incremental, symmetry-broken CaDiCaL encoding re-derives every breadth decision on ≥ 99% of steps per family × arm with 0 mismatches inside a declared budget; a no-symmetry spot check also finds 0 mismatches | **GX2″** |
 | (c) planning by model counts | Choosing actions to minimise expected surviving (machine, state) pairs (1–2 step lookahead) beats LU-R on coverage or time to first certificate, with 0 false certificates, and counts never touch certification | **GP1** |
 | (d) test isolation | One interpreter per test module removes the test_study_005 order dependence without editing a frozen file | **GTI** |
@@ -54,7 +54,7 @@ The ledger entry `preregistration_009` records the JSON's sha256 and the canonic
 
 | Gate | Threshold | Prediction |
 |---|---|---|
-| **GA1″** | PASS iff ONE arm in {S7, SC7} passes G1, G2, G3′ and G6b on the same run | FAIL: S7 passes G3′ and fails G6b; SC7 fails G3′ |
+| **GA1′ (JSON key GA1_prime)** | PASS iff ONE arm in {S7, SC7} passes G1, G2, G3′ and G6b on the same run | FAIL: S7 passes G3′ and fails G6b; SC7 fails G3′ |
 | G1 | 0 false conditional and 0 false public certificates in-family (S7, SC7, P7, B5, BS7, BSC7), all steps and actions | PASS (S7, BS7, P7); SC7/BSC7 likely, Open |
 | G2 | 0 false conditional certificates on ood5 (S7, SC7, P7) and ood6s3 (B5, BS7, BSC7) | PASS (S7, BS7, P7); SC7/BSC7 at risk |
 | G3′ | Unchanged. Per arm (S7, SC7): drift4 non-drift false = 0 AND total ≤ 0.5 × v0.90 control (A4), 144 cases | S7 PASS (low confidence), SC7 FAIL |
@@ -88,7 +88,7 @@ The ledger entry `preregistration_009` records the JSON's sha256 and the canonic
 
 ## What counts as failure
 - Any gate below its threshold is FAIL and is published verbatim everywhere.
-- GA1″ fails if G3′ and G6b are passed only by **different** arms.
+- GA1′ (JSON key GA1_prime) fails if G3′ and G6b are passed only by **different** arms.
 - One family or arm short on GX2″, or a spot-check failure, fails target (b). Any GP1 clause failing fails target (c).
 - The diagnostic is never evidence for or against a gate.
 - No reruns, re-seeding, threshold or constant changes after run_start. The only exception is an infrastructure crash, rerun with identical code and seeds, ledgered as a deviation and still inside the cap.
