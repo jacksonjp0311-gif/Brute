@@ -1,0 +1,995 @@
+{
+  "G14_prime_R_D78": {
+    "R": 0.631579,
+    "S_X": 48,
+    "S_Y": 76,
+    "cases": 1152,
+    "ci95": [
+      0.417722,
+      0.906667
+    ],
+    "resamples": 2000,
+    "resamples_with_zero_denominator": 0,
+    "rng": "python random.Random(20261025)",
+    "seeds": 384,
+    "seeds_with_stale_X": 35,
+    "seeds_with_stale_Y": 50,
+    "statistic": "R=S(E2)/S(A2)"
+  },
+  "G14_prime_R_main_drift4_reported": {
+    "R": 1.5,
+    "S_X": 3,
+    "S_Y": 2,
+    "cases": 72,
+    "ci95": [
+      1.0,
+      null
+    ],
+    "resamples": 2000,
+    "resamples_with_zero_denominator": 266,
+    "rng": "python random.Random(20261025)",
+    "seeds": 24,
+    "seeds_with_stale_X": 3,
+    "seeds_with_stale_Y": 2,
+    "statistic": "R=S(E2)/S(A2)"
+  },
+  "G15_dual_coverage_D2_minus_A2": {
+    "contrast": "D2-A2",
+    "families": {
+      "cycle3": {
+        "ci95": [
+          -0.195607,
+          -0.142356
+        ],
+        "gain": -0.168017,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "ood4": {
+        "ci95": [
+          -0.033955,
+          0.013894
+        ],
+        "gain": -0.009838,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "switch3": {
+        "ci95": [
+          -0.094343,
+          -0.027387
+        ],
+        "gain": -0.060571,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "unaliased2": {
+        "ci95": [
+          -0.072917,
+          -0.020255
+        ],
+        "gain": -0.047647,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "unstructured3": {
+        "ci95": [
+          -0.107446,
+          -0.028549
+        ],
+        "gain": -0.068094,
+        "pairs": 5184,
+        "seeds": 24
+      }
+    },
+    "families_pooled": [
+      "cycle3",
+      "switch3",
+      "unstructured3",
+      "unaliased2",
+      "ood4"
+    ],
+    "pooled_ci95": [
+      -0.085186,
+      -0.05733
+    ],
+    "pooled_gain": -0.070833
+  },
+  "G16_dual_coverage_F2_minus_A2": {
+    "contrast": "F2-A2",
+    "families": {
+      "cycle3": {
+        "ci95": [
+          -0.060764,
+          -0.028164
+        ],
+        "gain": -0.043789,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "ood4": {
+        "ci95": [
+          -0.034534,
+          -0.00135
+        ],
+        "gain": -0.014468,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "switch3": {
+        "ci95": [
+          -0.050159,
+          -0.018899
+        ],
+        "gain": -0.033372,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "unaliased2": {
+        "ci95": [
+          -0.04186,
+          -0.016011
+        ],
+        "gain": -0.028164,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "unstructured3": {
+        "ci95": [
+          -0.06385,
+          -0.023727
+        ],
+        "gain": -0.043403,
+        "pairs": 5184,
+        "seeds": 24
+      }
+    },
+    "families_pooled": [
+      "cycle3",
+      "switch3",
+      "unstructured3",
+      "unaliased2",
+      "ood4"
+    ],
+    "pooled_ci95": [
+      -0.040201,
+      -0.025616
+    ],
+    "pooled_gain": -0.032639
+  },
+  "G6_dual_coverage_A4_minus_P4": {
+    "contrast": "A4-P4",
+    "families": {
+      "cycle3": {
+        "ci95": [
+          0.043017,
+          0.073495
+        ],
+        "gain": 0.05787,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "ood4": {
+        "ci95": [
+          0.000772,
+          0.047656
+        ],
+        "gain": 0.020448,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "switch3": {
+        "ci95": [
+          0.039347,
+          0.065779
+        ],
+        "gain": 0.052469,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "unaliased2": {
+        "ci95": [
+          0.075612,
+          0.12963
+        ],
+        "gain": 0.10108,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "unstructured3": {
+        "ci95": [
+          0.042819,
+          0.086998
+        ],
+        "gain": 0.064043,
+        "pairs": 5184,
+        "seeds": 24
+      }
+    },
+    "families_pooled": [
+      "cycle3",
+      "switch3",
+      "unstructured3",
+      "unaliased2",
+      "ood4"
+    ],
+    "pooled_ci95": [
+      0.050153,
+      0.068635
+    ],
+    "pooled_gain": 0.059182
+  },
+  "G6b_prime_dual_coverage_A4_minus_A2": {
+    "contrast": "A4-A2",
+    "families": {
+      "cycle3": {
+        "ci95": [
+          -0.204287,
+          -0.1576
+        ],
+        "gain": -0.18017,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "ood4": {
+        "ci95": [
+          -0.048032,
+          -0.005787
+        ],
+        "gain": -0.024691,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "switch3": {
+        "ci95": [
+          -0.143326,
+          -0.086029
+        ],
+        "gain": -0.114198,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "unaliased2": {
+        "ci95": [
+          -0.108415,
+          -0.066155
+        ],
+        "gain": -0.087191,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "unstructured3": {
+        "ci95": [
+          -0.146812,
+          -0.077156
+        ],
+        "gain": -0.112654,
+        "pairs": 5184,
+        "seeds": 24
+      }
+    },
+    "families_pooled": [
+      "cycle3",
+      "switch3",
+      "unstructured3",
+      "unaliased2",
+      "ood4"
+    ],
+    "pooled_ci95": [
+      -0.115972,
+      -0.091898
+    ],
+    "pooled_gain": -0.103781
+  },
+  "R6_perm4": {
+    "A4-A2": {
+      "contrast": "A4-A2",
+      "families": {
+        "perm4": {
+          "ci95": [
+            -0.081988,
+            -0.018514
+          ],
+          "gain": -0.047647,
+          "pairs": 5184,
+          "seeds": 24
+        }
+      },
+      "families_pooled": [
+        "perm4"
+      ],
+      "pooled_ci95": [
+        -0.081988,
+        -0.018514
+      ],
+      "pooled_gain": -0.047647
+    },
+    "A4-A3": {
+      "contrast": "A4-A3",
+      "families": {
+        "perm4": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "gain": 0.0,
+          "pairs": 5184,
+          "seeds": 24
+        }
+      },
+      "families_pooled": [
+        "perm4"
+      ],
+      "pooled_ci95": [
+        0.0,
+        0.0
+      ],
+      "pooled_gain": 0.0
+    },
+    "A4-P4": {
+      "contrast": "A4-P4",
+      "families": {
+        "perm4": {
+          "ci95": [
+            0.014853,
+            0.060378
+          ],
+          "gain": 0.036073,
+          "pairs": 5184,
+          "seeds": 24
+        }
+      },
+      "families_pooled": [
+        "perm4"
+      ],
+      "pooled_ci95": [
+        0.014853,
+        0.060378
+      ],
+      "pooled_gain": 0.036073
+    }
+  },
+  "R_dual_coverage_A3_minus_A2": {
+    "contrast": "A3-A2",
+    "families": {
+      "cycle3": {
+        "ci95": [
+          -0.204287,
+          -0.1576
+        ],
+        "gain": -0.18017,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "ood4": {
+        "ci95": [
+          -0.048032,
+          -0.005787
+        ],
+        "gain": -0.024691,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "switch3": {
+        "ci95": [
+          -0.143326,
+          -0.086029
+        ],
+        "gain": -0.114198,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "unaliased2": {
+        "ci95": [
+          -0.108415,
+          -0.066155
+        ],
+        "gain": -0.087191,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "unstructured3": {
+        "ci95": [
+          -0.146812,
+          -0.077156
+        ],
+        "gain": -0.112654,
+        "pairs": 5184,
+        "seeds": 24
+      }
+    },
+    "families_pooled": [
+      "cycle3",
+      "switch3",
+      "unstructured3",
+      "unaliased2",
+      "ood4"
+    ],
+    "pooled_ci95": [
+      -0.115972,
+      -0.091898
+    ],
+    "pooled_gain": -0.103781
+  },
+  "R_dual_coverage_A4_minus_A3": {
+    "contrast": "A4-A3",
+    "families": {
+      "cycle3": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "gain": 0.0,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "ood4": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "gain": 0.0,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "switch3": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "gain": 0.0,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "unaliased2": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "gain": 0.0,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "unstructured3": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "gain": 0.0,
+        "pairs": 5184,
+        "seeds": 24
+      }
+    },
+    "families_pooled": [
+      "cycle3",
+      "switch3",
+      "unstructured3",
+      "unaliased2",
+      "ood4"
+    ],
+    "pooled_ci95": [
+      0.0,
+      0.0
+    ],
+    "pooled_gain": 0.0
+  },
+  "R_dual_coverage_E2_minus_A2": {
+    "contrast": "E2-A2",
+    "families": {
+      "cycle3": {
+        "ci95": [
+          -0.071571,
+          -0.028342
+        ],
+        "gain": -0.050347,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "ood4": {
+        "ci95": [
+          0.007137,
+          0.061343
+        ],
+        "gain": 0.031057,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "switch3": {
+        "ci95": [
+          -0.058642,
+          -0.00135
+        ],
+        "gain": -0.030285,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "unaliased2": {
+        "ci95": [
+          -0.127705,
+          -0.070988
+        ],
+        "gain": -0.096836,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "unstructured3": {
+        "ci95": [
+          -0.103395,
+          -0.038768
+        ],
+        "gain": -0.067901,
+        "pairs": 5184,
+        "seeds": 24
+      }
+    },
+    "families_pooled": [
+      "cycle3",
+      "switch3",
+      "unstructured3",
+      "unaliased2",
+      "ood4"
+    ],
+    "pooled_ci95": [
+      -0.055363,
+      -0.030396
+    ],
+    "pooled_gain": -0.042863
+  },
+  "R_dual_coverage_P4_minus_P2_not_available": "P2 is not an arm in study-006",
+  "cluster": "seed within family",
+  "logloss_contrasts": {
+    "cycle3": {
+      "logloss_A4_minus_A2": {
+        "ci95": [
+          0.016093,
+          0.032837
+        ],
+        "estimate": 0.023435,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A4_minus_A3": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A4_minus_C": {
+        "ci95": [
+          -0.006335,
+          -0.000328
+        ],
+        "estimate": -0.003177,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_D2_minus_A4": {
+        "ci95": [
+          -0.028082,
+          0.004056
+        ],
+        "estimate": -0.014544,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_F2_minus_A4": {
+        "ci95": [
+          -0.021037,
+          -0.010164
+        ],
+        "estimate": -0.015296,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P4_minus_C": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      }
+    },
+    "drift4": {
+      "logloss_A4_minus_A2": {
+        "ci95": [
+          -0.027069,
+          0.003269
+        ],
+        "estimate": -0.011012,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A4_minus_A3": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A4_minus_C": {
+        "ci95": [
+          -0.045649,
+          0.03272
+        ],
+        "estimate": -0.007486,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_D2_minus_A4": {
+        "ci95": [
+          -0.04693,
+          0.029719
+        ],
+        "estimate": -0.009702,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_F2_minus_A4": {
+        "ci95": [
+          -0.000411,
+          0.025376
+        ],
+        "estimate": 0.011174,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P4_minus_C": {
+        "ci95": [
+          -0.040133,
+          0.010091
+        ],
+        "estimate": -0.01417,
+        "seeds": 24,
+        "steps": 2592
+      }
+    },
+    "ood4": {
+      "logloss_A4_minus_A2": {
+        "ci95": [
+          0.001361,
+          0.024136
+        ],
+        "estimate": 0.010947,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A4_minus_A3": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A4_minus_C": {
+        "ci95": [
+          -0.024592,
+          0.00045
+        ],
+        "estimate": -0.010547,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_D2_minus_A4": {
+        "ci95": [
+          -0.044819,
+          -0.006591
+        ],
+        "estimate": -0.024488,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_F2_minus_A4": {
+        "ci95": [
+          -0.00589,
+          0.003587
+        ],
+        "estimate": -0.000675,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P4_minus_C": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      }
+    },
+    "ood5": {
+      "logloss_A4_minus_A2": {
+        "ci95": [
+          0.0,
+          0.062611
+        ],
+        "estimate": 0.024166,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A4_minus_A3": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A4_minus_C": {
+        "ci95": [
+          -0.04597,
+          -0.007273
+        ],
+        "estimate": -0.025327,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_D2_minus_A4": {
+        "ci95": [
+          -0.029988,
+          0.0071
+        ],
+        "estimate": -0.010011,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_F2_minus_A4": {
+        "ci95": [
+          -0.062611,
+          0.0
+        ],
+        "estimate": -0.024166,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P4_minus_C": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      }
+    },
+    "perm4": {
+      "logloss_A4_minus_A2": {
+        "ci95": [
+          0.002838,
+          0.028916
+        ],
+        "estimate": 0.014111,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A4_minus_A3": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A4_minus_C": {
+        "ci95": [
+          -0.017139,
+          -0.000226
+        ],
+        "estimate": -0.007506,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_D2_minus_A4": {
+        "ci95": [
+          -0.041712,
+          -0.004149
+        ],
+        "estimate": -0.021521,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_F2_minus_A4": {
+        "ci95": [
+          -0.025812,
+          -0.001044
+        ],
+        "estimate": -0.011439,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P4_minus_C": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      }
+    },
+    "switch3": {
+      "logloss_A4_minus_A2": {
+        "ci95": [
+          9.2e-05,
+          0.026229
+        ],
+        "estimate": 0.013334,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A4_minus_A3": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A4_minus_C": {
+        "ci95": [
+          -0.024995,
+          -0.009051
+        ],
+        "estimate": -0.016263,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_D2_minus_A4": {
+        "ci95": [
+          -0.057301,
+          -0.014131
+        ],
+        "estimate": -0.031677,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_F2_minus_A4": {
+        "ci95": [
+          -0.009647,
+          0.006951
+        ],
+        "estimate": -0.002374,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P4_minus_C": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      }
+    },
+    "unaliased2": {
+      "logloss_A4_minus_A2": {
+        "ci95": [
+          0.002588,
+          0.005633
+        ],
+        "estimate": 0.004042,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A4_minus_A3": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A4_minus_C": {
+        "ci95": [
+          -0.013126,
+          -0.004937
+        ],
+        "estimate": -0.008315,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_D2_minus_A4": {
+        "ci95": [
+          -0.009276,
+          -0.003883
+        ],
+        "estimate": -0.00634,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_F2_minus_A4": {
+        "ci95": [
+          -0.004355,
+          -0.001575
+        ],
+        "estimate": -0.002829,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P4_minus_C": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      }
+    },
+    "unstructured3": {
+      "logloss_A4_minus_A2": {
+        "ci95": [
+          0.004595,
+          0.020308
+        ],
+        "estimate": 0.011622,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A4_minus_A3": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A4_minus_C": {
+        "ci95": [
+          -0.012327,
+          -0.002781
+        ],
+        "estimate": -0.007163,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_D2_minus_A4": {
+        "ci95": [
+          -0.017254,
+          -0.003278
+        ],
+        "estimate": -0.009215,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_F2_minus_A4": {
+        "ci95": [
+          -0.015936,
+          -0.001889
+        ],
+        "estimate": -0.007682,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P4_minus_C": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      }
+    }
+  },
+  "resamples": 2000,
+  "schema": "brute.paired-analysis.v4_0",
+  "scientific_sha256": "987bcb7a4d033af7873158460415b93dc6573767df556ad71099c892b8cdc48d",
+  "scope": "coverage and log-loss: post-burn-in steps (9..44); stale certificates: all steps (plan metrics)",
+  "seed": 20261025
+}
