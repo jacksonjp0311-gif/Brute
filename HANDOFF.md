@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 08:51 EDT (v0.6.0: source frozen 8e80615, scoring scripts 08ac3f3, held-out run started 08:49 EDT)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 09:12 EDT (v0.6.0: source frozen 8e80615, scoring scripts 08ac3f3, held-out run started 08:49 EDT; main study sealed 08:58 EDT, post-study streams running)._
 
 ## Current version and state
 
@@ -12,7 +12,8 @@ _Kept current on the working branch during a release and on `main` at release. L
   `89c2d3b` (sha256 `6dc1a17d…7cdb502`; criteria canonical-JSON sha256 `2f6ee48a…3575e21`), ledger `preregistration_008`
   in `1bc702f`. Readable: `docs/research/v0.6.0/PLAN_008.md`. **Status 08:51 EDT:** seed check, reference, R6/C6, xcheck, GMC implemented; source freeze `8e80615` (ledger source_freeze_008);
   scoring scripts `08ac3f3` (ledger scoring_scripts_008 08:38 EDT); deviations `docs/research/BRUTE_DEVIATIONS_008.md`;
-  ledger run_start_008 08:49 EDT; held-out run RUNNING: `nohup bash scripts/run_study_008.sh > /tmp/w8/run008.log`
+  ledger run_start_008 08:49 EDT; GT1 tooling `29cd0d1`; main study 936/936 sealed 08:58 EDT (SEAL.json `c21ef12`);
+  streams A (xcheck), B (GMC), C (second impl, repro) RUNNING under: `nohup bash scripts/run_study_008.sh > /tmp/w8/run008.log`
   (checkpointed; re-running the same command resumes; check `ps` for a running instance first). After RUN_DONE:
   ledger run_end_008, commit sealed gz/JSON, seal_008, make_paired/reproducibility/gates_008, release step (10).
 
@@ -33,8 +34,8 @@ _Kept current on the working branch during a release and on `main` at release. L
    c: GT1 verify_release_060 / test_release_060, frozen 050 files untouched; d: GMC own gate ≥95% counted, budget 10 s/count,
    120 s/case, 6 h total, fallback blocking-clause/approxmc labelled). Predictions (Inferred): GA1 FAIL, GT1 PASS.
 2. DONE `1bc702f`: ledger preregistration_008 + MANIFEST; verify_release_050 --fast passes.
-3. NEXT (not started): scripts/check_seeds_008.py + tests/test_seeds_008.py, run, ledger seedcheck_008 — then
-   process_controls order in the plan. Seeds: held-out 18xxxxx/19xxxxx, smoke 980001–980030 only.
+3. DONE: seed check + ledger; implementation; smoke; source freeze `8e80615`; scoring scripts `08ac3f3`; run_start_008;
+   GT1 tooling `29cd0d1`; main SEAL `c21ef12`. NOW: post-study streams (logs /tmp/w8/stream{A,B,C}.log, gmc*.log).
 
 ## v0.5.0 progress (commit order is the chronology evidence)
 
