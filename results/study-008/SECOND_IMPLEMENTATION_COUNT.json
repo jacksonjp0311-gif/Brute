@@ -1,0 +1,63 @@
+{
+  "arm_traces_checked": 1872,
+  "breadth_steps_checked": {
+    "act3/BC6": {
+      "steps": 4608,
+      "steps_checked": 3537,
+      "traces_budget_stopped": 22
+    },
+    "act3/BR6": {
+      "steps": 4608,
+      "steps_checked": 3537,
+      "traces_budget_stopped": 22
+    },
+    "big6/BC6": {
+      "steps": 4608,
+      "steps_checked": 3758,
+      "traces_budget_stopped": 18
+    },
+    "big6/BR6": {
+      "steps": 4608,
+      "steps_checked": 3758,
+      "traces_budget_stopped": 18
+    },
+    "ood6s3/BC6": {
+      "steps": 4608,
+      "steps_checked": 4608,
+      "traces_budget_stopped": 0
+    },
+    "ood6s3/BR6": {
+      "steps": 4608,
+      "steps_checked": 4608,
+      "traces_budget_stopped": 0
+    },
+    "sens3/BC6": {
+      "steps": 4608,
+      "steps_checked": 4608,
+      "traces_budget_stopped": 0
+    },
+    "sens3/BR6": {
+      "steps": 4608,
+      "steps_checked": 4608,
+      "traces_budget_stopped": 0
+    }
+  },
+  "granularity": "one count per (case, arm) trace; the first differing field inside a trace is recorded",
+  "mismatches": [],
+  "mismatching_arm_traces": 0,
+  "mutation_test": {
+    "detected_injected": 20,
+    "flagged_not_injected": 0,
+    "injected": 20,
+    "passed": true,
+    "rng": "random.Random(20261026)"
+  },
+  "row_budget": 160000,
+  "schema": "brute.second-implementation-count.v3",
+  "scope": "R6/C6 with the v050_reference A5 audit + plan-008 rule (2x2 enumeration); BR6/BC6 with the v050_reference B5 audit + plan-008 rule up to the row budget",
+  "source_sha256": "b4b7b591cb8811e9102f2980481152407e60d72d39f133fc24aff0543253d02f",
+  "study": "BRUTE-060-DRIFTSOUND-008",
+  "tau6": 1.645215321642,
+  "tau7": 2.07944154168,
+  "wording": "second implementation by the same author, no brute import; not an independent or third-party audit"
+}
