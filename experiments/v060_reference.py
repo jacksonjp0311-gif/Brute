@@ -21,7 +21,9 @@ decision line replaced by the plan-008 rule and the drift-event bookkeeping adde
   tracked-state projection with the v0.1.0 gates, i.e. the v0.2.0/A2 rule on the region) is KEPT iff no event has
   happened so far and i >= burn_in (8); otherwise ABSTAIN / RESYNC_AMBIGUOUS.
 * then the SOLVER_BUDGET overlay as in A5. Each certificate-bearing forecast records cert_rule in
-  {None, 'Y1k', 'Y1k-recent', 'tracked-calm', 'downgraded'} and the diagnostics record drift_events.
+  {None, 'Y1k', 'Y1k-recent', 'tracked-calm', 'downgraded'} and the diagnostics record drift_events. cert_rule is
+  compared only on forecasts with solver_unknown == 0 (with an UNKNOWN the learner's Y1k set is a superset and the
+  forecast is ABSTAIN/SOLVER_BUDGET whatever the path).
 LU-R scores, alarm, resume, probabilities are unchanged from A5 / B5.
 Report = COUNT of mismatching (case, arm) traces, plus a mutation test (20 traces, random.Random(20261026)).
 """
@@ -147,7 +149,7 @@ def audit_drift_2x2(c,arm,plan,tau6):
             s_,rs,cert=expected_decision(s4,alarm,sup,s5,msup,sat)
             path=None
             if cert is not None:s_,rs,cert,path=rule_2x2(arm,r4,b,compatible_codes(last),k4,cert,s_,rs,acts,events,i,rw,burn)
-            check(r['cert_rule']==path,f'cert_rule {where} {i} {b}')
+            check(unk>0 or r['cert_rule']==path,f'cert_rule {where} {i} {b}')
             if unk>0 and s_!='OUT_OF_FAMILY':s_,rs,cert='ABSTAIN','SOLVER_BUDGET',None
             check((s_,rs,cert)==(r['status'],r['reason'],r['certificate']),f'decision {where} {i} {b}')
             pub=cert if (cert is not None and attested and not al.ever) else None
@@ -251,7 +253,7 @@ def audit_drift_breadth(c,arm,plan,tau7):
                 s_,rs,cert=expected_decision(s4,alarm,sup,s5,msup,sat)
                 path=None
                 if cert is not None:s_,rs,cert,path=rule_breadth(arm,r4,b,codes_of(last,s),N4,k,m,cert,s_,rs,acts,events,i,rw,burn)
-                check(r['cert_rule']==path,f'cert_rule {where} {i} {b}')
+                check(unk>0 or r['cert_rule']==path,f'cert_rule {where} {i} {b}')
                 if unk>0 and s_!='OUT_OF_FAMILY':s_,rs,cert='ABSTAIN','SOLVER_BUDGET',None
                 check((s_,rs,cert)==(r['status'],r['reason'],r['certificate']),f'decision {where} {i} {b}')
                 pub=cert if (cert is not None and lb['attested'] and not al.ever) else None
