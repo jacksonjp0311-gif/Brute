@@ -1,5 +1,38 @@
 # Brute changelog
 
+## v0.5.0: the constraint region as the engine; breadth families; projection-volume tie-break (study BRUTE-050-REGION-007)
+
+Criteria pre-registered at `5be08aa` (`experiments/BRUTE_PLAN_007.json`); second implementation `1b57efe`
+(`experiments/v050_reference.py`, same author, no `brute` import); implementation `fc2bed8`/`c8e8611`/`b693113`;
+pre-freeze fix to the reference `0c86d90` and infrastructure `d7054a1`/`b2c4209`; source frozen at `064a50e`; scoring
+scripts committed alone at `50e9321` (06:00:43 EDT), ledger `run_start_007` 06:11:52 EDT (11.2 min later), sealed at
+`51215e0`. Criteria and scoring scripts unchanged afterwards. Deviations: `docs/research/BRUTE_DEVIATIONS_007.md` (Q0–Q7).
+
+- **`brute/region.py`** (`RegionK`, `RegionSpace`): the constraint region for k actions and s sensors with tri-state
+  SAT answers (True / False / UNKNOWN under a per-query conflict budget).
+- **`brute/region_learner.py`** (`RegionBruteLearner`, arms A5 and M5): the v0.4.0 rules with every version-space query
+  on the region; **SOLVER_BUDGET** overlay — a forecast that used an UNKNOWN answer is ABSTAIN, never CERTIFIED; policy
+  `M` (projection-volume tie-break for LU-R ties).
+- **`brute/breadth.py`** (B5/BM5/BP5) and pre-registered breadth families big6 (≤6/≤7), sens3 (3 sensors), act3
+  (3 actions), ood6s3 (declared out of family); τ7 = 2.07944154168 calibrated on 450 in-family breadth cases.
+- **API 1.5** (`brute/api/service_v050.py`, schemas `*.v1_5.json`); `brute.release_version_050`.
+- **Study-007 (Observed):** 12 of 15 gated criteria pass. **GX1** A5 = A4 on all 25,344 steps (0 mismatches, 0
+  excluded). **GX3** 257 budget-hit forecasts, all abstain. G1/G2 0 false certificates in every arm, incl. breadth
+  and ood6s3. **Failed:** GX2 (0 mismatches, act3 only 84.5% of steps checkable by the reference, 90% registered),
+  G3′ (M5 1 non-drift false certificate on drift4), G6b (M5 − A2 −0.0796 [−0.0996, −0.0602], predicted).
+  **GM NOT DISTINGUISHED:** M5 − A5 +0.0262 [0.0109, 0.0425], BM5 − B5 +0.0391 [0.0204, 0.0579], but G3′ fails for M5.
+  Second implementation 0/2,592 arm traces, mutation 20/20. Reproducibility 296/296 byte-identical.
+- **GR2′ scaling (Observed raw, Inferred fits, not gated):** 0 UNKNOWN answers at n = 4..12 in three alphabets; clause
+  maxima 2,323 → 15,055 (2a2s, n = 4 → 12); cubic fit near-interpolating (5 n values); power exponents 1.57–1.74 with
+  curved residuals; enumeration too censored to fit; time noisy and non-monotone.
+- **Process (post-start, labelled post hoc; review of v0.4.0):** `scripts/check_smoke_seeds_007.py` (smoke seeds
+  901–903 disjoint from all 468 evaluation seeds; one held-out seed's world tables were printed by eye at 05:25, Q0);
+  retroactive ledger entry for smoke runs; `experiments/v050_prob_reference.py` recomputes v0.90 forecast probabilities
+  on taken and untaken branches (study-007 A4/A5/M5: 0/1,728 traces, 130,602 forecasts, swap mutations 20/20; also
+  applied to study-006 as v0.4.0 errata E3); `scripts/scaling_fit.py` (stated models with residuals).
+- `BRUTE_RELEASE_FREEZE_050.json` locks the scoring scripts, release verifier/test and the post-start audit scripts.
+- `scripts/verify_release_050.py`, `tests/test_release_050.py` (version-parameterised, tamper cases).
+
 ## v0.4.0 errata (2026-10-25, docs and new post-hoc checks only; tag `v0.4.0` and sealed results unchanged)
 
 From an external read-only review; details in `docs/research/v0.4.0/ERRATA.md`, new deviation P8 in

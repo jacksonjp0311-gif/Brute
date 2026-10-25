@@ -282,3 +282,43 @@ scripts/make_gates_005.py --check`.
 - **Reading (Inferred).** Forced checks remove roughly a third of stale certificates — a real but partial effect; the
   pre-registered decision is OPEN. The simulated power (0.955 / 0.905) assumed effects near the bounds; the observed R
   sits between them.
+
+## Study-007 (v0.5.0)
+
+### D22: The SAT region can replace enumeration without changing a decision
+
+- **Data (Observed).** A5 (every query on `RegionK`) vs A4 (frozen enumeration): 0 mismatching of 25,344 steps on 576
+  held-out 2x2 cases, 0 steps excluded (GX1); A5 − A4 coverage 0 exactly. No production forecast used an UNKNOWN answer
+  (226k forecasts). On the stress block (tiny budget) 257 forecasts used one and all abstained (GX3).
+- **Reading (Inferred).** For the v0.4.0 rules the representation is now the engine and is decision-neutral; what the
+  backend buys is reach (breadth, n up to 12), not different answers.
+- **White paper:** yes — with D17.
+
+### D23: Breadth families: sound, and experiments still pay
+
+- **Data (Observed).** big6/sens3/act3: 0 false certificates in B5 (2,108), BM5 (3,456), BP5 (802); ood6s3 0 false of
+  1,271 certificates, 0 public. Active minus passive (B5 − BP5) +0.045 [0.030, 0.060]. The enumeration reference ran out
+  of rows on ~20% of big6 steps and 15.5% of act3 steps (GX2 fails on act3's 90% floor; 0 mismatches where checked).
+- **Reading (Inferred).** Soundness of Y1k + margin is not specific to the 2-action, 2-sensor alphabet. Exactness at
+  breadth is checked only as far as enumeration reaches — the point of the backend, and the gap for v0.6.0.
+
+### D24: A volume tie-break raises coverage but walked into a stale window once
+
+- **Data (Observed).** M5 − A5 +0.0262 [0.0109, 0.0425] (largest cycle3 +0.054), BM5 − B5 +0.0391 [0.0204, 0.0579]
+  (act3 +0.091; sens3 −0.013, CI includes 0). M overrides LU-R on 259–883 of 3,168 steps per 2x2 family. On drift4
+  M5 had 25 false certificates (A5 6), 1 at a non-drift step: seed 1700015, mask 0.1, two steps after a drift, not
+  public. GM: NOT DISTINGUISHED by the registered rule.
+- **Reading (Inferred).** M prefers experiments that shrink fibre ambiguity, which certifies more — including on
+  regions that a drift two steps back has made stale but not yet contradicted. Y1k's one-step horizon, not M's
+  arithmetic, is the soundness gap; M exposes it more often (25 vs 6 drift-step false certificates). One non-drift event
+  is too few to say M raises the non-drift rate (*Open*).
+
+### D25: G6b's price is in the certification rule
+
+- **Data (Observed).** M5 − A2 −0.0796 [−0.0996, −0.0602]; A5/A4 − A2 −0.1054; v0.4.0 A4 − A2 −0.1038; D2 and F2 in
+  v0.4.0 also failed. The tie-break recovered about a quarter of the gap.
+- **Reading (Inferred).** Three policy changes (depth, two-step fibre, volume tie-break) leave most of the gap; the gap
+  is the set of A2 certificates that Y1k rejects because the fibre over the latest observation is not constant. Closing
+  it needs a certification rule that is sound on drift and narrower than "the whole fibre" — e.g. a fibre restricted by
+  the evidence since the last possible jump.
+
