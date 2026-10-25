@@ -20,7 +20,7 @@ Brute is a fork of **BGR (Bitwork Geometric Reasoning) v0.90.0**, and that resea
 | | |
 | --- | --- |
 | Version | 0.2.0 (`RELEASE.json`, `brute.release_version.RELEASE_VERSION`). `brute.version.RELEASE_VERSION` stays `0.1.1` and `brute.__version__` stays `0.1.0`, because those files are in earlier freezes |
-| Tests | `python -m unittest discover -s tests`: **@@TESTS@@** |
+| Tests | `python -m unittest discover -s tests`: **149 tests, 147 pass, 2 expected errors**: two frozen pre-v0.2.0 tests (`test_release_011.test_fast_verify_passes`, `test_brute_repro.test_verify_fails_under_tampered_results`) assert the v0.1.x version string; they cannot be edited (freeze) and fail by construction after the 0.2.0 bump (deviation N1). The v0.1.1 and v0.1.0 verifiers still pass unmodified on their raw trees inside `verify_release_020` |
 | Study | `BRUTE-020-ACTIVE-004`: criteria frozen at commit `c0ac594` before any v0.2.0 code; source frozen at `8bf8759` before the run. 7 families × 24 new held-out seeds × 3 mask rates = 504 cases. Arms: **A** active, **P** passive (same learner, fixed actions), **C** frozen v0.1.1 on P's sequence, plus the v0.90 control |
 | Gates | **12 of 13 pass; G3′ fails** ([`results/study-004/GATES.json`](results/study-004/GATES.json)) |
 | Verifier | `python -m scripts.verify_release_020 --fast` (seals, freezes, regenerated gates and paired analysis, ledger, manifest, git order); without `--fast` it re-runs the independent reference; `--frozen` also runs the frozen v0.1.1 and v0.1.0 verifiers on their own blobs |
