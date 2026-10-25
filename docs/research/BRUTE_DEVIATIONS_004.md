@@ -60,4 +60,9 @@ original criterion is always reported as registered. Labels: Exact / Observed / 
 
 ## Deviations after the study run
 
-(none yet)
+- **D1, storage of the sealed traces (no data, metric or criterion changed).** The frozen harness wrote `RESULTS.json`
+  (133,549,844 bytes) and `SCIENTIFIC.json` (133,460,089 bytes), above GitHub's 100 MB per-file limit, so they could not be
+  pushed. They are committed as deterministic gzip files (`*.json.gz`, level 9, mtime 0) of the exact sealed bytes; the raw
+  files are git-ignored. `scripts/study004_storage.py restore` (called by the gate, paired and release-verifier scripts)
+  rebuilds the raw files and checks them against `SEAL.json`, which is unchanged and still binds the raw bytes. Ledger
+  receipts for the traces name the `.gz` files. Done right after the run, before any result was read.
