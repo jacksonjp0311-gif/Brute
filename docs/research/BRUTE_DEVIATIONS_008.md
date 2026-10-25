@@ -91,3 +91,10 @@ held-out data were seen** unless it says so explicitly. Labels: Exact / Observed
     - (c) **big6 inside the checked cases.** Within the 46 checked cases, big6 checked 2903/2944 = 0.986 of steps,
       below 0.99. GX2' would have failed on clause (iii) even if only these cases had been registered. *Observed*.
     No threshold, case set or scoring rule was changed because of (a)-(c).
+25. **Missing ledger receipt for the pre-freeze reference fix (found at release verification).** The D1 fix `cae25ce` to
+    `experiments/v060_reference.py` was committed without a superseding ledger receipt. The pre-freeze fix itself was
+    already disclosed and is hashed by the source freeze `8e80615`. So `verify_release_060 --fast` failed with "ledger
+    source changed: experiments/v060_reference.py". A RETROACTIVE ledger entry `second_implementation_008_fix` (commit
+    `cae25ce`, the file's current bytes, which are unchanged since that commit) was appended at release time. This
+    follows the frozen `ledger_020` rule: the last receipt per source must match, and earlier receipts are superseded.
+    No code or result changed.
