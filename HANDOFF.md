@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 07:15 EDT (v0.5.0 released (merge 8e03e03, tag v0.5.0, gh release); v0.6.0 not started))._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 07:35 EDT (v0.5.0 released; v0.6.0 plan frozen on plan/v0.6.0, no code))._
 
 ## Current version and state
 
@@ -8,18 +8,29 @@ _Kept current on the working branch during a release and on `main` at release. L
   12 of 15 gated pass; GX2, G3′, G6b fail (on the record); GM NOT DISTINGUISHED; GX3 PASS. Tags v0.2.0/v0.3.0/v0.4.0/
   v0.5.0 never move. Post-tag commits on main are HANDOFF/MANIFEST/errata only.
 - **Alignment check of v0.5.0:** `docs/research/v0.5.0/ALIGNMENT_CHECK.md` (findings A1–A7; docs errata only).
-- **Next: v0.6.0** — pre-registration only on `plan/v0.6.0` (`experiments/BRUTE_PLAN_008.json`); no code before the plan
-  freeze is committed and ledgered.
+- **In progress: v0.6.0** on `plan/v0.6.0` — study-008 PRE-REGISTERED ONLY: `experiments/BRUTE_PLAN_008.json` frozen at
+  `89c2d3b` (sha256 `6dc1a17d…7cdb502`; criteria canonical-JSON sha256 `2f6ee48a…3575e21`), ledger `preregistration_008`
+  in `1bc702f`. Readable: `docs/research/v0.6.0/PLAN_008.md`. **No v0.6.0 code exists; next step is (2) seed check.**
 
 ## Branches (origin `github.com/jacksonjp0311-gif/Brute`, public on purpose: James asked for it 2026-10-25 01:13 EDT)
 
 | Branch | Head | State |
 | --- | --- | --- |
 | `main` | `8e03e03` = tag v0.5.0 (+ HANDOFF/errata commits) | Released code and record |
-| `plan/v0.6.0` | see `git log` | v0.6.0 pre-registration branch (from main) |
+| `plan/v0.6.0` | see `git log` (plan freeze `89c2d3b`) | v0.6.0 branch from main `ed66489`; plan frozen, no code |
 | `plan/v0.5.0` | `d0516a0` | v0.5.0 working branch (merged) |
 | `plan/v0.4.0` | `5e7d208` | v0.4.0 working branch (merged) |
 | `bridge/v0.2`, `bridge/v0.1` | `cced586`, `9c88a3a` | Bridge work; **unmerged; do not edit or merge without a decision** |
+
+## v0.6.0 progress (commit order is the chronology evidence)
+
+1. DONE 07:2x EDT: branch `plan/v0.6.0` from main `ed66489`. `89c2d3b`: BRUTE_PLAN_008.json + PLAN_008.md (targets
+   a: GA1 = one arm of R6/C6 passes G1+G2+G3′+G6b; b: GX2′ xcheck SAT/CaDiCaL, checked ≥0.99 per family×arm, 0 mismatches;
+   c: GT1 verify_release_060 / test_release_060, frozen 050 files untouched; d: GMC own gate ≥95% counted, budget 10 s/count,
+   120 s/case, 6 h total, fallback blocking-clause/approxmc labelled). Predictions (Inferred): GA1 FAIL, GT1 PASS.
+2. DONE `1bc702f`: ledger preregistration_008 + MANIFEST; verify_release_050 --fast passes.
+3. NEXT (not started): scripts/check_seeds_008.py + tests/test_seeds_008.py, run, ledger seedcheck_008 — then
+   process_controls order in the plan. Seeds: held-out 18xxxxx/19xxxxx, smoke 980001–980030 only.
 
 ## v0.5.0 progress (commit order is the chronology evidence)
 
