@@ -1,0 +1,28 @@
+{
+  "also_requires": [
+    "experiments/BRUTE_SOURCE_FREEZE_002.json",
+    "experiments/BRUTE_SOURCE_FREEZE_003.json",
+    "experiments/BRUTE_SOURCE_FREEZE_004.json"
+  ],
+  "plan_sha256": "5ba322886c3882a88227e7f25eda8dc9c0c5662da2da8be9ef7fa56f76fb3788",
+  "preregistration_commit": "25fa47b",
+  "schema": "brute.source-freeze.v1",
+  "sha256_files": {
+    "brute/api/schema/request.v1_3.json": "d197aa3c593ab01c7226800fcf14fa20a5c4e26041384495a0bb37e5cc3f030b",
+    "brute/api/schema/response.v1_3.json": "b7dbd52889edd80bc0c7871bea5798a087b5e50d504ddc3d7f453dd13d061b8a",
+    "brute/api/service_v030.py": "a1669afbbbc0b0f3f2d947fe4104be7f268fe0de4eb865a50fa4f92fa83e8218",
+    "brute/changepoint.py": "0d0f29444dfe1a2970f8d387854aab80d9ee32400f52d4ea6531d99769ba160d",
+    "brute/release_version_030.py": "d227ba6c73d41710209d26b0fe9370954a0e4ce4639bc802486ecbfb31612240",
+    "experiments/BRUTE_PLAN_005.json": "5ba322886c3882a88227e7f25eda8dc9c0c5662da2da8be9ef7fa56f76fb3788",
+    "experiments/brute_calibrate_005.py": "75a0a6e05a31ceb7214ef14f6d42d42c55e9341a438bc845a028cc0f93403374",
+    "experiments/brute_common_005.py": "83ec7900237dd451969bc28c0cd98863383e7ae87f87fc4961da02a1ba54cd60",
+    "experiments/brute_study_005.py": "12c4d0b4205cd2e17d529a19cff8ea2b09d199f00a67b168b18b7abbe6d602d1",
+    "experiments/v030_independent_reference.py": "a58b2196aff2c391bff0006cdeb50145ff3e6dddfbca09d2c03d0c11ac6aeae3",
+    "scripts/make_freeze_005.py": "256358b79adaad5e6abab628ef690e5b20ff39eb78a0b9932222f1d6ac56a7a9",
+    "tests/test_api_contract_v030.py": "a14dde83bb9c6d83483999b575d2546ff3a1bae69e22dedaabdd2b16991ec7d5",
+    "tests/test_brute_changepoint.py": "1fb97af58f27320678364bc8aa674a37dce7083e0999886a9c2ff9a4933696dd",
+    "tests/test_study_005.py": "49684f7b038ea4ff5e1303a8372a12de83257f350e8df6536219caf669846cbe"
+  },
+  "status": "frozen",
+  "study": "BRUTE-030-CHANGEPOINT-005"
+}

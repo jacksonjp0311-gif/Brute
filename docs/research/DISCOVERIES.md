@@ -142,3 +142,87 @@ python scripts/make_gates_004.py --check`.
 - **Reading (Inferred).** One-step lookahead fits the budget at n≤5; a two-step lookahead or n≤6 would not without a
   new representation (ROADMAP).
 - **White paper:** no.
+
+## Study-005 entries (Observed; sealed `results/study-005/SCIENTIFIC.json`, sha `358a423e…`, 504 held-out cases + 216 extended drift4 cases)
+
+Arms: **A3** = v0.3.0 (Y1k certification + LU-R lookahead), **P3** = the same learner on the passive actions, **A2** /
+**P2** = frozen v0.2.0 active / passive, **E2** = v0.2.0 certification + LU + an untaken-branch check (CHECK_RUN k=3),
+**C** = frozen v0.1.1 on the passive sequence. Gates: `results/study-005/GATES.json` (12 of 14 gated pass; G5 and G6b
+fail). Paired analysis: `results/study-005/PAIRED_ANALYSIS.json` (2,000 seed-clustered resamples, seed 20261025).
+Reproduce: `python scripts/study005_storage.py restore && python scripts/make_paired_005.py --check && python
+scripts/make_gates_005.py --check`.
+
+### D11: Certifying on the whole fibre removes the stale certificates (fixes D8; G3′ passes)
+
+- **Math.** Y1k keeps a certificate x for action b only if `U = ∪_{p∈R_4} ∪_{j: masks_p[j] ∩ m ≠ ∅} masks_p[δ_p(j,b)] = {x}`,
+  where m is the latest observation's mask, and an unknown edge from the current state contributes every visited
+  emission (all four codes if p has a free state). U is the projection of the **fibre** of the version space over the
+  latest observation: every place the hidden state could be if it had jumped unseen at the latest step. v0.2.0
+  certified on the projection of the current state only.
+- **Data (Observed).** drift4 main block, taken-action false certificates (all / non-drift / stale): **A3 9 / 0 / 0**,
+  P3 0 / 0 / 0, A2 15 / 1 / 2, P2 1 / 1 / 1, E2 7 / 0 / 0; v0.90 89 (limit 44.5). G3′ passes for A3 and P3 (it failed for
+  v0.2.0 A in study-004). Post-jump steps 13/24/35: A3 0 certificates, A2 2 (1 wrong). Extended block (not gated):
+  A3 38 / 2 / 4, A2 62 / 14 / 15, E2 38 / 12 / 14. Stale false certificates per certificate in the stale window: A3
+  0.027, A2 0.101, E2 0.097. 0 false certificates (taken, counterfactual, public) in family and on ood5 for every arm.
+- **Reading (Inferred).** The step-13 errors in D8 were certificates that hold on the current-state projection but not
+  on the fibre: the region still contained explanations in which the world had moved. Requiring constancy on the fibre
+  is a geometric condition (a projection test on a larger set), not a timer. The residue on the extended block is the
+  registered limitation: a jump into a state whose edge for b is still unknown is not covered.
+- **White paper: yes.** The headline result of v0.3.0, with D12.
+
+### D12: The price of robustness is about 45% of dual coverage (G6b fails, as pre-registered)
+
+- **Data (Observed).** Pooled in-family dual coverage: A2 0.220, E2 0.192, **A3 0.121**, P2 0.108, P3 0.057. A3 − A2
+  = −0.098264, CI95 [−0.110885, −0.087267] (design estimate −0.094; bar −0.03). Per family A3 − A2: cycle3 −0.188,
+  switch3 −0.109, unaliased2 −0.089, unstructured3 −0.068, ood4 −0.038. P3 − P2 = −0.0506 [−0.0559, −0.0458]. A3 still
+  gains over its own passive arm: **A3 − P3 = +0.064352, CI95 [0.055054, 0.073922]** (G6 passes; every family CI > 0).
+  RESYNC_AMBIGUOUS abstentions (A3, post-burn-in): cycle3 608, switch3 397, unaliased2 170, unstructured3 113, ood4 67.
+  In-family log-loss still falls below v0.1.1 in every family (G8b), and drift4 log-loss A3 1.162 < A2 1.171 < C 1.182.
+- **Reading (Inferred).** Most v0.2.0 certificates in cyclic worlds were correct only because the world had not
+  jumped; Y1k refuses them because it cannot rule a jump out. The fibre test is sound but conservative: it uses the
+  latest observation only, so it cannot use later evidence that the state was in fact not resynchronised. A test that
+  lets the fibre shrink with subsequent consistent evidence (a multi-step fibre) should recover part of the gap. Open.
+- **White paper:** with D11.
+
+### D13: D7 and D8 are not one mechanism (G14 verdict OPEN under the pre-registered rule)
+
+- **Hypothesis (pre-registered).** Stale certainty (D8) is caused by the attractor's suppression of untaken-branch
+  checks (D7). Manipulation: E2 forces the untaken action after 3 identical choices.
+- **Data (Observed).** M holds: in-family check rate E2 0.053 (A2 0), switch rate E2 0.611 vs A2 0.426. P1 holds:
+  in-family counterfactual certificates E2 760 vs A2 474 (×1.60). Stale false certificates, main + extended:
+  **S(A2) = 17, S(E2) = 14, S(A3) = 4**. Rule: CONFIRMED iff S(E2) ≤ 8.5; FALSIFIED iff S(E2) ≥ 17. Neither holds →
+  **OPEN**. S(E2) − S(A2) = −3, CI95 [−12, +6]; S(A3) − S(A2) = −13, CI95 [−23, −5]. A3 has check rate 0 and S(A3) = 4, so
+  the registered attribution condition (S(A3) = 0) is not met either.
+- **Reading (Inferred, not established by the pre-registered rule).** Forcing checks restored counterfactual knowledge
+  (D7's cost) but barely moved stale certainty (stale false per certificate 0.097 vs 0.101), whereas changing the
+  certification geometry (Y1k) cut it by ~4× with no checks at all. The two observations look like separate
+  mechanisms: D7 is about which branch the policy learns; D8 is about which set the certificate must be constant on.
+- **White paper:** as a section of D11.
+
+### D14: The passive learner knows more about the untaken branch than the active one
+
+- **Data (Observed).** Counterfactual (untaken-action) certificates, cycle3: P2 548 vs A2 164; in-family totals A3 574,
+  A2 474, E2 760. A3 has more counterfactual certificates than A2 despite lower dual coverage; on-policy coverage cycle3 A3 0.166 vs
+  A2 0.598.
+- **Reading (Inferred).** Confirms D7 on new seeds. LU-R scores with the Y1k gate, so it is drawn less towards
+  taken-branch-only certainty; the robust gate partly undoes the attractor as a side effect.
+- **White paper:** no; a footnote to D13.
+
+### D15: Residual-surprise false alarms on held-out ood4 seeds (G5 fails)
+
+- **Data (Observed).** 5 of 72 ood4 cases (seeds 1470003, 1470014, 1470022 at mask 0.35; 1470020 at 0.35 and 0.6)
+  raise RESIDUAL_SURPRISE while the n≤4 family is still supported, identically in A3, P3, A2, P2 and the frozen v0.1.1
+  control (153 alarm steps each); E2 (different action sequence) 0. Study-004 ood4: 0 of 72. τ = 1.433141502274 is
+  unchanged since study-002 and reproduces (G13).
+- **Reading (Inferred).** The alarm rule's false-alarm rate at high mask on 4-state worlds is above 5% on these seeds;
+  the τ calibration (max over calibration seeds) does not bound the held-out tail. Since certification never resumes
+  after an alarm in a session, each false alarm also costs coverage. A recalibration or a resumable alarm is Open.
+- **White paper:** no.
+
+### D16: Bridge observation O1 is a bridge-side difference (diagnostic)
+
+- **Data (Observed).** R3 untied experiments per case (A3 / A2): cycle3 10.1 / 23.6, switch3 15.8 / 20.2, unaliased2
+  11.2 / 16.4, unstructured3 9.7 / 14.6, ood4 2.5 / 5.4, ood5 1.9 / 3.4, drift4 1.4 / 1.8. The bridge reported 0 on
+  unstructured3 and drift4.
+- **Reading (Inferred).** The learner does produce untied experiments on unstructured3; the bridge's count differs for
+  a reason outside Brute. Open; not investigated (the bridge is not edited).
