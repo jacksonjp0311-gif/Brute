@@ -1,0 +1,49 @@
+{
+  "also_requires": [
+    "experiments/BRUTE_SOURCE_FREEZE_002.json",
+    "experiments/BRUTE_SOURCE_FREEZE_003.json",
+    "experiments/BRUTE_SOURCE_FREEZE_004.json",
+    "experiments/BRUTE_SOURCE_FREEZE_005.json",
+    "experiments/BRUTE_SOURCE_FREEZE_006.json",
+    "experiments/BRUTE_SOURCE_FREEZE_007.json",
+    "experiments/BRUTE_RELEASE_FREEZE_050.json"
+  ],
+  "implementation_commits": [
+    "457db5a",
+    "6556186",
+    "ff4d0d8",
+    "6f6cd22"
+  ],
+  "plan_sha256": "6dc1a17dd6e931901e1b5af2cf845426bb327a68d6b16e9ceb270e23e7cdb502",
+  "pre_freeze_fix_commits": [
+    "cae25ce"
+  ],
+  "preregistration_commit": "89c2d3b",
+  "reference_commit": "8863f06",
+  "schema": "brute.source-freeze.v1",
+  "seedcheck_commit": "1de8170",
+  "sha256_files": {
+    "brute/driftsound.py": "2d467d7308dae60304b920f5581d8b5c8cb2419edfa798e2df036dea31c5fcf1",
+    "brute/modelcount.py": "6f46232a82ceb2998ba291653ed18e440164d408a385144259aa0a5e3aa6efb4",
+    "brute/xcheck_sat.py": "37da1ed518444fee3f0d661f2b2b0a276eb4a15201e4e2c7400d6ebaa7c81eb4",
+    "experiments/BRUTE_PLAN_008.json": "6dc1a17dd6e931901e1b5af2cf845426bb327a68d6b16e9ceb270e23e7cdb502",
+    "experiments/brute_common_008.py": "60b8aeb672b2bb528c3e2763925a07ca820940491fac3fa6b06084e731c2dd0c",
+    "experiments/brute_study_008.py": "2df9d060253ba1d07023190fc67b073cdeccf0f7c3c2dc6f40c5142d635ef4ca",
+    "experiments/make_count_008.py": "17a4e2ebb2ff16228dd0da5d2f4171ed3e8c33a04e12cfacc7eea426f0992e8d",
+    "experiments/v060_reference.py": "2bdc9bf0606e9f24c1f9b72ed862a5d8a105e2f374baf9f9c203cf26172e52cb",
+    "experiments/v060_xcheck.py": "14eb6e73ed85798a3edbd65e10b11f87fa7e4b1784e2ead44a1fa473edc5c108",
+    "experiments/worlds_008.py": "64b01058e73eb37587d3474b37d4a3eff530fa12d51b0e033f61980af0bb2261",
+    "requirements-gmc.txt": "00d73a69ffdc8dc70174cf706bbfd48db6f8f5d93f036432e0efe9029a1cdafa",
+    "scripts/check_seeds_008.py": "ef33e62b54b69a38680a69247f0115b1e3ccd8bd134bb4ee13a5cb65bd133cc5",
+    "scripts/make_freeze_008.py": "57b1bda35a571c9b2067416b1aa9a415a489c551e381daffac7fb3d1872e83ea",
+    "scripts/make_second_impl_008.py": "d25240c38fa8d7c1798c0a953ed6c903cd023c9d0d8d573b64d9a54e136b4bc6",
+    "scripts/run_study_008.sh": "fbafcf1fd6f5151488e92a8a3680a2f714242cf09433806798692f60e14286e9",
+    "scripts/study008_storage.py": "0b8fad19fd6cb9d8446f04ddecde2d8a628ae76947e55756d3553772d6c721fe",
+    "tests/test_driftsound.py": "4afcbe55d33e1c4317f400284fd3c5eea45552101df34d358605bc7ceda876e8",
+    "tests/test_seeds_008.py": "2cecf65e83ec04bfc5b46397d78b81b157ceeabf97163f8e7a980aac2fa77219",
+    "tests/test_v060_reference.py": "fb9381b4d39fa241e8cd07074807fd6da30f191d37bd8763c1840a46bf49a7e6",
+    "tests/test_xcheck_sat.py": "a5950a267bdd62e794d17b146ca6b89603bf58dee0d1845ceece58251731a87c"
+  },
+  "status": "frozen",
+  "study": "BRUTE-060-DRIFTSOUND-008"
+}
