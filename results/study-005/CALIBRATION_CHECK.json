@@ -1,0 +1,53 @@
+{
+  "argmax": {
+    "family": "ood4",
+    "mask_rate": 0.6,
+    "seed": 970017,
+    "step": 8
+  },
+  "argmax_study002": {
+    "family": "ood4",
+    "mask_rate": 0.6,
+    "seed": 970017,
+    "step": 8
+  },
+  "argmax_v011_control": {
+    "family": "ood4",
+    "mask_rate": 0.6,
+    "seed": 970017,
+    "step": 8
+  },
+  "calibration_cases": 360,
+  "freeze_sha256": "f788109d4e83c83d22fae5a77294ca9299ba0bc60cea3cec4378c13e25b36518",
+  "out_of_family_data_used": false,
+  "per_family_max_R": {
+    "cycle3": 1.19939943064,
+    "ood4": 1.433141502274,
+    "switch3": 1.159700785107,
+    "unaliased2": 0.732001484178,
+    "unstructured3": 1.06595762113
+  },
+  "per_family_max_R_study002": {
+    "cycle3": 1.19939943064,
+    "ood4": 1.433141502274,
+    "switch3": 1.159700785107,
+    "unaliased2": 0.732001484178,
+    "unstructured3": 1.06595762113
+  },
+  "per_family_max_R_v011_control": {
+    "cycle3": 1.19939943064,
+    "ood4": 1.433141502274,
+    "switch3": 1.159700785107,
+    "unaliased2": 0.732001484178,
+    "unstructured3": 1.06595762113
+  },
+  "plan_sha256": "5ba322886c3882a88227e7f25eda8dc9c0c5662da2da8be9ef7fa56f76fb3788",
+  "schema": "brute.calibration-check.v3",
+  "study": "BRUTE-030-CHANGEPOINT-005",
+  "study002_calibration_sha256": "6ebe33af7d9b1dfd9410141a501c5c08ffc40296a6ddea552a14eb8d5b08e384",
+  "tau": 1.433141502274,
+  "tau_reproduced": true,
+  "tau_study002": 1.433141502274,
+  "tau_v011_control": 1.433141502274,
+  "window_W": 8
+}
