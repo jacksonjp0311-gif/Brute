@@ -1,0 +1,164 @@
+{
+  "G12_pass": true,
+  "all_byte_identical": true,
+  "files": {
+    "cases_index_divisible_by_3": {
+      "byte_identical": true,
+      "differing": [],
+      "expected": 312,
+      "per_block": {
+        "2x2": {
+          "cases": 216,
+          "identical": 216
+        },
+        "breadth": {
+          "cases": 96,
+          "identical": 96
+        }
+      },
+      "rerun": 312
+    }
+  },
+  "gmc_recount": {
+    "common_cases": 120,
+    "differences_only_by_timeout": 11,
+    "identical": true,
+    "identical_steps": 1069,
+    "other_difference_list": [],
+    "other_differences": 0,
+    "repro_cases": 120,
+    "timeout_differences": [
+      {
+        "fields": [
+          "fibre.0,0",
+          "fibre.0,1"
+        ],
+        "key": "2x2/switch3/1820009/0.1",
+        "step": 28
+      },
+      {
+        "fields": [
+          "pairs.0",
+          "fibre.0,0",
+          "fibre.0,1",
+          "fibre.0,2",
+          "fibre.0,3"
+        ],
+        "key": "2x2/switch3/1820010/0.1",
+        "step": 40
+      },
+      {
+        "fields": [
+          "pairs.0",
+          "pairs.1",
+          "fibre.0,0",
+          "fibre.0,1",
+          "fibre.0,2",
+          "fibre.0,3",
+          "fibre.1,0",
+          "fibre.1,1",
+          "fibre.1,2",
+          "fibre.1,3"
+        ],
+        "key": "2x2/unaliased2/1840021/0.1",
+        "step": 44
+      },
+      {
+        "fields": [
+          "fibre.1,0",
+          "fibre.1,1",
+          "fibre.1,2",
+          "fibre.1,3"
+        ],
+        "key": "2x2/unstructured3/1830001/0.1",
+        "step": 32
+      },
+      {
+        "fields": [
+          "pairs.0",
+          "pairs.1",
+          "fibre.0,0",
+          "fibre.0,1",
+          "fibre.0,2",
+          "fibre.0,3",
+          "fibre.1,0",
+          "fibre.1,1",
+          "fibre.1,2",
+          "fibre.1,3"
+        ],
+        "key": "2x2/unstructured3/1830001/0.1",
+        "step": 36
+      },
+      {
+        "fields": [
+          "pairs.0",
+          "pairs.1",
+          "fibre.0,0",
+          "fibre.0,1",
+          "fibre.0,2",
+          "fibre.0,3",
+          "fibre.1,0",
+          "fibre.1,1",
+          "fibre.1,2",
+          "fibre.1,3"
+        ],
+        "key": "2x2/unstructured3/1830001/0.1",
+        "step": 40
+      },
+      {
+        "fields": [
+          "pairs.0",
+          "pairs.1",
+          "fibre.0,0",
+          "fibre.0,1",
+          "fibre.0,2",
+          "fibre.0,3",
+          "fibre.1,0",
+          "fibre.1,1",
+          "fibre.1,2",
+          "fibre.1,3"
+        ],
+        "key": "2x2/unstructured3/1830001/0.1",
+        "step": 44
+      },
+      {
+        "fields": [
+          "pairs.1",
+          "fibre.1,0",
+          "fibre.1,1"
+        ],
+        "key": "2x2/unstructured3/1830009/0.1",
+        "step": 44
+      },
+      {
+        "fields": [
+          "pairs.0"
+        ],
+        "key": "2x2/unstructured3/1830013/0.1",
+        "step": 28
+      },
+      {
+        "fields": [
+          "fibre.1,0",
+          "fibre.1,1",
+          "fibre.1,2",
+          "fibre.1,3"
+        ],
+        "key": "2x2/unstructured3/1830023/0.1",
+        "step": 28
+      },
+      {
+        "fields": [
+          "fibre.0,2",
+          "fibre.0,3"
+        ],
+        "key": "2x2/unstructured3/1830024/0.1",
+        "step": 32
+      }
+    ]
+  },
+  "repro_scientific_sha256": "e4703e533a5501f46149e2fc209ae1b75cff20f3ea79c2603168a8c8209e0259",
+  "schema": "brute.reproducibility.v8",
+  "scientific_sha256": "803c2d1b3d5c07b50c444cd91f1aafe7f4867c38846968011174327d683991d1",
+  "study": "BRUTE-060-DRIFTSOUND-008"
+}
