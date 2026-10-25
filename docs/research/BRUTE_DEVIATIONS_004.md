@@ -66,3 +66,11 @@ original criterion is always reported as registered. Labels: Exact / Observed / 
   files are git-ignored. `scripts/study004_storage.py restore` (called by the gate, paired and release-verifier scripts)
   rebuilds the raw files and checks them against `SEAL.json`, which is unchanged and still binds the raw bytes. Ledger
   receipts for the traces name the `.gz` files. Done right after the run, before any result was read.
+- **D2, raw-trace restore in the gate and paired scripts (storage only; no scoring logic changed).** After the run,
+  `scripts/make_gates_004.py` and `scripts/make_paired_004.py` (committed before any result existed, `c0f84e1`) each
+  gained one line at the start of `build()`: `ensure_raw()` from `scripts/study004_storage.py` (D1). It writes a missing raw
+  trace from its `.gz` and checks every raw trace against `SEAL.json`; when the raw files are present it only checks them.
+  Justification: without it a fresh clone (which has only the `.gz` files) cannot score the gates. Check: the pre-results
+  `make_paired_004.py` from `c0f84e1` was run with `--check` against the `PAIRED_ANALYSIS.json` written by the edited
+  script and reproduced it byte for byte; the same check is done for `GATES.json` before it is committed. No threshold,
+  metric, seed, bootstrap setting or gate definition changed.

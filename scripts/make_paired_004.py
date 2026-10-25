@@ -31,6 +31,7 @@ def _ci(boot):return [round(float(np.quantile(boot,.025)),6),round(float(np.quan
 
 
 def build():
+    from scripts.study004_storage import ensure_raw;ensure_raw()
     d=load(STUDY_DIR/'SCIENTIFIC.json');plan=load(PLAN)
     reg=plan['criteria']['G6_active_coverage_gain']['threshold']
     check('2000 resamples, numpy default_rng seed 20261025' in reg,'bootstrap registration changed')

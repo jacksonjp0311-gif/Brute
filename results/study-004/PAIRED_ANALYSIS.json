@@ -1,0 +1,393 @@
+{
+  "G6_dual_coverage_gain": {
+    "families": {
+      "cycle3": {
+        "ci95": [
+          0.097415,
+          0.147569
+        ],
+        "gain": 0.120949,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "ood4": {
+        "ci95": [
+          0.01427,
+          0.073124
+        ],
+        "gain": 0.042245,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "switch3": {
+        "ci95": [
+          0.108989,
+          0.156057
+        ],
+        "gain": 0.130787,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "unaliased2": {
+        "ci95": [
+          0.136762,
+          0.190586
+        ],
+        "gain": 0.163773,
+        "pairs": 5184,
+        "seeds": 24
+      },
+      "unstructured3": {
+        "ci95": [
+          0.095872,
+          0.141787
+        ],
+        "gain": 0.11902,
+        "pairs": 5184,
+        "seeds": 24
+      }
+    },
+    "pooled_ci95": [
+      0.10409,
+      0.127123
+    ],
+    "pooled_gain": 0.115355
+  },
+  "cluster": "seed within family",
+  "logloss_contrasts": {
+    "cycle3": {
+      "logloss_A_minus_C": {
+        "ci95": [
+          -0.043453,
+          -0.019652
+        ],
+        "estimate": -0.031238,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A_minus_P": {
+        "ci95": [
+          -0.043453,
+          -0.019652
+        ],
+        "estimate": -0.031238,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A_minus_suffix1": {
+        "ci95": [
+          -0.906465,
+          -0.824097
+        ],
+        "estimate": -0.865711,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P_minus_C": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P_minus_suffix1": {
+        "ci95": [
+          -1.04901,
+          -0.98651
+        ],
+        "estimate": -1.01818,
+        "seeds": 24,
+        "steps": 2592
+      }
+    },
+    "drift4": {
+      "logloss_A_minus_C": {
+        "ci95": [
+          -0.099995,
+          0.019398
+        ],
+        "estimate": -0.033311,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A_minus_P": {
+        "ci95": [
+          -0.082297,
+          0.024416
+        ],
+        "estimate": -0.022723,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A_minus_suffix1": {
+        "ci95": [
+          -0.259235,
+          -0.004576
+        ],
+        "estimate": -0.127272,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P_minus_C": {
+        "ci95": [
+          -0.03722,
+          0.01631
+        ],
+        "estimate": -0.010588,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P_minus_suffix1": {
+        "ci95": [
+          -0.261194,
+          -0.000571
+        ],
+        "estimate": -0.124285,
+        "seeds": 24,
+        "steps": 2592
+      }
+    },
+    "ood4": {
+      "logloss_A_minus_C": {
+        "ci95": [
+          -0.058988,
+          -0.000993
+        ],
+        "estimate": -0.024429,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A_minus_P": {
+        "ci95": [
+          -0.058988,
+          -0.000993
+        ],
+        "estimate": -0.024429,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A_minus_suffix1": {
+        "ci95": [
+          -0.918576,
+          -0.815198
+        ],
+        "estimate": -0.866591,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P_minus_C": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P_minus_suffix1": {
+        "ci95": [
+          -0.93065,
+          -0.839545
+        ],
+        "estimate": -0.884356,
+        "seeds": 24,
+        "steps": 2592
+      }
+    },
+    "ood5": {
+      "logloss_A_minus_C": {
+        "ci95": [
+          -0.030165,
+          0.002704
+        ],
+        "estimate": -0.012106,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A_minus_P": {
+        "ci95": [
+          -0.030165,
+          0.002704
+        ],
+        "estimate": -0.012106,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A_minus_suffix1": {
+        "ci95": [
+          -0.675285,
+          -0.548832
+        ],
+        "estimate": -0.612935,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P_minus_C": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P_minus_suffix1": {
+        "ci95": [
+          -0.687757,
+          -0.566896
+        ],
+        "estimate": -0.630077,
+        "seeds": 24,
+        "steps": 2592
+      }
+    },
+    "switch3": {
+      "logloss_A_minus_C": {
+        "ci95": [
+          -0.053884,
+          -0.030396
+        ],
+        "estimate": -0.04224,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A_minus_P": {
+        "ci95": [
+          -0.053884,
+          -0.030396
+        ],
+        "estimate": -0.04224,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A_minus_suffix1": {
+        "ci95": [
+          -0.804275,
+          -0.721755
+        ],
+        "estimate": -0.76209,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P_minus_C": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P_minus_suffix1": {
+        "ci95": [
+          -0.946575,
+          -0.901282
+        ],
+        "estimate": -0.924486,
+        "seeds": 24,
+        "steps": 2592
+      }
+    },
+    "unaliased2": {
+      "logloss_A_minus_C": {
+        "ci95": [
+          -0.019469,
+          -0.007437
+        ],
+        "estimate": -0.012474,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A_minus_P": {
+        "ci95": [
+          -0.019469,
+          -0.007437
+        ],
+        "estimate": -0.012474,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A_minus_suffix1": {
+        "ci95": [
+          -0.899886,
+          -0.810329
+        ],
+        "estimate": -0.855457,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P_minus_C": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P_minus_suffix1": {
+        "ci95": [
+          -1.043181,
+          -0.991839
+        ],
+        "estimate": -1.017008,
+        "seeds": 24,
+        "steps": 2592
+      }
+    },
+    "unstructured3": {
+      "logloss_A_minus_C": {
+        "ci95": [
+          -0.027736,
+          -0.01103
+        ],
+        "estimate": -0.01913,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A_minus_P": {
+        "ci95": [
+          -0.027736,
+          -0.01103
+        ],
+        "estimate": -0.01913,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_A_minus_suffix1": {
+        "ci95": [
+          -0.854449,
+          -0.755683
+        ],
+        "estimate": -0.805776,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P_minus_C": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "estimate": 0.0,
+        "seeds": 24,
+        "steps": 2592
+      },
+      "logloss_P_minus_suffix1": {
+        "ci95": [
+          -0.93466,
+          -0.866501
+        ],
+        "estimate": -0.90177,
+        "seeds": 24,
+        "steps": 2592
+      }
+    }
+  },
+  "resamples": 2000,
+  "schema": "brute.paired-analysis.v2_0",
+  "scientific_sha256": "499e29a47d48797f70ad40c82ccb071969517aebe7903d88caf7a85264f38c07",
+  "scope": "post-burn-in steps (9..44)",
+  "seed": 20261025
+}

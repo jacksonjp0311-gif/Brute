@@ -28,6 +28,7 @@ def _dedup_tests_pass():
 
 
 def build():
+    from scripts.study004_storage import ensure_raw;ensure_raw()
     plan=load(PLAN);d=load(STUDY_DIR/'SCIENTIFIC.json');S=d['summary'];seal=load(STUDY_DIR/'SEAL.json')
     check(seal['scientific_sha256']==sha(STUDY_DIR/'SCIENTIFIC.json'),'SCIENTIFIC does not match SEAL')
     check(seal['plan_sha256']==sha(PLAN) and seal['freeze_sha256']==sha(FREEZE),'seal plan/freeze mismatch')
