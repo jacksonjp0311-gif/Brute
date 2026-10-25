@@ -74,3 +74,12 @@ original criterion is always reported as registered. Labels: Exact / Observed / 
   `make_paired_004.py` from `c0f84e1` was run with `--check` against the `PAIRED_ANALYSIS.json` written by the edited
   script and reproduced it byte for byte; the same check is done for `GATES.json` before it is committed. No threshold,
   metric, seed, bootstrap setting or gate definition changed.
+- **D3, superseded ledger receipts in the v0.2.0 release verifier (release tooling; no study artifact changed).** The
+  frozen v0.1.0 `_ledger` (also used by `verify_release_011`) requires every receipt's source to keep its bytes forever.
+  The v0.1.1 release appended a receipt for `RELEASE.json`, which must change at every release, so the 0.2.0 bump makes
+  that check fail by construction (as A3 did for the version check). `verify_release_020.ledger_020` keeps the chain and
+  receipt-hash checks unchanged, requires the **last** receipt for each source to match the current bytes, and accepts
+  an earlier, differing receipt only as superseded, after checking (when git is available) that the receipt's commit
+  holds that file with exactly the recorded hash. Superseded receipts are listed in the verifier output. The release
+  freeze `BRUTE_RELEASE_FREEZE_020.json` was rewritten once, before release, to lock the edited verifier (its first
+  version is superseded the same way). Sealed study receipts are not superseded.

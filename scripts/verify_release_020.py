@@ -12,7 +12,7 @@ import argparse,json,subprocess,sys,tempfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from experiments.brute_common import VerificationError,check,sha,load,dumps
-from scripts.verify_release import _freeze,_ledger
+from scripts.verify_release import _freeze
 
 PREREG_COMMIT='c0ac594'
 FREEZES=('experiments/SOURCE_FREEZE.json','experiments/BRUTE_SOURCE_FREEZE_002.json','experiments/BRUTE_RELEASE_FREEZE_010.json',
@@ -25,6 +25,31 @@ INHERITED=('results/study-001','results/study-002','results/study-003','experime
 
 def _git(root,*args):
     return subprocess.run(['git','-C',str(root),*args],capture_output=True,text=True)
+
+
+def ledger_020(root,git=True):
+    """The frozen v0.1.0 `_ledger` requires every receipt's source to keep its bytes forever, but RELEASE.json is ledgered
+    once per release (v0.1.1 receipt) and must change at each release (deviation D3). Rule: the chain and receipt
+    hashes are checked exactly as in `_ledger`; the LAST receipt for each source must match the current bytes; an
+    earlier receipt whose bytes differ is accepted only as superseded, and (when git is available) its recorded commit
+    must hold a blob of that source with exactly the recorded hash."""
+    import hashlib
+    previous='0'*64;receipts=[]
+    for line in (root/'results/RESEARCH_LEDGER.jsonl').read_text().splitlines():
+        r=json.loads(line);check(r['previous']==previous,'ledger chain broken')
+        previous=hashlib.sha256(json.dumps({k:v for k,v in r.items() if k!='receipt_sha256'},sort_keys=True,separators=(',',':')).encode()).hexdigest()
+        check(previous==r['receipt_sha256'],'ledger receipt hash');receipts.append(r)
+    last={r['source']:i for i,r in enumerate(receipts)};superseded=[]
+    for i,r in enumerate(receipts):
+        if sha(root/r['source'])==r['source_sha256']:continue
+        check(last[r['source']]!=i,'ledger source changed: '+r['source'])
+        if git:
+            check('commit' in r,'superseded receipt without commit: '+r['source'])
+            b=subprocess.run(['git','-C',str(root),'show',f"{r['commit']}:{r['source']}"],capture_output=True)
+            check(b.returncode==0 and __import__('hashlib').sha256(b.stdout).hexdigest()==r['source_sha256'],
+                  'superseded ledger receipt does not match its commit: '+r['source'])
+        superseded.append(r['source']+'@'+r.get('commit','?'))
+    return receipts,superseded
 
 
 def git_order(root):
@@ -109,7 +134,7 @@ def verify(root=ROOT,fast=False,git=True,frozen=False):
         from experiments.v020_independent_reference import audit
         check(aud==audit(s4),'study-004 fresh independent reference differs from committed report')
         out['independent_audit']='re-run, identical to committed report'
-    receipts=_ledger(root);out['ledger_receipts']=len(receipts);sources={r['source'] for r in receipts}
+    receipts,sup=ledger_020(root,git);out['ledger_receipts']=len(receipts);out['ledger_superseded']=sup;sources={r['source'] for r in receipts}
     for need in ('experiments/BRUTE_PLAN_004.json','experiments/BRUTE_SOURCE_FREEZE_004.json','results/study-004/CALIBRATION_CHECK.json',
                  'results/study-004/SEAL.json','results/study-004/SCIENTIFIC.json.gz','results/study-004/INDEPENDENT_AUDIT.json','results/study-004/GATES.json',
                  'results/study-004/REPRODUCIBILITY.json'):
