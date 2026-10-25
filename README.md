@@ -149,7 +149,7 @@ Findings and their math: [`docs/research/DISCOVERIES.md`](docs/research/DISCOVER
 - **It still pays ln 200 = 5.298 on every contradiction step.** *Exact* (ε reserve design).
 - **It does not grow its own model class.** Families and caps are fixed by hand. *Exact.*
 - **Public certificates need an outside attestation.** *Exact.*
-- **It only works on a toy domain:** 2 actions, 2 binary sensors, deterministic Moore machines. perm4 adds one new geometry (bijective actions) inside the same ≤4-state family. *Exact.*
+- **It only works on a toy domain:** 2 actions, 2 binary sensors, deterministic Moore machines. perm4 adds one new geometry (each action a permutation) inside the same ≤4-state family. *Exact.*
 - **The language adapter is templates only.** No free-form questions. *Exact.*
 - **Its audit is not independent.** G11 is a second implementation by the same author on the same machine, sharing the world generators with the runner; an error there would not be caught. No third party has replicated anything. *Exact.*
 - **Its test suite is still red by construction.** Frozen earlier-release tests assert older version strings and error after every bump (see [Test suite at release](#test-suite-at-release)); `tests/test_release_040.py` is parameterised by `RELEASE.json` so it does not repeat this. *Observed.*

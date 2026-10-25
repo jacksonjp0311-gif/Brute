@@ -1,5 +1,32 @@
 # Brute changelog
 
+## v0.4.0: geometric representation of the version space (study BRUTE-040-GEOMETRY-006)
+
+Criteria pre-registered at `5fa3628` (`experiments/BRUTE_PLAN_006.json`) before any v0.4.0 code; second implementation
+`2eba00b`; implementation `2811904` + pre-freeze fix `b5e7077`; source frozen at `70a3c43`; scoring scripts committed
+alone at `d9ddbe6` (03:08:51 EDT), ledger `run_start_006` at 03:20:15 EDT (11.4 min later), sealed at `454094c`.
+Criteria and scoring scripts unchanged afterwards. Deviations: `docs/research/BRUTE_DEVIATIONS_006.md` (P0–P7).
+
+- **`brute/geometry.py::ConstraintRegion`** — the version space as CNF over complete ≤n Moore machines (pysat Glucose3,
+  canonical first-visit symmetry breaking); support = projection, saturation = sub-region emptiness, Y1k = fibre,
+  observation = cut. **GR1** 0 mismatches in 778,840 items on 2,016 sealed study-004/005 traces; **GR1b** 0 in 470,318
+  on study-006 (*Observed*). **GR2** scaling: clauses ~n^1.6 vs enumeration rows ~n^8.5; SAT time noisy and
+  non-monotone, 17 budget-unknown steps at n = 8–12, slopes on 5–8 points (*Observed*, not gated). Not used by the
+  learner (*Exact*).
+- **`brute/resume.py`** — A4/P4: v0.3.0 Y1k + LU-R with τ6 = 1.645215321642 (in-family calibration, G13) and a
+  resumable alarm; D2 (two-step lookahead) and F2 (two-step fibre) candidates.
+- **`brute/api/service_v040.py`** — API 1.4 (`schema/*.v1_4.json`): predict responses gain `resumed` and `alarm_resumes`; `tau` defaults to τ6.
+- **perm4** — a new held-out family (each action a permutation of 4 states, one aliased emission pair), pre-registered before its data.
+- **Results (*Observed*).** 15 of 16 gated criteria pass; **G6b′ fails** (A4 − A2 −0.104 [−0.116, −0.092],
+  pre-registered). G5 passes (ood4 1/72; v0.3.0 τ also 1/72 on these seeds; perm4 2/72 vs 14/72). G15 (D2) and G16 (F2)
+  fail; F2 breaks G3′. **G14′ D7/D8 OPEN**: R = 0.632 [0.418, 0.907] at N = 384 (power-analysed). Resume: 3 per arm,
+  0 certificates after resume. G11 second implementation by the same author: 0 of 2,880 traces mismatching, mutation
+  20/20. G12 byte-identical rerun.
+- **Release hygiene.** `pyproject.toml` 0.4.0 with numpy 2.5.4 and python-sat 1.9.dev17 pinned;
+  `scripts/verify_release_040.py` and `tests/test_release_040.py` read the version from `RELEASE.json`; fresh-clone
+  checks restore the gitignored traces first (`scripts/study006_storage.py restore`).
+
+
 ## v0.3.0 errata (2026-10-25, docs and new checks only; tag `v0.3.0` and sealed results unchanged)
 
 After an independent cold review (`docs/research/v0.3.0/ERRATA.md`). No criterion, scoring script, frozen file or sealed

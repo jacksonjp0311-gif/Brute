@@ -1,39 +1,40 @@
-# Brute v0.4.0: next iteration (proposal, not pre-registered)
+# Brute v0.5.0: next iteration (proposal, not pre-registered)
 
-Earlier notes are kept at `docs/research/v0.3.0/NEXT_ITERATION.md`, `docs/research/v0.2.0/` and `docs/research/v0.1.0/`.
-Labels are the same as in the README.
+Earlier notes are kept at `docs/research/v0.4.0/NEXT_ITERATION.md`, `docs/research/v0.3.0/`, `docs/research/v0.2.0/` and
+`docs/research/v0.1.0/`. Labels are the same as in the README.
 
-## Where v0.3.0 leaves things (Observed, study-005)
+## Where v0.4.0 leaves things (Observed, study-006)
 
-- **Stale certificates are fixed on the gated block.** Certifying on the fibre over the latest observation (Y1k) gives
-  0 non-drift and 0 stale false certificates on drift4 (G3′ passes); 0 false certificates in family and on ood5.
-- **At a price.** Dual coverage A3 0.121 against v0.2.0's 0.220 (−0.098, G6b fails as pre-registered); still +0.064
-  over its own passive arm (G6).
-- **Not perfect beyond the gated block.** Extended drift4: 4 stale false certificates (v0.2.0: 15) — jumps into states
-  whose edge is still unknown.
-- **The D7 = D8 hypothesis is OPEN** (forced checks restored counterfactual knowledge but not safety; the certificate
-  geometry did the work).
-- **The τ alarm misfires on 5 of 72 held-out ood4 cases** (G5 fails; same in v0.1.1), and certification never
-  resumes after an alarm.
+- **Soundness holds on new seeds and a new family.** 0 false certificates in family (A4 2,686 taken + 736
+  counterfactual), 0 on ood5, drift4 13 false all at drift steps with 0 stale (G1, G2, G3′); perm4 0 false.
+- **The coverage price is unchanged.** A4 − A2 = −0.104 [−0.116, −0.092] (G6b′ fails, pre-registered); A4 = A3 exactly.
+- **Depth did not buy coverage back.** D2 (two-step lookahead) −0.071 vs A2 and sound; F2 (two-step fibre) −0.033 but
+  unsound (2 non-drift, 2 stale false certificates on drift4).
+- **The geometric representation is exact.** `ConstraintRegion` (CNF over complete ≤n Moore machines, symmetry-broken)
+  agrees with enumeration on 778,840 + 470,318 items. Size grows ~n^1.6 (clauses) vs ~n^8.5 (rows); SAT time is noisy
+  and has budget unknowns at n ≥ 8 (17 steps). **The learner does not use it.**
+- **Alarm.** τ6 = 1.645: G5 passes (ood4 1/72, perm4 2/72; the v0.3.0 τ gives perm4 14/72). Detection drops (ood5 25
+  vs 40 cases). Resume happened 3 times per arm and produced 0 certificates.
+- **D7 = D8 is OPEN at N = 384** (R = 0.63 [0.42, 0.91]).
 
-## Recommendation for v0.4.0: toward a general geometric reasoner
+## Recommendation for v0.5.0 (Inferred; to be pre-registered before any v0.5.0 code)
 
-The aim is a reasoner whose core operations are geometric (a region, its projections and fibres, cuts that shrink
-them) and that scales beyond enumeration and beyond one toy domain. Three tracks, one study:
+1. **Make the representation the engine (priority).** Route the learner's support, margin, saturation and fibre
+   queries through `ConstraintRegion` behind a switch, with enumeration kept as the frozen reference; gate exact
+   decision identity on study-004..006 traces (as GR1) and then raise the margin to n ≤ 6 and the family to n ≤ 5,
+   which enumeration cannot reach (GR2: 10 of 84 cases exhausted the 160,000-row budget at n = 6). Handle SAT unknowns as ABSTAIN with
+   a reason (never as a certificate) and report the unknown rate. Consider incremental solving (assumptions, no
+   rebuild per step) and a BDD/d-DNNF compilation for counting-based lookahead.
+2. **Fix the F2 unsoundness before any coverage claim.** The two-step fibre must treat an unknown edge on any of the
+   steps as any reading (as Y1k does for one step); re-test against G3′ on the sealed drift4 seeds as a design probe.
+3. **Coverage: understand the price, do not tune around it.** A pre-registered decomposition of A2's extra coverage
+   into fibre-ambiguous vs genuinely-unknown predictions (the RESYNC_AMBIGUOUS count is the measurable part).
+4. **Resume that can recover.** A resume rule that is exercised: measure post-alarm coverage on in-family cases with
+   injected transient noise, pre-registered.
+5. **D7/D8 at a sharper N.** CI width ~0.49 at N = 384; the power analysis method of plan 006 should be rerun with the
+   observed R to choose N (or accept OPEN and close the question).
+6. **Breadth.** One stochastic family (credal region) or a 3-action alphabet, pre-registered before seeing data.
+7. **Independence.** A third-party replication of GATES.json from the sealed traces.
 
-1. **Depth: re-certification through a multi-step fibre (primary; targets G6b).** Replace the one-observation fibre
-   with the fibre over the last w observations, shrinking as consistent evidence accumulates, and make the lookahead
-   two steps deep on the fibre (score the pair of actions that most shrinks it). Gate: G3′ unchanged, stale = 0 on the
-   extended block, and coverage non-inferior to v0.2.0 within −0.03. *Inferred:* D12's gap is mostly fibre points that
-   later evidence rules out.
-2. **Representation beyond enumeration (enabling).** Represent the region as a partition-refinement / quotient
-   automaton or a SAT/BDD encoding with projection and fibre queries, verified to give identical decisions to
-   enumeration on the sealed study-004/005 traces before any new study (an exactness gate, not a coverage gate). This
-   is the gate for n≤6, two-step lookahead within budget, and larger alphabets.
-3. **Breadth (first step).** Add one new domain family with a different geometry (e.g. 3 actions × 3-bit sensors, or
-   stochastic emissions with a credal region) to the held-out set, with its own soundness gate, so that no claim rests
-   on one toy domain. Keep the language adapter template-only until the core generalises.
-4. **Fix the alarm (hygiene).** Pre-register a recalibrated τ on new calibration seeds that bounds the held-out tail,
-   and a rule for resuming certification after an alarm once the region re-collapses.
-5. **Keep the discipline:** new seed blocks, criteria frozen before code, v0.3.0 A3/P3 and v0.2.0 A2 as control arms,
-   independent reference, byte-identical reproducibility, failures reported as failures.
+Deferred from v0.4.0 and still **Open**: learner on the representation; n ≥ 6 certification; bounded-time SAT at
+n ≥ 8; effective resume; the cause of D2's lower coverage; independent audit.
