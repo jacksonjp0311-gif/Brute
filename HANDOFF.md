@@ -36,7 +36,8 @@ _Kept current on the working branch during a release and on `main` at release. L
    enum-vs-SAT agreement). Smoke after fix: 12 cases in 13 s, 0 disagreements, 1 case with unknowns at n=10 and n=12.
 5. DONE: source freeze `70a3c43` (ledgered `94c80b2`).
 6. DONE `d9ddbe6` (03:08 EDT): scoring scripts `make_gates_006.py`, `make_paired_006.py`, `make_reproducibility_006.py`
-   in a separate commit (mechanically smoke-tested on /tmp smoke data only, not study data). Ledger `scoring_scripts_006`.
+   in a separate commit. **Errata (2026-10-25): this was false — the smoke data were 96 held-out study-006 cases and
+   the full scoring chain had been dry-run on them in /tmp/p6/st at 03:02–03:08 EDT; see DEVIATIONS_006 P8.** Ledger `scoring_scripts_006`.
    RUN DONE 03:32:58 EDT, sealed (commit 'study-006 sealed'). Earlier note: RUN STARTED 2026-10-25T03:20:15-04:00 (ledger `run_start_006`); if interrupted rerun the script (resumes). Then: ledger `run_start`, nohup calibrate -> study -> pack (outputs refuse to overwrite;
    rerun of a step skips if its output exists). Logs in /tmp/p6/run006.log.
 7. DONE: SECOND_IMPLEMENTATION_COUNT (2880 traces, 0 mismatching, mutation 20/20, 0 false flags) and GR1B (470,318 items, 0
