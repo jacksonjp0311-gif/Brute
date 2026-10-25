@@ -1,9 +1,9 @@
 [project]
 name = "brute"
-version = "0.3.0"
+version = "0.4.0"
 description = "A bounded hidden-state reasoner that abstains on what it cannot verify (research preview)"
 requires-python = ">=3.11"
-dependencies = ["numpy>=1.24"]
+dependencies = ["numpy==2.5.4", "python-sat==1.9.dev17"]
 
 [tool.setuptools.packages.find]
 include = ["brute*", "adapters*", "bgr*"]

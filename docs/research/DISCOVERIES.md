@@ -226,3 +226,59 @@ scripts/make_gates_005.py --check`.
   unstructured3 and drift4.
 - **Reading (Inferred).** The learner does produce untied experiments on unstructured3; the bridge's count differs for
   a reason outside Brute. Open; not investigated (the bridge is not edited).
+
+## Study-006 (v0.4.0)
+
+### D17: The version space has an exact, compact H-representation
+
+- **Data (Observed).** `ConstraintRegion` (CNF over complete ≤n Moore machines with first-visit symmetry breaking)
+  reproduces every support, margin, saturation and Y1k decision of the enumeration learner: 0 mismatches in 778,840
+  items on 2,016 sealed study-004/005 traces (GR1) and 0 in 470,318 on study-006 (GR1b). GR2 (84 cases): enumeration
+  peak rows 4.2 / 31 / 435 / 8,560 / 33,516 at n = 2..6 (10 cases exhausted at n = 6); SAT clauses 899 → 15,049 at
+  n = 2..12; 0 enum-vs-SAT disagreements.
+- **Math (Exact).** Enumeration lists the region's vertices (a V-representation, size ~ number of surviving
+  machine–state prefixes, exponential in n); the CNF lists the cuts (an H-representation; by construction O(n²·T) clauses for T steps,
+  independent of how many machines survive). A projection is a SAT query per reading, the fibre is a query with the current state constrained to
+  the latest observation's preimage. The S_n relabelling symmetry is quotiented out by canonical first-visit naming (state q ≥ 1 is used only after q−1
+  was visited), which keeps exactly one representative per orbit, so supports are unchanged.
+- **Reading (Inferred).** Log-log slopes 8.5 (rows) vs 1.6 (clauses) on 5–8 points; SAT *time* is not polynomial in
+  general, is noisy and non-monotone here (mask 0.6, n = 12: 5.5 s mean; mask 0.1, n = 12: 0.79 s), and 17 steps at
+  n ≥ 8 hit the conflict budget. The representation is the geometric object a general geometric reasoner would
+  manipulate; v0.4.0 only verifies it, the learner does not use it yet.
+- **White paper:** yes (the representation result).
+
+### D18: Recalibrated alarm: G5 passes, but perm4, not ood4, shows why
+
+- **Data (Observed).** τ6 = 1.645215321642 (max in-family residual over 1,500 calibration cases; G13). In-family
+  false-alarm cases: ood4 1/72, perm4 2/72, others 0 → G5 passes. Under the v0.3.0 τ on the same seeds: ood4 1/72,
+  perm4 14/72. Detection drops: ood5 25 vs 40 cases with an alarm, drift4 9 vs 33.
+- **Reading (Inferred).** The study-005 ood4 misfire is not re-tested on its own seeds here, so "τ6 fixes ood4" is not
+  shown; τ6 does prevent a large misfire on the new permutation family, at a detection cost that G7′ (log-loss) does
+  not penalise.
+- **White paper:** no.
+
+### D19: Resume is safe but idle
+
+- **Data (Observed).** 3 resumes per arm in 576 cases (ood4 1, perm4 2); 0 certificates and 0 false certificates after
+  any resume; 0 public certificates after a first alarm (G4, G9).
+- **Reading (Inferred).** The window of W = 8 calm steps comes late in a 44-step session, so nothing remains to
+  certify. Effective resume is Open.
+
+### D20: Depth does not buy coverage back; the two-step fibre is unsound
+
+- **Data (Observed).** D2 (LU2-R) is sound (G1/G2/G3′) but D2 − A2 = −0.071 [−0.085, −0.057] (G15 fails); D2 has more
+  RESYNC_AMBIGUOUS abstentions than A4 (cycle3 773 vs 610). F2 (certify on the 2-step fibre) − A2 = −0.033 [−0.040,
+  −0.026] (G16 fails) and gives 2 non-drift and 2 stale false certificates on drift4 (G3′ fails for F2).
+- **Reading (Inferred).** A deeper lookahead prefers actions that keep the fibre wide one step further on, not ones that
+  certify now; the 2-step fibre narrows the set the certificate must hold on, which is exactly what Y1k needed to keep
+  wide. Both are consistent with D11's price being a property of the fibre geometry rather than of the policy.
+- **White paper:** footnote to D11.
+
+### D21: D7 = D8 stays OPEN with a powered sample
+
+- **Data (Observed).** 1,152 drift4 cases (N = 384 seeds, chosen by a pre-registered power analysis). Stale false
+  certificates S(A2) = 76, S(E2) = 48, R = 0.632, CI95 [0.418, 0.907]; M (E2 check rate 0.057, switch 0.605 vs 0.393)
+  and P1 (counterfactual certificates ×1.50) hold. CONFIRMED needed CI upper < 0.75, FALSIFIED CI lower > 0.5.
+- **Reading (Inferred).** Forced checks remove roughly a third of stale certificates — a real but partial effect; the
+  pre-registered decision is OPEN. The simulated power (0.955 / 0.905) assumed effects near the bounds; the observed R
+  sits between them.

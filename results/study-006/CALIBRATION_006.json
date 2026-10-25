@@ -1,0 +1,24 @@
+{
+  "argmax": {
+    "family": "ood4",
+    "mask_rate": 0.35,
+    "seed": 1515061,
+    "step": 10
+  },
+  "calibration_cases": 1500,
+  "freeze_sha256": "f94b7f123de0c5c5b35c020bef1f5fcdea3934d0e1deedd13305b4f436231c4a",
+  "out_of_family_data_used": false,
+  "per_family_max_R": {
+    "cycle3": 1.208241520618,
+    "ood4": 1.645215321642,
+    "switch3": 1.190090865368,
+    "unaliased2": 0.756315899272,
+    "unstructured3": 1.258796719553
+  },
+  "plan_sha256": "01b2e51b48042acf94f889c1b2e773a4cc43084ecc243ddf21a1961255b0af37",
+  "schema": "brute.calibration.v6",
+  "study": "BRUTE-040-GEOMETRY-006",
+  "tau6": 1.645215321642,
+  "tau6_unrounded": 1.645215321642,
+  "window_W": 8
+}

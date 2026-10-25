@@ -1,0 +1,451 @@
+{
+  "schema": "brute.registered-plan.v1",
+  "status": "FROZEN pre-registration. Committed 2026-10-25 (America/New_York) on branch plan/v0.4.0 (from main 73a3a5a) before any v0.4.0 code is committed and before any study-006 seed is generated; the git commit that adds this file is the pre-registration record (its time is git's author time, which the author sets; see process_controls). Later changes go only to docs/research/BRUTE_DEVIATIONS_006.md and the ledger.",
+  "study": "BRUTE-040-GEOMETRY-006",
+  "version_under_test": "0.4.0",
+  "freeze_rule": "criteria, thresholds, margins, seeds, calibration rule for tau6, the resume rule, epsilon, caps, certification and policy rules, arms, the GR1/GR2 representation gates, the perm4 generator and the D78 decision rule are fixed by the commit that adds experiments/BRUTE_PLAN_006.json; that commit must be a git ancestor of every commit touching brute/geometry.py, brute/resume.py, brute/release_version_040.py, brute/api/service_v040.py, experiments/worlds_006.py, experiments/brute_study_006.py, experiments/v040_reference.py or experiments/exactness_006.py (checked by scripts/verify_release_040.py).",
+  "parent_study": {
+    "id": "BRUTE-030-CHANGEPOINT-005",
+    "reproducible_from": "git tag v0.3.0 (73a3a5a)",
+    "files_left_frozen": "everything in SOURCE_FREEZE.json, BRUTE_SOURCE_FREEZE_002..005 and BRUTE_RELEASE_FREEZE_010/011/020/030 stays byte-identical; brute/core/*, fallback.py, active.py, changepoint.py are subclassed or called, never edited"
+  },
+  "v030_errata_carried": "the v0.3.0 review errata (docs/research/v0.3.0/ERRATA.md, on main) apply: the reference is called a 'second implementation by the same author, no brute import', never 'independent'; its report is a mismatch COUNT with a mutation test; process claims are stated only as far as git shows them.",
+  "pre_freeze_disclosure": {
+    "summary": "Before this plan was committed, uncommitted design-probe code (files below, committed with this plan) was run ONLY on sealed study-004 and study-005 seeds (1330001..1390024 and 1430001..1490024, plus the study-005 extended drift4 block 1491001..1491072 for the power analysis). No study-006 seed or calibration seed was generated, run or looked at before this commit. This statement is the author's own report; git can only show that the files are committed here.",
+    "files_sha256": {
+      "docs/research/v0.4.0/design_probe/alarm_probe.py": "632cd63f25ec579c83e5920ae3ab5f9fffcaf53af2e9e8e56379a0dc3c3b60f8",
+      "docs/research/v0.4.0/design_probe/geometry_proto.py": "0b9b79df26edd958680aa2a9a3d546d4e099b6fdb18ae1f63ef4b2712d1f1ebc",
+      "docs/research/v0.4.0/design_probe/outputs/alarm_probe.json": "08ee116c01f67fa4511fb8c972b0c8ca9f6f14f6a7cf9cb9a9c66badd63548db",
+      "docs/research/v0.4.0/design_probe/outputs/d2.log": "622f7bad13086a13a850d05c5bd1bd6f3c81020a1dceb76d681439a842d13979",
+      "docs/research/v0.4.0/design_probe/outputs/power.log": "6774c72ca9fe0ab797e92e3697bac284625d14c70dd5fdc3d8970b0fa28b3d82",
+      "docs/research/v0.4.0/design_probe/outputs/power_d7d8.json": "0968c2abb1f12c8ca8a16bfc60b7f377c3c377dd14c1049e0f9f5efed361ad39",
+      "docs/research/v0.4.0/design_probe/outputs/probe_d2.json": "f4c855d244ef93539efbf945eb6797a04f57e768913058e5f5017af509fc4d94",
+      "docs/research/v0.4.0/design_probe/outputs/probe_resume.json": "4e2c2d0cf777a91944b56ea5364e288c1dd84a49e7cfac5cf8a6639ce612ddd3",
+      "docs/research/v0.4.0/design_probe/outputs/probe_smoke.json": "dbfc42e95c4a6125183318411daddae21e285b209e1fd5cc6ace0050a0a7ab1f",
+      "docs/research/v0.4.0/design_probe/outputs/probe_strict.json": "185784fd945d4014db73fca927b973da978766e8f761c61a7868cdb1a5ce68bb",
+      "docs/research/v0.4.0/design_probe/outputs/probe_wgrid.json": "a0730b60307e5bbc70605537a69b9336af5f58c3060730b502979829ba70dd7a",
+      "docs/research/v0.4.0/design_probe/outputs/resume.log": "622f7bad13086a13a850d05c5bd1bd6f3c81020a1dceb76d681439a842d13979",
+      "docs/research/v0.4.0/design_probe/outputs/strict.log": "622f7bad13086a13a850d05c5bd1bd6f3c81020a1dceb76d681439a842d13979",
+      "docs/research/v0.4.0/design_probe/outputs/wgrid.log": "622f7bad13086a13a850d05c5bd1bd6f3c81020a1dceb76d681439a842d13979",
+      "docs/research/v0.4.0/design_probe/power_d7d8.py": "c2db46862835cda89ecad9281fd551eda4562be4958af9a8f5183530be13f576",
+      "docs/research/v0.4.0/design_probe/probe.py": "a64cad8876d4cf10d0a8581a8981e79f116eb8e727a063fffdf17121c9278a7f",
+      "docs/research/v0.4.0/design_probe/summarize.py": "315db5e78dd1f3026fad6bd72a2d83088ce47d6006ff7ed97354a2bdea1c0ab6"
+    },
+    "design_results_Simulated": {
+      "pooled_in_family_dual_coverage_5_families_study004_plus_005_seeds": {
+        "A2_v020": 0.2197,
+        "A3_v030(Y1k,LU-R)": 0.1215,
+        "E2": 0.1916,
+        "P3": 0.0571,
+        "Fw_w1_LU-R": 0.1707,
+        "Fw_w2": 0.1891,
+        "Fw_w4": 0.2006,
+        "Fw_w8": 0.2089,
+        "Y1k_LU2-R(depth2)": 0.1539,
+        "Y1s(strict)_LU-R": 0.0749,
+        "Y1s_LU2-R": 0.1006,
+        "Y1s_passive": 0.0318
+      },
+      "drift4_taken_non_drift_false_certificates (G3prime clause 1)": {
+        "A3": 0,
+        "Fw_w>=1": "2-3 (steps 13 and 35)",
+        "Y1k_LU2-R": "3: (1390009,0.1,13),(1390022,0.1,13),(1490014,0.1,13)",
+        "Y1s_LU-R": 0,
+        "Y1s_LU2-R": "2: (1390022,0.1,13),(1490014,0.1,13)",
+        "Y1s_passive": 0
+      },
+      "reading": "Inferred: every candidate that recovers coverage (multi-step fibre, depth-2 lookahead) does it by steering into or trusting regions where an unseen jump lands in a state whose edge is still unknown (post-jump step 13); the strict fibre (Y1s) closes that hole only for depth 1 and costs most of the coverage. No design candidate reached A2-0.03 with 0 non-drift false certificates.",
+      "decision": "The release learner A4 keeps the v0.3.0 certification (Y1k) and depth-1 LU-R, and changes only the alarm (tau6 + resume). The depth-2 lookahead (D2) and the 2-step fibre (F2) are run as pre-registered candidate arms with their own soundness/coverage test (G15, G16) and are predicted to FAIL soundness. G6b' for A4 is predicted to FAIL. Rationale: soundness (G1/G2/G3') is the project's first constraint and the owner said to prioritise the representation track if a choice is forced.",
+      "alarm_design_study004_005_passive_traces": {
+        "per_family_max_residual": {
+          "cycle3": 1.2619,
+          "switch3": 1.1165,
+          "unstructured3": 1.1758,
+          "unaliased2": 0.7704,
+          "ood4": 1.7108,
+          "ood5": 2.3002,
+          "drift4": 2.3632
+        },
+        "out_of_family_case_alarm_rate_at_tau": {
+          "1.6": {
+            "ood5": 0.333,
+            "drift4": 0.34
+          },
+          "1.8": {
+            "ood5": 0.132,
+            "drift4": 0.181
+          },
+          "2.0": {
+            "ood5": 0.083,
+            "drift4": 0.076
+          }
+        }
+      },
+      "representation_design": {
+        "spot_check": "SAT region (pysat Glucose3, canonical first-visit symmetry breaking) vs enumeration on 720 (step, cap) checks of study-004 seeds (feasible, support(0/1), saturated, Y1k fibre(0/1), 2-step fibre): 0 mismatches, 6.3 ms per step",
+        "scaling_case_ood5_1380001_mask0.65_44_steps": {
+          "enumeration_n6": {
+            "peak_rows": 33909,
+            "time_s": 0.74
+          },
+          "SAT_n6": {
+            "time_s": 0.47,
+            "vars": 529,
+            "clauses": 4078
+          },
+          "SAT_n8": {
+            "time_s": 0.47,
+            "vars": 733,
+            "clauses": 6753
+          },
+          "SAT_n12": {
+            "time_s": 0.34,
+            "vars": 1189,
+            "clauses": 14371
+          }
+        },
+        "counter_case": "drift4 1390002 mask 0.65 n6: enumeration 0.31 s (11325 rows) vs SAT 1.84 s: SAT is not uniformly faster at small n (Observed)"
+      },
+      "resume_design_tau1.7108_W8": {
+        "Y1k_LU-R_with_resume(A4-like)": {
+          "pooled_dual_coverage": 0.123,
+          "per_family": {
+            "cycle3": 0.141,
+            "switch3": 0.179,
+            "unstructured3": 0.123,
+            "unaliased2": 0.142,
+            "ood4": 0.029
+          },
+          "drift4_false_certs": 25,
+          "drift4_non_drift_false": 0,
+          "drift4_stale_false": 0,
+          "ood5_false": 0
+        },
+        "Y1k_LU2-R_with_resume(D2-like)": {
+          "pooled_dual_coverage": 0.1539,
+          "drift4_false_certs": 39,
+          "drift4_taken_non_drift_false": 3,
+          "drift4_stale_false": 3
+        },
+        "reading": "Observed on sealed seeds: resume adds about +0.002 pooled coverage to A3-like depth 1 and roughly doubles drift-step false certificates (13 -> 25), all at drift steps; G6b-prime remains far out of reach"
+      },
+      "power_analysis": "see D78_rule.power"
+    },
+    "rejected_in_design": [
+      "Fw (w>=1) as the certification rule: 2-3 non-drift false certificates (Rejected; kept as diagnostic arm F2)",
+      "first D78 rule 'R<=0.5 and CI upper<1': confirms only ~50% under the HALF scenario at any N (Rejected)",
+      "SAT without symmetry breaking: ~14x slower (Rejected)"
+    ]
+  },
+  "heldout_ranges": {
+    "cycle3": [
+      1530001,
+      1530024
+    ],
+    "switch3": [
+      1540001,
+      1540024
+    ],
+    "unstructured3": [
+      1550001,
+      1550024
+    ],
+    "unaliased2": [
+      1560001,
+      1560024
+    ],
+    "ood4": [
+      1570001,
+      1570024
+    ],
+    "ood5": [
+      1580001,
+      1580024
+    ],
+    "drift4": [
+      1590001,
+      1590024
+    ],
+    "perm4": [
+      1600001,
+      1600024
+    ]
+  },
+  "calibration_ranges_tau6": {
+    "cycle3": [
+      1511001,
+      1511100
+    ],
+    "switch3": [
+      1512001,
+      1512100
+    ],
+    "unstructured3": [
+      1513001,
+      1513100
+    ],
+    "unaliased2": [
+      1514001,
+      1514100
+    ],
+    "ood4": [
+      1515001,
+      1515100
+    ]
+  },
+  "D78_block": {
+    "family": "drift4",
+    "range": [
+      1591001,
+      1591384
+    ],
+    "mask_rates": [
+      0.1,
+      0.35,
+      0.6
+    ],
+    "arms": [
+      "A2",
+      "E2"
+    ],
+    "use": "G14' only"
+  },
+  "heldout_note": "all blocks new and disjoint from studies 001-005 (930001..990024, 1130001..1190024, 1230001..1290024, 1330001..1390024, 1430001..1491072) and the study-001 calibration seeds",
+  "in_family": [
+    "cycle3",
+    "switch3",
+    "unstructured3",
+    "unaliased2",
+    "ood4",
+    "perm4"
+  ],
+  "in_family_original": [
+    "cycle3",
+    "switch3",
+    "unstructured3",
+    "unaliased2",
+    "ood4"
+  ],
+  "out_of_family": [
+    "ood5",
+    "drift4"
+  ],
+  "new_family_perm4": {
+    "status": "pre-registered here before any perm4 data was generated (the generator did not exist before this commit)",
+    "generator": "experiments/worlds_006.py world(seed,'perm4'): rng=random.Random(seed*104729+211); n=4; two transition permutations p0=list(range(4)) shuffled by rng, p1=list(range(4)) shuffled by rng (in that order); transitions[s]=(p0[s],p1[s]); codes=rng.sample(range(4),3); emissions=[codes[0],codes[0],codes[1],codes[2]] then rng.shuffle(emissions); start=rng.randrange(4); returns a bgr89.worlds.HiddenWorld(4,transitions,emissions,start,seed,'perm4') so that observed() and the sensor mask are identical to the other families; passive actions bgr89.worlds.actions(seed,44)",
+    "geometry": "each action is a bijection (a group action of the free monoid on 2 generators by permutations), unlike the cycle/switch families; 4 states with one aliased pair; in family (<=4 states)",
+    "gates": "G1, G4, G5 apply; reported separately for coverage (not pooled into G6/G6b' so that those stay comparable with v0.3.0)"
+  },
+  "mask_rates": [
+    0.1,
+    0.35,
+    0.6
+  ],
+  "actions_per_case": 44,
+  "burn_in": 8,
+  "declared_family": "deterministic-moore<=4/stationary",
+  "family_state_cap": 4,
+  "margin_state_cap": 5,
+  "row_budget_family": 160000,
+  "row_budget_margin": 160000,
+  "prediction_smoothing": 0.08,
+  "open_world_reserve_epsilon": 0.02,
+  "window_tier": "identical to BRUTE_PLAN_004 window_tier (never certifies)",
+  "certification_rule": "identical to BRUTE_PLAN_005 certification_rule (Y1k) for A4 and P4",
+  "experiment_rule": "identical to BRUTE_PLAN_005 experiment_rule (LU-R, CHECK_RUN 0) for A4",
+  "alarm_rule": {
+    "tau6_calibration": "run P4 with the alarm disabled (tau=+inf, so no alarm and no resume) on every calibration case (calibration_ranges_tau6 x 3 mask rates = 1500 cases, passive sequence bgr89.worlds.actions(seed,44)); tau6 = the maximum residual_after (window W=8, same residual definition as v0.1.1) over every step of every calibration case, rounded to 12 decimals. Per-family maxima are recorded. No out-of-family or held-out data is used.",
+    "resume": "once an alarm is set (residual > tau6), certification is withheld as in v0.3.0. While the alarm is set, count consecutive observe() steps with residual_after <= tau6; when the count reaches W=8 AND the <=4 family and <=5 margin are both supported, the alarm clears (alarm_step=None, count reset, resumes += 1) and certification may resume from the next predict. A new residual > tau6 sets the alarm again. A family or margin contradiction stays permanent (never resumed).",
+    "attestation": "public certificates are never re-enabled after the first alarm of a session: the frozen v0.1.1 learner already sets attestation=None on any alarm, so after a resume certificates are conditional only (public_certificate None, public_reason UNATTESTED_SCOPE). Diagnostics add first_alarm_step, alarm_steps (every step an alarm was set) and resume_steps.",
+    "probabilities": "unchanged from v0.3.0 (the alarm affects status/certificate and the experiment proposal only, as in v0.3.0)",
+    "why": "targets G5 (ood4 5/72 false-alarm cases in study-005 with tau 1.4331) by recalibrating on a larger in-family block that includes ood4, and the 'certification never resumes' limitation; the price (lower detection on ood5/drift4) is reported as R5"
+  },
+  "arms": {
+    "A4": "brute.resume.ResumeBruteLearner (Y1k + LU-R + tau6 + resume), v0.4.0 full",
+    "P4": "ResumeBruteLearner on the passive sequence",
+    "D2": "candidate: ResumeBruteLearner with LU2-R (depth-2 lookahead, defined below) instead of LU-R",
+    "F2": "candidate: ResumeBruteLearner with certification on the 2-step fibre F2 (defined below) instead of Y1k, LU-R scored with F2",
+    "A3": "frozen brute.changepoint.ChangePointBruteLearner (v0.3.0 full, tau 1.4331, no resume)",
+    "A2": "frozen brute.active.ActiveBruteLearner (v0.2.0 arm A)",
+    "E2": "v0.2.0 certification + LU + CHECK_RUN 3 (as in study-005), needed for G14'",
+    "C_v011": "frozen FallbackBruteLearner (v0.1.1) on the passive sequence with tau 1.4331",
+    "v0.90_control": "v0.90 expanded certificate from the P4 <=4 support",
+    "G_geometry": "brute.geometry.ConstraintRegion replaying the A4, P4, D2 and F2 evidence (GR1b); not a learner arm"
+  },
+  "candidate_rules": {
+    "LU2-R": "score2(a)=mean over c in S4(a) of [N(a,c) + max over a2 in {0,1} of mean over c2 in S4'(a2) of N'(a2,c2)], where S4' and N' are computed on the family/margin copies after (a,c); N is the LU-R count (single code passing Y1k on the copy, margin copy agreeing). Tie -> default action; rounding 12 d.p.; budget-exceeding copies score 0.",
+    "F2": "the certificate x for b must equal the union over every surviving row and every state j reachable from a visited state compatible with the mask of observation t-2 through the recorded actions/observations t-1, t (each step: known edge, target compatible with that observation mask) of: masks[trans[j,b]] if known; if unknown and j is current: all visited masks plus ALL if used<4; if unknown and not current: skipped (Y1k convention). w=2."
+  },
+  "metrics": "identical to BRUTE_PLAN_005 metrics (dual coverage, on-policy coverage, false/stale certificate, drift steps 12/23/34, check and switch rates)",
+  "representation": {
+    "name": "brute/geometry.py ConstraintRegion: the H-representation of the version space",
+    "framing": "The enumeration learner stores the version space as a list of rows (a V-representation: its points). ConstraintRegion stores it as CNF constraints over complete <=n Moore machines (an H-representation: the half-spaces that cut it out). Canonical first-visit state naming is a fundamental domain of the S_n relabelling action, so the region is represented on the quotient. Each query the learner needs is a geometric operation on the region: support(b) is the projection on the next-code coordinate; saturation is an emptiness test of the sub-region with an unused state; the Y1k/F2 certificate is a fibre over the latest observations; an observation is a cut (new clauses). Size grows with n^2 * steps clauses instead of the number of consistent machines. This is a step toward the long-term goal of a geometric reasoning system; it is not evidence of general intelligence.",
+    "solver": "python-sat (pysat) Glucose3, canonical first-visit symmetry breaking; one fresh solver per (evidence prefix, cap); queries by assumptions",
+    "GR1_exactness_sealed": {
+      "gated": true,
+      "threshold": "on every step of every sealed trace of study-004 arms A and P and study-005 arms A3 and P3 (504 + 504 + 504 + 504 traces, taken AND counterfactual action), ConstraintRegion at n=4 and n=5 rebuilt from the recorded initial observation, actions and observations reproduces exactly: family and margin feasibility (status supported vs contradicted), support (n=4), margin_support (n=5), saturated, and for study-005 A3/P3 the Y1k decision (CERTIFIED vs RESYNC_AMBIGUOUS given a single-code support); and for active arms (A, A3) both LU / LU-R experiment scores at every step where the trace records them. Steps where the enumeration hit its row budget are excluded and counted separately. Report = a COUNT of mismatching (trace, step, field) items over everything (no stop at first); PASS iff 0."
+    },
+    "GR1b_exactness_006": {
+      "gated": true,
+      "threshold": "same check on study-006 A4 and P4 traces (support, margin support, saturation, Y1k decision, LU-R scores for A4), and the D2 LU2-R scores and the F2 fibre decision on a pre-registered subsample (first 4 seeds per family, all masks); 0 mismatches"
+    },
+    "GR2_scaling": {
+      "gated": false,
+      "report": "for 84 cases (study-006 heldout: first 4 seeds of each of the 7 original families x 3 masks): enumeration (bgr90 SymbolicLearner) vs ConstraintRegion at n=2..6 on the passive sequence: per-step wall-clock, peak rows (enumeration) vs variables and clauses (region), per-case totals; SAT-only at n=8, 10, 12 on the same cases (enumeration capped at 6). Fitted log-log slope of time vs n for each. Hypothesis (Inferred, not gated): region size grows polynomially in n while enumeration rows grow exponentially on high-mask cases.",
+      "prediction": "mixed: SAT faster when rows are large (ood5 high mask), slower on small regions (Observed in design)"
+    }
+  },
+  "residual_surprise": {
+    "window_W": 8,
+    "tau6": "from the calibration rule above",
+    "tau_v030": 1.433141502274
+  },
+  "criteria": {
+    "G1_in_family_soundness": {
+      "gated": true,
+      "threshold": "arms A4 and P4: 0 false conditional and 0 false public certificates on every in_family case (6 families incl. perm4), all 44 steps incl. burn-in, taken AND counterfactual action"
+    },
+    "G2_ood5_soundness": {
+      "gated": true,
+      "threshold": "arms A4 and P4: 0 false conditional certificates on ood5, all steps, taken and counterfactual"
+    },
+    "G3_prime_drift4": {
+      "gated": true,
+      "threshold": "study-005 definition for A4 and P4 separately (taken action): non-drift false = 0 AND total <= 0.5 x v0.90 control false on the same cases",
+      "reported": "counterfactual by step type; A3, A2, D2, F2 for comparison"
+    },
+    "G4_public_safety": {
+      "gated": true,
+      "threshold": "A4 and P4: 0 public certificates on ood5 and drift4; 0 wrong public certificates anywhere; no public certificate after the first alarm of a session"
+    },
+    "G5_false_alarm_limit": {
+      "gated": true,
+      "threshold": "for EACH arm A4, P4 and EACH in_family family separately (6 families): fraction of that family's cases with >=1 RESIDUAL_SURPRISE alarm <= 0.05 (per family, not pooled)",
+      "design_estimate_Simulated": "tau6 >= 1.7108 if the calibration max resembles the design ood4 max; at 1.7108 design in-family alarm rate 0 (by construction on design data)"
+    },
+    "G6_active_coverage_gain": {
+      "gated": true,
+      "threshold": "study-005 G6 definition with A4 for A and P4 for P, pooled over in_family_original (5 families); every in_family_original family gain >= -0.01; perm4 gain reported"
+    },
+    "G6b_prime_coverage_non_inferiority_vs_v020": {
+      "gated": true,
+      "threshold": "pooled in_family_original dual coverage A4 - A2 >= -0.03 AND the 95% seed-clustered paired bootstrap CI lower bound (2000 resamples, numpy default_rng 20261025) >= -0.05",
+      "pre_registered_risk": "Simulated: A3 - A2 = -0.098 on design seeds and A4 differs from A3 only by the alarm; G6b' is expected to FAIL."
+    },
+    "G7_prime_open_world_no_regression": {
+      "gated": true,
+      "threshold": "mean post-burn-in taken-action log-loss: (a) P4 <= C and A4 <= C on ood5 and drift4; (b) every arm <= ln 4 on ood5 and drift4 and min probability >= 0.005 everywhere; (c) A4 <= A3 + 0.05 nats on ood5 and drift4"
+    },
+    "G8_passive_equivalence": {
+      "gated": true,
+      "threshold": "(a) study-005 G8a with P4 in place of P3: the frozen v0.1.1 learner C (tau 1.4331) runs alongside P4 on the same passive sequence (control_trace); at every step P4 and C have identical probabilities and forecast_source (except the v0.2.0 window_n4 tier replacing suffix1, as in study-005), and identical status and certificate except RESYNC_AMBIGUOUS downgrades, at every step before the first step where the P4 and C alarm states differ; (b) A4 in-family mean post-burn-in log-loss per family <= C + 0.05 nats"
+    },
+    "G9_retraction_semantics": {
+      "gated": true,
+      "threshold": "BRUTE_PLAN_005 G9 for A4 and P4; plus: every resume happens only after W=8 consecutive residuals <= tau6 with family and margin supported; no RESYNC_AMBIGUOUS forecast is issued"
+    },
+    "G10_compute_budget": {
+      "gated": true,
+      "threshold": "peak rows <= 160000 for the family, margin, window learners and lookahead copies of A4 and P4; exhaustion yields ABSTAIN/BUDGET_EXHAUSTED; over-budget copies score 0",
+      "reported": "wall-clock per arm; D2 cost vs A4"
+    },
+    "G11_second_implementation": {
+      "gated": true,
+      "threshold": "experiments/v040_reference.py (second implementation by the same author; no import of brute; written from this plan text and committed BEFORE brute/resume.py exists) recomputes for A4 and P4 every <=4 and <=5 support (taken and counterfactual), the Y1k union and decision, saturation, surprise, residual, alarm and resume state, attestation, probabilities and forecast_source, every LU-R score and chosen action; the report is a COUNT of mismatching arm traces over all traces (no stop at first) and must be 0; a mutation test (20 injected single-field errors in 20 distinct traces, rng 20261025) must detect 20/20 with 0 false flags. It may reuse the frozen v0.3.0 second implementation for the unchanged parts (disclosed; same author)."
+    },
+    "G12_reproducibility": {
+      "gated": true,
+      "threshold": "a second run to a new path gives byte-identical SCIENTIFIC.json and CALIBRATION_006.json (timing keys stripped)"
+    },
+    "G13_tau6_reproduces": {
+      "gated": true,
+      "threshold": "tau6 and the per-family maxima reproduce byte-for-byte in the second calibration run, and study-006 uses exactly that tau6"
+    },
+    "GR1": "see representation.GR1_exactness_sealed (gated)",
+    "GR1b": "see representation.GR1b_exactness_006 (gated)",
+    "G14_prime_D7_D8_powered": {
+      "gated": false,
+      "hypothesis_H": "as in BRUTE_PLAN_005 G14: forcing untaken-branch checks while keeping v0.2.0 certification halves stale certainty (E2 vs A2).",
+      "data": "D78_block (384 drift4 seeds x 3 masks) for S; main in_family_original block for M and P1",
+      "M": "pooled in-family check_rate(E2) > 0 and switch_rate(E2) > switch_rate(A2)",
+      "P1": "in-family counterfactual certificates E2 >= 1.10 x A2",
+      "statistic": "R = S(E2)/S(A2), S = stale false certificates (taken + counterfactual, conditional or public) summed over the D78 block; 95% seed-cluster bootstrap CI of R (2000 resamples over the 384 seeds, each seed = its 3 mask cases, python random.Random(20261025), percentile 2.5/97.5)",
+      "decision_rule": "CONFIRMED iff M, P1, S(A2) >= 20 and CI upper < 0.75. FALSIFIED iff M, S(A2) >= 20 and CI lower > 0.5. Otherwise OPEN.",
+      "power": {
+        "method": "docs/research/v0.4.0/design_probe/power_d7d8.py on the sealed study-005 drift4 main+extended seeds (96 seeds; S(A2)=17, S(E2)=14), 200 simulated studies per N",
+        "N384": {
+          "OBS (effect as observed, R~0.82)": "FALSIFIED 181/200 = 0.905",
+          "HALF (true R=0.5)": "CONFIRMED 191/200 = 0.955",
+          "NULL (R=1)": "FALSIFIED 200/200"
+        },
+        "choice": "N=384 seeds is the smallest grid value with power >= 0.9 under both OBS and HALF"
+      }
+    },
+    "G15_depth2_candidate": {
+      "gated": false,
+      "test": "D2 passes iff D2 satisfies the G1, G2 and G3' thresholds (taken action) AND pooled in_family_original dual coverage D2 - A2 >= -0.03",
+      "prediction_Simulated": "FAIL (design: 3 non-drift false at step 13; D2-A2 = -0.066)"
+    },
+    "G16_fibre2_candidate": {
+      "gated": false,
+      "test": "same test for F2",
+      "prediction_Simulated": "FAIL (design: 2-3 non-drift false; coverage F2-A2 = -0.031)"
+    },
+    "R1_price_of_robustness": {
+      "gated": false,
+      "report": "A2 - A4 coverage per family and mask; RESYNC_AMBIGUOUS abstentions"
+    },
+    "R2_drift_post_jump": {
+      "gated": false,
+      "report": "certificates and false certificates at steps 13, 24, 35 for A4, P4, A3, A2, D2, F2"
+    },
+    "R5_alarm_detection": {
+      "gated": false,
+      "report": "ood5 and drift4 fraction of cases with >=1 alarm and first-alarm step, A4/P4 (tau6) vs A3/P3-style tau 1.4331 (from the A3 arm); number of resumes per family and certificates issued after a resume, with false certificates after a resume listed"
+    },
+    "R6_perm4": {
+      "gated": false,
+      "report": "perm4 dual coverage A4, P4, A2, A3; true hidden state counts"
+    }
+  },
+  "api_1_4": {
+    "files": "brute/api/service_v040.py and schemas request.v1_4.json/response.v1_4.json (1.0-1.3 frozen)",
+    "changes": [
+      "learner = ResumeBruteLearner",
+      "predict response gains resumed (bool) and alarm_resumes (int)",
+      "public certificates never after the first alarm"
+    ]
+  },
+  "scoring": {
+    "soundness_counts": "all steps including burn-in",
+    "coverage_logloss_alarm_rates": "post-burn-in steps only (9..44)",
+    "loss": "-ln max(1e-12, p[actual]) on the full code"
+  },
+  "process_controls": {
+    "order": "(1) this plan; (2) experiments/v040_reference.py + its mutation test, committed before any brute/ v0.4.0 file; (3) implementation; (4) source freeze; (5) scoring scripts (make_gates_006, make_paired_006, make_reproducibility_006, exactness scoring) committed in a SEPARATE commit at least 10 minutes (wall clock) before the first study-006 run starts; (6) runs, each with a ledger 'run_start' receipt (start time, command) before and 'run_end' after; (7) seal; (8) scoring.",
+    "verifiable": "scripts/verify_release_040.py checks git ancestry for (1)<(2)<(3)<(4)<(5)<(7) and that the scoring scripts are unchanged after (5). Times in commits and ledger are self-reported (author-set) and are reported as such.",
+    "tests": "version-parameterised release tests; fresh-clone test runs restore gitignored traces first (documented)",
+    "dependencies": "requirements pin numpy==2.5.4 and python-sat==1.9.dev17 (tested environment, Python 3.13.5)"
+  },
+  "deviation_policy": "after freeze, any change is a ledger 'deviation' entry with reason in docs/research/BRUTE_DEVIATIONS_006.md; the original criterion is still reported. Study-006 seeds are never used to tune v0.4.0; failed gates are published as failed and the release ships with them documented (owner instruction).",
+  "scope_and_open": [
+    "Sound multi-step fibre certification (F2 is a candidate predicted unsound): Open",
+    "BDD / partition-refinement quotient alternatives to SAT: Open (not built)",
+    "SAT-backed learner as the production backend (v0.4.0 uses it as a verified parallel representation and for n>6 scaling only): Open",
+    "SAT-based lookahead at n>6: Open",
+    "More than one new family; 3-action/3-bit worlds; stochastic emissions: Open",
+    "Third-party replication: Open"
+  ],
+  "limitations": [
+    "Synthetic two-action, two-bit worlds only (plus perm4, still two actions/two bits).",
+    "Y1k does not protect a jump into a state whose edge is still unknown (Inferred).",
+    "The second implementation is by the same author and shares the world generators.",
+    "Commit/ledger times are author-set."
+  ],
+  "owner_decisions": {
+    "recorded_at": "2026-10-25 (America/New_York)",
+    "D1": "owner (James) 01:35 EDT: proceed autonomously with v0.4.0 / study-006; representation work has priority if budget forces a choice; scope tightly; defer the rest as Open",
+    "D2": "review steering 02:09 EDT: no 'independent' wording; counting reference with mutation test; reference committed before learner code; scoring scripts in an earlier separate commit with a time gap; run start times in the ledger"
+  },
+  "release_version_note": "brute/__init__.py, version.py, release_version.py and release_version_030.py stay frozen; new brute/release_version_040.py RELEASE_VERSION='0.4.0'; RELEASE.json 0.4.0; scripts/verify_release_040.py."
+}
