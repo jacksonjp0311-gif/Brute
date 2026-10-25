@@ -34,7 +34,7 @@ class ConstraintRegion:
 
     Derived variables (both directions): A[q][c] (code c compatible with every visit of q), V[q] (q visited),
     Tr[q][a] (edge (q,a) traversed), nx[b]/nc[b] (next state / next code after action b from the current state)."""
-    def __init__(self,n,masks,actions,solver=SOLVER,symmetry=True):
+    def __init__(self,n,masks,actions,solver=SOLVER,symmetry=True,conf_budget=None):
         if len(masks)!=len(actions)+1:raise ValueError('need one more mask than actions')
         self.n=n;self.masks=list(masks);self.actions=list(actions);self.T=T=len(actions)
         self.nv=0;self.cl=[];v=self._v
@@ -82,6 +82,7 @@ class ConstraintRegion:
             self._amo(self.nc[b])
         self.base_vars=self.nv;self.base_clauses=len(self.cl)
         self.s=Solver(name=solver,bootstrap_with=self.cl);self.calls=0;self.solver=solver
+        self.conf_budget=conf_budget;self.unknown=0
         self._sat=self._solve([])
 
     @classmethod
@@ -91,7 +92,7 @@ class ConstraintRegion:
 
     def extended(self,action,code):
         """The region after one more fully observed step (action, code) -- a lookahead copy."""
-        return ConstraintRegion(self.n,self.masks+[full_mask(code)],self.actions+[action],self.solver)
+        return ConstraintRegion(self.n,self.masks+[full_mask(code)],self.actions+[action],self.solver,conf_budget=self.conf_budget)
 
     def _v(self):
         self.nv+=1;return self.nv
@@ -103,7 +104,13 @@ class ConstraintRegion:
         self.cl.append(list(lits));self._amo(lits)
 
     def _solve(self,assume):
-        self.calls+=1;return self.s.solve(assumptions=assume)
+        """Exact by default. With conf_budget (GR2 scaling runs only) a query that exceeds the conflict budget is
+        counted in self.unknown and treated as unsatisfiable; callers must report or exclude such steps."""
+        self.calls+=1
+        if self.conf_budget is None:return self.s.solve(assumptions=assume)
+        self.s.conf_budget(self.conf_budget);r=self.s.solve_limited(assumptions=assume)
+        if r is None:self.unknown+=1;return False
+        return r
 
     def _add(self,clauses):
         for c in clauses:self.s.add_clause(c)

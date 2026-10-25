@@ -149,6 +149,7 @@ def gr1b(results_dir,workers,limit=None):
 
 # ------------------------------------------------------------------------------------------------------------- GR2
 ENUM_N=(2,3,4,5,6);SAT_N=(2,3,4,5,6,8,10,12)
+GR2_CONF_BUDGET=20000   # conflicts per SAT query in GR2 only (GR1/GR1b are exact, no budget); unknown queries are counted
 
 
 def _gr2_case(x):
@@ -163,19 +164,21 @@ def _gr2_case(x):
             res.append(s);L.observe(a,o);peak=max(peak,L.count)
         out['enum'][n]={'time_s':perf_counter()-t0,'peak_rows':peak,'final_status':L.status,'_res':res}
     for n in SAT_N:
-        masks=[mask_for_observation(init)];acts=[];t0=perf_counter();res=[];vmax=cmax=0
+        masks=[mask_for_observation(init)];acts=[];t0=perf_counter();res=[];vmax=cmax=0;unk_steps=unk_q=0
         for a,o in ev:
-            R=ConstraintRegion(n,masks,acts)
+            R=ConstraintRegion(n,masks,acts,conf_budget=GR2_CONF_BUDGET)
             res.append((R.support(0),R.support(1),R.saturated()) if R.feasible else None)
+            if R.unknown:unk_steps+=1;unk_q+=R.unknown;res[-1]='UNKNOWN'
             vmax=max(vmax,R.size['variables']);cmax=max(cmax,R.size['clauses']);R.close()
             masks.append(mask_for_observation(o));acts.append(a)
-        R=ConstraintRegion(n,masks,acts);fin=R.feasible;R.close()
-        out['sat'][n]={'time_s':perf_counter()-t0,'max_variables':vmax,'max_clauses':cmax,'final_feasible':fin,'_res':res}
+        R=ConstraintRegion(n,masks,acts,conf_budget=GR2_CONF_BUDGET);fin=None if R.unknown else R.feasible;R.close()
+        out['sat'][n]={'time_s':perf_counter()-t0,'max_variables':vmax,'max_clauses':cmax,'final_feasible':fin,
+                       'unknown_steps':unk_steps,'unknown_queries':unk_q,'_res':res}
     for n in ENUM_N:
         e=out['enum'][n];s=out['sat'][n]
         agree=dis=excl=0
         for x,y in zip(e['_res'],s['_res']):
-            if x is None and y is not None:excl+=1;continue   # enumeration over budget (region still feasible)
+            if (x is None and y is not None) or y=='UNKNOWN':excl+=1;continue   # enumeration over budget / SAT query over conflict budget
             if x==y:agree+=1
             else:dis+=1
         e['agree_steps']=agree;e['disagree_steps']=dis;e['excluded_steps']=excl
@@ -215,7 +218,9 @@ def gr2(results_dir,workers,budget=160000,limit=None):
                          budget_exhausted_cases=sum(x['final_status']=='budget_exhausted' for x in v),
                          agree_steps=sum(x['agree_steps'] for x in v),disagree_steps=sum(x['disagree_steps'] for x in v),
                          excluded_steps=sum(x['excluded_steps'] for x in v))
-            else:d.update(max_variables=max(x['max_variables'] for x in v),max_clauses=max(x['max_clauses'] for x in v))
+            else:d.update(max_variables=max(x['max_variables'] for x in v),max_clauses=max(x['max_clauses'] for x in v),
+                          unknown_steps=sum(x['unknown_steps'] for x in v),unknown_queries=sum(x['unknown_queries'] for x in v),
+                          cases_with_unknown=sum(x['unknown_steps']>0 for x in v))
             summ[kind][n]=d
     by_mask={}
     for m in sorted({r['mask_rate'] for r in rows}):
@@ -228,7 +233,7 @@ def gr2(results_dir,workers,budget=160000,limit=None):
             'sat_mean_time_vs_n_2_12':_slope(SAT_N,[summ['sat'][n]['mean_case_time_s'] for n in SAT_N]),
             'enum_mean_peak_rows_vs_n_2_6':_slope(ENUM_N,[summ['enum'][n]['mean_peak_rows'] for n in ENUM_N]),
             'sat_max_clauses_vs_n_2_12':_slope(SAT_N,[summ['sat'][n]['max_clauses'] for n in SAT_N])}
-    return {'cases':len(rows),'budget_rows':budget,'summary':summ,'by_mask_mean_case_time_s':by_mask,'loglog_slopes':slopes,
+    return {'cases':len(rows),'budget_rows':budget,'sat_conf_budget_per_query':GR2_CONF_BUDGET,'summary':summ,'by_mask_mean_case_time_s':by_mask,'loglog_slopes':slopes,
             'per_case':rows,'elapsed_informational_s':round(perf_counter()-t0,1),
             'timing_note':'wall-clock on one shared 8-CPU box with parallel workers; informational, not gated'}
 
