@@ -19,22 +19,24 @@ Earlier notes are kept at `docs/research/v0.4.0/NEXT_ITERATION.md`, `docs/resear
 
 ## Recommendation for v0.5.0 (Inferred; to be pre-registered before any v0.5.0 code)
 
-1. **Make the representation the engine (priority).** Route the learner's support, margin, saturation and fibre
-   queries through `ConstraintRegion` behind a switch, with enumeration kept as the frozen reference; gate exact
-   decision identity on study-004..006 traces (as GR1) and then raise the margin to n ≤ 6 and the family to n ≤ 5,
-   which enumeration cannot reach (GR2: 10 of 84 cases exhausted the 160,000-row budget at n = 6). Handle SAT unknowns as ABSTAIN with
-   a reason (never as a certificate) and report the unknown rate. Consider incremental solving (assumptions, no
-   rebuild per step) and a BDD/d-DNNF compilation for counting-based lookahead.
-2. **Fix the F2 unsoundness before any coverage claim.** The two-step fibre must treat an unknown edge on any of the
-   steps as any reading (as Y1k does for one step); re-test against G3′ on the sealed drift4 seeds as a design probe.
-3. **Coverage: understand the price, do not tune around it.** A pre-registered decomposition of A2's extra coverage
-   into fibre-ambiguous vs genuinely-unknown predictions (the RESYNC_AMBIGUOUS count is the measurable part).
-4. **Resume that can recover.** A resume rule that is exercised: measure post-alarm coverage on in-family cases with
-   injected transient noise, pre-registered.
-5. **D7/D8 at a sharper N.** CI width ~0.49 at N = 384; the power analysis method of plan 006 should be rerun with the
-   observed R to choose N (or accept OPEN and close the question).
-6. **Breadth.** One stochastic family (credal region) or a 3-action alphabet, pre-registered before seeing data.
-7. **Independence.** A third-party replication of GATES.json from the sealed traces.
+1. **Make `ConstraintRegion` the production backend, gated on continued exactness.** Route support, margin,
+   saturation and fibre queries through it; keep enumeration as the frozen reference and gate decision identity again
+   (GR1-style on study-004..006 traces, plus the new study wherever n ≤ 5 enumeration is still feasible). SAT unknowns
+   become ABSTAIN with a reason, never a certificate, and their rate is reported. Use incremental solving (assumptions,
+   no rebuild per step) to bound time; GR2 shows SAT time is the noisy part, not size.
+2. **Scale breadth as pre-registered families.** More states (n = 5–8 family, n + 1 margin), more than 2 sensors and
+   more than 2 actions, each family and its generator pre-registered before its data, as perm4 was. These are the
+   regimes enumeration cannot reach (GR2: 10 of 84 cases exhausted 160,000 rows at n = 6), so they test the
+   representation, not just reuse it.
+3. **Replace the experiment policy with region-volume / model-count selection.** Score each action by the expected
+   reduction of the region (exact #SAT or approximate counting, or projection cuts on the next-reading coordinates)
+   computed on the fibre-robust region, aimed at recovering G6b′ coverage (A4 − A2 −0.104) **without** breaking
+   G1/G2/G3′. Caveat from the data: deeper certification-count lookahead (D2) *lowered* coverage (−0.071), so a
+   counting policy is a different hypothesis, not "more depth"; gate it against A4 and A2 with the G6b′ rule unchanged.
+4. **Fix the F2 unsoundness** (treat an unknown edge at any step of the multi-step fibre as any reading) before any
+   multi-step fibre returns as a candidate.
+5. Secondary: an exercised resume (0 certificates after resume in v0.4.0); D7/D8 at a larger N or closed as OPEN;
+   a third-party replication of GATES.json.
 
 Deferred from v0.4.0 and still **Open**: learner on the representation; n ≥ 6 certification; bounded-time SAT at
 n ≥ 8; effective resume; the cause of D2's lower coverage; independent audit.
