@@ -1,15 +1,15 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 02:48 EDT (v0.4.0 implementation, branch `plan/v0.4.0`)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 05:40 EDT (v0.5.0 planning, branch `plan/v0.5.0`)._
 
 ## Current version and state
 
-- **Released: v0.3.0** (tag `v0.3.0` = `73a3a5a`, unchanged). 12 of 14 gates pass; G5 and G6b fail (on the record);
-  G14 OPEN. **v0.3.0 errata** on `main` (`8e6d323`, `8222e0e`; `docs/research/v0.3.0/ERRATA.md`): G11 is called a
-  *second implementation by the same author (no `brute` import)*, not an independent audit; full-scan count
-  **0/3,168** arm traces plus a mutation test; tamper-by-version tests; order check; numpy pin. GitHub releases
-  v0.2.0/v0.3.0 were created with notes that point to the errata.
-- **In progress: v0.4.0 / study BRUTE-040-GEOMETRY-006** on `plan/v0.4.0`.
+- **Released: v0.4.0** (tag `v0.4.0` = merge `5c02a7b` on main; GitHub release published 05:11 EDT). 15 of 16 gates
+  pass; G6b' fails (pre-registered risk, on the record); G14' OPEN. Tags v0.2.0/v0.3.0/v0.4.0 never move.
+- **In progress: v0.5.0 / study BRUTE-050-REGION-007** on `plan/v0.5.0` (owner request 05:13 EDT): (1) ConstraintRegion
+  as the production backend, exactness-gated against enumeration, SAT budget exhaustion -> ABSTAIN with reason;
+  (2) pre-registered breadth families (n>=6, >2 sensors, >2 actions) under the same soundness gates; (3) a
+  region-measure experiment policy aimed at G6b'. See "v0.5.0 progress" below.
 
 ## Branches (origin `github.com/jacksonjp0311-gif/Brute`, public on purpose: James asked for it 2026-10-25 01:13 EDT)
 
@@ -19,6 +19,16 @@ _Kept current on the working branch during a release and on `main` at release. L
 | `plan/v0.5.0` | see `git log` | v0.5.0 working branch (from main) |
 | `plan/v0.4.0` | `5e7d208` | v0.4.0 working branch (merged) |
 | `bridge/v0.2`, `bridge/v0.1` | `cced586`, `9c88a3a` | Bridge work; **unmerged; do not edit or merge without a decision** |
+
+## v0.5.0 progress (commit order is the chronology evidence)
+
+1. DONE: branch `plan/v0.5.0` from main `2998dba`. Design reading + timing probe (frozen `brute/geometry.py`, per-step
+   rebuild; sealed study-006 seeds only): 2x2 n<=4/5 SAT with LU-R lookahead ~0.1-0.7 s per 44-step case; n<=6/7 ~1-10 s.
+2. NEXT: pre-register `experiments/BRUTE_PLAN_007.json` (commit + push + ledger `preregistration_007`) before any v0.5.0 code.
+3. Then: second implementation `experiments/v050_reference.py` (+ mutation test) -> ledger `reference_007`; implementation in
+   NEW files (brute/region.py, brute/region_learner.py, experiments/worlds_007.py, ...); source freeze 007; scoring
+   scripts in a separate commit >= 10 min before `run_start_007`; nohup run with checkpoints; seal; scoring; docs;
+   release freeze 050; MANIFEST; fresh-clone verify; `--no-ff` merge in /tmp/brute-main; tag v0.5.0 on the merge; gh release.
 
 ## v0.4.0 progress (commit order is the chronology evidence)
 
