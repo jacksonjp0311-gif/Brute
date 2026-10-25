@@ -1,0 +1,50 @@
+"""Every sentence the bridge can say. id -> (text, slots, label).
+
+slot = (pointer_pattern, formatter, nullable). `{i}` in a pattern is a list index; `{ch}` is a
+channel-name parameter that must itself be a key present in the cited field. Text placeholders
+{0},{1}.. take formatted slot values; {ch} takes the parameter.
+"""
+R='/response';Q='/request'
+TEMPLATES={
+ # -- answers ---------------------------------------------------------------------------
+ 'status':('Brute returned {0} for op {1}.',[(R+'/status','plain',0),(R+'/op','plain',0)],'Exact'),
+ 'reason':('Reason code: {0}.',[(R+'/reason','plain',0)],'Exact'),
+ 'refusal':('{0}',[(R+'/refusal_text','plain',0)],'Exact'),
+ 'ack':('Recorded; {0} observations so far.',[(R+'/evidence/evidence_count','plain',0)],'Exact'),
+ 'cert':('Certificate ({0}, conditional on family {1}): after action {2} the next reading is {3}.',
+         [(R+'/certificate/kind','plain',0),(R+'/certificate/conditional_on','plain',0),(Q+'/action','plain',0),(R+'/certificate/value','reading',0)],'Exact'),
+ 'cert.channel':('Channel {ch} is certified as {0}.',[(R+'/certificate/value/{ch}','plain',0)],'Exact'),
+ 'possible':('After action {0} the next reading is one of: {1} (count {2}).',
+             [(Q+'/action','plain',0),(R+'/support','set',0),(R+'/support','len',0)],'Exact'),
+ 'possible.channel':('Across those readings, channel {ch} takes: {0}.',[(R+'/support','proj',0)],'Exact'),
+ 'prob':('Forecast probability {0} for {1} (source {2}).',
+         [(R+'/probabilities/{i}/p','prob',0),(R+'/probabilities/{i}/value','reading',0),(R+'/forecast_source','plain',0)],'Inferred'),
+ 'not_withheld':('The last prediction was {0}; Brute did not withhold a value.',[(R+'/status','plain',0)],'Exact'),
+ 'margin':('A {0}-state check leaves {1} possible readings.',[(R+'/evidence/margin/states','plain',0),(R+'/evidence/margin/support_size','plain',0)],'Exact'),
+ 'survivors':('{0} surviving version-space rows (partial machines) in family {1} after {2} observations.',
+              [(R+'/evidence/surviving_rows','plain',0),(R+'/evidence/family_scope','plain',0),(R+'/evidence/evidence_count','plain',0)],'Exact'),
+ 'saturated':('Every survivor uses all hidden states: {0}.',[(R+'/evidence/saturated','plain',0)],'Exact'),
+ 'retraction':('Withdrawn certificate for step {0}: it said {1}; reason {2}.',
+               [(R+'/retractions/{i}/step','plain',0),(R+'/retractions/{i}/previous_value','reading',0),(R+'/retractions/{i}/reason','plain',0)],'Rejected'),
+ 'retraction.count':('Retractions on record: {0}.',[(R+'/retractions','len',0)],'Exact'),
+ 'scope.family':('Declared family: {0}; margin check at {1} states.',[(R+'/evidence/family_scope','plain',0),(R+'/evidence/margin/states','plain',0)],'Exact'),
+ 'scope.attestation':('Scope attestation id: {0}.',[(R+'/evidence/attestation_id','plain',1)],'Exact'),
+ 'scope.legacy':('Legacy v0.90 family still consistent: {0}.',[(R+'/evidence/legacy_family_alive','plain',0)],'Exact'),
+ 'scope.residual':('Windowed surprise {0} (window {1}) against threshold {2}; alarm {3}.',
+                   [(R+'/evidence/residual/surprise','plain',0),(R+'/evidence/residual/window','plain',0),
+                    (R+'/evidence/residual/threshold','plain',0),(R+'/evidence/residual/alarm','plain',0)],'Exact'),
+ 'experiment':('Brute proposes action {0} (split score {1}).',[(R+'/experiment/action','plain',0),(R+'/experiment/score','plain',0)],'Exact'),
+ # -- Brute -> operator requests -----------------------------------------------------------
+ 'req.contradiction':('CONTRADICTION_NOTICE: Brute returned {0}/{1}; {2} issued certificate(s) withdrawn.',
+                      [(R+'/status','plain',0),(R+'/reason','plain',0),(R+'/retractions','len',0)],'Exact'),
+ 'req.scope.residual':('SCOPE_ALERT: windowed surprise {0} is above threshold {1}; Brute returned {2}.',
+                       [(R+'/evidence/residual/surprise','plain',0),(R+'/evidence/residual/threshold','plain',0),(R+'/status','plain',0)],'Exact'),
+ 'req.scope.legacy':('SCOPE_ALERT: legacy v0.90 family is now {0} (it was {1}).',
+                     [(R+'/evidence/legacy_family_alive','plain',0),(R+'/evidence/legacy_family_alive','plain',0)],'Exact'),
+ 'req.scope.attestation':('SCOPE_ALERT: scope attestation {0} is withdrawn (now {1}).',
+                          [(R+'/evidence/attestation_id','plain',0),(R+'/evidence/attestation_id','plain',1)],'Exact'),
+ 'req.observation':('REQUEST_OBSERVATION: channel {ch} was masked ({0}) in the last observation, and the next prediction returned {1}.',
+                    [(Q+'/observation/{ch}','plain',1),(R+'/status','plain',0)],'Observed'),
+ 'req.action':('REQUEST_ACTION: Brute asks for action {0} (split score {1}).',
+               [(R+'/experiment/action','plain',0),(R+'/experiment/score','plain',0)],'Exact'),
+}

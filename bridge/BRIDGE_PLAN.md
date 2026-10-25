@@ -79,3 +79,19 @@ contradiction can retract it (Exact, `service_v011._predict`). The bridge says s
 - **B9 Core untouched.** `git diff main -- brute/ bgr*/ experiments/ results/` is empty on `bridge/v0.1`.
 
 Failures are reported, not tuned away. Any change to a criterion goes in a dated deviation note below this line.
+
+---
+
+### Deviation note 2026-10-24 (implementation; the criteria B1–B9 are unchanged)
+
+- **D1. `retry` in the corpus.** It is asked in one short edge session, not at the end of every study-002 replay.
+  Under brute.api/1.1, `retry k=5` replays all evidence and costs about 3.5 s per call in Brute's core (profiled with
+  cProfile: `bgr90/symbolic._update`). That cost is the reasoner's, not the bridge's.
+- **D2. A claim's `trace_id`.** It is the trace that triggered the claim. Cross-trace refs, such as "it was true at
+  trace t…", are allowed because each ref names its own trace. The checker also requires `trace_id` to be one of the
+  cited traces.
+- **D3. New flag `duplicate_retraction_entries`.** It fires when one response lists the same (step, value)
+  retraction twice. It was found in the demo: two CERTIFIED `predict` calls at the same step each record an issuance.
+  This is Observed API behaviour. The core was not changed.
+- **D4. The attestation edge session uses an attested alternating world** (Simulated), because the study-002 drift4
+  case at mask 0.35 never certifies within 44 steps.

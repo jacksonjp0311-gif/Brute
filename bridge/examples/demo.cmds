@@ -1,0 +1,34 @@
+# Bridge demo: attested, alternating world (x flips each step), then one contradicting reading.
+init x=0 y=0 attest=deterministic-moore<=4/stationary
+predict a x
+observe a x=0 y=0
+predict a x
+observe a x=1 y=0
+predict a x
+observe a x=0 y=0
+predict a x
+observe a x=1 y=0
+predict a x
+observe a x=0 y=0
+predict a x
+observe a x=1 y=0
+why
+vs
+predict a
+observe a x=0 y=-
+predict a
+observe a x=1 y=-
+predict a
+why
+scope
+what do you predict for sensor x after action a
+observe a x=1 y=1
+retractions
+scope
+predict a
+why
+which action would best split your hypotheses?
+which models disagree?
+are you conscious?
+requests
+decline q1
