@@ -18,7 +18,7 @@ def build():
     return {'schema':'brute.source-freeze.v1','study':'BRUTE-050-REGION-007','status':'frozen',
             'also_requires':['experiments/BRUTE_SOURCE_FREEZE_00%d.json'%i for i in range(2,7)],
             'plan_sha256':sha(PLAN),'preregistration_commit':'5be08aa','reference_commit':'1b57efe',
-            'implementation_commits':['fc2bed8','c8e8611','b693113'],'pre_freeze_fix_commits':['0c86d90','__FIX2__'],
+            'implementation_commits':['fc2bed8','c8e8611','b693113'],'pre_freeze_fix_commits':['0c86d90','d7054a1'],
             'sha256_files':{rel:sha(ROOT/rel) for rel in FILES}}
 
 
