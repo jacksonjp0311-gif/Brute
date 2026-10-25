@@ -1,4 +1,4 @@
-"""Bridge v0.1 acceptance tests (bridge/BRIDGE_PLAN.md, criteria B1-B9)."""
+"""Bridge acceptance tests (bridge/BRIDGE_PLAN.md: v0.1 criteria B1-B9 on brute.api/1.1, v0.2 addendum B10-B14 on 1.2)."""
 import ast,json,subprocess,sys,time,unittest
 from pathlib import Path
 from tests.bridge_corpus import sessions,rows,ROOT,drive
@@ -56,7 +56,7 @@ class Grounding(unittest.TestCase):  # B1, B4, B5, B6
 
 class Unsupported(unittest.TestCase):  # B2
     def test_zero_claims_zero_calls(self):
-        b=Bridge();b.ask('init',obs={'x':0,'y':1})
+        b=Bridge(api='1.1');b.ask('init',obs={'x':0,'y':1})
         for line,intent in (('split','split'),('which action best splits?','split'),('which models disagree','models'),
                             ('tell me a joke','unknown'),('are you conscious','unknown'),('predict c','unknown'),('init x=3 y=0','unknown')):
             from bridge.parse import parse
@@ -66,14 +66,14 @@ class Unsupported(unittest.TestCase):  # B2
         self.assertEqual(sum(json.loads(l)['kind']=='unsupported_intent' for l in b.flags.lines),7)
 
     def test_split_hook_renders_only_with_field(self):
-        class Fake:  # stands in for a future v0.2.0 service that returns an `experiment` field
+        class Fake:  # a 1.1 service that happens to return an `experiment` field (the v0.1 forward hook)
             def __init__(s):
                 from brute.api.service_v011 import BruteServiceV011;s.s=BruteServiceV011()
             def handle(s,req):
                 r=s.s.handle(req)
-                if req['op']=='predict':r=dict(r,experiment={'action':'b','score':3})
+                if req['op']=='predict':r=dict(r,experiment={'action':'b','score':3,'rule':'fake rule','tie_break':'default_action','tied':False})
                 return r
-        b=Bridge(service=Fake());b.ask('init',obs={'x':0,'y':1});a,q=b.ask('predict',action='a')
+        b=Bridge(service=Fake(),api='1.1');b.ask('init',obs={'x':0,'y':1});a,q=b.ask('predict',action='a')
         self.assertEqual([x['kind'] for x in q],['REQUEST_ACTION'])
         a,_=b.ask('split');self.assertEqual(a['status'],'ANSWERED');self.assertEqual(a['claims'][0]['template'],'experiment')
         self.assertEqual(audit(rows(b))[0],[])
@@ -88,7 +88,7 @@ class Boundary(unittest.TestCase):  # B3, B9
                 top=mod.split('.')[0]
                 ok=top in STDLIB or mod=='brute.api' or mod.startswith('brute.api.') or mod.startswith('adapters.language') or top=='bridge'
                 self.assertTrue(ok,f'{p.name} imports {mod}')
-                for banned in ('brute.core','brute.fallback','brute.evaluation','bgr','experiments','scripts','numpy'):self.assertFalse(mod.startswith(banned),f'{p.name}: {mod}')
+                for banned in ('brute.core','brute.active','brute.fallback','brute.evaluation','bgr','experiments','scripts','numpy'):self.assertFalse(mod.startswith(banned),f'{p.name}: {mod}')
 
     def test_audit_modules_stdlib_only(self):
         for name in ('claims','templates','triggers','audit','log','parse'):
@@ -108,7 +108,7 @@ class Boundary(unittest.TestCase):  # B3, B9
                 for mod,level in imports(p):self.assertFalse(level==0 and mod.split('.')[0]=='bridge',f'{p}: {mod}')
 
     def test_core_untouched(self):
-        out=subprocess.run(['git','diff','--stat','main','--','brute','bgr89','bgr90','experiments','results'],cwd=ROOT,capture_output=True,text=True)
+        out=subprocess.run(['git','diff','--stat','origin/main','--','brute','bgr89','bgr90','experiments','results'],cwd=ROOT,capture_output=True,text=True)
         self.assertEqual(out.returncode,0);self.assertEqual(out.stdout.strip(),'')
 
 
@@ -120,17 +120,80 @@ class Determinism(unittest.TestCase):  # B7, B8
 
     def test_transcripts_reproduce(self):
         from tests.bridge_corpus import cases,commands
-        c=cases()['ood5'];a=drive(Bridge(source='x'),commands(c));b=drive(Bridge(source='x'),commands(c))
+        c=cases()['ood5'];a=drive(Bridge(source='x',api='1.1'),commands(c));b=drive(Bridge(source='x',api='1.1'),commands(c))
         self.assertEqual(a.transcript.lines,b.transcript.lines)
 
-    def test_query_speed(self):
-        from tests.bridge_corpus import cases,commands
-        c=cases()['cycle3'];b=Bridge();ts=[]
-        from bridge.parse import parse
-        for l in commands(c):
-            i,args=parse(l);t=time.perf_counter();b.ask(i,command=l,**args);ts.append(time.perf_counter()-t)
-        ts.sort();med=ts[len(ts)//2];print(f'\n[bridge speed] median {med*1000:.2f} ms over {len(ts)} queries',file=sys.stderr)
+    def test_query_speed(self):  # B8 restated: median wall time per ask over the study-004 cycle3 session
+        from tests.bridge_corpus_004 import cases,drive
+        import bridge.session as S
+        ts=[];ex=[];orig=S.Bridge.ask
+        def timed(self,*a,**k):
+            t=time.perf_counter();r=orig(self,*a,**k);(ex if a[0] in ('split','models') else ts).append(time.perf_counter()-t);return r
+        S.Bridge.ask=timed
+        try:drive(cases()['cycle3'])
+        finally:S.Bridge.ask=orig
+        ts.sort();med=ts[len(ts)//2];ex.sort()
+        print(f'\n[bridge speed] median {med*1000:.2f} ms over {len(ts)} asks; experiment asks (core cost, reported only) median {ex[len(ex)//2]*1000:.1f} ms, max {ex[-1]*1000:.1f} ms over {len(ex)}',file=sys.stderr)
         self.assertLess(med,0.05)
+
+
+class Api12(unittest.TestCase):  # v0.2 addendum B10-B12
+    @classmethod
+    def setUpClass(cls):
+        from tests.bridge_corpus_004 import sessions,cases
+        cls.S=sessions();cls.C=cases()
+
+    def test_b11_matches_study_004(self):
+        self.assertEqual(len(self.S),7)
+        for fam,(b,bad) in self.S.items():self.assertEqual(bad,[],fam)
+
+    def test_b12_audit_and_requests(self):
+        tot={}
+        for fam,(b,_) in self.S.items():
+            v,n=audit(rows(b));self.assertEqual(v,[],fam)
+            for k,x in n.items():tot[k]=tot.get(k,0)+x
+        self.assertEqual(tot['request_action'],tot['untied']);self.assertGreater(tot['request_action'],0)
+        self.assertEqual(tot['experiments'],7*44*2)
+        print('\n[bridge corpus 1.2]',json.dumps(tot,sort_keys=True),file=sys.stderr)
+
+    def test_b10_experiment_is_read_only(self):
+        from tests.bridge_corpus_004 import drive
+        def plain(b):
+            out=[]
+            for t,d in b.traces.items():
+                if d['request']['op']=='experiment':continue
+                out.append(json.dumps({k:v for k,v in d['response'].items() if k!='request_id'},sort_keys=True))
+            return out
+        for fam,c in self.C.items():
+            without,_=drive(c,experiments=False);self.assertEqual(plain(self.S[fam][0]),plain(without),fam)
+
+    def test_templates_and_flags_covered(self):
+        tpl=set();kinds=set();flags=set()
+        for b,_ in self.S.values():
+            for r in rows(b):
+                if r['type']!='turn':continue
+                tpl|={c['template'] for c in r['answer']['claims']};kinds|={q['kind'] for q in r['requests']}
+            flags|={json.loads(l)['kind'] for l in b.flags.lines}
+        for t in ('experiment','experiment.score','experiment.tied','counts.rows','counts.code','counts.margin'):self.assertIn(t,tpl)
+        self.assertIn('REQUEST_ACTION',kinds)
+
+    def test_replay_byte_identical_12(self):
+        b,_=self.S['cycle3'];n,bad=replay(rows(b));self.assertGreater(n,0);self.assertEqual(bad,[])
+
+    def test_override_flag(self):
+        b=Bridge();b.ask('init',obs={'x':0,'y':0})
+        for i in range(6):b.ask('observe',action='a',obs={'x':i%2,'y':0})
+        a,q=b.ask('split',default_action='a')
+        e=b.traces[b.last]['response']['experiment']
+        if e['tied']:self.skipTest('tied here')
+        other='ba'['ab'.index(e['action'])]
+        b.ask('observe',action=other,obs={'x':0,'y':0})
+        self.assertIn('request_action_overridden',[json.loads(l)['kind'] for l in b.flags.lines])
+        self.assertEqual(audit(rows(b))[0],[])
+
+    def test_models_unsupported_without_counts_under_11(self):
+        b=Bridge(api='1.1');b.ask('init',obs={'x':0,'y':0});n=b.calls
+        a,_=b.ask('models');self.assertEqual((a['status'],b.calls),('UNSUPPORTED',n))
 
 
 class Cli(unittest.TestCase):
@@ -139,8 +202,11 @@ class Cli(unittest.TestCase):
         d=tempfile.mkdtemp();s=os.path.join(d,'s.cmds')
         with open(s,'w') as fh:fh.write('init x=0 y=1\npredict a\nwhy\nsplit\nquit\n')
         t=os.path.join(d,'t.jsonl');f=os.path.join(d,'f.jsonl')
-        r=subprocess.run([sys.executable,'-m','bridge','--script',s,'--transcript',t,'--flags',f],cwd=ROOT,capture_output=True,text=True)
+        r=subprocess.run([sys.executable,'-m','bridge','--api','1.1','--script',s,'--transcript',t,'--flags',f],cwd=ROOT,capture_output=True,text=True)
         self.assertEqual(r.returncode,0,r.stderr);self.assertIn('[UNSUPPORTED] split',r.stdout)
+        r=subprocess.run([sys.executable,'-m','bridge.audit',t],cwd=ROOT,capture_output=True,text=True);self.assertEqual(r.returncode,0,r.stdout)
+        r=subprocess.run([sys.executable,'-m','bridge','--script',s,'--transcript',t+'2','--flags',f],cwd=ROOT,capture_output=True,text=True)
+        self.assertEqual(r.returncode,0,r.stderr);self.assertIn('[ANSWERED] split',r.stdout);t=t+'2'
         r=subprocess.run([sys.executable,'-m','bridge.audit',t],cwd=ROOT,capture_output=True,text=True);self.assertEqual(r.returncode,0,r.stdout)
 
 

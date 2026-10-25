@@ -1,7 +1,13 @@
-"""Bridge: operator intents -> real brute.api/1.1 calls -> grounded claims (+ Brute's requests back)."""
+"""Bridge: operator intents -> real brute.api calls (1.2 default, 1.1 frozen) -> grounded claims (+ Brute's requests back)."""
 from __future__ import annotations
 import hashlib
-from brute.api.service_v011 import BruteServiceV011,API_VERSION
+from brute.api import service_v011,service_v020
+
+SERVICES={'1.1':service_v011.BruteServiceV011,'1.2':service_v020.BruteServiceV020}
+API_VERSIONS={'1.1':service_v011.API_VERSION,'1.2':service_v020.API_VERSION}
+
+
+def make_service(api='1.2',**kw):return SERVICES[api](**kw)
 from brute.api import DEFAULT_ALPHABET
 from . import BRIDGE_VERSION
 from .claims import make
@@ -10,6 +16,7 @@ from .log import JsonlSink,dumps
 
 SESSION='operator'
 INTENTS=('init','observe','predict','retry','why','version_space','retractions','scope','split','models')
+MODELS_NOTE='Counts only: the API exposes how many surviving rows admit each reading, not which machines they are.'
 UNSUPPORTED_NOTES={
  'split':'brute.api/1.1 exposes no action-selection field; Brute cannot say which action best splits its hypotheses.',
  'models':'brute.api/1.1 exposes counts of surviving explanations, not their identities; Brute cannot list which models disagree.',
@@ -18,18 +25,21 @@ UNSUPPORTED_NOTES={
 
 
 class Bridge:
-    def __init__(self,transcript=None,flags=None,service=None,source='operator'):
-        self.svc=service or BruteServiceV011();self.traces={};self.seq=0;self.calls=0
-        self.last_predict=None;self.last=None;self.triggers=Triggers();self.pending={};self._seen=set()
+    def __init__(self,transcript=None,flags=None,service=None,source='operator',api=None):
+        if service is None:service=make_service(api or '1.2')
+        api=api or next((k for k,c in SERVICES.items() if isinstance(service,c)),'1.2')
+        self.api=api;self.api_version=API_VERSIONS[api]
+        self.svc=service;self.traces={};self.seq=0;self.calls=0
+        self.last_predict=None;self.last=None;self.triggers=Triggers();self.pending={};self._seen=set();self.last_resolved=[]
         self.transcript=JsonlSink(transcript);self.flags=JsonlSink(flags)
-        self.transcript.write({'type':'header','bridge':BRIDGE_VERSION,'api_version':API_VERSION,'session_id':SESSION,
+        self.transcript.write({'type':'header','bridge':BRIDGE_VERSION,'api_version':self.api_version,'session_id':SESSION,
                                'source':source,'actions':list(DEFAULT_ALPHABET.actions),
                                'channels':[c.name for c in DEFAULT_ALPHABET.channels]})
 
     # -- API -----------------------------------------------------------------------------
     def _call(self,op,**kw):
         self.calls+=1
-        req={'api_version':API_VERSION,'request_id':f'b{self.calls}','session_id':SESSION,'op':op,**kw}
+        req={'api_version':self.api_version,'request_id':f'b{self.calls}','session_id':SESSION,'op':op,**kw}
         resp=self.svc.handle(req)
         tid=f't{self.calls:04d}-'+hashlib.sha256((dumps(req)+dumps(resp)).encode()).hexdigest()[:10]
         self.traces[tid]={'request':req,'response':resp};self.last=tid
@@ -54,18 +64,18 @@ class Bridge:
     def ask(self,intent,command=None,**args):
         self.seq+=1;start=self.calls
         fn=getattr(self,'_i_'+intent,None) if intent in INTENTS else None
-        if fn is None and intent not in ('split','models'):intent='unknown'
+        if fn is None:intent='unknown'
         out=[];note=None;status='ANSWERED'
-        if intent in ('split','models','unknown'):
-            r=self.traces[self.last]['response'] if self.last else None
-            if intent=='split' and r is not None and isinstance(r.get('experiment'),dict):  # v0.2.0 hook
-                self._c(out,self.last,'experiment',['/response/experiment/action','/response/experiment/score'])
-            else:
-                status='UNSUPPORTED';note=UNSUPPORTED_NOTES[intent]
-                self._flag('unsupported_intent',intent=intent,command=command)
+        legacy=intent in ('split','models') and self.api=='1.1'
+        r=self.traces[self.last]['response'] if self.last else None
+        if legacy and intent=='split' and r is not None and isinstance(r.get('experiment'),dict):  # field carried by a 1.1-wrapped response
+            self._c(out,self.last,'experiment',['/response/experiment/action','/response/experiment/score','/response/experiment/rule'])
+        elif fn is None or legacy:
+            status='UNSUPPORTED';note=UNSUPPORTED_NOTES[intent]
+            self._flag('unsupported_intent',intent=intent,command=command)
         else:
             note=fn(out,**args)
-            if note:status='NO_DATA'
+            if note and not out:status='NO_DATA'
         new=list(self.traces)[start:]
         reqs=[]
         for t in new:
@@ -73,6 +83,12 @@ class Bridge:
                 reqs.append(q);self.pending[q['request_id']]=q
                 if q['kind'] in ('CONTRADICTION_NOTICE','SCOPE_ALERT'):
                     self._flag(q['kind'].lower(),request_id=q['request_id'],trace_id=q['trace_id'],text=q['claims'][0]['text'])
+        res=self.triggers.drain();self.last_resolved=res
+        for x in res:
+            self.pending.pop(x['request_id'],None)
+            if x['status']=='overridden':
+                self._flag('request_action_overridden',request_id=x['request_id'],trace_id=x['observe_trace'],
+                           detail_refs=[f"{x['request_trace']}#/response/experiment/action",f"{x['observe_trace']}#/request/action"])
         for t in new:
             rs=self.traces[t]['response']['retractions'];keys=[(x['step'],dumps(x['previous_value'])) for x in rs]
             if len(set(keys))<len(keys) and 'duplicate_retraction' not in self._seen:
@@ -81,7 +97,7 @@ class Bridge:
                            count=len(keys),distinct=len(set(keys)))
         ans={'seq':self.seq,'intent':intent,'args':args,'status':status,'claims':out,'note':note,
              'traces':sorted({c['trace_id'] for c in out}|set(new))}
-        self.transcript.write({'type':'turn','seq':self.seq,'command':command,'answer':ans,'requests':reqs,
+        self.transcript.write({'type':'turn','seq':self.seq,'command':command,'answer':ans,'requests':reqs,'resolved':res,
                                'trace_docs':{t:self.traces[t] for t in new}})
         return ans,reqs
 
@@ -91,7 +107,7 @@ class Bridge:
         ans={'seq':self.seq,'intent':'decline','args':{'request_id':request_id},'status':'ACKNOWLEDGED' if q else 'NO_DATA',
              'claims':[],'note':None if q else 'no pending request with that id','traces':[]}
         if q:self._flag('request_unsatisfied',request_id=request_id,request_kind=q['kind'],trace_id=q['trace_id'],text=q['claims'][0]['text'])
-        self.transcript.write({'type':'turn','seq':self.seq,'command':command,'answer':ans,'requests':[],'trace_docs':{}})
+        self.transcript.write({'type':'turn','seq':self.seq,'command':command,'answer':ans,'requests':[],'resolved':[],'trace_docs':{}})
         return ans,[]
 
     def _i_init(self,out,obs,max_states=None,attestation=None):
@@ -152,3 +168,30 @@ class Bridge:
         self._c(out,tid,'scope.legacy',['/response/evidence/legacy_family_alive'])
         self._c(out,tid,'scope.residual',['/response/evidence/residual/surprise','/response/evidence/residual/window',
                                           '/response/evidence/residual/threshold','/response/evidence/residual/alarm'])
+
+    def _i_split(self,out,default_action='a'):
+        tid=self._call('experiment',default_action=default_action,counts=False);r=self._common(out,tid)
+        if r['status']=='ERROR':return None
+        self._experiment(out,tid)
+
+    def _experiment(self,out,tid):
+        e=self.traces[tid]['response']['experiment']
+        self._c(out,tid,'experiment',['/response/experiment/action','/response/experiment/score','/response/experiment/rule'])
+        for i in range(len(e['scores'])):
+            self._c(out,tid,'experiment.score',[f'/response/experiment/scores/{i}/action',f'/response/experiment/scores/{i}/score'])
+        self._c(out,tid,'experiment.tied',['/response/experiment/tied','/response/experiment/tie_break','/request/default_action'])
+
+    def _i_models(self,out,default_action='a'):
+        tid=self._call('experiment',default_action=default_action,counts=True);r=self._common(out,tid)
+        if r['status']=='ERROR':return None
+        pa=r['experiment'].get('per_action')
+        if pa is None:return 'the response carried no per_action counts'
+        P='/response/experiment/per_action'
+        for i,x in enumerate(pa):
+            c=x['counts']
+            if c is None:self._c(out,tid,'counts.none',[f'{P}/{i}/action',f'{P}/{i}/counts']);continue
+            self._c(out,tid,'counts.rows',[f'{P}/{i}/action',f'{P}/{i}/counts/family_open_rows',f'{P}/{i}/counts/family_rows'])
+            for j in range(len(c['family_code_rows'])):
+                self._c(out,tid,'counts.code',[f'{P}/{i}/action',f'{P}/{i}/counts/family_code_rows/{j}/rows',f'{P}/{i}/counts/family_code_rows/{j}/value'])
+            self._c(out,tid,'counts.margin',[f'{P}/{i}/counts/margin_rows'])
+        return MODELS_NOTE

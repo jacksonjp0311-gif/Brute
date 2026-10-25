@@ -12,8 +12,9 @@ HELP='''commands:
   vs                        version space size (surviving explanations)
   retractions               what Brute withdrew and why
   scope                     declared family, attestation, residual alarm
-  split                     which action best splits hypotheses (UNSUPPORTED under brute.api/1.1)
-  models                    which surviving models disagree (UNSUPPORTED: API exposes counts only)
+  split [default=a]         which action Brute would test next (read-only `experiment` op, brute.api/1.2;
+                            default = your planned action, used on a tie). UNSUPPORTED under --api 1.1
+  models [default=a]        how many surviving rows admit each reading per action (counts, not identities)
   retry k=5                 replay evidence under a new state bound
   requests | decline qN     Brute's pending requests to you | say you cannot satisfy one
   raw tNNNN-...             print a stored trace;  help;  quit'''
@@ -48,10 +49,13 @@ def parse(line):
     if m:return 'predict',{'action':m[2],'channel':m[1]}
     m=re.search(r'predict\b.*\bafter (?:action )?([ab])\b',s)
     if m:return 'predict',{'action':m[1]}
-    if re.search(r'\b(which|what) (surviving )?models\b',s) or w[0]=='models':return 'models',{}
+    d=[t[8:] for t in w[1:] if t.startswith('default=')]
+    if d and d[0] not in ACTIONS:return 'unknown',{}
+    dk={'default_action':d[0]} if d else {}
+    if re.search(r'\b(which|what) (surviving )?models\b',s) or w[0]=='models':return 'models',dk
     if w[0]=='why' or s.startswith('why '):return 'why',{}
     if w[0] in ('vs','version-space','version_space') or 'version space' in s:return 'version_space',{}
     if w[0]=='retractions' or 'retract' in s:return 'retractions',{}
     if w[0]=='scope' or 'scope' in s:return 'scope',{}
-    if w[0]=='split' or 'best action' in s or 'which action' in s or 'split' in s:return 'split',{}
+    if w[0]=='split' or 'best action' in s or 'which action' in s or 'split' in s:return 'split',dk
     return 'unknown',{}

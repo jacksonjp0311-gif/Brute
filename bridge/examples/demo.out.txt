@@ -1,205 +1,260 @@
 op> init x=0 y=0 attest=deterministic-moore<=4/stationary
-[ANSWERED] init  traces=t0001-9dd3410ea0
-  - Brute returned ACKNOWLEDGED for op initialize.  [Exact] <t0001-9dd3410ea0>
-  - Recorded; 1 observations so far.  [Exact] <t0001-9dd3410ea0>
+[ANSWERED] init  traces=t0001-da27962984
+  - Brute returned ACKNOWLEDGED for op initialize.  [Exact] <t0001-da27962984>
+  - Recorded; 1 observations so far.  [Exact] <t0001-da27962984>
 op> predict a x
-[ANSWERED] predict  traces=t0002-734b826ae3
-  - Brute returned POSSIBLE_SET for op predict.  [Exact] <t0002-734b826ae3>
-  - After action a the next reading is one of: {x=0, y=0}; {x=0, y=1}; {x=1, y=0}; {x=1, y=1} (count 4).  [Exact] <t0002-734b826ae3>
-  - Across those readings, channel x takes: 0, 1.  [Exact] <t0002-734b826ae3>
-  - Forecast probability 0.6632 for x=0, y=0 (source v090).  [Inferred] <t0002-734b826ae3>
-  - Forecast probability 0.1123 for x=0, y=1 (source v090).  [Inferred] <t0002-734b826ae3>
-  - Forecast probability 0.1123 for x=1, y=0 (source v090).  [Inferred] <t0002-734b826ae3>
-  - Forecast probability 0.1123 for x=1, y=1 (source v090).  [Inferred] <t0002-734b826ae3>
+[ANSWERED] predict  traces=t0002-d57f7d8f66
+  - Brute returned POSSIBLE_SET for op predict.  [Exact] <t0002-d57f7d8f66>
+  - After action a the next reading is one of: {x=0, y=0}; {x=0, y=1}; {x=1, y=0}; {x=1, y=1} (count 4).  [Exact] <t0002-d57f7d8f66>
+  - Across those readings, channel x takes: 0, 1.  [Exact] <t0002-d57f7d8f66>
+  - Forecast probability 0.6632 for x=0, y=0 (source v090).  [Inferred] <t0002-d57f7d8f66>
+  - Forecast probability 0.1123 for x=0, y=1 (source v090).  [Inferred] <t0002-d57f7d8f66>
+  - Forecast probability 0.1123 for x=1, y=0 (source v090).  [Inferred] <t0002-d57f7d8f66>
+  - Forecast probability 0.1123 for x=1, y=1 (source v090).  [Inferred] <t0002-d57f7d8f66>
 op> observe a x=0 y=0
-[ANSWERED] observe  traces=t0003-2f2431f76d
-  - Brute returned ACKNOWLEDGED for op observe.  [Exact] <t0003-2f2431f76d>
-  - Recorded; 2 observations so far.  [Exact] <t0003-2f2431f76d>
+[ANSWERED] observe  traces=t0003-edb68add93
+  - Brute returned ACKNOWLEDGED for op observe.  [Exact] <t0003-edb68add93>
+  - Recorded; 2 observations so far.  [Exact] <t0003-edb68add93>
 op> predict a x
-[ANSWERED] predict  traces=t0004-1b6e8500d1
-  - Brute returned POSSIBLE_SET for op predict.  [Exact] <t0004-1b6e8500d1>
-  - After action a the next reading is one of: {x=0, y=0}; {x=0, y=1}; {x=1, y=0}; {x=1, y=1} (count 4).  [Exact] <t0004-1b6e8500d1>
-  - Across those readings, channel x takes: 0, 1.  [Exact] <t0004-1b6e8500d1>
-  - Forecast probability 0.9085 for x=0, y=0 (source v090).  [Inferred] <t0004-1b6e8500d1>
-  - Forecast probability 0.0305 for x=0, y=1 (source v090).  [Inferred] <t0004-1b6e8500d1>
-  - Forecast probability 0.0305 for x=1, y=0 (source v090).  [Inferred] <t0004-1b6e8500d1>
-  - Forecast probability 0.0305 for x=1, y=1 (source v090).  [Inferred] <t0004-1b6e8500d1>
+[ANSWERED] predict  traces=t0004-e347811203
+  - Brute returned POSSIBLE_SET for op predict.  [Exact] <t0004-e347811203>
+  - After action a the next reading is one of: {x=0, y=0}; {x=0, y=1}; {x=1, y=0}; {x=1, y=1} (count 4).  [Exact] <t0004-e347811203>
+  - Across those readings, channel x takes: 0, 1.  [Exact] <t0004-e347811203>
+  - Forecast probability 0.9085 for x=0, y=0 (source v090).  [Inferred] <t0004-e347811203>
+  - Forecast probability 0.0305 for x=0, y=1 (source v090).  [Inferred] <t0004-e347811203>
+  - Forecast probability 0.0305 for x=1, y=0 (source v090).  [Inferred] <t0004-e347811203>
+  - Forecast probability 0.0305 for x=1, y=1 (source v090).  [Inferred] <t0004-e347811203>
 op> observe a x=1 y=0
-[ANSWERED] observe  traces=t0005-19834e9f97
-  - Brute returned ACKNOWLEDGED for op observe.  [Exact] <t0005-19834e9f97>
-  - Recorded; 3 observations so far.  [Exact] <t0005-19834e9f97>
+[ANSWERED] observe  traces=t0005-285e8cab1f
+  - Brute returned ACKNOWLEDGED for op observe.  [Exact] <t0005-285e8cab1f>
+  - Recorded; 3 observations so far.  [Exact] <t0005-285e8cab1f>
 op> predict a x
-[ANSWERED] predict  traces=t0006-69b500ecff
-  - Brute returned POSSIBLE_SET for op predict.  [Exact] <t0006-69b500ecff>
-  - After action a the next reading is one of: {x=0, y=0}; {x=0, y=1}; {x=1, y=0}; {x=1, y=1} (count 4).  [Exact] <t0006-69b500ecff>
-  - Across those readings, channel x takes: 0, 1.  [Exact] <t0006-69b500ecff>
-  - Forecast probability 0.6257 for x=0, y=0 (source v090).  [Inferred] <t0006-69b500ecff>
-  - Forecast probability 0.0246 for x=0, y=1 (source v090).  [Inferred] <t0006-69b500ecff>
-  - Forecast probability 0.3251 for x=1, y=0 (source v090).  [Inferred] <t0006-69b500ecff>
-  - Forecast probability 0.0246 for x=1, y=1 (source v090).  [Inferred] <t0006-69b500ecff>
+[ANSWERED] predict  traces=t0006-fcb7c1d739
+  - Brute returned POSSIBLE_SET for op predict.  [Exact] <t0006-fcb7c1d739>
+  - After action a the next reading is one of: {x=0, y=0}; {x=0, y=1}; {x=1, y=0}; {x=1, y=1} (count 4).  [Exact] <t0006-fcb7c1d739>
+  - Across those readings, channel x takes: 0, 1.  [Exact] <t0006-fcb7c1d739>
+  - Forecast probability 0.6257 for x=0, y=0 (source v090).  [Inferred] <t0006-fcb7c1d739>
+  - Forecast probability 0.0246 for x=0, y=1 (source v090).  [Inferred] <t0006-fcb7c1d739>
+  - Forecast probability 0.3251 for x=1, y=0 (source v090).  [Inferred] <t0006-fcb7c1d739>
+  - Forecast probability 0.0246 for x=1, y=1 (source v090).  [Inferred] <t0006-fcb7c1d739>
 op> observe a x=0 y=0
-[ANSWERED] observe  traces=t0007-0c7edb3de6
-  - Brute returned ACKNOWLEDGED for op observe.  [Exact] <t0007-0c7edb3de6>
-  - Recorded; 4 observations so far.  [Exact] <t0007-0c7edb3de6>
+[ANSWERED] observe  traces=t0007-7d1c9c0d5e
+  - Brute returned ACKNOWLEDGED for op observe.  [Exact] <t0007-7d1c9c0d5e>
+  - Recorded; 4 observations so far.  [Exact] <t0007-7d1c9c0d5e>
 op> predict a x
-[ANSWERED] predict  traces=t0008-4588e9a80b
-  - Brute returned POSSIBLE_SET for op predict.  [Exact] <t0008-4588e9a80b>
-  - After action a the next reading is one of: {x=0, y=0}; {x=1, y=0} (count 2).  [Exact] <t0008-4588e9a80b>
-  - Across those readings, channel x takes: 0, 1.  [Exact] <t0008-4588e9a80b>
-  - Forecast probability 0.4950 for x=0, y=0 (source v090).  [Inferred] <t0008-4588e9a80b>
-  - Forecast probability 0.0050 for x=0, y=1 (source v090).  [Inferred] <t0008-4588e9a80b>
-  - Forecast probability 0.4950 for x=1, y=0 (source v090).  [Inferred] <t0008-4588e9a80b>
-  - Forecast probability 0.0050 for x=1, y=1 (source v090).  [Inferred] <t0008-4588e9a80b>
+[ANSWERED] predict  traces=t0008-3f7443ccdf
+  - Brute returned POSSIBLE_SET for op predict.  [Exact] <t0008-3f7443ccdf>
+  - After action a the next reading is one of: {x=0, y=0}; {x=1, y=0} (count 2).  [Exact] <t0008-3f7443ccdf>
+  - Across those readings, channel x takes: 0, 1.  [Exact] <t0008-3f7443ccdf>
+  - Forecast probability 0.4950 for x=0, y=0 (source v090).  [Inferred] <t0008-3f7443ccdf>
+  - Forecast probability 0.0050 for x=0, y=1 (source v090).  [Inferred] <t0008-3f7443ccdf>
+  - Forecast probability 0.4950 for x=1, y=0 (source v090).  [Inferred] <t0008-3f7443ccdf>
+  - Forecast probability 0.0050 for x=1, y=1 (source v090).  [Inferred] <t0008-3f7443ccdf>
 op> observe a x=1 y=0
-[ANSWERED] observe  traces=t0009-bf57378baa
-  - Brute returned ACKNOWLEDGED for op observe.  [Exact] <t0009-bf57378baa>
-  - Recorded; 5 observations so far.  [Exact] <t0009-bf57378baa>
+[ANSWERED] observe  traces=t0009-5f33bd89c3
+  - Brute returned ACKNOWLEDGED for op observe.  [Exact] <t0009-5f33bd89c3>
+  - Recorded; 5 observations so far.  [Exact] <t0009-5f33bd89c3>
 op> predict a x
-[ANSWERED] predict  traces=t0010-0fe3a13f2b
-  - Brute returned ABSTAIN for op predict.  [Exact] <t0010-0fe3a13f2b>
-  - Reason code: MARGIN_DISAGREES.  [Exact] <t0010-0fe3a13f2b>
-  - A model with one more hidden state could produce a different reading; Brute will not certify a single value.  [Exact] <t0010-0fe3a13f2b>
-  - After action a the next reading is one of: {x=0, y=0} (count 1).  [Exact] <t0010-0fe3a13f2b>
-  - Across those readings, channel x takes: 0.  [Exact] <t0010-0fe3a13f2b>
-  - Forecast probability 0.9850 for x=0, y=0 (source v090).  [Inferred] <t0010-0fe3a13f2b>
-  - Forecast probability 0.0050 for x=0, y=1 (source v090).  [Inferred] <t0010-0fe3a13f2b>
-  - Forecast probability 0.0050 for x=1, y=0 (source v090).  [Inferred] <t0010-0fe3a13f2b>
-  - Forecast probability 0.0050 for x=1, y=1 (source v090).  [Inferred] <t0010-0fe3a13f2b>
+[ANSWERED] predict  traces=t0010-f22c3da445
+  - Brute returned ABSTAIN for op predict.  [Exact] <t0010-f22c3da445>
+  - Reason code: MARGIN_DISAGREES.  [Exact] <t0010-f22c3da445>
+  - A model with one more hidden state could produce a different reading; Brute will not certify a single value.  [Exact] <t0010-f22c3da445>
+  - After action a the next reading is one of: {x=0, y=0} (count 1).  [Exact] <t0010-f22c3da445>
+  - Across those readings, channel x takes: 0.  [Exact] <t0010-f22c3da445>
+  - Forecast probability 0.9850 for x=0, y=0 (source v090).  [Inferred] <t0010-f22c3da445>
+  - Forecast probability 0.0050 for x=0, y=1 (source v090).  [Inferred] <t0010-f22c3da445>
+  - Forecast probability 0.0050 for x=1, y=0 (source v090).  [Inferred] <t0010-f22c3da445>
+  - Forecast probability 0.0050 for x=1, y=1 (source v090).  [Inferred] <t0010-f22c3da445>
 op> observe a x=0 y=0
-[ANSWERED] observe  traces=t0011-4a03e99d28
-  - Brute returned ACKNOWLEDGED for op observe.  [Exact] <t0011-4a03e99d28>
-  - Recorded; 6 observations so far.  [Exact] <t0011-4a03e99d28>
+[ANSWERED] observe  traces=t0011-708b2ca25a
+  - Brute returned ACKNOWLEDGED for op observe.  [Exact] <t0011-708b2ca25a>
+  - Recorded; 6 observations so far.  [Exact] <t0011-708b2ca25a>
 op> predict a x
-[ANSWERED] predict  traces=t0012-aed5a6eea1
-  - Brute returned ABSTAIN for op predict.  [Exact] <t0012-aed5a6eea1>
-  - Reason code: MARGIN_DISAGREES.  [Exact] <t0012-aed5a6eea1>
-  - A model with one more hidden state could produce a different reading; Brute will not certify a single value.  [Exact] <t0012-aed5a6eea1>
-  - After action a the next reading is one of: {x=1, y=0} (count 1).  [Exact] <t0012-aed5a6eea1>
-  - Across those readings, channel x takes: 1.  [Exact] <t0012-aed5a6eea1>
-  - Forecast probability 0.0050 for x=0, y=0 (source v090).  [Inferred] <t0012-aed5a6eea1>
-  - Forecast probability 0.0050 for x=0, y=1 (source v090).  [Inferred] <t0012-aed5a6eea1>
-  - Forecast probability 0.9850 for x=1, y=0 (source v090).  [Inferred] <t0012-aed5a6eea1>
-  - Forecast probability 0.0050 for x=1, y=1 (source v090).  [Inferred] <t0012-aed5a6eea1>
+[ANSWERED] predict  traces=t0012-5cc7add221
+  - Brute returned ABSTAIN for op predict.  [Exact] <t0012-5cc7add221>
+  - Reason code: MARGIN_DISAGREES.  [Exact] <t0012-5cc7add221>
+  - A model with one more hidden state could produce a different reading; Brute will not certify a single value.  [Exact] <t0012-5cc7add221>
+  - After action a the next reading is one of: {x=1, y=0} (count 1).  [Exact] <t0012-5cc7add221>
+  - Across those readings, channel x takes: 1.  [Exact] <t0012-5cc7add221>
+  - Forecast probability 0.0050 for x=0, y=0 (source v090).  [Inferred] <t0012-5cc7add221>
+  - Forecast probability 0.0050 for x=0, y=1 (source v090).  [Inferred] <t0012-5cc7add221>
+  - Forecast probability 0.9850 for x=1, y=0 (source v090).  [Inferred] <t0012-5cc7add221>
+  - Forecast probability 0.0050 for x=1, y=1 (source v090).  [Inferred] <t0012-5cc7add221>
 op> observe a x=1 y=0
-[ANSWERED] observe  traces=t0013-0734fb0eb6
-  - Brute returned ACKNOWLEDGED for op observe.  [Exact] <t0013-0734fb0eb6>
-  - Recorded; 7 observations so far.  [Exact] <t0013-0734fb0eb6>
+[ANSWERED] observe  traces=t0013-522159f6cb
+  - Brute returned ACKNOWLEDGED for op observe.  [Exact] <t0013-522159f6cb>
+  - Recorded; 7 observations so far.  [Exact] <t0013-522159f6cb>
 op> why
-[ANSWERED] why  traces=t0012-aed5a6eea1
-  - Brute returned ABSTAIN for op predict.  [Exact] <t0012-aed5a6eea1>
-  - Reason code: MARGIN_DISAGREES.  [Exact] <t0012-aed5a6eea1>
-  - A model with one more hidden state could produce a different reading; Brute will not certify a single value.  [Exact] <t0012-aed5a6eea1>
-  - After action a the next reading is one of: {x=1, y=0} (count 1).  [Exact] <t0012-aed5a6eea1>
-  - A 5-state check leaves 2 possible readings.  [Exact] <t0012-aed5a6eea1>
-  - 2 surviving version-space rows (partial machines) in family deterministic-moore<=4/stationary after 6 observations.  [Exact] <t0012-aed5a6eea1>
-  - Every survivor uses all hidden states: false.  [Exact] <t0012-aed5a6eea1>
+[ANSWERED] why  traces=t0012-5cc7add221
+  - Brute returned ABSTAIN for op predict.  [Exact] <t0012-5cc7add221>
+  - Reason code: MARGIN_DISAGREES.  [Exact] <t0012-5cc7add221>
+  - A model with one more hidden state could produce a different reading; Brute will not certify a single value.  [Exact] <t0012-5cc7add221>
+  - After action a the next reading is one of: {x=1, y=0} (count 1).  [Exact] <t0012-5cc7add221>
+  - A 5-state check leaves 2 possible readings.  [Exact] <t0012-5cc7add221>
+  - 2 surviving version-space rows (partial machines) in family deterministic-moore<=4/stationary after 6 observations.  [Exact] <t0012-5cc7add221>
+  - Every survivor uses all hidden states: false.  [Exact] <t0012-5cc7add221>
 op> vs
-[ANSWERED] version_space  traces=t0014-556b7224f6
-  - 2 surviving version-space rows (partial machines) in family deterministic-moore<=4/stationary after 7 observations.  [Exact] <t0014-556b7224f6>
-  - Every survivor uses all hidden states: false.  [Exact] <t0014-556b7224f6>
+[ANSWERED] version_space  traces=t0014-3b7992ebae
+  - 2 surviving version-space rows (partial machines) in family deterministic-moore<=4/stationary after 7 observations.  [Exact] <t0014-3b7992ebae>
+  - Every survivor uses all hidden states: false.  [Exact] <t0014-3b7992ebae>
+op> split
+[ANSWERED] split  traces=t0015-429250ce11
+  - Brute returned ACKNOWLEDGED for op experiment.  [Exact] <t0015-429250ce11>
+  - Brute proposes action a (split score 1.0; rule: LU: one-step certifiability lookahead, uniform over the <=4 family support).  [Exact] <t0015-429250ce11>
+  - Split score for action a: 1.0.  [Exact] <t0015-429250ce11>
+  - Split score for action b: 0.0.  [Exact] <t0015-429250ce11>
+  - Scores tied: false; tie-break: default_action (default action given: a).  [Exact] <t0015-429250ce11>
+  >> q1 REQUEST_ACTION: Brute asks for action a (split score 1.0; tied false).  [Exact] <t0015-429250ce11>
+op> split default=b
+[ANSWERED] split  traces=t0016-5fbe4beb0c
+  - Brute returned ACKNOWLEDGED for op experiment.  [Exact] <t0016-5fbe4beb0c>
+  - Brute proposes action a (split score 1.0; rule: LU: one-step certifiability lookahead, uniform over the <=4 family support).  [Exact] <t0016-5fbe4beb0c>
+  - Split score for action a: 1.0.  [Exact] <t0016-5fbe4beb0c>
+  - Split score for action b: 0.0.  [Exact] <t0016-5fbe4beb0c>
+  - Scores tied: false; tie-break: default_action (default action given: b).  [Exact] <t0016-5fbe4beb0c>
+  >> q2 REQUEST_ACTION: Brute asks for action a (split score 1.0; tied false).  [Exact] <t0016-5fbe4beb0c>
+  << q1 superseded (a newer request replaced it)
+op> models
+[ANSWERED] models  traces=t0017-4b427f7c68
+  - Brute returned ACKNOWLEDGED for op experiment.  [Exact] <t0017-4b427f7c68>
+  - After action a: 0 of 2 surviving rows leave that transition open.  [Exact] <t0017-4b427f7c68>
+  - After action a, 2 surviving rows admit the reading x=0, y=0.  [Exact] <t0017-4b427f7c68>
+  - After action a, 0 surviving rows admit the reading x=0, y=1.  [Exact] <t0017-4b427f7c68>
+  - After action a, 0 surviving rows admit the reading x=1, y=0.  [Exact] <t0017-4b427f7c68>
+  - After action a, 0 surviving rows admit the reading x=1, y=1.  [Exact] <t0017-4b427f7c68>
+  - Margin-check rows: 4.  [Exact] <t0017-4b427f7c68>
+  - After action b: 2 of 2 surviving rows leave that transition open.  [Exact] <t0017-4b427f7c68>
+  - After action b, 2 surviving rows admit the reading x=0, y=0.  [Exact] <t0017-4b427f7c68>
+  - After action b, 1 surviving rows admit the reading x=0, y=1.  [Exact] <t0017-4b427f7c68>
+  - After action b, 2 surviving rows admit the reading x=1, y=0.  [Exact] <t0017-4b427f7c68>
+  - After action b, 1 surviving rows admit the reading x=1, y=1.  [Exact] <t0017-4b427f7c68>
+  - Margin-check rows: 4.  [Exact] <t0017-4b427f7c68>
+  (note: Counts only: the API exposes how many surviving rows admit each reading, not which machines they are.)
+  >> q3 REQUEST_ACTION: Brute asks for action a (split score 1.0; tied false).  [Exact] <t0017-4b427f7c68>
+  << q2 superseded (a newer request replaced it)
 op> predict a
-[ANSWERED] predict  traces=t0015-c2b9fbbc66
-  - Brute returned CERTIFIED for op predict.  [Exact] <t0015-c2b9fbbc66>
-  - Certificate (public, conditional on family deterministic-moore<=4/stationary): after action a the next reading is x=0, y=0.  [Exact] <t0015-c2b9fbbc66>
-  - Forecast probability 0.9850 for x=0, y=0 (source v090).  [Inferred] <t0015-c2b9fbbc66>
-  - Forecast probability 0.0050 for x=0, y=1 (source v090).  [Inferred] <t0015-c2b9fbbc66>
-  - Forecast probability 0.0050 for x=1, y=0 (source v090).  [Inferred] <t0015-c2b9fbbc66>
-  - Forecast probability 0.0050 for x=1, y=1 (source v090).  [Inferred] <t0015-c2b9fbbc66>
+[ANSWERED] predict  traces=t0018-3dd68322d1
+  - Brute returned CERTIFIED for op predict.  [Exact] <t0018-3dd68322d1>
+  - Certificate (public, conditional on family deterministic-moore<=4/stationary): after action a the next reading is x=0, y=0.  [Exact] <t0018-3dd68322d1>
+  - Forecast probability 0.9850 for x=0, y=0 (source v090).  [Inferred] <t0018-3dd68322d1>
+  - Forecast probability 0.0050 for x=0, y=1 (source v090).  [Inferred] <t0018-3dd68322d1>
+  - Forecast probability 0.0050 for x=1, y=0 (source v090).  [Inferred] <t0018-3dd68322d1>
+  - Forecast probability 0.0050 for x=1, y=1 (source v090).  [Inferred] <t0018-3dd68322d1>
 op> observe a x=0 y=-
-[ANSWERED] observe  traces=t0016-18465e761f
-  - Brute returned ACKNOWLEDGED for op observe.  [Exact] <t0016-18465e761f>
-  - Recorded; 8 observations so far.  [Exact] <t0016-18465e761f>
+[ANSWERED] observe  traces=t0019-7d94c3073d
+  - Brute returned ACKNOWLEDGED for op observe.  [Exact] <t0019-7d94c3073d>
+  - Recorded; 8 observations so far.  [Exact] <t0019-7d94c3073d>
+  << q3 satisfied by <t0019-7d94c3073d>
 op> predict a
-[ANSWERED] predict  traces=t0017-7873f4cb92
-  - Brute returned CERTIFIED for op predict.  [Exact] <t0017-7873f4cb92>
-  - Certificate (public, conditional on family deterministic-moore<=4/stationary): after action a the next reading is x=1, y=0.  [Exact] <t0017-7873f4cb92>
-  - Forecast probability 0.0050 for x=0, y=0 (source v090).  [Inferred] <t0017-7873f4cb92>
-  - Forecast probability 0.0050 for x=0, y=1 (source v090).  [Inferred] <t0017-7873f4cb92>
-  - Forecast probability 0.9850 for x=1, y=0 (source v090).  [Inferred] <t0017-7873f4cb92>
-  - Forecast probability 0.0050 for x=1, y=1 (source v090).  [Inferred] <t0017-7873f4cb92>
+[ANSWERED] predict  traces=t0020-523f1c0452
+  - Brute returned CERTIFIED for op predict.  [Exact] <t0020-523f1c0452>
+  - Certificate (public, conditional on family deterministic-moore<=4/stationary): after action a the next reading is x=1, y=0.  [Exact] <t0020-523f1c0452>
+  - Forecast probability 0.0050 for x=0, y=0 (source v090).  [Inferred] <t0020-523f1c0452>
+  - Forecast probability 0.0050 for x=0, y=1 (source v090).  [Inferred] <t0020-523f1c0452>
+  - Forecast probability 0.9850 for x=1, y=0 (source v090).  [Inferred] <t0020-523f1c0452>
+  - Forecast probability 0.0050 for x=1, y=1 (source v090).  [Inferred] <t0020-523f1c0452>
 op> observe a x=1 y=-
-[ANSWERED] observe  traces=t0018-bb60e2b34b
-  - Brute returned ACKNOWLEDGED for op observe.  [Exact] <t0018-bb60e2b34b>
-  - Recorded; 9 observations so far.  [Exact] <t0018-bb60e2b34b>
+[ANSWERED] observe  traces=t0021-c392a3bf4e
+  - Brute returned ACKNOWLEDGED for op observe.  [Exact] <t0021-c392a3bf4e>
+  - Recorded; 9 observations so far.  [Exact] <t0021-c392a3bf4e>
 op> predict a
-[ANSWERED] predict  traces=t0019-31a582bc76
-  - Brute returned CERTIFIED for op predict.  [Exact] <t0019-31a582bc76>
-  - Certificate (public, conditional on family deterministic-moore<=4/stationary): after action a the next reading is x=0, y=0.  [Exact] <t0019-31a582bc76>
-  - Forecast probability 0.9850 for x=0, y=0 (source v090).  [Inferred] <t0019-31a582bc76>
-  - Forecast probability 0.0050 for x=0, y=1 (source v090).  [Inferred] <t0019-31a582bc76>
-  - Forecast probability 0.0050 for x=1, y=0 (source v090).  [Inferred] <t0019-31a582bc76>
-  - Forecast probability 0.0050 for x=1, y=1 (source v090).  [Inferred] <t0019-31a582bc76>
+[ANSWERED] predict  traces=t0022-af4723c95d
+  - Brute returned CERTIFIED for op predict.  [Exact] <t0022-af4723c95d>
+  - Certificate (public, conditional on family deterministic-moore<=4/stationary): after action a the next reading is x=0, y=0.  [Exact] <t0022-af4723c95d>
+  - Forecast probability 0.9850 for x=0, y=0 (source v090).  [Inferred] <t0022-af4723c95d>
+  - Forecast probability 0.0050 for x=0, y=1 (source v090).  [Inferred] <t0022-af4723c95d>
+  - Forecast probability 0.0050 for x=1, y=0 (source v090).  [Inferred] <t0022-af4723c95d>
+  - Forecast probability 0.0050 for x=1, y=1 (source v090).  [Inferred] <t0022-af4723c95d>
 op> why
-[ANSWERED] why  traces=t0019-31a582bc76
-  - Brute returned CERTIFIED for op predict.  [Exact] <t0019-31a582bc76>
-  - The last prediction was CERTIFIED; Brute did not withhold a value.  [Exact] <t0019-31a582bc76>
-  - A 5-state check leaves 1 possible readings.  [Exact] <t0019-31a582bc76>
-  - 2 surviving version-space rows (partial machines) in family deterministic-moore<=4/stationary after 9 observations.  [Exact] <t0019-31a582bc76>
-  - Every survivor uses all hidden states: false.  [Exact] <t0019-31a582bc76>
+[ANSWERED] why  traces=t0022-af4723c95d
+  - Brute returned CERTIFIED for op predict.  [Exact] <t0022-af4723c95d>
+  - The last prediction was CERTIFIED; Brute did not withhold a value.  [Exact] <t0022-af4723c95d>
+  - A 5-state check leaves 1 possible readings.  [Exact] <t0022-af4723c95d>
+  - 2 surviving version-space rows (partial machines) in family deterministic-moore<=4/stationary after 9 observations.  [Exact] <t0022-af4723c95d>
+  - Every survivor uses all hidden states: false.  [Exact] <t0022-af4723c95d>
 op> scope
-[ANSWERED] scope  traces=t0020-418442a880
-  - Declared family: deterministic-moore<=4/stationary; margin check at 5 states.  [Exact] <t0020-418442a880>
-  - Scope attestation id: 94b6e869b16f15f7.  [Exact] <t0020-418442a880>
-  - Legacy v0.90 family still consistent: true.  [Exact] <t0020-418442a880>
-  - Windowed surprise 0.640419469466 (window 8) against threshold 1.433141502274; alarm false.  [Exact] <t0020-418442a880>
+[ANSWERED] scope  traces=t0023-77b84d157b
+  - Declared family: deterministic-moore<=4/stationary; margin check at 5 states.  [Exact] <t0023-77b84d157b>
+  - Scope attestation id: 94b6e869b16f15f7.  [Exact] <t0023-77b84d157b>
+  - Legacy v0.90 family still consistent: true.  [Exact] <t0023-77b84d157b>
+  - Windowed surprise 0.640419469466 (window 8) against threshold 1.433141502274; alarm false.  [Exact] <t0023-77b84d157b>
 op> what do you predict for sensor x after action a
-[ANSWERED] predict  traces=t0021-2e991ab7d9
-  - Brute returned CERTIFIED for op predict.  [Exact] <t0021-2e991ab7d9>
-  - Certificate (public, conditional on family deterministic-moore<=4/stationary): after action a the next reading is x=0, y=0.  [Exact] <t0021-2e991ab7d9>
-  - Channel x is certified as 0.  [Exact] <t0021-2e991ab7d9>
-  - Forecast probability 0.9850 for x=0, y=0 (source v090).  [Inferred] <t0021-2e991ab7d9>
-  - Forecast probability 0.0050 for x=0, y=1 (source v090).  [Inferred] <t0021-2e991ab7d9>
-  - Forecast probability 0.0050 for x=1, y=0 (source v090).  [Inferred] <t0021-2e991ab7d9>
-  - Forecast probability 0.0050 for x=1, y=1 (source v090).  [Inferred] <t0021-2e991ab7d9>
+[ANSWERED] predict  traces=t0024-3475da873e
+  - Brute returned CERTIFIED for op predict.  [Exact] <t0024-3475da873e>
+  - Certificate (public, conditional on family deterministic-moore<=4/stationary): after action a the next reading is x=0, y=0.  [Exact] <t0024-3475da873e>
+  - Channel x is certified as 0.  [Exact] <t0024-3475da873e>
+  - Forecast probability 0.9850 for x=0, y=0 (source v090).  [Inferred] <t0024-3475da873e>
+  - Forecast probability 0.0050 for x=0, y=1 (source v090).  [Inferred] <t0024-3475da873e>
+  - Forecast probability 0.0050 for x=1, y=0 (source v090).  [Inferred] <t0024-3475da873e>
+  - Forecast probability 0.0050 for x=1, y=1 (source v090).  [Inferred] <t0024-3475da873e>
 op> observe a x=1 y=1
-[ANSWERED] observe  traces=t0022-195bb773a5
-  - Brute returned OUT_OF_FAMILY for op observe.  [Exact] <t0022-195bb773a5>
-  - Reason code: FAMILY_CONTRADICTED.  [Exact] <t0022-195bb773a5>
-  - No machine in the declared family is consistent with the evidence; Brute will not predict.  [Exact] <t0022-195bb773a5>
-  - Recorded; 10 observations so far.  [Exact] <t0022-195bb773a5>
-  >> q1 CONTRADICTION_NOTICE: Brute returned OUT_OF_FAMILY/FAMILY_CONTRADICTED; 4 issued certificate(s) withdrawn.  [Exact] <t0022-195bb773a5>
-  >> q2 SCOPE_ALERT: legacy v0.90 family is now false (it was true).  [Exact] <t0022-195bb773a5>
-  >> q3 SCOPE_ALERT: scope attestation 94b6e869b16f15f7 is withdrawn (now null).  [Exact] <t0022-195bb773a5>
+[ANSWERED] observe  traces=t0025-ddc4d34ec2
+  - Brute returned OUT_OF_FAMILY for op observe.  [Exact] <t0025-ddc4d34ec2>
+  - Reason code: FAMILY_CONTRADICTED.  [Exact] <t0025-ddc4d34ec2>
+  - No machine in the declared family is consistent with the evidence; Brute will not predict.  [Exact] <t0025-ddc4d34ec2>
+  - Recorded; 10 observations so far.  [Exact] <t0025-ddc4d34ec2>
+  >> q4 CONTRADICTION_NOTICE: Brute returned OUT_OF_FAMILY/FAMILY_CONTRADICTED; 3 issued certificate(s) withdrawn.  [Exact] <t0025-ddc4d34ec2>
+  >> q5 SCOPE_ALERT: legacy v0.90 family is now false (it was true).  [Exact] <t0025-ddc4d34ec2>
+  >> q6 SCOPE_ALERT: scope attestation 94b6e869b16f15f7 is withdrawn (now null).  [Exact] <t0025-ddc4d34ec2>
 op> retractions
-[ANSWERED] retractions  traces=t0023-e33a915a10
-  - Retractions on record: 4.  [Exact] <t0023-e33a915a10>
-  - Withdrawn certificate for step 7: it said x=0, y=0; reason unverifiable_masked.  [Rejected] <t0023-e33a915a10>
-  - Withdrawn certificate for step 8: it said x=1, y=0; reason unverifiable_masked.  [Rejected] <t0023-e33a915a10>
-  - Withdrawn certificate for step 9: it said x=0, y=0; reason falsified_by_observation.  [Rejected] <t0023-e33a915a10>
-  - Withdrawn certificate for step 9: it said x=0, y=0; reason falsified_by_observation.  [Rejected] <t0023-e33a915a10>
+[ANSWERED] retractions  traces=t0026-50a098662c
+  - Retractions on record: 3.  [Exact] <t0026-50a098662c>
+  - Withdrawn certificate for step 7: it said x=0, y=0; reason unverifiable_masked.  [Rejected] <t0026-50a098662c>
+  - Withdrawn certificate for step 8: it said x=1, y=0; reason unverifiable_masked.  [Rejected] <t0026-50a098662c>
+  - Withdrawn certificate for step 9: it said x=0, y=0; reason falsified_by_observation.  [Rejected] <t0026-50a098662c>
 op> scope
-[ANSWERED] scope  traces=t0024-13f8fdc03f
-  - Declared family: deterministic-moore<=4/stationary; margin check at 5 states.  [Exact] <t0024-13f8fdc03f>
-  - Scope attestation id: null.  [Exact] <t0024-13f8fdc03f>
-  - Legacy v0.90 family still consistent: false.  [Exact] <t0024-13f8fdc03f>
-  - Windowed surprise 1.251380588402 (window 8) against threshold 1.433141502274; alarm false.  [Exact] <t0024-13f8fdc03f>
+[ANSWERED] scope  traces=t0027-d46bf36e81
+  - Declared family: deterministic-moore<=4/stationary; margin check at 5 states.  [Exact] <t0027-d46bf36e81>
+  - Scope attestation id: null.  [Exact] <t0027-d46bf36e81>
+  - Legacy v0.90 family still consistent: false.  [Exact] <t0027-d46bf36e81>
+  - Windowed surprise 1.251380588402 (window 8) against threshold 1.433141502274; alarm false.  [Exact] <t0027-d46bf36e81>
 op> predict a
-[ANSWERED] predict  traces=t0025-dbaceffdfb
-  - Brute returned OUT_OF_FAMILY for op predict.  [Exact] <t0025-dbaceffdfb>
-  - Reason code: FAMILY_CONTRADICTED.  [Exact] <t0025-dbaceffdfb>
-  - No machine in the declared family is consistent with the evidence; Brute will not predict.  [Exact] <t0025-dbaceffdfb>
-  - Forecast probability 0.2500 for x=0, y=0 (source suffix1).  [Inferred] <t0025-dbaceffdfb>
-  - Forecast probability 0.2500 for x=0, y=1 (source suffix1).  [Inferred] <t0025-dbaceffdfb>
-  - Forecast probability 0.2500 for x=1, y=0 (source suffix1).  [Inferred] <t0025-dbaceffdfb>
-  - Forecast probability 0.2500 for x=1, y=1 (source suffix1).  [Inferred] <t0025-dbaceffdfb>
+[ANSWERED] predict  traces=t0028-3f93e89a00
+  - Brute returned OUT_OF_FAMILY for op predict.  [Exact] <t0028-3f93e89a00>
+  - Reason code: FAMILY_CONTRADICTED.  [Exact] <t0028-3f93e89a00>
+  - No machine in the declared family is consistent with the evidence; Brute will not predict.  [Exact] <t0028-3f93e89a00>
+  - Forecast probability 0.2500 for x=0, y=0 (source window_n4).  [Inferred] <t0028-3f93e89a00>
+  - Forecast probability 0.2500 for x=0, y=1 (source window_n4).  [Inferred] <t0028-3f93e89a00>
+  - Forecast probability 0.2500 for x=1, y=0 (source window_n4).  [Inferred] <t0028-3f93e89a00>
+  - Forecast probability 0.2500 for x=1, y=1 (source window_n4).  [Inferred] <t0028-3f93e89a00>
 op> why
-[ANSWERED] why  traces=t0025-dbaceffdfb
-  - Brute returned OUT_OF_FAMILY for op predict.  [Exact] <t0025-dbaceffdfb>
-  - Reason code: FAMILY_CONTRADICTED.  [Exact] <t0025-dbaceffdfb>
-  - No machine in the declared family is consistent with the evidence; Brute will not predict.  [Exact] <t0025-dbaceffdfb>
-  - 0 surviving version-space rows (partial machines) in family deterministic-moore<=4/stationary after 10 observations.  [Exact] <t0025-dbaceffdfb>
+[ANSWERED] why  traces=t0028-3f93e89a00
+  - Brute returned OUT_OF_FAMILY for op predict.  [Exact] <t0028-3f93e89a00>
+  - Reason code: FAMILY_CONTRADICTED.  [Exact] <t0028-3f93e89a00>
+  - No machine in the declared family is consistent with the evidence; Brute will not predict.  [Exact] <t0028-3f93e89a00>
+  - 0 surviving version-space rows (partial machines) in family deterministic-moore<=4/stationary after 10 observations.  [Exact] <t0028-3f93e89a00>
 op> which action would best split your hypotheses?
-[UNSUPPORTED] split  traces=-
-  (note: brute.api/1.1 exposes no action-selection field; Brute cannot say which action best splits its hypotheses.)
+[ANSWERED] split  traces=t0029-9db0f240e7
+  - Brute returned ACKNOWLEDGED for op experiment.  [Exact] <t0029-9db0f240e7>
+  - Brute proposes action a (split score 0.0; rule: LU: one-step certifiability lookahead, uniform over the <=4 family support).  [Exact] <t0029-9db0f240e7>
+  - Split score for action a: 0.0.  [Exact] <t0029-9db0f240e7>
+  - Split score for action b: 0.0.  [Exact] <t0029-9db0f240e7>
+  - Scores tied: true; tie-break: default_action (default action given: a).  [Exact] <t0029-9db0f240e7>
 op> which models disagree?
-[UNSUPPORTED] models  traces=-
-  (note: brute.api/1.1 exposes counts of surviving explanations, not their identities; Brute cannot list which models disagree.)
+[ANSWERED] models  traces=t0030-6c0f158304
+  - Brute returned ACKNOWLEDGED for op experiment.  [Exact] <t0030-6c0f158304>
+  - After action a Brute returned no counts (null).  [Exact] <t0030-6c0f158304>
+  - After action b Brute returned no counts (null).  [Exact] <t0030-6c0f158304>
+  (note: Counts only: the API exposes how many surviving rows admit each reading, not which machines they are.)
 op> are you conscious?
 [UNSUPPORTED] unknown  traces=-
   (note: No bridge intent matches this question; nothing was asked of Brute.)
 op> requests
-  q1 CONTRADICTION_NOTICE: Brute returned OUT_OF_FAMILY/FAMILY_CONTRADICTED; 4 issued certificate(s) withdrawn.
-  q2 SCOPE_ALERT: legacy v0.90 family is now false (it was true).
-  q3 SCOPE_ALERT: scope attestation 94b6e869b16f15f7 is withdrawn (now null).
+  q4 CONTRADICTION_NOTICE: Brute returned OUT_OF_FAMILY/FAMILY_CONTRADICTED; 3 issued certificate(s) withdrawn.
+  q5 SCOPE_ALERT: legacy v0.90 family is now false (it was true).
+  q6 SCOPE_ALERT: scope attestation 94b6e869b16f15f7 is withdrawn (now null).
 op> decline q1
-[ACKNOWLEDGED] decline  traces=-
+[NO_DATA] decline  traces=-
+  (note: no pending request with that id)
+op> models default=b
+[ANSWERED] models  traces=t0031-0970d6b4ed
+  - Brute returned ACKNOWLEDGED for op experiment.  [Exact] <t0031-0970d6b4ed>
+  - After action a Brute returned no counts (null).  [Exact] <t0031-0970d6b4ed>
+  - After action b Brute returned no counts (null).  [Exact] <t0031-0970d6b4ed>
+  (note: Counts only: the API exposes how many surviving rows admit each reading, not which machines they are.)
+op> scope
+[ANSWERED] scope  traces=t0032-cc1d68a795
+  - Declared family: deterministic-moore<=4/stationary; margin check at 5 states.  [Exact] <t0032-cc1d68a795>
+  - Scope attestation id: null.  [Exact] <t0032-cc1d68a795>
+  - Legacy v0.90 family still consistent: false.  [Exact] <t0032-cc1d68a795>
+  - Windowed surprise 1.251380588402 (window 8) against threshold 1.433141502274; alarm false.  [Exact] <t0032-cc1d68a795>

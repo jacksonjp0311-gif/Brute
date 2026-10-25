@@ -160,3 +160,12 @@ B1–B9 stay in force unchanged. In B9, "main" now means v0.2.0 (31a348e). One e
     recorded.
 - **B8 restated.** The bridge suite must still run in under 30 s. The median wall time per `ask` must be under 50 ms,
   measured over the study-004 cycle3 session. `experiment` latency is reported separately, as core cost.
+
+### v0.2 deviation notes (implementation; B1–B14 are unchanged)
+- **V1. A third resolution state, `superseded`.** It covers a REQUEST_ACTION that is replaced by a newer
+  REQUEST_ACTION before any observe; for example, `split` followed by `models` at the same step. Without it, the
+  older request would stay pending forever. The B6/B12 audit recomputes it like the other two states.
+- **V2. `counts.code` added to B5's single-reading allow-list.** The claim names one reading, but only to say how
+  many surviving rows admit it. That is a count, not a prediction.
+- **V3. Index consistency in the claim checker.** `{i}`/`{j}` pointer indices now have to agree across all slots of a
+  claim, so a claim cannot mix action a's counts with action b's label.

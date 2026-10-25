@@ -2,7 +2,7 @@
 
 Checks B1 (every claim grounded in its cited trace), B2 (UNSUPPORTED => 0 claims, 0 calls),
 B4 (refusal_text verbatim), B5 (no single reading unless CERTIFIED / set / retraction),
-B6 (recomputed triggers reproduce the logged requests exactly).
+B6/B12 (recomputed triggers and resolutions reproduce the log exactly; REQUEST_ACTION == non-tied experiments).
 Usage: python -m bridge.audit TRANSCRIPT.jsonl
 """
 from __future__ import annotations
@@ -11,11 +11,11 @@ from .claims import check_claim,READING,resolve,split_ref
 from .triggers import Triggers
 from .log import read_jsonl,dumps
 
-SINGLE_OK=('cert','cert.channel','retraction','possible','prob','req.observation')
+SINGLE_OK=('cert','cert.channel','retraction','possible','prob','req.observation','counts.code')
 
 
 def audit(rows):
-    v=[];traces={};trig=Triggers();n={'turns':0,'claims':0,'requests':0,'unsupported':0,'request_action':0}
+    v=[];traces={};trig=Triggers();n={'turns':0,'claims':0,'requests':0,'unsupported':0,'request_action':0,'experiments':0,'untied':0,'satisfied':0,'overridden':0,'superseded':0}
     for row in rows:
         if row.get('type')!='turn':continue
         n['turns']+=1;a=row['answer'];new=row['trace_docs'];traces.update(new)
@@ -32,9 +32,14 @@ def audit(rows):
         for t in {split_ref(r)[0] for c in a['claims'] for r in c['field_refs']}:
             rt=traces[t]['response'].get('refusal_text')
             if rt is not None and rt not in [c['text'] for c in a['claims']]:v.append(f"seq {a['seq']}: refusal_text of {t} missing")
-        recomputed=[q for t in new for q in trig.feed(t,traces)]
+        recomputed=[q for t in new for q in trig.feed(t,traces)];res=trig.drain()
         if dumps(recomputed)!=dumps(row['requests']):v.append(f"seq {a['seq']}: requests do not match recomputed triggers")
+        if dumps(res)!=dumps(row.get('resolved',[])):v.append(f"seq {a['seq']}: request resolutions do not match recompute")
+        n['experiments']+=sum(d['request']['op']=='experiment' and d['response']['status']!='ERROR' for d in new.values())
+        n['untied']+=sum(isinstance(d['response'].get('experiment'),dict) and d['response']['experiment'].get('tied') is False for d in new.values())
+        for x in res:n[x['status']]+=1
         n['requests']+=len(row['requests']);n['request_action']+=sum(q['kind']=='REQUEST_ACTION' for q in row['requests'])
+    if n['request_action']!=n['untied']:v.append('B12: REQUEST_ACTION count != non-tied experiment responses')
     return v,n
 
 

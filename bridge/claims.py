@@ -39,12 +39,15 @@ def fill(tid,traces,refs,params=None):
     return text.format(*vals,**params)
 
 
-def pattern_ok(pattern,ptr,params):
+def pattern_idx(pattern,ptr,params):
+    """Index captures {'i':..,'j':..} if `ptr` is allowed by `pattern`, else None."""
     for k,v in (params or {}).items():pattern=pattern.replace('{'+k+'}',v)
-    if '{i}' in pattern:
-        pre,suf=pattern.split('{i}');mid=ptr[len(pre):len(ptr)-len(suf)] if len(ptr)>=len(pre)+len(suf) else ''
-        return ptr.startswith(pre) and ptr.endswith(suf) and mid.isdigit()
-    return ptr==pattern
+    rx=re.escape(pattern).replace(r'\{i\}',r'(?P<i>\d+)').replace(r'\{j\}',r'(?P<j>\d+)')
+    m=re.fullmatch(rx,ptr)
+    return None if m is None else m.groupdict()
+
+
+def pattern_ok(pattern,ptr,params):return pattern_idx(pattern,ptr,params) is not None
 
 
 def make(tid,traces,refs,params=None,trace_id=None):
@@ -68,10 +71,14 @@ def check_claim(c,traces):
     _,slots,label=TEMPLATES[tid];refs=c.get('field_refs') or []
     if c.get('label')!=label:out.append('label does not match template')
     if len(refs)!=len(slots):return out+['wrong number of refs']
+    idx={}
     for ref,(pat,_f,nullable) in zip(refs,slots):
         t,ptr=split_ref(ref)
         if t not in traces:out.append(f'{ref}: unknown trace');continue
-        if not pattern_ok(pat,ptr,c.get('params')):out.append(f'{ref}: not allowed by {tid}');continue
+        g=pattern_idx(pat,ptr,c.get('params'))
+        if g is None:out.append(f'{ref}: not allowed by {tid}');continue
+        for k,v in g.items():
+            if idx.setdefault(k,v)!=v:out.append(f'{ref}: index {k} differs across slots')
         try:v=resolve(traces[t],ptr)
         except (KeyError,IndexError,TypeError,ValueError):out.append(f'{ref}: does not resolve');continue
         if v is None and not nullable:out.append(f'{ref}: null')

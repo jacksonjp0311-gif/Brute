@@ -27,19 +27,20 @@ def run(lines,bridge,write=print,echo=False):
             continue
         if w[0]=='decline' and len(w)==2:show(*bridge.decline(w[1],command=line),write);continue
         intent,args=parse(line);show(*bridge.ask(intent,command=line,**args),write)
+        for x in bridge.last_resolved:write(f"  << {x['request_id']} {x['status']}"+(f" by <{x['observe_trace']}>" if x['observe_trace'] else ' (a newer request replaced it)'))
 
 
 def main(argv=None):
-    ap=argparse.ArgumentParser(prog='python -m bridge',description='Interrogate Brute (brute.api/1.1); every claim cites a trace.')
+    ap=argparse.ArgumentParser(prog='python -m bridge',description='Interrogate Brute (brute.api/1.2 by default); every claim cites a trace.')
     ap.add_argument('--script',help='file of operator commands');ap.add_argument('--transcript',default='bridge_transcript.jsonl')
-    ap.add_argument('--flags',default='bridge/flags.jsonl');ap.add_argument('--source',default='operator')
+    ap.add_argument('--flags',default='bridge/flags.jsonl');ap.add_argument('--api',choices=('1.1','1.2'),default='1.2');ap.add_argument('--source',default='operator')
     a=ap.parse_args(argv)
-    b=Bridge(transcript=a.transcript,flags=a.flags,source=a.source)
+    b=Bridge(transcript=a.transcript,flags=a.flags,source=a.source,api=a.api)
     if a.script:
         from .log import read_text
         run(read_text(a.script).splitlines(),b,echo=True)
     else:
-        print('Brute bridge (brute.api/1.1). Type help.');
+        print(f'Brute bridge ({b.api_version}). Type help.');
         def lines():
             while True:
                 try:yield input('op> ')

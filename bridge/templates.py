@@ -1,6 +1,6 @@
 """Every sentence the bridge can say. id -> (text, slots, label).
 
-slot = (pointer_pattern, formatter, nullable). `{i}` in a pattern is a list index; `{ch}` is a
+slot = (pointer_pattern, formatter, nullable). `{i}`/`{j}` in a pattern are list indices; `{ch}` is a
 channel-name parameter that must itself be a key present in the cited field. Text placeholders
 {0},{1}.. take formatted slot values; {ch} takes the parameter.
 """
@@ -33,7 +33,20 @@ TEMPLATES={
  'scope.residual':('Windowed surprise {0} (window {1}) against threshold {2}; alarm {3}.',
                    [(R+'/evidence/residual/surprise','plain',0),(R+'/evidence/residual/window','plain',0),
                     (R+'/evidence/residual/threshold','plain',0),(R+'/evidence/residual/alarm','plain',0)],'Exact'),
- 'experiment':('Brute proposes action {0} (split score {1}).',[(R+'/experiment/action','plain',0),(R+'/experiment/score','plain',0)],'Exact'),
+ 'experiment':('Brute proposes action {0} (split score {1}; rule: {2}).',
+                [(R+'/experiment/action','plain',0),(R+'/experiment/score','plain',0),(R+'/experiment/rule','plain',0)],'Exact'),
+ 'experiment.score':('Split score for action {0}: {1}.',[(R+'/experiment/scores/{i}/action','plain',0),(R+'/experiment/scores/{i}/score','plain',0)],'Exact'),
+ 'experiment.tied':('Scores tied: {0}; tie-break: {1} (default action given: {2}).',
+                    [(R+'/experiment/tied','plain',0),(R+'/experiment/tie_break','plain',0),(Q+'/default_action','plain',0)],'Exact'),
+ 'counts.rows':('After action {0}: {1} of {2} surviving rows leave that transition open.',
+                [(R+'/experiment/per_action/{i}/action','plain',0),(R+'/experiment/per_action/{i}/counts/family_open_rows','plain',0),
+                 (R+'/experiment/per_action/{i}/counts/family_rows','plain',0)],'Exact'),
+ 'counts.code':('After action {0}, {1} surviving rows admit the reading {2}.',
+                [(R+'/experiment/per_action/{i}/action','plain',0),(R+'/experiment/per_action/{i}/counts/family_code_rows/{j}/rows','plain',0),
+                 (R+'/experiment/per_action/{i}/counts/family_code_rows/{j}/value','reading',0)],'Exact'),
+ 'counts.margin':('Margin-check rows: {0}.',[(R+'/experiment/per_action/{i}/counts/margin_rows','plain',1)],'Exact'),
+ 'counts.none':('After action {0} Brute returned no counts ({1}).',
+                [(R+'/experiment/per_action/{i}/action','plain',0),(R+'/experiment/per_action/{i}/counts','plain',1)],'Exact'),
  # -- Brute -> operator requests -----------------------------------------------------------
  'req.contradiction':('CONTRADICTION_NOTICE: Brute returned {0}/{1}; {2} issued certificate(s) withdrawn.',
                       [(R+'/status','plain',0),(R+'/reason','plain',0),(R+'/retractions','len',0)],'Exact'),
@@ -45,6 +58,6 @@ TEMPLATES={
                           [(R+'/evidence/attestation_id','plain',0),(R+'/evidence/attestation_id','plain',1)],'Exact'),
  'req.observation':('REQUEST_OBSERVATION: channel {ch} was masked ({0}) in the last observation, and the next prediction returned {1}.',
                     [(Q+'/observation/{ch}','plain',1),(R+'/status','plain',0)],'Observed'),
- 'req.action':('REQUEST_ACTION: Brute asks for action {0} (split score {1}).',
-               [(R+'/experiment/action','plain',0),(R+'/experiment/score','plain',0)],'Exact'),
+ 'req.action':('REQUEST_ACTION: Brute asks for action {0} (split score {1}; tied {2}).',
+               [(R+'/experiment/action','plain',0),(R+'/experiment/score','plain',0),(R+'/experiment/tied','plain',0)],'Exact'),
 }

@@ -1,4 +1,4 @@
-"""Shared corpus for bridge tests: study-002 replays (mask 0.35, one case per family) with every
+"""Shared brute.api/1.1 corpus for bridge tests (v0.1 behaviour, B13 back-compat): study-002 replays (mask 0.35, one case per family) with every
 intent asked at every step, plus edge sessions. Returns transcript rows (in memory)."""
 import json
 from functools import lru_cache
@@ -36,10 +36,10 @@ def drive(b,lines):
 def sessions():
     out={}
     for fam,c in cases().items():
-        b=Bridge(source=f'replay:results/study-002 {fam} seed {c["seed"]}')
+        b=Bridge(source=f'replay:results/study-002 {fam} seed {c["seed"]}',api='1.1')
         out[fam]=drive(b,commands(c))
     # attested session that certifies, then is contradicted: attestation withdrawal + contradiction + retractions
-    b=Bridge(source='edge:attested alternating world, then a contradicting reading')
+    b=Bridge(source='edge:attested alternating world, then a contradicting reading',api='1.1')
     b.ask('init',obs={'x':0,'y':0},attestation=ATTEST)
     for i in range(20):b.ask('predict',action='a');b.ask('observe',action='a',obs={'x':i%2,'y':0})
     b.ask('predict',action='a');b.ask('observe',action='a',obs={'x':1,'y':1})
@@ -48,9 +48,9 @@ def sessions():
     from brute.api.service_v011 import BruteServiceV011
     b=Bridge(service=BruteServiceV011(tau=-1.0),source='edge:tau=-1')
     drive(b,['init x=0 y=0']+['predict a','observe a x=0 y=0']*10+['scope','why']);out['edge_residual']=b
-    b=Bridge(source='edge:k=1');drive(b,['init x=0 y=0 k=1']+['predict a','why','observe a x=0 y=0']*8);out['edge_k1']=b
-    b=Bridge(source='edge:retry');drive(b,['init x=0 y=1']+['predict b','observe b x=1 y=-']*6+['retry k=5','vs','scope']);out['edge_retry']=b
-    b=Bridge(source='edge:uninitialized');drive(b,['vs','predict a','why','scope','retractions']);out['edge_uninit']=b
+    b=Bridge(source='edge:k=1',api='1.1');drive(b,['init x=0 y=0 k=1']+['predict a','why','observe a x=0 y=0']*8);out['edge_k1']=b
+    b=Bridge(source='edge:retry',api='1.1');drive(b,['init x=0 y=1']+['predict b','observe b x=1 y=-']*6+['retry k=5','vs','scope']);out['edge_retry']=b
+    b=Bridge(source='edge:uninitialized',api='1.1');drive(b,['vs','predict a','why','scope','retractions']);out['edge_uninit']=b
     return out
 
 
