@@ -108,8 +108,13 @@ def git_order(root,rel):
     fr=jload(root/rel['source_freeze'])
     chain=[('preregistration',req(fr,'preregistration_commit','freeze')),('reference',req(fr,'reference_commit','freeze'))]
     chain+=[(f'implementation_{i}',c) for i,c in enumerate(req(fr,'implementation_commits','freeze'))]
-    chain+=[(f'pre_freeze_fix_{i}',c) for i,c in enumerate(fr.get('pre_freeze_fix_commits',[]))]
     chain+=[('source_freeze',rel['source_freeze_commit']),('scoring_scripts',rel['scoring_scripts_commit']),('seal',rel['seal_commit']),('head','HEAD')]
+    # Pre-freeze fixes are not a step in the linear chain (cae25ce fixes the reference before the first implementation
+    # commit): each must descend from the reference and be a strict ancestor of the source freeze (DEVIATIONS_008 D26).
+    for i,c in enumerate(fr.get('pre_freeze_fix_commits',[])):
+        check(anc(chain[1][1],c),f'pre_freeze_fix_{i} {c} does not descend from the reference')
+        check(anc(c,rel['source_freeze_commit']) and _git(root,'rev-parse',c).stdout!=_git(root,'rev-parse',rel['source_freeze_commit']).stdout,
+              f'pre_freeze_fix_{i} {c} is not before the source freeze')
     for (na,a),(nb,b) in zip(chain,chain[1:]):
         check(anc(a,b),f'{na} {a} is not an ancestor of {nb} {b}')
         if b!='HEAD':check(_git(root,'rev-parse',a).stdout!=_git(root,'rev-parse',b).stdout,f'{na} and {nb} are the same commit')
