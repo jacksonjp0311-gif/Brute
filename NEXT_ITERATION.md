@@ -31,7 +31,9 @@ Earlier notes are kept at `docs/research/v0.5.0/NEXT_ITERATION_FROM_v0.4.0.md`, 
    and assumption-based incremental solving to cut per-step rebuild time; report timing with repeated runs and
    quantiles, not single wall clocks.
 5. **Process.** Recompute breadth-arm probabilities in the second implementation (2x2 only so far); smoke seeds checked
-   by code **before** the first run; a third-party replication of `GATES.json` from a fresh clone.
+   by code **before** the first run; a third-party replication of `GATES.json` from a fresh clone. Fix the v0.5.0 tamper-case defect
+   (`test_release_050`: a corrupted `SECOND_IMPLEMENTATION_COUNT.json` raises `JSONDecodeError`, not `VerificationError`)
+   in the v0.6.0 verifier: wrap all JSON loads.
 
 Deferred and still **Open**: stochastic worlds (credal regions); effective resume (2 resumes in study-007); D7/D8;
 learned family selection; grounding beyond templates; independent audit.
