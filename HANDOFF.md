@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 05:26 EDT (v0.5.0: reference done, implementing)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 05:36 EDT (implementation committed; smoke running)._
 
 ## Current version and state
 
@@ -28,9 +28,12 @@ _Kept current on the working branch during a release and on `main` at release. L
 3. DONE `1b57efe` (ledger `a5215ee`, ~05:26): `experiments/v050_reference.py` second implementation (no brute import) +
    `tests/test_v050_reference.py` (k=2 generalised enumeration == frozen reference). Process notes for DEVIATIONS_007 in
    `docs/research/v0.5.0/PROCESS_NOTES.md`.
-4. NEXT: implementation in NEW files: brute/region.py (RegionK), brute/region_learner.py (A5/M5), brute/breadth.py (B5/BM5/BP5),
-   brute/api/service_v050.py + schemas v1_5, experiments/worlds_007.py, brute_common_007, brute_study_007 (checkpointed),
-   brute_calibrate_007, scaling_007; tests. Smoke seeds 901-903 only.
+4. DONE (pre-freeze, ~05:40-06:05): `fc2bed8` brute/region.py (RegionK/RegionSpace, tri-state Glucose3), brute/region_learner.py
+   (A5/M5), brute/breadth.py (B5/BM5/BP5), experiments/worlds_007 / brute_common_007 / brute_study_007 (per-case checkpoint);
+   `c8e8611` brute_calibrate_007 + scaling_007; `b693113` api 1.5 service + schemas v1_5 + release_version_050 + tests/test_v050_impl.py
+   (8 tests OK). Smoke (seeds 901-903 only): A5 vs A4 on all 8 2x2 families x 3 rates = 3168 steps, 0 mismatches (Observed);
+   breadth per-case 0.2-6 s; scaling n=12 cases < 1 s.
+4b. RUNNING: smoke run of all arms (/tmp/w7/smoke) -> v050_reference count + mutation on it.
 5. Then: source freeze 007; scoring scripts separate commit >= 10 min before `run_start_007`; nohup run; seal; scoring; docs;
    release freeze 050; MANIFEST; fresh-clone verify; merge in /tmp/brute-main; tag v0.5.0 on merge; gh release.
 
