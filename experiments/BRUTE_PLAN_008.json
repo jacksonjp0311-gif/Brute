@@ -1,0 +1,365 @@
+{
+ "schema": "brute.registered-plan.v1",
+ "status": "PRE-REGISTERED (frozen at the commit that adds this file; no v0.6.0 code, world, seed or run exists at that commit)",
+ "study": "BRUTE-060-DRIFTSOUND-008",
+ "version_under_test": "0.6.0",
+ "parent_study": "BRUTE-050-SATREGION-007 (sealed; results/study-007, tag v0.5.0 -> 8e03e03)",
+ "owner_request": {
+  "recorded_at": "2026-10-25 07:17 and 07:20 EDT (America/New_York)",
+  "summary": "ONE combined v0.6.0 plan on plan/v0.6.0, pre-registration only, no code: (a) drift-sound certification gating G3-prime and G6b together with no G1/G2 regression; (b) breadth exactness check not dependent on brute-force enumeration, coverage threshold fixed in advance; (c) v0.5.0 tamper-case defect handled by a NEW verifier/test, frozen v0.5.0 files untouched; (d) exact model counting for region size WITH ITS OWN GATE, a budget rule and a stated fallback.",
+  "freeze_instruction": "Do not start coding against unfrozen criteria."
+ },
+ "freeze_rule": "The commit that adds this file must be an ancestor of every v0.6.0 code file (git merge-base --is-ancestor <plan commit> <first commit of file>), in particular of: experiments/v060_reference.py, experiments/v060_xcheck.py, brute/driftsound.py, brute/xcheck_sat.py, brute/modelcount.py, experiments/worlds_008.py, experiments/brute_study_008.py, scripts/check_seeds_008.py, scripts/make_gates_008.py, scripts/make_paired_008.py, scripts/verify_release_060.py, tests/test_release_060.py. The ledger entry preregistration_008 records the sha256 of this file; any later change to this file is a ledger \"deviation\" entry (docs/research/BRUTE_DEVIATIONS_008.md) and the original text is still reported.",
+ "frozen_inputs_not_touched": [
+  "every file listed in any experiments/*FREEZE*.json (incl. BRUTE_SOURCE_FREEZE_007, BRUTE_RELEASE_FREEZE_050)",
+  "brute/core/*",
+  "brute/api/service*.py and existing schemas",
+  "scripts/verify_release_050.py",
+  "tests/test_release_050.py",
+  "experiments/v040_reference.py, v050_reference.py, v050_prob_reference.py",
+  "results/study-00[1-7]/*",
+  "tags v0.2.0, v0.3.0, v0.4.0, v0.5.0"
+ ],
+ "pre_freeze_disclosure": {
+  "summary": "Before this commit the author read (did not run) brute/resume.py (fibre_union, Y1k) and brute/region.py y1k(), read the sealed study-007 GATES/RESULTS JSON and v0.5.0 release documents for the alignment check, and ran `pip index versions` for pyganak, pyapproxmc, pyd4 and listed python-sat solver names. No v0.6.0 world, seed or run was generated; no new data was looked at.",
+  "known_from_sealed_results": "Exact (study-007): M5 drift4 25 false certs incl. 1 non-drift (seed 1700015, mask 0.1, 2 steps after drift); A5 drift4 6 false, 0 non-drift; v0.90 control 72; M5-A2 coverage -0.079591 [-0.099615,-0.060224]; A5-A2 -0.105401; act3 checked 3895/4608 = 0.845269 (<0.90); test_release_050 corrupted SECOND_IMPLEMENTATION_COUNT.json raises JSONDecodeError (verify_release_050.py:87 via make_gates build) instead of VerificationError. These are development knowledge for the v0.6.0 design; study-007 seeds are never used as held-out evidence for v0.6.0."
+ },
+ "hypotheses": {
+  "H_a": "There exists a certification rule that, on held-out 2x2 data, has 0 non-drift false certificates on drift4, total drift4 false certificates <= 0.5 x v0.90 control, AND pooled in-family coverage no worse than v0.2.0 (A2) by more than 0.03 (CI lower >= -0.05), while keeping G1 and G2 at 0. Two candidate rules (R6, C6) are tested; H_a is supported only if ONE arm passes all four gates.",
+  "H_b": "Every breadth decision of the v0.5.0 production learner (B5) and of the v0.6.0 breadth arms can be re-derived exactly by an independent SAT encoding on a different solver, with uniqueness proved by UNSAT and abstentions witnessed by replayed counter-models, without row enumeration, on >= 99% of steps per breadth family including big6 and act3, with 0 mismatches.",
+  "H_c": "A new verifier (verify_release_060) converts every parse/IO failure of a sealed artifact into VerificationError; the frozen v0.5.0 defect is reproduced, documented and not edited.",
+  "H_d": "Exact (projected) model counts of the version-space region and of the per-code fibre are computable within a fixed per-step budget on >= 95% of sampled 2x2 steps and agree with an independent blocking-clause count wherever that count is <= 10^4."
+ },
+ "heldout_ranges_2x2": {
+  "cycle3": [
+   1810001,
+   1810024
+  ],
+  "switch3": [
+   1820001,
+   1820024
+  ],
+  "unstructured3": [
+   1830001,
+   1830024
+  ],
+  "unaliased2": [
+   1840001,
+   1840024
+  ],
+  "ood4": [
+   1850001,
+   1850024
+  ],
+  "perm4": [
+   1860001,
+   1860024
+  ],
+  "ood5": [
+   1870001,
+   1870024
+  ],
+  "drift4": [
+   1880001,
+   1880048
+  ]
+ },
+ "heldout_ranges_breadth": {
+  "big6": [
+   1910001,
+   1910024
+  ],
+  "sens3": [
+   1920001,
+   1920024
+  ],
+  "act3": [
+   1930001,
+   1930024
+  ],
+  "ood6s3": [
+   1940001,
+   1940024
+  ]
+ },
+ "modelcount_sample_block": {
+  "note": "GMC is evaluated on the A5 trace of the 2x2 held-out in_family_original cases (no new seeds); every 4th post-burn-in step (step index % 4 == 0) of every case; breadth steps every 8th step, reported only"
+ },
+ "smoke_seeds": {
+  "range": [
+   980001,
+   980030
+  ],
+  "rule": "smoke/debug runs may use ONLY seeds in 980001-980030 (any family generator). Held-out seeds are never generated, simulated or inspected before run_start of the held-out run."
+ },
+ "heldout_note": "All v0.6.0 ranges are disjoint from every earlier range: studies 001-007 held-out, calibration, stress and scaling blocks (all <= 1750006), the D78 block 1591001-1591384, smoke 901-903, study-007 calibration 1711001-1711050/1721001-.../1731001-.... drift4 is doubled to 48 seeds (144 cases) because G3-prime non-drift is a zero-tolerance criterion.",
+ "seed_assertion_plan": {
+  "script": "scripts/check_seeds_008.py (committed after this plan and before ANY v0.6.0 run including smoke)",
+  "asserts": [
+   "pairwise disjointness of all v0.6.0 ranges (held-out 2x2, held-out breadth, smoke)",
+   "disjointness from every range in experiments/BRUTE_PLAN_00[1-7].json (parsed, not hard-coded) plus 901-903 and 1591001-1591384",
+   "the runner (experiments/brute_study_008.py) refuses (raises) any seed outside the declared range of the requested block, and smoke mode refuses any seed outside 980001-980030"
+  ],
+  "order": "check_seeds_008 is run and its PASS output ledgered (event seedcheck_008) BEFORE the first smoke run; tests/test_seeds_008.py repeats the assertions in CI"
+ },
+ "ledger_rule": "Append-only scripts/append_ledger.py. Required events in order: preregistration_008 (this file), seedcheck_008, second_implementation_008, source_freeze_008, scoring_freeze_008, run_start/run_end for EVERY run (smoke included) with note = ISO start time EDT + block + exact seed set, seal_008, gates_008, release_060. A run without a run_start entry is not evidence and is reported as such. Deviations get a deviation entry before the affected run.",
+ "in_family_original_2x2": [
+  "cycle3",
+  "switch3",
+  "unstructured3",
+  "unaliased2",
+  "ood4"
+ ],
+ "in_family_2x2": [
+  "cycle3",
+  "switch3",
+  "unstructured3",
+  "unaliased2",
+  "ood4",
+  "perm4"
+ ],
+ "out_of_family_2x2": [
+  "ood5",
+  "drift4"
+ ],
+ "in_family_breadth": [
+  "big6",
+  "sens3",
+  "act3"
+ ],
+ "out_of_family_breadth": [
+  "ood6s3"
+ ],
+ "world_generators": "2x2 and breadth generators are the frozen study-007 generators (experiments/worlds_007.py and the study-006 2x2 generators) imported unchanged; experiments/worlds_008.py may only re-export them with the new seed ranges (no generator change).",
+ "mask_rates": [
+  0.1,
+  0.35,
+  0.6
+ ],
+ "actions_per_case_2x2": 44,
+ "actions_per_case_breadth": 64,
+ "burn_in": 8,
+ "tau6": {
+  "value": 1.645215321642,
+  "source": "results/study-006/CALIBRATION_006.json, unchanged"
+ },
+ "tau7": {
+  "value": 2.07944154168,
+  "source": "results/study-007/CALIBRATION_007.json, unchanged (no recalibration in study-008)"
+ },
+ "window_W": 8,
+ "drift_definition": "study-004/005/007 definition, unchanged: a drift4 false certificate (taken or counterfactual action, conditional or public) is NON-DRIFT iff it is at a step after the first drift step (step > 12) with step not in {12,23,34} (the drift steps). Drift indices of the frozen drift4 generator: 12, 23, 34.",
+ "arms": {
+  "R6": "brute.driftsound.DriftSoundLearner(rule=\"RO\"), subclass of the v0.5.0 RegionBruteLearner: Y1k certification on RegionK, plus RECENCY-OPENED EDGES: let s* be the most recent step with residual surprise > tau6/2 or a window-tier event; if s* is within the last W=8 steps, every transition edge (q,a) of every region machine whose confirming traversals all lie before s* is treated as UNKNOWN in the fibre_union/y1k check (unknown edges open to every code at every fibre state, not only the current one). Otherwise identical to A5 (LU-R, alarm, resume). Purpose: remove stale post-drift certificates (G3-prime).",
+  "C6": "brute.driftsound.DriftSoundLearner(rule=\"CT\"): COVERAGE-TRACKED certification: certify code c for action a if EITHER the A5 Y1k check certifies c, OR all of: (i) the tracked-state projection of the full-history region (v0.2.0 / A2 rule) is the single code c, (ii) no residual surprise > tau6/2, no window-tier event and no contradiction in the session so far, (iii) t >= burn_in. Purpose: recover A2 coverage in-family (G6b) while keeping Y1k after any surprising evidence.",
+  "A5": "frozen v0.5.0 production learner (brute.region_learner.RegionBruteLearner, policy LU-R), control and v0.90-control source",
+  "A4": "frozen brute.resume.ResumeBruteLearner (v0.4.0) run through frozen trajectory code; v0.90 control for G3-prime (same definition as 007)",
+  "A2": "frozen brute.active.ActiveBruteLearner (v0.2.0, tau 1.4331); G6b baseline",
+  "B5": "frozen v0.5.0 brute.breadth.BreadthBruteLearner (policy LU-R) on breadth worlds; GX2-prime subject",
+  "BR6": "R6 rule on breadth worlds (tau7 in place of tau6)",
+  "BC6": "C6 rule on breadth worlds (tau7 in place of tau6)"
+ },
+ "arms_by_block": {
+  "2x2": [
+   "R6",
+   "C6",
+   "A5",
+   "A4",
+   "A2"
+  ],
+  "breadth": [
+   "B5",
+   "BR6",
+   "BC6"
+  ]
+ },
+ "rule_constants_frozen": {
+  "surprise_fraction": 0.5,
+  "recency_window": 8,
+  "note": "tau6/2 (2x2) and tau7/2 (breadth) are fixed here; they are NOT tuned on any data. No other free parameter exists in R6/C6."
+ },
+ "default_policy_rule": "No auto-promotion: the release default stays the v0.5.0 rule (Y1k, LU-R) regardless of outcome. A rule passing GA1 becomes a candidate default only after an owner decision AND a fresh held-out replication in a later study.",
+ "xcheck_backend": {
+  "file": "brute/xcheck_sat.py (no import of brute/region.py, brute/geometry.py or any enumeration code)",
+  "encoding": "different from RegionK: direct (non-one-hot) transition variables T[q][a][r] with at-most-one via sequential counter, emission variables E[q][c] with exactly-one via pairwise, NO canonical first-visit symmetry breaking, state path variables S[t][q]; region re-derived from the raw (action, mask) evidence",
+  "solver": "CaDiCaL 1.9.5 via python-sat (pysat solver name cadical195); RegionK uses Glucose3",
+  "per_query": [
+   "support/feasibility (SAT)",
+   "uniqueness of the certified code c: UNSAT of (region AND fibre state predicts code != c under action a) proves the projection is {c} — a proof, not an enumeration",
+   "abstention: two SAT models predicting different codes; each model is decoded to an explicit machine and REPLAYED in plain Python against the evidence (witness check independent of either encoding)",
+   "status/reason/certificate, Y1k decision, margin support, saturation"
+  ],
+  "budget": "per query 2,000,000 conflicts (pysat conf_budget / solve_limited); a query hitting the budget makes the step UNCHECKED (counted, never a mismatch, never a pass)",
+  "note": "the decision-level fields (status, reason, certificate, Y1k decision, support sets) are compared; probabilities, surprise and LU-R scores are recomputed from the re-derived support sets by experiments/v060_xcheck.py"
+ },
+ "modelcount": {
+  "file": "brute/modelcount.py",
+  "quantities": [
+   "|R_t|: number of canonical (first-visit-named) machines in the family region (<=4 for 2x2) consistent with the evidence at step t",
+   "per action a and code c: projected count of the fibre-prediction projection (number of (machine, fibre state) pairs predicting c)"
+  ],
+  "primary_counter": "pyganak==2.8.0 (exact projected model counting) on the RegionK CNF with symmetry breaking, projection set = the machine variables (d, e)",
+  "independent_check": "blocking-clause enumeration on the xcheck encoding with CaDiCaL (count of distinct projected models), capped at 10^4 models",
+  "guarantee_labelling": "if the pinned counter version documents a probabilistic (not exact) guarantee, its counts are labelled Inferred, not Exact, and only the cross-check agreement decides GMC",
+  "use": "reporting only: counts are NEVER used by any certification, policy, alarm or experiment decision in v0.6.0"
+ },
+ "budget_rule_modelcount": {
+  "per_count": "10 s wall-clock (counter timeout) per count; timeout or error => that count is UNKNOWN, recorded with reason, never imputed",
+  "per_case": "at most 120 s of counting per case; remaining sampled steps of that case are UNKNOWN (budget)",
+  "total": "study-wide counting wall-clock <= 6 h; counting stops at the cap and the rest are UNKNOWN",
+  "dependency": "if pyganak==2.8.0 cannot be installed/imported on Python 3.13.5 at implementation time, every count is UNKNOWN (reason: counter unavailable) and the fallback applies; no other exact counter is substituted after freeze without a deviation entry"
+ },
+ "fallback_modelcount": "If GMC fails or the counter is unavailable: (1) GMC is published as FAIL/INFEASIBLE with the measured fraction; (2) reported region sizes fall back to the blocking-clause count where <= 10^4 (Exact, censored as \">10^4\" otherwise) and to pyapproxmc==4.4.0 estimates (epsilon=0.8, delta=0.2) labelled Inferred (approximate, with its PAC bound) — never presented as exact; (3) the \"Exact or approximate #SAT\" item stays Open; (4) no v0.6.0 claim depends on counts.",
+ "metrics": {
+  "false_certificates": "certificate on (step, action) whose code differs from the realized code of that action (counterfactual actions evaluated on the world copy)",
+  "coverage": "dual coverage as in study-006/007 (fraction of post-burn-in (step, action) pairs with a conditional certificate)",
+  "xcheck_checked_fraction": "checked steps / all steps per breadth family per arm (steps excluded only by the xcheck conflict budget)",
+  "xcheck_mismatch": "any decision-level field differing at a checked step",
+  "modelcount_coverage": "fraction of sampled steps with a counted (non-UNKNOWN) |R_t|",
+  "modelcount_agreement": "counts equal to the blocking-clause count where the latter is <= 10^4"
+ },
+ "scoring": {
+  "soundness_counts": "all steps incl. burn-in, every action (taken and counterfactual)",
+  "coverage_logloss_alarm_rates": "post-burn-in steps only",
+  "loss": "-ln max(1e-12, p[actual]) on the full code",
+  "bootstrap": "seed-clustered paired bootstrap (each seed = its 3 mask cases), 2000 resamples, numpy default_rng(20261026), percentile 2.5/97.5"
+ },
+ "criteria": {
+  "GA1_drift_sound_and_coverage": {
+   "gated": true,
+   "type": "headline conjunction for target (a)",
+   "threshold": "PASS iff for at least ONE arm X in {R6, C6}: G1(X) PASS AND G2(X) PASS AND G3_prime(X) PASS AND G6b(X) PASS, all on the same held-out run. The passing arm(s) are named; both arms are reported.",
+   "prediction": "Inferred: FAIL. R6 is expected to pass G3-prime but fail G6b (it is at least as conservative as A5, A5-A2 = -0.105); C6 is expected to pass G6b but fail G3-prime (an undetected drift leaves the tracked state stale one step later, as A2 did in study-006)."
+  },
+  "G1_in_family_soundness": {
+   "gated": true,
+   "threshold": "R6, C6 (2x2) and B5, BR6, BC6 (breadth): 0 false conditional and 0 false public certificates on every in-family case; all steps incl. burn-in, every action. No regression = same 0 as v0.5.0.",
+   "prediction": "Inferred: PASS for R6, BR6; C6/BC6 PASS in-family (no drift in in-family worlds) but not guaranteed (Open)."
+  },
+  "G2_ood_soundness": {
+   "gated": true,
+   "threshold": "R6, C6: 0 false conditional certificates on ood5; B5, BR6, BC6: 0 on ood6s3; all steps, every action",
+   "prediction": "Inferred: PASS for R6/BR6; C6/BC6 at risk (out-of-family worlds can agree on a wrong code without surprise)."
+  },
+  "G3_prime_drift4": {
+   "gated": true,
+   "threshold": "study-004/005/007 definition (see drift_definition), for R6 and C6 separately (taken action): non-drift false certificates = 0 AND total false certificates <= 0.5 x v0.90 control false on the same 144 drift4 cases (v0.90 control from the A4 full trace)",
+   "prediction": "Inferred: R6 PASS; C6 FAIL."
+  },
+  "G6b_coverage_vs_v020": {
+   "gated": true,
+   "threshold": "for R6 and C6 separately: pooled in_family_original_2x2 dual coverage X - A2 >= -0.03 AND 95% CI lower bound >= -0.05 (same test as BRUTE_PLAN_006/007)",
+   "prediction": "Inferred: R6 FAIL (about -0.10 to -0.12); C6 PASS."
+  },
+  "GX2_prime_breadth_exactness_nonenum": {
+   "gated": true,
+   "type": "target (b)",
+   "threshold": "brute/xcheck_sat.py + experiments/v060_xcheck.py re-derive every decision-level field of B5, BR6 and BC6 at every step of every breadth case. PASS iff (i) mismatching checked steps = 0, (ii) witness replays failing = 0, (iii) checked fraction >= 0.99 for EACH of big6, sens3, act3, ood6s3 and EACH of B5, BR6, BC6 separately (only the per-query conflict budget may exclude a step; excluded steps are counted and published), (iv) on steps where the frozen enumeration reference v050_reference.py also completes, xcheck and enumeration agree on all compared fields (0 disagreements).",
+   "coverage_threshold_fixed": 0.99,
+   "prediction": "Inferred: PASS on sens3, act3, ood6s3; big6 is the risk (6-state/2-sensor UNSAT proofs may hit the budget); a big6 shortfall fails the gate as a whole."
+  },
+  "GT1_verifier_parse_errors": {
+   "gated": true,
+   "type": "target (c)",
+   "threshold": "scripts/verify_release_060.py wraps every artifact read (open, gzip, json.loads, schema/key access) so that any failure raises VerificationError. tests/test_release_060.py: for EVERY JSON artifact of results/study-008 plus RELEASE.json, SEAL and MANIFEST, each of 4 corruption modes (truncated to half, invalid UTF-8 byte, empty file, valid JSON with a required key deleted) must raise VerificationError; 0 other exception types; 0 silent passes. Plus a documented regression test asserting that the FROZEN verify_release_050 still raises json.JSONDecodeError on the recorded v0.5.0 case (expected, recorded defect; not fixed, files untouched: sha256 of scripts/verify_release_050.py and tests/test_release_050.py equal BRUTE_RELEASE_FREEZE_050).",
+   "prediction": "Exact-by-construction target: PASS expected."
+  },
+  "GMC_model_counting_feasibility": {
+   "gated": true,
+   "gated_separately": true,
+   "type": "target (d); its result does not enter GA1 and no other gate depends on it",
+   "threshold": "on the modelcount sample (every 4th post-burn-in step of every A5 in_family_original_2x2 case): (i) |R_t| counted (not UNKNOWN) on >= 95% of sampled steps under the budget rule, (ii) 0 disagreements with the independent blocking-clause count on every sampled step where that count is <= 10^4, (iii) the per-code projected counts sum consistency check (sum over codes of fibre-prediction counts >= |R_t|, equality where each fibre state predicts exactly one code) has 0 violations. Breadth counts reported, not gated.",
+   "budget_rule": "see budget_rule_modelcount",
+   "fallback": "see fallback_modelcount",
+   "prediction": "Inferred: PASS on 2x2 (<=4-state regions are small); breadth largely UNKNOWN or censored (Open)."
+  },
+  "G4_public_safety": {
+   "gated": true,
+   "threshold": "R6, C6, B5, BR6, BC6: 0 public certificates on ood5, drift4 and ood6s3; 0 wrong public certificates anywhere; no public certificate after the first alarm of a session"
+  },
+  "G5_false_alarm_limit": {
+   "gated": true,
+   "threshold": "for EACH arm R6, C6, BR6, BC6 and EACH in-family family of its block: fraction of cases with >=1 RESIDUAL_SURPRISE alarm <= 0.05"
+  },
+  "G7_open_world": {
+   "gated": true,
+   "threshold": "mean post-burn-in taken-action log-loss: R6, C6 <= ln 4 on ood5 and drift4; BR6, BC6 <= ln 8 on ood6s3; min probability >= eps/m everywhere (0.005 for 2x2, 0.0025 for 8 codes)"
+  },
+  "G9_retraction_resume": {
+   "gated": true,
+   "threshold": "every resume (R6, C6, BR6, BC6) only after W=8 consecutive residuals <= tau with family and margin supported; no RESYNC_AMBIGUOUS forecast; retractions only at contradiction"
+  },
+  "G10_compute": {
+   "gated": true,
+   "threshold": "every case of every block completes; production arms: forecasts with solver_unknown>0 <= 1% of forecasts per block"
+  },
+  "G11_second_implementation": {
+   "gated": true,
+   "threshold": "experiments/v060_reference.py (same author, no brute import, committed before any v0.6.0 brute/ file) audits every R6, C6 trace (2x2 enumeration of the R6/C6 rules) and every BR6/BC6 trace up to its row budget 160000; report = COUNT of mismatching traces, must be 0; mutation test 20 injected single-field errors in 20 distinct traces (random.Random(20261026)) detected 20/20. Labelled \"second implementation by the same author\", never \"independent\"."
+  },
+  "G12_reproducibility": {
+   "gated": true,
+   "threshold": "a second run of every case whose run index is divisible by 3 (2x2 and breadth) to a new path gives byte-identical scientific JSON (timing keys stripped); for GMC, re-counted sampled steps give identical counts (UNKNOWN allowed to differ only by timeout, reported)"
+  },
+  "G13_frozen_controls_reproduce": {
+   "gated": true,
+   "threshold": "A5, A2, A4 and B5 are the frozen v0.5.0/earlier code (sha256 checked against BRUTE_SOURCE_FREEZE_007 / BRUTE_RELEASE_FREEZE_050 before run_start); tau6, tau7 equal the values in this plan"
+  }
+ },
+ "non_gated_reports": {
+  "R_dev_xcheck_007": "xcheck re-derivation of the SEALED study-007 B5/BM5/BP5 breadth traces (development data, not held-out evidence): reported as a check of the v0.5.0 record only; it cannot turn GX2 of v0.5.0 into PASS (v0.5.0 GX2 stays FAIL as recorded).",
+  "R_counts_breadth": "breadth model counts with UNKNOWN/censored fractions",
+  "R_coverage_all": "coverage of every arm per family with paired CIs vs A5 and A2",
+  "R_drift_detail": "every drift4 false certificate listed with seed, mask, steps after drift"
+ },
+ "what_counts_as_failure": [
+  "any gated criterion not meeting its threshold is FAIL and is published as FAIL in GATES_008.json, README, CHANGELOG, RELEASE.json and the release notes with the same wording",
+  "GA1 FAIL means target (a) is NOT met even if each of G3-prime and G6b is passed by a DIFFERENT arm; this must be stated explicitly",
+  "GX2-prime FAIL on any single family/arm fails target (b) as a whole",
+  "GMC FAIL or counter unavailable fails target (d); the fallback is applied and labelled, not substituted for a PASS",
+  "a missing run_start ledger entry, a seed outside its declared range, a frozen-file hash mismatch, or a smoke run on a non-smoke seed invalidates the affected run (reported, not silently rerun)",
+  "no re-run, re-seed, threshold change or rule-constant change after the held-out run_start; reruns only for infrastructure crash with identical code and seeds, ledgered as deviation"
+ ],
+ "power_and_sample": {
+  "2x2": "6 in-family families x 24 seeds x 3 masks = 432 cases; ood5 72; drift4 144 cases (48 seeds) x 44 steps x 2 actions",
+  "breadth": "4 families x 24 seeds x 3 masks = 288 cases x 64 steps",
+  "G6b": "paired seed-clustered bootstrap with 120 in_family_original seeds; study-007 CI half-width ~0.02, so a true difference of 0 passes with high probability and a true -0.10 fails (Inferred)",
+  "G3_prime": "zero-tolerance; 144 drift4 cases with 3 drifts each = 432 drift events"
+ },
+ "process_controls": {
+  "order": [
+   "(1) this plan committed + ledger preregistration_008",
+   "(2) scripts/check_seeds_008.py + tests/test_seeds_008.py committed; run; ledger seedcheck_008",
+   "(3) experiments/v060_reference.py (second implementation) committed; ledger second_implementation_008",
+   "(4) brute/driftsound.py, brute/xcheck_sat.py, brute/modelcount.py, experiments/v060_xcheck.py, study runner; smoke runs only on 980001-980030, each ledgered",
+   "(5) source freeze experiments/BRUTE_SOURCE_FREEZE_008.json + ledger source_freeze_008",
+   "(6) scoring scripts (make_gates_008, make_paired_008) committed and ledgered >= 10 min before run_start",
+   "(7) nohup checkpointed held-out runs with run_start/run_end ledger entries",
+   "(8) seal results/study-008/SEAL.json + ledger seal_008",
+   "(9) scoring, GATES_008.json + ledger gates_008",
+   "(10) verify_release_060 + tests/test_release_060 + release freeze BRUTE_RELEASE_FREEZE_060; HANDOFF/README/CHANGELOG; release only on owner instruction"
+  ],
+  "dependencies": "numpy==2.5.4, python-sat==1.9.dev17 (Python 3.13.5); added for GMC only: pyganak==2.8.0, pyapproxmc==4.4.0 (fallback)",
+  "times": "commit and ledger times are author-set and reported as such"
+ },
+ "deviation_policy": "after freeze, any change is a ledger \"deviation\" entry with its reason in docs/research/BRUTE_DEVIATIONS_008.md before the affected run; the original criterion is still reported. Study-008 held-out seeds are never used to tune v0.6.0; failed gates are published as failed.",
+ "carried_defect_v050": {
+  "what": "tests/test_release_050.py::test_tampered_copies_fail: corrupted results/study-007/SECOND_IMPLEMENTATION_COUNT.json raises json.JSONDecodeError (make_gates build via scripts/verify_release_050.py:87) instead of VerificationError",
+  "status": "Exact; frozen in BRUTE_RELEASE_FREEZE_050; stays as recorded in v0.5.0 (1 real failing test of 213). v0.6.0 does NOT edit either file; it adds verify_release_060/test_release_060 (GT1) and a regression test that documents the old behaviour."
+ },
+ "scope_and_open": [
+  "Soundness of any rule under ADVERSARIAL drift (a jump into a state consistent with the latest observation is undetectable at that step): Open; GA1 tests the registered drift4 generator only",
+  "Exact counting for breadth regions: Open (reported only)",
+  "Third-party replication: Open",
+  "Cross-step incremental SAT: Open",
+  "k-action/s-sensor API sessions: Open"
+ ],
+ "limitations": [
+  "Synthetic deterministic worlds only.",
+  "R6/C6 constants (tau/2, W=8) are fixed by the author without data; other constants might behave differently (not explored, to avoid tuning).",
+  "The xcheck encoding and the second implementation are by the same author.",
+  "Commit and ledger times are author-set.",
+  "drift4 is one drift generator; GA1 says nothing about other drift processes."
+ ],
+ "labels": "Every claim in study-008 documents carries one of Exact / Observed / Simulated / Inferred / Rejected / Open; predictions in this plan are Inferred."
+}
