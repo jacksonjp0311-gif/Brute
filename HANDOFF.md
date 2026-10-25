@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 01:35 EDT (v0.3.0 release)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 02:15 EDT (v0.4.0 design probes, branch `plan/v0.4.0`)._
 
 ## Current version and state
 
@@ -27,7 +27,9 @@ _Kept current on the working branch during a release and on `main` at release. L
 
 ## In progress
 
-Nothing. v0.3.0 is released. The next work is the v0.4.0 pre-registration.
+v0.4.0 / study-006 on branch `plan/v0.4.0` (from main 73a3a5a). Design probes (Simulated, study-004/005 sealed seeds
+only) are running in `docs/research/v0.4.0/design_probe/` (uncommitted until the plan commit, which discloses their
+hashes). Next: commit `experiments/BRUTE_PLAN_006.json` + ledger `preregistration`, then implementation.
 
 ## Exact next steps
 
