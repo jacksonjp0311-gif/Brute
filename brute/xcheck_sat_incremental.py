@@ -15,6 +15,9 @@ prefix. Differences from XRegion are purely structural:
   and disabled with [-g_L] when a sibling is committed;
 * per-step queries (support, saturation, Y1k, Y1k-recent) are the same guarded clause sets as XRegion, solved under
   assumptions [g_L, g_query] and retired with the unit [-g_query];
+* optional (`symmetry=True`, OFF unless requested): first-visit state naming S_0[0] and S_t[q] -> V_{t-1}[q-1]. This is
+  NOT in XRegion's GX2' decision encoding; it preserves satisfiability of every query because every query (support,
+  saturation, Y1k, Y1k-recent) is invariant under renaming the hidden states, so SAT/UNSAT answers are unchanged;
 * the conflict budget is the same 2,000,000 per solve call; every SAT answer is decoded and replayed in plain Python
   (reusing xcheck_sat.replay / py_y1k_has), exactly as XRegion does.
 
@@ -33,8 +36,8 @@ class _Layer:
 
 class IncSolver:
     """One live CaDiCaL instance for one bound N with a main (committed) trajectory plus one-step extensions."""
-    def __init__(self,n,k,m,conf_budget=CONF_BUDGET):
-        self.n=n;self.k=k;self.m=m;self.budget=conf_budget;self.top=0
+    def __init__(self,n,k,m,conf_budget=CONF_BUDGET,symmetry=False):
+        self.n=n;self.k=k;self.m=m;self.budget=conf_budget;self.top=0;self.symmetry=symmetry
         self.unknown=0;self.witness_failures=0;self.queries=0;self.layers_built=0;self.rebuilds=0
         self.s=None;self._reset()
 
@@ -80,6 +83,11 @@ class IncSolver:
             if parent is not None:
                 P=parent.rows[-1]
                 for p in range(n):C.append(G([-P[p],-self.Tq[p][action][q],S[q]]))
+        if self.symmetry:
+            # first-visit state naming (satisfiability-preserving for every query here: all queries are invariant under
+            # renaming states): S_0[0], and S_t[q] -> V_{t-1}[q-1] (state q-1 was visited before t)
+            if parent is None:C.append(G([S[0]]))
+            else:C.extend(G([-S[q],parent.V[q-1]]) for q in range(1,n))
         # chained derived variables
         L.Ac=[[None]*m for _ in range(n)];L.V=[None]*n;L.Tr=[[None]*k for _ in range(n)]
         for q in range(n):

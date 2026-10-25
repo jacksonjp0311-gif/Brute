@@ -21,12 +21,12 @@ from brute.xcheck_sat_incremental import IncSolver
 
 
 class IncOracle:
-    def __init__(self,k,m,budget=CONF_BUDGET,log=None):
-        self.k=k;self.m=m;self.budget=budget;self.res={};self.solvers={};self.log=log
+    def __init__(self,k,m,budget=CONF_BUDGET,log=None,symmetry=False):
+        self.k=k;self.m=m;self.budget=budget;self.res={};self.solvers={};self.log=log;self.symmetry=symmetry
         self.queries=0;self.unknown_queries=0;self.witness_failures=0;self.regions=0
 
     def _sol(self,N):
-        if N not in self.solvers:self.solvers[N]=IncSolver(N,self.k,self.m,self.budget)
+        if N not in self.solvers:self.solvers[N]=IncSolver(N,self.k,self.m,self.budget,self.symmetry)
         return self.solvers[N]
 
     def q(self,N,masks,acts,name,*args):
@@ -58,8 +58,8 @@ class IncOracle:
 
 
 def case_job(x):
-    idx,c,plan,tau7,arms,budget=x;t0=time.time()
-    w=breadth_world(c['seed'],c['family']);o=IncOracle(w.k,2**w.s,budget);out={};wall={}
+    idx,c,plan,tau7,arms,budget,sym=x;t0=time.time()
+    w=breadth_world(c['seed'],c['family']);o=IncOracle(w.k,2**w.s,budget,symmetry=sym);out={};wall={}
     for arm in arms:
         if arm not in c['arms']:continue
         ta=time.time()
@@ -74,7 +74,7 @@ def case_job(x):
                 'wall_informational':round(time.time()-t0,3)}
 
 
-def run(results,plan,arms,workers=4,checkpoint=None,budget=CONF_BUDGET,limit=None,cases_only=None,progress=None):
+def run(results,plan,arms,workers=4,checkpoint=None,budget=CONF_BUDGET,limit=None,cases_only=None,progress=None,symmetry=False):
     cases=[(i,c) for i,c in enumerate(load_cases(results)) if 'k' in c and any(a in c['arms'] for a in arms)]
     if cases_only is not None:cases=[(i,c) for i,c in cases if i in cases_only]
     if limit:cases=cases[:limit]
@@ -83,7 +83,7 @@ def run(results,plan,arms,workers=4,checkpoint=None,budget=CONF_BUDGET,limit=Non
     if checkpoint and Path(checkpoint).exists():
         for line in open(checkpoint):
             if line.strip():r=json.loads(line);done[r['case']]=r['out']
-    todo=[(i,c,view,tau7,arms,budget) for i,c in cases if i not in done]
+    todo=[(i,c,view,tau7,arms,budget,symmetry) for i,c in cases if i not in done]
     # hardest first (big6, high mask rate) so the long tail starts early
     todo.sort(key=lambda j:(j[1]['family']!='big6',-j[1]['mask_rate'],j[0]))
     ck=open(checkpoint,'a') if checkpoint else None
@@ -107,15 +107,16 @@ def main():
     ap.add_argument('--arms',default=','.join(ARMS_008));ap.add_argument('--workers',type=int,default=4)
     ap.add_argument('--checkpoint');ap.add_argument('--limit',type=int);ap.add_argument('--plan',default=str(PLAN))
     ap.add_argument('--cases',help='comma-separated case indices (subset)')
+    ap.add_argument('--symmetry',action='store_true',help='first-visit state naming in the incremental encoding (answers unchanged)')
     a=ap.parse_args();out=Path(a.output)
     if out.exists():raise SystemExit(f'refusing to overwrite {out}')
     plan=load(a.plan);t0=time.time()
     only=set(int(x) for x in a.cases.split(',')) if a.cases else None
-    rep,_=run(a.results,plan,tuple(a.arms.split(',')),a.workers,a.checkpoint,limit=a.limit,cases_only=only,progress=True)
+    rep,_=run(a.results,plan,tuple(a.arms.split(',')),a.workers,a.checkpoint,limit=a.limit,cases_only=only,progress=True,symmetry=a.symmetry)
     rep['schema']='brute.xcheck-sat-incremental-report.v1'
     rep['wording']=('post-release verification re-run with the incremental second encoding (brute/xcheck_sat_incremental.py), '
                     'same author, no enumeration; not an independent audit; cannot change the frozen GX2\' verdict')
-    rep['results_file']=a.results;rep['wall_informational']=round(time.time()-t0,1)
+    rep['symmetry_breaking']=a.symmetry;rep['results_file']=a.results;rep['cases_subset']=sorted(only) if only else None;rep['wall_informational']=round(time.time()-t0,1)
     out.write_text(json.dumps(rep,indent=1,sort_keys=True)+'\n');print(json.dumps({k:v for k,v in rep.items() if k!='mismatches'},indent=1)[:3000])
 
 

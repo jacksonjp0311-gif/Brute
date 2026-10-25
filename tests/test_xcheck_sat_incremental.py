@@ -31,8 +31,8 @@ def _all(X,L,k,m,rng,t0s):
 
 
 class IncrementalEqualsFull(unittest.TestCase):
-    def _walk(self,seed,steps=7):
-        rng=random.Random(seed);n,k,m,tr,em=_world(rng);N=rng.choice([n,n+1]);I=IncSolver(N,k,m);checks=0
+    def _walk(self,seed,steps=7,symmetry=False):
+        rng=random.Random(seed);n,k,m,tr,em=_world(rng);N=rng.choice([n,n+1]);I=IncSolver(N,k,m,symmetry=symmetry);checks=0
         try:
             q=rng.randrange(n);masks=[_mask(rng,m,em[q])];acts=[]
             for t in range(steps):
@@ -64,10 +64,18 @@ class IncrementalEqualsFull(unittest.TestCase):
         total=sum(self._walk(s) for s in range(25))
         self.assertGreater(total,200)
 
+    def test_random_walks_symmetry(self):
+        """With first-visit naming every answer is still equal to the frozen XRegion (no symmetry breaking)."""
+        total=sum(self._walk(s,symmetry=True) for s in range(25,50))
+        self.assertGreater(total,200)
+
     def test_divergent_evidence_rebuilds(self):
         """Switching to evidence that is not an extension of the main trajectory (another arm) rebuilds and stays exact."""
         rng=random.Random(5);n,k,m,tr,em=3,2,4,[[1,2],[2,0],[0,1]],[0,1,2]
-        I=IncSolver(3,2,4)
+        for sym in (False,True):self._divergent(sym)
+
+    def _divergent(self,sym):
+        I=IncSolver(3,2,4,symmetry=sym)
         try:
             for masks,acts in [([1,2,4],[0,0]),([1,2,4,1],[0,0,0]),([1],[]),([1,4],[1]),([1,4,2,1],[1,0,1])]:
                 L=I.layer(masks,acts);X=XRegion(3,2,4,masks,acts)
