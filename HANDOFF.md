@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 06:53 EDT (count + gates done; 12/15 gated))._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 06:58 EDT (docs + RELEASE.json + release freeze done; next MANIFEST/verify/tests/merge))._
 
 ## Current version and state
 
@@ -58,8 +58,11 @@ _Kept current on the working branch during a release and on `main` at release. L
    DONE `16d60cf` release freeze list also locks post-start audit scripts.
    DONE gates `dab2012`, ledger `cda5c49`: 12/15 gated pass; FAIL GX2 (0 mismatches, act3 checked 84.5% < 90%), G3' (M5 1 non-drift
    false cert on drift4; A5 passes), G6b (predicted). GM NOT DISTINGUISHED (M5-A5 CI > 0 but G3' fails for M5). GX3 PASS.
-10. NEXT: diagnostic on the M5 non-drift false cert (report only, no tuning); DEVIATIONS_007; README/CHANGELOG/DISCOVERIES/ROADMAP/NEXT_ITERATION; RELEASE.json+pyproject 0.5.0;
-   release freeze 050; MANIFEST; verify_release_050 --fast; test_release_050; fresh clone; merge in /tmp/brute-main; tag; gh release.
+10. DONE M5 non-drift diagnostic (DEVIATIONS_007 Q7, report only); DEVIATIONS_007 complete `a02e9c7`+.
+   DONE README `e86c9f9`; CHANGELOG/DISCOVERIES D22-D25/ROADMAP/NEXT_ITERATION (v0.6.0) `5d19d36`.
+   DONE RELEASE.json + pyproject 0.5.0 `87136cc`; release freeze 050 `267ca0f` (10 files), ledger release_freeze_050 `dafc2b0`.
+11. NEXT: MANIFEST; verify_release_050 --fast; test_release_050 + full discover (README test section); fresh clone verify;
+   merge --no-ff in /tmp/brute-main; tag v0.5.0 on merge commit; gh release; final HANDOFF + MANIFEST on main.
 
 ## v0.4.0 progress (commit order is the chronology evidence)
 
