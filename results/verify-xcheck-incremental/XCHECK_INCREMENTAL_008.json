@@ -1,0 +1,132 @@
+{
+ "arms": [
+  "B5",
+  "BR6",
+  "BC6"
+ ],
+ "cases": 288,
+ "cases_subset": null,
+ "conf_budget_per_query": 2000000,
+ "mismatches": [],
+ "mismatching_traces": 0,
+ "note": "a mismatching trace stops at its first differing field; its steps are not counted as checked",
+ "per_family_arm": {
+  "act3/B5": {
+   "certs": 504,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 4608,
+   "steps_checked": 4608,
+   "steps_unchecked": 0,
+   "traces": 72
+  },
+  "act3/BC6": {
+   "certs": 510,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 4608,
+   "steps_checked": 4608,
+   "steps_unchecked": 0,
+   "traces": 72
+  },
+  "act3/BR6": {
+   "certs": 474,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 4608,
+   "steps_checked": 4608,
+   "steps_unchecked": 0,
+   "traces": 72
+  },
+  "big6/B5": {
+   "certs": 372,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 4608,
+   "steps_checked": 4608,
+   "steps_unchecked": 0,
+   "traces": 72
+  },
+  "big6/BC6": {
+   "certs": 388,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 4608,
+   "steps_checked": 4608,
+   "steps_unchecked": 0,
+   "traces": 72
+  },
+  "big6/BR6": {
+   "certs": 337,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 4608,
+   "steps_checked": 4608,
+   "steps_unchecked": 0,
+   "traces": 72
+  },
+  "ood6s3/B5": {
+   "certs": 446,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 4608,
+   "steps_checked": 4608,
+   "steps_unchecked": 0,
+   "traces": 72
+  },
+  "ood6s3/BC6": {
+   "certs": 488,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 4608,
+   "steps_checked": 4608,
+   "steps_unchecked": 0,
+   "traces": 72
+  },
+  "ood6s3/BR6": {
+   "certs": 430,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 4608,
+   "steps_checked": 4608,
+   "steps_unchecked": 0,
+   "traces": 72
+  },
+  "sens3/B5": {
+   "certs": 720,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 4608,
+   "steps_checked": 4608,
+   "steps_unchecked": 0,
+   "traces": 72
+  },
+  "sens3/BC6": {
+   "certs": 762,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 4608,
+   "steps_checked": 4608,
+   "steps_unchecked": 0,
+   "traces": 72
+  },
+  "sens3/BR6": {
+   "certs": 664,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 4608,
+   "steps_checked": 4608,
+   "steps_unchecked": 0,
+   "traces": 72
+  }
+ },
+ "queries": 1358721,
+ "results_file": "results/study-008/RESULTS.json",
+ "schema": "brute.xcheck-sat-incremental-report.v1",
+ "solver": "cadical195",
+ "symmetry_breaking": true,
+ "unknown_queries": 0,
+ "wall_informational": 310.4,
+ "witness_replay_failures": 0,
+ "wording": "post-release verification re-run with the incremental second encoding (brute/xcheck_sat_incremental.py), same author, no enumeration; not an independent audit; cannot change the frozen GX2' verdict"
+}
