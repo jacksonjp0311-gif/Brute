@@ -12,7 +12,7 @@ Every number below is quoted unaltered from the BGR files it links to.
 | Experiment protocol | [`docs/ETR_PROTOCOL.md`](../ETR_PROTOCOL.md) | The study protocol |
 | BitWatts | [`docs/BITWATTS.md`](../BITWATTS.md) | Work accounting; physical energy unmeasured |
 | Directory | [`docs/DIRECTORY.md`](../DIRECTORY.md) | The original file directory |
-| Next iteration (BGR's) | [`NEXT_ITERATION.md`](../../NEXT_ITERATION.md) | BGR's own roadmap; superseded for Brute by [`BRUTE_v0.1.0_PLAN.md`](../../BRUTE_v0.1.0_PLAN.md) |
+| Next iteration (BGR's) | Root `NEXT_ITERATION.md` as of the fork (tag `bgr-v0.90.0-fork`) | BGR's own roadmap; superseded for Brute by [`BRUTE_v0.1.0_PLAN.md`](../../BRUTE_v0.1.0_PLAN.md). The root file is now Brute's current proposal |
 | Frozen study plan | [`experiments/PLAN.json`](../../experiments/PLAN.json) | Seeds, masks, and gates G1–G8 |
 | Study-001 results | [`results/study-001/`](../../results/study-001/) | `RESULTS.json`, `SCIENTIFIC.json`, `SEAL.json`, `INDEPENDENT_AUDIT.json` |
 | Gates | [`results/GATES.json`](../../results/GATES.json) | Passed, failed, and untested gates |
@@ -24,3 +24,14 @@ Every number below is quoted unaltered from the BGR files it links to.
 **Not carried over:** `baseline/BGR-v0.89.0.zip` (71,142,325 bytes, sha256 `2ae5e464…4c1e4a2`). See `FORK.md`.
 
 **How Brute reads this record:** BGR's in-family soundness result is real. Its out-of-family behaviour is the problem Brute v0.1.0 exists to fix. The open questions are listed in the root README under "What Brute can't do yet".
+
+## Brute's own record (studies 002–005)
+
+| Record | Location | What it is |
+| --- | --- | --- |
+| Pre-registrations | `experiments/BRUTE_PLAN_00{2,3,4,5}.json` | Criteria frozen before code for each study (v0.1.0, v0.1.1, v0.2.0, v0.3.0) |
+| Sealed results | `results/study-00{2,3,4,5}/` | Traces, seals, gates, paired analyses, independent audits, reproducibility reruns |
+| Deviations | [`BRUTE_DEVIATIONS_002–005.md`](BRUTE_DEVIATIONS_005.md) | Every departure from a plan, and every failed gate |
+| Discoveries | [`DISCOVERIES.md`](DISCOVERIES.md) | D1–D16, each with data, math and an evidence label |
+| Design probes | [`v0.2.0/design_probe/`](v0.2.0/design_probe/), [`v0.3.0/design_probe/`](v0.3.0/design_probe/) | Pre-freeze probe code on earlier sealed traces (Simulated evidence, disclosed) |
+| Earlier next-iteration notes | [`v0.1.0/`](v0.1.0/NEXT_ITERATION.md), [`v0.2.0/`](v0.2.0/NEXT_ITERATION.md), [`v0.3.0/`](v0.3.0/NEXT_ITERATION.md) | The proposals each release was planned from; the current one is the root `NEXT_ITERATION.md` (v0.4.0) |
