@@ -183,7 +183,8 @@ def read_checkpoint(path):
 
 def run(results,plan,arms,workers,checkpoint,symmetry,spot=None,budget=CONF_BUDGET,progress=True):
     cases=select(load_cases(results),spot);view=plan_view(plan);tau7=plan['tau7']['value']
-    done=read_checkpoint(checkpoint)
+    from experiments.brute_common_009 import repair_torn_tail
+    repair_torn_tail(checkpoint);done=read_checkpoint(checkpoint)
     todo=[(i,c,view,tau7,arms,budget,symmetry) for i,c in cases if i not in done]
     todo.sort(key=lambda j:(j[1]['family']!='big6',-j[1]['mask_rate'],j[0]))   # hardest first
     with open(checkpoint,'a') as ck:

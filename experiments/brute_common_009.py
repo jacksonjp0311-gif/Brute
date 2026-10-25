@@ -1,7 +1,28 @@
 """Shared helpers for study BRUTE-070-SYNCPLAN-009 (paths, plan view, freeze chain, checkpoints)."""
 from pathlib import Path
 from experiments.brute_common import VerificationError,check,sha,load,dumps,write_new
-from experiments.brute_common_007 import Checkpoint
+from experiments.brute_common_007 import Checkpoint as _Checkpoint007
+
+
+def repair_torn_tail(path):
+    """If a JSON-lines file ends in a torn (unterminated) line from a kill, move those bytes to <path>.torn (appended)
+    and truncate the file to its last complete line, so later appends cannot fuse with the torn bytes. Returns the
+    number of bytes moved (0 if the file is clean or absent)."""
+    path=Path(path)
+    if not path.exists():return 0
+    b=path.read_bytes()
+    if not b or b.endswith(b'\n'):return 0
+    cut=b.rfind(b'\n')+1
+    with open(str(path)+'.torn','ab') as f:f.write(b[cut:]+b'\n')
+    with open(path,'r+b') as f:f.truncate(cut)
+    return len(b)-cut
+
+
+class Checkpoint(_Checkpoint007):
+    """The frozen study-007 checkpoint, after repair_torn_tail (the frozen class tolerates a torn last line on read but
+    would append after it)."""
+    def __init__(self,path):
+        self.torn_bytes=repair_torn_tail(path);super().__init__(path)
 from experiments.brute_common_008 import check_freeze as check_freeze_008,plan006_keys
 
 ROOT=Path(__file__).resolve().parents[1]

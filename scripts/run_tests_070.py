@@ -18,7 +18,11 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 PLAN=ROOT/'experiments/BRUTE_PLAN_009.json'
 OUT=ROOT/'results/study-009/TEST_SUITE_009.json'
-NEW_TESTS=('test_seeds_009.py','test_syncevent.py','test_planner.py','test_v070_reference.py','test_run_tests_070.py','test_release_070.py')
+def new_tests(root=ROOT):
+    """The v0.7.0 test modules: tests/test*.py files absent from tag v0.6.0."""
+    old=set(subprocess.run(['git','ls-tree','--name-only','v0.6.0','tests/'],cwd=root,capture_output=True,text=True,check=True).stdout.split())
+    return tuple(sorted(Path(x).name for x in glob.glob(str(root/'tests/test*.py')) if 'tests/'+Path(x).name not in old))
+NEW_TESTS=new_tests()
 K060_ALLOWED={'test_release_060.Release060.test_version_consistent','test_release_060.Release060.test_fast_verify_passes',
               'test_release_060.Release060.test_untampered_copy_passes'}
 CHILD_TIMEOUT=3600

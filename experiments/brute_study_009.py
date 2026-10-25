@@ -227,6 +227,26 @@ def run_jobs(jobs,plan,workers,ckpt,log=print):
     return [ckpt.done[key(j)] for j in jobs]
 
 
+def seal_partial(output,block,smoke=False,every=1,offset=0,limit=None,reason='stream budget or study cap'):
+    """Seal a stopped stream AS IT IS (stop_rule): RESULTS/SCIENTIFIC/SEAL from the finished checkpoint cases only,
+    marked complete=False with the missing job keys. No case is run."""
+    output=Path(output);plan=load(PLAN)
+    for name in ('RESULTS.json','SCIENTIFIC.json','SEAL.json'):check(not (output/name).exists(),'refusing overwrite '+str(output/name))
+    jobs=(smoke_jobs(plan,block) if smoke else jobs_for(plan,block))[offset::every]
+    if limit:jobs=jobs[:limit]
+    ck=Checkpoint(output/'CHECKPOINT.jsonl');keys=[key(j) for j in jobs]
+    done=[k for k in keys if k in ck.done];missing=[k for k in keys if k not in ck.done]
+    result={'schema':'brute.study.v7_0','plan':plan,'block':block,'smoke':smoke,'complete':False,'stop_reason':reason,
+            'job_selection':{'every':every,'offset':offset,'limit':limit},'job_keys':keys,'missing_job_keys':missing,
+            'cases':[ck.done[k] for k in done],'total_elapsed_informational':None}
+    write_new(output/'RESULTS.json',result);write_new(output/'SCIENTIFIC.json',no_time(result))
+    write_new(output/'SEAL.json',{'study':plan['study'],'block':block,'results_sha256':sha(output/'RESULTS.json'),
+        'scientific_sha256':sha(output/'SCIENTIFIC.json'),'plan_sha256':sha(PLAN),'freeze_sha256':None if smoke else sha(FREEZE),
+        'case_count':len(done),'expected_case_count':len(keys),'complete':False,'smoke':smoke,
+        'job_selection':{'every':every,'offset':offset,'limit':limit}})
+    return len(done),len(keys)
+
+
 def run(output,workers,block,limit=None,smoke=False,every=1,offset=0):
     """every/offset select a subset of the ordered jobs (G12 repro: every=3, offset=0)."""
     output=Path(output);plan=load(PLAN)
@@ -239,13 +259,13 @@ def run(output,workers,block,limit=None,smoke=False,every=1,offset=0):
     if limit:jobs=jobs[:limit]
     output.mkdir(parents=True,exist_ok=True)
     cases=run_jobs(jobs,plan,workers,Checkpoint(output/'CHECKPOINT.jsonl'))
-    result={'schema':'brute.study.v7_0','plan':plan,'block':block,'smoke':smoke,
+    result={'schema':'brute.study.v7_0','plan':plan,'block':block,'smoke':smoke,'complete':True,
             'job_selection':{'every':every,'offset':offset,'limit':limit},
             'job_keys':[key(j) for j in jobs],'cases':cases,'total_elapsed_informational':time.perf_counter()-started}
     write_new(output/'RESULTS.json',result);write_new(output/'SCIENTIFIC.json',no_time(result))
     write_new(output/'SEAL.json',{'study':plan['study'],'block':block,'results_sha256':sha(output/'RESULTS.json'),
         'scientific_sha256':sha(output/'SCIENTIFIC.json'),'plan_sha256':sha(PLAN),'freeze_sha256':None if smoke else sha(FREEZE),
-        'case_count':len(cases),'smoke':smoke,'job_selection':{'every':every,'offset':offset,'limit':limit}})
+        'case_count':len(cases),'expected_case_count':len(jobs),'complete':True,'smoke':smoke,'job_selection':{'every':every,'offset':offset,'limit':limit}})
     return result
 
 
@@ -253,6 +273,8 @@ if __name__=='__main__':
     ap=argparse.ArgumentParser();ap.add_argument('--block',choices=BLOCKS,required=True)
     ap.add_argument('--output');ap.add_argument('--workers',type=int,default=3);ap.add_argument('--limit',type=int)
     ap.add_argument('--smoke',action='store_true');ap.add_argument('--every',type=int,default=1);ap.add_argument('--offset',type=int,default=0)
+    ap.add_argument('--seal-partial',action='store_true',help='seal the finished checkpoint cases of a stopped stream (no run)')
     a=ap.parse_args();out=a.output or str(STUDY_DIR/a.block)
     if a.smoke:check(not Path(out).resolve().is_relative_to(STUDY_DIR.resolve()),'smoke output must not be inside results/study-009')
-    run(out,a.workers,a.block,a.limit,a.smoke,a.every,a.offset);print('done')
+    if a.seal_partial:print('sealed partial',seal_partial(out,a.block,a.smoke,a.every,a.offset,a.limit))
+    else:run(out,a.workers,a.block,a.limit,a.smoke,a.every,a.offset);print('done')
