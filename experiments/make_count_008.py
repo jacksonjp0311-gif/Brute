@@ -116,7 +116,7 @@ def summarize(recs,gated):
 def run(a):
     plan=json.load(open(PLAN));burn=plan['burn_in']
     if isinstance(burn,dict):burn=burn.get('value',8)
-    cases=load_cases(a.results);args=[];gdl=time.time()+TOTAL_S
+    cases=load_cases(a.results);args=[];gdl=(a.budget_start or time.time())+TOTAL_S
     if a.breadth:
         lb=json.load(open(PLAN7))['breadth_worlds']['learner_bounds']
         for c in cases:
@@ -138,11 +138,12 @@ def run(a):
             r=fu.result();done[r['key']]=r;f.write(json.dumps(r,sort_keys=True)+'\n');f.flush();os.fsync(f.fileno())
             if i%10==0:print(i+1,r['key'],r['counter_seconds_informational'],flush=True)
     recs=[done[k] for k in sorted(done)]
-    rep={'schema':SCHEMA,'results_file':str(a.results),'mode':'breadth (reported only)' if a.breadth else '2x2 GMC sample',
+    from experiments.brute_common import sha as _sha
+    rep={'schema':SCHEMA,'results_file':str(a.results),'results_sha256':_sha(a.results),'mode':'breadth (reported only)' if a.breadth else '2x2 GMC sample',
          'counter':'pyganak==2.8.0 (Exact: documents itself as an exact model counter)',
          'independent_check':f'blocking-clause count on brute/xcheck_sat.XRegion (CaDiCaL), symmetry=True, cap {BLOCK_CAP}',
          'fallback':'pyapproxmc==4.4.0 eps 0.8 delta 0.2 (Inferred), only where |R_t| is UNKNOWN',
-         'budget':{'per_count_s':PER_COUNT_S,'per_case_s':PER_CASE_S,'total_s':TOTAL_S},
+         'budget':{'per_count_s':PER_COUNT_S,'per_case_s':PER_CASE_S,'total_s':TOTAL_S,'budget_start_epoch':a.budget_start},
          'use':'reporting only; never used by any decision',
          'summary':summarize(recs,not a.breadth),'cases':recs}
     out=Path(a.output)
@@ -154,4 +155,5 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--results',required=True);p.add_argument('--output',required=True)
     p.add_argument('--checkpoint',required=True);p.add_argument('--workers',type=int,default=4)
     p.add_argument('--breadth',action='store_true');p.add_argument('--limit',type=int)
+    p.add_argument('--budget-start',type=float,help='epoch seconds at which the study-wide 6 h counting cap started (shared by the 2x2 and breadth invocations)')
     run(p.parse_args())

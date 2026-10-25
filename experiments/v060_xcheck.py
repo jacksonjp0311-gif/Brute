@@ -238,10 +238,12 @@ def load_cases(path):
     return d['cases'] if isinstance(d,dict) else d
 
 
-def run(results,plan,arms,workers=4,checkpoint=None,budget=CONF_BUDGET,limit=None):
+def run(results,plan,arms,workers=4,checkpoint=None,budget=CONF_BUDGET,limit=None,tau7=None,every=1):
     cases=[(i,c) for i,c in enumerate(load_cases(results)) if 'k' in c and any(a in c['arms'] for a in arms)]
+    cases=cases[::every]
     if limit:cases=cases[:limit]
-    view=plan_view(plan);tau7=plan['tau7']['value'] if 'tau7' in plan else view['tau7']['value']
+    view=plan_view(plan)
+    if tau7 is None:tau7=plan['tau7']['value'] if 'tau7' in plan else view['tau7']['value']
     done={}
     if checkpoint and Path(checkpoint).exists():
         for line in open(checkpoint):
@@ -283,10 +285,17 @@ def main():
     ap=argparse.ArgumentParser();ap.add_argument('--results',required=True);ap.add_argument('--output',required=True)
     ap.add_argument('--arms',default=','.join(ARMS_008));ap.add_argument('--workers',type=int,default=4)
     ap.add_argument('--checkpoint');ap.add_argument('--limit',type=int);ap.add_argument('--plan',default=str(PLAN))
+    ap.add_argument('--every',type=int,default=1,help='deterministic subset: every n-th breadth case (R_dev_xcheck_007 only)')
+    ap.add_argument('--tau7-from-results',action='store_true',help='study-007 (R_dev_xcheck_007): tau7 is RESULTS["calibration"]["tau7"]')
     a=ap.parse_args();out=Path(a.output)
     if out.exists():raise SystemExit(f'refusing to overwrite {out}')
     plan=load(a.plan);t0=time.time()
-    rep=run(a.results,plan,tuple(a.arms.split(',')),a.workers,a.checkpoint,limit=a.limit)
+    tau7=None
+    if a.tau7_from_results:
+        op=gzip.open if str(a.results).endswith('.gz') else open
+        with op(a.results,'rt') as f:tau7=json.load(f)['calibration']['tau7']
+    rep=run(a.results,plan,tuple(a.arms.split(',')),a.workers,a.checkpoint,limit=a.limit,tau7=tau7,every=a.every);rep['every']=a.every
+    if tau7 is not None:rep['tau7_from_results']=tau7
     rep['results_file']=a.results;rep['wall_informational']=round(time.time()-t0,1)
     out.write_text(json.dumps(rep,indent=1,sort_keys=True)+'\n');print(json.dumps({k:v for k,v in rep.items() if k!='mismatches'},indent=1)[:3000])
 
