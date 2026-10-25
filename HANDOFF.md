@@ -1,48 +1,38 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 02:15 EDT (v0.4.0 design probes, branch `plan/v0.4.0`)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 02:48 EDT (v0.4.0 implementation, branch `plan/v0.4.0`)._
 
 ## Current version and state
 
-- **Released: v0.3.0** (tag `v0.3.0` on the `--no-ff` merge of `plan/v0.3.0` into `main`). Study
-  BRUTE-030-CHANGEPOINT-005: fibre-robust certification (Y1k) + LU-R lookahead. Earlier tags `v0.2.0`, `v0.1.1`… stay
-  as they are (never force-push).
-  - Gates (Observed, `results/study-005/GATES.json`): 12 of 14 pass; **G5** (ood4 false alarms 5/72) and **G6b**
-    (coverage −0.098 vs v0.2.0, pre-registered as expected) **fail and stay on the record**. G3′ (stale certificates),
-    which failed in v0.2.0, passes. G14 (D7 = D8 single-mechanism test) is **OPEN**.
-  - `python -m scripts.verify_release_030 --frozen` (full, reruns the independent reference, ~16 min) passed on a fresh
-    clone. Tests: 170, 3 errors by construction after `python scripts/study004_storage.py restore` (4 without it;
-    `BRUTE_DEVIATIONS_005.md` N1).
-- **Next version:** v0.4.0, not started (proposal in `NEXT_ITERATION.md`; no pre-registration yet).
+- **Released: v0.3.0** (tag `v0.3.0` = `73a3a5a`, unchanged). 12 of 14 gates pass; G5 and G6b fail (on the record);
+  G14 OPEN. **v0.3.0 errata** on `main` (`8e6d323`, `8222e0e`; `docs/research/v0.3.0/ERRATA.md`): G11 is called a
+  *second implementation by the same author (no `brute` import)*, not an independent audit; full-scan count
+  **0/3,168** arm traces plus a mutation test; tamper-by-version tests; order check; numpy pin. GitHub releases
+  v0.2.0/v0.3.0 were created with notes that point to the errata.
+- **In progress: v0.4.0 / study BRUTE-040-GEOMETRY-006** on `plan/v0.4.0`.
 
 ## Branches (origin `github.com/jacksonjp0311-gif/Brute`, private)
 
 | Branch | Head | State |
 | --- | --- | --- |
-| `main` | v0.3.0 merge commit (= tag `v0.3.0`) | Released code and record |
-| `plan/v0.3.0` | merged into `main` | v0.3.0 working branch (historical now) |
-| `bridge/v0.2` | `cced586` | Bridge work (separate worktree `/workspace/brute-bridge`); **unmerged; do not edit or merge without a decision** |
-| `bridge/v0.1` | `9c88a3a` | Older bridge protocol; unmerged |
-| `plan/v0.2.0`, `plan/v0.1.1` | — | Historical release branches (merged) |
+| `main` | `8222e0e` (v0.3.0 merge + errata) | Released code and record |
+| `plan/v0.4.0` | see `git log` | v0.4.0 working branch |
+| `bridge/v0.2`, `bridge/v0.1` | `cced586`, `9c88a3a` | Bridge work; **unmerged; do not edit or merge without a decision** |
 
-## In progress
+## v0.4.0 progress (commit order is the chronology evidence)
 
-v0.4.0 / study-006 on branch `plan/v0.4.0` (from main 73a3a5a). Design probes (Simulated, study-004/005 sealed seeds
-only) are running in `docs/research/v0.4.0/design_probe/` (uncommitted until the plan commit, which discloses their
-hashes). Next: commit `experiments/BRUTE_PLAN_006.json` + ledger `preregistration`, then implementation.
-
-## Exact next steps
-
-1. Create `plan/v0.4.0` from `main`. Write `experiments/BRUTE_PLAN_006.json` from `NEXT_ITERATION.md`: new seed blocks,
-   arms (v0.4.0 active/passive + v0.3.0 A3/P3 + v0.2.0 A2 controls), gates with numeric thresholds, and the
-   representation-exactness gate (the compact region gives decisions identical to enumeration on the sealed study-004/005
-   traces). Commit it, append the `preregistration` ledger receipt and push — **before any code**.
-2. Design probes (Simulated) go only on earlier sealed traces and are disclosed in `BRUTE_DEVIATIONS_006.md`.
-3. Implement in new files only. Write `BRUTE_SOURCE_FREEZE_006.json`, commit and ledger the scoring scripts before the
-   run, run study-006, and seal it. Then the same release sequence as v0.3.0: paired analysis, gates, independent audit,
-   reproducibility, docs, release freeze, MANIFEST, fresh-clone tests, `--no-ff` merge, tag on the merge commit (check it
-   with `git rev-parse`), push.
-4. Keep this file current at every step.
+1. DONE `5fa3628`: `experiments/BRUTE_PLAN_006.json` pre-registered with design probes (Simulated, sealed 004/005
+   seeds only, hashed in the plan). Ledger `preregistration_006` (appended after the errata merge to keep the chain linear).
+2. DONE `2eba00b`: clean-room second implementation `experiments/v040_reference.py` (written from the plan only,
+   before any `brute/` v0.4.0 code; counts mismatches and has a mutation test). Ledger `reference_006`.
+3. IN PROGRESS: implementation `brute/resume.py` (A4/P4 resume, D2 depth-2, F2 fibre), `brute/geometry.py`
+   (constraint region = H-representation of the version space; pysat Glucose3), `experiments/worlds_006.py` (perm4),
+   `brute_common_006.py`, `brute_study_006.py`, `brute_calibrate_006.py`. Smoke (96 cases, placeholder tau6):
+   reference count 0/80 traces then 0 on the larger smoke; mutation 20/20 detected.
+4. TODO: `experiments/exactness_006.py` (GR1/GR1b/GR2), API 1.4 (`service_v040.py`, schemas v1_4), storage, tests,
+   pins → `BRUTE_SOURCE_FREEZE_006.json` → scoring scripts in a separate commit ≥ 10 min before the run → ledger
+   `run_start` → calibrate (twice, G13) → run → seal → `run_end` → gates/paired/count/repro/GR → docs → release freeze,
+   MANIFEST, fresh-clone verify → `--no-ff` merge, tag v0.4.0 on the merge commit, gh release.
 
 ## Standing discipline rules
 
