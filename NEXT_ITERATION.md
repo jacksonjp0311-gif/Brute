@@ -40,3 +40,17 @@ The v0.1.0 note is kept at `docs/research/v0.1.0/NEXT_ITERATION.md`. Labels are 
 
 - Raising ε to soften the contradiction step. *Rejected* in the v0.1.1 plan, R1.
 - Mixing the margin forecast into the forecast before contradiction. *Rejected*, R2: Simulated gain, in-family cost.
+
+## Geometric roadmap note (added at the v0.2.0 freeze; Inferred / Open)
+
+- **The version space is a region.** Each action and reading cuts it. Certification means the region's projection onto
+  the queried coordinate collapses to a single point, and the n≤5 margin collapses to the same point (*Exact* as a
+  restatement of the gate order).
+- **v0.2.0 tests targeted collapse** (one-step lookahead) against fixed actions, with entropy-style bisection
+  *Rejected* on design data (DISCOVERIES D1).
+- **Beyond enumeration (Open):**
+  - partition lattices (Myhill–Nerode quotients);
+  - SAT/BDD encodings with projection by model counting;
+  - abstract-interpretation shapes over code probabilities.
+
+  These would let n≥6 fit a fixed budget. Tracked in `docs/ROADMAP.md`.

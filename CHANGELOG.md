@@ -1,5 +1,17 @@
 # Brute changelog
 
+## v0.2.0 (DRAFT, unreleased): active experimentation and window rebuild (study BRUTE-020-ACTIVE-004)
+
+Pre-registered in `experiments/BRUTE_PLAN_004.json` before any v0.2.0 code. Results are not yet run.
+
+- **X1 active experimentation:** `brute/active.py::ActiveBruteLearner.experiment` is a one-step certifiability lookahead
+  (LU). Certification rules are unchanged.
+- **X2 window rebuild:** a `window_n4` forecast tier after contradiction.
+- **X3 issuance de-duplication:** fixes the bridge double-issuance bug.
+- **X4 brute.api 1.2:** an `experiment` op and field.
+- **X5 version:** `brute/release_version.py`.
+- **X6 clone hygiene:** `.gitattributes` `*.ps1 -text`, a regenerated MANIFEST, and the README test count corrected.
+
 ## v0.1.1: open-world fallback forecast (study BRUTE-011-FALLBACK-003)
 
 Pre-registered at `1585a77` before any v0.1.1 code. The owner chose G3′ over G3 before the freeze. Criteria were not
