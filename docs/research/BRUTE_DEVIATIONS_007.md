@@ -106,8 +106,9 @@ M5 had taken action 1 by the M tie-break (LU-R scores tied 0/0, projection volum
 v0.90 control was also wrong there. A5 at the same step: POSSIBLE_SET, not certified. *Observed.*
 
 Reading (*Inferred*): Y1k certifies on the fibre over the **latest** observation, a one-step horizon; a drift two steps
-back whose evidence has not yet contradicted the region can leave a stale region. A3/A4/A5 hit this on the v0.3.0
-extended block (2 non-drift), and A2 here; M changes which action is taken and so which trajectory is seen, and on this
+back whose evidence has not yet contradicted the region can leave a stale region. A3 hit this on the v0.3.0
+extended block (2 non-drift), and on study-007's drift4 A2 (v0.2.0) has 1 non-drift of 14 false, A4 and A5 0 of 6
+(computed from the sealed SCIENTIFIC.json for this note, *Observed*); M changes which action is taken and so which trajectory is seen, and on this
 seed it walked into such a window. The registered G3′ rule counts it, and the GM decision rule therefore returns
 NOT DISTINGUISHED although the coverage CI excludes 0. Nothing is changed; this is an input to v0.6.0 (a multi-step
 fibre was rejected in v0.4.0 as F2, which broke G3′ itself).
