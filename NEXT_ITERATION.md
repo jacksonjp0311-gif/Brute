@@ -1,42 +1,36 @@
-# Brute v0.2.0: next iteration (proposal, not pre-registered)
+# Brute v0.3.0: next iteration (proposal, not pre-registered)
 
-The v0.1.0 note is kept at `docs/research/v0.1.0/NEXT_ITERATION.md`. Labels are the same as in the README.
+The v0.2.0 note is kept at `docs/research/v0.2.0/NEXT_ITERATION.md` (v0.1.0's at `docs/research/v0.1.0/`). Labels are the
+same as in the README.
 
-## Where v0.1.1 leaves things (Observed, study-003)
+## Where v0.2.0 leaves things (Observed, study-004)
 
-- **Safety holds.** There are 0 false certificates in family and on ood5. The only errors are 4 on drift4, all at
-  perturbation steps, and each was withdrawn and falsified at the next observation.
-- **Open-world forecasting is fixed for n≤5 worlds:** ood5 0.6245, down from 1.4808. On drift4 it only matches the
-  suffix-1 baseline: 1.1556 against 1.1679, with a paired interval that includes 0. At mask 0.6 it is slightly worse
-  than v0.1.0 (1.3713 against 1.3631).
-- **Coverage is the main cost:**
-  - in family 0.09–0.20, against 0.34–0.52 for v0.90;
-  - ood4 0.006, against 0.581;
-  - ood5 and drift4 0.001 and 0.006.
-- **Every margin abstention is real.** Each of the 4,226 MARGIN_DISAGREES abstentions has a replay-verified n≤5 machine
-  that predicts differently. Loosening the gate would be unsound.
-- **The largest per-step loss is the contradiction step:** 126 steps at ln 200 = 5.298.
+- **Active cuts work.** Dual coverage gain +0.115 pooled (CI [0.104, 0.127]), with 0 false certificates in family and on
+  ood5, and in-family log-loss lower than v0.1.1 in every family.
+- **The only errors are stale certificates after an unannounced change.** drift4 A: 24 wrong, 21 at drift steps and
+  **3 one step later** (G3′ failed). Passive P: 1 wrong.
+- **The policy exploits.** On-policy coverage ≈ 2 × dual coverage; certificates for the untaken action fall.
+- **The window rebuild clears suffix-1 on drift** (P − suffix-1 CI upper −0.0006) but is not distinguishable from v0.1.1.
+- **Budget:** peak 103,814 of 160,000 rows; one-step lookahead fits, deeper lookahead or n≤6 would not (*Inferred*).
 
-## Recommendation for v0.2.0
+## Recommendation for v0.3.0
 
-1. **Choose actions that disambiguate** (the primary coverage lever). The action sequence is fixed today. When the
-   margin disagrees, choose the action whose next reading splits the surviving n≤4 and n≤5 explanations. Certification
-   rules stay the same, so soundness carries over by construction (*Inferred*). Measure coverage against a fixed-action
-   arm.
-2. **Restart at a change point after contradiction** (drift4). When the margin is also contradicted (R5: 60 of 442
-   drift4 margin steps were outside its support), rebuild the n≤4/n≤5 supports from a trailing window, with no known
-   schedule. Encoding the generator's period of 11 stays *Rejected* as leakage. Target: drift4 log-loss below suffix-1
-   with an interval that excludes 0. The first wrong certificate right after an unannounced change cannot be prevented
-   by a causal learner (*Inferred*). G3′ stays the gate, and the target is fast withdrawal.
-3. **Grow the family to n≤5 certification behind an n≤6 margin**, only if the cost of 1 fits the 160,000-row budget.
-   The current peak is 102,806 margin rows, and n≤6 is likely to exceed it (*Inferred*). Measure before planning.
-4. **Keep the discipline:**
-   - pre-register study-004 on new seed blocks before any code;
-   - keep τ fixed, or calibrate it only on in-family calibration seeds;
-   - run v0.1.1 as the control arm;
-   - keep the independent reference and byte reproducibility.
+1. **Change-point-aware certification (primary; targets G3′).** After any residual alarm, family contradiction, or
+   window restart, withhold CERTIFIED for k steps, *or* require the certificate to survive a "recent change" margin: the
+   n≤4 region rebuilt from only the last w observations must project to the same point. Pre-register k/w on design
+   seeds (study-004 seeds are now design data), gate G3′ unchanged, and gate the coverage cost against v0.2.0 A.
+   *Inferred:* the 3 step-13 errors are exactly the ones a w-window agreement test can catch; the 21 drift-step errors
+   cannot be caught by any causal learner.
+2. **Exploration that values the untaken branch.** Score actions by certifiable-pair gain over both actions, or a
+   two-step lookahead restricted to the margin-disagreeing rows, and gate dual (not on-policy) coverage. Measure the
+   row cost first (D10).
+3. **Representation study (measure, do not ship).** Compare enumeration against a partition-refinement (Myhill–Nerode
+   style) or SAT/model-counting projection on the study-004 traces: same decisions, fewer rows. This is the gate for
+   n≤6 and R4.
+4. **Keep the discipline:** new seed blocks, criteria frozen before code, v0.2.0 A and P as control arms, independent
+   reference, byte reproducibility, failures kept on the record.
 
 ## Not recommended
 
-- Raising ε to soften the contradiction step. *Rejected* in the v0.1.1 plan, R1.
-- Mixing the margin forecast into the forecast before contradiction. *Rejected*, R2: Simulated gain, in-family cost.
+- Loosening the margin gate or ε to raise coverage. *Rejected* (study-003 witness audit: every margin abstention is real).
+- Encoding the drift generator's period. *Rejected* as leakage.

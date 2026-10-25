@@ -1,42 +1,67 @@
 {
-  "version": "0.1.1",
+  "version": "0.2.0",
   "name": "Brute",
   "forked_from": "BGR v0.90.0 (tag bgr-v0.90.0-fork)",
-  "mission": "general intelligence research; this release is a bounded open-world forecasting fix, not general intelligence",
-  "study": "BRUTE-011-FALLBACK-003",
-  "preregistration": "experiments/BRUTE_PLAN_003.json",
-  "preregistration_commit": "1585a77",
+  "mission": "general intelligence research; this release adds one-step active experimentation and a window rebuild forecast, not general intelligence",
+  "study": "BRUTE-020-ACTIVE-004",
+  "preregistration": "experiments/BRUTE_PLAN_004.json",
+  "preregistration_commit": "c0ac594",
+  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_004.json",
+  "source_freeze_commit": "8bf8759",
   "case_count": 504,
-  "gates": "results/study-003/GATES.json",
+  "gates": "results/study-004/GATES.json",
   "gates_passed": [
     "G1_in_family_soundness",
-    "G2_ood5_false_certs_zero",
-    "G3_prime_drift4",
+    "G2_ood5_soundness",
     "G4_public_safety",
     "G5_false_alarm_limit",
-    "G6_open_world_logloss",
-    "G7_in_family_no_change",
-    "G8_retraction_semantics",
-    "G9_compute_budget",
-    "G10_independent_audit",
-    "G11_reproducibility"
+    "G6_active_coverage_gain",
+    "G7_open_world_no_regression",
+    "G8_passive_equivalence",
+    "G9_retraction_semantics",
+    "G10_compute_budget",
+    "G11_independent_audit",
+    "G12_reproducibility",
+    "G13_tau_reproduces"
   ],
-  "gates_failed": [],
-  "g3_variant": "G3_prime (owner decision 2026-10-24 18:20 EDT); original G3 (drift4 false certs = 0) not gated and would fail (4)",
+  "gates_failed": [
+    "G3_prime_drift4"
+  ],
+  "gate_failure_note": "G3_prime_drift4 fails for the active arm A: 3 wrong taken-action certificates at a non-drift step (step 13, one step after the step-12 drift; seeds 1390010 and 1390011 at mask 0.1, 1390016 at mask 0.35). The total clause holds (24 <= 40.5 = 50% of v0.90's 81). The passive arm P passes (1 wrong, at drift step 23). Pre-registered risk (DISCOVERIES D3); thresholds were not changed.",
   "false_conditional_certificates": {
-    "brute_v011_ood5": 0,
-    "brute_v011_drift4": 4,
-    "brute_v011_drift4_non_drift_steps": 0,
-    "v090_control_ood5": 83,
-    "v090_control_drift4": 71
+    "active_A_in_family": 0,
+    "active_A_ood5": 0,
+    "active_A_drift4": 24,
+    "active_A_drift4_non_drift_steps": 3,
+    "passive_P_drift4": 1,
+    "v011_control_drift4": 1,
+    "v090_control_ood5": 74,
+    "v090_control_drift4": 81
+  },
+  "dual_coverage_gain_A_minus_P": {
+    "pooled": 0.115355,
+    "ci95": [
+      0.10409,
+      0.127123
+    ]
   },
   "open_world_logloss_post_burn_in": {
-    "ood5": 0.624547,
-    "drift4": 1.155589,
+    "ood5": {
+      "A": 0.665014,
+      "P": 0.67712,
+      "C_v011": 0.67712
+    },
+    "drift4": {
+      "A": 1.034239,
+      "P": 1.056963,
+      "C_v011": 1.06755,
+      "suffix1": 1.181247
+    },
     "ln4": 1.386294
   },
   "public_certificates_out_of_family": 0,
-  "version_note": "brute.version.RELEASE_VERSION = 0.1.1; brute.__version__ stays 0.1.0 because brute/__init__.py is in the study-002 freeze (amendment A3)",
+  "api": "brute.api 1.0, 1.1 and 1.2 (BruteServiceV020: experiment op and field)",
+  "version_note": "brute.release_version.RELEASE_VERSION = 0.2.0; brute.version.RELEASE_VERSION stays 0.1.1 and brute.__version__ stays 0.1.0 (both files are in earlier freezes)",
   "language_adapter": "template-only, grounded in brute.api responses; no language model connected",
   "baseline": "baseline/IDENTITY.json (zip not included in the fork)",
   "other_projects_modified": false
