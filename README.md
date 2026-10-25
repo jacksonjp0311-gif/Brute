@@ -151,7 +151,12 @@ Findings and their math: [`docs/research/DISCOVERIES.md`](docs/research/DISCOVER
 
 ## Test suite at release
 
-*Observed* on the release commit tree (`python -m unittest discover -s tests`, 256 s): **196 tests, 192 pass, 4 error.** The 4 errors are frozen earlier-release tests that assert their own version string against the current `RELEASE.json` (`test_release_011/020/030::test_fast_verify_passes`, `test_brute_repro::test_verify_fails_under_tampered_results`); they cannot be edited (frozen) and they pass on their own tags (`tests/test_tamper_by_version.py`). `tests/test_release_040.py` (5 tests, including an untampered-copy control and 8 tamper cases) reads the version from `RELEASE.json` and passes, also in a fresh clone after `study00{4,5,6}_storage.py restore`.
+*Observed* on the release branch tree at `3d9f587` (`python -m unittest discover -s tests`, 294 s): **213 tests, 204 pass, 1 failure, 8 errors.**
+
+- **8 of 9 are by construction.** These frozen earlier-release tests check their own version, or verify the current tree as their release: `test_release_011/020/030::test_fast_verify_passes`, `test_brute_repro::test_verify_fails_under_tampered_results`, and `test_release_040::{test_fast_verify_passes, test_git_order, test_untampered_copy_passes, test_version_consistent}`. `test_release_040` is "version-parameterised", but its verifier is pinned to study-006 and its freezes, so it errors once `RELEASE.json` says 0.5.0. They can't be edited (frozen), and they pass on their own tags.
+- **1 is a real defect in the v0.5.0 test/verifier pair.** In `tests/test_release_050.py::test_tampered_copies_fail`, the tamper case for `results/study-007/SECOND_IMPLEMENTATION_COUNT.json` corrupts the JSON. The verifier then rejects the tampered copy by raising an uncaught `JSONDecodeError` instead of `VerificationError`. The tampered copy still does not verify, but the error is of the wrong type. Both files were frozen in `BRUTE_RELEASE_FREEZE_050` before this run showed the problem, so the defect is recorded rather than patched. It is listed for v0.6.0.
+- The other 4 `test_release_050` tests pass. These are the version check, the untampered-copy control, git order, and fast verify, plus the other tamper cases.
+- `scripts/verify_release_050.py --fast` passes on the branch and in a fresh clone after `study00{4,5,6,7}_storage.py restore`.
 
 ## Study-005 (v0.3.0) against its pre-registered criteria (*Observed*, kept for reference)
 
