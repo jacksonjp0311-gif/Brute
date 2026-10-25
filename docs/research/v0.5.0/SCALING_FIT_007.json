@@ -1,0 +1,465 @@
+{
+ "label": "Inferred (models fitted post hoc to Observed per-case points; not pre-registered)",
+ "schema": "brute.scaling-fit.v1",
+ "study_007_scaling": {
+  "2a2s": {
+   "enumeration_peak_rows": {
+    "censored_cases_excluded": {},
+    "fit": "fewer than 3 uncensored n values; no fit",
+    "raw": {
+     "4": {
+      "cases": 6,
+      "max": 87.0,
+      "mean": 29.5,
+      "median": 15.5
+     },
+     "6": {
+      "cases": 6,
+      "max": 2709.0,
+      "mean": 1062.5,
+      "median": 759.0
+     }
+    }
+   },
+   "sat_case_seconds_informational": {
+    "raw": {
+     "10": {
+      "cases": 6,
+      "max": 0.830525,
+      "mean": 0.494707,
+      "median": 0.49118
+     },
+     "12": {
+      "cases": 6,
+      "max": 0.649199,
+      "mean": 0.508011,
+      "median": 0.507738
+     },
+     "4": {
+      "cases": 6,
+      "max": 0.049583,
+      "mean": 0.039783,
+      "median": 0.039722
+     },
+     "6": {
+      "cases": 6,
+      "max": 0.286573,
+      "mean": 0.215516,
+      "median": 0.212187
+     },
+     "8": {
+      "cases": 6,
+      "max": 1.604494,
+      "mean": 0.721404,
+      "median": 0.491042
+     }
+    }
+   },
+   "sat_max_clauses": {
+    "fit": {
+     "cubic": {
+      "R2": 0.999881,
+      "coef": [
+       13.0,
+       275.6667,
+       68.5,
+       1.0
+      ],
+      "mean_residual_by_n": {
+       "10": 0.0,
+       "12": 0.0,
+       "4": -0.0,
+       "6": -0.0,
+       "8": -0.0
+      },
+      "model": "y = c0 + c1 n + c2 n^2 + c3 n^3",
+      "residual_sd": 52.733
+     },
+     "exponential": {
+      "R2_log_scale": 0.9832,
+      "a": 6.9105,
+      "c_per_state": 0.2326,
+      "dropped_nonpositive": 0,
+      "growth_factor_per_state": 1.262,
+      "mean_residual_by_n": {
+       "10": 0.0336,
+       "12": -0.0922,
+       "4": -0.1111,
+       "6": 0.0714,
+       "8": 0.0983
+      },
+      "model": "log y = a + c n",
+      "residual_sd_log": 0.089
+     },
+     "n_values": [
+      4,
+      6,
+      8,
+      10,
+      12
+     ],
+     "points": 30,
+     "power": {
+      "R2_log_scale": 0.9989,
+      "a": 5.3372,
+      "b_exponent": 1.7095,
+      "dropped_nonpositive": 0,
+      "mean_residual_by_n": {
+       "10": -0.003,
+       "12": 0.0248,
+       "4": 0.0229,
+       "6": -0.0225,
+       "8": -0.0222
+      },
+      "model": "log y = a + b log n",
+      "residual_sd_log": 0.0227
+     }
+    },
+    "raw": {
+     "10": {
+      "cases": 6,
+      "max": 10738.0,
+      "mean": 10619.666667,
+      "median": 10608.0
+     },
+     "12": {
+      "cases": 6,
+      "max": 15055.0,
+      "mean": 14913.0,
+      "median": 14899.0
+     },
+     "4": {
+      "cases": 6,
+      "max": 2323.0,
+      "mean": 2275.666667,
+      "median": 2271.0
+     },
+     "6": {
+      "cases": 6,
+      "max": 4420.0,
+      "mean": 4349.0,
+      "median": 4342.0
+     },
+     "8": {
+      "cases": 6,
+      "max": 7209.0,
+      "mean": 7114.333333,
+      "median": 7105.0
+     }
+    }
+   },
+   "sat_unknown_answers_by_n": {
+    "10": 0,
+    "12": 0,
+    "4": 0,
+    "6": 0,
+    "8": 0
+   }
+  },
+  "2a3s": {
+   "enumeration_peak_rows": {
+    "censored_cases_excluded": {},
+    "fit": "fewer than 3 uncensored n values; no fit",
+    "raw": {
+     "4": {
+      "cases": 6,
+      "max": 69.0,
+      "mean": 37.666667,
+      "median": 31.5
+     },
+     "6": {
+      "cases": 6,
+      "max": 3784.0,
+      "mean": 1898.666667,
+      "median": 1241.5
+     }
+    }
+   },
+   "sat_case_seconds_informational": {
+    "raw": {
+     "10": {
+      "cases": 6,
+      "max": 0.661263,
+      "mean": 0.561528,
+      "median": 0.575702
+     },
+     "12": {
+      "cases": 6,
+      "max": 0.648027,
+      "mean": 0.603349,
+      "median": 0.612678
+     },
+     "4": {
+      "cases": 6,
+      "max": 0.149657,
+      "mean": 0.110101,
+      "median": 0.11729
+     },
+     "6": {
+      "cases": 6,
+      "max": 1.257894,
+      "mean": 0.725301,
+      "median": 0.666881
+     },
+     "8": {
+      "cases": 6,
+      "max": 0.958551,
+      "mean": 0.715266,
+      "median": 0.768693
+     }
+    }
+   },
+   "sat_max_clauses": {
+    "fit": {
+     "cubic": {
+      "R2": 0.999729,
+      "coef": [
+       57.0,
+       464.3333,
+       68.5,
+       1.0
+      ],
+      "mean_residual_by_n": {
+       "10": -0.0,
+       "12": -0.0,
+       "4": -0.0,
+       "6": -0.0,
+       "8": -0.0
+      },
+      "model": "y = c0 + c1 n + c2 n^2 + c3 n^3",
+      "residual_sd": 89.059
+     },
+     "exponential": {
+      "R2_log_scale": 0.9845,
+      "a": 7.2746,
+      "c_per_state": 0.2133,
+      "dropped_nonpositive": 0,
+      "growth_factor_per_state": 1.238,
+      "mean_residual_by_n": {
+       "10": 0.0295,
+       "12": -0.0808,
+       "4": -0.0972,
+       "6": 0.0624,
+       "8": 0.086
+      },
+      "model": "log y = a + c n",
+      "residual_sd_log": 0.0783
+     },
+     "n_values": [
+      4,
+      6,
+      8,
+      10,
+      12
+     ],
+     "points": 30,
+     "power": {
+      "R2_log_scale": 0.9984,
+      "a": 5.8348,
+      "b_exponent": 1.5662,
+      "dropped_nonpositive": 0,
+      "mean_residual_by_n": {
+       "10": -0.0036,
+       "12": 0.0272,
+       "4": 0.0247,
+       "6": -0.0241,
+       "8": -0.0243
+      },
+      "model": "log y = a + b log n",
+      "residual_sd_log": 0.0253
+     }
+    },
+    "raw": {
+     "10": {
+      "cases": 6,
+      "max": 12712.0,
+      "mean": 12550.333333,
+      "median": 12567.0
+     },
+     "12": {
+      "cases": 6,
+      "max": 17415.0,
+      "mean": 17221.0,
+      "median": 17241.0
+     },
+     "4": {
+      "cases": 6,
+      "max": 3139.0,
+      "mean": 3074.333333,
+      "median": 3081.0
+     },
+     "6": {
+      "cases": 6,
+      "max": 5622.0,
+      "mean": 5525.0,
+      "median": 5535.0
+     },
+     "8": {
+      "cases": 6,
+      "max": 8797.0,
+      "mean": 8667.666667,
+      "median": 8681.0
+     }
+    }
+   },
+   "sat_unknown_answers_by_n": {
+    "10": 0,
+    "12": 0,
+    "4": 0,
+    "6": 0,
+    "8": 0
+   }
+  },
+  "3a2s": {
+   "enumeration_peak_rows": {
+    "censored_cases_excluded": {
+     "6": 6
+    },
+    "fit": "fewer than 3 uncensored n values; no fit",
+    "raw": {
+     "4": {
+      "cases": 6,
+      "max": 2078.0,
+      "mean": 829.5,
+      "median": 394.0
+     }
+    }
+   },
+   "sat_case_seconds_informational": {
+    "raw": {
+     "10": {
+      "cases": 6,
+      "max": 0.314876,
+      "mean": 0.297311,
+      "median": 0.295603
+     },
+     "12": {
+      "cases": 6,
+      "max": 0.42299,
+      "mean": 0.399102,
+      "median": 0.408522
+     },
+     "4": {
+      "cases": 6,
+      "max": 0.209576,
+      "mean": 0.115755,
+      "median": 0.086561
+     },
+     "6": {
+      "cases": 6,
+      "max": 14.866902,
+      "mean": 7.312855,
+      "median": 4.82943
+     },
+     "8": {
+      "cases": 6,
+      "max": 0.274737,
+      "mean": 0.247504,
+      "median": 0.244399
+     }
+    }
+   },
+   "sat_max_clauses": {
+    "fit": {
+     "cubic": {
+      "R2": 0.999898,
+      "coef": [
+       19.0,
+       281.1667,
+       69.5,
+       1.5
+      ],
+      "mean_residual_by_n": {
+       "10": -0.0,
+       "12": -0.0,
+       "4": -0.0,
+       "6": -0.0,
+       "8": -0.0
+      },
+      "model": "y = c0 + c1 n + c2 n^2 + c3 n^3",
+      "residual_sd": 52.733
+     },
+     "exponential": {
+      "R2_log_scale": 0.984,
+      "a": 6.9242,
+      "c_per_state": 0.2373,
+      "dropped_nonpositive": 0,
+      "growth_factor_per_state": 1.268,
+      "mean_residual_by_n": {
+       "10": 0.0336,
+       "12": -0.0919,
+       "4": -0.1106,
+       "6": 0.0709,
+       "8": 0.0979
+      },
+      "model": "log y = a + c n",
+      "residual_sd_log": 0.0886
+     },
+     "n_values": [
+      4,
+      6,
+      8,
+      10,
+      12
+     ],
+     "points": 30,
+     "power": {
+      "R2_log_scale": 0.9987,
+      "a": 5.321,
+      "b_exponent": 1.7429,
+      "dropped_nonpositive": 0,
+      "mean_residual_by_n": {
+       "10": -0.0035,
+       "12": 0.0278,
+       "4": 0.0256,
+       "6": -0.0251,
+       "8": -0.0248
+      },
+      "model": "log y = a + b log n",
+      "residual_sd_log": 0.025
+     }
+    },
+    "raw": {
+     "10": {
+      "cases": 6,
+      "max": 11399.0,
+      "mean": 11280.666667,
+      "median": 11269.0
+     },
+     "12": {
+      "cases": 6,
+      "max": 16135.0,
+      "mean": 15993.0,
+      "median": 15979.0
+     },
+     "4": {
+      "cases": 6,
+      "max": 2399.0,
+      "mean": 2351.666667,
+      "median": 2347.0
+     },
+     "6": {
+      "cases": 6,
+      "max": 4603.0,
+      "mean": 4532.0,
+      "median": 4525.0
+     },
+     "8": {
+      "cases": 6,
+      "max": 7579.0,
+      "mean": 7484.333333,
+      "median": 7475.0
+     }
+    }
+   },
+   "sat_unknown_answers_by_n": {
+    "10": 0,
+    "12": 0,
+    "4": 0,
+    "6": 0,
+    "8": 0
+   }
+  },
+  "source": "results/study-007/SCALING_007.json"
+ }
+}
