@@ -1,0 +1,18 @@
+{
+  "all_byte_identical": true,
+  "files": {
+    "CALIBRATION_CHECK.json": {
+      "byte_identical": true,
+      "committed_sha256": "a88974b14d2d0513bfdf8e03ab0ef9950404c66863c5dc97406f745e1935b84d",
+      "rerun_sha256": "a88974b14d2d0513bfdf8e03ab0ef9950404c66863c5dc97406f745e1935b84d"
+    },
+    "SCIENTIFIC.json": {
+      "byte_identical": true,
+      "committed_sha256": "499e29a47d48797f70ad40c82ccb071969517aebe7903d88caf7a85264f38c07",
+      "rerun_sha256": "499e29a47d48797f70ad40c82ccb071969517aebe7903d88caf7a85264f38c07"
+    }
+  },
+  "note": "RESULTS.json carries timing fields and is not expected to be byte-identical; SCIENTIFIC.json is RESULTS minus *_informational keys.",
+  "schema": "brute.reproducibility.v1",
+  "study": "BRUTE-020-ACTIVE-004"
+}
