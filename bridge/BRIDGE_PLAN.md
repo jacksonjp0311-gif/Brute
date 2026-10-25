@@ -95,3 +95,68 @@ Failures are reported, not tuned away. Any change to a criterion goes in a dated
   This is Observed API behaviour. The core was not changed.
 - **D4. The attestation edge session uses an attested alternating world** (Simulated), because the study-002 drift4
   case at mask 0.35 never certifies within 44 steps.
+
+---
+
+# Bridge v0.2 addendum: brute.api/1.2 (pre-registered 2026-10-24, before any v0.2 code)
+
+B1–B9 stay in force unchanged. In B9, "main" now means v0.2.0 (31a348e). One exception: the merge-readiness
+`MANIFEST.sha256` regeneration (B14), which touches no file under `brute/ bgr*/ experiments/ results/`.
+
+## Service
+- The default service is `brute.api.service_v020.BruteServiceV020` (brute.api/1.2).
+- `--api 1.1` keeps the frozen 1.1 service. The v0.1 behaviour, including UNSUPPORTED for split and models, must
+  hold there unchanged.
+
+## New or changed intents
+- **`split [default=a|b]`**
+  - Calls the read-only `experiment` op once, with `default_action` set to the stated default (`a` if omitted)
+    and `counts:false`.
+  - Answers only from `/response/experiment/*`. The rule string is quoted verbatim. The score's meaning is not
+    glossed.
+- **`models`** ("which models disagree")
+  - Calls `experiment` with `counts:true`.
+  - Answers with per-action counts from `per_action[i].counts`: rows admitting each reading, open rows, family
+    rows and margin rows.
+  - A fixed note says identities are not exposed.
+  - If `counts` is null, a claim says so.
+  - If the API has no `per_action`, the answer is UNSUPPORTED, as in v0.1.
+- **New templates** (all Exact, because they restate API values):
+  - experiment (action, score, rule)
+  - experiment.score (per action)
+  - experiment.tied (tied, tie_break)
+  - counts.code
+  - counts.rows
+  - counts.margin
+  - counts.none
+
+## Requests (changed or new)
+- **REQUEST_ACTION** fires on a response whose `experiment` object has `tied == false`, once per such response.
+  A tie means Brute expresses no preference, because the action is just the operator's default; so a tie yields no
+  request. Its claim cites `/response/experiment/action`, `/response/experiment/score` and `/response/experiment/tied`.
+- **Resolution.** The next successful `observe` closes a pending REQUEST_ACTION.
+  - If the observe uses the requested action, it is logged as satisfied in that turn's `resolved` list.
+  - Otherwise it is logged as overridden, and a `request_action_overridden` flag cites both traces.
+  - Resolutions are recomputed in the B6 audit.
+
+## New criteria
+- **B10 Read-only experiment.** Run each study-004-style session twice, once with and once without the `experiment`
+  calls. Every response to a non-experiment request must be byte-identical between the two runs, ignoring
+  `request_id`.
+- **B11 Agreement with study-004.**
+  - Corpus: 7 cases, the first case per family at mask 0.35 in `results/study-004/SCIENTIFIC.json.gz`, arm A.
+  - At every step, the bridge's `split` (default = the recorded passive action) must return the recorded
+    `action`, `scores` and `tied`.
+  - The predict on the chosen action must return the recorded status and reason.
+  - A mismatch is reported as a flag and in the report, never silently fixed.
+- **B12 Request audit under 1.2.** The REQUEST_ACTION count must equal the number of non-tied experiment responses.
+  The offline recompute must reproduce the requests and resolutions exactly. The 1.1 corpus must still give 0.
+- **B13 Boundary.** The bridge may import `brute.api.service_v020`, alongside `service_v011` and `brute.api`.
+  It never imports `brute.active`, `brute.core`, `brute.fallback` or `bgr*`. The B3 AST test is extended.
+- **B14 Merge readiness.**
+  - Regenerate `MANIFEST.sha256` with `scripts/make_manifest.py`, so that `test_manifest_matches_tracked_files`
+    passes.
+  - The full suite must have no failure that main 31a348e does not also have. The baseline is measured and
+    recorded.
+- **B8 restated.** The bridge suite must still run in under 30 s. The median wall time per `ask` must be under 50 ms,
+  measured over the study-004 cycle3 session. `experiment` latency is reported separately, as core cost.
