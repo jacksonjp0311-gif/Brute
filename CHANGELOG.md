@@ -1,5 +1,34 @@
 # Brute changelog
 
+## v0.2.0: active experimentation and window rebuild (study BRUTE-020-ACTIVE-004)
+
+Criteria pre-registered at `c0ac594` before any v0.2.0 code; source frozen at `8bf8759` before the run. Criteria were not
+changed afterwards. Deviations and implementation notes are in `docs/research/BRUTE_DEVIATIONS_004.md`.
+
+- **X1 active experimentation** (`brute/active.py::ActiveBruteLearner.experiment`): a one-step certifiability lookahead
+  (LU) over copies of the n≤4 and n≤5 regions. Certification rules are unchanged.
+- **X2 window rebuild:** a `window_n4` forecast tier after contradiction (n≤4 learner restarted at each contradiction).
+- **X3 issuance de-duplication:** `record_issued` records a (step, certificate) pair once; fixes the bridge
+  double-issuance bug (B1). Study-003 had 0 duplicates (Exact check, 504 cases).
+- **X4 brute.api 1.2** (`BruteServiceV020`, `request/response.v1_2.json`): a read-only `experiment` op and response field
+  (`action`, `score`, `scores`, `rule`, `tie_break`, `tied`, optional per-action `counts`).
+- **X5 version:** `brute/release_version.py` = 0.2.0 (`brute.version` 0.1.1 and `brute.__version__` 0.1.0 stay frozen).
+- **X6 clone hygiene:** `.gitattributes` `*.ps1 -text` (fixes 2 of the 3 tests failing on a fresh clone of main, B2),
+  regenerated MANIFEST, README test count measured on a fresh clone.
+- **Storage (D1):** the 133 MB sealed traces are committed as deterministic gzip; `scripts/study004_storage.py`
+  restores and checks them against `SEAL.json`.
+- **Study tooling:** three-arm runner (A active, P passive, C frozen v0.1.1), τ calibration check, independent reference
+  (no `brute` import), gates/paired/reproducibility generators with `--check`, `verify_release_020` (runs the frozen
+  v0.1.1 and v0.1.0 verifiers with `--frozen`). Locks: `BRUTE_SOURCE_FREEZE_004`, `BRUTE_RELEASE_FREEZE_020`.
+- **Results (Observed): 12 of 13 gated criteria pass; G3′ fails.**
+  - Dual coverage gain A − P pooled **+0.115355**, CI95 [0.10409, 0.127123]; every family CI excludes 0.
+  - 0 false certificates in family (taken, counterfactual, public) and on ood5, both arms.
+  - **drift4: A 24 wrong of 221, 3 at non-drift step 13 → G3′ fails;** P 1 of 16 (passes); v0.90 81.
+  - ood5 log-loss A 0.665014, P = C 0.67712; drift4 A 1.034239, P 1.056963, C 1.06755, suffix-1 1.181247.
+  - Independent audit 0 mismatches; reproducibility byte-identical; τ reproduces.
+- **Tests:** see README Status (measured on a fresh clone). 2 expected errors are frozen earlier-release version checks
+  that fail by construction on the RELEASE.json bump (N1).
+
 ## v0.1.1: open-world fallback forecast (study BRUTE-011-FALLBACK-003)
 
 Pre-registered at `1585a77` before any v0.1.1 code. The owner chose G3′ over G3 before the freeze. Criteria were not

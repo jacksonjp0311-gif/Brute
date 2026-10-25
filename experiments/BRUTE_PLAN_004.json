@@ -1,0 +1,205 @@
+{
+ "schema": "brute.registered-plan.v1",
+ "status": "FROZEN pre-registration. Committed 2026-10-24 (America/New_York) on branch plan/v0.2.0 before any v0.2.0 code; the git commit that adds this file is the pre-registration record. Later changes go only to docs/research/BRUTE_DEVIATIONS_004.md and the ledger.",
+ "study": "BRUTE-020-ACTIVE-004",
+ "version_under_test": "0.2.0",
+ "freeze_rule": "criteria, thresholds, seeds, tau, epsilon, caps, policy rule, window rule and arms are fixed by the commit that adds experiments/BRUTE_PLAN_004.json; that commit must be an ancestor of every commit touching brute/active.py, brute/release_version.py, brute/api/service_v020.py, experiments/brute_study_004.py or experiments/v020_independent_reference.py (checked in scripts/verify_release_020.py).",
+ "parent_study": {
+  "id": "BRUTE-011-FALLBACK-003",
+  "reproducible_from": "git tag v0.1.1 (main 7a52671)",
+  "files_left_frozen": "everything listed in SOURCE_FREEZE.json, BRUTE_SOURCE_FREEZE_002/003 and BRUTE_RELEASE_FREEZE_010/011 stays byte-identical; brute/core/learner.py and brute/fallback.py are not edited"
+ },
+ "design_data_disclosure": "study-003 seeds (1230001..1290024, all 7 families, 504 cases) were replayed post hoc with candidate policies (passive, H, S, F, M, LA, LH, LP, LU) and a window tier to design v0.2.0 (docs/research/v0.2.0/design_probe/, outputs/). Those seeds are design data and are not used for any v0.2.0 claim.",
+ "heldout_ranges": {
+  "cycle3": [
+   1330001,
+   1330024
+  ],
+  "switch3": [
+   1340001,
+   1340024
+  ],
+  "unstructured3": [
+   1350001,
+   1350024
+  ],
+  "unaliased2": [
+   1360001,
+   1360024
+  ],
+  "ood4": [
+   1370001,
+   1370024
+  ],
+  "ood5": [
+   1380001,
+   1380024
+  ],
+  "drift4": [
+   1390001,
+   1390024
+  ]
+ },
+ "heldout_note": "new blocks, disjoint from study-001 (930001..990024), study-002 (1130001..1190024), study-003 (1230001..1290024, design data for v0.2.0) and the calibration set",
+ "in_family": [
+  "cycle3",
+  "switch3",
+  "unstructured3",
+  "unaliased2",
+  "ood4"
+ ],
+ "out_of_family": [
+  "ood5",
+  "drift4"
+ ],
+ "mask_rates": [
+  0.1,
+  0.35,
+  0.6
+ ],
+ "actions_per_case": 44,
+ "burn_in": 8,
+ "declared_family": "deterministic-moore<=4/stationary",
+ "family_state_cap": 4,
+ "margin_state_cap": 5,
+ "row_budget_family": 160000,
+ "row_budget_margin": 160000,
+ "prediction_smoothing": 0.08,
+ "open_world_reserve_epsilon": 0.02,
+ "window_tier": {
+  "state_cap": 4,
+  "row_budget": 160000,
+  "rule": "after the <=4 family is contradicted, a fresh <=4 symbolic learner is initialized with the observation of the contradiction step and fed every later (action, observation); when it is contradicted or exhausts its budget it is restarted from that step's observation (restart count recorded). It is used only when the published v0.1.1 tier would be suffix1 (family contradicted and the <=5 margin not supported or with empty support): if the window is supported with support S, p=(1-eps)*r+eps/4 with r = suffix1 restricted to S and renormalized; forecast_source='window_n4'. Otherwise the v0.1.1 rule is unchanged (v090 / margin_n5 / suffix1). The window never certifies; status, reason and certificate are never changed by it."
+ },
+ "experiment_rule": {
+  "name": "one-step certifiability lookahead, uniform over the family support (LU)",
+  "definition": "for each action a in {0,1}: score(a)=0 if the <=4 family or the <=5 margin is not 'supported' or a residual-surprise alarm is set. Otherwise S=family.predict_support(a) and score(a)=(1/|S|)*sum_{c in S} N(a,c), where N(a,c) is the number of b in {0,1} such that, after updating COPIES of the family and margin beliefs with (a, full observation c), the family copy is supported, its predict_support(b) is a single code x, the margin copy is supported with predict_support(b)==(x,), and the family copy is not saturated (some row uses < 4 states). A copy that exceeds its row budget or is contradicted counts as not supported. Scores are rounded to 12 d.p.",
+  "choice": "argmax score; exact tie -> the default (passive) action, which in study-004 is bgr89.worlds.actions(seed,44)[i]",
+  "certification_unchanged": "the policy only chooses the next action; predict/certification code is the frozen v0.1.0 gate order with the v0.1.1 fallback probabilities; no certification rule changes",
+  "geometric_reading": "Inferred: the version space is the set of surviving rows; the policy picks the action whose expected next observation most often collapses the region to a single point on the queried coordinate (next code for some action), confirmed by the 5-state margin. Entropy policies bisect volume instead and were Rejected on design data (DISCOVERIES D1).",
+  "design_evidence_Simulated": "LU and LP (published-probability weights) gave identical decisions on all 504 study-003 cases (DISCOVERIES D4); LU is chosen because the independent reference recomputes it without the v0.89 catalogue term."
+ },
+ "arms": {
+  "A_active": "brute.active.ActiveBruteLearner, actions chosen by experiment_rule (default = passive action)",
+  "P_passive": "brute.active.ActiveBruteLearner on the fixed passive sequence bgr89.worlds.actions(seed,44)",
+  "C_v011": "frozen brute.fallback.FallbackBruteLearner (v0.1.1) on the passive sequence (same tau)",
+  "v0.90_control": "v0.90 expanded certificate from the P arm <=4 support (as in study-003)",
+  "baselines": "uniform ln 4 and SuffixFrequency contexts 1/2/4 (alpha 0.7) on the A and on the P trajectory"
+ },
+ "metrics": {
+  "dual_coverage": "policy-independent coverage: at each post-burn-in step both predict(0) and predict(1) are evaluated before acting; dual coverage = (number of certified (step, action) pairs)/(2 x steps). Each counterfactual certificate is checked against the evaluator's hidden next emission for that action (drift4: bgr90.worlds.step). predict is side-effect-free; only the taken action's forecast is recorded as issued.",
+  "on_policy_coverage": "certified fraction of the taken action, reported (Inferred to overstate learning because the active policy steers into well-known regions, DISCOVERIES D2)",
+  "false_certificate": "any conditional or public certificate (taken or counterfactual action) whose code differs from the evaluator truth",
+  "drift_steps": "drift4 trace steps 12, 23, 34 (bgr90.worlds.step perturbs t>0, t%11==0)"
+ },
+ "probability_rule": "identical to BRUTE_PLAN_003 probability_rule except the window_tier above replaces suffix1 when the window is supported. Before the declared family is contradicted all published probabilities equal v0.1.0.",
+ "certification_rule": "identical to BRUTE_PLAN_002.json certification_rule (gate order unchanged)",
+ "residual_surprise": {
+  "window_W": 8,
+  "tau": 1.433141502274,
+  "tau_rule": "carried over unchanged from results/study-002/CALIBRATION.json; NOT refit",
+  "calibration_check": "rerun the study-003 calibration on the study-001 in-family calibration seeds (930001..970024 blocks, 3 mask rates) with the v0.2.0 learner on the passive sequence (P) and with v0.1.1 (C); tau must reproduce byte-for-byte (G13)",
+  "out_of_family_data_used": false
+ },
+ "criteria": {
+  "G1_in_family_soundness": {
+   "gated": true,
+   "threshold": "for arms A and P: 0 false conditional certificates and 0 false public certificates on every in_family case, all 44 steps incl. burn-in, for the taken action AND the counterfactual action (dual)"
+  },
+  "G2_ood5_soundness": {
+   "gated": true,
+   "threshold": "for arms A and P: 0 false conditional certificates on ood5, all steps, taken and counterfactual action"
+  },
+  "G3_prime_drift4": {
+   "gated": true,
+   "threshold": "for arms A and P separately (taken action): drift4 false certificates at non-drift steps = 0 AND total drift4 false certificates <= 0.5 x the v0.90 control false certificates on the same cases",
+   "pre_registered_risk": "Simulated on design data: the active policy issued 13 drift4 false certificates (passive 4), one at a non-drift step (seed 1290002, mask 0.1, step 13, one step after the drift-12 jump). A may FAIL the non-drift clause; a failure is reported as a failure.",
+   "reported": "counterfactual-action drift4 false certificates by step type; post-jump analysis (steps 13, 24, 35)"
+  },
+  "G4_public_safety": {
+   "gated": true,
+   "threshold": "arms A and P: 0 public certificates on ood5 and drift4; 0 wrong public certificates anywhere"
+  },
+  "G5_false_alarm_limit": {
+   "gated": true,
+   "threshold": "per arm A and P: fraction of in_family cases with >=1 RESIDUAL_SURPRISE alarm <= 0.05"
+  },
+  "G6_active_coverage_gain": {
+   "gated": true,
+   "threshold": "(a) pooled in-family dual coverage gain A - P >= 0.05, pooled = unweighted mean over the 5 in_family families of the per-family post-burn-in dual coverage difference; (b) the 95% seed-clustered paired bootstrap CI of the pooled gain (2000 resamples, numpy default_rng seed 20261025, seeds resampled with replacement within each family, per-family statistic = sum of A-P dual-certified pairs over the seed's 3 mask cases / sum of pairs) has lower bound > 0; (c) every in_family family has gain >= -0.01",
+   "design_estimate_Simulated": "pooled +0.115 (cycle3 +0.120, switch3 +0.128, unstructured3 +0.138, unaliased2 +0.152, ood4 +0.037)",
+   "reported": "on-policy coverage, per-mask gains, selective risk"
+  },
+  "G7_open_world_no_regression": {
+   "gated": true,
+   "threshold": "mean post-burn-in log-loss of the taken action: (a) P <= C on ood5 and on drift4; (b) A <= C on ood5 and on drift4; (c) every arm <= ln 4 on ood5 and drift4 and min published probability >= eps/4 = 0.005 at every step of every family",
+   "pre_registered_risk": "Simulated on design data without the window tier: A drift4 1.1729 vs C 1.1556 (regression); with the window tier, passive drift4 1.142. (b) on drift4 may FAIL.",
+   "reported_targets": "drift4 P below suffix1 (paired bootstrap, seed 20261025, CI excluding 0); per-mask table"
+  },
+  "G8_passive_equivalence": {
+   "gated": true,
+   "threshold": "(a) at every step of every case P and C have identical status, reason, certificate and public certificate, and identical probabilities at every step where P's forecast_source != 'window_n4'; (b) A in-family mean post-burn-in log-loss per family <= C + 0.05 nats"
+  },
+  "G9_retraction_semantics": {
+   "gated": true,
+   "threshold": "BRUTE_PLAN_003 G8 wording (amendment A4) for arms A and P; plus: no (step, certificate) pair appears twice in any issued or retraction list, and ActiveBruteLearner.record_issued called twice for the same forecast records it once (tests/test_brute_active.py)"
+  },
+  "G10_compute_budget": {
+   "gated": true,
+   "threshold": "peak rows <= 160000 for the family, margin and window learners of A and P; every family/margin budget exhaustion yields ABSTAIN/BUDGET_EXHAUSTED; lookahead copies that exceed the budget score 0 (counted: lookahead_budget_hits)",
+   "reported": "peak lookahead copy rows, wall-clock per arm (target A <= 4 x C; design: about 2-3x)"
+  },
+  "G11_independent_audit": {
+   "gated": true,
+   "threshold": "experiments/v020_independent_reference.py (no import of brute; bgr89/bgr90 world and baseline modules allowed; supports from experiments/v90_independent_reference.py) recomputes for arms A and P every <=4 and <=5 support (taken and counterfactual action), decision, saturation, surprise, residual, alarm, post-contradiction probability and forecast_source including the window tier, every retraction reason, every experiment score and every chosen action; P-vs-C equality (G8a) rechecked; 0 mismatches"
+  },
+  "G12_reproducibility": {
+   "gated": true,
+   "threshold": "a second run to a new path gives byte-identical SCIENTIFIC.json and CALIBRATION_CHECK.json (timing keys stripped)"
+  },
+  "G13_tau_reproduces": {
+   "gated": true,
+   "threshold": "calibration check: tau from P and from C on the in-family calibration seeds equals 1.433141502274 and the study-002 per-family maxima byte-for-byte"
+  },
+  "R1_geometry": {
+   "gated": false,
+   "report": "version-space volume diagnostics: family and margin row counts over steps for A vs P (mean log rows per step), lookahead copy rows"
+  },
+  "R2_drift_post_jump": {
+   "gated": false,
+   "report": "drift4 certificates and false certificates at steps 13, 24, 35 for A and P"
+  },
+  "R3_witness_audit": {
+   "gated": false,
+   "report": "not re-run for v0.2.0 (certification code unchanged); Open"
+  },
+  "R4_five_state_certificates": {
+   "gated": false,
+   "report": "Open: optional 5-state certificates checked against a 6-state margin were NOT attempted in v0.2.0 (compute budget: design margin rows already 102,806 at n<=5; an n<=6 margin is expected to exceed 160000 rows, Inferred)."
+  }
+ },
+ "scoring": {
+  "soundness_counts": "all steps including burn-in",
+  "coverage_logloss_alarm_rates": "post-burn-in steps only (9..44)",
+  "loss": "-ln max(1e-12, p[actual]) on the full code"
+ },
+ "deviation_policy": "after freeze, any change is a ledger 'deviation' entry with reason in docs/research/BRUTE_DEVIATIONS_004.md; the original criterion is still reported. Study-004 seeds are never used to tune v0.2.0; a failed gate is published as failed and the release still ships with the failure documented (owner instruction).",
+ "independent_audit_rule": "the reference implementation is written from this plan text, not from brute/active.py, and must not import brute",
+ "bridge_items": {
+  "B1_issuance": "bridge report: calling predict twice at the same step through brute.api/1.1 double-records issuance (service_v011._predict calls record_issued on every CERTIFIED predict). Fixed in v0.2.0 by de-duplicating (step, certificate) in ActiveBruteLearner.record_issued; brute.api/1.1 is frozen and keeps the bug (documented). Study counts: Exact by code reading, run_case_003 calls predict and record_issued once per step; verified on the sealed study-003 traces in BRUTE_DEVIATIONS_004.md.",
+  "B2_tests": "bridge report: a fresh clone of main fails 3 tests. Cause (Exact): .gitattributes '*.ps1 text eol=crlf' makes checkout write BGR-All-One.ps1 with CRLF while MANIFEST.sha256 records the committed LF bytes (deviation D5 of study-003), so test_manifest_matches_tracked_files and test_fast_verify_passes fail; test_verify_fails_under_tampered_results is the known A3 version error. Fix: '*.ps1 -text' so checkout is byte-identical to the committed blob (= the BGR original), and correct the README test count.",
+  "B3_api_1_2": "brute.api/1.2 (brute/api/service_v020.py): new op 'experiment' and response field experiment={action, score, scores, rule, tie_break, per_action:{family_code_rows, family_open_rows, family_rows, margin_rows}}; forecast_source may be 'window_n4'."
+ },
+ "limitations": [
+  "Synthetic two-action, two-bit worlds only.",
+  "The lookahead is one step deep and myopic.",
+  "Active policies can steer into drift exposure (Simulated, design D3).",
+  "5-state certificates are Open."
+ ],
+ "owner_decisions": {
+  "recorded_at": "2026-10-24 (America/New_York)",
+  "D1": "owner (James): continuous autonomous progress; freeze first, implement, run, score honestly, release even on gate failure",
+  "D2": "G3_prime carried over from study-003 (owner decision 2026-10-24 18:20 EDT)"
+ },
+ "release_version_note": "brute/__init__.py (__version__ 0.1.0) and brute/version.py (0.1.1) stay frozen; brute/release_version.py RELEASE_VERSION='0.2.0'; RELEASE.json says 0.2.0. Exact consequence: scripts/verify_release_011.py and tests/test_release_011.py::test_fast_verify_passes fail on the version check by construction (like A3); scripts/verify_release_020.py replaces them and runs the frozen 0.1.1 verifier on the raw v0.1.1 blobs."
+}
