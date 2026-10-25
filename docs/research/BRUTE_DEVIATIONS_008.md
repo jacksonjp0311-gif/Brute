@@ -39,8 +39,11 @@ held-out data were seen** unless it says so explicitly. Labels: Exact / Observed
 14. **GMC (i)** coverage is computed over the EXPECTED sampled steps (360 in_family_original A5 cases x 9 steps); a case
     missing from the report counts as UNKNOWN.
 15. **GT1** cannot be evaluated before verify_release_060 exists (plan step 10, after the gates). GATES_008.json lists
-    it as pending; tests/test_release_060.py writes `results/study-008/GT1_008.json`, after which GATES_008 is
-    regenerated (no other input changes) and GT1 enters the gate table.
+    it as pending. `scripts/make_gt1_008.py` (committed 29cd0d1, during the run, before any study-008 output was read)
+    runs the GT1 corruption matrix + the frozen-050 regression and writes `results/study-008/GT1_008.json`; the committed
+    `make_gates_008.py --output GATES_008_FINAL.json` then writes the final table (GATES_008.json is NOT overwritten).
+    verify_release_060 regenerates GATES_008_FINAL byte-for-byte and checks GATES_008 equals it outside GT1.
+    The matrix does not need an untampered pass; tests/test_release_060.py checks both afterwards.
 16. **G12** GMC recount: count fields R, blocking, pairs, fibre compared per key/step; timing fields ignored; a difference
     is allowed only if one side is UNKNOWN with a timeout/budget reason (each listed).
 
@@ -50,3 +53,8 @@ held-out data were seen** unless it says so explicitly. Labels: Exact / Observed
     streams on one shared 8-CPU box (`scripts/run_study_008.sh`); all wall-clock figures are informational.
 18. A resume message from the orchestrating agent described the scoring/run files as uncommitted; they were already
     committed and pushed (through c13f8c5). Nothing was redone.
+19. `results/study-008/GMC_BUDGET_START` (epoch 1792933084 = 08:58:04 EDT, the start of the shared 6 h counting cap,
+    written by stream B) was committed separately (0acdc5c) when noticed untracked; the main SEAL.json was committed
+    as soon as it was written (c21ef12), before the ledger run_end/seal entries, which follow RUN_DONE.
+20. GT1 tooling (verify_release_060, test_release_060, make_gt1_008, release_version_060) was committed at 29cd0d1
+    while the held-out run was in progress; it reads no result values and contains no scoring rule.
