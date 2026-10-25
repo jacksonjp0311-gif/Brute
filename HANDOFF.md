@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 06:26 EDT (v0.4.0 errata on main 47480f7, merged; ledger errata_040))._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 06:36 EDT (run done; paired, repro, prob done; count running))._
 
 ## Current version and state
 
@@ -52,8 +52,11 @@ _Kept current on the working branch during a release and on `main` at release. L
    DONE main `47480f7` v0.4.0 errata (docs/research/v0.4.0/ERRATA.md E1-E10; DEVIATIONS_006 P8 + P1/P2 notes; CHANGELOG,
    README, HANDOFF corrected; MANIFEST regenerated; verify_release_040 --fast passed; tag v0.4.0 still 5c02a7b).
    DONE merge main -> plan `0e29dc2`; ledger errata_040 `e972b8c` (receipt b00d1d20...).
-9. After RUN_DONE: commit seal etc; make_count_007 (nohup) -> paired -> repro -> gates; then v050_prob_reference on the sealed data;
-   docs; release freeze 050; MANIFEST; fresh-clone verify; merge in /tmp/brute-main; tag v0.5.0 on merge; gh release.
+9. DONE run: sealed 06:25 (`51215e0`), RUN_DONE 06:27:47 (`3073992`), ledger run_end_007 `86bd7bc`. SCALING_FIT_007 `feeeb1d`.
+   DONE paired + reproducibility (296/296 identical) `d88d4bb`, ledger `2ceb87e`. DONE PROB recompute 0/1728, 20/20 `ffeb0c4`.
+   RUNNING since 06:32: make_count_007 (nohup, log /tmp/w7/count007.log; if killed rerun `PYTHONPATH=. nohup python scripts/make_count_007.py --workers 6`).
+10. NEXT: gates (after count); DEVIATIONS_007; README/CHANGELOG/DISCOVERIES/ROADMAP/NEXT_ITERATION; RELEASE.json+pyproject 0.5.0;
+   release freeze 050; MANIFEST; verify_release_050 --fast; test_release_050; fresh clone; merge in /tmp/brute-main; tag; gh release.
 
 ## v0.4.0 progress (commit order is the chronology evidence)
 
