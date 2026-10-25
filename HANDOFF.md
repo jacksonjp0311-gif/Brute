@@ -1,9 +1,14 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 ~18:30 EDT (v0.6.0 release step: stream A stopped by owner 17:44 EDT; all gates scored)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 ~19:15 EDT (v0.7.0 plan frozen on `plan/v0.7.0`, no code yet). v0.6.0 is released; its record below is unchanged._
 
 ## Current version and state
 
+- **Planned: v0.7.0** (study BRUTE-070-SYNCPLAN-009, branch `plan/v0.7.0` from main `df0fec1`). **Pre-registration frozen, no code.**
+  - Freeze commit `3825ad3`: `experiments/BRUTE_PLAN_009.json` (sha256 `499dd18dac19787339131170f319e15c666faca405821517999965df654f1e25`; criteria canonical-JSON sha256 `b3d1a56637230ee6d9ed1d30c0f66f17ad02094f4119915c8b83376f984c38d5`) + `docs/research/v0.7.0/PLAN_009.md` (readable; JSON wins). Ledger `preregistration_009` in `feeeb4a`.
+  - Targets: (a0) lag diagnostic on sealed study-008 drift4, exploratory, not gated; (a) synchronous events S7/SC7 (E1 ∪ E2 falsified certificate ∪ E3 single-step surprise > τ), gate GA1′ = G1+G2+G3′+G6b for one arm; (b) GX2″ incremental symmetric CaDiCaL xcheck (adopted byte-identical from `verify/xcheck-incremental` c2bf07e) + no-symmetry spot check; (c) GP1 count planner P7 vs A5 LU-R; (d) GTI one interpreter per test module. Carried G1, G2, G3′, G4, G5, G6b, G7, G9–G13, plus G_RT (3 h stop rule; incomplete gates FAIL).
+  - Seeds: 2x2 2010001–2080048 (drift4 2080001–048), breadth 2110001–2140024, smoke 2190001–2190030 only. Predictions (Inferred): GA1′ FAIL, GP1 FAIL, GX2″ PASS, GTI PASS.
+  - **Next (plan `process_controls.order`):** (2) `scripts/check_seeds_009.py` + test, spot-sample draw, ledger `seedcheck_009`; (3) `scripts/diag_lag_009.py` on sealed study-008, ledger `diagnostic_009`; (4) `experiments/v070_reference.py`; (5) check out the 3 adopted files byte-identical, then implementation with smoke on 2190001–030 only. Use the pinned venv `/workspace/bgr/venv/bin/python` (system python3 lacks python-sat).
 - **Releasing: v0.6.0** (study BRUTE-060-DRIFTSOUND-008, `plan/v0.6.0` → main, tag `v0.6.0`). **11 of 16 gated pass.**
   - **FAIL:** GA1 (target a), G3′, G5, G6b and GX2′ (target b, incomplete coverage).
   - **PASS:** G1, G2, G4, G7, G9, G10, G11, G12, G13, GT1 (target c) and GMC (target d).
@@ -20,6 +25,8 @@ _Kept current on the working branch during a release and on `main` at release. L
 | Branch | Head | State |
 | --- | --- | --- |
 | `main` | tag v0.6.0 (+ HANDOFF/MANIFEST commits) | Released code and record |
+| `plan/v0.7.0` | see `git log` (freeze `3825ad3`) | v0.7.0 working branch: plan frozen, no code |
+| `verify/xcheck-incremental` | `c2bf07e` | Post-release incremental xcheck verification (not v0.6.0 evidence); 3 files adopted by v0.7.0 |
 | `plan/v0.6.0` | see `git log` | v0.6.0 working branch (merged) |
 | `plan/v0.5.0` | `d0516a0` | v0.5.0 working branch (merged) |
 | `plan/v0.4.0` | `5e7d208` | v0.4.0 working branch (merged) |
@@ -55,7 +62,7 @@ _Kept current on the working branch during a release and on `main` at release. L
 - The perm4 false-alarm cases under τ6 (D24a) need a pre-registered look at alarm calibration on perm4.
 - Neither rule gets close on G6b; the coverage/safety trade-off is still open.
 - Model counts are available but unused.
-- `experiments/brute_study_006.py` sets `S5.FULL` when it is imported, which makes `test_study_005` fail in full-suite runs (Observed). The next study should move that into the function that needs it.
+- `experiments/brute_study_006.py` sets `S5.FULL` when it is imported, which makes `test_study_005` fail in full-suite runs (Observed). Both files are frozen; v0.7.0 target (d) isolates it per process instead of editing them.
 
 ## v0.5.0 progress (commit order is the chronology evidence)
 
