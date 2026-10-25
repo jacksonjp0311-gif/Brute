@@ -1,5 +1,58 @@
 # Brute changelog
 
+## v0.6.0: drift-sound certification rules, a non-enumeration exactness check, a hardened verifier, model counting (study BRUTE-060-DRIFTSOUND-008)
+
+**11 of 16 gated criteria pass. GA1 (target a), GX2′ (target b), G3′, G5 and G6b fail.** GT1 (target c) and GMC
+(target d) pass.
+
+Timeline:
+
+- Criteria pre-registered at `89c2d3b` (`experiments/BRUTE_PLAN_008.json`).
+- Second implementation `8863f06` (`experiments/v060_reference.py`, same author, no `brute` import).
+- Implementation `457db5a`/`6556186`/`ff4d0d8`/`6f6cd22`; pre-freeze fix `cae25ce`.
+- Source frozen at `8e80615`.
+- Scoring scripts committed alone at `08ac3f3` (08:38:46 EDT); ledger `run_start_008` at 08:49:16 EDT; sealed at `c21ef12`.
+- Stream A (xcheck) stopped by owner decision at 17:44 EDT after 46/288 cases.
+- Criteria and scoring scripts were not changed afterwards. Deviations are in `docs/research/BRUTE_DEVIATIONS_008.md` (D1–D24).
+
+Code:
+
+- **`brute/driftsound.py`** (`DriftSoundLearner`, research arms R6 = rule RO and C6 = rule CT, breadth BR6/BC6).
+  - R6: for W = 8 steps after a surprise, transition edges confirmed only before it are treated as unknown in the Y1k check.
+  - C6: also certify on the v0.2.0 tracked-state projection while the session has had no surprise.
+  - Not the default. The release default stays the v0.5.0 rule.
+- **`brute/xcheck_sat.py`, `experiments/v060_xcheck.py`**: a second CNF encoding solved with CaDiCaL, with witness
+  checks, that re-decides breadth traces without enumeration.
+- **`brute/modelcount.py`**: exact |R_t| (pyganak 2.8.0), a blocking-clause cross-count, sum checks, and approxmc
+  estimates for UNKNOWN counts only. Reporting only; the pins are in `requirements-gmc.txt`.
+- **`scripts/verify_release_060.py`, `tests/test_release_060.py`, `scripts/make_gt1_008.py`**: every artifact is
+  parsed through one guard that raises `VerificationError`. This fixes the v0.5.0 `JSONDecodeError` defect in the
+  new verifier; the frozen v0.5.0 pair is unchanged. `brute.release_version_060`.
+- **`scripts/make_xcheck_partial_008.py`** (post-stop wrapper, D22): turns the partial xcheck checkpoint into the
+  frozen report schema with full-denominator fractions, so the unchanged gate script scores incomplete coverage as FAIL.
+
+Study-008 results (*Observed*):
+
+- **Failed:**
+  - **GA1:** no arm passes G1+G2+G3′+G6b.
+  - **G3′:** R6 had 20 false certificates with 1 at a non-drift step; C6 had 26 with 2. Each non-drift event comes one step after a drift. The limit is 86.
+  - **G6b:** R6 − A2 −0.101235 [−0.112695, −0.089699]; C6 − A2 −0.072145 [−0.084144, −0.060724].
+  - **G5:** perm4 R6 and C6 4/72 = 0.0556. The same 4 cases alarm in A4/A5 (D24).
+  - **GX2′:** incomplete coverage, 46/288 cases. On what was checked: 0 mismatching traces, 0 witness failures, 0 disagreements with enumeration. big6 within the checked cases was 0.986 < 0.99.
+- **Passed:**
+  - G1/G2: 0 false certificates in every arm, including ood5 (R6 0/39, C6 0/44) and ood6s3 (B5 0/505, BR6 0/486, BC6 0/550).
+  - G4.
+  - G7: log-loss ood5 0.644, drift4 1.095, ood6s3 1.371.
+  - G9: 273 retractions, 8 resumes, 0 violations.
+  - G10: 0 production forecasts used an UNKNOWN answer.
+  - G11: 0/1,872 mismatching traces, mutation 20/20.
+  - G12: 312/312 byte-identical; GMC recount 120 cases, 11 timeout-only differences.
+  - G13.
+  - **GT1:** 56/56 corruptions give `VerificationError`.
+  - **GMC:** 3,232/3,240 counted (0.997531), 0 disagreements, 0 sum violations.
+- **Reported, not gated:** C6 − A5 coverage +0.023 [0.019, 0.027]; R6 − A5 −0.003; breadth counts 1,881/2,016;
+  R_dev_xcheck_007 not run.
+
 ## v0.5.0: the constraint region as the engine; breadth families; projection-volume tie-break (study BRUTE-050-REGION-007)
 
 Criteria pre-registered at `5be08aa` (`experiments/BRUTE_PLAN_007.json`); second implementation `1b57efe`

@@ -1,42 +1,59 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 11:04 EDT (v0.6.0: main study sealed 08:58 EDT; stream C done 10:49 (G11, enumeration, repro, GMC recount; 9a43754); xcheck 29/288 breadth cases, GMC 2x2 317/360 running)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 ~18:30 EDT (v0.6.0 release step: stream A stopped by owner 17:44 EDT; all gates scored)._
 
 ## Current version and state
 
-- **Released: v0.5.0** (tag `v0.5.0` → merge `8e03e03` on main; GitHub release published 07:12 EDT, notes edited 07:13 EDT).
-  12 of 15 gated pass; GX2, G3′, G6b fail (on the record); GM NOT DISTINGUISHED; GX3 PASS. Tags v0.2.0/v0.3.0/v0.4.0/
-  v0.5.0 never move. Post-tag commits on main are HANDOFF/MANIFEST/errata only.
-- **Alignment check of v0.5.0:** `docs/research/v0.5.0/ALIGNMENT_CHECK.md` (findings A1–A7; docs errata only).
-- **In progress: v0.6.0** on `plan/v0.6.0` — study-008 PRE-REGISTERED ONLY: `experiments/BRUTE_PLAN_008.json` frozen at
-  `89c2d3b` (sha256 `6dc1a17d…7cdb502`; criteria canonical-JSON sha256 `2f6ee48a…3575e21`), ledger `preregistration_008`
-  in `1bc702f`. Readable: `docs/research/v0.6.0/PLAN_008.md`. **Status 08:51 EDT:** seed check, reference, R6/C6, xcheck, GMC implemented; source freeze `8e80615` (ledger source_freeze_008);
-  scoring scripts `08ac3f3` (ledger scoring_scripts_008 08:38 EDT); deviations `docs/research/BRUTE_DEVIATIONS_008.md`;
-  ledger run_start_008 08:49 EDT; GT1 tooling `29cd0d1`; main study 936/936 sealed 08:58 EDT (SEAL.json `c21ef12`);
-  streams A (xcheck), B (GMC), C (second impl, repro) RUNNING under: `nohup bash scripts/run_study_008.sh > /tmp/w8/run008.log`
-  (checkpointed; re-running the same command resumes; check `ps` for a running instance first). EXACT NEXT STEP: wait for
-  `RUN_DONE` in /tmp/w8/run008.log (streams A xcheck + B GMC still running at 11:34 EDT; C done). After RUN_DONE:
-  ledger run_end_008, commit sealed gz/JSON, seal_008, make_paired/reproducibility/gates_008, release step (10).
+- **Releasing: v0.6.0** (study BRUTE-060-DRIFTSOUND-008, `plan/v0.6.0` → main, tag `v0.6.0`). **11 of 16 gated pass.**
+  - **FAIL:** GA1 (target a), G3′, G5, G6b and GX2′ (target b, incomplete coverage).
+  - **PASS:** G1, G2, G4, G7, G9, G10, G11, G12, G13, GT1 (target c) and GMC (target d).
+  - Gates: `results/study-008/GATES_008_FINAL.json`. Deviations: `docs/research/BRUTE_DEVIATIONS_008.md` D1–D24.
+  - D21: stream A (xcheck) stopped by owner decision at 17:44 EDT with 46/288 cases. Scored FAIL on the frozen criterion; no results were inspected.
+  - D22: partial wrapper `scripts/make_xcheck_partial_008.py`.
+  - D23: pack was run by hand.
+  - D24: observations made during scoring, report only.
+- **Previous: v0.5.0** (tag `v0.5.0` → merge `8e03e03`). 12 of 15 gated pass; GX2, G3′ and G6b fail. Tags never move.
+- Default learner is still the v0.5.0 rule (Y1k, LU-R). R6/C6 are research arms only (plan `default_policy_rule`).
 
 ## Branches (origin `github.com/jacksonjp0311-gif/Brute`, public on purpose: James asked for it 2026-10-25 01:13 EDT)
 
 | Branch | Head | State |
 | --- | --- | --- |
-| `main` | `8e03e03` = tag v0.5.0 (+ HANDOFF/errata commits) | Released code and record |
-| `plan/v0.6.0` | see `git log` (plan freeze `89c2d3b`) | v0.6.0 branch from main `ed66489`; plan frozen, no code |
+| `main` | tag v0.6.0 (+ HANDOFF/MANIFEST commits) | Released code and record |
+| `plan/v0.6.0` | see `git log` | v0.6.0 working branch (merged) |
 | `plan/v0.5.0` | `d0516a0` | v0.5.0 working branch (merged) |
 | `plan/v0.4.0` | `5e7d208` | v0.4.0 working branch (merged) |
 | `bridge/v0.2`, `bridge/v0.1` | `cced586`, `9c88a3a` | Bridge work; **unmerged; do not edit or merge without a decision** |
 
 ## v0.6.0 progress (commit order is the chronology evidence)
 
-1. DONE 07:2x EDT: branch `plan/v0.6.0` from main `ed66489`. `89c2d3b`: BRUTE_PLAN_008.json + PLAN_008.md (targets
-   a: GA1 = one arm of R6/C6 passes G1+G2+G3′+G6b; b: GX2′ xcheck SAT/CaDiCaL, checked ≥0.99 per family×arm, 0 mismatches;
-   c: GT1 verify_release_060 / test_release_060, frozen 050 files untouched; d: GMC own gate ≥95% counted, budget 10 s/count,
-   120 s/case, 6 h total, fallback blocking-clause/approxmc labelled). Predictions (Inferred): GA1 FAIL, GT1 PASS.
-2. DONE `1bc702f`: ledger preregistration_008 + MANIFEST; verify_release_050 --fast passes.
-3. DONE: seed check + ledger; implementation; smoke; source freeze `8e80615`; scoring scripts `08ac3f3`; run_start_008;
-   GT1 tooling `29cd0d1`; main SEAL `c21ef12`. NOW: post-study streams (logs /tmp/w8/stream{A,B,C}.log, gmc*.log).
+1. DONE 07:2x EDT: branch `plan/v0.6.0` from main `ed66489`. `89c2d3b`: BRUTE_PLAN_008.json + PLAN_008.md. Targets:
+   - a: GA1, one arm of R6/C6 passes G1+G2+G3′+G6b.
+   - b: GX2′, xcheck with SAT/CaDiCaL, checked ≥0.99 per family×arm, 0 mismatches.
+   - c: GT1, verify_release_060 / test_release_060, with the frozen 050 files untouched.
+   - d: GMC, its own gate.
+   - Predictions (Inferred): GA1 FAIL, GT1 PASS.
+2. DONE `1bc702f`: ledger preregistration_008 + MANIFEST.
+3. DONE: seed check; implementation; smoke; source freeze `8e80615`; scoring scripts `08ac3f3`; run_start_008 08:49 EDT;
+   GT1 tooling `29cd0d1`; main SEAL `c21ef12`; stream C (G11, enumeration, repro, GMC recount) done 10:49 EDT; stream B (GMC) done.
+4. DONE 17:44 EDT: owner stopped stream A (xcheck) at 46/288 (`b02b0c3` checkpoint, D21–D23). Then, in order:
+   - pack `287d619`;
+   - ledger run_end_008 + seal_008 `3a5e193`;
+   - wrapper `1202c53`;
+   - XCHECK_008.json `87ad393`;
+   - paired + reproducibility;
+   - GATES_008 (ledger gates_008 `c4a7c1b`);
+   - GT1_008 + GATES_008_FINAL (ledger `1cd90f4`).
+5. DONE: RELEASE.json/pyproject 0.6.0; README/CHANGELOG/HANDOFF/D24; release freeze `BRUTE_RELEASE_FREEZE_060.json`;
+   ledger release_freeze_060/release_060; MANIFEST; verify_release_060 --fast; tests; ff-merge to main; tag v0.6.0; gh release.
+
+### Open for the next study (Inferred / Open)
+
+- The xcheck needs to run about 50x faster to finish breadth in a working day. Options: incremental solving, sampling steps under a pre-registered rule, or moving off a shared box. GX2′ is still open.
+- Stale certificates one step after a drift remain in R6, C6 and A5 (D24b). The surprise signal may arrive one step late.
+- The perm4 false-alarm cases under τ6 (D24a) need a pre-registered look at alarm calibration on perm4.
+- Neither rule gets close on G6b; the coverage/safety trade-off is still open.
+- Model counts are available but unused.
 
 ## v0.5.0 progress (commit order is the chronology evidence)
 
@@ -147,10 +164,11 @@ certification rule narrower than the whole fibre, exactness checks beyond enumer
 ```bash
 git clone https://github.com/jacksonjp0311-gif/Brute.git && cd Brute && git checkout main
 python -m venv venv && venv/bin/pip install -r requirements.txt          # box venv: /workspace/bgr/venv/bin/python
-python scripts/study005_storage.py restore                              # rebuild gzip-stored traces (verifiers do this too)
-python -m scripts.verify_release_030 --fast --frozen                    # must print "status": "passed"
+venv/bin/pip install -r requirements-gmc.txt                            # model counting (reporting only)
+for n in 4 5 6 7 8; do python scripts/study00${n}_storage.py restore; done  # rebuild gzip-stored traces
+PYTHONPATH=. python scripts/verify_release_060.py --fast                # must print "status": "passed"
 python -m unittest discover -s tests
 ```
 
 Then read, in this order: this file, `RELEASE.json`, `README.md` (Status, gate table, "What Brute can't do yet"),
-`docs/research/BRUTE_DEVIATIONS_005.md`, `NEXT_ITERATION.md`, and the tail of `results/RESEARCH_LEDGER.jsonl`.
+`docs/research/BRUTE_DEVIATIONS_008.md`, the "Open for the next study" list above, and the tail of `results/RESEARCH_LEDGER.jsonl`.

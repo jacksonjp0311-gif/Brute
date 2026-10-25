@@ -80,3 +80,14 @@ held-out data were seen** unless it says so explicitly. Labels: Exact / Observed
 23. **run_study_008.sh exited non-zero** after the kill (stream A failed), so its final `pack` and `RUN_DONE` lines were
     not printed by the script. The pack step (`scripts/study008_storage.py pack`) was run by hand with the same command,
     and RUN_DONE is recorded by the ledger `run_end_008` entry, whose note states the stop.
+24. **Observations made while scoring (report only, nothing rescored).** These were seen after GATES_008_FINAL was
+    written with the committed scripts:
+    - (a) **G5 failure, not predicted.** perm4 R6 and C6 each have 4 of 72 alarm cases (0.0556 > 0.05). The same
+      4 cases (seeds 1860001, 1860008, 1860010, 1860022, all at mask 0.1, first alarm at step 8-9) also alarm in the
+      frozen A4 and A5 arms. A2 has 0. So the failure comes from the shared tau6 residual alarm on these fresh
+      seeds, not from the R6/C6 rule. *Observed*; the cause is *Inferred*.
+    - (b) **G3' non-drift events.** All three non-drift false certificates (R6 1, C6 2) come exactly one step after a
+      drift step (drift4 seed 1880047 step 13, seed 1880006 step 24). A5 has the same seed-1880047 event. *Observed*.
+    - (c) **big6 inside the checked cases.** Within the 46 checked cases, big6 checked 2903/2944 = 0.986 of steps,
+      below 0.99. GX2' would have failed on clause (iii) even if only these cases had been registered. *Observed*.
+    No threshold, case set or scoring rule was changed because of (a)-(c).
