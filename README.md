@@ -60,7 +60,7 @@ Every result claim in this README (status, gates, scaling, findings, limits) car
 
 ## Study-008 (v0.6.0) against the pre-registered criteria (*Observed*)
 
-New arms on the 2x2 families: **R6** (for 8 steps after a surprise, transitions confirmed only before it count as unknown) and **C6** (certify on the v0.2.0 tracked state while there has been no surprise). Controls are A5 (v0.5.0), A4 and A2 (frozen). The release default stays the v0.5.0 rule (Y1k, LU-R) whatever the outcome; there is no auto-promotion (*Exact*, plan `default_policy_rule`). Breadth arms are **BR6** and **BC6** (the breadth versions), plus B5. There are 648 2x2 cases and 288 breadth cases (24 held-out seeds × 3 mask rates per family). The plan is [`BRUTE_PLAN_008.json`](experiments/BRUTE_PLAN_008.json) ([readable](docs/research/v0.6.0/PLAN_008.md)), the gates are in [`GATES_008_FINAL.json`](results/study-008/GATES_008_FINAL.json), and the deviations are in [`BRUTE_DEVIATIONS_008.md`](docs/research/BRUTE_DEVIATIONS_008.md) (D1–D23).
+New arms on the 2x2 families: **R6** (for 8 steps after a surprise, transitions confirmed only before it count as unknown) and **C6** (certify on the v0.2.0 tracked state while there has been no surprise). Controls are A5 (v0.5.0), A4 and A2 (frozen). The release default stays the v0.5.0 rule (Y1k, LU-R) whatever the outcome; there is no auto-promotion (*Exact*, plan `default_policy_rule`). Breadth arms are **BR6** and **BC6** (the breadth versions), plus B5. There are 648 2x2 cases and 288 breadth cases (24 held-out seeds × 3 mask rates per family). The plan is [`BRUTE_PLAN_008.json`](experiments/BRUTE_PLAN_008.json) ([readable](docs/research/v0.6.0/PLAN_008.md)), the gates are in [`GATES_008_FINAL.json`](results/study-008/GATES_008_FINAL.json), and the deviations are in [`BRUTE_DEVIATIONS_008.md`](docs/research/BRUTE_DEVIATIONS_008.md) (D1–D26).
 
 | Criterion | Result | Key numbers |
 | --- | --- | --- |
@@ -197,12 +197,17 @@ Findings and their math: [`docs/research/DISCOVERIES.md`](docs/research/DISCOVER
 
 ## Test suite at release
 
-*Observed* on the release branch tree at `3d9f587` (`python -m unittest discover -s tests`, 294 s): **213 tests, 204 pass, 1 failure, 8 errors.**
+*Observed* on the release branch tree at `7079dc9` (`python -m unittest discover -s tests`, 296 s): **234 tests, 217 pass, 2 failures, 15 errors.** `tests/test_release_060.py` passes 5/5. That includes the untampered-copy control and every tamper case raising `VerificationError`. `scripts/verify_release_060.py --fast` passes.
 
-- **8 of 9 are by construction.** These frozen earlier-release tests check their own version, or verify the current tree as their release: `test_release_011/020/030::test_fast_verify_passes`, `test_brute_repro::test_verify_fails_under_tampered_results`, and `test_release_040::{test_fast_verify_passes, test_git_order, test_untampered_copy_passes, test_version_consistent}`. `test_release_040` is "version-parameterised", but its verifier is pinned to study-006 and its freezes, so it errors once `RELEASE.json` says 0.5.0. They can't be edited (frozen), and they pass on their own tags.
-- **1 is a real defect in the v0.5.0 test/verifier pair.** In `tests/test_release_050.py::test_tampered_copies_fail`, the tamper case for `results/study-007/SECOND_IMPLEMENTATION_COUNT.json` corrupts the JSON. The verifier then rejects the tampered copy by raising an uncaught `JSONDecodeError` instead of `VerificationError`. The tampered copy still does not verify, but the error is of the wrong type. Both files were frozen in `BRUTE_RELEASE_FREEZE_050` before this run showed the problem, so the defect is recorded rather than patched. It is listed for v0.6.0.
-- The other 4 `test_release_050` tests pass. These are the version check, the untampered-copy control, git order, and fast verify, plus the other tamper cases.
-- `scripts/verify_release_050.py --fast` passes on the branch and in a fresh clone after `study00{4,5,6,7}_storage.py restore`.
+- **Frozen earlier-release tests fail by construction.** They check their own version, or verify the current tree as their release:
+  - `test_release_011/020/030::test_fast_verify_passes`
+  - `test_brute_repro::test_verify_fails_under_tampered_results`
+  - `test_release_040` (fast verify, git order, version, untampered-copy control)
+  - `test_release_050` (fast verify, git order, version, the `GATES.json` tamper subtest and the untampered-copy control). These fail now that `RELEASE.json` says 0.6.0.
+
+  They are frozen, so they can't be edited, and they pass on their own tags.
+- **The 3 `test_study_005` errors depend on test order, and the cause is a test-isolation defect.** The errors are `KeyError: 'v090_certificate'`. `experiments/brute_study_006.py` line 39 runs `S5.FULL=FULL` when it is imported, which changes the study-005 module in the same process. Any test module that imports study 006, 007 or 008 before `test_study_005` runs (in a full-suite run that is `test_driftsound`, and earlier ones) triggers it. `tests.test_study_005` passes on its own (6/6). Importing `brute.driftsound` alone does not trigger it. This dates from v0.4.0 and the files are frozen, so it is recorded, not patched. *Observed.*
+- The v0.5.0 `JSONDecodeError` defect is fixed in the new verifier (`verify_release_060`). The frozen v0.5.0 pair is unchanged.
 
 ## Study-005 (v0.3.0) against its pre-registered criteria (*Observed*, kept for reference)
 
@@ -373,7 +378,7 @@ python scripts/make_reproducibility_005.py --workers 4
 | `brute/resume.py`, `brute/geometry.py`, `brute/api/service_v040.py`, `brute/release_version_040.py` | v0.4.0 learner (A4/P4, D2/F2 candidates), constraint region and API 1.4 (study-006 freeze) |
 | `brute/region.py`, `brute/region_learner.py`, `brute/breadth.py`, `brute/api/service_v050.py`, `brute/release_version_050.py` | v0.5.0 SAT region backend (A5/M5), breadth learner (B5/BM5/BP5) and API 1.5 (study-007 freeze) |
 | `brute/driftsound.py`, `brute/xcheck_sat.py`, `brute/modelcount.py`, `brute/release_version_060.py` | v0.6.0 research arms R6/C6 (BR6/BC6), second SAT encoding (CaDiCaL), model counting (study-008 freeze) |
-| `experiments/BRUTE_PLAN_008.json` | The study-008 pre-registration (`89c2d3b`, [readable](docs/research/v0.6.0/PLAN_008.md)); `BRUTE_SOURCE_FREEZE_008.json` and `BRUTE_RELEASE_FREEZE_060.json` lock v0.6.0 code |
+| `experiments/BRUTE_PLAN_008.json` | The study-008 pre-registration (`89c2d3b`, [readable](docs/research/v0.6.0/PLAN_008.md)); `BRUTE_SOURCE_FREEZE_008.json` and `BRUTE_RELEASE_FREEZE_060_R1.json` (which supersedes `BRUTE_RELEASE_FREEZE_060.json`, D26) lock v0.6.0 code |
 | `results/study-008/` | Sealed traces (gzip), seal, seed check, second-implementation count (same author), B5 enumeration, partial xcheck report (46/288, D21/D22) and its raw checkpoint, model counts, gates, GT1, paired analysis, reproducibility |
 | `experiments/BRUTE_PLAN_007.json` | The study-007 pre-registration (`5be08aa`); `BRUTE_SOURCE_FREEZE_007.json` and `BRUTE_RELEASE_FREEZE_050.json` lock v0.5.0 code |
 | `results/study-007/` | Sealed traces (gzip), seal, calibration (τ7), scaling (GR2′), second-implementation count (same author), post-hoc probability recompute, gates, paired analysis, reproducibility |

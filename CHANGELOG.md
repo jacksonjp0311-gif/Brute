@@ -13,7 +13,7 @@ Timeline:
 - Source frozen at `8e80615`.
 - Scoring scripts committed alone at `08ac3f3` (08:38:46 EDT); ledger `run_start_008` at 08:49:16 EDT; sealed at `c21ef12`.
 - Stream A (xcheck) stopped by owner decision at 17:44 EDT after 46/288 cases.
-- Criteria and scoring scripts were not changed afterwards. Deviations are in `docs/research/BRUTE_DEVIATIONS_008.md` (D1–D24).
+- Criteria and scoring scripts were not changed afterwards. Deviations are in `docs/research/BRUTE_DEVIATIONS_008.md` (D1–D26). The release freeze is `experiments/BRUTE_RELEASE_FREEZE_060_R1.json`, which supersedes `BRUTE_RELEASE_FREEZE_060.json` (D26).
 
 Code:
 

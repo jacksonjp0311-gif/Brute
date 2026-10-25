@@ -7,7 +7,7 @@ _Kept current on the working branch during a release and on `main` at release. L
 - **Releasing: v0.6.0** (study BRUTE-060-DRIFTSOUND-008, `plan/v0.6.0` → main, tag `v0.6.0`). **11 of 16 gated pass.**
   - **FAIL:** GA1 (target a), G3′, G5, G6b and GX2′ (target b, incomplete coverage).
   - **PASS:** G1, G2, G4, G7, G9, G10, G11, G12, G13, GT1 (target c) and GMC (target d).
-  - Gates: `results/study-008/GATES_008_FINAL.json`. Deviations: `docs/research/BRUTE_DEVIATIONS_008.md` D1–D24.
+  - Gates: `results/study-008/GATES_008_FINAL.json`. Deviations: `docs/research/BRUTE_DEVIATIONS_008.md` D1–D26.
   - D21: stream A (xcheck) stopped by owner decision at 17:44 EDT with 46/288 cases. Scored FAIL on the frozen criterion; no results were inspected.
   - D22: partial wrapper `scripts/make_xcheck_partial_008.py`.
   - D23: pack was run by hand.
@@ -44,8 +44,9 @@ _Kept current on the working branch during a release and on `main` at release. L
    - paired + reproducibility;
    - GATES_008 (ledger gates_008 `c4a7c1b`);
    - GT1_008 + GATES_008_FINAL (ledger `1cd90f4`).
-5. DONE: RELEASE.json/pyproject 0.6.0; README/CHANGELOG/HANDOFF/D24; release freeze `BRUTE_RELEASE_FREEZE_060.json`;
-   ledger release_freeze_060/release_060; MANIFEST; verify_release_060 --fast; tests; ff-merge to main; tag v0.6.0; gh release.
+5. DONE: RELEASE.json/pyproject 0.6.0; README/CHANGELOG/HANDOFF/D24; retroactive receipt for pre-freeze fix `cae25ce` (D25); verify_release_060 git_order fix and
+   release freeze `BRUTE_RELEASE_FREEZE_060_R1.json` superseding `BRUTE_RELEASE_FREEZE_060.json` (D26);
+   ledger release_freeze_060_r1/release_060; MANIFEST; verify_release_060 --fast; tests; ff-merge to main; tag v0.6.0; gh release.
 
 ### Open for the next study (Inferred / Open)
 
@@ -54,6 +55,7 @@ _Kept current on the working branch during a release and on `main` at release. L
 - The perm4 false-alarm cases under τ6 (D24a) need a pre-registered look at alarm calibration on perm4.
 - Neither rule gets close on G6b; the coverage/safety trade-off is still open.
 - Model counts are available but unused.
+- `experiments/brute_study_006.py` sets `S5.FULL` when it is imported, which makes `test_study_005` fail in full-suite runs (Observed). The next study should move that into the function that needs it.
 
 ## v0.5.0 progress (commit order is the chronology evidence)
 
