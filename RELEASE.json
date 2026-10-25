@@ -1,125 +1,100 @@
 {
-  "version": "0.4.0",
+  "version": "0.5.0",
   "name": "Brute",
   "forked_from": "BGR v0.90.0 (tag bgr-v0.90.0-fork)",
-  "mission": "general intelligence research toward a geometric reasoning system; this release adds a recalibrated resumable alarm, an exact constraint (H-) representation of the version space verified against enumeration, a new domain family (perm4) and a powered D7/D8 test; not general intelligence",
-  "study": "BRUTE-040-GEOMETRY-006",
-  "preregistration": "experiments/BRUTE_PLAN_006.json",
-  "preregistration_commit": "5fa3628",
-  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_006.json",
-  "source_freeze_commit": "70a3c43",
-  "release_freeze": "experiments/BRUTE_RELEASE_FREEZE_040.json",
-  "scoring_scripts_commit": "d9ddbe6",
-  "seal_commit": "454094c",
-  "run_start": "2026-10-25T03:20:15-04:00 (ledger run_start_006; 11.4 min after the scoring-script commit)",
-  "results_dir": "results/study-006",
-  "case_count": 576,
-  "d78_case_count": 1152,
-  "gates": "results/study-006/GATES.json",
+  "mission": "general intelligence research toward a geometric reasoning system; this release makes the exact constraint (SAT) representation of the version space the learner's backend (budget exhaustion abstains), adds pre-registered breadth families (6 states, 3 sensors, 3 actions) and tests a projection-volume experiment tie-break; not general intelligence",
+  "study": "BRUTE-050-REGION-007",
+  "preregistration": "experiments/BRUTE_PLAN_007.json",
+  "preregistration_commit": "5be08aa",
+  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_007.json",
+  "source_freeze_commit": "064a50e",
+  "release_freeze": "experiments/BRUTE_RELEASE_FREEZE_050.json",
+  "scoring_scripts_commit": "50e9321",
+  "seal_commit": "51215e0",
+  "run_start": "2026-10-25T06:11:52-04:00 (ledger run_start_007; 11.2 min after the scoring-script commit)",
+  "results_dir": "results/study-007",
+  "case_count": 864,
+  "stress_case_count": 24,
+  "gates": "results/study-007/GATES.json",
   "gates_passed": [
+    "GX1_backend_exactness_2x2",
+    "GX3_budget_abstains",
     "G1_in_family_soundness",
-    "G2_ood5_soundness",
-    "G3_prime_drift4",
+    "G2_ood_soundness",
     "G4_public_safety",
     "G5_false_alarm_limit",
-    "G6_active_coverage_gain",
-    "G7_prime_open_world_no_regression",
-    "G8_passive_equivalence",
-    "G9_retraction_semantics",
-    "G10_compute_budget",
+    "G7_open_world",
+    "G9_retraction_resume",
+    "G10_compute",
     "G11_second_implementation",
     "G12_reproducibility",
-    "G13_tau6_reproduces",
-    "GR1_exactness_sealed",
-    "GR1b_exactness_006"
+    "G13_tau7_reproduces"
   ],
   "gates_failed": [
-    "G6b_prime_coverage_non_inferiority_vs_v020"
+    "GX2_backend_exactness_breadth",
+    "G3_prime_drift4",
+    "G6b_M_coverage_vs_v020"
   ],
-  "gate_failure_note": "G6b_prime fails as pre-registered (expected): pooled A4 - A2 dual coverage -0.103781, CI95 [-0.115972, -0.091898] against >= -0.03 with CI lower >= -0.05. A4 differs from v0.3.0 A3 only after a resume, so this is the v0.3.0 price of fibre-robust certification, unchanged. Thresholds were not changed.",
-  "G14_prime_verdict": "OPEN",
-  "G14_prime_note": "D7/D8 single-mechanism test, powered (N=384 seeds, 1152 cases, chosen by a pre-registered power analysis; not gated): M and P1 hold; R = S(E2)/S(A2) = 48/76 = 0.631579, CI95 [0.417722, 0.906667]; CONFIRMED needed CI upper < 0.75, FALSIFIED CI lower > 0.5, so OPEN. The point estimate favours a partial shared mechanism (forced checks remove about a third of A2's stale certificates) but neither bound is met.",
-  "candidates_not_adopted": {
-    "G15_depth2_D2": {
-      "passes": false,
-      "coverage_minus_A2": -0.070833,
+  "GM_verdict": "NOT DISTINGUISHED",
+  "GX3_verdict": "PASS",
+  "gate_failure_note": "GX2: 0 mismatching breadth steps, but the enumeration reference was budget-stopped so act3 had 84.5% of steps checked (registered >= 90%). G3-prime: M5 had 1 false certificate at a non-drift step on drift4 (seed 1700015, mask 0.1, two steps after a drift, not public); A5 passes. G6b: M5 - A2 -0.079591, CI95 [-0.099615, -0.060224], predicted FAIL. Thresholds were not changed.",
+  "GM_note": "M5 - A5 +0.026202 CI95 [0.01093, 0.042536]; BM5 - B5 +0.039131 [0.020403, 0.057874]; SUPPORTED required G1/G2/G3-prime for M5, G3-prime fails, so NOT DISTINGUISHED",
+  "backend_exactness": {
+    "GX1_steps": 25344,
+    "GX1_mismatches": 0,
+    "GX1_excluded": 0,
+    "GX2_mismatching_breadth_traces": 0,
+    "GX2_checked_fraction_min": {
+      "act3": 0.845269,
+      "big6": 0.791016,
+      "sens3": 1.0,
+      "ood6s3": 1.0
+    },
+    "GX3_stress_forecasts_with_unknown": 257,
+    "GX3_certificates_with_unknown": 0
+  },
+  "false_certificates": {
+    "in_family_all_arms": 0,
+    "ood5_A5_M5": 0,
+    "ood6s3_B5_BM5_BP5": 0,
+    "drift4_A5": 6,
+    "drift4_A5_non_drift": 0,
+    "drift4_M5": 25,
+    "drift4_M5_non_drift": 1,
+    "drift4_A2_v020": 14,
+    "drift4_v090_control": 72
+  },
+  "dual_coverage": {
+    "M5_minus_A2": {
+      "pooled": -0.079591,
       "ci95": [
-        -0.085186,
-        -0.05733
+        -0.099615,
+        -0.060224
       ]
     },
-    "G16_fibre2_F2": {
-      "passes": false,
-      "coverage_minus_A2": -0.032639,
+    "A5_minus_A2": {
+      "pooled": -0.105401,
       "ci95": [
-        -0.040201,
-        -0.025616
-      ],
-      "G3_prime": false,
-      "drift4_non_drift_false": 2,
-      "drift4_stale": 2
-    }
+        -0.117595,
+        -0.093633
+      ]
+    },
+    "A5_minus_A4": 0.0
   },
   "alarm": {
     "tau6": 1.645215321642,
-    "calibration_cases": 1500,
-    "ood4_false_alarm_cases_A4": "1/72 (v0.3.0 tau on the same seeds: 1/72; study-005: 5/72)",
-    "detection_cases_A4_vs_A3_tau_v030": {
-      "ood5": "25 vs 40 of 72",
-      "drift4": "9 vs 33 of 72"
-    },
-    "resumes_A4": 3,
-    "certificates_after_resume": 0
+    "tau7": 2.07944154168,
+    "tau7_calibration_cases": 450,
+    "false_alarm_cases_in_family": 0,
+    "resumes_checked": 2
   },
-  "representation": {
-    "name": "brute.geometry.ConstraintRegion (CNF H-representation of the version space, pysat Glucose3, first-visit symmetry breaking)",
-    "used_by_learner": false,
-    "GR1_items": 778840,
-    "GR1_mismatches": 0,
-    "GR1b_items": 470318,
-    "GR1b_mismatches": 0,
-    "GR2_note": "84 cases; enum vs SAT 0 disagreeing steps (SAT unknown steps under the 20000-conflict budget and enum budget-exhausted steps excluded and reported); enum mean peak rows n=5 8559.7, n=6 33515.5 (10 cases exhausted 160000 rows); SAT max clauses n=12 15049; SAT time noisy and non-monotone; slopes over few points (deviation P5)"
-  },
-  "false_conditional_certificates": {
-    "A4_in_family": 0,
-    "A4_ood5": 0,
-    "A4_drift4": 13,
-    "A4_drift4_non_drift_steps": 0,
-    "A4_drift4_stale": 0,
-    "P4_drift4": 1,
-    "A2_v020_drift4": 25,
-    "v090_control_ood5": 79,
-    "v090_control_drift4": 72
-  },
-  "dual_coverage_gain_A4_minus_P4": {
-    "pooled": 0.059182,
-    "ci95": [
-      0.050153,
-      0.068635
-    ]
-  },
-  "dual_coverage_A4_minus_A2": {
-    "pooled": -0.103781,
-    "ci95": [
-      -0.115972,
-      -0.091898
-    ]
-  },
-  "new_family_perm4": {
-    "A4_false_certificates": 0,
-    "A4_dual_coverage": 0.053434,
-    "A2_dual_coverage": 0.10108,
-    "A4_minus_P4": 0.036073,
-    "ci95": [
-      0.014853,
-      0.060378
-    ],
-    "false_alarm_cases_A4": "2/72"
-  },
-  "public_certificates_out_of_family": 0,
-  "api": "brute.api 1.0-1.3 and 1.4 (BruteServiceV040: resumable alarm)",
-  "version_note": "brute.release_version_040.RELEASE_VERSION = 0.4.0; release_version_030 stays 0.3.0, release_version 0.2.0, brute.version 0.1.1, brute.__version__ 0.1.0 (all in earlier freezes)",
-  "second_implementation": "second implementation by the same author, no brute import; 0 mismatching of 2880 arm traces; mutation test 20/20 detected, 0 false flags; not an independent or third-party audit",
+  "scaling_GR2_prime": "Observed: 0 UNKNOWN answers at n=4..12 (2a2s, 2a3s, 3a2s, 6 cases per bound); 2a2s max clauses 2323/4420/7209/10738/15055 at n=4/6/8/10/12; enumeration agreed on every step it ran; Inferred (post hoc, docs/research/v0.5.0/SCALING_FIT_007.json): cubic fit near-interpolating on 5 n values, power exponents 1.57-1.74 with curved residuals; time noisy and non-monotone; rests on few points",
+  "api": "brute.api 1.0-1.4 and 1.5 (BruteServiceV050: SAT region backend, SOLVER_BUDGET abstention)",
+  "version_note": "brute.release_version_050.RELEASE_VERSION = 0.5.0; earlier release_version modules keep their own versions (earlier freezes)",
+  "second_implementation": "second implementation by the same author, no brute import; 0 mismatching of 2592 arm traces; mutation test 20/20 detected, 0 false flags; post-hoc probability recompute (taken and untaken branches) 0 of 1728 A4/A5/M5 traces, 130602 forecasts, swap mutations 20/20; breadth probabilities not recomputed; not an independent or third-party audit",
+  "reproducibility": "296 of 296 rerun jobs byte-identical; calibration byte-identical",
+  "errata_v040": "docs/research/v0.4.0/ERRATA.md (E1-E10; merged to main as 47480f7 before this release)",
+  "deviations": "docs/research/BRUTE_DEVIATIONS_007.md",
   "language_adapter": "template-only, grounded in brute.api responses; no language model connected",
   "baseline": "baseline/IDENTITY.json (zip not included in the fork)",
   "other_projects_modified": false
