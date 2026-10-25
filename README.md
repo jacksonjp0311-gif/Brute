@@ -2,18 +2,20 @@
   <img src="assets/brand/lockup.png" alt="Brute" width="520">
 </p>
 
-<p align="center"><b>A reasoner that abstains on what it cannot verify, chooses experiments that let it verify more, certifies only what holds on every place the world could have jumped to, and now has an exact constraint representation of what it knows.</b><br>
-<sub>Brute v0.4.0 · forked from BGR v0.90.0 · research preview · not AGI</sub></p>
+<p align="center"><b>A reasoner that abstains on what it cannot verify, chooses experiments that let it verify more, certifies only what holds on every place the world could have jumped to, and now decides with an exact constraint representation of what it knows.</b><br>
+<sub>Brute v0.5.0 · forked from BGR v0.90.0 · research preview · not AGI</sub></p>
 
 ---
 
 ## Overview
 
-Brute is a small, exact reasoner for hidden finite-state worlds. It watches actions and masked sensor readings, keeps every hidden machine that is still consistent with the evidence (the *version space*, a region), and predicts the next reading **only** when every surviving explanation agrees (the region's projection onto that reading is a single point, and an n≤5 margin agrees). Since v0.2.0 it also acts: it picks the action whose answers would let it certify most (a one-step lookahead). Since v0.3.0 a certificate must also hold on the *fibre* of the region over the latest observation, so an unseen jump cannot leave a stale certificate standing.
+Brute is a small, exact reasoner for hidden finite-state worlds. It watches actions and masked sensor readings, keeps every hidden machine that is still consistent with the evidence (the *version space*, a region), and predicts the next reading **only** when every surviving explanation agrees (the region's projection onto that reading is a single point, and a larger margin bound agrees). Since v0.2.0 it also acts: it picks the action whose answers would let it certify most (a one-step lookahead). Since v0.3.0 a certificate must also hold on the *fibre* of the region over the latest observation (rule Y1k), so an unseen jump cannot leave a stale certificate standing. v0.4.0 added an exact constraint (H-) representation of the region and verified it against enumeration.
 
-**v0.4.0 gives the version space a second, exact geometric representation and tests depth, breadth and the alarm.** `brute/geometry.py::ConstraintRegion` stores the region as CNF constraints over complete ≤n-state Moore machines (an *H-representation*: the cuts that carve it out) instead of a list of surviving machines (a *V-representation*). Every learner query is a geometric operation on it: support = projection, saturation = emptiness of a sub-region, Y1k certificate = fibre, observation = cut. On every step of 2,016 sealed study-004/005 traces (a **development set**: the design probes had used them) it reproduces the enumeration learner's decisions **exactly (0 mismatches in 778,840 items)**, and on held-out study-006 (0 in 470,318; held-out status weakened for 16 cases, errata E1). Its clause count grows polynomially (O(T·n² + n³); a cubic fits the maxima) while enumeration's peak rows grow roughly exponentially (about ×6.9 per state, n = 2..5) — fits with residuals in [`errata/SCALING_FIT_006.json`](docs/research/v0.4.0/errata/SCALING_FIT_006.json), *Inferred*; the earlier "n^1.6 vs n^8.5" exponents are withdrawn ([errata](docs/research/v0.4.0/ERRATA.md) E2). **The learner still decides with enumeration**; the constraint region is verified-equivalent, not yet the engine (*Exact*).
+**v0.5.0 makes the constraint region the engine.** `brute/region.py` (`RegionK`, `RegionSpace`) answers every learner query — support, saturation, Y1k fibre, lookahead — with SAT queries (pysat Glucose3) over complete Moore machines with k actions and s sensors, instead of enumerating machines. If the solver hits its conflict budget, the answer is UNKNOWN and the forecast becomes **ABSTAIN / SOLVER_BUDGET** — never a certificate (*Exact*, by construction and unit test; *Observed* on a stress block: 257 such forecasts, 0 certificates). On the pre-registered study-007 the SAT learner **A5 makes the same decision as the frozen enumeration learner A4 on all 25,344 steps** (GX1, 0 mismatches, 0 excluded). It also runs where enumeration cannot: **breadth families** with 6 states, 3 sensors or 3 actions, with **0 false certificates** in family and 0 public certificates out of family. A new experiment rule **M** (break lookahead ties toward the experiment expected to leave the smallest fibre-projection *volume*) raises coverage (+0.026, CI95 [0.011, 0.043] on 2x2; +0.039 [0.020, 0.058] on breadth) but costs one non-drift false certificate on drift4, so by the registered rule it is **NOT DISTINGUISHED**.
 
-On the pre-registered study-006 (576 held-out cases in 8 families, including the new **perm4** family, plus a 1,152-case powered D7/D8 block) **15 of 16 gated criteria pass**. The one failure, **G6b′** (coverage 0.104 below v0.2.0), was pre-registered as expected: it is v0.3.0's price of fibre-robust certification, unchanged. **G5 passes** (ood4 false alarms 1/72 with the recalibrated τ6 = 1.645), but the v0.3.0 τ also gives 1/72 on these seeds, so the pass is not evidence that recalibration fixed the misfire (*Observed*). The two pre-registered depth candidates — a two-step lookahead (D2) and a two-step fibre (F2) — **both fail** their coverage gates as predicted, and F2 also breaks G3′. The powered D7/D8 test is **OPEN**: R = 0.63, CI95 [0.42, 0.91].
+On study-007 (864 held-out cases + 24 stress cases) **12 of 15 gated criteria pass**. Three fail and stay failed: **GX2** (the breadth reference enumeration ran out of budget on too many act3 steps: 84.5% checked vs 90% registered; 0 mismatches where it ran), **G3′** (M5: 1 false certificate at a non-drift step on drift4), and **G6b** (M5 − v0.2.0 coverage −0.080, CI95 [−0.100, −0.060]; predicted to fail).
+
+This release also carries the [v0.4.0 errata](docs/research/v0.4.0/ERRATA.md) from an outside review: v0.4.0's held-out discipline was broken once (96 study-006 cases ran before the scoring-script commit), its scaling exponents are withdrawn, and its audit did not recompute probabilities (a post-hoc recompute found 0 mismatches).
 
 Brute is a fork of **BGR (Bitwork Geometric Reasoning) v0.90.0**, and that research is credited in full ([`FORK.md`](FORK.md)).
 
@@ -21,25 +23,76 @@ Brute is a fork of **BGR (Bitwork Geometric Reasoning) v0.90.0**, and that resea
 
 | | |
 | --- | --- |
-| Version | *Exact.* 0.4.0 (`RELEASE.json`, `pyproject.toml`, `brute.release_version_040.RELEASE_VERSION`). `release_version_030` stays `0.3.0`, `release_version` `0.2.0`, `brute.version` `0.1.1` and `brute.__version__` `0.1.0` (earlier freezes) |
-| Tests | *Observed* at release: 196 tests, 192 pass, 4 frozen earlier-release version checks error by construction; see [Test suite at release](#test-suite-at-release) |
-| Study | `BRUTE-040-GEOMETRY-006`. *Exact* (git ancestry): plan `5fa3628` → second implementation `2eba00b` → implementation `2811904` → pre-freeze fix `b5e7077` → source freeze `70a3c43` → scoring scripts `d9ddbe6` (03:08:51 EDT) → ledger `run_start_006` (03:20:15 EDT, 11.4 min later) → seal `454094c`. Scoring scripts unchanged since their single commit. Commit times are the author's clock (*Observed*, not attested). **Errata (E1, deviation P8): study code and the full scoring chain had run on 96 held-out cases (02:29–03:08 EDT) before `d9ddbe6`.** Deviations: [`BRUTE_DEVIATIONS_006.md`](docs/research/BRUTE_DEVIATIONS_006.md) |
-| Gates | *Observed.* **15 of 16 gated pass; G6b′ fails (pre-registered); G14′ OPEN; candidates D2 (G15) and F2 (G16) fail** ([`results/study-006/GATES.json`](results/study-006/GATES.json)) |
-| Verifier | *Exact.* `python scripts/verify_release_040.py --fast` (seals, freezes, gates and paired analysis regenerated byte-for-byte, ledger chronology, manifest, git order, version consistency; values read from `RELEASE.json`); without `--fast` it also re-runs the second-implementation count |
-| Interface | *Exact.* `brute.api` 1.0–1.3 and **1.4** (`BruteServiceV040`: resumable alarm). Template-only language adapter. No language model is connected |
-| Storage | *Exact.* Sealed traces for studies 004–006 are committed as deterministic gzip; `python scripts/study00{4,5,6}_storage.py restore` rebuild them and check them against `SEAL.json` |
+| Version | *Exact.* 0.5.0 (`RELEASE.json`, `pyproject.toml`, `brute.release_version_050.RELEASE_VERSION`). Earlier `release_version*` modules keep their own versions (earlier freezes) |
+| Tests | *Observed* at release: see [Test suite at release](#test-suite-at-release) |
+| Study | `BRUTE-050-REGION-007`. *Exact* (git ancestry): plan `5be08aa` → second implementation `1b57efe` → implementation `fc2bed8`/`c8e8611`/`b693113` → pre-freeze fixes `0c86d90`, `d7054a1`, `b2c4209` → source freeze `064a50e` → scoring scripts `50e9321` (06:00:43 EDT) → ledger `run_start_007` (06:11:52 EDT, 11.2 min later) → seal `51215e0`. Scoring scripts unchanged since their single commit. Commit times are the author's clock (*Observed*, not attested). Deviations (smoke seeds, one held-out seed's world tables printed by eye, post-start audits): [`BRUTE_DEVIATIONS_007.md`](docs/research/BRUTE_DEVIATIONS_007.md) |
+| Gates | *Observed.* **12 of 15 gated pass; GX2, G3′ and G6b fail; GM NOT DISTINGUISHED; GX3 PASS** ([`results/study-007/GATES.json`](results/study-007/GATES.json)) |
+| Verifier | *Exact.* `python scripts/verify_release_050.py --fast` (seals, freezes, gates and paired analysis regenerated byte-for-byte, ledger chronology, manifest, git order, version consistency; values read from `RELEASE.json`); without `--fast` it also re-runs the second-implementation count |
+| Interface | *Exact.* `brute.api` 1.0–1.4 and **1.5** (`BruteServiceV050`: SAT region backend, `SOLVER_BUDGET` abstention). Template-only language adapter. No language model is connected |
+| Storage | *Exact.* Sealed traces for studies 004–007 are committed as deterministic gzip; `python scripts/study00{4,5,6,7}_storage.py restore` rebuild them and check them against `SEAL.json` |
 | Environment | *Exact.* Python 3.13.5, numpy 2.5.4, python-sat 1.9.dev17 (pinned in `requirements.txt` and `pyproject.toml`) |
 
 Every claim in this README carries a label:
 
 - **Exact**: proved or verified by the tests or by exact computation in this repository.
-- **Observed**: measured in study-006 (`results/study-006/SCIENTIFIC.json`, sealed), or in earlier studies where stated.
+- **Observed**: measured in study-007 (`results/study-007/SCIENTIFIC.json`, sealed), or in earlier studies where stated.
 - **Simulated**: a counterfactual predictor rescored on earlier sealed traces (design evidence, not pre-registered evidence).
-- **Inferred**: reasoning, not measured.
+- **Inferred**: reasoning or a model fitted after the fact, not measured.
 - **Rejected**: considered and dropped, with the reason given.
 - **Open**: unresolved.
 
-## Study-006 against the pre-registered criteria (*Observed*)
+## Study-007 against the pre-registered criteria (*Observed*)
+
+Arms on the eight 2x2 families (2 actions, 2 binary sensors, ≤4 states with a ≤5 margin): **A5** v0.5.0 (SAT region backend, v0.4.0 rules), **M5** A5 + projection-volume tie-break, **A4** frozen v0.4.0 (enumeration), **A2** frozen v0.2.0. Breadth families (pre-registered before any data): **big6** (≤6/≤7 states), **sens3** (3 sensors), **act3** (3 actions), **ood6s3** (declared out of family), with arms **B5** (active), **BM5** (active + M), **BP5** (passive). 2x2: 8 families × 24 held-out seeds × 3 mask rates = 576 cases; breadth 4 × 24 × 3 = 288; stress block 24 (tiny conflict budget).
+
+| Criterion | Result | Key numbers |
+| --- | --- | --- |
+| **GX1 backend exactness, 2x2 (A5 vs A4, excluded ≤ 1%)** | **PASS** | **0 mismatches in 25,344 steps, 0 excluded**; A5 − A4 coverage 0 exactly |
+| **GX2 backend exactness, breadth (vs second implementation)** | **FAIL** | **0 mismatching steps**, but the reference enumeration stopped at its 160,000-row budget on 15 act3 traces: act3 B5/BP5 84.5% of steps checked, registered minimum 90%. sens3, ood6s3 100%; big6 79–81% (reported, no floor) |
+| **GX3 budget exhaustion ⇒ abstain** | **PASS** | stress block: 257 forecasts used an UNKNOWN answer, all ABSTAIN / SOLVER_BUDGET, 0 certificates; 0 production certificates with an UNKNOWN; unit tests pass |
+| G1 in-family soundness (taken + public) | PASS | 0 false certificates in every arm and family: A5 3,945, M5 4,853 on 2x2 (cycle3/switch3/unstructured3/unaliased2/ood4/perm4); breadth B5 2,108, BM5 3,456, BP5 802 (big6/sens3/act3). Rule-of-three upper rate e.g. M5 cycle3 0.0028 |
+| G2 ood soundness | PASS | ood5: A5 0 of 72, M5 0 of 186; ood6s3: B5 0 of 252, BM5 0 of 995, BP5 0 of 24 |
+| **G3′ drift4 (0 wrong at non-drift steps, total ≤ 50% of v0.90)** | **FAIL** | A5 6 false, 0 non-drift; **M5 25 false, 1 non-drift** (two steps after a drift; not public; [Q7](docs/research/BRUTE_DEVIATIONS_007.md)); limit 36 (v0.90: 72). A2 14 (1 non-drift), A4 6 (0) |
+| G4 public safety | PASS | 0 public certificates on ood5/drift4/ood6s3; 0 public false anywhere; 0 public after the first alarm |
+| G5 in-family false alarms ≤ 5% per family and arm | PASS | 0 of 72 in every in-family family and arm (τ6 = 1.645 on 2x2; τ7 = 2.079 on breadth) |
+| **G6b M5 − A2 ≥ −0.03, CI lower ≥ −0.05** | **FAIL** (predicted) | **−0.079591, CI95 [−0.099615, −0.060224]**; A5 − A2 = A4 − A2 −0.105401 [−0.117595, −0.093633] (reported) |
+| G7 open world | PASS | log-loss ood5 A5 0.671 / M5 0.543; drift4 A5 1.043 / M5 1.091 (≤ ln 4); ood6s3 B5 1.380 / BM5 0.582 / BP5 1.444 (≤ ln 8); min p 0.005 (2x2), 0.0025 (breadth) |
+| G9 retraction + resume | PASS | 242 retractions (29 falsified, 138 scope withdrawn, 75 unverifiable), reasons match the reference; 0 duplicates; 2 resumes, 0 rule violations |
+| G10 compute | PASS | all 888 jobs present; 0 production forecasts with an UNKNOWN (2x2 101,376; breadth 124,416). Wall clock (informational, shared box): A4 104 s, A5 276 s, M5 344 s, B5 666 s, BM5 1,099 s |
+| G11 second implementation (**same author, no `brute` import; not independent**) | PASS | **0 mismatching of 2,592 arm traces**; mutation test 20/20 injected errors detected, 0 false flags. Post-hoc (not registered): forecast probabilities recomputed on taken and untaken branches for A4/A5/M5, 0 of 1,728 traces, 130,602 forecasts, swap mutations 20/20 |
+| G12 reproducibility | PASS | every third job rerun (296: 192 2x2, 96 breadth, 8 stress) byte-identical; calibration and traces byte-identical |
+| G13 τ7 reproduces | PASS | τ7 = 2.07944154168 (450 in-family breadth calibration cases; argmax sens3 seed 1721016, mask 0.1) |
+| GM projection-volume rule (decision, not gated) | **NOT DISTINGUISHED** | M5 − A5 **+0.026202, CI95 [0.010930, 0.042536]** (cycle3 +0.054, perm4 +0.028, unaliased2 +0.031, unstructured3 +0.036, switch3 +0.011, ood4 −0.003); breadth BM5 − B5 **+0.039131 [0.020403, 0.057874]** (act3 +0.091, big6 +0.039, sens3 −0.013). SUPPORTED needed G3′ to hold for M5; it does not |
+| GR2′ scaling (reported, not gated) | — | see below |
+
+Paired, seed-clustered bootstrap (2,000 resamples, seed 20261025; [`PAIRED_ANALYSIS.json`](results/study-007/PAIRED_ANALYSIS.json)). BP5 (passive) − B5 −0.044533 [−0.060310, −0.030285]: on breadth, experiments still buy coverage.
+
+### Breadth coverage after burn-in (*Observed*, all-action coverage)
+
+| Family | B5 / BM5 / BP5 | Note |
+| --- | --- | --- |
+| act3 (3 actions) | 0.061 / **0.152** / 0.009 | M's largest gain |
+| big6 (≤6, margin ≤7) | 0.028 / **0.067** / 0.005 | beyond enumeration's reach for most steps |
+| sens3 (3 sensors) | **0.138** / 0.125 / 0.081 | M slightly below B5 (−0.013, CI includes 0) |
+| ood6s3 (declared out of family) | 0.031 / 0.121 / 0.003 | alarms in 21 / 9 / 24 of 72 cases; 0 false certificates |
+
+### How the region backend scales (GR2′, *Observed* raw; fits *Inferred*)
+
+Six cases per bound and alphabet, every step, SAT at n = 4..12, enumeration where it fits. **0 UNKNOWN answers at every n** (production conflict budget); enumeration agreed on every step where it ran (0 disagreements).
+
+| n | Max clauses 2a2s / 2a3s / 3a2s | Enumeration max rows 2a2s / 2a3s / 3a2s | Case seconds mean (max), 2a2s |
+| --- | --- | --- | --- |
+| 4 | 2,323 / 3,139 / 2,399 | 87 / 69 / 2,078 | 0.04 (0.05) |
+| 6 | 4,420 / 5,622 / 4,603 | 2,709 / 3,784 / budget (6 of 6 exhausted) | 0.22 (0.29) |
+| 8 | 7,209 / 8,797 / 7,579 | not run | 0.72 (1.60) |
+| 10 | 10,738 / 12,712 / 11,399 | not run | 0.49 (0.83) |
+| 12 | 15,055 / 17,415 / 16,135 | not run | 0.51 (0.65) |
+
+Fits ([`SCALING_FIT_007.json`](docs/research/v0.5.0/SCALING_FIT_007.json), `scripts/scaling_fit.py`, post hoc, *Inferred*): clause maxima are fitted by a cubic y = c0 + c1·n + c2·n² + c3·n³ (2a2s: 13 + 275.7n + 68.5n² + n³, R² 0.99988); with 4 parameters on 5 values of n this is close to interpolation and is **not** evidence for the degree. A power law gives exponents 1.71 / 1.57 / 1.74 with residuals that curve (+0.02 at n = 4, −0.02 at n = 6–8, +0.02–0.03 at n = 12), so it is mis-specified. Enumeration has only two uncensored n values and is **not fitted**. **Time is noisy and non-monotone** (2a2s n = 8 mean 0.72 s vs n = 12 0.51 s; 3a2s n = 6 7.3 s mean / 14.9 s max, because its case time includes the enumeration side that exhausted its budget). The representation grows polynomially in size (*Exact*: O(T·n² + n³) clauses by construction); SAT time is not guaranteed polynomial (*Exact*, NP-hard in general). **GR2′ rests on 5 bounds × 6 cases per alphabet.**
+
+Findings and their math: [`docs/research/DISCOVERIES.md`](docs/research/DISCOVERIES.md) D22–D25.
+
+## Study-006 (v0.4.0) against its pre-registered criteria (*Observed*, kept for reference)
 
 Arms: **A4** v0.4.0 active (v0.3.0 Y1k + LU-R + τ6 + resume; identical to A3 except after a resume), **P4** v0.4.0 passive, **A3** v0.3.0, **A2** frozen v0.2.0, **E2** v0.2.0 + forced untaken-branch checks (mechanism arm), **D2** depth-2 lookahead candidate, **F2** two-step-fibre candidate, **C** frozen v0.1.1 control, plus the v0.90 control. 8 families × 24 new held-out seeds × 3 mask rates = 576 cases; D7/D8 block 384 drift4 seeds × 3 masks = 1,152 cases.
 
@@ -67,7 +120,7 @@ Arms: **A4** v0.4.0 active (v0.3.0 Y1k + LU-R + τ6 + resume; identical to A3 ex
 
 Paired, seed-clustered bootstrap (2,000 resamples, seed 20261025; [`PAIRED_ANALYSIS.json`](results/study-006/PAIRED_ANALYSIS.json)). Power analysis (pre-registered, *Simulated* on study-005 seeds): N = 384 seeds gives power ≥ 0.9 under the observed-effect and half-effect scenarios.
 
-### Coverage after burn-in (*Observed*)
+### Study-006 coverage after burn-in (*Observed*)
 
 | Family | Dual coverage P4 / A4 / A2 / D2 / F2 / E2 | C (v0.1.1) |
 | --- | --- | --- |
@@ -78,7 +131,7 @@ Paired, seed-clustered bootstrap (2,000 resamples, seed 20261025; [`PAIRED_ANALY
 | ood4 | 0.002 / **0.022** / 0.047 / 0.037 / 0.032 / 0.078 | 0.003 |
 | perm4 (new) | 0.017 / **0.053** / 0.101 / 0.119 / 0.094 / 0.079 | 0.033 |
 
-### The geometric representation and how it scales (GR2, *Observed*, not gated)
+### Study-006 GR2 scaling of the constraint region (*Observed*, not gated; superseded by GR2′ above)
 
 84 cases (7 families × 3 masks × 4 seeds), every step, enumeration at n = 2..6 vs `ConstraintRegion` at n = 2..12. Enum-vs-SAT: **0 disagreeing steps** among steps both sides decided. Excluded and reported: enumeration exhausted the 160,000-row budget in 10 cases at n = 6 (251 steps); SAT hit its 20,000-conflict per-query budget at n = 8 (5 steps), 10 (8) and 12 (4) (deviation P2).
 
@@ -139,26 +192,25 @@ Findings and their math: [`docs/research/DISCOVERIES.md`](docs/research/DISCOVER
 
 ## What Brute can't do yet
 
-- **It still pays for safety with coverage, and depth did not buy it back.** Dual coverage A4 is 0.104 below v0.2.0 in family (G6b′ fails, as in v0.3.0). Both pre-registered depth candidates fail: a two-step lookahead (D2) *loses* coverage against A2 (−0.071) and a two-step fibre (F2) gets closer (−0.033) but then certifies wrongly at non-drift steps on drift4 (G3′ breaks). *Observed.* Why the deeper lookahead lowers coverage is *Open*.
-- **Its geometric representation is verified but not yet used.** `ConstraintRegion` matches enumeration exactly on 778,840 development-set items (GR1) and 470,318 held-out items (GR1b, weakened for 16 cases by errata E1), but the learner, the lookahead and the API still decide with enumerated rows. *Exact.*
-- **Its SAT queries have unbounded tails.** With a 20,000-conflict budget, 17 steps at n = 8–12 came back unknown; without a budget one query ran > 6 minutes in the smoke run. A decision procedure that guarantees an answer in bounded time at n ≥ 8 is *Open*.
-- **It certifies nothing beyond n ≤ 4 with an n ≤ 5 margin.** The constraint region reaches n = 12 in GR2, but no study certifies with an n ≥ 6 margin yet. *Exact.*
-- **Its alarm recalibration is not shown to fix the ood4 misfire.** G5 passes, but the v0.3.0 τ also gives 1/72 on these ood4 seeds; the study-005 misfire (5/72) is not re-tested on its own seeds under τ6. The higher τ6 costs detection: ood5 25 vs 40 of 72 cases, drift4 9 vs 33. *Observed.*
-- **Resuming after an alarm is barely exercised.** 3 resumes per arm in 576 cases and **0 certificates after any resume** — "certification never resumes" is fixed in code but not shown to recover coverage. *Observed.*
-- **The D7/D8 question is still OPEN at N = 384.** R = 0.63 [0.42, 0.91]: forced checks remove about a third of A2's stale certificates, but neither decision bound is met. *Observed.*
+- **It still pays for safety with coverage.** G6b fails a third time: M5 is 0.080 below v0.2.0 in family, A5/A4 0.105. The price sits in the Y1k certification rule; neither depth (v0.4.0 D2/F2) nor a better tie-break (M) removes it. *Observed.*
+- **Its best coverage idea is not shown to be safe.** The projection-volume tie-break M adds coverage (+0.026 on 2x2, +0.039 on breadth, both CIs above 0) but produced one false certificate two steps after a drift (G3′ fails for M5); by the registered rule GM is NOT DISTINGUISHED. *Observed.* Whether M causes such windows or only happened to walk into one is *Open* (one event).
+- **Its certificate horizon is one step.** Y1k checks the fibre over the latest observation only; a drift two steps back can leave a stale region (the M5 event; v0.2.0 A2 also has 1 such step here). A multi-step fibre (F2) broke G3′ in v0.4.0. *Inferred*, *Open*.
+- **Breadth exactness is only partly checked.** The second implementation is enumeration, which runs out of rows on big6 (≈20% of steps unchecked) and on act3 (15.5%, which fails GX2). The SAT backend is exact on every step where it can be compared, but not compared everywhere. *Observed.*
+- **Breadth probabilities are not recomputed.** The post-hoc probability recompute covers the 2x2 arms only. *Open.*
+- **SAT time has no guarantee.** 0 UNKNOWN answers occurred in production and scaling runs, but SAT is NP-hard; the stress block shows the abstention path works, not that it will be rare at larger n. Timing is noisy and non-monotone, and GR2′ rests on 5 bounds × 6 cases. *Exact* / *Observed*.
+- **No model counting yet.** M uses projection volumes from the enumeration-free lookahead, not #SAT; approximate model counting, incremental SAT and BDD/d-DNNF compilation are *Open*.
+- **Breadth is still small:** ≤6 states (margin ≤7), ≤3 sensors or ≤3 actions, deterministic Moore machines. *Exact.*
 - **It still pays ln 200 = 5.298 on every contradiction step.** *Exact* (ε reserve design).
 - **It does not grow its own model class.** Families and caps are fixed by hand. *Exact.*
 - **Public certificates need an outside attestation.** *Exact.*
-- **It only works on a toy domain:** 2 actions, 2 binary sensors, deterministic Moore machines. perm4 adds one new geometry (each action a permutation) inside the same ≤4-state family. *Exact.*
 - **The language adapter is templates only.** No free-form questions. *Exact.*
-- **Its held-out discipline was broken once.** Study code and the full scoring chain ran on 96 held-out study-006 cases before the scoring scripts were committed; the repository said otherwise until the errata ([E1](docs/research/v0.4.0/ERRATA.md), P8). *Observed.*
-- **Its G11 audit did not recompute probabilities.** In the v0.90 regime it checked only sum/floor/source; a post-hoc recompute found 0 mismatches ([E3](docs/research/v0.4.0/ERRATA.md)). *Observed.*
-- **Its audit is not independent.** G11 is a second implementation by the same author on the same machine, sharing the world generators with the runner; an error there would not be caught. No third party has replicated anything. *Exact.*
-- **Its test suite is still red by construction.** Frozen earlier-release tests assert older version strings and error after every bump (see [Test suite at release](#test-suite-at-release)); `tests/test_release_040.py` is parameterised by `RELEASE.json` so it does not repeat this. *Observed.*
-- **Some process claims are self-reported.** That the scoring-script dry-run outputs were not looked at (errata E1), that no study-006 seed ran before the plan commit, and the 11.4-minute gap between the scoring-script commit and the run start rest on the author's clock and report. *Exact* (what git can show).
+- **Its held-out discipline is self-reported and was bent again.** One held-out seed's breadth world tables were printed by eye before the run (no learner, no outcome); smoke seeds are code-checked disjoint only after the run start; in v0.4.0 96 held-out cases ran before the scoring-script commit ([errata E1](docs/research/v0.4.0/ERRATA.md)). *Observed* / author's report.
+- **Post-start additions.** The probability recompute, the smoke-seed check and the scaling fits were added after `run_start_007` in response to review; they are labelled post hoc ([Q6](docs/research/BRUTE_DEVIATIONS_007.md)). *Exact.*
+- **Its audit is not independent.** G11/GX2 are a second implementation by the same author on the same machine, sharing world generators with the runner. No third party has replicated anything. *Exact.*
+- **Its test suite is still red by construction.** Frozen earlier-release tests assert older version strings and error after every bump (see [Test suite at release](#test-suite-at-release)); `tests/test_release_050.py` is parameterised by `RELEASE.json`. *Observed.*
 - **It is not AGI,** and nothing here shows general intelligence. *Exact.*
 
-The plan for v0.5.0 is in [`NEXT_ITERATION.md`](NEXT_ITERATION.md); the longer path is in [`docs/ROADMAP.md`](docs/ROADMAP.md).
+The plan for v0.6.0 is in [`NEXT_ITERATION.md`](NEXT_ITERATION.md); the longer path is in [`docs/ROADMAP.md`](docs/ROADMAP.md).
 
 ## Quickstart
 
@@ -167,11 +219,11 @@ Requires Python 3.11+, NumPy and python-sat (pinned in `requirements.txt`). No G
 ```bash
 git clone https://github.com/jacksonjp0311-gif/Brute.git && cd Brute
 python -m pip install -r requirements.txt
-python scripts/study004_storage.py restore && python scripts/study005_storage.py restore && python scripts/study006_storage.py restore   # gitignored raw traces from the committed gzip
+for k in 4 5 6 7; do python scripts/study00${k}_storage.py restore; done   # gitignored raw traces from the committed gzip
 python -m unittest discover -s tests            # see Status for the count
-python scripts/verify_release_040.py --fast      # seals, freezes, regenerated gates/paired, ledger chronology, manifest, git order
-python scripts/verify_release_040.py             # also re-runs the study-006 second-implementation count (same author; long)
-python -m unittest tests.test_release_040         # version-parameterised release tests incl. tamper checks
+python scripts/verify_release_050.py --fast      # seals, freezes, regenerated gates/paired, ledger chronology, manifest, git order
+python scripts/verify_release_050.py             # also re-runs the study-007 second-implementation count (same author; ~25 min on 6 workers)
+python -m unittest tests.test_release_050         # version-parameterised release tests incl. tamper checks
 ```
 
 A minimal API session:
@@ -215,9 +267,22 @@ R = ConstraintRegion(6, [mask_for_observation((0, 0)), mask_for_observation((0, 
 print(R.feasible, R.support(0), R.support(1), R.saturated(), R.size); R.close()
 ```
 
+The v0.5.0 SAT-backed learner through API 1.5 (a forecast that needed an UNKNOWN solver answer comes back ABSTAIN / SOLVER_BUDGET):
+
+```python
+from brute.api.service_v050 import BruteServiceV050
+s = BruteServiceV050()
+s.handle({"api_version": "brute.api/1.5", "session_id": "demo", "op": "initialize",
+          "observation": {"x": 0, "y": 0}, "family": {"max_states": 4}})
+s.handle({"api_version": "brute.api/1.5", "session_id": "demo", "op": "observe",
+          "action": "a", "observation": {"x": 0, "y": None}})
+print(s.handle({"api_version": "brute.api/1.5", "session_id": "demo", "op": "predict", "action": "b"}))
+```
+
 To rerun calibration and a study in a scratch directory and compare bytes with the sealed files (study-006 took about 25 minutes on this box; study-005 about 4 minutes on 4 workers):
 
 ```bash
+python scripts/make_reproducibility_007.py         # every third study-007 job (296)
 python scripts/make_reproducibility_006.py
 python scripts/make_reproducibility_005.py --workers 4
 ```
@@ -238,7 +303,10 @@ python scripts/make_reproducibility_005.py --workers 4
 12. **`brute.api`:** versioned JSON request and response schemas (`brute/api/schema/*.v1.json`) and a service that never raises.
 13. **Language adapter:** template rendering plus a checker that rejects any sentence not grounded in a response field.
 14. **Resumable alarm (v0.4.0, `brute/resume.py`):** τ6 = 1.645215321642, calibrated on 1,500 in-family cases only; while the alarm is set, W consecutive residuals ≤ τ6 with the family and margin both supported clear it and certification may resume (conditional only; attestation is never re-enabled; contradiction never resumes).
-15. **Constraint region (v0.4.0, `brute/geometry.py`):** the version space as CNF over complete ≤n Moore machines with canonical first-visit symmetry breaking (a fundamental domain of the S_n relabelling); support = projection, saturation = emptiness of a sub-region, fibre = certificate test, observation = cut. Verified decision-identical to enumeration (GR1, GR1b); not used by the learner yet.
+15. **Constraint region (v0.4.0, `brute/geometry.py`):** the version space as CNF over complete ≤n Moore machines with canonical first-visit symmetry breaking (a fundamental domain of the S_n relabelling); support = projection, saturation = emptiness of a sub-region, fibre = certificate test, observation = cut. Verified decision-identical to enumeration (GR1, GR1b).
+16. **Region backend (v0.5.0, `brute/region.py`, `brute/region_learner.py`):** `RegionK` generalises the constraint region to k actions and s sensors; `RegionBruteLearner` (A5) answers support, saturation, Y1k and LU-R lookahead with SAT queries under a per-query conflict budget. A query that returns UNKNOWN makes the forecast ABSTAIN / `SOLVER_BUDGET` (never CERTIFIED). Decision-identical to A4 on every study-007 step (GX1).
+17. **Projection-volume tie-break M (v0.5.0, policy `M`):** when LU-R scores tie, take the action a with the smaller V(a) = mean over its possible readings c of Σ_b log2 |Y1k fibre projection for b| in the region cut by obs(a)=c (an infeasible or UNKNOWN branch counts as the maximum, 4 bits) — the experiment expected to leave the least fibre ambiguity. Certification is unchanged.
+18. **Breadth learner (v0.5.0, `brute/breadth.py`):** B5/BM5/BP5 on k-action, s-sensor families (big6, sens3, act3) with τ7 = 2.079 calibrated on in-family breadth cases.
 
 ## Repository
 
@@ -250,6 +318,9 @@ python scripts/make_reproducibility_005.py --workers 4
 | `brute/active.py`, `brute/api/service_v020.py`, `brute/release_version.py` | v0.2.0 learner and API 1.2 (study-004 freeze) |
 | `brute/changepoint.py`, `brute/api/service_v030.py`, `brute/release_version_030.py` | v0.3.0 learner and API 1.3 (study-005 freeze) |
 | `brute/resume.py`, `brute/geometry.py`, `brute/api/service_v040.py`, `brute/release_version_040.py` | v0.4.0 learner (A4/P4, D2/F2 candidates), constraint region and API 1.4 (study-006 freeze) |
+| `brute/region.py`, `brute/region_learner.py`, `brute/breadth.py`, `brute/api/service_v050.py`, `brute/release_version_050.py` | v0.5.0 SAT region backend (A5/M5), breadth learner (B5/BM5/BP5) and API 1.5 (study-007 freeze) |
+| `experiments/BRUTE_PLAN_007.json` | The study-007 pre-registration (`5be08aa`); `BRUTE_SOURCE_FREEZE_007.json` and `BRUTE_RELEASE_FREEZE_050.json` lock v0.5.0 code |
+| `results/study-007/` | Sealed traces (gzip), seal, calibration (τ7), scaling (GR2′), second-implementation count (same author), post-hoc probability recompute, gates, paired analysis, reproducibility |
 | `experiments/BRUTE_PLAN_006.json` | The study-006 pre-registration (`5fa3628`); `BRUTE_SOURCE_FREEZE_006.json` and `BRUTE_RELEASE_FREEZE_040.json` lock v0.4.0 code |
 | `results/study-006/` | Sealed traces (gzip), seal, calibration, second-implementation count (same author), GR1/GR1b exactness, GR2 scaling, gates, paired analysis, reproducibility |
 | `experiments/BRUTE_PLAN_005.json` | The study-005 pre-registration (`25fa47b`); `BRUTE_SOURCE_FREEZE_005.json` and `BRUTE_RELEASE_FREEZE_030.json` lock v0.3.0 code |
@@ -261,7 +332,7 @@ python scripts/make_reproducibility_005.py --workers 4
 | `results/study-002/` | Sealed results, calibration, audit, gates, paired analysis, reproducibility, API replay, exploratory |
 | `results/study-001/`, `bgr*/` | Inherited BGR v0.90 evidence and code, byte-identical |
 | `results/RESEARCH_LEDGER.jsonl` | Local unsigned SHA chain of research events |
-| `docs/research/` | Inherited research record, [`BRUTE_DEVIATIONS_002.md`](docs/research/BRUTE_DEVIATIONS_002.md), [`BRUTE_DEVIATIONS_003.md`](docs/research/BRUTE_DEVIATIONS_003.md), [`BRUTE_DEVIATIONS_004.md`](docs/research/BRUTE_DEVIATIONS_004.md), [`BRUTE_DEVIATIONS_005.md`](docs/research/BRUTE_DEVIATIONS_005.md), [`BRUTE_DEVIATIONS_006.md`](docs/research/BRUTE_DEVIATIONS_006.md), [`DISCOVERIES.md`](docs/research/DISCOVERIES.md) |
+| `docs/research/` | Inherited research record, [`BRUTE_DEVIATIONS_002.md`](docs/research/BRUTE_DEVIATIONS_002.md), [`BRUTE_DEVIATIONS_003.md`](docs/research/BRUTE_DEVIATIONS_003.md), [`BRUTE_DEVIATIONS_004.md`](docs/research/BRUTE_DEVIATIONS_004.md), [`BRUTE_DEVIATIONS_005.md`](docs/research/BRUTE_DEVIATIONS_005.md), [`BRUTE_DEVIATIONS_006.md`](docs/research/BRUTE_DEVIATIONS_006.md), [`BRUTE_DEVIATIONS_007.md`](docs/research/BRUTE_DEVIATIONS_007.md), [v0.4.0 errata](docs/research/v0.4.0/ERRATA.md), [`DISCOVERIES.md`](docs/research/DISCOVERIES.md) |
 
 ## Credit and provenance
 
