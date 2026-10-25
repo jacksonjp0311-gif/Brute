@@ -38,7 +38,8 @@ _Kept current on the working branch during a release and on `main` at release. L
    in a separate commit (mechanically smoke-tested on /tmp smoke data only, not study data). Ledger `scoring_scripts_006`.
    RUN DONE 03:32:58 EDT, sealed (commit 'study-006 sealed'). Earlier note: RUN STARTED 2026-10-25T03:20:15-04:00 (ledger `run_start_006`); if interrupted rerun the script (resumes). Then: ledger `run_start`, nohup calibrate -> study -> pack (outputs refuse to overwrite;
    rerun of a step skips if its output exists). Logs in /tmp/p6/run006.log.
-7. IN PROGRESS (started 03:40 EDT, background, log /tmp/p6/score006.log, script /tmp/p6/score006.sh = count -> gr1b -> gr2 -> gr1,
+7. DONE: SECOND_IMPLEMENTATION_COUNT (2880 traces, 0 mismatching, mutation 20/20, 0 false flags) and GR1B (470,318 items, 0
+   mismatches). IN PROGRESS: gr2, then gr1 (started 03:40 EDT, background, log /tmp/p6/score006.log, script /tmp/p6/score006.sh = count -> gr1b -> gr2 -> gr1,
    each skipped if its output exists): scoring in order SECOND_IMPLEMENTATION_COUNT (v040_reference --mutate 20), GR1, GR1B, GR2 (exactness_006),
    PAIRED (make_paired_006), REPRODUCIBILITY (make_reproducibility_006), GATES (make_gates_006). Raw JSON is gitignored:
    `python scripts/study006_storage.py restore` first on a fresh clone. Each output refuses to overwrite: skip if present.
