@@ -11,7 +11,7 @@
 
 Brute is a small, exact reasoner for hidden finite-state worlds. It watches actions and masked sensor readings, keeps every hidden machine that is still consistent with the evidence (the *version space*, a region), and predicts the next reading **only** when every surviving explanation agrees (the region's projection onto that reading is a single point, and an n≤5 margin agrees). Since v0.2.0 it also acts: it picks the action whose answers would let it certify most (a one-step lookahead).
 
-**v0.3.0 makes certification robust to silent change.** A certificate must also be constant on the *fibre* of the region over the latest observation: every state the world could be in if it had jumped unseen at that step (rule Y1k; otherwise ABSTAIN with `RESYNC_AMBIGUOUS`). The lookahead scores with the same test (LU-R). On the pre-registered study-005 (504 held-out cases plus a 216-case extended drift block) **12 of 14 gated criteria pass, and G3′ — v0.2.0's failure — now passes**: 0 stale certificates on the gated drift block. **Two gates fail and stay on the record:** G6b (coverage is 0.098 below v0.2.0; pre-registered as the expected price) and G5 (the unchanged residual-surprise alarm misfires on 5 of 72 held-out ood4 cases, as it does in v0.1.1). The pre-registered test of whether D7 and D8 share one mechanism is **OPEN**.
+**v0.3.0 makes certification robust to silent change.** A certificate must also be constant on the *fibre* of the region over the latest observation: every state the world could be in if it had jumped unseen at that step (rule Y1k; otherwise ABSTAIN with `RESYNC_AMBIGUOUS`). The lookahead scores with the same test (LU-R). On the pre-registered study-005 (504 held-out cases plus a 216-case extended drift block) **12 of 14 gated criteria pass, and G3′ — v0.2.0's failure — now passes**: 0 stale certificates on the gated 72-case drift block — but on the pre-registered, non-gated 216-case extended drift4 block A3 has **38 false certificates, 2 at non-drift steps and 4 stale** (v0.2.0: 62 / 14 / 15), so the "0" is a property of the 72-case sample, not of the method (*Observed*; [errata](docs/research/v0.3.0/ERRATA.md) E2). **Two gates fail and stay on the record:** G6b (coverage is 0.098 below v0.2.0; pre-registered as the expected price) and G5 (the unchanged residual-surprise alarm misfires on 5 of 72 held-out ood4 cases, as it does in v0.1.1). The pre-registered test of whether D7 and D8 share one mechanism is **OPEN**.
 
 Brute is a fork of **BGR (Bitwork Geometric Reasoning) v0.90.0**, and that research is credited in full ([`FORK.md`](FORK.md)).
 
@@ -19,13 +19,13 @@ Brute is a fork of **BGR (Bitwork Geometric Reasoning) v0.90.0**, and that resea
 
 | | |
 | --- | --- |
-| Version | 0.3.0 (`RELEASE.json`, `brute.release_version_030.RELEASE_VERSION`). `brute.release_version` stays `0.2.0`, `brute.version` `0.1.1` and `brute.__version__` `0.1.0`, because those files are in earlier freezes |
-| Tests | `python -m unittest discover -s tests`: **170 tests, 167 pass, 3 expected errors** (fresh clone, after `python scripts/study004_storage.py restore`): three frozen earlier-release tests (`test_release_011.test_fast_verify_passes`, `test_brute_repro.test_verify_fails_under_tampered_results`, `test_release_020.test_fast_verify_passes`) assert older version strings and fail by construction after the 0.3.0 bump (deviation N1). Without the restore step a fourth, frozen test (`test_release_020.test_tampered_copies_fail`) errors because it expects the study-004 traces on disk. The unmodified v0.2.0 verifier still passes on the raw v0.2.0 tree (`--frozen`) |
-| Study | `BRUTE-030-CHANGEPOINT-005`: criteria frozen at `25fa47b` before any v0.3.0 code (pre-freeze probe code disclosed, deviation P0); source frozen at `f7f3bd3`; scoring scripts committed at `a1889b6` before results were inspected. 7 families × 24 new held-out seeds × 3 mask rates = 504 cases, plus 216 extended drift4 cases. Arms: **A3** v0.3.0 active, **P3** v0.3.0 passive, **A2**/**P2** frozen v0.2.0 active/passive, **E2** v0.2.0 + forced untaken-branch checks (mechanism arm), **C** frozen v0.1.1, plus the v0.90 control |
-| Gates | **12 of 14 pass; G5 and G6b fail; G14 OPEN** ([`results/study-005/GATES.json`](results/study-005/GATES.json)) |
-| Verifier | `python -m scripts.verify_release_030 --fast` (seals, freezes, regenerated gates and paired analysis, ledger, manifest, git order); without `--fast` it re-runs the independent reference; `--frozen` also runs the unmodified v0.2.0 verifier on the raw v0.2.0 tree |
-| Interface | `brute.api` 1.0–1.2 and **1.3** (`BruteServiceV030`: `RESYNC_AMBIGUOUS`, `experiment.check`, `proposal`/`no_proposal_reason`). Template-only language adapter. No language model is connected |
-| Storage | Sealed traces for study-004 and study-005 are committed as deterministic gzip; `python scripts/study005_storage.py restore` (and `study004_storage.py`) rebuild them and check them against `SEAL.json` |
+| Version | *Exact.* 0.3.0 (`RELEASE.json`, `brute.release_version_030.RELEASE_VERSION`). `brute.release_version` stays `0.2.0`, `brute.version` `0.1.1` and `brute.__version__` `0.1.0`, because those files are in earlier freezes |
+| Tests | *Observed* at release (v0.3.0 tag): `python -m unittest discover -s tests`: **170 tests, 167 pass, 3 errors** (fresh clone, after `python scripts/study004_storage.py restore`): three frozen earlier-release tests (`test_release_011.test_fast_verify_passes`, `test_brute_repro.test_verify_fails_under_tampered_results`, `test_release_020.test_fast_verify_passes`) assert older version strings and fail by construction after the 0.3.0 bump (deviation N1). Without the restore step a fourth, frozen test (`test_release_020.test_tampered_copies_fail`) errors because it expects the study-004 traces on disk. The unmodified v0.2.0 verifier still passes on the raw v0.2.0 tree (`--frozen`). Those 3 errors stop at a version assertion, so their tamper/verify checks were never reached; the errata add `tests/test_tamper_by_version.py`, which runs each release's own verifier on its own tag tree and checks that tampering is caught (v0.1.0–v0.3.0), and `tests/test_audit_mutation_030.py` (errata E4) |
+| Study | `BRUTE-030-CHANGEPOINT-005`: criteria committed at `25fa47b`, a git ancestor of every v0.3.0 code commit (*Exact*, git order; pre-freeze probe code disclosed, deviation P0); source frozen at `f7f3bd3` (*Exact*); scoring scripts committed at `a1889b6`, the parent of the sealed-results commit `78b321d` and unchanged since (*Exact*, `scripts/check_order_030.py`). Both commits carry the same timestamp, so "written before any results were seen" is the author's own report and cannot be verified from the repository (errata E3). 7 families × 24 new held-out seeds × 3 mask rates = 504 cases, plus 216 extended drift4 cases. Arms: **A3** v0.3.0 active, **P3** v0.3.0 passive, **A2**/**P2** frozen v0.2.0 active/passive, **E2** v0.2.0 + forced untaken-branch checks (mechanism arm), **C** frozen v0.1.1, plus the v0.90 control |
+| Gates | *Observed.* **12 of 14 pass; G5 and G6b fail; G14 OPEN** ([`results/study-005/GATES.json`](results/study-005/GATES.json)) |
+| Verifier | *Exact.* `python -m scripts.verify_release_030 --fast` (seals, freezes, regenerated gates and paired analysis, ledger, manifest, git order); without `--fast` it re-runs the second implementation (same author, no `brute` import); `--frozen` also runs the unmodified v0.2.0 verifier on the raw v0.2.0 tree |
+| Interface | *Exact.* `brute.api` 1.0–1.2 and **1.3** (`BruteServiceV030`: `RESYNC_AMBIGUOUS`, `experiment.check`, `proposal`/`no_proposal_reason`). Template-only language adapter. No language model is connected |
+| Storage | *Exact.* Sealed traces for study-004 and study-005 are committed as deterministic gzip; `python scripts/study005_storage.py restore` (and `study004_storage.py`) rebuild them and check them against `SEAL.json` |
 
 Every claim in this README carries a label:
 
@@ -42,16 +42,16 @@ Every claim in this README carries a label:
 | --- | --- | --- |
 | G1 in-family soundness, A3 and P3, taken + counterfactual, public | PASS | 0 false of 2,635 taken + 574 counterfactual certificates (A3); 0 of 729 + 771 (P3); 0 public false. Every other arm also 0 |
 | G2 ood5 false certificates = 0 | PASS | A3 0 of 113 (+4 counterfactual); P3 0 of 8; v0.90 control 85 of 174 |
-| **G3′ drift4: 0 wrong at non-drift steps and total ≤ 50% of v0.90** | **PASS** (failed in v0.2.0) | A3 9 of 62, all at drift steps, 0 stale; P3 0 of 6; limit 44.5 (v0.90: 89). v0.2.0 A2 on the same seeds: 15, 1 non-drift, 2 stale |
+| **G3′ drift4: 0 wrong at non-drift steps and total ≤ 50% of v0.90** | **PASS** (failed in v0.2.0) | A3 9 of 62, all at drift steps, 0 stale; P3 0 of 6; limit 44.5 (v0.90: 89). v0.2.0 A2 on the same seeds: 15, 1 non-drift, 2 stale. Extended 216-case block (not gated): A3 38 false / 2 non-drift / 4 stale; A2 62 / 14 / 15; E2 38 / 12 / 14 — the G3′ "0 non-drift" clause would fail there |
 | G4 public safety | PASS | 0 public certificates on ood5/drift4; 0 public false anywhere |
-| **G5 in-family false-alarm cases ≤ 5%** | **FAIL** | ood4 5 of 72 (0.069) in A3 and P3; identical in frozen v0.1.1, A2, P2 (unchanged alarm rule and τ). Other families 0 |
+| **G5 in-family false-alarm cases ≤ 5%, scored per family** (the plan text does not say per family or pooled; the scoring script and studies 003–005 use per family, the stricter reading; pooled would be 5/360 = 0.014) | **FAIL** | ood4 5 of 72 (0.069) in A3 and P3; identical in frozen v0.1.1, A2, P2 (unchanged alarm rule and τ). Other families 0 |
 | G6 active coverage gain (A3 − P3 ≥ 0.05, CI > 0, no family < −0.01) | PASS | **+0.064352, CI95 [0.055054, 0.073922]**; every family CI excludes 0 |
 | **G6b coverage non-inferiority vs v0.2.0 (A3 − A2 ≥ −0.03, CI lower ≥ −0.05)** | **FAIL** (pre-registered as expected) | **−0.098264, CI95 [−0.110885, −0.087267]** (design −0.094) |
 | G7 open-world no regression (A3, P3 ≤ C; ≤ ln 4; min p ≥ 0.005; A3 ≤ A2 + 0.05) | PASS | ood5 A3 0.63875 / P3 = C 0.648728 / A2 0.628252; drift4 A3 1.162304 / P3 1.163681 / A2 1.170786 / C 1.181917 |
 | G8 passive equivalence (P3 ≡ P2 except RESYNC; A3 in-family ≤ C + 0.05) | PASS | A3 in-family log-loss below C in every family |
 | G9 retraction semantics + de-duplication | PASS | 81 retractions (9 falsified, 47 scope withdrawn, 25 unverifiable); 0 duplicates; 0 RESYNC_AMBIGUOUS issued |
 | G10 compute budget | PASS | peak 100,230 of 160,000 rows; 0 exhaustions; wall clock A3/C 1.19 |
-| G11 independent audit | PASS | 504 + 216 cases, 139,392 arm-steps, 0 mismatches (no `brute` import) |
+| G11 "independent audit" (as registered) — in fact a **second implementation by the same author, no `brute` import**; not independent or third-party | PASS | 504 + 216 cases, 139,392 arm-steps replayed. The registered report stops at the first mismatch, so its "0 mismatches" means "ran to completion". Errata count (`scripts/audit_count_030.py`, scans everything): **0 mismatching of 3,168 arm traces** (*Observed*, E4 in the [errata](docs/research/v0.3.0/ERRATA.md)); a mutation test catches 8 of 8 injected errors |
 | G12 reproducibility | PASS | rerun `CALIBRATION_CHECK.json` and `SCIENTIFIC.json` byte-identical |
 | G13 τ reproduces | PASS | τ = 1.433141502274 |
 | G14 D7/D8 single-mechanism test (decision, not gated) | **OPEN** | S(A2) 17, S(E2) 14, S(A3) 4 (stale false certificates, main + extended); CONFIRMED needed S(E2) ≤ 8.5, FALSIFIED S(E2) ≥ 17. S(E2) − S(A2) −3 [−12, +6] |
@@ -68,6 +68,8 @@ Paired, seed-clustered bootstrap (2,000 resamples, seed 20261025; [`PAIRED_ANALY
 | unaliased2 | 0.041 / **0.129** / 0.218 / 0.137 | 170 | 0.0954 / **0.0877** |
 | ood4 | 0.004 / **0.032** / 0.070 / 0.117 | 67 | 0.3755 / **0.3666** |
 
+C (frozen v0.1.1, passive, `GATES.json` G6 `C_v011_coverage_post`) for context: cycle3 0.199, switch3 0.172, unstructured3 0.084, unaliased2 0.061, ood4 0.010 — in cycle3 A3 is below this passive control, so part of the G6 gain wins back coverage Y1k removed (review L2; *Observed*).
+
 Findings and their math: [`docs/research/DISCOVERIES.md`](docs/research/DISCOVERIES.md) D11–D16.
 
 ## What Brute can't do yet
@@ -83,7 +85,10 @@ Findings and their math: [`docs/research/DISCOVERIES.md`](docs/research/DISCOVER
 - **Public certificates need an outside attestation.** *Exact.*
 - **It only works on a toy domain:** 2 actions, 2 binary sensors, deterministic Moore machines, an n≤4 family with an n≤5 margin. *Exact.*
 - **The language adapter is templates only.** No free-form questions. *Exact.*
-- **It is not AGI,** and nothing here shows general intelligence. *Open.*
+- **Its audit is not independent.** G11 is a second implementation by the same author on the same machine, sharing the world generators (`bgr89`/`bgr90.worlds`) with the runner; an error there would not be caught. No third party has replicated anything. *Exact.*
+- **Its test suite is red by construction.** 3 frozen earlier-release tests error on version strings after every bump (4 on a fresh clone before the traces are restored), which hid their tamper checks until the errata's `tests/test_tamper_by_version.py`. *Observed.*
+- **Some process claims are self-reported.** That scoring scripts were written before results were seen, and that no study-005 seed was run before the plan commit, cannot be verified from git (same-second commits, author-set times). *Exact* (what git can show).
+- **It is not AGI,** and nothing here shows general intelligence. *Exact.*
 
 The plan for v0.4.0 is in [`NEXT_ITERATION.md`](NEXT_ITERATION.md); the longer path is in [`docs/ROADMAP.md`](docs/ROADMAP.md).
 
@@ -94,9 +99,10 @@ Requires Python 3.11+ and NumPy. No GPU, network, or model weights.
 ```bash
 git clone https://github.com/jacksonjp0311-gif/Brute.git && cd Brute
 python -m pip install -r requirements.txt
+python scripts/study004_storage.py restore && python scripts/study005_storage.py restore   # gitignored raw traces from the committed gzip
 python -m unittest discover -s tests            # see Status for the count
 python -m scripts.verify_release_030 --fast      # restores the study-004/005 traces, then seals, freezes, gates, ledger, manifest, git order
-python -m scripts.verify_release_030             # also re-runs the study-005 independent reference (long)
+python -m scripts.verify_release_030             # also re-runs the study-005 second implementation (same author; long)
 ```
 
 A minimal API session:
@@ -163,11 +169,11 @@ python scripts/make_reproducibility_005.py --workers 4
 | `brute/active.py`, `brute/api/service_v020.py`, `brute/release_version.py` | v0.2.0 learner and API 1.2 (study-004 freeze) |
 | `brute/changepoint.py`, `brute/api/service_v030.py`, `brute/release_version_030.py` | v0.3.0 learner and API 1.3 (study-005 freeze) |
 | `experiments/BRUTE_PLAN_005.json` | The study-005 pre-registration (`25fa47b`); `BRUTE_SOURCE_FREEZE_005.json` and `BRUTE_RELEASE_FREEZE_030.json` lock v0.3.0 code |
-| `results/study-005/` | Sealed traces (gzip), seal, calibration check, independent audit, gates, paired analysis, reproducibility |
+| `results/study-005/` | Sealed traces (gzip), seal, calibration check, second-implementation audit (same author), gates, paired analysis, reproducibility |
 | `experiments/BRUTE_PLAN_004.json` | The study-004 pre-registration (`c0ac594`); `BRUTE_SOURCE_FREEZE_004.json` and `BRUTE_RELEASE_FREEZE_020.json` lock v0.2.0 code |
-| `results/study-004/` | Sealed traces (gzip), seal, calibration check, independent audit, gates, paired analysis, reproducibility |
+| `results/study-004/` | Sealed traces (gzip), seal, calibration check, second-implementation audit (same author), gates, paired analysis, reproducibility |
 | `experiments/BRUTE_PLAN_003.json` | The study-003 pre-registration; `BRUTE_SOURCE_FREEZE_003.json` and `BRUTE_RELEASE_FREEZE_011.json` lock v0.1.1 code. Earlier plans and locks are kept |
-| `results/study-003/` | Sealed results, calibration check, independent audit, gates, paired analysis, reproducibility, witness audit, drift stress |
+| `results/study-003/` | Sealed results, calibration check, second-implementation audit (same author), gates, paired analysis, reproducibility, witness audit, drift stress |
 | `results/study-002/` | Sealed results, calibration, audit, gates, paired analysis, reproducibility, API replay, exploratory |
 | `results/study-001/`, `bgr*/` | Inherited BGR v0.90 evidence and code, byte-identical |
 | `results/RESEARCH_LEDGER.jsonl` | Local unsigned SHA chain of research events |
