@@ -59,6 +59,18 @@ same author; same identity `Brute <brute@local>`). This clone had made an identi
 its push was rejected and it was rebased away, so the ledger holds a single `run_start_007` receipt. Which process wrote
 `ebcc650` is not recorded beyond the commit itself (*Open*); its content is identical (*Exact*).
 
+## Q4. Scoring notes (no script changed after `50e9321`)
+
+- `make_count_007` ran 06:32–06:56 (nohup, 6 workers, `count_007`); `make_gates_007` ~06:58 (`gates_007`). Both are the
+  committed versions (single commit each, checked by `verify_release_050`).
+- The breadth reference (`v050_reference`, enumeration) stops at its own 160,000-row budget. It stopped on 20/19/20
+  big6 traces (B5/BM5/BP5) and 15/1/15 act3 traces; steps after the stop are unchecked and counted. This is what makes
+  **GX2 fail** (act3 checked 84.5% of steps, registered minimum 90%), with **0 mismatching steps** among the
+  checked ones. The 90% floor was registered before data; it is not changed here. *Observed.*
+- Not anticipated in the plan: act3 (3 actions, ≤4/≤5 states) blew the enumeration budget more often than design
+  guessed; the plan's design note expected only big6 to be partly unchecked. *Inferred* cause: the third action raises
+  the per-row branching of enumeration (|A|·n transitions per machine).
+
 ## Q5. Release tooling written during the run (`2438a74`)
 
 `scripts/verify_release_050.py`, `scripts/make_release_freeze_050.py`, `tests/test_release_050.py` were committed at
@@ -85,6 +97,34 @@ start and labelled post hoc:
 
 None of these changes a criterion, a scoring script or a sealed artifact. Ledger `steering_after_run_start_007`.
 
+## Q7. Post-gates diagnostic of the M5 non-drift false certificate (report only, no tuning)
+
+G3′ fails for M5 on one step. Case drift4, seed 1700015, mask 0.1, step 14 (trace index 13); the world drifted at trace
+indices 11, 22, 33, so this step is **two steps after a drift**, outside the "drift step" the G3′ definition exempts.
+M5 had taken action 1 by the M tie-break (LU-R scores tied 0/0, projection volumes 4 vs 3), certified emission 1
+(margin support {1}), the actual emission was 3. The certificate was **not public** (`UNATTESTED_SCOPE`); the
+v0.90 control was also wrong there. A5 at the same step: POSSIBLE_SET, not certified. *Observed.*
+
+Reading (*Inferred*): Y1k certifies on the fibre over the **latest** observation, a one-step horizon; a drift two steps
+back whose evidence has not yet contradicted the region can leave a stale region. A3/A4/A5 hit this on the v0.3.0
+extended block (2 non-drift), and A2 here; M changes which action is taken and so which trajectory is seen, and on this
+seed it walked into such a window. The registered G3′ rule counts it, and the GM decision rule therefore returns
+NOT DISTINGUISHED although the coverage CI excludes 0. Nothing is changed; this is an input to v0.6.0 (a multi-step
+fibre was rejected in v0.4.0 as F2, which broke G3′ itself).
+
 ## Outcomes that stay on the record
 
-(Filled in after gates.)
+From `results/study-007/GATES.json` (*Observed*; thresholds as registered):
+
+- **12 of 15 gated criteria pass.** Failed: **GX2** (breadth exactness: 0 mismatches, but act3 checked 84.5% < 90%),
+  **G3′** (M5: 1 non-drift false certificate on drift4; A5 passes with 6 total, 0 non-drift), **G6b** (M5 − A2
+  −0.0796, CI95 [−0.0996, −0.0602]; predicted FAIL).
+- **GX1 passes exactly:** A5 vs A4 on 25,344 steps, 0 mismatches, 0 excluded; A5 − A4 coverage = 0.
+- **GX3 passes:** stress block, 257 forecasts with SAT budget exhaustion, all abstain with reason; 0 production
+  certificates with an unknown answer.
+- **GM: NOT DISTINGUISHED** by the registered rule (M5 − A5 +0.0262, CI95 [0.0109, 0.0425], but G3′ fails for M5).
+  Breadth BM5 − B5 +0.0391 [0.0204, 0.0579]; the prediction "≤ +0.03" held for 2x2 only.
+- BP5 (passive breadth) − B5 −0.0445 [−0.0603, −0.0303] (reported).
+- Second implementation (same author, no `brute` import): 0 of 2,592 arm traces; mutation 20/20; post-hoc probability
+  recompute 0 of 1,728 (Q6).
+- Reproducibility: 296 of 296 rerun jobs byte-identical; calibration byte-identical.
