@@ -1,0 +1,180 @@
+{
+  "arms": [
+    "B5",
+    "BR6",
+    "BC6"
+  ],
+  "cases": 46,
+  "cases_checked": 46,
+  "cases_expected": 288,
+  "checked_cases_only": {
+    "cases": 46,
+    "label": "Observed",
+    "per_family_arm": {
+      "big6/B5": {
+        "certs": 292,
+        "checked_fraction": 0.986073,
+        "mismatching_traces": 0,
+        "steps": 2944,
+        "steps_checked": 2903,
+        "steps_unchecked": 41,
+        "traces": 46
+      },
+      "big6/BC6": {
+        "certs": 304,
+        "checked_fraction": 0.986073,
+        "mismatching_traces": 0,
+        "steps": 2944,
+        "steps_checked": 2903,
+        "steps_unchecked": 41,
+        "traces": 46
+      },
+      "big6/BR6": {
+        "certs": 268,
+        "checked_fraction": 0.986073,
+        "mismatching_traces": 0,
+        "steps": 2944,
+        "steps_checked": 2903,
+        "steps_unchecked": 41,
+        "traces": 46
+      }
+    }
+  },
+  "checkpoint_sha256": "6fce9ec4b01d53f84d1f41ec88c88c412bca21a2c38988ed2f081a1369586bc7",
+  "conf_budget_per_query": 2000000,
+  "mismatches": [],
+  "mismatching_traces": 0,
+  "note": "a mismatching trace stops at its first differing field; its steps are not counted as checked",
+  "partial": true,
+  "per_family_arm": {
+    "act3/B5": {
+      "certs": 0,
+      "checked_fraction": 0.0,
+      "mismatching_traces": 0,
+      "steps": 4608,
+      "steps_checked": 0,
+      "steps_unchecked": 4608,
+      "traces": 72,
+      "traces_checked": 0
+    },
+    "act3/BC6": {
+      "certs": 0,
+      "checked_fraction": 0.0,
+      "mismatching_traces": 0,
+      "steps": 4608,
+      "steps_checked": 0,
+      "steps_unchecked": 4608,
+      "traces": 72,
+      "traces_checked": 0
+    },
+    "act3/BR6": {
+      "certs": 0,
+      "checked_fraction": 0.0,
+      "mismatching_traces": 0,
+      "steps": 4608,
+      "steps_checked": 0,
+      "steps_unchecked": 4608,
+      "traces": 72,
+      "traces_checked": 0
+    },
+    "big6/B5": {
+      "certs": 292,
+      "checked_fraction": 0.629991,
+      "mismatching_traces": 0,
+      "steps": 4608,
+      "steps_checked": 2903,
+      "steps_unchecked": 1705,
+      "traces": 72,
+      "traces_checked": 46
+    },
+    "big6/BC6": {
+      "certs": 304,
+      "checked_fraction": 0.629991,
+      "mismatching_traces": 0,
+      "steps": 4608,
+      "steps_checked": 2903,
+      "steps_unchecked": 1705,
+      "traces": 72,
+      "traces_checked": 46
+    },
+    "big6/BR6": {
+      "certs": 268,
+      "checked_fraction": 0.629991,
+      "mismatching_traces": 0,
+      "steps": 4608,
+      "steps_checked": 2903,
+      "steps_unchecked": 1705,
+      "traces": 72,
+      "traces_checked": 46
+    },
+    "ood6s3/B5": {
+      "certs": 0,
+      "checked_fraction": 0.0,
+      "mismatching_traces": 0,
+      "steps": 4608,
+      "steps_checked": 0,
+      "steps_unchecked": 4608,
+      "traces": 72,
+      "traces_checked": 0
+    },
+    "ood6s3/BC6": {
+      "certs": 0,
+      "checked_fraction": 0.0,
+      "mismatching_traces": 0,
+      "steps": 4608,
+      "steps_checked": 0,
+      "steps_unchecked": 4608,
+      "traces": 72,
+      "traces_checked": 0
+    },
+    "ood6s3/BR6": {
+      "certs": 0,
+      "checked_fraction": 0.0,
+      "mismatching_traces": 0,
+      "steps": 4608,
+      "steps_checked": 0,
+      "steps_unchecked": 4608,
+      "traces": 72,
+      "traces_checked": 0
+    },
+    "sens3/B5": {
+      "certs": 0,
+      "checked_fraction": 0.0,
+      "mismatching_traces": 0,
+      "steps": 4608,
+      "steps_checked": 0,
+      "steps_unchecked": 4608,
+      "traces": 72,
+      "traces_checked": 0
+    },
+    "sens3/BC6": {
+      "certs": 0,
+      "checked_fraction": 0.0,
+      "mismatching_traces": 0,
+      "steps": 4608,
+      "steps_checked": 0,
+      "steps_unchecked": 4608,
+      "traces": 72,
+      "traces_checked": 0
+    },
+    "sens3/BR6": {
+      "certs": 0,
+      "checked_fraction": 0.0,
+      "mismatching_traces": 0,
+      "steps": 4608,
+      "steps_checked": 0,
+      "steps_unchecked": 4608,
+      "traces": 72,
+      "traces_checked": 0
+    }
+  },
+  "queries": 181756,
+  "results_file": "results/study-008/RESULTS.json",
+  "schema": "brute.xcheck-sat-report.v1",
+  "solver": "cadical195",
+  "stop": "stream A stopped by owner decision 2026-10-25 ~17:44 EDT (runtime: 46 of 288 breadth cases in ~8.8 h); not resumed",
+  "unknown_queries": 49,
+  "witness_replay_failures": 0,
+  "wording": "second encoding by the same author (brute/xcheck_sat.py), no enumeration; not an independent audit",
+  "wrapper": "scripts/make_xcheck_partial_008.py (DEVIATIONS_008 D22)"
+}
