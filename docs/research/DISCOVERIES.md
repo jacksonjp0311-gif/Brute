@@ -184,7 +184,7 @@ scripts/make_gates_005.py --check`.
   lets the fibre shrink with subsequent consistent evidence (a multi-step fibre) should recover part of the gap. Open.
 - **White paper:** with D11.
 
-### D13: D7 and D8 are not one mechanism (G14 verdict OPEN under the pre-registered rule)
+### D13: Are D7 and D8 one mechanism? G14 verdict OPEN (separate mechanisms is an Inferred reading only; heading corrected in the v0.3.0 errata)
 
 - **Hypothesis (pre-registered).** Stale certainty (D8) is caused by the attractor's suppression of untaken-branch
   checks (D7). Manipulation: E2 forces the untaken action after 3 identical choices.

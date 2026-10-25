@@ -7,8 +7,11 @@ Rejected / Open.
 
 ## P0. Probe code that existed before the freeze (owner discipline check, 2026-10-25 00:00 EDT)
 
-Exact. Before the plan commit the working tree held three **uncommitted** files, run only on study-004 seeds
-(1330001..1390024; design data for v0.3.0). No study-005 seed was generated or run before the plan commit.
+Labels (corrected in the v0.3.0 errata, E3): *Exact* for the two probe files, whose committed bytes match the hashes
+below; **author's own report (not verifiable from the repository)** for the pre-freeze `brute/changepoint.py`, whose bytes
+were never committed, and for the statements that the probes ran only on study-004 seeds and that no study-005 seed was
+generated or run before the plan commit. Before the plan commit the working tree held three **uncommitted** files, run
+only on study-004 seeds (1330001..1390024; design data for v0.3.0).
 
 | File | sha256 at freeze | Used for |
 |---|---|---|
@@ -37,7 +40,7 @@ gzip (level 9, mtime 0, no file name) of the exact sealed bytes (`*.json.gz`) an
 the raw bytes. Storage-only; no criterion or scoring rule is affected. `make_gates_005.py` and `make_paired_005.py` call
 `ensure_raw()` and regenerate `GATES.json` / `PAIRED_ANALYSIS.json` byte for byte (`--check`).
 
-## N1. Test-suite status at the source freeze and at release (Exact)
+## N1. Test-suite status at the source freeze and at release (Exact for the frozen test list; counts Observed)
 
 At the source freeze (`f7f3bd3`) the full suite ran 167 tests with 1 failure and 3 errors, none in study-005 code:
 - 2 pre-existing at tag v0.2.0, by construction (frozen version checks): `test_brute_repro.test_verify_fails_under_tampered_results`
@@ -92,3 +95,9 @@ magnitude below the bridge's ~0.11 / ~0.12 s; the difference is bridge-side over
 - **Freeze:** `BRUTE_RELEASE_FREEZE_030.json` was removed and regenerated with the new hash; the ledger keeps both
   `release030_freeze` receipts (append-only; the later one supersedes). No study artifact, criterion or scoring script
   changed.
+
+## E. Errata after release (2026-10-25 EDT; docs and new checks only)
+
+An independent cold review of tag `v0.3.0` found no number mismatches and confirmed reproduction, and raised wording and
+process points. The tag, sealed results, criteria, scoring scripts and frozen files are unchanged. Full list:
+[`docs/research/v0.3.0/ERRATA.md`](v0.3.0/ERRATA.md) (E1–E9).

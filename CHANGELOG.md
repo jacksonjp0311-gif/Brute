@@ -1,10 +1,27 @@
 # Brute changelog
 
+## v0.3.0 errata (2026-10-25, docs and new checks only; tag `v0.3.0` and sealed results unchanged)
+
+After an independent cold review (`docs/research/v0.3.0/ERRATA.md`). No criterion, scoring script, frozen file or sealed
+result changed.
+
+- G11 is reworded everywhere as a **second implementation by the same author, no `brute` import**, not an independent
+  audit. New `scripts/audit_count_030.py` reports a real mismatch count (scans every arm trace; the frozen reference stops
+  at the first mismatch) and has a mutation test (`tests/test_audit_mutation_030.py`). Result: 0 mismatching of 3,168 arm traces (*Observed*).
+- G3′ headline now sits next to the extended-block result (A3 38 false / 2 non-drift / 4 stale on 216 cases).
+- Process claims softened to what git shows (parent order, not time); P0 relabelled; DISCOVERIES D13 retitled to the
+  OPEN verdict; G5 per-family wording clarified; evidence labels added to the README Status table; "not AGI" is Exact.
+- `tests/test_tamper_by_version.py`: each release verifier (v0.1.0–v0.3.0) on its own tag tree passes and catches
+  tampering. `scripts/check_order_030.py`: scoring scripts precede the sealed results and are unchanged.
+- `requirements.txt` pins numpy 2.5.4 (the tested environment); `pyproject.toml` version 0.3.0. Quickstart restores the
+  gitignored traces before the tests.
+
 ## v0.3.0: fibre-robust certification (study BRUTE-030-CHANGEPOINT-005)
 
 Criteria pre-registered at `25fa47b` before any v0.3.0 code (pre-freeze probe code disclosed, deviation P0); source
-frozen at `f7f3bd3` before the run; scoring scripts committed at `a1889b6` before results were inspected. Criteria were
-not changed afterwards. Deviations are in `docs/research/BRUTE_DEVIATIONS_005.md`.
+frozen at `f7f3bd3` before the run; scoring scripts committed at `a1889b6`, the git parent of the sealed results (same
+timestamp, so "before results were seen" is the author's report, not verifiable; errata E3). Criteria were not changed
+afterwards. Deviations are in `docs/research/BRUTE_DEVIATIONS_005.md`.
 
 - **Y1k certification** (`brute/changepoint.py::ChangePointBruteLearner`): a CERTIFIED forecast stays certified only if
   it is constant on the fibre of the n≤4 region over the latest observation (known edges; an unknown edge from the
@@ -16,7 +33,7 @@ not changed afterwards. Deviations are in `docs/research/BRUTE_DEVIATIONS_005.md
 - **Version:** `brute/release_version_030.py` = 0.3.0 (earlier version files stay frozen).
 - **Storage (D1):** sealed traces committed as deterministic gzip; `scripts/study005_storage.py restore`.
 - **Study tooling:** five-arm runner (A3, P3, A2, P2, E2 + C and v0.90 controls) plus a 216-case extended drift4 block,
-  τ calibration check, independent reference (no `brute` import), gates/paired/reproducibility generators with
+  τ calibration check, second implementation by the same author (no `brute` import), gates/paired/reproducibility generators with
   `--check`, `verify_release_030` (`--frozen` runs the unmodified v0.2.0 verifier on the raw v0.2.0 tree). Locks:
   `BRUTE_SOURCE_FREEZE_005`, `BRUTE_RELEASE_FREEZE_030`.
 - **Results (Observed): 12 of 14 gated criteria pass; G5 and G6b fail.**
@@ -27,7 +44,8 @@ not changed afterwards. Deviations are in `docs/research/BRUTE_DEVIATIONS_005.md
   - **G5 fails:** ood4 5 of 72 cases raise a residual-surprise alarm (0.069 > 0.05), identically in v0.1.1 and v0.2.0.
   - ood5 log-loss A3 0.63875, P3 = C 0.648728; drift4 A3 1.162304, P3 1.163681, A2 1.170786, C 1.181917.
   - G14 (D7/D8 single-mechanism test, not gated): **OPEN** — S(A2) 17, S(E2) 14, S(A3) 4.
-  - Independent audit 0 mismatches (139,392 arm-steps); reproducibility byte-identical; τ reproduces.
+  - Second implementation (same author, no `brute` import) ran to completion over 139,392 arm-steps (it stops at the
+    first mismatch; errata count in E4); reproducibility byte-identical; τ reproduces.
 - **Tests:** see README Status (measured on a fresh clone). Expected errors are frozen earlier-release version checks
   that fail by construction on the RELEASE.json bump (N1).
 
@@ -48,8 +66,8 @@ changed afterwards. Deviations and implementation notes are in `docs/research/BR
   regenerated MANIFEST, README test count measured on a fresh clone.
 - **Storage (D1):** the 133 MB sealed traces are committed as deterministic gzip; `scripts/study004_storage.py`
   restores and checks them against `SEAL.json`.
-- **Study tooling:** three-arm runner (A active, P passive, C frozen v0.1.1), τ calibration check, independent reference
-  (no `brute` import), gates/paired/reproducibility generators with `--check`, `verify_release_020` (runs the frozen
+- **Study tooling:** three-arm runner (A active, P passive, C frozen v0.1.1), τ calibration check, second implementation by the same author (no `brute` import)
+  gates/paired/reproducibility generators with `--check`, `verify_release_020` (runs the frozen
   v0.1.1 and v0.1.0 verifiers with `--frozen`). Locks: `BRUTE_SOURCE_FREEZE_004`, `BRUTE_RELEASE_FREEZE_020`.
 - **Results (Observed): 12 of 13 gated criteria pass; G3′ fails.**
   - Dual coverage gain A − P pooled **+0.115355**, CI95 [0.10409, 0.127123]; every family CI excludes 0.
@@ -74,7 +92,7 @@ changed afterwards. Deviations are listed in `docs/research/BRUTE_DEVIATIONS_003
 - **F3 brute.api 1.1** (`BruteServiceV011`, `request/response.v1_1.json`): `forecast_source` and per-retraction reasons
   (`falsified_by_observation`, `scope_withdrawn`, `unverifiable_masked`).
 - **F4 witness audit** (`scripts/witness_audit.py`): n≤5 divergent witnesses, each verified by replay.
-- **Study tooling:** a two-arm lockstep runner, a τ calibration check, an independent reference (no `brute` import),
+- **Study tooling:** a two-arm lockstep runner, a τ calibration check, a second implementation by the same author (no `brute` import),
   gates/paired/reproducibility/R4 generators with `--check`, and `verify_release_011` (pre-registration order check;
   `--frozen-v010` runs the frozen v0.1.0 verifier on `git archive v0.1.0`). Locks: `BRUTE_SOURCE_FREEZE_003`,
   `BRUTE_RELEASE_FREEZE_011`.
