@@ -1,0 +1,41 @@
+{
+  "artifacts": [
+    "MANIFEST.sha256",
+    "RELEASE.json",
+    "results/study-008/ENUM_B5_008.json",
+    "results/study-008/GATES_008.json",
+    "results/study-008/GMC_BREADTH_008.json",
+    "results/study-008/GMC_COUNT_008.json",
+    "results/study-008/PAIRED_ANALYSIS.json",
+    "results/study-008/REPRODUCIBILITY.json",
+    "results/study-008/SEAL.json",
+    "results/study-008/SECOND_IMPLEMENTATION_COUNT.json",
+    "results/study-008/SEEDCHECK_008.json",
+    "results/study-008/XCHECK_008.json",
+    "results/study-008/repro/GMC_COUNT_008.json",
+    "results/study-008/repro/SEAL.json"
+  ],
+  "cases": 56,
+  "modes": [
+    "truncated_half",
+    "invalid_utf8_byte",
+    "empty",
+    "required_key_deleted"
+  ],
+  "not_verification_error": {},
+  "note": "artifacts enumerated at evaluation time; GT1_008.json and GATES_008_FINAL.json are written after this run and are covered by the final tests/test_release_060 run",
+  "other_exception_types": 0,
+  "outcomes": {
+    "VerificationError": 56
+  },
+  "pass": true,
+  "regression_frozen_050": {
+    "files_unchanged": {
+      "scripts/verify_release_050.py": true,
+      "tests/test_release_050.py": true
+    },
+    "raised": "JSONDecodeError"
+  },
+  "schema": "brute.gt1.v1",
+  "silent_passes": 0
+}
