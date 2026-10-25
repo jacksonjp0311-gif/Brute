@@ -69,5 +69,6 @@ the v0.1.x tests did at v0.2.0 (study-004 N1). The unmodified v0.2.0 verifier st
 
 O1: study-005 R3 reports A3 untied experiments per case unstructured3 9.68 and drift4 1.40 (A2 14.61 / 1.78), so the
 sealed traces do have untied experiments on unstructured3; the bridge's 0 is a bridge-side difference (Open, not
-investigated here; `/workspace/brute-bridge` not edited). O2: R4 mean per-call cost on unstructured3 is about 1 ms
-(observe) and 0.3 ms (experiment) in the study runner (informational, not reproducible). O3: implemented in brute.api/1.3.
+investigated here; `/workspace/brute-bridge` not edited). O2: R4 mean per-call cost on unstructured3 for A3 is 11.6 ms
+(observe) and 4.8 ms (experiment) in the study runner (A2: 10.8 / 7.9 ms; informational, not reproducible), an order of
+magnitude below the bridge's ~0.11 / ~0.12 s; the difference is bridge-side overhead (Inferred, not investigated). O3: implemented in brute.api/1.3.
