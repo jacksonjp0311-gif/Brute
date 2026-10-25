@@ -16,3 +16,7 @@
   keeps the unrounded comparison: an exact tau6 tie in an A4 trace would be reported as a mismatch, not hidden.
   This changes the reference AFTER brute/ files exist (ordering rule (2)<(3) is kept for the original reference commit
   1b57efe; the fix commit is listed as a deviation).
+- ~05:55 (pre-freeze, infrastructure; no science change): Checkpoint tolerates a torn final JSONL line (that job is redone);
+  study SEAL also binds calibration_traces_sha256; added scripts/study007_storage.py, scripts/run_study_007.sh,
+  scripts/make_freeze_007.py and the study-007 .gitignore entries (raw RESULTS/SCIENTIFIC/TRACES/checkpoints, committed as
+  deterministic .json.gz bound by SEAL).

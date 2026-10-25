@@ -38,9 +38,14 @@ class Checkpoint:
     def __init__(self,path):
         self.path=Path(path);self.done={}
         if self.path.exists():
-            for line in self.path.read_text().splitlines():
-                if line.strip():
-                    rec=json.loads(line);self.done[rec['key']]=rec['case']
+            lines=self.path.read_text().split('\n')
+            for i,line in enumerate(lines):
+                if not line.strip():continue
+                try:rec=json.loads(line)
+                except json.JSONDecodeError:
+                    if i==len(lines)-1:continue  # torn final line from an interruption: that job is simply redone
+                    raise
+                self.done[rec['key']]=rec['case']
 
     def add(self,key,case):
         self.path.parent.mkdir(parents=True,exist_ok=True)

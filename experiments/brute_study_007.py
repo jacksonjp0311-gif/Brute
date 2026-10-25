@@ -208,7 +208,7 @@ def run(output,calibration,workers,limit=None,smoke=False,every=1,offset=0):
     write_new(output/'RESULTS.json',result);write_new(output/'SCIENTIFIC.json',no_time(result))
     write_new(output/'SEAL.json',{'study':plan['study'],'results_sha256':sha(output/'RESULTS.json'),
         'scientific_sha256':sha(output/'SCIENTIFIC.json'),'plan_sha256':sha(PLAN),'freeze_sha256':None if smoke else sha(FREEZE),
-        'calibration_sha256':sha(calibration),'case_count':len(cases),'stress_case_count':len(stress),
+        'calibration_sha256':sha(calibration),'calibration_traces_sha256':sha(Path(calibration).parent/(Path(calibration).stem+'_TRACES.json')) if (Path(calibration).parent/(Path(calibration).stem+'_TRACES.json')).exists() else None,'case_count':len(cases),'stress_case_count':len(stress),
         'job_selection':{'every':every,'offset':offset,'limit':limit}})
     return result
 
