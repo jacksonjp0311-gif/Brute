@@ -1,103 +1,125 @@
 {
-  "version": "0.3.0",
+  "version": "0.4.0",
   "name": "Brute",
   "forked_from": "BGR v0.90.0 (tag bgr-v0.90.0-fork)",
-  "mission": "general intelligence research; this release adds fibre-robust (change-point-aware) certification and the LU-R lookahead, not general intelligence",
-  "study": "BRUTE-030-CHANGEPOINT-005",
-  "preregistration": "experiments/BRUTE_PLAN_005.json",
-  "preregistration_commit": "25fa47b",
-  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_005.json",
-  "source_freeze_commit": "f7f3bd3",
-  "scoring_scripts_commit": "a1889b6",
-  "case_count": 504,
-  "extended_drift4_case_count": 216,
-  "gates": "results/study-005/GATES.json",
+  "mission": "general intelligence research toward a geometric reasoning system; this release adds a recalibrated resumable alarm, an exact constraint (H-) representation of the version space verified against enumeration, a new domain family (perm4) and a powered D7/D8 test; not general intelligence",
+  "study": "BRUTE-040-GEOMETRY-006",
+  "preregistration": "experiments/BRUTE_PLAN_006.json",
+  "preregistration_commit": "5fa3628",
+  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_006.json",
+  "source_freeze_commit": "70a3c43",
+  "release_freeze": "experiments/BRUTE_RELEASE_FREEZE_040.json",
+  "scoring_scripts_commit": "d9ddbe6",
+  "seal_commit": "454094c",
+  "run_start": "2026-10-25T03:20:15-04:00 (ledger run_start_006; 11.4 min after the scoring-script commit)",
+  "results_dir": "results/study-006",
+  "case_count": 576,
+  "d78_case_count": 1152,
+  "gates": "results/study-006/GATES.json",
   "gates_passed": [
     "G1_in_family_soundness",
     "G2_ood5_soundness",
     "G3_prime_drift4",
     "G4_public_safety",
+    "G5_false_alarm_limit",
     "G6_active_coverage_gain",
-    "G7_open_world_no_regression",
+    "G7_prime_open_world_no_regression",
     "G8_passive_equivalence",
     "G9_retraction_semantics",
     "G10_compute_budget",
-    "G11_independent_audit",
+    "G11_second_implementation",
     "G12_reproducibility",
-    "G13_tau_reproduces"
+    "G13_tau6_reproduces",
+    "GR1_exactness_sealed",
+    "GR1b_exactness_006"
   ],
   "gates_failed": [
-    "G5_false_alarm_limit",
-    "G6b_coverage_non_inferiority_vs_v020"
+    "G6b_prime_coverage_non_inferiority_vs_v020"
   ],
-  "gate_failure_note": "G6b_coverage_non_inferiority_vs_v020 fails as pre-registered (expected): A3 - A2 dual coverage -0.098264, CI95 [-0.110885, -0.087267] against >= -0.03 with CI lower >= -0.05 (the price of change-robust certification). G5_false_alarm_limit fails: on ood4, 5 of 72 cases (0.069 > 0.05) raise a RESIDUAL_SURPRISE alarm in A3 and P3 while the family is still supported; the alarm rule and tau are unchanged since v0.1.0 and the frozen v0.1.1 control, A2 and P2 alarm on the same 5 cases. Thresholds were not changed.",
-  "G14_verdict": "OPEN",
-  "G14_note": "D7/D8 single-mechanism test (not gated): M and P1 hold; S(A2)=17, S(E2)=14, neither <= 8.5 (CONFIRMED) nor >= 17 (FALSIFIED), so OPEN. S(E2)-S(A2) = -3, CI95 [-12, 6]. S(A3)=4 with check rate 0 (attribution condition S(A3)=0 not met).",
-  "false_conditional_certificates": {
-    "A3_in_family": 0,
-    "A3_ood5": 0,
-    "A3_drift4": 9,
-    "A3_drift4_non_drift_steps": 0,
-    "A3_drift4_stale": 0,
-    "P3_drift4": 0,
-    "A2_v020_drift4": 15,
-    "A2_v020_drift4_non_drift_steps": 1,
-    "E2_drift4": 7,
-    "v011_control_drift4": 1,
-    "v090_control_ood5": 85,
-    "v090_control_drift4": 89,
-    "extended_drift4_not_gated": {
-      "A3": {
-        "false": 38,
-        "non_drift": 2,
-        "stale": 4
-      },
-      "A2": {
-        "false": 62,
-        "non_drift": 14,
-        "stale": 15
-      },
-      "E2": {
-        "false": 38,
-        "non_drift": 12,
-        "stale": 14
-      }
+  "gate_failure_note": "G6b_prime fails as pre-registered (expected): pooled A4 - A2 dual coverage -0.103781, CI95 [-0.115972, -0.091898] against >= -0.03 with CI lower >= -0.05. A4 differs from v0.3.0 A3 only after a resume, so this is the v0.3.0 price of fibre-robust certification, unchanged. Thresholds were not changed.",
+  "G14_prime_verdict": "OPEN",
+  "G14_prime_note": "D7/D8 single-mechanism test, powered (N=384 seeds, 1152 cases, chosen by a pre-registered power analysis; not gated): M and P1 hold; R = S(E2)/S(A2) = 48/76 = 0.631579, CI95 [0.417722, 0.906667]; CONFIRMED needed CI upper < 0.75, FALSIFIED CI lower > 0.5, so OPEN. The point estimate favours a partial shared mechanism (forced checks remove about a third of A2's stale certificates) but neither bound is met.",
+  "candidates_not_adopted": {
+    "G15_depth2_D2": {
+      "passes": false,
+      "coverage_minus_A2": -0.070833,
+      "ci95": [
+        -0.085186,
+        -0.05733
+      ]
+    },
+    "G16_fibre2_F2": {
+      "passes": false,
+      "coverage_minus_A2": -0.032639,
+      "ci95": [
+        -0.040201,
+        -0.025616
+      ],
+      "G3_prime": false,
+      "drift4_non_drift_false": 2,
+      "drift4_stale": 2
     }
   },
-  "dual_coverage_gain_A3_minus_P3": {
-    "pooled": 0.064352,
+  "alarm": {
+    "tau6": 1.645215321642,
+    "calibration_cases": 1500,
+    "ood4_false_alarm_cases_A4": "1/72 (v0.3.0 tau on the same seeds: 1/72; study-005: 5/72)",
+    "detection_cases_A4_vs_A3_tau_v030": {
+      "ood5": "25 vs 40 of 72",
+      "drift4": "9 vs 33 of 72"
+    },
+    "resumes_A4": 3,
+    "certificates_after_resume": 0
+  },
+  "representation": {
+    "name": "brute.geometry.ConstraintRegion (CNF H-representation of the version space, pysat Glucose3, first-visit symmetry breaking)",
+    "used_by_learner": false,
+    "GR1_items": 778840,
+    "GR1_mismatches": 0,
+    "GR1b_items": 470318,
+    "GR1b_mismatches": 0,
+    "GR2_note": "84 cases; enum vs SAT 0 disagreeing steps (SAT unknown steps under the 20000-conflict budget and enum budget-exhausted steps excluded and reported); enum mean peak rows n=5 8559.7, n=6 33515.5 (10 cases exhausted 160000 rows); SAT max clauses n=12 15049; SAT time noisy and non-monotone; slopes over few points (deviation P5)"
+  },
+  "false_conditional_certificates": {
+    "A4_in_family": 0,
+    "A4_ood5": 0,
+    "A4_drift4": 13,
+    "A4_drift4_non_drift_steps": 0,
+    "A4_drift4_stale": 0,
+    "P4_drift4": 1,
+    "A2_v020_drift4": 25,
+    "v090_control_ood5": 79,
+    "v090_control_drift4": 72
+  },
+  "dual_coverage_gain_A4_minus_P4": {
+    "pooled": 0.059182,
     "ci95": [
-      0.055054,
-      0.073922
+      0.050153,
+      0.068635
     ]
   },
-  "dual_coverage_A3_minus_A2": {
-    "pooled": -0.098264,
+  "dual_coverage_A4_minus_A2": {
+    "pooled": -0.103781,
     "ci95": [
-      -0.110885,
-      -0.087267
+      -0.115972,
+      -0.091898
     ]
   },
-  "open_world_logloss_post_burn_in": {
-    "ood5": {
-      "A3": 0.63875,
-      "P3": 0.648728,
-      "A2": 0.628252,
-      "C_v011": 0.648728
-    },
-    "drift4": {
-      "A3": 1.162304,
-      "P3": 1.163681,
-      "A2": 1.170786,
-      "E2": 1.150743,
-      "C_v011": 1.181917,
-      "suffix1_P3": 1.171412
-    },
-    "ln4": 1.386294
+  "new_family_perm4": {
+    "A4_false_certificates": 0,
+    "A4_dual_coverage": 0.053434,
+    "A2_dual_coverage": 0.10108,
+    "A4_minus_P4": 0.036073,
+    "ci95": [
+      0.014853,
+      0.060378
+    ],
+    "false_alarm_cases_A4": "2/72"
   },
   "public_certificates_out_of_family": 0,
-  "api": "brute.api 1.0, 1.1, 1.2 and 1.3 (BruteServiceV030: RESYNC_AMBIGUOUS, experiment.check, proposal / no_proposal_reason)",
-  "version_note": "brute.release_version_030.RELEASE_VERSION = 0.3.0; brute.release_version.RELEASE_VERSION stays 0.2.0, brute.version.RELEASE_VERSION 0.1.1 and brute.__version__ 0.1.0 (all in earlier freezes)",
+  "api": "brute.api 1.0-1.3 and 1.4 (BruteServiceV040: resumable alarm)",
+  "version_note": "brute.release_version_040.RELEASE_VERSION = 0.4.0; release_version_030 stays 0.3.0, release_version 0.2.0, brute.version 0.1.1, brute.__version__ 0.1.0 (all in earlier freezes)",
+  "second_implementation": "second implementation by the same author, no brute import; 0 mismatching of 2880 arm traces; mutation test 20/20 detected, 0 false flags; not an independent or third-party audit",
   "language_adapter": "template-only, grounded in brute.api responses; no language model connected",
   "baseline": "baseline/IDENTITY.json (zip not included in the fork)",
   "other_projects_modified": false
