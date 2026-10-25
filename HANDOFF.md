@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 07:09 EDT (verify + tests done; next merge/tag/release))._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 07:12 EDT (v0.5.0 released (merge 8e03e03, tag v0.5.0, gh release); v0.6.0 not started))._
 
 ## Current version and state
 
@@ -65,7 +65,12 @@ _Kept current on the working branch during a release and on `main` at release. L
    (verify flagged their hashes; disclosed in notes). verify_release_050 --fast PASSES on branch and fresh clone (after storage restore).
    Tests: discover 213 tests, 204 pass, 1 F + 8 E; 8 by construction (frozen old-release tests), 1 real: test_release_050 tamper case
    COUNT.json raises JSONDecodeError not VerificationError (frozen; recorded in README `d8bb38b`, NEXT_ITERATION).
-12. NEXT: merge --no-ff plan/v0.5.0 into main in /tmp/brute-main; tag v0.5.0 on merge commit; gh release; final HANDOFF + MANIFEST on main.
+12. DONE (07:15 EDT) verify_release_050 --fast passes on branch b3415d2, fresh clone, and merge commit. Merged into main as a
+   --no-ff merge commit 8e03e03 (tree identical to plan/v0.5.0; a fast-forward was possible, merge commit used per the earlier
+   "tag on merge commit" instruction; allowed by the "else merge commit" spec only in spirit), pushed non-forced. Annotated tag v0.5.0
+   (object aec362b) -> 8e03e03, verified local + remote; v0.2.0/v0.3.0/v0.4.0 unchanged. gh release (notes lead with the 12/15 +
+   priority verdicts, edited 07:13): https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.5.0
+   RELEASE COMPLETE. v0.6.0 NOT started (proposal in NEXT_ITERATION.md). This HANDOFF commit is post-tag (HANDOFF + MANIFEST only).
 
 ## v0.4.0 progress (commit order is the chronology evidence)
 
