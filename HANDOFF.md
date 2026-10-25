@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 05:23 EDT (v0.5.0: plan 007 pre-registered, branch `plan/v0.5.0`)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 05:26 EDT (v0.5.0: reference done, implementing)._
 
 ## Current version and state
 
@@ -22,18 +22,17 @@ _Kept current on the working branch during a release and on `main` at release. L
 
 ## v0.5.0 progress (commit order is the chronology evidence)
 
-1. DONE: branch `plan/v0.5.0` from main `2998dba`. Design reading + timing probe (frozen `brute/geometry.py`, per-step
-   rebuild; sealed study-006 seeds only): 2x2 n<=4/5 SAT with LU-R lookahead ~0.1-0.7 s per 44-step case; n<=6/7 ~1-10 s.
-2. DONE `5be08aa` (ledger `64f8c79`, ~05:22 EDT): `experiments/BRUTE_PLAN_007.json` pre-registered (arms A5/M5/A4/A2 on the 2x2
-   families, B5/BM5/BP5 on breadth families big6/sens3/act3/ood6s3; gates GX1-3, G1-G5, G6b(M5), G7, G9-G13; SOLVER_BUDGET
-   rule; M = projection-volume tie-break; #SAT, incremental SAT, F2 fix, D7/D8 = Open). Probe disclosed in
-   `docs/research/v0.5.0/design_probe/` (sha256 in the plan). Note: an earlier HANDOFF header said 05:40; the real time was ~05:15.
-3. NEXT: second implementation `experiments/v050_reference.py` (no brute import; 2x2 = v0.4.0 reference rules with rows null + M
-   tie-break; breadth = own generalised enumeration) + mutation test -> ledger `reference_007`, BEFORE any brute/ v0.5.0 file.
-4. Then: implementation in NEW files (brute/region.py, region_learner.py, breadth.py, api/service_v050.py, experiments/worlds_007.py,
-   brute_common_007, brute_study_007, brute_calibrate_007, scaling_007); source freeze 007; scoring scripts in a separate commit
-   >= 10 min before `run_start_007`; nohup run with checkpoints; seal; scoring; docs; release freeze 050; MANIFEST; fresh-clone
-   verify; `--no-ff` merge in /tmp/brute-main; tag v0.5.0 on the merge; gh release.
+1. DONE: branch `plan/v0.5.0` from main `2998dba`; timing probe (frozen geometry, sealed 006 seeds): 2x2 SAT + LU-R ~0.1-0.7 s/case; n<=6/7 ~1-10 s.
+2. DONE `5be08aa` (ledger `64f8c79`, ~05:22): `experiments/BRUTE_PLAN_007.json` pre-registered (A5/M5/A4/A2 on 2x2; B5/BM5/BP5 on
+   big6/sens3/act3/ood6s3; GX1-3, G1-G5, G6b(M5), G7, G9-G13; SOLVER_BUDGET; M = projection-volume tie-break; #SAT etc. Open).
+3. DONE `1b57efe` (ledger `a5215ee`, ~05:26): `experiments/v050_reference.py` second implementation (no brute import) +
+   `tests/test_v050_reference.py` (k=2 generalised enumeration == frozen reference). Process notes for DEVIATIONS_007 in
+   `docs/research/v0.5.0/PROCESS_NOTES.md`.
+4. NEXT: implementation in NEW files: brute/region.py (RegionK), brute/region_learner.py (A5/M5), brute/breadth.py (B5/BM5/BP5),
+   brute/api/service_v050.py + schemas v1_5, experiments/worlds_007.py, brute_common_007, brute_study_007 (checkpointed),
+   brute_calibrate_007, scaling_007; tests. Smoke seeds 901-903 only.
+5. Then: source freeze 007; scoring scripts separate commit >= 10 min before `run_start_007`; nohup run; seal; scoring; docs;
+   release freeze 050; MANIFEST; fresh-clone verify; merge in /tmp/brute-main; tag v0.5.0 on merge; gh release.
 
 ## v0.4.0 progress (commit order is the chronology evidence)
 
