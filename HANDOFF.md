@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 01:50 EDT (v0.3.0 release)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 01:35 EDT (v0.3.0 release)._
 
 ## Current version and state
 
