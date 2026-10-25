@@ -50,6 +50,12 @@ At release the MANIFEST is regenerated. `RELEASE.json` moves to 0.3.0, so the fr
 the v0.1.x tests did at v0.2.0 (study-004 N1). The unmodified v0.2.0 verifier still passes on the raw v0.2.0 tag tree
 (`python -m scripts.verify_release_030 --frozen`). The count measured on a fresh clone is in the README Status table.
 
+Measured on a fresh clone of `plan/v0.3.0` at release (*Observed*): 170 tests, 4 errors. The fourth is
+`test_release_020.test_tampered_copies_fail` (frozen): it copies the tree and tampers `results/study-004/SCIENTIFIC.json`,
+which exists only after the gzip traces are restored, and in a fresh clone the suite reaches it before any verifier has
+restored them. After `python scripts/study004_storage.py restore` (or on a second run) the count is 170 tests,
+3 errors, all by construction. The test is frozen and is not changed.
+
 ## R1. Results that fail a pre-registered gate (reported as registered; nothing changed)
 
 - **G6b coverage non-inferiority vs v0.2.0: FAIL** (pre-registered as expected to fail). A3 − A2 pooled −0.098264,
