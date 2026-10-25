@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 06:14 EDT (study-007 running))._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 06:20 EDT (steering B1-B3 done; run at 600/888))._
 
 ## Current version and state
 
@@ -41,8 +41,16 @@ _Kept current on the working branch during a release and on `main` at release. L
    DONE run_start_007 on origin as ebcc650 (06:11:52; local duplicate push rejected, rebased; identical receipt 5cefd253).
 7. RUNNING since 06:14 EDT: `PYTHONPATH=. W=6 nohup bash scripts/run_study_007.sh >> /tmp/w7/run007.log 2>&1 &`
    (resumable: rerun same command; each stage resumes from its checkpoint). NEXT: on RUN_DONE commit SEAL/calibration/scaling/gz, ledger run_end_007.
-7. Then: scoring scripts separate commit >= 10 min before `run_start_007`; nohup run; seal; scoring; docs;
-   release freeze 050; MANIFEST; fresh-clone verify; merge in /tmp/brute-main; tag v0.5.0 on merge; gh release.
+8. 06:17 steering (v0.4.0 review /workspace/brute-review/v0.4.0/REVIEW.md) arrived AFTER run_start; run not stopped (decision:
+   held-out data already in use; restart would be redoing work). Post-start, non-pre-registered additions (disclose in DEVIATIONS_007):
+   DONE `07a6c69` experiments/v050_prob_reference.py (2x2 v090 probabilities recomputed taken+untaken by partial-machine counting,
+   no brute/bgr import; swap mutations; smoke dry-run 0/216 mismatches, 20/20 detected) + scripts/check_smoke_seeds_007.py
+   (smoke seeds 901-903 disjoint from 468 evaluation seeds; 05:25 glance seed 1710001 overlaps -> deviation).
+   DONE `033c716` ledger smoke_run_retroactive_007 + steering_after_run_start_007.
+   TODO: scaling fit script (state model, residuals; study-006 GR2 + SCALING_007); v0.4.0 errata on main (/tmp/brute-main):
+   H1, M1, M2, M3, L1-L6 -> ERRATA.md + DEVIATIONS_006/CHANGELOG/README/HANDOFF corrections + ledger errata_040; merge main into plan.
+9. After RUN_DONE: commit seal etc; make_count_007 (nohup) -> paired -> repro -> gates; then v050_prob_reference on the sealed data;
+   docs; release freeze 050; MANIFEST; fresh-clone verify; merge in /tmp/brute-main; tag v0.5.0 on merge; gh release.
 
 ## v0.4.0 progress (commit order is the chronology evidence)
 
