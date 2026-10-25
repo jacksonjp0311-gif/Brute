@@ -34,6 +34,27 @@ ARMS_2X2_NEW=('A5','M5')
 ARMS_BREADTH=('B5','BM5','BP5')
 
 
+class _Alarm12(_Alarm):
+    """Pre-freeze fix (found on smoke seeds, PROCESS_NOTES): BRUTE_PLAN_007 defines residual = mean of the last W
+    surprises ROUNDED to 12 d.p. and 'alarm set when residual > tau'; the frozen v040_reference._Alarm compares the
+    unrounded mean, which differs from the plan exactly when the residual ties tau at 12 d.p. (residuals are discrete,
+    and tau7 is itself a rounded residual). The frozen A4 audit (audit_full) keeps _Alarm unchanged."""
+    def push(self,step,surprise,s4,s5):
+        self.s.append(surprise)
+        if len(self.s)<self.W:return None
+        R=round(sum(self.s[-self.W:])/self.W,12)
+        if self.tau is None:return R
+        if not self.on:
+            if R>self.tau:
+                self.on=True;self.ever=True;self.run=0;self.sets.append(step)
+                if self.first is None:self.first=step
+        elif self.resume:
+            self.run=self.run+1 if R<=self.tau else 0
+            if self.run>=self.W and s4=='supported' and s5=='supported':
+                self.on=False;self.run=0;self.resumes.append(step)
+        return R
+
+
 def plan006_view(plan):
     """The BRUTE_PLAN_006 keys the frozen v0.4.0 reference reads, filled from plan 007 (2x2 block)."""
     return {'family_state_cap':plan['family_state_cap_2x2'],'margin_state_cap':plan['margin_state_cap_2x2'],
@@ -64,7 +85,7 @@ def audit_region_2x2(c,arm,plan,tau6):
     check(list(initial)==c['initial_visible'],'initial '+where)
     attested=fam in plan['in_family_2x2'];check(c['attested']==attested,'attested flag '+where)
     r4=ref_initial(initial);s4='supported';r5=ref_initial(initial);s5='supported';last=initial
-    win=None;restarts=0;suffix=RefSuffix1(0.7,initial);al=_Alarm(tau6,W_,True)
+    win=None;restarts=0;suffix=RefSuffix1(0.7,initial);al=_Alarm12(tau6,W_,True)
     issued=[];retracted=None;t={'steps':0,'certs':0,'cf_certs':0,'resumes':0,'unknown_forecasts':0}
     for i,pa in enumerate(actions(seed,plan['actions_per_case_2x2'])):
         rec=trace[i];step=i+1;alarm=al.on
@@ -293,7 +314,7 @@ def audit_breadth(c,arm,plan,tau7):
     check(c['k']==k and c['s']==s and c['attested']==lb['attested'],'case header '+where)
     hidden=w.start;initial=w.observed(hidden,rate,-1);check(list(initial)==c['initial_visible'],'initial '+where)
     tau=None if arm=='BP5' and c.get('calibration') else tau7
-    al=_Alarm(tau,W_,True);issued=[];retracted=None
+    al=_Alarm12(tau,W_,True);issued=[];retracted=None
     t={'steps':0,'steps_checked':0,'budget_stop':None,'certs':0,'unknown_forecasts':0}
     try:
         r4=k_initial(codes_of(initial,s),k);s4='supported';r5=k_initial(codes_of(initial,s),k);s5='supported';last=initial
