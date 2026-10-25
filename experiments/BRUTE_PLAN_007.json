@@ -1,0 +1,418 @@
+{
+  "schema": "brute.registered-plan.v1",
+  "status": "FROZEN pre-registration. Committed 2026-10-25 (America/New_York) on branch plan/v0.5.0 (from main 2998dba) before any v0.5.0 code is committed and before any study-007 seed is generated; the git commit that adds this file is the pre-registration record (git author time is author-set; see process_controls). Later changes go only to docs/research/BRUTE_DEVIATIONS_007.md and the ledger.",
+  "study": "BRUTE-050-REGION-007",
+  "version_under_test": "0.5.0",
+  "freeze_rule": "criteria, thresholds, seeds, families and their generators, arms, certification/policy/probability/alarm rules, the SAT conflict budgets, the tau7 calibration rule and the exactness definitions are fixed by the commit that adds experiments/BRUTE_PLAN_007.json; that commit must be a git ancestor of every commit touching brute/region.py, brute/region_learner.py, brute/breadth.py, brute/release_version_050.py, brute/api/service_v050.py, experiments/worlds_007.py, experiments/brute_common_007.py, experiments/brute_study_007.py, experiments/brute_calibrate_007.py, experiments/scaling_007.py, experiments/v050_reference.py (checked by scripts/verify_release_050.py).",
+  "parent_study": {
+    "id": "BRUTE-040-GEOMETRY-006",
+    "reproducible_from": "git tag v0.4.0 (5c02a7b)",
+    "files_left_frozen": "everything in SOURCE_FREEZE.json, BRUTE_SOURCE_FREEZE_002..006 and BRUTE_RELEASE_FREEZE_010/011/020/030/040 stays byte-identical; brute/geometry.py, brute/resume.py, brute/core/*, fallback.py, active.py, changepoint.py are subclassed or called, never edited"
+  },
+  "errata_carried": "the second implementation is called a 'second implementation by the same author, no brute import', never 'independent'; its report is a mismatch COUNT with a mutation test; process claims are stated only as far as git shows them; commit and ledger times are author-set.",
+  "owner_request": {
+    "recorded_at": "2026-10-25 05:13 EDT",
+    "priorities_in_order": [
+      "(1) ConstraintRegion as the production backend, exactness-gated against enumeration where enumeration is feasible; SAT budget exhaustion => ABSTAIN with a reason",
+      "(2) breadth families pre-registered before data (more states n>=6, >2 sensors, >2 actions); the soundness gates apply there too",
+      "(3) region-measure experiment selection (model counting / approximate #SAT / projection cuts) as a new idea aimed at G6b' recovery without breaking G1/G2/G3'"
+    ],
+    "scope": "scope so it finishes; defer explicitly as Open",
+    "repo_visibility": "public on purpose (James, 2026-10-25 01:13 EDT)"
+  },
+  "pre_freeze_disclosure": {
+    "summary": "Before this plan was committed the author read the frozen code and ran a timing probe with the FROZEN brute/geometry.py on sealed study-006 seeds only (perm4 1600001-1600002; the ood5 generator with the same seed numbers; cycle3 1600001-1600002). No study-007 seed, breadth world or calibration seed was generated before this commit. The probe measured time only (no coverage or soundness was looked at).",
+    "files_sha256": {
+      "docs/research/v0.5.0/design_probe/RESULTS.md": "5558a9150a89f9d61781f129ba9b720aa8856e982b2a14a8b547de34603c72b5",
+      "docs/research/v0.5.0/design_probe/sat_timing_n45.py": "8ca8906264aaf18f3c853715fde973e39abee48db7f77c2514501174ce8c3365",
+      "docs/research/v0.5.0/design_probe/sat_timing_n67.py": "b266f187a26d1a5c0feb686ed7a0be3abf661aa8f58f615b422cdd128b847b03"
+    }
+  },
+  "heldout_ranges_2x2": {
+    "cycle3": [
+      1630001,
+      1630024
+    ],
+    "switch3": [
+      1640001,
+      1640024
+    ],
+    "unstructured3": [
+      1650001,
+      1650024
+    ],
+    "unaliased2": [
+      1660001,
+      1660024
+    ],
+    "ood4": [
+      1670001,
+      1670024
+    ],
+    "perm4": [
+      1680001,
+      1680024
+    ],
+    "ood5": [
+      1690001,
+      1690024
+    ],
+    "drift4": [
+      1700001,
+      1700024
+    ]
+  },
+  "heldout_ranges_breadth": {
+    "big6": [
+      1710001,
+      1710024
+    ],
+    "sens3": [
+      1720001,
+      1720024
+    ],
+    "act3": [
+      1730001,
+      1730024
+    ],
+    "ood6s3": [
+      1740001,
+      1740024
+    ]
+  },
+  "calibration_ranges_tau7": {
+    "big6": [
+      1711001,
+      1711050
+    ],
+    "sens3": [
+      1721001,
+      1721050
+    ],
+    "act3": [
+      1731001,
+      1731050
+    ]
+  },
+  "stress_block": {
+    "family": "big6",
+    "range": [
+      1715001,
+      1715024
+    ],
+    "mask_rates": [
+      0.35
+    ],
+    "conf_budget": 20,
+    "arms": [
+      "B5"
+    ],
+    "use": "GX3 only (forces SAT budget exhaustion)"
+  },
+  "scaling_block": {
+    "use": "GR2-prime (reported, not gated)",
+    "seeds": [
+      1750001,
+      1750006
+    ],
+    "mask_rate": 0.35,
+    "steps": 44,
+    "alphabets": {
+      "2a2s": "big6 generator",
+      "3a2s": "act3 generator",
+      "2a3s": "sens3 generator"
+    },
+    "family_bounds": [
+      4,
+      6,
+      8,
+      10,
+      12
+    ],
+    "queries": "per step on the <=n region: feasibility, support for every action, saturation, Y1k for every action (no lookahead); margin not built",
+    "conf_budget": 100000,
+    "case_wall_cap_seconds": 900,
+    "enumeration": "the second implementation enumeration on the same steps for n<=6 with row budget 160000 (exhaustion counted)",
+    "report": "mean/median/max per-step seconds, clauses and variables, unknown queries, enumeration rows and exhaustions, log-log slope of mean time vs n WITH the caveat that SAT time is noisy and non-monotone and the slope rests on 5 points"
+  },
+  "heldout_note": "all blocks new and disjoint from studies 001-006 (<=1600024 and the D78 block 1591001..1591384) and from every earlier calibration range",
+  "in_family_2x2": [
+    "cycle3",
+    "switch3",
+    "unstructured3",
+    "unaliased2",
+    "ood4",
+    "perm4"
+  ],
+  "in_family_original_2x2": [
+    "cycle3",
+    "switch3",
+    "unstructured3",
+    "unaliased2",
+    "ood4"
+  ],
+  "out_of_family_2x2": [
+    "ood5",
+    "drift4"
+  ],
+  "in_family_breadth": [
+    "big6",
+    "sens3",
+    "act3"
+  ],
+  "out_of_family_breadth": [
+    "ood6s3"
+  ],
+  "mask_rates": [
+    0.1,
+    0.35,
+    0.6
+  ],
+  "actions_per_case_2x2": 44,
+  "actions_per_case_breadth": 64,
+  "burn_in": 8,
+  "family_state_cap_2x2": 4,
+  "margin_state_cap_2x2": 5,
+  "row_budget_enumeration": 160000,
+  "prediction_smoothing": 0.08,
+  "open_world_reserve_epsilon": 0.02,
+  "tau6": {
+    "value": 1.645215321642,
+    "source": "results/study-006/CALIBRATION_006.json (sealed v0.4.0 calibration); reused unchanged for every 2x2 arm (A5, M5, A4)"
+  },
+  "tau_v030": 1.433141502274,
+  "window_W": 8,
+  "breadth_worlds": {
+    "status": "pre-registered here before any breadth world was generated (experiments/worlds_007.py does not exist at this commit)",
+    "world": "HiddenWorldK(n,k,s,transitions,emissions,start,seed,family): k actions 0..k-1, s binary sensors, m=2**s codes; transitions[q] is a tuple of k successors; emissions[q] in 0..m-1; bits of code c are ((c>>(s-1-j))&1 for j in 0..s-1) (big-endian, same as bgr89 for s=2); observed(h,rate,step): rng=random.Random((seed*1299709+step*23011+701)%2**64); each bit in order is shown iff rng.random()>=rate else None (identical to bgr89 HiddenWorld.observed for s=2); the initial observation uses step=-1, the observation after step i (0-based) uses step=i",
+    "mask": "mask(obs) = set of codes c with every shown bit j equal to bit j of c (bitmask over m codes)",
+    "passive_actions": "rng=random.Random(seed*72031+37); tuple(rng.randrange(k) for _ in range(steps)) (equals bgr89.worlds.actions for k=2)",
+    "reachable": "_reach(rng,n,k): repeat up to 10000 times: T=[[rng.randrange(n) for a in range(k)] for q in range(n)] (row-major), start=rng.randrange(n); accept iff every state is reachable from start; else ValueError",
+    "generators": {
+      "big6": "rng=random.Random(seed*130363+307); n=6,k=2,s=2; T,start=_reach(rng,6,2); codes=rng.sample(range(4),3); em=[c0,c0,c1,c1,c2,c2]; rng.shuffle(em)",
+      "sens3": "rng=random.Random(seed*130363+311); n=4,k=2,s=3; T,start=_reach(rng,4,2); codes=rng.sample(range(8),3); em=[c0,c0,c1,c2]; rng.shuffle(em)",
+      "act3": "rng=random.Random(seed*130363+313); n=4,k=3,s=2; T,start=_reach(rng,4,3); codes=rng.sample(range(4),3); em=[c0,c0,c1,c2]; rng.shuffle(em)",
+      "ood6s3": "rng=random.Random(seed*130363+317); n=6,k=2,s=3; T,start=_reach(rng,6,2); codes=rng.sample(range(8),4); em=[c0,c0,c1,c1,c2,c3]; rng.shuffle(em)"
+    },
+    "learner_bounds": {
+      "big6": {
+        "family": 6,
+        "margin": 7,
+        "declared": "deterministic-moore<=6/2-actions/2-sensors",
+        "attested": true
+      },
+      "sens3": {
+        "family": 4,
+        "margin": 5,
+        "declared": "deterministic-moore<=4/2-actions/3-sensors",
+        "attested": true
+      },
+      "act3": {
+        "family": 4,
+        "margin": 5,
+        "declared": "deterministic-moore<=4/3-actions/2-sensors",
+        "attested": true
+      },
+      "ood6s3": {
+        "family": 4,
+        "margin": 5,
+        "declared": "deterministic-moore<=4/2-actions/3-sensors",
+        "attested": false
+      }
+    },
+    "evaluator_only": "true n and the minimal Moore machine size of the reachable world (partition refinement) are recorded per case as *_EVALUATOR_ONLY; never given to a learner",
+    "why": "big6 = more states (n=6 > enumeration-feasible bound used so far); sens3 = 3 sensors (8 codes); act3 = 3 actions; ood6s3 = out-of-family for the 3-sensor alphabet (6 states vs declared <=4)"
+  },
+  "backend": {
+    "name": "brute/region.py RegionK: ConstraintRegion generalised to k actions and m codes (new file; brute/geometry.py stays frozen)",
+    "encoding": "identical to BRUTE_PLAN_006 representation (one-hot x[t][q], d[q][a][r], e[q][c]; canonical first-visit naming; derived A, V, Tr, nx, nc) with range(2) -> range(k) for actions and range(4) -> range(m) for codes; Glucose3 (python-sat); rebuilt per step, one solver per region answers all queries of that step through assumptions",
+    "queries": "feasible, support(b), saturated(), y1k(b,mask) (= BRUTE_PLAN_006 fibre_support with one mask), extended(a,c)",
+    "conf_budget": {
+      "production": 100000,
+      "unit": "Glucose conflicts per solve call (solve_limited)",
+      "stress": 20
+    },
+    "tri_state": "every solve returns SAT, UNSAT or UNKNOWN (budget hit). Conservative semantics: UNKNOWN on a support/Y1k code query counts the code as possible; UNKNOWN on saturation counts as saturated; UNKNOWN on feasibility after an observation sets status 'budget_exhausted' (sticky, as enumeration budget exhaustion is). Every forecast records solver_unknown = number of UNKNOWN answers used to build it.",
+    "abstain_rule": "SOLVER_BUDGET overlay: if a forecast used >=1 UNKNOWN answer and its status would otherwise be CERTIFIED, POSSIBLE_SET or ABSTAIN (any reason), it becomes ABSTAIN / SOLVER_BUDGET with certificate None (new reason value SOLVER_BUDGET). Feasibility UNKNOWN gives ABSTAIN / BUDGET_EXHAUSTED via the frozen gate order. In a lookahead branch any UNKNOWN makes that branch count 0 (counted in lookahead_budget_hits).",
+    "production_meaning": "A5/M5 (2x2) and B5/BM5/BP5 (breadth) never enumerate rows: every version-space query (family, margin, window tier, lookahead copies) goes through RegionK. Enumeration runs only in the A4 reference arm and in the second implementation."
+  },
+  "arms": {
+    "A5": "brute.region_learner.RegionBruteLearner: the A4 rules (v0.1.1 probabilities, v0.2.0 window tier, Y1k, LU-R, tau6 alarm + resume) with every version-space query on RegionK (family <=4, margin <=5, window <=4); production backend arm",
+    "M5": "A5 certification with the M policy (projection-volume tie-break, below) instead of plain LU-R",
+    "A4": "frozen brute.resume.ResumeBruteLearner (enumeration, v0.4.0), run through the frozen study-006 trajectory code as a full arm; exactness reference for GX1 and v0.90 control for G3-prime",
+    "A2": "frozen brute.active.ActiveBruteLearner (v0.2.0, tau 1.4331), slim trace; G6b baseline",
+    "B5": "brute.breadth.BreadthBruteLearner on breadth worlds, RegionK backend, LU-R generalised to k actions, tau7 alarm + resume",
+    "BM5": "B5 with the M policy",
+    "BP5": "B5 on the passive action sequence (also the tau7 calibration arm with the alarm disabled)"
+  },
+  "arms_by_block": {
+    "2x2": [
+      "A5",
+      "M5",
+      "A4",
+      "A2"
+    ],
+    "breadth": [
+      "B5",
+      "BM5",
+      "BP5"
+    ],
+    "stress": [
+      "B5"
+    ]
+  },
+  "breadth_learner": {
+    "gate_order": [
+      "family contradicted -> OUT_OF_FAMILY/FAMILY_CONTRADICTED",
+      "alarm on -> OUT_OF_FAMILY/RESIDUAL_SURPRISE",
+      "family budget_exhausted -> ABSTAIN/BUDGET_EXHAUSTED",
+      "|S_f(b)| != 1 -> POSSIBLE_SET",
+      "margin budget_exhausted or not supported -> ABSTAIN/BUDGET_EXHAUSTED (contradicted margin: ABSTAIN/MARGIN_DISAGREES)",
+      "S_m(b) != S_f(b) -> ABSTAIN/MARGIN_DISAGREES",
+      "saturated -> ABSTAIN/BOUND_SATURATED",
+      "Y1k(b, mask of latest observation) != S_f(b) -> ABSTAIN/RESYNC_AMBIGUOUS",
+      "else CERTIFIED; then the SOLVER_BUDGET overlay"
+    ],
+    "public": "public certificate iff certified, attested for the declared family, and no alarm ever set in the session (never re-attested after a resume)",
+    "probabilities": "p(c) = (1-eps)*uniform over S_f(b) + eps/m when the family is supported [source family]; else (1-eps)*uniform over S_m(b) + eps/m when the margin is supported with nonempty support [source margin]; else 1/m [source uniform]; eps=0.02; S_f, S_m are the conservative supports",
+    "surprise": "-ln(sum of p(c) over codes c compatible with the observation); residual = mean of the last W=8 surprises rounded to 12 d.p.",
+    "alarm": "alarm set when residual > tau7; resume exactly as BRUTE_PLAN_006 alarm_rule.resume (W=8 consecutive residuals <= tau7 with family and margin supported)",
+    "tau7_calibration": "run BP5 with the alarm disabled (tau=+inf) on every calibration_ranges_tau7 case x 3 mask rates (450 cases, 64 passive steps); tau7 = maximum residual_after over every step of every calibration case, rounded to 12 d.p.; per-family maxima recorded. One tau7 for all breadth families.",
+    "retraction": "issued certificates are retracted at family contradiction (as v0.1.1); issued = predicted and acted (taken action)"
+  },
+  "experiment_rules": {
+    "LU-R_k": "score(a) = round(mean over c in S_f(a) of N(a,c), 12); N(a,c)=0 if the family copy after (a, full code c) is infeasible, has an UNKNOWN, or is saturated; singles = {b : S_f'(b) = {s} and Y1k_f'(b,{c}) = {s}}; 0 if no singles or the margin copy is infeasible/UNKNOWN; else #{b in singles : S_m'(b) = {s}}. All scores 0 when family or margin is not supported or the alarm is on. Choice: argmax; if the default (passive) action is among the maximisers take it, else the lowest-index maximiser. For k=2 this is exactly the v0.3.0 LU-R.",
+    "M (new: projection-volume tie-break)": "among the LU-R maximisers, take the action with the smallest fibre volume V(a) = round(mean over c in S_f(a) of sum over b of log2 |Y1k_f'(b,{c})|, 12), f' = family copy after (a, full code c); a branch with an infeasible copy or an UNKNOWN contributes k*log2(m); remaining ties -> default action if among them, else lowest index. V is computed only when >=2 actions tie on the LU-R score and family and margin are supported with no alarm. Geometric reading (Inferred): when no action makes a certificate likely, cut the region so that the projection of the latest-observation fibre on the next-code coordinates is smallest, i.e. localise the current state, the step Y1k needs and plain LU-R ignores on ties.",
+    "not_built": "exact or approximate #SAT model counting of the region is NOT built in v0.5.0 (no counter in the pinned environment; an approximate count cannot be exactness-gated): Open"
+  },
+  "metrics": "2x2: identical to BRUTE_PLAN_006 metrics (dual coverage = both actions, on-policy coverage, false/stale certificates, drift steps 12/23/34). Breadth: all-action coverage = certificates over (post-burn-in step x k actions); false certificates over every step and every action; same status breakdown.",
+  "scoring": {
+    "soundness_counts": "all steps incl. burn-in, every action (taken and counterfactual)",
+    "coverage_logloss_alarm_rates": "post-burn-in steps only",
+    "loss": "-ln max(1e-12, p[actual]) on the full code",
+    "bootstrap": "seed-clustered paired bootstrap (each seed = its 3 mask cases), 2000 resamples, numpy default_rng(20261025), percentile 2.5/97.5"
+  },
+  "criteria": {
+    "GX1_backend_exactness_2x2": {
+      "gated": true,
+      "threshold": "A5 vs A4 on every 2x2 case and step: identical action, experiment scores/tied/proposal, and for BOTH actions identical status, reason, certificate, public_certificate, support, margin_support, saturated, probabilities, forecast_source; identical surprise, residual_after, alarm_after, issued, retractions, alarm/resume steps. Count of mismatching steps must be 0. Excluded and counted (not mismatches): steps from the first step where A4 reports any enumeration budget event (family/margin/window budget_exhausted or a lookahead budget hit) and steps where A5 has solver_unknown>0. The gate also requires excluded steps <= 1% of all 2x2 steps."
+    },
+    "GX2_backend_exactness_breadth": {
+      "gated": true,
+      "threshold": "experiments/v050_reference.py (enumeration, no brute import) recomputes for B5, BM5 and BP5 on every breadth case every support, margin support, saturation, Y1k decision, status/reason/certificate, probability, surprise, residual, alarm/resume state, LU-R score, M volume and chosen action, step by step until its own row budget (160000) is exceeded. Mismatching steps must be 0. Steps after a reference budget exhaustion are excluded and counted; sens3, act3 and ood6s3 must each have >= 90% of their steps checked. big6 (<=6/<=7) is checked only as far as enumeration fits; its unchecked share is reported (that is the point of the backend)."
+    },
+    "GX3_budget_abstains": {
+      "gated": true,
+      "threshold": "(a) stress block (conf_budget 20): >=1 forecast with solver_unknown>0 must occur (else GX3 is OPEN, not passed); every forecast with solver_unknown>0 has certificate None and status ABSTAIN (reason SOLVER_BUDGET or BUDGET_EXHAUSTED) or OUT_OF_FAMILY; 0 false certificates. (b) all production arms: 0 certificates with solver_unknown>0. (c) unit test with a forced UNKNOWN."
+    },
+    "G1_in_family_soundness": {
+      "gated": true,
+      "threshold": "A5, M5: 0 false conditional and 0 false public certificates on every in_family_2x2 case; B5, BM5, BP5: same on every in_family_breadth case; all steps incl. burn-in, every action"
+    },
+    "G2_ood_soundness": {
+      "gated": true,
+      "threshold": "A5, M5: 0 false conditional certificates on ood5; B5, BM5, BP5: 0 false conditional certificates on ood6s3; all steps, every action",
+      "pre_registered_risk": "Inferred: a 6-state 3-sensor world can make <=4 and <=5 agree on a wrong code before a contradiction; Y1k reduces but does not exclude this. No design data."
+    },
+    "G3_prime_drift4": {
+      "gated": true,
+      "threshold": "study-005 definition for A5 and M5 separately (taken action): non-drift false = 0 AND total <= 0.5 x v0.90 control false on the same cases (v0.90 control from the A4 full trace)"
+    },
+    "G4_public_safety": {
+      "gated": true,
+      "threshold": "A5, M5, B5, BM5, BP5: 0 public certificates on ood5, drift4 and ood6s3; 0 wrong public certificates anywhere; no public certificate after the first alarm of a session"
+    },
+    "G5_false_alarm_limit": {
+      "gated": true,
+      "threshold": "for EACH arm A5, M5, B5, BM5, BP5 and EACH in-family family of its block separately: fraction of cases with >=1 RESIDUAL_SURPRISE alarm <= 0.05"
+    },
+    "G6b_M_coverage_vs_v020": {
+      "gated": true,
+      "threshold": "pooled in_family_original_2x2 dual coverage M5 - A2 >= -0.03 AND 95% CI lower bound >= -0.05 (the BRUTE_PLAN_006 G6b' test with M5 in place of A4)",
+      "prediction": "Inferred: FAIL. M changes only which action is taken on LU-R ties; v0.4.0 measured A4 - A2 = -0.104, and the price is in the Y1k certification rule, which M does not change."
+    },
+    "G7_open_world": {
+      "gated": true,
+      "threshold": "mean post-burn-in taken-action log-loss: A5 and M5 <= ln 4 on ood5 and drift4; B5, BM5, BP5 <= ln 8 on ood6s3; min probability >= eps/m everywhere (0.005 for 2x2, 0.0025 for 8 codes)"
+    },
+    "G9_retraction_resume": {
+      "gated": true,
+      "threshold": "every resume (A5, M5, B5, BM5, BP5) happens only after W=8 consecutive residuals <= tau with family and margin supported; no RESYNC_AMBIGUOUS forecast is issued; retractions only at contradiction"
+    },
+    "G10_compute": {
+      "gated": true,
+      "threshold": "every case of every block completes; production arms: forecasts with solver_unknown>0 <= 1% of forecasts per block",
+      "reported": "wall-clock per arm, A5 vs A4 time ratio, per-step max"
+    },
+    "G11_second_implementation": {
+      "gated": true,
+      "threshold": "(a) experiments/v050_reference.py (same author, no brute import, committed before any v0.5.0 brute/ file) audits every A5, M5, B5, BM5, BP5 trace (2x2: the v0.4.0 reference rules with rows fields null and the M tie-break; breadth: its own generalised enumeration); (b) the frozen experiments/v040_reference.py audits every A4 trace. Report = COUNT of mismatching arm traces (no stop at first), must be 0; breadth traces are audited up to the reference row budget. Mutation test: 20 injected single-field errors in 20 distinct traces (random.Random(20261025)) detected 20/20 with 0 false flags."
+    },
+    "G12_reproducibility": {
+      "gated": true,
+      "threshold": "a second run of the calibration and of every case whose run index is divisible by 3 (2x2, breadth and stress blocks) to a new path gives byte-identical scientific JSON (timing keys stripped) for those cases and an identical CALIBRATION_007.json"
+    },
+    "G13_tau7_reproduces": {
+      "gated": true,
+      "threshold": "tau7 and per-family maxima reproduce byte-for-byte in the second calibration run, and study-007 uses exactly that tau7"
+    },
+    "GM_projection_volume_mechanism": {
+      "gated": false,
+      "report": "pooled in_family_2x2 dual coverage M5 - A5 with CI, per family and mask; tie frequency; how often M overrides the default; breadth all-action coverage BM5 - B5",
+      "decision_rule": "SUPPORTED iff M5 - A5 CI lower > 0 and G1/G2/G3-prime hold for M5; HARMFUL iff CI upper < 0; else NOT DISTINGUISHED",
+      "prediction": "Inferred: NOT DISTINGUISHED or small positive (<= +0.03); no design data"
+    },
+    "GR2_prime_scaling": {
+      "gated": false,
+      "report": "see scaling_block"
+    },
+    "R_breadth": {
+      "gated": false,
+      "report": "breadth all-action coverage B5, BM5, BP5 per family and mask; status breakdown; ood6s3 alarm detection rate and first-alarm step; minimal true state counts; A5 vs A4 wall-clock"
+    }
+  },
+  "power_and_sample": {
+    "2x2": "24 seeds x 3 masks per family (576 cases) as in study-006, whose seed-clustered CI half-width for pooled dual-coverage differences was about 0.012 (Observed, v0.4.0); adequate to separate the G6b thresholds",
+    "breadth": "24 seeds x 3 masks x 4 families (288 cases); soundness gates are zero-tolerance; with 0 false certificates over N certified forecasts the rule-of-three 95% upper bound 3/N is reported (Inferred)",
+    "cost": "design probe: 2x2 SAT arms ~0.1-0.7 s per case, n<=6/7 ~1-10 s per 44 steps; 8 workers"
+  },
+  "api_1_5": {
+    "files": "brute/api/service_v050.py and schemas request.v1_5.json/response.v1_5.json (1.0-1.4 frozen)",
+    "changes": [
+      "learner = RegionBruteLearner (2x2 alphabet only)",
+      "reason enum gains SOLVER_BUDGET",
+      "evidence gains backend=\"sat-region\" and solver_unknown; surviving_rows becomes null (rows are not enumerated)"
+    ],
+    "not_in_scope": "k-action / s-sensor sessions over the API (Open)"
+  },
+  "process_controls": {
+    "order": "(1) this plan; (2) experiments/v050_reference.py + its mutation test, committed before any v0.5.0 brute/ file; (3) implementation (pre-freeze fixes in separate commits); (4) source freeze BRUTE_SOURCE_FREEZE_007.json; (5) scoring scripts (make_gates_007, make_paired_007, make_reproducibility_007, exactness/count scoring) committed in a SEPARATE commit at least 10 minutes (wall clock) before the first study-007 run starts; (6) runs, each with ledger 'run_start' before and 'run_end' after, via nohup with per-case checkpoints (resumable, refusing to overwrite sealed outputs); (7) seal; (8) scoring.",
+    "verifiable": "scripts/verify_release_050.py checks git ancestry (1)<(2)<(3)<(4)<(5)<(7) and that scoring scripts are unchanged after (5); times are author-set and reported as such",
+    "tests": "version-parameterised release tests; fresh-clone tests restore gitignored traces first",
+    "dependencies": "numpy==2.5.4, python-sat==1.9.dev17 (Python 3.13.5)"
+  },
+  "deviation_policy": "after freeze, any change is a ledger 'deviation' entry with its reason in docs/research/BRUTE_DEVIATIONS_007.md; the original criterion is still reported. Study-007 seeds are never used to tune v0.5.0; failed gates are published as failed.",
+  "scope_and_open": [
+    "Cross-step incremental SAT (one solver kept across observations): Open; v0.5.0 rebuilds per step",
+    "Exact or approximate #SAT model-count experiment policy: Open (M uses exact projection sizes only)",
+    "Sound multi-step fibre certification (F2 fix: unknown edge counts as any reading at every step): Open",
+    "Powered D7/D8 replication (G14-prime was OPEN in v0.4.0): Open",
+    "k-action/s-sensor API sessions; stochastic emissions; learned (non-uniform) breadth probabilities: Open",
+    "Third-party replication: Open",
+    "BDD / partition-refinement alternatives: Open"
+  ],
+  "limitations": [
+    "Synthetic deterministic worlds only.",
+    "Breadth probabilities are uniform over the support (no v0.89 legacy model), so breadth log-loss is not comparable with 2x2.",
+    "Y1k does not protect a jump into a state whose edge is still unknown (Inferred).",
+    "The second implementation is by the same author and shares the 2x2 world generators.",
+    "Commit and ledger times are author-set."
+  ],
+  "owner_decisions": {
+    "recorded_at": "2026-10-25 (America/New_York)",
+    "D1": "owner (James) 05:13 EDT: v0.5.0 / study-007 with priorities (1) backend (2) breadth (3) region-measure policy; same discipline; commit+push and HANDOFF every step; nohup runs with checkpoints",
+    "D2": "repo public on purpose (James, 01:13 EDT)",
+    "D3": "author decision: 2x2 steps stay 44 for comparability; breadth uses 64 steps because 6-state / 3-action worlds need more evidence (no data looked at)"
+  },
+  "release_version_note": "earlier release_version*.py stay frozen; new brute/release_version_050.py RELEASE_VERSION='0.5.0'; RELEASE.json 0.5.0; pyproject 0.5.0; scripts/verify_release_050.py; tests/test_release_050.py"
+}

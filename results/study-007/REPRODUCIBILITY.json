@@ -1,0 +1,39 @@
+{
+  "all_byte_identical": true,
+  "files": {
+    "CALIBRATION_007.json": {
+      "byte_identical": true,
+      "sha256_main": "dca4fb86700bc19f38a60c540d0b72e670de1f306e73861a3fd7bf725b542eed",
+      "sha256_repro": "dca4fb86700bc19f38a60c540d0b72e670de1f306e73861a3fd7bf725b542eed"
+    },
+    "CALIBRATION_007_TRACES.json": {
+      "byte_identical": true,
+      "sha256_main": "153cc48b8e3f43bb5407c49e547e401986deca715534d2fcea9ba4593ad77831",
+      "sha256_repro": "153cc48b8e3f43bb5407c49e547e401986deca715534d2fcea9ba4593ad77831"
+    },
+    "cases_index_divisible_by_3": {
+      "byte_identical": true,
+      "differing": [],
+      "expected": 296,
+      "per_block": {
+        "2x2": {
+          "cases": 192,
+          "identical": 192
+        },
+        "breadth": {
+          "cases": 96,
+          "identical": 96
+        },
+        "stress": {
+          "cases": 8,
+          "identical": 8
+        }
+      },
+      "rerun": 296
+    }
+  },
+  "repro_scientific_sha256": "8b6ceb32efe334f75cf9a680e70df81b448d899ebdb795be748a761380130f0d",
+  "schema": "brute.reproducibility.v7",
+  "scientific_sha256": "603d35045ebb6fb8c8d0492e6f7bdd02be7485ebef0d106f4ae4a9f22687069e",
+  "study": "BRUTE-050-REGION-007"
+}

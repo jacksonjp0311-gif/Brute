@@ -1,0 +1,46 @@
+{
+  "also_requires": [
+    "experiments/BRUTE_SOURCE_FREEZE_002.json",
+    "experiments/BRUTE_SOURCE_FREEZE_003.json",
+    "experiments/BRUTE_SOURCE_FREEZE_004.json",
+    "experiments/BRUTE_SOURCE_FREEZE_005.json",
+    "experiments/BRUTE_SOURCE_FREEZE_006.json"
+  ],
+  "implementation_commits": [
+    "fc2bed8",
+    "c8e8611",
+    "b693113"
+  ],
+  "plan_sha256": "3a2aa94e0fd008baad102a8e1937759dcbf03313c6a1223309dec46ec8fa0a5e",
+  "pre_freeze_fix_commits": [
+    "0c86d90",
+    "d7054a1"
+  ],
+  "preregistration_commit": "5be08aa",
+  "reference_commit": "1b57efe",
+  "schema": "brute.source-freeze.v1",
+  "sha256_files": {
+    "brute/api/schema/request.v1_5.json": "d54a18966894b7c73e95f3ba5f68dfaa8193e059724ad9d05c9f665a1e40d1c6",
+    "brute/api/schema/response.v1_5.json": "f728250215dc837b47e27c8cd8b01b78aeeb7b952ee82c2e8396c0c976094e57",
+    "brute/api/service_v050.py": "cc4eab85c5f31209605b986b9534bec58e2c71df9aa8e9afcba65ca4a9899d24",
+    "brute/breadth.py": "932263e06f09d6a4a989b4291a40074e57553d3f3e95718ab50942432bf86242",
+    "brute/region.py": "df953c2073d5acb805809ece3118d162a3da010f5e7bddf00b5d74a6319ca141",
+    "brute/region_learner.py": "2d2f899995a6d4541be312aed49fcebece97c1c1bddf543d8c1eedb8b7a94ec2",
+    "brute/release_version_050.py": "d86d030c2774c22169fc2abfb11e9f7547e04fa8b746d6d3191203090ae64843",
+    "experiments/BRUTE_PLAN_007.json": "3a2aa94e0fd008baad102a8e1937759dcbf03313c6a1223309dec46ec8fa0a5e",
+    "experiments/brute_calibrate_007.py": "0cc1da9d1c735f4b79996a0e666d62f6a9e7ecbf806f2d8936e812bac94535fa",
+    "experiments/brute_common_007.py": "275a37c0a6e75c874d5d9ec81ed7683ce2e49c995d1289d324f25a677cebdbcf",
+    "experiments/brute_study_007.py": "52a9df6fac5163e4fd0a3ad8a9471f552f69bcb0e9f39284b9814c4c622e2a96",
+    "experiments/scaling_007.py": "2077de5ca83fda9170ac530b6129f48d67e20b0d6b49225006413de302873788",
+    "experiments/v050_reference.py": "a66a95767c132dd7c77a997959dc25cc0ad7624a1125be3c38cda2fe9e578dc3",
+    "experiments/worlds_007.py": "733f6131b478f62626f382f481cf5127e212a2470b789510e39cd1956fba596c",
+    "requirements.txt": "53c193b76a288fd665d9c6b3391998c899ab8f88e50774d3807bdd006a4cd7a3",
+    "scripts/make_freeze_007.py": "224fb2ea58531b2a168a7eedb86026af06a50dd89cc235e7c3352bb0a5bdfe47",
+    "scripts/run_study_007.sh": "4176aea85f7b9c3afff047a3be75784e587cb746cf4274a9033314da58d21c82",
+    "scripts/study007_storage.py": "e414517bd45816e44922a6b3f9b872773e97bd2bd84c4df0edf304400d36d21d",
+    "tests/test_v050_impl.py": "ec95c170c831c27670717a0ec21d6791a1b392a163c62c0bc5a6058c47b8e2a4",
+    "tests/test_v050_reference.py": "4316e4d9d5c73a0e1c1b45c08afbb2fc6238532343a7b4106a27a006d9dc53b6"
+  },
+  "status": "frozen",
+  "study": "BRUTE-050-REGION-007"
+}
