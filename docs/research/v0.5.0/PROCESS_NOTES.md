@@ -20,5 +20,5 @@
   study SEAL also binds calibration_traces_sha256; added scripts/study007_storage.py, scripts/run_study_007.sh,
   scripts/make_freeze_007.py and the study-007 .gitignore entries (raw RESULTS/SCIENTIFIC/TRACES/checkpoints, committed as
   deterministic .json.gz bound by SEAL).
-- ~05:59 smoke recount after the fix: 324 arm traces, 0 mismatching, mutation 24/24 detected, 0 false flags (Observed, smoke
+- ~05:56 smoke recount after the fix: 324 arm traces, 0 mismatching, mutation 24/24 detected, 0 false flags (Observed, smoke
   seeds only; /tmp scratch, not a study artifact).
