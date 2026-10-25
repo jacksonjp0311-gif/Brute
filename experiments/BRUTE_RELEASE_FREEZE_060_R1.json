@@ -1,0 +1,19 @@
+{
+  "reason": "verify_release_060 git_order placed pre_freeze_fix commits after the implementation commits; cae25ce precedes them (D26)",
+  "release": "0.6.0",
+  "schema": "brute.source-freeze.v1",
+  "scope": "code added for v0.6.0 outside BRUTE_SOURCE_FREEZE_008",
+  "sha256_files": {
+    "brute/release_version_060.py": "91758525fe8505de41fae193e176d6809a1bbc866a6784a3935760506044584c",
+    "scripts/make_gates_008.py": "af25d8b068b6dcc6b328d28eaa7097439a5cb0e4485fd66c7bb00bb7ad062a44",
+    "scripts/make_gt1_008.py": "c52fec450136f2095e06968ce76e88137c27c4b60d1aab045daa5ddad3aaddf7",
+    "scripts/make_paired_008.py": "0f943a8e9683f1fcf0cc427700aa9c380e582ad87c7b857a25bf532310933888",
+    "scripts/make_release_freeze_060.py": "607e9119c61b93195ed0d493682f01f00f099bfc55c05b713dbec0c5b69bcbfd",
+    "scripts/make_release_freeze_060_r1.py": "3ea9656214fb617106bec567d21ede19c6afa3a03e3e9e63097f172528e443f9",
+    "scripts/make_reproducibility_008.py": "7f912c0a32a2af5c11eb03ca53c7fb7fe41f319a34927fdafa376e91a977390a",
+    "scripts/verify_release_060.py": "b68203e7391c417210a5b0c8615241b0389cea1c04f4af4f07c06932d3e1bc7e",
+    "tests/test_release_060.py": "5bf643be0e8e0113ebbfcfcb238e86105faee3d9486c156ff6b8e2dfbdf23f51"
+  },
+  "status": "frozen",
+  "supersedes": "experiments/BRUTE_RELEASE_FREEZE_060.json"
+}

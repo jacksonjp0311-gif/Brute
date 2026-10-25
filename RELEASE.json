@@ -8,7 +8,7 @@
   "preregistration_commit": "89c2d3b",
   "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_008.json",
   "source_freeze_commit": "8e80615",
-  "release_freeze": "experiments/BRUTE_RELEASE_FREEZE_060.json",
+  "release_freeze": "experiments/BRUTE_RELEASE_FREEZE_060_R1.json",
   "scoring_scripts_commit": "08ac3f3",
   "seal_commit": "c21ef12",
   "run_start": "2026-10-25T08:49:16-04:00 (ledger run_start_008; scoring scripts ledgered 08:38:46 EDT)",
@@ -48,5 +48,6 @@
   "reproducibility": "312 of 312 rerun jobs byte-identical; GMC recount 120 cases identical up to 11 timeout-only differences",
   "language_adapter": "template-only, grounded in brute.api responses; no language model connected",
   "baseline": "baseline/IDENTITY.json (zip not included in the fork)",
-  "other_projects_modified": false
+  "other_projects_modified": false,
+  "release_freeze_note": "supersedes experiments/BRUTE_RELEASE_FREEZE_060.json after the verify_release_060 git-order fix (DEVIATIONS_008 D26)"
 }

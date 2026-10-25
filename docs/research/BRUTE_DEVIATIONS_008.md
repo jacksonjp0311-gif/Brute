@@ -98,3 +98,18 @@ held-out data were seen** unless it says so explicitly. Labels: Exact / Observed
     `cae25ce`, the file's current bytes, which are unchanged since that commit) was appended at release time. This
     follows the frozen `ledger_020` rule: the last receipt per source must match, and earlier receipts are superseded.
     No code or result changed.
+26. **verify_release_060 git-order defect, fixed at release (found at release verification).** `git_order` linked the
+    source freeze's `pre_freeze_fix_commits` after the `implementation_commits` in one ancestry chain. The only fix,
+    `cae25ce` (07:50:56 EDT), comes before the first implementation commit `457db5a` (07:53:36 EDT), so the check
+    could never pass on the real history ("implementation_3 6f6cd22 is not an ancestor of pre_freeze_fix_0 cae25ce").
+    The fix changes only that check. Each pre-freeze fix must now descend from the reference commit and be a strict
+    ancestor of the source freeze, and the linear chain is unchanged. Parsing, gates, seals and GT1 behaviour are untouched.
+    GT1 runs with `git=False`, so the git-order check does not run there.
+    `BRUTE_RELEASE_FREEZE_060.json` had already been written and ledgered with the old verifier hash. It is kept
+    unchanged as the record and superseded by `BRUTE_RELEASE_FREEZE_060_R1.json` (new script
+    `scripts/make_release_freeze_060_r1.py`). `RELEASE.json` now points at R1; ledger `release_freeze_060_r1` and a new
+    `release_060` receipt supersede the earlier ones.
+    Also disclosed: `GT1_008.json` was produced while `RELEASE.json` still said 0.5.0, so an untampered copy would also
+    have failed verification at that time. Corruptions are caught in `parse_all` before the version check, but the
+    stronger evidence is the final `tests/test_release_060` run on the 0.6.0 tree. That run repeats the full 56+ case
+    matrix and includes the untampered-copy control.
