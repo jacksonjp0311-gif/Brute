@@ -62,6 +62,10 @@ def frozen_verifier_020(root):
     env={'PYTHONPATH':'.','PATH':'/usr/bin:/bin','PYTHONDONTWRITEBYTECODE':'1'}
     with tempfile.TemporaryDirectory(prefix='brute-v020-') as tmp:
         _raw_tree(root,'v0.2.0',tmp)
+        # Index (no commit) the raw tag blobs so the v0.2.0 manifest check lists exactly them; without a .git it would also
+        # list the study-004 traces that its own ensure_raw() restores (deviation D2, BRUTE_DEVIATIONS_005).
+        for args in (('init','-q'),('add','-A')):
+            g=subprocess.run(['git','-C',tmp,*args],capture_output=True,text=True);check(g.returncode==0,'cannot index the raw v0.2.0 tree')
         code='import json;from scripts.verify_release_020 import verify;print(json.dumps(verify(fast=True,git=False)["status"]))'
         r=subprocess.run([sys.executable,'-c',code],cwd=tmp,capture_output=True,text=True,env=env)
         check(r.returncode==0 and '"passed"' in r.stdout,'frozen v0.2.0 verifier failed on the v0.2.0 tree: '+r.stdout[-400:]+r.stderr[-400:])

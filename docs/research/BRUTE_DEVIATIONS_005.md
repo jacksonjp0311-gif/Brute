@@ -72,3 +72,17 @@ sealed traces do have untied experiments on unstructured3; the bridge's 0 is a b
 investigated here; `/workspace/brute-bridge` not edited). O2: R4 mean per-call cost on unstructured3 for A3 is 11.6 ms
 (observe) and 4.8 ms (experiment) in the study runner (A2: 10.8 / 7.9 ms; informational, not reproducible), an order of
 magnitude below the bridge's ~0.11 / ~0.12 s; the difference is bridge-side overhead (Inferred, not investigated). O3: implemented in brute.api/1.3.
+
+## D2. `--frozen` harness indexes the raw v0.2.0 tree (release tooling; no effect on results)
+
+- **Found** after `BRUTE_RELEASE_FREEZE_030` was first written (`5af4539`): `verify_release_030 --frozen` failed. The
+  unmodified v0.2.0 verifier, run with `git=False` on a raw tree, restores the study-004 traces (`ensure_raw`) and then
+  builds its manifest from every file on disk, so the two restored files (`results/study-004/RESULTS.json`,
+  `SCIENTIFIC.json`) are listed as extra (*Observed*). This is a defect of the frozen v0.2.0 verifier's no-git mode; it
+  was not changed.
+- **Fix:** the harness in `scripts/verify_release_030.py::frozen_verifier_020` now runs `git init` and `git add -A` in
+  the temporary raw tree (no commit), so the v0.2.0 manifest check lists exactly the tag-v0.2.0 blobs. The v0.2.0
+  verifier then passes unmodified.
+- **Freeze:** `BRUTE_RELEASE_FREEZE_030.json` was removed and regenerated with the new hash; the ledger keeps both
+  `release030_freeze` receipts (append-only; the later one supersedes). No study artifact, criterion or scoring script
+  changed.
