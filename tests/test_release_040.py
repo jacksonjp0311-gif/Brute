@@ -10,7 +10,8 @@ REL=json.loads((ROOT/'RELEASE.json').read_text())
 
 
 def _linked_copy(dst):
-    def ignore(d,names):return [n for n in names if n in ('.git','__pycache__')]
+    """Hard-linked copy including .git (read-only use), so the manifest is built from the same tracked-file list."""
+    def ignore(d,names):return [n for n in names if n=='__pycache__']
     shutil.copytree(ROOT,dst,copy_function=os.link,ignore=ignore)
 
 
@@ -28,6 +29,11 @@ class ReleaseVersioned(unittest.TestCase):
         self.assertEqual(out['process_order']['scoring_scripts'],REL['scoring_scripts_commit'])
 
     def test_git_order(self):self.assertEqual(git_order(ROOT,REL)['preregistration'],REL['preregistration_commit'])
+
+    def test_untampered_copy_passes(self):
+        """Control for the tamper test: the copy itself verifies, so a failure below is caused by the tampering."""
+        with tempfile.TemporaryDirectory() as tmp:
+            dst=Path(tmp)/'brute';_linked_copy(dst);self.assertEqual(verify(dst,fast=True,git=False)['status'],'passed')
 
     def test_tampered_copies_fail(self):
         d=REL['results_dir']

@@ -15,7 +15,14 @@ from __future__ import annotations
 import argparse,json,sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
-from experiments.brute_common import VerificationError,check,sha,load,dumps
+from experiments.brute_common import VerificationError,check,sha,dumps
+from experiments.brute_common import load as _load_json
+
+
+def load(path):
+    """JSON load that reports a malformed or missing file as a verification failure, not a crash."""
+    try:return _load_json(path)
+    except (OSError,ValueError) as e:raise VerificationError(f'cannot read {path}: {e}') from None
 from scripts.verify_release import _freeze
 from scripts.verify_release_020 import ledger_020,_git
 
