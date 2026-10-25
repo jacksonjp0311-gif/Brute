@@ -58,3 +58,25 @@ held-out data were seen** unless it says so explicitly. Labels: Exact / Observed
     as soon as it was written (c21ef12), before the ledger run_end/seal entries, which follow RUN_DONE.
 20. GT1 tooling (verify_release_060, test_release_060, make_gt1_008, release_version_060) was committed at 29cd0d1
     while the held-out run was in progress; it reads no result values and contains no scoring rule.
+
+## D. Stream A stop and release scoring (decided 2026-10-25 ~17:44 EDT, after the main study was sealed)
+
+21. **Stream A (GX2' xcheck) stopped by owner decision.** James decided, after a full day of waiting, to stop the
+    `experiments.v060_xcheck` stream (PIDs 917088, 917131-917133, started 08:58 EDT) and release with what exists. The
+    processes were killed at 17:44 EDT (run008.log: "17:44:05 a stream failed"). At the stop the checkpoint held **46 of 288**
+    breadth cases (~8.8 h of wall clock, ~5.2 cases/h with 3 workers, i.e. roughly 2 more days to finish at that rate).
+    **No result values were inspected to make this decision**; it was based on the progress count and rate only.
+    The partial checkpoint was committed as-is (b02b0c3). GX2' is scored on the frozen criterion: the plan requires
+    checked fraction >= 0.99 for every family x arm (big6/sens3/act3/ood6s3 x B5/BR6/BC6) and coverage of every breadth
+    case, so GX2' is **FAIL (incomplete coverage)**. No new pass criterion is introduced. The mismatch count on the 46
+    checked cases (all big6, the first family in case order) is reported as Observed only.
+    Consequence: R_dev_xcheck_007 (not gated; it runs after the xcheck in stream A) was never started and is absent.
+22. **Partial-checkpoint wrapper** `scripts/make_xcheck_partial_008.py` (written after the stop, reads only the
+    checkpoint and the sealed RESULTS case list): it writes `results/study-008/XCHECK_008.json` in the frozen report
+    schema using the frozen `v060_xcheck.summarize`, but with `per_family_arm` counted over ALL 288 sealed breadth cases
+    (steps of unchecked cases count as unchecked), so the committed, unchanged `make_gates_008.py` scores clause (iii) and
+    `covers_every_breadth_case` as FAIL. The within-checked-cases summary is kept under `checked_cases_only` (Observed).
+    The file carries `partial: true` and the stop note. make_gates_008.py is not edited.
+23. **run_study_008.sh exited non-zero** after the kill (stream A failed), so its final `pack` and `RUN_DONE` lines were
+    not printed by the script. The pack step (`scripts/study008_storage.py pack`) was run by hand with the same command,
+    and RUN_DONE is recorded by the ledger `run_end_008` entry, whose note states the stop.
