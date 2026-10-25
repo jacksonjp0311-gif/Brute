@@ -11,12 +11,13 @@ _Kept current on the working branch during a release and on `main` at release. L
   v0.2.0/v0.3.0 were created with notes that point to the errata.
 - **In progress: v0.4.0 / study BRUTE-040-GEOMETRY-006** on `plan/v0.4.0`.
 
-## Branches (origin `github.com/jacksonjp0311-gif/Brute`, private)
+## Branches (origin `github.com/jacksonjp0311-gif/Brute`, public on purpose: James asked for it 2026-10-25 01:13 EDT)
 
 | Branch | Head | State |
 | --- | --- | --- |
-| `main` | `8222e0e` (v0.3.0 merge + errata) | Released code and record |
-| `plan/v0.4.0` | see `git log` | v0.4.0 working branch |
+| `main` | `5c02a7b` = tag v0.4.0 (+ HANDOFF commits) | Released code and record |
+| `plan/v0.5.0` | see `git log` | v0.5.0 working branch (from main) |
+| `plan/v0.4.0` | `5e7d208` | v0.4.0 working branch (merged) |
 | `bridge/v0.2`, `bridge/v0.1` | `cced586`, `9c88a3a` | Bridge work; **unmerged; do not edit or merge without a decision** |
 
 ## v0.4.0 progress (commit order is the chronology evidence)
@@ -61,7 +62,7 @@ _Kept current on the working branch during a release and on `main` at release. L
 - **The ledger is append-only** (`scripts/append_ledger.py EVENT SOURCE --note … --commit <short>`). A changed
   artifact gets a new receipt that supersedes the old one.
 - Every step is committed and pushed. Never modify `/workspace/bgr/BGR-v0.90.0` or `/workspace/brute-bridge`. The repo
-  stays private. Bridge observations are diagnostic only.
+  is public on purpose (James, 2026-10-25 01:13 EDT); keep it public. Bridge observations are diagnostic only.
 
 ## Roadmap goal
 
