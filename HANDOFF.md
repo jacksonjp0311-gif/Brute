@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 06:00 EDT (scoring scripts committed; waiting 10 min before run_start)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 06:03 EDT (run launcher armed (run_start 06:11:30))._
 
 ## Current version and state
 
@@ -38,7 +38,9 @@ _Kept current on the working branch during a release and on `main` at release. L
    unchanged; disclosed in PROCESS_NOTES). `d7054a1`: run/storage/freeze scripts, torn-line-tolerant checkpoint. Recount 05:56: 0/324 mismatching, mutation 24/24, 0 false flags (Observed, smoke).
 5. DONE `064a50e` source freeze 007 (20 files, chains 002-006; ledger `0ea8085`, ~05:57).
 6. DONE `50e9321` (06:00) scoring scripts 007 in their own commit (dry-run on smoke seeds only); ledger scoring_scripts_007.
-   NEXT (>= 06:11): ledger run_start_007, then `nohup bash scripts/run_study_007.sh > /tmp/w7/run007.log` (resumable: rerun same command).
+   LAUNCHED 06:03 (nohup /tmp/w7/launch.sh, log /tmp/w7/run007.log): waits to 06:11:30, appends+pushes ledger run_start_007
+   (skips if present), then scripts/run_study_007.sh. If interrupted: check the ledger has run_start_007, then
+   `nohup bash scripts/run_study_007.sh >> /tmp/w7/run007.log 2>&1 &` (every stage resumes from its checkpoint).
 7. Then: scoring scripts separate commit >= 10 min before `run_start_007`; nohup run; seal; scoring; docs;
    release freeze 050; MANIFEST; fresh-clone verify; merge in /tmp/brute-main; tag v0.5.0 on merge; gh release.
 
