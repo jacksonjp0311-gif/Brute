@@ -77,4 +77,68 @@ Common notation:
 - **Reproduce:** the `llw` field of `probe.py drift4 passive`.
 - **White paper:** no.
 
-(Study-004 adds Observed entries below once it is sealed.)
+## Study-004 entries (Observed; sealed `results/study-004/SCIENTIFIC.json`, sha `499e29a4…`, 504 held-out cases)
+
+Arms: **A** = active (LU lookahead), **P** = same learner with the fixed passive actions, **C** = frozen v0.1.1 on P's
+sequence. Paired analysis: `results/study-004/PAIRED_ANALYSIS.json` (2,000 seed-clustered resamples, seed 20261025).
+Reproduce everything: `python scripts/study004_storage.py restore && python scripts/make_paired_004.py --check &&
+python scripts/make_gates_004.py --check`.
+
+### D6: Targeted collapse confirmed on held-out seeds (confirms D1)
+
+- **Math.** Gain = mean over (case, post-burn-in step) of `dual_A − dual_P`, with dual as above, at an identical step
+  budget (45 steps per case, same seeds and masks).
+- **Data (Observed).** Pooled gain **0.115355**, CI95 [0.10409, 0.127123] (design estimate 0.115). Per family, dual
+  coverage P → A: cycle3 0.193 → 0.314; switch3 0.162 → 0.293; unstructured3 0.086 → 0.205; unaliased2 0.072 → 0.236
+  (3.3×); ood4 0.004 → 0.046 (11×). Every per-family CI excludes 0. Zero false certificates (taken, counterfactual or
+  public) in the five in-family families for A, P and C.
+- **Reading (Inferred).** Choosing the cut whose answer collapses the region's projection is worth roughly as much
+  coverage as v0.1.0 lost to the margin gate on the hard families, with no change to the certification rule. Soundness
+  carried over, as predicted by construction.
+- **White paper: yes.** The headline result of v0.2.0.
+
+### D7: The attractor is real, and it trades away counterfactual knowledge (confirms D2)
+
+- **Data (Observed).** On-policy coverage is about twice dual coverage under A (cycle3 0.539 against 0.314; unaliased2
+  0.461 against 0.236); under P the two are equal (0.197 / 0.193). Certificates for the action *not* taken fall under A:
+  cycle3 233 against 495 for P, switch3 184 against 439, unaliased2 29 against 206. In-family log-loss nevertheless
+  improves: A − C ranges from −0.012 (unaliased2, CI [−0.019, −0.007]) to −0.042 (switch3, CI [−0.054, −0.030]).
+- **Reading (Inferred).** A one-step lookahead keeps returning to actions it can already certify; it learns the taken
+  branch well and the other branch less. Dual coverage still rises because the taken branch gains more than the
+  other branch loses. **Open:** a multi-step objective that values the untaken branch.
+- **White paper:** with D8, as "safe exploitation under non-stationarity".
+
+### D8: Exploitation certifies on a stale model right after an unannounced change (confirms D3; G3′ fails)
+
+- **Data (Observed).** drift4 taken-action false certificates: **A 24 of 221**, P 1 of 16, C 1 of 16 (v0.90 on P's
+  trace: 81). Wrong-certificate steps for A: step 12 ×15, **step 13 ×3**, step 23 ×5, step 34 ×1 (drift steps are 12,
+  23, 34). The three non-drift errors are seeds 1390010 (mask 0.1), 1390011 (mask 0.1) and 1390016 (mask 0.35), all at
+  step 13, one step after the step-12 jump. A also issued 13 certificates at post-jump step 13 (`R2_post_jump`), 3 of them
+  wrong. All 24 were later withdrawn (124 retractions: 19 falsified, 70 scope withdrawn, 35 unverifiable masked).
+  Selective risk on drift4: A 0.122, P 0.077.
+- **Reading (Inferred).** At step 13 the n≤4 region had not yet been emptied by the post-jump evidence (it was not
+  contradicted, or Brute would have abstained), so the stale region still projected to a single point. More
+  certificates in force means more exposed when the world changes, and that stale projection lasts at least one step. No causal learner can avoid the first error at a silent jump; the
+  step-13 errors are the avoidable ones — they need a change-point test that withholds certification while the
+  evidence for the current region is younger than a few steps after a surprise, or a margin that includes
+  "recently changed" machines.
+- **White paper: yes,** with D7.
+
+### D9: The window rebuild beats the frequency table on drift (refines D5)
+
+- **Data (Observed).** drift4 log-loss: A 1.034239, P 1.056963, C (v0.1.1) 1.06755. P − suffix-1 = −0.124285, CI95
+  [−0.261194, −0.000571]: the first drift forecast in Brute whose interval excludes the suffix-1 baseline (v0.1.1 in
+  study-003: [−0.153, +0.107]). P − C = −0.0106, CI [−0.037, +0.016] — not distinguishable from v0.1.1 on these seeds.
+  `window_n4` served 1,006 of A's post-burn-in drift4 steps after 105 window restarts. ood5 does not regress: A 0.665014,
+  P = C 0.67712.
+- **Reading (Inferred).** Restarting a small exact learner at each contradiction is a cheap, causal change-point model.
+  The margin over v0.1.1 is too small to claim; the margin over the frequency table is just clear of 0.
+- **White paper:** no; a section of the D8 paper at most.
+
+### D10: Lookahead cost stays inside the row budget
+
+- **Data (Observed).** Peak rows 103,814 of 160,000 (unstructured3, margin and lookahead copy); 0 lookahead budget hits;
+  0 budget exhaustions in any arm.
+- **Reading (Inferred).** One-step lookahead fits the budget at n≤5; a two-step lookahead or n≤6 would not without a
+  new representation (ROADMAP).
+- **White paper:** no.
