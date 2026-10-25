@@ -1,100 +1,51 @@
 {
-  "version": "0.5.0",
+  "version": "0.6.0",
   "name": "Brute",
   "forked_from": "BGR v0.90.0 (tag bgr-v0.90.0-fork)",
-  "mission": "general intelligence research toward a geometric reasoning system; this release makes the exact constraint (SAT) representation of the version space the learner's backend (budget exhaustion abstains), adds pre-registered breadth families (6 states, 3 sensors, 3 actions) and tests a projection-volume experiment tie-break; not general intelligence",
-  "study": "BRUTE-050-REGION-007",
-  "preregistration": "experiments/BRUTE_PLAN_007.json",
-  "preregistration_commit": "5be08aa",
-  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_007.json",
-  "source_freeze_commit": "064a50e",
-  "release_freeze": "experiments/BRUTE_RELEASE_FREEZE_050.json",
-  "scoring_scripts_commit": "50e9321",
-  "seal_commit": "51215e0",
-  "run_start": "2026-10-25T06:11:52-04:00 (ledger run_start_007; 11.2 min after the scoring-script commit)",
-  "results_dir": "results/study-007",
-  "case_count": 864,
-  "stress_case_count": 24,
-  "gates": "results/study-007/GATES.json",
+  "mission": "general intelligence research toward a geometric reasoning system; this release tests drift-sound certification rules (R6 surprise-forgetting, C6 tracked-state certification), a non-enumeration exactness check (second SAT encoding on CaDiCaL), a GT1-hardened release verifier and exact model counting (pyganak) as a separately gated feasibility study; not general intelligence",
+  "study": "BRUTE-060-DRIFTSOUND-008",
+  "preregistration": "experiments/BRUTE_PLAN_008.json",
+  "preregistration_commit": "89c2d3b",
+  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_008.json",
+  "source_freeze_commit": "8e80615",
+  "release_freeze": "experiments/BRUTE_RELEASE_FREEZE_060.json",
+  "scoring_scripts_commit": "08ac3f3",
+  "seal_commit": "c21ef12",
+  "run_start": "2026-10-25T08:49:16-04:00 (ledger run_start_008; scoring scripts ledgered 08:38:46 EDT)",
+  "results_dir": "results/study-008",
+  "case_count": 936,
+  "gates": "results/study-008/GATES_008_FINAL.json",
   "gates_passed": [
-    "GX1_backend_exactness_2x2",
-    "GX3_budget_abstains",
     "G1_in_family_soundness",
     "G2_ood_soundness",
     "G4_public_safety",
-    "G5_false_alarm_limit",
     "G7_open_world",
     "G9_retraction_resume",
     "G10_compute",
     "G11_second_implementation",
     "G12_reproducibility",
-    "G13_tau7_reproduces"
+    "G13_frozen_controls_reproduce",
+    "GMC_model_counting_feasibility",
+    "GT1_verifier_parse_errors"
   ],
   "gates_failed": [
-    "GX2_backend_exactness_breadth",
     "G3_prime_drift4",
-    "G6b_M_coverage_vs_v020"
+    "G5_false_alarm_limit",
+    "G6b_coverage_vs_v020",
+    "GA1_drift_sound_and_coverage",
+    "GX2_prime_breadth_exactness_nonenum"
   ],
-  "GM_verdict": "NOT DISTINGUISHED",
-  "GX3_verdict": "PASS",
-  "gate_failure_note": "GX2: 0 mismatching breadth steps, but the enumeration reference was budget-stopped so act3 had 84.5% of steps checked (registered >= 90%). G3-prime: M5 had 1 false certificate at a non-drift step on drift4 (seed 1700015, mask 0.1, two steps after a drift, not public); A5 passes. G6b: M5 - A2 -0.079591, CI95 [-0.099615, -0.060224], predicted FAIL. Thresholds were not changed.",
-  "GM_note": "M5 - A5 +0.026202 CI95 [0.01093, 0.042536]; BM5 - B5 +0.039131 [0.020403, 0.057874]; SUPPORTED required G1/G2/G3-prime for M5, G3-prime fails, so NOT DISTINGUISHED",
-  "backend_exactness": {
-    "GX1_steps": 25344,
-    "GX1_mismatches": 0,
-    "GX1_excluded": 0,
-    "GX2_mismatching_breadth_traces": 0,
-    "GX2_checked_fraction_min": {
-      "act3": 0.845269,
-      "big6": 0.791016,
-      "sens3": 1.0,
-      "ood6s3": 1.0
-    },
-    "GX3_stress_forecasts_with_unknown": 257,
-    "GX3_certificates_with_unknown": 0
-  },
-  "false_certificates": {
-    "in_family_all_arms": 0,
-    "ood5_A5_M5": 0,
-    "ood6s3_B5_BM5_BP5": 0,
-    "drift4_A5": 6,
-    "drift4_A5_non_drift": 0,
-    "drift4_M5": 25,
-    "drift4_M5_non_drift": 1,
-    "drift4_A2_v020": 14,
-    "drift4_v090_control": 72
-  },
-  "dual_coverage": {
-    "M5_minus_A2": {
-      "pooled": -0.079591,
-      "ci95": [
-        -0.099615,
-        -0.060224
-      ]
-    },
-    "A5_minus_A2": {
-      "pooled": -0.105401,
-      "ci95": [
-        -0.117595,
-        -0.093633
-      ]
-    },
-    "A5_minus_A4": 0.0
-  },
-  "alarm": {
-    "tau6": 1.645215321642,
-    "tau7": 2.07944154168,
-    "tau7_calibration_cases": 450,
-    "false_alarm_cases_in_family": 0,
-    "resumes_checked": 2
-  },
-  "scaling_GR2_prime": "Observed: 0 UNKNOWN answers at n=4..12 (2a2s, 2a3s, 3a2s, 6 cases per bound); 2a2s max clauses 2323/4420/7209/10738/15055 at n=4/6/8/10/12; enumeration agreed on every step it ran; Inferred (post hoc, docs/research/v0.5.0/SCALING_FIT_007.json): cubic fit near-interpolating on 5 n values, power exponents 1.57-1.74 with curved residuals; time noisy and non-monotone; rests on few points",
-  "api": "brute.api 1.0-1.4 and 1.5 (BruteServiceV050: SAT region backend, SOLVER_BUDGET abstention)",
-  "version_note": "brute.release_version_050.RELEASE_VERSION = 0.5.0; earlier release_version modules keep their own versions (earlier freezes)",
-  "second_implementation": "second implementation by the same author, no brute import; 0 mismatching of 2592 arm traces; mutation test 20/20 detected, 0 false flags; post-hoc probability recompute (taken and untaken branches) 0 of 1728 A4/A5/M5 traces, 130602 forecasts, swap mutations 20/20; breadth probabilities not recomputed; not an independent or third-party audit",
-  "reproducibility": "296 of 296 rerun jobs byte-identical; calibration byte-identical",
-  "errata_v040": "docs/research/v0.4.0/ERRATA.md (E1-E10; merged to main as 47480f7 before this release)",
-  "deviations": "docs/research/BRUTE_DEVIATIONS_007.md",
+  "GA1": false,
+  "GX2_prime": false,
+  "GMC": true,
+  "gate_summary": "11 of 16 gated pass",
+  "gate_failure_note": "GA1 (target a) NOT MET: no arm of R6/C6 passes G1+G2+G3-prime+G6b. G3-prime: R6 1 and C6 2 false certificates at non-drift steps on drift4 (each one step after a drift; not public). G6b: R6-A2 -0.101235 [-0.112695,-0.089699], C6-A2 -0.072145 [-0.084144,-0.060724] (>= -0.03 required). G5: perm4 R6 and C6 4/72 = 0.0556 > 0.05 (the same 4 cases alarm in frozen A4/A5; tau6 alarm, mask 0.1, steps 8-9). GX2-prime (target b) FAIL, incomplete coverage: stream A (xcheck) stopped by owner decision at 17:44 EDT with 46/288 breadth cases checked (DEVIATIONS_008 D21); 0 mismatching traces and 0 witness failures on what was checked (Observed). Thresholds were not changed.",
+  "stream_A_stop": "owner decision 2026-10-25 ~17:44 EDT for runtime; 46/288 cases; XCHECK_008.json is a partial report written by scripts/make_xcheck_partial_008.py (D22); R_dev_xcheck_007 not run",
+  "GT1": "PASS: 56/56 corruption cases raise VerificationError in verify_release_060; frozen verify_release_050 still raises JSONDecodeError (unchanged, documented)",
+  "GMC_note": "2x2 A5 in_family_original: |R_t| counted on 3232 of 3240 sampled steps (0.997531), 0 disagreements with the blocking-clause count (2641 compared), 0 sum-check violations; counts never feed certification. Breadth (reported only): 1881/2016 (0.933036), 0 disagreements",
+  "deviations": "docs/research/BRUTE_DEVIATIONS_008.md",
+  "second_implementation": "second implementation by the same author, no brute import; 0 mismatching of 1872 arm traces; mutation 20/20 detected, 0 false flags; not an independent or third-party audit",
+  "reproducibility": "312 of 312 rerun jobs byte-identical; GMC recount 120 cases identical up to 11 timeout-only differences",
   "language_adapter": "template-only, grounded in brute.api responses; no language model connected",
   "baseline": "baseline/IDENTITY.json (zip not included in the fork)",
   "other_projects_modified": false
