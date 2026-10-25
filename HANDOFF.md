@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 05:36 EDT (implementation committed; smoke running)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 05:55 EDT (pre-freeze fixes, smoke recount running)._
 
 ## Current version and state
 
@@ -28,12 +28,14 @@ _Kept current on the working branch during a release and on `main` at release. L
 3. DONE `1b57efe` (ledger `a5215ee`, ~05:26): `experiments/v050_reference.py` second implementation (no brute import) +
    `tests/test_v050_reference.py` (k=2 generalised enumeration == frozen reference). Process notes for DEVIATIONS_007 in
    `docs/research/v0.5.0/PROCESS_NOTES.md`.
-4. DONE (pre-freeze, ~05:40-06:05): `fc2bed8` brute/region.py (RegionK/RegionSpace, tri-state Glucose3), brute/region_learner.py
+4. DONE (pre-freeze, ~05:27-05:41): `fc2bed8` brute/region.py (RegionK/RegionSpace, tri-state Glucose3), brute/region_learner.py
    (A5/M5), brute/breadth.py (B5/BM5/BP5), experiments/worlds_007 / brute_common_007 / brute_study_007 (per-case checkpoint);
    `c8e8611` brute_calibrate_007 + scaling_007; `b693113` api 1.5 service + schemas v1_5 + release_version_050 + tests/test_v050_impl.py
    (8 tests OK). Smoke (seeds 901-903 only): A5 vs A4 on all 8 2x2 families x 3 rates = 3168 steps, 0 mismatches (Observed);
    breadth per-case 0.2-6 s; scaling n=12 cases < 1 s.
-4b. RUNNING: smoke run of all arms (/tmp/w7/smoke) -> v050_reference count + mutation on it.
+4b. Smoke count (324 arm traces, 24/24 mutations detected) flagged 2 traces: residual == smoke tau7 at 12 d.p.; plan says
+   rounded residual > tau, reference used frozen unrounded _Alarm. Pre-freeze fix `0c86d90` (_Alarm12 in v050_reference, A4 audit
+   unchanged; disclosed in PROCESS_NOTES). `d7054a1`: run/storage/freeze scripts, torn-line-tolerant checkpoint. RUNNING: recount.
 5. Then: source freeze 007; scoring scripts separate commit >= 10 min before `run_start_007`; nohup run; seal; scoring; docs;
    release freeze 050; MANIFEST; fresh-clone verify; merge in /tmp/brute-main; tag v0.5.0 on merge; gh release.
 
