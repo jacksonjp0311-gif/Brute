@@ -25,7 +25,7 @@ _Kept current on the working branch during a release and on `main` at release. L
    seeds only, hashed in the plan). Ledger `preregistration_006` (appended after the errata merge to keep the chain linear).
 2. DONE `2eba00b`: clean-room second implementation `experiments/v040_reference.py` (written from the plan only,
    before any `brute/` v0.4.0 code; counts mismatches and has a mutation test). Ledger `reference_006`.
-3. IN PROGRESS: implementation `brute/resume.py` (A4/P4 resume, D2 depth-2, F2 fibre), `brute/geometry.py`
+3. DONE `2811904` (+ pre-freeze fix `b5e7077`): implementation `brute/resume.py` (A4/P4 resume, D2 depth-2, F2 fibre), `brute/geometry.py`
    (constraint region = H-representation of the version space; pysat Glucose3), `experiments/worlds_006.py` (perm4),
    `brute_common_006.py`, `brute_study_006.py`, `brute_calibrate_006.py`. Smoke (96 cases, placeholder tau6):
    reference count 0/80 traces then 0 on the larger smoke; mutation 20/20 detected.
@@ -33,7 +33,12 @@ _Kept current on the working branch during a release and on `main` at release. L
    >6 min). Fix before the freeze: `ConstraintRegion(conf_budget=None)` stays exact by default (GR1/GR1b unchanged);
    GR2 only uses `GR2_CONF_BUDGET=20000` conflicts per query and counts `unknown_steps/queries` (excluded from
    enum-vs-SAT agreement). Smoke after fix: 12 cases in 13 s, 0 disagreements, 1 case with unknowns at n=10 and n=12.
-5. DONE: source freeze 70a3c43 (ledgered). TODO: scoring scripts (separate commit), then runs. Original list: exactness, API 1.4, storage, tests,
+5. DONE: source freeze `70a3c43` (ledgered `94c80b2`).
+6. DONE `d9ddbe6` (03:08 EDT): scoring scripts `make_gates_006.py`, `make_paired_006.py`, `make_reproducibility_006.py`
+   in a separate commit (mechanically smoke-tested on /tmp smoke data only, not study data). Ledger `scoring_scripts_006`.
+   NEXT: wait until >= 03:19 EDT, ledger `run_start`, nohup calibrate -> study -> pack (outputs refuse to overwrite;
+   rerun of a step skips if its output exists). Logs in /tmp/p6/run006.log.
+   Original list: exactness, API 1.4, storage, tests,
    pins → `BRUTE_SOURCE_FREEZE_006.json` → scoring scripts in a separate commit ≥ 10 min before the run → ledger
    `run_start` → calibrate (twice, G13) → run → seal → `run_end` → gates/paired/count/repro/GR → docs → release freeze,
    MANIFEST, fresh-clone verify → `--no-ff` merge, tag v0.4.0 on the merge commit, gh release.
