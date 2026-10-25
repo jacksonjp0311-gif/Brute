@@ -20,7 +20,7 @@ def build():
             'also_requires':['experiments/BRUTE_SOURCE_FREEZE_002.json','experiments/BRUTE_SOURCE_FREEZE_003.json',
                              'experiments/BRUTE_SOURCE_FREEZE_004.json','experiments/BRUTE_SOURCE_FREEZE_005.json'],
             'plan_sha256':sha(PLAN),'preregistration_commit':'5fa3628','reference_commit':'2eba00b',
-            'implementation_commit':'2811904','sha256_files':{rel:sha(ROOT/rel) for rel in FILES}}
+            'implementation_commit':'2811904','pre_freeze_fix_commit':'b5e7077','sha256_files':{rel:sha(ROOT/rel) for rel in FILES}}
 
 
 if __name__=='__main__':

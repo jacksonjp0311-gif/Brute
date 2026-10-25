@@ -1,0 +1,38 @@
+{
+  "also_requires": [
+    "experiments/BRUTE_SOURCE_FREEZE_002.json",
+    "experiments/BRUTE_SOURCE_FREEZE_003.json",
+    "experiments/BRUTE_SOURCE_FREEZE_004.json",
+    "experiments/BRUTE_SOURCE_FREEZE_005.json"
+  ],
+  "implementation_commit": "2811904",
+  "plan_sha256": "01b2e51b48042acf94f889c1b2e773a4cc43084ecc243ddf21a1961255b0af37",
+  "pre_freeze_fix_commit": "b5e7077",
+  "preregistration_commit": "5fa3628",
+  "reference_commit": "2eba00b",
+  "schema": "brute.source-freeze.v1",
+  "sha256_files": {
+    "brute/api/schema/request.v1_4.json": "91e8d9360e0dd5624c7641aa12c2e0185f8bd3793653acac5916ee4bd2c08af1",
+    "brute/api/schema/response.v1_4.json": "4e1e9c08cb3ce1cf1e15b2551b390dd7bf76cfe0f1d5fd005edd752b6097821e",
+    "brute/api/service_v040.py": "e533e88b7c2850509fffc523c28da3aecb0acc5a7538832342723770fa270a89",
+    "brute/geometry.py": "a53164183530175f633c764770a962d70952a3e4d42ac0d5f5c2546c0153afc0",
+    "brute/release_version_040.py": "4a8785847286177458a9e6d37f515cb8177b285ebb8d06afcc103c29a5fa07bf",
+    "brute/resume.py": "601a13a8075d7afe5172f60affdb5bf6f8e75ca2f1651621d29dcea72f81c0bc",
+    "experiments/BRUTE_PLAN_006.json": "01b2e51b48042acf94f889c1b2e773a4cc43084ecc243ddf21a1961255b0af37",
+    "experiments/brute_calibrate_006.py": "ccc471098a188890b422b1b78374cc7f5d5dcfff661881aa4234b6eee0281d49",
+    "experiments/brute_common_006.py": "88beabeaa26b4ee950f37f01a3716996fa6f7ad14cd42dd81f3df94de1a6295c",
+    "experiments/brute_study_006.py": "d0d0e8cdc91a7de40df35578470fe7f15eb391435882a04a33f82f743eb64cae",
+    "experiments/exactness_006.py": "be619c2517e50213c4e046f9ae787de394d888da5871e70eec546bd7e1173670",
+    "experiments/v040_reference.py": "1205d40775d300e2b7321c0711233d3725bbd6f41b274e366d47c6293c071911",
+    "experiments/worlds_006.py": "f1f246359b5efb1151efc65bb6a77cfd49e1991797fe20a94d009b3e71f73f4d",
+    "requirements.txt": "53c193b76a288fd665d9c6b3391998c899ab8f88e50774d3807bdd006a4cd7a3",
+    "scripts/make_freeze_006.py": "8241c463f98e39d9dc8ed80d5e2d0714a3268d8870c50d3eb612f3c95ed23a0f",
+    "scripts/study006_storage.py": "2f77bfe7f0c8ed0ac7690e799f8a49969a12759ddbd4011dab9b02d04955956f",
+    "tests/test_api_contract_v040.py": "11d62c4d727e23fda2f90276f86be2e93464c08fa6dcd78eeedebbce1bfa5080",
+    "tests/test_brute_resume_006.py": "7c5cd3798e89fb41cc9ef356311c8f5363d58838752f4e8d0a2bb0e09c91ac10",
+    "tests/test_exactness_mutation_006.py": "21fd59785e9a916ef75ef5c2b6f3f91fd737adac79bf06b60a159e313300e80a",
+    "tests/test_v040_reference.py": "f0db2eb0711e089307f35db789cc2938dae9f51d27e859ce7df9270252277159"
+  },
+  "status": "frozen",
+  "study": "BRUTE-040-GEOMETRY-006"
+}
