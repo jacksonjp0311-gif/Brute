@@ -118,7 +118,7 @@ def _job(x):
 
 
 def count(cases,arms,eps,workers):
-    jobs=[(c,a,eps) for c in cases if c['block']=='2x2' for a in arms if a in c['arms']]
+    jobs=[(c,a,eps) for c in cases if c.get('block','2x2')=='2x2' for a in arms if a in c['arms']]
     with Pool(workers) as p:res=p.map(_job,jobs,chunksize=4)
     bad=[{'case':k,'arm':a,'message':m} for k,a,s,f,m in res if m]
     return len(res),sum(f for *_,f,m in res),bad
@@ -127,7 +127,7 @@ def count(cases,arms,eps,workers):
 def mutate(cases,k,arms,seed=20261025):
     rng=random.Random(seed);cases=copy.deepcopy(cases);cand=[]
     for i,c in enumerate(cases):
-        if c['block']!='2x2':continue
+        if c.get('block','2x2')!='2x2':continue
         for a in arms:
             if a not in c['arms']:continue
             st=[j for j,r in enumerate(c['arms'][a]['trace']) if r.get('forecast_source')=='v090' and r['counterfactual'].get('forecast_source')=='v090'
@@ -148,7 +148,7 @@ def mutate(cases,k,arms,seed=20261025):
 
 def run(directory,workers=6,mutate_k=0,arms=('A4','A5','M5')):
     d=json.loads((Path(directory)/'RESULTS.json').read_text());eps=d['plan']['open_world_reserve_epsilon']
-    two=[c for c in d['cases'] if c['block']=='2x2']
+    two=[c for c in d['cases'] if c.get('block','2x2')=='2x2']
     n,f,bad=count(two,arms,eps,workers)
     import hashlib
     rep={'schema':'brute.second-implementation-probabilities.v1',
