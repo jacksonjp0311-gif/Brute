@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 07:35 EDT (v0.5.0 released; v0.6.0 plan frozen on plan/v0.6.0, no code))._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 08:51 EDT (v0.6.0: source frozen 8e80615, scoring scripts 08ac3f3, held-out run started 08:49 EDT)._
 
 ## Current version and state
 
@@ -10,7 +10,11 @@ _Kept current on the working branch during a release and on `main` at release. L
 - **Alignment check of v0.5.0:** `docs/research/v0.5.0/ALIGNMENT_CHECK.md` (findings A1–A7; docs errata only).
 - **In progress: v0.6.0** on `plan/v0.6.0` — study-008 PRE-REGISTERED ONLY: `experiments/BRUTE_PLAN_008.json` frozen at
   `89c2d3b` (sha256 `6dc1a17d…7cdb502`; criteria canonical-JSON sha256 `2f6ee48a…3575e21`), ledger `preregistration_008`
-  in `1bc702f`. Readable: `docs/research/v0.6.0/PLAN_008.md`. **No v0.6.0 code exists; next step is (2) seed check.**
+  in `1bc702f`. Readable: `docs/research/v0.6.0/PLAN_008.md`. **Status 08:51 EDT:** seed check, reference, R6/C6, xcheck, GMC implemented; source freeze `8e80615` (ledger source_freeze_008);
+  scoring scripts `08ac3f3` (ledger scoring_scripts_008 08:38 EDT); deviations `docs/research/BRUTE_DEVIATIONS_008.md`;
+  ledger run_start_008 08:49 EDT; held-out run RUNNING: `nohup bash scripts/run_study_008.sh > /tmp/w8/run008.log`
+  (checkpointed; re-running the same command resumes; check `ps` for a running instance first). After RUN_DONE:
+  ledger run_end_008, commit sealed gz/JSON, seal_008, make_paired/reproducibility/gates_008, release step (10).
 
 ## Branches (origin `github.com/jacksonjp0311-gif/Brute`, public on purpose: James asked for it 2026-10-25 01:13 EDT)
 
