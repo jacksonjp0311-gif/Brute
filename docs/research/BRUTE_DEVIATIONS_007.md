@@ -113,6 +113,18 @@ seed it walked into such a window. The registered G3′ rule counts it, and the 
 NOT DISTINGUISHED although the coverage CI excludes 0. Nothing is changed; this is an input to v0.6.0 (a multi-step
 fibre was rejected in v0.4.0 as F2, which broke G3′ itself).
 
+## Q8. Release-time process items (disclosed after release, alignment check A6)
+
+- `verify_release_050` flagged two ledger sources whose last receipt predated a committed change: `experiments/v050_reference.py`
+  (pre-freeze fix `0c86d90`, Q1) and `experiments/v050_prob_reference.py` (schema fix `91ae0d8`, Q6). Late receipts
+  `reference_fix_007` and `prob_reference_fix_007` were appended at release (commit `3d9f587`); neither file changed after its
+  fix. A ledger entry `release_050` for `RELEASE.json` was also added (`d33a8b5`).
+- The README "Test suite at release" section (`d8bb38b`) and the v0.6.0 note on the `test_release_050` tamper-case defect were
+  written after the release freeze `267ca0f`; the defect is real and both frozen files stay as they are.
+- Main was merged with `--no-ff` (merge commit `8e03e03`, tree identical to `plan/v0.5.0` `b3415d2`) although a fast-forward
+  was possible; the owner's later spec preferred a fast-forward. Not undone (would need a force-push).
+- The GitHub release notes were edited once (07:13 EDT) to lead with the owner-specified summary; no number changed.
+
 ## Outcomes that stay on the record
 
 From `results/study-007/GATES.json` (*Observed*; thresholds as registered):

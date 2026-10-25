@@ -1,22 +1,23 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 07:12 EDT (v0.5.0 released (merge 8e03e03, tag v0.5.0, gh release); v0.6.0 not started))._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 07:15 EDT (v0.5.0 released (merge 8e03e03, tag v0.5.0, gh release); v0.6.0 not started))._
 
 ## Current version and state
 
-- **Released: v0.4.0** (tag `v0.4.0` = merge `5c02a7b` on main; GitHub release published 05:11 EDT). 15 of 16 gates
-  pass; G6b' fails (pre-registered risk, on the record); G14' OPEN. Tags v0.2.0/v0.3.0/v0.4.0 never move.
-- **In progress: v0.5.0 / study BRUTE-050-REGION-007** on `plan/v0.5.0` (owner request 05:13 EDT): (1) ConstraintRegion
-  as the production backend, exactness-gated against enumeration, SAT budget exhaustion -> ABSTAIN with reason;
-  (2) pre-registered breadth families (n>=6, >2 sensors, >2 actions) under the same soundness gates; (3) a
-  region-measure experiment policy aimed at G6b'. See "v0.5.0 progress" below.
+- **Released: v0.5.0** (tag `v0.5.0` → merge `8e03e03` on main; GitHub release published 07:12 EDT, notes edited 07:13 EDT).
+  12 of 15 gated pass; GX2, G3′, G6b fail (on the record); GM NOT DISTINGUISHED; GX3 PASS. Tags v0.2.0/v0.3.0/v0.4.0/
+  v0.5.0 never move. Post-tag commits on main are HANDOFF/MANIFEST/errata only.
+- **Alignment check of v0.5.0:** `docs/research/v0.5.0/ALIGNMENT_CHECK.md` (findings A1–A7; docs errata only).
+- **Next: v0.6.0** — pre-registration only on `plan/v0.6.0` (`experiments/BRUTE_PLAN_008.json`); no code before the plan
+  freeze is committed and ledgered.
 
 ## Branches (origin `github.com/jacksonjp0311-gif/Brute`, public on purpose: James asked for it 2026-10-25 01:13 EDT)
 
 | Branch | Head | State |
 | --- | --- | --- |
-| `main` | `5c02a7b` = tag v0.4.0 (+ HANDOFF commits) | Released code and record |
-| `plan/v0.5.0` | see `git log` | v0.5.0 working branch (from main) |
+| `main` | `8e03e03` = tag v0.5.0 (+ HANDOFF/errata commits) | Released code and record |
+| `plan/v0.6.0` | see `git log` | v0.6.0 pre-registration branch (from main) |
+| `plan/v0.5.0` | `d0516a0` | v0.5.0 working branch (merged) |
 | `plan/v0.4.0` | `5e7d208` | v0.4.0 working branch (merged) |
 | `bridge/v0.2`, `bridge/v0.1` | `cced586`, `9c88a3a` | Bridge work; **unmerged; do not edit or merge without a decision** |
 
@@ -120,9 +121,9 @@ _Kept current on the working branch during a release and on `main` at release. L
 ## Roadmap goal
 
 A **general-intelligence geometric reasoning system**: its core operations are on regions (projections, fibres, cuts),
-it certifies only what every surviving explanation agrees on, and it chooses experiments that shrink regions. Next it
-needs depth (multi-step lookahead and re-certification), a representation beyond enumeration, and breadth (new domains,
-larger alphabets, n ≥ 6). It is not AGI now; see `docs/ROADMAP.md`, `NEXT_ITERATION.md`, `docs/research/DISCOVERIES.md`.
+it certifies only what every surviving explanation agrees on, and it chooses experiments that shrink regions. Since v0.5.0
+the region (SAT) is the engine and breadth reaches 6 states / 3 sensors / 3 actions; next it needs a drift-sound
+certification rule narrower than the whole fibre, exactness checks beyond enumeration, and model counting. It is not AGI now; see `docs/ROADMAP.md`, `NEXT_ITERATION.md`, `docs/research/DISCOVERIES.md`.
 
 ## How to resume
 

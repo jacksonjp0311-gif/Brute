@@ -32,7 +32,7 @@ Brute is a fork of **BGR (Bitwork Geometric Reasoning) v0.90.0**, and that resea
 | Storage | *Exact.* Sealed traces for studies 004–007 are committed as deterministic gzip; `python scripts/study00{4,5,6,7}_storage.py restore` rebuild them and check them against `SEAL.json` |
 | Environment | *Exact.* Python 3.13.5, numpy 2.5.4, python-sat 1.9.dev17 (pinned in `requirements.txt` and `pyproject.toml`) |
 
-Every claim in this README carries a label:
+Every result claim in this README (status, gates, scaling, findings, limits) carries a label; descriptive sections (How it works, Quickstart, Repository) describe code and are not evidence claims:
 
 - **Exact**: proved or verified by the tests or by exact computation in this repository.
 - **Observed**: measured in study-007 (`results/study-007/SCIENTIFIC.json`, sealed), or in earlier studies where stated.
