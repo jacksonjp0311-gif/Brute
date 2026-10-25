@@ -268,6 +268,10 @@ def build(study=STUDY_DIR,smoke=False):
     # GX2''
     fr={f'{f}/{a}':((xc or {}).get('per_family_arm',{}).get(f'{f}/{a}') or {}).get('checked_fraction') for f in XFAM for a in SOUND_B}
     spot_steps=(xs or {}).get('checked_steps_per_family',{})
+    # incomplete inputs: breadth block, either report missing, gx2_sym stopped by the cap or an error (its own 30 min
+    # budget stop is allowed: unreached steps are unchecked and clause (ii) decides), gx2_spot stopped for any reason
+    gx_why=incomplete(('breadth',),files=(('XCHECK_009.json',xc),('XCHECK_SPOT_009.json',xs)),streams=('gx2_spot',))
+    if str(stopped.get('gx2_sym','')).startswith(('STUDY_BUDGET','exit code')):gx_why.append(f"gx2_sym stream stopped: {stopped['gx2_sym']}")
     gx={}
     if xc:
         gx={'i_zero_mismatching_and_witness':xc['mismatching_traces']==0 and xc['witness_replay_failures']==0,
@@ -283,7 +287,7 @@ def build(study=STUDY_DIR,smoke=False):
          'unknown_queries':(xc or {}).get('unknown_queries'),'witness_replay_failures':(xc or {}).get('witness_replay_failures'),
          'spot':None if xs is None else {k:xs[k] for k in xs if k not in ('mismatches',)},'wording':(xc or {}).get('wording'),
          'prediction':C['GX2_dprime_incremental_xcheck']['prediction']},
-         why=incomplete(('breadth',),files=(('XCHECK_009.json',xc),('XCHECK_SPOT_009.json',xs)),streams=('gx2_sym','gx2_spot')) if not (xc and xs and not str(stopped.get('gx2_sym','')).startswith(('STUDY_BUDGET','exit code')) and not stopped.get('gx2_spot','').startswith(('STUDY_BUDGET','exit code'))) or incomplete(('breadth',)) else None)
+         why=gx_why)
     # GP1
     P=(paired or {}).get('GP1_i_P7_minus_A5') or {};rc,rt=P.get('route_coverage'),P.get('route_tcert')
     pin=[c for c in pl if c['family'] in IFO];pood=fam(pl,'ood5');tin=tally(pin,'P7');tood=tally(pood,'P7')
