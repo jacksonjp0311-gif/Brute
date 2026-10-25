@@ -1,36 +1,39 @@
-# Brute v0.3.0: next iteration (proposal, not pre-registered)
+# Brute v0.4.0: next iteration (proposal, not pre-registered)
 
-The v0.2.0 note is kept at `docs/research/v0.2.0/NEXT_ITERATION.md` (v0.1.0's at `docs/research/v0.1.0/`). Labels are the
-same as in the README.
+Earlier notes are kept at `docs/research/v0.3.0/NEXT_ITERATION.md`, `docs/research/v0.2.0/` and `docs/research/v0.1.0/`.
+Labels are the same as in the README.
 
-## Where v0.2.0 leaves things (Observed, study-004)
+## Where v0.3.0 leaves things (Observed, study-005)
 
-- **Active cuts work.** Dual coverage gain +0.115 pooled (CI [0.104, 0.127]), with 0 false certificates in family and on
-  ood5, and in-family log-loss lower than v0.1.1 in every family.
-- **The only errors are stale certificates after an unannounced change.** drift4 A: 24 wrong, 21 at drift steps and
-  **3 one step later** (G3′ failed). Passive P: 1 wrong.
-- **The policy exploits.** On-policy coverage ≈ 2 × dual coverage; certificates for the untaken action fall.
-- **The window rebuild clears suffix-1 on drift** (P − suffix-1 CI upper −0.0006) but is not distinguishable from v0.1.1.
-- **Budget:** peak 103,814 of 160,000 rows; one-step lookahead fits, deeper lookahead or n≤6 would not (*Inferred*).
+- **Stale certificates are fixed on the gated block.** Certifying on the fibre over the latest observation (Y1k) gives
+  0 non-drift and 0 stale false certificates on drift4 (G3′ passes); 0 false certificates in family and on ood5.
+- **At a price.** Dual coverage A3 0.121 against v0.2.0's 0.220 (−0.098, G6b fails as pre-registered); still +0.064
+  over its own passive arm (G6).
+- **Not perfect beyond the gated block.** Extended drift4: 4 stale false certificates (v0.2.0: 15) — jumps into states
+  whose edge is still unknown.
+- **The D7 = D8 hypothesis is OPEN** (forced checks restored counterfactual knowledge but not safety; the certificate
+  geometry did the work).
+- **The τ alarm misfires on 5 of 72 held-out ood4 cases** (G5 fails; same in v0.1.1), and certification never
+  resumes after an alarm.
 
-## Recommendation for v0.3.0
+## Recommendation for v0.4.0: toward a general geometric reasoner
 
-1. **Change-point-aware certification (primary; targets G3′).** After any residual alarm, family contradiction, or
-   window restart, withhold CERTIFIED for k steps, *or* require the certificate to survive a "recent change" margin: the
-   n≤4 region rebuilt from only the last w observations must project to the same point. Pre-register k/w on design
-   seeds (study-004 seeds are now design data), gate G3′ unchanged, and gate the coverage cost against v0.2.0 A.
-   *Inferred:* the 3 step-13 errors are exactly the ones a w-window agreement test can catch; the 21 drift-step errors
-   cannot be caught by any causal learner.
-2. **Exploration that values the untaken branch.** Score actions by certifiable-pair gain over both actions, or a
-   two-step lookahead restricted to the margin-disagreeing rows, and gate dual (not on-policy) coverage. Measure the
-   row cost first (D10).
-3. **Representation study (measure, do not ship).** Compare enumeration against a partition-refinement (Myhill–Nerode
-   style) or SAT/model-counting projection on the study-004 traces: same decisions, fewer rows. This is the gate for
-   n≤6 and R4.
-4. **Keep the discipline:** new seed blocks, criteria frozen before code, v0.2.0 A and P as control arms, independent
-   reference, byte reproducibility, failures kept on the record.
+The aim is a reasoner whose core operations are geometric (a region, its projections and fibres, cuts that shrink
+them) and that scales beyond enumeration and beyond one toy domain. Three tracks, one study:
 
-## Not recommended
-
-- Loosening the margin gate or ε to raise coverage. *Rejected* (study-003 witness audit: every margin abstention is real).
-- Encoding the drift generator's period. *Rejected* as leakage.
+1. **Depth: re-certification through a multi-step fibre (primary; targets G6b).** Replace the one-observation fibre
+   with the fibre over the last w observations, shrinking as consistent evidence accumulates, and make the lookahead
+   two steps deep on the fibre (score the pair of actions that most shrinks it). Gate: G3′ unchanged, stale = 0 on the
+   extended block, and coverage non-inferior to v0.2.0 within −0.03. *Inferred:* D12's gap is mostly fibre points that
+   later evidence rules out.
+2. **Representation beyond enumeration (enabling).** Represent the region as a partition-refinement / quotient
+   automaton or a SAT/BDD encoding with projection and fibre queries, verified to give identical decisions to
+   enumeration on the sealed study-004/005 traces before any new study (an exactness gate, not a coverage gate). This
+   is the gate for n≤6, two-step lookahead within budget, and larger alphabets.
+3. **Breadth (first step).** Add one new domain family with a different geometry (e.g. 3 actions × 3-bit sensors, or
+   stochastic emissions with a credal region) to the held-out set, with its own soundness gate, so that no claim rests
+   on one toy domain. Keep the language adapter template-only until the core generalises.
+4. **Fix the alarm (hygiene).** Pre-register a recalibrated τ on new calibration seeds that bounds the held-out tail,
+   and a rule for resuming certification after an alarm once the region re-collapses.
+5. **Keep the discipline:** new seed blocks, criteria frozen before code, v0.3.0 A3/P3 and v0.2.0 A2 as control arms,
+   independent reference, byte-identical reproducibility, failures reported as failures.

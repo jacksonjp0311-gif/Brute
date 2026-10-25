@@ -202,9 +202,10 @@ scripts/make_gates_005.py --check`.
 ### D14: The passive learner knows more about the untaken branch than the active one
 
 - **Data (Observed).** Counterfactual (untaken-action) certificates, cycle3: P2 548 vs A2 164; in-family totals A3 574,
-  A2 474, E2 760. A3 has more counterfactual certificates than A2 despite lower dual coverage, because LU-R scores with
-  the Y1k gate and so steers less into taken-branch-only certainty (on-policy cycle3 A3 0.166 vs A2 0.598).
-- **Reading (Inferred).** Confirms D7 on new seeds; the robust gate partly undoes the attractor as a side effect.
+  A2 474, E2 760. A3 has more counterfactual certificates than A2 despite lower dual coverage; on-policy coverage cycle3 A3 0.166 vs
+  A2 0.598.
+- **Reading (Inferred).** Confirms D7 on new seeds. LU-R scores with the Y1k gate, so it is drawn less towards
+  taken-branch-only certainty; the robust gate partly undoes the attractor as a side effect.
 - **White paper:** no; a footnote to D13.
 
 ### D15: Residual-surprise false alarms on held-out ood4 seeds (G5 fails)
