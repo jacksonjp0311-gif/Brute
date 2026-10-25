@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 06:36 EDT (run done; paired, repro, prob done; count running))._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 06:53 EDT (count + gates done; 12/15 gated))._
 
 ## Current version and state
 
@@ -54,8 +54,11 @@ _Kept current on the working branch during a release and on `main` at release. L
    DONE merge main -> plan `0e29dc2`; ledger errata_040 `e972b8c` (receipt b00d1d20...).
 9. DONE run: sealed 06:25 (`51215e0`), RUN_DONE 06:27:47 (`3073992`), ledger run_end_007 `86bd7bc`. SCALING_FIT_007 `feeeb1d`.
    DONE paired + reproducibility (296/296 identical) `d88d4bb`, ledger `2ceb87e`. DONE PROB recompute 0/1728, 20/20 `ffeb0c4`.
-   RUNNING since 06:32: make_count_007 (nohup, log /tmp/w7/count007.log; if killed rerun `PYTHONPATH=. nohup python scripts/make_count_007.py --workers 6`).
-10. NEXT: gates (after count); DEVIATIONS_007; README/CHANGELOG/DISCOVERIES/ROADMAP/NEXT_ITERATION; RELEASE.json+pyproject 0.5.0;
+   DONE count `9c7737e` (0/2592 arm traces, mutation 20/20; breadth reference budget-stopped on some big6/act3 traces), ledger `7ddaf45`.
+   DONE `16d60cf` release freeze list also locks post-start audit scripts.
+   DONE gates `dab2012`, ledger `cda5c49`: 12/15 gated pass; FAIL GX2 (0 mismatches, act3 checked 84.5% < 90%), G3' (M5 1 non-drift
+   false cert on drift4; A5 passes), G6b (predicted). GM NOT DISTINGUISHED (M5-A5 CI > 0 but G3' fails for M5). GX3 PASS.
+10. NEXT: diagnostic on the M5 non-drift false cert (report only, no tuning); DEVIATIONS_007; README/CHANGELOG/DISCOVERIES/ROADMAP/NEXT_ITERATION; RELEASE.json+pyproject 0.5.0;
    release freeze 050; MANIFEST; verify_release_050 --fast; test_release_050; fresh clone; merge in /tmp/brute-main; tag; gh release.
 
 ## v0.4.0 progress (commit order is the chronology evidence)
