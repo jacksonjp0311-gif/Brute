@@ -58,7 +58,6 @@ class ChangePointBruteLearner(ActiveBruteLearner):
         super().__init__(*args,**kwargs)
         if resync is not None:self.resync=bool(resync)
         if check_run is not None:self.check_run=int(check_run)
-        self.resync_abstentions=0;self.checks=0
 
     def _last_mask(self):return mask_for_observation(self.support.evidence[-1][1])
 
