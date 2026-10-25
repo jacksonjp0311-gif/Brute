@@ -1,5 +1,36 @@
 # Brute changelog
 
+## v0.3.0: fibre-robust certification (study BRUTE-030-CHANGEPOINT-005)
+
+Criteria pre-registered at `25fa47b` before any v0.3.0 code (pre-freeze probe code disclosed, deviation P0); source
+frozen at `f7f3bd3` before the run; scoring scripts committed at `a1889b6` before results were inspected. Criteria were
+not changed afterwards. Deviations are in `docs/research/BRUTE_DEVIATIONS_005.md`.
+
+- **Y1k certification** (`brute/changepoint.py::ChangePointBruteLearner`): a CERTIFIED forecast stays certified only if
+  it is constant on the fibre of the n≤4 region over the latest observation (known edges; an unknown edge from the
+  current state counts as any code); otherwise ABSTAIN with `RESYNC_AMBIGUOUS` (never issued).
+- **LU-R experiments:** the v0.2.0 one-step lookahead scored with the Y1k gate. Optional `CHECK_RUN k` (0 in v0.3.0;
+  k=3 only for the mechanism arm E2).
+- **brute.api 1.3** (`BruteServiceV030`, `request/response.v1_3.json`): `RESYNC_AMBIGUOUS`, `experiment.check`,
+  `proposal: NO_PROPOSAL` with `no_proposal_reason` after OUT_OF_FAMILY (bridge O3).
+- **Version:** `brute/release_version_030.py` = 0.3.0 (earlier version files stay frozen).
+- **Storage (D1):** sealed traces committed as deterministic gzip; `scripts/study005_storage.py restore`.
+- **Study tooling:** five-arm runner (A3, P3, A2, P2, E2 + C and v0.90 controls) plus a 216-case extended drift4 block,
+  τ calibration check, independent reference (no `brute` import), gates/paired/reproducibility generators with
+  `--check`, `verify_release_030` (`--frozen` runs the unmodified v0.2.0 verifier on the raw v0.2.0 tree). Locks:
+  `BRUTE_SOURCE_FREEZE_005`, `BRUTE_RELEASE_FREEZE_030`.
+- **Results (Observed): 12 of 14 gated criteria pass; G5 and G6b fail.**
+  - **G3′ passes:** drift4 A3 9 false certificates, all at drift steps, 0 stale (v0.2.0 A2: 15, 1 non-drift, 2 stale;
+    v0.90: 89). 0 false certificates in family and on ood5 (taken, counterfactual, public), every arm.
+  - G6 dual coverage gain A3 − P3 **+0.064352**, CI95 [0.055054, 0.073922].
+  - **G6b fails (pre-registered risk):** A3 − A2 −0.098264, CI95 [−0.110885, −0.087267].
+  - **G5 fails:** ood4 5 of 72 cases raise a residual-surprise alarm (0.069 > 0.05), identically in v0.1.1 and v0.2.0.
+  - ood5 log-loss A3 0.63875, P3 = C 0.648728; drift4 A3 1.162304, P3 1.163681, A2 1.170786, C 1.181917.
+  - G14 (D7/D8 single-mechanism test, not gated): **OPEN** — S(A2) 17, S(E2) 14, S(A3) 4.
+  - Independent audit 0 mismatches (139,392 arm-steps); reproducibility byte-identical; τ reproduces.
+- **Tests:** see README Status (measured on a fresh clone). Expected errors are frozen earlier-release version checks
+  that fail by construction on the RELEASE.json bump (N1).
+
 ## v0.2.0: active experimentation and window rebuild (study BRUTE-020-ACTIVE-004)
 
 Criteria pre-registered at `c0ac594` before any v0.2.0 code; source frozen at `8bf8759` before the run. Criteria were not
