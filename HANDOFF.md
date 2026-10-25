@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 06:20 EDT (steering B1-B3 done; run at 600/888))._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 06:26 EDT (v0.4.0 errata on main 47480f7, merged; ledger errata_040))._
 
 ## Current version and state
 
@@ -47,8 +47,11 @@ _Kept current on the working branch during a release and on `main` at release. L
    no brute/bgr import; swap mutations; smoke dry-run 0/216 mismatches, 20/20 detected) + scripts/check_smoke_seeds_007.py
    (smoke seeds 901-903 disjoint from 468 evaluation seeds; 05:25 glance seed 1710001 overlaps -> deviation).
    DONE `033c716` ledger smoke_run_retroactive_007 + steering_after_run_start_007.
-   TODO: scaling fit script (state model, residuals; study-006 GR2 + SCALING_007); v0.4.0 errata on main (/tmp/brute-main):
-   H1, M1, M2, M3, L1-L6 -> ERRATA.md + DEVIATIONS_006/CHANGELOG/README/HANDOFF corrections + ledger errata_040; merge main into plan.
+   DONE `1c4dd00` scripts/scaling_fit.py + docs/research/v0.5.0/SCALING_FIT_006.json (power/exponential/cubic, residuals by n).
+   DONE `91ae0d8` post-hoc v0.90 probability recompute on sealed study-006 A4+P4: 0/1152 traces, 88,038 forecasts, mutation 20/20.
+   DONE main `47480f7` v0.4.0 errata (docs/research/v0.4.0/ERRATA.md E1-E10; DEVIATIONS_006 P8 + P1/P2 notes; CHANGELOG,
+   README, HANDOFF corrected; MANIFEST regenerated; verify_release_040 --fast passed; tag v0.4.0 still 5c02a7b).
+   DONE merge main -> plan `0e29dc2`; ledger errata_040 `e972b8c` (receipt b00d1d20...).
 9. After RUN_DONE: commit seal etc; make_count_007 (nohup) -> paired -> repro -> gates; then v050_prob_reference on the sealed data;
    docs; release freeze 050; MANIFEST; fresh-clone verify; merge in /tmp/brute-main; tag v0.5.0 on merge; gh release.
 
