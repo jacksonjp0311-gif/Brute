@@ -14,7 +14,8 @@ _Kept current on the working branch during a release and on `main` at release. L
   scoring scripts `08ac3f3` (ledger scoring_scripts_008 08:38 EDT); deviations `docs/research/BRUTE_DEVIATIONS_008.md`;
   ledger run_start_008 08:49 EDT; GT1 tooling `29cd0d1`; main study 936/936 sealed 08:58 EDT (SEAL.json `c21ef12`);
   streams A (xcheck), B (GMC), C (second impl, repro) RUNNING under: `nohup bash scripts/run_study_008.sh > /tmp/w8/run008.log`
-  (checkpointed; re-running the same command resumes; check `ps` for a running instance first). After RUN_DONE:
+  (checkpointed; re-running the same command resumes; check `ps` for a running instance first). EXACT NEXT STEP: wait for
+  `RUN_DONE` in /tmp/w8/run008.log (streams A xcheck + B GMC still running at 11:06 EDT; C done). After RUN_DONE:
   ledger run_end_008, commit sealed gz/JSON, seal_008, make_paired/reproducibility/gates_008, release step (10).
 
 ## Branches (origin `github.com/jacksonjp0311-gif/Brute`, public on purpose: James asked for it 2026-10-25 01:13 EDT)
