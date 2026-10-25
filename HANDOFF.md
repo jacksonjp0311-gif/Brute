@@ -36,7 +36,7 @@ _Kept current on the working branch during a release and on `main` at release. L
 5. DONE: source freeze `70a3c43` (ledgered `94c80b2`).
 6. DONE `d9ddbe6` (03:08 EDT): scoring scripts `make_gates_006.py`, `make_paired_006.py`, `make_reproducibility_006.py`
    in a separate commit (mechanically smoke-tested on /tmp smoke data only, not study data). Ledger `scoring_scripts_006`.
-   NEXT: wait until >= 03:19 EDT, ledger `run_start`, nohup calibrate -> study -> pack (outputs refuse to overwrite;
+   RUN STARTED 2026-10-25T03:20:15-04:00 (ledger `run_start_006`); if interrupted rerun the script (resumes). Then: ledger `run_start`, nohup calibrate -> study -> pack (outputs refuse to overwrite;
    rerun of a step skips if its output exists). Logs in /tmp/p6/run006.log.
    Original list: exactness, API 1.4, storage, tests,
    pins → `BRUTE_SOURCE_FREEZE_006.json` → scoring scripts in a separate commit ≥ 10 min before the run → ledger
