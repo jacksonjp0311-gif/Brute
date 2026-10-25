@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 09:12 EDT (v0.6.0: source frozen 8e80615, scoring scripts 08ac3f3, held-out run started 08:49 EDT; main study sealed 08:58 EDT, post-study streams running)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 10:15 EDT (v0.6.0: main study sealed 08:58 EDT; post-study streams running: xcheck 18/288 breadth cases, GMC 2x2 192/360, G11 second impl done, B5 enumeration running)._
 
 ## Current version and state
 
