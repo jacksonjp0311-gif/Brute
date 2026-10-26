@@ -19,7 +19,7 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 | **v0.8.0 ran every pre-registered stream inside a hard 2 h cap** with an independent watchdog: the whole study finished in 1,970 s (cap 7,200 s), the second implementation agreed on 648/648 + 144/144 mandatory traces and caught 20/20 injected mutations, and in-cap test isolation passed (294 tests). The kill drill stopped 8 process groups in 0.239 s | `results/study-010/GATES_010.json` (G11, GX2_010, GTI, G_RT ii/iii) | *Observed* |
 | In v0.7.0 the symmetric cross-check covered 100% of steps in every breadth family × arm in 316 s, with 0 mismatches | `results/study-009/` | *Observed* |
 | When the solver runs out of budget, the answer is **ABSTAIN / SOLVER_BUDGET, never a certificate** (257 stress forecasts, 0 certificates) | `brute/region.py`, study-007 GX3 | *Exact* / *Observed* |
-| Pre-registration and audit trail: the plan is frozen at a commit before any code, followed by a source freeze, a scoring freeze, a seal and a verifier. The ledger has 166 SHA-chained entries. `verify_release_080.py` regenerates gates, paired analysis and reproducibility byte-for-byte | `experiments/BRUTE_PLAN_0*.json`, `results/RESEARCH_LEDGER.jsonl`, `scripts/verify_release_080.py` | *Exact* |
+| Pre-registration and audit trail: the plan is frozen at a commit before any code, followed by a source freeze, a scoring freeze, a seal and a verifier. The ledger has 170 SHA-chained entries. `verify_release_080.py` regenerates gates, paired analysis and reproducibility byte-for-byte | `experiments/BRUTE_PLAN_0*.json`, `results/RESEARCH_LEDGER.jsonl`, `scripts/verify_release_080.py` | *Exact* |
 
 ## Where it stands
 
