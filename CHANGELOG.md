@@ -1,5 +1,22 @@
 # Brute changelog
 
+## v0.11.0: sound-transfer arms DR / AT / LX with wrong-family controls; embeddable API brute.certify/1 (study BRUTE-0110-SOUND-TRANSFER-013)
+
+**22 of 26 gated criteria pass.** Four fail, all in the transfer track: GST (headline), GS_a and GS_c (ATn, 3 false certificates in 1 of 288 cases) and GS_e (LX speedup, S −1.32 [−2.19, −0.50]). *Observed*. The scoring rules were fixed before the data (*Exact*).
+
+### Results (*Observed*)
+
+- **Transfer.** GS_d PASS: ATp S 6.64 [5.73, 7.54], 0 false in 10,202. GS_b PASS: DR ⊆ SP8 exactly, S 0. GS_ref PASS (288/288). The ATn false certificates come from one cycle3-library hypothesis aliased with a switch3 target (seed 6120009) for 7 confirmations.
+- **API.** GAPI PASS: `brute/api/certify.py` (`brute.certify/1`), host-agnostic, observations in → CERTIFIED answer or UNKNOWN out; `verify_release_0110` checks the interface and an UNKNOWN on one observation.
+- **Other.** First pass of G6b on the SP8 arm (−0.0104 [−0.0165, −0.0047]). G3′ strict PASS. GTI PASS (K_080/K_090 declared). G78 soundness with power (0 of 360). G1, G2, G3L, GH, G4, G5, G7, G9, G10, G11, G12, G13 and G_RT (R_G_RT_strict true) all pass.
+- **Runtime.** 2,148 s of 7,200 s; every stream complete. Kill drill 0.225 s. GLV `--long` 33 cases, 66 traces, 0 mismatches, 53.7 s of 900 s. GCC PASS.
+
+### Timeline (author's clock, EDT)
+
+- Seen-data applicability diagnostic `e0aa431` → plan `bb1d96e` → seeds `780be3b` → reference `eed2ada` → implementation `084076a`/`3871e78`/`7dc04c8` → rate math (no change) → source freeze `e6fc10c` (ledger `70c179f`) → scoring scripts `22bdb9f` (scoring_freeze_013 10:57:34–10:59:50 EDT; erratum `aab5046`) → run_start 11:10:34 (`9d588d0`) → RUN_DONE 11:46:22 → seal `5f45ed4` → run_end/seal ledger `af4b384` → GATES_013 `ad1ba6a` → release tooling `a56a177` → deviations/release ledger `d5bf4ce` → release freeze `8890884`/`ed53fdf` → clean clone `d9ca7bc`.
+- Deviations #53–#57 (retroactive smoke receipt, storage file in a later commit, ledger commit-field typo with erratum, push outage from ~10:56 EDT, watchdog/orchestrator start order): `docs/research/BRUTE_DEVIATIONS_013.md`. Erratum: the release-freeze commit message and its ledger note say "10 files"; the freeze holds 9 (`study013_storage.py` is already in the source freeze). *Exact.*
+- Default learner unchanged (Y1k, LU-R). DR, AT and LX are research arms.
+
 ## v0.10.0: first transfer test (TRp/TRn), J10 exact jump-window support, 7–8 state worlds, ROADMAP_TO_GI (study BRUTE-0100-SUPPORT-TRANSFER-012)
 
 **18 of 24 gated criteria pass.** Six fail: GT_a and GT_c (transfer soundness and negative control), G6b, GA1_012 (headline), G3′ strict, and GTI as frozen. *Observed*; scoring rules were fixed before the data (*Exact*).

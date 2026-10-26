@@ -1,16 +1,25 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 ~10:25 EDT (v0.11.0 IN PROGRESS on `plan/v0.11.0`)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 ~12:02 EDT (v0.11.0 release-ready on `plan/v0.11.0`; push blocked by GitHub auth)._
 
 ## Current version and state
 
 <!-- V0110 -->
-- **In progress: v0.11.0** (study BRUTE-0110-SOUND-TRANSFER-013, branch `plan/v0.11.0` from main b935fff + seen-data applicability diagnostic `e0aa431`, deviation #52).
-  - Plan frozen at `bb1d96e` (experiments/BRUTE_PLAN_013.json, readable docs/research/v0.11.0/PLAN_013.md). Headline gate GST = sound transfer: AT (applicability test, M_app 6) or LX (library experiment choice) must show 0 false certificates for both the positive and the wrong-family library, no significant help from the wrong family, and a significant speedup. DR (dual region) is Exact-sound and cannot speed up.
-  - Also: G6b on SP8 only; big78 SP8_78 288 cases with ≥150 certificates required; K_080/K_090 declared in GTI; GAPI = new brute/api/certify.py (`brute.certify/1`: observations in, certified answer or UNKNOWN out) with a test.
-  - Done: seeds `780be3b` → reference `eed2ada` → implementation `084076a`/`3871e78`/`7dc04c8` → smoke-1 (285 s) and kill drill (latency 0.225 s, `8984a18`) → GTI smoke (1464 s; failed only on a stale MANIFEST) → rate math (no change) → source freeze (25 files) ledgered at `70c179f` → scoring scripts + scoring_freeze_013 ledgered 10:57:34 EDT at `4e3852a` (scripts committed `22bdb9f`; per-script receipts 10:59 EDT + erratum `aab5046` for a typo in their commit field).
-  - **Next: run_start no earlier than 11:10:00 EDT** (last scoring_freeze_013 receipt ~10:59:50 EDT), hard cap = run_start + 2 h, orchestrator `scripts/run_study_013.py` + `setsid` watchdog `scripts/watchdog_013.py`. If interrupted mid-run: do NOT relaunch streams; run `run_study_013.py --finalize-only`, then seal_013, then score.
-  - Push note: from ~10:56 EDT the box GITHUB_TOKEN was rejected ("Invalid username or token"); commits after `7dc04c8` may be local only until auth is restored (then do a plain `git push`, never force).
+- **Release-ready: v0.11.0** (study BRUTE-0110-SOUND-TRANSFER-013, branch `plan/v0.11.0` from main b935fff + diagnostic `e0aa431`, deviation #52). **22 of 26 gated pass.**
+  - **TRANSFER (headline GST): FAIL.** GS_d PASS: ATp mean S 6.64 steps, seed-paired CI95 [5.73, 7.54], 146 helped / 0 hurt, 0 false in 10,202. **GS_a FAIL and GS_c FAIL:** ATn issued 3 false transfer-rule certificates in 1/288 cases (switch3 seed 6120009; one cycle3 hypothesis aliased for 7 confirmations). **GS_e FAIL:** LXp S −1.32 [−2.19, −0.50]; LX had 0 false certificates. GS_b PASS: DR ⊆ SP8 exactly, S 0. GS_ref PASS: 288/288.
+  - **API:** GAPI PASS. `brute/api/certify.py` implements `brute.certify/1` (observations in, CERTIFIED answer or UNKNOWN out; host-agnostic). `verify_release_0110` checks it.
+  - **PASS:** G1, G2, G3L, G3′ strict, G6b (SP8 − A2 −0.0104 [−0.0165, −0.0047]), GH, G4, G5, G7, G9, G10, G11, G12, G13, GTI (K_080/K_090 declared), G_RT (R_G_RT_strict true), G78_soundness (0 of 360), G78_containment, GS_b, GS_d, GS_ref, GAPI. Release gates: GLV `--long` PASS (33 cases, 66 traces, 0 mismatches, 53.7 s of 900 s); GCC clean clone PASS (`results/study-013/CLEAN_CLONE_013.json`).
+  - **Run:** run_start 11:10:34 EDT, hard cap 13:10:34 EDT, RUN_DONE 11:46:22 EDT (2,148 s of 7,200 s). The watchdog did not fire. Every stream completed. The GTI stream used 79% of its budget (disclosure). There were heartbeat gaps of 335 s and 94 s.
+  - **Chain (Exact, git ancestry):** plan `bb1d96e` → seeds `780be3b` → reference `eed2ada` → implementation `084076a`/`3871e78`/`7dc04c8` → source freeze `e6fc10c` → scoring `22bdb9f` (ledgered 10:57–10:59 EDT; erratum `aab5046`) → run_start `9d588d0` → seal `5f45ed4` → run_end/seal ledger `af4b384` → GATES_013 `ad1ba6a` → release tooling `a56a177` → deviation/release ledger `d5bf4ce` → release freeze `8890884`/`ed53fdf` → clean clone `d9ca7bc` → release docs.
+  - **Deviations #52–#57:** `docs/research/BRUTE_DEVIATIONS_013.md`.
+  - **BLOCKER:** `git push` has failed since ~10:56 EDT ("Invalid username or token"; `gh auth status` reports the GITHUB_TOKEN as invalid). Every commit after `7dc04c8` is local only. Once GitHub auth is restored, run these steps. Plain pushes only, never force:
+    1. `git push origin plan/v0.11.0`
+    2. Fresh clone, then `verify_release_0110` short and `--long`, then `tests.test_release_0110`.
+    3. Fast-forward main (`git merge --ff-only plan/v0.11.0`), then `git push origin main`.
+    4. `git tag -a v0.11.0`, then `git push origin v0.11.0`.
+    5. Create the GitHub release.
+    6. Update this block to "Released".
+  - **Next: v0.12.0 per `NEXT_ITERATION.md`.** Make the transfer license disagreement-based against the full region, add an aliasing stress block, use discriminating library experiments, and add `brute.certify/2`.
 <!-- /V0110 -->
 
 <!-- V0100 -->
