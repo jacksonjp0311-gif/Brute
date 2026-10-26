@@ -1,8 +1,15 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 ~10:03 EDT (v0.10.0 RELEASED; main)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 ~10:25 EDT (v0.11.0 IN PROGRESS on `plan/v0.11.0`)._
 
 ## Current version and state
+
+<!-- V0110 -->
+- **In progress: v0.11.0** (study BRUTE-0110-SOUND-TRANSFER-013, branch `plan/v0.11.0` from main b935fff + seen-data applicability diagnostic `e0aa431`, deviation #52).
+  - Plan frozen at `bb1d96e` (experiments/BRUTE_PLAN_013.json, readable docs/research/v0.11.0/PLAN_013.md). Headline gate GST = sound transfer: AT (applicability test, M_app 6) or LX (library experiment choice) must show 0 false certificates for both the positive and the wrong-family library, no significant help from the wrong family, and a significant speedup. DR (dual region) is Exact-sound and cannot speed up.
+  - Also: G6b on SP8 only; big78 SP8_78 288 cases with ≥150 certificates required; K_080/K_090 declared in GTI; GAPI = new brute/api/certify.py with a test.
+  - Next step: check_seeds_013 → v0110_reference → implementation + smoke + rate math → source freeze → scoring → run (2 h cap, watchdog).
+<!-- /V0110 -->
 
 <!-- V0100 -->
 - **Released: v0.10.0** (study BRUTE-0100-SUPPORT-TRANSFER-012, branch `plan/v0.10.0` = main 13daa32 + diagnostic, deviation #48). **18 of 24 gated pass.**
