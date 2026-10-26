@@ -1,0 +1,160 @@
+{
+ "v0110_ranges": {
+  "2x2/cycle3": [
+   6010001,
+   6010024
+  ],
+  "2x2/switch3": [
+   6020001,
+   6020024
+  ],
+  "2x2/unstructured3": [
+   6030001,
+   6030024
+  ],
+  "2x2/unaliased2": [
+   6040001,
+   6040024
+  ],
+  "2x2/ood4": [
+   6050001,
+   6050024
+  ],
+  "2x2/perm4": [
+   6060001,
+   6060024
+  ],
+  "2x2/ood5": [
+   6070001,
+   6070024
+  ],
+  "2x2/drift4": [
+   6080001,
+   6080096
+  ],
+  "big78/moore78": [
+   6090001,
+   6090096
+  ],
+  "target/cycle3": [
+   6110001,
+   6110024
+  ],
+  "target/switch3": [
+   6120001,
+   6120024
+  ],
+  "target/unaliased2": [
+   6130001,
+   6130024
+  ],
+  "target/ood4": [
+   6140001,
+   6140024
+  ],
+  "source": [
+   6150001,
+   6150096
+  ],
+  "smoke": [
+   6190001,
+   6190030
+  ]
+ },
+ "prior_files": [
+  "PLAN.json",
+  "BRUTE_PLAN_002.json",
+  "BRUTE_PLAN_003.json",
+  "BRUTE_PLAN_004.json",
+  "BRUTE_PLAN_005.json",
+  "BRUTE_PLAN_006.json",
+  "BRUTE_PLAN_007.json",
+  "BRUTE_PLAN_008.json",
+  "BRUTE_PLAN_009.json",
+  "BRUTE_PLAN_010.json",
+  "BRUTE_PLAN_011.json",
+  "BRUTE_PLAN_012.json"
+ ],
+ "prior_range_count": 136,
+ "pairwise_overlaps": [],
+ "prior_overlaps": [],
+ "mandatory_optional_overlap": [],
+ "subset_violations": [],
+ "g11_mandatory_cases": 216,
+ "g11_optional_cases": 54,
+ "long_verify_cases": 33,
+ "source_worlds": 96,
+ "negative_controls": [
+  [
+   "smoke",
+   901,
+   "refused"
+  ],
+  [
+   "smoke",
+   6010001,
+   "refused"
+  ],
+  [
+   "smoke",
+   3190001,
+   "refused"
+  ],
+  [
+   "2x2",
+   6190001,
+   "refused"
+  ],
+  [
+   "2x2",
+   4010001,
+   "refused"
+  ],
+  [
+   "2x2",
+   6010025,
+   "refused"
+  ],
+  [
+   "2x2",
+   6080097,
+   "refused"
+  ],
+  [
+   "big78",
+   6090097,
+   "refused"
+  ],
+  [
+   "big78",
+   6010001,
+   "refused"
+  ],
+  [
+   "target",
+   6110025,
+   "refused"
+  ],
+  [
+   "target",
+   6150001,
+   "refused"
+  ],
+  [
+   "source",
+   6150097,
+   "refused"
+  ],
+  [
+   "source",
+   6110001,
+   "refused"
+  ],
+  [
+   "2x2",
+   9000001,
+   "refused"
+  ]
+ ],
+ "PASS": true
+}
