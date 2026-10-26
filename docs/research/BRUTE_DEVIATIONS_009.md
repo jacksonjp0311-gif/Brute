@@ -81,3 +81,13 @@ after the held-out run and says so per entry. Labels: Exact / Observed / Simulat
 25. **Release steps after the cap were run by the operating agent under a deadline of 2026-10-26 01:00 EDT** set by the
     owner's session; no study stream was relaunched or extended (Exact). Large raw files packed with
     scripts/study009_storage.py pack (deterministic gzip) before the study SEAL, as study-008.
+26. **Release verifier fixed after the release freeze; freeze superseded by BRUTE_RELEASE_FREEZE_070_R1.json.** The
+    first final-tree test run (23:29–23:44 EDT, kept as results/study-009/TEST_SUITE_009_FINAL_ATTEMPT1.json, not
+    used by any gate) failed 3 tests of tests/test_release_070.py because scripts/verify_release_070.py had two defects
+    (Observed): (a) it required a 'schema' key on every study-009 JSON, but the frozen orchestrator writes
+    PROGRESS_009.json (sealed) without one; REQUIRED_KEYS now maps PROGRESS_009.json to 'streams'; (b) it re-checked
+    experiments/BRUTE_RELEASE_FREEZE_060.json, which _060_R1 superseded before the v0.6.0 tag (verify_release_060.py
+    is unchanged since tag v0.6.0, Exact by git diff); that freeze is no longer re-checked. No study output, scoring
+    script, plan or source-freeze file changed (Exact). The fix was written after seeing the failure, by the same agent,
+    and is release tooling only; RELEASE.json release_freeze now points to _070_R1. The final-tree test run was
+    repeated on the fixed tree; GATES_009_FINAL uses that second run. GATES_009 is unchanged (Exact).

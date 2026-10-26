@@ -23,10 +23,12 @@ REQUIRED_KEYS={'SEAL.json':'study','GATES_009.json':'gates','GATES_009_FINAL.jso
                'XCHECK_SPOT_009.json':'mismatching_traces','PLANNING_AUDIT_009.json':'iv_replay','TEST_SUITE_009.json':'verdict',
                'TEST_SUITE_009_FINAL.json':'verdict','RUN_STATE_009.json':'stopped','RUN_DONE_009.json':'elapsed_s',
                'STOP_009.json':'unfinished_or_stopped','SEEDCHECK_009.json':'PASS','SPOT_SAMPLE_009.json':'cases','DIAG_LAG_009.json':'arms',
-               'RELEASE.json':'version'}
+               'RELEASE.json':'version',
+               'PROGRESS_009.json':'streams'}  # R1: run_study_009 writes PROGRESS_009 without 'schema' (DEVIATIONS_009 entry 26)
 RELEASE_KEYS=('version','preregistration','preregistration_commit','source_freeze','source_freeze_commit','release_freeze',
               'scoring_scripts_commit','seal_commit','results_dir','gates_passed','gates_failed','GA1_prime','GP1','GTI_release_statement')
-PREVIOUS_FREEZES=PF060+('experiments/BRUTE_SOURCE_FREEZE_008.json','experiments/BRUTE_RELEASE_FREEZE_060.json','experiments/BRUTE_RELEASE_FREEZE_060_R1.json')
+# R1: BRUTE_RELEASE_FREEZE_060.json is superseded by _060_R1 (verify_release_060 changed before the v0.6.0 tag), so it is not re-checked (entry 26)
+PREVIOUS_FREEZES=PF060+('experiments/BRUTE_SOURCE_FREEZE_008.json','experiments/BRUTE_RELEASE_FREEZE_060_R1.json')
 SCORING=('scripts/make_gates_009.py','scripts/make_paired_009.py','scripts/make_reproducibility_009.py')
 LEDGER_ORDER=('preregistration_009','seedcheck_009','diagnostic_009','second_implementation_009','source_freeze_009','scoring_freeze_009',
               'run_start_009','seal_009','gates_009')
