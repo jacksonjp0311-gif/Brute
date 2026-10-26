@@ -1,0 +1,128 @@
+{
+ "v090_ranges": {
+  "heldout_ranges_2x2/cycle3": [
+   4010001,
+   4010024
+  ],
+  "heldout_ranges_2x2/switch3": [
+   4020001,
+   4020024
+  ],
+  "heldout_ranges_2x2/unstructured3": [
+   4030001,
+   4030024
+  ],
+  "heldout_ranges_2x2/unaliased2": [
+   4040001,
+   4040024
+  ],
+  "heldout_ranges_2x2/ood4": [
+   4050001,
+   4050024
+  ],
+  "heldout_ranges_2x2/perm4": [
+   4060001,
+   4060024
+  ],
+  "heldout_ranges_2x2/ood5": [
+   4070001,
+   4070024
+  ],
+  "heldout_ranges_2x2/drift4": [
+   4080001,
+   4080096
+  ],
+  "smoke": [
+   4190001,
+   4190030
+  ],
+  "feas/n6": [
+   4200001,
+   4200012
+  ],
+  "feas/n7": [
+   4210001,
+   4210012
+  ],
+  "feas/n8": [
+   4220001,
+   4220012
+  ]
+ },
+ "prior_files": [
+  "PLAN.json",
+  "BRUTE_PLAN_002.json",
+  "BRUTE_PLAN_003.json",
+  "BRUTE_PLAN_004.json",
+  "BRUTE_PLAN_005.json",
+  "BRUTE_PLAN_006.json",
+  "BRUTE_PLAN_007.json",
+  "BRUTE_PLAN_008.json",
+  "BRUTE_PLAN_009.json",
+  "BRUTE_PLAN_010.json"
+ ],
+ "prior_range_count": 108,
+ "pairwise_overlaps": [],
+ "prior_overlaps": [],
+ "subset_violations": [],
+ "g11_mandatory_cases": 216,
+ "long_verify_cases": 33,
+ "negative_controls": [
+  [
+   "smoke",
+   901,
+   "refused"
+  ],
+  [
+   "smoke",
+   4010001,
+   "refused"
+  ],
+  [
+   "smoke",
+   2190001,
+   "refused"
+  ],
+  [
+   "2x2",
+   4190001,
+   "refused"
+  ],
+  [
+   "2x2",
+   3010001,
+   "refused"
+  ],
+  [
+   "2x2",
+   4010025,
+   "refused"
+  ],
+  [
+   "2x2",
+   4080097,
+   "refused"
+  ],
+  [
+   "feas",
+   4200013,
+   "refused"
+  ],
+  [
+   "feas",
+   4010001,
+   "refused"
+  ],
+  [
+   "2x2",
+   4210001,
+   "refused"
+  ],
+  [
+   "feas",
+   4220001,
+   "refused"
+  ]
+ ],
+ "PASS": true
+}
