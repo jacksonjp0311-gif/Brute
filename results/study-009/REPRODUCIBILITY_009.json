@@ -1,0 +1,83 @@
+{
+  "G12_pass": true,
+  "blocks": {
+    "2x2": {
+      "allowed_p7_fallback_differences": [],
+      "byte_identical": 216,
+      "expected": 216,
+      "failing_differences": [],
+      "main_scientific_sha256": "46161c47dbe894d28d40820f052b2d7bb4b91f5c1022d84fe04c4c1caeb47c8e",
+      "missing": [],
+      "passed": true,
+      "repro_complete": true,
+      "repro_scientific_sha256": "1dc5089de884e7ef672d04f60355a4b589701476910ccf524093423ed98b88e3",
+      "rerun": 216,
+      "unexpected": []
+    },
+    "breadth": {
+      "allowed_p7_fallback_differences": [],
+      "byte_identical": 96,
+      "expected": 96,
+      "failing_differences": [],
+      "main_scientific_sha256": "eb4643b92f78ab08b4edfc1ae3f01386f332417d60e5c85c9c6a840306318301",
+      "missing": [],
+      "passed": true,
+      "repro_complete": true,
+      "repro_scientific_sha256": "06945ade4db843b7da54832c6d2647722d9e84f5ee0cb8c66669ccba8e18d968",
+      "rerun": 96,
+      "unexpected": []
+    },
+    "planning": {
+      "allowed_p7_fallback_differences": [
+        {
+          "allowed": true,
+          "first_budget_fallback_step": 14,
+          "first_differing_step": 14,
+          "key": "planning/unstructured3/2030002/0.1",
+          "why": "differs only from the first budget/timeout fallback"
+        },
+        {
+          "allowed": true,
+          "first_budget_fallback_step": 10,
+          "first_differing_step": 10,
+          "key": "planning/unstructured3/2030003/0.1",
+          "why": "differs only from the first budget/timeout fallback"
+        },
+        {
+          "allowed": true,
+          "first_budget_fallback_step": 27,
+          "first_differing_step": 27,
+          "key": "planning/unstructured3/2030005/0.1",
+          "why": "differs only from the first budget/timeout fallback"
+        },
+        {
+          "allowed": true,
+          "first_budget_fallback_step": 20,
+          "first_differing_step": 20,
+          "key": "planning/unstructured3/2030006/0.1",
+          "why": "differs only from the first budget/timeout fallback"
+        },
+        {
+          "allowed": true,
+          "first_budget_fallback_step": 14,
+          "first_differing_step": 14,
+          "key": "planning/unstructured3/2030008/0.1",
+          "why": "differs only from the first budget/timeout fallback"
+        }
+      ],
+      "byte_identical": 43,
+      "expected": 48,
+      "failing_differences": [],
+      "main_scientific_sha256": "50dd322fb4bc4deca4b661eedc6f32a0c41375cf31a544f01c4b8daaa8ba83b7",
+      "missing": [],
+      "passed": true,
+      "repro_complete": true,
+      "repro_scientific_sha256": "8331c431b0dc3e3b0e465e6e686617e83f2333d5b1b698df65fa58b8c5b21cc3",
+      "rerun": 48,
+      "unexpected": []
+    }
+  },
+  "schema": "brute.reproducibility.v9",
+  "smoke_dry_run": false,
+  "study": "BRUTE-070-SYNCPLAN-009"
+}
