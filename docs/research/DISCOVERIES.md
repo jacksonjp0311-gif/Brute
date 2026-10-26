@@ -322,3 +322,32 @@ scripts/make_gates_005.py --check`.
   it needs a certification rule that is sound on drift and narrower than "the whole fibre" — e.g. a fibre restricted by
   the evidence since the last possible jump.
 
+
+## Study-009 (v0.7.0)
+
+### D26: Incremental solving with symmetry breaking makes breadth exactness cheap; without symmetry it is still slow
+
+- **Data (Observed).** GX2″ symmetric incremental CaDiCaL check: every step of B5, BS7, BSC7 on all 288 breadth cases,
+  0 mismatches, 0 witness failures, 0 unknown queries, 316 s wall on 4 workers. The no-symmetry spot check (same
+  adopted solver, symmetry breaking off) took 15–1,386 s per case and finished 6 of 24 cases in 30 min. In v0.6.0
+  the non-incremental check covered 46 of 288 cases (B5/BR6/BC6) in ~8.8 h.
+- **Reading (Inferred).** Per case the symmetric incremental check is on the order of 10² times faster than the
+  v0.6.0 check (different arms and seeds; not a controlled comparison). The spot data suggest symmetry breaking, not
+  incrementality alone, carries most of it. A controlled factorial (incremental × symmetry) is *Open*.
+
+### D27: Synchronous drift events do not close the post-drift window
+
+- **Data (Observed).** drift4 non-drift false certificates: S7 4, SC7 5 (R6 15 / C6 24 / A5 21 taken-action false in
+  total on these seeds; S7 15, SC7 19). E2 (falsified certificate) fired 11 (S7) / 15 (SC7) times on 144 drift4
+  cases; E1 1,839 and E3 541. S7 − R6 coverage −0.0006; SC7 − C6 +0.0145 [0.0105, 0.0189].
+- **Reading (Inferred).** Withdrawing on events at the step they are observed still leaves the step after a silent
+  jump uncovered: the evidence that a jump happened arrives after the certificate is issued. A rule needs to price the
+  possibility of a jump before evidence of it, not react to it.
+
+### D28: Exact model counts did not make better experiments than LU-R
+
+- **Data (Observed).** P7 − A5 coverage −0.035 (CI97.5 [−0.054, −0.017]); T_cert +0.64 steps; switch3 −0.098 and
+  +7.75 steps; planned fraction ≥ 0.80, 0 false certificates, replay isolation and count audit pass.
+- **Reading (Inferred).** Count reduction is not the same objective as certification: shrinking |R_t| does not
+  necessarily collapse the projection that the next forecast needs. *Open*: a planner scoring projection collapse on
+  counts.

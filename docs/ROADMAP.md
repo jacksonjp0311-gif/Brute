@@ -10,8 +10,17 @@ Labels: **Exact**, **Observed**, **Simulated**, **Inferred**, **Rejected**, **Op
 | v0.3.0 | Fibre-robust certification (Y1k: a certificate must be constant on the fibre of the region over the latest observation) and the LU-R lookahead scored with it | Observed (study-005): G3′ passes (0 stale certificates on the gated drift4 block, 0 in-family errors); coverage −0.098 vs v0.2.0 (G6b failed, as pre-registered); G5 failed (τ alarm on 5/72 ood4 cases, unchanged rule); D7=D8 test OPEN |
 | v0.4.0 | Exact H-representation of the version space (`ConstraintRegion`, CNF + symmetry breaking) verified decision-identical to enumeration; recalibrated, resumable alarm; two-step lookahead / two-step fibre candidates; perm4 family; powered D7/D8 | Observed (study-006): GR1/GR1b 0 mismatches in 1.25 M items; clauses ~n^1.6 vs rows ~n^8.5 (few points; SAT time noisy); 15/16 gates; G5 passes; G6b′ fails (−0.104, pre-registered); D2/F2 fail (F2 unsound); D7/D8 OPEN (R 0.63); representation not yet the learner's engine |
 | v0.5.0 | The learner on the constraint region (SAT backend, SOLVER_BUDGET abstention); breadth families (6 states, 3 sensors, 3 actions); projection-volume tie-break | Observed (study-007): A5 = A4 on 25,344 steps; breadth 0 false certificates; 12/15 gates (GX2 coverage of the reference, G3′ for M5, G6b fail); GM NOT DISTINGUISHED (+0.026 coverage, 1 non-drift false); clauses 2.3k→15k at n=4→12, 0 UNKNOWN |
-| v0.6.0 | A certification rule sound on drift but narrower than the whole fibre; exactness reference beyond enumeration (a second SAT/BDD encoding); model counting; incremental SAT | Open (proposal in NEXT_ITERATION.md) |
+| v0.6.0 | Drift-sound certification rules R6/C6; non-enumeration exactness check (CaDiCaL); hardened verifier; model counting | Observed (study-008): 11/16 gates; GA1 FAIL (G3′, G6b), GX2′ incomplete (46/288), G5 FAIL (perm4); GT1, GMC pass |
+| v0.7.0 | Synchronous drift events S7/SC7; incremental symmetric xcheck; count planner P7; per-module test isolation; 3 h stop rule | Observed (study-009): 9/17 gates; GA1′ FAIL (G3′ S7 4 / SC7 5, G6b SC7 −0.050); GP1 FAIL (−0.035); GX2″ symmetric part complete, 0 mismatches, but FAIL STUDY_BUDGET (spot 6/24); G11, GTI, G_RT FAIL STUDY_BUDGET |
+| v0.8.0 | A certification rule that prices an unobserved jump before evidence of it; a planner scoring projection collapse; every stream checkpointed and projected before run_start | Open (proposal in NEXT_ITERATION.md) |
 | later | n≥6 and richer action and sensor alphabets on the compact representation; stochastic worlds with credal regions; deeper experiment design; learned family selection; grounding beyond templates | Open |
+
+**Position after v0.7.0 (Inferred).** (3) representation/exactness moved most: breadth exactness without enumeration
+is now cheap with symmetry breaking (all 288 breadth cases in 316 s, *Observed*). (1) time is still the binding
+soundness limit: reacting to drift events, even synchronously, does not stop stale certificates one step after a silent
+jump (D27). (2) depth/experiment design: exact counts are available but count reduction is the wrong objective (D28).
+Process: the 3 h stop rule worked as a stop rule but cost G11 and GTI, so runtime planning is now a gap of its own.
+SC7 is the closest rule to G6b so far (−0.050). It is not general intelligence.
 
 **Position after v0.5.0 (Inferred).** (3) representation — the region is now the engine, decision-identical to the
 enumeration learner and reaching n = 12 and wider alphabets with 0 solver unknowns in the runs made (*Observed*). (4)

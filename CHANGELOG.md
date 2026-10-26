@@ -1,5 +1,27 @@
 # Brute changelog
 
+## v0.7.0: synchronous drift events, incremental symmetric xcheck, a count planner, per-module test isolation (study BRUTE-070-SYNCPLAN-009)
+
+**9 of 17 gated criteria pass. GA1′ (target a), GP1 (target c), G3′ and G6b fail on the data; GX2″ (target b), GTI (target d), G11 and G_RT fail STUDY_BUDGET** because the 3 h stop rule fired (*Observed*; scoring rule fixed before data, *Exact*).
+
+Timeline (commit and ledger times are the author's clock):
+
+- Criteria pre-registered at `3825ad3` (`experiments/BRUTE_PLAN_009.json`); seed check, lag diagnostic a0 on sealed study-008, second implementation `experiments/v070_reference.py`.
+- Source frozen at `f9b94e7`; scoring scripts frozen at `b49cc37` (ledger scoring_freeze_009, 19:53 EDT).
+- Held-out run (`scripts/run_study_009.py`) started 20:04:06 EDT; 3 h cap 23:04:06 EDT; the stop rule fired at 23:22:42 EDT (late, DEVIATIONS_009 entry 21). gx2_spot stopped by its 30 min stream budget (6/24 cases); g11 stopped by the cap with no output; GTI never started.
+- Pack `30bb932`, ledger run_end_009 + study SEAL `327d4fd`, paired + reproducibility, GATES_009 `a50f751`, final-tree test run and GATES_009_FINAL, release freeze `BRUTE_RELEASE_FREEZE_070.json`. Deviations: `docs/research/BRUTE_DEVIATIONS_009.md` (entries 1–25).
+
+Code:
+
+- **`brute/syncevent.py`**: research arms S7/SC7 (2x2) and BS7/BSC7 (breadth): certificates are withdrawn on synchronous events E1 ∪ E2 ∪ E3. Not the default.
+- **`brute/planner.py`**: P7, an experiment planner that scores actions with exact model counts (forked per-count 2 s limit, 150 s per case). Not the default.
+- **Adopted byte-identical from `verify/xcheck-incremental` (c2bf07e):** `brute/xcheck_sat_incremental.py`, `experiments/v060_xcheck_incremental.py`, `tests/test_xcheck_sat_incremental.py`; `experiments/v070_xcheck.py`.
+- **`scripts/run_tests_070.py`**: GTI runner, one fresh interpreter per test module.
+- **`scripts/run_study_009.py`**: Python orchestrator with per-stream budgets, a 3 h cap and seal-partial.
+- **`scripts/verify_release_070.py`, `tests/test_release_070.py`, `scripts/make_gates_final_009.py`, `scripts/study009_storage.py`, `brute/release_version_070.py`.**
+
+Results (*Observed*): G1/G2 0 false certificates for every arm; S7 4 / SC7 5 non-drift false certificates on drift4; G6b S7 −0.0989, SC7 −0.0503; GP1 coverage −0.035; GX2″ symmetric check 100% of breadth steps, 0 mismatches, 316 s; G5 0 alarms everywhere; G12 360/360.
+
 ## v0.6.0: drift-sound certification rules, a non-enumeration exactness check, a hardened verifier, model counting (study BRUTE-060-DRIFTSOUND-008)
 
 **11 of 16 gated criteria pass. GA1 (target a), GX2′ (target b), G3′, G5 and G6b fail.** GT1 (target c) and GMC

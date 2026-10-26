@@ -1,15 +1,17 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 ~19:15 EDT (v0.7.0 plan frozen on `plan/v0.7.0`, no code yet). v0.6.0 is released; its record below is unchanged._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 ~23:40 EDT (v0.7.0 release in progress on `plan/v0.7.0`)._
 
 ## Current version and state
 
-- **Planned: v0.7.0** (study BRUTE-070-SYNCPLAN-009, branch `plan/v0.7.0` from main `df0fec1`). **Pre-registration frozen, no code.**
-  - Freeze commit `3825ad3`: `experiments/BRUTE_PLAN_009.json` (sha256 `499dd18dac19787339131170f319e15c666faca405821517999965df654f1e25`; criteria canonical-JSON sha256 `b3d1a56637230ee6d9ed1d30c0f66f17ad02094f4119915c8b83376f984c38d5`) + `docs/research/v0.7.0/PLAN_009.md` (readable; JSON wins). Ledger `preregistration_009` in `feeeb4a`.
-  - Targets: (a0) lag diagnostic on sealed study-008 drift4, exploratory, not gated; (a) synchronous events S7/SC7 (E1 ∪ E2 falsified certificate ∪ E3 single-step surprise > τ), gate GA1′ = G1+G2+G3′+G6b for one arm; (b) GX2″ incremental symmetric CaDiCaL xcheck (adopted byte-identical from `verify/xcheck-incremental` c2bf07e) + no-symmetry spot check; (c) GP1 count planner P7 vs A5 LU-R; (d) GTI one interpreter per test module. Carried G1, G2, G3′, G4, G5, G6b, G7, G9–G13, plus G_RT (3 h stop rule; incomplete gates FAIL).
-  - Seeds: 2x2 2010001–2080048 (drift4 2080001–048), breadth 2110001–2140024, smoke 2190001–2190030 only. Predictions (Inferred): GA1′ FAIL, GP1 FAIL, GX2″ PASS, GTI PASS.
-  - **Next (plan `process_controls.order`):** (2) `scripts/check_seeds_009.py` + test, spot-sample draw, ledger `seedcheck_009`; (3) `scripts/diag_lag_009.py` on sealed study-008, ledger `diagnostic_009`; (4) `experiments/v070_reference.py`; (5) check out the 3 adopted files byte-identical, then implementation with smoke on 2190001–030 only. Use the pinned venv `/workspace/bgr/venv/bin/python` (system python3 lacks python-sat).
-- **Releasing: v0.6.0** (study BRUTE-060-DRIFTSOUND-008, `plan/v0.6.0` → main, tag `v0.6.0`). **11 of 16 gated pass.**
+- **Releasing: v0.7.0** (study BRUTE-070-SYNCPLAN-009, branch `plan/v0.7.0`). **9 of 17 gated pass.**
+  - **FAIL:** GA1′ (target a), G3′, G6b, GP1 (target c); STUDY_BUDGET: GX2″ (target b; symmetric part complete, 0 mismatches; spot 6/24), G11 (no output), GTI (target d, never ran in-cap), G_RT.
+  - **PASS:** G1, G2, G4, G5, G7, G9, G10, G12, G13.
+  - Run: start 20:04:06 EDT, cap 23:04:06, stop rule fired 23:22:42 EDT (late; DEVIATIONS_009 entry 21). No stream relaunched.
+  - Done in order: run-end commit `4cdeeb4`; deviations 21–25 `af60688`; pack `30bb932`; ledger run_end_009 + SEAL `327d4fd`; ledger seal_009 `8888b88`; paired + repro; GATES_009 `a50f751` + ledger gates_009; docs + RELEASE.json/pyproject 0.7.0.
+  - **Next (if interrupted, continue here):** release freeze (`scripts/make_release_freeze_070.py`) → ledger release_freeze_070 → MANIFEST → `scripts/run_tests_070.py --output results/study-009/TEST_SUITE_009_FINAL.json` (NEVER the default output: TEST_SUITE_009.json is the in-cap gated file and must stay absent) → `scripts/make_gates_final_009.py` → ledger gates_final_009/release_070 → MANIFEST → `verify_release_070 --fast` (branch + fresh clone) → `--no-ff` merge to main → annotated tag v0.7.0 on the merge commit → gh release.
+- **Previous: v0.6.0** released (tag `v0.6.0`), 11 of 16 gated pass; its record follows.
+- **Released: v0.6.0** (study BRUTE-060-DRIFTSOUND-008, `plan/v0.6.0` → main, tag `v0.6.0`). **11 of 16 gated pass.**
   - **FAIL:** GA1 (target a), G3′, G5, G6b and GX2′ (target b, incomplete coverage).
   - **PASS:** G1, G2, G4, G7, G9, G10, G11, G12, G13, GT1 (target c) and GMC (target d).
   - Gates: `results/study-008/GATES_008_FINAL.json`. Deviations: `docs/research/BRUTE_DEVIATIONS_008.md` D1–D26.
