@@ -1,0 +1,51 @@
+{
+ "all_gone_at": "2026-10-26T10:31:35-0400",
+ "cap_s": 10,
+ "deadline": "2026-10-26T10:31:35-0400",
+ "deadline_epoch": 1793025095.0,
+ "drill_dir": "/tmp/drill013",
+ "drill_note": "smoke kill drill (BRUTE_SMOKE_DRILL=1, CAP_S=10) on smoke seeds; copy of the watchdog STOP_013 record plus partial-seal summary",
+ "drill_partial_seals": {
+  "2x2": {
+   "case_count": 2,
+   "complete": false,
+   "expected_case_count": 3
+  },
+  "big78": {
+   "case_count": 3,
+   "complete": false,
+   "expected_case_count": 4
+  },
+  "repro/2x2": {
+   "case_count": 0,
+   "complete": false,
+   "expected_case_count": 1
+  },
+  "repro/transfer": {
+   "case_count": 0,
+   "complete": false,
+   "expected_case_count": 3
+  },
+  "transfer": {
+   "case_count": 4,
+   "complete": false,
+   "expected_case_count": 8
+  }
+ },
+ "drill_surviving_study_processes_after_finalize": 0,
+ "fire_delay_s": 0.001,
+ "fired_at": "2026-10-26T10:31:35-0400",
+ "heartbeat_gaps_over_10s": [],
+ "kill_latency_s": 0.225,
+ "orchestrator_pids": [
+  1516613
+ ],
+ "process_groups": [
+  1516616,
+  1516617,
+  1516618
+ ],
+ "sigkill_used": false,
+ "survivors": [],
+ "t0": 1793025085.0
+}
