@@ -1,23 +1,22 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 ~05:50 EDT (v0.8.0 release in progress; see the release checklist below)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 ~05:55 EDT (v0.8.0 RELEASED)._
 
 ## Current version and state
 
-- **Releasing: v0.8.0** (study BRUTE-080-ALIGN-010, branch `plan/v0.8.0`). **12 of 17 gated pass.**
+- **Released: v0.8.0** (study BRUTE-080-ALIGN-010, branch `plan/v0.8.0`). **12 of 17 gated pass.**
   - **FAIL:** GA1_010 (target a), G3′ (SP8 3 non-drift false certificates), G6b (J8 coverage 0), GD (clause i, 2/7 silent-jump class), G_RT (clause i: the g11_2x2 optional phase hit its own budget).
   - **PASS:** G1, G2, G4, G5, G7, G9, G10, G11, G12, G13, GX2_010, GTI.
   - Run: start 05:03:17 EDT, hard cap 07:03:17 EDT, RUN_DONE 05:36:07 EDT (1,970 s). The watchdog did not fire.
   - Chain: plan `881f0a6` → source freeze `5470c48` → scoring `39d255b` → run_start `19f3a88`/MANIFEST `687f28a` → run_end `eb85feb` → seal `1bdebc9` → ledger seal/gates `3cfac6c`/`0422ac0` → sealed run state `7b8a06d` → merge of main `b1e628d` → release docs and freeze.
-  - Release checklist:
-    1. Release files, RELEASE.json and docs.
-    2. Ledger release_080 + deviation_010, then MANIFEST.
-    3. `verify_release_080` and `tests.test_release_080`.
-    4. Fast-forward main.
-    5. Tag v0.8.0.
-    6. GitHub release.
-
-    If interrupted, re-run `PYTHONPATH=. python scripts/verify_release_080.py` and continue from the first step not visible on origin.
+  - **RELEASED 2026-10-26 ~05:55 EDT:**
+    - Release commit `3bce08c`.
+    - Deviations #38 (superseding ledger receipt for the frozen harness) and #39 (pre-publication verifier fix: note-less receipts dated by commit).
+    - Ledger 172 entries; final release commit `70cb351`.
+    - `verify_release_080` passed on the branch, on a fresh clone and as main. `tests.test_release_080` 5/5 OK (109 s).
+    - main fast-forwarded a86298b..70cb351 (not forced).
+    - Annotated tag v0.8.0 (object `9fa656c`) -> `70cb351`.
+    - [GitHub release](https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.8.0).
   - Next: v0.9.0 per `NEXT_ITERATION.md`. First a lag diagnostic on seen data, then pre-register BRUTE_PLAN_011 on a new branch from main.
 - **Previous: v0.7.0** released (tag `v0.7.0`), 9 of 17 gated pass; its record follows.
 - **Released: v0.7.0** (study BRUTE-070-SYNCPLAN-009, branch `plan/v0.7.0`). **9 of 17 gated pass.**
