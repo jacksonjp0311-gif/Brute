@@ -1,0 +1,22 @@
+[2026-10-26T05:03:18-0400] orchestrator start pid 1301291; cap 7200 s, deadline 2026-10-26T07:03:17-0400
+[2026-10-26T05:03:18-0400] 2x2: start (3 workers, spent 0 s, budget 1500)
+[2026-10-26T05:03:18-0400] breadth: start (3 workers, spent 0 s, budget 2400)
+[2026-10-26T05:03:18-0400] gti: start (2 workers, spent 0 s, budget 2400)
+[2026-10-26T05:09:17-0400] PROGRESS_010.json written: {"2x2": [424, 648, 548], "breadth": [63, 288, 1639], "gti": [null, null, null], "g11_2x2": [null, null, null], "repro_2x2": [null, 216, null], "gx2_sym": [null, null, null], "gx2_spot": [null, null, null], "g11_breadth": [null, null, null], "repro_breadth": [null, 96, null]}
+[2026-10-26T05:11:01-0400] 2x2: done in 463 s
+[2026-10-26T05:11:01-0400] g11_2x2: start (2 workers, spent 0 s, budget 1500)
+[2026-10-26T05:14:05-0400] breadth: done in 647 s
+[2026-10-26T05:14:05-0400] repro_2x2: start (2 workers, spent 0 s, budget 900)
+[2026-10-26T05:14:05-0400] gx2_sym: start (2 workers, spent 0 s, budget 1200)
+[2026-10-26T05:16:33-0400] repro_2x2: done in 148 s
+[2026-10-26T05:16:33-0400] gx2_spot: start (1 workers, spent 0 s, budget 1200)
+[2026-10-26T05:18:57-0400] gx2_spot: done in 144 s
+[2026-10-26T05:18:57-0400] g11_breadth: start (2 workers, spent 0 s, budget 1500)
+[2026-10-26T05:23:55-0400] gti: done in 1237 s
+[2026-10-26T05:23:55-0400] repro_breadth: start (2 workers, spent 0 s, budget 1500)
+[2026-10-26T05:25:23-0400] gx2_sym: done in 678 s
+[2026-10-26T05:25:59-0400] repro_breadth: done in 124 s
+[2026-10-26T05:29:51-0400] g11_breadth: done in 654 s
+[2026-10-26T05:36:02-0400] g11_2x2: stream budget 1500 s reached: stopping
+[2026-10-26T05:36:07-0400] g11_2x2: sealed as it is (stream budget) rc=0 d": 0, "flagged_not_injected_basis": "Exact: uninjected traces asserted byte-identical", "injected": 20, "injected_j8": 8, "injected_j8_cert_or_hull_fields": 4, "injected_on_already_mismatching_trace": 0, "injected_sp8": 8, "injected_sp8_action": 5, "passed": true, "rng": "random.Random(20261026)"}} 
+[2026-10-26T05:36:07-0400] RUN_DONE (1970 s since t0; stopped streams: {'g11_2x2': 'stream budget 1500 s'})

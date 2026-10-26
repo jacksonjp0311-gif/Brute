@@ -1,0 +1,32 @@
+[05:16:41] case 149 act3 0.6 wall 2.595s unk 0 ok [True] done 1
+[05:16:43] case 215 act3 0.6 wall 1.56s unk 0 ok [True] done 2
+[05:16:46] case 76 sens3 0.35 wall 2.926s unk 0 ok [True] done 3
+[05:18:52] case 135 sens3 0.1 wall 125.621s unk 0 ok [True] done 4
+[05:18:53] case 141 sens3 0.1 wall 1.209s unk 0 ok [True] done 5
+[05:18:54] case 171 act3 0.1 wall 1.688s unk 0 ok [True] done 6
+{
+ "schema": "brute.xcheck-sat-incremental-report.v2",
+ "solver": "cadical195",
+ "conf_budget_per_query": 2000000,
+ "arms": [
+  "B5"
+ ],
+ "wording": "second encoding by the same author (brute/xcheck_sat_incremental.py, adopted), no enumeration; not an independent audit",
+ "cases_expected": 6,
+ "cases_done": 6,
+ "cases_not_reached": [],
+ "checked_steps_per_family": {
+  "big6": 0,
+  "sens3": 72,
+  "act3": 72,
+  "ood6s3": 0
+ },
+ "mismatching_traces": 0,
+ "witness_replay_failures": 0,
+ "queries": 19248,
+ "unknown_queries": 0,
+ "note": "a mismatching trace stops at its first differing field; its steps are not counted as checked",
+ "symmetry_breaking": false,
+ "spot_sample": "/workspace/brute/results/study-010/SPOT_SAMPLE_010.json",
+ "results_file": "/workspace/brute/results/study-010/XCHECK_SPOT_010_CHECKPOINT_results_trunc24.json.gz"
+}
