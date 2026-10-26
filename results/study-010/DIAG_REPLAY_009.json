@@ -1,0 +1,140 @@
+{
+ "arms": [
+  "S7",
+  "SC7"
+ ],
+ "by_arm": {
+  "S7": {
+   "nd_false": 4,
+   "stale_class": 4
+  },
+  "SC7": {
+   "nd_false": 5,
+   "stale_class": 5
+  }
+ },
+ "clause_i": {
+  "evaluable": true,
+  "min_events": 3,
+  "pass": true,
+  "reason": null,
+  "threshold": 0.8
+ },
+ "drift4_cases": 144,
+ "false_certificates": [
+  {
+   "action_kind": "taken",
+   "arm": "S7",
+   "at_d_plus_1": true,
+   "cert_rule": "Y1k",
+   "d": 12,
+   "event_at_d": false,
+   "mask": 0.1,
+   "seed": 2080010,
+   "stale_class": true,
+   "step": 13
+  },
+  {
+   "action_kind": "taken",
+   "arm": "SC7",
+   "at_d_plus_1": true,
+   "cert_rule": "Y1k",
+   "d": 12,
+   "event_at_d": false,
+   "mask": 0.1,
+   "seed": 2080010,
+   "stale_class": true,
+   "step": 13
+  },
+  {
+   "action_kind": "taken",
+   "arm": "S7",
+   "at_d_plus_1": true,
+   "cert_rule": "Y1k",
+   "d": 12,
+   "event_at_d": false,
+   "mask": 0.35,
+   "seed": 2080016,
+   "stale_class": true,
+   "step": 13
+  },
+  {
+   "action_kind": "taken",
+   "arm": "SC7",
+   "at_d_plus_1": true,
+   "cert_rule": "Y1k",
+   "d": 12,
+   "event_at_d": false,
+   "mask": 0.35,
+   "seed": 2080016,
+   "stale_class": true,
+   "step": 13
+  },
+  {
+   "action_kind": "taken",
+   "arm": "S7",
+   "at_d_plus_1": true,
+   "cert_rule": "Y1k",
+   "d": 12,
+   "event_at_d": false,
+   "mask": 0.1,
+   "seed": 2080020,
+   "stale_class": true,
+   "step": 13
+  },
+  {
+   "action_kind": "taken",
+   "arm": "SC7",
+   "at_d_plus_1": true,
+   "cert_rule": "Y1k",
+   "d": 12,
+   "event_at_d": false,
+   "mask": 0.1,
+   "seed": 2080020,
+   "stale_class": true,
+   "step": 13
+  },
+  {
+   "action_kind": "taken",
+   "arm": "SC7",
+   "at_d_plus_1": true,
+   "cert_rule": "tracked-calm",
+   "d": 23,
+   "event_at_d": false,
+   "mask": 0.35,
+   "seed": 2080039,
+   "stale_class": true,
+   "step": 24
+  },
+  {
+   "action_kind": "taken",
+   "arm": "S7",
+   "at_d_plus_1": true,
+   "cert_rule": "Y1k",
+   "d": 12,
+   "event_at_d": false,
+   "mask": 0.1,
+   "seed": 2080043,
+   "stale_class": true,
+   "step": 13
+  },
+  {
+   "action_kind": "taken",
+   "arm": "SC7",
+   "at_d_plus_1": true,
+   "cert_rule": "Y1k",
+   "d": 12,
+   "event_at_d": false,
+   "mask": 0.1,
+   "seed": 2080043,
+   "stale_class": true,
+   "step": 13
+  }
+ ],
+ "fraction": 1.0,
+ "inputs": [
+  "results/study-009/2x2/CHECKPOINT.jsonl"
+ ],
+ "nd_false_total": 9,
+ "stale_class": 9
+}
