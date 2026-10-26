@@ -1,0 +1,82 @@
+{
+ "completed_at": {
+  "2x2": 1793028462.9648159,
+  "big78": 1793028619.0879188,
+  "g11": 1793028847.1971185,
+  "gti": 1793029582.1926086,
+  "repro": 1793028759.159952,
+  "transfer": 1793028496.9990056
+ },
+ "events": {
+  "g11": {
+   "mandatory_done": {
+    "event": "mandatory_done",
+    "t": 1793028783.5615838,
+    "wall_since_start": 282.4
+   },
+   "mutation": {
+    "detected_injected": 20,
+    "event": "mutation",
+    "flagged_not_injected": 0,
+    "flagged_not_injected_basis": "Exact: uninjected traces asserted byte-identical",
+    "injected": 20,
+    "injected_action": 7,
+    "injected_j10": 11,
+    "injected_j10_cert_or_hull_fields": 5,
+    "injected_on_already_mismatching_trace": 0,
+    "injected_sp8": 9,
+    "passed": true,
+    "rng": "random.Random(20261026)"
+   },
+   "optional_done": {
+    "event": "optional_done",
+    "optional_cases": 54,
+    "t": 1793028845.2964623
+   },
+   "start": {
+    "event": "start",
+    "t": 1793028501.1960568
+   },
+   "transfer_done": {
+    "event": "transfer_done",
+    "t": 1793028784.1915932
+   }
+  }
+ },
+ "finished": {
+  "2x2": "2026-10-26T11:27:42-0400",
+  "big78": "2026-10-26T11:30:19-0400",
+  "g11": "2026-10-26T11:34:07-0400",
+  "gti": "2026-10-26T11:46:22-0400",
+  "repro": "2026-10-26T11:32:39-0400",
+  "transfer": "2026-10-26T11:28:16-0400"
+ },
+ "heartbeat": 1793029582.1919026,
+ "mandatory": {
+  "2x2": true,
+  "big78": true,
+  "g11": true,
+  "gti": true,
+  "repro": true,
+  "transfer": true
+ },
+ "orchestrator_pid": 1536574,
+ "running": {},
+ "spent": {
+  "2x2": 1016.1619596481323,
+  "big78": 1172.2860140800476,
+  "g11": 350.18639969825745,
+  "gti": 2135.388646841049,
+  "repro": 296.18185091018677,
+  "transfer": 1050.1962563991547
+ },
+ "started_at": {
+  "2x2": 1793027446.8011053,
+  "big78": 1793027446.8017092,
+  "g11": 1793028497.0105774,
+  "gti": 1793027446.8036542,
+  "repro": 1793028462.9779766,
+  "transfer": 1793027446.8025897
+ },
+ "stopped": {}
+}

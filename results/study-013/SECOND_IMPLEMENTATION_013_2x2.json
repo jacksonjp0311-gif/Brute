@@ -1,0 +1,308 @@
+{
+ "arms": [
+  "J10",
+  "SP8"
+ ],
+ "block": "2x2",
+ "events": {
+  "mandatory_done": {
+   "event": "mandatory_done",
+   "t": 1793028783.5615838,
+   "wall_since_start": 282.4
+  },
+  "mutation": {
+   "detected_injected": 20,
+   "event": "mutation",
+   "flagged_not_injected": 0,
+   "flagged_not_injected_basis": "Exact: uninjected traces asserted byte-identical",
+   "injected": 20,
+   "injected_action": 7,
+   "injected_j10": 11,
+   "injected_j10_cert_or_hull_fields": 5,
+   "injected_on_already_mismatching_trace": 0,
+   "injected_sp8": 9,
+   "passed": true,
+   "rng": "random.Random(20261026)"
+  },
+  "optional_done": {
+   "event": "optional_done",
+   "optional_cases": 54,
+   "t": 1793028845.2964623
+  },
+  "start": {
+   "event": "start",
+   "t": 1793028501.1960568
+  },
+  "transfer_done": {
+   "event": "transfer_done",
+   "t": 1793028784.1915932
+  }
+ },
+ "j10_support": {
+  "hull_downgrades": 2145,
+  "hull_nonvacuous": 5279,
+  "hull_steps": 9923,
+  "hull_unauditable": 0,
+  "steps": 11880
+ },
+ "jump_window_K": 4,
+ "mandatory": {
+  "mismatches": [],
+  "mismatching_traces": 0,
+  "per_arm": {
+   "J10": {
+    "audited": 216,
+    "expected": 216,
+    "mismatching": 0
+   },
+   "SP8": {
+    "audited": 216,
+    "expected": 216,
+    "mismatching": 0
+   }
+  },
+  "traces_audited": 432,
+  "traces_expected": 432,
+  "traces_not_reached": 0
+ },
+ "mandatory_complete": true,
+ "mandatory_samples_present": true,
+ "mutation_test": {
+  "details": [
+   {
+    "arm": "J10",
+    "case": "cycle3/6010002/0.1",
+    "detected": true,
+    "first_difference": "VerificationError: hull_union cycle3 6010002 0.1 J10 7 1",
+    "injected_fields": [
+     "hull_union"
+    ]
+   },
+   {
+    "arm": "J10",
+    "case": "switch3/6020004/0.6",
+    "detected": true,
+    "first_difference": "VerificationError: decision switch3 6020004 0.6 J10 1 0",
+    "injected_fields": [
+     "certificate"
+    ]
+   },
+   {
+    "arm": "J10",
+    "case": "switch3/6020007/0.6",
+    "detected": true,
+    "first_difference": "VerificationError: decision switch3 6020007 0.6 J10 0 0",
+    "injected_fields": [
+     "status"
+    ]
+   },
+   {
+    "arm": "SP8",
+    "case": "unstructured3/6030002/0.1",
+    "detected": true,
+    "first_difference": "VerificationError: action unstructured3 6030002 0.1 SP8 2",
+    "injected_fields": [
+     "action"
+    ]
+   },
+   {
+    "arm": "J10",
+    "case": "unstructured3/6030002/0.35",
+    "detected": true,
+    "first_difference": "VerificationError: logloss unstructured3 6030002 0.35 J10",
+    "injected_fields": [
+     "logloss"
+    ]
+   },
+   {
+    "arm": "J10",
+    "case": "unaliased2/6040002/0.35",
+    "detected": true,
+    "first_difference": "VerificationError: decision unaliased2 6040002 0.35 J10 3 0",
+    "injected_fields": [
+     "status"
+    ]
+   },
+   {
+    "arm": "SP8",
+    "case": "unaliased2/6040002/0.35",
+    "detected": true,
+    "first_difference": "VerificationError: logloss unaliased2 6040002 0.35 SP8",
+    "injected_fields": [
+     "logloss"
+    ]
+   },
+   {
+    "arm": "SP8",
+    "case": "unaliased2/6040008/0.35",
+    "detected": true,
+    "first_difference": "VerificationError: action unaliased2 6040008 0.35 SP8 5",
+    "injected_fields": [
+     "action"
+    ]
+   },
+   {
+    "arm": "SP8",
+    "case": "ood4/6050006/0.6",
+    "detected": true,
+    "first_difference": "VerificationError: decision ood4 6050006 0.6 SP8 2 1",
+    "injected_fields": [
+     "status"
+    ]
+   },
+   {
+    "arm": "J10",
+    "case": "ood4/6050008/0.35",
+    "detected": true,
+    "first_difference": "VerificationError: decision ood4 6050008 0.35 J10 4 1",
+    "injected_fields": [
+     "certificate"
+    ]
+   },
+   {
+    "arm": "SP8",
+    "case": "perm4/6060005/0.6",
+    "detected": true,
+    "first_difference": "VerificationError: logloss perm4 6060005 0.6 SP8",
+    "injected_fields": [
+     "logloss"
+    ]
+   },
+   {
+    "arm": "SP8",
+    "case": "perm4/6060007/0.35",
+    "detected": true,
+    "first_difference": "VerificationError: action perm4 6060007 0.35 SP8 3",
+    "injected_fields": [
+     "action"
+    ]
+   },
+   {
+    "arm": "SP8",
+    "case": "ood5/6070002/0.1",
+    "detected": true,
+    "first_difference": "VerificationError: action ood5 6070002 0.1 SP8 1",
+    "injected_fields": [
+     "action"
+    ]
+   },
+   {
+    "arm": "SP8",
+    "case": "ood5/6070004/0.1",
+    "detected": true,
+    "first_difference": "VerificationError: decision ood5 6070004 0.1 SP8 5 1",
+    "injected_fields": [
+     "certificate"
+    ]
+   },
+   {
+    "arm": "J10",
+    "case": "ood5/6070005/0.1",
+    "detected": true,
+    "first_difference": "VerificationError: hull_union ood5 6070005 0.1 J10 2 1",
+    "injected_fields": [
+     "hull_union"
+    ]
+   },
+   {
+    "arm": "J10",
+    "case": "ood5/6070006/0.6",
+    "detected": true,
+    "first_difference": "VerificationError: action ood5 6070006 0.6 J10 0",
+    "injected_fields": [
+     "action"
+    ]
+   },
+   {
+    "arm": "J10",
+    "case": "ood5/6070008/0.6",
+    "detected": true,
+    "first_difference": "VerificationError: action ood5 6070008 0.6 J10 2",
+    "injected_fields": [
+     "action"
+    ]
+   },
+   {
+    "arm": "J10",
+    "case": "drift4/6080001/0.6",
+    "detected": true,
+    "first_difference": "VerificationError: action drift4 6080001 0.6 J10 4",
+    "injected_fields": [
+     "action"
+    ]
+   },
+   {
+    "arm": "J10",
+    "case": "drift4/6080003/0.6",
+    "detected": true,
+    "first_difference": "VerificationError: decision drift4 6080003 0.6 J10 2 0",
+    "injected_fields": [
+     "certificate"
+    ]
+   },
+   {
+    "arm": "SP8",
+    "case": "drift4/6080012/0.6",
+    "detected": true,
+    "first_difference": "VerificationError: decision drift4 6080012 0.6 SP8 3 1",
+    "injected_fields": [
+     "certificate"
+    ]
+   }
+  ],
+  "detected_injected": 20,
+  "event": "mutation",
+  "flagged_not_injected": 0,
+  "flagged_not_injected_basis": "Exact: uninjected traces asserted byte-identical",
+  "injected": 20,
+  "injected_action": 7,
+  "injected_j10": 11,
+  "injected_j10_cert_or_hull_fields": 5,
+  "injected_on_already_mismatching_trace": 0,
+  "injected_sp8": 9,
+  "passed": true,
+  "rng": "random.Random(20261026)"
+ },
+ "optional_fixed_expected_cases": 54,
+ "optional_stamp": "optional_done",
+ "rest": {
+  "mismatches": [],
+  "mismatching_traces": 0,
+  "per_arm": {
+   "J10": {
+    "audited": 54,
+    "expected": 54,
+    "mismatching": 0
+   },
+   "SP8": {
+    "audited": 54,
+    "expected": 54,
+    "mismatching": 0
+   }
+  },
+  "traces_audited": 108,
+  "traces_expected": 108,
+  "traces_not_reached": 0
+ },
+ "rest_mismatch_fails_g11": true,
+ "results_file": "/workspace/brute/results/study-013/2x2/RESULTS.json",
+ "results_sha256": "5729c69e017d7092d85887994439abd4b59e7f1d81c52fd900925c9fc09bd7c9",
+ "schema": "brute.second-implementation-013.v1",
+ "source_sha256": {
+  "v0100_reference.py": "4ab642076936768cd63bda388f1668db90aed958676ef85a634d0a4797c2bfa0",
+  "v0110_reference.py": "6c4274bcfee9627544ca3dbf968d7bec78f8bffa177e8e7ea1078679aeb3abd6"
+ },
+ "study": "BRUTE-0110-SOUND-TRANSFER-013",
+ "tau6": 1.645215321642,
+ "transfer_audit": {
+  "cases_audited": 288,
+  "cases_expected": 288,
+  "cases_not_reached": 0,
+  "done_event": true,
+  "mismatches": [],
+  "mismatching_cases": 0,
+  "results_file": "/workspace/brute/results/study-013/transfer/RESULTS.json",
+  "results_sha256": "ae88f5eac8248b8bdc7b3376f170611a579b43aec1d62572e42d7a2efacf057c"
+ },
+ "wording": "second implementation by the same author, no brute import; not an independent or third-party audit"
+}
