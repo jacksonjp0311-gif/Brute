@@ -43,3 +43,15 @@ these.
 
 **Disclosure: GTI smoke.** The smoke GTI run at 1c43d68 (1149 s) failed clause (i) with 6 undeclared failures, all
 caused (Inferred) by a stale MANIFEST.sha256; see RATE_MATH_012.md. No test, test list or GTI rule was changed.
+
+**#50: GTI predicted FAIL; non-gated K_080 report added (before the source freeze).** The GTI smoke showed that the
+three test_release_080 tests (version_consistent, fast_verify_passes, untampered_copy_passes) fail on the v0.10.0 tree
+because RELEASE.json has said 0.9.0 since the v0.9.0 release (Observed: re-run alone at 5ae0891, AssertionError
+'0.9.0' != '0.8.0' and missing key GA1_010). This is the same superseded-release pattern as K_060 / K_070, but the
+frozen GTI criterion has no K_080 rule. **The gated criterion is NOT changed**: GTI_test_isolation is scored as frozen
+and its plan prediction (PASS) is now Inferred FAIL. Added: scripts/gti_k080_012.py (frozen with the sources), run after
+the seal, writes the non-gated report results/study-012/GTI_K080_012.json (does each test_release_080 failure pass on a
+clean v0.8.0 worktree with the same runner, and would GTI pass with a K_080 rule). The other three smoke failures
+(manifest test, release_090 short/untampered verify) were caused by the stale MANIFEST: after make_manifest at 5ae0891
+test_manifest_matches_tracked_files and test_short_verify_passes pass (Observed). Smoke of the new script on the GTI
+smoke output: K_080 rule applies (all 3 pass on clean v0.8.0).
