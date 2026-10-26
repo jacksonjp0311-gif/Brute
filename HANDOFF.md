@@ -1,9 +1,28 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 ~05:55 EDT (v0.8.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 ~06:40 EDT (v0.9.0 IN PROGRESS on `plan/v0.9.0`)._
 
 ## Current version and state
 
+- **In progress: v0.9.0** (study BRUTE-090-WINDOW-011, branch `plan/v0.9.0` from origin/main f79c925, which contains 70cb351; deviation #40).
+  - Done, in order:
+    1. Lag diagnostic on seen data (exploratory) `a5ef9c8`/`0c3f348`.
+    2. Plan 011 pre-registered and frozen `7950513`.
+    3. Seed check `06249f7`.
+    4. Second implementation `experiments/v090_reference.py` `d5c6a54`.
+    5. `brute/jumpwindow.py` (J9, K=4) `8eeb810`.
+    6. Harness `4c4800b`/`052ec9d`.
+    7. Smoke-1 plus GTI smoke, ledgered after the fact (deviation #42).
+    8. Kill drill `13b12ee`: 0.228 s, no survivors.
+    9. Rate math `6cf27bd`: no stream above 70% of its budget.
+    10. Scoring-script drafts `13b12ee`.
+  - Deviations so far: #40 (branch base), #41 (feasibility seeds 4200001/4210001/4220001 touched in dev), #42 (smoke-1 ledgered late). See `docs/research/BRUTE_DEVIATIONS_011.md`.
+  - Next:
+    1. Source freeze (`scripts/make_freeze_011.py <impl commits>`).
+    2. Scoring freeze, at least 10 min before run_start.
+    3. Held-out run from a CLEAN committed tree: run_start_011 ledger, then RUN_T0, nohup `scripts/run_study_011.py`, then `setsid` `scripts/watchdog_011.py`. Commit nothing until gti finishes; a dirty tree failed 3 tests in the GTI smoke.
+    4. seal_011, storage pack, paired/repro/gates, clean_clone_011, verify_release_090 (short and `--long`), release.
+- **Previous: v0.8.0** released (tag `v0.8.0`), 12 of 17 gated pass; its record follows.
 - **Released: v0.8.0** (study BRUTE-080-ALIGN-010, branch `plan/v0.8.0`). **12 of 17 gated pass.**
   - **FAIL:** GA1_010 (target a), G3′ (SP8 3 non-drift false certificates), G6b (J8 coverage 0), GD (clause i, 2/7 silent-jump class), G_RT (clause i: the g11_2x2 optional phase hit its own budget).
   - **PASS:** G1, G2, G4, G5, G7, G9, G10, G11, G12, G13, GX2_010, GTI.
