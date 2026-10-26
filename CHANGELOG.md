@@ -12,7 +12,7 @@ All times are the author's clock, EDT.
 - **Pre-registration and preparation.** Plan `7950513` (`experiments/BRUTE_PLAN_011.json`); seed check `06249f7`; second implementation `experiments/v090_reference.py` `d5c6a54`; implementation `8eeb810`, `4c4800b`, `052ec9d`; kill drill and scoring scripts `13b12ee` (0.228 s); rate math `6cf27bd`.
 - **Freezes.** Source frozen at `f658e13` (30 files). Scoring scripts (at `13b12ee`, deviation #43) ledgered 06:38:21 EDT.
 - **Held-out run** (`scripts/run_study_011.py` + independent `scripts/watchdog_011.py`). Started 06:48:41 EDT under a hard 2 h cap (08:48:41 EDT). RUN_DONE 07:18:53 EDT (1,812 s). The watchdog did not fire.
-- **After the run.** Seal `6ae2cc4` (26 files); GATES_011 `ed2b042`; release tooling and RELEASE.json; release freeze `BRUTE_RELEASE_FREEZE_090_R1.json` (supersedes `_090`, deviation #44). Deviations #40–#46 in `docs/research/BRUTE_DEVIATIONS_011.md`.
+- **After the run.** Seal `6ae2cc4` (26 files); GATES_011 `ed2b042`; release tooling and RELEASE.json; release freeze `BRUTE_RELEASE_FREEZE_090_R1.json` (supersedes `_090`, deviation #44). Clean-clone gate GCC PASS. Deviations #40–#42 in `docs/research/BRUTE_DEVIATIONS_011.md`, #43–#47 in `docs/research/BRUTE_DEVIATIONS_011_R1.md` (#47: the #42 ledger receipt names the wrong commit; file restored and continued in R1).
 
 ### Code
 
