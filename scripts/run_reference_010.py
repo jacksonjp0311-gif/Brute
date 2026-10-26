@@ -79,13 +79,29 @@ def mutation(mand,arms,view,tau6,tau7,base,k=MUTATE):
             if (i,a) in inj:check(mc[i]['arms'][a]!=c['arms'][a],'injection did not change the trace')
     det=[]
     for i,a in sorted(inj):
-        ok,msg,_=R.audit_trace(mc[i],a,view,tau6,tau7);det.append({'case':ckey(mc[i]),'arm':a,'detected':not ok,'first_difference':msg})
+        ok,msg,_=R.audit_trace(mc[i],a,view,tau6,tau7)
+        fields=sorted({k for r0,r1 in zip(c_tr(mand[i],a),c_tr(mc[i],a)) for k in set(r0)|set(r1) if r0.get(k)!=r1.get(k)})
+        det.append({'case':ckey(mc[i]),'arm':a,'detected':not ok,'first_difference':msg,'injected_fields':fields})
+    j8ch=sum(1 for d in det if d['arm']=='J8' and set(d['injected_fields'])&{'hull_union','hull_unknown','certificate'})
+    sp8a=sum(1 for d in det if d['arm']=='SP8' and 'action' in d['injected_fields'])
     base_bad={(ckey(mand[i]),a) for i,a in inj if not base[(ckey(mand[i]),a)]['ok']}
     return {'event':'mutation','injected':len(inj),'injected_j8':sum(a=='J8' for _,a in inj),'injected_sp8':sum(a=='SP8' for _,a in inj),
             'detected_injected':sum(d['detected'] for d in det),'injected_on_already_mismatching_trace':len(base_bad),
             'flagged_not_injected':0,'flagged_not_injected_basis':'Exact: uninjected traces asserted byte-identical',
+            'injected_j8_cert_or_hull_fields':j8ch,'injected_sp8_action':sp8a,
             'rng':'random.Random(20261026)','details':det,
-            'passed':all(d['detected'] for d in det) and len(inj)==k and sum(a=='J8' for _,a in inj)>=4 and sum(a=='SP8' for _,a in inj)>=4}
+            'passed':all(d['detected'] for d in det) and len(inj)==k and len({d['case']+d['arm'] for d in det})==k and j8ch>=4 and sp8a>=4}
+
+
+def c_tr(c,a):
+    """flattened per-step records of one arm (forecast dicts merged so a nested certificate change is visible)."""
+    out=[]
+    for r in c['arms'][a]['trace']:
+        f=dict(r)
+        if 'forecasts' in r and r.get('action') is not None and isinstance(r['forecasts'],list):
+            f.update({k:v for k,v in r['forecasts'][r['action']].items() if k in ('certificate','status')})
+        out.append(f)
+    return out
 
 
 def summarize(block,cases,plan,traces,events,results,src,M):
