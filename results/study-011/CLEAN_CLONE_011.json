@@ -1,0 +1,62 @@
+{
+  "commit": "74acaeec2e42f8a06bcdbcb8f8796b2617a2054c",
+  "elapsed_informational_s": 24.9,
+  "passed": true,
+  "schema": "brute.clean-clone.v1",
+  "scoring_inputs": {
+    "gz_restored": [
+      "results/study-011/2x2/RESULTS.json",
+      "results/study-011/2x2/SCIENTIFIC.json",
+      "results/study-011/repro/2x2/RESULTS.json",
+      "results/study-011/repro/2x2/SCIENTIFIC.json"
+    ],
+    "tracked": [
+      "results/study-011/2x2/SEAL.json",
+      "results/study-011/repro/2x2/SEAL.json",
+      "results/study-011/PAIRED_ANALYSIS_011.json",
+      "results/study-011/REPRODUCIBILITY_011.json",
+      "results/study-011/SECOND_IMPLEMENTATION_011_2x2.json",
+      "results/study-011/TEST_SUITE_011.json",
+      "results/study-011/FEASIBILITY_011.json",
+      "results/study-011/RUN_STATE_011.json",
+      "results/study-011/RUN_T0",
+      "results/study-011/HEARTBEAT_011.jsonl",
+      "results/study-011/KILL_DRILL_011.json",
+      "results/study-011/SEAL.json",
+      "results/study-011/GATES_011.json",
+      "results/diag-011/LAG_DIAG_SEEN.json"
+    ],
+    "tracked_if_present": [
+      "results/study-011/RUN_DONE_011.json",
+      "results/study-011/STOP_011.json",
+      "results/study-011/STOP_011_ORCHESTRATOR.json"
+    ]
+  },
+  "steps": {
+    "make_gates_011": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "GATES_011.json reproduces\n"
+    },
+    "make_paired_011": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "PAIRED_ANALYSIS_011 reproduces\n"
+    },
+    "make_reproducibility_011": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "REPRODUCIBILITY_011 reproduces\n"
+    },
+    "restore": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "True\n"
+    }
+  },
+  "tracked": {
+    "missing_from_tree": [],
+    "passed": true,
+    "raw_json_committed_unexpectedly": []
+  }
+}
