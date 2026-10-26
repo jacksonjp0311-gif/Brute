@@ -1,0 +1,148 @@
+{
+ "v080_ranges": {
+  "heldout_ranges_2x2/cycle3": [
+   3010001,
+   3010024
+  ],
+  "heldout_ranges_2x2/switch3": [
+   3020001,
+   3020024
+  ],
+  "heldout_ranges_2x2/unstructured3": [
+   3030001,
+   3030024
+  ],
+  "heldout_ranges_2x2/unaliased2": [
+   3040001,
+   3040024
+  ],
+  "heldout_ranges_2x2/ood4": [
+   3050001,
+   3050024
+  ],
+  "heldout_ranges_2x2/perm4": [
+   3060001,
+   3060024
+  ],
+  "heldout_ranges_2x2/ood5": [
+   3070001,
+   3070024
+  ],
+  "heldout_ranges_2x2/drift4": [
+   3080001,
+   3080048
+  ],
+  "heldout_ranges_breadth/big6": [
+   3110001,
+   3110024
+  ],
+  "heldout_ranges_breadth/sens3": [
+   3120001,
+   3120024
+  ],
+  "heldout_ranges_breadth/act3": [
+   3130001,
+   3130024
+  ],
+  "heldout_ranges_breadth/ood6s3": [
+   3140001,
+   3140024
+  ],
+  "smoke": [
+   3190001,
+   3190030
+  ]
+ },
+ "prior_range_count": 95,
+ "pairwise_overlaps": [],
+ "prior_overlaps": [],
+ "subset_violations": [],
+ "g11_mandatory_cases": {
+  "2x2": 216,
+  "breadth": 72
+ },
+ "negative_controls": [
+  [
+   "smoke",
+   901,
+   "refused"
+  ],
+  [
+   "smoke",
+   3010001,
+   "refused"
+  ],
+  [
+   "smoke",
+   2180001,
+   "refused"
+  ],
+  [
+   "2x2",
+   3190001,
+   "refused"
+  ],
+  [
+   "breadth",
+   3010001,
+   "refused"
+  ],
+  [
+   "2x2",
+   2010001,
+   "refused"
+  ],
+  [
+   "2x2",
+   3010025,
+   "refused"
+  ],
+  [
+   "2x2",
+   3080049,
+   "refused"
+  ],
+  [
+   "breadth",
+   3110025,
+   "refused"
+  ],
+  [
+   "breadth",
+   3150001,
+   "refused"
+  ]
+ ],
+ "PASS": true,
+ "spot_sample_written": "results/study-010/SPOT_SAMPLE_010.json",
+ "spot_sample": {
+  "act3": [
+   [
+    3130002,
+    0.6
+   ],
+   [
+    3130010,
+    0.1
+   ],
+   [
+    3130024,
+    0.6
+   ]
+  ],
+  "sens3": [
+   [
+    3120002,
+    0.35
+   ],
+   [
+    3120022,
+    0.1
+   ],
+   [
+    3120024,
+    0.1
+   ]
+  ]
+ }
+}

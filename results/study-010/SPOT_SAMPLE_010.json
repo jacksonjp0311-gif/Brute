@@ -1,0 +1,38 @@
+{
+  "arm": "B5",
+  "cases": {
+    "act3": [
+      [
+        3130002,
+        0.6
+      ],
+      [
+        3130010,
+        0.1
+      ],
+      [
+        3130024,
+        0.6
+      ]
+    ],
+    "sens3": [
+      [
+        3120002,
+        0.35
+      ],
+      [
+        3120022,
+        0.1
+      ],
+      [
+        3120024,
+        0.1
+      ]
+    ]
+  },
+  "max_steps": 24,
+  "rng": 20261028,
+  "rule": "random.Random(20261028), drawn in the order act3 then sens3: 3 of the 72 held-out cases of each family (ascending (seed, mask) after drawing); arm B5; steps 1..24 only (prefix check). Drawn by scripts/check_seeds_010.py and written to results/study-010/SPOT_SAMPLE_010.json before run_start. big6 and ood6s3 are excluded because a single no-symmetry big6 case took 1386 s in study-009 (Observed); this is a sizing decision from measured rates, disclosed.",
+  "schema": "brute.spot-sample.v1",
+  "study": "BRUTE-080-ALIGN-010"
+}
