@@ -59,3 +59,25 @@ after the held-out run and says so per entry. Labels: Exact / Observed / Simulat
     freeze; it resumed from the pushed state (f3be0bf, tree clean, nothing running). No held-out data existed. The
     only change after resuming was the GX2'' incomplete-input rule simplification (entry 19), committed before
     scoring_freeze_009 (Exact).
+21. **3 h cap fired late** (written 2026-10-25 ~23:30 EDT, after the run; held-out data existed, no scored output had
+    been inspected). RUN_T0 20:04:06 EDT, so the cap was 23:04:06 EDT. RUN_009.log records "3 h CAP reached" at
+    23:22:42 EDT and STOP_009.json `stopped_at` 23:22:44 EDT, about 18 min 36 s after the cap (Observed). The
+    orchestrator loop checks the deadline every ~2 s (scripts/run_study_009.py, frozen); why it did not act at 23:04 is
+    not known. The box uptime shows no reboot; a paused process or paused session is possible but not shown (Open).
+    Effect: g11 ran ~18 min past the cap and was then stopped; it wrote no output in either case, so no gate result
+    differs (Inferred: g11 writes SECOND_IMPLEMENTATION_009.json only at the end and has no checkpoint). The cap is
+    scored as it fired: G_RT FAIL, and gates that need g11 or GTI are FAIL STUDY_BUDGET (Exact, make_gates_009).
+22. **g11 (second implementation, G11) produced nothing in 9229 s** (Observed: logs/g11.log is empty,
+    SECOND_IMPLEMENTATION_009.json absent). The g11 stream had no stream budget, no checkpoint and no seal-partial
+    path, so a stop left no partial evidence. G11 is FAIL STUDY_BUDGET. Its run time was not projected before the run
+    (Rejected as an excuse; recorded as a design gap for v0.8.0: every stream needs a checkpoint and a projection).
+23. **GTI never ran in-cap** (Observed): the gti stream depends on g11 and gp1_audit; g11 never finished, so GTI never
+    started. GTI (gated) is FAIL STUDY_BUDGET. The final-tree test run (TEST_SUITE_009_FINAL.json, entry 13) was run
+    after the cap on the release tree; it is reported as non-gate Observed information only and cannot make GTI pass.
+    The release statement is therefore "GTI FAIL" whatever the final-tree run shows (Exact, make_gates_final_009).
+24. **gx2_spot stopped by its own 1800 s stream budget** at 21:18:56 EDT with 6 of 24 spot cases checked (0 mismatches
+    on those; one big6 case took 1386 s) and sealed as it is (Observed). Under make_gates_009 a gx2_spot stop makes
+    GX2'' incomplete, so GX2'' scores FAIL (Exact, scoring rule fixed before data; entry 19).
+25. **Release steps after the cap were run by the operating agent under a deadline of 2026-10-26 01:00 EDT** set by the
+    owner's session; no study stream was relaunched or extended (Exact). Large raw files packed with
+    scripts/study009_storage.py pack (deterministic gzip) before the study SEAL, as study-008.
