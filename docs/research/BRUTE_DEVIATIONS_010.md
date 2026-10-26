@@ -32,3 +32,9 @@ The re-drill (smoke-3) killed all 8 groups in 0.239 s, with no SIGKILL and no su
 - Kill latency is measured until every tracked pid is gone.
 
 (Inferred: each is the natural reading of the plan text.)
+
+**#33: MANIFEST.sha256 is regenerated just before t0.**
+- **What happened:** a GTI dev run (`run_tests_080.py` on the pre-freeze tree, outside any held-out range, 851.5 s wall) failed clause (i) on exactly one undeclared test, `test_brute_repro.BruteRepro.test_manifest_matches_tracked_files` (Observed). The manifest lists every tracked file, the ledger included, so any commit invalidates it. Every other failure was in the 14 K_frozen ids or allowed by K_060/K_070, and both clean-tag runs reproduced.
+- **What was done:** `scripts/make_manifest.py` is run and committed after the run_start_010 ledger commit and before RUN_T0 is written, so the in-cap GTI sees a manifest of the tree it tests.
+- **Effect on the cap:** the few seconds this takes count against the cap, because t0 is the ledger time.
+- **Why this is not tuning:** no test, rule or threshold changed. (Exact)
