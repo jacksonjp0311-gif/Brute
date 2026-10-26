@@ -1,0 +1,71 @@
+{
+  "commit": "ed53fdf0849b81782583c20263886bcfd6f2332a",
+  "elapsed_informational_s": 42.7,
+  "passed": true,
+  "schema": "brute.clean-clone.v1",
+  "scoring_inputs": {
+    "gz_restored": [
+      "results/study-013/2x2/RESULTS.json",
+      "results/study-013/2x2/SCIENTIFIC.json",
+      "results/study-013/big78/RESULTS.json",
+      "results/study-013/big78/SCIENTIFIC.json",
+      "results/study-013/transfer/RESULTS.json",
+      "results/study-013/transfer/SCIENTIFIC.json",
+      "results/study-013/repro/2x2/RESULTS.json",
+      "results/study-013/repro/2x2/SCIENTIFIC.json",
+      "results/study-013/repro/transfer/RESULTS.json",
+      "results/study-013/repro/transfer/SCIENTIFIC.json"
+    ],
+    "tracked": [
+      "results/study-013/2x2/SEAL.json",
+      "results/study-013/big78/SEAL.json",
+      "results/study-013/transfer/SEAL.json",
+      "results/study-013/repro/2x2/SEAL.json",
+      "results/study-013/repro/transfer/SEAL.json",
+      "results/study-013/PAIRED_ANALYSIS_013.json",
+      "results/study-013/REPRODUCIBILITY_013.json",
+      "results/study-013/SECOND_IMPLEMENTATION_013_2x2.json",
+      "results/study-013/TEST_SUITE_013.json",
+      "results/study-013/RUN_STATE_013.json",
+      "results/study-013/RUN_T0",
+      "results/study-013/HEARTBEAT_013.jsonl",
+      "results/study-013/KILL_DRILL_013.json",
+      "results/study-013/SEAL.json",
+      "results/study-013/GATES_013.json",
+      "results/diag-013/APPLICABILITY_DIAG_SEEN.json",
+      "results/diag-013/SEEDCHECK_013.json"
+    ],
+    "tracked_if_present": [
+      "results/study-013/RUN_DONE_013.json",
+      "results/study-013/STOP_013.json",
+      "results/study-013/STOP_013_ORCHESTRATOR.json"
+    ]
+  },
+  "steps": {
+    "make_gates_013": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "GATES_013.json reproduces\n"
+    },
+    "make_paired_013": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "PAIRED_ANALYSIS_013 reproduces\n"
+    },
+    "make_reproducibility_013": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "REPRODUCIBILITY_013 reproduces\n"
+    },
+    "restore": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "True\n"
+    }
+  },
+  "tracked": {
+    "missing_from_tree": [],
+    "passed": true,
+    "raw_json_committed_unexpectedly": []
+  }
+}
