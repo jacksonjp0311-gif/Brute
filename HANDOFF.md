@@ -1,8 +1,16 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 ~07:54 EDT (v0.9.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 ~08:12 EDT (v0.10.0 IN PROGRESS on plan/v0.10.0)._
 
 ## Current version and state
+
+<!-- V0100 -->
+- **IN PROGRESS: v0.10.0** (study BRUTE-0100-SUPPORT-TRANSFER-012, branch `plan/v0.10.0` = main 13daa32 + diagnostic, deviation #48).
+  - Done: seen-data downgrade diagnostic `6494a35` (ledger `a52313b`; surprise gate Rejected, exact support window supW4 +27.5%); plan + freeze + ROADMAP_TO_GI `0cccf0d` (ledger preregistration_012, deviation #48 `8d74b35`).
+  - Tracks: J10 (exact jump-window support; GA1_012/G6b predicted FAIL; GJ10 J10>J9), big78 (7-8 states, soundness G78), TRANSFER (GT_a/b/c/ref; motifs from one source world, positive vs rotated-family negative control).
+  - Next on resume: (2) scripts/check_seeds_012.py + test, ledger seedcheck_012; (3) experiments/v0100_reference.py before any learner; (4) brute/supportwindow.py, bigstate.py, transfer.py, harness; smoke + kill drill + rate math; (5) source freeze; (6) scoring scripts AFTER the freeze, ledgered >= 10 min before run_start.
+  - Scratch: /workspace/scratch012 (delete at release).
+<!-- /V0100 -->
 
 - **Released: v0.9.0** (study BRUTE-090-WINDOW-011, branch `plan/v0.9.0` from origin/main f79c925 ⊃ 70cb351, deviation #40). **15 of 17 gated pass.**
   - **FAIL:** G6b (J9−A2 coverage −0.1918, 95% CI [−0.2073, −0.1772]), GA1_011 (J9 does not reach SP8-level coverage).
