@@ -1,0 +1,62 @@
+{
+ "elapsed_s": 360,
+ "note": "read-only projection (stop_rule); no design, budget or seed change follows",
+ "streams": {
+  "2x2": {
+   "budget_s": 1800,
+   "checkpoint_lines": 792,
+   "done": true,
+   "expected_cases": 792,
+   "mandatory": true,
+   "projected_over_budget": false,
+   "projected_total_s": 304,
+   "spent_s": 304,
+   "stopped": null
+  },
+  "feas": {
+   "budget_s": 1200,
+   "checkpoint_lines": 144,
+   "done": true,
+   "expected_cases": null,
+   "mandatory": false,
+   "projected_over_budget": null,
+   "projected_total_s": null,
+   "spent_s": 4,
+   "stopped": null
+  },
+  "g11_2x2": {
+   "budget_s": 1500,
+   "checkpoint_lines": 105,
+   "done": false,
+   "expected_cases": null,
+   "mandatory": true,
+   "projected_over_budget": null,
+   "projected_total_s": null,
+   "spent_s": 54,
+   "stopped": null
+  },
+  "gti": {
+   "budget_s": 2400,
+   "checkpoint_lines": null,
+   "done": false,
+   "expected_cases": null,
+   "mandatory": true,
+   "projected_over_budget": null,
+   "projected_total_s": null,
+   "spent_s": 358,
+   "stopped": null
+  },
+  "repro_2x2": {
+   "budget_s": 900,
+   "checkpoint_lines": 79,
+   "done": false,
+   "expected_cases": 264,
+   "mandatory": true,
+   "projected_over_budget": false,
+   "projected_total_s": 181,
+   "spent_s": 54,
+   "stopped": null
+  }
+ },
+ "written_at": "2026-10-26T06:54:41-0400"
+}

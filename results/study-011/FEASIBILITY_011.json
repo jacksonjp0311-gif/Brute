@@ -1,0 +1,168 @@
+{
+ "all_feasible": true,
+ "cells": {
+  "n6/T16": {
+   "cases": 12,
+   "clauses_median": 1888.0,
+   "feasible_true": 12,
+   "solver_calls": 216,
+   "unknown_fraction": 0.0,
+   "unknown_queries": 0,
+   "variables_median": 260.0,
+   "wall_max_s": 0.035716,
+   "wall_median_s": 0.003277,
+   "wall_p95_s": 0.035716
+  },
+  "n6/T24": {
+   "cases": 12,
+   "clauses_median": 2584.0,
+   "feasible_true": 12,
+   "solver_calls": 216,
+   "unknown_fraction": 0.0,
+   "unknown_queries": 0,
+   "variables_median": 308.0,
+   "wall_max_s": 0.094972,
+   "wall_median_s": 0.006264,
+   "wall_p95_s": 0.094972
+  },
+  "n6/T32": {
+   "cases": 12,
+   "clauses_median": 3283.0,
+   "feasible_true": 12,
+   "solver_calls": 216,
+   "unknown_fraction": 0.0,
+   "unknown_queries": 0,
+   "variables_median": 356.0,
+   "wall_max_s": 0.035447,
+   "wall_median_s": 0.010058,
+   "wall_p95_s": 0.035447
+  },
+  "n6/T8": {
+   "cases": 12,
+   "clauses_median": 1180.0,
+   "feasible_true": 12,
+   "solver_calls": 216,
+   "unknown_fraction": 0.0,
+   "unknown_queries": 0,
+   "variables_median": 212.0,
+   "wall_max_s": 0.004216,
+   "wall_median_s": 0.001578,
+   "wall_p95_s": 0.004216
+  },
+  "n7/T16": {
+   "cases": 12,
+   "clauses_median": 2501.5,
+   "feasible_true": 12,
+   "solver_calls": 216,
+   "unknown_fraction": 0.0,
+   "unknown_queries": 0,
+   "variables_median": 316.0,
+   "wall_max_s": 0.009368,
+   "wall_median_s": 0.003863,
+   "wall_p95_s": 0.009368
+  },
+  "n7/T24": {
+   "cases": 12,
+   "clauses_median": 3408.0,
+   "feasible_true": 12,
+   "solver_calls": 216,
+   "unknown_fraction": 0.0,
+   "unknown_queries": 0,
+   "variables_median": 372.0,
+   "wall_max_s": 0.05298,
+   "wall_median_s": 0.007361,
+   "wall_p95_s": 0.05298
+  },
+  "n7/T32": {
+   "cases": 12,
+   "clauses_median": 4307.5,
+   "feasible_true": 12,
+   "solver_calls": 216,
+   "unknown_fraction": 0.0,
+   "unknown_queries": 0,
+   "variables_median": 428.0,
+   "wall_max_s": 0.493955,
+   "wall_median_s": 0.01961,
+   "wall_p95_s": 0.493955
+  },
+  "n7/T8": {
+   "cases": 12,
+   "clauses_median": 1581.0,
+   "feasible_true": 12,
+   "solver_calls": 216,
+   "unknown_fraction": 0.0,
+   "unknown_queries": 0,
+   "variables_median": 260.0,
+   "wall_max_s": 0.002998,
+   "wall_median_s": 0.001826,
+   "wall_p95_s": 0.002998
+  },
+  "n8/T16": {
+   "cases": 12,
+   "clauses_median": 3169.0,
+   "feasible_true": 12,
+   "solver_calls": 216,
+   "unknown_fraction": 0.0,
+   "unknown_queries": 0,
+   "variables_median": 376.0,
+   "wall_max_s": 0.012653,
+   "wall_median_s": 0.003368,
+   "wall_p95_s": 0.012653
+  },
+  "n8/T24": {
+   "cases": 12,
+   "clauses_median": 4297.0,
+   "feasible_true": 12,
+   "solver_calls": 216,
+   "unknown_fraction": 0.0,
+   "unknown_queries": 0,
+   "variables_median": 440.0,
+   "wall_max_s": 0.018489,
+   "wall_median_s": 0.00648,
+   "wall_p95_s": 0.018489
+  },
+  "n8/T32": {
+   "cases": 12,
+   "clauses_median": 5433.0,
+   "feasible_true": 12,
+   "solver_calls": 216,
+   "unknown_fraction": 0.0,
+   "unknown_queries": 0,
+   "variables_median": 504.0,
+   "wall_max_s": 0.103507,
+   "wall_median_s": 0.011647,
+   "wall_p95_s": 0.103507
+  },
+  "n8/T8": {
+   "cases": 12,
+   "clauses_median": 2045.0,
+   "feasible_true": 12,
+   "solver_calls": 216,
+   "unknown_fraction": 0.0,
+   "unknown_queries": 0,
+   "variables_median": 312.0,
+   "wall_max_s": 0.002465,
+   "wall_median_s": 0.002008,
+   "wall_p95_s": 0.002465
+  }
+ },
+ "expected_measurements": 144,
+ "gated": false,
+ "labels": "per-case timings Observed (shared 8-CPU box, informational); projections Inferred",
+ "measurements": 144,
+ "projection_inferred": {
+  "n7": {
+   "basis": "Inferred: median T=32 query wall / 7 x 14 queries x 44 steps",
+   "per_792_cases_s": 1367.0,
+   "per_case_s_44_steps_14_queries_per_step": 1.7
+  },
+  "n8": {
+   "basis": "Inferred: median T=32 query wall / 7 x 14 queries x 44 steps",
+   "per_792_cases_s": 812.0,
+   "per_case_s_44_steps_14_queries_per_step": 1.0
+  }
+ },
+ "schema": "brute.feasibility-011.v1",
+ "smoke": false,
+ "study": "BRUTE-090-WINDOW-011"
+}

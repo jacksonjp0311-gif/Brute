@@ -1,0 +1,61 @@
+{
+ "completed_at": {
+  "2x2": 1793012027.140504,
+  "feas": 1793011727.0356216,
+  "gti": 1793012888.3677683,
+  "repro_2x2": 1793012169.5019448
+ },
+ "elapsed_s": 1812,
+ "events": {
+  "g11_2x2": {
+   "mandatory_done": {
+    "event": "mandatory_done",
+    "t": 1793012724.065296,
+    "wall_since_start": 694.7
+   },
+   "mutation": {
+    "detected_injected": 20,
+    "event": "mutation",
+    "flagged_not_injected": 0,
+    "flagged_not_injected_basis": "Exact: uninjected traces asserted byte-identical",
+    "injected": 20,
+    "injected_action": 7,
+    "injected_j9": 11,
+    "injected_j9_cert_or_hull_fields": 5,
+    "injected_on_already_mismatching_trace": 0,
+    "injected_sp8": 9,
+    "passed": true,
+    "rng": "random.Random(20261026)"
+   },
+   "start": {
+    "event": "start",
+    "t": 1793012029.3245683
+   }
+  }
+ },
+ "finished": {
+  "2x2": "2026-10-26T06:53:47-0400",
+  "feas": "2026-10-26T06:48:47-0400",
+  "gti": "2026-10-26T07:08:08-0400",
+  "repro_2x2": "2026-10-26T06:56:09-0400"
+ },
+ "finished_at": "2026-10-26T07:18:53-0400",
+ "mandatory": {
+  "2x2": true,
+  "feas": false,
+  "g11_2x2": true,
+  "gti": true,
+  "repro_2x2": true
+ },
+ "spent": {
+  "2x2": 304,
+  "feas": 4,
+  "g11_2x2": 1502,
+  "gti": 1165,
+  "repro_2x2": 142
+ },
+ "stopped": {
+  "g11_2x2": "stream budget 1500 s"
+ },
+ "t0": 1793011721.0
+}
