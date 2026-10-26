@@ -1,0 +1,11 @@
+{
+ "schema": "brute.plan-freeze.v1",
+ "study": "BRUTE-090-WINDOW-011",
+ "plan": "experiments/BRUTE_PLAN_011.json",
+ "plan_sha256": "41cb28a8d70fcab81957518254212b7da85955646c7217db7ea3e346c58425bf",
+ "criteria_canonical_json_sha256": "e7149362fd320cad63719fcade368e420070f3748a0b8fe7ad5d0f85799e87fb",
+ "criteria_hash_method": "sha256 of json.dumps(plan['criteria'], sort_keys=True, separators=(',', ':'), ensure_ascii=False) (same as preregistration_010)",
+ "readable_plan": "docs/research/v0.9.0/PLAN_011.md (the JSON wins if they differ)",
+ "frozen_at": "the commit that adds this file (recorded in the ledger entry preregistration_011)",
+ "note": "no v0.9.0 learner code, held-out world, seed or run exists at this commit; the seen-data lag diagnostic (a5ef9c8) precedes it by owner order"
+}
