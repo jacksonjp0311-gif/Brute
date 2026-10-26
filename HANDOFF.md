@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 ~23:40 EDT (v0.7.0 release in progress on `plan/v0.7.0`)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 ~01:00 EDT (v0.7.0 RELEASED)._
 
 ## Current version and state
 
@@ -9,7 +9,7 @@ _Kept current on the working branch during a release and on `main` at release. L
   - **PASS:** G1, G2, G4, G5, G7, G9, G10, G12, G13.
   - Run: start 20:04:06 EDT, cap 23:04:06, stop rule fired 23:22:42 EDT (late; DEVIATIONS_009 entry 21). No stream relaunched.
   - Done in order: run-end commit `4cdeeb4`; deviations 21–25 `af60688`; pack `30bb932`; ledger run_end_009 + SEAL `327d4fd`; ledger seal_009 `8888b88`; paired + repro; GATES_009 `a50f751` + ledger gates_009; docs + RELEASE.json/pyproject 0.7.0.
-  - **Next (if interrupted, continue here):** release freeze (`scripts/make_release_freeze_070.py`) → ledger release_freeze_070 → MANIFEST → `scripts/run_tests_070.py --output results/study-009/TEST_SUITE_009_FINAL.json` (NEVER the default output: TEST_SUITE_009.json is the in-cap gated file and must stay absent) → `scripts/make_gates_final_009.py` → ledger gates_final_009/release_070 → MANIFEST → `verify_release_070 --fast` (branch + fresh clone) → `--no-ff` merge to main → annotated tag v0.7.0 on the merge commit → gh release.
+  - **RELEASED 2026-10-26 ~00:57 EDT:** GATES_009_FINAL + TEST_SUITE_009_FINAL `db6f6bb`; ledger gates_final_009 + MANIFEST `ee21407`; verify_release_070 --fast passed on branch, fresh clone and merge; `--no-ff` merge `d016a81` on main; annotated tag v0.7.0 (object `e5ae50b`) -> `d016a81`; [GitHub release](https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.7.0). 9/17 gated pass. Next: v0.8.0 per NEXT_ITERATION.md (pre-register BRUTE_PLAN_010 on a new branch from main first).
 - **Previous: v0.6.0** released (tag `v0.6.0`), 11 of 16 gated pass; its record follows.
 - **Released: v0.6.0** (study BRUTE-060-DRIFTSOUND-008, `plan/v0.6.0` → main, tag `v0.6.0`). **11 of 16 gated pass.**
   - **FAIL:** GA1 (target a), G3′, G5, G6b and GX2′ (target b, incomplete coverage).
