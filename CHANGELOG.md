@@ -1,5 +1,36 @@
 # Brute changelog
 
+## v0.9.0: selective window hull (J9), G_RT mandatory vs optional, clean-clone and --long verify, 7–8 state feasibility (study BRUTE-090-WINDOW-011)
+
+**15 of 17 gated criteria pass.** Two fail: G6b and GA1_011 (headline target). *Observed*; scoring rules were fixed before the data (*Exact*).
+
+### Timeline
+
+All times are the author's clock, EDT.
+
+- **Before the plan.** Lag diagnostic on seen data (sealed studies 008–010, exploratory) `a5ef9c8`/`0c3f348`: 23/28 stale certificates at lag 1.
+- **Pre-registration and preparation.** Plan `7950513` (`experiments/BRUTE_PLAN_011.json`); seed check `06249f7`; second implementation `experiments/v090_reference.py` `d5c6a54`; implementation `8eeb810`, `4c4800b`, `052ec9d`; kill drill and scoring scripts `13b12ee` (0.228 s); rate math `6cf27bd`.
+- **Freezes.** Source frozen at `f658e13` (30 files). Scoring scripts (at `13b12ee`, deviation #43) ledgered 06:38:21 EDT.
+- **Held-out run** (`scripts/run_study_011.py` + independent `scripts/watchdog_011.py`). Started 06:48:41 EDT under a hard 2 h cap (08:48:41 EDT). RUN_DONE 07:18:53 EDT (1,812 s). The watchdog did not fire.
+- **After the run.** Seal `6ae2cc4` (26 files); GATES_011 `ed2b042`; release tooling and RELEASE.json; release freeze `BRUTE_RELEASE_FREEZE_090_R1.json` (supersedes `_090`, deviation #44). Deviations #40–#46 in `docs/research/BRUTE_DEVIATIONS_011.md`.
+
+### Code
+
+- **`brute/jumpwindow.py`**: J9, SP8 certification plus a selective K=4 window hull (`JumpWindowRegionK`, `WindowSyncLearner`). Research arm, not the default.
+- **`experiments/v090_reference.py`**: second implementation by row enumeration, with a mutation test.
+- **Run control.** `scripts/run_study_011.py` (mandatory vs optional streams), `scripts/watchdog_011.py`, `scripts/run_tests_090.py` (GTI), `scripts/seal_011.py`, `scripts/feasibility_011.py` (7–8 states).
+- **Release.** `scripts/verify_release_090.py` (short and `--long`), `tests/test_release_090.py` (tamper matrix, tracked-files test), `scripts/clean_clone_011.py`, `scripts/study011_storage.py`, `scripts/make_release_freeze_090{,_r1}.py`, `brute/release_version_090.py`.
+
+### Results (*Observed*)
+
+- **Soundness and safety.** G1/G2: 0 false certificates for J9 and SP8. G4: 0 public false certificates. G5: 0 alarms.
+- **Drift.** G3L: J9 0 non-drift false certificates at lag ≥ 2 (and 0 at lag 1); SP8 7 at lag ≥ 2 (power informative). Strict G3′: J9 0, SP8 16, control 323, the first strict pass for any arm. J9's 8 false certificates are all at drift steps.
+- **Coverage.** G6b fails: J9 − A2 −0.1918 [−0.2073, −0.1772]. J9 − SP8 −0.1660 [−0.1803, −0.1520]. SP8 − A2 −0.0109 [−0.0172, −0.0054].
+- **Hull.** GH: 595 checked, 0 exceptions. 38% (cycle3) and 68% (drift4) of hull steps admit every code.
+- **Exactness and reproducibility.** G11: mandatory 0 mismatches, mutation 20/20; optional rest 960/1,152 traces, 0 mismatches (stopped at its budget). G12: 264/264. GLV `--long`: 33 cases, 66 traces, 0 mismatches, 363 s.
+- **Runtime.** G_RT passes under the plan-011 mandatory/optional rule; R_G_RT_strict (v0.8.0 reading) false. One 78 s heartbeat gap.
+- **Feasibility (ungated).** n6–n8 all feasible, millisecond median solve times.
+
 ## v0.8.0: jump-hull certification, aligned lookahead, a silent-jump diagnostic, a hard 2 h cap with a watchdog (study BRUTE-080-ALIGN-010)
 
 **12 of 17 gated criteria pass.** Five fail: GA1_010 (target a), G3′, G6b, GD and G_RT. **G11, GX2_010 and GTI pass, inside the cap.** *Observed*; scoring rules were fixed before the data (*Exact*).

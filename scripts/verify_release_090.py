@@ -73,10 +73,17 @@ def git_order(root,rel):
     check(rel['preregistration_commit']==req(fr,'preregistration_commit','freeze'),'RELEASE.json preregistration_commit differs from the source freeze')
     chain=[('diagnostic',fr['diagnostic_commit']),('preregistration',fr['preregistration_commit']),('seedcheck',fr['seedcheck_commit']),('reference',fr['reference_commit'])]
     chain+=[(f'implementation_{i}',c) for i,c in enumerate(req(fr,'implementation_commits','freeze'))]
-    chain+=[('source_freeze',rel['source_freeze_commit']),('scoring_scripts',rel['scoring_scripts_commit']),('seal',rel['seal_commit']),('head','HEAD')]
+    chain+=[('source_freeze',rel['source_freeze_commit']),('seal',rel['seal_commit']),('head','HEAD')]
     for (na,a),(nb,b) in zip(chain,chain[1:]):
         check(anc(a,b),f'{na} {a} is not an ancestor of {nb} {b}')
         if b!='HEAD':check(_git(root,'rev-parse',a).stdout!=_git(root,'rev-parse',b).stdout,f'{na} and {nb} are the same commit')
+    # deviation #43: the scoring scripts were committed (13b12ee) before the source freeze commit, not after it as plan order (6)
+    # says; their freeze is the scoring_freeze_011 ledger entries (after source_freeze_011, >= 600 s before run_start, checked
+    # by ledger_order). Here: the scoring commit precedes the seal and differs from it, and its bytes equal the tree (below).
+    sc=rel['scoring_scripts_commit']
+    check(anc(sc,rel['seal_commit']) and _git(root,'rev-parse',sc).stdout!=_git(root,'rev-parse',rel['seal_commit']).stdout,
+          f"scoring_scripts {sc} is not a strict ancestor of seal {rel['seal_commit']}")
+    chain.insert([n for n,_ in chain].index('source_freeze'),('scoring_scripts',sc))
     plan=_git(root,'show',f"{rel['preregistration_commit']}:{rel['preregistration']}")
     check(plan.returncode==0 and plan.stdout==(root/rel['preregistration']).read_text(),'plan changed after pre-registration')
     for f in SCORING:

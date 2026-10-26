@@ -3,7 +3,7 @@
 </p>
 
 <p align="center"><b>Exact geometric reasoning about hidden worlds. Brute keeps every explanation the evidence still allows, and it certifies an answer only when all of them agree. Otherwise it says "I don't know."</b><br>
-<sub>Brute v0.8.0 · built on BGR v0.90.0 (BITWORK — Geometric Reasoning) · research preview · not general intelligence</sub></p>
+<sub>Brute v0.9.0 · built on BGR v0.90.0 (BITWORK — Geometric Reasoning) · research preview · not general intelligence</sub></p>
 
 ---
 
@@ -13,19 +13,21 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 
 | Claim | Evidence | Label |
 | --- | --- | --- |
-| **0 public false certificates in all nine pre-registered studies** (002–010, v0.1.0–v0.8.0). The in-family soundness, out-of-family soundness and public-safety gates passed in every study | `results/study-00*/GATES*.json` (G1/G2/G4; C1/C2/C4 in study-002) | *Observed* |
+| **0 public false certificates in all ten pre-registered studies** (002–011, v0.1.0–v0.9.0). The in-family soundness, out-of-family soundness and public-safety gates passed in every study | `results/study-00*/GATES*.json` (G1/G2/G4; C1/C2/C4 in study-002) | *Observed* |
 | **The SAT engine makes the same decision as brute-force enumeration on all 25,344 steps** (v0.5.0, GX1), and the constraint region matches enumeration on 1.25 M items (v0.4.0, GR1/GR1b) | `results/study-007/`, `results/study-006/` | *Observed* |
 | **Second-encoding cross-check, 288/288 breadth cases: 0 mismatching traces in 1,358,721 SAT queries, 0 unknowns, 0 witness failures.** This was an incremental CaDiCaL re-run of the v0.6.0 cross-check: 310 s on 4 workers, against ~8.8 h for 46 cases before. It is post-release verification and does not change the frozen GX2′ FAIL | branch [`verify/xcheck-incremental`](https://github.com/jacksonjp0311-gif/Brute/tree/verify/xcheck-incremental), `results/verify-xcheck-incremental/` | *Observed* |
 | **v0.8.0 ran every pre-registered stream inside a hard 2 h cap** with an independent watchdog: the whole study finished in 1,970 s (cap 7,200 s), the second implementation agreed on 648/648 + 144/144 mandatory traces and caught 20/20 injected mutations, and in-cap test isolation passed (294 tests). The kill drill stopped 8 process groups in 0.239 s | `results/study-010/GATES_010.json` (G11, GX2_010, GTI, G_RT ii/iii) | *Observed* |
+| **v0.9.0: the first arm with 0 non-drift false certificates on drift4 at any lag while still certifying** (J9, window hull; strict G3′ passes for the first time). It covers only 3–7% of forecasts, so it still fails the coverage gate. The study ran in 1,812 s of a 7,200 s cap; `verify_release_090 --long` re-ran the second implementation on 33 cases (66 traces, 0 mismatches) in 363 s | `results/study-011/GATES_011.json` (G3L, G3′, GH, G6b, G_RT) | *Observed* |
 | In v0.7.0 the symmetric cross-check covered 100% of steps in every breadth family × arm in 316 s, with 0 mismatches | `results/study-009/` | *Observed* |
 | When the solver runs out of budget, the answer is **ABSTAIN / SOLVER_BUDGET, never a certificate** (257 stress forecasts, 0 certificates) | `brute/region.py`, study-007 GX3 | *Exact* / *Observed* |
-| Pre-registration and audit trail: the plan is frozen at a commit before any code, followed by a source freeze, a scoring freeze, a seal and a verifier. The ledger has 172 SHA-chained entries. `verify_release_080.py` regenerates gates, paired analysis and reproducibility byte-for-byte | `experiments/BRUTE_PLAN_0*.json`, `results/RESEARCH_LEDGER.jsonl`, `scripts/verify_release_080.py` | *Exact* |
+| Pre-registration and audit trail: the plan is frozen at a commit before any code, followed by a source freeze, a scoring freeze, a seal and a verifier. The ledger has over 200 SHA-chained entries. `verify_release_090.py` regenerates gates, paired analysis and reproducibility byte-for-byte | `experiments/BRUTE_PLAN_0*.json`, `results/RESEARCH_LEDGER.jsonl`, `scripts/verify_release_090.py` | *Exact* |
 
 ## Where it stands
 
 | Version | Study | Gates | What it added | Key result |
 | --- | --- | --- | --- | --- |
-| **v0.8.0** (current) | BRUTE-080-ALIGN-010, 936 held-out cases (648 2x2, 288 breadth) | **12 / 17** | jump-hull certification (J8), aligned lookahead LU-C on SC7 (SP8), silent-jump diagnostic (GD), hard 2 h cap + watchdog | first G6b pass ever (SP8 −0.017 vs −0.03) but SP8 fails G3′; J8 has 0 drift4 false certificates but 0 coverage *Observed*; G11, GX2_010 and GTI all pass in-cap |
+| **v0.9.0** (current) | BRUTE-090-WINDOW-011, 792 held-out 2x2 cases | **15 / 17** | selective K=4 window hull on SP8 (J9), G_RT mandatory vs optional, clean-clone tracked-files test, `--long` verify, 7–8 state feasibility | J9: 0 non-drift drift4 false certificates (first strict G3′ pass) but coverage 0–7%, G6b −0.192 *Observed*; GA1_011 fails on G6b only |
+| v0.8.0 | BRUTE-080-ALIGN-010, 936 held-out cases (648 2x2, 288 breadth) | **12 / 17** | jump-hull certification (J8), aligned lookahead LU-C on SC7 (SP8), silent-jump diagnostic (GD), hard 2 h cap + watchdog | first G6b pass ever (SP8 −0.017 vs −0.03) but SP8 fails G3′; J8 has 0 drift4 false certificates but 0 coverage *Observed*; G11, GX2_010 and GTI all pass in-cap |
 | v0.7.0 | BRUTE-070-SYNCPLAN-009, 1,080 held-out cases | **9 / 17** | synchronous drift events (S7/SC7), count-based planner (P7), incremental symmetric cross-check, 3 h stop rule | soundness held for every arm; SC7 is the closest drift rule yet to the coverage target (−0.050 vs −0.03; +0.0145 over C6) *Observed*; 4 gates ran out of budget |
 | v0.6.0 | BRUTE-060-DRIFTSOUND-008, 936 cases | 11 / 16 | drift-sound rules R6/C6, CaDiCaL cross-check, hardened verifier, exact model counting | GT1 56/56 tamper cases rejected *Exact*; counts on 99.75% of sampled steps *Observed*; cross-check stopped at 46/288 (FAIL) |
 | v0.5.0 | BRUTE-050-REGION-007, 864 + 24 cases | 12 / 15 | SAT region engine; 6 states, 3 sensors, 3 actions | A5 = A4 on 25,344 steps *Observed* |
@@ -35,7 +37,7 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 
 ## Published failures (they stay failed)
 
-- **No rule is both drift-safe and coverage-competitive (GA1, failed in v0.6.0, v0.7.0 and v0.8.0).** In v0.8.0 SP8 (SC7 with the aligned lookahead LU-C) passed G6b for the first time (−0.017 vs v0.2.0, limit −0.03) but issued 3 non-drift false certificates on drift4; J8 (S7 plus a one-step jump hull) issued none but certified nothing at all (coverage 0, G6b −0.224). *Observed.*
+- **No rule is both drift-safe and coverage-competitive (GA1, failed in v0.6.0, v0.7.0, v0.8.0 and v0.9.0).** In v0.9.0 J9 (SP8 plus a K=4 window hull) issued 0 non-drift false certificates on drift4 but its coverage fell to 0.067 on cycle3 (SP8 0.286) and 0 on unaliased2: J9 − A2 −0.1918 [−0.2073, −0.1772], limit −0.03. *Observed.* In v0.8.0 SP8 (SC7 with the aligned lookahead LU-C) passed G6b for the first time (−0.017 vs v0.2.0, limit −0.03) but issued 3 non-drift false certificates on drift4; J8 (S7 plus a one-step jump hull) issued none but certified nothing at all (coverage 0, G6b −0.224). *Observed.*
 - **Stale certificates after a silent jump in the world.** On drift4, SP8 issued 3 false certificates at non-drift steps and SC7 4 (v0.7.0: S7 4, SC7 5). None was public. *Observed.* The v0.8.0 diagnostic (GD) did not support the silent-jump explanation (a false certificate at step d+1 after a drift at d with no event at d): only 1 of 4 (SC7) and 1 of 3 (SP8) fit it, though the replay on sealed study-009 data had found 9/9. *Observed*; the real cause is *Open*.
 - **The count-based planner did not beat the baseline (GP1).** P7 − LU-R coverage is −0.035 [−0.054, −0.017]. *Observed.*
 - **Budget overruns (fixed in v0.8.0, with one technical failure).** The v0.6.0 cross-check took ~8.8 h for 46/288 cases. In v0.7.0 the 3 h stop rule fired 18.6 min late, G11 produced no output and GTI never ran. In v0.8.0 every stream finished well inside the 2 h cap, but G_RT still fails clause (i): the g11_2x2 stream's optional phase was stopped by its own 1,500 s budget after its mandatory set had passed, so it has no completion stamp. *Observed.*
@@ -58,9 +60,9 @@ Details: [`NEXT_ITERATION.md`](NEXT_ITERATION.md), [`docs/ROADMAP.md`](docs/ROAD
 ```bash
 git clone https://github.com/jacksonjp0311-gif/Brute.git && cd Brute
 python -m pip install -r requirements.txt
-for k in 004 005 006 007 008 009 010; do python scripts/study${k}_storage.py restore; done   # rebuild sealed traces, checked against SEAL.json
-PYTHONPATH=. python scripts/verify_release_080.py   # seals, freezes, ledger chain, manifest, git order; regenerates paired/repro/gates byte-for-byte
-PYTHONPATH=. python scripts/make_gates_010.py --check   # GATES_010.json alone
+for k in 004 005 006 007 008 009 010 011; do python scripts/study${k}_storage.py restore; done   # rebuild sealed traces, checked against SEAL.json
+PYTHONPATH=. python scripts/verify_release_090.py   # (--long adds the 33-case second-implementation re-run, ~6 min) seals, freezes, ledger chain, manifest, git order; regenerates paired/repro/gates byte-for-byte
+PYTHONPATH=. python scripts/make_gates_011.py --check   # GATES_011.json alone
 ```
 
 No GPU, network or model weights are needed. CPU only, Python 3.11+ (the release was run on 3.13.5).
@@ -70,6 +72,15 @@ No GPU, network or model weights are needed. CPU only, Python 3.11+ (the release
 Brute is built on **BGR v0.90.0, "BITWORK — Geometric Reasoning"**, James's earlier research system. Its exact symbolic support over Moore machines, the study-001 evidence and the `bgr*/` code are carried forward byte-identical, with full credit in [`FORK.md`](FORK.md) and [`docs/research/bgr-v0.90.0/`](docs/research/bgr-v0.90.0/).
 
 ---
+
+## v0.9.0 at a glance: 15 of 17 gated criteria pass; G6b and the headline target GA1_011 fail
+
+On the pre-registered study-011 (792 held-out 2x2 cases; plan frozen at `7950513` before any code; source freeze `f658e13`; scoring scripts `13b12ee`, ledgered 620 s before the run; seal `6ae2cc4`) **15 of 17 gated criteria pass** (*Observed*). The run started at 06:48:41 EDT under a hard 2 h cap and finished at 07:18:53 EDT (1,812 s); the watchdog never had to fire (*Observed*). **Failed, and they stay failed:**
+
+- **GA1_011 (J9 passes G1 + G2 + G3L + G6b): NOT MET.** J9 passes G1, G2 and G3L; it fails G6b. *Observed.* GA1_011 used G3L (lag ≥ 2 only), a weaker target than v0.8.0's strict G3′, disclosed in the plan (*Exact*).
+- **G6b:** J9 − A2 −0.1918 [−0.2073, −0.1772] (limit −0.03, CI lower −0.05). Per family: cycle3 −0.231, switch3 −0.241, unaliased2 −0.213, unstructured3 −0.220, ood4 −0.054. SP8 − A2 −0.0109 [−0.0172, −0.0054] (reported). *Observed.*
+
+**Passed:** G1, G2 (0 false certificates for J9 and SP8), G3L (J9 0 non-drift false certificates at lag ≥ 2 and 0 at lag 1; SP8 7 at lag ≥ 2, so the test had power), G3′ strict (J9 0, SP8 16, control 323), GH (595 checked, 0 exceptions), G4, G5 (0 alarms), G7, G9, G10 (792/792, 0 unknown forecasts), G11 (mandatory 0 mismatches, mutation 20/20), G12 (264/264 byte-identical), G13, GTI (339 tests, only declared failures, clean tree), G_RT (mandatory streams inside the cap; watchdog for the whole run; kill drill 0.228 s). The optional g11 rest stopped at its own 1,500 s budget after 960/1,152 traces with 0 mismatches, so the v0.8.0-style strict reading (R_G_RT_strict) is still false (reported only). Release gates: GLV `--long` 33 cases, 0 mismatches, 363 s of 900 s; GCC clean clone (see `results/study-011/CLEAN_CLONE_011.json`). Deviations #40–#46: [`BRUTE_DEVIATIONS_011.md`](docs/research/BRUTE_DEVIATIONS_011.md).
 
 ## v0.8.0 at a glance: 12 of 17 gated criteria pass; 5 fail, including the headline target GA1_010
 
@@ -143,11 +154,11 @@ Brute is built on **BGR v0.90.0 (BITWORK — Geometric Reasoning)**, and that re
 
 | | |
 | --- | --- |
-| Version | *Exact.* 0.8.0 (`RELEASE.json`, `pyproject.toml`, `brute.release_version_080.RELEASE_VERSION`). Earlier `release_version*` modules keep their own versions (earlier freezes) |
+| Version | *Exact.* 0.9.0 (`RELEASE.json`, `pyproject.toml`, `brute.release_version_090.RELEASE_VERSION`). Earlier `release_version*` modules keep their own versions (earlier freezes) |
 | Tests | *Observed* at release: see [Test suite at release](#test-suite-at-release) |
-| Study | `BRUTE-080-ALIGN-010`. *Exact* (git ancestry): plan `881f0a6` → seed check `c80bdd7` → diagnostic replay `299babf` → second implementation `385ea23` → implementation `2360559`…`8c7fdf2` → source freeze `5470c48` → scoring freeze `39d255b` → ledger `run_start_010` (05:03:17 EDT) → `run_end_010` (05:36:07 EDT) → seal `1bdebc9`. Deviations: [`BRUTE_DEVIATIONS_010.md`](docs/research/BRUTE_DEVIATIONS_010.md). Previous: `BRUTE-070-SYNCPLAN-009`. *Exact* (git ancestry): plan `3825ad3` → source freeze `f9b94e7` → scoring freeze `b49cc37` → ledger `run_start_009` (20:04:06 EDT) → stop rule (23:22:42 EDT) → seal `327d4fd`. Deviations: [`BRUTE_DEVIATIONS_009.md`](docs/research/BRUTE_DEVIATIONS_009.md). Previous: `BRUTE-060-DRIFTSOUND-008`. *Exact* (git ancestry): plan `89c2d3b` → reference `8863f06` → implementation `457db5a`/`6556186`/`ff4d0d8`/`6f6cd22` → pre-freeze fix `cae25ce` → source freeze `8e80615` → scoring scripts `08ac3f3` (08:38:46 EDT) → ledger `run_start_008` (08:49:16 EDT) → seal `c21ef12` (09:04:53 EDT). Scoring scripts unchanged since their single commit. Stream A (xcheck) was stopped by the owner at 17:44 EDT, after 46/288 cases. Commit times are the author's clock (*Observed*, not attested). Deviations: [`BRUTE_DEVIATIONS_008.md`](docs/research/BRUTE_DEVIATIONS_008.md) |
-| Gates | *Observed.* **12 of 17 gated pass. G3′, G6b, GA1_010, GD and G_RT fail** ([`results/study-010/GATES_010.json`](results/study-010/GATES_010.json)). v0.7.0: 9 of 17 ([`GATES_009_FINAL.json`](results/study-009/GATES_009_FINAL.json)). v0.6.0: 11 of 16 ([`GATES_008_FINAL.json`](results/study-008/GATES_008_FINAL.json)) |
-| Verifier | *Exact.* `PYTHONPATH=. python scripts/verify_release_080.py` (v0.7.0: `verify_release_070.py`; v0.6.0: `verify_release_060.py`) parses every artifact and raises `VerificationError` on any malformed file. It also checks seals, freezes, ledger chronology, the manifest, git order and version consistency, and regenerates the gates, paired analysis and reproducibility byte-for-byte |
+| Study | `BRUTE-090-WINDOW-011`. *Exact* (git ancestry): lag diagnostic `a5ef9c8` → plan `7950513` → seed check `06249f7` → second implementation `d5c6a54` → implementation `8eeb810`/`4c4800b`/`052ec9d` → scoring scripts `13b12ee` → source freeze `f658e13` → ledger scoring_freeze_011 (06:38:21 EDT) → `run_start_011` (06:48:41 EDT) → `run_end_011` (07:18:53 EDT) → seal `6ae2cc4`. Deviations: [`BRUTE_DEVIATIONS_011.md`](docs/research/BRUTE_DEVIATIONS_011.md). Previous: `BRUTE-080-ALIGN-010`. *Exact* (git ancestry): plan `881f0a6` → seed check `c80bdd7` → diagnostic replay `299babf` → second implementation `385ea23` → implementation `2360559`…`8c7fdf2` → source freeze `5470c48` → scoring freeze `39d255b` → ledger `run_start_010` (05:03:17 EDT) → `run_end_010` (05:36:07 EDT) → seal `1bdebc9`. Deviations: [`BRUTE_DEVIATIONS_010.md`](docs/research/BRUTE_DEVIATIONS_010.md). Previous: `BRUTE-070-SYNCPLAN-009`. *Exact* (git ancestry): plan `3825ad3` → source freeze `f9b94e7` → scoring freeze `b49cc37` → ledger `run_start_009` (20:04:06 EDT) → stop rule (23:22:42 EDT) → seal `327d4fd`. Deviations: [`BRUTE_DEVIATIONS_009.md`](docs/research/BRUTE_DEVIATIONS_009.md). Previous: `BRUTE-060-DRIFTSOUND-008`. *Exact* (git ancestry): plan `89c2d3b` → reference `8863f06` → implementation `457db5a`/`6556186`/`ff4d0d8`/`6f6cd22` → pre-freeze fix `cae25ce` → source freeze `8e80615` → scoring scripts `08ac3f3` (08:38:46 EDT) → ledger `run_start_008` (08:49:16 EDT) → seal `c21ef12` (09:04:53 EDT). Scoring scripts unchanged since their single commit. Stream A (xcheck) was stopped by the owner at 17:44 EDT, after 46/288 cases. Commit times are the author's clock (*Observed*, not attested). Deviations: [`BRUTE_DEVIATIONS_008.md`](docs/research/BRUTE_DEVIATIONS_008.md) |
+| Gates | *Observed.* **15 of 17 gated pass. G6b and GA1_011 fail** ([`results/study-011/GATES_011.json`](results/study-011/GATES_011.json)). v0.8.0: 12 of 17 ([`GATES_010.json`](results/study-010/GATES_010.json)). v0.7.0: 9 of 17 ([`GATES_009_FINAL.json`](results/study-009/GATES_009_FINAL.json)). v0.6.0: 11 of 16 ([`GATES_008_FINAL.json`](results/study-008/GATES_008_FINAL.json)) |
+| Verifier | *Exact.* `PYTHONPATH=. python scripts/verify_release_090.py [--long]` (v0.8.0: `verify_release_080.py`; v0.7.0: `verify_release_070.py`; v0.6.0: `verify_release_060.py`) parses every artifact and raises `VerificationError` on any malformed file. It also checks seals, freezes, ledger chronology, the manifest, git order and version consistency, and regenerates the gates, paired analysis and reproducibility byte-for-byte |
 | Interface | *Exact.* `brute.api` 1.0–1.5, unchanged (`BruteServiceV050`). The R6/C6 rules (`brute/driftsound.py`), the S7/SC7 synchronous-event rules (`brute/syncevent.py`), the P7 count planner (`brute/planner.py`), the J8 jump hull (`brute/jumphull.py`) and the SP8/BSP8 aligned lookahead LU-C (`brute/align.py`) are research arms and are not exposed in the API. The language adapter is template-only; no language model is connected |
 | Storage | *Exact.* Sealed traces for studies 004–010 are committed as deterministic gzip; `python scripts/study0{04,05,06,07,08,09,10}_storage.py restore` rebuilds them and checks them against `SEAL.json` |
 | Environment | *Exact.* Python 3.13.5, numpy 2.5.4, python-sat 1.9.dev17 (`requirements.txt`, `pyproject.toml`); model counting (reporting only) pyganak 2.8.0, pyapproxmc 4.4.0 (`requirements-gmc.txt`) |
@@ -379,14 +390,24 @@ Findings and their math: [`docs/research/DISCOVERIES.md`](docs/research/DISCOVER
 
 ## What Brute can't do yet
 
-New in v0.8.0:
+New in v0.9.0:
+
+- **It still cannot be both drift-safe and useful.** J9 has 0 non-drift false certificates on drift4 at any lag, but covers 0.067 of cycle3 forecasts (SP8 0.286) and none on unaliased2. A K=4 window hull trades almost all of SP8's coverage for safety. *Observed.*
+- **The hull is usually uninformative.** 38% of cycle3 and 68% of drift4 hull steps admit every code; 5,665 of 24,877 hull steps downgraded a certificate. *Observed.* Whether a smaller or surprise-gated window keeps safety is *Open*.
+- **Seen-data diagnostics still mislead.** The seen-data lag diagnostic put 23/28 stale certificates at lag 1; on fresh seeds SP8 had 11 of 18 at lag 1 and 7 at lag ≥ 2. *Observed.*
+- **The optional second-implementation rest still does not finish in its budget** (960/1,152 traces at 1,500 s; 0 mismatches). *Observed.*
+- **Its clock is still not trusted.** One unexplained 78 s heartbeat gap. *Observed*; cause *Open*.
+- **7–8 state worlds are only measured, not used.** Feasibility at n6–n8 is fast (millisecond medians), but no study certifies on them. *Observed* / *Open*.
+- **It is not AGI**, and nothing here shows general intelligence. *Exact.*
+
+Carried from v0.8.0 (still true unless superseded above):
 
 - **It cannot be both safe after a silent jump and useful.** J8 is drift-safe on drift4 (0 non-drift false certificates) only because it certifies nothing: coverage 0 in every family. SP8 keeps coverage (first G6b pass) but issues 3 non-drift false certificates. No arm meets GA1. *Observed.*
 - **It does not know why stale certificates happen.** The silent-jump hypothesis H_c explained 9/9 cases on seen study-009 data and only 2/7 on fresh study-010 data. *Observed*; cause *Open*.
 - **The jump hull is too wide to use.** On drift4, 69% of hull steps admitted every code; the hull downgraded 1,126 of 3,168 cycle3 hull steps. A tighter one-step hull is untested. *Observed* / *Open*.
 - **Its runtime gate still fails on a rule technicality.** Every stream finished inside the cap, but an optional phase hit its own budget, which the frozen G_RT rule counts as a stop. *Exact.*
 - **Its clock is not trusted.** Two unexplained heartbeat gaps (125 s, 85 s) appear in a run on a shared VM. *Observed*; cause *Inferred* (suspension).
-- **Verification is fast-mode only.** `verify_release_080` regenerates gates byte-for-byte but does not re-run the second implementation ([#34](docs/research/BRUTE_DEVIATIONS_010.md)). *Exact.*
+- **(Superseded in v0.9.0 by `verify_release_090 --long`.)** `verify_release_080` regenerates gates byte-for-byte but does not re-run the second implementation ([#34](docs/research/BRUTE_DEVIATIONS_010.md)). *Exact.*
 - **It is not AGI**, and nothing here shows general intelligence. *Exact.*
 
 Carried from v0.7.0 (still true unless superseded above):
