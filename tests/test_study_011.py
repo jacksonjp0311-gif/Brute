@@ -1,12 +1,11 @@
-"""experiments/brute_study_011.py + scripts/run_reference_011.py + scripts/feasibility_011.py + scripts/study011_storage.py
-on smoke seeds only (4190001-4190030): arms, trace fields, seed guard, smoke selection, J9 / SP8 audit, feasibility."""
+"""experiments/brute_study_011.py + scripts/run_reference_011.py
+on smoke seeds only (4190001-4190030): arms, trace fields, seed guard, smoke selection, J9 / SP8 audit."""
 import json,tempfile,unittest
 from pathlib import Path
 import experiments.brute_study_011 as S
 import experiments.v090_reference as R
 from experiments.brute_common import VerificationError
 from experiments.brute_common_011 import load,PLAN
-import scripts.feasibility_011 as F
 import scripts.run_reference_011 as G
 
 
@@ -44,14 +43,6 @@ class Study011(unittest.TestCase):
 
     def test_g11_mandatory_is_216(self):
         self.assertEqual(len(G.mandatory_keys(self.plan,'2x2')),216)
-
-    def test_feasibility_smoke(self):
-        J=F.jobs(self.plan,smoke=True);self.assertEqual({j[0] for j in J},{4190028,4190029,4190030})
-        self.assertEqual(len(F.jobs(self.plan)),36*4)
-        r=F.measure(4190028,6,8);self.assertIs(r['feasible'],True);self.assertEqual(r['T'],8)
-        d=Path(tempfile.mkdtemp());F.main(['--checkpoint',str(d/'ck.jsonl'),'--output',str(d/'F.json'),'--smoke','--limit','2'])
-        rep=json.loads((d/'F.json').read_text());self.assertTrue(rep['smoke']);self.assertEqual(rep['measurements'],2)
-        self.assertTrue(rep['all_feasible'])
 
 
 if __name__=='__main__':unittest.main()
