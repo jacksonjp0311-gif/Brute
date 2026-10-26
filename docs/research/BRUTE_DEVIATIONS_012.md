@@ -55,3 +55,8 @@ clean v0.8.0 worktree with the same runner, and would GTI pass with a K_080 rule
 (manifest test, release_090 short/untampered verify) were caused by the stale MANIFEST: after make_manifest at 5ae0891
 test_manifest_matches_tracked_files and test_short_verify_passes pass (Observed). Smoke of the new script on the GTI
 smoke output: K_080 rule applies (all 3 pass on clean v0.8.0).
+
+**Disclosure (pre-freeze bug fix, not a deviation): superseded release freeze.** The first source-freeze attempt showed
+that experiments/brute_common_012.check_freeze also verified BRUTE_RELEASE_FREEZE_090.json, which is superseded by
+BRUTE_RELEASE_FREEZE_090_R1.json (scripts/verify_release_090.py changed under R1), so G13 could never pass. Fixed before
+the freeze: the list is 070_R1, 080, 090_R1. No plan text changed.

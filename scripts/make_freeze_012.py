@@ -1,6 +1,6 @@
 """Write experiments/BRUTE_SOURCE_FREEZE_012.json (study-012 source lock, BRUTE_PLAN_012 process step 5). Refuses to overwrite.
 
-The study-002..011 source freezes and the v0.7.0_R1 / v0.8.0 / v0.9.0 / v0.9.0_R1 release freezes stay in force;
+The study-002..011 source freezes and the v0.7.0_R1 / v0.8.0 / v0.9.0_R1 release freezes (0.9.0 superseded by 0.9.0_R1) stay in force;
 experiments/brute_common_012.check_freeze verifies all of them plus this one (G13).
 The scoring scripts (make_gates_012, make_paired_012, make_reproducibility_012, clean_clone_012) are locked separately by
 the scoring_freeze_012 ledger entry (>= 10 minutes before run_start_012). tests/test_release_0100.py and
@@ -24,7 +24,7 @@ def build(implementation_commits):
     return {'schema':'brute.source-freeze.v1','study':'BRUTE-0100-SUPPORT-TRANSFER-012','status':'frozen',
             'also_requires':['experiments/BRUTE_SOURCE_FREEZE_00%d.json'%i for i in range(2,10)]+['experiments/BRUTE_SOURCE_FREEZE_010.json',
                              'experiments/BRUTE_SOURCE_FREEZE_011.json','experiments/BRUTE_RELEASE_FREEZE_070_R1.json','experiments/BRUTE_RELEASE_FREEZE_080.json',
-                             'experiments/BRUTE_RELEASE_FREEZE_090.json','experiments/BRUTE_RELEASE_FREEZE_090_R1.json'],
+                             'experiments/BRUTE_RELEASE_FREEZE_090_R1.json'],
             'plan_sha256':sha(PLAN),'preregistration_commit':'0cccf0d','diagnostic_commit':'6494a35','seedcheck_commit':'9f4d4db',
             'reference_commit':'a44a8da','implementation_commits':implementation_commits,'deviations_in_force':[49,50],
             'sha256_files':{rel:sha(ROOT/rel) for rel in FILES}}

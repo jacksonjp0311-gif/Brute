@@ -8,7 +8,7 @@ ROOT=Path(__file__).resolve().parents[1]
 PLAN=ROOT/'experiments/BRUTE_PLAN_012.json'
 PLAN007=ROOT/'experiments/BRUTE_PLAN_007.json'
 FREEZE=ROOT/'experiments/BRUTE_SOURCE_FREEZE_012.json'
-RELEASE_FREEZES=[ROOT/f'experiments/BRUTE_RELEASE_FREEZE_{v}.json' for v in ('070_R1','080','090','090_R1')]
+RELEASE_FREEZES=[ROOT/f'experiments/BRUTE_RELEASE_FREEZE_{v}.json' for v in ('070_R1','080','090_R1')]  # 090 is superseded by 090_R1
 STUDY_DIR=ROOT/'results/study-012'
 
 __all__=['VerificationError','check','sha','load','dumps','write_new','ROOT','PLAN','PLAN007','FREEZE','STUDY_DIR',
@@ -22,8 +22,8 @@ def plan_view(plan):
 
 
 def check_freeze():
-    """Study-002..011 source freezes (via brute_common_011.check_freeze), the v0.7.0_R1/0.8.0/0.9.0/0.9.0_R1 release
-    freezes and the study-012 source freeze must all hold (G13)."""
+    """Study-002..011 source freezes (via brute_common_011.check_freeze), the v0.7.0_R1/0.8.0/0.9.0_R1 release
+    freezes (0.9.0 is superseded by 0.9.0_R1) and the study-012 source freeze must all hold (G13)."""
     check_freeze_011()
     for f in RELEASE_FREEZES+[FREEZE]:
         if not f.exists():
