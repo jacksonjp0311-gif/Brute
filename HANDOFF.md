@@ -1,14 +1,15 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 ~08:12 EDT (v0.10.0 IN PROGRESS on plan/v0.10.0)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 ~08:58 EDT (v0.10.0 IN PROGRESS on plan/v0.10.0)._
 
 ## Current version and state
 
 <!-- V0100 -->
 - **IN PROGRESS: v0.10.0** (study BRUTE-0100-SUPPORT-TRANSFER-012, branch `plan/v0.10.0` = main 13daa32 + diagnostic, deviation #48).
-  - Done: seen-data downgrade diagnostic `6494a35` (ledger `a52313b`; surprise gate Rejected, exact support window supW4 +27.5%); plan + freeze + ROADMAP_TO_GI `0cccf0d` (ledger preregistration_012, deviation #48 `8d74b35`).
-  - Tracks: J10 (exact jump-window support; GA1_012/G6b predicted FAIL; GJ10 J10>J9), big78 (7-8 states, soundness G78), TRANSFER (GT_a/b/c/ref; motifs from one source world, positive vs rotated-family negative control).
-  - Next on resume: (2) scripts/check_seeds_012.py + test, ledger seedcheck_012; (3) experiments/v0100_reference.py before any learner; (4) brute/supportwindow.py, bigstate.py, transfer.py, harness; smoke + kill drill + rate math; (5) source freeze; (6) scoring scripts AFTER the freeze, ledgered >= 10 min before run_start.
+  - Done: diagnostic `6494a35`; plan + freeze + docs/ROADMAP_TO_GI.md `0cccf0d`; seedcheck `9f4d4db`; v0100_reference `a44a8da`; learner/harness `2564201`, `1c43d68`; smoke-1, kill drill, GTI smoke, RATE_MATH_012 + deviation #49 (big78 budget 2700 s) `4628617`/`5ae0891`; deviation #50 (GTI K_080 non-gated report; gated GTI predicted FAIL) `2fb806c`; pre-freeze fix (superseded 090 freeze) `7e77621`; **source freeze `b40f263`** (ledger `4439837`); **scoring freeze `22ce7f7`** (ledger `04f91d1`, 08:57 EDT; run_start must be >= 09:08 EDT).
+  - Tracks: J10 (exact jump-window support), big78 (7-8 states; smoke had 0 certificates -> G78 likely vacuous), TRANSFER (TRp positive library, TRn rotated-family negative control; smoke TRn had 4 false certs before elimination -> GT_a/GT_c at risk).
+  - Next: held-out run (see resume rules), then seal_012 + pack, gti_k080_012, paired/repro/gates, clean_clone_012, verify_release_0100 (short + --long, /tmp dry run), release freeze 0100, README/CHANGELOG/NEXT_ITERATION/HANDOFF, ff main, tag v0.10.0, GitHub release, delete /workspace/scratch012, /tmp/drill012, /tmp/gti012, /tmp/smoke1g.
+  - **Resume rules for the held-out run:** results/study-012/RUN_T0 fixes the 2 h cap (RUN_T0 + 7200 s) and is never rewritten. If RUN_DONE_012.json exists the run is over: go to seal. If the orchestrator is dead and the cap has not passed: restart ONLY `nohup $PY scripts/run_study_012.py >> results/study-012/RUN_012.log 2>&1 &` (resumes from checkpoints, charges spent budget) and make sure ONE watchdog runs (`nohup setsid $PY scripts/watchdog_012.py >> results/study-012/WATCHDOG_012.log 2>&1 &`); ledger the restart as a deviation. If the cap passed: the watchdog/orchestrator stop rule applies; seal partial, no new cases. Never commit or edit tracked files while the gti stream runs (it checks the tracked tree). Never re-run a stream by hand.
   - Scratch: /workspace/scratch012 (delete at release).
 <!-- /V0100 -->
 
