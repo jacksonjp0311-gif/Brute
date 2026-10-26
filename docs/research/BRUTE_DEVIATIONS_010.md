@@ -38,3 +38,28 @@ The re-drill (smoke-3) killed all 8 groups in 0.239 s, with no SIGKILL and no su
 - **What was done:** `scripts/make_manifest.py` is run and committed after the run_start_010 ledger commit and before RUN_T0 is written, so the in-cap GTI sees a manifest of the tree it tests.
 - **Effect on the cap:** the few seconds this takes count against the cap, because t0 is the ledger time.
 - **Why this is not tuning:** no test, rule or threshold changed. (Exact)
+
+## Written after the run (release, 2026-10-26 EDT)
+
+Entries #34–#37 were written after the seal. None changes a criterion, a scoring script, a threshold or a sealed byte.
+
+**#34: release-time changes to the repository.**
+- **Single verifier mode.** `scripts/verify_release_080.py` has one (fast) mode. It does not re-run the second implementation, the cross-check or GTI. It binds their sealed reports through the study SEAL and the block seals instead, and it regenerates PAIRED_ANALYSIS_010, REPRODUCIBILITY_010 and GATES_010 byte for byte. (Exact)
+- **Sealed files that were git-ignored are now committed** (commit 7b8a06d): `RUN_STATE_010.json`, `RUN_010.log` and `logs/*.log`, 116 KB in total. They were sealed (`SEAL.json` lists them) but `.gitignore` excluded them. Without `RUN_STATE_010.json`, `make_gates_010.py --check` failed in a clean clone, because G_RT reads its completion stamps. Their bytes match the SEAL. The CHECKPOINT files stay uncommitted, and the verifier allows only checkpoints and logs to be absent. (Exact / Observed)
+- **REQUIRED_KEYS is keyed by path.** It is keyed by the path relative to `results/study-010`, because the block seals and the study SEAL share a file name. (Exact)
+- **Merge commit.** `origin/main` (a86298b, README and MANIFEST only) was merged into `plan/v0.8.0` at b1e628d, after the seal and before the release docs. The branch had not changed README, so README came from main and was then edited for v0.8.0. MANIFEST was regenerated. main is fast-forwarded to the release commit. (Exact)
+
+**#35: heartbeat gaps.** The orchestrator heartbeat (`HEARTBEAT_010.jsonl`, 882 beats) has two gaps over 10 s:
+- 125.4 s, ending 05:18:51 EDT.
+- 84.5 s, ending 05:33:12 EDT.
+
+An independent 1 s shell loop outside the orchestrator (`/tmp/hb010.log`, not committed) shows the same gaps, 123.6 s and 84.5 s. That points to the whole VM being suspended rather than the orchestrator stalling (Inferred). The cap is wall-clock, so the gaps count against it. G_RT (ii) still passes, because the watchdog ran for the whole run and the last heartbeat is within 10 s of the run end (Observed). Stream wall times include the gaps.
+
+**#36: G_RT (i) fails on an optional phase.** `g11_2x2` finished its mandatory set at 640.9 s with mutation 20/20. Its optional "rest" phase (the remaining 432 traces) was then stopped by its own 1,500 s stream budget at 130/432. It therefore has no `completed_at` stamp. The frozen reading (#30) counts any stop as a G_RT (i) failure, so G_RT is scored FAIL. G11 itself passes under its own rule (#30, G11 iv). (Exact)
+
+**#37: ledger omissions.**
+- The smoke-1 dry run (`run_start`, 04:39:12 EDT) has no `run_end` entry.
+- No `deviation_010` entry was written before the affected runs for #28 or #33, although the plan's ledger_rule asks for one. The deviations were committed to this file before the run (#27–#32 at faa6ac5, #33 at 7705ac9, both before t0) and are now ledgered retroactively as one `deviation_010` entry at release.
+- HANDOFF.md was not updated during the v0.8.0 run. It is updated at release.
+
+(Exact)

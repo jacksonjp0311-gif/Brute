@@ -1,5 +1,52 @@
 # Brute changelog
 
+## v0.8.0: jump-hull certification, aligned lookahead, a silent-jump diagnostic, a hard 2 h cap with a watchdog (study BRUTE-080-ALIGN-010)
+
+**12 of 17 gated criteria pass.** Five fail: GA1_010 (target a), G3′, G6b, GD and G_RT. **G11, GX2_010 and GTI pass, inside the cap.** *Observed*; scoring rules were fixed before the data (*Exact*).
+
+### Timeline
+
+All times are the author's clock, EDT.
+
+- **Pre-registration and preparation.**
+  - Criteria pre-registered at `881f0a6` (`experiments/BRUTE_PLAN_010.json`).
+  - Seed check `c80bdd7`.
+  - GD classifier replay on sealed study-009 `299babf`.
+  - Second implementation `experiments/v080_reference.py` `385ea23`.
+  - Implementation `2360559`…`8c7fdf2`.
+  - Smoke runs and kill drills smoke-1/2/3. The watchdog fix is in DEVIATIONS_010 #28.
+- **Freezes.** Source frozen at `5470c48`. Scoring scripts frozen at `39d255b` (ledger scoring_freeze_010, 04:52:47 EDT).
+- **Held-out run** (`scripts/run_study_010.py` + independent `scripts/watchdog_010.py`).
+  - Started 05:03:17 EDT under a hard 2 h cap (07:03:17 EDT).
+  - RUN_DONE at 05:36:07 EDT (1,970 s). The watchdog did not need to fire.
+- **After the run.**
+  - Seal `1bdebc9` (47 files).
+  - GATES_010 ledgered at `0422ac0`.
+  - Sealed run state committed at `7b8a06d`.
+  - main merged in at `b1e628d`.
+  - Release freeze `BRUTE_RELEASE_FREEZE_080.json`.
+  - Deviations are in `docs/research/BRUTE_DEVIATIONS_010.md` (#27–#37).
+
+### Code
+
+- **`brute/jumphull.py`**: J8, which is S7 plus a one-step jump hull. A certificate survives only if Y1k on the region without its last transition gives the same single code. It is a research arm, not the default.
+- **`brute/align.py`**: SP8 / BSP8, which is SC7 / BSC7 certification with the aligned lookahead LU-C. It is a research arm, not the default.
+- **`experiments/v080_reference.py`, `scripts/run_reference_010.py`**: an independent second implementation with a mutation test.
+- **`experiments/v080_xcheck.py`**: incremental symmetric CaDiCaL cross-check plus a spot check.
+- **Run control.** `scripts/run_study_010.py` (checkpointed streams, per-stream budgets, hard cap), `scripts/watchdog_010.py` (an independent process that SIGSTOPs the orchestrator and kills its descendants), `scripts/run_tests_080.py` (GTI) and `scripts/seal_010.py`.
+- **Release.** `scripts/verify_release_080.py`, `tests/test_release_080.py`, `scripts/study010_storage.py`, `scripts/make_release_freeze_080.py` and `brute/release_version_080.py`.
+
+### Results (*Observed*)
+
+- **Soundness and safety.** G1/G2: 0 false certificates for every arm. G4 passes. G5: max 2/72 on perm4.
+- **G3′.** J8 0 non-drift false certificates; SP8 3; SC7 4.
+- **G6b.** SP8 − A2 −0.0167 [−0.0228, −0.0113], a pass and the first in the project. J8 − A2 −0.2242 [−0.2381, −0.2110]: J8 coverage is 0.
+- **Reported contrasts.** SP8 − SC7 +0.0345 [0.0272, 0.0420]. BSP8 − BSC7 +0.0195 [0.0100, 0.0297].
+- **GD.** Clause (i) fails: 1/4 and 1/3 silent-jump class against the 0.8 threshold. Clause (ii) passes.
+- **Exactness and second implementation.** G11: 648/648 + 144/144 traces with 0 mismatches; mutation 20/20. GX2_010: 100% of steps, 0 mismatches.
+- **Reproducibility.** G12: 216/216 + 96/96.
+- **G_RT.** Clause (i) fails: the optional g11_2x2 phase hit its own budget. Clauses (ii) and (iii) pass; kill latency 0.239 s.
+
 ## v0.7.0: synchronous drift events, incremental symmetric xcheck, a count planner, per-module test isolation (study BRUTE-070-SYNCPLAN-009)
 
 **9 of 17 gated criteria pass. GA1′ (target a), GP1 (target c), G3′ and G6b fail on the data; GX2″ (target b), GTI (target d), G11 and G_RT fail STUDY_BUDGET** because the 3 h stop rule fired (*Observed*; scoring rule fixed before data, *Exact*).
