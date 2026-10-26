@@ -13,7 +13,7 @@ VerificationError. Resumable: every finished case is appended to <output>/CHECKP
 cases. RESULTS.json, SCIENTIFIC.json and SEAL.json refuse to overwrite. --block selects one block (one stream each).
 """
 from __future__ import annotations
-import argparse,time
+import argparse,os,time
 from pathlib import Path
 from time import perf_counter
 from concurrent.futures import ProcessPoolExecutor,as_completed
@@ -166,6 +166,10 @@ def smoke_jobs(plan,block):
     """Smoke jobs: seeds 3190001-3190030 only, mask 0.35. 2x2: 3190001-3190016 (2 per family); breadth:
     3190017-3190024 (2 per family). 3190025-3190030 stay free for the kill drill."""
     lo,hi=plan['smoke_seeds']['range'];J=[]
+    if os.environ.get('BRUTE_SMOKE_DRILL'):          # kill drill: 3190025-3190027 (2x2), 3190028-3190030 (breadth)
+        fams=list(plan['heldout_ranges_2x2' if block=='2x2' else 'heldout_ranges_breadth'])[:3];s=lo+24+(0 if block=='2x2' else 3)
+        J=[('smoke-'+block,f,s+n,SMOKE_MASK) for n,f in enumerate(fams)]
+        check(all(lo<=j[2]<=hi for j in J),'smoke seeds exhausted');return J
     if block=='2x2':
         s=lo
         for fam in plan['heldout_ranges_2x2']:
