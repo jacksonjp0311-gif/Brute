@@ -1,5 +1,37 @@
 # Brute changelog
 
+## v0.10.0: first transfer test (TRp/TRn), J10 exact jump-window support, 7–8 state worlds, ROADMAP_TO_GI (study BRUTE-0100-SUPPORT-TRANSFER-012)
+
+**18 of 24 gated criteria pass.** Six fail: GT_a and GT_c (transfer soundness and negative control), G6b, GA1_012 (headline), G3′ strict, and GTI as frozen. *Observed*; scoring rules were fixed before the data (*Exact*).
+
+### Timeline
+
+All times are the author's clock, EDT.
+
+- **Before the plan.** Seen-data downgrade and transfer diagnostics (exploratory, sealed study-011) `6494a35`.
+- **Pre-registration and preparation.** Plan, freeze and `docs/ROADMAP_TO_GI.md` `0cccf0d`; seed check `9f4d4db`; second implementation `experiments/v0100_reference.py` `a44a8da`; implementation `2564201`, `1c43d68`; smoke, kill drill (0.257 s), RATE_MATH_012 and deviation #49 `4628617`/`5ae0891`; deviation #50 `2fb806c`; pre-freeze fix `7e77621`.
+- **Freezes.** Source frozen at `b40f263`. Scoring scripts at `22ce7f7`, ledgered 08:57:44 EDT (682 s before run_start).
+- **Held-out run** (`scripts/run_study_012.py` plus the independent `scripts/watchdog_012.py`). Started 09:09:06 EDT under a hard 2 h cap (11:09:06 EDT). RUN_DONE 09:37:26 EDT (1,700 s). The watchdog did not fire, and every stream completed.
+- **After the run.** Seal `c07d773` (38 digests verified before commit); GATES_012 `1080654`; release tooling `be6a4ea`; release freeze `BRUTE_RELEASE_FREEZE_0100.json` `fb4ffd1`; clean clone `173465a`. Deviations #48–#51 are in `docs/research/BRUTE_DEVIATIONS_012.md` (#51: .gitignore patterns for study-012 were added after the run and before the seal commit).
+
+### Code
+
+- **Transfer**: TRp (a motif library from a same-family, fully observed source, used as a filter over relabelled copies), TRn (a negative control with a rotated, unrelated-family library), and a second-implementation transfer audit.
+- **J10**: SP8 plus an exact jump-window support. Research arm, not the default.
+- **big78**: J10_78 and SP8_78 on 7–8 state worlds.
+- **Release.** `scripts/verify_release_0100.py` (short and `--long`), `tests/test_release_0100.py`, `scripts/clean_clone_012.py`, `scripts/study012_storage.py`, `scripts/make_release_freeze_0100.py`, `brute/release_version_0100.py`.
+
+### Results (*Observed*)
+
+- **Transfer.** GT_b PASS: TRp mean S 20.18 steps, seed-paired CI95 [19.18, 21.17]; 270/288 helped, 0 hurt; ood4 largest (32.0). TRp: 0 false certificates in 20,027. GT_ref PASS: 288/288, 0 mismatches. GT_a FAIL: TRn 167 false certificates (all from the transfer rule, out of 322) in 50/288 cases, and the library was disabled in all 288 cases. GT_c FAIL: TRn false certificates, and S_n 4.53 [3.37, 5.73] > 0.
+- **Coverage.** GJ10 PASS: J10 − J9 +0.0090 [0.0059, 0.0122]. G6b FAIL: J10 − A2 −0.1657 [−0.1767, −0.1551]; GA1_012 fails through it.
+- **Drift.** G3L PASS (J10 0 at lag ≥ 2). G3′ strict FAIL (J10 1 at lag 1; J9 1; SP8 16; control 318).
+- **7–8 states.** G78_soundness PASS (0 of 193 certificates false) and G78_containment PASS (0 exceptions in 25,344), but coverage is 0.1–1.6%.
+- **Soundness and safety.** G1, G2, G4, G5, G7, G9, GH and G10 all pass.
+- **Exactness and reproducibility.** G11: mandatory and optional 108/108, 0 mismatches, mutation 20/20. G12: 264/264 and 96/96. GLV `--long`: 33 cases, 0 mismatches, ~21 s. GCC: PASS.
+- **Runtime.** G_RT PASS; R_G_RT_strict is true for the first time. Max heartbeat gap 44 s.
+- **GTI.** FAILS as frozen on the 3 declared test_release_080 failures; R_GTI_K080 passes. The 0.10.0 bump also turns the test_release_090 version and verify tests red (to be declared in v0.11.0).
+
 ## v0.9.0: selective window hull (J9), G_RT mandatory vs optional, clean-clone and --long verify, 7–8 state feasibility (study BRUTE-090-WINDOW-011)
 
 **15 of 17 gated criteria pass.** Two fail: G6b and GA1_011 (headline target). *Observed*; scoring rules were fixed before the data (*Exact*).

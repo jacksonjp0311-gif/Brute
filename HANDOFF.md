@@ -1,20 +1,22 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 ~09:09 EDT (v0.10.0 IN PROGRESS on plan/v0.10.0)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 (v0.10.0 release on plan/v0.10.0)._
 
 ## Current version and state
 
 <!-- V0100 -->
-- **IN PROGRESS: v0.10.0** (study BRUTE-0100-SUPPORT-TRANSFER-012, branch `plan/v0.10.0` = main 13daa32 + diagnostic, deviation #48).
-  - Done: diagnostic `6494a35`; plan + freeze + docs/ROADMAP_TO_GI.md `0cccf0d`; seedcheck `9f4d4db`; v0100_reference `a44a8da`; learner/harness `2564201`, `1c43d68`; smoke-1, kill drill, GTI smoke, RATE_MATH_012 + deviation #49 (big78 budget 2700 s) `4628617`/`5ae0891`; deviation #50 (GTI K_080 non-gated report; gated GTI predicted FAIL) `2fb806c`; pre-freeze fix (superseded 090 freeze) `7e77621`; **source freeze `b40f263`** (ledger `4439837`); **scoring freeze `22ce7f7`** (ledger `04f91d1`, 08:57 EDT; run_start must be >= 09:08 EDT).
-  - Tracks: J10 (exact jump-window support), big78 (7-8 states; smoke had 0 certificates -> G78 likely vacuous), TRANSFER (TRp positive library, TRn rotated-family negative control; smoke TRn had 4 false certs before elimination -> GT_a/GT_c at risk).
-  - **Held-out run LAUNCHED 2026-10-26T09:09:06-04:00 EDT (RUN_T0=1793020146, hard cap 11:09:06 EDT).** Streams 2x2 2400 s, big78 2700 s (#49), transfer 1200 s, gti 2400 s, repro 1200 s, g11 1500 s.
-  - Next: wait for RUN_DONE_012 (see resume rules), then seal_012 + pack, gti_k080_012, paired/repro/gates, clean_clone_012, verify_release_0100 (short + --long, /tmp dry run), release freeze 0100, README/CHANGELOG/NEXT_ITERATION/HANDOFF, ff main, tag v0.10.0, GitHub release, delete /workspace/scratch012, /tmp/drill012, /tmp/gti012, /tmp/smoke1g.
-  - **Resume rules for the held-out run:** results/study-012/RUN_T0 fixes the 2 h cap (RUN_T0 + 7200 s) and is never rewritten. If RUN_DONE_012.json exists the run is over: go to seal. If the orchestrator is dead and the cap has not passed: restart ONLY `nohup $PY scripts/run_study_012.py >> results/study-012/RUN_012.log 2>&1 &` (resumes from checkpoints, charges spent budget) and make sure ONE watchdog runs (`nohup setsid $PY scripts/watchdog_012.py >> results/study-012/WATCHDOG_012.log 2>&1 &`); ledger the restart as a deviation. If the cap passed: the watchdog/orchestrator stop rule applies; seal partial, no new cases. Never commit or edit tracked files while the gti stream runs (it checks the tracked tree). Never re-run a stream by hand.
-  - Scratch: /workspace/scratch012 (delete at release).
+- **Released: v0.10.0** (study BRUTE-0100-SUPPORT-TRANSFER-012, branch `plan/v0.10.0` = main 13daa32 + diagnostic, deviation #48). **18 of 24 gated pass.**
+  - **TRANSFER:** GT_b PASS (TRp mean S 20.18 steps, seed-paired CI95 [19.18, 21.17]; 270 helped / 0 hurt; 0 false in 20,027). GT_ref PASS (288/288, 0 mismatches). **GT_a FAIL** (TRn 167 false transfer-rule certificates in 50/288 cases). **GT_c FAIL** (the same certificates, plus S_n 4.53 [3.37, 5.73] > 0).
+  - **Other FAIL:** G6b (J10−A2 −0.1657 [−0.1767, −0.1551]), GA1_012 (via G6b), G3′ strict (J10 1 at lag 1), GTI as frozen (3 test_release_080 failures, deviation #50; R_GTI_K080 passes).
+  - **PASS:** G1, G2, G3L, GJ10 (+0.0090 [0.0059, 0.0122]), GH, G4, G5, G7, G9, G10, G11, G12, G13, G78_soundness, G78_containment, G_RT (R_G_RT_strict true), GT_b, GT_ref. Release gates: GLV `--long` PASS (33 cases, 0 mismatches, ~21 s); GCC clean clone PASS (`results/study-012/CLEAN_CLONE_012.json`).
+  - Run: run_start 09:09:06 EDT, hard cap 11:09:06 EDT, RUN_DONE 09:37:26 EDT (1,700 s of 7,200 s). The watchdog did not fire. Every stream completed (g11 optional 108/108).
+  - Chain (Exact, git ancestry): diagnostic `6494a35` → plan + ROADMAP_TO_GI `0cccf0d` → seed check `9f4d4db` → reference `a44a8da` → implementation `2564201`/`1c43d68`/`4628617`/`2fb806c`/`7e77621` → source freeze `b40f263` → scoring `22ce7f7` (ledgered 08:57:44 EDT) → run_start `9b0babe` → seal `c07d773` → run_end/seal ledger `1af2976` → GATES_012 `1080654` → release tooling `be6a4ea` → deviation #51 + release_0100 ledger `90c3d1d` → release freeze `fb4ffd1` → clean clone `173465a`.
+  - Deviations #48–#51 and disclosures: `docs/research/BRUTE_DEVIATIONS_012.md`. The pyproject bump to 0.10.0 makes the frozen test_release_090 version and verify tests fail (the K_090 analogue of K_080); v0.11.0 must declare it.
+  - Release steps: verify_release_0100 short and `--long` passed on the branch and on a /tmp dry-run clone; tests.test_release_0100 6/6 OK. See the main-branch HANDOFF commit for the tag and the GitHub release.
+  - **Next: v0.11.0 per `NEXT_ITERATION.md`** (sound transfer: intersect the prior with the full region, or verify the library before it licenses certificates; library for experiment choice; declare K_080 and K_090; big78 power). Pre-register BRUTE_PLAN_013 on `plan/v0.11.0` from main before any code.
 <!-- /V0100 -->
 
-- **Released: v0.9.0** (study BRUTE-090-WINDOW-011, branch `plan/v0.9.0` from origin/main f79c925 ⊃ 70cb351, deviation #40). **15 of 17 gated pass.**
+- **Previous: v0.9.0** (study BRUTE-090-WINDOW-011, branch `plan/v0.9.0` from origin/main f79c925 ⊃ 70cb351, deviation #40). **15 of 17 gated pass.**
   - **FAIL:** G6b (J9−A2 coverage −0.1918, 95% CI [−0.2073, −0.1772]), GA1_011 (J9 does not reach SP8-level coverage).
   - **PASS:** G1, G2, G3L, G3′ strict (first strict pass: J9 0, SP8 16, control 323 ≤ limit 161.5), GH, G4, G5, G7, G9, G10, G11, G12, G13, GTI, G_RT.
   - Release gates (not in GATES_011): GLV `--long` PASS (33 cases, 66 traces, 0 mismatches, 363 s of 900 s); GCC clean clone PASS (`results/study-011/CLEAN_CLONE_011.json`, 24.9 s).

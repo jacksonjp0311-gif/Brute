@@ -3,7 +3,7 @@
 </p>
 
 <p align="center"><b>Exact geometric reasoning about hidden worlds. Brute keeps every explanation the evidence still allows, and it certifies an answer only when all of them agree. Otherwise it says "I don't know."</b><br>
-<sub>Brute v0.9.0 · built on BGR v0.90.0 (BITWORK — Geometric Reasoning) · research preview · not general intelligence</sub></p>
+<sub>Brute v0.10.0 · built on BGR v0.90.0 (BITWORK — Geometric Reasoning) · research preview · not general intelligence</sub></p>
 
 ---
 
@@ -13,10 +13,11 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 
 | Claim | Evidence | Label |
 | --- | --- | --- |
-| **0 public false certificates in all ten pre-registered studies** (002–011, v0.1.0–v0.9.0). The in-family soundness, out-of-family soundness and public-safety gates passed in every study | `results/study-00*/GATES*.json` (G1/G2/G4; C1/C2/C4 in study-002) | *Observed* |
+| **0 public false certificates in all eleven pre-registered studies** (002–012, v0.1.0–v0.10.0). The in-family soundness, out-of-family soundness and public-safety gates passed in every study | `results/study-00*/GATES*.json` (G1/G2/G4; C1/C2/C4 in study-002) | *Observed* |
 | **The SAT engine makes the same decision as brute-force enumeration on all 25,344 steps** (v0.5.0, GX1), and the constraint region matches enumeration on 1.25 M items (v0.4.0, GR1/GR1b) | `results/study-007/`, `results/study-006/` | *Observed* |
 | **Second-encoding cross-check, 288/288 breadth cases: 0 mismatching traces in 1,358,721 SAT queries, 0 unknowns, 0 witness failures.** This was an incremental CaDiCaL re-run of the v0.6.0 cross-check: 310 s on 4 workers, against ~8.8 h for 46 cases before. It is post-release verification and does not change the frozen GX2′ FAIL | branch [`verify/xcheck-incremental`](https://github.com/jacksonjp0311-gif/Brute/tree/verify/xcheck-incremental), `results/verify-xcheck-incremental/` | *Observed* |
 | **v0.8.0 ran every pre-registered stream inside a hard 2 h cap** with an independent watchdog: the whole study finished in 1,970 s (cap 7,200 s), the second implementation agreed on 648/648 + 144/144 mandatory traces and caught 20/20 injected mutations, and in-cap test isolation passed (294 tests). The kill drill stopped 8 process groups in 0.239 s | `results/study-010/GATES_010.json` (G11, GX2_010, GTI, G_RT ii/iii) | *Observed* |
+| **v0.10.0: first transfer test. A same-family motif library (TRp) reached its first certificate 20.18 steps sooner than learning from scratch (seed-paired CI95 [19.18, 21.17]; 270/288 cases helped, 0 hurt) with 0 false certificates in 20,027.** The negative control (TRn, an unrelated-family library) issued 167 false certificates before disabling itself, so GT_a and GT_c fail: transfer by hard restriction is sound only when the prior is right | `results/study-012/GATES_012.json` (GT_a, GT_b, GT_c, GT_ref) | *Observed* |
 | **v0.9.0: the first arm with 0 non-drift false certificates on drift4 at any lag while still certifying** (J9, window hull; strict G3′ passes for the first time). It covers only 3–7% of forecasts, so it still fails the coverage gate. The study ran in 1,812 s of a 7,200 s cap; `verify_release_090 --long` re-ran the second implementation on 33 cases (66 traces, 0 mismatches) in 363 s | `results/study-011/GATES_011.json` (G3L, G3′, GH, G6b, G_RT) | *Observed* |
 | In v0.7.0 the symmetric cross-check covered 100% of steps in every breadth family × arm in 316 s, with 0 mismatches | `results/study-009/` | *Observed* |
 | When the solver runs out of budget, the answer is **ABSTAIN / SOLVER_BUDGET, never a certificate** (257 stress forecasts, 0 certificates) | `brute/region.py`, study-007 GX3 | *Exact* / *Observed* |
@@ -26,7 +27,8 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 
 | Version | Study | Gates | What it added | Key result |
 | --- | --- | --- | --- | --- |
-| **v0.9.0** (current) | BRUTE-090-WINDOW-011, 792 held-out 2x2 cases | **15 / 17** | selective K=4 window hull on SP8 (J9), G_RT mandatory vs optional, clean-clone tracked-files test, `--long` verify, 7–8 state feasibility | J9: 0 non-drift drift4 false certificates (first strict G3′ pass) but coverage 0–7%, G6b −0.192 *Observed*; GA1_011 fails on G6b only |
+| **v0.10.0** (current) | BRUTE-0100-SUPPORT-TRANSFER-012, 792 2x2 + 144 big78 + 288 transfer held-out cases | **18 / 24** | motif transfer (TRp, negative control TRn), J10 exact jump-window support, 7–8 state worlds (big78), docs/ROADMAP_TO_GI.md | GT_b PASS (S 20.18 [19.18, 21.17]); GT_a/GT_c FAIL (TRn 167 false certificates); J10 +0.0090 over J9 but G6b −0.166 *Observed*; GA1_012 fails on G6b |
+| v0.9.0 | BRUTE-090-WINDOW-011, 792 held-out 2x2 cases | **15 / 17** | selective K=4 window hull on SP8 (J9), G_RT mandatory vs optional, clean-clone tracked-files test, `--long` verify, 7–8 state feasibility | J9: 0 non-drift drift4 false certificates (first strict G3′ pass) but coverage 0–7%, G6b −0.192 *Observed*; GA1_011 fails on G6b only |
 | v0.8.0 | BRUTE-080-ALIGN-010, 936 held-out cases (648 2x2, 288 breadth) | **12 / 17** | jump-hull certification (J8), aligned lookahead LU-C on SC7 (SP8), silent-jump diagnostic (GD), hard 2 h cap + watchdog | first G6b pass ever (SP8 −0.017 vs −0.03) but SP8 fails G3′; J8 has 0 drift4 false certificates but 0 coverage *Observed*; G11, GX2_010 and GTI all pass in-cap |
 | v0.7.0 | BRUTE-070-SYNCPLAN-009, 1,080 held-out cases | **9 / 17** | synchronous drift events (S7/SC7), count-based planner (P7), incremental symmetric cross-check, 3 h stop rule | soundness held for every arm; SC7 is the closest drift rule yet to the coverage target (−0.050 vs −0.03; +0.0145 over C6) *Observed*; 4 gates ran out of budget |
 | v0.6.0 | BRUTE-060-DRIFTSOUND-008, 936 cases | 11 / 16 | drift-sound rules R6/C6, CaDiCaL cross-check, hardened verifier, exact model counting | GT1 56/56 tamper cases rejected *Exact*; counts on 99.75% of sampled steps *Observed*; cross-check stopped at 46/288 (FAIL) |
@@ -36,6 +38,8 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 | v0.1.0–v0.2.0 | studies 002–004 | see `results/` | exact version space, open-world fallback, active experiments | active coverage +0.115 pooled *Observed* |
 
 ## Published failures (they stay failed)
+
+- **Transfer from a wrong prior issues confident errors (GT_a, GT_c, v0.10.0).** TRn, fed a motif library from a rotated, unrelated family, issued 167 false certificates (all from the transfer rule, of 322) in 50/288 cases before the library was falsified and disabled in all 288. It also sped up some cases (S_n 4.53 [3.37, 5.73]), so the "no help" clause fails too. None was public. *Observed.*
 
 - **No rule is both drift-safe and coverage-competitive (GA1, failed in v0.6.0, v0.7.0, v0.8.0 and v0.9.0).** In v0.9.0 J9 (SP8 plus a K=4 window hull) issued 0 non-drift false certificates on drift4 but its coverage fell to 0.067 on cycle3 (SP8 0.286) and 0 on unaliased2: J9 − A2 −0.1918 [−0.2073, −0.1772], limit −0.03. *Observed.* In v0.8.0 SP8 (SC7 with the aligned lookahead LU-C) passed G6b for the first time (−0.017 vs v0.2.0, limit −0.03) but issued 3 non-drift false certificates on drift4; J8 (S7 plus a one-step jump hull) issued none but certified nothing at all (coverage 0, G6b −0.224). *Observed.*
 - **Stale certificates after a silent jump in the world.** On drift4, SP8 issued 3 false certificates at non-drift steps and SC7 4 (v0.7.0: S7 4, SC7 5). None was public. *Observed.* The v0.8.0 diagnostic (GD) did not support the silent-jump explanation (a false certificate at step d+1 after a drift at d with no event at d): only 1 of 4 (SC7) and 1 of 3 (SP8) fit it, though the replay on sealed study-009 data had found 9/9. *Observed*; the real cause is *Open*.
@@ -50,19 +54,19 @@ It is a sound, narrow, exact reasoner over small deterministic worlds: at most 6
 
 1. **Speed.** Use incremental solving and symmetry breaking everywhere, and project each stream's runtime before the run starts with a watchdog stop rule. The 288-case cross-check went from ~5 cases/h to all 288 cases in about 5 minutes.
 2. **Planning.** Score experiments by the expected collapse of the next forecast coordinate instead of by raw model-count reduction. Certify before a jump is observed, using a one-step jump hull.
-3. **Abstraction and transfer.** Learn to select families and grow the model class, so that structure carries from one world to the next.
+3. **Abstraction and transfer.** Learn to select families and grow the model class, so that structure carries from one world to the next. v0.10.0 showed a speedup from a right prior (S 20.18 steps) and confident errors from a wrong one. The next step is to intersect the prior with the full region.
 4. **Real data.** Add stochastic worlds with credal regions, grounding beyond templates, and independent replication.
 
-Details: [`NEXT_ITERATION.md`](NEXT_ITERATION.md), [`docs/ROADMAP.md`](docs/ROADMAP.md), [`HANDOFF.md`](HANDOFF.md).
+Details: [`docs/ROADMAP_TO_GI.md`](docs/ROADMAP_TO_GI.md) (gated steps toward general reasoning; transfer had its first test in v0.10.0), [`NEXT_ITERATION.md`](NEXT_ITERATION.md), [`docs/ROADMAP.md`](docs/ROADMAP.md), [`HANDOFF.md`](HANDOFF.md).
 
 ## Reproduce
 
 ```bash
 git clone https://github.com/jacksonjp0311-gif/Brute.git && cd Brute
 python -m pip install -r requirements.txt
-for k in 004 005 006 007 008 009 010 011; do python scripts/study${k}_storage.py restore; done   # rebuild sealed traces, checked against SEAL.json
-PYTHONPATH=. python scripts/verify_release_090.py   # (--long adds the 33-case second-implementation re-run, ~6 min) seals, freezes, ledger chain, manifest, git order; regenerates paired/repro/gates byte-for-byte
-PYTHONPATH=. python scripts/make_gates_011.py --check   # GATES_011.json alone
+for k in 004 005 006 007 008 009 010 011 012; do python scripts/study${k}_storage.py restore; done   # rebuild sealed traces, checked against SEAL.json
+PYTHONPATH=. python scripts/verify_release_0100.py   # (--long adds the 33-case second-implementation re-run, ~1 min) seals, freezes, ledger chain, manifest, git order; regenerates paired/repro/gates byte-for-byte
+PYTHONPATH=. python scripts/make_gates_012.py --check   # GATES_012.json alone
 ```
 
 No GPU, network or model weights are needed. CPU only, Python 3.11+ (the release was run on 3.13.5).
@@ -72,6 +76,29 @@ No GPU, network or model weights are needed. CPU only, Python 3.11+ (the release
 Brute is built on **BGR v0.90.0, "BITWORK — Geometric Reasoning"**, James's earlier research system. Its exact symbolic support over Moore machines, the study-001 evidence and the `bgr*/` code are carried forward byte-identical, with full credit in [`FORK.md`](FORK.md) and [`docs/research/bgr-v0.90.0/`](docs/research/bgr-v0.90.0/).
 
 ---
+
+## v0.10.0 at a glance: 18 of 24 gated criteria pass; transfer works from a right prior and fails from a wrong one
+
+On the pre-registered study-012 (792 held-out 2x2 cases, 144 big78 cases, 288 transfer cases; plan and `docs/ROADMAP_TO_GI.md` frozen at `0cccf0d` before any code; source freeze `b40f263`; scoring scripts `22ce7f7`, ledgered 682 s before the run; seal `c07d773`) **18 of 24 gated criteria pass** (*Observed*). The run started at 09:09:06 EDT under a hard 2 h cap and finished at 09:37:26 EDT (1,700 s); the watchdog never had to fire (*Observed*).
+
+**Transfer track (first in Brute):**
+
+| Gate | Result | Numbers (*Observed*) |
+| --- | --- | --- |
+| GT_b speedup (TRp vs SP8, steps to first certificate) | **PASS** | mean S 20.18, seed-paired CI95 [19.18, 21.17]; 270 helped / 0 hurt / 18 equal; cycle3 15.9, switch3 15.6, unaliased2 17.2, ood4 32.0 |
+| GT_ref second-implementation audit | **PASS** | 288/288 cases, 0 mismatches |
+| GT_a soundness (0 false transfer certificates, both arms) | **FAIL** | TRp 0 of 20,027 (15,781 transfer-rule); TRn 167 of 4,568 (all 167 from the transfer rule, of 322) in 50/288 cases |
+| GT_c negative control (TRn: 0 false, no significant help) | **FAIL** | 167 false certificates; S_n 4.53 [3.37, 5.73] > 0 (48 helped, 240 equal, 0 hurt) |
+
+What this means (*Inferred*): a motif library that is used as a hard restriction is sound only when it contains the truth. A wrong library yields confident errors until the evidence falsifies it. v0.11.0 must intersect with the full region (or verify the library first) instead of replacing it.
+
+**Other failures, and they stay failed:**
+
+- **G6b:** J10 − A2 −0.1657 [−0.1767, −0.1551] (limit −0.03). J10 − SP8 −0.1563 [−0.1671, −0.1453]; SP8 − A2 −0.0095 (reported). **GA1_012** fails through G6b. *Observed.*
+- **G3′ strict:** J10 1 non-drift false certificate at lag 1 (J9 1, SP8 16; limit 159; v0.9.0 control 318). *Observed.*
+- **GTI as frozen:** the 3 declared test_release_080 failures (deviation #50). The K_080 reading (R_GTI_K080, reported only) passes; clauses ii–v pass; 1,261 s. *Observed.*
+
+**Passed:** G1, G2 (0 false certificates for J10, J9, SP8), G3L (J10 0 at lag ≥ 2), GJ10 (J10 − J9 +0.0090 [0.0059, 0.0122]), GH (644 checked, 0 exceptions), G4, G5, G7, G9, G10 (0 unknown forecasts in 209,088), G11 (mandatory and optional 108/108 traces, 0 mismatches; mutation 20/20), G12 (2x2 264/264 and transfer 96/96 byte-identical), G13, G78_soundness (0 false in 193 certificates at 7–8 states), G78_containment (25,344 checked, 0 exceptions), G_RT (kill drill 0.257 s; R_G_RT_strict true for the first time). Release gates: GLV `--long` 33 cases, 66 traces, 0 mismatches, ~21 s of 900 s; GCC clean clone PASS (`results/study-012/CLEAN_CLONE_012.json`). Deviations #48–#51: [`BRUTE_DEVIATIONS_012.md`](docs/research/BRUTE_DEVIATIONS_012.md).
 
 ## v0.9.0 at a glance: 15 of 17 gated criteria pass; G6b and the headline target GA1_011 fail
 
@@ -390,7 +417,16 @@ Findings and their math: [`docs/research/DISCOVERIES.md`](docs/research/DISCOVER
 
 ## What Brute can't do yet
 
-New in v0.9.0:
+New in v0.10.0:
+
+- **It cannot transfer safely from a wrong prior.** An unrelated-family motif library made it issue 167 false certificates in 50 of 288 cases before the evidence disabled the library. Transfer is only safe when the library already contains the truth, and Brute cannot yet tell in advance whether it does. *Observed.*
+- **It cannot learn concepts smaller than a whole machine.** The library holds relabelled copies of entire source machines. Parts (cycles, toggles, absorbing states) are not extracted or composed. *Exact.*
+- **It is still not both drift-safe and useful.** J10 recovers +0.009 coverage over J9 but sits 0.166 below v0.2.0. Its coverage is 0.077 on cycle3 and 0 on unaliased2. *Observed.*
+- **It barely certifies at 7–8 states.** It is sound there (0 of 193 false), but coverage is 0.1–1.6%, so the soundness bound is weak (J10_78 rule-of-three 0.125). *Observed.*
+- **Its frozen test suite goes red on every version bump.** test_release_080 failed GTI as frozen, and the 0.10.0 bump breaks test_release_090's version and verify tests. *Observed* / *Exact*.
+- **It is not AGI**, and nothing here shows general intelligence. *Exact.*
+
+Carried from v0.9.0 (still true unless superseded above):
 
 - **It still cannot be both drift-safe and useful.** J9 has 0 non-drift false certificates on drift4 at any lag, but covers 0.067 of cycle3 forecasts (SP8 0.286) and none on unaliased2. A K=4 window hull trades almost all of SP8's coverage for safety. *Observed.*
 - **The hull is usually uninformative.** 38% of cycle3 and 68% of drift4 hull steps admit every code; 5,665 of 24,877 hull steps downgraded a certificate. *Observed.* Whether a smaller or surprise-gated window keeps safety is *Open*.
