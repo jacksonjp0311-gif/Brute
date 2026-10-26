@@ -60,3 +60,25 @@ smoke output: K_080 rule applies (all 3 pass on clean v0.8.0).
 that experiments/brute_common_012.check_freeze also verified BRUTE_RELEASE_FREEZE_090.json, which is superseded by
 BRUTE_RELEASE_FREEZE_090_R1.json (scripts/verify_release_090.py changed under R1), so G13 could never pass. Fixed before
 the freeze: the list is 070_R1, 080, 090_R1. No plan text changed.
+
+## After the held-out run (release v0.10.0)
+
+**#51: .gitignore entries for study-012 added after the run, before the seal commit.** The study-012 raw RESULTS.json /
+SCIENTIFIC.json, CHECKPOINT files, RUN_012.log and logs/ were not yet git-ignored when the run ended (Observed: the
+pre-run .gitignore listed study-011 only). The five study-011-style patterns were added for study-012 before `git add`,
+so the sealed raw bytes are committed only as their deterministic .json.gz (as planned in study012_storage). No result,
+seal or scoring input changed; the seal was re-checked intact before the commit (38/38 digests, 10/10 gz round trips).
+
+**Disclosure: stale docstring.** scripts/run_study_012.py's docstring still says big78 1800 s; the code (frozen at
+b40f263) uses 2700 s per deviation #49. Text only.
+
+**Disclosure: interrupted shell after the pack.** The post-run shell job (ledger run_end_012, seal_012.py, pack) was
+interrupted by the agent harness after the pack had written all 10 .json.gz files. Nothing was re-run: the seal and the
+gz files were verified intact and committed as they were (c07d773).
+
+**Disclosure: release tooling.** scripts/verify_release_0100.py, tests/test_release_0100.py,
+brute/release_version_0100.py and scripts/make_release_freeze_0100.py are new files adapted from the frozen 090
+versions (study-012 paths, `_012` ledger events, PREVIOUS_FREEZES + SOURCE_FREEZE_011 + RELEASE_FREEZE_090_R1, J10/SP8 long
+verify). git_order checks the plan order (6) directly: source freeze -> scoring scripts -> seal (strict). Bumping
+pyproject to 0.10.0 makes the frozen test_release_090 version/verify tests fail on this tree (the K_090 analogue of #50);
+v0.11.0 must declare it.
