@@ -9,7 +9,7 @@ verifier (DEVIATIONS_010 #34); its report is bound to the sealed block digests i
   python scripts/verify_release_080.py   # seals, freezes, regenerated paired/repro/gates, ledger, manifest, git order
 """
 from __future__ import annotations
-import argparse,json,sys
+import argparse,json,subprocess,sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from experiments.brute_common import VerificationError,check,sha,dumps
@@ -49,14 +49,20 @@ def parse_all(root):
     return out
 
 
-def ledger_order(receipts):
+def ledger_order(receipts,root='.'):
     ev=[req(r,'event','ledger') for r in receipts]
     for e in LEDGER_ORDER:check(e in ev,'ledger lacks '+e)
     idx=[ev.index(e) for e in LEDGER_ORDER];check(idx==sorted(idx),'ledger study-010 chronology')
     end=[i for i,e in enumerate(ev) if e in ('run_end_010','stop_010')];check(end and ev.index('run_start_010')<end[0]<ev.index('seal_010'),'ledger lacks run_end_010/stop_010 between run_start and seal')
     from datetime import datetime
     def t(e,last=False):
-        notes=[r['note'] for r in receipts if r['event']==e];return datetime.fromisoformat((notes[-1] if last else notes[0]).split()[0])
+        # Time of a receipt: the ISO time that opens its note, or, when the note has none
+        # (the scoring_freeze_010 notes), the commit time of the first commit adding that receipt line.
+        rs=[r for r in receipts if r['event']==e];r=rs[-1] if last else rs[0]
+        try:return datetime.fromisoformat(r['note'].split()[0])
+        except ValueError:pass
+        g=subprocess.run(['git','log','--reverse','--format=%cI','-S'+req(r,'receipt_sha256','ledger'),'--','results/RESEARCH_LEDGER.jsonl'],cwd=root,capture_output=True,text=True)
+        check(g.returncode==0 and g.stdout.split(),'cannot date ledger receipt '+e);return datetime.fromisoformat(g.stdout.split()[0])
     check((t('run_start_010')-t('scoring_freeze_010',last=True)).total_seconds()>=600,'scoring scripts ledgered < 10 min before run_start')
     return {e:next(r['note'] for r in receipts if r['event']==e)[:160] for e in ('scoring_freeze_010','run_start_010','seal_010')}
 
@@ -119,7 +125,7 @@ def _verify(root,git):
     gates=arts[f'{STUDY}/GATES_010.json']
     from scripts.verify_release_020 import ledger_020
     receipts,sup=ledger_020(root,git);out['ledger_receipts']=len(receipts);out['ledger_superseded']=sup
-    out['run_chronology']=ledger_order(receipts)
+    out['run_chronology']=ledger_order(receipts,root)
     sources={r['source'] for r in receipts}
     for need in (rel['source_freeze'],f'{STUDY}/SEAL.json',f'{STUDY}/GATES_010.json'):check(need in sources,'ledger lacks '+need)
     if git:out['process_order']=git_order(root,rel)
