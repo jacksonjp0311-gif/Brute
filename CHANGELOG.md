@@ -25,7 +25,7 @@ All times are the author's clock, EDT.
   - Sealed run state committed at `7b8a06d`.
   - main merged in at `b1e628d`.
   - Release freeze `BRUTE_RELEASE_FREEZE_080.json`.
-  - Deviations are in `docs/research/BRUTE_DEVIATIONS_010.md` (#27–#38; #38 is a superseding ledger receipt for the frozen harness).
+  - Deviations are in `docs/research/BRUTE_DEVIATIONS_010.md` (#27–#39; #38 is a superseding ledger receipt for the frozen harness, #39 a pre-publication verifier fix).
 
 ### Code
 
