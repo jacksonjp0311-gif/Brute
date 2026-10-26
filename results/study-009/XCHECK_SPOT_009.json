@@ -1,0 +1,88 @@
+{
+ "arms": [
+  "B5"
+ ],
+ "cases_done": 6,
+ "cases_expected": 24,
+ "cases_not_reached": [
+  68,
+  75,
+  84,
+  125,
+  135,
+  141,
+  149,
+  154,
+  173,
+  197,
+  199,
+  214,
+  238,
+  241,
+  242,
+  248,
+  265,
+  279
+ ],
+ "checked_steps_per_family": {
+  "act3": 0,
+  "big6": 320,
+  "ood6s3": 0,
+  "sens3": 64
+ },
+ "conf_budget_per_query": 2000000,
+ "mismatches": [],
+ "mismatching_traces": 0,
+ "note": "a mismatching trace stops at its first differing field; its steps are not counted as checked",
+ "per_family_arm": {
+  "act3/B5": {
+   "certs": 0,
+   "checked_fraction": 0.0,
+   "mismatching_traces": 0,
+   "steps": 384,
+   "steps_checked": 0,
+   "steps_unchecked": 384,
+   "traces": 6,
+   "traces_not_reached": 6
+  },
+  "big6/B5": {
+   "certs": 2,
+   "checked_fraction": 0.833333,
+   "mismatching_traces": 0,
+   "steps": 384,
+   "steps_checked": 320,
+   "steps_unchecked": 64,
+   "traces": 6,
+   "traces_not_reached": 1
+  },
+  "ood6s3/B5": {
+   "certs": 0,
+   "checked_fraction": 0.0,
+   "mismatching_traces": 0,
+   "steps": 384,
+   "steps_checked": 0,
+   "steps_unchecked": 384,
+   "traces": 6,
+   "traces_not_reached": 6
+  },
+  "sens3/B5": {
+   "certs": 0,
+   "checked_fraction": 0.166667,
+   "mismatching_traces": 0,
+   "steps": 384,
+   "steps_checked": 64,
+   "steps_unchecked": 320,
+   "traces": 6,
+   "traces_not_reached": 5
+  }
+ },
+ "queries": 19217,
+ "results_file": "/workspace/brute/results/study-009/breadth/RESULTS.json",
+ "schema": "brute.xcheck-sat-incremental-report.v2",
+ "solver": "cadical195",
+ "spot_sample": "/workspace/brute/results/study-009/SPOT_SAMPLE_009.json",
+ "symmetry_breaking": false,
+ "unknown_queries": 0,
+ "witness_replay_failures": 0,
+ "wording": "second encoding by the same author (brute/xcheck_sat_incremental.py, adopted), no enumeration; not an independent audit"
+}

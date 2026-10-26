@@ -1,0 +1,220 @@
+{
+ "v070_ranges": {
+  "heldout_ranges_2x2/cycle3": [
+   2010001,
+   2010024
+  ],
+  "heldout_ranges_2x2/switch3": [
+   2020001,
+   2020024
+  ],
+  "heldout_ranges_2x2/unstructured3": [
+   2030001,
+   2030024
+  ],
+  "heldout_ranges_2x2/unaliased2": [
+   2040001,
+   2040024
+  ],
+  "heldout_ranges_2x2/ood4": [
+   2050001,
+   2050024
+  ],
+  "heldout_ranges_2x2/perm4": [
+   2060001,
+   2060024
+  ],
+  "heldout_ranges_2x2/ood5": [
+   2070001,
+   2070024
+  ],
+  "heldout_ranges_2x2/drift4": [
+   2080001,
+   2080048
+  ],
+  "heldout_ranges_breadth/big6": [
+   2110001,
+   2110024
+  ],
+  "heldout_ranges_breadth/sens3": [
+   2120001,
+   2120024
+  ],
+  "heldout_ranges_breadth/act3": [
+   2130001,
+   2130024
+  ],
+  "heldout_ranges_breadth/ood6s3": [
+   2140001,
+   2140024
+  ],
+  "smoke": [
+   2190001,
+   2190030
+  ]
+ },
+ "prior_range_count": 82,
+ "pairwise_overlaps": [],
+ "prior_overlaps": [],
+ "subset_violations": [],
+ "negative_controls": [
+  [
+   "smoke",
+   901,
+   "refused"
+  ],
+  [
+   "smoke",
+   2010001,
+   "refused"
+  ],
+  [
+   "smoke",
+   980001,
+   "refused"
+  ],
+  [
+   "2x2",
+   2190001,
+   "refused"
+  ],
+  [
+   "breadth",
+   2010001,
+   "refused"
+  ],
+  [
+   "2x2",
+   1880001,
+   "refused"
+  ],
+  [
+   "2x2",
+   2010025,
+   "refused"
+  ],
+  [
+   "planning",
+   2010009,
+   "refused"
+  ],
+  [
+   "planning",
+   2080001,
+   "refused"
+  ],
+  [
+   "breadth",
+   2110025,
+   "refused"
+  ]
+ ],
+ "PASS": true,
+ "spot_sample_written": "results/study-009/SPOT_SAMPLE_009.json",
+ "spot_sample": {
+  "big6": [
+   [
+    2110003,
+    0.1
+   ],
+   [
+    2110006,
+    0.35
+   ],
+   [
+    2110007,
+    0.35
+   ],
+   [
+    2110009,
+    0.1
+   ],
+   [
+    2110018,
+    0.35
+   ],
+   [
+    2110023,
+    0.6
+   ]
+  ],
+  "sens3": [
+   [
+    2120002,
+    0.1
+   ],
+   [
+    2120005,
+    0.1
+   ],
+   [
+    2120010,
+    0.6
+   ],
+   [
+    2120018,
+    0.6
+   ],
+   [
+    2120022,
+    0.1
+   ],
+   [
+    2120024,
+    0.1
+   ]
+  ],
+  "act3": [
+   [
+    2130002,
+    0.6
+   ],
+   [
+    2130004,
+    0.35
+   ],
+   [
+    2130010,
+    0.6
+   ],
+   [
+    2130018,
+    0.6
+   ],
+   [
+    2130019,
+    0.35
+   ],
+   [
+    2130024,
+    0.35
+   ]
+  ],
+  "ood6s3": [
+   [
+    2140008,
+    0.35
+   ],
+   [
+    2140009,
+    0.35
+   ],
+   [
+    2140009,
+    0.6
+   ],
+   [
+    2140011,
+    0.6
+   ],
+   [
+    2140017,
+    0.35
+   ],
+   [
+    2140022,
+    0.1
+   ]
+  ]
+ }
+}

@@ -1,10 +1,17 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 ~18:30 EDT (v0.6.0 release step: stream A stopped by owner 17:44 EDT; all gates scored)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-25 ~23:40 EDT (v0.7.0 release in progress on `plan/v0.7.0`)._
 
 ## Current version and state
 
-- **Releasing: v0.6.0** (study BRUTE-060-DRIFTSOUND-008, `plan/v0.6.0` → main, tag `v0.6.0`). **11 of 16 gated pass.**
+- **Releasing: v0.7.0** (study BRUTE-070-SYNCPLAN-009, branch `plan/v0.7.0`). **9 of 17 gated pass.**
+  - **FAIL:** GA1′ (target a), G3′, G6b, GP1 (target c); STUDY_BUDGET: GX2″ (target b; symmetric part complete, 0 mismatches; spot 6/24), G11 (no output), GTI (target d, never ran in-cap), G_RT.
+  - **PASS:** G1, G2, G4, G5, G7, G9, G10, G12, G13.
+  - Run: start 20:04:06 EDT, cap 23:04:06, stop rule fired 23:22:42 EDT (late; DEVIATIONS_009 entry 21). No stream relaunched.
+  - Done in order: run-end commit `4cdeeb4`; deviations 21–25 `af60688`; pack `30bb932`; ledger run_end_009 + SEAL `327d4fd`; ledger seal_009 `8888b88`; paired + repro; GATES_009 `a50f751` + ledger gates_009; docs + RELEASE.json/pyproject 0.7.0.
+  - **Next (if interrupted, continue here):** release freeze (`scripts/make_release_freeze_070.py`) → ledger release_freeze_070 → MANIFEST → `scripts/run_tests_070.py --output results/study-009/TEST_SUITE_009_FINAL.json` (NEVER the default output: TEST_SUITE_009.json is the in-cap gated file and must stay absent) → `scripts/make_gates_final_009.py` → ledger gates_final_009/release_070 → MANIFEST → `verify_release_070 --fast` (branch + fresh clone) → `--no-ff` merge to main → annotated tag v0.7.0 on the merge commit → gh release.
+- **Previous: v0.6.0** released (tag `v0.6.0`), 11 of 16 gated pass; its record follows.
+- **Released: v0.6.0** (study BRUTE-060-DRIFTSOUND-008, `plan/v0.6.0` → main, tag `v0.6.0`). **11 of 16 gated pass.**
   - **FAIL:** GA1 (target a), G3′, G5, G6b and GX2′ (target b, incomplete coverage).
   - **PASS:** G1, G2, G4, G7, G9, G10, G11, G12, G13, GT1 (target c) and GMC (target d).
   - Gates: `results/study-008/GATES_008_FINAL.json`. Deviations: `docs/research/BRUTE_DEVIATIONS_008.md` D1–D26.
@@ -20,6 +27,8 @@ _Kept current on the working branch during a release and on `main` at release. L
 | Branch | Head | State |
 | --- | --- | --- |
 | `main` | tag v0.6.0 (+ HANDOFF/MANIFEST commits) | Released code and record |
+| `plan/v0.7.0` | see `git log` (freeze `3825ad3`) | v0.7.0 working branch: plan frozen, no code |
+| `verify/xcheck-incremental` | `c2bf07e` | Post-release incremental xcheck verification (not v0.6.0 evidence); 3 files adopted by v0.7.0 |
 | `plan/v0.6.0` | see `git log` | v0.6.0 working branch (merged) |
 | `plan/v0.5.0` | `d0516a0` | v0.5.0 working branch (merged) |
 | `plan/v0.4.0` | `5e7d208` | v0.4.0 working branch (merged) |
@@ -55,7 +64,7 @@ _Kept current on the working branch during a release and on `main` at release. L
 - The perm4 false-alarm cases under τ6 (D24a) need a pre-registered look at alarm calibration on perm4.
 - Neither rule gets close on G6b; the coverage/safety trade-off is still open.
 - Model counts are available but unused.
-- `experiments/brute_study_006.py` sets `S5.FULL` when it is imported, which makes `test_study_005` fail in full-suite runs (Observed). The next study should move that into the function that needs it.
+- `experiments/brute_study_006.py` sets `S5.FULL` when it is imported, which makes `test_study_005` fail in full-suite runs (Observed). Both files are frozen; v0.7.0 target (d) isolates it per process instead of editing them.
 
 ## v0.5.0 progress (commit order is the chronology evidence)
 

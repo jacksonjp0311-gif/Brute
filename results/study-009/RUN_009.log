@@ -1,0 +1,28 @@
+[2026-10-25T20:04:09-0400] orchestrator start; cap at 2026-10-25T23:04:06-0400
+[2026-10-25T20:04:09-0400] planning: start (6 workers, spent 0 s, budget 3600)
+[2026-10-25T20:04:09-0400] 2x2: start (2 workers, spent 0 s, budget 2700)
+[2026-10-25T20:16:43-0400] planning: done in 754 s
+[2026-10-25T20:16:43-0400] gp1_audit: start (2 workers, spent 0 s, budget None)
+[2026-10-25T20:16:43-0400] repro_planning: start (4 workers, spent 0 s, budget None)
+[2026-10-25T20:23:40-0400] repro_planning: done in 417 s
+[2026-10-25T20:24:28-0400] 2x2: done in 1220 s
+[2026-10-25T20:24:28-0400] breadth: start (2 workers, spent 0 s, budget 2700)
+[2026-10-25T20:24:28-0400] repro_2x2: start (2 workers, spent 0 s, budget None)
+[2026-10-25T20:28:13-0400] repro_2x2: done in 224 s
+[2026-10-25T20:34:07-0400] PROGRESS_009.json written
+[2026-10-25T20:34:35-0400] gp1_audit: done in 1071 s
+[2026-10-25T20:48:55-0400] breadth: done in 1467 s
+[2026-10-25T20:48:55-0400] gx2_sym: start (4 workers, spent 0 s, budget 1800)
+[2026-10-25T20:48:55-0400] gx2_spot: start (2 workers, spent 0 s, budget 1800)
+[2026-10-25T20:48:55-0400] g11: start (2 workers, spent 0 s, budget None)
+[2026-10-25T20:54:11-0400] gx2_sym: done in 316 s
+[2026-10-25T20:54:11-0400] repro_breadth: start (2 workers, spent 0 s, budget None)
+[2026-10-25T21:16:24-0400] repro_breadth: done in 1333 s
+[2026-10-25T21:18:56-0400] gx2_spot: stream budget 1800 s reached: stopping
+[2026-10-25T21:18:59-0400] gx2_spot: sealed as it is (stream budget) rc=0 ounted as checked",
+ "symmetry_breaking": false,
+ "spot_sample": "/workspace/brute/results/study-009/SPOT_SAMPLE_009.json",
+ "results_file": "/workspace/brute/results/study-009/breadth/RESULTS.json"
+} 
+[2026-10-25T23:22:42-0400] 3 h CAP reached: stopping every running stream (no extension, no rerun)
+[2026-10-25T23:22:44-0400] STOP_009 written: ['gx2_spot', 'g11', 'gti']
