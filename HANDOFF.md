@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 ~06:48 EDT (v0.9.0 HELD-OUT RUN LAUNCHING on `plan/v0.9.0`)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 ~07:09 EDT (v0.9.0 HELD-OUT RUN IN PROGRESS on `plan/v0.9.0`)._
 
 ## Current version and state
 
@@ -18,7 +18,13 @@ _Kept current on the working branch during a release and on `main` at release. L
     10. Scoring-script drafts `13b12ee`.
   - Deviations so far: #40 (branch base), #41 (feasibility seeds 4200001/4210001/4220001 touched in dev), #42 (smoke-1 ledgered late). See `docs/research/BRUTE_DEVIATIONS_011.md`.
   - Source freeze `f658e13` (30 files; ledger `f71fbad`). Scoring freeze ledgered 06:38:21 EDT for the 4 scoring scripts at `13b12ee` (`b40069b`).
-  - **Held-out run:** run_start_011 is the next ledger commit. The cap is 7200 s from RUN_T0 (`results/study-011/RUN_T0`, epoch seconds).
+  - **Held-out run started 06:48:41 EDT** (ledger run_start_011 `3c75164`; RUN_T0 1793011721; hard cap 08:48:41 EDT). Stream status at 07:08 EDT:
+    - feas: done in 4 s.
+    - 2x2: done in 304 s (792/792).
+    - repro_2x2: done in 142 s.
+    - gti: done in 1165 s.
+    - g11_2x2: mandatory_done at 694.7 s; the optional rest is still running (budget 1500 s).
+  - Earlier note: The cap is 7200 s from RUN_T0 (`results/study-011/RUN_T0`, epoch seconds).
   - **RESUME RULES:** check `pgrep -af "run_study_011|watchdog_011"`.
     - If the run is alive, do not touch the tree; wait for `results/study-011/RUN_DONE_011.json` or `STOP_011*.json`.
     - If it died before the cap, relaunch with the same RUN_T0. The orchestrator skips finished streams, and the cap is never extended. Restart the watchdog as well.
