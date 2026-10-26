@@ -1,0 +1,38 @@
+{
+ "clean_results": {
+  "test_release_080.Corruption080.test_every_artifact_every_mode_raises_verification_error": [
+   "ok",
+   null
+  ],
+  "test_release_080.Release080.test_fast_verify_passes": [
+   "ok",
+   null
+  ],
+  "test_release_080.Release080.test_storage_round_trip": [
+   "ok",
+   null
+  ],
+  "test_release_080.Release080.test_untampered_copy_passes": [
+   "ok",
+   null
+  ],
+  "test_release_080.Release080.test_version_consistent": [
+   "ok",
+   null
+  ]
+ },
+ "clean_tag": "v0.8.0",
+ "gated": false,
+ "gti_would_pass_with_k080": true,
+ "k080_failures": [
+  "test_release_080.Release080.test_fast_verify_passes",
+  "test_release_080.Release080.test_untampered_copy_passes",
+  "test_release_080.Release080.test_version_consistent"
+ ],
+ "k080_rule_applies": true,
+ "report": "R_GTI_K080",
+ "schema": "brute.gti-k080.v1",
+ "test_suite_head": "9b0babe63b16632a3cb8e1d6a95fdbab410bbde1",
+ "undeclared_after_k080": [],
+ "wall_informational": 136.2
+}
