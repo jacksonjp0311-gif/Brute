@@ -1,0 +1,11 @@
+{
+ "schema": "brute.plan-freeze.v1",
+ "study": "BRUTE-0110-SOUND-TRANSFER-013",
+ "plan": "experiments/BRUTE_PLAN_013.json",
+ "plan_sha256": "dfd13c0005a3b778cebb01408beb2299bab100c7a836ea0bdb80a7b1f8a4d60d",
+ "criteria_canonical_json_sha256": "2b996cb96e406e8faa1259ed905a2dba5f87d63309a00e70363cb5b144e45043",
+ "criteria_hash_method": "sha256 of json.dumps(plan['criteria'], sort_keys=True, separators=(',', ':'), ensure_ascii=False) (same as preregistration_012)",
+ "readable_plan": "docs/research/v0.11.0/PLAN_013.md (the JSON wins if they differ)",
+ "frozen_at": "the commit that adds this file (recorded in the ledger entry preregistration_013)",
+ "note": "no v0.11.0 learner, transfer, API or reference code, held-out world, seed or run exists at this commit; the seen-data applicability diagnostic (e0aa431) precedes it"
+}

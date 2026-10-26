@@ -1,0 +1,507 @@
+{
+ "schema": "brute.registered-plan.v1",
+ "status": "PRE-REGISTERED (frozen at the commit that adds this file; no v0.11.0 learner, transfer, API or reference code, held-out world, seed or run exists at that commit)",
+ "study": "BRUTE-0110-SOUND-TRANSFER-013",
+ "version_under_test": "0.11.0",
+ "parent_study": "BRUTE-0100-SUPPORT-TRANSFER-012",
+ "owner_request": {
+  "recorded_at": "2026-10-26 10:00 EDT (America/New_York), relayed by the coordinating agent",
+  "summary": "v0.11.0 end to end with identical discipline and rules, per NEXT_ITERATION.md: pre-register and freeze BRUTE_PLAN_013 on plan/v0.11.0 from main b935fff before any code. Center it on SOUND TRANSFER: (a) a dual-region certificate rule and/or an applicability-test gate; (b) the library used for experiment selection only, with certification unaffected; (c) a wrong-family control that must produce 0 false certificates and no significant help. Declare K_080/K_090 known test failures in advance, give big78 enough power, keep window hulls off G6b. Keep the core API host-agnostic and embeddable (small stable interface, observations in; certified answer or UNKNOWN out, with a test). Enforced <= 2 h cap, push after every step, HANDOFF current, deviations from #52, delete scratch at the end."
+ },
+ "branch_base": {
+  "requested": "main b935fff",
+  "used": "plan/v0.11.0 = b935fff + e0aa431 (exploratory applicability diagnostic: scripts/diag_applicability_013.py, results/diag-013/APPLICABILITY_DIAG_SEEN.json, docs/research/BRUTE_DIAG_APPLICABILITY_013.md) + 373e8d0 (its ledger receipts); no learner code; disclosed as deviation #52 in docs/research/BRUTE_DEVIATIONS_013.md",
+  "exact": "git merge-base --is-ancestor b935fff <plan commit> holds"
+ },
+ "freeze_rule": "The commit that adds this file must be an ancestor of every v0.11.0 code file (git merge-base --is-ancestor <plan commit> <first commit of file>), in particular of: brute/soundtransfer.py, brute/api/certify.py, experiments/v0110_reference.py, experiments/worlds_013.py, experiments/brute_common_013.py, experiments/brute_study_013.py, scripts/check_seeds_013.py, scripts/watchdog_013.py, scripts/run_study_013.py, scripts/run_reference_013.py, scripts/study013_storage.py, scripts/run_tests_0110.py, scripts/make_freeze_013.py, scripts/seal_013.py, scripts/make_gates_013.py, scripts/make_paired_013.py, scripts/make_reproducibility_013.py, scripts/clean_clone_013.py, scripts/verify_release_0110.py and their tests. The applicability diagnostic (scripts/diag_applicability_013.py, results/diag-013/, docs/research/BRUTE_DIAG_APPLICABILITY_013.md) is analysis code on SEEN data committed BEFORE this plan to calibrate one constant (M_app) and is not v0.11.0 learner code. The ledger entry preregistration_013 records the sha256 of this file and of its criteria block; any later change is a deviation_013 entry (docs/research/BRUTE_DEVIATIONS_013.md) and the original text is still reported.",
+ "adopted_files": {
+  "note": "No new adopted files. brute/align.py (SP8), brute/transfer.py (motif learner, expansion, TransferTracker), brute/bigstate.py, brute/supportwindow.py (J10), brute/jumpwindow.py (J9) and experiments/v0100_reference.py are IMPORTED unchanged from the v0.10.0 freezes; v0.11.0 code lives in new files."
+ },
+ "frozen_inputs_not_touched": [
+  "every file listed in any experiments/*FREEZE*.json (incl. BRUTE_SOURCE_FREEZE_012 and BRUTE_RELEASE_FREEZE_0100)",
+  "brute/core/*",
+  "every existing brute/ module incl. brute/transfer.py, brute/align.py, brute/supportwindow.py, brute/bigstate.py and every existing brute/api/*.py (imported, never edited)",
+  "experiments/brute_study_0[0-1][0-9].py up to 012, experiments/v0[1-9]0_reference.py, experiments/v0100_reference.py, experiments/worlds_0[0-1][0-9].py up to 012",
+  "scripts/*_00[0-9].py, scripts/*_01[0-2].py, scripts/run_tests_0[7-9]0.py, scripts/run_tests_0100.py, scripts/verify_release_0[1-9]*.py, scripts/verify_release_0100.py, tests/test_release_0[1-9]*.py, tests/test_release_0100.py",
+  "experiments/BRUTE_PLAN_00[2-9].json, BRUTE_PLAN_01[0-2].json",
+  "results/study-00[1-9]/*, results/study-01[0-2]/*, results/diag-01[1-3]/* (read-only)",
+  "tags v0.2.0 .. v0.10.0",
+  "/workspace/brute-bridge and /workspace/bgr/BGR-v0.90.0 (out of scope, not touched)"
+ ],
+ "pre_freeze_disclosure": {
+  "summary": "Before this commit the author ran scripts/diag_applicability_013.py on the SEALED study-012 transfer traces (288 target cases, already scored for v0.10.0; Observed on SEEN data, exploratory): the v0.10.0 transfer rule gated by >= M confirmed informative library predictions gives TRn false certificates 167 / 73 / 22 / 3 / 0 for M = 0 / 1 / 2 / 3 / 4 and 0 for every M >= 4, with TRp mean speedup 20.2 / 18.6 / 16.3 / 13.4 / 11.0 / 8.7 / 6.3 (M = 6) / 3.1 (M = 8). M_app = 6 is frozen here (smallest seen-safe M = 4 plus a margin of 2 chosen before any held-out data); AT4 (M = 4) is a non-gated sensitivity arm. No held-out seed of this plan was generated.",
+  "also_read_before_freeze": [
+   "brute/transfer.py, brute/align.py, experiments/brute_study_012.py, experiments/v0100_reference.py (frozen v0.10.0 code)",
+   "the v0.10.0 release results (GATES_012: TRp mean S 20.18 CI [19.18, 21.17], TRn 246 false certificates, SP8 - A2 coverage -0.0095 CI [-0.0137, -0.0054], SP8_78 169 certificates in 144 cases)",
+   "current test failures on the v0.10.0 tree (Observed 2026-10-26 10:10 EDT): test_release_080 x3 and test_release_090 x3 (version, short-verify and untampered-copy tests pinned to superseded releases); test_release_0100 passes"
+  ]
+ },
+ "hypotheses": {
+  "H_dr": "Dual-region DR (certify c only if SP8 certifies c on the full region AND the library-restricted region forces c, or the library is refuted) is sound whenever SP8 is (Exact: DR certificates are a subset of SP8 certificates) and cannot speed up certification (Exact: T_cert(DR) >= T_cert(SP8)); it measures how often the library DISAGREES with a sound certificate (Inferred: never for the positive library, sometimes for the wrong family).",
+  "H_at": "Applicability-tested transfer AT (the v0.10.0 transfer rule may fire only after the library has made M_app = 6 confirmed informative predictions on the target) keeps a significant speedup with the positive library and issues 0 false certificates with the wrong-family library on fresh seeds (Inferred from SEEN data; soundness of AT under a wrong library is an empirical claim, Open, not Exact).",
+  "H_lx": "Library experiment selection LX (the library chooses the action, SP8 certifies unchanged) speeds up SP8 certification with the positive library (Open: LU-C is already a certification-aligned planner); with the wrong-family library it issues 0 false certificates (Inferred: certification is SP8 code on SP8 evidence) and gives no significant help (Open).",
+  "H_78": "SP8_78 on 288 big78 cases issues >= 150 certificates with 0 false (Inferred: 169 certificates in 144 cases in study-012), so the rule-of-three upper false-certificate rate is <= 0.02.",
+  "H_api": "A small host-agnostic certify interface (observations in; certified code or UNKNOWN out) reproduces SP8 certificates exactly (Inferred)."
+ },
+ "heldout_ranges_2x2": {
+  "cycle3": [
+   6010001,
+   6010024
+  ],
+  "switch3": [
+   6020001,
+   6020024
+  ],
+  "unstructured3": [
+   6030001,
+   6030024
+  ],
+  "unaliased2": [
+   6040001,
+   6040024
+  ],
+  "ood4": [
+   6050001,
+   6050024
+  ],
+  "perm4": [
+   6060001,
+   6060024
+  ],
+  "ood5": [
+   6070001,
+   6070024
+  ],
+  "drift4": [
+   6080001,
+   6080096
+  ]
+ },
+ "heldout_ranges_big78": {
+  "moore78": [
+   6090001,
+   6090096
+  ]
+ },
+ "heldout_ranges_transfer": {
+  "targets": {
+   "cycle3": [
+    6110001,
+    6110024
+   ],
+   "switch3": [
+    6120001,
+    6120024
+   ],
+   "unaliased2": [
+    6130001,
+    6130024
+   ],
+   "ood4": [
+    6140001,
+    6140024
+   ]
+  },
+  "sources": [
+   6150001,
+   6150096
+  ]
+ },
+ "smoke_seeds": {
+  "range": [
+   6190001,
+   6190030
+  ],
+  "rule": "smoke/debug runs of v0.11.0 code may use ONLY seeds 6190001-6190030 (any generator; transfer smoke sources 6190021-6190030) or the study-012 smoke seeds 5190001-5190030; held-out seeds are never generated, simulated or inspected before run_start of the held-out run. Sealed data of studies 001-012 may be used for development, never as v0.11.0 evidence."
+ },
+ "heldout_note": "All v0.11.0 ranges (6010001-6190030) are disjoint from every earlier range (all <= 5190030) and from the pre-freeze timing seeds 9000001-9000002; scripts/check_seeds_013.py asserts this from the parsed plans 001-012.",
+ "seed_assertion_plan": {
+  "script": "scripts/check_seeds_013.py (committed after this plan and before ANY v0.11.0 run including smoke)",
+  "asserts": [
+   "pairwise disjointness of all v0.11.0 ranges (2x2, big78, transfer targets, transfer sources, smoke); samples are subsets of the held-out blocks",
+   "disjointness from every range in experiments/PLAN.json and experiments/BRUTE_PLAN_0*.json other than this plan (001-012, parsed, not hard-coded) plus 901-903, 1591001-1591384 and 9000001-9000002",
+   "the runner refuses any seed outside the declared range of the requested block; smoke mode refuses any seed outside the smoke ranges"
+  ],
+  "order": "run and ledgered (seedcheck_013) before the first smoke run; tests/test_seeds_013.py repeats the assertions"
+ },
+ "in_family_original_2x2": [
+  "cycle3",
+  "switch3",
+  "unstructured3",
+  "unaliased2",
+  "ood4"
+ ],
+ "in_family_2x2": [
+  "cycle3",
+  "switch3",
+  "unstructured3",
+  "unaliased2",
+  "ood4",
+  "perm4"
+ ],
+ "out_of_family_2x2": [
+  "ood5",
+  "drift4"
+ ],
+ "mask_rates": [
+  0.1,
+  0.35,
+  0.6
+ ],
+ "actions_per_case_2x2": 44,
+ "burn_in": 8,
+ "tau6": {
+  "value": 1.645215321642,
+  "source": "results/study-006/CALIBRATION_006.json, unchanged"
+ },
+ "window_W": 8,
+ "event_triggers": {
+  "E1": "v0.6.0 event, unchanged: after observing step u, residual (mean of the last W=8 surprises, 12 d.p.) > tau x 0.5, or a window-tier event (as brute/driftsound._note_event)",
+  "E2": "falsified certificate: the forecast for the taken action at step u carried a conditional certificate c and the observation at u is incompatible with c (bit c not in the observation mask). Constant-free.",
+  "E3": "single-step surprise: s_u = -ln compatible_mass(published probabilities for u, observation u) > tau (tau6 for 2x2, tau7 for breadth; the frozen ALARM threshold applied to one step instead of the window mean). No new constant. Exact: tau6 = 1.645215 > ln 4 = 1.386294 and tau7 = 2.07944154168 > ln 8 = 2.07944154167984 (margin ~2e-13), so a forecast spread uniformly over all codes never triggers E3; E3 needs the realised observation to have had probability < e^-tau (0.1930 for 2x2, 0.1250 for 8 codes).",
+  "note": "Inferred: when the published forecast is a certified one, E2 implies E3 (the falsified code carried >= 1-3eps/4 mass, so the compatible mass is <= 3 x eps/4 = 0.015, s >= 4.2 > tau6); E2 is kept as an explicit, constant-free trigger and each event records which triggers fired. Alarms (F4 RESIDUAL_SURPRISE), resume, probabilities and LU-R are NOT changed by E2/E3."
+ },
+ "drift_definition": "study-004/005/007/008 definition, unchanged: a drift4 false certificate (taken or counterfactual action, conditional or public) is NON-DRIFT iff it is at a step after the first drift step (step > 12) with step not in {12,23,34} (the drift steps). Drift indices of the frozen drift4 generator: 12, 23, 34.",
+ "tau7": {
+  "value": 2.07944154168,
+  "source": "unchanged; not used by any v0.11.0 arm, kept for the frozen G13 check"
+ },
+ "J10_definition": {
+  "rule": "brute.supportwindow.SupportWindowLearner = brute.jumpwindow.WindowSyncLearner with ONE change: the kept-certificate test uses supW(action) = RegionK.support(action) evaluated on JumpWindowRegionK(K=4) (the exact projection of the next code after `action` over every (machine, at most one window jump) consistent with the evidence; frozen tri-state: UNKNOWN codes count as possible; UNKNOWN feasibility -> every code) instead of Y1kW. A certificate c that SP8 keeps survives iff supW(action) == {c} (cert_rule <SP8 path> + \"+wsupp\"), else ABSTAIN / RESYNC_AMBIGUOUS, cert_rule \"wsupp-downgraded\". Memo key (\"supW\", action) through RegionSpace._q (unknowns count toward SOLVER_BUDGET). hull_union / hull_unknown record supW(0), supW(1) per step while the family is supported. LU-C unchanged (so J10, J9 and SP8 take the same actions on the same case unless a solver UNKNOWN differs).",
+  "soundness_argument": "Inferred/Exact by construction: J10 certificates are a subset of SP8 certificates; when the true (machine, jump) is inside the window region the true next code is in supW, so a singleton supW is the true code (same containment as J9; lag 1 is covered in the same sense as J9 since J(T) includes T-1 and the transition into T stays constrained).",
+  "big78": "brute.bigstate.big(cls) wraps a learner class: constructed with the frozen symbolic caps (5, 6) and then its family / margin RegionSpace replaced by RegionSpace(8) / RegionSpace(9), family string deterministic-moore<=8/stationary (the attestation names that family). The recency-window tier keeps its frozen <= 4 bound (disclosed: it is only used after a contradiction)."
+ },
+ "jump_window_definition": {
+  "region": "JumpWindowRegionK(n,k,m,masks,actions,K) = RegionK (same variables, symmetry clause, state bound, first state 0) with at most ONE free transition: for each t in J(T) = {max(1, T-K+1), ..., T-1} a selector j_t (at most one true); the transition clause into observation t holds unless j_t; a transition whose selector is true is not a traversal (Tr counts transition t+1 out of x[t] only if j_{t+1} is false; transitions out of t with t+1 not in J always count). The transition into the LAST observation T is always constrained (lag-1 jumps are NOT covered). With J(T) empty (T <= 1) the region equals RegionK. JW contains every machine of RegionK (all selectors false), so Y1kW contains Y1k (Exact by construction).",
+  "lag_mapping": "a certificate for step s is issued after T = s-1 observations; a drift4 jump at drift step d is the transition into observation d; lag L = s - d; the jump is inside J(T) iff 2 <= L <= K (Exact arithmetic).",
+  "hull": "Y1kW(b, mask) = RegionK.y1k evaluated on JumpWindowRegionK with mask = mask of observation T. UNKNOWN feasibility -> every code (never certifies); y1k UNKNOWN codes count as possible (frozen tri-state semantics).",
+  "J9": "brute.jumpwindow.WindowSyncLearner: brute.align.AlignedSyncLearner (SP8: SyncEventLearner rule CTR + LU-C) unchanged, plus: a certificate c that SP8 keeps (taken or counterfactual action) is kept only if Y1kW(action, mask_T) == {c} (cert_rule <SP8 path> + \"+whull\"), else ABSTAIN / RESYNC_AMBIGUOUS with cert_rule \"whull-downgraded\". Hull queries go through RegionSpace._q (memo key (\"y1kW\", action, mask)) so their unknowns count toward SOLVER_BUDGET. The LU-C lookahead is NOT changed (it counts what SP8 would certify, not what J9 keeps; disclosed). hull_union / hull_unknown are recorded per step while the family is supported (as J8).",
+  "not_selective_by_surprise": "NEXT_ITERATION proposed applying the hull only after an unsurprising observation; the seen data had no event between drift and certificate in 28/28, so that condition would almost always hold. J9 is selective by POSITION (window excluding the last transition), not by surprise (Inferred, disclosed)."
+ },
+ "metrics": {
+  "false_certificates": "certificate on (step, action) whose code differs from the realized code of that action (counterfactual actions evaluated on the world copy)",
+  "coverage": "dual coverage as in study-006/007/008 (fraction of post-burn-in (step, action) pairs with a conditional certificate)",
+  "steps_to_cert": "T_cert(case) = the first step t (1..44) whose taken-action forecast carries a conditional certificate; 45 if none (censored, included)",
+  "event_lag": "as study-009 diagnostic_a0 (E1/E2/E3 lag in steps after a drift step)",
+  "xcheck_checked_fraction": "checked steps / all steps per breadth family per arm",
+  "xcheck_mismatch": "any decision-level field differing at a checked step",
+  "hull_containment": "GH: realized code of each action in the recorded J10 hull_union (= supW4) at drift4 steps 14..16 when the family is supported before the forecast and hull_unknown == 0",
+  "stale_class": "GD (i): non-drift false certificate at step d+1 with no event at d",
+  "steps_to_cert_transfer": "T_cert(case, arm) = first step t (1..44) whose taken-action forecast carries a conditional certificate; 45 if none (censored, included); saving S(case) = T_cert(SP8) - T_cert(TR) on the same target trajectory"
+ },
+ "scoring": {
+  "soundness_counts": "all steps incl. burn-in, every action (taken and counterfactual)",
+  "coverage_logloss_alarm_rates": "post-burn-in steps only",
+  "loss": "-ln max(1e-12, p[actual]) on the full code",
+  "bootstrap": "seed-clustered paired bootstrap (each seed = its 3 mask cases), 2000 resamples, numpy default_rng(20261026), percentile 2.5/97.5 (95%)"
+ },
+ "world_generators": {
+  "2x2": "the frozen study-008..012 generators (experiments/worlds_012.py) imported unchanged; experiments/worlds_013.py re-exports them",
+  "big78": "experiments/worlds_013.moore78 = the frozen experiments/worlds_012.moore78(seed), re-exported unchanged: random.Random(seed*130363+331); n = 7 + seed % 2; transitions and start by experiments/worlds_007._reach; 4 distinct codes, emission pattern (0,0,1,1,2,2,3,3)[:n] shuffled; 2 actions, 2 bits. Stationary, in the declared <= 8 family.",
+  "transfer": "targets and sources are the frozen bgr89/worlds_006 worlds of their family (experiments/worlds_011.world); sources are observed with mask 0.0 for 60 steps under the frozen passive actions bgr89.worlds.actions(source_seed, 60)."
+ },
+ "rule_constants_frozen": {
+  "surprise_fraction": 0.5,
+  "recency_window": 8,
+  "E3_threshold": "tau (tau6 / tau7), no new constant",
+  "note": "No constant of SP8, J9, J10 or the v0.10.0 transfer code is changed. New v0.11.0 constants: M_app = 6 (applicability threshold, from the seen-data diagnostic + margin 2, see pre_freeze_disclosure), M_app_sensitivity = 4 (AT4, non-gated). The transfer constants source_steps 60, source_mask 0.0, library_solution_cap 64, hypothesis_cap 200000 are the frozen v0.10.0 ones.",
+  "jump_window_K": 4,
+  "M_app": 6,
+  "M_app_sensitivity": 4
+ },
+ "ledger_rule": "Append-only scripts/append_ledger.py; every note starts with an ISO-8601 time with offset. Required events in order: diag_applicability_013 (done before this plan), preregistration_013 (this file, sha256 + criteria sha256), seedcheck_013, second_implementation_013 (experiments/v0110_reference.py, before brute/soundtransfer.py and brute/api/certify.py), smoke runs (run_start/run_end with ISO EDT time, block and exact seed set; the kill drill is a smoke run), rate_math_013, source_freeze_013, scoring_freeze_013 (>= 10 min before run_start), run_start_013 / run_end_013, stop_013 (only if the watchdog or the stop rule fires), seal_013, gates_013, clean_clone_013, release_0110. A run without a run_start entry is not evidence. Deviations get a deviation_013 entry before the affected run.",
+ "transfer_definition": {
+  "source_learning": "unchanged v0.10.0 (frozen brute.transfer.learn_motifs on the fully observed source, mask 0.0, 60 frozen passive steps bgr89.worlds.actions(source_seed, 60); expand with hypothesis_cap 200000)",
+  "pairs": "positive: target family f uses the library of source seed 6150000 + 24 x index(f) + offset (same family f; index order cycle3, switch3, unaliased2, ood4). wrong-family control (negative): target f uses the library of the same offset from the ROTATED family: cycle3 <- switch3, switch3 <- cycle3, unaliased2 <- ood4, ood4 <- unaliased2.",
+  "cases": "4 families x 24 target seeds x 3 masks = 288 target cases; 96 source worlds",
+  "library_tracker": "the frozen brute.transfer.TransferTracker (hypotheses filtered by every target observation; predict(b) = unanimous next code over survivors, else None; empty survivors = library refuted, logged step)",
+  "confirmation": "confirmed informative prediction at step t (counted after observing t): BEFORE the observation the tracker predicts a unanimous code c for the TAKEN action a, the SP8 published support for a at t is non-null with >= 2 codes, the observation at t is fully unmasked (both bits) and its code equals c",
+  "DR_arm": "post hoc on the SP8 trajectory (like TR): for action b at step t, DR certifies c iff SP8 certifies c AND (the tracker is refuted (no survivors) OR the tracker predicts the unanimous code c); otherwise DR abstains (rule \"dr-disagree\" when SP8 certified but the live library does not force c). Library-restricted region = the surviving library hypotheses; full region = SP8. Exact: DR subset of SP8.",
+  "AT_arm": "post hoc on the SP8 trajectory: as the frozen TransferTracker.decide (SP8 certificate passes; else after burn_in, if the tracker predicts c and c is in the SP8 support, certify c with rule \"transfer\") EXCEPT that the transfer rule may fire only when the confirmations counted on steps < t are >= M_app (6). AT4: same with M = 4 (non-gated sensitivity). TRp/TRn (M = 0, the v0.10.0 rule) are recomputed as reported controls.",
+  "LX_arm": "a NEW SP8 trajectory on the same target world, seed and mask with the library choosing the action; certificates, forecasts and evidence are the unchanged SP8 code (brute.align.AlignedSyncLearner, never edited). At each step: SP8 experiment(passive) is called as in the frozen trace (its action a_sp8 recorded); a TransferTracker is filtered by the LX trajectory own observations. If the tracker has >= 2 survivors and some action b splits them (largest group of equal predicted next code smaller than the survivor count), choose the b with the smallest largest group (rule \"lx-split\"; ties -> a_sp8 if among the minimisers, else action 0). Else if the tracker is alive and unanimous for both actions with codes c0, c1: v_b = SP8 lookahead value _certifiable_after(b, c_b) (the frozen LU-C branch value at the predicted code); if v0 != v1 choose the larger (rule \"lx-plan\"), else a_sp8 (rule \"sp8\"). Else (refuted) a_sp8 (rule \"sp8\"). The library never touches a certificate. LXp / LXn: positive / wrong-family library.",
+  "speedup": "S(case, X) = T_cert(SP8) - T_cert(X) on the taken action, censored at 45 (metrics.steps_to_cert_transfer); for LX T_cert is on the LX trajectory",
+  "not_run": "unstructured3 and perm4 are not transfer targets (no shared motif by construction), as in study-012."
+ },
+ "api_definition": {
+  "file": "brute/api/certify.py (new; existing brute/api files untouched)",
+  "interface": "Certifier(family_states=4, mask_bits=2, actions=2): .initialize(observation) ; .observe(action, observation) ; .query(action) -> {\"status\": \"CERTIFIED\" | \"UNKNOWN\", \"answer\": int code or None, \"support\": list or None, \"step\": int, \"api\": \"brute.certify/1\"}. certify(observations, actions, query_action) is the stateless wrapper (observations[0] is the initial observation; len(observations) == len(actions) + 1). An observation is a pair of bits, each 0, 1 or None (masked). Optional library: Certifier(..., library_hypotheses=H) applies the DR rule (certify only if SP8 certifies AND the library is refuted or forces the same code). No host, I/O, network, threads or global state; stdlib + the pinned brute dependencies only.",
+  "gate_test": "tests/test_api_certify_0110.py: (i) on 4 smoke-seed trajectories (seeds 6190009-6190012, mask 0.35) the Certifier fed the recorded actions and observations returns, for both actions at every step, exactly the SP8 certificate of the frozen trajectory (CERTIFIED iff SP8 certified, same code); (ii) malformed input raises ValueError; (iii) DR mode never certifies a code SP8 does not; (iv) the module imports no host-specific module (checked by AST: no os.system, subprocess, socket, http, threading)."
+ },
+ "arms": {
+  "J10": "frozen brute.supportwindow.SupportWindowLearner (v0.10.0), drift-safety continuity",
+  "J9": "frozen brute.jumpwindow.WindowSyncLearner (v0.9.0), reported",
+  "SP8": "frozen brute.align.AlignedSyncLearner (v0.8.0): the G6b arm (window hulls OFF G6b) and the transfer scratch comparator",
+  "A4": "frozen brute.resume.ResumeBruteLearner (v0.4.0), G3 control",
+  "A2": "frozen brute.active.ActiveBruteLearner (v0.2.0), G6b baseline",
+  "SP8_78": "frozen brute.bigstate.big(SP8) on the big78 block (J10_78 not run: power goes to SP8_78)",
+  "TRp / TRn": "v0.10.0 rule recomputed post hoc (reported controls)",
+  "DRp / DRn": "transfer_definition.DR_arm",
+  "ATp / ATn": "transfer_definition.AT_arm, M_app = 6",
+  "AT4p / AT4n": "AT with M = 4 (non-gated sensitivity)",
+  "LXp / LXn": "transfer_definition.LX_arm"
+ },
+ "arms_by_block": {
+  "2x2": [
+   "J10",
+   "J9",
+   "SP8",
+   "A4",
+   "A2"
+  ],
+  "big78": [
+   "SP8_78"
+  ],
+  "transfer": [
+   "SP8",
+   "TRp",
+   "TRn",
+   "DRp",
+   "DRn",
+   "ATp",
+   "ATn",
+   "AT4p",
+   "AT4n",
+   "LXp",
+   "LXn"
+  ]
+ },
+ "second_implementation": {
+  "file": "experiments/v0110_reference.py (same author, no brute import, committed before brute/soundtransfer.py and brute/api/certify.py)",
+  "method": "2x2: the frozen experiments/v0100_reference audit (J10, SP8) imported unchanged. Transfer: libraries and hypotheses from the frozen v0100_reference re-implementation (ref_library, ref_hypotheses); an independent tracker recomputes every DR, AT, AT4, TR certificate / abstention / rule / confirmation count on the SP8 trajectory, and on the LX trajectory every survivor count, refutation step, lx-split choice (exact) and, for lx-plan steps, that the chosen action is the argmax of the recorded v values (the SAT lookahead value itself is not re-derived: disclosed limitation). Any differing field is a mismatch.",
+  "checkpoint": "every audited trace is appended to a checkpoint; a stop leaves partial evidence"
+ },
+ "samples": {
+  "g11_mandatory_2x2": "arms J10, SP8: seeds with offset 1..8 from the start of each 2x2 family range except drift4, drift4 offsets 1..16, all three masks: 8 x 7 x 3 + 16 x 3 = 216 cases",
+  "g11_optional_fixed": "arms J10, SP8: offsets 9..10 of each non-drift 2x2 family and drift4 offsets 17..20, all three masks: 2 x 7 x 3 + 4 x 3 = 54 cases, a FIXED list (replaces the open-ended v0.9.0 rest); audited after the mandatory sample inside the g11 stream budget; the stream writes the stamp optional_done (all 54 audited) or stopped_own_budget (budget reached first; audited count reported); any audited optional mismatch fails G11. The rate math may shrink this list ONCE before the source freeze (disclosed deviation), never after.",
+  "long_verify": "verify_release_0110 --long: arms J10, SP8 on drift4 offsets 1..4 (12 cases) and offset 1 of each other 2x2 family (21 cases), all three masks = 33 cases; own cap 900 s; 0 mismatching traces required",
+  "repro": "every 2x2 case and every transfer case whose run index (0-based, block order) is divisible by 3",
+  "api_test": "4 smoke trajectories (seeds 6190009-6190012, mask 0.35, families cycle3, switch3, unaliased2, ood4) for tests/test_api_certify_0110.py"
+ },
+ "criteria": {
+  "GST_sound_transfer": {
+   "gated": true,
+   "threshold": "HEADLINE. PASS iff at least one mechanism X in {AT, LX} has: X_p and X_n 0 false certificates (GS_a), X_n no significant help (GS_c), and X_p a significant speedup (GS_d for AT, GS_e for LX).",
+   "prediction": "Inferred: PASS via AT (seen data); LX Open."
+  },
+  "GS_a_transfer_soundness": {
+   "gated": true,
+   "threshold": "DRp, DRn, ATp, ATn, LXp, LXn: 0 false certificates on all 288 transfer target cases, all steps, every action (taken and counterfactual). Per-arm pass reported; the gate passes iff all six pass.",
+   "prediction": "DR Exact-given-SP8 PASS; LX Inferred PASS; ATp Inferred PASS; ATn Open (seen 0)."
+  },
+  "GS_b_dual_region_subset": {
+   "gated": true,
+   "threshold": "Exact check: every DRp / DRn certificate equals the SP8 certificate at the same (case, step, action); DR certificate counts <= SP8; S(DR) <= 0 on every case.",
+   "prediction": "Exact: PASS."
+  },
+  "GS_c_wrong_family_control": {
+   "gated": true,
+   "threshold": "For EACH of DRn, ATn, LXn: (i) 0 false certificates AND (ii) no significant help: 95% CI lower bound of mean S_n (seed-clustered paired bootstrap) <= 0. Per-arm pass reported; the gate passes iff all three pass.",
+   "prediction": "DRn Exact PASS (S <= 0); ATn Inferred PASS (seen: 0 transfer certificates for M >= 4); LXn Open."
+  },
+  "GS_d_AT_speedup": {
+   "gated": true,
+   "threshold": "ATp: seed-clustered paired bootstrap mean S >= 1.0 step AND 95% CI lower bound > 0",
+   "prediction": "Inferred: PASS (seen mean 6.28 at M = 6)."
+  },
+  "GS_e_LX_speedup": {
+   "gated": true,
+   "threshold": "LXp: seed-clustered paired bootstrap mean S >= 1.0 step AND 95% CI lower bound > 0",
+   "prediction": "Open."
+  },
+  "GS_ref_transfer_audit": {
+   "gated": true,
+   "threshold": "experiments/v0110_reference.py reproduces both libraries and every DR / AT / AT4 / TR / LX field listed in second_implementation.method on all 288 transfer cases: 0 mismatching cases",
+   "prediction": "Inferred: PASS."
+  },
+  "GAPI_embeddable_certify": {
+   "gated": true,
+   "threshold": "tests.test_api_certify_0110 (api_definition.gate_test) passes inside the in-cap GTI run (every test id ok) and brute/api/certify.py is in the source freeze",
+   "prediction": "Inferred: PASS."
+  },
+  "G1_in_family_soundness": {
+   "gated": true,
+   "threshold": "J10, J9 and SP8 (2x2): 0 false conditional and 0 false public certificates on every in-family case; all steps incl. burn-in, every action",
+   "prediction": "Inferred: PASS."
+  },
+  "G2_ood_soundness": {
+   "gated": true,
+   "threshold": "J10, J9 and SP8: 0 false conditional certificates on ood5; all steps, every action",
+   "prediction": "Inferred: PASS."
+  },
+  "G3L_drift4_lag_ge_2": {
+   "gated": true,
+   "threshold": "J10 on the 288 drift4 cases: (a) 0 non-drift false certificates with lag >= 2, taken AND counterfactual action; (b) total taken-action false certificates <= 0.5 x the A4 control on the same cases. SP8 lag >= 2 count reported (UNINFORMATIVE label if SP8 also has 0).",
+   "prediction": "Inferred: PASS."
+  },
+  "G3_prime_strict_drift4": {
+   "gated": true,
+   "threshold": "unchanged v0.8.0 definition applied to J10: taken action, 288 drift4 cases: non-drift false certificates (any lag) = 0 AND total <= 0.5 x A4 control",
+   "prediction": "Inferred: PASS (seen data: 0 for supW4 and J9)."
+  },
+  "GH_support_containment": {
+   "gated": true,
+   "threshold": "J10 on drift4: at every step s in {14,15,16} where the family is supported before the forecast and hull_unknown == 0, the realised code of BOTH actions is in the recorded hull_union (supW). 0 exceptions; missing hull_union while supported = exception. Non-vacuity reported.",
+   "prediction": "Inferred: PASS (exact containment)."
+  },
+  "G4_public_safety": {
+   "gated": true,
+   "threshold": "J10, J9, SP8: 0 public certificates on ood5 and drift4; 0 wrong public certificates anywhere; no public certificate after the first alarm of a session",
+   "prediction": "Inferred: PASS."
+  },
+  "G5_false_alarm_limit": {
+   "gated": true,
+   "threshold": "unchanged: for EACH arm J10, J9, SP8 and EACH in-family 2x2 family: fraction of cases with >= 1 RESIDUAL_SURPRISE alarm <= 0.05",
+   "prediction": "Inferred: PASS; perm4 Open (shared tau6 alarm; 0/72 in study-009)."
+  },
+  "G7_open_world": {
+   "gated": true,
+   "threshold": "mean post-burn-in taken-action log-loss: J10, J9, SP8 <= ln 4 on ood5 and drift4; min probability >= eps/4 = 0.005 on every step of every case for J10, J9 and SP8",
+   "prediction": "Inferred: PASS."
+  },
+  "G9_retraction_resume": {
+   "gated": true,
+   "threshold": "every resume (J10, J9, SP8) only after W=8 consecutive residuals <= tau6 with family and margin supported; no certified RESYNC_AMBIGUOUS forecast; retraction reasons equal the reference; no duplicate issued/retraction pairs",
+   "prediction": "Inferred: PASS."
+  },
+  "G6b_coverage_vs_v020": {
+   "gated": true,
+   "threshold": "SP8 ONLY (window hulls off G6b, owner order): pooled in_family_original_2x2 dual coverage SP8 - A2 >= -0.03 AND 95% CI lower bound >= -0.05 (unchanged thresholds). J10 - A2 and J9 - A2 reported only (R_window_G6b).",
+   "prediction": "Inferred: PASS (study-012 SP8 - A2 = -0.0095, CI [-0.0137, -0.0054])."
+  },
+  "G10_compute": {
+   "gated": true,
+   "threshold": "all 792 2x2 cases, all 288 big78 cases and all 288 transfer cases complete and sealed, every 2x2 / big78 / transfer trace (incl. LXp / LXn) has 44 steps; production arms J10, J9, SP8 (2x2): forecasts with solver_unknown > 0 <= 1%",
+   "prediction": "Inferred: PASS (rate math decides budgets)."
+  },
+  "G12_reproducibility": {
+   "gated": true,
+   "threshold": "a second run of every 2x2 and transfer case whose run index is divisible by 3 to a new path gives byte-identical scientific JSON (timing keys stripped)",
+   "prediction": "Inferred: PASS."
+  },
+  "G13_frozen_controls_reproduce": {
+   "gated": true,
+   "threshold": "J10, J9, SP8, A4, A2, SP8_78, the v0.10.0 transfer code and the v0100 reference run frozen code (sha256 checked against every live BRUTE_SOURCE_FREEZE_0xx incl. 012 and the release freezes 070_R1 / 080 / 090_R1 / 0100 via check_freeze before run_start); tau6, tau7 equal this plan; every case records the plan tau6",
+   "prediction": "Inferred: PASS."
+  },
+  "G11_second_implementation": {
+   "gated": true,
+   "threshold": "experiments/v0110_reference.py (importing the frozen v0100 2x2 audit) audits (i) EVERY trace of g11_mandatory_2x2 (J10, SP8) with 0 mismatching traces; (ii) every audited g11_optional_fixed trace with 0 mismatches; (iii) mutation test: 20 injected single-field errors in 20 distinct mandatory traces (random.Random(20261026); >= 4 in J10 certificate/hull fields and >= 4 in action choices) detected 20/20, 0 flagged not injected; (iv) the mandatory audit finishes inside the g11 stream budget and the audited RESULTS.json sha256 equals the block SEAL. Labelled \"second implementation by the same author\".",
+   "prediction": "Inferred: PASS."
+  },
+  "GTI_test_isolation": {
+   "gated": true,
+   "threshold": "scripts/run_tests_0110.py (the run_tests_070 method: every tests/test*.py module in its own fresh interpreter, pinned venv) on the frozen v0.11.0 tree, run INSIDE the cap, writing results/study-013/TEST_SUITE_013.json. PASS iff: (i) every failing or erroring test id is in known_failing_allowed (the 14 study-009 K_frozen ids) or allowed by K_060_rule, K_070_rule, K_080_rule or K_090_rule (DECLARED IN ADVANCE: K_080 = test_release_080.Release080.{test_version_consistent, test_fast_verify_passes, test_untampered_copy_passes}; K_090 = test_release_090.Release090.{test_version_consistent, test_short_verify_passes, test_untampered_copy_passes}; each allowed only if the same test passes on a clean worktree of tag v0.8.0 / v0.9.0 with the same runner, recorded); (ii) the 6 tests of test_study_005 pass; (iii) per-module test count equals the plain `unittest discover -s tests` count and skipped sets agree; (iv) no frozen file changed; (v) every new v0.11.0 test passes (incl. tests.test_api_certify_0110).",
+   "prediction": "Inferred: PASS."
+  },
+  "G_RT_study_runtime": {
+   "gated": true,
+   "threshold": "PASS iff ALL of: (i) MANDATORY work completes inside the cap: streams 2x2, big78, transfer, repro and gti have completed_at <= RUN_T0 + 7200 s and were not stopped, and stream g11 recorded its mandatory_done event at wall <= RUN_T0 + 7200 s inside its own budget and was not stopped before writing its report; (ii) the watchdog ran for the whole run (heartbeat from <= RUN_T0 + 60 s to >= end - 10 s); (iii) the smoke kill drill latency <= 15 s with no survivors. The g11 optional phase is REPORTED via its stamp and does not affect G_RT.",
+   "prediction": "Inferred: PASS."
+  },
+  "G78_soundness": {
+   "gated": true,
+   "threshold": "big78 block (288 cases = 96 seeds x 3 masks, n = 7 and 8, state bound 8): SP8_78 (a) 0 false conditional and 0 false public certificates, all steps, every action AND (b) power: >= 150 conditional certificates issued (rule-of-three upper false-certificate rate 3 / certificates <= 0.02)",
+   "prediction": "Inferred: PASS (expected ~338 certificates from the study-012 rate)."
+  },
+  "G78_containment": {
+   "gated": true,
+   "threshold": "big78: at every step where SP8_78 reports a non-null published support with solver_unknown == 0, the realised code of that action is in it (Exact sanity). 0 exceptions.",
+   "prediction": "Inferred: PASS."
+  }
+ },
+ "retired_gates": {
+  "GA1_012_support_drift_and_coverage": "retired (owner: window hulls off G6b; sound transfer is the headline). J10 G6b is reported in R_window_G6b.",
+  "GJ10_coverage_vs_J9": "retired; reported as R_J10_minus_J9.",
+  "GT_a/GT_b/GT_c/GT_ref (TR)": "replaced by GS_*; TRp/TRn recomputed and reported (R_TR_v0100)."
+ },
+ "release_gates": {
+  "GCC_clean_clone": "scripts/clean_clone_013.py PASS and tests/test_release_0110 tracked-files test PASS; reported in RELEASE.json",
+  "GLV_long_verify": "verify_release_0110 --long PASS (0 mismatches on the 33-case sample inside 900 s); reported in RELEASE.json"
+ },
+ "non_gated_reports": {
+  "R_window_G6b": "J10 - A2 and J9 - A2 with CI (not gated)",
+  "R_J10_minus_J9": "paired J10 - J9 coverage with CI",
+  "R_TR_v0100": "TRp / TRn (M = 0) false certificates and S (replication of v0.10.0 on fresh seeds)",
+  "R_AT4_sensitivity": "AT4p / AT4n false certificates and S",
+  "R_DR_disagreements": "DR abstentions where SP8 certified and the live library disagreed, per library",
+  "R_LX_rules": "LX rule counts (lx-split, lx-plan, sp8), library refutation steps, LX coverage vs SP8",
+  "R_lag_detail": "every drift4 false certificate of J10, J9, SP8, A4 with lag",
+  "R_G_RT_strict": "PASS iff every stream complete inside the cap and none stopped AND the g11 stamp is optional_done",
+  "R_optional_phase": "g11 optional stamp, audited count, times",
+  "R_big78_coverage": "SP8_78 coverage, steps to first certificate, per n",
+  "R_heartbeat": "heartbeat gaps",
+  "R_rates": "per-stream measured rates vs budgets",
+  "R_tests_plain": "plain unittest discover result",
+  "R_diag_seen": "the seen-data applicability diagnostic summary (Observed on seen data)",
+  "R_K0100_after_release": "after the 0.11.0 version bump, the test_release_0100 version / verify tests are expected to fail on the released tree (same superseded-release kind as K_080 / K_090; declared here, checked post-release against tag v0.10.0, not gated)"
+ },
+ "stop_rule": {
+  "cap": "2 h 00 min (7200 s) wall clock from RUN_T0 (the epoch written with the run_start_013 ledger entry); smoke, seed check, diagnostic and plan steps are outside the cap",
+  "streams_and_budgets": "MANDATORY at t0: 2x2 (J10, J9, SP8, A4, A2) 3 workers 2400 s; big78 (SP8_78) 2 workers 2700 s; transfer 1 worker 1800 s; gti 2 workers 2700 s. After 2x2: repro (2x2 + transfer index % 3 == 0) 2 workers 1500 s; g11 2 workers 1800 s (after 2x2 AND transfer: mandatory sample, mutation, mandatory_done, GS_ref transfer audit, fixed optional list, stamp). At most 8 worker processes at once (watchdog and orchestrator not counted); a stream that starts after another finishes takes its workers.",
+  "rate_math": "before the source freeze the smoke timings are converted into a projected per-stream wall time (ledger rate_math_013, docs/research/v0.11.0/RATE_MATH_013.md); if a mandatory stream projects above 70% of its budget the budget/worker split (or the big78 case count, never below 192 cases, or the optional list) may be changed ONCE before the freeze as a disclosed deviation; nothing after run_start.",
+  "projection": "at RUN_T0 + 360 s the orchestrator writes PROGRESS_013.json; reported, nothing changes.",
+  "watchdog": "scripts/watchdog_013.py started (nohup, own session) right after RUN_T0; HEARTBEAT_013.jsonl every 2 s; at RUN_T0 + 7200 s SIGTERM to the orchestrator and every stream process group in RUN_STATE_013.json, SIGKILL after 20 s, STOP_013.json; the orchestrator also enforces the cap itself.",
+  "at_cap": "every unfinished stream is stopped; its checkpoint is sealed as it is; ledger stop_013; NO extension and NO rerun",
+  "scoring": "every gate whose inputs are incomplete at the cap or whose mandatory stream completed after RUN_T0 + 7200 s is FAIL (reason STUDY_BUDGET)"
+ },
+ "power_and_sample": {
+  "2x2": "792 cases as study-012 (504 + 288 drift4)",
+  "G6b": "120 in_family_original seeds paired; study-012 SP8 - A2 CI half-width ~0.004, so the -0.03 / -0.05 margin is ~5x the CI width",
+  "big78": "288 cases (144 per n), double study-012; G78 requires >= 150 certificates so 0 false gives a rule-of-three bound <= 0.02 (study-012 rate predicts ~338)",
+  "transfer": "96 target seeds x 3 masks per library, seed-clustered; S integer steps censored at 45; study-012 TRp S sd ~12.9, so a mean of 1 step is detectable (SE ~ 0.8 per 96 clusters is conservative)"
+ },
+ "clean_clone": {
+  "tracked_files_test": "tests/test_release_0110.py::test_scoring_inputs_tracked and scripts/clean_clone_013.py: every file that make_gates_013, make_paired_013 and make_reproducibility_013 read from results/study-013 is git-tracked, or is a gitignored large JSON whose tracked .json.gz (scripts/study013_storage.py) restores to the sha256 recorded in the block SEAL.",
+  "clean_clone_check": "scripts/clean_clone_013.py exports git archive <release commit>, restores the .gz files and re-runs make_gates_013 --check, make_paired_013 --check and make_reproducibility_013 --check; PASS iff all three reproduce byte-for-byte. Written to results/study-013/CLEAN_CLONE_013.json."
+ },
+ "what_counts_as_failure": [
+  "any gated criterion not meeting its threshold is FAIL and is published as FAIL in GATES_013.json, README, CHANGELOG, RELEASE.json and the release notes with the same wording",
+  "GST FAIL means sound transfer with a speedup is NOT shown; it is published as the headline result either way",
+  "a smoke or seen-data observation never softens a FAIL",
+  "any gate with inputs incomplete at the cap, or completed after it, is FAIL (stop_rule)",
+  "a missing run_start ledger entry, a seed outside its declared range, a frozen-file hash mismatch, or a smoke run on a non-smoke seed invalidates the affected run (reported, not silently rerun)",
+  "no re-run, re-seed, threshold change or rule-constant change after the held-out run_start; reruns only for an infrastructure crash with identical code and seeds, ledgered as deviation and still inside the cap"
+ ],
+ "process_controls": {
+  "order": [
+   "(0) applicability diagnostic on seen data committed + ledger diag_applicability_013 (done, commits e0aa431, 373e8d0)",
+   "(1) this plan committed + ledger preregistration_013 + BRUTE_PLAN_FREEZE_013 on branch plan/v0.11.0; pushed",
+   "(2) scripts/check_seeds_013.py + tests committed; run; ledger seedcheck_013",
+   "(3) experiments/v0110_reference.py committed; ledger second_implementation_013",
+   "(4) brute/soundtransfer.py, brute/api/certify.py, worlds_013, study runner, watchdog, orchestrator, storage, run_tests_0110 and tests; smoke runs only on smoke seeds incl. the kill drill, each ledgered; rate math ledgered",
+   "(5) source freeze experiments/BRUTE_SOURCE_FREEZE_013.json + ledger source_freeze_013",
+   "(6) scoring scripts committed strictly after (5), unit-tested on a smoke directory, ledgered >= 10 min before run_start",
+   "(7) nohup orchestrator + independent watchdog under the 2 h stop rule",
+   "(8) seal + pack + ledger seal_013",
+   "(9) scoring, GATES_013.json + ledger gates_013",
+   "(10) verify_release_0110 (short and --long; dry run on a /tmp clone before the release freeze) + clean_clone_013 + release freeze BRUTE_RELEASE_FREEZE_0110; README/CHANGELOG/NEXT_ITERATION/HANDOFF; fast-forward main, tag v0.11.0, GitHub release; delete scratch clones"
+  ],
+  "dependencies": "numpy==2.5.4, python-sat==1.9.dev17 (Python 3.13.5), pyganak==2.8.0, pyapproxmc==4.4.0 (as study-008); every run uses the pinned venv (the system python3 on the box lacks python-sat, Observed pre-freeze)",
+  "times": "commit and ledger times are author-set and reported as such",
+  "push": "push to origin after every step; never force-push; no GitHub Actions"
+ },
+ "deviation_policy": "after freeze, any change is a ledger \"deviation_013\" entry with its reason in docs/research/BRUTE_DEVIATIONS_013.md before the affected run; the original criterion is still reported. Numbering CONTINUES project-wide: study-012 ended at #51, so study-013 starts at #52 (#52 = the branch base, see branch_base). Held-out seeds are never used to tune v0.11.0; failed gates are published as failed.",
+ "default_policy_rule": "No auto-promotion: the release default stays the v0.5.0 rule (Y1k, LU-R) regardless of outcome; DR / AT / LX are research arms, never a default. brute/api/certify.py is a NEW additive interface; the existing brute.api handle() contract is unchanged.",
+ "carried_defects": {
+  "v050_tamper": "tests/test_release_050.py::test_tampered_copies_fail and related frozen version checks stay as recorded (Exact; frozen in BRUTE_RELEASE_FREEZE_050); not edited",
+  "test_study_005_order": "experiments/brute_study_006.py line 39 sets S5.FULL at import, so test_study_005 errors when it runs after a module importing brute_study_006 (KeyError 'v090_certificate'; Observed in v0.6.0 runs). Both files are frozen (BRUTE_SOURCE_FREEZE_005/006) and are NOT edited; target (d) isolates them per process."
+ },
+ "limitations": [
+  "Synthetic deterministic worlds only.",
+  "M_app comes from a seen-data diagnostic (disclosed); held-out seeds were never touched.",
+  "AT soundness under a wrong library is EMPIRICAL (a wrong library can pass M_app confirmations by chance); only DR and LX inherit SP8 soundness by construction.",
+  "The transfer families share structure BY GENERATOR CONSTRUCTION (Exact); transfer across genuinely different but related structures is not tested.",
+  "The LX lookahead value (SAT) is not re-derived by the reference (disclosed).",
+  "big78 has no row-enumeration audit (infeasible at n = 8); only the containment sanity check.",
+  "The second implementation and the learners are by the same author.",
+  "Commit and ledger times are author-set."
+ ],
+ "scope_and_open": [
+  "SP8-level coverage with drift safety: Open (needs a probabilistic drift model)",
+  "Learned family selection (which library applies) beyond a confirmation count: Open",
+  "Concept formation beyond whole-machine motifs: Open (docs/ROADMAP_TO_GI.md)",
+  "Noisy / stochastic / real data: Open"
+ ],
+ "brand": "docs keep the existing palette and rules: charcoal/sage; no purple, neon, emoji, mascots or gold",
+ "labels": "Every claim in study-013 documents carries one of Exact / Observed / Simulated / Inferred / Rejected / Open; predictions in this plan are Inferred unless marked otherwise."
+}
