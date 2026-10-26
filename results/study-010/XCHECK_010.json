@@ -1,0 +1,110 @@
+{
+ "arms": [
+  "B5",
+  "BSC7"
+ ],
+ "cases_done": 288,
+ "cases_expected": 288,
+ "cases_not_reached": [],
+ "checked_steps_per_family": {
+  "act3": 9216,
+  "big6": 9216,
+  "ood6s3": 9216,
+  "sens3": 9216
+ },
+ "conf_budget_per_query": 2000000,
+ "mismatches": [],
+ "mismatching_traces": 0,
+ "note": "a mismatching trace stops at its first differing field; its steps are not counted as checked",
+ "per_family_arm": {
+  "act3/B5": {
+   "certs": 757,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 4608,
+   "steps_checked": 4608,
+   "steps_unchecked": 0,
+   "traces": 72,
+   "traces_not_reached": 0
+  },
+  "act3/BSC7": {
+   "certs": 788,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 4608,
+   "steps_checked": 4608,
+   "steps_unchecked": 0,
+   "traces": 72,
+   "traces_not_reached": 0
+  },
+  "big6/B5": {
+   "certs": 433,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 4608,
+   "steps_checked": 4608,
+   "steps_unchecked": 0,
+   "traces": 72,
+   "traces_not_reached": 0
+  },
+  "big6/BSC7": {
+   "certs": 535,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 4608,
+   "steps_checked": 4608,
+   "steps_unchecked": 0,
+   "traces": 72,
+   "traces_not_reached": 0
+  },
+  "ood6s3/B5": {
+   "certs": 143,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 4608,
+   "steps_checked": 4608,
+   "steps_unchecked": 0,
+   "traces": 72,
+   "traces_not_reached": 0
+  },
+  "ood6s3/BSC7": {
+   "certs": 175,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 4608,
+   "steps_checked": 4608,
+   "steps_unchecked": 0,
+   "traces": 72,
+   "traces_not_reached": 0
+  },
+  "sens3/B5": {
+   "certs": 865,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 4608,
+   "steps_checked": 4608,
+   "steps_unchecked": 0,
+   "traces": 72,
+   "traces_not_reached": 0
+  },
+  "sens3/BSC7": {
+   "certs": 975,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 4608,
+   "steps_checked": 4608,
+   "steps_unchecked": 0,
+   "traces": 72,
+   "traces_not_reached": 0
+  }
+ },
+ "queries": 1371707,
+ "results_file": "/workspace/brute/results/study-010/breadth/RESULTS.json",
+ "schema": "brute.xcheck-sat-incremental-report.v2",
+ "solver": "cadical195",
+ "spot_sample": null,
+ "symmetry_breaking": true,
+ "unknown_queries": 0,
+ "witness_replay_failures": 0,
+ "wording": "second encoding by the same author (brute/xcheck_sat_incremental.py, adopted), no enumeration; not an independent audit"
+}

@@ -1,0 +1,109 @@
+{
+ "arms": [
+  "BSC7",
+  "BSP8"
+ ],
+ "block": "breadth",
+ "breadth_steps_checked": {
+  "act3/BSC7": {
+   "steps": 4608,
+   "steps_checked": 3893,
+   "traces_budget_stopped": 16
+  },
+  "act3/BSP8": {
+   "steps": 4608,
+   "steps_checked": 3893,
+   "traces_budget_stopped": 16
+  },
+  "big6/BSC7": {
+   "steps": 4608,
+   "steps_checked": 3832,
+   "traces_budget_stopped": 17
+  },
+  "big6/BSP8": {
+   "steps": 4608,
+   "steps_checked": 3832,
+   "traces_budget_stopped": 17
+  },
+  "ood6s3/BSC7": {
+   "steps": 4608,
+   "steps_checked": 4608,
+   "traces_budget_stopped": 0
+  },
+  "ood6s3/BSP8": {
+   "steps": 4608,
+   "steps_checked": 4608,
+   "traces_budget_stopped": 0
+  },
+  "sens3/BSC7": {
+   "steps": 4608,
+   "steps_checked": 4608,
+   "traces_budget_stopped": 0
+  },
+  "sens3/BSP8": {
+   "steps": 4608,
+   "steps_checked": 4608,
+   "traces_budget_stopped": 0
+  }
+ },
+ "events": {
+  "mandatory_done": {
+   "event": "mandatory_done",
+   "t": 1793006450.493147,
+   "wall_since_start": 112.2
+  },
+  "start": {
+   "event": "start",
+   "t": 1793006338.2981572
+  }
+ },
+ "mandatory": {
+  "mismatches": [],
+  "mismatching_traces": 0,
+  "per_arm": {
+   "BSC7": {
+    "audited": 72,
+    "expected": 72,
+    "mismatching": 0
+   },
+   "BSP8": {
+    "audited": 72,
+    "expected": 72,
+    "mismatching": 0
+   }
+  },
+  "traces_audited": 144,
+  "traces_expected": 144,
+  "traces_not_reached": 0
+ },
+ "mandatory_complete": true,
+ "mandatory_samples_present": true,
+ "rest": {
+  "mismatches": [],
+  "mismatching_traces": 0,
+  "per_arm": {
+   "BSC7": {
+    "audited": 216,
+    "expected": 216,
+    "mismatching": 0
+   },
+   "BSP8": {
+    "audited": 216,
+    "expected": 216,
+    "mismatching": 0
+   }
+  },
+  "traces_audited": 432,
+  "traces_expected": 432,
+  "traces_not_reached": 0
+ },
+ "rest_mismatch_fails_g11": true,
+ "results_file": "/workspace/brute/results/study-010/breadth/RESULTS.json",
+ "results_sha256": "0a08b469adf73797713cd36bbc31c1307130aac679d7919e113d68a3e9420bdd",
+ "schema": "brute.second-implementation-010.v1",
+ "source_sha256": "be191c43ba4f0f188ec89cc056b705f9b9525d480f07d6f24be3a655642727a9",
+ "study": "BRUTE-080-ALIGN-010",
+ "tau6": 1.645215321642,
+ "tau7": 2.07944154168,
+ "wording": "second implementation by the same author, no brute import; not an independent or third-party audit"
+}

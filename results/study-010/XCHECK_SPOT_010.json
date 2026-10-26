@@ -1,0 +1,49 @@
+{
+ "arms": [
+  "B5"
+ ],
+ "cases_done": 6,
+ "cases_expected": 6,
+ "cases_not_reached": [],
+ "checked_steps_per_family": {
+  "act3": 72,
+  "big6": 0,
+  "ood6s3": 0,
+  "sens3": 72
+ },
+ "conf_budget_per_query": 2000000,
+ "mismatches": [],
+ "mismatching_traces": 0,
+ "note": "a mismatching trace stops at its first differing field; its steps are not counted as checked",
+ "per_family_arm": {
+  "act3/B5": {
+   "certs": 11,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 72,
+   "steps_checked": 72,
+   "steps_unchecked": 0,
+   "traces": 3,
+   "traces_not_reached": 0
+  },
+  "sens3/B5": {
+   "certs": 14,
+   "checked_fraction": 1.0,
+   "mismatching_traces": 0,
+   "steps": 72,
+   "steps_checked": 72,
+   "steps_unchecked": 0,
+   "traces": 3,
+   "traces_not_reached": 0
+  }
+ },
+ "queries": 19248,
+ "results_file": "/workspace/brute/results/study-010/XCHECK_SPOT_010_CHECKPOINT_results_trunc24.json.gz",
+ "schema": "brute.xcheck-sat-incremental-report.v2",
+ "solver": "cadical195",
+ "spot_sample": "/workspace/brute/results/study-010/SPOT_SAMPLE_010.json",
+ "symmetry_breaking": false,
+ "unknown_queries": 0,
+ "witness_replay_failures": 0,
+ "wording": "second encoding by the same author (brute/xcheck_sat_incremental.py, adopted), no enumeration; not an independent audit"
+}

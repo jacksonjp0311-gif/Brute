@@ -1,0 +1,629 @@
+{
+  "G6b_dual_coverage_J8_minus_A2": {
+    "contrast": "J8-A2",
+    "families": {
+      "cycle3": {
+        "ci95": [
+          -0.342785,
+          -0.288378
+        ],
+        "forecasts": 5184,
+        "gain": -0.316358,
+        "seeds": 24
+      },
+      "ood4": {
+        "ci95": [
+          -0.097222,
+          -0.021026
+        ],
+        "forecasts": 5184,
+        "gain": -0.055556,
+        "seeds": 24
+      },
+      "switch3": {
+        "ci95": [
+          -0.333917,
+          -0.288773
+        ],
+        "forecasts": 5184,
+        "gain": -0.310185,
+        "seeds": 24
+      },
+      "unaliased2": {
+        "ci95": [
+          -0.245761,
+          -0.193287
+        ],
+        "forecasts": 5184,
+        "gain": -0.219136,
+        "seeds": 24
+      },
+      "unstructured3": {
+        "ci95": [
+          -0.254258,
+          -0.183637
+        ],
+        "forecasts": 5184,
+        "gain": -0.219715,
+        "seeds": 24
+      }
+    },
+    "families_pooled": [
+      "cycle3",
+      "switch3",
+      "unstructured3",
+      "unaliased2",
+      "ood4"
+    ],
+    "pooled_ci95": [
+      -0.238122,
+      -0.210995
+    ],
+    "pooled_gain": -0.22419
+  },
+  "G6b_dual_coverage_SP8_minus_A2": {
+    "contrast": "SP8-A2",
+    "families": {
+      "cycle3": {
+        "ci95": [
+          -0.040316,
+          -0.019097
+        ],
+        "forecasts": 5184,
+        "gain": -0.029707,
+        "seeds": 24
+      },
+      "ood4": {
+        "ci95": [
+          -0.05556,
+          -0.006944
+        ],
+        "forecasts": 5184,
+        "gain": -0.028164,
+        "seeds": 24
+      },
+      "switch3": {
+        "ci95": [
+          -0.026432,
+          -0.007716
+        ],
+        "forecasts": 5184,
+        "gain": -0.017554,
+        "seeds": 24
+      },
+      "unaliased2": {
+        "ci95": [
+          -0.004244,
+          -0.000386
+        ],
+        "forecasts": 5184,
+        "gain": -0.002122,
+        "seeds": 24
+      },
+      "unstructured3": {
+        "ci95": [
+          -0.01196,
+          -0.001543
+        ],
+        "forecasts": 5184,
+        "gain": -0.006173,
+        "seeds": 24
+      }
+    },
+    "families_pooled": [
+      "cycle3",
+      "switch3",
+      "unstructured3",
+      "unaliased2",
+      "ood4"
+    ],
+    "pooled_ci95": [
+      -0.022763,
+      -0.011265
+    ],
+    "pooled_gain": -0.016744
+  },
+  "R_BSC7_minus_B5": {
+    "contrast": "BSC7-B5",
+    "families": {
+      "act3": {
+        "ci95": [
+          -0.001984,
+          0.0086
+        ],
+        "forecasts": 12096,
+        "gain": 0.00248,
+        "seeds": 24
+      },
+      "big6": {
+        "ci95": [
+          0.007192,
+          0.02877
+        ],
+        "forecasts": 8064,
+        "gain": 0.017485,
+        "seeds": 24
+      },
+      "sens3": {
+        "ci95": [
+          0.005952,
+          0.037205
+        ],
+        "forecasts": 8064,
+        "gain": 0.020585,
+        "seeds": 24
+      }
+    },
+    "families_pooled": [
+      "big6",
+      "sens3",
+      "act3"
+    ],
+    "pooled_ci95": [
+      0.007137,
+      0.020008
+    ],
+    "pooled_gain": 0.013517
+  },
+  "R_BSP8_minus_BSC7": {
+    "contrast": "BSP8-BSC7",
+    "families": {
+      "act3": {
+        "ci95": [
+          0.000165,
+          0.019097
+        ],
+        "forecasts": 12096,
+        "gain": 0.008433,
+        "seeds": 24
+      },
+      "big6": {
+        "ci95": [
+          0.011409,
+          0.056799
+        ],
+        "forecasts": 8064,
+        "gain": 0.033358,
+        "seeds": 24
+      },
+      "sens3": {
+        "ci95": [
+          0.003224,
+          0.03187
+        ],
+        "forecasts": 8064,
+        "gain": 0.016617,
+        "seeds": 24
+      }
+    },
+    "families_pooled": [
+      "big6",
+      "sens3",
+      "act3"
+    ],
+    "pooled_ci95": [
+      0.009962,
+      0.029682
+    ],
+    "pooled_gain": 0.019469
+  },
+  "R_J8_minus_SC7_in_family": {
+    "contrast": "J8-SC7",
+    "families": {
+      "cycle3": {
+        "ci95": [
+          -0.257137,
+          -0.211029
+        ],
+        "forecasts": 5184,
+        "gain": -0.234568,
+        "seeds": 24
+      },
+      "ood4": {
+        "ci95": [
+          -0.055941,
+          -0.000193
+        ],
+        "forecasts": 5184,
+        "gain": -0.021219,
+        "seeds": 24
+      },
+      "perm4": {
+        "ci95": [
+          -0.16591,
+          -0.07446
+        ],
+        "forecasts": 5184,
+        "gain": -0.11767,
+        "seeds": 24
+      },
+      "switch3": {
+        "ci95": [
+          -0.275656,
+          -0.237649
+        ],
+        "forecasts": 5184,
+        "gain": -0.256752,
+        "seeds": 24
+      },
+      "unaliased2": {
+        "ci95": [
+          -0.20583,
+          -0.14294
+        ],
+        "forecasts": 5184,
+        "gain": -0.173032,
+        "seeds": 24
+      },
+      "unstructured3": {
+        "ci95": [
+          -0.188088,
+          -0.121335
+        ],
+        "forecasts": 5184,
+        "gain": -0.156443,
+        "seeds": 24
+      }
+    },
+    "families_pooled": [
+      "cycle3",
+      "switch3",
+      "unstructured3",
+      "unaliased2",
+      "ood4",
+      "perm4"
+    ],
+    "pooled_ci95": [
+      -0.173677,
+      -0.14776
+    ],
+    "pooled_gain": -0.159947
+  },
+  "R_SP8_minus_SC7_in_family": {
+    "contrast": "SP8-SC7",
+    "families": {
+      "cycle3": {
+        "ci95": [
+          0.034336,
+          0.069444
+        ],
+        "forecasts": 5184,
+        "gain": 0.052083,
+        "seeds": 24
+      },
+      "ood4": {
+        "ci95": [
+          0.0,
+          0.018326
+        ],
+        "forecasts": 5184,
+        "gain": 0.006173,
+        "seeds": 24
+      },
+      "perm4": {
+        "ci95": [
+          0.003274,
+          0.022188
+        ],
+        "forecasts": 5184,
+        "gain": 0.011574,
+        "seeds": 24
+      },
+      "switch3": {
+        "ci95": [
+          0.014275,
+          0.058454
+        ],
+        "forecasts": 5184,
+        "gain": 0.03588,
+        "seeds": 24
+      },
+      "unaliased2": {
+        "ci95": [
+          0.024494,
+          0.065779
+        ],
+        "forecasts": 5184,
+        "gain": 0.043981,
+        "seeds": 24
+      },
+      "unstructured3": {
+        "ci95": [
+          0.034336,
+          0.081602
+        ],
+        "forecasts": 5184,
+        "gain": 0.057099,
+        "seeds": 24
+      }
+    },
+    "families_pooled": [
+      "cycle3",
+      "switch3",
+      "unstructured3",
+      "unaliased2",
+      "ood4",
+      "perm4"
+    ],
+    "pooled_ci95": [
+      0.027231,
+      0.042023
+    ],
+    "pooled_gain": 0.034465
+  },
+  "R_SP8_minus_SC7_in_family_original": {
+    "contrast": "SP8-SC7",
+    "families": {
+      "cycle3": {
+        "ci95": [
+          0.034336,
+          0.069444
+        ],
+        "forecasts": 5184,
+        "gain": 0.052083,
+        "seeds": 24
+      },
+      "ood4": {
+        "ci95": [
+          0.0,
+          0.018326
+        ],
+        "forecasts": 5184,
+        "gain": 0.006173,
+        "seeds": 24
+      },
+      "switch3": {
+        "ci95": [
+          0.014275,
+          0.058454
+        ],
+        "forecasts": 5184,
+        "gain": 0.03588,
+        "seeds": 24
+      },
+      "unaliased2": {
+        "ci95": [
+          0.024494,
+          0.065779
+        ],
+        "forecasts": 5184,
+        "gain": 0.043981,
+        "seeds": 24
+      },
+      "unstructured3": {
+        "ci95": [
+          0.034336,
+          0.081602
+        ],
+        "forecasts": 5184,
+        "gain": 0.057099,
+        "seeds": 24
+      }
+    },
+    "families_pooled": [
+      "cycle3",
+      "switch3",
+      "unstructured3",
+      "unaliased2",
+      "ood4"
+    ],
+    "pooled_ci95": [
+      0.0304,
+      0.048111
+    ],
+    "pooled_gain": 0.039043
+  },
+  "R_coverage_all_point": {
+    "2x2": {
+      "A2": {
+        "cycle3": 0.316358,
+        "drift4": 0.030382,
+        "ood4": 0.055556,
+        "ood5": 0.048225,
+        "perm4": 0.153549,
+        "switch3": 0.310185,
+        "unaliased2": 0.219136,
+        "unstructured3": 0.219715
+      },
+      "A4": {
+        "cycle3": 0.149498,
+        "drift4": 0.01929,
+        "ood4": 0.021219,
+        "ood5": 0.033372,
+        "perm4": 0.098573,
+        "switch3": 0.196759,
+        "unaliased2": 0.146605,
+        "unstructured3": 0.128086
+      },
+      "J8": {
+        "cycle3": 0.0,
+        "drift4": 0.0,
+        "ood4": 0.0,
+        "ood5": 0.0,
+        "perm4": 0.0,
+        "switch3": 0.0,
+        "unaliased2": 0.0,
+        "unstructured3": 0.0
+      },
+      "SC7": {
+        "cycle3": 0.234568,
+        "drift4": 0.018519,
+        "ood4": 0.021219,
+        "ood5": 0.03125,
+        "perm4": 0.11767,
+        "switch3": 0.256752,
+        "unaliased2": 0.173032,
+        "unstructured3": 0.156443
+      },
+      "SP8": {
+        "cycle3": 0.286651,
+        "drift4": 0.023823,
+        "ood4": 0.027392,
+        "ood5": 0.035301,
+        "perm4": 0.129244,
+        "switch3": 0.292631,
+        "unaliased2": 0.217014,
+        "unstructured3": 0.213542
+      }
+    },
+    "breadth": {
+      "B5": {
+        "act3": 0.06498,
+        "big6": 0.067584,
+        "ood6s3": 0.019097,
+        "sens3": 0.119792
+      },
+      "BSC7": {
+        "act3": 0.06746,
+        "big6": 0.085069,
+        "ood6s3": 0.025546,
+        "sens3": 0.140377
+      },
+      "BSP8": {
+        "act3": 0.075893,
+        "big6": 0.118428,
+        "ood6s3": 0.03249,
+        "sens3": 0.156994
+      }
+    }
+  },
+  "R_dual_coverage_A4_minus_A2": {
+    "contrast": "A4-A2",
+    "families": {
+      "cycle3": {
+        "ci95": [
+          -0.184221,
+          -0.148727
+        ],
+        "forecasts": 5184,
+        "gain": -0.16686,
+        "seeds": 24
+      },
+      "ood4": {
+        "ci95": [
+          -0.062307,
+          -0.01331
+        ],
+        "forecasts": 5184,
+        "gain": -0.034336,
+        "seeds": 24
+      },
+      "switch3": {
+        "ci95": [
+          -0.137543,
+          -0.091049
+        ],
+        "forecasts": 5184,
+        "gain": -0.113426,
+        "seeds": 24
+      },
+      "unaliased2": {
+        "ci95": [
+          -0.096258,
+          -0.051693
+        ],
+        "forecasts": 5184,
+        "gain": -0.072531,
+        "seeds": 24
+      },
+      "unstructured3": {
+        "ci95": [
+          -0.118248,
+          -0.065779
+        ],
+        "forecasts": 5184,
+        "gain": -0.091628,
+        "seeds": 24
+      }
+    },
+    "families_pooled": [
+      "cycle3",
+      "switch3",
+      "unstructured3",
+      "unaliased2",
+      "ood4"
+    ],
+    "pooled_ci95": [
+      -0.106404,
+      -0.085378
+    ],
+    "pooled_gain": -0.095756
+  },
+  "R_dual_coverage_SC7_minus_A2": {
+    "contrast": "SC7-A2",
+    "families": {
+      "cycle3": {
+        "ci95": [
+          -0.100699,
+          -0.063074
+        ],
+        "forecasts": 5184,
+        "gain": -0.08179,
+        "seeds": 24
+      },
+      "ood4": {
+        "ci95": [
+          -0.062307,
+          -0.01331
+        ],
+        "forecasts": 5184,
+        "gain": -0.034336,
+        "seeds": 24
+      },
+      "switch3": {
+        "ci95": [
+          -0.077358,
+          -0.029707
+        ],
+        "forecasts": 5184,
+        "gain": -0.053434,
+        "seeds": 24
+      },
+      "unaliased2": {
+        "ci95": [
+          -0.068099,
+          -0.02623
+        ],
+        "forecasts": 5184,
+        "gain": -0.046103,
+        "seeds": 24
+      },
+      "unstructured3": {
+        "ci95": [
+          -0.086806,
+          -0.041667
+        ],
+        "forecasts": 5184,
+        "gain": -0.063272,
+        "seeds": 24
+      }
+    },
+    "families_pooled": [
+      "cycle3",
+      "switch3",
+      "unstructured3",
+      "unaliased2",
+      "ood4"
+    ],
+    "pooled_ci95": [
+      -0.065934,
+      -0.045563
+    ],
+    "pooled_gain": -0.055787
+  },
+  "cluster": "seed within family",
+  "complete": {
+    "2x2": true,
+    "breadth": true
+  },
+  "resamples": 2000,
+  "schema": "brute.paired-analysis.v8_0",
+  "scientific_sha256": {
+    "2x2": "60a4798ec9c77a8474aa7a651e2aa0519deac6fedc5180adedfe183deeda97c6",
+    "breadth": "28ee783d92c8593586d93ea4108d31b60fa943528a0ca3850b3add1bb36ca81d"
+  },
+  "scope": "post-burn-in steps; 2x2 dual coverage (taken + counterfactual); breadth all-action coverage",
+  "seed": 20261026,
+  "smoke_dry_run": false,
+  "study": "BRUTE-080-ALIGN-010"
+}

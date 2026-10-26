@@ -1,0 +1,4594 @@
+{
+  "GA1_010": false,
+  "GD": false,
+  "GTI_in_cap": true,
+  "GX2_010": true,
+  "G_RT": false,
+  "all_gated_pass": false,
+  "failed": [
+    "G3_prime_drift4",
+    "G6b_coverage_vs_v020",
+    "GA1_010_align_drift_and_coverage",
+    "GD_stale_cause_diagnostic",
+    "G_RT_study_runtime"
+  ],
+  "gates": {
+    "G10_compute": {
+      "gated": true,
+      "observed": {
+        "cases_expected": {
+          "2x2": 648,
+          "breadth": 288
+        },
+        "cases_present": {
+          "2x2": 648,
+          "breadth": 288
+        },
+        "production_unknown_forecasts": {
+          "2x2": {
+            "arms": [
+              "J8",
+              "SP8"
+            ],
+            "forecasts": 114048,
+            "fraction": 0.0,
+            "with_unknown": 0
+          },
+          "breadth": {
+            "arms": [
+              "BSP8"
+            ],
+            "forecasts": 41472,
+            "fraction": 0.0,
+            "with_unknown": 0
+          }
+        },
+        "sealed_complete": {
+          "2x2": true,
+          "breadth": true
+        },
+        "short_traces": [],
+        "timing_note": "informational, shared 8-CPU box; not a gate input",
+        "wall_clock_informational_seconds": {
+          "2x2/A2": 198.74,
+          "2x2/A4": 165.88,
+          "2x2/J8": 342.87,
+          "2x2/SC7": 302.8,
+          "2x2/SP8": 320.51,
+          "breadth/B5": 611.8,
+          "breadth/BSC7": 615.0,
+          "breadth/BSP8": 688.83
+        }
+      },
+      "pass": true
+    },
+    "G11_second_implementation": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "2x2": {
+            "i_mandatory_complete_zero_mismatch": true,
+            "ii_rest_zero_mismatch": true,
+            "iii_mutation_20_of_20": true,
+            "iv_mandatory_inside_budget": true,
+            "of_sealed_results": true
+          },
+          "breadth": {
+            "i_mandatory_complete_zero_mismatch": true,
+            "ii_rest_zero_mismatch": true,
+            "iv_mandatory_inside_budget": true,
+            "of_sealed_results": true
+          }
+        },
+        "reports": {
+          "2x2": {
+            "arms": [
+              "J8",
+              "SP8",
+              "SC7"
+            ],
+            "block": "2x2",
+            "breadth_steps_checked": {},
+            "events": {
+              "mandatory_done": {
+                "event": "mandatory_done",
+                "t": 1793006504.7093897,
+                "wall_since_start": 640.9
+              },
+              "mutation": {
+                "detected_injected": 20,
+                "event": "mutation",
+                "flagged_not_injected": 0,
+                "flagged_not_injected_basis": "Exact: uninjected traces asserted byte-identical",
+                "injected": 20,
+                "injected_j8": 8,
+                "injected_j8_cert_or_hull_fields": 4,
+                "injected_on_already_mismatching_trace": 0,
+                "injected_sp8": 8,
+                "injected_sp8_action": 5,
+                "passed": true,
+                "rng": "random.Random(20261026)"
+              },
+              "start": {
+                "event": "start",
+                "t": 1793005863.8359227
+              }
+            },
+            "mandatory": {
+              "mismatches": [],
+              "mismatching_traces": 0,
+              "per_arm": {
+                "J8": {
+                  "audited": 216,
+                  "expected": 216,
+                  "mismatching": 0
+                },
+                "SC7": {
+                  "audited": 216,
+                  "expected": 216,
+                  "mismatching": 0
+                },
+                "SP8": {
+                  "audited": 216,
+                  "expected": 216,
+                  "mismatching": 0
+                }
+              },
+              "traces_audited": 648,
+              "traces_expected": 648,
+              "traces_not_reached": 0
+            },
+            "mandatory_complete": true,
+            "mandatory_samples_present": true,
+            "mutation_test": {
+              "details": [
+                {
+                  "arm": "J8",
+                  "case": "cycle3/3010002/0.1",
+                  "detected": true,
+                  "first_difference": "VerificationError: hull_union cycle3 3010002 0.1 J8 14 1",
+                  "injected_fields": [
+                    "hull_union"
+                  ]
+                },
+                {
+                  "arm": "J8",
+                  "case": "cycle3/3010002/0.6",
+                  "detected": true,
+                  "first_difference": "VerificationError: logloss cycle3 3010002 0.6 J8",
+                  "injected_fields": [
+                    "logloss"
+                  ]
+                },
+                {
+                  "arm": "SC7",
+                  "case": "cycle3/3010004/0.1",
+                  "detected": true,
+                  "first_difference": "VerificationError: decision cycle3 3010004 0.1 SC7 1 0",
+                  "injected_fields": [
+                    "status"
+                  ]
+                },
+                {
+                  "arm": "J8",
+                  "case": "switch3/3020004/0.6",
+                  "detected": true,
+                  "first_difference": "VerificationError: decision switch3 3020004 0.6 J8 5 0",
+                  "injected_fields": [
+                    "certificate"
+                  ]
+                },
+                {
+                  "arm": "SP8",
+                  "case": "switch3/3020007/0.35",
+                  "detected": true,
+                  "first_difference": "VerificationError: action switch3 3020007 0.35 SP8 3",
+                  "injected_fields": [
+                    "action"
+                  ]
+                },
+                {
+                  "arm": "SP8",
+                  "case": "unstructured3/3030001/0.6",
+                  "detected": true,
+                  "first_difference": "VerificationError: action unstructured3 3030001 0.6 SP8 4",
+                  "injected_fields": [
+                    "action"
+                  ]
+                },
+                {
+                  "arm": "SP8",
+                  "case": "unaliased2/3040007/0.35",
+                  "detected": true,
+                  "first_difference": "VerificationError: action unaliased2 3040007 0.35 SP8 2",
+                  "injected_fields": [
+                    "action"
+                  ]
+                },
+                {
+                  "arm": "SC7",
+                  "case": "ood4/3050003/0.35",
+                  "detected": true,
+                  "first_difference": "VerificationError: action ood4 3050003 0.35 SC7 1",
+                  "injected_fields": [
+                    "action"
+                  ]
+                },
+                {
+                  "arm": "SP8",
+                  "case": "ood4/3050005/0.35",
+                  "detected": true,
+                  "first_difference": "VerificationError: logloss ood4 3050005 0.35 SP8",
+                  "injected_fields": [
+                    "logloss"
+                  ]
+                },
+                {
+                  "arm": "SP8",
+                  "case": "ood4/3050008/0.1",
+                  "detected": true,
+                  "first_difference": "VerificationError: decision ood4 3050008 0.1 SP8 0 0",
+                  "injected_fields": [
+                    "certificate"
+                  ]
+                },
+                {
+                  "arm": "SP8",
+                  "case": "perm4/3060003/0.6",
+                  "detected": true,
+                  "first_difference": "VerificationError: action perm4 3060003 0.6 SP8 7",
+                  "injected_fields": [
+                    "action"
+                  ]
+                },
+                {
+                  "arm": "J8",
+                  "case": "perm4/3060004/0.35",
+                  "detected": true,
+                  "first_difference": "VerificationError: logloss perm4 3060004 0.35 J8",
+                  "injected_fields": [
+                    "logloss"
+                  ]
+                },
+                {
+                  "arm": "SC7",
+                  "case": "perm4/3060006/0.6",
+                  "detected": true,
+                  "first_difference": "VerificationError: decision perm4 3060006 0.6 SC7 5 1",
+                  "injected_fields": [
+                    "certificate"
+                  ]
+                },
+                {
+                  "arm": "J8",
+                  "case": "ood5/3070005/0.1",
+                  "detected": true,
+                  "first_difference": "VerificationError: hull_union ood5 3070005 0.1 J8 3 1",
+                  "injected_fields": [
+                    "hull_union"
+                  ]
+                },
+                {
+                  "arm": "J8",
+                  "case": "ood5/3070007/0.6",
+                  "detected": true,
+                  "first_difference": "VerificationError: action ood5 3070007 0.6 J8 4",
+                  "injected_fields": [
+                    "action"
+                  ]
+                },
+                {
+                  "arm": "J8",
+                  "case": "drift4/3080003/0.6",
+                  "detected": true,
+                  "first_difference": "VerificationError: decision drift4 3080003 0.6 J8 1 1",
+                  "injected_fields": [
+                    "certificate"
+                  ]
+                },
+                {
+                  "arm": "SC7",
+                  "case": "drift4/3080007/0.35",
+                  "detected": true,
+                  "first_difference": "VerificationError: decision drift4 3080007 0.35 SC7 3 0",
+                  "injected_fields": [
+                    "certificate"
+                  ]
+                },
+                {
+                  "arm": "SP8",
+                  "case": "drift4/3080009/0.35",
+                  "detected": true,
+                  "first_difference": "VerificationError: decision drift4 3080009 0.35 SP8 1 1",
+                  "injected_fields": [
+                    "status"
+                  ]
+                },
+                {
+                  "arm": "J8",
+                  "case": "drift4/3080010/0.35",
+                  "detected": true,
+                  "first_difference": "VerificationError: decision drift4 3080010 0.35 J8 2 1",
+                  "injected_fields": [
+                    "status"
+                  ]
+                },
+                {
+                  "arm": "SP8",
+                  "case": "drift4/3080015/0.1",
+                  "detected": true,
+                  "first_difference": "VerificationError: action drift4 3080015 0.1 SP8 0",
+                  "injected_fields": [
+                    "action"
+                  ]
+                }
+              ],
+              "detected_injected": 20,
+              "event": "mutation",
+              "flagged_not_injected": 0,
+              "flagged_not_injected_basis": "Exact: uninjected traces asserted byte-identical",
+              "injected": 20,
+              "injected_j8": 8,
+              "injected_j8_cert_or_hull_fields": 4,
+              "injected_on_already_mismatching_trace": 0,
+              "injected_sp8": 8,
+              "injected_sp8_action": 5,
+              "passed": true,
+              "rng": "random.Random(20261026)"
+            },
+            "rest": {
+              "mismatches": [],
+              "mismatching_traces": 0,
+              "per_arm": {
+                "J8": {
+                  "audited": 139,
+                  "expected": 432,
+                  "mismatching": 0
+                },
+                "SC7": {
+                  "audited": 139,
+                  "expected": 432,
+                  "mismatching": 0
+                },
+                "SP8": {
+                  "audited": 139,
+                  "expected": 432,
+                  "mismatching": 0
+                }
+              },
+              "traces_audited": 417,
+              "traces_expected": 1296,
+              "traces_not_reached": 879
+            },
+            "rest_mismatch_fails_g11": true,
+            "results_file": "/workspace/brute/results/study-010/2x2/RESULTS.json",
+            "results_sha256": "d3424e25d2b932566a303e53f5dc6d07dc4b1f45328826d63ae1009cc3da0677",
+            "schema": "brute.second-implementation-010.v1",
+            "source_sha256": "be191c43ba4f0f188ec89cc056b705f9b9525d480f07d6f24be3a655642727a9",
+            "study": "BRUTE-080-ALIGN-010",
+            "tau6": 1.645215321642,
+            "tau7": 2.07944154168,
+            "wording": "second implementation by the same author, no brute import; not an independent or third-party audit"
+          },
+          "breadth": {
+            "arms": [
+              "BSC7",
+              "BSP8"
+            ],
+            "block": "breadth",
+            "breadth_steps_checked": {
+              "act3/BSC7": {
+                "steps": 4608,
+                "steps_checked": 3893,
+                "traces_budget_stopped": 16
+              },
+              "act3/BSP8": {
+                "steps": 4608,
+                "steps_checked": 3893,
+                "traces_budget_stopped": 16
+              },
+              "big6/BSC7": {
+                "steps": 4608,
+                "steps_checked": 3832,
+                "traces_budget_stopped": 17
+              },
+              "big6/BSP8": {
+                "steps": 4608,
+                "steps_checked": 3832,
+                "traces_budget_stopped": 17
+              },
+              "ood6s3/BSC7": {
+                "steps": 4608,
+                "steps_checked": 4608,
+                "traces_budget_stopped": 0
+              },
+              "ood6s3/BSP8": {
+                "steps": 4608,
+                "steps_checked": 4608,
+                "traces_budget_stopped": 0
+              },
+              "sens3/BSC7": {
+                "steps": 4608,
+                "steps_checked": 4608,
+                "traces_budget_stopped": 0
+              },
+              "sens3/BSP8": {
+                "steps": 4608,
+                "steps_checked": 4608,
+                "traces_budget_stopped": 0
+              }
+            },
+            "events": {
+              "mandatory_done": {
+                "event": "mandatory_done",
+                "t": 1793006450.493147,
+                "wall_since_start": 112.2
+              },
+              "start": {
+                "event": "start",
+                "t": 1793006338.2981572
+              }
+            },
+            "mandatory": {
+              "mismatches": [],
+              "mismatching_traces": 0,
+              "per_arm": {
+                "BSC7": {
+                  "audited": 72,
+                  "expected": 72,
+                  "mismatching": 0
+                },
+                "BSP8": {
+                  "audited": 72,
+                  "expected": 72,
+                  "mismatching": 0
+                }
+              },
+              "traces_audited": 144,
+              "traces_expected": 144,
+              "traces_not_reached": 0
+            },
+            "mandatory_complete": true,
+            "mandatory_samples_present": true,
+            "rest": {
+              "mismatches": [],
+              "mismatching_traces": 0,
+              "per_arm": {
+                "BSC7": {
+                  "audited": 216,
+                  "expected": 216,
+                  "mismatching": 0
+                },
+                "BSP8": {
+                  "audited": 216,
+                  "expected": 216,
+                  "mismatching": 0
+                }
+              },
+              "traces_audited": 432,
+              "traces_expected": 432,
+              "traces_not_reached": 0
+            },
+            "rest_mismatch_fails_g11": true,
+            "results_file": "/workspace/brute/results/study-010/breadth/RESULTS.json",
+            "results_sha256": "0a08b469adf73797713cd36bbc31c1307130aac679d7919e113d68a3e9420bdd",
+            "schema": "brute.second-implementation-010.v1",
+            "source_sha256": "be191c43ba4f0f188ec89cc056b705f9b9525d480f07d6f24be3a655642727a9",
+            "study": "BRUTE-080-ALIGN-010",
+            "tau6": 1.645215321642,
+            "tau7": 2.07944154168,
+            "wording": "second implementation by the same author, no brute import; not an independent or third-party audit"
+          }
+        },
+        "wording": "second implementation by the same author"
+      },
+      "pass": true
+    },
+    "G12_reproducibility": {
+      "gated": true,
+      "observed": {
+        "2x2": {
+          "byte_identical": 216,
+          "expected": 216,
+          "failing_differences": [],
+          "main_scientific_sha256": "60a4798ec9c77a8474aa7a651e2aa0519deac6fedc5180adedfe183deeda97c6",
+          "missing": [],
+          "passed": true,
+          "repro_complete": true,
+          "repro_scientific_sha256": "602cfa99745333d30fcde08ec25eb65e016c69cd6c99361d942c85c32616fbcf",
+          "rerun": 216,
+          "unexpected": []
+        },
+        "breadth": {
+          "byte_identical": 96,
+          "expected": 96,
+          "failing_differences": [],
+          "main_scientific_sha256": "28ee783d92c8593586d93ea4108d31b60fa943528a0ca3850b3add1bb36ca81d",
+          "missing": [],
+          "passed": true,
+          "repro_complete": true,
+          "repro_scientific_sha256": "2f950e1ff4a96fe6a11090d6eedeea5deb0310133efb47525b1cce42b61a8173",
+          "rerun": 96,
+          "unexpected": []
+        }
+      },
+      "pass": true
+    },
+    "G13_frozen_controls_reproduce": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "cases_use_plan_tau": true,
+          "freeze_chain_holds": true,
+          "plan_tau_values": true,
+          "seals_of_current_plan_and_freeze": true
+        },
+        "freeze_error": null,
+        "recorded_taus": [
+          1.645215321642,
+          2.07944154168
+        ],
+        "smoke_dry_run_relaxed": false
+      },
+      "pass": true
+    },
+    "G1_in_family_soundness": {
+      "gated": true,
+      "observed": {
+        "per_arm_pass": {
+          "B5": true,
+          "BSC7": true,
+          "BSP8": true,
+          "J8": true,
+          "SC7": true,
+          "SP8": true
+        },
+        "per_family": {
+          "act3": {
+            "B5": {
+              "cases": 72,
+              "certs": 793,
+              "false_certs": 0,
+              "forecasts": 13824,
+              "public_certs": 793,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.003783
+            },
+            "BSC7": {
+              "cases": 72,
+              "certs": 823,
+              "false_certs": 0,
+              "forecasts": 13824,
+              "public_certs": 823,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.003645
+            },
+            "BSP8": {
+              "cases": 72,
+              "certs": 925,
+              "false_certs": 0,
+              "forecasts": 13824,
+              "public_certs": 925,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.003243
+            }
+          },
+          "big6": {
+            "B5": {
+              "cases": 72,
+              "certs": 546,
+              "false_certs": 0,
+              "forecasts": 9216,
+              "public_certs": 546,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.005495
+            },
+            "BSC7": {
+              "cases": 72,
+              "certs": 687,
+              "false_certs": 0,
+              "forecasts": 9216,
+              "public_certs": 687,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.004367
+            },
+            "BSP8": {
+              "cases": 72,
+              "certs": 956,
+              "false_certs": 0,
+              "forecasts": 9216,
+              "public_certs": 956,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.003138
+            }
+          },
+          "cycle3": {
+            "J8": {
+              "cases": 72,
+              "certs": 0,
+              "false_certs": 0,
+              "forecasts": 6336,
+              "public_certs": 0,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": null
+            },
+            "SC7": {
+              "cases": 72,
+              "certs": 1219,
+              "false_certs": 0,
+              "forecasts": 6336,
+              "public_certs": 1219,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.002461
+            },
+            "SP8": {
+              "cases": 72,
+              "certs": 1489,
+              "false_certs": 0,
+              "forecasts": 6336,
+              "public_certs": 1489,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.002015
+            }
+          },
+          "ood4": {
+            "J8": {
+              "cases": 72,
+              "certs": 0,
+              "false_certs": 0,
+              "forecasts": 6336,
+              "public_certs": 0,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": null
+            },
+            "SC7": {
+              "cases": 72,
+              "certs": 120,
+              "false_certs": 0,
+              "forecasts": 6336,
+              "public_certs": 120,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.025
+            },
+            "SP8": {
+              "cases": 72,
+              "certs": 152,
+              "false_certs": 0,
+              "forecasts": 6336,
+              "public_certs": 152,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.019737
+            }
+          },
+          "perm4": {
+            "J8": {
+              "cases": 72,
+              "certs": 0,
+              "false_certs": 0,
+              "forecasts": 6336,
+              "public_certs": 0,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": null
+            },
+            "SC7": {
+              "cases": 72,
+              "certs": 625,
+              "false_certs": 0,
+              "forecasts": 6336,
+              "public_certs": 625,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.0048
+            },
+            "SP8": {
+              "cases": 72,
+              "certs": 685,
+              "false_certs": 0,
+              "forecasts": 6336,
+              "public_certs": 685,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.00438
+            }
+          },
+          "sens3": {
+            "B5": {
+              "cases": 72,
+              "certs": 978,
+              "false_certs": 0,
+              "forecasts": 9216,
+              "public_certs": 978,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.003067
+            },
+            "BSC7": {
+              "cases": 72,
+              "certs": 1144,
+              "false_certs": 0,
+              "forecasts": 9216,
+              "public_certs": 1144,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.002622
+            },
+            "BSP8": {
+              "cases": 72,
+              "certs": 1278,
+              "false_certs": 0,
+              "forecasts": 9216,
+              "public_certs": 1278,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.002347
+            }
+          },
+          "switch3": {
+            "J8": {
+              "cases": 72,
+              "certs": 0,
+              "false_certs": 0,
+              "forecasts": 6336,
+              "public_certs": 0,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": null
+            },
+            "SC7": {
+              "cases": 72,
+              "certs": 1352,
+              "false_certs": 0,
+              "forecasts": 6336,
+              "public_certs": 1352,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.002219
+            },
+            "SP8": {
+              "cases": 72,
+              "certs": 1538,
+              "false_certs": 0,
+              "forecasts": 6336,
+              "public_certs": 1538,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.001951
+            }
+          },
+          "unaliased2": {
+            "J8": {
+              "cases": 72,
+              "certs": 0,
+              "false_certs": 0,
+              "forecasts": 6336,
+              "public_certs": 0,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": null
+            },
+            "SC7": {
+              "cases": 72,
+              "certs": 900,
+              "false_certs": 0,
+              "forecasts": 6336,
+              "public_certs": 900,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.003333
+            },
+            "SP8": {
+              "cases": 72,
+              "certs": 1128,
+              "false_certs": 0,
+              "forecasts": 6336,
+              "public_certs": 1128,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.00266
+            }
+          },
+          "unstructured3": {
+            "J8": {
+              "cases": 72,
+              "certs": 0,
+              "false_certs": 0,
+              "forecasts": 6336,
+              "public_certs": 0,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": null
+            },
+            "SC7": {
+              "cases": 72,
+              "certs": 823,
+              "false_certs": 0,
+              "forecasts": 6336,
+              "public_certs": 823,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.003645
+            },
+            "SP8": {
+              "cases": 72,
+              "certs": 1119,
+              "false_certs": 0,
+              "forecasts": 6336,
+              "public_certs": 1119,
+              "public_false_certs": 0,
+              "rule_of_three_upper_false_rate": 0.002681
+            }
+          }
+        }
+      },
+      "pass": true
+    },
+    "G2_ood_soundness": {
+      "gated": true,
+      "observed": {
+        "ood5": {
+          "J8": {
+            "cases": 72,
+            "certs": 0,
+            "false_certs": 0,
+            "forecasts": 6336,
+            "public_certs": 0,
+            "public_false_certs": 0,
+            "rule_of_three_upper_false_rate": null
+          },
+          "SC7": {
+            "cases": 72,
+            "certs": 167,
+            "false_certs": 0,
+            "forecasts": 6336,
+            "public_certs": 0,
+            "public_false_certs": 0,
+            "rule_of_three_upper_false_rate": 0.017964
+          },
+          "SP8": {
+            "cases": 72,
+            "certs": 188,
+            "false_certs": 0,
+            "forecasts": 6336,
+            "public_certs": 0,
+            "public_false_certs": 0,
+            "rule_of_three_upper_false_rate": 0.015957
+          }
+        },
+        "ood6s3": {
+          "B5": {
+            "cases": 72,
+            "certs": 155,
+            "false_certs": 0,
+            "forecasts": 9216,
+            "public_certs": 0,
+            "public_false_certs": 0,
+            "rule_of_three_upper_false_rate": 0.019355
+          },
+          "BSC7": {
+            "cases": 72,
+            "certs": 207,
+            "false_certs": 0,
+            "forecasts": 9216,
+            "public_certs": 0,
+            "public_false_certs": 0,
+            "rule_of_three_upper_false_rate": 0.014493
+          },
+          "BSP8": {
+            "cases": 72,
+            "certs": 263,
+            "false_certs": 0,
+            "forecasts": 9216,
+            "public_certs": 0,
+            "public_false_certs": 0,
+            "rule_of_three_upper_false_rate": 0.011407
+          }
+        },
+        "per_arm_pass": {
+          "B5": true,
+          "BSC7": true,
+          "BSP8": true,
+          "J8": true,
+          "SC7": true,
+          "SP8": true
+        },
+        "prediction": "Inferred: PASS with risk for SP8/BSP8 (different action sequences reach different evidence)."
+      },
+      "pass": true
+    },
+    "G3_prime_drift4": {
+      "gated": true,
+      "observed": {
+        "J8": {
+          "false_certs_non_drift": 0,
+          "false_certs_taken": 0,
+          "non_drift_zero": true,
+          "pass": true,
+          "reported_counterfactual_false": 0,
+          "reported_counterfactual_false_non_drift": 0,
+          "total_within_limit": true
+        },
+        "SC7": {
+          "false_certs_non_drift": 4,
+          "false_certs_taken": 18,
+          "non_drift_zero": false,
+          "pass": false,
+          "reported_counterfactual_false": 3,
+          "reported_counterfactual_false_non_drift": 0,
+          "role": "reported (comparator), not gated",
+          "total_within_limit": true
+        },
+        "SP8": {
+          "false_certs_non_drift": 3,
+          "false_certs_taken": 23,
+          "non_drift_zero": false,
+          "pass": false,
+          "reported_counterfactual_false": 3,
+          "reported_counterfactual_false_non_drift": 0,
+          "total_within_limit": true
+        },
+        "definition": "study-004/005/007/008 definition, unchanged: a drift4 false certificate (taken or counterfactual action, conditional or public) is NON-DRIFT iff it is at a step after the first drift step (step > 12) with step not in {12,23,34} (the drift steps). Drift indices of the frozen drift4 generator: 12, 23, 34.",
+        "drift_cases": 144,
+        "limit": 87.5,
+        "per_arm_pass": {
+          "J8": true,
+          "SP8": false
+        },
+        "prediction": "Inferred: J8 PASS; SP8 FAIL.",
+        "v090_control_false_certs": 175
+      },
+      "pass": false
+    },
+    "G4_public_safety": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "a_no_public_on_ood5_drift4_ood6s3": true,
+          "b_no_wrong_public": true,
+          "c_no_public_after_first_alarm": true
+        },
+        "public_after_first_alarm": 0,
+        "public_certs_out_of_family": {
+          "drift4": {
+            "J8": 0,
+            "SC7": 0,
+            "SP8": 0
+          },
+          "ood5": {
+            "J8": 0,
+            "SC7": 0,
+            "SP8": 0
+          },
+          "ood6s3": {
+            "B5": 0,
+            "BSC7": 0,
+            "BSP8": 0
+          }
+        },
+        "public_false_certs": 0
+      },
+      "pass": true
+    },
+    "G5_false_alarm_limit": {
+      "gated": true,
+      "observed": {
+        "per_family": {
+          "act3": {
+            "BSP8": {
+              "cases": 72,
+              "cases_with_alarm": 0,
+              "fraction": 0.0
+            }
+          },
+          "big6": {
+            "BSP8": {
+              "cases": 72,
+              "cases_with_alarm": 0,
+              "fraction": 0.0
+            }
+          },
+          "cycle3": {
+            "J8": {
+              "cases": 72,
+              "cases_with_alarm": 0,
+              "fraction": 0.0
+            },
+            "SP8": {
+              "cases": 72,
+              "cases_with_alarm": 0,
+              "fraction": 0.0
+            }
+          },
+          "ood4": {
+            "J8": {
+              "cases": 72,
+              "cases_with_alarm": 0,
+              "fraction": 0.0
+            },
+            "SP8": {
+              "cases": 72,
+              "cases_with_alarm": 0,
+              "fraction": 0.0
+            }
+          },
+          "perm4": {
+            "J8": {
+              "cases": 72,
+              "cases_with_alarm": 2,
+              "fraction": 0.027778
+            },
+            "SP8": {
+              "cases": 72,
+              "cases_with_alarm": 2,
+              "fraction": 0.027778
+            }
+          },
+          "sens3": {
+            "BSP8": {
+              "cases": 72,
+              "cases_with_alarm": 0,
+              "fraction": 0.0
+            }
+          },
+          "switch3": {
+            "J8": {
+              "cases": 72,
+              "cases_with_alarm": 0,
+              "fraction": 0.0
+            },
+            "SP8": {
+              "cases": 72,
+              "cases_with_alarm": 0,
+              "fraction": 0.0
+            }
+          },
+          "unaliased2": {
+            "J8": {
+              "cases": 72,
+              "cases_with_alarm": 0,
+              "fraction": 0.0
+            },
+            "SP8": {
+              "cases": 72,
+              "cases_with_alarm": 0,
+              "fraction": 0.0
+            }
+          },
+          "unstructured3": {
+            "J8": {
+              "cases": 72,
+              "cases_with_alarm": 0,
+              "fraction": 0.0
+            },
+            "SP8": {
+              "cases": 72,
+              "cases_with_alarm": 0,
+              "fraction": 0.0
+            }
+          }
+        },
+        "prediction": "Inferred: PASS; perm4 Open (shared tau6 alarm; 0/72 in study-009).",
+        "tau6": 1.645215321642,
+        "tau7": 2.07944154168
+      },
+      "pass": true
+    },
+    "G6b_coverage_vs_v020": {
+      "gated": true,
+      "observed": {
+        "J8": {
+          "a_pooled_ge_-0.03": false,
+          "b_ci_lower_ge_-0.05": false,
+          "families": {
+            "cycle3": {
+              "ci95": [
+                -0.342785,
+                -0.288378
+              ],
+              "forecasts": 5184,
+              "gain": -0.316358,
+              "seeds": 24
+            },
+            "ood4": {
+              "ci95": [
+                -0.097222,
+                -0.021026
+              ],
+              "forecasts": 5184,
+              "gain": -0.055556,
+              "seeds": 24
+            },
+            "switch3": {
+              "ci95": [
+                -0.333917,
+                -0.288773
+              ],
+              "forecasts": 5184,
+              "gain": -0.310185,
+              "seeds": 24
+            },
+            "unaliased2": {
+              "ci95": [
+                -0.245761,
+                -0.193287
+              ],
+              "forecasts": 5184,
+              "gain": -0.219136,
+              "seeds": 24
+            },
+            "unstructured3": {
+              "ci95": [
+                -0.254258,
+                -0.183637
+              ],
+              "forecasts": 5184,
+              "gain": -0.219715,
+              "seeds": 24
+            }
+          },
+          "pass": false,
+          "pooled_ci95": [
+            -0.238122,
+            -0.210995
+          ],
+          "pooled_gain": -0.22419
+        },
+        "SP8": {
+          "a_pooled_ge_-0.03": true,
+          "b_ci_lower_ge_-0.05": true,
+          "families": {
+            "cycle3": {
+              "ci95": [
+                -0.040316,
+                -0.019097
+              ],
+              "forecasts": 5184,
+              "gain": -0.029707,
+              "seeds": 24
+            },
+            "ood4": {
+              "ci95": [
+                -0.05556,
+                -0.006944
+              ],
+              "forecasts": 5184,
+              "gain": -0.028164,
+              "seeds": 24
+            },
+            "switch3": {
+              "ci95": [
+                -0.026432,
+                -0.007716
+              ],
+              "forecasts": 5184,
+              "gain": -0.017554,
+              "seeds": 24
+            },
+            "unaliased2": {
+              "ci95": [
+                -0.004244,
+                -0.000386
+              ],
+              "forecasts": 5184,
+              "gain": -0.002122,
+              "seeds": 24
+            },
+            "unstructured3": {
+              "ci95": [
+                -0.01196,
+                -0.001543
+              ],
+              "forecasts": 5184,
+              "gain": -0.006173,
+              "seeds": 24
+            }
+          },
+          "pass": true,
+          "pooled_ci95": [
+            -0.022763,
+            -0.011265
+          ],
+          "pooled_gain": -0.016744
+        },
+        "per_arm_pass": {
+          "J8": false,
+          "SP8": true
+        },
+        "prediction": "Inferred: J8 FAIL (about -0.20); SP8 Open/borderline (point estimate about -0.02 to -0.04).",
+        "reported_SC7_minus_A2": -0.055787,
+        "reported_SP8_minus_SC7": {
+          "pooled_ci95": [
+            0.0304,
+            0.048111
+          ],
+          "pooled_gain": 0.039043
+        }
+      },
+      "pass": false
+    },
+    "G7_open_world": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "logloss_2x2_le_ln4": true,
+          "logloss_ood6s3_le_ln8": true,
+          "min_probability": true
+        },
+        "eps": 0.02,
+        "ln4": 1.386294,
+        "ln8": 2.079442,
+        "logloss_post": {
+          "drift4": {
+            "J8": 1.026471,
+            "SP8": 1.032655
+          },
+          "ood5": {
+            "J8": 0.647382,
+            "SP8": 0.635559
+          },
+          "ood6s3": {
+            "BSP8": 1.108087
+          }
+        },
+        "min_probability_by_block_family_arm": {
+          "2x2/cycle3/A4": 0.005,
+          "2x2/cycle3/J8": 0.005,
+          "2x2/cycle3/SC7": 0.005,
+          "2x2/cycle3/SP8": 0.005,
+          "2x2/drift4/A4": 0.005,
+          "2x2/drift4/J8": 0.005,
+          "2x2/drift4/SC7": 0.005,
+          "2x2/drift4/SP8": 0.005,
+          "2x2/ood4/A4": 0.005,
+          "2x2/ood4/J8": 0.005,
+          "2x2/ood4/SC7": 0.005,
+          "2x2/ood4/SP8": 0.005,
+          "2x2/ood5/A4": 0.005,
+          "2x2/ood5/J8": 0.005,
+          "2x2/ood5/SC7": 0.005,
+          "2x2/ood5/SP8": 0.005,
+          "2x2/perm4/A4": 0.005,
+          "2x2/perm4/J8": 0.005,
+          "2x2/perm4/SC7": 0.005,
+          "2x2/perm4/SP8": 0.005,
+          "2x2/switch3/A4": 0.005,
+          "2x2/switch3/J8": 0.005,
+          "2x2/switch3/SC7": 0.005,
+          "2x2/switch3/SP8": 0.005,
+          "2x2/unaliased2/A4": 0.005,
+          "2x2/unaliased2/J8": 0.005,
+          "2x2/unaliased2/SC7": 0.005,
+          "2x2/unaliased2/SP8": 0.005,
+          "2x2/unstructured3/A4": 0.005,
+          "2x2/unstructured3/J8": 0.005,
+          "2x2/unstructured3/SC7": 0.005,
+          "2x2/unstructured3/SP8": 0.005,
+          "breadth/act3/B5": 0.005,
+          "breadth/act3/BSC7": 0.005,
+          "breadth/act3/BSP8": 0.005,
+          "breadth/big6/B5": 0.005,
+          "breadth/big6/BSC7": 0.005,
+          "breadth/big6/BSP8": 0.005,
+          "breadth/ood6s3/B5": 0.0025,
+          "breadth/ood6s3/BSC7": 0.0025,
+          "breadth/ood6s3/BSP8": 0.0025,
+          "breadth/sens3/B5": 0.0025,
+          "breadth/sens3/BSC7": 0.0025,
+          "breadth/sens3/BSP8": 0.0025
+        },
+        "violations": []
+      },
+      "pass": true
+    },
+    "G9_retraction_resume": {
+      "gated": true,
+      "observed": {
+        "duplicate_pairs": 0,
+        "resume_rule_violations": [],
+        "resumes_checked": 4,
+        "resync_ambiguous_certified_or_issued": 0,
+        "retraction_reason_mismatches": [],
+        "retraction_reasons_match_reference": true,
+        "retraction_reasons_total": {
+          "falsified_by_observation": 23,
+          "scope_withdrawn": 60,
+          "unverifiable_masked": 26
+        }
+      },
+      "pass": true
+    },
+    "GA1_010_align_drift_and_coverage": {
+      "gated": true,
+      "observed": {
+        "note": "FAIL means the drift-and-coverage target is NOT met even if G3-prime and G6b are each passed by a DIFFERENT arm",
+        "passing_arms": [],
+        "per_arm": {
+          "J8": {
+            "G1": true,
+            "G2": true,
+            "G3_prime": true,
+            "G6b": false,
+            "all": false
+          },
+          "SP8": {
+            "G1": true,
+            "G2": true,
+            "G3_prime": false,
+            "G6b": true,
+            "all": false
+          }
+        },
+        "prediction": "Inferred: FAIL (J8 fails G6b by construction-level coverage loss; SP8 is expected to fail G3-prime because silent jumps remain undetectable, H_c)."
+      },
+      "pass": false
+    },
+    "GD_stale_cause_diagnostic": {
+      "gated": true,
+      "observed": {
+        "by_arm": {
+          "SC7": {
+            "nd_false": 4,
+            "stale_class": 1
+          },
+          "SP8": {
+            "nd_false": 3,
+            "stale_class": 1
+          }
+        },
+        "clause_i": {
+          "evaluable": true,
+          "min_events": 3,
+          "pass": false,
+          "reason": null,
+          "threshold": 0.8
+        },
+        "clause_ii": {
+          "arm": "J8",
+          "exception_detail": [],
+          "exceptions": 0,
+          "missing": 0,
+          "nonvacuous_cases": 28,
+          "pass": true,
+          "supported_cases": 116
+        },
+        "false_certificates": [
+          {
+            "action_kind": "taken",
+            "arm": "SC7",
+            "at_d_plus_1": false,
+            "cert_rule": "Y1k-recent",
+            "d": 12,
+            "event_at_d": false,
+            "mask": 0.1,
+            "seed": 3080022,
+            "stale_class": false,
+            "step": 16
+          },
+          {
+            "action_kind": "taken",
+            "arm": "SP8",
+            "at_d_plus_1": false,
+            "cert_rule": "Y1k-recent",
+            "d": 12,
+            "event_at_d": false,
+            "mask": 0.1,
+            "seed": 3080022,
+            "stale_class": false,
+            "step": 16
+          },
+          {
+            "action_kind": "taken",
+            "arm": "SC7",
+            "at_d_plus_1": false,
+            "cert_rule": "tracked-calm",
+            "d": 23,
+            "event_at_d": false,
+            "mask": 0.35,
+            "seed": 3080035,
+            "stale_class": false,
+            "step": 25
+          },
+          {
+            "action_kind": "taken",
+            "arm": "SP8",
+            "at_d_plus_1": false,
+            "cert_rule": "tracked-calm",
+            "d": 23,
+            "event_at_d": false,
+            "mask": 0.35,
+            "seed": 3080035,
+            "stale_class": false,
+            "step": 25
+          },
+          {
+            "action_kind": "taken",
+            "arm": "SC7",
+            "at_d_plus_1": true,
+            "cert_rule": "Y1k",
+            "d": 12,
+            "event_at_d": false,
+            "mask": 0.1,
+            "seed": 3080039,
+            "stale_class": true,
+            "step": 13
+          },
+          {
+            "action_kind": "taken",
+            "arm": "SP8",
+            "at_d_plus_1": true,
+            "cert_rule": "Y1k",
+            "d": 12,
+            "event_at_d": false,
+            "mask": 0.1,
+            "seed": 3080039,
+            "stale_class": true,
+            "step": 13
+          },
+          {
+            "action_kind": "taken",
+            "arm": "SC7",
+            "at_d_plus_1": false,
+            "cert_rule": "tracked-calm",
+            "d": 34,
+            "event_at_d": false,
+            "mask": 0.6,
+            "seed": 3080043,
+            "stale_class": false,
+            "step": 36
+          }
+        ],
+        "fraction": 0.2857142857142857,
+        "nd_false_total": 7,
+        "prediction": "Inferred: PASS (seen data: 9/9 at d+1 with no event at d; (ii) is Exact by construction if the code is right, and is likely vacuous-ish because the hull is often all codes - non-vacuity reported).",
+        "scored_fail_reason": null,
+        "stale_class": 2
+      },
+      "pass": false
+    },
+    "GTI_test_isolation": {
+      "gated": true,
+      "observed": {
+        "clean_tag_runs": {
+          "060": {
+            "results": {
+              "test_release_060.GT1.test_every_artifact_every_mode_raises_verification_error": [
+                "ok",
+                null
+              ],
+              "test_release_060.GT1.test_frozen_050_defect_still_recorded": [
+                "ok",
+                null
+              ],
+              "test_release_060.Release060.test_fast_verify_passes": [
+                "ok",
+                null
+              ],
+              "test_release_060.Release060.test_untampered_copy_passes": [
+                "ok",
+                null
+              ],
+              "test_release_060.Release060.test_version_consistent": [
+                "ok",
+                null
+              ]
+            },
+            "returncode": 0,
+            "skipped": [],
+            "tests_run": 5,
+            "wall_informational": 110.8
+          },
+          "070": {
+            "results": {
+              "test_release_070.Corruption070.test_every_artifact_every_mode_raises_verification_error": [
+                "ok",
+                null
+              ],
+              "test_release_070.Release070.test_fast_verify_passes": [
+                "ok",
+                null
+              ],
+              "test_release_070.Release070.test_storage_round_trip": [
+                "ok",
+                null
+              ],
+              "test_release_070.Release070.test_untampered_copy_passes": [
+                "ok",
+                null
+              ],
+              "test_release_070.Release070.test_version_consistent": [
+                "ok",
+                null
+              ]
+            },
+            "returncode": 0,
+            "skipped": [],
+            "tests_run": 5,
+            "wall_informational": 140.7
+          }
+        },
+        "head": "687f28af384aece4accb1ccf218e8b32708f8024",
+        "run": "in-cap",
+        "tracked_tree_dirty": false,
+        "verdict": {
+          "clauses": {
+            "i_only_declared_failures": true,
+            "ii_test_study_005_six_pass": true,
+            "iii_counts_match_plain": true,
+            "iv_frozen_unchanged": true,
+            "v_new_tests_pass": true
+          },
+          "failing": [
+            "test_brute_repro.BruteRepro.test_verify_fails_under_tampered_results",
+            "test_release_011.ReleaseV011.test_fast_verify_passes",
+            "test_release_020.ReleaseV020.test_fast_verify_passes",
+            "test_release_030.ReleaseV030.test_fast_verify_passes",
+            "test_release_040.ReleaseVersioned.test_fast_verify_passes",
+            "test_release_040.ReleaseVersioned.test_git_order",
+            "test_release_040.ReleaseVersioned.test_tampered_copies_fail",
+            "test_release_040.ReleaseVersioned.test_untampered_copy_passes",
+            "test_release_040.ReleaseVersioned.test_version_consistent",
+            "test_release_050.ReleaseVersioned.test_fast_verify_passes",
+            "test_release_050.ReleaseVersioned.test_git_order",
+            "test_release_050.ReleaseVersioned.test_tampered_copies_fail",
+            "test_release_050.ReleaseVersioned.test_untampered_copy_passes",
+            "test_release_050.ReleaseVersioned.test_version_consistent",
+            "test_release_060.Release060.test_fast_verify_passes",
+            "test_release_060.Release060.test_untampered_copy_passes",
+            "test_release_060.Release060.test_version_consistent",
+            "test_release_070.Release070.test_fast_verify_passes",
+            "test_release_070.Release070.test_untampered_copy_passes"
+          ],
+          "k_rules": {
+            "060": {
+              "applied": true,
+              "failures": [
+                "test_release_060.Release060.test_fast_verify_passes",
+                "test_release_060.Release060.test_untampered_copy_passes",
+                "test_release_060.Release060.test_version_consistent"
+              ]
+            },
+            "070": {
+              "applied": true,
+              "failures": [
+                "test_release_070.Release070.test_fast_verify_passes",
+                "test_release_070.Release070.test_untampered_copy_passes"
+              ]
+            }
+          },
+          "new_test_failures": [],
+          "new_test_modules_missing": [],
+          "new_tests": [
+            "test_align.py",
+            "test_diag_stale_010.py",
+            "test_jumphull.py",
+            "test_run_tests_080.py",
+            "test_seeds_010.py",
+            "test_v080_reference.py",
+            "test_v080_xcheck.py",
+            "test_watchdog_010.py"
+          ],
+          "passed": true,
+          "skipped_per_module": [],
+          "skipped_plain": [],
+          "test_study_005": {
+            "test_study_005.Study005.test_aggregate": "ok",
+            "test_study_005.Study005.test_deterministic": "ok",
+            "test_study_005.Study005.test_jobs_match_plan": "ok",
+            "test_study_005.Study005.test_reference_agrees": "ok",
+            "test_study_005.Study005.test_reference_detects_tampering": "ok",
+            "test_study_005.Study005.test_reference_imports_no_brute": "ok"
+          },
+          "tests_run_per_module_total": 294,
+          "tests_run_plain": 294,
+          "undeclared_failures": []
+        }
+      },
+      "pass": true
+    },
+    "GX2_010_incremental_xcheck": {
+      "gated": true,
+      "observed": {
+        "checked_fraction": {
+          "act3/B5": 1.0,
+          "act3/BSC7": 1.0,
+          "big6/B5": 1.0,
+          "big6/BSC7": 1.0,
+          "ood6s3/B5": 1.0,
+          "ood6s3/BSC7": 1.0,
+          "sens3/B5": 1.0,
+          "sens3/BSC7": 1.0
+        },
+        "clauses": {
+          "i_covers_every_breadth_case": true,
+          "i_zero_mismatching_and_witness": true,
+          "ii_checked_ge_0.99_each": true,
+          "iii_symmetric_inside_budget": true,
+          "iv_spot_ge_64_steps_act3_sens3": true,
+          "iv_spot_zero_mismatching_and_witness": true
+        },
+        "mismatches": [],
+        "per_family_arm": {
+          "act3/B5": {
+            "certs": 757,
+            "checked_fraction": 1.0,
+            "mismatching_traces": 0,
+            "steps": 4608,
+            "steps_checked": 4608,
+            "steps_unchecked": 0,
+            "traces": 72,
+            "traces_not_reached": 0
+          },
+          "act3/BSC7": {
+            "certs": 788,
+            "checked_fraction": 1.0,
+            "mismatching_traces": 0,
+            "steps": 4608,
+            "steps_checked": 4608,
+            "steps_unchecked": 0,
+            "traces": 72,
+            "traces_not_reached": 0
+          },
+          "big6/B5": {
+            "certs": 433,
+            "checked_fraction": 1.0,
+            "mismatching_traces": 0,
+            "steps": 4608,
+            "steps_checked": 4608,
+            "steps_unchecked": 0,
+            "traces": 72,
+            "traces_not_reached": 0
+          },
+          "big6/BSC7": {
+            "certs": 535,
+            "checked_fraction": 1.0,
+            "mismatching_traces": 0,
+            "steps": 4608,
+            "steps_checked": 4608,
+            "steps_unchecked": 0,
+            "traces": 72,
+            "traces_not_reached": 0
+          },
+          "ood6s3/B5": {
+            "certs": 143,
+            "checked_fraction": 1.0,
+            "mismatching_traces": 0,
+            "steps": 4608,
+            "steps_checked": 4608,
+            "steps_unchecked": 0,
+            "traces": 72,
+            "traces_not_reached": 0
+          },
+          "ood6s3/BSC7": {
+            "certs": 175,
+            "checked_fraction": 1.0,
+            "mismatching_traces": 0,
+            "steps": 4608,
+            "steps_checked": 4608,
+            "steps_unchecked": 0,
+            "traces": 72,
+            "traces_not_reached": 0
+          },
+          "sens3/B5": {
+            "certs": 865,
+            "checked_fraction": 1.0,
+            "mismatching_traces": 0,
+            "steps": 4608,
+            "steps_checked": 4608,
+            "steps_unchecked": 0,
+            "traces": 72,
+            "traces_not_reached": 0
+          },
+          "sens3/BSC7": {
+            "certs": 975,
+            "checked_fraction": 1.0,
+            "mismatching_traces": 0,
+            "steps": 4608,
+            "steps_checked": 4608,
+            "steps_unchecked": 0,
+            "traces": 72,
+            "traces_not_reached": 0
+          }
+        },
+        "prediction": "Inferred: PASS (study-009 symmetric 316 s for 3 arms; act3/sens3 no-symmetry cases finished in study-009).",
+        "queries": 1371707,
+        "spot": {
+          "arms": [
+            "B5"
+          ],
+          "cases_done": 6,
+          "cases_expected": 6,
+          "cases_not_reached": [],
+          "checked_steps_per_family": {
+            "act3": 72,
+            "big6": 0,
+            "ood6s3": 0,
+            "sens3": 72
+          },
+          "conf_budget_per_query": 2000000,
+          "mismatching_traces": 0,
+          "note": "a mismatching trace stops at its first differing field; its steps are not counted as checked",
+          "per_family_arm": {
+            "act3/B5": {
+              "certs": 11,
+              "checked_fraction": 1.0,
+              "mismatching_traces": 0,
+              "steps": 72,
+              "steps_checked": 72,
+              "steps_unchecked": 0,
+              "traces": 3,
+              "traces_not_reached": 0
+            },
+            "sens3/B5": {
+              "certs": 14,
+              "checked_fraction": 1.0,
+              "mismatching_traces": 0,
+              "steps": 72,
+              "steps_checked": 72,
+              "steps_unchecked": 0,
+              "traces": 3,
+              "traces_not_reached": 0
+            }
+          },
+          "queries": 19248,
+          "results_file": "/workspace/brute/results/study-010/XCHECK_SPOT_010_CHECKPOINT_results_trunc24.json.gz",
+          "schema": "brute.xcheck-sat-incremental-report.v2",
+          "solver": "cadical195",
+          "spot_sample": "/workspace/brute/results/study-010/SPOT_SAMPLE_010.json",
+          "symmetry_breaking": false,
+          "unknown_queries": 0,
+          "witness_replay_failures": 0,
+          "wording": "second encoding by the same author (brute/xcheck_sat_incremental.py, adopted), no enumeration; not an independent audit"
+        },
+        "symmetric_spent_s": 677.9073085784912,
+        "symmetric_stop": null,
+        "unknown_queries": 0,
+        "witness_replay_failures": 0,
+        "wording": "second encoding by the same author (brute/xcheck_sat_incremental.py, adopted), no enumeration; not an independent audit"
+      },
+      "pass": true
+    },
+    "G_RT_study_runtime": {
+      "gated": true,
+      "observed": {
+        "cap_s": 7200,
+        "clauses": {
+          "i_every_stream_completed_inside_cap": false,
+          "ii_watchdog_whole_run": true,
+          "iii_kill_drill_latency_le_15s": true
+        },
+        "completion_s_after_t0": {
+          "2x2": 464.3,
+          "breadth": 648.5,
+          "g11_2x2": null,
+          "g11_breadth": 1594.5,
+          "gti": 1238.4,
+          "gx2_spot": 940.2,
+          "gx2_sym": 1326.4,
+          "repro_2x2": 796.6,
+          "repro_breadth": 1362.4
+        },
+        "heartbeat": {
+          "beats": 882,
+          "first_wall": 1793005398.704,
+          "gaps_over_10s": [
+            {
+              "gap_s": 125.376,
+              "wall": 1793006331.198
+            },
+            {
+              "gap_s": 84.508,
+              "wall": 1793007192.568
+            }
+          ],
+          "last_wall": 1793007368.686,
+          "max_gap_s": 125.376
+        },
+        "kill_drill": {
+          "all_gone_at": "2026-10-26T04:44:50-0400",
+          "cap_s": 20,
+          "deadline": "2026-10-26T04:44:50-0400",
+          "deadline_epoch": 1793004290.6190107,
+          "fire_delay_s": 0.002,
+          "fired_at": "2026-10-26T04:44:50-0400",
+          "heartbeat_gaps_over_10s": [],
+          "kill_latency_s": 0.239,
+          "orchestrator_pids": [
+            1286792
+          ],
+          "process_groups": [
+            1286803,
+            1286804,
+            1286805,
+            1287187,
+            1287188,
+            1287232,
+            1287255,
+            1287296
+          ],
+          "sigkill_used": false,
+          "survivors": [],
+          "t0": 1793004270.6190107
+        },
+        "run_done": {
+          "completed_at": {
+            "2x2": 1793005861.3228621,
+            "breadth": 1793006045.5178607,
+            "g11_breadth": 1793006991.5209656,
+            "gti": 1793006635.3747747,
+            "gx2_spot": 1793006337.1854506,
+            "gx2_sym": 1793006723.4276023,
+            "repro_2x2": 1793006193.6023521,
+            "repro_breadth": 1793006759.4408097
+          },
+          "elapsed_s": 1970,
+          "finished": {
+            "2x2": "2026-10-26T05:11:01-0400",
+            "breadth": "2026-10-26T05:14:05-0400",
+            "g11_breadth": "2026-10-26T05:29:51-0400",
+            "gti": "2026-10-26T05:23:55-0400",
+            "gx2_spot": "2026-10-26T05:18:57-0400",
+            "gx2_sym": "2026-10-26T05:25:23-0400",
+            "repro_2x2": "2026-10-26T05:16:33-0400",
+            "repro_breadth": "2026-10-26T05:25:59-0400"
+          },
+          "finished_at": "2026-10-26T05:36:07-0400",
+          "spent": {
+            "2x2": 463,
+            "breadth": 647,
+            "g11_2x2": 1502,
+            "g11_breadth": 654,
+            "gti": 1237,
+            "gx2_spot": 144,
+            "gx2_sym": 678,
+            "repro_2x2": 148,
+            "repro_breadth": 124
+          },
+          "stopped": {
+            "g11_2x2": "stream budget 1500 s"
+          },
+          "t0": 1793005397.0
+        },
+        "spent_s": {
+          "2x2": 463,
+          "breadth": 647,
+          "g11_2x2": 1502,
+          "g11_breadth": 654,
+          "gti": 1237,
+          "gx2_spot": 144,
+          "gx2_sym": 678,
+          "repro_2x2": 148,
+          "repro_breadth": 124
+        },
+        "stop_orchestrator": null,
+        "stop_watchdog": null,
+        "stopped_streams": {
+          "g11_2x2": "stream budget 1500 s"
+        }
+      },
+      "pass": false,
+      "reason": "clauses failed: i_every_stream_completed_inside_cap"
+    },
+    "R_BSP8_vs_BSC7": {
+      "gated": false,
+      "observed": {
+        "families": {
+          "act3": {
+            "ci95": [
+              0.000165,
+              0.019097
+            ],
+            "forecasts": 12096,
+            "gain": 0.008433,
+            "seeds": 24
+          },
+          "big6": {
+            "ci95": [
+              0.011409,
+              0.056799
+            ],
+            "forecasts": 8064,
+            "gain": 0.033358,
+            "seeds": 24
+          },
+          "sens3": {
+            "ci95": [
+              0.003224,
+              0.03187
+            ],
+            "forecasts": 8064,
+            "gain": 0.016617,
+            "seeds": 24
+          }
+        },
+        "pooled_ci95": [
+          0.009962,
+          0.029682
+        ],
+        "pooled_gain": 0.019469
+      },
+      "pass": null
+    },
+    "R_J8_coverage": {
+      "gated": false,
+      "observed": {
+        "cycle3": {
+          "cases": 72,
+          "coverage": 0.0,
+          "fraction_hull_all_codes": 0.384154,
+          "hull_all_codes": 1217,
+          "hull_downgrades": 1126,
+          "hull_steps": 3168,
+          "post_certs": 0,
+          "post_forecasts": 5184
+        },
+        "drift4": {
+          "cases": 144,
+          "coverage": 0.0,
+          "fraction_hull_all_codes": 0.686409,
+          "hull_all_codes": 2399,
+          "hull_downgrades": 363,
+          "hull_steps": 3495,
+          "post_certs": 0,
+          "post_forecasts": 10368
+        },
+        "ood4": {
+          "cases": 72,
+          "coverage": 0.0,
+          "fraction_hull_all_codes": 0.331755,
+          "hull_all_codes": 1051,
+          "hull_downgrades": 238,
+          "hull_steps": 3168,
+          "post_certs": 0,
+          "post_forecasts": 5184
+        },
+        "ood5": {
+          "cases": 72,
+          "coverage": 0.0,
+          "fraction_hull_all_codes": 0.522388,
+          "hull_all_codes": 735,
+          "hull_downgrades": 298,
+          "hull_steps": 1407,
+          "post_certs": 0,
+          "post_forecasts": 5184
+        },
+        "perm4": {
+          "cases": 72,
+          "coverage": 0.0,
+          "fraction_hull_all_codes": 0.451705,
+          "hull_all_codes": 1431,
+          "hull_downgrades": 973,
+          "hull_steps": 3168,
+          "post_certs": 0,
+          "post_forecasts": 5184
+        },
+        "switch3": {
+          "cases": 72,
+          "coverage": 0.0,
+          "fraction_hull_all_codes": 0.447601,
+          "hull_all_codes": 1418,
+          "hull_downgrades": 1880,
+          "hull_steps": 3168,
+          "post_certs": 0,
+          "post_forecasts": 5184
+        },
+        "unaliased2": {
+          "cases": 72,
+          "coverage": 0.0,
+          "fraction_hull_all_codes": 1.0,
+          "hull_all_codes": 3168,
+          "hull_downgrades": 1478,
+          "hull_steps": 3168,
+          "post_certs": 0,
+          "post_forecasts": 5184
+        },
+        "unstructured3": {
+          "cases": 72,
+          "coverage": 0.0,
+          "fraction_hull_all_codes": 0.776199,
+          "hull_all_codes": 2459,
+          "hull_downgrades": 1266,
+          "hull_steps": 3168,
+          "post_certs": 0,
+          "post_forecasts": 5184
+        }
+      },
+      "pass": null
+    },
+    "R_SP8_vs_SC7": {
+      "gated": false,
+      "observed": {
+        "R_SP8_minus_SC7_in_family": {
+          "pooled_ci95": [
+            0.027231,
+            0.042023
+          ],
+          "pooled_gain": 0.034465
+        },
+        "R_SP8_minus_SC7_in_family_original": {
+          "pooled_ci95": [
+            0.0304,
+            0.048111
+          ],
+          "pooled_gain": 0.039043
+        },
+        "drift4_taken_false": {
+          "A2": 41,
+          "A4": 17,
+          "J8": 0,
+          "SC7": 18,
+          "SP8": 23
+        },
+        "drift4_taken_false_non_drift": {
+          "A2": 5,
+          "A4": 2,
+          "J8": 0,
+          "SC7": 4,
+          "SP8": 3
+        }
+      },
+      "pass": null
+    },
+    "R_diag_replay_009": {
+      "gated": false,
+      "observed": {
+        "arms": [
+          "S7",
+          "SC7"
+        ],
+        "by_arm": {
+          "S7": {
+            "nd_false": 4,
+            "stale_class": 4
+          },
+          "SC7": {
+            "nd_false": 5,
+            "stale_class": 5
+          }
+        },
+        "clause_i": {
+          "evaluable": true,
+          "min_events": 3,
+          "pass": true,
+          "reason": null,
+          "threshold": 0.8
+        },
+        "drift4_cases": 144,
+        "fraction": 1.0,
+        "inputs": [
+          "results/study-009/2x2/CHECKPOINT.jsonl"
+        ],
+        "nd_false_total": 9,
+        "stale_class": 9
+      },
+      "pass": null
+    },
+    "R_drift_detail": {
+      "gated": false,
+      "observed": {
+        "count_by_arm": {
+          "A2": 45,
+          "A4": 21,
+          "J8": 0,
+          "SC7": 21,
+          "SP8": 26
+        },
+        "false_certificates": [
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080001,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080003,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080003,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": false,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080003,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080003,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080003,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080005,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080005,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": false,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080005,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080005,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080006,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SC7",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080006,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080006,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080006,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": false,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080007,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SC7",
+            "event_at_d": false,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080007,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080007,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080007,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": true,
+            "public": false,
+            "seed": 3080007,
+            "step": 13,
+            "steps_after_last_drift": 1
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080007,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.35,
+            "non_drift": true,
+            "public": false,
+            "seed": 3080007,
+            "step": 13,
+            "steps_after_last_drift": 1
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080008,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080009,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SC7",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080009,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080009,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080009,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080010,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080010,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080010,
+            "step": 34,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.6,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080010,
+            "step": 34,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "counterfactual",
+            "arm": "SP8",
+            "event_at_d": false,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080011,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "counterfactual",
+            "arm": "SC7",
+            "event_at_d": false,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080011,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "counterfactual",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080011,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080011,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080011,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080012,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080014,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SC7",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080014,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080014,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080014,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080018,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080018,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": false,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080018,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SC7",
+            "event_at_d": false,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080018,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080018,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080018,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080020,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080021,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SC7",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080021,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080021,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080021,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080021,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080021,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": false,
+            "mask_rate": 0.1,
+            "non_drift": true,
+            "public": false,
+            "seed": 3080022,
+            "step": 16,
+            "steps_after_last_drift": 4
+          },
+          {
+            "action": "taken",
+            "arm": "SC7",
+            "event_at_d": false,
+            "mask_rate": 0.1,
+            "non_drift": true,
+            "public": false,
+            "seed": 3080022,
+            "step": 16,
+            "steps_after_last_drift": 4
+          },
+          {
+            "action": "counterfactual",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080022,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": true,
+            "public": false,
+            "seed": 3080022,
+            "step": 16,
+            "steps_after_last_drift": 4
+          },
+          {
+            "action": "counterfactual",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080022,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": true,
+            "public": false,
+            "seed": 3080022,
+            "step": 16,
+            "steps_after_last_drift": 4
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": false,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080022,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080022,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080023,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080024,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080028,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SC7",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080028,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080028,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080029,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SC7",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080029,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080029,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080029,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080031,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080031,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "counterfactual",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080031,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080033,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SC7",
+            "event_at_d": false,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080033,
+            "step": 34,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080033,
+            "step": 34,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080033,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080034,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080034,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": true,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080034,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SC7",
+            "event_at_d": true,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080034,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080034,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080034,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": false,
+            "mask_rate": 0.35,
+            "non_drift": true,
+            "public": false,
+            "seed": 3080035,
+            "step": 25,
+            "steps_after_last_drift": 2
+          },
+          {
+            "action": "taken",
+            "arm": "SC7",
+            "event_at_d": false,
+            "mask_rate": 0.35,
+            "non_drift": true,
+            "public": false,
+            "seed": 3080035,
+            "step": 25,
+            "steps_after_last_drift": 2
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.35,
+            "non_drift": true,
+            "public": false,
+            "seed": 3080035,
+            "step": 25,
+            "steps_after_last_drift": 2
+          },
+          {
+            "action": "counterfactual",
+            "arm": "SP8",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080036,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "counterfactual",
+            "arm": "SC7",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080036,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "counterfactual",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080036,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "counterfactual",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080036,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": false,
+            "mask_rate": 0.1,
+            "non_drift": true,
+            "public": false,
+            "seed": 3080039,
+            "step": 13,
+            "steps_after_last_drift": 1
+          },
+          {
+            "action": "taken",
+            "arm": "SC7",
+            "event_at_d": false,
+            "mask_rate": 0.1,
+            "non_drift": true,
+            "public": false,
+            "seed": 3080039,
+            "step": 13,
+            "steps_after_last_drift": 1
+          },
+          {
+            "action": "taken",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": true,
+            "public": false,
+            "seed": 3080039,
+            "step": 13,
+            "steps_after_last_drift": 1
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": true,
+            "public": false,
+            "seed": 3080039,
+            "step": 13,
+            "steps_after_last_drift": 1
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080041,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SC7",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080041,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080041,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080041,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "counterfactual",
+            "arm": "SP8",
+            "event_at_d": false,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080043,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": false,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080043,
+            "step": 34,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "counterfactual",
+            "arm": "SC7",
+            "event_at_d": false,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080043,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "counterfactual",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080043,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "counterfactual",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080043,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080043,
+            "step": 34,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SC7",
+            "event_at_d": false,
+            "mask_rate": 0.6,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080043,
+            "step": 34,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SC7",
+            "event_at_d": false,
+            "mask_rate": 0.6,
+            "non_drift": true,
+            "public": false,
+            "seed": 3080043,
+            "step": 36,
+            "steps_after_last_drift": 2
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": false,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080044,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SC7",
+            "event_at_d": false,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080044,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.35,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080044,
+            "step": 23,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SP8",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080048,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "SC7",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080048,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A4",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080048,
+            "step": 12,
+            "steps_after_last_drift": 0
+          },
+          {
+            "action": "taken",
+            "arm": "A2",
+            "event_at_d": null,
+            "mask_rate": 0.1,
+            "non_drift": false,
+            "public": false,
+            "seed": 3080048,
+            "step": 12,
+            "steps_after_last_drift": 0
+          }
+        ]
+      },
+      "pass": null
+    },
+    "R_heartbeat": {
+      "gated": false,
+      "observed": {
+        "beats": 882,
+        "first_wall": 1793005398.704,
+        "gaps_over_10s": [
+          {
+            "gap_s": 125.376,
+            "wall": 1793006331.198
+          },
+          {
+            "gap_s": 84.508,
+            "wall": 1793007192.568
+          }
+        ],
+        "last_wall": 1793007368.686,
+        "max_gap_s": 125.376
+      },
+      "pass": null
+    },
+    "R_rates": {
+      "gated": false,
+      "observed": {
+        "2x2": {
+          "budget_s": 1500,
+          "fraction_of_budget": 0.308,
+          "spent_s": 462.6
+        },
+        "breadth": {
+          "budget_s": 2400,
+          "fraction_of_budget": 0.27,
+          "spent_s": 646.8
+        },
+        "g11_2x2": {
+          "budget_s": 1500,
+          "fraction_of_budget": 1.001,
+          "spent_s": 1501.7
+        },
+        "g11_breadth": {
+          "budget_s": 1500,
+          "fraction_of_budget": 0.436,
+          "spent_s": 654.3
+        },
+        "gti": {
+          "budget_s": 2400,
+          "fraction_of_budget": 0.515,
+          "spent_s": 1236.7
+        },
+        "gx2_spot": {
+          "budget_s": 1200,
+          "fraction_of_budget": 0.12,
+          "spent_s": 143.6
+        },
+        "gx2_sym": {
+          "budget_s": 1200,
+          "fraction_of_budget": 0.565,
+          "spent_s": 677.9
+        },
+        "repro_2x2": {
+          "budget_s": 900,
+          "fraction_of_budget": 0.165,
+          "spent_s": 148.1
+        },
+        "repro_breadth": {
+          "budget_s": 1500,
+          "fraction_of_budget": 0.083,
+          "spent_s": 124.1
+        }
+      },
+      "pass": null
+    },
+    "R_tests_plain": {
+      "gated": false,
+      "observed": {
+        "results": {
+          "test85.V85Tests.test_certificate_matches_reachable_teacher": [
+            "ok",
+            null
+          ],
+          "test85.V85Tests.test_certified_routes_no_teacher": [
+            "ok",
+            null
+          ],
+          "test85.V85Tests.test_false_certification_if_teacher_outside_family_not_claimed": [
+            "ok",
+            null
+          ],
+          "test85.V85Tests.test_goal_is_hint_not_teacher_leak": [
+            "ok",
+            null
+          ],
+          "test85.V85Tests.test_no_reset_all_families": [
+            "ok",
+            null
+          ],
+          "test85.V85Tests.test_provably_unreachable_from_closed_region": [
+            "ok",
+            null
+          ],
+          "test85.V85Tests.test_reachable_complete_without_global_identification": [
+            "ok",
+            null
+          ],
+          "test85.V85Tests.test_separate_safety_scope_is_not_escalated": [
+            "ok",
+            null
+          ],
+          "test85.V85Tests.test_unknown_action_prevents_certificate": [
+            "ok",
+            null
+          ],
+          "test85.V85Tests.test_unknown_edges_do_not_become_shortest": [
+            "ok",
+            null
+          ],
+          "test86.GoalLearningTests.test_belief_actions_obey_external_safety_scope": [
+            "ok",
+            null
+          ],
+          "test86.GoalLearningTests.test_external_oracle_is_not_imported_by_controller": [
+            "ok",
+            null
+          ],
+          "test86.GoalLearningTests.test_goal_certified_route_precedes_exploration": [
+            "ok",
+            null
+          ],
+          "test86.GoalLearningTests.test_goal_takes_priority_over_unrelated_unknown_action": [
+            "ok",
+            null
+          ],
+          "test86.GoalLearningTests.test_if_all_paths_unsafe_abstain": [
+            "ok",
+            null
+          ],
+          "test86.GoalLearningTests.test_independent_reference_reconstructs_hidden_rule_posterior": [
+            "ok",
+            null
+          ],
+          "test86.GoalLearningTests.test_optimistic_routes_are_not_safety_or_certainty": [
+            "ok",
+            null
+          ],
+          "test86.GoalLearningTests.test_paired_goals_independent_of_exploration_policy": [
+            "ok",
+            null
+          ],
+          "test86.GoalLearningTests.test_real_world_progress_and_no_reset": [
+            "ok",
+            null
+          ],
+          "test86.GoalLearningTests.test_robust_all_outcomes_and_no_fabricated_certification": [
+            "ok",
+            null
+          ],
+          "test86.GoalLearningTests.test_robust_successor_paths_are_all_certified_or_safe": [
+            "ok",
+            null
+          ],
+          "test86.GoalLearningTests.test_unknown_outcomes_never_masquerade_as_certified": [
+            "ok",
+            null
+          ],
+          "test87.ExactPlanningTests.test_bellman_value_against_separate_exact_oracle": [
+            "ok",
+            null
+          ],
+          "test87.ExactPlanningTests.test_budget_fallback_and_exact_abstention": [
+            "ok",
+            null
+          ],
+          "test87.ExactPlanningTests.test_catalogue_bijection_independent_code": [
+            "ok",
+            null
+          ],
+          "test87.ExactPlanningTests.test_direct_goal_precedes_expensive_search": [
+            "ok",
+            null
+          ],
+          "test87.ExactPlanningTests.test_external_scope_fail_closed": [
+            "ok",
+            null
+          ],
+          "test87.ExactPlanningTests.test_no_reset_paired_trials_and_soundness": [
+            "ok",
+            null
+          ],
+          "test87.ExactPlanningTests.test_out_of_family_effect_rejected_transactionally": [
+            "ok",
+            null
+          ],
+          "test87.ExactPlanningTests.test_posterior_filter_independent_reference": [
+            "ok",
+            null
+          ],
+          "test87.ExactPlanningTests.test_prior_action_exchangeability_proof": [
+            "ok",
+            null
+          ],
+          "test87.ExactPlanningTests.test_transposition_memo_preserves_actions_and_reduces_work": [
+            "ok",
+            null
+          ],
+          "test88.ProjectionTests.test_known_unused_distractor_can_be_dropped": [
+            "ok",
+            null
+          ],
+          "test88.ProjectionTests.test_projection_evaluator_equivalence_without_oracle_leak": [
+            "ok",
+            null
+          ],
+          "test88.ProjectionTests.test_projection_proof_requires_all_candidate_parents_inside": [
+            "ok",
+            null
+          ],
+          "test88.V88Tests.test_atomic_contradiction_multi_target": [
+            "ok",
+            null
+          ],
+          "test88.V88Tests.test_calibration_weights": [
+            "ok",
+            null
+          ],
+          "test88.V88Tests.test_essential_boolean_catalogue_is_unique": [
+            "ok",
+            null
+          ],
+          "test88.V88Tests.test_false_certification_not_authorized_by_prior": [
+            "ok",
+            null
+          ],
+          "test88.V88Tests.test_gate_decreases_transfer_trust_for_out_of_family_target": [
+            "ok",
+            null
+          ],
+          "test88.V88Tests.test_models_infer_targets_not_oracle_labels": [
+            "ok",
+            null
+          ],
+          "test88.V88Tests.test_parent_arity_expands_on_witness_without_reset": [
+            "ok",
+            null
+          ],
+          "test88.V88Tests.test_source_motif_is_independent_of_channel_identity": [
+            "ok",
+            null
+          ],
+          "test88.V88Tests.test_target_trace_has_no_reset_and_oracle_never_updates_models": [
+            "ok",
+            null
+          ],
+          "test88.V88Tests.test_trained_prior_uses_only_observed_source_evidence": [
+            "ok",
+            null
+          ],
+          "test89.TestV89.test_after_ood_rejection_all_new_certifications_abstain": [
+            "ok",
+            null
+          ],
+          "test89.TestV89.test_catalogue_sizes_and_opaque_initial_gauge": [
+            "ok",
+            null
+          ],
+          "test89.TestV89.test_conservative_sensor_proof": [
+            "ok",
+            null
+          ],
+          "test89.TestV89.test_in_family_never_false_certifications": [
+            "ok",
+            null
+          ],
+          "test89.TestV89.test_independent_scalar_reference_mixed_missingness": [
+            "ok",
+            null
+          ],
+          "test89.TestV89.test_masks_not_imputed_as_true_bits": [
+            "ok",
+            null
+          ],
+          "test89.TestV89.test_no_secret_truth_leak_in_latent_learner": [
+            "ok",
+            null
+          ],
+          "test89.TestV89.test_ood_errors_recorded_and_not_claimed_globally_sound": [
+            "ok",
+            null
+          ],
+          "test89.TestV89.test_size_not_automatically_identifiable": [
+            "ok",
+            null
+          ],
+          "test89.TestV89.test_transactional_incompatible_transition": [
+            "ok",
+            null
+          ],
+          "test89.TestV89.test_two_hidden_states_same_visible_code_can_have_different_future": [
+            "ok",
+            null
+          ],
+          "test90.NewMathTests.test_budget_failure_records_evidence_abstains_and_retry": [
+            "ok",
+            null
+          ],
+          "test90.NewMathTests.test_exact_possible_next_outcomes_vs_complete_enumeration": [
+            "ok",
+            null
+          ],
+          "test90.NewMathTests.test_four_state_world_never_excluded_within_grammar": [
+            "ok",
+            null
+          ],
+          "test90.NewMathTests.test_grammar_violation_preserves_evidence": [
+            "ok",
+            null
+          ],
+          "test90.NewMathTests.test_lab_attestation_conditional_only_within_scope": [
+            "ok",
+            null
+          ],
+          "test90.NewMathTests.test_observation_mask": [
+            "ok",
+            null
+          ],
+          "test90.NewMathTests.test_permuting_hidden_state_labels_preserves_fingerprint": [
+            "ok",
+            null
+          ],
+          "test90.NewMathTests.test_quotient_agrees_with_independent_future_word_reference": [
+            "ok",
+            null
+          ],
+          "test90.NewMathTests.test_sensor_alias_does_not_imply_equivalence": [
+            "ok",
+            null
+          ],
+          "test90.NewMathTests.test_twin_states_merge": [
+            "ok",
+            null
+          ],
+          "test90.NewMathTests.test_unverified_grammar_never_issues_public_cert": [
+            "ok",
+            null
+          ],
+          "test90_limit.FinitePrefixLimitTests.test_any_single_prefix_has_divergent_completion": [
+            "ok",
+            null
+          ],
+          "test90_limit.FinitePrefixLimitTests.test_randomized_mixed_masks_and_actions": [
+            "ok",
+            null
+          ],
+          "test_adapter_boundary.AdapterBoundary.test_adapter_has_no_side_channel": [
+            "ok",
+            null
+          ],
+          "test_adapter_boundary.AdapterBoundary.test_adapter_imports_only_api": [
+            "ok",
+            null
+          ],
+          "test_adapter_boundary.AdapterBoundary.test_core_never_imports_adapter": [
+            "ok",
+            null
+          ],
+          "test_adapter_grounding.AdapterGrounding.test_checker_rejects_unbacked_sentence": [
+            "ok",
+            null
+          ],
+          "test_adapter_grounding.AdapterGrounding.test_claim_text_is_template_of_refs": [
+            "ok",
+            null
+          ],
+          "test_adapter_grounding.AdapterGrounding.test_covers_all_statuses": [
+            "ok",
+            null
+          ],
+          "test_adapter_grounding.AdapterGrounding.test_every_claim_has_field_refs": [
+            "ok",
+            null
+          ],
+          "test_adapter_grounding.AdapterGrounding.test_no_upgrade_of_status": [
+            "ok",
+            null
+          ],
+          "test_adapter_grounding.AdapterGrounding.test_refusal_passthrough_verbatim": [
+            "ok",
+            null
+          ],
+          "test_align.Align.test_labels": [
+            "ok",
+            null
+          ],
+          "test_align.Align.test_scores_vs_lur_and_reference": [
+            "ok",
+            null
+          ],
+          "test_api_contract.ApiContract.test_calibrated_tau_matches_study": [
+            "ok",
+            null
+          ],
+          "test_api_contract.ApiContract.test_error_on_bad_input": [
+            "ok",
+            null
+          ],
+          "test_api_contract.ApiContract.test_every_forecast_path_maps_to_one_status": [
+            "ok",
+            null
+          ],
+          "test_api_contract.ApiContract.test_public_needs_attestation": [
+            "ok",
+            null
+          ],
+          "test_api_contract.ApiContract.test_retry_drops_attestation": [
+            "ok",
+            null
+          ],
+          "test_api_contract.ApiContract.test_schema_enums_match_python_enums": [
+            "ok",
+            null
+          ],
+          "test_api_contract.ApiContract.test_schema_round_trip": [
+            "ok",
+            null
+          ],
+          "test_api_contract.ApiContract.test_validator_rejects_malformed": [
+            "ok",
+            null
+          ],
+          "test_api_contract_v011.ApiV011.test_retraction_reasons_match_truth": [
+            "ok",
+            null
+          ],
+          "test_api_contract_v011.ApiV011.test_round_trip_errors_and_attestation": [
+            "ok",
+            null
+          ],
+          "test_api_contract_v011.ApiV011.test_same_as_v10_except_documented_fields": [
+            "ok",
+            null
+          ],
+          "test_api_contract_v011.ApiV011.test_schema": [
+            "ok",
+            null
+          ],
+          "test_api_contract_v020.ApiV020.test_bad_requests": [
+            "ok",
+            null
+          ],
+          "test_api_contract_v020.ApiV020.test_double_predict_records_once": [
+            "ok",
+            null
+          ],
+          "test_api_contract_v020.ApiV020.test_experiment_op": [
+            "ok",
+            null
+          ],
+          "test_api_contract_v020.ApiV020.test_same_as_v11_except_documented": [
+            "ok",
+            null
+          ],
+          "test_api_contract_v020.ApiV020.test_schema": [
+            "ok",
+            null
+          ],
+          "test_api_contract_v030.ApiV030.test_experiment_fields": [
+            "ok",
+            null
+          ],
+          "test_api_contract_v030.ApiV030.test_no_proposal_out_of_scope": [
+            "ok",
+            null
+          ],
+          "test_api_contract_v030.ApiV030.test_same_as_v12_except_resync": [
+            "ok",
+            null
+          ],
+          "test_api_contract_v030.ApiV030.test_schema": [
+            "ok",
+            null
+          ],
+          "test_api_contract_v040.ApiV040.test_no_alarm_same_as_v13": [
+            "ok",
+            null
+          ],
+          "test_api_contract_v040.ApiV040.test_resume_session": [
+            "ok",
+            null
+          ],
+          "test_api_contract_v040.ApiV040.test_schema": [
+            "ok",
+            null
+          ],
+          "test_audit_mutation_030.AuditMutation030.test_clean_count_zero": [
+            "ok",
+            null
+          ],
+          "test_audit_mutation_030.AuditMutation030.test_injected_errors_are_counted": [
+            "ok",
+            null
+          ],
+          "test_brute_abstention.BruteAbstention.test_contradiction_yields_out_of_family_and_retraction": [
+            "ok",
+            null
+          ],
+          "test_brute_abstention.BruteAbstention.test_every_certificate_names_its_family_and_is_belief_consistent": [
+            "ok",
+            null
+          ],
+          "test_brute_abstention.BruteAbstention.test_margin_gate_blocks_ood5_false_certificates": [
+            "ok",
+            null
+          ],
+          "test_brute_abstention.BruteAbstention.test_margin_gate_preserves_in_family_soundness": [
+            "ok",
+            null
+          ],
+          "test_brute_abstention.BruteAbstention.test_public_cert_requires_attestation_margin_and_no_alarm": [
+            "ok",
+            null
+          ],
+          "test_brute_abstention.BruteAbstention.test_residual_surprise_flags_drift4": [
+            "ok",
+            null
+          ],
+          "test_brute_abstention.BruteAbstention.test_retry_revokes_attestation": [
+            "ok",
+            null
+          ],
+          "test_brute_abstention.BruteAbstention.test_saturated_bound_abstains": [
+            "ok",
+            null
+          ],
+          "test_brute_active.Dedup.test_record_twice_once": [
+            "ok",
+            null
+          ],
+          "test_brute_active.Dedup.test_retraction_listed_once": [
+            "ok",
+            null
+          ],
+          "test_brute_active.Experiment.test_counts": [
+            "ok",
+            null
+          ],
+          "test_brute_active.Experiment.test_policy_never_changes_certification_rule": [
+            "ok",
+            null
+          ],
+          "test_brute_active.Experiment.test_retry_keeps_class": [
+            "ok",
+            null
+          ],
+          "test_brute_active.Experiment.test_score_definition": [
+            "ok",
+            null
+          ],
+          "test_brute_active.Experiment.test_tie_goes_to_default_and_read_only": [
+            "ok",
+            null
+          ],
+          "test_brute_active.PassiveEquivalence.test_same_as_v011_until_window": [
+            "ok",
+            null
+          ],
+          "test_brute_active.PassiveEquivalence.test_window_tier_used_on_drift": [
+            "ok",
+            null
+          ],
+          "test_brute_active.Version.test_release_version": [
+            "ok",
+            null
+          ],
+          "test_brute_changepoint.ChangePoint.test_check_run_forces_other_branch": [
+            "ok",
+            null
+          ],
+          "test_brute_changepoint.ChangePoint.test_experiment_fields_and_rule": [
+            "ok",
+            null
+          ],
+          "test_brute_changepoint.ChangePoint.test_no_proposal_after_contradiction": [
+            "ok",
+            null
+          ],
+          "test_brute_changepoint.ChangePoint.test_passive_only_downgrades": [
+            "ok",
+            null
+          ],
+          "test_brute_changepoint.ChangePoint.test_resync_off_is_v020": [
+            "ok",
+            null
+          ],
+          "test_brute_changepoint.ChangePoint.test_retry_keeps_class_and_settings": [
+            "ok",
+            null
+          ],
+          "test_brute_changepoint.ChangePoint.test_union_contains_certificate": [
+            "ok",
+            null
+          ],
+          "test_brute_changepoint.ChangePoint.test_version": [
+            "ok",
+            null
+          ],
+          "test_brute_fallback.Fallback.test_before_initialize_and_bad_action": [
+            "ok",
+            null
+          ],
+          "test_brute_fallback.Fallback.test_identical_to_v010_before_contradiction": [
+            "ok",
+            null
+          ],
+          "test_brute_fallback.Fallback.test_never_certifies_after_contradiction_and_counts_match_v010": [
+            "ok",
+            null
+          ],
+          "test_brute_fallback.Fallback.test_post_contradiction_rule": [
+            "ok",
+            null
+          ],
+          "test_brute_fallback.Fallback.test_retraction_reason": [
+            "ok",
+            null
+          ],
+          "test_brute_fallback.Fallback.test_retractions_carry_reasons": [
+            "ok",
+            null
+          ],
+          "test_brute_fallback.Fallback.test_retry_keeps_v011_learner": [
+            "ok",
+            null
+          ],
+          "test_brute_reporting.BruteReporting.test_aggregate_reports_coverage_and_selective_risk": [
+            "ok",
+            null
+          ],
+          "test_brute_reporting.BruteReporting.test_burn_in_excluded_consistently": [
+            "ok",
+            null
+          ],
+          "test_brute_reporting.BruteReporting.test_legacy_logloss_recorded_when_legacy_valid": [
+            "ok",
+            null
+          ],
+          "test_brute_reporting.BruteReporting.test_no_probability_zero_on_any_code": [
+            "ok",
+            null
+          ],
+          "test_brute_repro.BruteRepro.test_audit_not_vacuous_under_python_O": [
+            "ok",
+            null
+          ],
+          "test_brute_repro.BruteRepro.test_default_budgets_match_plan": [
+            "ok",
+            null
+          ],
+          "test_brute_repro.BruteRepro.test_generators_reproduce_results_bytes": [
+            "ok",
+            null
+          ],
+          "test_brute_repro.BruteRepro.test_manifest_matches_tracked_files": [
+            "ok",
+            null
+          ],
+          "test_brute_repro.BruteRepro.test_no_time_strips_all_timing_keys": [
+            "ok",
+            null
+          ],
+          "test_brute_repro.BruteRepro.test_verify_fails_under_tampered_results": [
+            "error",
+            "^^^^^^^^^^^^^^\n  File \"/workspace/brute/scripts/verify_release.py\", line 35, in verify\n    rel=load(root/'RELEASE.json');import brute;check(rel['version']==brute.__version__,'RELEASE.json version != brute.__version__')\n                                               ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/brute/experiments/brute_common.py\", line 15, in check\n    if not cond:raise VerificationError(msg)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nexperiments.brute_common.VerificationError: RELEASE.json version != brute.__version__\n"
+          ],
+          "test_brute_resume_006.Perm4.test_bijections_and_alias": [
+            "ok",
+            null
+          ],
+          "test_brute_resume_006.Region.test_tiny": [
+            "ok",
+            null
+          ],
+          "test_brute_resume_006.Resume.test_args": [
+            "ok",
+            null
+          ],
+          "test_brute_resume_006.Resume.test_default_flags": [
+            "ok",
+            null
+          ],
+          "test_brute_resume_006.Resume.test_resume_rule": [
+            "ok",
+            null
+          ],
+          "test_diag_stale_010.DiagStale010.test_classify": [
+            "ok",
+            null
+          ],
+          "test_diag_stale_010.DiagStale010.test_hull": [
+            "ok",
+            null
+          ],
+          "test_diag_stale_010.DiagStale010.test_nondrift": [
+            "ok",
+            null
+          ],
+          "test_driftsound.TestDriftSound.test_actions_equal_a5": [
+            "ok",
+            null
+          ],
+          "test_driftsound.TestDriftSound.test_cert_rule_and_events_recorded": [
+            "ok",
+            null
+          ],
+          "test_driftsound.TestDriftSound.test_certificates_subset_relations": [
+            "ok",
+            null
+          ],
+          "test_driftsound.TestDriftSound.test_retry_keeps_rule": [
+            "ok",
+            null
+          ],
+          "test_driftsound.TestDriftSound.test_rules": [
+            "ok",
+            null
+          ],
+          "test_driftsound.TestDriftSound.test_y1k_recent_matches_y1k_without_aged_edges": [
+            "ok",
+            null
+          ],
+          "test_exactness_mutation_006.ExactnessMutation.test_clean_zero": [
+            "ok",
+            null
+          ],
+          "test_exactness_mutation_006.ExactnessMutation.test_each_mutation_counted": [
+            "ok",
+            null
+          ],
+          "test_exactness_mutation_006.ExactnessMutation.test_k_mutations_k_counts": [
+            "ok",
+            null
+          ],
+          "test_jumphull.JumpHull.test_hull_matches_reference": [
+            "ok",
+            null
+          ],
+          "test_jumphull.JumpHull.test_j8_rule": [
+            "ok",
+            null
+          ],
+          "test_jumphull.JumpHull.test_t0_identical_to_regionk": [
+            "ok",
+            null
+          ],
+          "test_jumphull.JumpHull.test_y1k_subset_of_hull": [
+            "ok",
+            null
+          ],
+          "test_planner.Planner009.test_certification_isolation_replay": [
+            "ok",
+            null
+          ],
+          "test_planner.Planner009.test_enumeration_equals_ganak": [
+            "ok",
+            null
+          ],
+          "test_planner.Planner009.test_objective": [
+            "ok",
+            null
+          ],
+          "test_planner.Planner009.test_planned_trace_and_reference": [
+            "ok",
+            null
+          ],
+          "test_planner.Planner009.test_policy_guard": [
+            "ok",
+            null
+          ],
+          "test_release_011.ReleaseV011.test_fast_verify_passes": [
+            "error",
+            "RELEASE_VERSION is not 0.1.1 (brute.__version__ stays 0.1.0: study-002 freeze, amendment A3)')\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/brute/experiments/brute_common.py\", line 15, in check\n    if not cond:raise VerificationError(msg)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nexperiments.brute_common.VerificationError: RELEASE.json / brute.version.RELEASE_VERSION is not 0.1.1 (brute.__version__ stays 0.1.0: study-002 freeze, amendment A3)\n"
+          ],
+          "test_release_011.ReleaseV011.test_git_order": [
+            "ok",
+            null
+          ],
+          "test_release_011.ReleaseV011.test_tampered_copies_fail": [
+            "ok",
+            null
+          ],
+          "test_release_020.ReleaseV020.test_fast_verify_passes": [
+            "error",
+            "c0ac594')\n  File \"/workspace/brute/scripts/verify_release_020.py\", line 115, in verify\n    check(rel['version']==RELEASE_VERSION=='0.2.0','RELEASE.json / brute.release_version.RELEASE_VERSION is not 0.2.0')\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/brute/experiments/brute_common.py\", line 15, in check\n    if not cond:raise VerificationError(msg)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nexperiments.brute_common.VerificationError: RELEASE.json / brute.release_version.RELEASE_VERSION is not 0.2.0\n"
+          ],
+          "test_release_020.ReleaseV020.test_git_order": [
+            "ok",
+            null
+          ],
+          "test_release_020.ReleaseV020.test_tampered_copies_fail": [
+            "ok",
+            null
+          ],
+          "test_release_030.ReleaseV030.test_fast_verify_passes": [
+            "error",
+            " File \"/workspace/brute/scripts/verify_release_030.py\", line 78, in verify\n    check(rel['version']==RELEASE_VERSION=='0.3.0','RELEASE.json / brute.release_version_030.RELEASE_VERSION is not 0.3.0')\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/brute/experiments/brute_common.py\", line 15, in check\n    if not cond:raise VerificationError(msg)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nexperiments.brute_common.VerificationError: RELEASE.json / brute.release_version_030.RELEASE_VERSION is not 0.3.0\n"
+          ],
+          "test_release_030.ReleaseV030.test_git_order": [
+            "ok",
+            null
+          ],
+          "test_release_030.ReleaseV030.test_tampered_copies_fail": [
+            "ok",
+            null
+          ],
+          "test_release_040.ReleaseVersioned.test_fast_verify_passes": [
+            "error",
+            "True);self.assertEqual(out['status'],'passed')\n  File \"/workspace/brute/scripts/verify_release_040.py\", line 72, in verify\n    check(rel['version']==RELEASE_VERSION,'RELEASE.json version differs from brute.release_version_040')\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/brute/experiments/brute_common.py\", line 15, in check\n    if not cond:raise VerificationError(msg)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nexperiments.brute_common.VerificationError: RELEASE.json version differs from brute.release_version_040\n"
+          ],
+          "test_release_040.ReleaseVersioned.test_git_order": [
+            "error",
+            "n test_git_order\n    def test_git_order(self):self.assertEqual(git_order(ROOT,REL)['preregistration'],REL['preregistration_commit'])\n                                              ~~~~~~~~~^^^^^^^^^^\n  File \"/workspace/brute/scripts/verify_release_040.py\", line 44, in git_order\n    chain=[('preregistration',fr['preregistration_commit']),('reference',fr['reference_commit']),('implementation',fr['implementation_commit']),\n                                                                                                                   ~~^^^^^^^^^^^^^^^^^^^^^^^^^\nKeyError: 'implementation_commit'\n"
+          ],
+          "test_release_040.ReleaseVersioned.test_tampered_copies_fail": [
+            "error",
+            "subtest (rel='results/study-009/SECOND_IMPLEMENTATION_COUNT.json'): '\"' in data else data+b' ')\n  File \"/usr/lib/python3.13/pathlib/_abc.py\", line 625, in read_bytes\n    with self.open(mode='rb') as f:\n         ~~~~~~~~~^^^^^^^^^^^\n  File \"/usr/lib/python3.13/pathlib/_local.py\", line 539, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpbhm38oyv/brute/results/study-009/SECOND_IMPLEMENTATION_COUNT.json'\n"
+          ],
+          "test_release_040.ReleaseVersioned.test_untampered_copy_passes": [
+            "error",
+            "               ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/brute/scripts/verify_release_040.py\", line 72, in verify\n    check(rel['version']==RELEASE_VERSION,'RELEASE.json version differs from brute.release_version_040')\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/brute/experiments/brute_common.py\", line 15, in check\n    if not cond:raise VerificationError(msg)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nexperiments.brute_common.VerificationError: RELEASE.json version differs from brute.release_version_040\n"
+          ],
+          "test_release_040.ReleaseVersioned.test_version_consistent": [
+            "fail",
+            "Traceback (most recent call last):\n  File \"/workspace/brute/tests/test_release_040.py\", line 24, in test_version_consistent\n    self.assertEqual(REL['version'],RELEASE_VERSION)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: '0.7.0' != '0.4.0'\n- 0.7.0\n?   ^\n+ 0.4.0\n?   ^\n\n"
+          ],
+          "test_release_050.ReleaseVersioned.test_fast_verify_passes": [
+            "error",
+            "True);self.assertEqual(out['status'],'passed')\n  File \"/workspace/brute/scripts/verify_release_050.py\", line 72, in verify\n    check(rel['version']==RELEASE_VERSION,'RELEASE.json version differs from brute.release_version_050')\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/brute/experiments/brute_common.py\", line 15, in check\n    if not cond:raise VerificationError(msg)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nexperiments.brute_common.VerificationError: RELEASE.json version differs from brute.release_version_050\n"
+          ],
+          "test_release_050.ReleaseVersioned.test_git_order": [
+            "error",
+            "Traceback (most recent call last):\n  File \"/workspace/brute/tests/test_release_050.py\", line 31, in test_git_order\n    def test_git_order(self):self.assertEqual(git_order(ROOT,REL)['preregistration'],REL['preregistration_commit'])\n                                              ~~~~~~~~~^^^^^^^^^^\n  File \"/workspace/brute/scripts/verify_release_050.py\", line 45, in git_order\n    chain+=[(f'pre_freeze_fix_{i}',c) for i,c in enumerate(fr['pre_freeze_fix_commits'])]\n                                                           ~~^^^^^^^^^^^^^^^^^^^^^^^^^^\nKeyError: 'pre_freeze_fix_commits'\n"
+          ],
+          "test_release_050.ReleaseVersioned.test_tampered_copies_fail": [
+            "error",
+            "subtest (rel='results/study-009/SECOND_IMPLEMENTATION_COUNT.json'): '\"' in data else data+b' ')\n  File \"/usr/lib/python3.13/pathlib/_abc.py\", line 625, in read_bytes\n    with self.open(mode='rb') as f:\n         ~~~~~~~~~^^^^^^^^^^^\n  File \"/usr/lib/python3.13/pathlib/_local.py\", line 539, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpllyikzys/brute/results/study-009/SECOND_IMPLEMENTATION_COUNT.json'\n"
+          ],
+          "test_release_050.ReleaseVersioned.test_untampered_copy_passes": [
+            "error",
+            "               ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/brute/scripts/verify_release_050.py\", line 72, in verify\n    check(rel['version']==RELEASE_VERSION,'RELEASE.json version differs from brute.release_version_050')\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/brute/experiments/brute_common.py\", line 15, in check\n    if not cond:raise VerificationError(msg)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nexperiments.brute_common.VerificationError: RELEASE.json version differs from brute.release_version_050\n"
+          ],
+          "test_release_050.ReleaseVersioned.test_version_consistent": [
+            "fail",
+            "Traceback (most recent call last):\n  File \"/workspace/brute/tests/test_release_050.py\", line 24, in test_version_consistent\n    self.assertEqual(REL['version'],RELEASE_VERSION)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: '0.7.0' != '0.5.0'\n- 0.7.0\n?   ^\n+ 0.5.0\n?   ^\n\n"
+          ],
+          "test_release_060.GT1.test_every_artifact_every_mode_raises_verification_error": [
+            "ok",
+            null
+          ],
+          "test_release_060.GT1.test_frozen_050_defect_still_recorded": [
+            "ok",
+            null
+          ],
+          "test_release_060.Release060.test_fast_verify_passes": [
+            "error",
+            ":return fn(*a,**k)\n               ~~^^^^^^^^\n  File \"/workspace/brute/scripts/verify_release_060.py\", line 136, in _verify\n    check(rel['version']==RELEASE_VERSION,'RELEASE.json version differs from brute.release_version_060')\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/brute/experiments/brute_common.py\", line 15, in check\n    if not cond:raise VerificationError(msg)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nexperiments.brute_common.VerificationError: RELEASE.json version differs from brute.release_version_060\n"
+          ],
+          "test_release_060.Release060.test_untampered_copy_passes": [
+            "error",
+            ":return fn(*a,**k)\n               ~~^^^^^^^^\n  File \"/workspace/brute/scripts/verify_release_060.py\", line 136, in _verify\n    check(rel['version']==RELEASE_VERSION,'RELEASE.json version differs from brute.release_version_060')\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/brute/experiments/brute_common.py\", line 15, in check\n    if not cond:raise VerificationError(msg)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nexperiments.brute_common.VerificationError: RELEASE.json version differs from brute.release_version_060\n"
+          ],
+          "test_release_060.Release060.test_version_consistent": [
+            "fail",
+            "Traceback (most recent call last):\n  File \"/workspace/brute/tests/test_release_060.py\", line 82, in test_version_consistent\n    rel=json.loads((ROOT/'RELEASE.json').read_text());self.assertEqual(rel['version'],RELEASE_VERSION)\n                                                      ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: '0.7.0' != '0.6.0'\n- 0.7.0\n?   ^\n+ 0.6.0\n?   ^\n\n"
+          ],
+          "test_release_070.Corruption070.test_every_artifact_every_mode_raises_verification_error": [
+            "ok",
+            null
+          ],
+          "test_release_070.Release070.test_fast_verify_passes": [
+            "error",
+            "_020(root,git);out['ledger_receipts']=len(receipts);out['ledger_superseded']=sup\n                 ~~~~~~~~~~^^^^^^^^^^\n  File \"/workspace/brute/scripts/verify_release_020.py\", line 45, in ledger_020\n    check(last[r['source']]!=i,'ledger source changed: '+r['source'])\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/brute/experiments/brute_common.py\", line 15, in check\n    if not cond:raise VerificationError(msg)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nexperiments.brute_common.VerificationError: ledger source changed: experiments/brute_study_010.py\n"
+          ],
+          "test_release_070.Release070.test_storage_round_trip": [
+            "ok",
+            null
+          ],
+          "test_release_070.Release070.test_untampered_copy_passes": [
+            "error",
+            "_020(root,git);out['ledger_receipts']=len(receipts);out['ledger_superseded']=sup\n                 ~~~~~~~~~~^^^^^^^^^^\n  File \"/workspace/brute/scripts/verify_release_020.py\", line 45, in ledger_020\n    check(last[r['source']]!=i,'ledger source changed: '+r['source'])\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/brute/experiments/brute_common.py\", line 15, in check\n    if not cond:raise VerificationError(msg)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nexperiments.brute_common.VerificationError: ledger source changed: experiments/brute_study_010.py\n"
+          ],
+          "test_release_070.Release070.test_version_consistent": [
+            "ok",
+            null
+          ],
+          "test_run_tests_070.RunTests070.test_count_mismatch_and_frozen": [
+            "ok",
+            null
+          ],
+          "test_run_tests_070.RunTests070.test_frozen_files_unchanged": [
+            "ok",
+            null
+          ],
+          "test_run_tests_070.RunTests070.test_k060": [
+            "ok",
+            null
+          ],
+          "test_run_tests_070.RunTests070.test_pass_and_declared": [
+            "ok",
+            null
+          ],
+          "test_run_tests_070.RunTests070.test_undeclared_fails": [
+            "ok",
+            null
+          ],
+          "test_run_tests_080.RunTests080.test_clean_pass": [
+            "ok",
+            null
+          ],
+          "test_run_tests_080.RunTests080.test_counts_and_frozen": [
+            "ok",
+            null
+          ],
+          "test_run_tests_080.RunTests080.test_k070_needs_clean_tag_pass": [
+            "ok",
+            null
+          ],
+          "test_run_tests_080.RunTests080.test_k070_other_test_not_covered": [
+            "ok",
+            null
+          ],
+          "test_run_tests_080.RunTests080.test_new_test_failure_and_missing": [
+            "ok",
+            null
+          ],
+          "test_run_tests_080.RunTests080.test_new_tests_are_absent_from_v070": [
+            "ok",
+            null
+          ],
+          "test_seeds_008.Seeds008.test_disjoint": [
+            "ok",
+            null
+          ],
+          "test_seeds_008.Seeds008.test_main": [
+            "ok",
+            null
+          ],
+          "test_seeds_008.Seeds008.test_runner_refuses": [
+            "ok",
+            null
+          ],
+          "test_seeds_009.Seeds009.test_disjoint": [
+            "ok",
+            null
+          ],
+          "test_seeds_009.Seeds009.test_main": [
+            "ok",
+            null
+          ],
+          "test_seeds_009.Seeds009.test_planning_and_spot": [
+            "ok",
+            null
+          ],
+          "test_seeds_009.Seeds009.test_runner_refuses": [
+            "ok",
+            null
+          ],
+          "test_seeds_010.Seeds010.test_disjoint": [
+            "ok",
+            null
+          ],
+          "test_seeds_010.Seeds010.test_main": [
+            "ok",
+            null
+          ],
+          "test_seeds_010.Seeds010.test_runner_refuses": [
+            "ok",
+            null
+          ],
+          "test_seeds_010.Seeds010.test_samples": [
+            "ok",
+            null
+          ],
+          "test_study_003.Study003.test_control_arm_equals_frozen_runner": [
+            "ok",
+            null
+          ],
+          "test_study_003.Study003.test_g8_reason_rule": [
+            "ok",
+            null
+          ],
+          "test_study_003.Study003.test_in_family_v011_identical_to_control": [
+            "ok",
+            null
+          ],
+          "test_study_003.Study003.test_reference_imports_no_brute": [
+            "ok",
+            null
+          ],
+          "test_study_003.Study003.test_reference_passes_with_retractions": [
+            "ok",
+            null
+          ],
+          "test_study_003.Study003.test_reference_rejects_tampering": [
+            "ok",
+            null
+          ],
+          "test_study_004.Study004.test_aggregate_and_dedup": [
+            "ok",
+            null
+          ],
+          "test_study_004.Study004.test_reference_agrees": [
+            "ok",
+            null
+          ],
+          "test_study_004.Study004.test_reference_detects_tampering": [
+            "ok",
+            null
+          ],
+          "test_study_004.Study004.test_reference_imports_no_brute": [
+            "ok",
+            null
+          ],
+          "test_study_005.Study005.test_aggregate": [
+            "error",
+            "(*k) for k in CASES];s=aggregate_005(cs,PLAN_)\n                                   ~~~~~~~~~~~~~^^^^^^^^^^\n  File \"/workspace/brute/experiments/brute_study_005.py\", line 256, in aggregate_005\n    o['v0.90']={'certs_all':sum(r['v090_certificate'] is not None for r in pall),\n                            ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/brute/experiments/brute_study_005.py\", line 256, in <genexpr>\n    o['v0.90']={'certs_all':sum(r['v090_certificate'] is not None for r in pall),\n                                ~^^^^^^^^^^^^^^^^^^^^\nKeyError: 'v090_certificate'\n"
+          ],
+          "test_study_005.Study005.test_deterministic": [
+            "ok",
+            null
+          ],
+          "test_study_005.Study005.test_jobs_match_plan": [
+            "ok",
+            null
+          ],
+          "test_study_005.Study005.test_reference_agrees": [
+            "error",
+            "y\", line 29, in test_reference_agrees\n    out=audit_case((case(*k),PLAN_,TAU))\n  File \"/workspace/brute/experiments/v030_independent_reference.py\", line 230, in audit_case\n    return {arm:audit_arm(c,arm,plan,tau,arm in ('A3','P3') and 'observed' in c['arms'][arm]['trace'][0]) for arm in c['arms']}\n                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/brute/experiments/v030_independent_reference.py\", line 180, in audit_arm\n    if rec['forecast_source']!='window_n4':\n       ~~~^^^^^^^^^^^^^^^^^^^\nKeyError: 'forecast_source'\n"
+          ],
+          "test_study_005.Study005.test_reference_detects_tampering": [
+            "error",
+            "                                                     ~~~~~~~~~~^^^^^^^^^^^^^^^\n  File \"/workspace/brute/experiments/v030_independent_reference.py\", line 230, in audit_case\n    return {arm:audit_arm(c,arm,plan,tau,arm in ('A3','P3') and 'observed' in c['arms'][arm]['trace'][0]) for arm in c['arms']}\n                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/brute/experiments/v030_independent_reference.py\", line 180, in audit_arm\n    if rec['forecast_source']!='window_n4':\n       ~~~^^^^^^^^^^^^^^^^^^^\nKeyError: 'forecast_source'\n"
+          ],
+          "test_study_005.Study005.test_reference_imports_no_brute": [
+            "ok",
+            null
+          ],
+          "test_syncevent.SyncEvent009.test_2x2_arms_and_reference": [
+            "ok",
+            null
+          ],
+          "test_syncevent.SyncEvent009.test_breadth_reference": [
+            "ok",
+            null
+          ],
+          "test_syncevent.SyncEvent009.test_reference_detects_certificate_flip": [
+            "ok",
+            null
+          ],
+          "test_syncevent.SyncEvent009.test_rules_differ_only_in_calm_branch": [
+            "ok",
+            null
+          ],
+          "test_tamper_by_version.TamperByVersion.test_v010": [
+            "ok",
+            null
+          ],
+          "test_tamper_by_version.TamperByVersion.test_v011": [
+            "ok",
+            null
+          ],
+          "test_tamper_by_version.TamperByVersion.test_v020": [
+            "ok",
+            null
+          ],
+          "test_tamper_by_version.TamperByVersion.test_v030": [
+            "ok",
+            null
+          ],
+          "test_v040_reference.Alarm.test_no_resume_mode_is_permanent": [
+            "ok",
+            null
+          ],
+          "test_v040_reference.Alarm.test_resume_needs_W_low_residuals_and_support": [
+            "ok",
+            null
+          ],
+          "test_v040_reference.OnSealed.test_count_and_mutation_on_a_slice": [
+            "ok",
+            null
+          ],
+          "test_v040_reference.Perm4.test_actions_are_bijections_and_one_aliased_pair": [
+            "ok",
+            null
+          ],
+          "test_v050_impl.A5EqualsA4.test_smoke_seed_trace_equal": [
+            "ok",
+            null
+          ],
+          "test_v050_impl.Breadth.test_declared_family_string": [
+            "ok",
+            null
+          ],
+          "test_v050_impl.ForcedUnknown.test_feasibility_unknown_is_budget_exhausted": [
+            "ok",
+            null
+          ],
+          "test_v050_impl.ForcedUnknown.test_tiny_budget_abstains_with_reason": [
+            "ok",
+            null
+          ],
+          "test_v050_impl.Region.test_codes_mask_equals_frozen_mask_for_s2": [
+            "ok",
+            null
+          ],
+          "test_v050_impl.Region.test_region_equals_enumeration_k3_s3": [
+            "ok",
+            null
+          ],
+          "test_v050_impl.Region.test_worlds_equal_second_implementation": [
+            "ok",
+            null
+          ],
+          "test_v050_impl.Service15.test_roundtrip": [
+            "ok",
+            null
+          ],
+          "test_v050_reference.TestGeneralisedEnumeration.test_breadth_worlds_shape": [
+            "ok",
+            null
+          ],
+          "test_v050_reference.TestGeneralisedEnumeration.test_budget_raises": [
+            "ok",
+            null
+          ],
+          "test_v050_reference.TestGeneralisedEnumeration.test_choose": [
+            "ok",
+            null
+          ],
+          "test_v050_reference.TestGeneralisedEnumeration.test_k2_s2_equals_frozen_v090_reference": [
+            "ok",
+            null
+          ],
+          "test_v060_reference.Ref060.test_last_traversals": [
+            "ok",
+            null
+          ],
+          "test_v060_reference.Ref060.test_no_brute_import": [
+            "ok",
+            null
+          ],
+          "test_v060_reference.Ref060.test_recent_union": [
+            "ok",
+            null
+          ],
+          "test_v060_reference.Ref060.test_rule": [
+            "ok",
+            null
+          ],
+          "test_v070_reference.Reference070.test_mutation_detected": [
+            "ok",
+            null
+          ],
+          "test_v080_reference.V080Reference.test_bsc7_audit_on_sealed_009_trace": [
+            "ok",
+            null
+          ],
+          "test_v080_reference.V080Reference.test_calm": [
+            "ok",
+            null
+          ],
+          "test_v080_reference.V080Reference.test_constants": [
+            "ok",
+            null
+          ],
+          "test_v080_reference.V080Reference.test_hull_contains_y1k_and_opens_on_fresh_state": [
+            "ok",
+            null
+          ],
+          "test_v080_reference.V080Reference.test_no_brute_import": [
+            "ok",
+            null
+          ],
+          "test_v080_reference.V080Reference.test_sc7_audit_on_sealed_009_traces": [
+            "ok",
+            null
+          ],
+          "test_v080_reference.V080Reference.test_score_c_not_calm_equals_lur": [
+            "ok",
+            null
+          ],
+          "test_v080_xcheck.Truncate.test_full_length_is_identity_on_counts": [
+            "ok",
+            null
+          ],
+          "test_v080_xcheck.Truncate.test_prefix": [
+            "ok",
+            null
+          ],
+          "test_v080_xcheck.Truncate.test_retraction_kept_when_contradiction_inside": [
+            "ok",
+            null
+          ],
+          "test_watchdog_010.Watchdog010.test_cap_override_refused_in_study_dir": [
+            "ok",
+            null
+          ],
+          "test_watchdog_010.Watchdog010.test_exit_on_run_done": [
+            "ok",
+            null
+          ],
+          "test_watchdog_010.Watchdog010.test_kill_at_deadline": [
+            "ok",
+            null
+          ],
+          "test_watchdog_010.Watchdog010.test_untracked_child_stream_is_killed": [
+            "ok",
+            null
+          ],
+          "test_witness_audit.WitnessAudit.test_certified_steps_have_no_witness_and_disagreements_do": [
+            "ok",
+            null
+          ],
+          "test_witness_audit.WitnessAudit.test_replay_rejects_incompatible_machine": [
+            "ok",
+            null
+          ],
+          "test_witness_audit.WitnessAudit.test_unsupported_margin_is_not_checked": [
+            "ok",
+            null
+          ],
+          "test_xcheck_sat.ModelCount.test_counts_agree": [
+            "ok",
+            null
+          ],
+          "test_xcheck_sat.XcheckSat.test_agrees_with_regionk": [
+            "ok",
+            null
+          ],
+          "test_xcheck_sat.XcheckSat.test_mask_of": [
+            "ok",
+            null
+          ],
+          "test_xcheck_sat_incremental.IncrementalEqualsFull.test_divergent_evidence_rebuilds": [
+            "ok",
+            null
+          ],
+          "test_xcheck_sat_incremental.IncrementalEqualsFull.test_random_walks": [
+            "ok",
+            null
+          ],
+          "test_xcheck_sat_incremental.IncrementalEqualsFull.test_random_walks_symmetry": [
+            "ok",
+            null
+          ]
+        },
+        "returncode": 0,
+        "skipped": [],
+        "tests_run": 294,
+        "wall_informational": 569.2
+      },
+      "pass": null
+    }
+  },
+  "passed": [
+    "G1_in_family_soundness",
+    "G2_ood_soundness",
+    "G4_public_safety",
+    "G5_false_alarm_limit",
+    "G7_open_world",
+    "G9_retraction_resume",
+    "G10_compute",
+    "G11_second_implementation",
+    "G12_reproducibility",
+    "G13_frozen_controls_reproduce",
+    "GX2_010_incremental_xcheck",
+    "GTI_test_isolation"
+  ],
+  "pending": [],
+  "plan_sha256": "88cee3d565b2872418e732e7e132c285edd887d5a7405ba84780297befd0a092",
+  "schema": "brute.gates.v8_0",
+  "scientific_sha256": {
+    "2x2": "60a4798ec9c77a8474aa7a651e2aa0519deac6fedc5180adedfe183deeda97c6",
+    "breadth": "28ee783d92c8593586d93ea4108d31b60fa943528a0ca3850b3add1bb36ca81d"
+  },
+  "smoke_dry_run": false,
+  "stop_rule_fired": false,
+  "study": "BRUTE-080-ALIGN-010",
+  "study_seal_present": true
+}

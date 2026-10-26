@@ -1,0 +1,289 @@
+{
+ "arms": [
+  "J8",
+  "SP8",
+  "SC7"
+ ],
+ "block": "2x2",
+ "breadth_steps_checked": {},
+ "events": {
+  "mandatory_done": {
+   "event": "mandatory_done",
+   "t": 1793006504.7093897,
+   "wall_since_start": 640.9
+  },
+  "mutation": {
+   "detected_injected": 20,
+   "event": "mutation",
+   "flagged_not_injected": 0,
+   "flagged_not_injected_basis": "Exact: uninjected traces asserted byte-identical",
+   "injected": 20,
+   "injected_j8": 8,
+   "injected_j8_cert_or_hull_fields": 4,
+   "injected_on_already_mismatching_trace": 0,
+   "injected_sp8": 8,
+   "injected_sp8_action": 5,
+   "passed": true,
+   "rng": "random.Random(20261026)"
+  },
+  "start": {
+   "event": "start",
+   "t": 1793005863.8359227
+  }
+ },
+ "mandatory": {
+  "mismatches": [],
+  "mismatching_traces": 0,
+  "per_arm": {
+   "J8": {
+    "audited": 216,
+    "expected": 216,
+    "mismatching": 0
+   },
+   "SC7": {
+    "audited": 216,
+    "expected": 216,
+    "mismatching": 0
+   },
+   "SP8": {
+    "audited": 216,
+    "expected": 216,
+    "mismatching": 0
+   }
+  },
+  "traces_audited": 648,
+  "traces_expected": 648,
+  "traces_not_reached": 0
+ },
+ "mandatory_complete": true,
+ "mandatory_samples_present": true,
+ "mutation_test": {
+  "details": [
+   {
+    "arm": "J8",
+    "case": "cycle3/3010002/0.1",
+    "detected": true,
+    "first_difference": "VerificationError: hull_union cycle3 3010002 0.1 J8 14 1",
+    "injected_fields": [
+     "hull_union"
+    ]
+   },
+   {
+    "arm": "J8",
+    "case": "cycle3/3010002/0.6",
+    "detected": true,
+    "first_difference": "VerificationError: logloss cycle3 3010002 0.6 J8",
+    "injected_fields": [
+     "logloss"
+    ]
+   },
+   {
+    "arm": "SC7",
+    "case": "cycle3/3010004/0.1",
+    "detected": true,
+    "first_difference": "VerificationError: decision cycle3 3010004 0.1 SC7 1 0",
+    "injected_fields": [
+     "status"
+    ]
+   },
+   {
+    "arm": "J8",
+    "case": "switch3/3020004/0.6",
+    "detected": true,
+    "first_difference": "VerificationError: decision switch3 3020004 0.6 J8 5 0",
+    "injected_fields": [
+     "certificate"
+    ]
+   },
+   {
+    "arm": "SP8",
+    "case": "switch3/3020007/0.35",
+    "detected": true,
+    "first_difference": "VerificationError: action switch3 3020007 0.35 SP8 3",
+    "injected_fields": [
+     "action"
+    ]
+   },
+   {
+    "arm": "SP8",
+    "case": "unstructured3/3030001/0.6",
+    "detected": true,
+    "first_difference": "VerificationError: action unstructured3 3030001 0.6 SP8 4",
+    "injected_fields": [
+     "action"
+    ]
+   },
+   {
+    "arm": "SP8",
+    "case": "unaliased2/3040007/0.35",
+    "detected": true,
+    "first_difference": "VerificationError: action unaliased2 3040007 0.35 SP8 2",
+    "injected_fields": [
+     "action"
+    ]
+   },
+   {
+    "arm": "SC7",
+    "case": "ood4/3050003/0.35",
+    "detected": true,
+    "first_difference": "VerificationError: action ood4 3050003 0.35 SC7 1",
+    "injected_fields": [
+     "action"
+    ]
+   },
+   {
+    "arm": "SP8",
+    "case": "ood4/3050005/0.35",
+    "detected": true,
+    "first_difference": "VerificationError: logloss ood4 3050005 0.35 SP8",
+    "injected_fields": [
+     "logloss"
+    ]
+   },
+   {
+    "arm": "SP8",
+    "case": "ood4/3050008/0.1",
+    "detected": true,
+    "first_difference": "VerificationError: decision ood4 3050008 0.1 SP8 0 0",
+    "injected_fields": [
+     "certificate"
+    ]
+   },
+   {
+    "arm": "SP8",
+    "case": "perm4/3060003/0.6",
+    "detected": true,
+    "first_difference": "VerificationError: action perm4 3060003 0.6 SP8 7",
+    "injected_fields": [
+     "action"
+    ]
+   },
+   {
+    "arm": "J8",
+    "case": "perm4/3060004/0.35",
+    "detected": true,
+    "first_difference": "VerificationError: logloss perm4 3060004 0.35 J8",
+    "injected_fields": [
+     "logloss"
+    ]
+   },
+   {
+    "arm": "SC7",
+    "case": "perm4/3060006/0.6",
+    "detected": true,
+    "first_difference": "VerificationError: decision perm4 3060006 0.6 SC7 5 1",
+    "injected_fields": [
+     "certificate"
+    ]
+   },
+   {
+    "arm": "J8",
+    "case": "ood5/3070005/0.1",
+    "detected": true,
+    "first_difference": "VerificationError: hull_union ood5 3070005 0.1 J8 3 1",
+    "injected_fields": [
+     "hull_union"
+    ]
+   },
+   {
+    "arm": "J8",
+    "case": "ood5/3070007/0.6",
+    "detected": true,
+    "first_difference": "VerificationError: action ood5 3070007 0.6 J8 4",
+    "injected_fields": [
+     "action"
+    ]
+   },
+   {
+    "arm": "J8",
+    "case": "drift4/3080003/0.6",
+    "detected": true,
+    "first_difference": "VerificationError: decision drift4 3080003 0.6 J8 1 1",
+    "injected_fields": [
+     "certificate"
+    ]
+   },
+   {
+    "arm": "SC7",
+    "case": "drift4/3080007/0.35",
+    "detected": true,
+    "first_difference": "VerificationError: decision drift4 3080007 0.35 SC7 3 0",
+    "injected_fields": [
+     "certificate"
+    ]
+   },
+   {
+    "arm": "SP8",
+    "case": "drift4/3080009/0.35",
+    "detected": true,
+    "first_difference": "VerificationError: decision drift4 3080009 0.35 SP8 1 1",
+    "injected_fields": [
+     "status"
+    ]
+   },
+   {
+    "arm": "J8",
+    "case": "drift4/3080010/0.35",
+    "detected": true,
+    "first_difference": "VerificationError: decision drift4 3080010 0.35 J8 2 1",
+    "injected_fields": [
+     "status"
+    ]
+   },
+   {
+    "arm": "SP8",
+    "case": "drift4/3080015/0.1",
+    "detected": true,
+    "first_difference": "VerificationError: action drift4 3080015 0.1 SP8 0",
+    "injected_fields": [
+     "action"
+    ]
+   }
+  ],
+  "detected_injected": 20,
+  "event": "mutation",
+  "flagged_not_injected": 0,
+  "flagged_not_injected_basis": "Exact: uninjected traces asserted byte-identical",
+  "injected": 20,
+  "injected_j8": 8,
+  "injected_j8_cert_or_hull_fields": 4,
+  "injected_on_already_mismatching_trace": 0,
+  "injected_sp8": 8,
+  "injected_sp8_action": 5,
+  "passed": true,
+  "rng": "random.Random(20261026)"
+ },
+ "rest": {
+  "mismatches": [],
+  "mismatching_traces": 0,
+  "per_arm": {
+   "J8": {
+    "audited": 139,
+    "expected": 432,
+    "mismatching": 0
+   },
+   "SC7": {
+    "audited": 139,
+    "expected": 432,
+    "mismatching": 0
+   },
+   "SP8": {
+    "audited": 139,
+    "expected": 432,
+    "mismatching": 0
+   }
+  },
+  "traces_audited": 417,
+  "traces_expected": 1296,
+  "traces_not_reached": 879
+ },
+ "rest_mismatch_fails_g11": true,
+ "results_file": "/workspace/brute/results/study-010/2x2/RESULTS.json",
+ "results_sha256": "d3424e25d2b932566a303e53f5dc6d07dc4b1f45328826d63ae1009cc3da0677",
+ "schema": "brute.second-implementation-010.v1",
+ "source_sha256": "be191c43ba4f0f188ec89cc056b705f9b9525d480f07d6f24be3a655642727a9",
+ "study": "BRUTE-080-ALIGN-010",
+ "tau6": 1.645215321642,
+ "tau7": 2.07944154168,
+ "wording": "second implementation by the same author, no brute import; not an independent or third-party audit"
+}
