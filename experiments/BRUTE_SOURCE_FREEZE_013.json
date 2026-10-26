@@ -1,0 +1,62 @@
+{
+  "also_requires": [
+    "experiments/BRUTE_SOURCE_FREEZE_002.json",
+    "experiments/BRUTE_SOURCE_FREEZE_003.json",
+    "experiments/BRUTE_SOURCE_FREEZE_004.json",
+    "experiments/BRUTE_SOURCE_FREEZE_005.json",
+    "experiments/BRUTE_SOURCE_FREEZE_006.json",
+    "experiments/BRUTE_SOURCE_FREEZE_007.json",
+    "experiments/BRUTE_SOURCE_FREEZE_008.json",
+    "experiments/BRUTE_SOURCE_FREEZE_009.json",
+    "experiments/BRUTE_SOURCE_FREEZE_010.json",
+    "experiments/BRUTE_SOURCE_FREEZE_011.json",
+    "experiments/BRUTE_SOURCE_FREEZE_012.json",
+    "experiments/BRUTE_RELEASE_FREEZE_070_R1.json",
+    "experiments/BRUTE_RELEASE_FREEZE_080.json",
+    "experiments/BRUTE_RELEASE_FREEZE_090_R1.json",
+    "experiments/BRUTE_RELEASE_FREEZE_0100.json"
+  ],
+  "deviations_in_force": [
+    52
+  ],
+  "diagnostic_commit": "e0aa431",
+  "implementation_commits": [
+    "084076a",
+    "3871e78",
+    "7dc04c8"
+  ],
+  "plan_sha256": "dfd13c0005a3b778cebb01408beb2299bab100c7a836ea0bdb80a7b1f8a4d60d",
+  "preregistration_commit": "bb1d96e",
+  "reference_commit": "eed2ada",
+  "schema": "brute.source-freeze.v1",
+  "seedcheck_commit": "780be3b",
+  "sha256_files": {
+    "brute/api/certify.py": "a84c3b133ee450edfa699dfc6af62a51632551475e0b9a4837df794604055615",
+    "brute/soundtransfer.py": "4d83f0df6bc1938c47ba610a3c52434f1a82c82d0be6e22042b55ff48c73fcdd",
+    "experiments/BRUTE_PLAN_013.json": "dfd13c0005a3b778cebb01408beb2299bab100c7a836ea0bdb80a7b1f8a4d60d",
+    "experiments/BRUTE_PLAN_FREEZE_013.json": "17815ef64271db494083c8c769d0671cf6af3414b322f9d43120d7d65c0a5f53",
+    "experiments/brute_common_013.py": "a8ab5079ae217be70d3abe33d64a0e04f8d7596a1704301b420a4c699fd0109f",
+    "experiments/brute_study_013.py": "bef9aadc2927b953af6197c3e5dbda7edc08eda7acdd90a795c76a98d0c073b1",
+    "experiments/v0110_reference.py": "6c4274bcfee9627544ca3dbf968d7bec78f8bffa177e8e7ea1078679aeb3abd6",
+    "experiments/worlds_013.py": "b9859059179fac9324a3c57027832f29d1bedc5a39c6e9de68218ad19d5c5b5e",
+    "requirements-gmc.txt": "00d73a69ffdc8dc70174cf706bbfd48db6f8f5d93f036432e0efe9029a1cdafa",
+    "requirements.txt": "53c193b76a288fd665d9c6b3391998c899ab8f88e50774d3807bdd006a4cd7a3",
+    "results/diag-013/APPLICABILITY_DIAG_SEEN.json": "c8731c0d0de8776e16acf2a354260982d727dd41b08e0fef6cfc1564755694a5",
+    "results/diag-013/SEEDCHECK_013.json": "f76cdc397ddd773d65d3c2abd5a7c42ab1c9920a24a7901f54d3956ad744fbc7",
+    "scripts/check_seeds_013.py": "76b130503720da599aa07eaa38b0bd3d5d405f802604220df6fe72dadea83fc8",
+    "scripts/diag_applicability_013.py": "7dcdfb9d9e41839930a61e5ec3a01275d5474d751555097e8cb128e4823e9ea3",
+    "scripts/make_freeze_013.py": "c217c7fdf508652ce636c3855c4a979003e986064073cfa60746eae0798d3520",
+    "scripts/run_reference_013.py": "d4ba02297255222b99986a40ee6ab50bc45988b2da18a3abcc2ff3033a82607d",
+    "scripts/run_study_013.py": "467d81894196955f6cdd11675838132c042318d522e4e1bdd37ceeb765b63420",
+    "scripts/run_tests_0110.py": "2317948af6f5c92b19d50df7b5cc071976a9a1c4bc72353da8ab4fca1f7cbaf3",
+    "scripts/seal_013.py": "99f7686296b75e0ed02662f194ef6ad626f4de40a31b9be2a53d8c9ced47ac8b",
+    "scripts/study013_storage.py": "518edfd688a7156ccba0ef175260a469c609d412e53a66423def882670c93557",
+    "scripts/watchdog_013.py": "702ad9ec2a41189a89522d8b1bd3447078730dd562fd67c62f6af5c944f32175",
+    "tests/test_api_certify_0110.py": "6dbb16d06aba66884b69d00fcfe4074d50f7364542496b6d7da6859eb2b359c0",
+    "tests/test_seeds_013.py": "ee6dae2918327c4173eaeb484d4a0717569a754bf6a36ec36f111e77ccb7d5a5",
+    "tests/test_soundtransfer_013.py": "c94cc530aa2355527a7fbaef605b25e74d790d1a6aece813e79f16bd2af3f832",
+    "tests/test_study_013.py": "c2675c3ab4655bed4885ae37ae120c880ed3d8fbae38d0ea4cdb011395f872ef"
+  },
+  "status": "frozen",
+  "study": "BRUTE-0110-SOUND-TRANSFER-013"
+}
