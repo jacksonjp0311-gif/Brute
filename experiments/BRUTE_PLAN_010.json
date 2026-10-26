@@ -1,0 +1,418 @@
+{
+ "schema": "brute.registered-plan.v1",
+ "status": "PRE-REGISTERED (frozen at the commit that adds this file; no v0.8.0 code, held-out world, seed or run exists at that commit)",
+ "study": "BRUTE-080-ALIGN-010",
+ "version_under_test": "0.8.0",
+ "parent_study": "BRUTE-070-SYNCPLAN-009 (sealed; results/study-009, tag v0.7.0, main 9ca6260)",
+ "owner_request": {
+  "recorded_at": "2026-10-26 ~04:00 EDT (America/New_York), relayed by the coordinating agent",
+  "summary": "Continue toward a general geometric reasoning system, version after version, without asking. v0.8.0 end to end: freeze this plan before any new code; (a) an enforced hard wall-clock cap (independent watchdog, STUDY_BUDGET scoring), diagnose the v0.7.0 late cap, total budget <= 2 h; (b) G11 second implementation and a cross-check that finish inside the cap (incremental CaDiCaL with symmetry + a bounded no-symmetry spot check sized from measured rates); (c) a pre-registered diagnostic of the real cause of stale post-drift false certificates; (d) a principled new arm for the G6b gap (SC7 -0.050 in study-009); keep 0 public false certificates. Never force-push, never edit frozen files, no GitHub Actions minutes, evidence labels on every claim."
+ },
+ "freeze_rule": "The commit that adds this file must be an ancestor of every v0.8.0 code file (git merge-base --is-ancestor <plan commit> <first commit of file>), in particular of: brute/jumphull.py, brute/align.py, experiments/worlds_010.py, experiments/brute_common_010.py, experiments/brute_study_010.py, experiments/v080_reference.py, experiments/v080_xcheck.py, scripts/check_seeds_010.py, scripts/diag_stale_010.py, scripts/watchdog_010.py, scripts/run_study_010.py, scripts/run_reference_010.py, scripts/run_tests_080.py, scripts/seal_010.py, scripts/make_freeze_010.py, scripts/make_gates_010.py, scripts/make_paired_010.py, scripts/make_reproducibility_010.py, scripts/verify_release_080.py, tests/test_seeds_010.py, tests/test_jumphull.py, tests/test_align.py, tests/test_v080_reference.py, tests/test_watchdog_010.py, tests/test_release_080.py. The ledger entry preregistration_010 records the sha256 of this file and of its criteria block; any later change to this file is a ledger \"deviation\" entry (docs/research/BRUTE_DEVIATIONS_010.md) and the original text is still reported.",
+ "adopted_files": {
+  "note": "No new adopted files. brute/xcheck_sat_incremental.py, experiments/v060_xcheck_incremental.py (adopted in study-009, pinned in BRUTE_PLAN_009.adopted_files) and the frozen experiments/v070_xcheck.py, experiments/v070_reference.py are IMPORTED unchanged; v0.8.0 code that needs other behaviour lives in new files."
+ },
+ "frozen_inputs_not_touched": [
+  "every file listed in any experiments/*FREEZE*.json (incl. BRUTE_SOURCE_FREEZE_009, BRUTE_RELEASE_FREEZE_070_R1)",
+  "brute/core/*",
+  "brute/region.py, brute/driftsound.py, brute/syncevent.py, brute/breadth.py, brute/resume.py, brute/active.py (imported or subclassed, never edited)",
+  "experiments/brute_study_00[5-9].py, experiments/v0[4-7]0_reference.py, experiments/v070_xcheck.py, experiments/v060_xcheck*.py, brute/xcheck_sat*.py",
+  "scripts/*_009.py, scripts/run_tests_070.py, scripts/verify_release_0[1-7]*.py and tests/test_release_0[1-7]*.py",
+  "experiments/BRUTE_PLAN_00[2-9].json",
+  "results/study-00[1-9]/* (read-only; study-009 seen data may be read for the diagnostic and development only)",
+  "tags v0.2.0 .. v0.7.0",
+  "/workspace/brute-bridge and /workspace/bgr/BGR-v0.90.0 (out of scope, not touched)"
+ ],
+ "pre_freeze_disclosure": {
+  "summary": "Before this commit the author (a) read the sealed study-009 data: GATES_009_FINAL.json, RUN_009.log, RUN_T0, STOP_009.json, the 2x2 drift4 traces of S7/SC7 (CHECKPOINT.jsonl, streamed), XCHECK_SPOT_009_CHECKPOINT.jsonl, TEST_SUITE_009_FINAL.json, and the box kernel log (dmesg, \"crng reseeded due to virtual machine fork\" events); (b) ran exploratory analyses of the sealed study-009 drift4 false certificates (Observed on SEEN data): every S7 (4/4) and SC7 (5/5) non-drift false certificate is at step d+1 after a drift step d with no event (E1/E2/E3) at d; (c) wrote an UNCOMMITTED scratch prototype (/workspace/scratch010/proto, not part of the repository) of the jump hull and of the LU-C lookahead and ran it ONLY on study-009 SMOKE seeds 2190001-2190030 (never on any range of this plan): SC7/SP8/A2 on cycle3, switch3, unstructured3, unaliased2, ood4 seeds 2190003-2190006, mask 0.35 (20 cases): mean dual coverage A2 0.206, SC7 0.144, SP8 0.190 (SP8 - A2 = -0.016; Observed, smoke, n=20, no CI); 0 false certificates; J8 coverage 0.000 on 12 in-family smoke cases (Observed); drift4 seeds 2190003-2190030 at mask 0.35: SP8 false at steps 13, 14 (one case) and 12, 23 (drift steps); SC7 false at 23, 34; J8 0 false certificates (Observed, smoke). Per-case wall time about 0.2-1.0 s for every 2x2 arm (Observed). (d) timed the frozen v070_reference audits on one study-009 case per (family, mask): S7/SC7 <= 0.6 s per trace, BSC7 0.0-13.7 s per trace (Observed); the study-009 g11 stream (9229 s, no output) was therefore dominated by the P7 planning audit, not by S7/SC7 (Inferred). These observations motivated the arm choice (SP8) and the budgets; no rule constant was tuned (every constant below is a frozen study-009 constant). Held-out seeds of this plan were never generated.",
+  "late_cap_diagnosis": {
+   "observed": "RUN_T0 20:04:06 EDT, cap 23:04:06 EDT; RUN_009.log \"3 h CAP reached\" 23:22:42 EDT (18 min 36 s late); the frozen orchestrator checks the deadline every ~2 s; no repository file changed between about 22:41 and 23:22 EDT; the kernel log has 46 \"crng reseeded due to virtual machine fork\" events (VM snapshot/fork resumes) over the box uptime; their mapping to wall time is unreliable because the guest monotonic clock can stop while the VM is paused (Observed).",
+   "inferred": "The box (VM) was paused or snapshotted across the deadline while no agent was actively monitoring, and every process, the orchestrator included, resumed at about 23:22 and then acted at once. A watchdog inside the same VM cannot fire during a VM pause. (Inferred, not proven.)",
+   "fix": "(1) an independent watchdog process (scripts/watchdog_010.py, own session) that kills every study process group at the deadline and records its own kill latency; (2) a heartbeat file written every 2 s by the watchdog (wall and monotonic time); a wall-clock gap > 10 s is recorded as a suspected suspension; (3) the cap is ALSO enforced at scoring: a stream whose completion wall time is after the deadline is STUDY_BUDGET even if it produced output; (4) the operator monitors the run actively (blocking waits of <= 4.5 min) so the session is not idle; (5) a smoke kill drill measures the watchdog latency before the held-out run."
+  }
+ },
+ "hypotheses": {
+  "H_d": "SP8 (the SC7 certification rule with the ALIGNED lookahead LU-C) closes the G6b gap: pooled in_family_original_2x2 dual coverage SP8 - A2 >= -0.03 with 95% CI lower bound >= -0.05. Rationale (Inferred): SC7 certifies a single-support code in calm steps without Y1k (\"tracked-calm\") but chooses actions with LU-R, which counts only Y1k-certifiable branches; LU-C counts exactly what the SC7 rule would certify at t+1 (calm: single support + margin agreement as A2/LU; not calm: LU-R), so the action policy and the certification rule are aligned. Prediction: Open / borderline (smoke -0.016, n=20, Observed; study-009 SC7 -0.050).",
+  "H_c": "(diagnostic, gated as GD) Stale post-drift false certificates are a MODEL-CLASS violation, not a late alarm: after a silent jump at step d (an observation at d that is masked or unsurprising, so no event can fire at d), the no-jump region excludes the true (machine, path) and the surviving hypotheses agree on a wrong code at d+1; the jump is information-theoretically undetectable before the forecast for d+1 is issued. Testable prediction: >= 0.8 of the non-drift false certificates of SC7 and SP8 (pooled, taken and counterfactual) on held-out drift4 are at step d+1 for a drift step d with NO event at d.",
+  "H_j": "(price of silent-jump safety) J8 = S7 certification AND the jump-hull union Y1kJ == {c} (brute/jumphull.py: the region with the last transition x[T-1] -> x[T] removed, so the hidden state may have jumped to any state before observation T). Exact by construction (to be unit-tested): Y1k is a subset of Y1kJ, and if the true machine is within the bound and the ONLY violation of the stationary model is one jump just before the last observation, the true next code is in Y1kJ. Inferred consequence: while fewer states are visited than the bound, a jump into a fresh state is consistent and Y1kJ is all codes, so J8 certifies almost nothing. Prediction: J8 passes G3-prime (0 non-drift false) and FAILS G6b with pooled coverage <= 0.02 (Observed 0.000 on 12 smoke cases).",
+  "H_a": "(harness) Every held-out stream finishes within the 2 h cap under an independent watchdog; a smoke kill drill shows watchdog kill latency <= 15 s.",
+  "H_b": "(verification) The second implementation (enumeration rows, no brute import) re-derives every field of J8, SP8, SC7 on a pre-registered mandatory sample and BSC7, BSP8 on a breadth sample with 0 mismatches inside its budget; the symmetric incremental CaDiCaL harness re-derives B5 and BSC7 on all breadth cases; a bounded no-symmetry spot check (prefix of 24 steps) completes."
+ },
+ "heldout_ranges_2x2": {
+  "cycle3": [
+   3010001,
+   3010024
+  ],
+  "switch3": [
+   3020001,
+   3020024
+  ],
+  "unstructured3": [
+   3030001,
+   3030024
+  ],
+  "unaliased2": [
+   3040001,
+   3040024
+  ],
+  "ood4": [
+   3050001,
+   3050024
+  ],
+  "perm4": [
+   3060001,
+   3060024
+  ],
+  "ood5": [
+   3070001,
+   3070024
+  ],
+  "drift4": [
+   3080001,
+   3080048
+  ]
+ },
+ "heldout_ranges_breadth": {
+  "big6": [
+   3110001,
+   3110024
+  ],
+  "sens3": [
+   3120001,
+   3120024
+  ],
+  "act3": [
+   3130001,
+   3130024
+  ],
+  "ood6s3": [
+   3140001,
+   3140024
+  ]
+ },
+ "smoke_seeds": {
+  "range": [
+   3190001,
+   3190030
+  ],
+  "rule": "smoke/debug runs of v0.8.0 code may use ONLY seeds 3190001-3190030 (any generator) or the study-009 smoke seeds 2190001-2190030; held-out seeds are never generated, simulated or inspected before run_start of the held-out run. Sealed study-009 data may be used for the diagnostic replay and for development, never as v0.8.0 evidence."
+ },
+ "heldout_note": "All v0.8.0 ranges (3010001-3190030) are disjoint from every earlier range (all <= 2190030); scripts/check_seeds_010.py asserts this from the parsed plans. drift4 stays doubled (48 seeds, 144 cases) because G3-prime non-drift is zero-tolerance.",
+ "seed_assertion_plan": {
+  "script": "scripts/check_seeds_010.py (committed after this plan and before ANY v0.8.0 run including smoke)",
+  "asserts": [
+   "pairwise disjointness of all v0.8.0 ranges (held-out 2x2, held-out breadth, smoke); samples are subsets of the held-out blocks",
+   "disjointness from every range in experiments/PLAN.json and experiments/BRUTE_PLAN_00[2-9].json (parsed, not hard-coded) plus 901-903 and 1591001-1591384",
+   "the runner (experiments/brute_study_010.py) refuses any seed outside the declared range of the requested block; smoke mode refuses any seed outside the smoke ranges"
+  ],
+  "order": "run and ledgered (seedcheck_010) before the first smoke run; tests/test_seeds_010.py repeats the assertions"
+ },
+ "samples": {
+  "g11_mandatory_2x2": "arms J8, SP8, SC7: seeds with offset 1..8 from the start of each 2x2 family range (drift4: offsets 1..16), all three masks: 8 x 7 x 3 + 16 x 3 = 216 cases",
+  "g11_mandatory_breadth": "arms BSC7, BSP8: seeds with offset 1..6 of each breadth family, all three masks: 72 cases",
+  "g11_rest": "every other 2x2 case (J8, SP8, SC7) and breadth case (BSC7, BSP8) is audited best effort after the mandatory sample, inside the stream budget; audited rest traces count (a mismatch there also fails G11); rest traces not reached are reported, not failed",
+  "gx2_spot": "random.Random(20261028), drawn in the order act3 then sens3: 3 of the 72 held-out cases of each family (ascending (seed, mask) after drawing); arm B5; steps 1..24 only (prefix check). Drawn by scripts/check_seeds_010.py and written to results/study-010/SPOT_SAMPLE_010.json before run_start. big6 and ood6s3 are excluded because a single no-symmetry big6 case took 1386 s in study-009 (Observed); this is a sizing decision from measured rates, disclosed.",
+  "repro": "every case whose run index (0-based, block order) is divisible by 3, blocks 2x2 and breadth"
+ },
+ "ledger_rule": "Append-only scripts/append_ledger.py. Required events in order: preregistration_010 (this file, sha256 + criteria sha256), seedcheck_010, diagnostic_010 (the replay of the GD classifier on sealed study-009 data, before any smoke run), second_implementation_010, smoke runs (run_start/run_end with ISO EDT time, block and exact seed set; the kill drill is a smoke run), source_freeze_010, scoring_freeze_010 (>= 10 min before run_start), run_start_010 / run_end_010, stop_010 (only if the watchdog or the stop rule fires), seal_010, gates_010, release_080. A run without a run_start entry is not evidence. Deviations get a deviation_010 entry before the affected run.",
+ "in_family_original_2x2": [
+  "cycle3",
+  "switch3",
+  "unstructured3",
+  "unaliased2",
+  "ood4"
+ ],
+ "in_family_2x2": [
+  "cycle3",
+  "switch3",
+  "unstructured3",
+  "unaliased2",
+  "ood4",
+  "perm4"
+ ],
+ "out_of_family_2x2": [
+  "ood5",
+  "drift4"
+ ],
+ "in_family_breadth": [
+  "big6",
+  "sens3",
+  "act3"
+ ],
+ "out_of_family_breadth": [
+  "ood6s3"
+ ],
+ "mask_rates": [
+  0.1,
+  0.35,
+  0.6
+ ],
+ "actions_per_case_2x2": 44,
+ "actions_per_case_breadth": 64,
+ "burn_in": 8,
+ "tau6": {
+  "value": 1.645215321642,
+  "source": "results/study-006/CALIBRATION_006.json, unchanged"
+ },
+ "tau7": {
+  "value": 2.07944154168,
+  "source": "results/study-007/CALIBRATION_007.json, unchanged (no recalibration in study-010)"
+ },
+ "window_W": 8,
+ "event_triggers": {
+  "E1": "v0.6.0 event, unchanged: after observing step u, residual (mean of the last W=8 surprises, 12 d.p.) > tau x 0.5, or a window-tier event (as brute/driftsound._note_event)",
+  "E2": "falsified certificate: the forecast for the taken action at step u carried a conditional certificate c and the observation at u is incompatible with c (bit c not in the observation mask). Constant-free.",
+  "E3": "single-step surprise: s_u = -ln compatible_mass(published probabilities for u, observation u) > tau (tau6 for 2x2, tau7 for breadth; the frozen ALARM threshold applied to one step instead of the window mean). No new constant. Exact: tau6 = 1.645215 > ln 4 = 1.386294 and tau7 = 2.07944154168 > ln 8 = 2.07944154167984 (margin ~2e-13), so a forecast spread uniformly over all codes never triggers E3; E3 needs the realised observation to have had probability < e^-tau (0.1930 for 2x2, 0.1250 for 8 codes).",
+  "note": "Inferred: when the published forecast is a certified one, E2 implies E3 (the falsified code carried >= 1-3eps/4 mass, so the compatible mass is <= 3 x eps/4 = 0.015, s >= 4.2 > tau6); E2 is kept as an explicit, constant-free trigger and each event records which triggers fired. Alarms (F4 RESIDUAL_SURPRISE), resume, probabilities and LU-R are NOT changed by E2/E3."
+ },
+ "drift_definition": "study-004/005/007/008 definition, unchanged: a drift4 false certificate (taken or counterfactual action, conditional or public) is NON-DRIFT iff it is at a step after the first drift step (step > 12) with step not in {12,23,34} (the drift steps). Drift indices of the frozen drift4 generator: 12, 23, 34.",
+ "world_generators": "The frozen study-008/009 generators (experiments/worlds_009.py re-exporting worlds_008) imported unchanged; experiments/worlds_010.py may only re-export them with the new seed ranges.",
+ "arms": {
+  "J8": "brute.jumphull.JumpSyncLearner: the frozen SyncEventLearner(rule=\"RO\") (S7) whose certificate is kept only if ALSO the jump-hull union Y1kJ(action, mask of the last observation) == {c} (\"+hull\" appended to cert_rule; else ABSTAIN / RESYNC_AMBIGUOUS, cert_rule \"hull-downgraded\"). Y1kJ is the Y1k formula on JumpRegionK: RegionK (same variables, symmetry and bound) with the transition constraint into the LAST observation removed and that transition not counted as a traversal (Tr ranges over t < T-1). Action policy LU-R (unchanged). Every step records hull unions for both actions while the family is supported (trace field hull_union, GD (ii)).",
+  "SP8": "brute.align.AlignedSyncLearner: the frozen SyncEventLearner(rule=\"CTR\") (SC7 certification unchanged) with the action policy LU-C: for each action a and each code c in the support, N(a,c) = number of actions b such that, after the hypothetical full observation (a,c): family support for b is a single code s, the extended region is feasible and not saturated, the margin support for b equals s, and EITHER step t+1 is calm (no event u with (t+1) - u < W, and t+1 >= burn_in; the condition under which SC7 would certify s via \"tracked-calm\") OR Y1k of the extended region for b with mask {c} equals s (the LU-R condition). Score(a) = mean over c of N(a,c); ties -> passive action (as LU-R). Any solver budget hit -> 0 for that branch (as LU-R).",
+  "SC7": "frozen brute.syncevent.SyncEventLearner(rule=\"CTR\") through the frozen study-009 trajectory code (comparator; SP8 - SC7 paired difference reported)",
+  "A4": "frozen brute.resume.ResumeBruteLearner (v0.4.0) through the frozen study-006 trajectory code; v0.90 control for G3-prime",
+  "A2": "frozen brute.active.ActiveBruteLearner (v0.2.0, tau 1.4331), slim trace; G6b baseline",
+  "B5": "frozen v0.5.0 BreadthBruteLearner (LU-R) through the frozen study-007 trajectory code; GX2 subject",
+  "BSC7": "frozen brute.syncevent.BreadthSyncEventLearner(rule=\"CTR\") through the frozen study-009 breadth trajectory code; GX2 subject; BSP8 comparator",
+  "BSP8": "brute.align.AlignedBreadthSyncLearner: BSC7 certification unchanged, action policy LU-C on k actions (as SP8, Y1k with the code mask 1<<c, tau7 events)"
+ },
+ "arms_by_block": {
+  "2x2": [
+   "J8",
+   "SP8",
+   "SC7",
+   "A4",
+   "A2"
+  ],
+  "breadth": [
+   "B5",
+   "BSC7",
+   "BSP8"
+  ]
+ },
+ "dropped_from_study_009": "R6, C6, S7, A5 (2x2), BS7 (breadth) and the planning block P7/GP1 are not rerun: they were scored in study-009 and nothing in v0.8.0 changes them; the planning block was the largest runtime item (P7 3961 s CPU, g11 P7 audit unfinished) and GP1 failed clause (i) there (Exact, GATES_009_FINAL). Disclosed; no claim about them is made by study-010.",
+ "rule_constants_frozen": {
+  "surprise_fraction": 0.5,
+  "recency_window": 8,
+  "E3_threshold": "tau (tau6 / tau7), no new constant",
+  "note": "No constant of J8/SP8/BSP8 is new or tuned: surprise_fraction 0.5, recency_window 8, burn_in 8, tau6, tau7 are the frozen study-009 values; LU-C introduces no constant."
+ },
+ "default_policy_rule": "No auto-promotion: the release default stays the v0.5.0 rule (Y1k, LU-R) regardless of outcome. A rule passing GA1 becomes a candidate default only after an owner decision AND a fresh held-out replication.",
+ "xcheck_backend": {
+  "symmetric": "the frozen experiments/v070_xcheck.py (incremental CaDiCaL second encoding, symmetry=True) driven by experiments/v080_xcheck.py with --plan experiments/BRUTE_PLAN_010.json, arms B5 and BSC7 only (BSP8 changes the action policy, which v070_xcheck does not encode; BSP8 is covered by G11 on its sample - disclosed)",
+  "spot": "the same harness with --no-symmetry on SPOT_SAMPLE_010 (B5), restricted to steps 1..24 by experiments/v080_xcheck.py (traces truncated to 24 steps with the plan copy actions_per_case_breadth = 24; a truncated trace is a prefix of the recorded trace, Exact)",
+  "budget": "2,000,000 conflicts per solve call (unchanged); a query over budget makes the step UNCHECKED",
+  "independence_caveat": "same author; symmetric pass shares RegionK first-visit symmetry idea (as study-009); never called independent"
+ },
+ "second_implementation": {
+  "file": "experiments/v080_reference.py (same author, no brute import, committed before any v0.8.0 brute/ file)",
+  "method": "the frozen v070_reference audits (imported, unchanged) extended in the new file: J8 = the S7 audit plus the jump-row hull: rows after observations 0..T-1 (ref_observe), then a JUMP step in which every row moves to any target state < min(N, n_states_of_row + 1) whose output set meets the codes of observation T (paths unchanged, a new state gets unknown edges), and y1k_union over those rows == {c}; SP8 = the SC7 audit with the LU-C score recomputed by enumeration (calm test from the reference event list); BSP8 = the BSC7 audit with LU-C on k actions. hull_union fields are audited too.",
+  "checkpoint": "every audited trace is appended to a checkpoint; a stop leaves partial evidence (study-009 lesson, D22)"
+ },
+ "diagnostic_GD": {
+  "gated": true,
+  "script": "scripts/diag_stale_010.py",
+  "replay": "before any smoke run the classifier is run on the sealed study-009 S7/SC7 drift4 traces (seen data, Observed, ledger diagnostic_010); it cannot change any rule",
+  "quantities": [
+   "for every non-drift false certificate (taken and counterfactual) of SC7 and SP8 on held-out drift4: the last drift step d < step, whether step == d+1, and whether any event (E1/E2/E3, diagnostics.event_triggers) fired at d",
+   "for J8: at step 13 (d+1 for the first drift d=12) of every drift4 case whose family status is supported after observation 12, whether the realized code of each action is in the recorded hull_union for that action; and the number of such steps where hull_union is not all codes (non-vacuity, reported)"
+  ]
+ },
+ "criteria": {
+  "GA1_010_align_drift_and_coverage": {
+   "gated": true,
+   "threshold": "PASS iff for at least ONE arm X in {SP8, J8}: G1(X), G2(X), G3_prime(X) and G6b(X) all PASS on the same held-out run. Both arms are reported.",
+   "prediction": "Inferred: FAIL (J8 fails G6b by construction-level coverage loss; SP8 is expected to fail G3-prime because silent jumps remain undetectable, H_c)."
+  },
+  "G1_in_family_soundness": {
+   "gated": true,
+   "threshold": "J8, SP8, SC7 (2x2) and B5, BSC7, BSP8 (breadth): 0 false conditional and 0 false public certificates on every in-family case of their block; all steps incl. burn-in, every action",
+   "prediction": "Inferred: PASS (SC7/BSC7 0 in study-009; SP8/BSP8 change actions only; J8 certifies a subset of S7)."
+  },
+  "G2_ood_soundness": {
+   "gated": true,
+   "threshold": "J8, SP8, SC7: 0 false conditional certificates on ood5; B5, BSC7, BSP8: 0 on ood6s3; all steps, every action",
+   "prediction": "Inferred: PASS with risk for SP8/BSP8 (different action sequences reach different evidence)."
+  },
+  "G3_prime_drift4": {
+   "gated": true,
+   "threshold": "for J8 and SP8 separately (SC7 reported): taken action on the 144 drift4 cases: non-drift false certificates = 0 AND total false certificates <= 0.5 x the v0.90 control false certificates of A4 on the same cases (unchanged definition)",
+   "prediction": "Inferred: J8 PASS; SP8 FAIL."
+  },
+  "G6b_coverage_vs_v020": {
+   "gated": true,
+   "threshold": "for J8 and SP8 separately: pooled in_family_original_2x2 dual coverage X - A2 >= -0.03 AND 95% CI lower bound >= -0.05 (unchanged)",
+   "prediction": "Inferred: J8 FAIL (about -0.20); SP8 Open/borderline (point estimate about -0.02 to -0.04)."
+  },
+  "GD_stale_cause_diagnostic": {
+   "gated": true,
+   "threshold": "PASS iff BOTH: (i) among the non-drift false certificates of SC7 and SP8 pooled on held-out drift4 (taken and counterfactual), the fraction at step d+1 with no event at d is >= 0.8, provided there are >= 3 such certificates; with fewer than 3 the clause is NOT EVALUABLE and GD is scored FAIL (reason INSUFFICIENT_EVENTS) - an untestable prediction does not pass; (ii) J8 hull containment at step 13 has 0 exceptions (every realized code is in the recorded hull_union whenever the family is supported after observation 12).",
+   "prediction": "Inferred: PASS (seen data: 9/9 at d+1 with no event at d; (ii) is Exact by construction if the code is right, and is likely vacuous-ish because the hull is often all codes - non-vacuity reported)."
+  },
+  "G4_public_safety": {
+   "gated": true,
+   "threshold": "J8, SP8, SC7, B5, BSC7, BSP8: 0 public certificates on ood5, drift4 and ood6s3; 0 wrong public certificates anywhere; no public certificate after the first alarm of a session",
+   "prediction": "Inferred: PASS."
+  },
+  "G5_false_alarm_limit": {
+   "gated": true,
+   "threshold": "unchanged: for EACH arm J8, SP8, BSP8 and EACH in-family family of its block: fraction of cases with >= 1 RESIDUAL_SURPRISE alarm <= 0.05",
+   "prediction": "Inferred: PASS; perm4 Open (shared tau6 alarm; 0/72 in study-009)."
+  },
+  "G7_open_world": {
+   "gated": true,
+   "threshold": "mean post-burn-in taken-action log-loss: J8, SP8 <= ln 4 on ood5 and drift4; BSP8 <= ln 8 on ood6s3; min probability >= eps/m everywhere (0.005 for 2x2, 0.0025 for 8 codes)",
+   "prediction": "Inferred: PASS."
+  },
+  "G9_retraction_resume": {
+   "gated": true,
+   "threshold": "every resume (J8, SP8, BSP8) only after W=8 consecutive residuals <= tau with family and margin supported; no certified RESYNC_AMBIGUOUS forecast; retractions only at contradiction",
+   "prediction": "Inferred: PASS."
+  },
+  "G10_compute": {
+   "gated": true,
+   "threshold": "every case of every block completes; production arms (J8, SP8, BSP8): forecasts with solver_unknown > 0 <= 1% per block",
+   "prediction": "Inferred: PASS."
+  },
+  "G11_second_implementation": {
+   "gated": true,
+   "threshold": "experiments/v080_reference.py audits (i) EVERY trace of the mandatory samples (g11_mandatory_2x2: J8, SP8, SC7; g11_mandatory_breadth: BSC7, BSP8) with 0 mismatching traces; (ii) every audited rest trace with 0 mismatches; (iii) mutation test: 20 injected single-field errors in 20 distinct mandatory traces (random.Random(20261026); >= 4 in J8 certificate/hull fields and >= 4 in SP8 action choices) detected 20/20; (iv) the mandatory audits finish inside the g11 stream budgets. Labelled \"second implementation by the same author\".",
+   "prediction": "Inferred: PASS (S7/SC7 audits <= 0.6 s per trace, Observed pre-freeze)."
+  },
+  "GX2_010_incremental_xcheck": {
+   "gated": true,
+   "threshold": "PASS iff ALL of: (i) the symmetric harness re-derives every decision-level field of B5 and BSC7 at every step of every held-out breadth case with 0 mismatching checked steps and 0 failed witness replays; (ii) checked fraction >= 0.99 for EACH breadth family and EACH of B5, BSC7; (iii) the symmetric pass finishes inside its stream budget; (iv) no-symmetry spot check (SPOT_SAMPLE_010, steps 1..24): 0 mismatching checked steps, 0 failed replays, and >= 64 checked steps in EACH of act3 and sens3.",
+   "prediction": "Inferred: PASS (study-009 symmetric 316 s for 3 arms; act3/sens3 no-symmetry cases finished in study-009)."
+  },
+  "G12_reproducibility": {
+   "gated": true,
+   "threshold": "a second run of every case whose run index is divisible by 3 (2x2 and breadth) to a new path gives byte-identical scientific JSON (timing keys stripped)",
+   "prediction": "Inferred: PASS."
+  },
+  "G13_frozen_controls_reproduce": {
+   "gated": true,
+   "threshold": "SC7, A4, A2, B5, BSC7 run the frozen code (sha256 checked against BRUTE_SOURCE_FREEZE_00[5-9] and BRUTE_RELEASE_FREEZE_070_R1 before run_start); tau6, tau7 equal this plan",
+   "prediction": "Inferred: PASS."
+  },
+  "GTI_test_isolation": {
+   "gated": true,
+   "threshold": "scripts/run_tests_080.py (the run_tests_070 method: every tests/test*.py module in its own fresh interpreter, pinned venv) on the frozen v0.8.0 tree, run INSIDE the cap, writing results/study-010/TEST_SUITE_010.json. PASS iff: (i) every failing or erroring test id is in known_failing_allowed (the 14 study-009 K_frozen ids) or allowed by K_060_rule or K_070_rule; (ii) the 6 tests of test_study_005 pass; (iii) per-module test count equals the plain `unittest discover -s tests` count and skipped sets agree; (iv) no frozen file changed; (v) every new v0.8.0 test passes.",
+   "known_failing_allowed": [
+    "test_brute_repro.BruteRepro.test_verify_fails_under_tampered_results",
+    "test_release_011.ReleaseV011.test_fast_verify_passes",
+    "test_release_020.ReleaseV020.test_fast_verify_passes",
+    "test_release_030.ReleaseV030.test_fast_verify_passes",
+    "test_release_040.ReleaseVersioned.test_fast_verify_passes",
+    "test_release_040.ReleaseVersioned.test_git_order",
+    "test_release_040.ReleaseVersioned.test_tampered_copies_fail",
+    "test_release_040.ReleaseVersioned.test_untampered_copy_passes",
+    "test_release_040.ReleaseVersioned.test_version_consistent",
+    "test_release_050.ReleaseVersioned.test_fast_verify_passes",
+    "test_release_050.ReleaseVersioned.test_git_order",
+    "test_release_050.ReleaseVersioned.test_tampered_copies_fail",
+    "test_release_050.ReleaseVersioned.test_untampered_copy_passes",
+    "test_release_050.ReleaseVersioned.test_version_consistent"
+   ],
+   "K_060_rule": "a test of tests/test_release_060.py may fail ONLY if it is in {test_version_consistent, test_fast_verify_passes, test_untampered_copy_passes} AND it passes on a clean worktree of tag v0.6.0 with the same runner (run and recorded in TEST_SUITE_010.json); any other test_release_060 failure fails GTI",
+   "K_070_rule": "a test of tests/test_release_070.py may fail ONLY if it is in {test_version_consistent, test_fast_verify_passes, test_untampered_copy_passes} AND it passes on a clean worktree of tag v0.7.0 with the same runner (recorded in TEST_SUITE_010.json)",
+   "prediction": "Inferred: PASS (study-009 final-tree run passed every clause, Observed post-cap)."
+  },
+  "G_RT_study_runtime": {
+   "gated": true,
+   "threshold": "PASS iff ALL of: (i) every held-out stream (2x2, breadth, gx2_sym, gx2_spot, g11_2x2, g11_breadth, repro_2x2, repro_breadth, gti) records completion at a wall time <= RUN_T0 + 7200 s; (ii) the watchdog ran for the whole run (heartbeat file present from <= RUN_T0 + 60 s to the end of the run or the deadline); (iii) the smoke kill drill measured watchdog kill latency <= 15 s. The maximum heartbeat gap and every gap > 10 s are reported (suspected VM suspension; they count against the cap and are not excluded).",
+   "prediction": "Inferred: PASS."
+  }
+ },
+ "metrics": {
+  "false_certificates": "certificate on (step, action) whose code differs from the realized code of that action (counterfactual actions evaluated on the world copy)",
+  "coverage": "dual coverage as in study-006/007/008 (fraction of post-burn-in (step, action) pairs with a conditional certificate)",
+  "steps_to_cert": "T_cert(case) = the first step t (1..44) whose taken-action forecast carries a conditional certificate; 45 if none (censored, included)",
+  "event_lag": "as study-009 diagnostic_a0 (E1/E2/E3 lag in steps after a drift step)",
+  "xcheck_checked_fraction": "checked steps / all steps per breadth family per arm",
+  "xcheck_mismatch": "any decision-level field differing at a checked step",
+  "hull_containment": "GD (ii): realized code in hull_union at step 13 of drift4 when the family is supported after observation 12",
+  "stale_class": "GD (i): non-drift false certificate at step d+1 with no event at d"
+ },
+ "scoring": {
+  "soundness_counts": "all steps incl. burn-in, every action (taken and counterfactual)",
+  "coverage_logloss_alarm_rates": "post-burn-in steps only",
+  "loss": "-ln max(1e-12, p[actual]) on the full code",
+  "bootstrap": "seed-clustered paired bootstrap (each seed = its 3 mask cases), 2000 resamples, numpy default_rng(20261026), percentile 2.5/97.5 (95%)"
+ },
+ "stop_rule": {
+  "cap": "2 h 00 min (7200 s) wall clock from RUN_T0 (the epoch written with the run_start_010 ledger entry); smoke, seed check, diagnostic replay and plan steps are outside the cap",
+  "streams_and_budgets": "2x2 (J8, SP8, SC7, A4, A2) 3 workers 1500 s; breadth (B5, BSC7, BSP8) 3 workers 2400 s; gti 2 workers 2400 s (starts at t0); g11_2x2 2 workers 1500 s (after 2x2); repro_2x2 2 workers 900 s (after 2x2); gx2_sym 2 workers 1200 s (after breadth); gx2_spot 1 worker 1200 s (after breadth); g11_breadth 2 workers 1500 s (after breadth); repro_breadth 2 workers 1500 s (after breadth); at most 8 worker processes at once (the watchdog and orchestrator are not counted)",
+  "projection": "at RUN_T0 + 360 s (5% of the cap) the orchestrator writes PROGRESS_010.json: cases done per stream, rate, projected finish of 2x2 and breadth; the operator reads it. Pre-registered cut: if the projected breadth finish exceeds RUN_T0 + 3600 s, the operator stops nothing and changes nothing (stream budgets already bound every stream); the projection is reported. No design, seed or threshold change follows from it.",
+  "watchdog": "scripts/watchdog_010.py is started by the operator (nohup, own session) right after RUN_T0 is written; it writes HEARTBEAT_010.jsonl every 2 s and at RUN_T0 + 7200 s sends SIGTERM to the orchestrator and to every stream process group listed in RUN_STATE_010.json, then SIGKILL after 20 s, writes STOP_010.json with the kill wall time and latency; the orchestrator also enforces the cap itself",
+  "at_cap": "every unfinished stream is stopped; its checkpoint is sealed as it is (outside the cap, by the operator, with the frozen seal tools; sealing does not add evidence); ledger stop_010; NO extension and NO rerun",
+  "scoring": "every gate whose inputs are incomplete at the cap or whose stream completed after RUN_T0 + 7200 s (wall time recorded by the orchestrator or, if absent, the output file mtime) is FAIL (reason STUDY_BUDGET); G_RT is then FAIL"
+ },
+ "non_gated_reports": {
+  "R_diag_replay_009": "GD classifier on sealed study-009 S7/SC7 drift4 traces (Observed on seen data)",
+  "R_SP8_vs_SC7": "SP8 - SC7 paired coverage (in_family_original_2x2) and drift4 false-cert difference",
+  "R_BSP8_vs_BSC7": "BSP8 - BSC7 paired breadth in-family coverage with CI",
+  "R_J8_coverage": "J8 coverage per family and the fraction of steps with hull_union = all codes",
+  "R_drift_detail": "every drift4 false certificate (arm, seed, mask, step, steps after drift, event at d)",
+  "R_heartbeat": "heartbeat gaps (max, count > 10 s)",
+  "R_rates": "per-stream measured rates vs budgets",
+  "R_tests_plain": "plain unittest discover result"
+ },
+ "what_counts_as_failure": [
+  "any gated criterion not meeting its threshold is FAIL and is published as FAIL in GATES_010.json, README, CHANGELOG, RELEASE.json and the release notes with the same wording",
+  "GA1_010 FAIL means the drift-and-coverage target is NOT met even if G3-prime and G6b are each passed by a DIFFERENT arm",
+  "a smoke or seen-data observation never softens a FAIL",
+  "any gate with inputs incomplete at the cap, or completed after it, is FAIL (stop_rule)",
+  "a missing run_start ledger entry, a seed outside its declared range, a frozen-file hash mismatch, or a smoke run on a non-smoke seed invalidates the affected run (reported, not silently rerun)",
+  "no re-run, re-seed, threshold change or rule-constant change after the held-out run_start; reruns only for an infrastructure crash with identical code and seeds, ledgered as deviation and still inside the cap"
+ ],
+ "power_and_sample": {
+  "2x2": "6 in-family families x 24 seeds x 3 masks = 432 cases; ood5 72; drift4 144 cases (48 seeds) x 44 steps x 2 actions",
+  "breadth": "4 families x 24 seeds x 3 masks = 288 cases x 64 steps",
+  "G6b": "paired seed-clustered bootstrap with 120 in_family_original seeds; CI half-width about 0.02 (Inferred from study-009)",
+  "G3_prime": "zero-tolerance; 432 drift events",
+  "GD": "study-009 had 4 (S7) and 5 (SC7) non-drift false certificates on 144 drift4 cases, so >= 3 events is likely but not certain (Open)"
+ },
+ "process_controls": {
+  "order": [
+   "(1) this plan committed + ledger preregistration_010 (plan sha256, criteria sha256) on branch plan/v0.8.0; pushed",
+   "(2) scripts/check_seeds_010.py + tests/test_seeds_010.py committed; run (incl. the spot sample draw); ledger seedcheck_010",
+   "(3) scripts/diag_stale_010.py committed; replay on sealed study-009 traces; ledger diagnostic_010",
+   "(4) experiments/v080_reference.py committed; ledger second_implementation_010",
+   "(5) brute/jumphull.py, brute/align.py, experiments/v080_xcheck.py, study runner, watchdog, orchestrator, run_tests_080 and tests; smoke runs only on smoke seeds incl. the kill drill, each ledgered",
+   "(6) source freeze experiments/BRUTE_SOURCE_FREEZE_010.json + ledger source_freeze_010",
+   "(7) scoring scripts (make_gates_010, make_paired_010, make_reproducibility_010) committed and ledgered >= 10 min before run_start",
+   "(8) nohup orchestrator + independent watchdog under the 2 h stop rule; operator monitors actively",
+   "(9) seal + ledger seal_010",
+   "(10) scoring, GATES_010.json + ledger gates_010",
+   "(11) verify_release_080 + tests/test_release_080 + release freeze BRUTE_RELEASE_FREEZE_080; HANDOFF/README/CHANGELOG; merge to main (fast-forward preferred), tag v0.8.0, GitHub release (owner standing instruction relayed by the coordinating agent)"
+  ],
+  "dependencies": "numpy==2.5.4, python-sat==1.9.dev17 (Python 3.13.5), pyganak==2.8.0, pyapproxmc==4.4.0 (as study-008); every run uses the pinned venv (the system python3 on the box lacks python-sat, Observed pre-freeze)",
+  "times": "commit and ledger times are author-set and reported as such",
+  "push": "push to origin after every step; never force-push; no GitHub Actions"
+ },
+ "deviation_policy": "after freeze, any change is a ledger \"deviation_010\" entry with its reason in docs/research/BRUTE_DEVIATIONS_010.md before the affected run; the original criterion is still reported. Deviation numbers CONTINUE the project-wide numbering (study-009 ended at 26, so study-010 starts at 27). Study-010 held-out seeds are never used to tune v0.8.0; failed gates are published as failed.",
+ "carried_defects": {
+  "v050_tamper": "tests/test_release_050.py::test_tampered_copies_fail and related frozen version checks stay as recorded (Exact; frozen in BRUTE_RELEASE_FREEZE_050); not edited",
+  "test_study_005_order": "experiments/brute_study_006.py line 39 sets S5.FULL at import, so test_study_005 errors when it runs after a module importing brute_study_006 (KeyError 'v090_certificate'; Observed in v0.6.0 runs). Both files are frozen (BRUTE_SOURCE_FREEZE_005/006) and are NOT edited; target (d) isolates them per process."
+ },
+ "scope_and_open": [
+  "Certification that is sound under SILENT jumps with useful coverage: Open (H_j predicts the jump hull alone gives almost none)",
+  "A rate- or prior-based (probabilistic) drift model instead of worst-case jumps: Open (not attempted; it would change the meaning of a certificate)",
+  "tau6 calibration on perm4: Open",
+  "A mechanical proof that symmetry breaking preserves every xcheck query: Open",
+  "xcheck of LU-C action scores by the incremental harness: Open (G11 covers BSP8 on a sample)",
+  "Third-party replication: Open",
+  "Planning (P7) is not re-tested in study-010"
+ ],
+ "limitations": [
+  "Synthetic deterministic worlds only.",
+  "SP8 was chosen after seeing study-009 results and a 20-case smoke comparison on study-009 smoke seeds (disclosed); held-out seeds of this plan were never touched.",
+  "The second implementation, the xcheck encoding and the learners are by the same author.",
+  "drift4 is one drift generator; GA1_010 says nothing about other drift processes.",
+  "Commit and ledger times are author-set.",
+  "A VM pause cannot be prevented from inside the VM; the cap counts paused time against the study (conservative)."
+ ],
+ "brand": "docs keep the existing palette and rules: charcoal/sage; no purple, neon, emoji, mascots or gold",
+ "labels": "Every claim in study-010 documents carries one of Exact / Observed / Simulated / Inferred / Rejected / Open; predictions in this plan are Inferred unless marked otherwise."
+}
