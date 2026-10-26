@@ -59,7 +59,7 @@ def repro(workers):
 def tasks():
     g2,g2o,g2f=g11('2x2',2);rc,ro,rf=repro(2)
     T=[('2x2',3,2400,[],study('2x2',3,D/'2x2'),D/'2x2/SEAL.json',('study','2x2',D/'2x2',()),True),
-       ('big78',2,1800,[],study('big78',2,D/'big78'),D/'big78/SEAL.json',('study','big78',D/'big78',()),True),
+       ('big78',2,2700,[],study('big78',2,D/'big78'),D/'big78/SEAL.json',('study','big78',D/'big78',()),True),
        ('transfer',1,1200,[],study('transfer',1,D/'transfer'),D/'transfer/SEAL.json',('study','transfer',D/'transfer',()),True),
        ('gti',2,2400,[],[PY,'scripts/run_tests_0100.py','--output',str(D/'TEST_SUITE_012.json')],D/'TEST_SUITE_012.json',None,True),
        ('repro',2,1200,['2x2'],rc,ro,rf,True),

@@ -20,3 +20,26 @@ therefore part of the frozen plan, so it needed no addendum.
 **Disclosure (not a deviation): J10 differs from the NEXT_ITERATION.md proposal.** That proposal was a
 surprise-gated hull, and surprise gating was **Rejected** on seen data by the diagnostic. J10 is instead the
 exact jump-window *support* rule. This is recorded in plan `pre_freeze_disclosure`.
+
+**#49: big78 stream budget 1800 s -> 2700 s (rate math, before the source freeze).** The big78 stream projected
+~1390 s, ~77% of its frozen 1800 s budget, above the 70% trigger of stop_rule.rate_math
+(docs/research/v0.10.0/RATE_MATH_012.md). The one permitted change was used: big78 budget 2700 s (~51%). Sample,
+workers and every other budget are unchanged. Exact: scripts/run_study_012.py and scripts/make_gates_012.py both use 2700.
+
+**Disclosure: the g11 stream carries GT_ref.** The independent transfer audit (experiments/v0100_reference) runs inside
+the g11 stream after the mandatory 2x2 sample, so g11 depends on both 2x2 and transfer. The repro stream is one
+process group (repro/2x2 then repro/transfer, one bash chain).
+
+**Disclosure: exploratory seen-data runs before the source freeze.** Besides the pre-plan downgrade diagnostic:
+(a) scripts/diag_transfer_seen_012.py on study-011 seen seeds (results/diag-012/TRANSFER_DIAG_SEEN.json): TRp 0 false
+certificates; TRn 246 false certificates, all before the wrong library was eliminated (Observed, exploratory). It was run
+after the plan freeze and did not change any frozen constant. (b) a scratch g11 timing (J10/SP8 audit ratio 2.0) used
+only for rate math.
+
+**Disclosure: smoke observations that bear on the gates (smoke seeds only).** big78: 0 certificates on all 6 timed
+smoke cases, so G78_soundness is expected to pass VACUOUSLY. Transfer: TRn issued 4 false certificates on 2/8 smoke
+targets before elimination, so GT_a and GT_c are at risk. The TR rule stays as frozen; no constant was tuned after seeing
+these.
+
+**Disclosure: GTI smoke.** The smoke GTI run at 1c43d68 (1149 s) failed clause (i) with 6 undeclared failures, all
+caused (Inferred) by a stale MANIFEST.sha256; see RATE_MATH_012.md. No test, test list or GTI rule was changed.
