@@ -1,0 +1,74 @@
+{
+ "completed_at": {
+  "2x2": 1793020885.6318007,
+  "big78": 1793021049.7350628,
+  "g11": 1793021846.2883036,
+  "gti": 1793021410.1197913,
+  "repro": 1793021113.7610312,
+  "transfer": 1793020367.219926
+ },
+ "elapsed_s": 1700,
+ "events": {
+  "g11": {
+   "mandatory_done": {
+    "event": "mandatory_done",
+    "t": 1793021518.632144,
+    "wall_since_start": 629.5
+   },
+   "mutation": {
+    "detected_injected": 20,
+    "event": "mutation",
+    "flagged_not_injected": 0,
+    "flagged_not_injected_basis": "Exact: uninjected traces asserted byte-identical",
+    "injected": 20,
+    "injected_action": 7,
+    "injected_j10": 11,
+    "injected_j10_cert_or_hull_fields": 5,
+    "injected_on_already_mismatching_trace": 0,
+    "injected_sp8": 9,
+    "passed": true,
+    "rng": "random.Random(20261026)"
+   },
+   "optional_done": {
+    "event": "optional_done",
+    "optional_cases": 54,
+    "t": 1793021842.6031146
+   },
+   "start": {
+    "event": "start",
+    "t": 1793020889.1090693
+   },
+   "transfer_done": {
+    "event": "transfer_done",
+    "t": 1793021519.0249574
+   }
+  }
+ },
+ "finished": {
+  "2x2": "2026-10-26T09:21:25-0400",
+  "big78": "2026-10-26T09:24:09-0400",
+  "g11": "2026-10-26T09:37:26-0400",
+  "gti": "2026-10-26T09:30:10-0400",
+  "repro": "2026-10-26T09:25:13-0400",
+  "transfer": "2026-10-26T09:12:47-0400"
+ },
+ "finished_at": "2026-10-26T09:37:26-0400",
+ "mandatory": {
+  "2x2": true,
+  "big78": true,
+  "g11": true,
+  "gti": true,
+  "repro": true,
+  "transfer": true
+ },
+ "spent": {
+  "2x2": 737,
+  "big78": 901,
+  "g11": 961,
+  "gti": 1261,
+  "repro": 228,
+  "transfer": 218
+ },
+ "stopped": {},
+ "t0": 1793020146.0
+}
