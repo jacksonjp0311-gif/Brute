@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 ~06:40 EDT (v0.9.0 IN PROGRESS on `plan/v0.9.0`)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 ~06:48 EDT (v0.9.0 HELD-OUT RUN LAUNCHING on `plan/v0.9.0`)._
 
 ## Current version and state
 
@@ -17,9 +17,13 @@ _Kept current on the working branch during a release and on `main` at release. L
     9. Rate math `6cf27bd`: no stream above 70% of its budget.
     10. Scoring-script drafts `13b12ee`.
   - Deviations so far: #40 (branch base), #41 (feasibility seeds 4200001/4210001/4220001 touched in dev), #42 (smoke-1 ledgered late). See `docs/research/BRUTE_DEVIATIONS_011.md`.
+  - Source freeze `f658e13` (30 files; ledger `f71fbad`). Scoring freeze ledgered 06:38:21 EDT for the 4 scoring scripts at `13b12ee` (`b40069b`).
+  - **Held-out run:** run_start_011 is the next ledger commit. The cap is 7200 s from RUN_T0 (`results/study-011/RUN_T0`, epoch seconds).
+  - **RESUME RULES:** check `pgrep -af "run_study_011|watchdog_011"`.
+    - If the run is alive, do not touch the tree; wait for `results/study-011/RUN_DONE_011.json` or `STOP_011*.json`.
+    - If it died before the cap, relaunch with the same RUN_T0. The orchestrator skips finished streams, and the cap is never extended. Restart the watchdog as well.
+    - After that, follow step 4 below.
   - Next:
-    1. Source freeze (`scripts/make_freeze_011.py <impl commits>`).
-    2. Scoring freeze, at least 10 min before run_start.
     3. Held-out run from a CLEAN committed tree: run_start_011 ledger, then RUN_T0, nohup `scripts/run_study_011.py`, then `setsid` `scripts/watchdog_011.py`. Commit nothing until gti finishes; a dirty tree failed 3 tests in the GTI smoke.
     4. seal_011, storage pack, paired/repro/gates, clean_clone_011, verify_release_090 (short and `--long`), release.
 - **Previous: v0.8.0** released (tag `v0.8.0`), 12 of 17 gated pass; its record follows.
