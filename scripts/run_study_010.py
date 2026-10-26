@@ -165,6 +165,9 @@ def finalize_only():
         try:os.killpg(st['running'][n]['pgid'],0);raise SystemExit(f'{n} still running; refusing')
         except ProcessLookupError:pass
     for t in T:
+        if t['done'].exists() and t['name'] not in st['finished'] and t['name'] not in st['stopped']:
+            st['finished'][t['name']]=stamp(t['done'].stat().st_mtime);st['completed_at'][t['name']]=t['done'].stat().st_mtime
+            st.setdefault('completed_at_basis',{})[t['name']]='output file mtime (finished as the stop fired; recorded by --finalize-only)'
         if not t['done'].exists():
             st['stopped'].setdefault(t['name'],'STUDY_BUDGET (2 h cap, watchdog)');finalize(t,'after stop')
     st['running']={};save_state(st);return 0
@@ -225,6 +228,7 @@ def main():
             lf=open(D/'logs'/f'{n}.log','a');log(f'{n}: start ({t["workers"]} workers, spent {st["spent"].get(n,0):.0f} s, budget {t["budget"]})')
             p=subprocess.Popen(t['cmd'],cwd=ROOT,env=env,stdout=lf,stderr=subprocess.STDOUT,start_new_session=True)
             running[n]=(p,t,now());st['started_at'].setdefault(n,now());free-=t['workers']
+            st['running'][n]={'pgid':p.pid,'since':running[n][2],'spent_before':st['spent'].get(n,0)};save_state(st)   # visible to the watchdog at once
         if not running and all(finished(t['name']) for t in T):
             (D/'RUN_DONE_010.json').write_text(json.dumps({'finished_at':stamp(),'elapsed_s':round(now()-t0),'t0':t0,
                 'spent':{k:round(v) for k,v in st['spent'].items()},'stopped':st['stopped'],'finished':st['finished'],

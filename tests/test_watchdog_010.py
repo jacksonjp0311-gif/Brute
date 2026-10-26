@@ -28,6 +28,23 @@ class Watchdog010(unittest.TestCase):
             for p in (orch,s):
                 if p.poll() is None:p.kill()
 
+    def test_untracked_child_stream_is_killed(self):
+        d=self._dir()
+        code=('import subprocess,sys,time;p=subprocess.Popen([sys.executable,"-c","import time;time.sleep(60)"],start_new_session=True);'
+              'open(sys.argv[1],"w").write(str(p.pid));time.sleep(60)')
+        cp=d/'child.pid';orch=subprocess.Popen([sys.executable,'-c',code,str(cp)],start_new_session=True)
+        (d/'RUN_STATE_010.json').write_text(json.dumps({'orchestrator_pid':orch.pid,'running':{}}))
+        try:
+            for _ in range(50):
+                if cp.exists() and cp.read_text():break
+                time.sleep(0.1)
+            child=int(cp.read_text())
+            self.assertEqual(W.run(d,cap=3,period=0.5,kill_after=2),3);orch.wait(5)
+            S=json.loads((d/'STOP_010.json').read_text());self.assertIn(child,S['process_groups']);self.assertEqual(S['survivors'],[])
+            self.assertFalse(W.pid_alive(child))
+        finally:
+            if orch.poll() is None:orch.kill()
+
     def test_exit_on_run_done(self):
         d=self._dir();(d/'RUN_DONE_010.json').write_text('{}')
         self.assertEqual(W.run(d,cap=30,period=0.2),0);self.assertFalse((d/'STOP_010.json').exists())
