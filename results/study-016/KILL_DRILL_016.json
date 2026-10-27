@@ -1,0 +1,53 @@
+{
+  "all_gone_at": "2026-10-27T03:38:56-0400",
+  "cap_s": 15,
+  "deadline": "2026-10-27T03:38:56-0400",
+  "deadline_epoch": 1793086736.0,
+  "fire_delay_monotonic_s": 0.0,
+  "fire_delay_s": 0.0,
+  "fired_at": "2026-10-27T03:38:56-0400",
+  "heartbeat": {
+    "beats": 9,
+    "first_wall": 1793086721.168,
+    "gaps_over_10s": [],
+    "last_wall": 1793086737.168,
+    "max_gap_s": 2.0
+  },
+  "kill_latency_monotonic_s": 0.223,
+  "kill_latency_s": 0.223,
+  "kill_thread_disk_io_before_kill": false,
+  "label": "Observed (smoke seeds 8290013-8290015, block smoke-drill; outside the cap)",
+  "note": "Observed: the watchdog wrote STOP_016.json at the 15 s cap and killed the orchestrator and its 3 stream process groups (transfer, repro, g11) with SIGTERM within 0.223 s; no SIGKILL needed; ps afterwards found no surviving study process.",
+  "orchestrator_log": [
+    "[2026-10-27T03:38:41-0400] orchestrator start pid 1785403; cap 600 s, deadline 2026-10-27T03:48:41-0400",
+    "[2026-10-27T03:38:41-0400] transfer: start (4 workers, spent 0 s, budget 3000)",
+    "[2026-10-27T03:38:45-0400] transfer: done in 4 s",
+    "[2026-10-27T03:38:45-0400] repro: start (2 workers, spent 0 s, budget 1500)",
+    "[2026-10-27T03:38:45-0400] g11: start (4 workers, spent 0 s, budget 2400)",
+    "[2026-10-27T03:38:49-0400] repro: done in 4 s"
+  ],
+  "orchestrator_pids": [
+    1785403
+  ],
+  "partial_seal": {
+    "case_count": 3,
+    "complete": true,
+    "expected_case_count": 3
+  },
+  "process_groups": [
+    1785415,
+    1785445,
+    1785446
+  ],
+  "schema": "brute.kill-drill.v2",
+  "setup": "SMOKE=1 SKIP_GTI=1 BRUTE_SMOKE_DRILL=1, orchestrator CAP_S=600 (so the watchdog, not the orchestrator, fires), watchdog_016 --dir /tmp/s16/drill --cap 15",
+  "sigkill_used": false,
+  "study": "BRUTE-0140-DEFERRED-SPLIT-016",
+  "survivors": [],
+  "t0": 1793086721.0,
+  "watchdog_log": [
+    "[2026-10-27T03:38:41-0400] watchdog_016 start pid 1785404; deadline 2026-10-27T03:38:56-0400 (cap 15 s)",
+    "[2026-10-27T03:38:56-0400] STOP_016.json written: latency 0.223 s, survivors []",
+    "[2026-10-27T03:38:57-0400] kill done; gaps>10s []"
+  ]
+}

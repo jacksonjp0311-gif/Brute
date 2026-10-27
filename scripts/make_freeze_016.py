@@ -29,7 +29,7 @@ def build(implementation_commits):
                              'experiments/BRUTE_RELEASE_FREEZE_0110.json','experiments/BRUTE_RELEASE_FREEZE_0120.json',
                              'experiments/BRUTE_RELEASE_FREEZE_0130.json'],
             'plan_sha256':sha(PLAN),'preregistration_commit':'498d768','seedcheck_commit':'35b9840','diagnosis_commit':'afb89a9',
-            'reference_commits':['ac717c4'],'implementation_commits':implementation_commits,'deviations_in_force':[75,76],
+            'reference_commits':['ac717c4'],'implementation_commits':implementation_commits,'deviations_in_force':[75,76,77,78,79],
             'sha256_files':{rel:sha(ROOT/rel) for rel in FILES}}
 
 

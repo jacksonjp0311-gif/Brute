@@ -1,0 +1,169 @@
+{
+  "heartbeat": {
+    "beats": 16,
+    "first_wall": 1793086606.132,
+    "gaps_over_10s": [],
+    "last_wall": 1793086636.133,
+    "max_gap_s": 2.001
+  },
+  "label": "Observed (smoke seeds only; no held-out seed)",
+  "reference_audit": {
+    "audit_wall_informational": 130.6,
+    "cases_audited": 10,
+    "cases_expected": 10,
+    "cases_not_reached": 0,
+    "events": {
+      "audit_done": {
+        "event": "audit_done",
+        "t": 1793086634.6408234
+      },
+      "done": {
+        "event": "done",
+        "t": 1793086634.6417851
+      },
+      "mutation": {
+        "event": "mutation",
+        "passed": null,
+        "skipped": "10 cases < 20 (smoke only)"
+      },
+      "start": {
+        "event": "start",
+        "t": 1793086601.0661185
+      }
+    },
+    "mismatching_cases": 0,
+    "passed": false,
+    "results_file": "/tmp/s16/dry/transfer/RESULTS.json",
+    "results_sha256": "26b99ad5d51099eb16b8b94f179c91e45289b0b2e59bd7cb7298e70001abe80d",
+    "schema": "brute.second-implementation-016.v1",
+    "scope": "bounded supports (exhaustive, n = 1..5 on SP8, RSX and RSXL); RSX and RSXL actions; RG4 / RG5, RSXL4, RSX4, DLF / DLF2 / RSXL library arms, EB (all fields); summary; stress entries incl. certificate lists; ood5 RG4 / RG5",
+    "source_sha256": "850ba0edef690b2b8aabec1ecb5daab7fab4d0df7588644352fe8e06d5d85350",
+    "study": "BRUTE-0140-DEFERRED-SPLIT-016",
+    "wording": "second implementation by the same author, no brute import; not an independent or third-party audit"
+  },
+  "repro_byte_identical": {
+    "byte_identical": 4,
+    "expected": 4,
+    "failing_differences": [],
+    "main_scientific_sha256": "14da29e33ef4ed0f54740f3bafeda2ad6e9cb08c6d8befdfba76d8f59613cee3",
+    "missing": [],
+    "passed": true,
+    "repro_complete": true,
+    "repro_scientific_sha256": "b9c775b93aba05d5fa77d4c1a98d5d9e0742c8275966c47e26bebfbe2b4a9e61",
+    "rerun": 4,
+    "unexpected": []
+  },
+  "run_done": {
+    "completed_at": {
+      "g11": 1793086634.9085429,
+      "repro": 1793086608.8931832,
+      "transfer": 1793086600.886587
+    },
+    "elapsed_s": 41,
+    "events": {
+      "g11": {
+        "audit_done": {
+          "event": "audit_done",
+          "t": 1793086634.6408234
+        },
+        "done": {
+          "event": "done",
+          "t": 1793086634.6417851
+        },
+        "mutation": {
+          "event": "mutation",
+          "passed": null,
+          "skipped": "10 cases < 20 (smoke only)"
+        },
+        "start": {
+          "event": "start",
+          "t": 1793086601.0661185
+        }
+      }
+    },
+    "finished": {
+      "g11": "2026-10-27T03:37:14-0400",
+      "repro": "2026-10-27T03:36:48-0400",
+      "transfer": "2026-10-27T03:36:40-0400"
+    },
+    "finished_at": "2026-10-27T03:37:14-0400",
+    "mandatory": {
+      "g11": true,
+      "repro": true,
+      "transfer": true
+    },
+    "spent": {
+      "g11": 34,
+      "repro": 8,
+      "transfer": 6
+    },
+    "stopped": {},
+    "t0": 1793086594.0
+  },
+  "run_log": [
+    "[2026-10-27T03:36:34-0400] orchestrator start pid 1783587; cap 7200 s, deadline 2026-10-27T05:36:34-0400",
+    "[2026-10-27T03:36:34-0400] transfer: start (4 workers, spent 0 s, budget 3000)",
+    "[2026-10-27T03:36:40-0400] transfer: done in 6 s",
+    "[2026-10-27T03:36:40-0400] repro: start (2 workers, spent 0 s, budget 1500)",
+    "[2026-10-27T03:36:40-0400] g11: start (4 workers, spent 0 s, budget 2400)",
+    "[2026-10-27T03:36:48-0400] repro: done in 8 s",
+    "[2026-10-27T03:37:14-0400] g11: done in 34 s",
+    "[2026-10-27T03:37:14-0400] RUN_DONE (41 s since t0; stopped streams: {})"
+  ],
+  "run_state": {
+    "completed_at": {
+      "g11": 1793086634.9085429,
+      "repro": 1793086608.8931832,
+      "transfer": 1793086600.886587
+    },
+    "events": {
+      "g11": {
+        "audit_done": {
+          "event": "audit_done",
+          "t": 1793086634.6408234
+        },
+        "done": {
+          "event": "done",
+          "t": 1793086634.6417851
+        },
+        "mutation": {
+          "event": "mutation",
+          "passed": null,
+          "skipped": "10 cases < 20 (smoke only)"
+        },
+        "start": {
+          "event": "start",
+          "t": 1793086601.0661185
+        }
+      }
+    },
+    "finished": {
+      "g11": "2026-10-27T03:37:14-0400",
+      "repro": "2026-10-27T03:36:48-0400",
+      "transfer": "2026-10-27T03:36:40-0400"
+    },
+    "heartbeat": 1793086634.9081316,
+    "mandatory": {
+      "g11": true,
+      "repro": true,
+      "transfer": true
+    },
+    "orchestrator_pid": 1783587,
+    "running": {},
+    "spent": {
+      "g11": 34.02031111717224,
+      "repro": 8.005760669708252,
+      "transfer": 6.002208948135376
+    },
+    "started_at": {
+      "g11": 1793086600.8881798,
+      "repro": 1793086600.8873465,
+      "transfer": 1793086594.8842902
+    },
+    "stopped": {}
+  },
+  "schema": "brute.smoke-dryrun.v3",
+  "setup": "SMOKE=1 SKIP_GTI=1 run_study_016 + watchdog_016 --dir /tmp/s16/dry (clean env otherwise)",
+  "study": "BRUTE-0140-DEFERRED-SPLIT-016",
+  "watchdog_started_late_s_informational": 12.132
+}
