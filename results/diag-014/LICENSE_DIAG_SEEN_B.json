@@ -1,0 +1,168 @@
+{
+ "arms": {
+  "DLF0n": {
+   "cases_helped": 248,
+   "cases_hurt": 0,
+   "cases_with_false": 3,
+   "false_certificates": 9,
+   "library_licensed_certificates": 34,
+   "mean_S": 11.5382,
+   "mean_S_by_family": {
+    "cycle3": 6.9444,
+    "ood4": 24.2778,
+    "switch3": 6.7222,
+    "unaliased2": 8.2083
+   }
+  },
+  "DLF0p": {
+   "cases_helped": 267,
+   "cases_hurt": 0,
+   "cases_with_false": 0,
+   "false_certificates": 0,
+   "library_licensed_certificates": 6019,
+   "mean_S": 17.1354,
+   "mean_S_by_family": {
+    "cycle3": 11.9583,
+    "ood4": 23.0833,
+    "switch3": 14.0972,
+    "unaliased2": 19.4028
+   }
+  },
+  "DLFn": {
+   "cases_helped": 248,
+   "cases_hurt": 0,
+   "cases_with_false": 0,
+   "false_certificates": 0,
+   "library_licensed_certificates": 0,
+   "mean_S": 11.1597,
+   "mean_S_by_family": {
+    "cycle3": 6.7361,
+    "ood4": 23.0833,
+    "switch3": 6.6111,
+    "unaliased2": 8.2083
+   }
+  },
+  "DLFp": {
+   "cases_helped": 254,
+   "cases_hurt": 0,
+   "cases_with_false": 0,
+   "false_certificates": 0,
+   "library_licensed_certificates": 1725,
+   "mean_S": 13.0972,
+   "mean_S_by_family": {
+    "cycle3": 6.7361,
+    "ood4": 23.0833,
+    "switch3": 6.6111,
+    "unaliased2": 15.9583
+   }
+  },
+  "RG2": {
+   "cases_helped": 155,
+   "cases_hurt": 0,
+   "cases_with_false": 91,
+   "false_certificates": 373,
+   "mean_S": 13.0833,
+   "mean_S_by_family": {
+    "cycle3": 7.4306,
+    "ood4": 13.4028,
+    "switch3": 12.0972,
+    "unaliased2": 19.4028
+   }
+  },
+  "RG3": {
+   "cases_helped": 250,
+   "cases_hurt": 0,
+   "cases_with_false": 48,
+   "false_certificates": 142,
+   "mean_S": 15.6875,
+   "mean_S_by_family": {
+    "cycle3": 11.9583,
+    "ood4": 20.7361,
+    "switch3": 14.0972,
+    "unaliased2": 15.9583
+   }
+  },
+  "RG4": {
+   "cases_helped": 248,
+   "cases_hurt": 0,
+   "cases_with_false": 0,
+   "false_certificates": 0,
+   "mean_S": 11.1597,
+   "mean_S_by_family": {
+    "cycle3": 6.7361,
+    "ood4": 23.0833,
+    "switch3": 6.6111,
+    "unaliased2": 8.2083
+   }
+  },
+  "RG5": {
+   "cases_helped": 89,
+   "cases_hurt": 0,
+   "cases_with_false": 0,
+   "false_certificates": 0,
+   "mean_S": 4.5556,
+   "mean_S_by_family": {
+    "cycle3": 1.5417,
+    "ood4": 15.1806,
+    "switch3": 1.375,
+    "unaliased2": 0.125
+   }
+  }
+ },
+ "inputs": {
+  "results": "results/study-013/transfer/RESULTS.json",
+  "results_sha256": "ae88f5eac8248b8bdc7b3376f170611a579b43aec1d62572e42d7a2efacf057c"
+ },
+ "label": "Observed on SEEN data (exploratory, pre-plan); not v0.12.0 evidence",
+ "schema": "brute.diag.v12_0b",
+ "speedup_vs_SP8_mean_ci95": {
+  "DLFn": [
+   11.1597,
+   9.625,
+   13.0139
+  ],
+  "DLFp": [
+   13.0972,
+   11.4618,
+   14.8646
+  ],
+  "RG4": [
+   11.1597,
+   9.625,
+   13.0139
+  ]
+ },
+ "stress": {
+  "AT6_false_on_stress": 1080,
+  "DLF_false_all_pairs": 0,
+  "DLF_false_on_stress": 0,
+  "DLF_false_outside_exact_bound": 0,
+  "DLF_library_licensed_all_pairs": 912,
+  "pairs": 20736,
+  "pairs_outside_exact_bound": 1728,
+  "stress_pairs": 600
+ },
+ "transfer_value_vs_RG4_mean_ci95": {
+  "DLF0n": [
+   0.3785,
+   0.1076,
+   0.7153
+  ],
+  "DLF0p": [
+   5.9757,
+   5.0139,
+   6.9132
+  ],
+  "DLFn": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "DLFp": [
+   1.9375,
+   1.1979,
+   2.6979
+  ]
+ },
+ "wall_informational_s": 74.6
+}
