@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~11:30 EDT (v0.16.0 scored and release-frozen on `plan/v0.16.0`; fresh-clone verification pending)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~11:20 EDT (v0.16.0 RELEASED on `main`; v0.17.0 to be pre-registered on `plan/v0.17.0`)._
 
 ## Current version and state
 
@@ -15,7 +15,7 @@ _Kept current on the working branch during a release and on `main` at release. L
   - **Deviations:** #97 `docs/research/BRUTE_DEVIATIONS_018.md`; #98–#99 `_ADDENDUM_1`; post-run disclosures #100 (GTI dirty-ledger window, scoring_scripts_commit, REQUIRED_KEYS, kill-drill provenance, rate math; no rescoring) `_ADDENDUM_2`.
   - **K_0160 (expected, 0.16.0 tree):** v0.17.0 must declare K_0160 (test_release_0160 version / API / RELEASE.json key tests after the bump).
   - **No CI:** Brute has no `.github` directory and uses no GitHub Actions minutes; add no workflows.
-  - **RELEASE STATUS: verifying** (fresh GitHub clone pending).
+  - **RELEASE STATUS: RELEASED.** Release commit `49a19f9`, annotated tag `v0.16.0`. Fresh GitHub clone of `plan/v0.16.0`@49a19f9 (storage restore 004–018): short verify rc 0; `--long` GLV 12 cases / 0 mismatching / 178.7 s, rc 0; `tests.test_release_0160` 7/7 OK (88.6 s); finished 11:16:58 EDT. `main` fast-forwarded c255873 → 49a19f9 (no force). Release: https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.16.0 . No CI workflows.
 <!-- /V0160 -->
 
 <!-- V0150 -->
