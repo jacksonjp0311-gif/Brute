@@ -1,8 +1,12 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~03:30 EDT (v0.13.0 RELEASED on main)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~03:22 EDT (v0.13.0 RELEASED on main; v0.14.0 PRE-REGISTERED on `plan/v0.14.0`, no code yet)._
 
 ## Current version and state
+
+<!-- V0140 -->
+- **In progress: v0.14.0** (study BRUTE-0140-DEFERRED-SPLIT-016, branch `plan/v0.14.0` from main `ffa045b`). **Pre-registered:** `experiments/BRUTE_PLAN_016.json` + `BRUTE_PLAN_FREEZE_016.json` at `498d768` (ledger preregistration_016 `4b87380`); readable `docs/research/v0.14.0/PLAN_016.md`. Headline GDS: deferred region split RSXL4 (SP8 until the first RG4 certificate, then RSX) adds coverage ΔC ≥ 0.03, CI lower > 0, at equal first-certificate time (equality *Exact* by construction; coverage *Open*). DLF re-gated on fresh seeds with ood4 doubled (*Open*); ood5 bound-violation signal reported; `brute.certify/4`. Next step: `scripts/check_seeds_016.py` (seeds 8210001–8290030), then the seen-data license diagnostic `scripts/diag_license_016.py`.
+<!-- /V0140 -->
 
 <!-- V0130 -->
 - **Released: v0.13.0** (study BRUTE-0130-REGION-SPLIT-015, branch `plan/v0.13.0` from main `8c86587`). **11 of 15 gated pass.**
@@ -14,7 +18,7 @@ _Kept current on the working branch during a release and on `main` at release. L
   - **Chain (Exact, git ancestry):** plan `9642783` (ledger `61584ee`; HANDOFF `c6bfcb3`, recorded as `preregistration_commit` in RELEASE.json) → seeds `f6fbb92` → reference `f95a176`/`305b739` → implementation `6815770`/`3cd15e4`/`0f95f92`/`744969b` → make_freeze `069cbca` → source freeze `f67bcaf` (ledger `1c144d1`) → scoring `58e42fd` (ledger `31edbe0`, 02:09:54 EDT) → run_start `6406522` → run end `eb2f7d2` → seal `f1668a7` → GATES `c21b405` → tooling `e25943f` → release freeze `9e785b1` → clean clone `8e6923c`.
   - **Deviations #64–#73:** `docs/research/BRUTE_DEVIATIONS_015.md`; **#74:** `docs/research/BRUTE_DEVIATIONS_015_ADDENDUM.md` (TEST_SUITE `tracked_tree_dirty=true`, cause Open).
   - **K_0120 (Observed, 0.13.0 tree):** tests.test_release_0120 4 of 7 fail (version, embeddable API answers, short verify, untampered copy). v0.14.0 must declare K_0120 and K_0130.
-  - **RELEASED 2026-10-27 ~03:30 EDT:** release commit `d1f6c71`. On the branch and on a fresh GitHub clone of `d1f6c71`, `verify_release_0130` passed both short and `--long` (GLV: 15 cases, 0 mismatches, 170 s), and `tests.test_release_0130` passed 7/7 (100 s). main was fast-forwarded to `d1f6c71` with no force. Annotated tag `v0.13.0` (tag object `2ee29f7`) points to `d1f6c71`. GitHub release: https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.13.0
+  - **RELEASED 2026-10-27 ~03:18 EDT** (erratum: the main copy says ~03:30; the HANDOFF commit `ffa045b` is 03:18:53 EDT): release commit `d1f6c71`. On the branch and on a fresh GitHub clone of `d1f6c71`, `verify_release_0130` passed both short and `--long` (GLV: 15 cases, 0 mismatches, 170 s), and `tests.test_release_0130` passed 7/7 (100 s). main was fast-forwarded to `d1f6c71` with no force. Annotated tag `v0.13.0` (tag object `2ee29f7`) points to `d1f6c71`. GitHub release: https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.13.0
   - **Next: v0.14.0 per `NEXT_ITERATION.md`** (deferred region split RSXL, DLF license replication, ood5 bound-violation signal).
 <!-- /V0130 -->
 
