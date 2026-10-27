@@ -1,0 +1,124 @@
+{
+ "schema": "brute.diag-license.v16",
+ "label": "Observed on SEEN data (studies 014 and 015, sealed); changes no v0.14.0 criterion",
+ "Q1_case": {
+  "seed": 8140016,
+  "mask_rate": 0.35,
+  "family": "ood4",
+  "true_n_EVALUATOR_ONLY": 4,
+  "step": 9,
+  "action": 0,
+  "certificate": 0,
+  "true_reading_EVALUATOR_ONLY": 1,
+  "library": {
+   "source_family": "unaliased2",
+   "source_seed": 8150064,
+   "min_n": 2,
+   "motifs": [
+    {
+     "classes": [
+      0,
+      1
+     ],
+     "n": 2,
+     "trans": [
+      [
+       0,
+       1
+      ],
+      [
+       1,
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  "library_hypotheses_alive_before": 1,
+  "license_bound": 3,
+  "disabled_step": 9,
+  "sp8_support": [
+   0,
+   1
+  ],
+  "bounded_support_at_step": {
+   "1": [
+    0
+   ],
+   "2": [
+    0
+   ],
+   "3": [
+    0
+   ],
+   "4": [
+    0,
+    1
+   ],
+   "5": [
+    0,
+    1
+   ]
+  },
+  "first_step_license_region_empty": 22,
+  "same_step_rg": {
+   "RG2": 0,
+   "RG3": 0,
+   "RG4": null,
+   "RG5": null
+  },
+  "rsxn_same": true
+ },
+ "Q2_license_by_guarantee": {
+  "015": {
+   "DLFn": {
+    "outside": {
+     "certificates": 3,
+     "false": 1
+    }
+   },
+   "DLFp": {
+    "inside": {
+     "certificates": 1542,
+     "false": 0
+    }
+   },
+   "RSXn": {
+    "outside": {
+     "certificates": 2,
+     "false": 1
+    }
+   },
+   "RSXp": {
+    "inside": {
+     "certificates": 1854,
+     "false": 0
+    }
+   }
+  },
+  "014": {
+   "DLFn": {
+    "outside": {
+     "certificates": 1,
+     "false": 0
+    }
+   },
+   "DLFp": {
+    "inside": {
+     "certificates": 1625,
+     "false": 0
+    }
+   }
+  }
+ },
+ "Q3_filter_015": {
+  "cases_with_license_bound_below_true_n": 72,
+  "rg_at_bound_false": 173,
+  "dlfn_false": 1
+ },
+ "Q3_filter_014": {
+  "cases_with_license_bound_below_true_n": 72,
+  "rg_at_bound_false": 130,
+  "dlfn_false": 0
+ }
+}
