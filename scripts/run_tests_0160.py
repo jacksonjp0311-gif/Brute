@@ -11,8 +11,8 @@ subprocesses; each child is its own interpreter, so isolation is unchanged). Cla
 New v0.16.0 tests = tests/test*.py absent from tag v0.15.0. Writes results/study-018/TEST_SUITE_018.json (refuses to overwrite).
 """
 from __future__ import annotations
-import argparse,glob,json,subprocess,sys,threading,time
-from concurrent.futures import ThreadPoolExecutor
+import argparse,glob,json,subprocess,sys,tempfile,threading,time
+from concurrent.futures import ThreadPoolExecutor,as_completed
 from pathlib import Path
 from scripts import run_tests_070 as T
 from scripts import run_tests_0150 as P
@@ -25,12 +25,20 @@ K_ALLOWED=dict(P.K_ALLOWED)
 K_ALLOWED['0150']={f'test_release_0150.Release0150.{t}' for t in ('test_version_consistent','test_embeddable_api_answers','test_short_verify_passes','test_untampered_copy_passes')}
 TAGS=dict(P.TAGS,**{'0150':'v0.15.0'})
 K_096={'test_scripts_017.Orchestrator017.test_streams'}
-WORKERS=3
-_GIT=threading.Lock()   # clean-tag worktrees are created one at a time (git worktree locks)
+WORKERS=4
+_GIT=threading.Lock()   # git worktree add / remove one at a time (git worktree locks); the child runs OUTSIDE the lock
 
 
-def _clean(tag,m,python):
-    with _GIT:return P.clean_run(tag,m,python)
+def _clean(tag,module,python):
+    """run_tests_0150.clean_run (frozen) with only the git worktree operations serialized, so clean-tag children run in
+    parallel like every other child (the 0150 body, otherwise unchanged)."""
+    tmp=Path(tempfile.mkdtemp(prefix=f'{tag}wt-'))/'wt'
+    with _GIT:subprocess.run(['git','worktree','add','--detach',str(tmp),tag],cwd=ROOT,check=True,capture_output=True)
+    try:
+        if not (tmp/'scripts/run_tests_070.py').exists():(tmp/'scripts/run_tests_070.py').write_text((ROOT/'scripts/run_tests_070.py').read_text())
+        return T.run_child(module,tmp,python)
+    finally:
+        with _GIT:subprocess.run(['git','worktree','remove','--force',str(tmp)],cwd=ROOT,capture_output=True)
 
 
 def new_tests(root=ROOT):
@@ -80,15 +88,15 @@ def run_all(modules,workers,python=sys.executable,log=print):
     modules=sorted(modules,key=lambda m:(-prev.get(m,1e9),m))
     with ThreadPoolExecutor(workers) as ex:
         fp=ex.submit(T.run_child,'test*.py',ROOT,python)
-        fm={m:ex.submit(T.run_child,m,ROOT,python) for m in modules};fc={}
-        for m,f in fm.items():
-            mods[m]=f.result()
+        fm={ex.submit(T.run_child,m,ROOT,python):m for m in modules};fc={}
+        for f in as_completed(fm):   # a failing test_release module's clean-tag child is queued as soon as it finishes
+            m=fm[f];mods[m]=f.result()
             v=next((v for v in TAGS if m==f'test_release_{v}.py'),None)
             if v and any(r[0] in ('fail','error') for r in mods[m]['results'].values()):fc[v]=ex.submit(_clean,TAGS[v],m,python)
         log(f'modules done {time.time()-t0:.0f} s',flush=True)
         for v in TAGS:clean[v]=fc[v].result() if v in fc else None
         plain=fp.result()
-    return mods,plain,clean
+    return {m:mods[m] for m in modules},plain,clean
 
 
 def main():
