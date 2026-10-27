@@ -1,0 +1,60 @@
+{
+  "commit": "5fe769a903d422900a1d27bc9626754f6befa75a",
+  "elapsed_informational_s": 25.0,
+  "passed": true,
+  "schema": "brute.clean-clone.v2",
+  "scoring_inputs": {
+    "gz_restored": [
+      "results/study-016/transfer/RESULTS.json",
+      "results/study-016/transfer/SCIENTIFIC.json",
+      "results/study-016/repro/transfer/RESULTS.json",
+      "results/study-016/repro/transfer/SCIENTIFIC.json"
+    ],
+    "tracked": [
+      "results/study-016/transfer/SEAL.json",
+      "results/study-016/repro/transfer/SEAL.json",
+      "results/study-016/PAIRED_ANALYSIS_016.json",
+      "results/study-016/REPRODUCIBILITY_016.json",
+      "results/study-016/SECOND_IMPLEMENTATION_016.json",
+      "results/study-016/TEST_SUITE_016.json",
+      "results/study-016/RUN_STATE_016.json",
+      "results/study-016/RUN_T0",
+      "results/study-016/HEARTBEAT_016.jsonl",
+      "results/study-016/KILL_DRILL_016.json",
+      "results/study-016/SEAL.json",
+      "results/study-016/GATES_016.json"
+    ],
+    "tracked_if_present": [
+      "results/study-016/RUN_DONE_016.json",
+      "results/study-016/STOP_016.json",
+      "results/study-016/STOP_016_ORCHESTRATOR.json"
+    ]
+  },
+  "steps": {
+    "make_gates_016": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "GATES_016.json reproduces\n"
+    },
+    "make_paired_016": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "PAIRED_ANALYSIS_016 reproduces\n"
+    },
+    "make_reproducibility_016": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "REPRODUCIBILITY_016 reproduces\n"
+    },
+    "restore": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "True\n"
+    }
+  },
+  "tracked": {
+    "missing_from_tree": [],
+    "passed": true,
+    "raw_json_committed_unexpectedly": []
+  }
+}
