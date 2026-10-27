@@ -1,0 +1,164 @@
+{
+ "cases": 17,
+ "details": [
+  {
+   "detected": true,
+   "family": "cycle3",
+   "first_difference": "VerificationError: RSXp trace",
+   "index": 0,
+   "seed": 8190001
+  },
+  {
+   "detected": true,
+   "family": "cycle3",
+   "first_difference": "VerificationError: EB trace",
+   "index": 1,
+   "seed": 8190002
+  },
+  {
+   "detected": true,
+   "family": "switch3",
+   "first_difference": "VerificationError: RSX n=3 step 35 b=0 support",
+   "index": 2,
+   "seed": 8190003
+  },
+  {
+   "detected": true,
+   "family": "switch3",
+   "first_difference": "VerificationError: SP8 n=2 step 13 b=0 support",
+   "index": 3,
+   "seed": 8190004
+  },
+  {
+   "detected": true,
+   "family": "unaliased2",
+   "first_difference": "VerificationError: RSX n=1 step 5 b=1 support",
+   "index": 4,
+   "seed": 8190005
+  },
+  {
+   "detected": true,
+   "family": "unaliased2",
+   "first_difference": "VerificationError: RG4 trace",
+   "index": 5,
+   "seed": 8190006
+  },
+  {
+   "detected": true,
+   "family": "ood4",
+   "first_difference": "VerificationError: DLFp trace",
+   "index": 6,
+   "seed": 8190007
+  },
+  {
+   "detected": true,
+   "family": "ood4",
+   "first_difference": "VerificationError: SP8 n=2 step 1 b=0 support",
+   "index": 7,
+   "seed": 8190008
+  },
+  {
+   "detected": true,
+   "family": "cycle3",
+   "first_difference": "VerificationError: RG4 trace",
+   "index": 10,
+   "seed": 8190009
+  },
+  {
+   "detected": true,
+   "family": "switch3",
+   "first_difference": "VerificationError: RSX n=3 step 31 b=0 support",
+   "index": 11,
+   "seed": 8190010
+  },
+  {
+   "detected": true,
+   "family": "unaliased2",
+   "first_difference": "VerificationError: EB trace",
+   "index": 12,
+   "seed": 8190011
+  },
+  {
+   "detected": true,
+   "family": "ood4",
+   "first_difference": "VerificationError: stress 19 AT6_false",
+   "index": 13,
+   "seed": 8190012
+  },
+  {
+   "detected": true,
+   "family": "cycle3",
+   "first_difference": "VerificationError: RSX n=3 step 44 b=1 support",
+   "index": 14,
+   "seed": 8190013
+  },
+  {
+   "detected": true,
+   "family": "switch3",
+   "first_difference": "VerificationError: stress 12 RSX_false",
+   "index": 15,
+   "seed": 8190014
+  },
+  {
+   "detected": true,
+   "family": "unaliased2",
+   "first_difference": "VerificationError: RSX n=2 step 35 b=1 support",
+   "index": 16,
+   "seed": 8190015
+  },
+  {
+   "detected": true,
+   "family": "cycle3",
+   "first_difference": "VerificationError: stress 11 RSX_false",
+   "index": 17,
+   "seed": 8190001
+  },
+  {
+   "detected": true,
+   "family": "cycle3",
+   "first_difference": "VerificationError: RSX n=3 step 30 b=0 support",
+   "index": 18,
+   "seed": 8190002
+  },
+  {
+   "detected": true,
+   "family": "switch3",
+   "first_difference": "VerificationError: EB trace",
+   "index": 19,
+   "seed": 8190003
+  },
+  {
+   "detected": true,
+   "family": "switch3",
+   "first_difference": "VerificationError: RSX n=5 step 10 b=0 support",
+   "index": 20,
+   "seed": 8190004
+  },
+  {
+   "detected": true,
+   "family": "unaliased2",
+   "first_difference": "VerificationError: RSXn trace",
+   "index": 21,
+   "seed": 8190005
+  }
+ ],
+ "detected": 20,
+ "duplicated_main_indices_to_reach_20": 5,
+ "injected": 20,
+ "kinds": {
+  "bounded": 5,
+  "dlf": 3,
+  "eb": 3,
+  "rg": 2,
+  "rsx": 4,
+  "stress": 3
+ },
+ "label": "Observed, smoke seeds only (smoke-transfer + smoke-api + smoke-drill, mask 0.35); not GS_ref3 evidence",
+ "main_cases": 15,
+ "rng": "random.Random(20261027)",
+ "schema": "brute.reference-mutation-smoke.v2",
+ "study": "BRUTE-0130-REGION-SPLIT-015",
+ "unmutated_failures": [],
+ "unmutated_ok": 17,
+ "unmutated_total": 17
+}

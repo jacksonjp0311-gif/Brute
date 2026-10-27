@@ -8,8 +8,8 @@ stream budget with the time already spent (RUN_STATE_015.json).
 
 Streams (plan stop_rule.streams_and_budgets; at most 8 worker processes at once):
   MANDATORY at t0:     transfer (288 main + 72 ood5) 4w 3000 s | gti 2w 3600 s
-  after transfer:      repro 2w 1500 s (every run index % 3 == 0) | g11 4w 2400 s (reference audit of all 288 cases,
-                       then the mutation test; scripts/run_reference_015.py; 4 workers: deviation #61, RATE_MATH_015)
+  after transfer:      repro 2w 1500 s (every run index % 3 == 0) | g11 2w 2400 s (reference audit of all 360 cases,
+                       then the mutation test on main cases; scripts/run_reference_015.py)
 Stops: at RUN_T0 + 7200 s the orchestrator stops every running stream (SIGTERM, SIGKILL after 10 s), seals each
 checkpoint as it is (--seal-partial / --summarize-only; never a new case) and writes STOP_015_ORCHESTRATOR.json (the
 watchdog writes STOP_015.json). Every stream completion is stamped (wall epoch) in RUN_STATE_015.json 'completed_at'.
