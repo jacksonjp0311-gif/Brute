@@ -1,0 +1,1360 @@
+{
+  "GN0": false,
+  "GNS": false,
+  "G_HB": true,
+  "G_RT": true,
+  "all_gated_pass": false,
+  "criteria_registered": [
+    "G10_compute",
+    "G12_reproducibility",
+    "G13_frozen_controls_reproduce",
+    "GAPI6_certify6",
+    "GN0_control",
+    "GNS_noise_soundness",
+    "GS_a6_soundness",
+    "GS_ref6_reference_audit",
+    "GTI_test_isolation",
+    "G_HB_heartbeat_gap",
+    "G_RT_study_runtime",
+    "G_recount"
+  ],
+  "criteria_scored": [
+    "G10_compute",
+    "G12_reproducibility",
+    "G13_frozen_controls_reproduce",
+    "GAPI6_certify6",
+    "GN0_control",
+    "GNS_noise_soundness",
+    "GS_a6_soundness",
+    "GS_ref6_reference_audit",
+    "GTI_test_isolation",
+    "G_HB_heartbeat_gap",
+    "G_RT_study_runtime",
+    "G_recount"
+  ],
+  "failed": [
+    "GNS_noise_soundness",
+    "GN0_control"
+  ],
+  "gates": {
+    "G10_compute": {
+      "gated": true,
+      "observed": {
+        "cases": 480,
+        "expected": 480,
+        "queries": {
+          "RGN4": {
+            "queries": 42240,
+            "unknown_gt0": 0
+          },
+          "RGN4_0": {
+            "queries": 42240,
+            "unknown_gt0": 0
+          },
+          "RGN4_or": {
+            "queries": 42240,
+            "unknown_gt0": 0
+          },
+          "bounded4": {
+            "queries": 42240,
+            "unknown_gt0": 0
+          }
+        },
+        "traces_44_steps": {
+          "RG4": true,
+          "RGN4": true,
+          "RGN4_0": true,
+          "RGN4_or": true,
+          "SP8": true
+        },
+        "unknown_gt0_fraction": {
+          "RGN4": 0.0,
+          "RGN4_0": 0.0,
+          "RGN4_or": 0.0,
+          "bounded4": 0.0
+        }
+      },
+      "pass": true
+    },
+    "G12_reproducibility": {
+      "gated": true,
+      "observed": {
+        "transfer": {
+          "byte_identical": 120,
+          "expected": 120,
+          "failing_differences": [],
+          "main_scientific_sha256": "889923664a8e13b73de86461eee1e5de5f270ed74c5873720d7b260c57510322",
+          "missing": [],
+          "passed": true,
+          "repro_complete": true,
+          "repro_scientific_sha256": "fda56a09df3a508962ffa62a5b86c075747de6ab971bfabbc55f33530021d720",
+          "rerun": 120,
+          "unexpected": []
+        }
+      },
+      "pass": true
+    },
+    "G13_frozen_controls_reproduce": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "cases_use_plan013_tau6": true,
+          "freeze_chain_holds": true,
+          "rg4_reproduces_eps0": true,
+          "rg_sp8_are_frozen_v0120": true,
+          "seal_of_current_plan_and_freeze": true
+        },
+        "freeze_error": null,
+        "rg4_not_reproduced": [],
+        "smoke_dry_run_relaxed": false
+      },
+      "pass": true
+    },
+    "GAPI6_certify6": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "certify6_in_freeze": true,
+          "module_ok": true,
+          "soundness_dict": true
+        },
+        "results": {
+          "test_api_certify6_0160.Certify6.test_bad_input": [
+            "ok",
+            null
+          ],
+          "test_api_certify6_0160.Certify6.test_host_agnostic": [
+            "ok",
+            null
+          ],
+          "test_api_certify6_0160.Certify6.test_matches_runner": [
+            "ok",
+            null
+          ],
+          "test_api_certify6_0160.Certify6.test_soundness": [
+            "ok",
+            null
+          ]
+        },
+        "soundness_probe": {
+          "error": null,
+          "matches": true,
+          "soundness": {
+            "conditional_on": "flips <= m and n* <= family_bound",
+            "delta": 0.01,
+            "kind": "probabilistic"
+          }
+        }
+      },
+      "pass": true
+    },
+    "GN0_control": {
+      "gated": true,
+      "observed": {
+        "cases_differing": [
+          "main/cycle3/8410024/0.0"
+        ],
+        "clauses": {
+          "RGN4_0_eq_RG4_every_eps0_case": false,
+          "RGN4_zero_false_eps0": true
+        },
+        "differing_slots": [
+          [
+            "main/cycle3/8410024/0.0",
+            6,
+            1
+          ],
+          [
+            "main/cycle3/8410024/0.0",
+            8,
+            1
+          ]
+        ],
+        "differing_slots_after_burn_in": 0,
+        "differing_slots_in_burn_in": 2,
+        "eps0_cases": 120,
+        "prediction": "Inferred FAIL (#97 item 3: RG4 passes SP8 certificates through during burn-in)"
+      },
+      "pass": false
+    },
+    "GNS_noise_soundness": {
+      "gated": true,
+      "observed": {
+        "C_RG4_eps2": [
+          0.235322,
+          [
+            0.199901,
+            0.27179
+          ]
+        ],
+        "C_RGN4_eps1": [
+          0.058712,
+          [
+            0.046591,
+            0.070362
+          ]
+        ],
+        "C_RGN4_eps2": [
+          0.066098,
+          [
+            0.05142,
+            0.080871
+          ]
+        ],
+        "case_false": 0,
+        "case_false_examples": [],
+        "cases_flips_gt_m": 0,
+        "cases_flips_le_m": 240,
+        "clauses": {
+          "a_zero_false_when_flips_le_m": true,
+          "b_cp_upper_le_0.05": true,
+          "c_C_eps2_mean_ge_0.10_ci_lower_gt_0.05": false
+        },
+        "cp_upper_95_one_sided": 0.01240464,
+        "false_certificates_RGN4": 0,
+        "noisy_cases": 240
+      },
+      "pass": false
+    },
+    "GS_a6_soundness": {
+      "gated": true,
+      "observed": {
+        "RG4_recomputed_false": 0,
+        "RG4_recorded_false": 0,
+        "eps0_cases": 120
+      },
+      "pass": true
+    },
+    "GS_ref6_reference_audit": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "all_gated_cases_audited": true,
+          "mutation_20_of_20": true,
+          "results_sha_matches_seal": true,
+          "zero_gated_mismatching": true
+        },
+        "gated_expected": 240,
+        "mutation": {
+          "detected_injected": 20,
+          "distinct_cases": 20,
+          "event": "mutation",
+          "flagged_not_injected": 0,
+          "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+          "injected": 20,
+          "injected_on_already_mismatching_case": 0,
+          "kinds": {
+            "B": 1,
+            "counts": 2,
+            "flips": 1,
+            "latent": 1,
+            "m": 1,
+            "observed": 2,
+            "rg4_cert": 2,
+            "rgn_cert": 3,
+            "summary": 1,
+            "support": 4,
+            "wrong": 2
+          },
+          "passed": true,
+          "rng": "random.Random(20261029)"
+        },
+        "report": {
+          "audit_wall_informational": 357.5,
+          "cases_audited": 480,
+          "cases_expected": 480,
+          "cases_not_reached": 0,
+          "events": {
+            "audit_done": {
+              "event": "audit_done",
+              "t": 1793112479.0677805
+            },
+            "done": {
+              "event": "done",
+              "t": 1793112484.345677
+            },
+            "mutation": {
+              "detected_injected": 20,
+              "distinct_cases": 20,
+              "event": "mutation",
+              "flagged_not_injected": 0,
+              "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+              "injected": 20,
+              "injected_on_already_mismatching_case": 0,
+              "kinds": {
+                "B": 1,
+                "counts": 2,
+                "flips": 1,
+                "latent": 1,
+                "m": 1,
+                "observed": 2,
+                "rg4_cert": 2,
+                "rgn_cert": 3,
+                "summary": 1,
+                "support": 4,
+                "wrong": 2
+              },
+              "passed": true,
+              "rng": "random.Random(20261029)"
+            },
+            "start": {
+              "event": "start",
+              "t": 1793112299.687782
+            }
+          },
+          "gated_cases_audited": 240,
+          "gated_cases_expected": 240,
+          "gated_mismatching_cases": 0,
+          "mismatching_cases": 0,
+          "passed": true,
+          "results_file": "/workspace/brute/results/study-018/transfer/RESULTS.json",
+          "results_sha256": "f9979ede1515fe5555797184ec5379b99c3aafa7b5f53c7ad53be70d0c755ce8",
+          "schema": "brute.second-implementation-018.v1",
+          "scope": "RGN4 / RGN4_0 / RGN4_or supports (exhaustive <= 4-state Moore machines, per-state mismatch costs), RegionSpace(4) supports at m = 0, B / m / realized flips, RG4 and RGN certificates, wrong flags, counts, summary",
+          "source_sha256": "7caf17894b0113a07cb09f3778835c7a91ee5cfec2873bfd697a73ae91586121",
+          "study": "BRUTE-0160-NOISY-OBSERVATION-018",
+          "wording": "second implementation by the same author, no brute import; not an independent or third-party audit"
+        },
+        "wording": "second implementation by the same author"
+      },
+      "pass": true
+    },
+    "GTI_test_isolation": {
+      "gated": true,
+      "observed": {
+        "clean_tag_runs": {
+          "0100": {
+            "test_release_0100.Corruption0100.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0110": {
+            "test_release_0110.Corruption0110.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0120": {
+            "test_release_0120.Corruption0120.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0130": {
+            "test_release_0130.Corruption0130.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0140": {
+            "test_release_0140.Corruption0140.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0140.Release0140.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0140.Release0140.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0140.Release0140.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0140.Release0140.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0140.Release0140.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0140.Release0140.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0150": {
+            "test_release_0150.Corruption0150.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0150.Release0150.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0150.Release0150.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0150.Release0150.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0150.Release0150.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0150.Release0150.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0150.Release0150.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "060": {
+            "test_release_060.GT1.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_060.GT1.test_frozen_050_defect_still_recorded": [
+              "ok",
+              null
+            ],
+            "test_release_060.Release060.test_fast_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_060.Release060.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_060.Release060.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "070": {
+            "test_release_070.Corruption070.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_070.Release070.test_fast_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_070.Release070.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_070.Release070.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_070.Release070.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "080": {
+            "test_release_080.Corruption080.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_080.Release080.test_fast_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_080.Release080.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_080.Release080.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_080.Release080.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "090": {
+            "test_release_090.Corruption090.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_version_consistent": [
+              "ok",
+              null
+            ]
+          }
+        },
+        "dirty_tracked_files": [
+          "esults/RESEARCH_LEDGER.jsonl"
+        ],
+        "head": "f9df9bcccb192ecd7a9f7f040e43402ea398bf8b",
+        "run": "in-cap",
+        "tracked_tree_dirty": true,
+        "verdict": {
+          "clauses": {
+            "i_only_declared_failures": true,
+            "ii_test_study_005_six_pass": true,
+            "iii_counts_match_plain": true,
+            "iv_frozen_unchanged": true,
+            "v_new_tests_pass": true
+          },
+          "failing": [
+            "test_brute_repro.BruteRepro.test_verify_fails_under_tampered_results",
+            "test_release_0100.Release0100.test_short_verify_passes",
+            "test_release_0100.Release0100.test_untampered_copy_passes",
+            "test_release_0100.Release0100.test_version_consistent",
+            "test_release_011.ReleaseV011.test_fast_verify_passes",
+            "test_release_0110.Release0110.test_embeddable_api_answers",
+            "test_release_0110.Release0110.test_short_verify_passes",
+            "test_release_0110.Release0110.test_untampered_copy_passes",
+            "test_release_0110.Release0110.test_version_consistent",
+            "test_release_0120.Release0120.test_embeddable_api_answers",
+            "test_release_0120.Release0120.test_short_verify_passes",
+            "test_release_0120.Release0120.test_untampered_copy_passes",
+            "test_release_0120.Release0120.test_version_consistent",
+            "test_release_0130.Release0130.test_embeddable_api_answers",
+            "test_release_0130.Release0130.test_short_verify_passes",
+            "test_release_0130.Release0130.test_untampered_copy_passes",
+            "test_release_0130.Release0130.test_version_consistent",
+            "test_release_0140.Release0140.test_embeddable_api_answers",
+            "test_release_0140.Release0140.test_short_verify_passes",
+            "test_release_0140.Release0140.test_untampered_copy_passes",
+            "test_release_0140.Release0140.test_version_consistent",
+            "test_release_0150.Release0150.test_short_verify_passes",
+            "test_release_0150.Release0150.test_untampered_copy_passes",
+            "test_release_020.ReleaseV020.test_fast_verify_passes",
+            "test_release_030.ReleaseV030.test_fast_verify_passes",
+            "test_release_040.ReleaseVersioned.test_fast_verify_passes",
+            "test_release_040.ReleaseVersioned.test_git_order",
+            "test_release_040.ReleaseVersioned.test_tampered_copies_fail",
+            "test_release_040.ReleaseVersioned.test_untampered_copy_passes",
+            "test_release_040.ReleaseVersioned.test_version_consistent",
+            "test_release_050.ReleaseVersioned.test_fast_verify_passes",
+            "test_release_050.ReleaseVersioned.test_git_order",
+            "test_release_050.ReleaseVersioned.test_tampered_copies_fail",
+            "test_release_050.ReleaseVersioned.test_untampered_copy_passes",
+            "test_release_050.ReleaseVersioned.test_version_consistent",
+            "test_release_060.Release060.test_fast_verify_passes",
+            "test_release_060.Release060.test_untampered_copy_passes",
+            "test_release_060.Release060.test_version_consistent",
+            "test_release_070.Release070.test_fast_verify_passes",
+            "test_release_070.Release070.test_untampered_copy_passes",
+            "test_release_070.Release070.test_version_consistent",
+            "test_release_080.Release080.test_fast_verify_passes",
+            "test_release_080.Release080.test_untampered_copy_passes",
+            "test_release_080.Release080.test_version_consistent",
+            "test_release_090.Release090.test_short_verify_passes",
+            "test_release_090.Release090.test_untampered_copy_passes",
+            "test_release_090.Release090.test_version_consistent",
+            "test_scripts_017.Orchestrator017.test_streams"
+          ],
+          "k_rules": {
+            "0100": {
+              "applied": true,
+              "failures": [
+                "test_release_0100.Release0100.test_short_verify_passes",
+                "test_release_0100.Release0100.test_untampered_copy_passes",
+                "test_release_0100.Release0100.test_version_consistent"
+              ]
+            },
+            "0110": {
+              "applied": true,
+              "failures": [
+                "test_release_0110.Release0110.test_embeddable_api_answers",
+                "test_release_0110.Release0110.test_short_verify_passes",
+                "test_release_0110.Release0110.test_untampered_copy_passes",
+                "test_release_0110.Release0110.test_version_consistent"
+              ]
+            },
+            "0120": {
+              "applied": true,
+              "failures": [
+                "test_release_0120.Release0120.test_embeddable_api_answers",
+                "test_release_0120.Release0120.test_short_verify_passes",
+                "test_release_0120.Release0120.test_untampered_copy_passes",
+                "test_release_0120.Release0120.test_version_consistent"
+              ]
+            },
+            "0130": {
+              "applied": true,
+              "failures": [
+                "test_release_0130.Release0130.test_embeddable_api_answers",
+                "test_release_0130.Release0130.test_short_verify_passes",
+                "test_release_0130.Release0130.test_untampered_copy_passes",
+                "test_release_0130.Release0130.test_version_consistent"
+              ]
+            },
+            "0140": {
+              "applied": true,
+              "failures": [
+                "test_release_0140.Release0140.test_embeddable_api_answers",
+                "test_release_0140.Release0140.test_short_verify_passes",
+                "test_release_0140.Release0140.test_untampered_copy_passes",
+                "test_release_0140.Release0140.test_version_consistent"
+              ]
+            },
+            "0150": {
+              "applied": true,
+              "failures": [
+                "test_release_0150.Release0150.test_short_verify_passes",
+                "test_release_0150.Release0150.test_untampered_copy_passes"
+              ]
+            },
+            "060": {
+              "applied": true,
+              "failures": [
+                "test_release_060.Release060.test_fast_verify_passes",
+                "test_release_060.Release060.test_untampered_copy_passes",
+                "test_release_060.Release060.test_version_consistent"
+              ]
+            },
+            "070": {
+              "applied": true,
+              "failures": [
+                "test_release_070.Release070.test_fast_verify_passes",
+                "test_release_070.Release070.test_untampered_copy_passes",
+                "test_release_070.Release070.test_version_consistent"
+              ]
+            },
+            "080": {
+              "applied": true,
+              "failures": [
+                "test_release_080.Release080.test_fast_verify_passes",
+                "test_release_080.Release080.test_untampered_copy_passes",
+                "test_release_080.Release080.test_version_consistent"
+              ]
+            },
+            "090": {
+              "applied": true,
+              "failures": [
+                "test_release_090.Release090.test_short_verify_passes",
+                "test_release_090.Release090.test_untampered_copy_passes",
+                "test_release_090.Release090.test_version_consistent"
+              ]
+            },
+            "096": {
+              "applied": true,
+              "failures": [
+                "test_scripts_017.Orchestrator017.test_streams"
+              ]
+            }
+          },
+          "new_test_failures": [],
+          "new_test_modules_missing": [],
+          "new_tests": [
+            "test_api_certify6_0160.py",
+            "test_noisyregion_0160.py",
+            "test_scoring_018.py",
+            "test_scripts_018.py",
+            "test_seeds_0160.py",
+            "test_study_0160.py",
+            "test_v0160_reference.py"
+          ],
+          "passed": true,
+          "skipped_per_module": [],
+          "skipped_plain": [],
+          "test_study_005": {
+            "test_study_005.Study005.test_aggregate": "ok",
+            "test_study_005.Study005.test_deterministic": "ok",
+            "test_study_005.Study005.test_jobs_match_plan": "ok",
+            "test_study_005.Study005.test_reference_agrees": "ok",
+            "test_study_005.Study005.test_reference_detects_tampering": "ok",
+            "test_study_005.Study005.test_reference_imports_no_brute": "ok"
+          },
+          "tests_run_per_module_total": 635,
+          "tests_run_plain": 635,
+          "undeclared_failures": []
+        },
+        "workers": 4
+      },
+      "pass": true
+    },
+    "G_HB_heartbeat_gap": {
+      "gated": true,
+      "observed": {
+        "beats": 442,
+        "gaps_over_10s_attributed": [],
+        "max_gap_s": 2.011
+      },
+      "pass": true
+    },
+    "G_RT_study_runtime": {
+      "gated": true,
+      "observed": {
+        "cap_s": 7200,
+        "clauses": {
+          "i_streams_inside_cap_not_stopped": true,
+          "ii_watchdog_whole_run": true,
+          "iii_kill_drill_latency_le_15s": true
+        },
+        "completion_s_after_t0": {
+          "g11": 611.9,
+          "gti": 882.0,
+          "repro": 589.8,
+          "transfer": 425.6
+        },
+        "kill_drill": {
+          "fire_delay_s": 0.0,
+          "kill_latency_s": 0.226,
+          "label": "Observed (block smoke-drill; outside the cap; run while the dry2 smoke GTI stream was also running)",
+          "sigkill_used": false,
+          "survivors": []
+        },
+        "run_done": {
+          "completed_at": {
+            "g11": 1793112484.863428,
+            "gti": 1793112754.9723873,
+            "repro": 1793112462.8390896,
+            "transfer": 1793112298.6300707
+          },
+          "elapsed_s": 882,
+          "events": {
+            "g11": {
+              "audit_done": {
+                "event": "audit_done",
+                "t": 1793112479.0677805
+              },
+              "done": {
+                "event": "done",
+                "t": 1793112484.345677
+              },
+              "mutation": {
+                "detected_injected": 20,
+                "distinct_cases": 20,
+                "event": "mutation",
+                "flagged_not_injected": 0,
+                "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+                "injected": 20,
+                "injected_on_already_mismatching_case": 0,
+                "kinds": {
+                  "B": 1,
+                  "counts": 2,
+                  "flips": 1,
+                  "latent": 1,
+                  "m": 1,
+                  "observed": 2,
+                  "rg4_cert": 2,
+                  "rgn_cert": 3,
+                  "summary": 1,
+                  "support": 4,
+                  "wrong": 2
+                },
+                "passed": true,
+                "rng": "random.Random(20261029)"
+              },
+              "start": {
+                "event": "start",
+                "t": 1793112299.687782
+              }
+            }
+          },
+          "finished": {
+            "g11": "2026-10-27T10:48:04-0400",
+            "gti": "2026-10-27T10:52:34-0400",
+            "repro": "2026-10-27T10:47:42-0400",
+            "transfer": "2026-10-27T10:44:58-0400"
+          },
+          "finished_at": "2026-10-27T10:52:34-0400",
+          "mandatory": {
+            "g11": true,
+            "gti": true,
+            "repro": true,
+            "transfer": true
+          },
+          "spent": {
+            "g11": 186,
+            "gti": 881,
+            "repro": 164,
+            "transfer": 425
+          },
+          "stopped": {},
+          "t0": 1793111873.0
+        },
+        "spent_s": {
+          "g11": 186,
+          "gti": 881,
+          "repro": 164,
+          "transfer": 425
+        },
+        "stop_orchestrator": null,
+        "stop_watchdog": null,
+        "stopped_streams": {},
+        "streams": {
+          "g11": true,
+          "gti": true,
+          "repro": true,
+          "transfer": true
+        }
+      },
+      "pass": true
+    },
+    "G_recount": {
+      "gated": true,
+      "observed": {
+        "arms_not_recounted": [],
+        "certificate_count_mismatches": [],
+        "mismatches": [],
+        "per_subset_arm": {
+          "main": {
+            "RG4": {
+              "mismatching_records": 0,
+              "recomputed_false": 89,
+              "recorded_false": 89,
+              "records": 360
+            },
+            "RGN4": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "RGN4_0": {
+              "mismatching_records": 0,
+              "recomputed_false": 89,
+              "recorded_false": 89,
+              "records": 360
+            },
+            "RGN4_or": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "SP8": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            }
+          },
+          "stress": {
+            "RG4": {
+              "mismatching_records": 0,
+              "recomputed_false": 125,
+              "recorded_false": 125,
+              "records": 120
+            },
+            "RGN4": {
+              "mismatching_records": 0,
+              "recomputed_false": 16,
+              "recorded_false": 16,
+              "records": 120
+            },
+            "RGN4_0": {
+              "mismatching_records": 0,
+              "recomputed_false": 125,
+              "recorded_false": 125,
+              "records": 120
+            },
+            "RGN4_or": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 120
+            },
+            "SP8": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 120
+            }
+          }
+        },
+        "wrong_flag_mismatches": []
+      },
+      "pass": true
+    },
+    "R_RG4_noise": {
+      "gated": false,
+      "observed": {
+        "C_RG4": {
+          "eps0": [
+            0.44053,
+            [
+              0.421018,
+              0.46023
+            ]
+          ],
+          "eps1": [
+            0.33447,
+            [
+              0.30085,
+              0.369129
+            ]
+          ],
+          "eps2": [
+            0.235322,
+            [
+              0.199901,
+              0.27179
+            ]
+          ],
+          "stress": [
+            0.107292,
+            [
+              0.082197,
+              0.131534
+            ]
+          ]
+        },
+        "RG4": {
+          "0.0": {
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage": 0.44053,
+            "cp_upper_95_one_sided": 0.0246554,
+            "false_certificates": 0
+          },
+          "0.01": {
+            "case_false": 16,
+            "case_false_rate": 0.133333,
+            "cases": 120,
+            "coverage": 0.33447,
+            "cp_upper_95_one_sided": 0.19544385,
+            "false_certificates": 49
+          },
+          "0.02": {
+            "case_false": 24,
+            "case_false_rate": 0.2,
+            "cases": 120,
+            "coverage": 0.235322,
+            "cp_upper_95_one_sided": 0.2695814,
+            "false_certificates": 40
+          },
+          "0.05": {
+            "case_false": 46,
+            "case_false_rate": 0.383333,
+            "cases": 120,
+            "coverage": 0.107292,
+            "cp_upper_95_one_sided": 0.46209113,
+            "false_certificates": 125
+          }
+        },
+        "SP8": {
+          "0.0": {
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage": 0.146496,
+            "cp_upper_95_one_sided": 0.0246554,
+            "false_certificates": 0
+          },
+          "0.01": {
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage": 0.107765,
+            "cp_upper_95_one_sided": 0.0246554,
+            "false_certificates": 0
+          },
+          "0.02": {
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage": 0.074432,
+            "cp_upper_95_one_sided": 0.0246554,
+            "false_certificates": 0
+          },
+          "0.05": {
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage": 0.015625,
+            "cp_upper_95_one_sided": 0.0246554,
+            "false_certificates": 0
+          }
+        },
+        "label": "expected > 0 under noise"
+      },
+      "pass": null
+    },
+    "R_bound": {
+      "gated": false,
+      "observed": {
+        "0.0": {
+          "B_range": [
+            46,
+            68
+          ],
+          "cases": 120,
+          "m_values": [
+            4,
+            5
+          ],
+          "mean_bound_P_flips_gt_m": 0.0,
+          "observed_RGN4_case_false_rate": 0.0,
+          "observed_flips_gt_m_rate": 0.0
+        },
+        "0.01": {
+          "B_range": [
+            46,
+            68
+          ],
+          "cases": 120,
+          "m_values": [
+            4,
+            5
+          ],
+          "mean_bound_P_flips_gt_m": 0.00029879,
+          "observed_RGN4_case_false_rate": 0.0,
+          "observed_flips_gt_m_rate": 0.0
+        },
+        "0.02": {
+          "B_range": [
+            46,
+            68
+          ],
+          "cases": 120,
+          "m_values": [
+            4,
+            5
+          ],
+          "mean_bound_P_flips_gt_m": 0.00614862,
+          "observed_RGN4_case_false_rate": 0.0,
+          "observed_flips_gt_m_rate": 0.0
+        },
+        "0.05": {
+          "B_range": [
+            46,
+            68
+          ],
+          "cases": 120,
+          "m_values": [
+            4,
+            5
+          ],
+          "mean_bound_P_flips_gt_m": 0.16373812,
+          "observed_RGN4_case_false_rate": 0.075,
+          "observed_flips_gt_m_rate": 0.158333
+        }
+      },
+      "pass": null
+    },
+    "R_gn0_post_burn": {
+      "gated": false,
+      "observed": {
+        "cases_differing_after_burn_in": [],
+        "eps0_cases": 120,
+        "label": "reported, #97 item 3",
+        "pass": true
+      },
+      "pass": null
+    },
+    "R_gn0_support": {
+      "gated": false,
+      "observed": {
+        "cases": 480,
+        "cases_supports_differ": 0,
+        "examples": [],
+        "label": "Exact check (reported, #97 item 3)",
+        "pass": true
+      },
+      "pass": null
+    },
+    "R_heartbeat_attribution": {
+      "gated": false,
+      "observed": {
+        "label": "Inferred; deviation #90 diagnostic, changes no verdict",
+        "sentinel_attribution": {
+          "class_counts": {
+            "box_pause": 0,
+            "clock_step": 0,
+            "suspend": 0,
+            "unattributed": 0,
+            "watchdog_stall": 0
+          },
+          "gaps_over_10s": [],
+          "max_sentinel_tick_gap_s": 0.328,
+          "max_watchdog_gap_s": 2.011,
+          "sentinel_records": 439
+        },
+        "watchdog_gaps_over_10s": []
+      },
+      "pass": null
+    },
+    "R_oracle": {
+      "gated": false,
+      "observed": {
+        "C_RGN4_or": {
+          "eps0": [
+            0.440341,
+            [
+              0.420736,
+              0.460133
+            ]
+          ],
+          "eps1": [
+            0.380966,
+            [
+              0.355395,
+              0.405777
+            ]
+          ],
+          "eps2": [
+            0.315814,
+            [
+              0.29053,
+              0.341006
+            ]
+          ],
+          "noisy": [
+            0.34839,
+            [
+              0.326561,
+              0.369844
+            ]
+          ],
+          "stress": [
+            0.242898,
+            [
+              0.219032,
+              0.266669
+            ]
+          ]
+        },
+        "RGN4_or": {
+          "0.0": {
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage": 0.440341,
+            "cp_upper_95_one_sided": 0.0246554,
+            "false_certificates": 0
+          },
+          "0.01": {
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage": 0.380966,
+            "cp_upper_95_one_sided": 0.0246554,
+            "false_certificates": 0
+          },
+          "0.02": {
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage": 0.315814,
+            "cp_upper_95_one_sided": 0.0246554,
+            "false_certificates": 0
+          },
+          "0.05": {
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage": 0.242898,
+            "cp_upper_95_one_sided": 0.0246554,
+            "false_certificates": 0
+          }
+        },
+        "dC_RGN4_or_minus_RGN4": {
+          "eps0": 0.382576,
+          "eps1": 0.322254,
+          "eps2": 0.249716,
+          "noisy": 0.285985,
+          "stress": 0.14839
+        }
+      },
+      "pass": null
+    },
+    "R_rates": {
+      "gated": false,
+      "observed": {
+        "g11": {
+          "budget_s": 1200,
+          "fraction_of_budget": 0.155,
+          "spent_s": 186.2
+        },
+        "gti": {
+          "budget_s": 4800,
+          "fraction_of_budget": 0.184,
+          "spent_s": 880.9
+        },
+        "repro": {
+          "budget_s": 1200,
+          "fraction_of_budget": 0.137,
+          "spent_s": 164.2
+        },
+        "solver_cost": {
+          "RG4": {
+            "ms_per_step": 0.843,
+            "total_s": 17.805
+          },
+          "RGN4": {
+            "ms_per_step": 55.7841,
+            "total_s": 1178.161
+          },
+          "RGN4_0": {
+            "ms_per_step": 1.0863,
+            "total_s": 22.943
+          },
+          "RGN4_or": {
+            "ms_per_step": 12.8524,
+            "total_s": 271.442
+          },
+          "timing_source": "transfer/RESULTS.json (informational, unsealed)"
+        },
+        "transfer": {
+          "budget_s": 1800,
+          "fraction_of_budget": 0.236,
+          "spent_s": 424.6
+        }
+      },
+      "pass": null
+    },
+    "R_stress": {
+      "gated": false,
+      "observed": {
+        "RGN4": {
+          "case_false": 9,
+          "case_false_rate": 0.075,
+          "cases": 120,
+          "coverage": 0.094508,
+          "cp_upper_95_one_sided": 0.12722554,
+          "false_certificates": 16
+        },
+        "RGN4_case_false_flips_gt_m": 9,
+        "RGN4_case_false_flips_le_m": 0,
+        "RGN4_or": {
+          "case_false": 0,
+          "case_false_rate": 0.0,
+          "cases": 120,
+          "coverage": 0.242898,
+          "cp_upper_95_one_sided": 0.0246554,
+          "false_certificates": 0
+        },
+        "cases": 120,
+        "cases_flips_gt_m": 19,
+        "label": "outside the attestation; no guarantee"
+      },
+      "pass": null
+    }
+  },
+  "passed": [
+    "G_recount",
+    "GS_a6_soundness",
+    "GS_ref6_reference_audit",
+    "GAPI6_certify6",
+    "G10_compute",
+    "G12_reproducibility",
+    "G13_frozen_controls_reproduce",
+    "GTI_test_isolation",
+    "G_RT_study_runtime",
+    "G_HB_heartbeat_gap"
+  ],
+  "pending": [],
+  "plan_sha256": "b6471275f8acebf2a081f85c3eddbc0bc884b41eb58c9b8588aad9b5b8632ecf",
+  "schema": "brute.gates.v16_0",
+  "scientific_sha256": "889923664a8e13b73de86461eee1e5de5f270ed74c5873720d7b260c57510322",
+  "smoke_dry_run": false,
+  "stop_rule_fired": false,
+  "study": "BRUTE-0160-NOISY-OBSERVATION-018"
+}
