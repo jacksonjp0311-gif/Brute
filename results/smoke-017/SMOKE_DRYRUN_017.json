@@ -1,0 +1,87 @@
+{
+  "gates_smoke_tail": [
+    "{'passed': ['G_recount', 'GS_a5_soundness', 'GS_b5_containment', 'G10_compute', 'G13_frozen_controls_reproduce', 'G_HB_heartbeat_gap'], 'failed': ['GRL_bounded_lookahead', 'GDS2_deferred_split_replication', 'GS_ref5_reference_audit', 'GAPI5_certify5', 'G12_reproducibility', 'GTI_test_isolation', 'G_RT_study_runtime'], 'pending': []}",
+    "{'GRL_bounded_lookahead': 'INCOMPLETE_INPUT (PAIRED_ANALYSIS_017.json missing)', 'GDS2_deferred_split_replication': 'INCOMPLETE_INPUT (PAIRED_ANALYSIS_017.json missing)', 'GAPI5_certify5': 'INCOMPLETE_INPUT (TEST_SUITE_017.json missing)', 'G12_reproducibility': 'INCOMPLETE_INPUT (REPRODUCIBILITY_017.json missing)', 'GTI_test_isolation': 'INCOMPLETE_INPUT (TEST_SUITE_017.json missing)', 'G_RT_study_runtime': 'clauses failed: iii_kill_drill_latency_le_15s'}"
+  ],
+  "heartbeat": {
+    "beats": 29,
+    "first_wall": 1793095900.857,
+    "gaps_over_10s": [],
+    "last_wall": 1793095956.857,
+    "max_gap_s": 2.004
+  },
+  "heartbeat_attribution": {
+    "G_HB_unchanged": "max watchdog heartbeat gap <= 30 s (gated separately in GATES_017)",
+    "class_counts": {
+      "box_pause": 0,
+      "clock_step": 0,
+      "suspend": 0,
+      "unattributed": 0,
+      "watchdog_stall": 0
+    },
+    "gaps_over_10s": [],
+    "gated": false,
+    "heartbeats": 29,
+    "label": "Inferred (classes are readings of clock / CPU evidence)",
+    "max_sentinel_tick_gap_s": 0.263,
+    "max_watchdog_gap_s": 2.004,
+    "schema": "brute.heartbeat-attribution.v1",
+    "sentinel_records": 27
+  },
+  "label": "Observed (smoke seeds only; no held-out seed)",
+  "note": "GS_ref5 passed False in the dry run only because the mutation test is skipped below 20 cases (smoke); see REFERENCE_MUTATION_SMOKE_017.json. GTI skipped here; see GTI_SMOKE_017.json.",
+  "orchestrator_log": [
+    "[2026-10-27T06:11:40-0400] orchestrator start pid 1869647; cap 1200 s, deadline 2026-10-27T06:31:40-0400",
+    "[2026-10-27T06:11:40-0400] transfer: start (4 workers, spent 0 s, budget 3000)",
+    "[2026-10-27T06:11:50-0400] transfer: done in 10 s",
+    "[2026-10-27T06:11:50-0400] repro: start (2 workers, spent 0 s, budget 1500)",
+    "[2026-10-27T06:11:50-0400] g11: start (6 workers, spent 0 s, budget 2400)",
+    "[2026-10-27T06:12:00-0400] repro: done in 10 s",
+    "[2026-10-27T06:12:34-0400] g11: done in 44 s",
+    "[2026-10-27T06:12:34-0400] RUN_DONE (54 s since t0; stopped streams: {})"
+  ],
+  "reference_audit": {
+    "cases_audited": 10,
+    "cases_expected": 10,
+    "cases_not_reached": 0,
+    "events": {
+      "audit_done": {
+        "event": "audit_done",
+        "t": 1793095953.0583968
+      },
+      "done": {
+        "event": "done",
+        "t": 1793095953.0590124
+      },
+      "mutation": {
+        "event": "mutation",
+        "passed": null,
+        "skipped": "10 cases < 20 (smoke only)"
+      },
+      "start": {
+        "event": "start",
+        "t": 1793095911.1638136
+      }
+    },
+    "mismatching_cases": 0,
+    "passed": false
+  },
+  "reproducibility": {
+    "transfer": {
+      "byte_identical": 4,
+      "expected": 4,
+      "failing_differences": [],
+      "main_scientific_sha256": "cba1137130a666ae48cad811b129f6911f614415e6f1ba347626003c59e52d30",
+      "missing": [],
+      "passed": true,
+      "repro_complete": true,
+      "repro_scientific_sha256": "984b96892347753357d85f996ad2ff1a73db8338cfa9ed64a686f0f8640ada92",
+      "rerun": 4,
+      "unexpected": []
+    }
+  },
+  "schema": "brute.smoke-dryrun.v1",
+  "sentinel_lines": 27,
+  "setup": "SMOKE=1 SKIP_GTI=1 STUDY_DIR_017=/tmp/s17/dry CAP_S=1200; watchdog_017 and hbsentinel_017 --dir /tmp/s17/dry --cap 1200 launched separately",
+  "study": "BRUTE-0150-BOUNDED-LOOKAHEAD-017"
+}

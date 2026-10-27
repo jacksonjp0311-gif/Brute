@@ -1,0 +1,52 @@
+{
+  "all_gone_at": "2026-10-27T06:14:01-0400",
+  "cap_s": 15,
+  "deadline": "2026-10-27T06:14:01-0400",
+  "deadline_epoch": 1793096041.0,
+  "fire_delay_monotonic_s": 0.0,
+  "fire_delay_s": 0.0,
+  "fired_at": "2026-10-27T06:14:01-0400",
+  "heartbeat": {
+    "beats": 9,
+    "first_wall": 1793096027.005,
+    "gaps_over_10s": [],
+    "last_wall": 1793096043.005,
+    "max_gap_s": 2.001
+  },
+  "kill_latency_monotonic_s": 0.224,
+  "kill_latency_s": 0.224,
+  "kill_thread_disk_io_before_kill": false,
+  "label": "Observed (smoke seeds 8390013-8390015, block smoke-drill; outside the cap)",
+  "note": "Observed: the watchdog wrote STOP_017.json at the 15 s cap and stopped the orchestrator and its stream process groups [1872385, 1872452, 1872453] within 0.224 s; SIGKILL used: False; survivors [].",
+  "orchestrator_log": [
+    "[2026-10-27T06:13:47-0400] orchestrator start pid 1872372; cap 600 s, deadline 2026-10-27T06:23:46-0400",
+    "[2026-10-27T06:13:47-0400] transfer: start (4 workers, spent 0 s, budget 3000)",
+    "[2026-10-27T06:13:59-0400] transfer: done in 12 s",
+    "[2026-10-27T06:13:59-0400] repro: start (2 workers, spent 0 s, budget 1500)",
+    "[2026-10-27T06:13:59-0400] g11: start (6 workers, spent 0 s, budget 2400)"
+  ],
+  "orchestrator_pids": [
+    1872372
+  ],
+  "partial_seal": {
+    "case_count": 3,
+    "complete": true,
+    "expected_case_count": 3
+  },
+  "process_groups": [
+    1872385,
+    1872452,
+    1872453
+  ],
+  "schema": "brute.kill-drill.v2",
+  "setup": "SMOKE=1 SKIP_GTI=1 BRUTE_SMOKE_DRILL=1, orchestrator CAP_S=600 (so the watchdog, not the orchestrator, fires), watchdog_017 --dir /tmp/s17/drill --cap 15",
+  "sigkill_used": false,
+  "study": "BRUTE-0150-BOUNDED-LOOKAHEAD-017",
+  "survivors": [],
+  "t0": 1793096026.0,
+  "watchdog_log": [
+    "[2026-10-27T06:13:46-0400] watchdog_017 start pid 1872374; deadline 2026-10-27T06:14:01-0400 (cap 15 s)",
+    "[2026-10-27T06:14:01-0400] STOP_017.json written: latency 0.224 s, survivors []",
+    "[2026-10-27T06:14:03-0400] kill done; gaps>10s []"
+  ]
+}

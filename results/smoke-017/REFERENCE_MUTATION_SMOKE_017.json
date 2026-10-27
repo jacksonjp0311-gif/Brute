@@ -1,0 +1,190 @@
+{
+ "cases": 20,
+ "clean_cases_passing": 20,
+ "label": "Observed (smoke seeds only)",
+ "mutation": {
+  "details": [
+   {
+    "case": "cycle3/8390001/0.1",
+    "changed_sections": [
+     "rglx"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGLX step 9 b=1 num"
+   },
+   {
+    "case": "cycle3/8390001/0.35",
+    "changed_sections": [
+     "transfer"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RSXLp trace"
+   },
+   {
+    "case": "cycle3/8390002/0.1",
+    "changed_sections": [
+     "rsxl"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RSXL n=3 step 37 b=0 support"
+   },
+   {
+    "case": "cycle3/8390002/0.35",
+    "changed_sections": [
+     "transfer"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGL4 trace"
+   },
+   {
+    "case": "cycle3/8390009/0.35",
+    "changed_sections": [
+     "bounded"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGLX n=5 step 19 b=1 support"
+   },
+   {
+    "case": "cycle3/8390010/0.35",
+    "changed_sections": [
+     "bounded"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RSX n=5 step 32 b=0 support"
+   },
+   {
+    "case": "ood4/8390007/0.1",
+    "changed_sections": [
+     "bounded"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGLX n=4 step 1 b=1 support"
+   },
+   {
+    "case": "ood4/8390007/0.35",
+    "changed_sections": [
+     "stress"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: stress 23 DLF_license"
+   },
+   {
+    "case": "ood4/8390008/0.1",
+    "changed_sections": [
+     "rglx"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGLX step 10 b=1 num"
+   },
+   {
+    "case": "ood4/8390008/0.35",
+    "changed_sections": [
+     "transfer"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: DLFa_p trace"
+   },
+   {
+    "case": "switch3/8390003/0.1",
+    "changed_sections": [
+     "bounded"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGLX n=3 step 27 b=1 support"
+   },
+   {
+    "case": "switch3/8390003/0.35",
+    "changed_sections": [
+     "transfer"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: DLFp trace"
+   },
+   {
+    "case": "switch3/8390004/0.1",
+    "changed_sections": [
+     "rsxl"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RSXL step 32 deferred"
+   },
+   {
+    "case": "switch3/8390004/0.35",
+    "changed_sections": [
+     "rglx"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGLX step 10 b=1 num"
+   },
+   {
+    "case": "switch3/8390011/0.35",
+    "changed_sections": [
+     "transfer"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RSXL4 trace"
+   },
+   {
+    "case": "switch3/8390012/0.35",
+    "changed_sections": [
+     "transfer"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: DLFa_n trace"
+   },
+   {
+    "case": "unaliased2/8390005/0.1",
+    "changed_sections": [
+     "transfer"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: EB trace"
+   },
+   {
+    "case": "unaliased2/8390005/0.35",
+    "changed_sections": [
+     "rgl"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGL n=2 step 41 b=0 support"
+   },
+   {
+    "case": "unaliased2/8390006/0.1",
+    "changed_sections": [
+     "stress"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: stress 3 DLF_license"
+   },
+   {
+    "case": "unaliased2/8390006/0.35",
+    "changed_sections": [
+     "rgl"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGL step 25 b=1 num"
+   }
+  ],
+  "detected_injected": 20,
+  "distinct_cases": 20,
+  "event": "mutation",
+  "flagged_not_injected": 0,
+  "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+  "injected": 20,
+  "injected_on_already_mismatching_case": 0,
+  "kinds": {
+   "bounded": 4,
+   "dlf": 2,
+   "dlfa": 2,
+   "eb": 1,
+   "rg": 2,
+   "rgl": 2,
+   "rglx": 3,
+   "rsxl": 2,
+   "stress": 2
+  },
+  "passed": true,
+  "rng": "random.Random(20261029)"
+ },
+ "what": "v0150_reference.mutate on 20 smoke main cases (seeds 8390001-8390012, masks 0.35 / 0.1), audit with run_reference_017.audit worker"
+}
