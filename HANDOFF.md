@@ -5,7 +5,7 @@ _Kept current on the working branch during a release and on `main` at release. L
 ## Current version and state
 
 <!-- V0170 -->
-- **Released: v0.17.0** (study BRUTE-0170-SEQUENTIAL-MARGIN-019, branch `plan/v0.17.0` from main `e92a7c4`). **12 of 13 gated pass.**
+- **Released: v0.17.0** — tag `v0.17.0` on `1cc76e1`, release https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.17.0; `main` fast-forwarded `e92a7c4..1cc76e1` (no force); fresh-clone short verify of `plan/v0.17.0@1cc76e1` passed (428 receipts) (study BRUTE-0170-SEQUENTIAL-MARGIN-019, branch `plan/v0.17.0` from main `e92a7c4`). **12 of 13 gated pass.**
   - **SEQUENTIAL MARGIN (headline GNB): FAIL on clauses (c) and (d).** (a) RGNB4 0 false on 240/240 noisy cases, 0 crossings; (b) CP95 upper 0.0124 ≤ 0.05; (c) dC(RGNB4 − RGN4) eps 0.02 = +0.0017 [−0.0005, +0.0041], CI lower not > 0; (d) C(RGNB4) eps 0.02 = 0.052 [0.041, 0.065] < 0.10.
   - **PASS:** GNB_post_burn_control, GA3 (CP95 0.0605), GS_a7, G_recount, GS_ref7 (336 gated, 0 mismatching, mutation 20/20), GAPI7 (`brute.certify/7`), G10, G12 (152/152), G13, GTI (691 tests, undeclared []), G_RT, G_HB (637 beats, max gap 2.006 s). Release gates: GLV `--long` 15 cases / 0 mismatching / 77.6 s; GCC PASS.
   - **Reported only:** C at eps 0 / 0.02: RG4 0.453 / 0.249, RGN4 0.054 / 0.051, RGNB4 0.055 / 0.052, RGN4_or 0.339 (eps 0.02), SP8 0.153 / 0.076. RG4 case-false 26/120 at eps 0.02. Stress: RGNB4 8/120 false, RGN4 9/120, RGN4_or 0. Alphabet3: RG4_3 20/48 false at eps 0.02; C(RGNB4_3) 0.012.
