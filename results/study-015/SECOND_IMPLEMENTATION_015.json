@@ -1,0 +1,230 @@
+{
+ "audit_wall_informational": 3279.9,
+ "cases_audited": 360,
+ "cases_expected": 360,
+ "cases_not_reached": 0,
+ "events": {
+  "audit_done": {
+   "event": "audit_done",
+   "t": 1793082993.236781
+  },
+  "done": {
+   "event": "done",
+   "t": 1793083036.6265194
+  },
+  "mutation": {
+   "detected_injected": 20,
+   "distinct_cases": 20,
+   "event": "mutation",
+   "flagged_not_injected": 0,
+   "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+   "injected": 20,
+   "injected_on_already_mismatching_case": 0,
+   "kinds": {
+    "bounded": 5,
+    "dlf": 3,
+    "eb": 3,
+    "rg": 2,
+    "rsx": 4,
+    "stress": 3
+   },
+   "passed": true,
+   "rng": "random.Random(20261027)"
+  },
+  "start": {
+   "event": "start",
+   "t": 1793082170.977635
+  }
+ },
+ "mismatches": [],
+ "mismatching_cases": 0,
+ "mutation_test": {
+  "details": [
+   {
+    "case": "cycle3/8110005/0.35",
+    "changed_sections": [
+     "bounded"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: SP8 n=1 step 1 b=0 support"
+   },
+   {
+    "case": "cycle3/8110005/0.6",
+    "changed_sections": [
+     "bounded"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RSX n=5 step 22 b=1 support"
+   },
+   {
+    "case": "cycle3/8110007/0.6",
+    "changed_sections": [
+     "bounded"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: SP8 n=2 step 2 b=0 support"
+   },
+   {
+    "case": "cycle3/8110009/0.35",
+    "changed_sections": [
+     "rsx"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RSX n=3 step 29 b=0 support"
+   },
+   {
+    "case": "cycle3/8110014/0.35",
+    "changed_sections": [
+     "transfer"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: EB trace"
+   },
+   {
+    "case": "cycle3/8110018/0.1",
+    "changed_sections": [
+     "transfer"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RSX4 trace"
+   },
+   {
+    "case": "cycle3/8110023/0.1",
+    "changed_sections": [
+     "bounded"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: SP8 n=5 step 25 b=1 support"
+   },
+   {
+    "case": "ood4/8140002/0.6",
+    "changed_sections": [
+     "transfer"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: DLFn trace"
+   },
+   {
+    "case": "ood4/8140013/0.1",
+    "changed_sections": [
+     "transfer"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RSXp trace"
+   },
+   {
+    "case": "ood4/8140013/0.35",
+    "changed_sections": [
+     "rsx"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RSX n=4 step 34 b=0 support"
+   },
+   {
+    "case": "ood4/8140023/0.35",
+    "changed_sections": [
+     "bounded"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: SP8 n=4 step 9 b=0 support"
+   },
+   {
+    "case": "switch3/8120003/0.1",
+    "changed_sections": [
+     "stress"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: stress 34 AT6_false"
+   },
+   {
+    "case": "switch3/8120009/0.1",
+    "changed_sections": [
+     "stress"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: stress 46 AT6_false"
+   },
+   {
+    "case": "switch3/8120009/0.35",
+    "changed_sections": [
+     "transfer"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: EB2 trace"
+   },
+   {
+    "case": "switch3/8120012/0.35",
+    "changed_sections": [
+     "rsx"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RSX n=3 step 35 b=0 support"
+   },
+   {
+    "case": "switch3/8120015/0.6",
+    "changed_sections": [
+     "transfer"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RSXp trace"
+   },
+   {
+    "case": "switch3/8120016/0.6",
+    "changed_sections": [
+     "transfer"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RSX4 trace"
+   },
+   {
+    "case": "switch3/8120020/0.35",
+    "changed_sections": [
+     "stress"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: stress 51 RSX_rg"
+   },
+   {
+    "case": "unaliased2/8130022/0.6",
+    "changed_sections": [
+     "rsx"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RSX n=2 step 34 b=0 support"
+   },
+   {
+    "case": "unaliased2/8130024/0.6",
+    "changed_sections": [
+     "transfer"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: EB trace"
+   }
+  ],
+  "detected_injected": 20,
+  "distinct_cases": 20,
+  "event": "mutation",
+  "flagged_not_injected": 0,
+  "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+  "injected": 20,
+  "injected_on_already_mismatching_case": 0,
+  "kinds": {
+   "bounded": 5,
+   "dlf": 3,
+   "eb": 3,
+   "rg": 2,
+   "rsx": 4,
+   "stress": 3
+  },
+  "passed": true,
+  "rng": "random.Random(20261027)"
+ },
+ "passed": true,
+ "results_file": "/workspace/brute/results/study-015/transfer/RESULTS.json",
+ "results_sha256": "8d173f46c6f5ae814684f8b656220c0451ade0caf3a78ca093faf43bb4f61202",
+ "schema": "brute.second-implementation-015.v1",
+ "scope": "bounded supports (exhaustive, n = 1..5 on SP8 and RSX); RSX actions; RG2-5, RSX4, DLF, RSX library arms, EB, EB2 (all fields); summary; stress entries incl. certificate lists; ood5 RG4 / RG5",
+ "source_sha256": "042c4c00e22b2f1f3fa2f7622145d6362aa9674bf7496d980732f961d7f91305",
+ "study": "BRUTE-0130-REGION-SPLIT-015",
+ "wording": "second implementation by the same author, no brute import; not an independent or third-party audit"
+}

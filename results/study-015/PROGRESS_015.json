@@ -1,0 +1,51 @@
+{
+ "elapsed_s": 361,
+ "note": "read-only projection (stop_rule); no design, budget or seed change follows",
+ "streams": {
+  "g11": {
+   "budget_s": 2400,
+   "checkpoint_lines": 83,
+   "done": false,
+   "expected_cases": 361,
+   "mandatory": true,
+   "projected_over_budget": false,
+   "projected_total_s": 897,
+   "spent_s": 206,
+   "stopped": null
+  },
+  "gti": {
+   "budget_s": 3600,
+   "checkpoint_lines": null,
+   "done": false,
+   "expected_cases": null,
+   "mandatory": true,
+   "projected_over_budget": null,
+   "projected_total_s": null,
+   "spent_s": 360,
+   "stopped": null
+  },
+  "repro": {
+   "budget_s": 1500,
+   "checkpoint_lines": 120,
+   "done": true,
+   "expected_cases": 120,
+   "mandatory": true,
+   "projected_over_budget": false,
+   "projected_total_s": 68,
+   "spent_s": 68,
+   "stopped": null
+  },
+  "transfer": {
+   "budget_s": 3000,
+   "checkpoint_lines": 360,
+   "done": true,
+   "expected_cases": 360,
+   "mandatory": true,
+   "projected_over_budget": false,
+   "projected_total_s": 154,
+   "spent_s": 154,
+   "stopped": null
+  }
+ },
+ "written_at": "2026-10-27T02:26:15-0400"
+}
