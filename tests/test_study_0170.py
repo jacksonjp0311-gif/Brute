@@ -17,6 +17,7 @@ class Study0170(unittest.TestCase):
         self.assertEqual(len(jobs_for(plan,'reproset')),152)
         self.assertEqual(len(jobs_for(plan,'smoke-transfer')),32);self.assertEqual(len(jobs_for(plan,'smoke-api')),4)
         self.assertEqual(len(jobs_for(plan,'smoke-a3')),8);self.assertEqual(len(jobs_for(plan,'smoke-drill')),12)
+        self.assertEqual(jobs_for(plan,'smoke-all'),jobs_for(plan,'smoke-transfer')+jobs_for(plan,'smoke-a3'))
         for j in jobs_for(plan,'smoke-transfer')+jobs_for(plan,'smoke-a3')+J[:3]+J[-3:]:check_job(j,plan)
         for bad in (('main','cycle3',8510001,0.05),('stress','cycle3',8510001,0.02),('main','cycle3',8520001,0.0),
                     ('main','rand4a3',8550001,0.0),('alphabet3','rand4a3',8550001,0.01),('alphabet3','cycle3',8510001,0.0),

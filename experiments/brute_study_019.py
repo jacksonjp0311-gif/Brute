@@ -38,7 +38,7 @@ from scripts.check_seeds_019 import (check_run_seeds,smoke_family,SMOKE_TARGETS,
 READINGS=45;SLOTS=88;SLOTS3=132;N=4
 NOISY_ARMS=('RGN4','RGNB4','RGNB4_0','RGN4_or');ARMS=('RG4',)+NOISY_ARMS;A3_ARMS=('RG4_3','RGN4_3','RGNB4_3')
 SMOKE_BLOCKS={'smoke-transfer':SMOKE_TARGETS,'smoke-api':API_TEST,'smoke-drill':KILL_DRILL,'smoke-a3':A3_SMOKE}
-BLOCKS=('transfer','main','alphabet3','reproset')+tuple(SMOKE_BLOCKS)
+BLOCKS=('transfer','main','alphabet3','reproset')+tuple(SMOKE_BLOCKS)+('smoke-all',)   # smoke-all = smoke-transfer + smoke-a3 (orchestrator dry run)
 
 
 def flip_array(seed,eps):
@@ -205,6 +205,7 @@ def jobs_for(plan,block):
     if block=='main':return main
     if block=='alphabet3':return a3
     if block=='reproset':return main[::3]+a3[::3]
+    if block=='smoke-all':return jobs_for(plan,'smoke-transfer')+jobs_for(plan,'smoke-a3')
     if block in SMOKE_BLOCKS:
         if block=='smoke-a3':E=EPS_A3
         elif block=='smoke-api':E=(lv['eps2'],)
