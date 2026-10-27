@@ -1,11 +1,13 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~03:36 EDT (v0.13.0 RELEASED on main; README soundness claims narrowed after v0.13.0 at `2d0bfd4`; v0.14.0 PRE-REGISTERED on `plan/v0.14.0`, in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~04:25 EDT (v0.13.0 RELEASED on main; v0.14.0 source and scoring frozen on `plan/v0.14.0`, run next)._
 
 ## Current version and state
 
 <!-- V0140 -->
-- **In progress: v0.14.0** (study BRUTE-0140-DEFERRED-SPLIT-016, branch `plan/v0.14.0` from main `ffa045b`). **Pre-registered:** `experiments/BRUTE_PLAN_016.json` + `BRUTE_PLAN_FREEZE_016.json` at `498d768` (ledger preregistration_016 `4b87380`); readable `docs/research/v0.14.0/PLAN_016.md`. Headline GDS: deferred region split RSXL4 (SP8 until the first RG4 certificate, then RSX) adds coverage ΔC ≥ 0.03, CI lower > 0, at equal first-certificate time (equality *Exact* by construction; coverage *Open*). DLF re-gated on fresh seeds with ood4 doubled (*Open*); ood5 bound-violation signal reported; `brute.certify/4`. Next step: `scripts/check_seeds_016.py` (seeds 8210001–8290030), then the seen-data license diagnostic `scripts/diag_license_016.py`.
+- **In progress: v0.14.0** (study BRUTE-0140-DEFERRED-SPLIT-016, branch `plan/v0.14.0` from main `ffa045b`). **Pre-registered:** `experiments/BRUTE_PLAN_016.json` + `BRUTE_PLAN_FREEZE_016.json` at `498d768` (ledger preregistration_016 `4b87380`); readable `docs/research/v0.14.0/PLAN_016.md`. Headline GDS: deferred region split RSXL4 (SP8 until the first RG4 certificate, then RSX) adds coverage ΔC ≥ 0.03, CI lower > 0, at equal first-certificate time.
+  - **Done:** seeds `35b9840`; 8140016 diagnosis `afb89a9` (`results/diag-016/DIAG_LICENSE_016.json`, seen data: the ood4 world (true n = 4) got a unaliased2 library with license bound 3; RG4 on the same step does not certify, RG2/RG3 certify the same wrong reading); reference `ac717c4`; implementation `97f9800`; step 5 `62bea00` (rate math, deviations #75–#79, dry run, kill drill 0.223 s); smokes `75d57d4` (GTI smoke clause iii 522 vs 533 = untracked test_scoring_016, see GTI_SMOKE_016_NOTE.md; mutation smoke 20/20); source freeze `c7ed80e` (ledger `ecad32d`); scoring freeze `0e9113c` (ledger `cc8525d` + `32ebaba`, 04:23 EDT).
+  - **Next:** run_start_016 no earlier than 04:33:15 EDT, then seal, GATES_016, release (verify_release_0140 drafted, uncommitted until release).
 <!-- /V0140 -->
 
 <!-- V0130 -->
