@@ -1,0 +1,160 @@
+{
+ "cases": 20,
+ "clean_cases_passing": 0,
+ "details": [
+  {
+   "detected": true,
+   "family": "cycle3",
+   "first_difference": "VerificationError: RSXL n=2 step 1 b=0 support",
+   "index": 0,
+   "seed": 8290001
+  },
+  {
+   "detected": true,
+   "family": "cycle3",
+   "first_difference": "VerificationError: EB trace",
+   "index": 1,
+   "seed": 8290002
+  },
+  {
+   "detected": true,
+   "family": "switch3",
+   "first_difference": "VerificationError: RSXL n=3 step 17 b=1 support",
+   "index": 2,
+   "seed": 8290003
+  },
+  {
+   "detected": true,
+   "family": "switch3",
+   "first_difference": "VerificationError: RSXL n=3 step 9 b=1 support",
+   "index": 3,
+   "seed": 8290004
+  },
+  {
+   "detected": true,
+   "family": "unaliased2",
+   "first_difference": "VerificationError: stress 15 RSXL_rg",
+   "index": 4,
+   "seed": 8290005
+  },
+  {
+   "detected": true,
+   "family": "unaliased2",
+   "first_difference": "VerificationError: RSXLn trace",
+   "index": 5,
+   "seed": 8290006
+  },
+  {
+   "detected": true,
+   "family": "ood4",
+   "first_difference": "VerificationError: RSXL4 trace",
+   "index": 6,
+   "seed": 8290007
+  },
+  {
+   "detected": true,
+   "family": "ood4",
+   "first_difference": "VerificationError: RSXL n=4 step 24 b=0 support",
+   "index": 7,
+   "seed": 8290008
+  },
+  {
+   "detected": true,
+   "family": "cycle3",
+   "first_difference": "VerificationError: DLF2n trace",
+   "index": 8,
+   "seed": 8290009
+  },
+  {
+   "detected": true,
+   "family": "switch3",
+   "first_difference": "VerificationError: DLF2p trace",
+   "index": 9,
+   "seed": 8290010
+  },
+  {
+   "detected": true,
+   "family": "unaliased2",
+   "first_difference": "VerificationError: RSXL n=3 step 40 b=1 support",
+   "index": 10,
+   "seed": 8290011
+  },
+  {
+   "detected": true,
+   "family": "ood4",
+   "first_difference": "VerificationError: stress 8 RSXL_false",
+   "index": 11,
+   "seed": 8290012
+  },
+  {
+   "detected": true,
+   "family": "cycle3",
+   "first_difference": "VerificationError: RSXLn trace",
+   "index": 12,
+   "seed": 8290013
+  },
+  {
+   "detected": true,
+   "family": "switch3",
+   "first_difference": "VerificationError: RSX n=1 step 1 b=1 support",
+   "index": 13,
+   "seed": 8290014
+  },
+  {
+   "detected": true,
+   "family": "unaliased2",
+   "first_difference": "VerificationError: DLFp trace",
+   "index": 14,
+   "seed": 8290015
+  },
+  {
+   "detected": true,
+   "family": "cycle3",
+   "first_difference": "VerificationError: RSXL step 18 deferred",
+   "index": 15,
+   "seed": 8290001
+  },
+  {
+   "detected": true,
+   "family": "cycle3",
+   "first_difference": "VerificationError: stress 7 RSXL_rg",
+   "index": 16,
+   "seed": 8290002
+  },
+  {
+   "detected": true,
+   "family": "switch3",
+   "first_difference": "VerificationError: RSXL n=4 step 25 b=1 support",
+   "index": 17,
+   "seed": 8290003
+  },
+  {
+   "detected": true,
+   "family": "switch3",
+   "first_difference": "VerificationError: RSX n=3 step 11 b=0 support",
+   "index": 18,
+   "seed": 8290004
+  },
+  {
+   "detected": true,
+   "family": "unaliased2",
+   "first_difference": "VerificationError: RG4 trace",
+   "index": 19,
+   "seed": 8290005
+  }
+ ],
+ "detected": 20,
+ "distinct_cases": 15,
+ "injected": 20,
+ "kinds": {
+  "bounded": 5,
+  "dlf": 3,
+  "dlf2": 2,
+  "eb": 1,
+  "rg": 2,
+  "rsxl": 4,
+  "stress": 3
+ },
+ "label": "Observed, smoke seeds only; 15 distinct main smoke cases, 5 duplicated to reach the 20 the mutation test needs; not study evidence",
+ "note": "all 20 pool cases are injected, so clean_cases_passing = 0 is vacuous; clean-case audits pass in SMOKE_DRYRUN_016 (10 / 10, 0 mismatches)"
+}
