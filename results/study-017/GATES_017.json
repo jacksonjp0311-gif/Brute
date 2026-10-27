@@ -1,0 +1,2504 @@
+{
+  "GDS2": true,
+  "GRL": true,
+  "G_HB": false,
+  "G_RT": false,
+  "all_gated_pass": false,
+  "criteria_registered": [
+    "G10_compute",
+    "G12_reproducibility",
+    "G13_frozen_controls_reproduce",
+    "GAPI5_certify5",
+    "GDS2_deferred_split_replication",
+    "GRL_bounded_lookahead",
+    "GS_a5_soundness",
+    "GS_b5_containment",
+    "GS_ref5_reference_audit",
+    "GTI_test_isolation",
+    "G_HB_heartbeat_gap",
+    "G_RT_study_runtime",
+    "G_recount"
+  ],
+  "criteria_scored": [
+    "G10_compute",
+    "G12_reproducibility",
+    "G13_frozen_controls_reproduce",
+    "GAPI5_certify5",
+    "GDS2_deferred_split_replication",
+    "GRL_bounded_lookahead",
+    "GS_a5_soundness",
+    "GS_b5_containment",
+    "GS_ref5_reference_audit",
+    "GTI_test_isolation",
+    "G_HB_heartbeat_gap",
+    "G_RT_study_runtime",
+    "G_recount"
+  ],
+  "failed": [
+    "GS_ref5_reference_audit",
+    "GTI_test_isolation",
+    "G_RT_study_runtime",
+    "G_HB_heartbeat_gap"
+  ],
+  "gates": {
+    "G10_compute": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "cases": true,
+          "stress_72_per_main_case": true,
+          "traces_44": true,
+          "unknown_le_1pct_every_trajectory": true
+        },
+        "trace_lengths_ok": {
+          "DLF2n": true,
+          "DLF2p": true,
+          "DLFa_n": true,
+          "DLFa_p": true,
+          "DLFn": true,
+          "DLFp": true,
+          "EB": true,
+          "RG4": true,
+          "RG5": true,
+          "RGL": true,
+          "RGL4": true,
+          "RGLX": true,
+          "RGLX4": true,
+          "RSX": true,
+          "RSX4": true,
+          "RSXL": true,
+          "RSXL4": true,
+          "RSXL5": true,
+          "RSXLn": true,
+          "RSXLp": true,
+          "SP8": true
+        },
+        "unknown_fraction_per_trajectory": {
+          "RGL": 0.0,
+          "RGLX": 0.0,
+          "RSX": 0.0,
+          "RSXL": 0.0,
+          "RSXL5": 0.0,
+          "SP8": 0.0
+        },
+        "unknown_per_trajectory_n": {
+          "RGL": {
+            "1": {
+              "queries": 31680,
+              "unknown_gt0": 0
+            },
+            "2": {
+              "queries": 31680,
+              "unknown_gt0": 0
+            },
+            "3": {
+              "queries": 31680,
+              "unknown_gt0": 0
+            },
+            "4": {
+              "queries": 31680,
+              "unknown_gt0": 0
+            },
+            "5": {
+              "queries": 31680,
+              "unknown_gt0": 0
+            }
+          },
+          "RGLX": {
+            "1": {
+              "queries": 31680,
+              "unknown_gt0": 0
+            },
+            "2": {
+              "queries": 31680,
+              "unknown_gt0": 0
+            },
+            "3": {
+              "queries": 31680,
+              "unknown_gt0": 0
+            },
+            "4": {
+              "queries": 31680,
+              "unknown_gt0": 0
+            },
+            "5": {
+              "queries": 31680,
+              "unknown_gt0": 0
+            }
+          },
+          "RSX": {
+            "1": {
+              "queries": 31680,
+              "unknown_gt0": 0
+            },
+            "2": {
+              "queries": 31680,
+              "unknown_gt0": 0
+            },
+            "3": {
+              "queries": 31680,
+              "unknown_gt0": 0
+            },
+            "4": {
+              "queries": 31680,
+              "unknown_gt0": 0
+            },
+            "5": {
+              "queries": 31680,
+              "unknown_gt0": 0
+            }
+          },
+          "RSXL": {
+            "1": {
+              "queries": 31680,
+              "unknown_gt0": 0
+            },
+            "2": {
+              "queries": 31680,
+              "unknown_gt0": 0
+            },
+            "3": {
+              "queries": 31680,
+              "unknown_gt0": 0
+            },
+            "4": {
+              "queries": 31680,
+              "unknown_gt0": 0
+            },
+            "5": {
+              "queries": 31680,
+              "unknown_gt0": 0
+            }
+          },
+          "RSXL5": {
+            "1": {
+              "queries": 6336,
+              "unknown_gt0": 0
+            },
+            "2": {
+              "queries": 6336,
+              "unknown_gt0": 0
+            },
+            "3": {
+              "queries": 6336,
+              "unknown_gt0": 0
+            },
+            "4": {
+              "queries": 6336,
+              "unknown_gt0": 0
+            },
+            "5": {
+              "queries": 6336,
+              "unknown_gt0": 0
+            }
+          },
+          "SP8": {
+            "1": {
+              "queries": 38016,
+              "unknown_gt0": 0
+            },
+            "2": {
+              "queries": 38016,
+              "unknown_gt0": 0
+            },
+            "3": {
+              "queries": 38016,
+              "unknown_gt0": 0
+            },
+            "4": {
+              "queries": 38016,
+              "unknown_gt0": 0
+            },
+            "5": {
+              "queries": 38016,
+              "unknown_gt0": 0
+            }
+          }
+        }
+      },
+      "pass": true
+    },
+    "G12_reproducibility": {
+      "gated": true,
+      "observed": {
+        "transfer": {
+          "byte_identical": 144,
+          "expected": 144,
+          "failing_differences": [],
+          "main_scientific_sha256": "33d3acc7f7878dd34f6c584a1ce6551e4c2e19618e8947d143964afc8b6c7fb5",
+          "missing": [],
+          "passed": true,
+          "repro_complete": true,
+          "repro_scientific_sha256": "b7f17ef5e0c076eef7fcff567449d896b84598e9098bb761a00ff38179412c7b",
+          "rerun": 144,
+          "unexpected": []
+        }
+      },
+      "pass": true
+    },
+    "G13_frozen_controls_reproduce": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "cases_use_plan_tau": true,
+          "freeze_chain_holds": true,
+          "plan_tau6": true,
+          "rg_dlf_are_frozen_v0120": true,
+          "seal_of_current_plan_and_freeze": true
+        },
+        "freeze_error": null,
+        "smoke_dry_run_relaxed": false
+      },
+      "pass": true
+    },
+    "GAPI5_certify5": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "certify5_in_freeze": true,
+          "module_ok": true
+        },
+        "results": {
+          "test_api_certify5_0150.Certify5.test_bad_input": [
+            "ok",
+            null
+          ],
+          "test_api_certify5_0150.Certify5.test_host_agnostic": [
+            "ok",
+            null
+          ],
+          "test_api_certify5_0150.Certify5.test_stateless": [
+            "ok",
+            null
+          ],
+          "test_api_certify5_0150.Certify5.test_suggest_matches_runner": [
+            "ok",
+            null
+          ]
+        }
+      },
+      "pass": true
+    },
+    "GDS2_deferred_split_replication": {
+      "gated": true,
+      "observed": {
+        "C_RG4": [
+          0.40202,
+          [
+            0.388128,
+            0.415913
+          ]
+        ],
+        "C_RSXL4": [
+          0.438952,
+          [
+            0.425186,
+            0.452779
+          ]
+        ],
+        "cases_S_differs": [],
+        "cases_negative": 69,
+        "cases_positive": 201,
+        "cases_zero": 90,
+        "clauses": {
+          "i_RSXL4_zero_false": true,
+          "ii_S_RSXL4_eq_S_RG4_every_case": true,
+          "iii_dC_mean_ge_0.03": true,
+          "iv_dC_ci_lower_gt_0": true
+        },
+        "dC_RSXL4_ci95": [
+          0.030492,
+          0.043467
+        ],
+        "dC_RSXL4_mean": 0.036932,
+        "families": {
+          "cycle3": {
+            "cases": 72,
+            "ci95": [
+              0.046871,
+              0.076547
+            ],
+            "mean": 0.060764,
+            "seeds": 24
+          },
+          "ood4": {
+            "cases": 144,
+            "ci95": [
+              0.011519,
+              0.025489
+            ],
+            "mean": 0.018703,
+            "seeds": 48
+          },
+          "switch3": {
+            "cases": 72,
+            "ci95": [
+              0.032982,
+              0.070707
+            ],
+            "mean": 0.050979,
+            "seeds": 24
+          },
+          "unaliased2": {
+            "cases": 72,
+            "ci95": [
+              0.021145,
+              0.050663
+            ],
+            "mean": 0.035511,
+            "seeds": 24
+          }
+        },
+        "histogram": {
+          "-0.011364": 17,
+          "-0.022727": 9,
+          "-0.034091": 12,
+          "-0.045455": 9,
+          "-0.056818": 4,
+          "-0.068182": 9,
+          "-0.079545": 5,
+          "-0.090909": 1,
+          "-0.102273": 1,
+          "-0.125": 2,
+          "0.0": 90,
+          "0.011364": 22,
+          "0.022727": 20,
+          "0.034091": 16,
+          "0.045455": 23,
+          "0.056818": 14,
+          "0.068182": 14,
+          "0.079545": 12,
+          "0.090909": 12,
+          "0.102273": 10,
+          "0.113636": 12,
+          "0.125": 5,
+          "0.136364": 5,
+          "0.147727": 8,
+          "0.159091": 8,
+          "0.170455": 6,
+          "0.181818": 4,
+          "0.193182": 2,
+          "0.204545": 4,
+          "0.215909": 2,
+          "0.284091": 2
+        }
+      },
+      "pass": true
+    },
+    "GRL_bounded_lookahead": {
+      "gated": true,
+      "observed": {
+        "C_RGLX4": [
+          0.434186,
+          [
+            0.420644,
+            0.44858
+          ]
+        ],
+        "S_RG4": [
+          14.25,
+          [
+            13.444375,
+            15.038958
+          ]
+        ],
+        "S_RGLX4": [
+          17.086111,
+          [
+            16.222222,
+            17.872222
+          ]
+        ],
+        "TV_RGL4": [
+          2.836111,
+          [
+            2.211042,
+            3.455625
+          ]
+        ],
+        "TV_RGLX4_ci95": [
+          2.211042,
+          3.455625
+        ],
+        "TV_RGLX4_mean": 2.836111,
+        "cases_negative": 51,
+        "cases_positive": 208,
+        "cases_zero": 101,
+        "clauses": {
+          "i_RGLX4_zero_false": true,
+          "ii_TV_mean_ge_1.0": true,
+          "iii_TV_ci_lower_gt_0": true
+        },
+        "dC_RGLX4": [
+          0.032165,
+          [
+            0.022378,
+            0.042361
+          ]
+        ],
+        "families": {
+          "cycle3": {
+            "cases": 72,
+            "ci95": [
+              1.555556,
+              4.084028
+            ],
+            "mean": 2.777778,
+            "seeds": 24
+          },
+          "ood4": {
+            "cases": 144,
+            "ci95": [
+              1.263715,
+              2.965278
+            ],
+            "mean": 2.131944,
+            "seeds": 48
+          },
+          "switch3": {
+            "cases": 72,
+            "ci95": [
+              1.944097,
+              4.972569
+            ],
+            "mean": 3.416667,
+            "seeds": 24
+          },
+          "unaliased2": {
+            "cases": 72,
+            "ci95": [
+              2.208333,
+              5.319444
+            ],
+            "mean": 3.722222,
+            "seeds": 24
+          }
+        },
+        "histogram": {
+          "-1": 16,
+          "-10": 1,
+          "-11": 1,
+          "-14": 1,
+          "-2": 8,
+          "-20": 1,
+          "-3": 8,
+          "-4": 2,
+          "-5": 3,
+          "-6": 6,
+          "-7": 1,
+          "-8": 3,
+          "0": 101,
+          "1": 21,
+          "10": 5,
+          "11": 4,
+          "12": 2,
+          "13": 2,
+          "14": 3,
+          "15": 2,
+          "16": 7,
+          "17": 2,
+          "18": 1,
+          "2": 29,
+          "20": 3,
+          "24": 2,
+          "3": 32,
+          "35": 1,
+          "4": 30,
+          "5": 16,
+          "6": 22,
+          "7": 6,
+          "8": 12,
+          "9": 6
+        }
+      },
+      "pass": true
+    },
+    "GS_a5_soundness": {
+      "gated": true,
+      "observed": {
+        "per_arm": {
+          "DLF2n": {
+            "certificates": 12736,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 360
+          },
+          "DLF2p": {
+            "certificates": 12736,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 360
+          },
+          "DLFa_n": {
+            "certificates": 12736,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 360
+          },
+          "DLFa_p": {
+            "certificates": 12736,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 360
+          },
+          "DLFn": {
+            "certificates": 12744,
+            "mismatching_records": 0,
+            "pass": false,
+            "recomputed_false": 5,
+            "recorded_false": 5,
+            "records": 360
+          },
+          "DLFp": {
+            "certificates": 14296,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 360
+          },
+          "EB": {
+            "certificates": 14817,
+            "mismatching_records": 0,
+            "pass": false,
+            "recomputed_false": 141,
+            "recorded_false": 141,
+            "records": 360
+          },
+          "RG4": {
+            "certificates": 12736,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 360
+          },
+          "RG5": {
+            "certificates": 7089,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 360
+          },
+          "RGL4": {
+            "certificates": 12651,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 360
+          },
+          "RGLX4": {
+            "certificates": 13755,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 360
+          },
+          "RSX4": {
+            "certificates": 14183,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 360
+          },
+          "RSXL4": {
+            "certificates": 13906,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 360
+          },
+          "RSXLn": {
+            "certificates": 13914,
+            "mismatching_records": 0,
+            "pass": false,
+            "recomputed_false": 5,
+            "recorded_false": 5,
+            "records": 360
+          },
+          "RSXLp": {
+            "certificates": 15714,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 360
+          }
+        },
+        "per_arm_ood5": {
+          "RG4": {
+            "certificates": 446,
+            "mismatching_records": 0,
+            "pass": false,
+            "recomputed_false": 148,
+            "recorded_false": 148,
+            "records": 72
+          },
+          "RG5": {
+            "certificates": 174,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 72
+          },
+          "RSXL5": {
+            "certificates": 50,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 72
+          }
+        },
+        "per_arm_pass": {
+          "DLFa_n": true,
+          "DLFa_p": true,
+          "RG4": true,
+          "RGL4": true,
+          "RGLX4": true,
+          "RSXL4": true,
+          "ood5_RG5": true,
+          "ood5_RSXL5": true
+        }
+      },
+      "pass": true
+    },
+    "GS_b5_containment": {
+      "gated": true,
+      "observed": {
+        "cases_checked": 432,
+        "cases_failing": 0,
+        "examples": {}
+      },
+      "pass": true
+    },
+    "GS_ref5_reference_audit": {
+      "gated": true,
+      "observed_on_available_inputs": {
+        "clauses": {
+          "all_cases_audited": false,
+          "mutation_20_of_20": false,
+          "mutation_kinds": false,
+          "results_sha_matches_seal": true,
+          "zero_mismatching": true
+        },
+        "mutation": {},
+        "report": {
+          "audit_wall_informational": 14303.6,
+          "cases_audited": 308,
+          "cases_expected": 432,
+          "cases_not_reached": 124,
+          "events": {
+            "start": {
+              "event": "start",
+              "t": 1793100463.8574598
+            }
+          },
+          "mismatching_cases": 0,
+          "passed": false,
+          "results_file": "/workspace/brute/results/study-017/transfer/RESULTS.json",
+          "results_sha256": "a36d9b65721415063a7355a68e35a2f413f2e4760436698843597bf4a4b7599e",
+          "schema": "brute.second-implementation-017.v1",
+          "scope": "bounded supports (exhaustive, n = 1..5 on SP8, RSX, RSXL, RGLX and RGL); RSX, RSXL, RGLX and RGL actions and lookahead scores; RG4 / RG5, RGLX4, RGL4, RSXL4, RSX4, DLF / DLFa / DLF2 / RSXL library arms, EB (all fields); summary; stress entries; ood5 RG4 / RG5 / RSXL5",
+          "source_sha256": "dd5e1a15e6b1cb9c7460a73386d89f6adf26eeb9afb4b102f35b7845b9c76b8f",
+          "study": "BRUTE-0150-BOUNDED-LOOKAHEAD-017",
+          "wording": "second implementation by the same author, no brute import; not an independent or third-party audit"
+        },
+        "wording": "second implementation by the same author"
+      },
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (g11 stream stopped: stream budget 2400 s)"
+    },
+    "GTI_test_isolation": {
+      "gated": true,
+      "observed": {
+        "clean_tag_runs": {
+          "0100": {
+            "test_release_0100.Corruption0100.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0110": {
+            "test_release_0110.Corruption0110.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0120": {
+            "test_release_0120.Corruption0120.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0130": {
+            "test_release_0130.Corruption0130.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0140": null,
+          "060": {
+            "test_release_060.GT1.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_060.GT1.test_frozen_050_defect_still_recorded": [
+              "ok",
+              null
+            ],
+            "test_release_060.Release060.test_fast_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_060.Release060.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_060.Release060.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "070": {
+            "test_release_070.Corruption070.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_070.Release070.test_fast_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_070.Release070.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_070.Release070.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_070.Release070.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "080": {
+            "test_release_080.Corruption080.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_080.Release080.test_fast_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_080.Release080.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_080.Release080.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_080.Release080.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "090": {
+            "test_release_090.Corruption090.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_version_consistent": [
+              "ok",
+              null
+            ]
+          }
+        },
+        "dirty_tracked_files": [
+          "esults/RESEARCH_LEDGER.jsonl"
+        ],
+        "head": "b80caac7374ad83b1f1240a830b3033df8266ae5",
+        "run": "in-cap",
+        "tracked_tree_dirty": true,
+        "verdict": {
+          "clauses": {
+            "i_only_declared_failures": false,
+            "ii_test_study_005_six_pass": true,
+            "iii_counts_match_plain": true,
+            "iv_frozen_unchanged": true,
+            "v_new_tests_pass": false
+          },
+          "failing": [
+            "test_brute_repro.BruteRepro.test_verify_fails_under_tampered_results",
+            "test_release_0100.Release0100.test_short_verify_passes",
+            "test_release_0100.Release0100.test_untampered_copy_passes",
+            "test_release_0100.Release0100.test_version_consistent",
+            "test_release_011.ReleaseV011.test_fast_verify_passes",
+            "test_release_0110.Release0110.test_embeddable_api_answers",
+            "test_release_0110.Release0110.test_short_verify_passes",
+            "test_release_0110.Release0110.test_untampered_copy_passes",
+            "test_release_0110.Release0110.test_version_consistent",
+            "test_release_0120.Release0120.test_embeddable_api_answers",
+            "test_release_0120.Release0120.test_short_verify_passes",
+            "test_release_0120.Release0120.test_untampered_copy_passes",
+            "test_release_0120.Release0120.test_version_consistent",
+            "test_release_0130.Release0130.test_embeddable_api_answers",
+            "test_release_0130.Release0130.test_short_verify_passes",
+            "test_release_0130.Release0130.test_untampered_copy_passes",
+            "test_release_0130.Release0130.test_version_consistent",
+            "test_release_020.ReleaseV020.test_fast_verify_passes",
+            "test_release_030.ReleaseV030.test_fast_verify_passes",
+            "test_release_040.ReleaseVersioned.test_fast_verify_passes",
+            "test_release_040.ReleaseVersioned.test_git_order",
+            "test_release_040.ReleaseVersioned.test_tampered_copies_fail",
+            "test_release_040.ReleaseVersioned.test_untampered_copy_passes",
+            "test_release_040.ReleaseVersioned.test_version_consistent",
+            "test_release_050.ReleaseVersioned.test_fast_verify_passes",
+            "test_release_050.ReleaseVersioned.test_git_order",
+            "test_release_050.ReleaseVersioned.test_tampered_copies_fail",
+            "test_release_050.ReleaseVersioned.test_untampered_copy_passes",
+            "test_release_050.ReleaseVersioned.test_version_consistent",
+            "test_release_060.Release060.test_fast_verify_passes",
+            "test_release_060.Release060.test_untampered_copy_passes",
+            "test_release_060.Release060.test_version_consistent",
+            "test_release_070.Release070.test_fast_verify_passes",
+            "test_release_070.Release070.test_untampered_copy_passes",
+            "test_release_070.Release070.test_version_consistent",
+            "test_release_080.Release080.test_fast_verify_passes",
+            "test_release_080.Release080.test_untampered_copy_passes",
+            "test_release_080.Release080.test_version_consistent",
+            "test_release_090.Release090.test_short_verify_passes",
+            "test_release_090.Release090.test_untampered_copy_passes",
+            "test_release_090.Release090.test_version_consistent",
+            "test_scripts_017.Orchestrator017.test_streams"
+          ],
+          "k_rules": {
+            "0100": {
+              "applied": true,
+              "failures": [
+                "test_release_0100.Release0100.test_short_verify_passes",
+                "test_release_0100.Release0100.test_untampered_copy_passes",
+                "test_release_0100.Release0100.test_version_consistent"
+              ]
+            },
+            "0110": {
+              "applied": true,
+              "failures": [
+                "test_release_0110.Release0110.test_embeddable_api_answers",
+                "test_release_0110.Release0110.test_short_verify_passes",
+                "test_release_0110.Release0110.test_untampered_copy_passes",
+                "test_release_0110.Release0110.test_version_consistent"
+              ]
+            },
+            "0120": {
+              "applied": true,
+              "failures": [
+                "test_release_0120.Release0120.test_embeddable_api_answers",
+                "test_release_0120.Release0120.test_short_verify_passes",
+                "test_release_0120.Release0120.test_untampered_copy_passes",
+                "test_release_0120.Release0120.test_version_consistent"
+              ]
+            },
+            "0130": {
+              "applied": true,
+              "failures": [
+                "test_release_0130.Release0130.test_embeddable_api_answers",
+                "test_release_0130.Release0130.test_short_verify_passes",
+                "test_release_0130.Release0130.test_untampered_copy_passes",
+                "test_release_0130.Release0130.test_version_consistent"
+              ]
+            },
+            "0140": {
+              "applied": false,
+              "failures": []
+            },
+            "060": {
+              "applied": true,
+              "failures": [
+                "test_release_060.Release060.test_fast_verify_passes",
+                "test_release_060.Release060.test_untampered_copy_passes",
+                "test_release_060.Release060.test_version_consistent"
+              ]
+            },
+            "070": {
+              "applied": true,
+              "failures": [
+                "test_release_070.Release070.test_fast_verify_passes",
+                "test_release_070.Release070.test_untampered_copy_passes",
+                "test_release_070.Release070.test_version_consistent"
+              ]
+            },
+            "080": {
+              "applied": true,
+              "failures": [
+                "test_release_080.Release080.test_fast_verify_passes",
+                "test_release_080.Release080.test_untampered_copy_passes",
+                "test_release_080.Release080.test_version_consistent"
+              ]
+            },
+            "090": {
+              "applied": true,
+              "failures": [
+                "test_release_090.Release090.test_short_verify_passes",
+                "test_release_090.Release090.test_untampered_copy_passes",
+                "test_release_090.Release090.test_version_consistent"
+              ]
+            }
+          },
+          "new_test_failures": [
+            "test_scripts_017.Orchestrator017.test_streams"
+          ],
+          "new_test_modules_missing": [],
+          "new_tests": [
+            "test_api_certify5_0150.py",
+            "test_boundedlookahead_0150.py",
+            "test_scoring_017.py",
+            "test_scripts_017.py",
+            "test_seeds_0150.py",
+            "test_streams_017_R1.py",
+            "test_study_017.py",
+            "test_v0150_reference.py"
+          ],
+          "passed": false,
+          "skipped_per_module": [],
+          "skipped_plain": [],
+          "test_study_005": {
+            "test_study_005.Study005.test_aggregate": "ok",
+            "test_study_005.Study005.test_deterministic": "ok",
+            "test_study_005.Study005.test_jobs_match_plan": "ok",
+            "test_study_005.Study005.test_reference_agrees": "ok",
+            "test_study_005.Study005.test_reference_detects_tampering": "ok",
+            "test_study_005.Study005.test_reference_imports_no_brute": "ok"
+          },
+          "tests_run_per_module_total": 586,
+          "tests_run_plain": 586,
+          "undeclared_failures": [
+            "test_scripts_017.Orchestrator017.test_streams"
+          ]
+        }
+      },
+      "pass": false
+    },
+    "G_HB_heartbeat_gap": {
+      "gated": true,
+      "observed": {
+        "beats": 1364,
+        "gaps_over_10s_attributed": [
+          {
+            "d_boottime": 425.668,
+            "d_cpu_s": 0.001,
+            "d_monotonic": 425.668,
+            "d_psi_io_full_us": 4981,
+            "d_psi_io_some_us": 25852,
+            "gap_s": 425.668,
+            "wall_from": 1793101514.981
+          },
+          {
+            "d_boottime": 316.471,
+            "d_cpu_s": 0.002,
+            "d_monotonic": 316.471,
+            "d_psi_io_full_us": 0,
+            "d_psi_io_some_us": 1704,
+            "gap_s": 316.47,
+            "wall_from": 1793102416.649
+          }
+        ],
+        "max_gap_s": 425.668
+      },
+      "pass": false
+    },
+    "G_RT_study_runtime": {
+      "gated": true,
+      "observed": {
+        "cap_s": 7200,
+        "clauses": {
+          "i_streams_inside_cap_not_stopped": false,
+          "ii_watchdog_whole_run": true,
+          "iii_kill_drill_latency_le_15s": true
+        },
+        "completion_s_after_t0": {
+          "g11": null,
+          "gti": 3463.3,
+          "repro": 726.8,
+          "transfer": 506.7
+        },
+        "kill_drill": {
+          "fire_delay_s": 0.0,
+          "kill_latency_s": 0.224,
+          "label": "Observed (smoke seeds 8390013-8390015, block smoke-drill; outside the cap)",
+          "sigkill_used": false,
+          "survivors": []
+        },
+        "run_done": {
+          "completed_at": {
+            "gti": 1793103197.2747104,
+            "repro": 1793100460.8197975,
+            "transfer": 1793100240.7274957
+          },
+          "elapsed_s": 3463,
+          "events": {
+            "g11": {
+              "start": {
+                "event": "start",
+                "t": 1793100463.8574598
+              }
+            }
+          },
+          "finished": {
+            "gti": "2026-10-27T08:13:17-0400",
+            "repro": "2026-10-27T07:27:40-0400",
+            "transfer": "2026-10-27T07:24:00-0400"
+          },
+          "finished_at": "2026-10-27T08:13:17-0400",
+          "mandatory": {
+            "g11": true,
+            "gti": true,
+            "repro": true,
+            "transfer": true
+          },
+          "spent": {
+            "g11": 2401,
+            "gti": 3463,
+            "repro": 220,
+            "transfer": 506
+          },
+          "stopped": {
+            "g11": "stream budget 2400 s"
+          },
+          "t0": 1793099734.0049024
+        },
+        "spent_s": {
+          "g11": 2401,
+          "gti": 3463,
+          "repro": 220,
+          "transfer": 506
+        },
+        "stop_orchestrator": null,
+        "stop_watchdog": null,
+        "stopped_streams": {
+          "g11": "stream budget 2400 s"
+        },
+        "streams": {
+          "g11": false,
+          "gti": true,
+          "repro": true,
+          "transfer": true
+        }
+      },
+      "pass": false,
+      "reason": "clauses failed: i_streams_inside_cap_not_stopped"
+    },
+    "G_recount": {
+      "gated": true,
+      "observed": {
+        "arms_by_block_not_recounted": {
+          "ood5": [],
+          "transfer": []
+        },
+        "certificate_count_mismatches": [],
+        "mismatches": [],
+        "per_block_arm": {
+          "ood5": {
+            "RG4": {
+              "mismatching_records": 0,
+              "recomputed_false": 148,
+              "recorded_false": 148,
+              "records": 72
+            },
+            "RG5": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 72
+            },
+            "RSXL5": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 72
+            },
+            "RSXL5_trajectory_SP8": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 72
+            },
+            "SP8": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 72
+            }
+          },
+          "transfer": {
+            "DLF2n": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "DLF2p": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "DLFa_n": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "DLFa_p": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "DLFn": {
+              "mismatching_records": 0,
+              "recomputed_false": 5,
+              "recorded_false": 5,
+              "records": 360
+            },
+            "DLFp": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "EB": {
+              "mismatching_records": 0,
+              "recomputed_false": 141,
+              "recorded_false": 141,
+              "records": 360
+            },
+            "RG4": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "RG5": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "RGL4": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "RGLX4": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "RGLX_trajectory_SP8": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "RGL_trajectory_SP8": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "RSX4": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "RSXL4": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "RSXL_trajectory_SP8": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "RSXLn": {
+              "mismatching_records": 0,
+              "recomputed_false": 5,
+              "recorded_false": 5,
+              "records": 360
+            },
+            "RSXLp": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "RSX_trajectory_SP8": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "SP8": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "stress_DLF_RSXL": {
+              "mismatching_records": 0,
+              "recomputed_false": 120,
+              "recorded_false": 120,
+              "records": 25920
+            },
+            "stress_DLF_SP8": {
+              "mismatching_records": 0,
+              "recomputed_false": 120,
+              "recorded_false": 120,
+              "records": 25920
+            }
+          }
+        }
+      },
+      "pass": true
+    },
+    "R_DLF": {
+      "gated": false,
+      "observed": {
+        "DLF2n": {
+          "S": [
+            14.25,
+            [
+              13.444375,
+              15.038958
+            ]
+          ],
+          "TV": [
+            0.0,
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "dC": [
+            0.0,
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "per_arm": {
+            "certificates": 12736,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 360
+          },
+          "per_family": {
+            "cycle3": {
+              "cases": 72,
+              "certificates": 2482,
+              "false": 0,
+              "mean_S": 6.6528
+            },
+            "ood4": {
+              "cases": 144,
+              "certificates": 6176,
+              "false": 0,
+              "mean_S": 25.2639
+            },
+            "switch3": {
+              "cases": 72,
+              "certificates": 2233,
+              "false": 0,
+              "mean_S": 6.0556
+            },
+            "unaliased2": {
+              "cases": 72,
+              "certificates": 1845,
+              "false": 0,
+              "mean_S": 8.0139
+            }
+          }
+        },
+        "DLF2p": {
+          "S": [
+            14.25,
+            [
+              13.444375,
+              15.038958
+            ]
+          ],
+          "TV": [
+            0.0,
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "dC": [
+            0.0,
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "per_arm": {
+            "certificates": 12736,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 360
+          },
+          "per_family": {
+            "cycle3": {
+              "cases": 72,
+              "certificates": 2482,
+              "false": 0,
+              "mean_S": 6.6528
+            },
+            "ood4": {
+              "cases": 144,
+              "certificates": 6176,
+              "false": 0,
+              "mean_S": 25.2639
+            },
+            "switch3": {
+              "cases": 72,
+              "certificates": 2233,
+              "false": 0,
+              "mean_S": 6.0556
+            },
+            "unaliased2": {
+              "cases": 72,
+              "certificates": 1845,
+              "false": 0,
+              "mean_S": 8.0139
+            }
+          }
+        },
+        "DLFa": {
+          "DLFa_n": {
+            "certificates": 12736,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 360
+          },
+          "DLFa_p": {
+            "certificates": 12736,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 360
+          }
+        },
+        "DLFa_attested_cases": {
+          "DLFa_n": 216,
+          "DLFa_p": 288
+        },
+        "DLFa_equal_RG4_cases": {
+          "DLFa_n": 360,
+          "DLFa_p": 360
+        },
+        "DLFn": {
+          "S": [
+            14.308333,
+            [
+              13.488681,
+              15.11125
+            ]
+          ],
+          "TV": [
+            0.058333,
+            [
+              0.0,
+              0.163889
+            ]
+          ],
+          "dC": [
+            0.000253,
+            [
+              6.3e-05,
+              0.000505
+            ]
+          ],
+          "per_arm": {
+            "certificates": 12744,
+            "mismatching_records": 0,
+            "pass": false,
+            "recomputed_false": 5,
+            "recorded_false": 5,
+            "records": 360
+          },
+          "per_family": {
+            "cycle3": {
+              "cases": 72,
+              "certificates": 2482,
+              "false": 0,
+              "mean_S": 6.6528
+            },
+            "ood4": {
+              "cases": 144,
+              "certificates": 6184,
+              "false": 5,
+              "mean_S": 25.4097
+            },
+            "switch3": {
+              "cases": 72,
+              "certificates": 2233,
+              "false": 0,
+              "mean_S": 6.0556
+            },
+            "unaliased2": {
+              "cases": 72,
+              "certificates": 1845,
+              "false": 0,
+              "mean_S": 8.0139
+            }
+          }
+        },
+        "DLFp": {
+          "S": [
+            15.786111,
+            [
+              14.986111,
+              16.583472
+            ]
+          ],
+          "TV": [
+            1.536111,
+            [
+              1.252708,
+              1.833333
+            ]
+          ],
+          "dC": [
+            0.049242,
+            [
+              0.044097,
+              0.054451
+            ]
+          ],
+          "per_arm": {
+            "certificates": 14296,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 360
+          },
+          "per_family": {
+            "cycle3": {
+              "cases": 72,
+              "certificates": 2482,
+              "false": 0,
+              "mean_S": 6.6528
+            },
+            "ood4": {
+              "cases": 144,
+              "certificates": 6176,
+              "false": 0,
+              "mean_S": 25.2639
+            },
+            "switch3": {
+              "cases": 72,
+              "certificates": 2233,
+              "false": 0,
+              "mean_S": 6.0556
+            },
+            "unaliased2": {
+              "cases": 72,
+              "certificates": 3405,
+              "false": 0,
+              "mean_S": 15.6944
+            }
+          }
+        },
+        "EB": {
+          "S": [
+            17.838889,
+            [
+              16.980556,
+              18.666667
+            ]
+          ],
+          "per_arm": {
+            "certificates": 14817,
+            "mismatching_records": 0,
+            "pass": false,
+            "recomputed_false": 141,
+            "recorded_false": 141,
+            "records": 360
+          }
+        },
+        "RSX4": {
+          "S": [
+            10.172222,
+            [
+              9.347083,
+              10.941944
+            ]
+          ],
+          "TV": [
+            -4.077778,
+            [
+              -4.738889,
+              -3.413889
+            ]
+          ],
+          "per_arm": {
+            "certificates": 14183,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 360
+          }
+        },
+        "RSXLn": {
+          "S": [
+            14.308333,
+            [
+              13.488681,
+              15.11125
+            ]
+          ],
+          "TV": [
+            0.058333,
+            [
+              0.0,
+              0.163889
+            ]
+          ],
+          "dC": [
+            0.037184,
+            [
+              0.030682,
+              0.043752
+            ]
+          ],
+          "per_arm": {
+            "certificates": 13914,
+            "mismatching_records": 0,
+            "pass": false,
+            "recomputed_false": 5,
+            "recorded_false": 5,
+            "records": 360
+          },
+          "per_family": {
+            "cycle3": {
+              "cases": 72,
+              "certificates": 2867,
+              "false": 0,
+              "mean_S": 6.6528
+            },
+            "ood4": {
+              "cases": 144,
+              "certificates": 6421,
+              "false": 5,
+              "mean_S": 25.4097
+            },
+            "switch3": {
+              "cases": 72,
+              "certificates": 2556,
+              "false": 0,
+              "mean_S": 6.0556
+            },
+            "unaliased2": {
+              "cases": 72,
+              "certificates": 2070,
+              "false": 0,
+              "mean_S": 8.0139
+            }
+          }
+        },
+        "RSXLp": {
+          "S": [
+            15.786111,
+            [
+              14.986111,
+              16.583472
+            ]
+          ],
+          "TV": [
+            1.536111,
+            [
+              1.252708,
+              1.833333
+            ]
+          ],
+          "dC": [
+            0.094003,
+            [
+              0.087499,
+              0.100506
+            ]
+          ],
+          "per_arm": {
+            "certificates": 15714,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 360
+          },
+          "per_family": {
+            "cycle3": {
+              "cases": 72,
+              "certificates": 2867,
+              "false": 0,
+              "mean_S": 6.6528
+            },
+            "ood4": {
+              "cases": 144,
+              "certificates": 6413,
+              "false": 0,
+              "mean_S": 25.2639
+            },
+            "switch3": {
+              "cases": 72,
+              "certificates": 2556,
+              "false": 0,
+              "mean_S": 6.0556
+            },
+            "unaliased2": {
+              "cases": 72,
+              "certificates": 3878,
+              "false": 0,
+              "mean_S": 15.6944
+            }
+          }
+        }
+      },
+      "pass": null
+    },
+    "R_RGL": {
+      "gated": false,
+      "observed": {
+        "C": [
+          0.399337,
+          [
+            0.385697,
+            0.41206
+          ]
+        ],
+        "RGLX_trajectory": {
+          "lookahead_steps": 3191,
+          "lookahead_wall_s_informational": 26.587,
+          "rule_counts": {
+            "cycle3": {
+              "rgl": 406,
+              "rsx": 399,
+              "sp8": 2363
+            },
+            "ood4": {
+              "rgl": 701,
+              "rsx": 570,
+              "sp8": 5065
+            },
+            "switch3": {
+              "rgl": 350,
+              "rsx": 569,
+              "sp8": 2249
+            },
+            "unaliased2": {
+              "rgl": 367,
+              "rsx": 813,
+              "sp8": 1988
+            }
+          },
+          "timing_source": "transfer/RESULTS.json (informational, unsealed)",
+          "wall_per_lookahead_step_ms": 8.3317
+        },
+        "RGL_trajectory": {
+          "lookahead_steps": 12960,
+          "lookahead_wall_s_informational": 79.892,
+          "rule_counts": {
+            "cycle3": {
+              "rgl": 1793,
+              "rsx": 0,
+              "sp8": 1375
+            },
+            "ood4": {
+              "rgl": 2676,
+              "rsx": 0,
+              "sp8": 3660
+            },
+            "switch3": {
+              "rgl": 1945,
+              "rsx": 0,
+              "sp8": 1223
+            },
+            "unaliased2": {
+              "rgl": 2129,
+              "rsx": 0,
+              "sp8": 1039
+            }
+          },
+          "timing_source": "transfer/RESULTS.json (informational, unsealed)",
+          "wall_per_lookahead_step_ms": 6.1645
+        },
+        "S": [
+          17.086111,
+          [
+            16.222222,
+            17.872222
+          ]
+        ],
+        "TV": [
+          2.836111,
+          [
+            2.211042,
+            3.455625
+          ]
+        ],
+        "cases_RGL4_S_eq_RGLX4_S": 360,
+        "dC": [
+          -0.002683,
+          [
+            -0.01471,
+            0.008557
+          ]
+        ],
+        "per_arm": {
+          "certificates": 12651,
+          "mismatching_records": 0,
+          "pass": true,
+          "recomputed_false": 0,
+          "recorded_false": 0,
+          "records": 360
+        },
+        "per_family": {
+          "cycle3": {
+            "cases": 72,
+            "certificates": 2409,
+            "false": 0,
+            "mean_S": 9.4306
+          },
+          "ood4": {
+            "cases": 144,
+            "certificates": 5881,
+            "false": 0,
+            "mean_S": 27.3958
+          },
+          "switch3": {
+            "cases": 72,
+            "certificates": 2208,
+            "false": 0,
+            "mean_S": 9.4722
+          },
+          "unaliased2": {
+            "cases": 72,
+            "certificates": 2153,
+            "false": 0,
+            "mean_S": 11.7361
+          }
+        }
+      },
+      "pass": null
+    },
+    "R_coverage": {
+      "gated": false,
+      "observed": {
+        "C_SP8_main": 0.130145,
+        "C_main": {
+          "DLF2n": [
+            0.40202,
+            [
+              0.388128,
+              0.415913
+            ]
+          ],
+          "DLF2p": [
+            0.40202,
+            [
+              0.388128,
+              0.415913
+            ]
+          ],
+          "DLFa_n": [
+            0.40202,
+            [
+              0.388128,
+              0.415913
+            ]
+          ],
+          "DLFa_p": [
+            0.40202,
+            [
+              0.388128,
+              0.415913
+            ]
+          ],
+          "DLFn": [
+            0.402273,
+            [
+              0.388442,
+              0.416162
+            ]
+          ],
+          "DLFp": [
+            0.451263,
+            [
+              0.436047,
+              0.466098
+            ]
+          ],
+          "EB": [
+            0.467708,
+            [
+              0.452554,
+              0.483086
+            ]
+          ],
+          "RG4": [
+            0.40202,
+            [
+              0.388128,
+              0.415913
+            ]
+          ],
+          "RG5": [
+            0.223769,
+            [
+              0.212784,
+              0.235387
+            ]
+          ],
+          "RGL4": [
+            0.399337,
+            [
+              0.385697,
+              0.41206
+            ]
+          ],
+          "RGLX4": [
+            0.434186,
+            [
+              0.420644,
+              0.44858
+            ]
+          ],
+          "RSX4": [
+            0.447696,
+            [
+              0.43409,
+              0.462154
+            ]
+          ],
+          "RSXL4": [
+            0.438952,
+            [
+              0.425186,
+              0.452779
+            ]
+          ],
+          "RSXLn": [
+            0.439205,
+            [
+              0.425533,
+              0.45303
+            ]
+          ],
+          "RSXLp": [
+            0.496023,
+            [
+              0.482543,
+              0.510642
+            ]
+          ]
+        },
+        "C_ood5": {
+          "RG4": 0.070391,
+          "RG5": 0.027462,
+          "RSXL5": 0.007891
+        },
+        "dC_RGLX4": {
+          "cases_negative": 110,
+          "cases_positive": 233,
+          "cases_zero": 17,
+          "families": {
+            "cycle3": {
+              "cases": 72,
+              "ci95": [
+                0.020518,
+                0.061237
+              ],
+              "mean": 0.040878,
+              "seeds": 24
+            },
+            "ood4": {
+              "cases": 144,
+              "ci95": [
+                0.009391,
+                0.040483
+              ],
+              "mean": 0.024937,
+              "seeds": 48
+            },
+            "switch3": {
+              "cases": 72,
+              "ci95": [
+                0.002837,
+                0.063613
+              ],
+              "mean": 0.033775,
+              "seeds": 24
+            },
+            "unaliased2": {
+              "cases": 72,
+              "ci95": [
+                0.016256,
+                0.054774
+              ],
+              "mean": 0.036301,
+              "seeds": 24
+            }
+          },
+          "histogram": {
+            "-0.011364": 12,
+            "-0.022727": 8,
+            "-0.034091": 11,
+            "-0.045455": 16,
+            "-0.056818": 14,
+            "-0.068182": 2,
+            "-0.079545": 9,
+            "-0.090909": 6,
+            "-0.102273": 7,
+            "-0.113636": 3,
+            "-0.125": 5,
+            "-0.147727": 1,
+            "-0.159091": 4,
+            "-0.170455": 2,
+            "-0.181818": 1,
+            "-0.193182": 1,
+            "-0.204545": 1,
+            "-0.215909": 2,
+            "-0.227273": 1,
+            "-0.25": 1,
+            "-0.261364": 1,
+            "-0.272727": 1,
+            "-0.397727": 1,
+            "0.0": 17,
+            "0.011364": 19,
+            "0.022727": 19,
+            "0.034091": 23,
+            "0.045455": 26,
+            "0.056818": 12,
+            "0.068182": 11,
+            "0.079545": 14,
+            "0.090909": 20,
+            "0.102273": 13,
+            "0.113636": 15,
+            "0.125": 10,
+            "0.136364": 6,
+            "0.147727": 11,
+            "0.159091": 8,
+            "0.170455": 7,
+            "0.181818": 3,
+            "0.193182": 2,
+            "0.204545": 7,
+            "0.215909": 2,
+            "0.238636": 1,
+            "0.284091": 1,
+            "0.306818": 2,
+            "0.318182": 1
+          },
+          "mean_ci": [
+            0.032165,
+            [
+              0.022378,
+              0.042361
+            ]
+          ]
+        },
+        "per_family_C": {
+          "DLF2n": {
+            "cycle3": 0.39173,
+            "ood4": 0.487374,
+            "switch3": 0.352431,
+            "unaliased2": 0.291193
+          },
+          "DLF2p": {
+            "cycle3": 0.39173,
+            "ood4": 0.487374,
+            "switch3": 0.352431,
+            "unaliased2": 0.291193
+          },
+          "DLFa_n": {
+            "cycle3": 0.39173,
+            "ood4": 0.487374,
+            "switch3": 0.352431,
+            "unaliased2": 0.291193
+          },
+          "DLFa_p": {
+            "cycle3": 0.39173,
+            "ood4": 0.487374,
+            "switch3": 0.352431,
+            "unaliased2": 0.291193
+          },
+          "DLFn": {
+            "cycle3": 0.39173,
+            "ood4": 0.488005,
+            "switch3": 0.352431,
+            "unaliased2": 0.291193
+          },
+          "DLFp": {
+            "cycle3": 0.39173,
+            "ood4": 0.487374,
+            "switch3": 0.352431,
+            "unaliased2": 0.537405
+          },
+          "EB": {
+            "cycle3": 0.398043,
+            "ood4": 0.508996,
+            "switch3": 0.380682,
+            "unaliased2": 0.541824
+          },
+          "RG4": {
+            "cycle3": 0.39173,
+            "ood4": 0.487374,
+            "switch3": 0.352431,
+            "unaliased2": 0.291193
+          },
+          "RG5": {
+            "cycle3": 0.237058,
+            "ood4": 0.233744,
+            "switch3": 0.228851,
+            "unaliased2": 0.185448
+          },
+          "RGL4": {
+            "cycle3": 0.380208,
+            "ood4": 0.464094,
+            "switch3": 0.348485,
+            "unaliased2": 0.339804
+          },
+          "RGLX4": {
+            "cycle3": 0.432607,
+            "ood4": 0.512311,
+            "switch3": 0.386206,
+            "unaliased2": 0.327494
+          },
+          "RSX4": {
+            "cycle3": 0.456755,
+            "ood4": 0.507655,
+            "switch3": 0.410511,
+            "unaliased2": 0.355903
+          },
+          "RSXL4": {
+            "cycle3": 0.452494,
+            "ood4": 0.506076,
+            "switch3": 0.403409,
+            "unaliased2": 0.326705
+          },
+          "RSXLn": {
+            "cycle3": 0.452494,
+            "ood4": 0.506708,
+            "switch3": 0.403409,
+            "unaliased2": 0.326705
+          },
+          "RSXLp": {
+            "cycle3": 0.452494,
+            "ood4": 0.506076,
+            "switch3": 0.403409,
+            "unaliased2": 0.612058
+          }
+        }
+      },
+      "pass": null
+    },
+    "R_heartbeat_attribution": {
+      "gated": false,
+      "observed": {
+        "label": "Inferred; deviation #90 diagnostic, changes no verdict",
+        "sentinel_attribution": {
+          "class_counts": {
+            "box_pause": 0,
+            "clock_step": 0,
+            "suspend": 0,
+            "unattributed": 2,
+            "watchdog_stall": 0
+          },
+          "gaps_over_10s": [
+            {
+              "ckpt_bytes_written": 208,
+              "class": "unattributed",
+              "d_boot_s": 425.668,
+              "d_mono_s": 425.668,
+              "from_wall": 1793101514.981,
+              "gap_wall_s": 425.668,
+              "jiffies_delta": {
+                "idle": 10,
+                "iowait": 12,
+                "steal": 24,
+                "system": 1872,
+                "user": 2431
+              },
+              "label": "Inferred",
+              "n_desc": 9,
+              "sentinel_stall_s": 424.155,
+              "workers_cpu_s": 2576.46
+            },
+            {
+              "ckpt_bytes_written": 0,
+              "class": "unattributed",
+              "d_boot_s": 316.471,
+              "d_mono_s": 316.471,
+              "from_wall": 1793102416.649,
+              "gap_wall_s": 316.47,
+              "jiffies_delta": {
+                "idle": 31823,
+                "iowait": 3,
+                "steal": 1,
+                "system": 682,
+                "user": 2717
+              },
+              "label": "Inferred",
+              "n_desc": 9,
+              "sentinel_stall_s": 316.039,
+              "workers_cpu_s": 2241.4
+            }
+          ],
+          "max_sentinel_tick_gap_s": 424.155,
+          "max_watchdog_gap_s": 425.668,
+          "sentinel_records": 1357
+        },
+        "watchdog_gaps_over_10s": [
+          {
+            "d_boottime": 425.668,
+            "d_cpu_s": 0.001,
+            "d_monotonic": 425.668,
+            "d_psi_io_full_us": 4981,
+            "d_psi_io_some_us": 25852,
+            "gap_s": 425.668,
+            "wall_from": 1793101514.981
+          },
+          {
+            "d_boottime": 316.471,
+            "d_cpu_s": 0.002,
+            "d_monotonic": 316.471,
+            "d_psi_io_full_us": 0,
+            "d_psi_io_some_us": 1704,
+            "gap_s": 316.47,
+            "wall_from": 1793102416.649
+          }
+        ]
+      },
+      "pass": null
+    },
+    "R_ood5": {
+      "gated": false,
+      "observed": {
+        "RG4": {
+          "C": 0.070391,
+          "S": [
+            21.333333,
+            [
+              17.249653,
+              25.347222
+            ]
+          ],
+          "cases_with_false": 52,
+          "per_arm": {
+            "certificates": 446,
+            "mismatching_records": 0,
+            "pass": false,
+            "recomputed_false": 148,
+            "recorded_false": 148,
+            "records": 72
+          }
+        },
+        "RG5": {
+          "C": 0.027462,
+          "S": [
+            6.0,
+            [
+              2.736111,
+              9.765278
+            ]
+          ],
+          "cases_with_false": 0,
+          "per_arm": {
+            "certificates": 174,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 72
+          }
+        },
+        "RSXL5": {
+          "C": 0.007891,
+          "S": [
+            6.0,
+            [
+              2.736111,
+              9.765278
+            ]
+          ],
+          "cases_with_false": 0,
+          "per_arm": {
+            "certificates": 50,
+            "mismatching_records": 0,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0,
+            "records": 72
+          }
+        },
+        "SP8_false": 0,
+        "cases": 72
+      },
+      "pass": null
+    },
+    "R_rates": {
+      "gated": false,
+      "observed": {
+        "g11": {
+          "budget_s": 2400,
+          "fraction_of_budget": 1.0,
+          "spent_s": 2400.9
+        },
+        "gti": {
+          "budget_s": 3600,
+          "fraction_of_budget": 0.962,
+          "spent_s": 3462.8
+        },
+        "lookahead_cost": {
+          "rgl": {
+            "lookahead_steps": 12960,
+            "lookahead_wall_s_informational": 79.892,
+            "rule_counts": {
+              "cycle3": {
+                "rgl": 1793,
+                "rsx": 0,
+                "sp8": 1375
+              },
+              "ood4": {
+                "rgl": 2676,
+                "rsx": 0,
+                "sp8": 3660
+              },
+              "switch3": {
+                "rgl": 1945,
+                "rsx": 0,
+                "sp8": 1223
+              },
+              "unaliased2": {
+                "rgl": 2129,
+                "rsx": 0,
+                "sp8": 1039
+              }
+            },
+            "timing_source": "transfer/RESULTS.json (informational, unsealed)",
+            "wall_per_lookahead_step_ms": 6.1645
+          },
+          "rglx": {
+            "lookahead_steps": 3191,
+            "lookahead_wall_s_informational": 26.587,
+            "rule_counts": {
+              "cycle3": {
+                "rgl": 406,
+                "rsx": 399,
+                "sp8": 2363
+              },
+              "ood4": {
+                "rgl": 701,
+                "rsx": 570,
+                "sp8": 5065
+              },
+              "switch3": {
+                "rgl": 350,
+                "rsx": 569,
+                "sp8": 2249
+              },
+              "unaliased2": {
+                "rgl": 367,
+                "rsx": 813,
+                "sp8": 1988
+              }
+            },
+            "timing_source": "transfer/RESULTS.json (informational, unsealed)",
+            "wall_per_lookahead_step_ms": 8.3317
+          }
+        },
+        "repro": {
+          "budget_s": 1500,
+          "fraction_of_budget": 0.147,
+          "spent_s": 220.1
+        },
+        "transfer": {
+          "budget_s": 3000,
+          "fraction_of_budget": 0.169,
+          "spent_s": 506.3
+        }
+      },
+      "pass": null
+    },
+    "R_stress": {
+      "gated": false,
+      "observed": {
+        "AT6_false": 1510,
+        "DLF_false": 120,
+        "DLF_false_outside_bound": 120,
+        "RSXL_false": 120,
+        "RSXL_false_outside_bound": 120,
+        "pairs": 25920,
+        "pairs_outside_exact_bound": 3456
+      },
+      "pass": null
+    }
+  },
+  "passed": [
+    "G_recount",
+    "GS_a5_soundness",
+    "GS_b5_containment",
+    "GRL_bounded_lookahead",
+    "GDS2_deferred_split_replication",
+    "GAPI5_certify5",
+    "G10_compute",
+    "G12_reproducibility",
+    "G13_frozen_controls_reproduce"
+  ],
+  "pending": [],
+  "plan_sha256": "ebe52bbbec26bc230705245273f23fff4af1823aef85b4acd60847cb41820706",
+  "schema": "brute.gates.v15_0",
+  "scientific_sha256": "33d3acc7f7878dd34f6c584a1ce6551e4c2e19618e8947d143964afc8b6c7fb5",
+  "smoke_dry_run": false,
+  "stop_rule_fired": false,
+  "study": "BRUTE-0150-BOUNDED-LOOKAHEAD-017"
+}
