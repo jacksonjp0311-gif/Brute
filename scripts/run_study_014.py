@@ -8,8 +8,8 @@ stream budget with the time already spent (RUN_STATE_014.json).
 
 Streams (plan stop_rule.streams_and_budgets; at most 8 worker processes at once):
   MANDATORY at t0:     transfer 4w 2400 s | gti 2w 3600 s
-  after transfer:      repro 2w 1500 s (every run index % 3 == 0) | g11 2w 2400 s (reference audit of all 288 cases,
-                       then the mutation test; scripts/run_reference_014.py)
+  after transfer:      repro 2w 1500 s (every run index % 3 == 0) | g11 4w 2400 s (reference audit of all 288 cases,
+                       then the mutation test; scripts/run_reference_014.py; 4 workers: deviation #61, RATE_MATH_014)
 Stops: at RUN_T0 + 7200 s the orchestrator stops every running stream (SIGTERM, SIGKILL after 10 s), seals each
 checkpoint as it is (--seal-partial / --summarize-only; never a new case) and writes STOP_014_ORCHESTRATOR.json (the
 watchdog writes STOP_014.json). Every stream completion is stamped (wall epoch) in RUN_STATE_014.json 'completed_at'.
@@ -51,11 +51,11 @@ def g11(workers):
 
 
 def tasks():
-    g,go,gf=g11(2);R=('--every','3','--offset','0')
+    g,go,gf=g11(4);R=('--every','3','--offset','0')
     T=[('transfer',4,2400,[],study(4,D/'transfer'),D/'transfer/SEAL.json',('study',BLOCK,D/'transfer',()),True),
        ('gti',2,3600,[],[PY,'scripts/run_tests_0120.py','--output',str(D/'TEST_SUITE_014.json')],D/'TEST_SUITE_014.json',None,True),
        ('repro',2,1500,['transfer'],study(2,D/'repro/transfer',R),D/'repro/transfer/SEAL.json',('study',BLOCK,D/'repro/transfer',R),True),
-       ('g11',2,2400,['transfer'],g,go,gf,True)]
+       ('g11',4,2400,['transfer'],g,go,gf,True)]
     T=[dict(zip(('name','workers','budget','deps','cmd','done','finalize','mandatory'),t)) for t in T]
     if DRY_BUDGET:
         for t in T:t['budget']=DRY_BUDGET

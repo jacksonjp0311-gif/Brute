@@ -32,3 +32,13 @@ answer or rule, so no gate input changes (Exact: tests/test_api_certify2_0120 (i
 brute_study_013 functions read study-013 plan keys (plan_view, in_family_2x2, actions_per_case_2x2). Study 014 hands
 them the BRUTE_PLAN_013 dict through experiments.brute_common_014.learner_plan, which asserts tau6, tau7, burn_in,
 actions per case and mask rates equal plan 014's. Seeds are checked by scripts/check_seeds_014 before any case runs.
+
+**#61: g11 worker split (rate math, once, before the source freeze).** stop_rule.rate_math allows one budget / worker
+change before the freeze if a mandatory stream projects above 70% of its budget. Smoke timings (smoke seeds 7190001
+and 7190005 at mask 0.1, 0.35 and 0.6, one process each, plus the sm14b dry run; docs/research/v0.12.0/RATE_MATH_014.md)
+give a mean reference audit of about 12.4 s per case (mask 0.6 up to 27.8 s). With the registered 2 workers g11
+projects to about 1,910 s (288 x 12.4 / 2 plus the 20-case mutation test), 80% of its 2,400 s budget. The change: g11
+runs with **4 workers** (budget unchanged at 2,400 s). g11 starts only after transfer ends, so at most
+gti 2 + repro 2 + g11 4 = 8 worker processes run at once, which keeps the registered 8-process limit (the orchestrator
+enforces it through MAX_WORKERS). Nothing else changes: no budget, stream, order, seed, threshold or gate. Projection
+with 4 workers: about 955 s (40%). Made before the source freeze and before any held-out seed was generated.
