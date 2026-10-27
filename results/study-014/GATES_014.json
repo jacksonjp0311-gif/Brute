@@ -1,0 +1,1524 @@
+{
+  "GST2": true,
+  "G_HB": true,
+  "G_RT": true,
+  "all_gated_pass": false,
+  "criteria_registered": [
+    "G10_compute",
+    "G12_reproducibility",
+    "G13_frozen_controls_reproduce",
+    "GAPI2_certify2",
+    "GST2_bounded_transfer",
+    "GS_a_soundness",
+    "GS_b_containment",
+    "GS_c_wrong_family_control",
+    "GS_d_transfer_value",
+    "GS_ref_reference_audit",
+    "GS_rg_bounded_certification",
+    "GS_x_discriminating_experiments",
+    "GTI_test_isolation",
+    "G_HB_heartbeat_gap",
+    "G_RT_study_runtime",
+    "G_alias_stress"
+  ],
+  "failed": [
+    "GS_x_discriminating_experiments"
+  ],
+  "gates": {
+    "G10_compute": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "cases": true,
+          "stress_72_per_case": true,
+          "traces_44": true,
+          "unknown_le_1pct": true
+        },
+        "trace_lengths_ok": {
+          "ATn": true,
+          "ATp": true,
+          "DLF0n": true,
+          "DLF0p": true,
+          "DLFn": true,
+          "DLFp": true,
+          "DXn": true,
+          "DXp": true,
+          "LXn": true,
+          "LXp": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "SP8": true
+        },
+        "unknown_fraction_pooled": 0.0,
+        "unknown_per_n": {
+          "2": {
+            "fraction": 0.0,
+            "queries": 25344,
+            "unknown_gt0": 0
+          },
+          "3": {
+            "fraction": 0.0,
+            "queries": 38016,
+            "unknown_gt0": 0
+          },
+          "4": {
+            "fraction": 0.0,
+            "queries": 76032,
+            "unknown_gt0": 0
+          },
+          "5": {
+            "fraction": 0.0,
+            "queries": 38016,
+            "unknown_gt0": 0
+          }
+        }
+      },
+      "pass": true
+    },
+    "G12_reproducibility": {
+      "gated": true,
+      "observed": {
+        "transfer": {
+          "byte_identical": 96,
+          "expected": 96,
+          "failing_differences": [],
+          "main_scientific_sha256": "47e0429d7c31a621cba401fc74d0b2d5f5cfe944b93de98a2ec3363c94ce0911",
+          "missing": [],
+          "passed": true,
+          "repro_complete": true,
+          "repro_scientific_sha256": "9cb74ac176162822e256de045b5ba5139c26a2dbedd9b3ae3e58f7f187e83ae6",
+          "rerun": 96,
+          "unexpected": []
+        }
+      },
+      "pass": true
+    },
+    "G13_frozen_controls_reproduce": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "cases_use_plan_tau": true,
+          "freeze_chain_holds": true,
+          "plan_tau6": true,
+          "plan_tau7": true,
+          "seal_of_current_plan_and_freeze": true
+        },
+        "freeze_error": null,
+        "smoke_dry_run_relaxed": false
+      },
+      "pass": true
+    },
+    "GAPI2_certify2": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "certify2_in_freeze": true,
+          "module_ok": true
+        },
+        "results": {
+          "test_api_certify2_0120.Certify2.test_i_no_library_equals_rg4_and_contains_certify1": [
+            "ok",
+            null
+          ],
+          "test_api_certify2_0120.Certify2.test_ii_library_equals_study_dlf": [
+            "ok",
+            null
+          ],
+          "test_api_certify2_0120.Certify2.test_iii_reasons": [
+            "ok",
+            null
+          ],
+          "test_api_certify2_0120.Certify2.test_iv_value_errors": [
+            "ok",
+            null
+          ],
+          "test_api_certify2_0120.Certify2.test_v_host_agnostic": [
+            "ok",
+            null
+          ]
+        }
+      },
+      "pass": true
+    },
+    "GST2_bounded_transfer": {
+      "gated": true,
+      "observed": {
+        "DLFn_zero_false": true,
+        "DLFp_zero_false": true,
+        "GS_c": true,
+        "GS_d": true
+      },
+      "pass": true
+    },
+    "GS_a_soundness": {
+      "gated": true,
+      "observed": {
+        "per_arm": {
+          "ATn": {
+            "certificates": 4642,
+            "pass": false,
+            "recomputed_false": 36,
+            "recorded_false": 36
+          },
+          "ATp": {
+            "certificates": 10081,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0
+          },
+          "DLF0n": {
+            "certificates": 9842,
+            "pass": false,
+            "recomputed_false": 6,
+            "recorded_false": 6
+          },
+          "DLF0p": {
+            "certificates": 15700,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0
+          },
+          "DLFn": {
+            "certificates": 9810,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0
+          },
+          "DLFp": {
+            "certificates": 11434,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0
+          },
+          "DXn": {
+            "certificates": 10100,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0
+          },
+          "DXp": {
+            "certificates": 11761,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0
+          },
+          "LXn": {
+            "certificates": 4494,
+            "pass": false,
+            "recomputed_false": 1503,
+            "recorded_false": 0
+          },
+          "LXp": {
+            "certificates": 4490,
+            "pass": false,
+            "recomputed_false": 1723,
+            "recorded_false": 0
+          },
+          "RG2": {
+            "certificates": 8922,
+            "pass": false,
+            "recomputed_false": 353,
+            "recorded_false": 353
+          },
+          "RG3": {
+            "certificates": 12146,
+            "pass": false,
+            "recomputed_false": 130,
+            "recorded_false": 130
+          },
+          "RG4": {
+            "certificates": 9809,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0
+          },
+          "RG5": {
+            "certificates": 5975,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0
+          }
+        },
+        "per_arm_pass": {
+          "DLFn": true,
+          "DLFp": true,
+          "DXn": true,
+          "DXp": true,
+          "RG4": true
+        }
+      },
+      "pass": true
+    },
+    "GS_b_containment": {
+      "gated": true,
+      "observed": {
+        "cases_checked": 288,
+        "cases_failing": 0,
+        "examples": {}
+      },
+      "pass": true
+    },
+    "GS_c_wrong_family_control": {
+      "gated": true,
+      "observed": {
+        "TV_DLFn_ci95": [
+          0.0,
+          0.145833
+        ],
+        "TV_DLFn_mean": 0.048611,
+        "clauses": {
+          "i_DLFn_zero_false": true,
+          "ii_TV_DLFn_ci_lower_le_0": true
+        }
+      },
+      "pass": true
+    },
+    "GS_d_transfer_value": {
+      "gated": true,
+      "observed": {
+        "TV_DLFp_ci95": [
+          1.267361,
+          2.006944
+        ],
+        "TV_DLFp_mean": 1.642361,
+        "per_family": {
+          "cycle3": {
+            "cases": 72,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "mean": 0.0,
+            "seeds": 24
+          },
+          "ood4": {
+            "cases": 72,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "mean": 0.0,
+            "seeds": 24
+          },
+          "switch3": {
+            "cases": 72,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "mean": 0.0,
+            "seeds": 24
+          },
+          "unaliased2": {
+            "cases": 72,
+            "ci95": [
+              5.069444,
+              8.027778
+            ],
+            "mean": 6.569444,
+            "seeds": 24
+          }
+        }
+      },
+      "pass": true
+    },
+    "GS_ref_reference_audit": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "all_cases_audited": true,
+          "mutation_20_of_20": true,
+          "mutation_kinds": true,
+          "results_sha_matches_seal": true,
+          "zero_mismatching": true
+        },
+        "mutation": {
+          "detected_injected": 20,
+          "distinct_cases": 20,
+          "event": "mutation",
+          "flagged_not_injected": 0,
+          "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+          "injected": 20,
+          "injected_on_already_mismatching_case": 0,
+          "kinds": {
+            "bounded": 6,
+            "dlf": 6,
+            "dx": 2,
+            "rg": 2,
+            "stress": 4
+          },
+          "passed": true,
+          "rng": "random.Random(20261026)"
+        },
+        "report": {
+          "audit_wall_informational": 2400.3,
+          "cases_audited": 288,
+          "cases_expected": 288,
+          "cases_not_reached": 0,
+          "events": {
+            "audit_done": {
+              "event": "audit_done",
+              "t": 1793075242.2133913
+            },
+            "done": {
+              "event": "done",
+              "t": 1793075287.6953173
+            },
+            "mutation": {
+              "detected_injected": 20,
+              "distinct_cases": 20,
+              "event": "mutation",
+              "flagged_not_injected": 0,
+              "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+              "injected": 20,
+              "injected_on_already_mismatching_case": 0,
+              "kinds": {
+                "bounded": 6,
+                "dlf": 6,
+                "dx": 2,
+                "rg": 2,
+                "stress": 4
+              },
+              "passed": true,
+              "rng": "random.Random(20261026)"
+            },
+            "start": {
+              "event": "start",
+              "t": 1793074639.235739
+            }
+          },
+          "mismatching_cases": 0,
+          "passed": true,
+          "results_file": "/workspace/brute/results/study-014/transfer/RESULTS.json",
+          "results_sha256": "2a90df1762da75cc9b054d32a4fe7002d2cc16cb7a5990845bb5ff7638633bee",
+          "schema": "brute.second-implementation-014.v1",
+          "scope": "bounded supports (exhaustive, n = 2..5 on SP8, dx_bounds on LX); RG2-5, DLF, DLF0, AT, LX, DX (all fields); summary; stress counts",
+          "source_sha256": "3f283dfae498e50f37a2c6e671c9085c082fbcd977d4ec9c979abbe3774f6139",
+          "study": "BRUTE-0120-BOUNDED-TRANSFER-014",
+          "wording": "second implementation by the same author, no brute import; not an independent or third-party audit"
+        },
+        "wording": "second implementation by the same author"
+      },
+      "pass": true
+    },
+    "GS_rg_bounded_certification": {
+      "gated": true,
+      "observed": {
+        "RG4_zero_false": true,
+        "S_RG4_ci95": [
+          9.833333,
+          11.840278
+        ],
+        "S_RG4_mean": 10.857639,
+        "per_family": {
+          "cycle3": {
+            "cases": 72,
+            "ci95": [
+              7.069444,
+              10.292014
+            ],
+            "mean": 8.611111,
+            "seeds": 24
+          },
+          "ood4": {
+            "cases": 72,
+            "ci95": [
+              18.471875,
+              24.916667
+            ],
+            "mean": 21.916667,
+            "seeds": 24
+          },
+          "switch3": {
+            "cases": 72,
+            "ci95": [
+              4.125,
+              6.305556
+            ],
+            "mean": 5.222222,
+            "seeds": 24
+          },
+          "unaliased2": {
+            "cases": 72,
+            "ci95": [
+              6.083333,
+              9.347222
+            ],
+            "mean": 7.680556,
+            "seeds": 24
+          }
+        }
+      },
+      "pass": true
+    },
+    "GS_x_discriminating_experiments": {
+      "gated": true,
+      "observed": {
+        "DXn_minus_DLFn": [
+          0.173611,
+          [
+            -0.472222,
+            0.86467
+          ]
+        ],
+        "DXp_minus_DLFp_mean": -0.006944,
+        "ci95": [
+          -0.590365,
+          0.57309
+        ],
+        "per_family": {
+          "cycle3": {
+            "cases": 72,
+            "ci95": [
+              -2.083333,
+              0.680556
+            ],
+            "mean": -0.666667,
+            "seeds": 24
+          },
+          "ood4": {
+            "cases": 72,
+            "ci95": [
+              -1.222222,
+              1.236458
+            ],
+            "mean": 0.027778,
+            "seeds": 24
+          },
+          "switch3": {
+            "cases": 72,
+            "ci95": [
+              -0.388889,
+              1.972569
+            ],
+            "mean": 0.805556,
+            "seeds": 24
+          },
+          "unaliased2": {
+            "cases": 72,
+            "ci95": [
+              -0.652778,
+              0.208333
+            ],
+            "mean": -0.194444,
+            "seeds": 24
+          }
+        }
+      },
+      "pass": false
+    },
+    "GTI_test_isolation": {
+      "gated": true,
+      "observed": {
+        "clean_tag_runs": {
+          "0100": {
+            "test_release_0100.Corruption0100.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0110": null,
+          "060": {
+            "test_release_060.GT1.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_060.GT1.test_frozen_050_defect_still_recorded": [
+              "ok",
+              null
+            ],
+            "test_release_060.Release060.test_fast_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_060.Release060.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_060.Release060.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "070": {
+            "test_release_070.Corruption070.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_070.Release070.test_fast_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_070.Release070.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_070.Release070.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_070.Release070.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "080": {
+            "test_release_080.Corruption080.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_080.Release080.test_fast_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_080.Release080.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_080.Release080.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_080.Release080.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "090": {
+            "test_release_090.Corruption090.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_version_consistent": [
+              "ok",
+              null
+            ]
+          }
+        },
+        "head": "fad500d81cf8c5ef59ea99fc8ad1d9b09b5cc2ac",
+        "run": "in-cap",
+        "tracked_tree_dirty": false,
+        "verdict": {
+          "clauses": {
+            "i_only_declared_failures": true,
+            "ii_test_study_005_six_pass": true,
+            "iii_counts_match_plain": true,
+            "iv_frozen_unchanged": true,
+            "v_new_tests_pass": true
+          },
+          "failing": [
+            "test_brute_repro.BruteRepro.test_verify_fails_under_tampered_results",
+            "test_release_0100.Release0100.test_short_verify_passes",
+            "test_release_0100.Release0100.test_untampered_copy_passes",
+            "test_release_0100.Release0100.test_version_consistent",
+            "test_release_011.ReleaseV011.test_fast_verify_passes",
+            "test_release_020.ReleaseV020.test_fast_verify_passes",
+            "test_release_030.ReleaseV030.test_fast_verify_passes",
+            "test_release_040.ReleaseVersioned.test_fast_verify_passes",
+            "test_release_040.ReleaseVersioned.test_git_order",
+            "test_release_040.ReleaseVersioned.test_tampered_copies_fail",
+            "test_release_040.ReleaseVersioned.test_untampered_copy_passes",
+            "test_release_040.ReleaseVersioned.test_version_consistent",
+            "test_release_050.ReleaseVersioned.test_fast_verify_passes",
+            "test_release_050.ReleaseVersioned.test_git_order",
+            "test_release_050.ReleaseVersioned.test_tampered_copies_fail",
+            "test_release_050.ReleaseVersioned.test_untampered_copy_passes",
+            "test_release_050.ReleaseVersioned.test_version_consistent",
+            "test_release_060.Release060.test_fast_verify_passes",
+            "test_release_060.Release060.test_untampered_copy_passes",
+            "test_release_060.Release060.test_version_consistent",
+            "test_release_070.Release070.test_fast_verify_passes",
+            "test_release_070.Release070.test_untampered_copy_passes",
+            "test_release_070.Release070.test_version_consistent",
+            "test_release_080.Release080.test_fast_verify_passes",
+            "test_release_080.Release080.test_untampered_copy_passes",
+            "test_release_080.Release080.test_version_consistent",
+            "test_release_090.Release090.test_short_verify_passes",
+            "test_release_090.Release090.test_untampered_copy_passes",
+            "test_release_090.Release090.test_version_consistent"
+          ],
+          "k_rules": {
+            "0100": {
+              "applied": true,
+              "failures": [
+                "test_release_0100.Release0100.test_short_verify_passes",
+                "test_release_0100.Release0100.test_untampered_copy_passes",
+                "test_release_0100.Release0100.test_version_consistent"
+              ]
+            },
+            "0110": {
+              "applied": false,
+              "failures": []
+            },
+            "060": {
+              "applied": true,
+              "failures": [
+                "test_release_060.Release060.test_fast_verify_passes",
+                "test_release_060.Release060.test_untampered_copy_passes",
+                "test_release_060.Release060.test_version_consistent"
+              ]
+            },
+            "070": {
+              "applied": true,
+              "failures": [
+                "test_release_070.Release070.test_fast_verify_passes",
+                "test_release_070.Release070.test_untampered_copy_passes",
+                "test_release_070.Release070.test_version_consistent"
+              ]
+            },
+            "080": {
+              "applied": true,
+              "failures": [
+                "test_release_080.Release080.test_fast_verify_passes",
+                "test_release_080.Release080.test_untampered_copy_passes",
+                "test_release_080.Release080.test_version_consistent"
+              ]
+            },
+            "090": {
+              "applied": true,
+              "failures": [
+                "test_release_090.Release090.test_short_verify_passes",
+                "test_release_090.Release090.test_untampered_copy_passes",
+                "test_release_090.Release090.test_version_consistent"
+              ]
+            }
+          },
+          "new_test_failures": [],
+          "new_test_modules_missing": [],
+          "new_tests": [
+            "test_api_certify2_0120.py",
+            "test_boundedtransfer_014.py",
+            "test_scoring_014.py",
+            "test_scripts_014.py",
+            "test_seeds_014.py",
+            "test_study_014.py",
+            "test_v0120_reference.py"
+          ],
+          "passed": true,
+          "skipped_per_module": [],
+          "skipped_plain": [],
+          "test_study_005": {
+            "test_study_005.Study005.test_aggregate": "ok",
+            "test_study_005.Study005.test_deterministic": "ok",
+            "test_study_005.Study005.test_jobs_match_plan": "ok",
+            "test_study_005.Study005.test_reference_agrees": "ok",
+            "test_study_005.Study005.test_reference_detects_tampering": "ok",
+            "test_study_005.Study005.test_reference_imports_no_brute": "ok"
+          },
+          "tests_run_per_module_total": 440,
+          "tests_run_plain": 440,
+          "undeclared_failures": []
+        }
+      },
+      "pass": true
+    },
+    "G_HB_heartbeat_gap": {
+      "gated": true,
+      "observed": {
+        "beats": 829,
+        "gaps_over_10s_attributed": [],
+        "max_gap_s": 2.003
+      },
+      "pass": true
+    },
+    "G_RT_study_runtime": {
+      "gated": true,
+      "observed": {
+        "cap_s": 7200,
+        "clauses": {
+          "i_streams_inside_cap_not_stopped": true,
+          "ii_watchdog_whole_run": true,
+          "iii_kill_drill_latency_le_15s": true
+        },
+        "completion_s_after_t0": {
+          "g11": 842.6,
+          "gti": 1655.0,
+          "repro": 274.3,
+          "transfer": 192.2
+        },
+        "kill_drill": {
+          "fire_delay_s": 0.0,
+          "kill_latency_s": 0.212,
+          "label": "Observed (smoke seeds 7190013-7190015, block smoke-drill, mask 0.35; outside the cap)",
+          "sigkill_used": false,
+          "survivors": []
+        },
+        "run_done": {
+          "completed_at": {
+            "g11": 1793075288.282496,
+            "gti": 1793076100.6266937,
+            "repro": 1793074719.9639397,
+            "transfer": 1793074637.9100497
+          },
+          "elapsed_s": 1655,
+          "events": {
+            "g11": {
+              "audit_done": {
+                "event": "audit_done",
+                "t": 1793075242.2133913
+              },
+              "done": {
+                "event": "done",
+                "t": 1793075287.6953173
+              },
+              "mutation": {
+                "detected_injected": 20,
+                "distinct_cases": 20,
+                "event": "mutation",
+                "flagged_not_injected": 0,
+                "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+                "injected": 20,
+                "injected_on_already_mismatching_case": 0,
+                "kinds": {
+                  "bounded": 6,
+                  "dlf": 6,
+                  "dx": 2,
+                  "rg": 2,
+                  "stress": 4
+                },
+                "passed": true,
+                "rng": "random.Random(20261026)"
+              },
+              "start": {
+                "event": "start",
+                "t": 1793074639.235739
+              }
+            }
+          },
+          "finished": {
+            "g11": "2026-10-27T00:28:08-0400",
+            "gti": "2026-10-27T00:41:40-0400",
+            "repro": "2026-10-27T00:18:39-0400",
+            "transfer": "2026-10-27T00:17:17-0400"
+          },
+          "finished_at": "2026-10-27T00:41:40-0400",
+          "mandatory": {
+            "g11": true,
+            "gti": true,
+            "repro": true,
+            "transfer": true
+          },
+          "spent": {
+            "g11": 650,
+            "gti": 1655,
+            "repro": 82,
+            "transfer": 192
+          },
+          "stopped": {},
+          "t0": 1793074445.6708868
+        },
+        "spent_s": {
+          "g11": 650,
+          "gti": 1655,
+          "repro": 82,
+          "transfer": 192
+        },
+        "stop_orchestrator": null,
+        "stop_watchdog": null,
+        "stopped_streams": {},
+        "streams": {
+          "g11": true,
+          "gti": true,
+          "repro": true,
+          "transfer": true
+        }
+      },
+      "pass": true
+    },
+    "G_alias_stress": {
+      "gated": true,
+      "observed": {
+        "AT6_false_on_stress_pairs": 2016,
+        "DLF_false_on_stress_pairs": 0,
+        "DLF_license_on_stress_pairs": 72,
+        "stress_pairs": 600,
+        "stress_pairs_with_DLF_false": 0,
+        "underpowered": false
+      },
+      "pass": true
+    },
+    "R_AT_v0110": {
+      "gated": false,
+      "observed": {
+        "ATn": {
+          "S": [
+            0.020833,
+            [
+              0.0,
+              0.055556
+            ]
+          ],
+          "per_arm": {
+            "certificates": 4642,
+            "pass": false,
+            "recomputed_false": 36,
+            "recorded_false": 36
+          },
+          "per_family": {
+            "cycle3": {
+              "cases": 72,
+              "false": 1,
+              "mean_S": 0.0556
+            },
+            "ood4": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 0.0
+            },
+            "switch3": {
+              "cases": 72,
+              "false": 35,
+              "mean_S": 0.0278
+            },
+            "unaliased2": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 0.0
+            }
+          }
+        },
+        "ATp": {
+          "S": [
+            5.232639,
+            [
+              4.458247,
+              6.007118
+            ]
+          ],
+          "per_arm": {
+            "certificates": 10081,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0
+          },
+          "per_family": {
+            "cycle3": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 3.2639
+            },
+            "ood4": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 11.1667
+            },
+            "switch3": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 2.1944
+            },
+            "unaliased2": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 4.3056
+            }
+          }
+        }
+      },
+      "pass": null
+    },
+    "R_DLF0": {
+      "gated": false,
+      "observed": {
+        "DLF0n": {
+          "S": [
+            11.302083,
+            [
+              10.211719,
+              12.340278
+            ]
+          ],
+          "TV": [
+            0.444444,
+            [
+              0.173611,
+              0.756944
+            ]
+          ],
+          "per_arm": {
+            "certificates": 9842,
+            "pass": false,
+            "recomputed_false": 6,
+            "recorded_false": 6
+          },
+          "per_family": {
+            "cycle3": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 8.8472
+            },
+            "ood4": {
+              "cases": 72,
+              "false": 6,
+              "mean_S": 23.0694
+            },
+            "switch3": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 5.6111
+            },
+            "unaliased2": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 7.6806
+            }
+          }
+        },
+        "DLF0p": {
+          "S": [
+            16.350694,
+            [
+              15.222222,
+              17.368403
+            ]
+          ],
+          "TV": [
+            5.493056,
+            [
+              4.795139,
+              6.170226
+            ]
+          ],
+          "per_arm": {
+            "certificates": 15700,
+            "pass": true,
+            "recomputed_false": 0,
+            "recorded_false": 0
+          },
+          "per_family": {
+            "cycle3": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 14.1389
+            },
+            "ood4": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 21.9167
+            },
+            "switch3": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 12.2639
+            },
+            "unaliased2": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 17.0833
+            }
+          }
+        }
+      },
+      "pass": null
+    },
+    "R_DX_vs_SP8": {
+      "gated": false,
+      "observed": {
+        "DXn": {
+          "S": [
+            11.079861,
+            [
+              9.947917,
+              12.131944
+            ]
+          ],
+          "TV": [
+            0.222222,
+            [
+              -0.42717,
+              0.909722
+            ]
+          ],
+          "per_family": {
+            "cycle3": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 7.9583
+            },
+            "ood4": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 22.2222
+            },
+            "switch3": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 6.0
+            },
+            "unaliased2": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 8.1389
+            }
+          }
+        },
+        "DXp": {
+          "S": [
+            12.493056,
+            [
+              11.402778,
+              13.496615
+            ]
+          ],
+          "TV": [
+            1.635417,
+            [
+              0.958333,
+              2.263976
+            ]
+          ],
+          "per_family": {
+            "cycle3": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 7.9444
+            },
+            "ood4": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 21.9444
+            },
+            "switch3": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 6.0278
+            },
+            "unaliased2": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 14.0556
+            }
+          }
+        },
+        "LXn": {
+          "S": [
+            -0.4375,
+            [
+              -1.337066,
+              0.371615
+            ]
+          ],
+          "TV": [
+            -11.295139,
+            [
+              -12.236111,
+              -10.350434
+            ]
+          ],
+          "per_family": {
+            "cycle3": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 0.4167
+            },
+            "ood4": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": -1.6389
+            },
+            "switch3": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": -1.1667
+            },
+            "unaliased2": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 0.6389
+            }
+          }
+        },
+        "LXp": {
+          "S": [
+            -0.326389,
+            [
+              -1.253472,
+              0.451389
+            ]
+          ],
+          "TV": [
+            -11.184028,
+            [
+              -12.229167,
+              -10.117795
+            ]
+          ],
+          "per_family": {
+            "cycle3": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": 0.1111
+            },
+            "ood4": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": -1.0278
+            },
+            "switch3": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": -0.25
+            },
+            "unaliased2": {
+              "cases": 72,
+              "false": 0,
+              "mean_S": -0.1389
+            }
+          }
+        }
+      },
+      "pass": null
+    },
+    "R_K_after_release": {
+      "gated": false,
+      "observed": {
+        "note": "test_release_0110 / 0120 after the version bump: checked post-release, reported in RELEASE.json (not scored here)"
+      },
+      "pass": null
+    },
+    "R_diag_seen": {
+      "gated": false,
+      "observed": {
+        "diag_a_sha256": "940e04d4bc574ab83bdf512b504710bbb6b9cb165ef2bb463d28912da61ad110",
+        "diag_b_sha256": "e0f41abd4837b4bff2b92be5ae9fcb44f44b54dbd28b95fe0a6087bbfc3fdecb",
+        "label": "seen data, exploratory (diag-014), not held-out"
+      },
+      "pass": null
+    },
+    "R_heartbeat_attribution": {
+      "gated": false,
+      "observed": [],
+      "pass": null
+    },
+    "R_license_counts": {
+      "gated": false,
+      "observed": {
+        "DLF0n": {
+          "cycle3": {
+            "license": 18,
+            "rg": 1117
+          },
+          "ood4": {
+            "license": 12,
+            "rg": 2761
+          },
+          "switch3": {
+            "license": 3,
+            "rg": 728
+          },
+          "unaliased2": {
+            "license": 0,
+            "rg": 599
+          }
+        },
+        "DLF0p": {
+          "cycle3": {
+            "license": 1478,
+            "rg": 1117
+          },
+          "ood4": {
+            "license": 0,
+            "rg": 2761
+          },
+          "switch3": {
+            "license": 1484,
+            "rg": 728
+          },
+          "unaliased2": {
+            "license": 2929,
+            "rg": 599
+          }
+        },
+        "DLFn": {
+          "cycle3": {
+            "license": 0,
+            "rg": 1117
+          },
+          "ood4": {
+            "license": 1,
+            "rg": 2761
+          },
+          "switch3": {
+            "license": 0,
+            "rg": 728
+          },
+          "unaliased2": {
+            "license": 0,
+            "rg": 599
+          }
+        },
+        "DLFp": {
+          "cycle3": {
+            "license": 0,
+            "rg": 1117
+          },
+          "ood4": {
+            "license": 0,
+            "rg": 2761
+          },
+          "switch3": {
+            "license": 0,
+            "rg": 728
+          },
+          "unaliased2": {
+            "license": 1625,
+            "rg": 599
+          }
+        },
+        "DXn": {
+          "cycle3": {
+            "license": 0,
+            "rg": 1333
+          },
+          "ood4": {
+            "license": 0,
+            "rg": 2860
+          },
+          "switch3": {
+            "license": 0,
+            "rg": 853
+          },
+          "unaliased2": {
+            "license": 0,
+            "rg": 560
+          }
+        },
+        "DXp": {
+          "cycle3": {
+            "license": 0,
+            "rg": 1143
+          },
+          "ood4": {
+            "license": 0,
+            "rg": 2848
+          },
+          "switch3": {
+            "license": 0,
+            "rg": 949
+          },
+          "unaliased2": {
+            "license": 1663,
+            "rg": 668
+          }
+        },
+        "RG4": {
+          "cycle3": {
+            "license": 0,
+            "rg": 1117
+          },
+          "ood4": {
+            "license": 0,
+            "rg": 2761
+          },
+          "switch3": {
+            "license": 0,
+            "rg": 728
+          },
+          "unaliased2": {
+            "license": 0,
+            "rg": 599
+          }
+        }
+      },
+      "pass": null
+    },
+    "R_rates": {
+      "gated": false,
+      "observed": {
+        "g11": {
+          "budget_s": 2400,
+          "fraction_of_budget": 0.271,
+          "spent_s": 650.4
+        },
+        "gti": {
+          "budget_s": 3600,
+          "fraction_of_budget": 0.46,
+          "spent_s": 1654.8
+        },
+        "repro": {
+          "budget_s": 1500,
+          "fraction_of_budget": 0.055,
+          "spent_s": 82.1
+        },
+        "transfer": {
+          "budget_s": 2400,
+          "fraction_of_budget": 0.08,
+          "spent_s": 192.1
+        }
+      },
+      "pass": null
+    },
+    "R_rg_family": {
+      "gated": false,
+      "observed": {
+        "RG2": {
+          "cycle3": {
+            "cases": 72,
+            "false": 103,
+            "mean_S": 5.7222
+          },
+          "ood4": {
+            "cases": 72,
+            "false": 97,
+            "mean_S": 12.8611
+          },
+          "switch3": {
+            "cases": 72,
+            "false": 153,
+            "mean_S": 9.8194
+          },
+          "unaliased2": {
+            "cases": 72,
+            "false": 0,
+            "mean_S": 17.0833
+          }
+        },
+        "RG3": {
+          "cycle3": {
+            "cases": 72,
+            "false": 0,
+            "mean_S": 14.1389
+          },
+          "ood4": {
+            "cases": 72,
+            "false": 130,
+            "mean_S": 15.9028
+          },
+          "switch3": {
+            "cases": 72,
+            "false": 0,
+            "mean_S": 12.2639
+          },
+          "unaliased2": {
+            "cases": 72,
+            "false": 0,
+            "mean_S": 14.25
+          }
+        },
+        "RG4": {
+          "cycle3": {
+            "cases": 72,
+            "false": 0,
+            "mean_S": 8.6111
+          },
+          "ood4": {
+            "cases": 72,
+            "false": 0,
+            "mean_S": 21.9167
+          },
+          "switch3": {
+            "cases": 72,
+            "false": 0,
+            "mean_S": 5.2222
+          },
+          "unaliased2": {
+            "cases": 72,
+            "false": 0,
+            "mean_S": 7.6806
+          }
+        },
+        "RG5": {
+          "cycle3": {
+            "cases": 72,
+            "false": 0,
+            "mean_S": 1.2222
+          },
+          "ood4": {
+            "cases": 72,
+            "false": 0,
+            "mean_S": 15.2361
+          },
+          "switch3": {
+            "cases": 72,
+            "false": 0,
+            "mean_S": 0.7083
+          },
+          "unaliased2": {
+            "cases": 72,
+            "false": 0,
+            "mean_S": 0.4722
+          }
+        }
+      },
+      "pass": null
+    },
+    "R_stress_all_pairs": {
+      "gated": false,
+      "observed": {
+        "AT6_false": 2016,
+        "AT6_false_outside_bound": 0,
+        "DLF0_false": 3576,
+        "DLF0_false_outside_bound": 144,
+        "DLF0_license_all": 12048,
+        "DLF_false": 0,
+        "DLF_false_outside_bound": 0,
+        "DLF_license_all": 336,
+        "pairs": 20736,
+        "pairs_outside_exact_bound": 1728
+      },
+      "pass": null
+    }
+  },
+  "passed": [
+    "GS_a_soundness",
+    "GS_b_containment",
+    "GS_c_wrong_family_control",
+    "GS_d_transfer_value",
+    "GS_rg_bounded_certification",
+    "GST2_bounded_transfer",
+    "G_alias_stress",
+    "GS_ref_reference_audit",
+    "GAPI2_certify2",
+    "G10_compute",
+    "G12_reproducibility",
+    "G13_frozen_controls_reproduce",
+    "GTI_test_isolation",
+    "G_RT_study_runtime",
+    "G_HB_heartbeat_gap"
+  ],
+  "pending": [],
+  "plan_sha256": "f32c48b979de6d53544da1012044c82714948644d9d523d937de03d762ae56f8",
+  "schema": "brute.gates.v12_0",
+  "scientific_sha256": "47e0429d7c31a621cba401fc74d0b2d5f5cfe944b93de98a2ec3363c94ce0911",
+  "smoke_dry_run": false,
+  "stop_rule_fired": false,
+  "study": "BRUTE-0120-BOUNDED-TRANSFER-014"
+}
