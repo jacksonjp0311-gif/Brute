@@ -48,7 +48,3 @@ heartbeat for the cap, and the cap was never at risk.
 **Disclosure: release tooling.** verify_release_0110, test_release_0110, release_version_0110 and
 make_release_freeze_0110 were drafted outside the repo (/tmp) during the run, so the in-cap GTI module count stayed
 the same. They were committed after gates_013.
-
-## Addendum (post-release, 2026-10-26 ~22:50 EDT): #56 resolved
-
-The push outage recorded as #56 (~10:56 EDT, "Invalid username or token", stale `GITHUB_TOKEN`) is resolved. git now uses the gh credential helper with `GITHUB_TOKEN`/`GH_TOKEN` unset. The 22 local commits went to `origin/plan/v0.11.0` as a plain fast-forward (7dc04c8..d8b449d). No force-push, no history rewrite, no MCP push_files. The release commit `d8b449d` was verified on a fresh GitHub clone before the tag. This addendum is appended after the tag and changes no criterion or result.
