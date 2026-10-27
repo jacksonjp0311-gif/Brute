@@ -1,17 +1,20 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~11:25 EDT (v0.16.0 RELEASED on `main`; v0.17.0 pre-registered on `plan/v0.17.0`)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~13:10 EDT (v0.17.0 RELEASED on `main`; v0.18.0 to be pre-registered on `plan/v0.18.0`, docs only)._
 
 ## Current version and state
 
 <!-- V0170 -->
-- **In progress: v0.17.0** (study BRUTE-0170-SEQUENTIAL-MARGIN-019, branch `plan/v0.17.0` from main `e92a7c4`). **Pre-registered only:** `experiments/BRUTE_PLAN_019.json` (sha256 428e82ef…88a1aa) + `BRUTE_PLAN_FREEZE_019.json`; ledger `preregistration_019`. Readable summary `docs/research/v0.17.0/PLAN_019.md`.
-  - Headline GNB: sequential flip boundary m(b) (exact linear alpha spending, delta 0.01, eps_bar 0.02) replacing the fixed m of RGN4; gated on soundness (a, b), gain over RGN4 (c) and the 0.10 coverage bar (d, Open).
-  - Breadth block GA3: 3 actions × 2-bit readings, ≤ 4 states, eps 0 / 0.02, random actions, 48 seeds.
-  - Seeds (Exact, disjoint from all prior ranges): 8510001–8510024, 8520001–8520024, 8530001–8530024, 8540001–8540048, 8550001–8550048; smoke 8590001–8590030.
-  - Process: commit run_start before streams (#100 item 1); declare K_0160; deviations from #101.
-  - Next: seed check, numpy reference (2 and 3 actions), implementation in new files, rate math, source freeze, scoring freeze ≥ 600 s before run_start, one held-out run under the 2 h cap.
-
+- **Released: v0.17.0** (study BRUTE-0170-SEQUENTIAL-MARGIN-019, branch `plan/v0.17.0` from main `e92a7c4`). **12 of 13 gated pass.**
+  - **SEQUENTIAL MARGIN (headline GNB): FAIL on clauses (c) and (d).** (a) RGNB4 0 false on 240/240 noisy cases, 0 crossings; (b) CP95 upper 0.0124 ≤ 0.05; (c) dC(RGNB4 − RGN4) eps 0.02 = +0.0017 [−0.0005, +0.0041], CI lower not > 0; (d) C(RGNB4) eps 0.02 = 0.052 [0.041, 0.065] < 0.10.
+  - **PASS:** GNB_post_burn_control, GA3 (CP95 0.0605), GS_a7, G_recount, GS_ref7 (336 gated, 0 mismatching, mutation 20/20), GAPI7 (`brute.certify/7`), G10, G12 (152/152), G13, GTI (691 tests, undeclared []), G_RT, G_HB (637 beats, max gap 2.006 s). Release gates: GLV `--long` 15 cases / 0 mismatching / 77.6 s; GCC PASS.
+  - **Reported only:** C at eps 0 / 0.02: RG4 0.453 / 0.249, RGN4 0.054 / 0.051, RGNB4 0.055 / 0.052, RGN4_or 0.339 (eps 0.02), SP8 0.153 / 0.076. RG4 case-false 26/120 at eps 0.02. Stress: RGNB4 8/120 false, RGN4 9/120, RGN4_or 0. Alphabet3: RG4_3 20/48 false at eps 0.02; C(RGNB4_3) 0.012.
+  - **Run:** run_start 12:19:16 EDT; RUN_DONE after 1274 s (cap 7200 s); no stream stopped. Rate math projected 1514 / 679 / 366 / 1582 s, observed 923 / 348 / 248 / 995 s (transfer / repro / g11 / gti).
+  - **Chain:** plan `c11a852` → #102 `5ca467c` → rate math/smokes `2f552bc` → source freeze `5f6bde1` → scoring freeze `f597096` → run_start `13aa9b8` → seal `76fbe07` → gates `5a3cca8` → clean clone `b4e6d46` → correction receipts `09a0eee` → release tooling `20eec72` → release freeze `85b9969` → RELEASE.json `576e564` (ledger `2f3aebb`).
+  - **Ledger note:** run_end_019, seal_019, gates_019, clean_clone_019 each have a first receipt naming the script and a correction receipt naming the artifact; both kept (append-only).
+  - **K_0170 (expected, 0.17.0 tree):** v0.18.0 must declare K_0170.
+  - **No CI:** no `.github`, no workflows.
+  - **Next:** `NEXT_ITERATION.md` (horizon headline GLH, per-bit certificates reported). v0.18.0 is pre-registration only; do not build it without a new owner request.
 <!-- V0160 -->
 - **Released: v0.16.0** (study BRUTE-0160-NOISY-OBSERVATION-018, branch `plan/v0.16.0` from main `c255873`). **10 of 12 gated pass.**
   - **NOISE SOUNDNESS (headline GNS): FAIL on clause (c) only.** (a) RGN4 0 false certificates on 240/240 noisy cases, all with realized flips ≤ m (m = 4 on 460 of 480 cases, 5 on 20); (b) one-sided CP95 upper bound of the case-false rate 0.0124 ≤ 0.05; (c) C(RGN4) at eps 0.02 = 0.066 [0.051, 0.081], required mean ≥ 0.10 and CI lower > 0.05. *Observed.*

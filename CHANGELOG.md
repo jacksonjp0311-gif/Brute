@@ -1,6 +1,34 @@
 # Brute changelog
 
 
+## v0.17.0: sequential flip margin RGNB4, 3-action alphabet block, brute.certify/7 (study BRUTE-0170-SEQUENTIAL-MARGIN-019)
+
+**12 of 13 gated criteria pass. GNB (headline) FAILS on its coverage clauses (c) and (d); its soundness clauses pass.** *Observed*; scoring rules fixed before the data (*Exact*).
+
+### Timeline (author's clock, EDT, 2026-10-27)
+
+- **Pre-registration.** Plan `c11a852` (ledger preregistration_019).
+- **Preparation.** Deviation #102 (per-step bound after a contradiction) `5ca467c`; rate math, smoke dry runs and kill drill `2f552bc`.
+- **Freezes.** Source `5f6bde1`; scoring `f597096` (receipts `8f6d2fe`, ≥ 600 s before run_start).
+- **Held-out run.** run_start `13aa9b8`, 12:19:16 EDT, under a 2 h cap; RUN_DONE 12:40:27 EDT after 1274 s. No stream stopped; watchdog exited without killing; heartbeat max gap 2.006 s.
+- **After the run.** Seal `76fbe07`; GATES_019 `5a3cca8`; clean clone `b4e6d46` PASS; artifact-source correction receipts `09a0eee`; release tooling `20eec72`; release freeze `85b9969`; RELEASE.json `576e564` (ledger `2f3aebb`).
+
+### Code
+
+- `experiments/brute_study_019.py`: RGNB4 (sequential boundary m(b_t), exact alpha spending, eps_bar 0.02, delta 0.01), RGNB4_0, and the alphabet3 block (RG4_3, RGN4_3, RGNB4_3).
+- `brute/api/certify7.py`: `brute.certify/7`, 2 or 3 actions, probabilistic soundness conditional on running flips ≤ m(b) and n* ≤ family_bound.
+- `experiments/v0170_reference.py`: numpy second implementation.
+- Release: `scripts/verify_release_0170.py` (short, `--long`), `tests/test_release_0170.py`, `scripts/make_release_freeze_0170.py`.
+
+### Results (*Observed*)
+
+- **Soundness holds.** RGNB4 0 false certificates on 240/240 noisy main cases, 0 crossings, CP95 upper 0.0124 (GNB a, b PASS).
+- **Coverage is not recovered (GNB c, d FAIL).** dC(RGNB4 − RGN4) at eps 0.02 = +0.0017 [−0.0005, +0.0041]; C(RGNB4) = 0.052 [0.041, 0.065] < 0.10. C(RGNB4) is 0.055 even at eps 0 (RG4 0.453).
+- **Oracle and baseline.** RGN4_or C 0.339 at eps 0.02 with 0 false; RG4 false on 26/120 eps 0.02 cases.
+- **GA3 PASS.** RG4_3 0 false at eps 0; RGNB4_3 0 case-false at eps 0.02 (CP95 0.0605); RG4_3 false on 20/48 at eps 0.02; C(RGNB4_3) 0.012.
+- **Stress (eps 0.05, no guarantee).** RGNB4 false on 8/120, RGN4 9/120, RGN4_or 0.
+- **Process.** GS_ref7 PASS (mutation 20/20), G12 152/152 byte-identical, GTI PASS (691 tests), G_RT, G_HB PASS; GLV `--long` 15 cases / 0 mismatching / 77.6 s; GCC PASS.
+
 ## v0.16.0: noisy observations, tolerant bounded region RGN4(m), brute.certify/6 (study BRUTE-0160-NOISY-OBSERVATION-018)
 
 **10 of 12 gated criteria pass. GNS (headline) FAILS on its coverage clause (c) only; GN0 FAILS as predicted before the run.** *Observed*; scoring rules fixed before the data (*Exact*).
