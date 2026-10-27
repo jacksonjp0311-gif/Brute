@@ -1,24 +1,18 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 ~12:02 EDT (v0.11.0 release-ready on `plan/v0.11.0`; push blocked by GitHub auth)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-26 ~22:43 EDT (v0.11.0 RELEASED on main; v0.12.0 next on `plan/v0.12.0`)._
 
 ## Current version and state
 
 <!-- V0110 -->
-- **Release-ready: v0.11.0** (study BRUTE-0110-SOUND-TRANSFER-013, branch `plan/v0.11.0` from main b935fff + diagnostic `e0aa431`, deviation #52). **22 of 26 gated pass.**
+- **Released: v0.11.0** (study BRUTE-0110-SOUND-TRANSFER-013, branch `plan/v0.11.0` from main b935fff + diagnostic `e0aa431`, deviation #52). **22 of 26 gated pass.**
   - **TRANSFER (headline GST): FAIL.** GS_d PASS: ATp mean S 6.64 steps, seed-paired CI95 [5.73, 7.54], 146 helped / 0 hurt, 0 false in 10,202. **GS_a FAIL and GS_c FAIL:** ATn issued 3 false transfer-rule certificates in 1/288 cases (switch3 seed 6120009; one cycle3 hypothesis aliased for 7 confirmations). **GS_e FAIL:** LXp S −1.32 [−2.19, −0.50]; LX had 0 false certificates. GS_b PASS: DR ⊆ SP8 exactly, S 0. GS_ref PASS: 288/288.
   - **API:** GAPI PASS. `brute/api/certify.py` implements `brute.certify/1` (observations in, CERTIFIED answer or UNKNOWN out; host-agnostic). `verify_release_0110` checks it.
   - **PASS:** G1, G2, G3L, G3′ strict, G6b (SP8 − A2 −0.0104 [−0.0165, −0.0047]), GH, G4, G5, G7, G9, G10, G11, G12, G13, GTI (K_080/K_090 declared), G_RT (R_G_RT_strict true), G78_soundness (0 of 360), G78_containment, GS_b, GS_d, GS_ref, GAPI. Release gates: GLV `--long` PASS (33 cases, 66 traces, 0 mismatches, 53.7 s of 900 s); GCC clean clone PASS (`results/study-013/CLEAN_CLONE_013.json`).
   - **Run:** run_start 11:10:34 EDT, hard cap 13:10:34 EDT, RUN_DONE 11:46:22 EDT (2,148 s of 7,200 s). The watchdog did not fire. Every stream completed. The GTI stream used 79% of its budget (disclosure). There were heartbeat gaps of 335 s and 94 s.
   - **Chain (Exact, git ancestry):** plan `bb1d96e` → seeds `780be3b` → reference `eed2ada` → implementation `084076a`/`3871e78`/`7dc04c8` → source freeze `e6fc10c` → scoring `22bdb9f` (ledgered 10:57–10:59 EDT; erratum `aab5046`) → run_start `9d588d0` → seal `5f45ed4` → run_end/seal ledger `af4b384` → GATES_013 `ad1ba6a` → release tooling `a56a177` → deviation/release ledger `d5bf4ce` → release freeze `8890884`/`ed53fdf` → clean clone `d9ca7bc` → release docs.
   - **Deviations #52–#57:** `docs/research/BRUTE_DEVIATIONS_013.md`.
-  - **BLOCKER:** `git push` has failed since ~10:56 EDT ("Invalid username or token"; `gh auth status` reports the GITHUB_TOKEN as invalid). Every commit after `7dc04c8` is local only. Once GitHub auth is restored, run these steps. Plain pushes only, never force:
-    1. `git push origin plan/v0.11.0`
-    2. Fresh clone, then `verify_release_0110` short and `--long`, then `tests.test_release_0110`.
-    3. Fast-forward main (`git merge --ff-only plan/v0.11.0`), then `git push origin main`.
-    4. `git tag -a v0.11.0`, then `git push origin v0.11.0`.
-    5. Create the GitHub release.
-    6. Update this block to "Released".
+  - **RELEASED 2026-10-26 ~22:50 EDT:** release commit `d8b449d`. Deviation #56 (push outage from ~10:56 EDT, stale GITHUB_TOKEN) was RESOLVED at ~22:40 EDT: gh credential helper, `env -u GITHUB_TOKEN -u GH_TOKEN`. The 22-commit backlog went out as a plain fast-forward (7dc04c8..d8b449d), with no force and no history rewrite. `verify_release_0110` passed short and `--long` on the branch and on a fresh GitHub clone of `d8b449d` (GLV 33 cases, 66 traces, 0 mismatches). `tests.test_release_0110` passed 7/7 on the fresh clone (129 s). main was fast-forwarded b935fff..d8b449d (not forced). The annotated tag `v0.11.0` (object `f97197b`) points to `d8b449d`. This HANDOFF commit is the only post-tag commit on main. [GitHub release](https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.11.0). The default learner is unchanged (Y1k, LU-R); DR, AT and LX are research arms. Standing rule since v0.11.0: on a push or auth failure, keep working locally and push the backlog when access returns.
   - **Next: v0.12.0 per `NEXT_ITERATION.md`.** Make the transfer license disagreement-based against the full region, add an aliasing stress block, use discriminating library experiments, and add `brute.certify/2`.
 <!-- /V0110 -->
 
