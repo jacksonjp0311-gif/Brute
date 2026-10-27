@@ -20,7 +20,7 @@ Case format (the learner side writes the same dicts; timing fields '*wall_inform
   case['rsx'] (main block) = {'trace': [{'step', 'action', 'sp8_action', 'passive_action', 'rsx_rule' ('rsx' | 'sp8'),
       'bounded_sizes' [k0, k1], 'certificate' [c0, c1], 'support' [s0, s1], 'observed', 'actual_EVALUATOR_ONLY' [a0, a1],
       'wrong' [w0, w1]}], 'first_cert_step', 'false_certificates', 'certificates', 'rule_counts' {'rsx', 'sp8'}}
-      k_b = len(s_b) for the online RegionSpace(4) support (0 if None). Rule: step <= burn_in -> SP8 choice ('sp8');
+      k_b = len(s_b) of the recorded RSX n = 4 support (UNKNOWN codes count as possible; 0 if None). Rule: step <= burn_in -> SP8 choice ('sp8');
       else if max(k0, k1) <= 1 or k0 == k1 -> SP8 choice ('sp8'); else argmax ('rsx'; with two actions a tie between
       the maximisers is k0 == k1, broken by the SP8 choice).
   case['transfer']['RG<n>'] (n = 2..5, SP8 trajectory) and ['RSX4'] (n = 4, RSX trajectory) = v0120 RG format
@@ -66,12 +66,13 @@ def rsx_choice(t,burn,sizes,sp8_action):
     return (0 if k0>k1 else 1),'rsx'
 
 
-def audit_rsx(rsx,init,burn,where='RSX'):
-    tr=rsx['trace'];S=steps_rsx(rsx)
-    ref4=ref_bounded(4,init,[s['a'] for s in S],[s['obs'] for s in S]);cnt={'rsx':0,'sp8':0}
+def audit_rsx(rsx,BR4,burn,where='RSX'):
+    """BR4 = the recorded RSX n = 4 supports, already checked by audit_bounded against exhaustive enumeration (equal
+    where unknown == 0, superset otherwise; the learner's sizes count UNKNOWN codes as possible)."""
+    tr=rsx['trace'];S=steps_rsx(rsx);cnt={'rsx':0,'sp8':0}
     for i,r in enumerate(tr):
         check(r['step']==i+1,f'{where} step index')
-        sizes=[len(x) if x is not None else 0 for x in ref4[i]]
+        sizes=[len(x) if x is not None else 0 for x in BR4['support'][i]]
         check(r['bounded_sizes']==sizes,f'{where} step {i+1} bounded_sizes')
         a,rule=rsx_choice(r['step'],burn,sizes,r['sp8_action'])
         check(r['action']==a and r['rsx_rule']==rule,f'{where} step {i+1} action/rule');cnt[rule]+=1
@@ -140,8 +141,8 @@ def audit_case(c,plan):
             check(sorted(T)==sorted(OOD5_ARMS),'ood5 arm set');check(c['summary']==_summary(c,S,exp,OOD5_ARMS),'summary')
             return True,None
         check(sorted(c['bounded'])==['RSX','SP8'],'bounded trajectories')
-        R=audit_rsx(c['rsx'],init,burn);check(len(R)==len(S),'RSX steps')
-        audit_bounded(c['bounded']['RSX'],R,init,NS,'RSX');BR=c['bounded']['RSX']
+        R=steps_rsx(c['rsx']);check(len(R)==len(S),'RSX steps')
+        audit_bounded(c['bounded']['RSX'],R,init,NS,'RSX');BR=c['bounded']['RSX'];audit_rsx(c['rsx'],BR['4'],burn)
         for n in (2,3,4,5):exp[f'RG{n}']=ref_rg(S,BS,n,burn)
         exp['RSX4']=ref_rg(R,BR,4,burn)
         exp['EB']=ref_eb(S,BS,burn,1);exp['EB2']=ref_eb(S,BS,burn,2)
