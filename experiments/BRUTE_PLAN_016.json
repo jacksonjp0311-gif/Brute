@@ -1,0 +1,315 @@
+{
+ "schema": "brute.registered-plan.v1",
+ "status": "PRE-REGISTERED (frozen at the commit that adds this file; no v0.14.0 experiment chooser, license variant, API, reference code, held-out world, seed or run exists at that commit)",
+ "study": "BRUTE-0140-DEFERRED-SPLIT-016",
+ "version_under_test": "0.14.0",
+ "parent_study": "BRUTE-0130-REGION-SPLIT-015",
+ "owner_request": {
+  "recorded_at": "2026-10-27 02:47 EDT (America/New_York), relayed by the coordinating agent",
+  "summary": "After the v0.13.0 release: pre-register v0.14.0. Standing rules: push after every step; no force-push; never edit frozen or ledger-hashed files; no GitHub Actions; evidence labels; keep the core API host-agnostic and embeddable; env -u GITHUB_TOKEN -u GH_TOKEN for git/gh; don't force results.",
+  "interpretation": "NEXT_ITERATION (v0.13.0 -> v0.14.0) items map to: deferred region split RSXL (headline GDS, coverage gain with first-certificate time unchanged), DLF license replication with a larger wrong-family block (gated GS_a4 / GS_c4) and the seen-data diagnostic of the study-015 DLFn false certificate (reported, before any v0.14.0 code), ood5 bound-violation signal (reported R_BV), EB retired to a reported negative control, GTI dirty-file list (fixes #74 opacity), K_0120 / K_0130 declared in advance."
+ },
+ "branch_base": {
+  "requested": "main at the v0.13.0 release (tag v0.13.0 -> d1f6c71) plus the post-tag HANDOFF commit ffa045b",
+  "used": "plan/v0.14.0 = main ffa045b; no diagnostic commits",
+  "exact": "git merge-base --is-ancestor ffa045b <plan commit> holds"
+ },
+ "freeze_rule": "The commit that adds this file must be an ancestor of every v0.14.0 code file (git merge-base --is-ancestor <plan commit> <first commit of file>), in particular of: brute/deferredsplit.py, brute/api/certify4.py, experiments/v0140_reference.py, experiments/brute_common_016.py, experiments/brute_study_016.py, scripts/run_study_016.py, scripts/watchdog_016.py, scripts/check_seeds_016.py, scripts/diag_license_016.py and every scoring script for study-016.",
+ "adopted_files": {
+  "note": "No new adopted files. brute/align.py (SP8), brute/region.py, brute/boundedtransfer.py (RG / DLF), brute/regionsplit.py (RSX, EB), brute/api/certify.py, certify2.py, certify3.py, experiments/brute_study_015.py, experiments/v0130_reference.py and scripts/watchdog_014.py are imported unchanged."
+ },
+ "frozen_inputs_not_touched": [
+  "every file listed in any experiments/*FREEZE*.json (incl. BRUTE_SOURCE_FREEZE_015 and BRUTE_RELEASE_FREEZE_0130)",
+  "every ledger-hashed file (results/RESEARCH_LEDGER.jsonl sources)",
+  "brute/core/*",
+  "every existing brute/ module and brute/api/*.py (imported, never edited)",
+  "experiments/brute_study_0*.py up to 015, experiments/v0*_reference.py up to v0130",
+  "/workspace/brute-bridge and /workspace/bgr/BGR-v0.90.0 (other projects, never touched)"
+ ],
+ "pre_freeze_disclosure": {
+  "summary": "No new diagnostic was run for this plan. The design uses only the sealed, already-scored study-015 results (Observed on SEEN data): RSX4 0 false, TV_RSX -5.27, coverage proxy RSX4 0.434 vs RG4 0.370; DLFn / RSXn 1 false each on ood4 seed 8140016 mask 0.35; EB 91 false; ood5 RG4 121 false, RG5 0. Held-out v0.14.0 seeds have never been generated.",
+  "exact_note": "Exact from definitions: (a) RSXL's trajectory equals the SP8 trajectory up to and including the step of RG4's first certificate, so S(RSXL4) = S(RG4) on every case by construction; the headline therefore tests coverage, not time to first certificate. (b) An RG4 certificate requires a non-empty bounded region at 4, so a 'region at 4 is empty' detector cannot block any RG4 certificate at the step it is issued; R_BV measures only after-the-fact detection. (c) DLF margin 2 (min(n_L + 2, 4)) equals RG4 whenever n_L >= 2, so it is reported (R_DLF2) and not offered as a fix."
+ },
+ "hypotheses": {
+  "H_rsxl": "Deferred region split RSXL (use the SP8 LU-R choice until the first step at which RG4 on this trajectory has issued a certificate, then the frozen RSX choice) certified by RG4 on its own trajectory (RSXL4) is sound (Exact lemma: RG4 is sound in-family on any trajectory), has S(RSXL4) = S(RG4) on every case (Exact by construction) and issues more certificates than RG4 on the SP8 trajectory (Open; study-015 RSX4 +0.064 coverage but from step 9 on).",
+  "H_license": "DLF (frozen, margin 1) with the positive and the wrong-family library issues 0 false certificates on fresh seeds (Open after the study-015 DLFn false certificate; replication with a doubled ood4 block).",
+  "H_bv": "On ood5 targets the bounded region at 4 becomes empty at some step on most cases, after some RG4 false certificates have already been issued (Inferred; reported only).",
+  "H_recount": "as study-015 (own-trajectory recount equals recorded count; Exact by construction).",
+  "H_api": "brute.certify/4 (= brute.certify/3 plus a deferred suggest_action: SP8 action until the caller's first certificate, then RSX) reproduces certify/3 on query and returns the study RSXL action on every step (Inferred)."
+ },
+ "heldout_ranges_transfer": {
+  "targets": {
+   "cycle3": [
+    8210001,
+    8210024
+   ],
+   "switch3": [
+    8220001,
+    8220024
+   ],
+   "unaliased2": [
+    8230001,
+    8230024
+   ],
+   "ood4": [
+    8240001,
+    8240048
+   ]
+  },
+  "sources": [
+   8250001,
+   8250096
+  ],
+  "ood5_targets": [
+   8260001,
+   8260024
+  ]
+ },
+ "smoke_seeds": {
+  "range": [
+   8290001,
+   8290030
+  ],
+  "rule": "smoke/debug runs of v0.14.0 code may use ONLY seeds 8290001-8290030 or the study-015 smoke seeds 8190001-8190030; held-out seeds are never generated, simulated or inspected before run_start of the held-out run. Sealed data of studies 001-015 may be used for development (seen data)."
+ },
+ "heldout_note": "All v0.14.0 ranges (8210001-8290030) are disjoint from every earlier range (all <= 8190030 except the pre-freeze timing seeds 9000001-9000002); scripts/check_seeds_016.py asserts this from the parsed plans 001-015.",
+ "seed_assertion_plan": {
+  "script": "scripts/check_seeds_016.py (committed after this plan and before ANY v0.14.0 run including smoke)",
+  "asserts": [
+   "pairwise disjointness of all v0.14.0 ranges",
+   "disjointness from every range in experiments/PLAN.json and experiments/BRUTE_PLAN_0*.json other than 016",
+   "results/diag-016/SEEDCHECK_016.json written; ledger seedcheck_016"
+  ]
+ },
+ "mask_rates": [
+  0.1,
+  0.35,
+  0.6
+ ],
+ "actions_per_case": 44,
+ "burn_in": 8,
+ "family_bound_FB": 4,
+ "license_margin": 1,
+ "tau6": {
+  "value": 1.645215321642,
+  "source": "results/study-006/CALIBRATION_006.json, unchanged"
+ },
+ "transfer_definition": {
+  "source_learning": "unchanged v0.12.0 (frozen experiments.brute_study_012.library; n_L = the library's min_n)",
+  "pairs": "positive: target family f uses the library of source seed 8250000 + 24 x index(f) + offset (index order cycle3, switch3, unaliased2, ood4; ood4 offsets 25-48 reuse sources offset-24). Negative: the same source offset from the rotated family (cycle3 <- switch3, switch3 <- cycle3, unaliased2 <- ood4, ood4 <- unaliased2), as study-015.",
+  "cases": "main block: cycle3, switch3, unaliased2 x 24 target seeds + ood4 x 48 target seeds, x 3 masks = 360 target cases, 96 source worlds; ood5 block: 24 seeds x 3 masks = 72 cases (no library); stress: all wrong-family libraries per main case, as study-015",
+  "bounded_supports": "as study-014 (brute.region.RegionSpace(n).predict_support), recorded on every trajectory (SP8, RSX) for n in {1, 2, 3, 4, 5}; n = 1..4 non-emptiness recorded for EB",
+  "RSX_trajectory": "as study-015 (reported replication, R_RSX)",
+  "RG_arm": "as study-014 (frozen brute.boundedtransfer), on any trajectory; RG4 on the SP8 trajectory is the gated baseline; RSX4 = RG4 on the RSX trajectory",
+  "DLF_arm": "as study-015 (frozen dlf_decide, margin 1); DLFp / DLFn on the SP8 trajectory, RSXLp / RSXLn on the RSXL trajectory; DLF2 (margin 2) reported",
+  "EB_arm": "as study-015 (frozen), reported negative control only",
+  "speedup": "S(X) = steps-to-first-certificate(SP8) - steps-to-first-certificate(X), censored at 45 (as study-015).",
+  "ood5": "RG4, RG5 on the SP8 trajectory of ood5 targets; false certificates, S and the first step at which the bounded region at 4 is empty (R_BV) reported",
+  "RSXL_trajectory": "a new SP8 trajectory on the same target world, seed and mask whose action at step t uses the SP8 LU-R choice while RG4 on this trajectory has issued no certificate at any step < t, and the frozen study-015 RSX choice (brute.regionsplit) afterwards. Learner-visible only.",
+  "coverage": "C(X) = certificates issued by X on its own trajectory / (44 x 2) per case; dC = C(RSXL4) - C(RG4)"
+ },
+ "api_definition": {
+  "file": "brute/api/certify4.py (new; certify.py, certify2.py, certify3.py untouched)",
+  "interface": "Certifier4(library=None, margin=1): the brute.certify/3 Certifier3 methods unchanged, plus suggest_action(deferred=True) -> {'api': 'brute.certify/4', 'action': int, 'rule': 'sp8' | 'rsx', 'deferred': bool, 'certified_before': bool}; stateless certify4(...) and suggest4(observations, actions, certified_before). Host-agnostic: no I/O, network, threads, subprocesses or global state.",
+  "tests": "tests/test_api_certify4_0140.py: (i) query equals certify/3 on smoke traces; (ii) suggest_action equals the study RSXL action; (iii) ValueError on bad input; (iv) host-agnostic import check"
+ },
+ "watchdog_definition": {
+  "file": "scripts/watchdog_014.py reused unchanged via a thin scripts/watchdog_016.py wrapper (study paths only)"
+ },
+ "arms": {
+  "SP8": "frozen comparator",
+  "RG4": "gated baseline (SP8 trajectory)",
+  "RSXL4": "headline (RSXL trajectory, RG4 certifier)",
+  "RSXLp / RSXLn": "RSXL trajectory, DLF certifier with positive / wrong library",
+  "DLFp / DLFn": "SP8 trajectory, replication",
+  "RSX4": "reported replication of study-015",
+  "DLF2p / DLF2n": "reported (margin 2)",
+  "EB": "reported negative control",
+  "RG5": "reported",
+  "ood5: RG4 / RG5": "reported",
+  "stress": "DLF on all wrong-family libraries on SP8 and RSXL trajectories"
+ },
+ "arms_by_block": {
+  "transfer": [
+   "SP8",
+   "RG4",
+   "RG5",
+   "RSXL4",
+   "RSXLp",
+   "RSXLn",
+   "DLFp",
+   "DLFn",
+   "DLF2p",
+   "DLF2n",
+   "RSX4",
+   "EB",
+   "stress"
+  ],
+  "ood5": [
+   "SP8",
+   "RG4",
+   "RG5"
+  ]
+ },
+ "metrics": {
+  "false_certificates": "as study-015 (own trajectory)",
+  "speedup": "transfer_definition.speedup",
+  "coverage": "transfer_definition.coverage",
+  "bootstrap": "seed-clustered paired bootstrap, 2000 resamples, seed 20261028, 95% percentile CI"
+ },
+ "criteria": {
+  "GDS_deferred_split": {
+   "gated": true,
+   "threshold": "HEADLINE. RSXL4: 0 false certificates AND S(RSXL4) == S(RG4) on every one of the 360 main cases AND mean dC = C(RSXL4) - C(RG4) >= 0.03 AND 95% CI lower bound of dC > 0 (seed-clustered paired bootstrap over the 360 main cases).",
+   "prediction": "Open (soundness and equal first-certificate time Exact by construction; coverage untested: RSX4 gained +0.064 from step 9 on in study-015, RSXL starts later)."
+  },
+  "GS_a4_soundness": {
+   "gated": true,
+   "threshold": "RG4, RSXL4, RSXLp, RSXLn, DLFp, DLFn: 0 false certificates on all 360 main cases, all steps, every action. Per-arm pass reported; passes iff all six pass.",
+   "prediction": "RG4 / RSXL4 Exact PASS; DLF arms Open (study-015 DLFn 1 false)."
+  },
+  "GS_b4_containment": {
+   "gated": true,
+   "threshold": "Exact check on every case: every SP8 certificate is an RG4 certificate with the same code; every RSXL4 certificate is an RSXLp and RSXLn certificate with the same code; every certificate's recorded bounded support equals the singleton of its code; the RSXL trajectory equals the SP8 trajectory up to RG4's first certificate.",
+   "prediction": "Exact PASS."
+  },
+  "GS_c4_wrong_family": {
+   "gated": true,
+   "threshold": "RSXLn and DLFn: 0 false AND 95% CI lower bound of S(DLFn) - S(RG4) <= 0.",
+   "prediction": "Open."
+  },
+  "G_alias4_stress": {
+   "gated": true,
+   "threshold": "DLF on the RSXL trajectory: 0 false certificates on every stress pair (frozen AT6 licenses >= 1 transfer certificate on the SP8 trajectory); at least 20 stress pairs, else FAIL.",
+   "prediction": "Inferred PASS."
+  },
+  "G_recount": {
+   "gated": true,
+   "threshold": "as study-015, for every arm in arms_by_block.",
+   "prediction": "Exact PASS."
+  },
+  "GS_ref4_reference_audit": {
+   "gated": true,
+   "threshold": "experiments/v0140_reference.py (numpy exhaustive, n <= 5): 0 mismatches on all 360 main cases (bounded supports, RSXL actions, RG / DLF decisions) and the ood5 block; mutation test catches 20/20 injected mutations.",
+   "prediction": "Inferred PASS."
+  },
+  "GAPI4_certify4": {
+   "gated": true,
+   "threshold": "tests/test_api_certify4_0140.py passes inside GTI (4 clauses) and brute/api/certify4.py is in the source freeze.",
+   "prediction": "Inferred PASS."
+  },
+  "G10_compute": {
+   "gated": true,
+   "threshold": "as study-015",
+   "prediction": "Inferred PASS (v0.13.0: 0.0)."
+  },
+  "G12_reproducibility": {
+   "gated": true,
+   "threshold": "repro stream (index % 3 == 0, 120 main cases + 24 ood5) byte-identical after stripping timing keys",
+   "prediction": "Inferred PASS."
+  },
+  "G13_frozen_controls_reproduce": {
+   "gated": true,
+   "threshold": "every frozen freeze file verifies; RG4 / DLF / RSX reproduce through the frozen v0.13.0 code",
+   "prediction": "Exact PASS."
+  },
+  "GTI_test_isolation": {
+   "gated": true,
+   "threshold": "as study-015 (clauses i-v), with K_060 ... K_0110 as in study-015, K_0120 (test_release_0120: version, embeddable API answers, short verify, untampered copy; Observed on the 0.13.0 tree) and K_0130 (test_release_0130 version / API / RELEASE.json key tests after the 0.14.0 bump) declared in advance; any other failure is FAIL. The runner records the list of dirty tracked files whenever tracked_tree_dirty is true.",
+   "prediction": "Inferred PASS."
+  },
+  "G_RT_study_runtime": {
+   "gated": true,
+   "threshold": "as study-015",
+   "prediction": "Inferred PASS."
+  },
+  "G_HB_heartbeat_gap": {
+   "gated": true,
+   "threshold": "largest heartbeat gap <= 30 s",
+   "prediction": "Inferred PASS (v0.13.0: 2.03 s)."
+  }
+ },
+ "retired_gates": {
+  "GRS, GEB, GS_a3, GS_c3 (v0.13.0)": "not re-gated under their v0.13.0 names; FAILs stay published. RSX4 and EB are reported (R_RSX, R_EB)."
+ },
+ "release_gates": {
+  "GCC_clean_clone": "scripts/clean_clone_016.py PASS and the tracked-files test PASS",
+  "GLV_long_verify": "verify_release_0140 --long: 15 main cases (per family offsets 1 / 2 / 3 at masks 0.1 / 0.6 / 0.35, plus ood4 offsets 25 / 26 / 27 at 0.1 / 0.6 / 0.35) + 3 ood5 cases (offsets 1-3 at 0.1 / 0.6 / 0.35) re-run and compared to the sealed traces, audited by the reference; own cap 900 s; 0 mismatching cases"
+ },
+ "non_gated_reports": {
+  "R_RSX": "RSX4 S, TV, coverage (replication of study-015)",
+  "R_DLF2": "DLF2p / DLF2n false, S (Exact: equals RG4 when n_L >= 2)",
+  "R_EB": "EB false, S (negative control)",
+  "R_BV": "ood5: RG4 / RG5 false, S, first step with an empty bounded region at 4 and how many RG4 false certificates precede it",
+  "R_coverage_family": "dC per family",
+  "R_diag_license": "the seen-data diagnostic of study-015 case ood4 seed 8140016 mask 0.35 (scripts/diag_license_016.py, committed and ledgered before any v0.14.0 code; Observed on seen data; changes no criterion)"
+ },
+ "second_implementation": {
+  "file": "experiments/v0140_reference.py (same author, no brute import, committed before brute/deferredsplit.py and brute/api/certify4.py)",
+  "method": "extends v0130_reference: RSXL action recomputed from the reference supports, the recorded SP8 LU-R choice and the reference RG4 first-certificate step; RG / DLF decisions recomputed; any differing field is a mismatch"
+ },
+ "samples": {
+  "g11_mandatory": "all 360 main cases (SP8 and RSXL trajectories) and all 72 ood5 cases",
+  "long_verify": "see release_gates.GLV_long_verify"
+ },
+ "power_and_sample": {
+  "transfer": "120 seeds x 3 masks, seed-clustered; study-015 coverage proxies differ by ~0.06 between RSX4 and RG4; a 0.03 threshold with CI lower > 0 needs a true dC near 0.05 (Inferred)",
+  "soundness": "0 false in N certificates gives a rule-of-three bound 3/N per arm (reported); the ood4 block is doubled because both study-015 DLF false certificates were on ood4"
+ },
+ "stop_rule": {
+  "cap": "2 h 00 min (7200 s) wall clock from RUN_T0 (written with the run_start_015 ledger entry)",
+  "streams_and_budgets": "MANDATORY at t0: transfer (main + ood5) 4 workers 3000 s; gti 2 workers 3600 s. After transfer: repro 2 workers 1500 s; g11 reference 2 workers 2400 s. At most 8 worker processes at once.",
+  "rate_math": "as study-015",
+  "watchdog": "as study-015 (STOP_016.json at the cap)",
+  "at_cap": "every unfinished stream is stopped and sealed as is; NO extension and NO rerun",
+  "scoring": "every gate whose inputs are incomplete at the cap is FAIL (STUDY_BUDGET)"
+ },
+ "clean_clone": {
+  "tracked_files_test": "tests/test_release_0140.py::test_scoring_inputs_tracked and scripts/clean_clone_016.py, as study-015"
+ },
+ "what_counts_as_failure": [
+  "any gated criterion not meeting its threshold is FAIL and is published as FAIL in GATES_016.json, README, CHANGELOG, RELEASE.json and the release notes",
+  "GDS FAIL means deferring the region split did NOT add significant coverage at equal first-certificate time",
+  "GS_a4 / GS_c4 FAIL on a DLF arm means the library license is not sound on fresh wrong-family seeds and must not be offered as sound"
+ ],
+ "process_controls": {
+  "order": [
+   "(1) this plan committed + ledger preregistration_016 + BRUTE_PLAN_FREEZE_016 on branch plan/v0.14.0; pushed",
+   "(2) scripts/check_seeds_016.py + tests; run; ledger seedcheck_016",
+   "(3) scripts/diag_license_016.py on sealed study-015 data (seen data); report docs/research/BRUTE_DIAG_LICENSE_016.md; ledger diag_license_016",
+   "(4) experiments/v0140_reference.py; ledger second_implementation_016",
+   "(5) brute/deferredsplit.py, brute/api/certify4.py, brute_common_016, brute_study_016, orchestrator, storage, run_tests_0140 (records dirty files) and tests; smoke runs on smoke seeds only incl. the kill drill; rate math ledgered",
+   "(6) source freeze BRUTE_SOURCE_FREEZE_016 + ledger",
+   "(7) scoring scripts after (6), unit-tested on a smoke directory, ledgered >= 10 min before run_start",
+   "(8) orchestrator + independent watchdog under the 2 h cap",
+   "(9) seal + pack + ledger seal_016",
+   "(10) GATES_016.json + ledger gates_016",
+   "(11) verify_release_0140 short and --long, clean_clone_016, release freeze BRUTE_RELEASE_FREEZE_0140, docs, verify on a fresh GitHub clone, fast-forward main, tag v0.14.0, GitHub release; delete scratch"
+  ],
+  "dependencies": "as study-014 (pinned venv /workspace/bgr/venv)",
+  "times": "commit and ledger times are author-set (America/New_York)",
+  "push": "push after every step; never force-push; no GitHub Actions; on a push or auth failure keep working locally and push the backlog later; git/gh with env -u GITHUB_TOKEN -u GH_TOKEN"
+ },
+ "deviation_policy": "after freeze, any change is a ledger 'deviation_016' entry with its reason in docs/research/BRUTE_DEVIATIONS_016.md before the affected run; the original criterion is still reported. Numbering continues project-wide: study-015 ended at #74, so study-016 deviations start at #75.",
+ "default_policy_rule": "No auto-promotion: the release default stays the v0.5.0 rule (Y1k, LU-R); RSXL is a research arm. brute/api/certify4.py is a new additive interface; certify/1, /2 and /3 are unchanged.",
+ "carried_defects": {
+  "v050_tamper": "as study-015",
+  "K_sets": "K_060 ... K_0130 frozen release tests fail after version bumps (declared in GTI)",
+  "D74": "study-015 TEST_SUITE tracked_tree_dirty=true, cause Open; the v0.14.0 runner records the dirty file list"
+ },
+ "limitations": [
+  "Synthetic deterministic worlds only.",
+  "The family bound FB = 4 is a caller attestation; RSXL4 soundness is Exact only inside it.",
+  "Coverage proxy counts certificates, not their usefulness to a host.",
+  "The ood5 block is reported only.",
+  "Same-author second implementation; no independent replication."
+ ],
+ "scope_and_open": [
+  "Content-level transfer: Open",
+  "Learned family selection: Open",
+  "Stochastic / noisy worlds: Open",
+  "Independent audit: Open"
+ ],
+ "brand": "docs keep the existing palette and rules: charcoal/sage; no purple, neon, emoji, mascots or gold",
+ "labels": "Every claim in study-016 documents carries one of Exact / Observed / Simulated / Inferred / Rejected / Open; predictions in this plan are Inferred unless marked otherwise."
+}
