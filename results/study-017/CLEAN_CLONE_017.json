@@ -1,0 +1,62 @@
+{
+  "commit": "ba30c9e1110f6bf2cc7fc0ae8f72cd5b13570f86",
+  "elapsed_informational_s": 35.6,
+  "passed": true,
+  "schema": "brute.clean-clone.v2",
+  "scoring_inputs": {
+    "gz_restored": [
+      "results/study-017/transfer/RESULTS.json",
+      "results/study-017/transfer/SCIENTIFIC.json",
+      "results/study-017/repro/transfer/RESULTS.json",
+      "results/study-017/repro/transfer/SCIENTIFIC.json"
+    ],
+    "tracked": [
+      "results/study-017/transfer/SEAL.json",
+      "results/study-017/repro/transfer/SEAL.json",
+      "results/study-017/PAIRED_ANALYSIS_017.json",
+      "results/study-017/REPRODUCIBILITY_017.json",
+      "results/study-017/SECOND_IMPLEMENTATION_017.json",
+      "results/study-017/TEST_SUITE_017.json",
+      "results/study-017/RUN_STATE_017.json",
+      "results/study-017/RUN_T0",
+      "results/study-017/HEARTBEAT_017.jsonl",
+      "results/study-017/KILL_DRILL_017.json",
+      "results/study-017/SEAL.json",
+      "results/study-017/GATES_017.json"
+    ],
+    "tracked_if_present": [
+      "results/study-017/RUN_DONE_017.json",
+      "results/study-017/STOP_017.json",
+      "results/study-017/STOP_017_ORCHESTRATOR.json",
+      "results/study-017/HB_SENTINEL_017.jsonl",
+      "results/study-017/HEARTBEAT_ATTRIBUTION_017.json"
+    ]
+  },
+  "steps": {
+    "make_gates_017": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "GATES_017.json reproduces\n"
+    },
+    "make_paired_017": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "PAIRED_ANALYSIS_017 reproduces\n"
+    },
+    "make_reproducibility_017": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "REPRODUCIBILITY_017 reproduces\n"
+    },
+    "restore": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "True\n"
+    }
+  },
+  "tracked": {
+    "missing_from_tree": [],
+    "passed": true,
+    "raw_json_committed_unexpectedly": []
+  }
+}
