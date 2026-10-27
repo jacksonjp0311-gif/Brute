@@ -1,0 +1,206 @@
+{
+ "arms": {
+  "AT6n": {
+   "cases": 288,
+   "cases_helped": 1,
+   "cases_hurt": 0,
+   "cases_with_false": 1,
+   "false_certificates": 3,
+   "mean_S": 0.0243,
+   "transfer_certificates": 10
+  },
+  "AT6p": {
+   "cases": 288,
+   "cases_helped": 146,
+   "cases_hurt": 0,
+   "cases_with_false": 0,
+   "false_certificates": 0,
+   "mean_S": 6.6354,
+   "transfer_certificates": 5905
+  },
+  "BKun": {
+   "cases": 288,
+   "cases_helped": 159,
+   "cases_hurt": 0,
+   "cases_with_false": 152,
+   "false_certificates": 537,
+   "mean_S": 13.5174,
+   "transfer_certificates": 2275
+  },
+  "BKup": {
+   "cases": 288,
+   "cases_helped": 267,
+   "cases_hurt": 0,
+   "cases_with_false": 0,
+   "false_certificates": 0,
+   "mean_S": 20.6424,
+   "transfer_certificates": 14906
+  },
+  "BR1n": {
+   "cases": 288,
+   "cases_helped": 172,
+   "cases_hurt": 0,
+   "cases_with_false": 48,
+   "false_certificates": 142,
+   "mean_S": 8.5521,
+   "transfer_certificates": 2403
+  },
+  "BR1p": {
+   "cases": 288,
+   "cases_helped": 241,
+   "cases_hurt": 0,
+   "cases_with_false": 0,
+   "false_certificates": 0,
+   "mean_S": 11.1215,
+   "transfer_certificates": 5419
+  },
+  "DL0n": {
+   "cases": 288,
+   "cases_helped": 10,
+   "cases_hurt": 0,
+   "cases_with_false": 3,
+   "false_certificates": 9,
+   "mean_S": 0.9583,
+   "transfer_certificates": 46
+  },
+  "DL0p": {
+   "cases": 288,
+   "cases_helped": 267,
+   "cases_hurt": 0,
+   "cases_with_false": 0,
+   "false_certificates": 0,
+   "mean_S": 17.1354,
+   "transfer_certificates": 11203
+  },
+  "DL1n": {
+   "cases": 288,
+   "cases_helped": 3,
+   "cases_hurt": 0,
+   "cases_with_false": 0,
+   "false_certificates": 0,
+   "mean_S": 0.1458,
+   "transfer_certificates": 12
+  },
+  "DL1p": {
+   "cases": 288,
+   "cases_helped": 241,
+   "cases_hurt": 0,
+   "cases_with_false": 0,
+   "false_certificates": 0,
+   "mean_S": 11.1215,
+   "transfer_certificates": 5419
+  }
+ },
+ "heartbeat_013": {
+  "beats": 860,
+  "gaps_over_10s": [
+   {
+    "gap_monotonic_s": 334.511,
+    "gap_wall_s": 334.511,
+    "wall": 1793028216.714
+   },
+   {
+    "gap_monotonic_s": 93.833,
+    "gap_wall_s": 93.833,
+    "wall": 1793029508.16
+   }
+  ],
+  "reading": "monotonic gap == wall gap: CLOCK_MONOTONIC kept running, so the watchdog process itself was not scheduled or was blocked (each beat does write + fsync + /proc reads); a clock jump is excluded (Observed). Cause (I/O stall in fsync vs. host deschedule) is not identified (Open)."
+ },
+ "inputs": {
+  "results": "results/study-013/transfer/RESULTS.json",
+  "results_sha256": "ae88f5eac8248b8bdc7b3376f170611a579b43aec1d62572e42d7a2efacf057c"
+ },
+ "label": "Observed on SEEN data (exploratory, pre-plan); not v0.12.0 evidence",
+ "mean_S_by_family": {
+  "AT6n": {
+   "cycle3": 0,
+   "ood4": 0,
+   "switch3": 0.0972,
+   "unaliased2": 0
+  },
+  "AT6p": {
+   "cycle3": 2.2222,
+   "ood4": 16.0278,
+   "switch3": 2.0556,
+   "unaliased2": 6.2361
+  },
+  "BKun": {
+   "cycle3": 11.125,
+   "ood4": 19.25,
+   "switch3": 9.3056,
+   "unaliased2": 14.3889
+  },
+  "BKup": {
+   "cycle3": 15.2222,
+   "ood4": 30.7083,
+   "switch3": 17.3194,
+   "unaliased2": 19.3194
+  },
+  "BR1n": {
+   "cycle3": 6.7361,
+   "ood4": 20.7361,
+   "switch3": 6.6111,
+   "unaliased2": 0.125
+  },
+  "BR1p": {
+   "cycle3": 6.7361,
+   "ood4": 15.1806,
+   "switch3": 6.6111,
+   "unaliased2": 15.9583
+  },
+  "DL0n": {
+   "cycle3": 0.2639,
+   "ood4": 2.875,
+   "switch3": 0.6944,
+   "unaliased2": 0
+  },
+  "DL0p": {
+   "cycle3": 11.9583,
+   "ood4": 23.0833,
+   "switch3": 14.0972,
+   "unaliased2": 19.4028
+  },
+  "DL1n": {
+   "cycle3": 0,
+   "ood4": 0,
+   "switch3": 0.5833,
+   "unaliased2": 0
+  },
+  "DL1p": {
+   "cycle3": 6.7361,
+   "ood4": 15.1806,
+   "switch3": 6.6111,
+   "unaliased2": 15.9583
+  }
+ },
+ "schema": "brute.diag.v12_0",
+ "stress": {
+  "AT6_false_on_stress": 1080,
+  "AT6_stress_pairs_with_false": 480,
+  "DL0_false_all_pairs": 3216,
+  "DL0_pairs_with_false": 1128,
+  "DL1_false_all_pairs": 0,
+  "DL1_false_on_stress": 0,
+  "DL1_false_outside_exact_bound": 0,
+  "DL1_transfer_on_stress": 2832,
+  "all_pairs": 20736,
+  "pairs_outside_exact_bound_DL1": 1728,
+  "stress_pairs_AT6_licenses": 600,
+  "stress_pairs_by_target_library": {
+   "cycle3<-ood4": 192,
+   "cycle3<-switch3": 0,
+   "cycle3<-unaliased2": 0,
+   "ood4<-cycle3": 240,
+   "ood4<-switch3": 0,
+   "ood4<-unaliased2": 0,
+   "switch3<-cycle3": 24,
+   "switch3<-ood4": 0,
+   "switch3<-unaliased2": 72,
+   "unaliased2<-cycle3": 0,
+   "unaliased2<-ood4": 0,
+   "unaliased2<-switch3": 72
+  }
+ },
+ "wall_informational_s": 74.6
+}
