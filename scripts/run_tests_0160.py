@@ -1,0 +1,115 @@
+"""GTI test isolation runner for study-018 (BRUTE-0160-NOISY-OBSERVATION-018), the run_tests_070 method run IN PARALLEL
+(deviation #98, BRUTE_DEVIATIONS_018_ADDENDUM_1.md: the sequential study-017 runner took 3461 s of 3600 s).
+
+Same children as scripts/run_tests_0150.py (frozen, imported for frozen_check / clean_run): every tests/test*.py module
+in its OWN fresh interpreter (frozen scripts/run_tests_070.run_child), the plain `unittest discover -s tests` run, and a
+clean-tag run of every failing test_release_0X0 module; here up to --workers children run at once (a thread pool of
+subprocesses; each child is its own interpreter, so isolation is unchanged). Clause logic as run_tests_0150.verdict plus:
+  K_0150 (DECLARED IN ADVANCE, BRUTE_PLAN_018 GTI): test_release_0150.Release0150 version / embeddable API / short verify /
+         untampered copy, allowed only if the same test passes on a clean worktree of tag v0.15.0;
+  K_096  (DECLARED IN ADVANCE, deviation #96): test_scripts_017.Orchestrator017.test_streams (stale frozen literal).
+New v0.16.0 tests = tests/test*.py absent from tag v0.15.0. Writes results/study-018/TEST_SUITE_018.json (refuses to overwrite).
+"""
+from __future__ import annotations
+import argparse,glob,json,subprocess,sys,threading,time
+from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
+from scripts import run_tests_070 as T
+from scripts import run_tests_0150 as P
+
+ROOT=Path(__file__).resolve().parents[1]
+PLAN=ROOT/'experiments/BRUTE_PLAN_018.json'
+PLAN009=P.PLAN009
+OUT=ROOT/'results/study-018/TEST_SUITE_018.json'
+K_ALLOWED=dict(P.K_ALLOWED)
+K_ALLOWED['0150']={f'test_release_0150.Release0150.{t}' for t in ('test_version_consistent','test_embeddable_api_answers','test_short_verify_passes','test_untampered_copy_passes')}
+TAGS=dict(P.TAGS,**{'0150':'v0.15.0'})
+K_096={'test_scripts_017.Orchestrator017.test_streams'}
+WORKERS=3
+_GIT=threading.Lock()   # clean-tag worktrees are created one at a time (git worktree locks)
+
+
+def _clean(tag,m,python):
+    with _GIT:return P.clean_run(tag,m,python)
+
+
+def new_tests(root=ROOT):
+    old=set(subprocess.run(['git','ls-tree','--name-only','v0.15.0','tests/'],cwd=root,capture_output=True,text=True,check=True).stdout.split())
+    return tuple(sorted(Path(x).name for x in glob.glob(str(root/'tests/test*.py')) if 'tests/'+Path(x).name not in old))
+NEW_TESTS=new_tests()
+
+
+def verdict(mods,plain,frozen,plan,clean=None,new_tests=None):
+    clean=clean or {};new_tests=NEW_TESTS if new_tests is None else new_tests
+    K=set(json.loads(PLAN009.read_text())['criteria']['GTI_test_isolation']['known_failing_allowed'])
+    failing={tid:v for d in mods.values() for tid,v in d['results'].items() if v[0] in ('fail','error')}
+    allowed_k=set();rule={}
+    for v,A in K_ALLOWED.items():
+        rv={t for t in failing if t.startswith(f'test_release_{v}.')};c=clean.get(v)
+        ok=bool(rv) and rv<=A and c is not None and all(c['results'].get(t,['missing'])[0]=='ok' for t in rv)
+        rule[v]={'failures':sorted(rv),'applied':ok}
+        if ok:allowed_k|=rv
+    k96=sorted(t for t in failing if t in K_096);rule['096']={'failures':k96,'applied':bool(k96)};allowed_k|=set(k96)
+    undeclared=sorted(t for t in failing if t not in K and t not in allowed_k)
+    s5={t:v[0] for t,v in mods.get('test_study_005.py',{'results':{}})['results'].items()}
+    run_total=sum(d['tests_run'] for d in mods.values());skipped=sorted(t for d in mods.values() for t in d['skipped'])
+    new_bad=sorted(t for m in new_tests for t,v in mods.get(m,{'results':{}})['results'].items() if v[0] not in ('ok','skip'))
+    missing_new=[m for m in new_tests if m not in mods]
+    c={'i_only_declared_failures':not undeclared,
+       'ii_test_study_005_six_pass':len(s5)==6 and all(v=='ok' for v in s5.values()),
+       'iii_counts_match_plain':run_total==plain['tests_run'] and skipped==sorted(plain['skipped']),
+       'iv_frozen_unchanged':not frozen['changed'],
+       'v_new_tests_pass':not new_bad and not missing_new}
+    return {'clauses':c,'passed':all(c.values()),'undeclared_failures':undeclared,'failing':sorted(failing),
+            'test_study_005':s5,'tests_run_per_module_total':run_total,'tests_run_plain':plain['tests_run'],
+            'skipped_per_module':skipped,'skipped_plain':sorted(plain['skipped']),'new_tests':list(new_tests),
+            'new_test_failures':new_bad,'new_test_modules_missing':missing_new,'k_rules':rule}
+
+
+def _prev_walls():
+    p=ROOT/'results/study-017/TEST_SUITE_017.json'
+    if not p.exists():return {}
+    return {m:d.get('wall_informational',0) for m,d in json.loads(p.read_text())['per_module'].items()}
+
+
+def run_all(modules,workers,python=sys.executable,log=print):
+    """Per-module children, the plain discover child and the needed clean-tag children on one pool. The plain run and the
+    slowest modules are submitted first: longest-processing-time order by the per-module wall recorded in the committed
+    study-017 TEST_SUITE_017.json (modules it lacks first; ordering only, results are keyed by module)."""
+    mods={};clean={};t0=time.time();prev=_prev_walls()
+    modules=sorted(modules,key=lambda m:(-prev.get(m,1e9),m))
+    with ThreadPoolExecutor(workers) as ex:
+        fp=ex.submit(T.run_child,'test*.py',ROOT,python)
+        fm={m:ex.submit(T.run_child,m,ROOT,python) for m in modules};fc={}
+        for m,f in fm.items():
+            mods[m]=f.result()
+            v=next((v for v in TAGS if m==f'test_release_{v}.py'),None)
+            if v and any(r[0] in ('fail','error') for r in mods[m]['results'].values()):fc[v]=ex.submit(_clean,TAGS[v],m,python)
+        log(f'modules done {time.time()-t0:.0f} s',flush=True)
+        for v in TAGS:clean[v]=fc[v].result() if v in fc else None
+        plain=fp.result()
+    return mods,plain,clean
+
+
+def main():
+    ap=argparse.ArgumentParser();ap.add_argument('--output',default=str(OUT));ap.add_argument('--modules',help='comma list (dev only; not a GTI run)')
+    ap.add_argument('--workers',type=int,default=WORKERS)
+    a=ap.parse_args();out=Path(a.output)
+    if out.exists():raise SystemExit(f'refusing to overwrite {out}')
+    plan=json.loads(PLAN.read_text());t0=time.time()
+    head=subprocess.run(['git','rev-parse','HEAD'],cwd=ROOT,capture_output=True,text=True).stdout.strip()
+    dirty=subprocess.run(['git','status','--porcelain','--untracked-files=no'],cwd=ROOT,capture_output=True,text=True).stdout.strip()
+    modules=a.modules.split(',') if a.modules else sorted(Path(x).name for x in glob.glob(str(ROOT/'tests/test*.py')))
+    mods,plain,clean=run_all(modules,a.workers);frozen=P.frozen_check()
+    V=verdict(mods,plain,frozen,plan,clean)
+    rep={'schema':'brute.test-suite.v3','study':plan['study'],'gate':'GTI_test_isolation','python':sys.version.split()[0],
+         'executable':sys.executable,'head':head,'tracked_tree_dirty':bool(dirty),'workers':a.workers,
+         'dirty_tracked_files':[l[3:] for l in dirty.splitlines()] if dirty else [],'modules_subset':a.modules,
+         'per_module':mods,'plain_discover':plain,'frozen_files':frozen,'clean_tag_runs':clean,
+         'verdict':V,'wall_informational':round(time.time()-t0,1)}
+    out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(rep,indent=1,sort_keys=True)+'\n')
+    print(json.dumps({'passed':V['passed'],'clauses':V['clauses'],'undeclared':V['undeclared_failures'],
+                      'run':V['tests_run_per_module_total'],'plain':V['tests_run_plain'],'wall':rep['wall_informational']},indent=1))
+
+
+if __name__=='__main__':main()
