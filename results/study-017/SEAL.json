@@ -1,0 +1,115 @@
+{
+ "blocks": {
+  "repro/transfer": {
+   "case_count": 144,
+   "complete": true,
+   "expected_case_count": 144,
+   "missing_job_keys": 0,
+   "seal_sha256": "8d984657db8fd2c11ae1e8782a8c878e910019532e16afd64ef07c4be9c866b5"
+  },
+  "transfer": {
+   "case_count": 432,
+   "complete": true,
+   "expected_case_count": 432,
+   "missing_job_keys": 0,
+   "seal_sha256": "3f9f5782177e9cab3940893a168a9343a53157a273207190ab591388fc8b63d6"
+  }
+ },
+ "files_sha256": {
+  "HB_SENTINEL_017.jsonl": "8544c6fcbb9d0be4c3f9d4aa1e2edea158e12c74b022d8291fe3025e5e47313c",
+  "HB_SENTINEL_017.log": "eb48926abd09b9afbb8886567f4b21b4a8c39b04bacc149b9f833336ef37f614",
+  "HEARTBEAT_017.jsonl": "8a38aad03d5784a657ac3b57592585e432327c6e6f5d1c995b990a0fd7386a36",
+  "HEARTBEAT_ATTRIBUTION_017.json": "8088d5e8422edb27f277a05d3421b9b3eb61c5a13e35bef6070fe9f5fee89f81",
+  "KILL_DRILL_017.json": "9c3f0372a1003fbe270314c28332455c891d21d139e5a58f4262709d9ad6dce6",
+  "PROGRESS_017.json": "0bce4c34150d91b2c15754c7656d0a0f0d4221922659d5893eaafff6e0c362c2",
+  "RUN_017.log": "2ce7febe46d77acb3a7e41dfbf8d6bfbd5033fef0dfcd8af4209459b9316a412",
+  "RUN_DONE_017.json": "95adbaa1db51ea30d483e431c7839656627b64740fb2c0c67c4d7efa160da376",
+  "RUN_STATE_017.json": "89367646142cd3c4692a425413057ccef00c53e58e9ef3ac38eef83a81c42fad",
+  "RUN_T0": "44f319a524680818f0ba67f2073db0f2baec6fe0f857017275e30d49de0ed03d",
+  "SECOND_IMPLEMENTATION_017.json": "89b4195f79d6cf5bc261c6a9b988e4687d7caa1e1409fa05fb094f5d3f3bfe59",
+  "SECOND_IMPLEMENTATION_017_CHECKPOINT.jsonl": "e547268578191126f921e40290443099ba5d4878b8f17da91e42a4b7af893ba7",
+  "TEST_SUITE_017.json": "383d2b375c2bcd8ec6e66dab525d2a89ba3589afbecfdf269d1fdf60182b0c8b",
+  "WATCHDOG_017.log": "d3f3d210aeaac5898959fb531de6cd5efaa7ae0ca3cc1ebbcc98bbf996beef3f",
+  "logs/g11.log": "74f6669e39216560c229ce168380aaced01d8c027f739fc0c63fe8f1a8e1a825",
+  "logs/gti.log": "1ad0917a56ecc77198a66686e71f4965c8417dfbec4b1f08abf5b81bb7966569",
+  "logs/repro.log": "3fe4efb35ef50dc99e2988259f6b360effa071d82222e0623be6d00ab73055d7",
+  "logs/transfer.log": "a0ed5a9585628a6ebd4a08e4b5276e3630d43334fc3312c4b203a9c4ed2afd7d",
+  "repro/transfer/CHECKPOINT.jsonl": "719fbc21d96b4ef4b548e03c72a70bdd34a7f4a1d208d256cb616ad2bcc0fc2b",
+  "repro/transfer/RESULTS.json": "3cbc392ff41b436b3b8c9ab0d43902606121e1ce5c250acd6e4752840d5cc6b2",
+  "repro/transfer/SCIENTIFIC.json": "b7f17ef5e0c076eef7fcff567449d896b84598e9098bb761a00ff38179412c7b",
+  "repro/transfer/SEAL.json": "8d984657db8fd2c11ae1e8782a8c878e910019532e16afd64ef07c4be9c866b5",
+  "transfer/CHECKPOINT.jsonl": "94698d3bd74789eb76b7a1f4072b82ae2f36561c3faf8d9b586bafb113ee98c4",
+  "transfer/RESULTS.json": "a36d9b65721415063a7355a68e35a2f413f2e4760436698843597bf4a4b7599e",
+  "transfer/SCIENTIFIC.json": "33d3acc7f7878dd34f6c584a1ce6551e4c2e19618e8947d143964afc8b6c7fb5",
+  "transfer/SEAL.json": "3f9f5782177e9cab3940893a168a9343a53157a273207190ab591388fc8b63d6"
+ },
+ "heartbeat": {
+  "beats": 1364,
+  "first_wall": 1793099734.981,
+  "gaps_over_10s": [
+   {
+    "boottime": 238137.223,
+    "cpu_s": 0.6394,
+    "gap_s": 425.668,
+    "monotonic": 238137.223,
+    "psi_io_full_us": 512663574,
+    "psi_io_some_us": 559579276,
+    "wall": 1793101940.649
+   },
+   {
+    "boottime": 238929.694,
+    "cpu_s": 0.8326,
+    "gap_s": 316.47,
+    "monotonic": 238929.694,
+    "psi_io_full_us": 516284629,
+    "psi_io_some_us": 564837907,
+    "wall": 1793102733.119
+   }
+  ],
+  "last_wall": 1793103199.119,
+  "max_gap_s": 425.668
+ },
+ "run_done": {
+  "completed_at": {
+   "gti": 1793103197.2747104,
+   "repro": 1793100460.8197975,
+   "transfer": 1793100240.7274957
+  },
+  "elapsed_s": 3463,
+  "events": {
+   "g11": {
+    "start": {
+     "event": "start",
+     "t": 1793100463.8574598
+    }
+   }
+  },
+  "finished": {
+   "gti": "2026-10-27T08:13:17-0400",
+   "repro": "2026-10-27T07:27:40-0400",
+   "transfer": "2026-10-27T07:24:00-0400"
+  },
+  "finished_at": "2026-10-27T08:13:17-0400",
+  "mandatory": {
+   "g11": true,
+   "gti": true,
+   "repro": true,
+   "transfer": true
+  },
+  "spent": {
+   "g11": 2401,
+   "gti": 3463,
+   "repro": 220,
+   "transfer": 506
+  },
+  "stopped": {
+   "g11": "stream budget 2400 s"
+  },
+  "t0": 1793099734.0049024
+ },
+ "sealed_at": "2026-10-27T08:19:52-0400",
+ "stop_orchestrator": null,
+ "stop_rule_fired": false,
+ "stop_watchdog": null,
+ "study": "BRUTE-0150-BOUNDED-LOOKAHEAD-017"
+}
