@@ -1,0 +1,56 @@
+{
+ "dry1": {
+  "commit": "552bae8",
+  "dir": "/tmp/s19/dry",
+  "finding": "transfer stopped: VerificationError RGNB4 per-step bound on smoke-transfer/cycle3/8590002/0.05 (contradicted at step 43; stale m_bound) -> deviation #102 (5ca467c)",
+  "orchestrator_log": [
+   "[2026-10-27T11:36:37-0400] orchestrator start pid 2068432; cap 7200 s, deadline 2026-10-27T13:36:37-0400",
+   "[2026-10-27T11:36:37-0400] transfer: start (4 workers, spent 0 s, budget 2400)",
+   "[2026-10-27T11:36:37-0400] gti: start (4 workers, spent 0 s, budget 4800)",
+   "[2026-10-27T11:37:33-0400] transfer: FAILED rc=1 (see logs/transfer.log)",
+   "[2026-10-27T11:37:33-0400] transfer: sealed as it is (stream error) rc=0 sealed partial (7, 40) ",
+   "[2026-10-27T11:37:33-0400] repro: start (2 workers, spent 0 s, budget 1800)",
+   "[2026-10-27T11:37:33-0400] g11: start (2 workers, spent 0 s, budget 1800)",
+   "[2026-10-27T11:37:37-0400] g11: done in 4 s",
+   "[2026-10-27T11:38:16-0400] repro: done in 42 s",
+   "[2026-10-27T11:42:38-0400] PROGRESS_019.json written: {\"transfer\": [7, 40, 320], \"gti\": [null, null, null], \"repro\": [14, 14, 42], \"g11\": [11, 41, 15]}",
+   "[2026-10-27T11:51:42-0400] gti: done in 905 s",
+   "[2026-10-27T11:51:42-0400] RUN_DONE (906 s since t0; stopped streams: {'transfer': 'exit code 1'})"
+  ]
+ },
+ "dry2": {
+  "commit": "ece6b32",
+  "dir": "/tmp/s19/dry2",
+  "env": "SMOKE=1 SKIP_GTI=1",
+  "orchestrator_log": [
+   "[2026-10-27T11:58:12-0400] orchestrator start pid 2084936; cap 7200 s, deadline 2026-10-27T13:58:12-0400",
+   "[2026-10-27T11:58:12-0400] transfer: start (4 workers, spent 0 s, budget 2400)",
+   "[2026-10-27T11:59:06-0400] transfer: done in 54 s",
+   "[2026-10-27T11:59:06-0400] repro: start (2 workers, spent 0 s, budget 1800)",
+   "[2026-10-27T11:59:06-0400] g11: start (2 workers, spent 0 s, budget 1800)",
+   "[2026-10-27T11:59:24-0400] g11: done in 18 s",
+   "[2026-10-27T11:59:44-0400] repro: done in 38 s",
+   "[2026-10-27T11:59:44-0400] RUN_DONE (92 s since t0; stopped streams: {})"
+  ],
+  "transfer_seal": {
+   "block": "smoke-all",
+   "case_count": 40,
+   "complete": true,
+   "expected_case_count": 40,
+   "freeze_sha256": null,
+   "job_selection": {
+    "every": 1,
+    "limit": null,
+    "offset": 0
+   },
+   "plan_sha256": "428e82ef934de29809005ef1d4500943b6c22f34f6d3d568c0da74c8d388a1aa",
+   "results_sha256": "a7ea19fc673484ca822f9852f4e0e5392ea664de363e0c26034282e5742a48d3",
+   "scientific_sha256": "f10c1aec7529d53ab8f4cf297542d1a024f935c794312d7af878ac77a5adbf12",
+   "smoke": true,
+   "study": "BRUTE-0170-SEQUENTIAL-MARGIN-019"
+  }
+ },
+ "label": "Observed (smoke seeds 8590001-030 only)",
+ "schema": "brute.smoke-dryrun.v19",
+ "study": "BRUTE-0170-SEQUENTIAL-MARGIN-019"
+}
