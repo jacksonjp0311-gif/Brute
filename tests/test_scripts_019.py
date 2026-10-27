@@ -95,8 +95,9 @@ class Orchestrator019(unittest.TestCase):
         self.assertEqual(T['repro']['deps'],['transfer']);self.assertEqual(T['g11']['deps'],['transfer'])
         W_={n:t['workers'] for n,t in T.items()}
         self.assertLessEqual(W_['transfer']+W_['gti'],8);self.assertLessEqual(W_['gti']+W_['repro']+W_['g11'],8)
-        self.assertIn('reproset',T['repro']['cmd']);self.assertNotIn('--every',T['repro']['cmd']);self.assertIn('run_tests_0170.py',' '.join(T['gti']['cmd']))
-        self.assertIn('--progress',T['g11']['cmd']);self.assertIn('transfer',T['transfer']['cmd'])
+        self.assertIn(RS.RBLOCK,T['repro']['cmd']);self.assertIn('run_tests_0170.py',' '.join(T['gti']['cmd']))
+        if not RS.SM:self.assertEqual((RS.BLOCK,RS.RBLOCK),('transfer','reproset'));self.assertNotIn('--every',T['repro']['cmd'])   # held-out layout (a SMOKE=1 dry run swaps in the smoke blocks)
+        self.assertIn('--progress',T['g11']['cmd']);self.assertIn(RS.BLOCK,T['transfer']['cmd'])
         self.assertLessEqual(max(RS.STREAMS['gti'][1],RS.STREAMS['transfer'][1]+max(RS.STREAMS['repro'][1],RS.STREAMS['g11'][1])),RS.CAP)
 
 
