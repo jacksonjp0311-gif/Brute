@@ -1,0 +1,282 @@
+{
+ "schema": "brute.plan.v1",
+ "status": "PRE-REGISTERED (frozen at the commit that adds this file; no v0.17.0 sequential-margin region, 3-action world, API, reference code, held-out world, seed or run exists at that commit)",
+ "study": "BRUTE-0170-SEQUENTIAL-MARGIN-019",
+ "version_under_test": "0.17.0",
+ "parent_study": "BRUTE-0160-NOISY-OBSERVATION-018",
+ "owner_request": {
+  "recorded_at": "2026-10-27 10:59 EDT (America/New_York), relayed by the coordinating agent",
+  "summary": "After the v0.16.0 release: pre-register v0.17.0. Standing rules unchanged: push after every step; no force-push; never edit frozen or ledger-hashed files; no GitHub Actions and no workflows; evidence labels Exact / Observed / Simulated / Inferred / Rejected / Open; host-agnostic embeddable core API; do not touch brute-bridge or BGR-v0.90.0; publish whatever happens."
+ },
+ "breadth_decision": {
+  "decision": "DEPTH headline plus a BREADTH block. Headline: recover the coverage the v0.16.0 tolerant region lost, without weakening its soundness bound, by replacing the single worst-case flip budget m with a sequential boundary m(b). Breadth block: the first larger alphabet (3 actions, 2-bit readings).",
+  "reasons": [
+   "v0.16.0 GNS failed on usefulness only: RGN4 was sound (0 false in 240 noisy cases, CP95 0.0124) but C at eps 0.02 was 0.066 [0.051, 0.081] (Observed, GATES_018). Leaving that failure unaddressed would make every later noisy study inherit a near-useless certifier.",
+   "The oracle arm RGN4_or (m = realized flips) reached C 0.316 at eps 0.02 with 0 false (Observed), so the loss is in the margin, not in the region.",
+   "A certificate at step t depends only on readings up to t, so the margin needs to cover only the flips seen so far; a boundary on the running flip count keeps the same per-case delta (Exact lemma below).",
+   "Larger alphabets were deferred from v0.16.0; a 3-action block at modest size tests whether the region machinery and its soundness carry over without changing the headline question."
+  ],
+  "label": "Inferred (design judgement, recorded before any v0.17.0 code or data exists)"
+ },
+ "branch_base": {
+  "requested": "main at the v0.16.0 release (tag v0.16.0) plus the post-tag HANDOFF commit",
+  "used": "plan/v0.17.0 branched from main after the v0.16.0 RELEASED HANDOFF commit",
+  "exact": "git merge-base --is-ancestor <main at branch time> <plan commit> holds"
+ },
+ "freeze_rule": "The commit that adds this file must be an ancestor of every v0.17.0 code file, in particular of: brute/seqmargin.py, brute/region3.py, brute/api/certify7.py, experiments/v0170_reference.py, experiments/brute_common_019.py, experiments/brute_study_019.py, scripts/check_seeds_019.py, scripts/run_study_019.py, scripts/watchdog_019.py, scripts/rate_math_019.py, scripts/make_gates_019.py, scripts/make_paired_019.py, scripts/make_reproducibility_019.py, scripts/clean_clone_019.py, scripts/verify_release_0170.py, tests/test_*_0170.py.",
+ "adopted_files": {
+  "note": "No new adopted files. brute/region.py (RegionK, RG), brute/align.py (SP8), brute/noisyregion.py (RGN, m_rule) and brute/api/certify.py ... certify6.py are imported unchanged."
+ },
+ "frozen_inputs_not_touched": [
+  "every file listed in any experiments/*FREEZE*.json (incl. BRUTE_SOURCE_FREEZE_018 and BRUTE_RELEASE_FREEZE_0160)",
+  "every ledger-hashed file (results/RESEARCH_LEDGER.jsonl sources)",
+  "brute/core/*",
+  "every existing brute/ module and brute/api/*.py (imported, never edited)",
+  "experiments/brute_study_0*.py and experiments/v0*_reference.py of earlier studies",
+  "/workspace/brute-bridge and /workspace/bgr/BGR-v0.90.0 (other projects)"
+ ],
+ "pre_freeze_disclosure": {
+  "summary": "No sequential-margin or 3-action code, world or run exists. The design uses the definition of the frozen RGN region (brute/noisyregion.py) and the sealed study-018 results on seen data (RGN4 C 0.058 / 0.059 / 0.066 at eps 0 / 0.01 / 0.02; RGN4_or 0.440 / 0.381 / 0.316; m = 4 on 460 of 480 cases, 5 on 20; B from 46 to 68, mean 58.5). The boundary examples below were computed with exact rationals before this plan was written.",
+  "label": "Observed on seen data; predictions below are Inferred unless marked Exact"
+ },
+ "noise_model": {
+  "definition": "as study-018: each OBSERVED (unmasked) bit of every reading, including the initial one, is flipped independently with probability eps; masked bits are unaffected; actions are noise-free; the latent reading is the scoring truth.",
+  "levels": {
+   "eps0_control": 0.0,
+   "eps1": 0.01,
+   "eps2": 0.02,
+   "eps5_stress": 0.05
+  },
+  "attested_bound": "eps_bar = 0.02 (caller attestation); eps5_stress is outside it and has no guarantee.",
+  "flip_rng": "numpy.random.default_rng([target_seed, round(1000*eps), 19]) drawn after the mask; realized flips per case and per prefix recorded (Exact count).",
+  "label": "Simulated (synthetic iid noise)"
+ },
+ "sequential_margin": {
+  "RGNB_n": "RGN_n with the single cardinality constraint sum(flips) <= m replaced, at step t, by sum(flips over the observed bits of readings 0..t) <= m(b_t), where b_t is the number of observed bits in readings 0..t and m(.) is the boundary below; certification rule as RGN (region singleton after burn-in 8, no SP8 passthrough; SAT UNKNOWN counts as possible; infeasible certifies nothing).",
+  "boundary": "Observed bits are ordered reading by reading (reading 0 first, bit 0 before bit 1). Given B (observed bits over all 45 readings, fixed by the mask before the first action), eps_bar and delta = 0.01: m(0) = 0; for b = 1..B, m(b) is the smallest integer >= m(b-1) such that the probability, under iid Bernoulli(eps_bar) flips, that the running flip count has exceeded the boundary at some bit <= b is at most delta * b / B (linear alpha spending), computed by an exact dynamic program over the running count with fractions.Fraction.",
+  "boundary_examples_Exact": {
+   "B=46": "m = 1 from bit 1, 2 from bit 3, 3 from bit 15, 4 from bit 38 (total crossing probability 0.00848)",
+   "B=58": "m = 1 from bit 1, 2 from bit 2, 3 from bit 14, 4 from bit 35 (0.00970)",
+   "B=68": "m = 1 from bit 1, 2 from bit 2, 3 from bit 13, 4 from bit 33, 5 from bit 57 (0.00871)",
+   "vs_fixed_m": "final m(B) equals the study-018 fixed m for B in 44-58 and 66-70, and is one larger for B = 40-42 and 60-64"
+  },
+  "lemma_conditional_Exact": "If the running flip count never exceeds m(b) on a trajectory and the true machine has <= n states, the true machine is in RGNB_n at every step, so every RGNB_n certificate equals the latent reading.",
+  "bound_unconditional": "Under the noise model with eps <= eps_bar, P(case has any false RGNB4 certificate) <= P(boundary crossed) <= delta = 0.01 per case (Exact as a probability statement under the model; Simulated with respect to real noise).",
+  "label": "Exact conditional on (no crossing, n* <= FB); probabilistic (<= delta per case) unconditionally under the iid model"
+ },
+ "alphabet3_block": {
+  "worlds": "complete Moore machines with n* <= 4 states, 3 actions, 2-bit readings (4 codes), generated uniformly over transition and output tables and rejected unless strongly connected and minimal (Exact by generator; family name rand4a3)",
+  "arms": "RG4_3 (RegionK generalised to 3 actions, new file brute/region3.py, noiseless rule as RG without SP8 passthrough), RGNB4_3 (sequential margin on RG4_3), RGN4_3 (fixed m) ; actions chosen uniformly at random from a per-case rng (no 3-action SP8 exists; identical across arms within a case)",
+  "certificate_unit": "one certificate per (step, action) = the predicted 2-bit latent code of the next reading; C3 = certificates / 132 (44 steps x 3 actions)",
+  "label": "Inferred design; Open size of effect"
+ },
+ "heldout_ranges": {
+  "targets": {
+   "cycle3": [
+    8510001,
+    8510024
+   ],
+   "switch3": [
+    8520001,
+    8520024
+   ],
+   "unaliased2": [
+    8530001,
+    8530024
+   ],
+   "ood4": [
+    8540001,
+    8540048
+   ],
+   "rand4a3": [
+    8550001,
+    8550048
+   ]
+  },
+  "notes": "no library / source worlds"
+ },
+ "smoke_seeds": {
+  "range": [
+   8590001,
+   8590030
+  ],
+  "rule": "smoke/debug runs of v0.17.0 code may use ONLY seeds 8590001-8590030 or the study-018 smoke seeds 8490001-8490030; held-out seeds are never generated, simulated or inspected before run_start of the held-out run. Sealed data of studies 001-018 may be used for development (seen data)."
+ },
+ "heldout_note": "All v0.17.0 ranges (8510001-8590030) are disjoint from every earlier range (all <= 8490030).",
+ "seed_assertion_plan": {
+  "script": "scripts/check_seeds_019.py (committed after this plan and before ANY v0.17.0 run including smoke)",
+  "asserts": [
+   "pairwise disjointness of all v0.17.0 ranges",
+   "disjointness from every range in experiments/PLAN.json and experiments/BRUTE_PLAN_0*.json other than 019"
+  ]
+ },
+ "mask_rate": 0.35,
+ "actions_per_case": 44,
+ "burn_in": 8,
+ "family_bound_FB": {
+  "main": 4,
+  "alphabet3": 4,
+  "note": "caller attestation; targets generated with n* <= 4 (Exact by generator)"
+ },
+ "cases": {
+  "main": "120 two-action target seeds x eps in {0, 0.01, 0.02} at mask 0.35 = 360 cases",
+  "stress": "the same 120 seeds at eps = 0.05 = 120 cases, reported only",
+  "alphabet3": "48 rand4a3 seeds x eps in {0, 0.02} at mask 0.35 = 96 cases"
+ },
+ "trajectory": "main block: SP8 actions computed from the NOISY observations, identical across arms within a case (as study-018); alphabet3 block: uniform random actions from numpy.random.default_rng([seed, 19, 3]).",
+ "arms": {
+  "SP8": "frozen comparator (main block only)",
+  "RG4": "frozen noise-unaware baseline",
+  "RGN4": "frozen study-018 tolerant region with fixed m (the comparator for the headline)",
+  "RGNB4": "HEADLINE sequential-margin region at n = 4",
+  "RGNB4_0": "RGNB4 with the boundary forced to 0 (equals RGN4_0; Exact check)",
+  "RGN4_or": "oracle m = realized flips (reported)",
+  "RG4_3 / RGN4_3 / RGNB4_3": "alphabet3 block"
+ },
+ "metrics": {
+  "false_certificate": "a certified code that differs from the latent reading",
+  "coverage": "C = certificates / 88 (main) or / 132 (alphabet3)",
+  "case_false": "a case with >= 1 false certificate for the arm",
+  "crossing": "a case whose running flip count exceeds m(b) at some bit (Exact, recorded)",
+  "bootstrap": "seed-clustered paired bootstrap, 2000 resamples, seed 20261030, 95% percentile CI",
+  "clopper_pearson": "exact one-sided 95% upper bound on the case-false rate"
+ },
+ "criteria": {
+  "GNB_sequential_margin": {
+   "gated": true,
+   "threshold": "HEADLINE. RGNB4 on the 240 noisy main cases (eps 0.01 and 0.02): (a) 0 false certificates on every case without a boundary crossing; AND (b) Clopper-Pearson 95% upper bound of the case-false rate <= 0.05; AND (c) dC = C(RGNB4) - C(RGN4) at eps = 0.02 with seed-clustered paired CI lower > 0; AND (d) mean C(RGNB4) at eps = 0.02 >= 0.10 with CI lower > 0.05 (the study-018 bar, unchanged).",
+   "prediction": "(a) Exact PASS; (b) Inferred PASS; (c) Inferred PASS (the boundary is below m for most of the run); (d) Open, leaning FAIL (the boundary still allows 2-3 flips early, against 0-2 realized)."
+  },
+  "GNB_post_burn_control": {
+   "gated": true,
+   "threshold": "On the 120 eps = 0 cases: RGNB4_0 == RG4 certificate-for-certificate at every t > burn_in, and RGNB4 has 0 false certificates. (The study-018 full-run GN0 comparison is reported as R_gn0_full; it differs in burn-in by construction, deviation #97 item 3.)",
+   "prediction": "Inferred PASS."
+  },
+  "GA3_alphabet3_soundness": {
+   "gated": true,
+   "threshold": "alphabet3 block: RG4_3 0 false certificates on the 48 eps = 0 cases; RGNB4_3 0 false certificates on every eps = 0.02 case without a crossing; the case-false CP95 upper bound of RGNB4_3 at eps 0.02 <= 0.10 (48 cases).",
+   "prediction": "Inferred PASS; coverage C3 is Open and reported only."
+  },
+  "GS_a7_soundness": {
+   "gated": true,
+   "threshold": "RG4 0 false on the 120 eps = 0 main cases (in-family control).",
+   "prediction": "Exact PASS."
+  },
+  "G_recount": {
+   "gated": true,
+   "threshold": "as study-018, for every arm and both blocks",
+   "prediction": "Exact PASS."
+  },
+  "GS_ref7_reference_audit": {
+   "gated": true,
+   "threshold": "experiments/v0170_reference.py (numpy exhaustive over complete <= 4-state machines with prefix mismatch counts, 2 and 3 actions, no brute import): 0 mismatches against RGNB4 supports on every eps = 0.02 main case and every eps = 0 main case, and against RGNB4_3 on every alphabet3 case; mutation test catches 20/20 injected mutations.",
+   "prediction": "Inferred PASS (3-action enumeration cost is Open until rate math; budget set by stop_rule.g11_rate_projection)."
+  },
+  "GAPI7_certify7": {
+   "gated": true,
+   "threshold": "tests/test_api_certify7_0170.py passes inside GTI (stateless, host-agnostic, bad input incl. eps_bar outside [0, 0.5), delta outside (0, 1), num_actions outside {2, 3}; the boundary matches the study runner) and brute/api/certify7.py is in the source freeze; the API reports soundness as {'kind': 'probabilistic', 'delta': ..., 'conditional_on': 'running flips <= m(b) and n* <= family_bound'}.",
+   "prediction": "Inferred PASS."
+  },
+  "G10_compute": {
+   "gated": true,
+   "threshold": "as study-018",
+   "prediction": "Inferred PASS."
+  },
+  "G12_reproducibility": {
+   "gated": true,
+   "threshold": "repro stream (index % 3 == 0 of the main cases and of the alphabet3 cases) byte-identical after stripping timing keys",
+   "prediction": "Inferred PASS."
+  },
+  "G13_frozen_controls_reproduce": {
+   "gated": true,
+   "threshold": "every frozen freeze file verifies; RG4 and RGN4 reproduce through the frozen code on the main cases",
+   "prediction": "Exact PASS."
+  },
+  "GTI_test_isolation": {
+   "gated": true,
+   "threshold": "as study-018 (clauses i-v), with K_060 ... K_0150 and K_096 as in study-018 and K_0160 (test_release_0160 version / API / RELEASE.json key tests after the 0.17.0 bump) declared in advance; the run_start ledger entry must be committed before the GTI stream starts (tracked tree clean at GTI start, deviation #100 item 1); any other failure is FAIL.",
+   "prediction": "Inferred PASS."
+  },
+  "G_RT_study_runtime": {
+   "gated": true,
+   "threshold": "as study-018",
+   "prediction": "Inferred PASS (study-018 used 882 s of 7,200 s)."
+  },
+  "G_HB_heartbeat_gap": {
+   "gated": true,
+   "threshold": "largest heartbeat gap <= 30 s (unchanged).",
+   "prediction": "Inferred PASS."
+  }
+ },
+ "release_gates": {
+  "GCC_clean_clone": "scripts/clean_clone_019.py PASS and the tracked-files test PASS",
+  "GLV_long_verify": "verify_release_0170 --long: 12 main cases (3 per family across eps 0 / 0.01 / 0.02) + 3 alphabet3 cases re-run from scratch, 0 mismatches, 900 s cap"
+ },
+ "non_gated_reports": {
+  "R_gn0_full": "RGNB4_0 vs RG4 over the full run including burn-in (expected to differ in burn-in)",
+  "R_boundary": "per-step margin m(b_t) vs fixed m; per-step coverage RGNB4 vs RGN4",
+  "R_RG4_noise": "as study-018",
+  "R_stress": "RGNB4 false / case-false at eps 0.05 (no guarantee)",
+  "R_oracle": "RGN4_or coverage",
+  "R_bound": "observed case-false and crossing rates vs delta",
+  "R_alphabet3_coverage": "C3 for RG4_3, RGN4_3, RGNB4_3",
+  "R_rates": "stream spend vs budget; rate-math projection error",
+  "R_heartbeat_attribution": "as study-018"
+ },
+ "second_implementation": {
+  "file": "experiments/v0170_reference.py (same author, no brute import, committed before brute/seqmargin.py, brute/region3.py and brute/api/certify7.py)",
+  "method": "exhaustive enumeration of complete <= 4-state Moore machines (2 or 3 actions, 4 codes) with per-machine running mismatch counts over observed bits, compared against the boundary"
+ },
+ "stop_rule": {
+  "cap": "2 h 00 min (7200 s) wall clock from RUN_T0",
+  "streams_and_budgets": "fixed by rate math on smoke seeds before the source freeze, at most 8 worker processes; recorded in the source freeze",
+  "at_cap": "every unfinished stream is stopped and sealed as is; NO extension and NO rerun",
+  "scoring": "every gate whose inputs are incomplete at the cap is FAIL (STUDY_BUDGET)",
+  "g11_rate_projection": "as study-018 (per-cell smoke cost under concurrency, slowest case per cell, x 1.75; act before the source freeze if > 0.8 of a budget), with the alphabet3 cells added; scripts/rate_math_019.py is part of the freeze",
+  "operator_wait": "as study-018 (<= 240 s blocking checks)"
+ },
+ "process_controls": {
+  "order": [
+   "(1) this plan committed + ledger preregistration_019 + BRUTE_PLAN_FREEZE_019 on branch plan/v0.17.0; pushed",
+   "(2) scripts/check_seeds_019.py + tests; ledger seedcheck_019",
+   "(3) experiments/v0170_reference.py; ledger second_implementation_019",
+   "(4) implementation (brute/seqmargin.py, brute/region3.py, brute/api/certify7.py, runner, process scripts, tests); ledger implementation_019",
+   "(5) rate math, deviations, dry run and kill drill on smoke seeds only",
+   "(6) smokes; source freeze BRUTE_SOURCE_FREEZE_019; ledger",
+   "(7) scoring scripts committed and ledgered scoring_freeze_019 at least 600 s before run_start",
+   "(8) run_start_019 ledgered AND committed; then the held-out run under the 2 h cap with the watchdog; ledger run_end_019",
+   "(9) seal; gates; release v0.17.0"
+  ]
+ },
+ "deviation_policy": "after freeze, any change is a ledger 'deviation_019' entry with its reason in docs/research/BRUTE_DEVIATIONS_019.md before the affected run; the original criterion is still reported. Numbering continues project-wide: study-018 ended at #100, so study-019 deviations start at #101.",
+ "what_counts_as_failure": [
+  "any gated criterion not meeting its threshold is FAIL and is published as FAIL everywhere",
+  "GNB (c) FAIL means the sequential boundary does not recover coverage over the fixed margin",
+  "GNB (d) FAIL means the noise-tolerant certifier is still below the usefulness bar set in study-018",
+  "GNB (a) or GA3 FAIL would refute the conditional lemma or the implementation"
+ ],
+ "default_policy_rule": "No auto-promotion: the release default stays the v0.5.0 rule; RGNB is a research arm; brute/api/certify7.py is additive; certify/1 ... /6 unchanged.",
+ "carried_defects": {
+  "v050_tamper": "as study-018",
+  "K_sets": "K_060 ... K_0160 as declared",
+  "D83": "as study-018",
+  "D96": "as study-018",
+  "D100": "TEST_SUITE dirty-file parser drops the first path character (cosmetic; fixed in new code)"
+ },
+ "limitations": [
+  "Synthetic worlds with synthetic iid bit-flip noise; real noise is correlated and non-stationary.",
+  "eps_bar and FB are caller attestations; outside them there is no guarantee.",
+  "The soundness claim is probabilistic (<= delta = 0.01 per case).",
+  "The alphabet3 block uses random actions and 48 seeds; it tests soundness carry-over, not efficiency.",
+  "Same-author second implementation; no independent replication."
+ ],
+ "scope_and_open": [
+  "Correlated / adversarial noise: Open",
+  "Estimating eps from data: Open",
+  "Noisy actions or transitions: Open",
+  "Larger readings (3+ bits) and > 4 states with noise: Open",
+  "Independent audit: Open"
+ ],
+ "brand": "docs keep the existing palette and rules: charcoal/sage; no purple, neon, emoji, mascots or gold",
+ "labels": "Every claim in study-019 documents carries one of Exact / Observed / Simulated / Inferred / Rejected / Open; predictions in this plan are Inferred unless marked otherwise."
+}

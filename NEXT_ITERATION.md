@@ -1,4 +1,4 @@
-# Brute v0.16.0 → v0.17.0: next iteration (to be pre-registered as BRUTE_PLAN_019 on `plan/v0.17.0`)
+# Brute v0.16.0 → v0.17.0: next iteration (pre-registered as BRUTE_PLAN_019 on `plan/v0.17.0`; ledger preregistration_019)
 
 The previous note is in `docs/research/v0.16.0/NEXT_ITERATION_FROM_v0.15.0.md`. Labels are as in the README. Nothing here counts as evidence until it runs on fresh seeds.
 

@@ -1,8 +1,16 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~11:20 EDT (v0.16.0 RELEASED on `main`; v0.17.0 to be pre-registered on `plan/v0.17.0`)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~11:25 EDT (v0.16.0 RELEASED on `main`; v0.17.0 pre-registered on `plan/v0.17.0`)._
 
 ## Current version and state
+
+<!-- V0170 -->
+- **In progress: v0.17.0** (study BRUTE-0170-SEQUENTIAL-MARGIN-019, branch `plan/v0.17.0` from main `e92a7c4`). **Pre-registered only:** `experiments/BRUTE_PLAN_019.json` (sha256 428e82ef…88a1aa) + `BRUTE_PLAN_FREEZE_019.json`; ledger `preregistration_019`. Readable summary `docs/research/v0.17.0/PLAN_019.md`.
+  - Headline GNB: sequential flip boundary m(b) (exact linear alpha spending, delta 0.01, eps_bar 0.02) replacing the fixed m of RGN4; gated on soundness (a, b), gain over RGN4 (c) and the 0.10 coverage bar (d, Open).
+  - Breadth block GA3: 3 actions × 2-bit readings, ≤ 4 states, eps 0 / 0.02, random actions, 48 seeds.
+  - Seeds (Exact, disjoint from all prior ranges): 8510001–8510024, 8520001–8520024, 8530001–8530024, 8540001–8540048, 8550001–8550048; smoke 8590001–8590030.
+  - Process: commit run_start before streams (#100 item 1); declare K_0160; deviations from #101.
+  - Next: seed check, numpy reference (2 and 3 actions), implementation in new files, rate math, source freeze, scoring freeze ≥ 600 s before run_start, one held-out run under the 2 h cap.
 
 <!-- V0160 -->
 - **Released: v0.16.0** (study BRUTE-0160-NOISY-OBSERVATION-018, branch `plan/v0.16.0` from main `c255873`). **10 of 12 gated pass.**
