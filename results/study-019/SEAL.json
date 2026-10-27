@@ -1,0 +1,133 @@
+{
+ "blocks": {
+  "repro/reproset": {
+   "case_count": 152,
+   "complete": true,
+   "expected_case_count": 152,
+   "missing_job_keys": 0,
+   "seal_sha256": "620c947d8525ae418a8d9241338ded31a770732598b96ed0719cbbd8d7041165"
+  },
+  "transfer": {
+   "case_count": 576,
+   "complete": true,
+   "expected_case_count": 576,
+   "missing_job_keys": 0,
+   "seal_sha256": "6f8b6d2d57d1c3ce8e3db121d9ac43851eed5e88acbb0deaa08fb62a6181f3b2"
+  }
+ },
+ "files_sha256": {
+  "HB_SENTINEL_019.jsonl": "7fe9df3ec84d1c2a462a5143beec21c4b088569082da2d884b6339e00897e755",
+  "HB_SENTINEL_019.log": "aa1170d3e07b3838d411a28ec1d00e4c3514e5a06c22763fe1ceb99a030f0f57",
+  "HEARTBEAT_019.jsonl": "3b6a6ec3eeb5eecf13e144625b95bb8984cb134050920175f3fbce98049f70ce",
+  "HEARTBEAT_ATTRIBUTION_019.json": "1548a658860869135da1f8138c87b8c16aa56137318a85050c41911e08d719af",
+  "KILL_DRILL_019.json": "c6ba845f6af53127ddf036a390d6f8e7048f1a3a2592385273cdd21704c5ede9",
+  "PROGRESS_019.json": "c731e7afc4f5c95c55afdbaef1eff4bce3eba130e6c87701a8344a23468a0c74",
+  "PROGRESS_G11_019.json": "110cd2f00574e359923fd8b616268c91ac26b073133f31e53293f35cfd7cdc1c",
+  "RUN_019.log": "63978f4f51c4e57c5d5b25e73da2ad0e8e3cbba1d55fde0de8a85ee25f58ef8f",
+  "RUN_DONE_019.json": "681a22406652fb4cfe1d98e2303c3938975d142ae3ae3ecd3e32ebfcc05363ff",
+  "RUN_STATE_019.json": "9676b762d036046a89d6a08418719c828e7834e0be1c2506ad2704f4dd5b8cff",
+  "RUN_T0": "326fb2eb3bd1dbab1a3a13443941880bd8b14e7ee678486260e122772492fbb6",
+  "SECOND_IMPLEMENTATION_019.json": "606282f402393647d5cbee95b1dd6a96991861498bec3de894eda5898afb9334",
+  "SECOND_IMPLEMENTATION_019_CHECKPOINT.jsonl": "18a134f9bd6d203300b49682fe9c33779803041ec40fa68f3b1823c03dedda46",
+  "TEST_SUITE_019.json": "d63c83e1e241b413181fbd2a9b6eea471b5874872e08667cb5f39e58626cb813",
+  "WATCHDOG_019.log": "0cfe6f75ffdb08fabcc13f52c95c1e446c2817b79e765801cdeba537bc8a0677",
+  "logs/g11.log": "0cf057387526f6eb049b9dcb0dc533498b25bb2a8bfe0bd5376ac0a54c0a477e",
+  "logs/gti.log": "fb920df7dc39dae8dadb00571c0f8fe60f4de67e96c813ac4f386e40d39d0edb",
+  "logs/repro.log": "121c86c723464e72bbf7256bffa5f8a1adbf4c4cbd870f2009478488fbee19b7",
+  "logs/transfer.log": "b59b0df7c188b0ab10ab5d7908fd8166dfa0dc16dcaa1b483095a71c7feb534f",
+  "repro/reproset/CHECKPOINT.jsonl": "7bd5ddb907c31c8418458fbe2dbe373d40b2b14179b4de41eb60f399f12decc6",
+  "repro/reproset/RESULTS.json": "9da4c47b9e16c5a13f2e3ba8c1748ca63172e441afdfc8ac5c62b6e569b24687",
+  "repro/reproset/SCIENTIFIC.json": "b62259a4a976150347401e79c3be46d0a8dff43f4b33c29cbddc12fd55a8d752",
+  "repro/reproset/SEAL.json": "620c947d8525ae418a8d9241338ded31a770732598b96ed0719cbbd8d7041165",
+  "transfer/CHECKPOINT.jsonl": "09bf3c914d5b403af234f9d29a2cccfaed744e9fa8d64cbaef7d52c8b2a5ecfb",
+  "transfer/RESULTS.json": "3dbc9360b05906273ade5cda6f36273f8dee9820db113f2412b47824bc0421e7",
+  "transfer/SCIENTIFIC.json": "0a8999382faeadbfe7dca1f1ae50275bdc5bdb6e5ce40a6d4483f141270ad420",
+  "transfer/SEAL.json": "6f8b6d2d57d1c3ce8e3db121d9ac43851eed5e88acbb0deaa08fb62a6181f3b2"
+ },
+ "heartbeat": {
+  "beats": 637,
+  "first_wall": 1793117955.928,
+  "gaps_over_10s": [],
+  "last_wall": 1793119227.928,
+  "max_gap_s": 2.006
+ },
+ "run_done": {
+  "completed_at": {
+   "g11": 1793119127.0478308,
+   "gti": 1793118950.9735463,
+   "repro": 1793119227.0862155,
+   "transfer": 1793118878.941182
+  },
+  "elapsed_s": 1274,
+  "events": {
+   "g11": {
+    "audit_done": {
+     "event": "audit_done",
+     "t": 1793119117.1741588
+    },
+    "done": {
+     "event": "done",
+     "t": 1793119125.9229126
+    },
+    "mutation": {
+     "detected_injected": 20,
+     "distinct_cases": 20,
+     "event": "mutation",
+     "flagged_not_injected": 0,
+     "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+     "injected": 20,
+     "injected_on_already_mismatching_case": 0,
+     "kinds": {
+      "B": 1,
+      "a3_cert": 1,
+      "a3_support": 1,
+      "boundary": 1,
+      "counts": 2,
+      "crossing": 1,
+      "flips": 1,
+      "latent": 1,
+      "m": 1,
+      "observed": 1,
+      "prefix": 1,
+      "rg4_cert": 1,
+      "rgn_cert": 2,
+      "support": 3,
+      "wrong": 2
+     },
+     "passed": true,
+     "rng": "random.Random(20261030)"
+    },
+    "start": {
+     "event": "start",
+     "t": 1793118880.0675826
+    }
+   }
+  },
+  "finished": {
+   "g11": "2026-10-27T12:38:47-0400",
+   "gti": "2026-10-27T12:35:50-0400",
+   "repro": "2026-10-27T12:40:27-0400",
+   "transfer": "2026-10-27T12:34:38-0400"
+  },
+  "finished_at": "2026-10-27T12:40:27-0400",
+  "mandatory": {
+   "g11": true,
+   "gti": true,
+   "repro": true,
+   "transfer": true
+  },
+  "spent": {
+   "g11": 248,
+   "gti": 995,
+   "repro": 348,
+   "transfer": 923
+  },
+  "stopped": {},
+  "t0": 1793117953.0
+ },
+ "sealed_at": "2026-10-27T12:44:22-0400",
+ "stop_orchestrator": null,
+ "stop_rule_fired": false,
+ "stop_watchdog": null,
+ "study": "BRUTE-0170-SEQUENTIAL-MARGIN-019"
+}

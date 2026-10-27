@@ -1,0 +1,49 @@
+{
+ "all_gone_at": "2026-10-27T12:06:58-0400",
+ "cap_s": 15,
+ "deadline": "2026-10-27T12:06:58-0400",
+ "deadline_epoch": 1793117218.0,
+ "fire_delay_monotonic_s": 0.002,
+ "fire_delay_s": 0.002,
+ "fired_at": "2026-10-27T12:06:58-0400",
+ "heartbeat": {
+  "beats": 9,
+  "gaps_over_10s": [],
+  "max_gap_s": 2.001
+ },
+ "kill_latency_monotonic_s": 0.03,
+ "kill_latency_s": 0.03,
+ "kill_thread_disk_io_before_kill": false,
+ "label": "Observed (block smoke-drill; outside the cap). Transfer (12 drill cases) sealed at 14 s; the watchdog fired at 15 s during repro + g11.",
+ "note": "Observed: watchdog_019 wrote STOP_019.json at the 15 s cap and stopped the orchestrator and process groups [2089643, 2089723, 2089724] within 0.03 s; SIGKILL used: False; survivors [].",
+ "orchestrator_log": [
+  "[2026-10-27T12:06:43-0400] orchestrator start pid 2089624; cap 600 s, deadline 2026-10-27T12:16:43-0400",
+  "[2026-10-27T12:06:43-0400] transfer: start (4 workers, spent 0 s, budget 2400)",
+  "[2026-10-27T12:06:57-0400] transfer: done in 14 s",
+  "[2026-10-27T12:06:57-0400] repro: start (2 workers, spent 0 s, budget 1800)",
+  "[2026-10-27T12:06:57-0400] g11: start (2 workers, spent 0 s, budget 1800)"
+ ],
+ "orchestrator_pids": [
+  2089624
+ ],
+ "partial_checkpoint": {
+  "all_lines_parse": true,
+  "case_lines": 12
+ },
+ "process_groups": [
+  2089643,
+  2089723,
+  2089724
+ ],
+ "schema": "brute.kill-drill.v2",
+ "setup": "SMOKE=1 SKIP_GTI=1 BRUTE_SMOKE_DRILL=1, orchestrator CAP_S=600 (so the watchdog, not the orchestrator, fires), watchdog_019 --dir /tmp/s19/drill --cap 15",
+ "sigkill_used": false,
+ "study": "BRUTE-0170-SEQUENTIAL-MARGIN-019",
+ "survivors": [],
+ "t0": 1793117203.0,
+ "watchdog_log": [
+  "[2026-10-27T12:06:43-0400] watchdog_019 start pid 2089626; deadline 2026-10-27T12:06:58-0400 (cap 15 s)",
+  "[2026-10-27T12:06:58-0400] STOP_019.json written: latency 0.03 s, survivors []",
+  "[2026-10-27T12:06:59-0400] kill done; gaps>10s []"
+ ]
+}
