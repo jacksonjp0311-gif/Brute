@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~09:05 EDT (v0.15.0 release in progress on `plan/v0.15.0`)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~09:17 EDT (v0.15.0 RELEASED on `main`)._
 
 ## Current version and state
 
@@ -16,7 +16,7 @@ _Kept current on the working branch during a release and on `main` at release. L
   - **Deviations:** #86–#91 `docs/research/BRUTE_DEVIATIONS_017.md`; #92–#95 `_ADDENDUM_1`; #96 `_ADDENDUM_2`; post-run disclosures (g11 budget, heartbeat/idle, GTI as #96; no rescoring) `_ADDENDUM_3`.
   - **K_0150 (expected, 0.15.0 tree):** v0.16.0 must declare K_0150 (test_release_0150 version / API / RELEASE.json key tests after the bump) and K_096.
   - **No CI:** Brute has no `.github` directory and uses no GitHub Actions minutes; add no workflows.
-  - **RELEASE STATUS:** pending tag (updated below at release).
+  - **RELEASE STATUS: RELEASED.** Release commit `90210a6`, annotated tag `v0.15.0`. Fresh GitHub clone of `plan/v0.15.0`@90210a6 (storage restore 004–017): short verify rc 0; `--long` GLV 18 cases / 0 mismatching / 491.0 s, rc 0; `tests.test_release_0150` 7/7 OK (151.2 s); finished 09:14:43 EDT. `main` fast-forwarded d1f462b → 90210a6 (no force). Release: https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.15.0 . No CI workflows.
 <!-- /V0150 -->
 
 <!-- V0140 -->
