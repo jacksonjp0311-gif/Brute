@@ -40,3 +40,20 @@ jobs; the repro selection index % 3 == 0 over this list gives 96 main + 24 ood5 
 tests/test_study_015.test_jobs).
 
 **#71: watchdog_015 = frozen watchdog_014 bytes with study path tokens substituted at import (step 4).** watchdog_014 writes its file names as literals (`RUN_STATE_014.json`, `HEARTBEAT_014.jsonl`, `STOP_014.json`, `RUN_DONE_014.json`, `results/study-014`), so a wrapper cannot redirect them by passing a directory alone. `scripts/watchdog_015.py` reads `scripts/watchdog_014.py`, refuses unless its sha256 equals the BRUTE_SOURCE_FREEZE_014 digest (972a7fc6…), replaces only `_014`→`_015` and `study-014`→`study-015`, and executes that text as the module. No logic line changes; the frozen file is not edited. Effect on gates: none (G_HB / G_RT read HEARTBEAT_015 / STOP_015). Label: Exact (sha256 asserted at import).
+
+**#72: g11 reference stream at 4 workers (rate math, before the source freeze).** The plan registers g11 at 2 workers /
+2,400 s. RATE_MATH_015 projects 1,501 s (63%) uncontended and 2,252 s (94%) at x1.5 contention, above the plan's 70%
+line. Using the plan's single allowed budget / worker change, g11 runs with 4 workers (budget unchanged at 2,400 s).
+scripts/run_study_015.py is ledger-hashed and is not edited: the new file scripts/run_study_015_R1.py pins the base
+file's sha256, changes only g11's worker count, and is the orchestrator launched at run_start. The worker ceiling
+holds: after transfer ends, 2 (gti) + 2 (repro) + 4 (g11) = 8. Effect on gates: G_RT checks the unchanged budgets; no
+science changes. Label: Exact (tests/test_run_study_015_R1 expects g11 (4, 2400, ['transfer']); smoke
+results/smoke-015/SMOKE_R1_015.json shows g11 starting with 4 workers).
+
+**#73: run_study_015.py changed after its ledger receipt.** The process_scripts_015 receipt (commit 3cd15e4) hashes
+scripts/run_study_015.py at 59144b5f…. Commit 0f95f92 (smoke dry run) then changed two docstring lines (the g11 line
+copied from study 014 said "4w … 288 cases … deviation #61"; it now matches the code: 2w, 360 cases). No code line
+changed (Exact: git diff 3cd15e4 0f95f92). The ledger rule (verify_release_020.ledger_020, deviation D3) needs the LAST
+receipt of each source to match its current bytes, so HEAD 426db81 would fail release verification. A new receipt
+process_scripts_015b records the current bytes (9fa73b8c…); the 3cd15e4 receipt becomes superseded and still matches
+its commit's blob. The file is not edited again (see #72). Label: Exact.

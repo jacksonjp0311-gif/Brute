@@ -1,0 +1,22 @@
+{
+ "completed_at": {
+  "g11": 1793081287.045097,
+  "repro": 1793081263.0332325,
+  "transfer": 1793081259.025807
+ },
+ "label": "Observed, smoke seeds only (smoke-transfer, SMOKE=1, SKIP_GTI, CAP_S=600), outside the cap; not study evidence",
+ "log": [
+  "[2026-10-27T02:07:35-0400] orchestrator start pid 1730788; cap 600 s, deadline 2026-10-27T02:17:34-0400",
+  "[2026-10-27T02:07:35-0400] transfer: start (4 workers, spent 0 s, budget 3000)",
+  "[2026-10-27T02:07:39-0400] transfer: done in 4 s",
+  "[2026-10-27T02:07:39-0400] repro: start (2 workers, spent 0 s, budget 1500)",
+  "[2026-10-27T02:07:39-0400] g11: start (4 workers, spent 0 s, budget 2400)",
+  "[2026-10-27T02:07:43-0400] repro: done in 4 s",
+  "[2026-10-27T02:08:07-0400] g11: done in 28 s",
+  "[2026-10-27T02:08:07-0400] RUN_DONE (33 s since t0; stopped streams: {})"
+ ],
+ "orchestrator": "scripts/run_study_015_R1.py",
+ "purpose": "deviation #72: g11 runs with 4 workers through the R1 wrapper",
+ "schema": "brute.smoke.v1",
+ "study": "BRUTE-0130-REGION-SPLIT-015"
+}
