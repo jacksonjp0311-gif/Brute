@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~01:10 EDT (v0.12.0 release candidate on `plan/v0.12.0`; verified locally, awaiting fresh-clone verify, tag and release)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~01:03 EDT (v0.12.0 RELEASED on main; v0.13.0 pre-registration next on `plan/v0.13.0`)._
 
 ## Current version and state
 
 <!-- V0120 -->
-- **Release candidate: v0.12.0** (study BRUTE-0120-BOUNDED-TRANSFER-014, branch `plan/v0.12.0` from main). **15 of 16 gated pass.**
+- **Released: v0.12.0** (study BRUTE-0120-BOUNDED-TRANSFER-014, branch `plan/v0.12.0` from main). **15 of 16 gated pass.**
   - **BOUNDED TRANSFER (headline GST2): PASS.** GS_a: 0 false in RG4 9,809, DLFp 11,434, DLFn 9,810, DXp 11,761, DXn 10,100. G_alias_stress: 600 stress pairs, AT6 2,016 false, DLF 0; all 20,736 pairs 336 DLF licenses, 0 false. GS_d: TV(DLFp) over RG4 1.64 [1.27, 2.01], all on unaliased2 (6.57). GS_c: TV(DLFn) 0.05 [0.00, 0.15]. GS_rg: RG4 S 10.86 [9.83, 11.84]. *Observed.*
   - **FAIL: GS_x** (DXp − DLFp −0.007 [−0.59, 0.57]).
   - **PASS:** GS_a, GS_b, GS_c, GS_d, GS_rg, GST2, G_alias_stress, GS_ref (288/288, mutation 20/20), GAPI2 (`brute.certify/2`, 5/5), G10, G12 (96/96), G13, GTI (440 tests; failures only the declared K_060–K_0100 sets), G_RT, G_HB (max gap 2.0 s). Release gates: GLV `--long` 12 cases, 0 mismatches, 117 s of 900 s; GCC clean clone PASS.
@@ -13,6 +13,7 @@ _Kept current on the working branch during a release and on `main` at release. L
   - **Chain (Exact, git ancestry):** plan `ef865e7` → seeds `f87f5bc` → reference `89ff5b8` → implementation `7323b44`/`0b81c76`/`76a9e8d`/`516fe34` → source freeze `b4f0fc8` → scoring `4375a5f` (ledger `3688d06`, 00:02:31 EDT) → run_start `fad500d` → run end `89be4ed` → seal `12455f0` → GATES_014 `27bfe45` → release tooling `ee1a1c8` → deviation/release ledger `8c7c9b2` → release freeze → ledger `f59caf7` → clean clone → ledger `028d9cb` → release docs.
   - **Deviations #59–#61:** `docs/research/BRUTE_DEVIATIONS_014.md`; **#62–#63:** `docs/research/BRUTE_DEVIATIONS_014_ADDENDUM.md`. Erratum to #62: the "~00:55 EDT" time on the LX recount is approximate; the recount ran before 00:50 EDT.
   - **K_0110 (Observed, 0.12.0 tree):** tests.test_release_0110 4 of 7 fail (version, API name, two verify tests needing RELEASE.json key GST). Declared in RELEASE.json; v0.13.0 must declare K_0110 and K_0120.
+  - **RELEASED 2026-10-27 ~01:03 EDT:** release commit `2a1f110`. `verify_release_0120` passed short and `--long` on the branch and on a fresh GitHub clone of `2a1f110` (GLV 12 cases, 0 mismatches, 119 s); `tests.test_release_0120` 7/7 on the fresh clone (67 s). main was fast-forwarded to `2a1f110` (not forced). Annotated tag `v0.12.0` (object `3c1a88f`) points to `2a1f110`. Post-tag commits on main are docs only (this HANDOFF update). [GitHub release](https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.12.0). Default learner unchanged (Y1k, LU-R); RGn, DLF and DX are research arms; `brute.certify/2` is the embeddable API.
   - **Next: v0.13.0 per `NEXT_ITERATION.md`** (region-split experiments, evidence-derived bound, family bound 5, own-trajectory recount).
 <!-- /V0120 -->
 
