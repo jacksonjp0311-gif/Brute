@@ -3,7 +3,7 @@
 </p>
 
 <p align="center"><b>Exact geometric reasoning about hidden worlds. Brute keeps every explanation the evidence still allows, and it certifies an answer only when all of them agree. Otherwise it says "I don't know."</b><br>
-<sub>Brute v0.14.0 · built on BGR v0.90.0 (BITWORK — Geometric Reasoning) · research preview · not general intelligence</sub></p>
+<sub>Brute v0.15.0 · built on BGR v0.90.0 (BITWORK — Geometric Reasoning) · research preview · not general intelligence</sub></p>
 
 ---
 
@@ -17,6 +17,7 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 | **The SAT engine makes the same decision as brute-force enumeration on all 25,344 steps** (v0.5.0, GX1), and the constraint region matches enumeration on 1.25 M items (v0.4.0, GR1/GR1b) | `results/study-007/`, `results/study-006/` | *Observed* |
 | **Second-encoding cross-check, 288/288 breadth cases: 0 mismatching traces in 1,358,721 SAT queries, 0 unknowns, 0 witness failures.** This was an incremental CaDiCaL re-run of the v0.6.0 cross-check: 310 s on 4 workers, against ~8.8 h for 46 cases before. It is post-release verification and does not change the frozen GX2′ FAIL | branch [`verify/xcheck-incremental`](https://github.com/jacksonjp0311-gif/Brute/tree/verify/xcheck-incremental), `results/verify-xcheck-incremental/` | *Observed* |
 | **v0.8.0 ran every pre-registered stream inside a hard 2 h cap** with an independent watchdog: the whole study finished in 1,970 s (cap 7,200 s), the second implementation agreed on 648/648 + 144/144 mandatory traces and caught 20/20 injected mutations, and in-cap test isolation passed (294 tests). The kill drill stopped 8 process groups in 0.239 s | `results/study-010/GATES_010.json` (G11, GX2_010, GTI, G_RT ii/iii) | *Observed* |
+| **v0.15.0: looking ahead inside the bounded region certifies sooner (GRL PASS, 9 of 13 gated).** RGLX4 picks, before its first certificate, the action whose answers would split the RG4 region most (exhaustive one-step lookahead), then switches to the region-split chooser. It issued 0 false certificates in 13,755 and reached its first certificate 2.84 steps sooner than RG4 (seed-clustered CI95 [2.21, 3.46]; 17.09 vs 14.25 steps before SP8; sooner on 208 of 360 cases, later on 51). The deferred-split coverage gain replicated on fresh seeds (GDS2: dC +0.037 [0.030, 0.043]). The second-implementation audit ran out of its stream budget (308 of 432 cases audited, 0 mismatches, 124 not reached: GS_ref5 FAIL), so G_RT fails too; GTI failed on the stale test declared in advance as #96; two heartbeat gaps failed G_HB. **New API `brute.certify/5`** | `results/study-017/GATES_017.json` (GRL, GDS2, GS_ref5, GTI, G_RT, G_HB, GAPI5) | *Observed* |
 | **v0.14.0: deferring the region split keeps RG4's speed and adds coverage (GDS PASS, 11 of 14 gated).** RSXL4 follows SP8 until the bounded region RG4 has certified once, then switches to the region-split chooser. It issued 0 false certificates in 14,491, reached its first certificate exactly when RG4 did on all 360 cases (13.69 steps before SP8, CI95 [12.61, 14.74]) and raised coverage by 0.049 (seed-clustered CI95 [0.041, 0.057]; 0.457 vs 0.408). A wrong-family library again licensed false certificates (DLFn, RSXLn 2 each, one ood4 case), and one 285 s box pause failed the heartbeat gate. **New API `brute.certify/4`** | `results/study-016/GATES_016.json` (GDS, GS_a4, GS_c4, G_HB, GAPI4) | *Observed* / *Exact* (S equality) |
 | **v0.13.0: region-split experiments were sound but slower (GRS FAIL, 11 of 15 gated).** RSX4 (choose the action that splits the bounded region RG4 most evenly) issued 0 false certificates in 11,005 and issued 17% more certificates than RG4 (9,368), but reached its first certificate 5.27 steps later (seed-clustered CI95 [−5.99, −4.59]; later on 220 of 288 cases). The evidence-derived bound EB was unsound (91 false). A wrong-family library produced the first DLF false certificate (1, one ood4 case). **New API `brute.certify/3`** (adds `suggest_action`) | `results/study-015/GATES_015.json` (GRS, GS_a3, GS_c3, GEB, GAPI3, G_recount) | *Observed* |
 | **v0.12.0: bounded transfer caught the aliased priors with 0 false certificates on study-014 seeds (GST2 PASS, 15 of 16 gated; on study-015 seeds DLFn issued 1 false certificate, see v0.13.0).** On 600 aliasing-stress pairs, where the v0.11.0 rule (AT6) issued 2,016 false certificates, the disagreement-based license DLF issued 0; over all 20,736 target × wrong-library pairs, 336 licenses, 0 false. The library-free bound RG4 certifies 10.86 steps sooner than SP8 (CI95 [9.83, 11.84], 0 false in 9,809); the right library adds 1.64 [1.27, 2.01] more, all on unaliased2. Discriminating experiments (DX) did not help (GS_x FAIL). **New API `brute.certify/2`** | `results/study-014/GATES_014.json` (GST2, G_alias_stress, GS_a–GS_d, GS_rg, GS_x, GAPI2) | *Observed* |
@@ -31,7 +32,8 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 
 | Version | Study | Gates | What it added | Key result |
 | --- | --- | --- | --- | --- |
-| **v0.14.0** (current) | BRUTE-0140-DEFERRED-SPLIT-016, 360 transfer held-out cases (ood4 doubled) + 72 ood5 + 25,920 stress pairs | **11 / 14** | deferred region split RSXL, DLF2 license rule, ood5 bound-violation report, 8140016 license diagnosis, `brute.certify/4` | GDS PASS (dC +0.049 [0.041, 0.057], S equal to RG4 on every case, 0 false); GS_a4/GS_c4 FAIL (DLFn, RSXLn 2 false each, ood4 8240010); G_HB FAIL (one 285 s gap) *Observed* |
+| **v0.15.0** (current) | BRUTE-0150-BOUNDED-LOOKAHEAD-017, 360 transfer held-out cases (ood4 doubled) + 72 ood5 + 25,920 stress pairs | **9 / 13** | bounded-region lookahead chooser RGLX / RGL, deferred-split replication, attested license DLFa, RSXL5 on ood5, heartbeat sentinel, `brute.certify/5` | GRL PASS (TV +2.84 [2.21, 3.46], 0 false); GDS2 PASS (dC +0.037); GS_ref5 FAIL (audit 308/432 at budget, 0 mismatches); GTI FAIL (#96, declared); G_RT FAIL (g11 stopped); G_HB FAIL (425.7 s, 316.5 s gaps) *Observed* |
+| v0.14.0 | BRUTE-0140-DEFERRED-SPLIT-016, 360 transfer held-out cases (ood4 doubled) + 72 ood5 + 25,920 stress pairs | **11 / 14** | deferred region split RSXL, DLF2 license rule, ood5 bound-violation report, 8140016 license diagnosis, `brute.certify/4` | GDS PASS (dC +0.049 [0.041, 0.057], S equal to RG4 on every case, 0 false); GS_a4/GS_c4 FAIL (DLFn, RSXLn 2 false each, ood4 8240010); G_HB FAIL (one 285 s gap) *Observed* |
 | v0.13.0 | BRUTE-0130-REGION-SPLIT-015, 288 transfer held-out cases + 72 ood5 + 20,736 stress pairs | **11 / 15** | region-split experiment chooser RSX, evidence-derived bound EB, ood5 bound-5 block, own-trajectory recount G_recount, `brute.certify/3` | GRS FAIL (RSX4 0 false but TV −5.27 [−5.99, −4.59]); GEB FAIL (EB 91 false); GS_a3/GS_c3 FAIL (DLFn, RSXn 1 false each, one case); RG4 S 10.51 [9.64, 11.33] *Observed* |
 | v0.12.0 | BRUTE-0120-BOUNDED-TRANSFER-014, 288 transfer held-out cases + 20,736 aliasing-stress pairs | **15 / 16** | bounded-region certification RGn, disagreement-based license DLF, discriminating experiments DX, aliasing stress block, `brute.certify/2`, heartbeat fix | GST2 PASS (DLFn 0 false; stress DLF 0 vs AT6 2,016); RG4 S 10.86 [9.83, 11.84]; TV(DLFp) 1.64 [1.27, 2.01]; GS_x FAIL (−0.007) *Observed* |
 | v0.11.0 | BRUTE-0110-SOUND-TRANSFER-013, 792 2x2 + 288 big78 + 288 transfer held-out cases | **22 / 26** | sound-transfer arms DR / AT / LX with wrong-family controls, embeddable API `brute.certify/1`, big78 power, K_080/K_090 declared | GST FAIL (ATn 3 false in 1/288; LX S −1.32); GS_d AT speedup PASS (S 6.64 [5.73, 7.54]); G6b PASS on SP8 (−0.0104); GTI PASS *Observed* |
@@ -46,6 +48,9 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 | v0.1.0–v0.2.0 | studies 002–004 | see `results/` | exact version space, open-world fallback, active experiments | active coverage +0.115 pooled *Observed* |
 
 ## Published failures (they stay failed)
+- **The second-implementation audit did not finish (GS_ref5, v0.15.0).** It audited 308 of 432 cases with 0 mismatches and was stopped by its frozen 2400 s budget; 124 cases (52 ood4, 72 stress) and the mutation check were not reached. The rate math under-projected the audit cost by 1.72x (46.4 vs 27.0 worker-seconds per case). 0 mismatches in 308 is not a pass. G_RT fails with it (a stream was stopped). *Observed.*
+- **Test isolation failed on one stale frozen test (GTI, v0.15.0).** The only undeclared failure was `test_scripts_017.Orchestrator017.test_streams`, a stale literal disclosed before the run as deviation #96. *Observed* (predicted, *Inferred*).
+- **Two heartbeat gaps (G_HB, v0.15.0): 425.7 s and 316.5 s.** Workers kept using CPU and writing checkpoints; both gaps ended within about 1 s of the operator's next action after a long idle wait. *Observed*; cause *Inferred* (host deschedules the box while the operator is idle).
 
 - **A wrong-family library licensed false certificates again (GS_a4, GS_c4, v0.14.0).** DLFn and RSXLn each issued 2 false certificates on one case (ood4 seed 8240010, mask 0.6, true n = 4, unaliased2 library with min_n 2), the same pattern as 8140016. RG4, RSXL4, RSXLp, DLFp, RSX4, DLF2p and DLF2n issued 0. None was public. *Observed.*
 - **One heartbeat gap of 285 s (G_HB, v0.14.0).** The whole box appears to have paused (monotonic and boot clocks both advanced 285 s, watchdog CPU +0.001 s, no file written); no stream was stopped. *Observed*; cause *Inferred*.
@@ -70,7 +75,7 @@ It is a sound, narrow, exact reasoner over small deterministic worlds: at most 6
 
 1. **Speed.** Use incremental solving and symmetry breaking everywhere, and project each stream's runtime before the run starts with a watchdog stop rule. The 288-case cross-check went from ~5 cases/h to all 288 cases in about 5 minutes.
 2. **Planning.** Score experiments by the expected collapse of the next forecast coordinate instead of by raw model-count reduction. Certify before a jump is observed, using a one-step jump hull.
-3. **Abstraction and transfer.** Learn to select families and grow the model class, so that structure carries from one world to the next. v0.10.0 showed a speedup from a right prior (S 20.18 steps) and confident errors from a wrong one. v0.11.0 showed that counting confirmations cannot make a wrong prior safe; v0.12.0 made transfer sound by letting a library license an answer only when a bounded region also forces it (0 false on 600 aliasing-stress pairs). The value it adds over the library-free bound is small (1.64 steps, one family). v0.13.0 showed that splitting the bounded region from the start delays the first certificate; v0.14.0 showed that deferring the split until the first certificate keeps the speed and adds coverage (dC +0.049). Next: a license whose bound cannot fall below the true size.
+3. **Abstraction and transfer.** Learn to select families and grow the model class, so that structure carries from one world to the next. v0.10.0 showed a speedup from a right prior (S 20.18 steps) and confident errors from a wrong one. v0.11.0 showed that counting confirmations cannot make a wrong prior safe; v0.12.0 made transfer sound by letting a library license an answer only when a bounded region also forces it (0 false on 600 aliasing-stress pairs). The value it adds over the library-free bound is small (1.64 steps, one family). v0.13.0 showed that splitting the bounded region from the start delays the first certificate; v0.14.0 showed that deferring the split until the first certificate keeps the speed and adds coverage (dC +0.049); v0.15.0 showed that a bounded-region lookahead before the first certificate certifies 2.84 steps sooner. Next (v0.16.0): noisy observations with an attested noise bound.
 4. **Real data.** Add stochastic worlds with credal regions, grounding beyond templates, and independent replication.
 
 Details: [`docs/ROADMAP_TO_GI.md`](docs/ROADMAP_TO_GI.md) (gated steps toward general reasoning; transfer had its first test in v0.10.0), [`NEXT_ITERATION.md`](NEXT_ITERATION.md), [`docs/ROADMAP.md`](docs/ROADMAP.md), [`HANDOFF.md`](HANDOFF.md).
@@ -80,13 +85,14 @@ Details: [`docs/ROADMAP_TO_GI.md`](docs/ROADMAP_TO_GI.md) (gated steps toward ge
 ```bash
 git clone https://github.com/jacksonjp0311-gif/Brute.git && cd Brute
 python -m pip install -r requirements.txt
-for k in 004 005 006 007 008 009 010 011 012 013 014 015 016; do python scripts/study${k}_storage.py restore; done   # rebuild sealed traces, checked against SEAL.json
-PYTHONPATH=. python scripts/verify_release_0140.py   # (--long adds the 18-case transfer + ood5 re-run + second-implementation audit) seals, freezes, ledger chain, manifest, git order; regenerates paired/repro/gates byte-for-byte
-PYTHONPATH=. python scripts/make_gates_016.py --check   # GATES_016.json alone
+for k in 004 005 006 007 008 009 010 011 012 013 014 015 016 017; do python scripts/study${k}_storage.py restore; done   # rebuild sealed traces, checked against SEAL.json
+PYTHONPATH=. python scripts/verify_release_0150.py   # (--long adds the 18-case transfer + ood5 re-run + second-implementation audit) seals, freezes, ledger chain, manifest, git order; regenerates paired/repro/gates byte-for-byte
+PYTHONPATH=. python scripts/make_gates_017.py --check   # GATES_017.json alone
 PYTHONPATH=. python -c "from brute.api.certify import certify; print(certify([(0,1)],[],0))"   # embeddable API brute.certify/1
 PYTHONPATH=. python -c "from brute.api.certify2 import certify2; print(certify2([(0,1)],[],0))"   # brute.certify/2 (UNKNOWN, reason burn-in)
 PYTHONPATH=. python -c "from brute.api.certify3 import suggest3; print(suggest3([(0,1)],[]))"   # brute.certify/3 action suggestion
 PYTHONPATH=. python -c "from brute.api.certify4 import suggest4; print(suggest4([(0,1)],[]))"   # brute.certify/4 deferred-split suggestion
+PYTHONPATH=. python -c "from brute.api.certify5 import suggest5; print(suggest5([(0,1)],[]))"   # brute.certify/5 bounded-lookahead suggestion
 ```
 
 No GPU, network or model weights are needed. CPU only, Python 3.11+ (the release was run on 3.13.5).
@@ -96,6 +102,24 @@ No GPU, network or model weights are needed. CPU only, Python 3.11+ (the release
 Brute is built on **BGR v0.90.0, "BITWORK — Geometric Reasoning"**, James's earlier research system. Its exact symbolic support over Moore machines, the study-001 evidence and the `bgr*/` code are carried forward byte-identical, with full credit in [`FORK.md`](FORK.md) and [`docs/research/bgr-v0.90.0/`](docs/research/bgr-v0.90.0/).
 
 ---
+
+## v0.15.0 at a glance: 9 of 13 gated criteria pass; bounded-region lookahead certifies 2.84 steps sooner (GRL PASS); the deferred-split gain replicates (GDS2 PASS); the audit ran out of budget (GS_ref5 FAIL)
+
+Study-017 was pre-registered as a transfer block: 360 held-out target cases (cycle3, switch3, unaliased2 × 24 seeds, ood4 × 48 seeds, × masks 0.1 / 0.35 / 0.6), 72 ood5 cases and 25,920 aliasing-stress pairs. The plan was frozen at `908fe9b` before any code. Source freeze `0b3ad52`; scoring freeze ledgered 07:05 EDT, more than 600 s before run_start 07:15:33 EDT; seal `3e4f0e8`; GATES `911f06c`. RUN_DONE came 3,463 s after RUN_T0, inside the 7,200 s cap; the watchdog did not fire (*Observed*).
+
+| Gate | Result | Numbers (*Observed*) |
+| --- | --- | --- |
+| **GRL bounded lookahead (headline)** | **PASS** | RGLX4 0 false in 13,755; TV = S(RGLX4) − S(RG4) +2.84 [2.21, 3.46] (17.09 vs 14.25 steps before SP8); sooner on 208 cases, later on 51, equal on 101. Per family: unaliased2 3.72, switch3 3.42, cycle3 2.78, ood4 2.13 |
+| GDS2 deferred-split replication | PASS | RSXL4 0 false in 13,906; S(RSXL4) = S(RG4) on every case; dC +0.037 [0.030, 0.043] (0.439 vs 0.402) |
+| GS_ref5 reference audit | **FAIL** | 308/432 audited, 0 mismatching, 124 not reached, mutation not reached: stopped at the 2400 s stream budget (STUDY_BUDGET) |
+| GTI test isolation | **FAIL** | 586 per-module = 586 plain; one undeclared failure, the stale literal disclosed as #96 before the run |
+| G_RT study runtime | **FAIL** | clause (i) fails: g11 was stopped by its budget; watchdog whole run and kill drill (0.224 s) pass |
+| G_HB heartbeat | **FAIL** | 1,364 beats; gaps 425.668 s and 316.471 s; sentinel class "unattributed" |
+| GS_a5, GS_b5, G_recount, GAPI5, G10, G12, G13 | PASS | every gated arm 0 false; 432/432 containment; 0 recount mismatches; `brute.certify/5` contract tests pass; repro 144/144 byte-identical |
+
+Reported only (*Observed*): coverage SP8 0.130, RG4 0.402, RGL4 0.399, RGLX4 0.434, RSXL4 0.439, DLFp 0.451. RGL4 (lookahead the whole run) TV +2.84 but dC −0.003. DLFa (attested license) equals RG4 on every case (12,736 certificates, 0 false). Outside the guarantee: DLFn 5 false, RSXLn 5 false, EB 141 false; stress DLF 120 and RSXL 120 false in 25,920 pairs, all outside the exact license bound; AT6 1,510. ood5: RG4 148 false in 446 certificates (52 of 72 cases), RG5 0 in 174, RSXL5 0 in 50. Lookahead cost about 8.3 ms per step (RGLX). Release: GLV `--long` 18 cases, 0 mismatches, 466 s of 900 s; GCC PASS.
+
+What this means (*Inferred*): choosing experiments by how they split the bounded region pays only before the first certificate, and there it pays about 3 steps; combined with the deferred split it gives both speed and coverage. The audit failure is a budget failure, not a disagreement: every audited case matched, but a quarter of the cases were never checked, so the exactness claim for this study is incomplete.
 
 ## v0.14.0 at a glance: 11 of 14 gated criteria pass; the deferred region split adds coverage at RG4's speed (GDS PASS); a wrong-family library licensed false certificates again (GS_a4, GS_c4 FAIL); one box pause failed G_HB
 
@@ -522,6 +546,18 @@ C (frozen v0.1.1, passive, `GATES.json` G6 `C_v011_coverage_post`) for context: 
 Findings and their math: [`docs/research/DISCOVERIES.md`](docs/research/DISCOVERIES.md) D11–D16. Study-005 deviations: [`BRUTE_DEVIATIONS_005.md`](docs/research/BRUTE_DEVIATIONS_005.md).
 
 ## What Brute can't do yet
+
+New in v0.15.0:
+
+- **Its own second-implementation audit for study-017 is incomplete.** 124 of 432 cases and the mutation check were not reached inside the budget; their exactness is not shown. *Observed.*
+- **It cannot yet project its own audit cost reliably.** The rate math under-projected by 1.72x; BRUTE_PLAN_018 adds a per-cell, under-concurrency projection with a 1.75 factor. *Observed* / *Inferred.*
+- **It has not shown a heartbeat-clean run while the operator is idle** (gaps 425.7 s and 316.5 s). *Observed.*
+- **The lookahead speedup needs a correct attested bound.** RGLX4 is certified by RG4; on ood5 the 4-state bound is still unsound (RG4 148 false). *Observed.*
+- **The attested license adds nothing over the bounded region** (DLFa = RG4 everywhere). *Exact* / *Observed.*
+- **It still handles only noiseless readings, 2 actions and 2 bits.** Noisy observations are pre-registered for v0.16.0; larger alphabets are deferred. *Exact.*
+- **`brute.certify/5` is still a small-family library call.** *Exact.*
+
+Carried from v0.14.0 (still true unless superseded above; the lookahead chooser RGLX now does speed up certification, superseding the experiment-choice item below):
 
 New in v0.14.0:
 

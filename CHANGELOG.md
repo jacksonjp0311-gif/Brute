@@ -1,6 +1,39 @@
 # Brute changelog
 
 
+## v0.15.0: bounded-region lookahead RGLX / RGL, deferred-split replication GDS2, attested license DLFa, RSXL5 on ood5, heartbeat sentinel, brute.certify/5 (study BRUTE-0150-BOUNDED-LOOKAHEAD-017)
+
+**9 of 13 gated criteria pass; GRL (headline) PASS; GS_ref5, GTI, G_RT and G_HB FAIL.** *Observed*; scoring rules fixed before the data (*Exact*).
+
+### Timeline (author's clock, EDT, 2026-10-27)
+
+- **Pre-registration.** Plan `908fe9b` (ledger `c0a793d`, 05:38:54 EDT); deviations #86–#91 `f720f1b`; seed check `5506eff`; numpy reference `5c88600`.
+- **Preparation.** Implementation `356ecfd`; rate math and deviations #92–#95 `460271b`; smokes, mutation smoke 20/20, kill drill `5361010`.
+- **Freezes.** Source `0b3ad52` (ledger `35e30f5`); deviation #96 `b25f53d`; scoring `b7ec1ef` (ledger `cd545a7`, `b80caac`, 07:04:51 EDT).
+- **Held-out run.** run_start `cf71514`, 07:15:33 EDT, under a 2 h cap; RUN_DONE 3,463 s after RUN_T0. g11 stopped at its 2400 s stream budget (08:07:41 EDT); watchdog did not fire; two heartbeat gaps (425.7 s, 316.5 s).
+- **After the run.** Seal `3e4f0e8` (ledger `2b8792e`); GATES_017 `911f06c`; release tooling `9174956`; release freeze `9f0d6dc`; RELEASE.json receipt `7545ec8`; addendum 3 `c1e5592`; clean clone `fa658bf` PASS.
+
+### Code
+
+- `brute/boundedlookahead.py`: bounded-region lookahead chooser RGLX (lookahead on the RG4 region until the first certificate, then RSX) and RGL (lookahead throughout).
+- `experiments/brute_study_017.py`: study runner, including the RSXL5 (ood5) and DLFa (attested license) arms.
+- `brute/api/certify5.py`: `brute.certify/5` (`suggest5(rule='rglx')`).
+- `experiments/v0150_reference.py`: numpy exhaustive second implementation with lookahead scores.
+- `scripts/hbsentinel_017.py`, `scripts/hb_attribution_017.py`: heartbeat sentinel and gap attribution (#90, diagnostic).
+- Release: `scripts/verify_release_0150.py` (short, `--long`), `tests/test_release_0150.py`, `scripts/make_release_freeze_0150.py`.
+
+### Results (*Observed*)
+
+- **Headline GRL PASS.** RGLX4 0 false in 13,755; TV +2.84 [2.21, 3.46] (S 17.09 vs 14.25); 208 sooner, 51 later, 101 equal; unaliased2 3.72, switch3 3.42, cycle3 2.78, ood4 2.13.
+- **GDS2 PASS.** RSXL4 0 false in 13,906; dC +0.037 [0.030, 0.043].
+- **Coverage.** SP8 0.130, RGL4 0.399, RG4 0.402, RGLX4 0.434, RSXL4 0.439, DLFp 0.451.
+- **Soundness.** Every gated arm 0 false. Outside the guarantee: DLFn 5, RSXLn 5, EB 141. DLFa = RG4 everywhere.
+- **ood5.** RG4 148 false in 446; RG5 0 in 174; RSXL5 0 in 50.
+- **Stress.** 25,920 pairs: AT6 1,510 false; DLF 120 and RSXL 120, all outside the exact license bound.
+- **Audit.** GS_ref5 FAIL: 308/432 audited, 0 mismatches, 124 not reached (STUDY_BUDGET); cost 46.4 vs 27.0 projected worker-s per case.
+- **GTI FAIL** exactly as declared in #96 (586 = 586 tests). **G_RT FAIL** (g11 stopped; kill drill 0.224 s). **G_HB FAIL** (gaps 425.7 s and 316.5 s, ending at the operator's next action; cause *Inferred*).
+- **Release.** G12 144/144; GLV `--long` 18 cases, 0 mismatches, 466 s; GCC PASS. No CI workflows (Brute has no `.github` directory).
+
 ## v0.14.0: deferred region split RSXL, DLF re-gate with doubled ood4, DLF2, ood5 bound-violation report, 8140016 diagnosis, brute.certify/4 (study BRUTE-0140-DEFERRED-SPLIT-016)
 
 **11 of 14 gated criteria pass; GDS (headline) PASS; GS_a4, GS_c4 and G_HB FAIL.** *Observed*; scoring rules fixed before the data (*Exact*).

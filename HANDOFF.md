@@ -1,15 +1,22 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~05:45 EDT (v0.14.0 released on main; v0.15.0 pre-registered on `plan/v0.15.0`)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~09:05 EDT (v0.15.0 release in progress on `plan/v0.15.0`)._
 
 ## Current version and state
 
 <!-- V0150 -->
-- **In progress: v0.15.0** (study BRUTE-0150-BOUNDED-LOOKAHEAD-017, branch `plan/v0.15.0` from main `d1f462b`).
-  - **Pre-registered:** `experiments/BRUTE_PLAN_017.json` + `BRUTE_PLAN_FREEZE_017.json` (plan sha256 `ebe52bbb…`), readable `docs/research/v0.15.0/PLAN_017.md`; commit `908fe9b`, ledger `preregistration_017` `c0a793d`.
-  - **Headline GRL:** RGLX4 (lookahead on the RG4 region before the first certificate, RSX after; certified by RG4): 0 false AND TV over RG4 >= 1.0 step, CI lower > 0. Prediction Open. **GDS2:** RSXL4 dC >= 0.03, CI lower > 0 (replication). Others: GS_a5, GS_b5 (incl. DLFa = RG4, Exact), G_recount, GS_ref5, GAPI5 (`brute.certify/5`), G10, G12, G13, GTI (declare K_0130 and K_0140), G_RT, G_HB (<= 30 s).
-  - **Seeds:** targets 8310001–8340048, sources 8350001–8350096, ood5 8360001–8360024, smoke 8390001–8390030. Deviations start at #86.
-  - **Next steps:** seed commit → `experiments/v0150_reference.py` → `brute/boundedlookahead.py`, `brute/api/certify5.py` + tests → smokes and rate math → source freeze → scoring freeze (>= 600 s before run_start) → run under the 2 h cap with watchdog → score → seal → release. Wait on live background shells, not idle sleeps (#80).
+- **Released: v0.15.0** (study BRUTE-0150-BOUNDED-LOOKAHEAD-017, branch `plan/v0.15.0` from main `d1f462b`). **9 of 13 gated pass.**
+  - **BOUNDED LOOKAHEAD (headline GRL): PASS.** RGLX4 0 false in 13,755; TV = S(RGLX4) − S(RG4) +2.84 [2.21, 3.46] (17.09 vs 14.25); 208 sooner, 51 later, 101 equal. Per family: unaliased2 3.72, switch3 3.42, cycle3 2.78, ood4 2.13. *Observed.*
+  - **GDS2 PASS:** RSXL4 0 false in 13,906; S equal to RG4 on every case; dC +0.037 [0.030, 0.043].
+  - **FAIL: GS_ref5** (g11 stopped by its 2400 s stream budget at 08:07:41 EDT: 308/432 audited, 0 mismatching, 124 not reached (52 ood4 + 72 stress), mutation not reached; cost 46.4 vs 27.0 projected worker-s per case), **GTI** (only undeclared failure the #96 stale literal; 586 = 586), **G_RT** (clause i: g11 stopped; kill drill 0.224 s), **G_HB** (gaps 425.668 s and 316.471 s, sentinel "unattributed"; both ended within ~1 s of the operator's next tool call; cause Inferred).
+  - **PASS:** GS_a5, GS_b5 (432/432), G_recount, GAPI5 (`brute.certify/5`), G10, G12 (144/144), G13. Release gates: GLV `--long` 18 cases, 0 mismatches, 465.7 s of 900 s; GCC PASS.
+  - **Reported only:** coverage SP8 0.130, RGL4 0.399, RG4 0.402, RGLX4 0.434, RSXL4 0.439, DLFp 0.451; DLFa = RG4 (12,736, 0 false); DLFn 5, RSXLn 5, EB 141 false (outside guarantee); ood5 RG4 148 false in 446, RG5 0/174, RSXL5 0/50; stress DLF/RSXL 120 each, all outside the exact bound; RGLX lookahead ~8.3 ms per step.
+  - **Run:** run_start 07:15:33 EDT; RUN_DONE 3,463 s after RUN_T0 (cap 7,200 s); watchdog did not fire.
+  - **Chain (Exact, git ancestry):** plan `908fe9b` (ledger `c0a793d`) → deviations #86–#91 `f720f1b` → seeds `5506eff` → reference `5c88600` → implementation `356ecfd` → rate math + #92–#95 `460271b` → smokes `5361010` → source freeze `0b3ad52` (ledger `35e30f5`) → #96 `b25f53d` → scoring `b7ec1ef` (ledger `cd545a7`/`b80caac`) → run_start `cf71514` → seal `3e4f0e8` (ledger `2b8792e`) → GATES `911f06c` (ledger `5d0055a`) → tooling `9174956` → release freeze `9f0d6dc` → RELEASE.json receipt `7545ec8` → addendum 3 `c1e5592` → clean clone `fa658bf`.
+  - **Deviations:** #86–#91 `docs/research/BRUTE_DEVIATIONS_017.md`; #92–#95 `_ADDENDUM_1`; #96 `_ADDENDUM_2`; post-run disclosures (g11 budget, heartbeat/idle, GTI as #96; no rescoring) `_ADDENDUM_3`.
+  - **K_0150 (expected, 0.15.0 tree):** v0.16.0 must declare K_0150 (test_release_0150 version / API / RELEASE.json key tests after the bump) and K_096.
+  - **No CI:** Brute has no `.github` directory and uses no GitHub Actions minutes; add no workflows.
+  - **RELEASE STATUS:** pending tag (updated below at release).
 <!-- /V0150 -->
 
 <!-- V0140 -->
