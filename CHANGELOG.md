@@ -1,5 +1,33 @@
 # Brute changelog
 
+
+## v0.12.0: bounded transfer (RGn, DLF, DX), aliasing stress block, brute.certify/2, heartbeat fix (study BRUTE-0120-BOUNDED-TRANSFER-014)
+
+**15 of 16 gated criteria pass; GST2 (headline) PASS; GS_x FAIL.** *Observed*; scoring rules fixed before the data (*Exact*).
+
+### Timeline (author's clock, EDT, 2026-10-26/27)
+
+- **Before the plan.** License diagnostics on sealed study-013 (seen data): `BRUTE_DIAG_LICENSE_014.md`, `_014B.md` (bank unanimity Rejected, 537 false).
+- **Pre-registration and preparation.** Plan `ef865e7`; seed check `f87f5bc`; numpy exhaustive reference `89ff5b8`; implementation `7323b44`/`0b81c76`/`76a9e8d`/`516fe34`; rate math (deviation #61, g11 on 4 workers).
+- **Freezes.** Source `b4f0fc8`. Scoring `4375a5f` (ledgered 00:02:31 EDT).
+- **Held-out run.** run_start 00:14:04 EDT under a 2 h cap; RUN_DONE after 1,655 s. Watchdog did not fire; max heartbeat gap 2.0 s.
+- **After the run.** Seal `12455f0`; GATES_014 `27bfe45`; release tooling `ee1a1c8`; deviations #62–#63 addendum; release freeze `BRUTE_RELEASE_FREEZE_0120.json`; clean clone `CLEAN_CLONE_014.json` PASS.
+
+### Code
+
+- `brute/boundedtransfer.py`: bounded-region certification RGn and the disagreement-based license DLF (library unanimous, answer in SP8 support, bounded region at min(n_L + 1, 4) states a singleton).
+- `brute/api/certify2.py`: `brute.certify/2` (`Certifier2`, `certify2`) with reasons on UNKNOWN.
+- `experiments/v0120_reference.py`: numpy exhaustive second implementation; `scripts/watchdog_014.py` heartbeat fix.
+- Release: `scripts/verify_release_0120.py` (short, `--long`), `tests/test_release_0120.py`, `scripts/clean_clone_014.py`, `scripts/make_release_freeze_0120.py`, `brute/release_version_0120.py`.
+
+### Results (*Observed*)
+
+- **Soundness.** 0 false certificates in every gated arm (RG4 9,809; DLFp 11,434; DLFn 9,810; DXp 11,761; DXn 10,100).
+- **Aliasing stress.** 600 stress pairs: AT6 2,016 false, DLF 0. All 20,736 pairs: 336 DLF licenses, 0 false. DLF0 (margin 0): 3,576 false.
+- **Speed.** RG4 S 10.86 [9.83, 11.84]; DLFp S 12.50 [11.43, 13.52]; TV(DLFp) 1.64 [1.27, 2.01] (unaliased2 only); TV(DLFn) 0.05 [0.00, 0.15]; DX − DLF −0.007 [−0.59, 0.57] (GS_x FAIL).
+- **Exactness.** GS_ref 288/288, mutation 20/20; G12 96/96; GLV `--long` 12 cases, 0 mismatches.
+- **Disclosure #62.** The frozen scorer's non-gated recount of LX uses the SP8 trajectory (1,723 / 1,503 "false"); on LX's own trajectory it is 0 / 4,490 and 0 / 4,494. No gate changes.
+
 ## v0.11.0: sound-transfer arms DR / AT / LX with wrong-family controls; embeddable API brute.certify/1 (study BRUTE-0110-SOUND-TRANSFER-013)
 
 **22 of 26 gated criteria pass.** Four fail, all in the transfer track: GST (headline), GS_a and GS_c (ATn, 3 false certificates in 1 of 288 cases) and GS_e (LX speedup, S −1.32 [−2.19, −0.50]). *Observed*. The scoring rules were fixed before the data (*Exact*).
