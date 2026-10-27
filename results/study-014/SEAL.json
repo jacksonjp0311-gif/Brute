@@ -1,0 +1,119 @@
+{
+ "blocks": {
+  "repro/transfer": {
+   "case_count": 96,
+   "complete": true,
+   "expected_case_count": 96,
+   "missing_job_keys": 0,
+   "seal_sha256": "764e5b9222e8b0173f63a77eb258ce752259b50cc348feb39dd510553211a340"
+  },
+  "transfer": {
+   "case_count": 288,
+   "complete": true,
+   "expected_case_count": 288,
+   "missing_job_keys": 0,
+   "seal_sha256": "2b3fb0642a47d2de836fddffe128904d05d71a60b9e30654c1bf4f33a3d3598a"
+  }
+ },
+ "files_sha256": {
+  "HEARTBEAT_014.jsonl": "17d9b572dc6e1b9ad70f14b3759a152df758e5fff924240769790ee864fc16d8",
+  "KILL_DRILL_014.json": "19816baa2c02e5d2783c12465d77178c4f51546dad0ea985b9db8612a96f04da",
+  "PROGRESS_014.json": "8e1e9f7a928dc68e9453ca812d10d066acfdd615320510f023261fcdaa7d8a9a",
+  "RUN_014.log": "75c5c0df5d186ceb2b9825b681e98cfc5bb1fbfdc67a8aaa22c365ce918c55b8",
+  "RUN_DONE_014.json": "d855a68664d9f63a38436018928aeee926e9132e2f203224479bec20d6b96a31",
+  "RUN_STATE_014.json": "3a17af6e5edc084e086fec1463ad8f526bf05c89fe64e023db63768fd7da4cc9",
+  "RUN_T0": "994faa5a6bb113575fd2e93ace89daaac9e9425a3ed8f417935364cbed1ac4bd",
+  "SECOND_IMPLEMENTATION_014.json": "03380d4544313ccbce347b540ad54b63801fecf3ec870fa14d2c27550e701f0f",
+  "SECOND_IMPLEMENTATION_014_CHECKPOINT.jsonl": "267257923adf99e63b4a78ea751904d8935fa4309d7efd926684a174b316b3f0",
+  "TEST_SUITE_014.json": "9cb50839a12e0f390fde19fbbeed7c33d3a72b849769a2b761726046d9f7d72a",
+  "WATCHDOG_014.log": "825aa24e573854761b0aefbf2527db86f59e6a1351500df5e8db2a073d364cf2",
+  "logs/g11.log": "7a486898a715fdb3bfa0ae74a4cf972c8443495c6b9780916ea4dc86956d6ea3",
+  "logs/gti.log": "45a2a95141aeb00c713d9ed62f3067ad65b0d19a9791ef83ff21a9677b955e81",
+  "logs/repro.log": "a5095513f8dae4a629b86cb25996f6b66021e9dec86f346c278cc79637563751",
+  "logs/transfer.log": "a3806875a738243810d73c7ac3dddbcecbecdd9a2a0d75df4a4b8680833e010c",
+  "repro/transfer/CHECKPOINT.jsonl": "af7f7b441e251f7eaf52b0b700eb3b28efac8a228a9093db7486ef0a8c52776e",
+  "repro/transfer/RESULTS.json": "2fb983d058a6b49dea89d30a38b5b5b7a83e6f8df48f6cca07202a13dbdc0dd1",
+  "repro/transfer/SCIENTIFIC.json": "9cb74ac176162822e256de045b5ba5139c26a2dbedd9b3ae3e58f7f187e83ae6",
+  "repro/transfer/SEAL.json": "764e5b9222e8b0173f63a77eb258ce752259b50cc348feb39dd510553211a340",
+  "transfer/CHECKPOINT.jsonl": "ada41fa899e4c5edfb9e4ef9a22510e41a48e5044f312512055d9e3870060978",
+  "transfer/RESULTS.json": "2a90df1762da75cc9b054d32a4fe7002d2cc16cb7a5990845bb5ff7638633bee",
+  "transfer/SCIENTIFIC.json": "47e0429d7c31a621cba401fc74d0b2d5f5cfe944b93de98a2ec3363c94ce0911",
+  "transfer/SEAL.json": "2b3fb0642a47d2de836fddffe128904d05d71a60b9e30654c1bf4f33a3d3598a"
+ },
+ "heartbeat": {
+  "beats": 829,
+  "first_wall": 1793074446.317,
+  "gaps_over_10s": [],
+  "last_wall": 1793076102.317,
+  "max_gap_s": 2.002
+ },
+ "run_done": {
+  "completed_at": {
+   "g11": 1793075288.282496,
+   "gti": 1793076100.6266937,
+   "repro": 1793074719.9639397,
+   "transfer": 1793074637.9100497
+  },
+  "elapsed_s": 1655,
+  "events": {
+   "g11": {
+    "audit_done": {
+     "event": "audit_done",
+     "t": 1793075242.2133913
+    },
+    "done": {
+     "event": "done",
+     "t": 1793075287.6953173
+    },
+    "mutation": {
+     "detected_injected": 20,
+     "distinct_cases": 20,
+     "event": "mutation",
+     "flagged_not_injected": 0,
+     "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+     "injected": 20,
+     "injected_on_already_mismatching_case": 0,
+     "kinds": {
+      "bounded": 6,
+      "dlf": 6,
+      "dx": 2,
+      "rg": 2,
+      "stress": 4
+     },
+     "passed": true,
+     "rng": "random.Random(20261026)"
+    },
+    "start": {
+     "event": "start",
+     "t": 1793074639.235739
+    }
+   }
+  },
+  "finished": {
+   "g11": "2026-10-27T00:28:08-0400",
+   "gti": "2026-10-27T00:41:40-0400",
+   "repro": "2026-10-27T00:18:39-0400",
+   "transfer": "2026-10-27T00:17:17-0400"
+  },
+  "finished_at": "2026-10-27T00:41:40-0400",
+  "mandatory": {
+   "g11": true,
+   "gti": true,
+   "repro": true,
+   "transfer": true
+  },
+  "spent": {
+   "g11": 650,
+   "gti": 1655,
+   "repro": 82,
+   "transfer": 192
+  },
+  "stopped": {},
+  "t0": 1793074445.6708868
+ },
+ "sealed_at": "2026-10-27T00:47:11-0400",
+ "stop_orchestrator": null,
+ "stop_rule_fired": false,
+ "stop_watchdog": null,
+ "study": "BRUTE-0120-BOUNDED-TRANSFER-014"
+}
