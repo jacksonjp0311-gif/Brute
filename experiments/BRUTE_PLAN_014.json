@@ -1,0 +1,349 @@
+{
+ "schema": "brute.registered-plan.v1",
+ "status": "PRE-REGISTERED (frozen at the commit that adds this file; no v0.12.0 learner, license, API, watchdog or reference code, held-out world, seed or run exists at that commit)",
+ "study": "BRUTE-0120-BOUNDED-TRANSFER-014",
+ "version_under_test": "0.12.0",
+ "parent_study": "BRUTE-0110-SOUND-TRANSFER-013",
+ "owner_request": {
+  "recorded_at": "2026-10-26 22:36 EDT (America/New_York), relayed by the coordinating agent",
+  "summary": "Start v0.12.0 right away. Follow NEXT_ITERATION: pre-register BRUTE_PLAN_014 (disagreement-based license, discriminating library experiments, aliasing stress test, brute.certify/2, heartbeat-gap fix), freeze it and push; implement, run the study under the 2 h cap, score it and release with the full discipline. Push after every step; no force-push; never edit frozen files; no GitHub Actions; keep the core API host-agnostic and embeddable. If a push or auth failure happens again, keep working locally and push the backlog later.",
+  "interpretation": "'Disagreement-based license' is realised as the bounded-region license DLF: the library may license a certificate only where EVERY machine within a state bound consistent with the target evidence agrees (the bounded region has no disagreement) AND the library itself is alive and unanimous. A bank-unanimity license (agreement among libraries) was tested on seen data first and Rejected (results/diag-014). The NEXT_ITERATION items map to: DLF (headline), DX (discriminating library experiments), the aliasing stress block (G_alias), brute/api/certify2.py (brute.certify/2, GAPI2) and scripts/watchdog_014.py (G_HB)."
+ },
+ "branch_base": {
+  "requested": "main 9edbc03 (v0.11.0 released, tag v0.11.0 -> d8b449d, plus post-tag docs commits fb76a27, f83c5c2, 9edbc03)",
+  "used": "plan/v0.12.0 = 9edbc03 + d613662 / 440a067 (seen-data diagnostic part a: scripts/diag_license_014.py, results/diag-014/LICENSE_DIAG_SEEN.json, docs/research/BRUTE_DIAG_LICENSE_014.md, ledger diag_license_014) + 59c3560 / 6e8098a (seen-data diagnostic part b: scripts/diag_license_014b.py, results/diag-014/LICENSE_DIAG_SEEN_B.json, docs/research/BRUTE_DIAG_LICENSE_014B.md, ledger diag_license_014b); no learner code. Disclosed as deviation #59 in docs/research/BRUTE_DEVIATIONS_014.md.",
+  "exact": "git merge-base --is-ancestor 9edbc03 <plan commit> holds"
+ },
+ "freeze_rule": "The commit that adds this file must be an ancestor of every v0.12.0 code file (git merge-base --is-ancestor <plan commit> <first commit of file>), in particular of: brute/boundedtransfer.py, brute/api/certify2.py, experiments/v0120_reference.py, experiments/brute_common_014.py, experiments/brute_study_014.py, scripts/check_seeds_014.py, scripts/watchdog_014.py, scripts/run_study_014.py, scripts/run_reference_014.py, scripts/study014_storage.py, scripts/run_tests_0120.py, scripts/make_freeze_014.py, scripts/seal_014.py, scripts/make_gates_014.py, scripts/make_paired_014.py, scripts/make_reproducibility_014.py, scripts/clean_clone_014.py, scripts/verify_release_0120.py and their tests. The license diagnostics (scripts/diag_license_014.py, scripts/diag_license_014b.py, results/diag-014/, docs/research/BRUTE_DIAG_LICENSE_014.md) are analysis code on SEEN data committed BEFORE this plan and are not v0.12.0 learner code. The ledger entry preregistration_014 records the sha256 of this file and of its criteria block; any later change is a deviation_014 entry (docs/research/BRUTE_DEVIATIONS_014.md) and the original text is still reported.",
+ "adopted_files": {
+  "note": "No new adopted files. brute/align.py (SP8), brute/transfer.py (TransferTracker, learn_motifs, expand), brute/region.py (RegionSpace), brute/soundtransfer.py (GatedTransfer AT, lx_choose), brute/api/certify.py (brute.certify/1), experiments/brute_study_013.py (gated_arm, lx_trajectory), experiments/brute_study_012.py (run_case_2x2, library), experiments/worlds_013.py, experiments/v0100_reference.py and experiments/v0110_reference.py are IMPORTED unchanged from their freezes; v0.12.0 code lives in new files."
+ },
+ "frozen_inputs_not_touched": [
+  "every file listed in any experiments/*FREEZE*.json (incl. BRUTE_SOURCE_FREEZE_013 and BRUTE_RELEASE_FREEZE_0110)",
+  "brute/core/*",
+  "every existing brute/ module and every existing brute/api/*.py (imported, never edited)",
+  "experiments/brute_study_0[0-1][0-9].py up to 013, experiments/v0*_reference.py up to v0110, experiments/worlds_0*.py up to 013, experiments/brute_common_0*.py up to 013",
+  "scripts/*_00[0-9].py, scripts/*_01[0-3].py, scripts/run_tests_0[7-9]0.py, scripts/run_tests_0100.py, scripts/run_tests_0110.py, scripts/verify_release_0[1-9]*.py, scripts/verify_release_0100.py, scripts/verify_release_0110.py, tests/test_release_0[1-9]*.py, tests/test_release_0100.py, tests/test_release_0110.py",
+  "experiments/BRUTE_PLAN_00[2-9].json, BRUTE_PLAN_01[0-3].json and their freezes",
+  "results/study-00[1-9]/*, results/study-01[0-3]/*, results/diag-01[1-4]/* (read-only; results/diag-014 is append-only: existing files are never rewritten)",
+  "docs/research/BRUTE_DEVIATIONS_013.md (ledger-hashed; see deviation #58)",
+  "tags v0.2.0 .. v0.11.0",
+  "/workspace/brute-bridge and /workspace/bgr/BGR-v0.90.0 (out of scope, not touched)"
+ ],
+ "pre_freeze_disclosure": {
+  "summary": "Before this commit the author ran two exploratory diagnostics on the SEALED study-013 transfer traces (288 target cases, already scored for v0.11.0; Observed on SEEN data): (a) scripts/diag_license_014.py: bank unanimity over the other families' libraries issues 537 false certificates in 152 cases (Rejected); the bounded-region license with margin 1 (DL1) issues 0 false certificates in the positive, wrong-family and 600-pair aliasing stress settings (AT6: 1,080 false on the same stress pairs) with mean S 11.12; BUT the region-only ablation equals DL1 exactly on the positive arm. (b) scripts/diag_license_014b.py: the LIBRARY-FREE bounded region at the declared family bound (RG4, 4 states) is itself sound (0 false) with mean S 11.16 [9.63, 13.01] over SP8, i.e. most of the DL1 'transfer' speedup needs no library. The pre-registered license DLF therefore contains RG4 by construction and is scored on its TRANSFER VALUE over RG4: seen DLFp - RG4 = 1.94 [1.20, 2.70] (all of it from unaliased2 targets, where the library tightens the bound from 4 to 3 states), DLFn - RG4 = 0.00 [0.00, 0.00], DLF 0 false on all 20,736 stress pairs. Constants frozen here from that reading: margin 1 (DL0 / DLF0 with margin 0 is unsound under stress: 3,216 false), the family bound FB = 4 (the declared family, not a fitted constant). No held-out seed of this plan was generated.",
+  "also_read_before_freeze": [
+   "brute/region.py, brute/transfer.py, brute/soundtransfer.py, brute/api/certify.py, experiments/brute_study_013.py, experiments/v0110_reference.py, scripts/run_study_013.py, scripts/watchdog_013.py, scripts/make_gates_013.py, scripts/make_paired_013.py (frozen v0.11.0 code)",
+   "the v0.11.0 results (GATES_013: GST FAIL; ATp mean S 6.3 PASS GS_d; ATn 3 false certificates in 1 case; LXp no significant speedup; G_RT PASS; heartbeat gaps 334.5 s and 93.8 s)",
+   "results/study-013/HEARTBEAT_013.jsonl (gap analysis in docs/research/BRUTE_DIAG_LICENSE_014.md)"
+  ]
+ },
+ "hypotheses": {
+  "H_rg": "Library-free bounded certification RG4 (certify c after burn-in iff c is in the SP8 support and every complete Moore machine with <= 4 states consistent with the target evidence predicts c) is sound for every in-family target (Exact lemma, given the solver's conservative UNKNOWN) and is significantly faster than SP8 (Inferred: seen mean S 11.16). This is NOT transfer: it shows the SP8 certificate rule is conservative relative to its own declared region.",
+  "H_dlf": "The bounded transfer license DLF (RG4, or: library alive and unanimous on c AND every machine with <= min(n_L + 1, 4) states consistent with the evidence predicts c) adds a significant transfer value over RG4 with the positive library (Inferred: seen 1.94, from the library's state-count bound only) and none with the wrong-family library (Inferred: seen 0.00). Exact: DLF is sound whenever the target has <= min(n_L + 1, 4) states; outside that bound (only n_L = 2 libraries on 4-state targets) soundness is empirical and rests on the library veto (Open, seen 0 false).",
+  "H_dx": "Discriminating library experiments DX (the frozen v0.11.0 LX action choice: split the surviving library hypotheses, else the SP8 lookahead plan) certified by DLF on their own trajectory are sound (Inferred, same license) and faster than DLF on the SP8 trajectory (Open; v0.11.0 LX gave no significant speedup).",
+  "H_alias": "Under aliasing stress (every wrong-family library at every offset), DLF issues 0 false certificates on every pair where the frozen AT6 rule licenses transfer (Inferred: seen 0 vs AT6 1,080).",
+  "H_api": "brute.certify/2 reproduces SP8 without a library and the DLF study decisions with one, and explains every UNKNOWN with a reason from a fixed list (Inferred).",
+  "H_hb": "Removing per-beat fsync and moving the kill deadline to a thread that does no disk I/O keeps the largest heartbeat gap <= 30 s (Open: the 013 gaps' cause is not identified)."
+ },
+ "heldout_ranges_transfer": {
+  "targets": {
+   "cycle3": [
+    7110001,
+    7110024
+   ],
+   "switch3": [
+    7120001,
+    7120024
+   ],
+   "unaliased2": [
+    7130001,
+    7130024
+   ],
+   "ood4": [
+    7140001,
+    7140024
+   ]
+  },
+  "sources": [
+   7150001,
+   7150096
+  ]
+ },
+ "smoke_seeds": {
+  "range": [
+   7190001,
+   7190030
+  ],
+  "rule": "smoke/debug runs of v0.12.0 code may use ONLY seeds 7190001-7190030 or the study-013 smoke seeds 6190001-6190030; held-out seeds are never generated, simulated or inspected before run_start of the held-out run. Sealed data of studies 001-013 may be used for development, never as v0.12.0 evidence.",
+  "layout": {
+   "smoke_transfer_targets": "7190001-7190008 (2 per family in order cycle3, switch3, unaliased2, ood4); target 7190000 + k uses source seed 7190020 + k (positive: same family; negative: rotated family); smoke stress uses every other-family library on sources 7190021-7190028",
+   "api_test_targets": "7190009-7190012 (cycle3, switch3, unaliased2, ood4), mask 0.35; positive libraries from sources 7190021-7190024 of the target family",
+   "kill_drill_targets": "7190013-7190015 (cycle3, switch3, unaliased2), sources 7190025-7190027"
+  }
+ },
+ "heldout_note": "All v0.12.0 ranges (7110001-7190030) are disjoint from every earlier range (all <= 6190030 except the pre-freeze timing seeds 9000001-9000002); scripts/check_seeds_014.py asserts this from the parsed plans 001-013.",
+ "seed_assertion_plan": {
+  "script": "scripts/check_seeds_014.py (committed after this plan and before ANY v0.12.0 run including smoke)",
+  "asserts": [
+   "pairwise disjointness of all v0.12.0 ranges (transfer targets, sources, smoke)",
+   "disjointness from every range in experiments/PLAN.json and experiments/BRUTE_PLAN_0*.json other than this plan (001-013, parsed, not hard-coded) plus 901-903, 1591001-1591384 and 9000001-9000002",
+   "the runner refuses any seed outside the declared range of the requested block; smoke mode refuses any seed outside the smoke ranges"
+  ],
+  "order": "run and ledgered (seedcheck_014) before the first smoke run; tests/test_seeds_014.py repeats the assertions"
+ },
+ "mask_rates": [
+  0.1,
+  0.35,
+  0.6
+ ],
+ "actions_per_case": 44,
+ "burn_in": 8,
+ "family_bound_FB": 4,
+ "license_margin": 1,
+ "tau6": {
+  "value": 1.645215321642,
+  "source": "results/study-006/CALIBRATION_006.json, unchanged"
+ },
+ "tau7": {
+  "value": 2.07944154168,
+  "source": "unchanged; not used by any v0.12.0 arm, kept for the frozen G13 check"
+ },
+ "transfer_definition": {
+  "source_learning": "unchanged v0.10.0 / v0.11.0 (frozen experiments.brute_study_012.library: brute.transfer.learn_motifs on the fully observed source, 60 frozen passive steps; expand with hypothesis_cap 200000). n_L = the library's min_n.",
+  "pairs": "positive: target family f uses the library of source seed 7150000 + 24 x index(f) + offset (same family f; index order cycle3, switch3, unaliased2, ood4). wrong-family control (negative): the same offset from the ROTATED family: cycle3 <- switch3, switch3 <- cycle3, unaliased2 <- ood4, ood4 <- unaliased2 (as study-013).",
+  "cases": "4 families x 24 target seeds x 3 masks = 288 target cases; 96 source worlds",
+  "bounded_supports": "on every recorded trajectory (SP8, DXp, DXn), before acting at step t and for each action b: the projection of the next code after b over every complete Moore machine with <= n states (start state 0) consistent with the evidence so far, brute.region.RegionSpace(n).predict_support(b) (tri-state: UNKNOWN codes count as possible; status != supported -> None), with its unknown count. Recorded for n in {2, 3, 4, 5} on the SP8 trajectory and for n in {4, min(n_L + 1, 4), n_L + 1 if <= 5} on each DX trajectory. Learner-visible (no hidden state).",
+  "RG_arm": "RGn post hoc on a trajectory: at step t for action b, the SP8 certificate if any; else, if t > burn_in, the SP8 published support for b is not None and bounded_support[n][b] == (c,) with c in that support, certify c (rule 'rg'). RG4 (n = FB) is the gated library-free baseline; RG2, RG3, RG5 are reported.",
+  "DLF_arm": "the v0.12.0 bounded transfer license, post hoc on a trajectory with library L (frozen TransferTracker filtered by that trajectory's own observations): the SP8 certificate if any (rule 'sp8'); else if t > burn_in and the SP8 published support S for b is not None: (1) if bounded_support[FB][b] == (c,) with c in S: certify c (rule 'rg'); (2) else if L is alive and predicts the unanimous code c for b, c in S, and bounded_support[min(n_L + margin, FB)][b] == (c,): certify c (rule 'license'); else UNKNOWN. margin = 1. DLF0 (margin 0) is a reported sensitivity arm. Exact: DLF certificates contain RG4 certificates, which contain SP8 certificates.",
+  "AT_arm": "the frozen v0.11.0 AT rule (experiments.brute_study_013.gated_arm mode 'AT', M = 6) on the SP8 trace: a reported control (ATp / ATn) and the stress-pair selector.",
+  "DX_arm": "a new SP8 trajectory on the same target world, seed and mask whose actions are chosen by the frozen v0.11.0 LX rule (experiments.brute_study_013.lx_trajectory imported unchanged: lx-split over the surviving library hypotheses, else lx-plan by the SP8 lookahead value, else the SP8 action); certified post hoc by DLF with the same library on its own trajectory and its own bounded supports. DXp / DXn: positive / wrong-family library.",
+  "stress_block": "aliasing stress: for every target case and every WRONG-family library (3 other families x 24 offsets = 72 libraries, sources 7150001-7150096), AT6 and DLF are run post hoc on the SP8 trace with that library (bounded supports of the SP8 trajectory). A stress pair is a (case, library) pair where AT6 issues >= 1 transfer certificate. Per pair the runner records n_L, AT6 false / transfer counts, DLF false / license / rg counts and DLF0 false.",
+  "speedup": "S(case, X) = T_cert(SP8) - T_cert(X) on the taken action, censored at 45 (T_cert = first step 1..44 whose taken-action certificate is not None, else 45); for DX, T_cert is on the DX trajectory. Transfer value TV(case, X) = S(case, X) - S(case, RG4).",
+  "not_run": "unstructured3 and perm4 are not transfer targets (no shared motif by construction), as in studies 012-013; the 2x2 and big78 blocks are not re-run (no learner they test changed; their v0.11.0 results stand and are cited, not re-claimed)."
+ },
+ "api_definition": {
+  "file": "brute/api/certify2.py (new; brute/api/certify.py and every other brute/api file untouched)",
+  "interface": "Certifier2(library=None, margin=1): library is None or {'hypotheses': H (brute.transfer.expand output), 'min_n': n_L}. .initialize(observation) ; .observe(action, observation) ; .query(action) -> {'api': 'brute.certify/2', 'status': 'CERTIFIED' | 'UNKNOWN', 'answer': int | None, 'support': list | None, 'bounded_support': list | None, 'rule': 'sp8' | 'rg' | 'license' | None, 'reason': None if CERTIFIED else one of REASONS, 'step': int}. REASONS = ('burn-in', 'sp8-support-unavailable', 'region-not-singleton', 'outside-sp8-support', 'library-refuted', 'library-split', 'bounded-region-not-singleton', 'no-library'). The reason is the FIRST failing condition in DLF order. certify2(observations, actions, query_action, library=None) is the stateless wrapper. margin must be 1 (ValueError otherwise; margin 0 is unsound under stress). Family: deterministic Moore, <= 4 states, stationary, 2 actions, 2 bits, attested by the caller. No host, I/O, network, threads, subprocesses or global state.",
+  "gate_test": "tests/test_api_certify2_0120.py: (i) without a library, on the 4 api_test trajectories (smoke seeds 7190009-7190012, mask 0.35) Certifier2 returns CERTIFIED with the same code exactly where RG4 certifies for both actions at every step, and every brute.certify/1 certificate is a Certifier2 certificate; (ii) with the positive smoke library it returns exactly the DLF decision of experiments/brute_study_014 on the same trajectory (status, answer, rule) for both actions at every step; (iii) every UNKNOWN carries a reason in REASONS; (iv) malformed input and margin != 1 raise ValueError; (v) the module imports no host-specific module (AST: no os, subprocess, socket, http, threading, open())."
+ },
+ "watchdog_definition": {
+  "file": "scripts/watchdog_014.py (new; watchdog_013 untouched)",
+  "changes": "(1) heartbeat lines are appended with a plain buffered write and flush, no per-beat fsync; a background thread calls os.fsync on the heartbeat file every 30 s; (2) the deadline/kill logic runs in its own thread that does no disk I/O before the kill (it sleeps on CLOCK_MONOTONIC until RUN_T0 + 7200 s, then SIGTERM / SIGKILL every process group in an in-memory copy of RUN_STATE refreshed by the main thread); (3) every beat records wall, CLOCK_MONOTONIC, CLOCK_BOOTTIME, the process CPU time, and the /proc/pressure/io some/full totals, so a gap can be attributed (descheduled host: BOOTTIME and MONOTONIC both advance, CPU time flat, PSI flat; I/O stall: PSI full total advances). Beat interval 2 s as study-013."
+ },
+ "arms": {
+  "SP8": "frozen brute.align.AlignedSyncLearner (v0.8.0) target trajectory (frozen study-012 case code), the comparator",
+  "RG4": "transfer_definition.RG_arm, n = 4 (gated library-free baseline)",
+  "RG2 / RG3 / RG5": "reported",
+  "DLFp / DLFn": "transfer_definition.DLF_arm, margin 1",
+  "DLF0p / DLF0n": "DLF with margin 0 (reported sensitivity)",
+  "ATp / ATn": "frozen v0.11.0 AT (M = 6), reported control",
+  "DXp / DXn": "transfer_definition.DX_arm"
+ },
+ "arms_by_block": {
+  "transfer": [
+   "SP8",
+   "RG2",
+   "RG3",
+   "RG4",
+   "RG5",
+   "DLFp",
+   "DLFn",
+   "DLF0p",
+   "DLF0n",
+   "ATp",
+   "ATn",
+   "DXp",
+   "DXn",
+   "stress"
+  ]
+ },
+ "metrics": {
+  "false_certificates": "certificate on (step, action) whose code differs from the realized code of that action (counterfactual actions evaluated on the world copy)",
+  "steps_to_cert_transfer": "transfer_definition.speedup",
+  "transfer_value": "transfer_definition.speedup (TV)",
+  "bootstrap": "seed-clustered paired bootstrap as study-013 (scripts/make_paired_009 contrast: 2000 resamples, random seed 20261026, 95% percentile CI); clusters = target seeds (96), each with its 3 masks",
+  "heartbeat_gap": "the largest difference between consecutive heartbeat wall times in HEARTBEAT_014.jsonl from RUN_T0 to the last beat"
+ },
+ "criteria": {
+  "GST2_bounded_transfer": {
+   "gated": true,
+   "threshold": "HEADLINE. PASS iff GS_a (DLFp and DLFn 0 false certificates), GS_c (DLFn no significant transfer value over RG4) and GS_d (DLFp significant transfer value over RG4) all pass.",
+   "prediction": "Inferred: PASS (seen: DLFp TV 1.94 [1.20, 2.70], DLFn TV 0.00, 0 false); the transfer value rests on unaliased2 targets only."
+  },
+  "GS_a_soundness": {
+   "gated": true,
+   "threshold": "RG4, DLFp, DLFn, DXp, DXn: 0 false certificates on all 288 transfer target cases, all steps, every action (taken and counterfactual). Per-arm pass reported; the gate passes iff all five pass.",
+   "prediction": "RG4 and the DLF / DX cases within the bound: Exact PASS (lemma); DLFn / DXn on ood4 targets (n_L = 2 < 4 states): Inferred PASS (seen 0)."
+  },
+  "GS_b_containment": {
+   "gated": true,
+   "threshold": "Exact check on every case: every SP8 certificate is an RG4 certificate with the same code, every RG4 certificate is a DLFp and a DLFn certificate with the same code, every 'rg' or 'license' certificate has the recorded bounded support equal to the singleton of its code, and S(DLF) >= S(RG4) >= 0 on every case.",
+   "prediction": "Exact: PASS."
+  },
+  "GS_c_wrong_family_control": {
+   "gated": true,
+   "threshold": "DLFn: 0 false certificates AND 95% CI lower bound of the mean transfer value TV(DLFn) = S(DLFn) - S(RG4) <= 0 (seed-clustered paired bootstrap).",
+   "prediction": "Inferred: PASS (seen TV 0.00 [0.00, 0.00]; 0 library-licensed certificates)."
+  },
+  "GS_d_transfer_value": {
+   "gated": true,
+   "threshold": "DLFp: mean TV(DLFp) = S(DLFp) - S(RG4) >= 1.0 step AND 95% CI lower bound > 0 (seed-clustered paired bootstrap).",
+   "prediction": "Inferred: PASS (seen 1.94 [1.20, 2.70])."
+  },
+  "GS_rg_bounded_certification": {
+   "gated": true,
+   "threshold": "RG4: 0 false certificates AND mean S(RG4) >= 1.0 step AND 95% CI lower bound > 0 (vs SP8, seed-clustered paired bootstrap). Not a transfer claim.",
+   "prediction": "Inferred: PASS (seen 11.16 [9.63, 13.01]); soundness Exact."
+  },
+  "GS_x_discriminating_experiments": {
+   "gated": true,
+   "threshold": "DXp vs DLFp (same case): mean S(DXp) - S(DLFp) >= 1.0 step AND 95% CI lower bound > 0 (seed-clustered paired bootstrap); DXp, DXn soundness is in GS_a.",
+   "prediction": "Open (v0.11.0 LX: no significant speedup over SP8)."
+  },
+  "G_alias_stress": {
+   "gated": true,
+   "threshold": "stress block: DLF issues 0 false certificates on every stress pair (AT6 licenses >= 1 transfer certificate); at least 20 stress pairs required, else FAIL (UNDERPOWERED). AT6 false certificates on the same pairs and DLF false certificates on ALL pairs reported.",
+   "prediction": "Inferred: PASS (seen 600 stress pairs, DLF 0 false, AT6 1,080 false)."
+  },
+  "GS_ref_reference_audit": {
+   "gated": true,
+   "threshold": "experiments/v0120_reference.py (no brute import; bounded supports by EXHAUSTIVE enumeration of complete transition tables with start state 0 for n = 2..5, as second_implementation) reproduces, on all 288 transfer cases, every recorded bounded support (equal when its unknown count is 0, a superset otherwise), every RG / DLF / DLF0 / AT decision and rule on the SP8 trajectory, every DX action (via the frozen v0110_reference LX audit) and DLF decision on both DX trajectories, every case summary and every per-pair stress count: 0 mismatching cases. Mutation test: 20 injected single-field errors in 20 distinct cases (random.Random(20261026); >= 6 in bounded supports, >= 6 in DLF certificates or rules, >= 4 in stress counts) detected 20/20, 0 flagged not injected. Labelled 'second implementation by the same author'.",
+   "prediction": "Inferred: PASS."
+  },
+  "GAPI2_certify2": {
+   "gated": true,
+   "threshold": "tests.test_api_certify2_0120 (api_definition.gate_test) passes inside the in-cap GTI run (every test id ok) and brute/api/certify2.py is in the source freeze",
+   "prediction": "Inferred: PASS."
+  },
+  "G10_compute": {
+   "gated": true,
+   "threshold": "all 288 transfer cases complete and sealed; every SP8 / DXp / DXn trace has 44 steps; every case has the 72-library stress record; bounded-support queries with unknown > 0 <= 1% (reported per n)",
+   "prediction": "Inferred: PASS."
+  },
+  "G12_reproducibility": {
+   "gated": true,
+   "threshold": "a second run of every transfer case whose run index (0-based, block order) is divisible by 3 (96 cases) to a new path gives byte-identical scientific JSON (timing keys stripped)",
+   "prediction": "Inferred: PASS."
+  },
+  "G13_frozen_controls_reproduce": {
+   "gated": true,
+   "threshold": "SP8, the v0.10.0 / v0.11.0 transfer and LX code, brute.region, the v0100 / v0110 references and every imported study module run frozen code (sha256 checked against every live BRUTE_SOURCE_FREEZE_0xx incl. 013 and the release freezes incl. 0110 via check_freeze before run_start); tau6, tau7 equal this plan; every case records the plan tau6",
+   "prediction": "Inferred: PASS."
+  },
+  "GTI_test_isolation": {
+   "gated": true,
+   "threshold": "scripts/run_tests_0120.py (the run_tests_070 method: every tests/test*.py module in its own fresh interpreter, pinned venv) on the frozen v0.12.0 tree, run INSIDE the cap, writing results/study-014/TEST_SUITE_014.json. PASS iff: (i) every failing or erroring test id is in known_failing_allowed (the 14 study-009 K_frozen ids) or allowed by K_060, K_070, K_080, K_090 (as study-013) or, DECLARED IN ADVANCE, K_0100 = test_release_0100.Release0100.{test_version_consistent, test_short_verify_passes, test_untampered_copy_passes} and K_0110 = test_release_0110.Release0110.{test_version_consistent, test_short_verify_passes, test_untampered_copy_passes}, each allowed only if the same test passes on a clean worktree of its tag (v0.10.0 / v0.11.0) with the same runner, recorded; (ii) the 6 tests of test_study_005 pass; (iii) per-module test count equals the plain `unittest discover -s tests` count and skipped sets agree; (iv) no frozen file changed; (v) every new v0.12.0 test (tests absent from tag v0.11.0) passes, incl. tests.test_api_certify2_0120.",
+   "prediction": "Inferred: PASS."
+  },
+  "G_RT_study_runtime": {
+   "gated": true,
+   "threshold": "PASS iff ALL of: (i) streams transfer, repro, gti and g11 have completed_at <= RUN_T0 + 7200 s and were not stopped; (ii) the watchdog ran for the whole run (heartbeat from <= RUN_T0 + 60 s to >= end - 10 s); (iii) the smoke kill drill latency <= 15 s with no survivors.",
+   "prediction": "Inferred: PASS."
+  },
+  "G_HB_heartbeat_gap": {
+   "gated": true,
+   "threshold": "the largest heartbeat gap from RUN_T0 to the last beat is <= 30 s (metrics.heartbeat_gap). If it fails, the beat records attribute the gap (reported, does not change the verdict).",
+   "prediction": "Open (study-013: 334.5 s and 93.8 s; cause not identified)."
+  }
+ },
+ "retired_gates": {
+  "G1_in_family_soundness, G2_ood_soundness, G3L, G3_prime, GH, G4, G5, G6b, G7, G9, G78_soundness, G78_containment, G11 (2x2)": "retired as carried: the 2x2 and big78 blocks are not re-run because no learner they test changed (J10, J9, SP8, A4, A2, SP8_78 are frozen and imported). Their v0.11.0 results (GATES_013) stand for those frozen learners and are cited, not re-claimed. G11's role moves to GS_ref.",
+  "GST_sound_transfer (013), GS_b_dual_region_subset, GS_d_AT_speedup, GS_e_LX_speedup, GAPI_embeddable_certify": "replaced by GST2, GS_b_containment, GS_d_transfer_value, GS_x and GAPI2; ATp / ATn recomputed and reported (R_AT_v0110)."
+ },
+ "release_gates": {
+  "GCC_clean_clone": "scripts/clean_clone_014.py PASS and tests/test_release_0120 tracked-files test PASS; reported in RELEASE.json",
+  "GLV_long_verify": "verify_release_0120 --long PASS (0 mismatches on the long sample inside 900 s); reported in RELEASE.json"
+ },
+ "non_gated_reports": {
+  "R_rg_family": "RG2, RG3, RG4, RG5: false certificates and S per family (bound sensitivity; RG2 / RG3 are expected unsound on larger targets)",
+  "R_DLF0": "DLF0p / DLF0n false certificates, S, TV (margin-0 sensitivity)",
+  "R_AT_v0110": "ATp / ATn false certificates and S (replication of v0.11.0 on fresh seeds)",
+  "R_DX_vs_SP8": "S(DXp), S(DXn) vs SP8 with CI; DX rule counts",
+  "R_license_counts": "'rg' vs 'license' certificate counts per arm and family; the families where the library adds value",
+  "R_stress_all_pairs": "DLF / DLF0 / AT6 false certificates on all 20,736 pairs and on pairs outside the Exact bound (target states > min(n_L + 1, 4))",
+  "R_heartbeat_attribution": "per gap > 10 s: wall, MONOTONIC, BOOTTIME, CPU and PSI deltas",
+  "R_rates": "stream wall times vs rate math",
+  "R_diag_seen": "the seen-data diagnostic numbers next to the held-out numbers (labelled)",
+  "R_K_after_release": "test_release_0110 / 0120 after the version bump (reported)"
+ },
+ "second_implementation": {
+  "file": "experiments/v0120_reference.py (same author, no brute import, committed before brute/boundedtransfer.py and brute/api/certify2.py)",
+  "method": "Bounded supports by exhaustive enumeration: for n states, every complete transition table d: (state, action) -> state with start state 0 (n^(2n) tables; 5^10 = 9,765,625 for n = 5) is simulated along the recorded actions with numpy; per table the set of codes still allowed at each state is the AND of the observation masks seen there (unvisited states allow all 4 codes); a table is feasible iff no state's set is empty; the projection for action b is the OR over feasible tables of the allowed set at d(current state, b). This equals the RegionK projection (symmetry breaking removes only relabelings; emissions factor per state). Libraries, hypotheses and the library tracker from the frozen v0100_reference / v0110_reference re-implementations (ref_library, ref_hypotheses, RefTracker); RG / DLF / DLF0 / AT decisions, rules and summaries recomputed from the learner-visible trace fields; DX actions via the frozen v0110_reference.ref_lx_audit; stress counts recomputed for all 72 libraries per case. Any differing field is a mismatch.",
+  "checkpoint": "every audited case is appended to a checkpoint; a stop leaves partial evidence"
+ },
+ "samples": {
+  "g11_mandatory": "all 288 transfer cases (bounded supports n = 2..5 on the SP8 trajectory and the recorded bounds on both DX trajectories)",
+  "long_verify": "verify_release_0120 --long: 12 transfer cases (offsets 1 and 2 of each family at masks 0.1 and 0.6, offset 3 at 0.35 ... fixed list written in verify_release_0120 before the release freeze) re-run and compared to the sealed traces; own cap 900 s; 0 mismatching cases",
+  "repro": "every transfer case whose run index (0-based, block order) is divisible by 3",
+  "api_test": "smoke_seeds.layout.api_test_targets"
+ },
+ "power_and_sample": {
+  "transfer": "96 target seeds x 3 masks per library, seed-clustered; S and TV are integer steps censored at 45; seen TV(DLFp) sd is large and concentrated in unaliased2 (seen CI half-width ~0.75 step), so the 1-step threshold has margin ~0.94 step on seen data",
+  "stress": "20,736 pairs; seen 600 stress pairs (threshold 20)"
+ },
+ "stop_rule": {
+  "cap": "2 h 00 min (7200 s) wall clock from RUN_T0 (the epoch written with the run_start_014 ledger entry); smoke, seed check, diagnostic and plan steps are outside the cap",
+  "streams_and_budgets": "MANDATORY at t0: transfer 4 workers 2400 s; gti 2 workers 3600 s. After transfer: repro (index % 3 == 0) 2 workers 1500 s; g11 (reference audit of all 288 cases, then the mutation test) 2 workers 2400 s. At most 8 worker processes at once (watchdog and orchestrator not counted).",
+  "rate_math": "before the source freeze the smoke timings are converted into a projected per-stream wall time (ledger rate_math_014, docs/research/v0.12.0/RATE_MATH_014.md); if a mandatory stream projects above 70% of its budget the budget / worker split may be changed ONCE before the freeze as a disclosed deviation; nothing after run_start.",
+  "projection": "at RUN_T0 + 360 s the orchestrator writes PROGRESS_014.json; reported, nothing changes.",
+  "watchdog": "scripts/watchdog_014.py (watchdog_definition) started (nohup, own session) right after RUN_T0; HEARTBEAT_014.jsonl every 2 s; at RUN_T0 + 7200 s SIGTERM to the orchestrator and every stream process group, SIGKILL after 20 s, STOP_014.json; the orchestrator also enforces the cap itself.",
+  "at_cap": "every unfinished stream is stopped; its checkpoint is sealed as it is; ledger stop_014; NO extension and NO rerun",
+  "scoring": "every gate whose inputs are incomplete at the cap or whose mandatory stream completed after RUN_T0 + 7200 s is FAIL (reason STUDY_BUDGET)"
+ },
+ "clean_clone": {
+  "tracked_files_test": "tests/test_release_0120.py::test_scoring_inputs_tracked and scripts/clean_clone_014.py: every file that make_gates_014, make_paired_014 and make_reproducibility_014 read from results/study-014 is git-tracked, or is a gitignored large JSON whose tracked .json.gz (scripts/study014_storage.py) restores to the sha256 recorded in the block SEAL.",
+  "clean_clone_check": "scripts/clean_clone_014.py exports git archive <release commit>, restores the .gz files and re-runs make_gates_014 --check, make_paired_014 --check and make_reproducibility_014 --check; PASS iff all three reproduce byte-for-byte. Written to results/study-014/CLEAN_CLONE_014.json."
+ },
+ "what_counts_as_failure": [
+  "any gated criterion not meeting its threshold is FAIL and is published as FAIL in GATES_014.json, README, CHANGELOG, RELEASE.json and the release notes with the same wording",
+  "GST2 FAIL means a significant, sound transfer value over the library-free bounded baseline is NOT shown; it is published as the headline result either way",
+  "a smoke or seen-data observation never softens a FAIL",
+  "any gate with inputs incomplete at the cap, or completed after it, is FAIL (stop_rule)",
+  "a missing run_start ledger entry, a seed outside its declared range, a frozen-file hash mismatch, or a smoke run on a non-smoke seed invalidates the affected run (reported, not silently rerun)",
+  "no re-run, re-seed, threshold change or rule-constant change after the held-out run_start; reruns only for an infrastructure crash with identical code and seeds, ledgered as deviation and still inside the cap"
+ ],
+ "process_controls": {
+  "order": [
+   "(0) license diagnostics on seen data committed + ledger diag_license_014 / diag_license_014b (before this plan)",
+   "(1) this plan committed + ledger preregistration_014 + BRUTE_PLAN_FREEZE_014 on branch plan/v0.12.0; pushed",
+   "(2) scripts/check_seeds_014.py + tests committed; run; ledger seedcheck_014",
+   "(3) experiments/v0120_reference.py committed; ledger second_implementation_014",
+   "(4) brute/boundedtransfer.py, brute/api/certify2.py, brute_common_014, brute_study_014, watchdog_014, orchestrator, storage, run_tests_0120 and tests; smoke runs only on smoke seeds incl. the kill drill, each ledgered; rate math ledgered",
+   "(5) source freeze experiments/BRUTE_SOURCE_FREEZE_014.json + ledger source_freeze_014",
+   "(6) scoring scripts committed strictly after (5), unit-tested on a smoke directory, ledgered >= 10 min before run_start",
+   "(7) nohup orchestrator + independent watchdog under the 2 h stop rule",
+   "(8) seal + pack + ledger seal_014",
+   "(9) scoring, GATES_014.json + ledger gates_014",
+   "(10) verify_release_0120 (short and --long) + clean_clone_014 + release freeze BRUTE_RELEASE_FREEZE_0120; README / CHANGELOG / NEXT_ITERATION / HANDOFF; verify on the branch and on a fresh clone; fast-forward main, tag v0.12.0, GitHub release; delete scratch"
+  ],
+  "dependencies": "numpy==2.5.4, python-sat==1.9.dev17 (Python 3.13.5), pyganak==2.8.0, pyapproxmc==4.4.0 (as study-008); every run uses the pinned venv /workspace/bgr/venv",
+  "times": "commit and ledger times are author-set and reported as such (America/New_York)",
+  "push": "push to origin after every step; never force-push; no GitHub Actions; on a push or auth failure keep working locally and push the backlog when access returns (owner rule, 2026-10-26 22:36 EDT)"
+ },
+ "deviation_policy": "after freeze, any change is a ledger 'deviation_014' entry with its reason in docs/research/BRUTE_DEVIATIONS_014.md before the affected run; the original criterion is still reported. Numbering CONTINUES project-wide: study-013 ended at #57 and #58 (the fb76a27 ledger-hashed-file erratum, resolved in f83c5c2 and recorded in BRUTE_DEVIATIONS_013_ADDENDUM.md) is the first number after it, so study-014 deviations start at #59 (#59 = the branch base, see branch_base). Held-out seeds are never used to tune v0.12.0; failed gates are published as failed.",
+ "default_policy_rule": "No auto-promotion: the release default stays the v0.5.0 rule (Y1k, LU-R) regardless of outcome; RG / DLF / DX are research arms, never a default. brute/api/certify2.py is a NEW additive interface; brute.certify/1 and the brute.api handle() contract are unchanged.",
+ "carried_defects": {
+  "v050_tamper": "tests/test_release_050.py::test_tampered_copies_fail and related frozen version checks stay as recorded (Exact; frozen in BRUTE_RELEASE_FREEZE_050); not edited",
+  "test_study_005_order": "as study-013: isolated per process by the GTI runner"
+ },
+ "limitations": [
+  "Synthetic deterministic worlds only.",
+  "The license design comes from seen-data diagnostics (disclosed); held-out seeds were never touched.",
+  "The family bound FB = 4 is a caller attestation: RG4 / DLF soundness is Exact only inside the declared family.",
+  "The measured transfer is a STATE-COUNT prior plus a veto: the library's hypotheses license nothing RG4 would not, except by tightening the state bound (seen: unaliased2 only). Content-level transfer is not shown.",
+  "DLF soundness outside min(n_L + 1, 4) states (n_L = 2 libraries on 4-state targets) is empirical.",
+  "The reference bounded supports are exhaustive for n <= 5; the RegionK solver UNKNOWN case is audited only as a superset.",
+  "The DX lookahead value (SAT) is not re-derived by the reference (as study-013).",
+  "The second implementation and the learners are by the same author.",
+  "Commit and ledger times are author-set."
+ ],
+ "scope_and_open": [
+  "Content-level transfer (the library's hypotheses, not only its size, carrying certifying information): Open",
+  "Learned family selection: Open",
+  "Why SP8's certificate rule is slower than its own bounded region (RG4): Open; a candidate for a future default after its own study",
+  "Noisy / stochastic / real data: Open"
+ ],
+ "brand": "docs keep the existing palette and rules: charcoal/sage; no purple, neon, emoji, mascots or gold",
+ "labels": "Every claim in study-014 documents carries one of Exact / Observed / Simulated / Inferred / Rejected / Open; predictions in this plan are Inferred unless marked otherwise."
+}

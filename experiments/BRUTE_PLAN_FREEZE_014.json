@@ -1,0 +1,11 @@
+{
+ "schema": "brute.plan-freeze.v1",
+ "study": "BRUTE-0120-BOUNDED-TRANSFER-014",
+ "plan": "experiments/BRUTE_PLAN_014.json",
+ "plan_sha256": "f32c48b979de6d53544da1012044c82714948644d9d523d937de03d762ae56f8",
+ "criteria_canonical_json_sha256": "a4498ce932f3d8f5c7817bdd18db06e4dda3b39026fe67d90c0bd3631c183bde",
+ "criteria_hash_method": "sha256 of json.dumps(plan['criteria'], sort_keys=True, separators=(',', ':'), ensure_ascii=False) (same as preregistration_013)",
+ "readable_plan": "docs/research/v0.12.0/PLAN_014.md (the JSON wins if they differ)",
+ "frozen_at": "the commit that adds this file (recorded in the ledger entry preregistration_014)",
+ "note": "no v0.12.0 learner, license, API, watchdog or reference code, held-out world, seed or run exists at this commit; the seen-data license diagnostics (d613662, 59c3560) precede it"
+}
