@@ -1,0 +1,11 @@
+{
+ "schema": "brute.plan-freeze.v1",
+ "study": "BRUTE-0130-REGION-SPLIT-015",
+ "plan": "experiments/BRUTE_PLAN_015.json",
+ "plan_sha256": "3762f365b9413b9d7cf46c9386a566746f77f2882b96881c4ee56dded4fdf31c",
+ "criteria_canonical_json_sha256": "ffa326581c02e525c332ea908948778b74af114d6d09fadfd49d88d31058b3c8",
+ "criteria_hash_method": "sha256 of json.dumps(plan['criteria'], sort_keys=True, separators=(',', ':'), ensure_ascii=False) (same as preregistration_014)",
+ "readable_plan": "docs/research/v0.13.0/PLAN_015.md (the JSON wins if they differ)",
+ "frozen_at": "the commit that adds this file (recorded in the ledger entry preregistration_015)",
+ "note": "no v0.13.0 experiment chooser, bound rule, API, reference code, held-out world, seed or run exists at this commit"
+}
