@@ -1,16 +1,22 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~09:22 EDT (v0.15.0 RELEASED on `main`; v0.16.0 pre-registered on `plan/v0.16.0`)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~11:30 EDT (v0.16.0 scored and release-frozen on `plan/v0.16.0`; fresh-clone verification pending)._
 
 ## Current version and state
 
 <!-- V0160 -->
-- **In progress: v0.16.0** (study BRUTE-0160-NOISY-OBSERVATION-018, branch `plan/v0.16.0` from main `c255873`). **Pre-registered only:** `experiments/BRUTE_PLAN_018.json` (sha256 b6471275…32ecf) + `BRUTE_PLAN_FREEZE_018.json`, commit 9beb459, ledger `preregistration_018` 34901f8. Summary `docs/research/v0.16.0/PLAN_018.md` (the JSON wins). No v0.16.0 code, world, seed or run exists yet.
-  - Breadth choice: noisy observations (iid bit flips eps ∈ {0, 0.01, 0.02}; stress 0.05; attested eps_bar 0.02); larger alphabets deferred to v0.17.0. Headline arm RGN4(m), flip budget m from Bin(B, 0.02) at δ 0.01.
-  - Seeds (Exact, disjoint from all 178 prior ranges): targets 8410001–8410024, 8420001–8420024, 8430001–8430024, 8440001–8440048; smoke 8490001–8490030. 360 main cases at mask 0.35 + 120 stress.
-  - Gates: GNS (headline), GN0, GS_a6, G_recount, GS_ref6, GAPI6, G10, G12, G13, GTI (K_0150, K_096), G_RT, G_HB; release GCC + GLV `--long`.
-  - New stop rules: `g11_rate_projection` (per-cell smoke under concurrency, slowest × 1.75, act pre-freeze if > 0.8 of budget; `scripts/rate_math_018.py` in the freeze) and `operator_wait` (≤ 240 s blocking checks). Deviations numbered from #97.
-  - Next: implement noise model + RGN4 + reference in new files; smoke on 849xxxx only; rate_math_018; source freeze; then one held-out run under the 2 h cap.
+- **Released: v0.16.0** (study BRUTE-0160-NOISY-OBSERVATION-018, branch `plan/v0.16.0` from main `c255873`). **10 of 12 gated pass.**
+  - **NOISE SOUNDNESS (headline GNS): FAIL on clause (c) only.** (a) RGN4 0 false certificates on 240/240 noisy cases, all with realized flips ≤ m (m = 4 on 460 of 480 cases, 5 on 20); (b) one-sided CP95 upper bound of the case-false rate 0.0124 ≤ 0.05; (c) C(RGN4) at eps 0.02 = 0.066 [0.051, 0.081], required mean ≥ 0.10 and CI lower > 0.05. *Observed.*
+  - **FAIL: GN0** (RGN4_0 ≠ RG4 on main/cycle3/8410024/0.0 in 2 slots, steps 6 and 8, both in burn-in where RG4 passes SP8 through; 0 slots differ after burn-in; RGN4 0 false on eps 0). Predicted Inferred FAIL in #97 item 3.
+  - **PASS:** GS_a6, G_recount, GS_ref6 (480/480 audited, 0 mismatching, mutation 20/20), GAPI6 (`brute.certify/6`), G10, G12 (120/120 byte-identical), G13, GTI, G_RT (kill drill 0.226 s), G_HB (442 beats, max gap 2.011 s). Release gates: GLV `--long` 12 cases / 0 mismatching; GCC PASS.
+  - **Reported only:** coverage at eps 0 / 0.01 / 0.02: RG4 0.441 / 0.335 / 0.235, RGN4 0.058 / 0.059 / 0.066, RGN4_or 0.440 / 0.381 / 0.316, SP8 0.147 / 0.107 / 0.075. Case-false at eps 0.01 / 0.02: RG4 and RGN4_0 16 / 24 of 120; RGN4, RGN4_or, SP8 0. Stress eps 0.05 (outside eps_bar): RGN4 9/120, RG4 46/120, RGN4_or 0.
+  - **Run:** run_start 10:37:53 EDT; RUN_DONE after 882 s (cap 7,200 s); no stream stopped; watchdog exited without killing. Rate math projected 984 / 377 / 585 / 1352 s, observed 425 / 164 / 186 / 881 s (transfer / repro / g11 / gti).
+  - **Chain (Exact, git ancestry):** plan `9beb459` (ledger `34901f8`) → seeds `503d61a` → #97 `a74cbaf` → reference `f6ef422` → implementation `f646cca` → process `18885f4` → #98–#99 `6f22051` → smokes `7ec7f08` → source freeze `c350ba5` (ledger `68d0601`) → scoring freeze `5b77da4`/`f9df9bc` → run_start `138cfee` → run_end `012294c` → seal `e86f1df` (`365055e`) → gates `f0f0010` (`ad6b437`) → clean clone `560e177` (`695a1fd`) → tooling `8933d3a`, `c1fc976` (`0b39f05`) → release freeze `b83b1f2` (`fa97faa`) → release record `e5713fa`.
+  - **Deviations:** #97 `docs/research/BRUTE_DEVIATIONS_018.md`; #98–#99 `_ADDENDUM_1`; post-run disclosures #100 (GTI dirty-ledger window, scoring_scripts_commit, REQUIRED_KEYS, kill-drill provenance, rate math; no rescoring) `_ADDENDUM_2`.
+  - **K_0160 (expected, 0.16.0 tree):** v0.17.0 must declare K_0160 (test_release_0160 version / API / RELEASE.json key tests after the bump).
+  - **No CI:** Brute has no `.github` directory and uses no GitHub Actions minutes; add no workflows.
+  - **RELEASE STATUS: verifying** (fresh GitHub clone pending).
+<!-- /V0160 -->
 
 <!-- V0150 -->
 - **Released: v0.15.0** (study BRUTE-0150-BOUNDED-LOOKAHEAD-017, branch `plan/v0.15.0` from main `d1f462b`). **9 of 13 gated pass.**

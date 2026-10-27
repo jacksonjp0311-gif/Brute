@@ -1,6 +1,37 @@
 # Brute changelog
 
 
+## v0.16.0: noisy observations, tolerant bounded region RGN4(m), brute.certify/6 (study BRUTE-0160-NOISY-OBSERVATION-018)
+
+**10 of 12 gated criteria pass. GNS (headline) FAILS on its coverage clause (c) only; GN0 FAILS as predicted before the run.** *Observed*; scoring rules fixed before the data (*Exact*).
+
+### Timeline (author's clock, EDT, 2026-10-27)
+
+- **Pre-registration.** Plan `9beb459` (ledger `34901f8`); seed check `503d61a`; deviations #97 `a74cbaf`; numpy reference `f6ef422`.
+- **Preparation.** Implementation `f646cca`; process scripts (parallel clean-tag GTI, as_completed) `18885f4`; deviations #98–#99 `6f22051`; rate math, kill drill and smokes `7ec7f08`.
+- **Freezes.** Source `c350ba5` (ledger `68d0601`); scoring `5b77da4` / `f9df9bc` (10:27:07–10:27:22 EDT, 631 s before run_start).
+- **Held-out run.** run_start `138cfee`, 10:37:53 EDT, under a 2 h cap; RUN_DONE 10:52:34 EDT after 882 s. No stream stopped; watchdog exited without killing; heartbeat max gap 2.0 s.
+- **After the run.** Run end `012294c`; seal `e86f1df` (ledger `365055e`); GATES_018 `f0f0010` (ledger `ad6b437`); clean clone `560e177` PASS; release tooling `8933d3a`; RELEASE.json fix `c1fc976` (ledger `0b39f05`); release freeze `b83b1f2` (ledger `fa97faa`); release record ledger `e5713fa`. Deviations: #97 `BRUTE_DEVIATIONS_018.md`, #98–#99 `_ADDENDUM_1`, post-run disclosures #100 `_ADDENDUM_2`.
+
+### Code
+
+- `brute/noisyregion.py`: `NoisyRegionSpace(4, m)`, a bounded region that keeps every hypothesis explaining the observations with at most m flipped bits; `m_rule(B, eps_bar, delta)`; the RGN decision rule (region singleton after burn-in 8, no SP8 passthrough).
+- `experiments/brute_study_018.py`: noise model (iid flips of observed bits, eps 0 / 0.01 / 0.02, stress 0.05) and arms SP8, RG4, RGN4, RGN4_0, RGN4_or.
+- `brute/api/certify6.py`: `brute.certify/6` with a probabilistic soundness record (delta 0.01, conditional on flips <= m and n* <= 4).
+- `experiments/v0160_reference.py`: numpy exhaustive second implementation of the tolerant region.
+- Process: `scripts/run_tests_0160.py` (clean-tag release tests in parallel), `scripts/rate_math_018.py`, watchdog, heartbeat sentinel.
+- Release: `scripts/verify_release_0160.py` (short, `--long`), `tests/test_release_0160.py`, `scripts/make_release_freeze_0160.py`.
+
+### Results (*Observed*)
+
+- **Soundness under noise holds.** RGN4 0 false certificates on all 240 noisy main cases; realized flips <= m on 240/240 (m = 4 on 460 of 480 cases, 5 on 20); one-sided CP95 upper bound on the case-false rate 0.0124 (GNS a, b PASS).
+- **Coverage does not (GNS c FAIL).** C(RGN4) at eps 0.02 = 0.066 [0.051, 0.081]; the pre-registered bar was mean >= 0.10 with CI lower > 0.05. C(RGN4) is 0.058 even at eps 0, so the loss comes from the margin m, not from the flips themselves.
+- **The noise-blind baseline is unsound.** RG4 false on 16/120 cases at eps 0.01 and 24/120 at eps 0.02 (0.20 [0.13, 0.27]); RGN4_0 (m = 0) the same. Coverage RG4 0.235 at eps 0.02.
+- **The oracle margin shows the room left.** RGN4_or (m = realized flips) 0 false, C 0.316 at eps 0.02 (reported; a host does not know its flips).
+- **GN0 FAIL (predicted in #97 item 3).** RGN4_0 differs from RG4 on one eps-0 case (main/cycle3/8410024) in 2 burn-in slots where RG4 passes SP8 certificates through; 0 differing slots after burn-in.
+- **Stress eps 0.05 (outside eps_bar, reported).** RGN4 false on 9/120 cases, RG4 46/120, RGN4_or 0.
+- **Audit and process.** GS_ref6 PASS (480/480 audited, 0 mismatches; mutation 20/20); G12 120/120; GTI PASS (10 clean-tag runs in parallel; the run_start ledger line was appended at 10:37:53 and committed at 10:38:15 EDT, and the GTI stream started inside that 22 s window, so TEST_SUITE records a dirty tree, *Observed*, no verdict depends on it); G_RT PASS (kill drill 0.226 s); G_HB PASS. No CI workflows (Brute has no `.github` directory).
+
 ## v0.15.0: bounded-region lookahead RGLX / RGL, deferred-split replication GDS2, attested license DLFa, RSXL5 on ood5, heartbeat sentinel, brute.certify/5 (study BRUTE-0150-BOUNDED-LOOKAHEAD-017)
 
 **9 of 13 gated criteria pass; GRL (headline) PASS; GS_ref5, GTI, G_RT and G_HB FAIL.** *Observed*; scoring rules fixed before the data (*Exact*).
