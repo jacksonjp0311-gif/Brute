@@ -1,8 +1,12 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~01:03 EDT (v0.12.0 RELEASED on main; v0.13.0 pre-registration next on `plan/v0.13.0`)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~01:35 EDT (v0.12.0 RELEASED on main; v0.13.0 PRE-REGISTERED on `plan/v0.13.0`, no code yet)._
 
 ## Current version and state
+
+<!-- V0130 -->
+- **In progress: v0.13.0** (study BRUTE-0130-REGION-SPLIT-015, branch `plan/v0.13.0` from main `8c86587`). **Pre-registered:** `experiments/BRUTE_PLAN_015.json` + `BRUTE_PLAN_FREEZE_015.json` at `9642783` (ledger preregistration_015); readable `docs/research/v0.13.0/PLAN_015.md`. Headline GRS: region-split experiments RSX4 beat RG4 by ≥ 1 step with 0 false (*Open*). Gated soundness of an evidence-derived bound EB (*Open*), own-trajectory recount (fixes #62), `brute.certify/3`, ood5 block reported. Next step: `scripts/check_seeds_015.py` (seeds 8110001–8190030), then `experiments/v0130_reference.py`, then implementation. Deviations start at #64 in `docs/research/BRUTE_DEVIATIONS_015.md`.
+<!-- /V0130 -->
 
 <!-- V0120 -->
 - **Released: v0.12.0** (study BRUTE-0120-BOUNDED-TRANSFER-014, branch `plan/v0.12.0` from main). **15 of 16 gated pass.**
