@@ -1,0 +1,129 @@
+{
+ "blocks": {
+  "repro/main": {
+   "case_count": 120,
+   "complete": true,
+   "expected_case_count": 120,
+   "missing_job_keys": 0,
+   "seal_sha256": "7c74f8fde69f0bb59092b8753c4fb658a56a980ac0d6ff68c629b4d751692b4e"
+  },
+  "transfer": {
+   "case_count": 480,
+   "complete": true,
+   "expected_case_count": 480,
+   "missing_job_keys": 0,
+   "seal_sha256": "58e16936401afbd5cba826b76da1d5a2792dfdb3f63096bb6dd4aa9c720a1aa9"
+  }
+ },
+ "files_sha256": {
+  "HB_SENTINEL_018.jsonl": "b2def94fb20e72622d5ba8a3ff830f885dbc0531979b32d713f3ee6588d53a12",
+  "HB_SENTINEL_018.log": "a2a79648eb66e78be61a7c3696660e2ea96a1d906b2ba7af9c3d61a76e7b0656",
+  "HEARTBEAT_018.jsonl": "aa4dfa66f0cf41ddbf4d6c56d4243344e0626f0fcb3ea679c8342bca1bb83116",
+  "HEARTBEAT_ATTRIBUTION_018.json": "4b632d02d4f7b714b36919e20ad851043c872eb86ec2b532a4f6bc8750583daf",
+  "KILL_DRILL_018.json": "76e2d32685001e81c7590a318bd20a392c1548c4ea3846b3f1e32bbc3b7347a9",
+  "PROGRESS_018.json": "14ab00ac92954bbd134215e0057ced4c2ee758a9964e9bc251956be0401891c9",
+  "PROGRESS_G11_018.json": "ea53dd6c9f4d17cd95c09772279a378a9238dd0784ee8bbbb4e534ef0c316b45",
+  "RUN_018.log": "df2dbf18709e6aa5c891367a79f9d8f5b32dcab2ddaa26afff00c85032a9e282",
+  "RUN_DONE_018.json": "9e048ea586fa8147750b3c2eb1196c386807707fea5dece1a75e3f10f0359015",
+  "RUN_STATE_018.json": "a57db7bcf09f4c73282714682776baa0b94cfa7794373a3b5f9dd6fb90a46e6e",
+  "RUN_T0": "c2a8ade624756f6571e8cbb428454f09aa8c4282c31a2dc3667bc2c5cb87d0f8",
+  "SECOND_IMPLEMENTATION_018.json": "34f35b991736fe1c5493954020ce574af84120490ddc8fd88bb253692825506f",
+  "SECOND_IMPLEMENTATION_018_CHECKPOINT.jsonl": "7c10fd01285b7d4be971603f4c9a632a2b3faee3d4ec94d7090ce09cf356cc9e",
+  "TEST_SUITE_018.json": "16f18baba4ed89f61ff51f1d654d1b69804c62552ce64659e794597d1b7e5c85",
+  "WATCHDOG_018.log": "767937c903a9654ce3918fe60c201cce8cd0a1280f75018fde6a9e0783c6daa4",
+  "logs/g11.log": "ccd31175dbdbd440757eb7fc33acfe251f46e8c6b8bb0b3223bb746f8ca211b4",
+  "logs/gti.log": "3271108c57e05d4fdca4d73f03895a37146b0045f98e8de6adbd0c1967f2718b",
+  "logs/repro.log": "57f29d9713699643a8dbb74082099cfc5536b1d851f417eae840436b4f909478",
+  "logs/transfer.log": "6ac50c7c60cf9a9c0b089aa6ac528c6d0ac207d00649b59e793246e417f832b7",
+  "repro/main/CHECKPOINT.jsonl": "43daed2aabae21a4e76f645fe419e116e6c9a49a0ea76efb6caf90e9568e73f9",
+  "repro/main/RESULTS.json": "91e46b6c42f0ea88dc275b37f244e3c7620cdc7e64ed4a8677c3b2ecb498d139",
+  "repro/main/SCIENTIFIC.json": "fda56a09df3a508962ffa62a5b86c075747de6ab971bfabbc55f33530021d720",
+  "repro/main/SEAL.json": "7c74f8fde69f0bb59092b8753c4fb658a56a980ac0d6ff68c629b4d751692b4e",
+  "transfer/CHECKPOINT.jsonl": "995df4695b256cd0cf38f8582528a58384ef65fa8cd72f65eda675689477c4c9",
+  "transfer/RESULTS.json": "f9979ede1515fe5555797184ec5379b99c3aafa7b5f53c7ad53be70d0c755ce8",
+  "transfer/SCIENTIFIC.json": "889923664a8e13b73de86461eee1e5de5f270ed74c5873720d7b260c57510322",
+  "transfer/SEAL.json": "58e16936401afbd5cba826b76da1d5a2792dfdb3f63096bb6dd4aa9c720a1aa9"
+ },
+ "heartbeat": {
+  "beats": 442,
+  "first_wall": 1793111873.858,
+  "gaps_over_10s": [],
+  "last_wall": 1793112755.859,
+  "max_gap_s": 2.011
+ },
+ "run_done": {
+  "completed_at": {
+   "g11": 1793112484.863428,
+   "gti": 1793112754.9723873,
+   "repro": 1793112462.8390896,
+   "transfer": 1793112298.6300707
+  },
+  "elapsed_s": 882,
+  "events": {
+   "g11": {
+    "audit_done": {
+     "event": "audit_done",
+     "t": 1793112479.0677805
+    },
+    "done": {
+     "event": "done",
+     "t": 1793112484.345677
+    },
+    "mutation": {
+     "detected_injected": 20,
+     "distinct_cases": 20,
+     "event": "mutation",
+     "flagged_not_injected": 0,
+     "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+     "injected": 20,
+     "injected_on_already_mismatching_case": 0,
+     "kinds": {
+      "B": 1,
+      "counts": 2,
+      "flips": 1,
+      "latent": 1,
+      "m": 1,
+      "observed": 2,
+      "rg4_cert": 2,
+      "rgn_cert": 3,
+      "summary": 1,
+      "support": 4,
+      "wrong": 2
+     },
+     "passed": true,
+     "rng": "random.Random(20261029)"
+    },
+    "start": {
+     "event": "start",
+     "t": 1793112299.687782
+    }
+   }
+  },
+  "finished": {
+   "g11": "2026-10-27T10:48:04-0400",
+   "gti": "2026-10-27T10:52:34-0400",
+   "repro": "2026-10-27T10:47:42-0400",
+   "transfer": "2026-10-27T10:44:58-0400"
+  },
+  "finished_at": "2026-10-27T10:52:34-0400",
+  "mandatory": {
+   "g11": true,
+   "gti": true,
+   "repro": true,
+   "transfer": true
+  },
+  "spent": {
+   "g11": 186,
+   "gti": 881,
+   "repro": 164,
+   "transfer": 425
+  },
+  "stopped": {},
+  "t0": 1793111873.0
+ },
+ "sealed_at": "2026-10-27T10:54:38-0400",
+ "stop_orchestrator": null,
+ "stop_rule_fired": false,
+ "stop_watchdog": null,
+ "study": "BRUTE-0160-NOISY-OBSERVATION-018"
+}

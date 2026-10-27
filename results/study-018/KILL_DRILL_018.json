@@ -1,0 +1,46 @@
+{
+ "all_gone_at": "2026-10-27T10:10:36-0400",
+ "cap_s": 15,
+ "deadline": "2026-10-27T10:10:36-0400",
+ "deadline_epoch": 1793110236.0,
+ "fire_delay_monotonic_s": 0.0,
+ "fire_delay_s": 0.0,
+ "fired_at": "2026-10-27T10:10:36-0400",
+ "heartbeat": {
+  "beats": 9,
+  "first_wall": 1793110221.218,
+  "gaps_over_10s": [],
+  "last_wall": 1793110237.218,
+  "max_gap_s": 2.007
+ },
+ "kill_latency_monotonic_s": 0.226,
+ "kill_latency_s": 0.226,
+ "kill_thread_disk_io_before_kill": false,
+ "label": "Observed (block smoke-drill; outside the cap; run while the dry2 smoke GTI stream was also running)",
+ "note": "Observed: the watchdog wrote STOP_018.json at the 15 s cap and stopped the orchestrator and its stream process groups [2006629] within 0.226 s; SIGKILL used: False; survivors []; 4 transfer checkpoint lines intact.",
+ "orchestrator_log": [
+  "[2026-10-27T10:10:21-0400] orchestrator start pid 2006618; cap 600 s, deadline 2026-10-27T10:20:21-0400",
+  "[2026-10-27T10:10:21-0400] transfer: start (4 workers, spent 0 s, budget 1800)"
+ ],
+ "orchestrator_pids": [
+  2006618
+ ],
+ "partial_checkpoint": {
+  "all_lines_parse": true,
+  "case_lines": 4
+ },
+ "process_groups": [
+  2006629
+ ],
+ "schema": "brute.kill-drill.v2",
+ "setup": "SMOKE=1 SKIP_GTI=1 BRUTE_SMOKE_DRILL=1, orchestrator CAP_S=600 (so the watchdog, not the orchestrator, fires), watchdog_018 --dir /tmp/s18/drill --cap 15",
+ "sigkill_used": false,
+ "study": "BRUTE-0160-NOISY-OBSERVATION-018",
+ "survivors": [],
+ "t0": 1793110221.0,
+ "watchdog_log": [
+  "[2026-10-27T10:10:21-0400] watchdog_018 start pid 2006616; deadline 2026-10-27T10:10:36-0400 (cap 15 s)",
+  "[2026-10-27T10:10:36-0400] STOP_018.json written: latency 0.226 s, survivors []",
+  "[2026-10-27T10:10:37-0400] kill done; gaps>10s []"
+ ]
+}
