@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~03:30 EDT (v0.13.0 RELEASED on main)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~03:35 EDT (v0.13.0 RELEASED on main; README soundness claims narrowed after v0.13.0; v0.14.0 pre-registered on `plan/v0.14.0`)._
 
 ## Current version and state
 
@@ -14,7 +14,7 @@ _Kept current on the working branch during a release and on `main` at release. L
   - **Chain (Exact, git ancestry):** plan `9642783` (ledger `61584ee`; HANDOFF `c6bfcb3`, recorded as `preregistration_commit` in RELEASE.json) → seeds `f6fbb92` → reference `f95a176`/`305b739` → implementation `6815770`/`3cd15e4`/`0f95f92`/`744969b` → make_freeze `069cbca` → source freeze `f67bcaf` (ledger `1c144d1`) → scoring `58e42fd` (ledger `31edbe0`, 02:09:54 EDT) → run_start `6406522` → run end `eb2f7d2` → seal `f1668a7` → GATES `c21b405` → tooling `e25943f` → release freeze `9e785b1` → clean clone `8e6923c`.
   - **Deviations #64–#73:** `docs/research/BRUTE_DEVIATIONS_015.md`; **#74:** `docs/research/BRUTE_DEVIATIONS_015_ADDENDUM.md` (TEST_SUITE `tracked_tree_dirty=true`, cause Open).
   - **K_0120 (Observed, 0.13.0 tree):** tests.test_release_0120 4 of 7 fail (version, embeddable API answers, short verify, untampered copy). v0.14.0 must declare K_0120 and K_0130.
-  - **RELEASED 2026-10-27 ~03:30 EDT:** release commit `d1f6c71`. On the branch and on a fresh GitHub clone of `d1f6c71`, `verify_release_0130` passed both short and `--long` (GLV: 15 cases, 0 mismatches, 170 s), and `tests.test_release_0130` passed 7/7 (100 s). main was fast-forwarded to `d1f6c71` with no force. Annotated tag `v0.13.0` (tag object `2ee29f7`) points to `d1f6c71`. GitHub release: https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.13.0
+  - **RELEASED 2026-10-27 ~03:18 EDT:** release commit `d1f6c71`. On the branch and on a fresh GitHub clone of `d1f6c71`, `verify_release_0130` passed both short and `--long` (GLV: 15 cases, 0 mismatches, 170 s), and `tests.test_release_0130` passed 7/7 (100 s). main was fast-forwarded to `d1f6c71` with no force. Annotated tag `v0.13.0` (tag object `2ee29f7`) points to `d1f6c71`. GitHub release: https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.13.0
   - **Next: v0.14.0 per `NEXT_ITERATION.md`** (deferred region split RSXL, DLF license replication, ood5 bound-violation signal).
 <!-- /V0130 -->
 
