@@ -59,9 +59,10 @@ def certify7(initial,actions,observations,planned_observed_bits,num_actions=2,ep
     if seen>B:raise ValueError('more observed bits than planned_observed_bits')
     bd=boundary(B,eps_bar,delta);R=SeqMarginRegionSpace(FB,bd,k);S=[];U=[];C=[];M=[]
     try:
-        R.initialize(init)
+        R.initialize(init);rd=[init]+obs
         for t in range(1,len(acts)+2):
-            row=supports_k(R,k);S.append([s for s,_ in row]);U.append([u for _,u in row]);M.append(R.m_bound)
+            # the bound in force after readings 0..t-1 (a contradicted space stops rebuilding, so R.m_bound can be stale)
+            row=supports_k(R,k);S.append([s for s,_ in row]);U.append([u for _,u in row]);M.append(bd[sum(b is not None for o in rd[:t] for b in o)])
             C.append([rgnb_decide(t,burn_in,s) for s,_ in row])
             if t<=len(acts):R.observe(acts[t-1],obs[t-1])
         status=R.status

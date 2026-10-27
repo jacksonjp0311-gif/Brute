@@ -44,5 +44,15 @@ class Study0170(unittest.TestCase):
             _,c=run_job(job,plan);ok,msg=REF.audit_case(c,plan);self.assertTrue(ok,msg)
         self.assertEqual(c['summary']['coverage'].keys(),{'RG4_3','RGN4_3','RGNB4_3'})
 
+    def test_bound_after_contradiction(self):
+        # deviation #102: smoke stress case 8590002 cycle3 eps 0.05 is contradicted at step 43; the recorded bound is the plan bound
+        from brute.api.certify7 import certify7
+        _,c=run_job(('smoke-transfer','cycle3',8590002,0.05),load(PLAN));T=len(c['noisy']['RGNB4']['m'])
+        bits=c['prefix_bits'];self.assertEqual(c['noisy']['RGNB4']['m'],[c['boundary'][bits[i]] for i in range(T)])
+        self.assertIsNone(c['noisy']['RGNB4']['support'][-1][0])
+        tr=c['arms']['SP8']['trace'];r=certify7(tuple(c['initial_visible']),[x['action'] for x in tr],[tuple(x['observed']) for x in tr],c['B'])
+        self.assertEqual(r['m'][:-1],c['noisy']['RGNB4']['m']);self.assertEqual(r['status'],'grammar_contradicted')
+        self.assertEqual(r['supports'][:-1],c['noisy']['RGNB4']['support'])
+
 
 if __name__=='__main__':unittest.main()

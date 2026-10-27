@@ -61,6 +61,18 @@ def prefix_data(readings,F):
     return bits,flips,seq
 
 
+def plan_bound(r,bd,bits,T):
+    """Deviation #102: the bound in force at step i is bd[bits[i]] (plan sequential_margin). The region space reports
+    m_bound only when it rebuilds; after a contradicted or budget-exhausted build it no longer rebuilds (sticky, #101) and
+    its m_bound goes stale. Checked equal on every step whose space was still live; the plan bound is what is recorded.
+    Contradicted / exhausted steps certify nothing, so no certificate depends on the recorded value."""
+    want=[bd[bits[i]] for i in range(T)];live=True
+    for i in range(T):
+        if live:check(r['m'][i]==want[i],'per-step bound at a live step')
+        live=live and r['status'][i]=='supported'
+    return want
+
+
 def cert_arm(steps,truth,sup,m,burn,k):
     """steps: [(t, a)]; RGN-rule certificates (singleton after burn-in), k actions."""
     out={'m':m,'trace':[]};first=CENSOR;false=0
@@ -116,8 +128,7 @@ def run_case(seed,family,eps,plan,block='main'):
     t1=perf_counter();r=noisy_supports(init,acts,obs,FB,m);noisy['RGN4']={'m':m,'support':r['support'],'unknown':r['unknown'],'shared_with':None}
     wall['RGN4']=perf_counter()-t1
     t1=perf_counter();r=seqmargin_supports(init,acts,obs,FB,bd)
-    check(r['m']==[bd[bits[i]] for i in range(T_)],'RGNB4 per-step bound')
-    noisy['RGNB4']={'m':r['m'],'support':r['support'],'unknown':r['unknown'],'shared_with':None};wall['RGNB4']=perf_counter()-t1
+    noisy['RGNB4']={'m':plan_bound(r,bd,bits,T_),'support':r['support'],'unknown':r['unknown'],'shared_with':None};wall['RGNB4']=perf_counter()-t1
     t1=perf_counter();r=noisy_supports(init,acts,obs,FB,0)
     noisy['RGNB4_0']={'m':[0]*T_,'support':r['support'],'unknown':r['unknown'],'shared_with':None};wall['RGNB4_0']=perf_counter()-t1
     share='RGN4' if flips==m else 'RGNB4_0' if flips==0 else None;t1=perf_counter()
@@ -187,8 +198,8 @@ def run_case3(seed,family,eps,plan,block='alphabet3'):
     wall['RG4_3']=perf_counter()-t1
     t1=perf_counter();r=rgn3_supports(init,acts,obs,m,N);R['RGN4_3']={'m':m,'support':r['support'],'unknown':r['unknown'],'shared_with':None}
     wall['RGN4_3']=perf_counter()-t1
-    t1=perf_counter();r=rgnb3_supports(init,acts,obs,bd,N);check(r['m']==[bd[bits[i]] for i in range(len(acts))],'RGNB4_3 per-step bound')
-    R['RGNB4_3']={'m':r['m'],'support':r['support'],'unknown':r['unknown'],'shared_with':None};wall['RGNB4_3']=perf_counter()-t1
+    t1=perf_counter();r=rgnb3_supports(init,acts,obs,bd,N);mb=plan_bound(r,bd,bits,len(acts))
+    R['RGNB4_3']={'m':mb,'support':r['support'],'unknown':r['unknown'],'shared_with':None};wall['RGNB4_3']=perf_counter()-t1
     c['regions']=R;c['region_wall_informational']=wall;st=[(i+1,a) for i,a in enumerate(acts)]
     T={arm:cert_arm(st,truth,R[arm]['support'],R[arm]['m'],burn,K3) for arm in A3_ARMS}
     c['certifiers']=T;c['summary']=summary(T,A3_ARMS,SLOTS3)
