@@ -8,7 +8,7 @@ stream budget with the time already spent (RUN_STATE_017.json).
 
 Streams (plan stop_rule.streams_and_budgets; at most 8 worker processes at once):
   MANDATORY at t0:     transfer (360 main + 72 ood5) 4w 3000 s | gti 2w 3600 s
-  after transfer:      repro 2w 1500 s (every run index % 3 == 0) | g11 4w 2400 s (deviation #76; reference audit of all 432 cases,
+  after transfer:      repro 2w 1500 s (every run index % 3 == 0) | g11 6w 2400 s (deviation #92; starts after repro; reference audit of all 432 cases,
                        then the mutation test on main cases; scripts/run_reference_017.py)
 Stops: at RUN_T0 + 7200 s the orchestrator stops every running stream (SIGTERM, SIGKILL after 10 s), seals each
 checkpoint as it is (--seal-partial / --summarize-only; never a new case) and writes STOP_017_ORCHESTRATOR.json (the
@@ -31,7 +31,7 @@ CAP=7200
 MAX_WORKERS=8
 GRACE=10
 PROGRESS_AT=360
-G11_WORKERS=4   # deviation #76 (plan stop_rule says 2; RATE_MATH_017): after transfer 2 (gti) + 2 (repro) + 4 (g11) = 8 = MAX_WORKERS
+G11_WORKERS=6   # deviation #92 (plan stop_rule says 2; RATE_MATH_017): g11 starts once 6 workers are free, i.e. after repro: 2 (gti) + 6 (g11) = 8 = MAX_WORKERS
 SM=['--smoke'] if os.environ.get('SMOKE') else []
 if SM and os.environ.get('CAP_S'):CAP=int(os.environ['CAP_S'])
 DRY_BUDGET=int(os.environ['BUDGET_S']) if SM and os.environ.get('BUDGET_S') else None

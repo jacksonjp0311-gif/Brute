@@ -92,8 +92,8 @@ class Orchestrator017(unittest.TestCase):
         T={t['name']:(t['workers'],t['budget'],t['deps']) for t in RS.tasks()}
         self.assertEqual(T,{'transfer':(4,3000,[]),'gti':(2,3600,[]),'repro':(2,1500,['transfer']),'g11':(4,2400,['transfer'])})
         self.assertEqual((RS.CAP,RS.MAX_WORKERS),(7200,8))
-        self.assertEqual(RS.G11_WORKERS,4)   # deviation #76
-        self.assertLessEqual(2+2+RS.G11_WORKERS,RS.MAX_WORKERS)
+        self.assertEqual(RS.G11_WORKERS,6)   # deviation #92
+        self.assertLessEqual(2+RS.G11_WORKERS,RS.MAX_WORKERS);self.assertGreater(2+2+RS.G11_WORKERS,RS.MAX_WORKERS)   # g11 waits for repro
 
 
 if __name__=='__main__':unittest.main()
