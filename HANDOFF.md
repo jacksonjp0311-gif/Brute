@@ -1,11 +1,19 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~05:45 EDT (v0.14.0 released on main; v0.15.0 next)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~05:45 EDT (v0.14.0 released on main; v0.15.0 pre-registered on `plan/v0.15.0`)._
 
 ## Current version and state
 
+<!-- V0150 -->
+- **In progress: v0.15.0** (study BRUTE-0150-BOUNDED-LOOKAHEAD-017, branch `plan/v0.15.0` from main `d1f462b`).
+  - **Pre-registered:** `experiments/BRUTE_PLAN_017.json` + `BRUTE_PLAN_FREEZE_017.json` (plan sha256 `ebe52bbb…`), readable `docs/research/v0.15.0/PLAN_017.md`; commit `908fe9b`, ledger `preregistration_017` `c0a793d`.
+  - **Headline GRL:** RGLX4 (lookahead on the RG4 region before the first certificate, RSX after; certified by RG4): 0 false AND TV over RG4 >= 1.0 step, CI lower > 0. Prediction Open. **GDS2:** RSXL4 dC >= 0.03, CI lower > 0 (replication). Others: GS_a5, GS_b5 (incl. DLFa = RG4, Exact), G_recount, GS_ref5, GAPI5 (`brute.certify/5`), G10, G12, G13, GTI (declare K_0130 and K_0140), G_RT, G_HB (<= 30 s).
+  - **Seeds:** targets 8310001–8340048, sources 8350001–8350096, ood5 8360001–8360024, smoke 8390001–8390030. Deviations start at #86.
+  - **Next steps:** seed commit → `experiments/v0150_reference.py` → `brute/boundedlookahead.py`, `brute/api/certify5.py` + tests → smokes and rate math → source freeze → scoring freeze (>= 600 s before run_start) → run under the 2 h cap with watchdog → score → seal → release. Wait on live background shells, not idle sleeps (#80).
+<!-- /V0150 -->
+
 <!-- V0140 -->
-- **Released: v0.14.0** (study BRUTE-0140-DEFERRED-SPLIT-016, branch `plan/v0.14.0` from main `ffa045b`). **11 of 14 gated pass.**
+- **Released: v0.14.0** (tag `v0.14.0` → `36d8488`; https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.14.0) (study BRUTE-0140-DEFERRED-SPLIT-016, branch `plan/v0.14.0` from main `ffa045b`). **11 of 14 gated pass.**
   - **DEFERRED SPLIT (headline GDS): PASS.** RSXL4 0 false in 14,491 (clause i); S(RSXL4) = S(RG4) on 360/360 cases, 13.69 [12.61, 14.74] (clause ii, Exact by construction and confirmed); dC = C(RSXL4) − C(RG4) +0.049 [0.041, 0.057] (clauses iii/iv); 224 cases up, 65 down, 71 equal. Per family: switch3 0.081, cycle3 0.058, ood4 0.038, unaliased2 0.030.
   - **FAIL: GS_a4** (DLFn 2 false, RSXLn 2 false, both ood4 seed 8240010 mask 0.6, true n 4, libraries (unaliased2, min_n 2) and (ood4, 4); RG4/RG5/RSXL4/RSXLp/DLFp/DLF2p/DLF2n/RSX4 0), **GS_c4** (clauses i/ii; iii passes, DLFn − RG4 0.017 [0, 0.05]), **G_HB** (one 285.065 s gap, 04:41:38–04:46:23 EDT; d_monotonic = d_boottime, watchdog CPU +0.001 s, no file written; Inferred whole-box pause; addendum #80).
   - **PASS:** G_recount, GS_b4 (432/432), G_alias4_stress (984 pairs; AT6 2,736 false, RSXL 0), GS_ref4 (432/432, mutation 20/20), GAPI4 (4/4), G10, G12 (144/144), G13, GTI (533 = 533 tests; failures only K_060–K_0120), G_RT (kill drill 0.223 s). Release gates: GLV `--long` 18 cases, 0 mismatches, 217 s of 900 s; GCC PASS.

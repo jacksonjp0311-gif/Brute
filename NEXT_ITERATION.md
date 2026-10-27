@@ -1,4 +1,4 @@
-# Brute v0.14.0 → v0.15.0: next iteration (proposal; to be pre-registered as BRUTE_PLAN_017 on `plan/v0.15.0`)
+# Brute v0.14.0 → v0.15.0: next iteration (pre-registered as BRUTE_PLAN_017 on `plan/v0.15.0`, commit `908fe9b`)
 
 The previous note is in `docs/research/v0.14.0/NEXT_ITERATION_FROM_v0.13.0.md`. Labels are as in the README. Nothing here counts as evidence until it runs on fresh seeds. The longer path is in `docs/ROADMAP_TO_GI.md`.
 
@@ -9,7 +9,9 @@ The previous note is in `docs/research/v0.14.0/NEXT_ITERATION_FROM_v0.13.0.md`. 
 - **A 4-state bound on a 5-state world is unsound** (RG4 155 false on ood5); RG5 is sound but slow.
 - **One 285 s whole-box pause failed G_HB.** No stream was affected.
 
-## Recommendation for v0.15.0 (Inferred)
+> **Superseded headline (Exact; deviation #85).** The attested-license headline proposed below would certify exactly what RG_FB certifies: a license kept inside the attested bound never certifies more than RG_FB (*Observed* consistent: DLF2 = RG4 on all 360 cases). BRUTE_PLAN_017 instead gates a **bounded-region lookahead chooser** (RGLX4: GRL, TV ≥ 1.0 step, CI lower > 0, 0 false) and a **deferred-split replication** (GDS2). The attested license stays in as a reported equality check. See `docs/research/v0.15.0/PLAN_017.md`.
+
+## Recommendation for v0.15.0 (Inferred; headline superseded, see above)
 
 1. **Bound-attested license (headline).** License a library answer only when the library's bound n_L + 1 is at least the caller-attested family bound FB; otherwise certify with RG4. Inside the attestation this is sound (*Exact* lemma). The gate checks 0 false on every wrong-family arm and on all stress pairs, on fresh seeds with ood4 doubled, and reports the speed it gives up (expected on unaliased2 targets, where DLFp's gain lived).
 2. **Replicate GDS on fresh seeds** with the bound-attested license on the deferred-split trajectory (RSXLa): dC ≥ 0.03 over RG4, CI lower > 0, 0 false.
