@@ -1,0 +1,131 @@
+{
+ "blocks": {
+  "repro/transfer": {
+   "case_count": 144,
+   "complete": true,
+   "expected_case_count": 144,
+   "missing_job_keys": 0,
+   "seal_sha256": "71a4ec9ada740b50a71bdf77f3d984d6446d0308645ed35ce94dc08d8a36dcb8"
+  },
+  "transfer": {
+   "case_count": 432,
+   "complete": true,
+   "expected_case_count": 432,
+   "missing_job_keys": 0,
+   "seal_sha256": "af63a9cdd52c6bd0f5850edb98b3f944454bd0bf5806424be74339d94a9738c9"
+  }
+ },
+ "files_sha256": {
+  "HEARTBEAT_016.jsonl": "c2cc74d98dc5656da8bd6ef7eeb022135f659e691be444f5137b11e72c9d15ab",
+  "KILL_DRILL_016.json": "4faf6d427c9e640d0c33a2baeaef2a6d7f2885f71a406eff012622a4d4748c40",
+  "PROGRESS_016.json": "af5b330d5dead1be8e56e856cf71a62614279fb0c8abd589b9b776efda10621a",
+  "RUN_016.log": "3881d69a7a5c35f3aeba02d266cb62356031c7b807180893b23f0e9015bb492f",
+  "RUN_DONE_016.json": "374fa85f2a8ba9e8148cfc47ddfb50af7352951420839317617045e4561ff4f5",
+  "RUN_STATE_016.json": "8d8761b6f976de1f9e036637dc2918a3aa29aee9a906189cdcf7ac102c631e36",
+  "RUN_T0": "033f44a7805cd248e55ab52d03cbfb64ecad60dc364de9d44207058483ad810b",
+  "SECOND_IMPLEMENTATION_016.json": "bc7ba7bdae3ed1eb735a48991752834d942286a52e5c850eb52653d6d8e00285",
+  "SECOND_IMPLEMENTATION_016_CHECKPOINT.jsonl": "b0b0554ecb8e0ea118d30fce826819be7a2ab6eac220bfefdb189a8003dd874d",
+  "TEST_SUITE_016.json": "0e5ba45ffd550dd7607d9a693a2451fd853701f10d7ba7709f74e39a134f88b0",
+  "WATCHDOG_016.log": "b7feb7fdf34f9abfdd59fae333957ec3b26f5ab8cb6cc005fbeded6fb63847ed",
+  "logs/g11.log": "780042faeac0473b51084c9d14ba58e2078b88b0a926bee503cf9e74a00a5338",
+  "logs/gti.log": "2c6b45253f3c1a2bba29e5c0a8292e4a2cecfd22871ec18e7fa5058632c91dab",
+  "logs/repro.log": "b62ec30fdd06dd20f3d0f855ef8c784db44a3fcced1cd42f9b2f182836514a86",
+  "logs/transfer.log": "549b35ce3f19da881dfdbda0830ad9c79278df134338213c4c4f633b322a2025",
+  "repro/transfer/CHECKPOINT.jsonl": "d850bc4b0d9c4674e1229b441c2ada7a95841580754405f66bae077c3e6113f1",
+  "repro/transfer/RESULTS.json": "e2f3b59506c76808818240a25fe65784b1495c2d98e5e3619280c982f688b1d9",
+  "repro/transfer/SCIENTIFIC.json": "1bb556493b49829c548c93e75d1bcc17f585f4f137597fc521b172eff5a758c1",
+  "repro/transfer/SEAL.json": "71a4ec9ada740b50a71bdf77f3d984d6446d0308645ed35ce94dc08d8a36dcb8",
+  "transfer/CHECKPOINT.jsonl": "11716b45582e43e9a0e14592f6dea868ddc945a52dff447e179f5b9f2062c7b7",
+  "transfer/RESULTS.json": "78c47665c96ec158a160e847afb314a71ab121bd85e8df20af34a8479e7ee456",
+  "transfer/SCIENTIFIC.json": "9186601e498c72d91ec3f3bf71ae243507c850c96c2aeae76ef87e98274f5594",
+  "transfer/SEAL.json": "af63a9cdd52c6bd0f5850edb98b3f944454bd0bf5806424be74339d94a9738c9"
+ },
+ "heartbeat": {
+  "beats": 1023,
+  "first_wall": 1793090042.837,
+  "gaps_over_10s": [
+   {
+    "boottime": 226980.476,
+    "cpu_s": 0.1731,
+    "gap_s": 285.065,
+    "monotonic": 226980.476,
+    "psi_io_full_us": 399369407,
+    "psi_io_some_us": 432708195,
+    "wall": 1793090783.902
+   }
+  ],
+  "last_wall": 1793092369.902,
+  "max_gap_s": 285.065
+ },
+ "run_done": {
+  "completed_at": {
+   "g11": 1793092042.556228,
+   "gti": 1793092368.69392,
+   "repro": 1793090421.3787374,
+   "transfer": 1793090305.158844
+  },
+  "elapsed_s": 2326,
+  "events": {
+   "g11": {
+    "audit_done": {
+     "event": "audit_done",
+     "t": 1793091976.5999873
+    },
+    "done": {
+     "event": "done",
+     "t": 1793092039.4936166
+    },
+    "mutation": {
+     "detected_injected": 20,
+     "distinct_cases": 20,
+     "event": "mutation",
+     "flagged_not_injected": 0,
+     "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+     "injected": 20,
+     "injected_on_already_mismatching_case": 0,
+     "kinds": {
+      "bounded": 5,
+      "dlf": 3,
+      "dlf2": 2,
+      "eb": 1,
+      "rg": 2,
+      "rsxl": 4,
+      "stress": 3
+     },
+     "passed": true,
+     "rng": "random.Random(20261028)"
+    },
+    "start": {
+     "event": "start",
+     "t": 1793090307.4222965
+    }
+   }
+  },
+  "finished": {
+   "g11": "2026-10-27T05:07:22-0400",
+   "gti": "2026-10-27T05:12:48-0400",
+   "repro": "2026-10-27T04:40:21-0400",
+   "transfer": "2026-10-27T04:38:25-0400"
+  },
+  "finished_at": "2026-10-27T05:12:48-0400",
+  "mandatory": {
+   "g11": true,
+   "gti": true,
+   "repro": true,
+   "transfer": true
+  },
+  "spent": {
+   "g11": 1737,
+   "gti": 2326,
+   "repro": 118,
+   "transfer": 262
+  },
+  "stopped": {},
+  "t0": 1793090042.8013806
+ },
+ "sealed_at": "2026-10-27T05:13:30-0400",
+ "stop_orchestrator": null,
+ "stop_rule_fired": false,
+ "stop_watchdog": null,
+ "study": "BRUTE-0140-DEFERRED-SPLIT-016"
+}
