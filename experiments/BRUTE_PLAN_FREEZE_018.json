@@ -1,0 +1,11 @@
+{
+ "schema": "brute.plan-freeze.v1",
+ "study": "BRUTE-0160-NOISY-OBSERVATION-018",
+ "plan": "experiments/BRUTE_PLAN_018.json",
+ "plan_sha256": "b6471275f8acebf2a081f85c3eddbc0bc884b41eb58c9b8588aad9b5b8632ecf",
+ "criteria_canonical_json_sha256": "195521340c1d3df9ddd76d550c8e0ec441c0185501bca15b705befd872fb91ff",
+ "criteria_hash_method": "sha256 of json.dumps(plan['criteria'], sort_keys=True, separators=(',', ':'), ensure_ascii=False) (same as preregistration_017)",
+ "readable_plan": "docs/research/v0.16.0/PLAN_018.md (the JSON wins if they differ)",
+ "frozen_at": "the commit that adds this file (recorded in the ledger entry preregistration_018)",
+ "note": "no v0.16.0 noise model, tolerant region, API, reference code, held-out world, seed or run exists at this commit"
+}
