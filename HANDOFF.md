@@ -1,6 +1,6 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~05:40 EDT (v0.14.0 released on main; v0.15.0 next)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~05:45 EDT (v0.14.0 released on main; v0.15.0 next)._
 
 ## Current version and state
 
@@ -15,7 +15,8 @@ _Kept current on the working branch during a release and on `main` at release. L
   - **Chain (Exact, git ancestry):** plan `498d768` (ledger `4b87380`) → seeds `35b9840` → diagnosis `afb89a9` → reference `ac717c4` → implementation `97f9800`/`62bea00` → smokes `75d57d4` → source freeze `c7ed80e` (ledger `ecad32d`) → scoring `0e9113c` (ledger `cc8525d`/`32ebaba`) → run_start `65d2fb5` → run end `83c2116` → seal `6a82c35` (ledger `da091a2`) → GATES `cc10159` (ledger `ba8fedf`) → tooling `cce6642` → release freeze `ece2474` → RELEASE.json receipt `3109ad4` → addendum `35bca5a` → clean clone `0d29822`.
   - **Deviations #75–#79:** `docs/research/BRUTE_DEVIATIONS_016.md`; **#80–#83:** `docs/research/BRUTE_DEVIATIONS_016_ADDENDUM.md`.
   - **K_0130 (Observed, 0.14.0 tree):** tests.test_release_0130 4 of 7 fail (version, embeddable API answers, short verify, untampered copy). v0.15.0 must declare K_0130 and K_0140.
-  - **RELEASE: pending fresh-clone verification.**
+  - **Deviations #84–#85:** `docs/research/BRUTE_DEVIATIONS_016_ADDENDUM_2.md` (#84 corrects the G_HB threshold quoted in #80 to <= 30 s; verdict unchanged).
+  - **RELEASED.** Release commit `36d8488` (tag `v0.14.0`). Fresh GitHub clone at `36d8488` (Observed 05:28–05:36 EDT): storage restore 004–016 OK, `verify_release_0140` short rc 0, `--long` rc 0, `tests.test_release_0140` 7/7 OK. main fast-forwarded (no force). Release: https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.14.0. Next: v0.15.0 under BRUTE_PLAN_017 on `plan/v0.15.0`.
 <!-- /V0140 -->
 
 <!-- V0130 -->
