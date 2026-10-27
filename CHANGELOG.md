@@ -1,6 +1,36 @@
 # Brute changelog
 
 
+## v0.13.0: region-split experiments RSX, evidence-derived bound EB, ood5 block, own-trajectory recount, brute.certify/3 (study BRUTE-0130-REGION-SPLIT-015)
+
+**11 of 15 gated criteria pass; GRS (headline) FAIL; GS_a3, GS_c3 and GEB FAIL.** *Observed*; scoring rules fixed before the data (*Exact*).
+
+### Timeline (author's clock, EDT, 2026-10-27)
+
+- **Pre-registration.** Plan `9642783` (ledger `61584ee`, 01:05:51 EDT; HANDOFF `c6bfcb3`); seed check `f6fbb92`; numpy exhaustive reference `f95a176`/`305b739`.
+- **Preparation.** Implementation `6815770`; process scripts `3cd15e4`; smoke, kill drill and mutation smoke `0f95f92`; rate math `744969b` (deviation #72, g11 on 4 workers via `run_study_015_R1.py`).
+- **Freezes.** make_freeze `069cbca`; source `f67bcaf` (ledger `1c144d1`); scoring `58e42fd` (ledger `31edbe0`, 02:09:54 EDT).
+- **Held-out run.** run_start `6406522`, 02:20:13 EDT, under a 2 h cap; RUN_DONE 02:50:57 EDT after 1,844 s. No stream stopped; watchdog did not fire; max heartbeat gap 2.03 s.
+- **After the run.** Run end `eb2f7d2`; seal `f1668a7`; GATES_015 `c21b405`; release tooling `e25943f` (deviation #74 addendum); release freeze `9e785b1`; clean clone `8e6923c` PASS.
+
+### Code
+
+- `brute/regionsplit.py`: region-split action chooser RSX (action that splits the bounded region most evenly) and the evidence-derived bound EB / EB2.
+- `brute/api/certify3.py`: `brute.certify/3` (adds `suggest_action` with reasons).
+- `experiments/v0130_reference.py`: numpy exhaustive second implementation (bounded supports n = 1..5 on SP8 and RSX trajectories).
+- Release: `scripts/verify_release_0130.py` (short, `--long`), `tests/test_release_0130.py`, `scripts/make_release_freeze_0130.py`.
+
+### Results (*Observed*)
+
+- **Headline GRS FAIL.** RSX4 0 false in 11,005 certificates, but TV_RSX = S(RSX4) − S(RG4) −5.27 [−5.99, −4.59]; negative in every family (cycle3 −4.24, switch3 −3.96, ood4 −4.15, unaliased2 −8.75). RSXp TV −1.55.
+- **Speed over SP8.** RG4 10.51 [9.64, 11.33]; RSX4 5.24 [4.28, 6.17]; RSXp 8.97 [8.00, 9.88]; DLFp 12.39 [11.52, 13.22].
+- **Coverage.** Certificate fraction SP8 0.166, RG4 0.370, RSX4 0.434, RSXp 0.507.
+- **Soundness.** RG4, RSX4, RSXp, DLFp 0 false. DLFn and RSXn 1 false each, both on ood4 seed 8140016, mask 0.35 (GS_a3, GS_c3 FAIL). EB 91 false in 11,355 (GEB FAIL); EB2 8 false. RG2 400, RG3 173 false; RG5 0.
+- **ood5.** RG4 121 false in 381 certificates; RG5 0 false in 132.
+- **Stress.** 576 stress pairs: AT6 2,664 false, DLF on the RSX trajectory 0.
+- **Exactness.** GS_ref3 360/360, mutation 20/20; G_recount PASS (every arm on its own trajectory); G12 120/120; GLV `--long` 15 cases, 0 mismatches (172 s); GTI 488 tests, failures only K_060–K_0110.
+- **Disclosure #74.** TEST_SUITE_015 records `tracked_tree_dirty=true`; cause Open; frozen files byte-identical; GTI scored as recorded.
+
 ## v0.12.0: bounded transfer (RGn, DLF, DX), aliasing stress block, brute.certify/2, heartbeat fix (study BRUTE-0120-BOUNDED-TRANSFER-014)
 
 **15 of 16 gated criteria pass; GST2 (headline) PASS; GS_x FAIL.** *Observed*; scoring rules fixed before the data (*Exact*).

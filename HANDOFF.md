@@ -1,11 +1,20 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~01:35 EDT (v0.12.0 RELEASED on main; v0.13.0 PRE-REGISTERED on `plan/v0.13.0`, no code yet)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~03:10 EDT (v0.12.0 RELEASED on main; v0.13.0 scored and release candidate on `plan/v0.13.0`)._
 
 ## Current version and state
 
 <!-- V0130 -->
-- **In progress: v0.13.0** (study BRUTE-0130-REGION-SPLIT-015, branch `plan/v0.13.0` from main `8c86587`). **Pre-registered:** `experiments/BRUTE_PLAN_015.json` + `BRUTE_PLAN_FREEZE_015.json` at `9642783` (ledger preregistration_015); readable `docs/research/v0.13.0/PLAN_015.md`. Headline GRS: region-split experiments RSX4 beat RG4 by ≥ 1 step with 0 false (*Open*). Gated soundness of an evidence-derived bound EB (*Open*), own-trajectory recount (fixes #62), `brute.certify/3`, ood5 block reported. Next step: `scripts/check_seeds_015.py` (seeds 8110001–8190030), then `experiments/v0130_reference.py`, then implementation. Deviations start at #64 in `docs/research/BRUTE_DEVIATIONS_015.md`.
+- **Release candidate: v0.13.0** (study BRUTE-0130-REGION-SPLIT-015, branch `plan/v0.13.0` from main `8c86587`). **11 of 15 gated pass.**
+  - **REGION SPLIT (headline GRS): FAIL.** RSX4 0 false in 11,005 (clause i PASS), but TV_RSX = S(RSX4) − S(RG4) −5.27 [−5.99, −4.59] (clauses ii/iii FAIL); later on 220 of 288 cases, equal on 40, earlier on 28. Per family: cycle3 −4.24, switch3 −3.96, ood4 −4.15, unaliased2 −8.75. RSXp TV −1.55.
+  - **FAIL: GS_a3** (DLFn 1 false, RSXn 1 false, both ood4 seed 8140016 mask 0.35; RG4/RSX4/RSXp/DLFp 0), **GS_c3** (RSXn 1 false; CI clause passes, 0.05 [0, 0.16]), **GEB** (EB 91 false in 11,355; EB2 8).
+  - **PASS:** G_recount, GS_b3 (360/360), G_alias3_stress (576 pairs; AT6 2,664 false, DLF 0), GS_ref3 (360/360, mutation 20/20), GAPI3 (4/4), G10, G12 (120/120), G13, GTI (488 tests; failures only K_060–K_0110), G_RT (kill drill 0.209 s), G_HB (max gap 2.03 s). Release gates: GLV `--long` 15 cases, 0 mismatches, 172 s; GCC PASS.
+  - **Reported only:** S over SP8 RG4 10.51 [9.64, 11.33], RSX4 5.24, RSXp 8.97, DLFp 12.39; coverage SP8 0.166, RG4 0.370, RSX4 0.434, RSXp 0.507; ood5 RG4 121 false in 381, RG5 0 in 132.
+  - **Run:** run_start 02:20:13 EDT, RUN_DONE 02:50:57 EDT (1,844 s of 7,200 s). Watchdog did not fire.
+  - **Chain (Exact, git ancestry):** plan `9642783` (ledger `61584ee`; HANDOFF `c6bfcb3`, recorded as `preregistration_commit` in RELEASE.json) → seeds `f6fbb92` → reference `f95a176`/`305b739` → implementation `6815770`/`3cd15e4`/`0f95f92`/`744969b` → make_freeze `069cbca` → source freeze `f67bcaf` (ledger `1c144d1`) → scoring `58e42fd` (ledger `31edbe0`, 02:09:54 EDT) → run_start `6406522` → run end `eb2f7d2` → seal `f1668a7` → GATES `c21b405` → tooling `e25943f` → release freeze `9e785b1` → clean clone `8e6923c`.
+  - **Deviations #64–#73:** `docs/research/BRUTE_DEVIATIONS_015.md`; **#74:** `docs/research/BRUTE_DEVIATIONS_015_ADDENDUM.md` (TEST_SUITE `tracked_tree_dirty=true`, cause Open).
+  - **K_0120 (Observed, 0.13.0 tree):** tests.test_release_0120 4 of 7 fail (version, embeddable API answers, short verify, untampered copy). v0.14.0 must declare K_0120 and K_0130.
+  - **Next:** fresh-clone verify, fast-forward main, tag v0.13.0, then v0.14.0 per `NEXT_ITERATION.md`.
 <!-- /V0130 -->
 
 <!-- V0120 -->
