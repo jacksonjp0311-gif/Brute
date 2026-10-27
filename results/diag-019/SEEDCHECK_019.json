@@ -1,0 +1,224 @@
+{
+ "schema": "brute.seedcheck.v19",
+ "v0170_ranges": {
+  "target/cycle3": [
+   8510001,
+   8510024
+  ],
+  "target/switch3": [
+   8520001,
+   8520024
+  ],
+  "target/unaliased2": [
+   8530001,
+   8530024
+  ],
+  "target/ood4": [
+   8540001,
+   8540048
+  ],
+  "target/rand4a3": [
+   8550001,
+   8550048
+  ],
+  "smoke": [
+   8590001,
+   8590030
+  ]
+ },
+ "prior_files": [
+  "PLAN.json",
+  "BRUTE_PLAN_002.json",
+  "BRUTE_PLAN_003.json",
+  "BRUTE_PLAN_004.json",
+  "BRUTE_PLAN_005.json",
+  "BRUTE_PLAN_006.json",
+  "BRUTE_PLAN_007.json",
+  "BRUTE_PLAN_008.json",
+  "BRUTE_PLAN_009.json",
+  "BRUTE_PLAN_010.json",
+  "BRUTE_PLAN_011.json",
+  "BRUTE_PLAN_012.json",
+  "BRUTE_PLAN_013.json",
+  "BRUTE_PLAN_014.json",
+  "BRUTE_PLAN_015.json",
+  "BRUTE_PLAN_016.json",
+  "BRUTE_PLAN_017.json",
+  "BRUTE_PLAN_018.json"
+ ],
+ "prior_range_count": 183,
+ "pairwise_overlaps": [],
+ "prior_overlaps": [],
+ "negative_controls": [
+  [
+   "smoke",
+   901,
+   "refused"
+  ],
+  [
+   "smoke",
+   8010001,
+   "refused"
+  ],
+  [
+   "smoke",
+   8290001,
+   "refused"
+  ],
+  [
+   "smoke",
+   8390001,
+   "refused"
+  ],
+  [
+   "smoke",
+   8410001,
+   "refused"
+  ],
+  [
+   "smoke",
+   8550001,
+   "refused"
+  ],
+  [
+   "target",
+   8510025,
+   "refused"
+  ],
+  [
+   "target",
+   8410001,
+   "refused"
+  ],
+  [
+   "target",
+   8490001,
+   "refused"
+  ],
+  [
+   "target",
+   8540049,
+   "refused"
+  ],
+  [
+   "target",
+   8550049,
+   "refused"
+  ],
+  [
+   "target",
+   8550001,
+   "refused"
+  ],
+  [
+   "target",
+   8510001,
+   "refused"
+  ],
+  [
+   "target",
+   8590001,
+   "refused"
+  ],
+  [
+   "target",
+   9000001,
+   "refused"
+  ],
+  [
+   "source",
+   8350001,
+   "refused"
+  ],
+  [
+   "ood5",
+   8360001,
+   "refused"
+  ]
+ ],
+ "smoke_layout": [
+  [
+   8590001,
+   "cycle3"
+  ],
+  [
+   8590002,
+   "cycle3"
+  ],
+  [
+   8590003,
+   "switch3"
+  ],
+  [
+   8590004,
+   "switch3"
+  ],
+  [
+   8590005,
+   "unaliased2"
+  ],
+  [
+   8590006,
+   "unaliased2"
+  ],
+  [
+   8590007,
+   "ood4"
+  ],
+  [
+   8590008,
+   "ood4"
+  ],
+  [
+   8590009,
+   "cycle3"
+  ],
+  [
+   8590010,
+   "switch3"
+  ],
+  [
+   8590011,
+   "unaliased2"
+  ],
+  [
+   8590012,
+   "ood4"
+  ],
+  [
+   8590013,
+   "cycle3"
+  ],
+  [
+   8590014,
+   "switch3"
+  ],
+  [
+   8590015,
+   "unaliased2"
+  ],
+  [
+   8590016,
+   "rand4a3"
+  ],
+  [
+   8590017,
+   "rand4a3"
+  ],
+  [
+   8590018,
+   "rand4a3"
+  ],
+  [
+   8590019,
+   "rand4a3"
+  ]
+ ],
+ "target_seeds": 120,
+ "cases": 360,
+ "stress_cases": 120,
+ "alphabet3_seeds": 48,
+ "alphabet3_cases": 96,
+ "eps_levels_match_plan": true,
+ "PASS": true
+}
