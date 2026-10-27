@@ -1,0 +1,11 @@
+{
+ "schema": "brute.plan-freeze.v1",
+ "study": "BRUTE-0150-BOUNDED-LOOKAHEAD-017",
+ "plan": "experiments/BRUTE_PLAN_017.json",
+ "plan_sha256": "ebe52bbbec26bc230705245273f23fff4af1823aef85b4acd60847cb41820706",
+ "criteria_canonical_json_sha256": "e2f25567a3056ddc710c227ef5afc839919c03fd7f1dd9c49ac335445e71ea91",
+ "criteria_hash_method": "sha256 of json.dumps(plan['criteria'], sort_keys=True, separators=(',', ':'), ensure_ascii=False) (same as preregistration_016)",
+ "readable_plan": "docs/research/v0.15.0/PLAN_017.md (the JSON wins if they differ)",
+ "frozen_at": "the commit that adds this file (recorded in the ledger entry preregistration_017)",
+ "note": "no v0.15.0 experiment chooser, lookahead, API, reference code, held-out world, seed or run exists at this commit"
+}
