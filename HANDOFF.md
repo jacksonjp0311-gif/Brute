@@ -1,13 +1,21 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~04:25 EDT (v0.13.0 RELEASED on main; v0.14.0 source and scoring frozen on `plan/v0.14.0`, run next)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~05:40 EDT (v0.14.0 released on main; v0.15.0 next)._
 
 ## Current version and state
 
 <!-- V0140 -->
-- **In progress: v0.14.0** (study BRUTE-0140-DEFERRED-SPLIT-016, branch `plan/v0.14.0` from main `ffa045b`). **Pre-registered:** `experiments/BRUTE_PLAN_016.json` + `BRUTE_PLAN_FREEZE_016.json` at `498d768` (ledger preregistration_016 `4b87380`); readable `docs/research/v0.14.0/PLAN_016.md`. Headline GDS: deferred region split RSXL4 (SP8 until the first RG4 certificate, then RSX) adds coverage ΔC ≥ 0.03, CI lower > 0, at equal first-certificate time.
-  - **Done:** seeds `35b9840`; 8140016 diagnosis `afb89a9` (`results/diag-016/DIAG_LICENSE_016.json`, seen data: the ood4 world (true n = 4) got a unaliased2 library with license bound 3; RG4 on the same step does not certify, RG2/RG3 certify the same wrong reading); reference `ac717c4`; implementation `97f9800`; step 5 `62bea00` (rate math, deviations #75–#79, dry run, kill drill 0.223 s); smokes `75d57d4` (GTI smoke clause iii 522 vs 533 = untracked test_scoring_016, see GTI_SMOKE_016_NOTE.md; mutation smoke 20/20); source freeze `c7ed80e` (ledger `ecad32d`); scoring freeze `0e9113c` (ledger `cc8525d` + `32ebaba`, 04:23 EDT).
-  - **Next:** run_start_016 no earlier than 04:33:15 EDT, then seal, GATES_016, release (verify_release_0140 drafted, uncommitted until release).
+- **Released: v0.14.0** (study BRUTE-0140-DEFERRED-SPLIT-016, branch `plan/v0.14.0` from main `ffa045b`). **11 of 14 gated pass.**
+  - **DEFERRED SPLIT (headline GDS): PASS.** RSXL4 0 false in 14,491 (clause i); S(RSXL4) = S(RG4) on 360/360 cases, 13.69 [12.61, 14.74] (clause ii, Exact by construction and confirmed); dC = C(RSXL4) − C(RG4) +0.049 [0.041, 0.057] (clauses iii/iv); 224 cases up, 65 down, 71 equal. Per family: switch3 0.081, cycle3 0.058, ood4 0.038, unaliased2 0.030.
+  - **FAIL: GS_a4** (DLFn 2 false, RSXLn 2 false, both ood4 seed 8240010 mask 0.6, true n 4, libraries (unaliased2, min_n 2) and (ood4, 4); RG4/RG5/RSXL4/RSXLp/DLFp/DLF2p/DLF2n/RSX4 0), **GS_c4** (clauses i/ii; iii passes, DLFn − RG4 0.017 [0, 0.05]), **G_HB** (one 285.065 s gap, 04:41:38–04:46:23 EDT; d_monotonic = d_boottime, watchdog CPU +0.001 s, no file written; Inferred whole-box pause; addendum #80).
+  - **PASS:** G_recount, GS_b4 (432/432), G_alias4_stress (984 pairs; AT6 2,736 false, RSXL 0), GS_ref4 (432/432, mutation 20/20), GAPI4 (4/4), G10, G12 (144/144), G13, GTI (533 = 533 tests; failures only K_060–K_0120), G_RT (kill drill 0.223 s). Release gates: GLV `--long` 18 cases, 0 mismatches, 217 s of 900 s; GCC PASS.
+  - **Reported only:** coverage SP8 0.146, RG5 0.235, RG4 0.408, RSXL4 0.457, DLFp 0.464, RSX4 0.471, EB 0.479, RSXLp 0.518; S over SP8 RG4 13.69, RSXLp/DLFp 15.13 (TV +1.44), RSX4 9.01 (TV −4.68), EB 16.97 (111 false), RG5 6.81; DLF2 = RG4 everywhere (Exact); ood5 RG4 155 false in 457 (49 of 72 cases, 148 before the 4-state region empties), RG5 0 in 111; stress DLF 48 / RSXL 48 false in 25,920 pairs, all outside the exact license bound.
+  - **8140016 diagnosis (seen data, `afb89a9`):** license bound 3 < true n 4 (unaliased2 library, min_n 2); inside the guarantee DLFp 0/1,542 and RSXp 0/1,854 false; outside DLFn 1/3, RSXn 1/2; 72 cases had a license bound below true n.
+  - **Run:** run_start 04:34:02 EDT, RUN_DONE 05:12:48 EDT (2,326 s of 7,200 s). Watchdog did not fire; no stream stopped.
+  - **Chain (Exact, git ancestry):** plan `498d768` (ledger `4b87380`) → seeds `35b9840` → diagnosis `afb89a9` → reference `ac717c4` → implementation `97f9800`/`62bea00` → smokes `75d57d4` → source freeze `c7ed80e` (ledger `ecad32d`) → scoring `0e9113c` (ledger `cc8525d`/`32ebaba`) → run_start `65d2fb5` → run end `83c2116` → seal `6a82c35` (ledger `da091a2`) → GATES `cc10159` (ledger `ba8fedf`) → tooling `cce6642` → release freeze `ece2474` → RELEASE.json receipt `3109ad4` → addendum `35bca5a` → clean clone `0d29822`.
+  - **Deviations #75–#79:** `docs/research/BRUTE_DEVIATIONS_016.md`; **#80–#83:** `docs/research/BRUTE_DEVIATIONS_016_ADDENDUM.md`.
+  - **K_0130 (Observed, 0.14.0 tree):** tests.test_release_0130 4 of 7 fail (version, embeddable API answers, short verify, untampered copy). v0.15.0 must declare K_0130 and K_0140.
+  - **RELEASE: pending fresh-clone verification.**
 <!-- /V0140 -->
 
 <!-- V0130 -->
@@ -21,7 +29,6 @@ _Kept current on the working branch during a release and on `main` at release. L
   - **Deviations #64–#73:** `docs/research/BRUTE_DEVIATIONS_015.md`; **#74:** `docs/research/BRUTE_DEVIATIONS_015_ADDENDUM.md` (TEST_SUITE `tracked_tree_dirty=true`, cause Open).
   - **K_0120 (Observed, 0.13.0 tree):** tests.test_release_0120 4 of 7 fail (version, embeddable API answers, short verify, untampered copy). v0.14.0 must declare K_0120 and K_0130.
   - **RELEASED 2026-10-27 ~03:18 EDT:** release commit `d1f6c71`. On the branch and on a fresh GitHub clone of `d1f6c71`, `verify_release_0130` passed both short and `--long` (GLV: 15 cases, 0 mismatches, 170 s), and `tests.test_release_0130` passed 7/7 (100 s). main was fast-forwarded to `d1f6c71` with no force. Annotated tag `v0.13.0` (tag object `2ee29f7`) points to `d1f6c71`. GitHub release: https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.13.0
-  - **Next: v0.14.0 per `NEXT_ITERATION.md`** (deferred region split RSXL, DLF license replication, ood5 bound-violation signal).
 <!-- /V0130 -->
 
 <!-- V0120 -->

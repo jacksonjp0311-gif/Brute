@@ -1,6 +1,35 @@
 # Brute changelog
 
 
+## v0.14.0: deferred region split RSXL, DLF re-gate with doubled ood4, DLF2, ood5 bound-violation report, 8140016 diagnosis, brute.certify/4 (study BRUTE-0140-DEFERRED-SPLIT-016)
+
+**11 of 14 gated criteria pass; GDS (headline) PASS; GS_a4, GS_c4 and G_HB FAIL.** *Observed*; scoring rules fixed before the data (*Exact*).
+
+### Timeline (author's clock, EDT, 2026-10-27)
+
+- **Pre-registration.** Plan `498d768` (ledger `4b87380`); seed check `35b9840`; seen-data diagnosis of the v0.13.0 false certificate `afb89a9`; numpy reference `ac717c4`.
+- **Preparation.** Implementation `97f9800`; rate math, deviations #75–#79, dry run and kill drill `62bea00`; smokes `75d57d4`.
+- **Freezes.** Source `c7ed80e` (ledger `ecad32d`); scoring `0e9113c` (ledger `cc8525d`, `32ebaba`).
+- **Held-out run.** run_start `65d2fb5`, 04:34:02 EDT, under a 2 h cap; RUN_DONE 05:12:48 EDT after 2,326 s. No stream stopped; watchdog did not fire; one 285 s heartbeat gap.
+- **After the run.** Run end `83c2116`; seal `6a82c35`; GATES_016 `cc10159`; release tooling `cce6642`; release freeze `ece2474`; addendum `35bca5a` (#80–#83); clean clone `0d29822` PASS.
+
+### Code
+
+- `brute/deferredsplit.py`: deferred region-split chooser RSXL (SP8 until the first RG4 certificate, then RSX) and the margin-2 license DLF2.
+- `brute/api/certify4.py`: `brute.certify/4` (`suggest_action(deferred=True)`).
+- `experiments/v0140_reference.py`: numpy exhaustive second implementation.
+- Release: `scripts/verify_release_0140.py` (short, `--long`), `tests/test_release_0140.py`, `scripts/make_release_freeze_0140.py`.
+
+### Results (*Observed*)
+
+- **Headline GDS PASS.** RSXL4 0 false in 14,491; S(RSXL4) = S(RG4) on every case (13.69 [12.61, 14.74]); dC +0.049 [0.041, 0.057].
+- **Coverage.** SP8 0.146, RG5 0.235, RG4 0.408, RSXL4 0.457, DLFp 0.464, RSX4 0.471, EB 0.479, RSXLp 0.518.
+- **Speed over SP8.** RG4 13.69; RSXLp, DLFp 15.13 (TV +1.44 [1.12, 1.76]); RSX4 9.01 (TV −4.68); EB 16.97; RG5 6.81.
+- **Soundness.** DLFn 2 and RSXLn 2 false, all on ood4 seed 8240010, mask 0.6 (GS_a4, GS_c4 FAIL); every other gated arm 0. EB 111 false.
+- **ood5.** RG4 155 false in 457; RG5 0 in 111.
+- **Stress.** 25,920 pairs: AT6 2,736 false on 984 stress pairs; DLF 48 and RSXL 48 false, all outside the exact license bound.
+- **Heartbeat.** G_HB FAIL: one 285.065 s gap; whole-box pause (*Inferred*).
+
 ## v0.13.0: region-split experiments RSX, evidence-derived bound EB, ood5 block, own-trajectory recount, brute.certify/3 (study BRUTE-0130-REGION-SPLIT-015)
 
 **11 of 15 gated criteria pass; GRS (headline) FAIL; GS_a3, GS_c3 and GEB FAIL.** *Observed*; scoring rules fixed before the data (*Exact*).

@@ -3,7 +3,7 @@
 </p>
 
 <p align="center"><b>Exact geometric reasoning about hidden worlds. Brute keeps every explanation the evidence still allows, and it certifies an answer only when all of them agree. Otherwise it says "I don't know."</b><br>
-<sub>Brute v0.13.0 · built on BGR v0.90.0 (BITWORK — Geometric Reasoning) · research preview · not general intelligence</sub></p>
+<sub>Brute v0.14.0 · built on BGR v0.90.0 (BITWORK — Geometric Reasoning) · research preview · not general intelligence</sub></p>
 
 ---
 
@@ -13,10 +13,11 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 
 | Claim | Evidence | Label |
 | --- | --- | --- |
-| **0 wrong public certificates in the twelve studies that gated them** (002–013, v0.1.0–v0.11.0): the public-safety gate (C4/G4) and the in- and out-of-family soundness gates (C1/C2, G1/G2) passed for the production arms each plan named (for example J10, J9 and SP8 in 012–013). This is not a claim that every Brute arm is sound. Studies 014–015 ran transfer blocks only and gated no public channel; there the SP8 comparator issued 0 false certificates (015: 288 + 72 ood5 cases, own-trajectory recount; 014: implied by the GS_b containment of SP8 in RG4, which had 0 false). Research arms have issued published false certificates: TRn 167, ATn 3, RG2/RG3, EB 91, and DLFn and RSXn 1 each on ood4 seed 8140016. The v0.5.0 default A5 issued a non-public false certificate one step after a drift (v0.6.0) | `results/study-00*/GATES*.json`, `results/study-01[0-3]/GATES_01*.json` (G1/G2/G4; C1/C2/C4 in study-002); `results/study-015/GATES_015.json` (G_recount) | *Observed* |
+| **0 wrong public certificates in the twelve studies that gated them** (002–013, v0.1.0–v0.11.0): the public-safety gate (C4/G4) and the in- and out-of-family soundness gates (C1/C2, G1/G2) passed for the production arms each plan named (for example J10, J9 and SP8 in 012–013). This is not a claim that every Brute arm is sound. Studies 014–015 ran transfer blocks only and gated no public channel; there the SP8 comparator issued 0 false certificates (015: 288 + 72 ood5 cases, own-trajectory recount; 014: implied by the GS_b containment of SP8 in RG4, which had 0 false). Research arms have issued published false certificates: TRn 167, ATn 3, RG2/RG3, EB 91, DLFn and RSXn 1 each on ood4 seed 8140016 (v0.13.0), and DLFn and RSXLn 2 each on ood4 seed 8240010 (v0.14.0). The v0.5.0 default A5 issued a non-public false certificate one step after a drift (v0.6.0) | `results/study-00*/GATES*.json`, `results/study-01[0-3]/GATES_01*.json` (G1/G2/G4; C1/C2/C4 in study-002); `results/study-015/GATES_015.json` (G_recount) | *Observed* |
 | **The SAT engine makes the same decision as brute-force enumeration on all 25,344 steps** (v0.5.0, GX1), and the constraint region matches enumeration on 1.25 M items (v0.4.0, GR1/GR1b) | `results/study-007/`, `results/study-006/` | *Observed* |
 | **Second-encoding cross-check, 288/288 breadth cases: 0 mismatching traces in 1,358,721 SAT queries, 0 unknowns, 0 witness failures.** This was an incremental CaDiCaL re-run of the v0.6.0 cross-check: 310 s on 4 workers, against ~8.8 h for 46 cases before. It is post-release verification and does not change the frozen GX2′ FAIL | branch [`verify/xcheck-incremental`](https://github.com/jacksonjp0311-gif/Brute/tree/verify/xcheck-incremental), `results/verify-xcheck-incremental/` | *Observed* |
 | **v0.8.0 ran every pre-registered stream inside a hard 2 h cap** with an independent watchdog: the whole study finished in 1,970 s (cap 7,200 s), the second implementation agreed on 648/648 + 144/144 mandatory traces and caught 20/20 injected mutations, and in-cap test isolation passed (294 tests). The kill drill stopped 8 process groups in 0.239 s | `results/study-010/GATES_010.json` (G11, GX2_010, GTI, G_RT ii/iii) | *Observed* |
+| **v0.14.0: deferring the region split keeps RG4's speed and adds coverage (GDS PASS, 11 of 14 gated).** RSXL4 follows SP8 until the bounded region RG4 has certified once, then switches to the region-split chooser. It issued 0 false certificates in 14,491, reached its first certificate exactly when RG4 did on all 360 cases (13.69 steps before SP8, CI95 [12.61, 14.74]) and raised coverage by 0.049 (seed-clustered CI95 [0.041, 0.057]; 0.457 vs 0.408). A wrong-family library again licensed false certificates (DLFn, RSXLn 2 each, one ood4 case), and one 285 s box pause failed the heartbeat gate. **New API `brute.certify/4`** | `results/study-016/GATES_016.json` (GDS, GS_a4, GS_c4, G_HB, GAPI4) | *Observed* / *Exact* (S equality) |
 | **v0.13.0: region-split experiments were sound but slower (GRS FAIL, 11 of 15 gated).** RSX4 (choose the action that splits the bounded region RG4 most evenly) issued 0 false certificates in 11,005 and issued 17% more certificates than RG4 (9,368), but reached its first certificate 5.27 steps later (seed-clustered CI95 [−5.99, −4.59]; later on 220 of 288 cases). The evidence-derived bound EB was unsound (91 false). A wrong-family library produced the first DLF false certificate (1, one ood4 case). **New API `brute.certify/3`** (adds `suggest_action`) | `results/study-015/GATES_015.json` (GRS, GS_a3, GS_c3, GEB, GAPI3, G_recount) | *Observed* |
 | **v0.12.0: bounded transfer caught the aliased priors with 0 false certificates on study-014 seeds (GST2 PASS, 15 of 16 gated; on study-015 seeds DLFn issued 1 false certificate, see v0.13.0).** On 600 aliasing-stress pairs, where the v0.11.0 rule (AT6) issued 2,016 false certificates, the disagreement-based license DLF issued 0; over all 20,736 target × wrong-library pairs, 336 licenses, 0 false. The library-free bound RG4 certifies 10.86 steps sooner than SP8 (CI95 [9.83, 11.84], 0 false in 9,809); the right library adds 1.64 [1.27, 2.01] more, all on unaliased2. Discriminating experiments (DX) did not help (GS_x FAIL). **New API `brute.certify/2`** | `results/study-014/GATES_014.json` (GST2, G_alias_stress, GS_a–GS_d, GS_rg, GS_x, GAPI2) | *Observed* |
 | **v0.11.0: sound transfer is NOT yet shown (GST FAIL).** Applicability-tested transfer (AT) with the right library certified 6.64 steps sooner than learning from scratch (seed-paired CI95 [5.73, 7.54]; 146/288 helped, 0 hurt, 0 false in 10,202). With a wrong-family library it issued 3 false certificates in 1 of 288 cases: one wrong hypothesis agreed with the target on 7 informative predictions before the evidence removed it. Library-guided experiments (LX) were sound but slower (S −1.32 [−2.19, −0.50]). **New embeddable API `brute.certify/1`**: observations in, certified answer or UNKNOWN out (GAPI PASS) | `results/study-013/GATES_013.json` (GST, GS_a–GS_e, GAPI) | *Observed* |
@@ -30,7 +31,8 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 
 | Version | Study | Gates | What it added | Key result |
 | --- | --- | --- | --- | --- |
-| **v0.13.0** (current) | BRUTE-0130-REGION-SPLIT-015, 288 transfer held-out cases + 72 ood5 + 20,736 stress pairs | **11 / 15** | region-split experiment chooser RSX, evidence-derived bound EB, ood5 bound-5 block, own-trajectory recount G_recount, `brute.certify/3` | GRS FAIL (RSX4 0 false but TV −5.27 [−5.99, −4.59]); GEB FAIL (EB 91 false); GS_a3/GS_c3 FAIL (DLFn, RSXn 1 false each, one case); RG4 S 10.51 [9.64, 11.33] *Observed* |
+| **v0.14.0** (current) | BRUTE-0140-DEFERRED-SPLIT-016, 360 transfer held-out cases (ood4 doubled) + 72 ood5 + 25,920 stress pairs | **11 / 14** | deferred region split RSXL, DLF2 license rule, ood5 bound-violation report, 8140016 license diagnosis, `brute.certify/4` | GDS PASS (dC +0.049 [0.041, 0.057], S equal to RG4 on every case, 0 false); GS_a4/GS_c4 FAIL (DLFn, RSXLn 2 false each, ood4 8240010); G_HB FAIL (one 285 s gap) *Observed* |
+| v0.13.0 | BRUTE-0130-REGION-SPLIT-015, 288 transfer held-out cases + 72 ood5 + 20,736 stress pairs | **11 / 15** | region-split experiment chooser RSX, evidence-derived bound EB, ood5 bound-5 block, own-trajectory recount G_recount, `brute.certify/3` | GRS FAIL (RSX4 0 false but TV −5.27 [−5.99, −4.59]); GEB FAIL (EB 91 false); GS_a3/GS_c3 FAIL (DLFn, RSXn 1 false each, one case); RG4 S 10.51 [9.64, 11.33] *Observed* |
 | v0.12.0 | BRUTE-0120-BOUNDED-TRANSFER-014, 288 transfer held-out cases + 20,736 aliasing-stress pairs | **15 / 16** | bounded-region certification RGn, disagreement-based license DLF, discriminating experiments DX, aliasing stress block, `brute.certify/2`, heartbeat fix | GST2 PASS (DLFn 0 false; stress DLF 0 vs AT6 2,016); RG4 S 10.86 [9.83, 11.84]; TV(DLFp) 1.64 [1.27, 2.01]; GS_x FAIL (−0.007) *Observed* |
 | v0.11.0 | BRUTE-0110-SOUND-TRANSFER-013, 792 2x2 + 288 big78 + 288 transfer held-out cases | **22 / 26** | sound-transfer arms DR / AT / LX with wrong-family controls, embeddable API `brute.certify/1`, big78 power, K_080/K_090 declared | GST FAIL (ATn 3 false in 1/288; LX S −1.32); GS_d AT speedup PASS (S 6.64 [5.73, 7.54]); G6b PASS on SP8 (−0.0104); GTI PASS *Observed* |
 | v0.10.0 | BRUTE-0100-SUPPORT-TRANSFER-012, 792 2x2 + 144 big78 + 288 transfer held-out cases | **18 / 24** | motif transfer (TRp, negative control TRn), J10 exact jump-window support, 7–8 state worlds (big78), docs/ROADMAP_TO_GI.md | GT_b PASS (S 20.18 [19.18, 21.17]); GT_a/GT_c FAIL (TRn 167 false certificates); J10 +0.0090 over J9 but G6b −0.166 *Observed*; GA1_012 fails on G6b |
@@ -45,6 +47,8 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 
 ## Published failures (they stay failed)
 
+- **A wrong-family library licensed false certificates again (GS_a4, GS_c4, v0.14.0).** DLFn and RSXLn each issued 2 false certificates on one case (ood4 seed 8240010, mask 0.6, true n = 4, unaliased2 library with min_n 2), the same pattern as 8140016. RG4, RSXL4, RSXLp, DLFp, RSX4, DLF2p and DLF2n issued 0. None was public. *Observed.*
+- **One heartbeat gap of 285 s (G_HB, v0.14.0).** The whole box appears to have paused (monotonic and boot clocks both advanced 285 s, watchdog CPU +0.001 s, no file written); no stream was stopped. *Observed*; cause *Inferred*.
 - **Region-split experiments slowed the first certificate (GRS, v0.13.0).** RSX4 − RG4 mean −5.27 steps, seed-clustered CI95 [−5.99, −4.59] (needed ≥ 1, CI lower > 0); every family negative (unaliased2 −8.75). RSX4 was sound (0 false in 11,005) and issued more certificates than RG4 (11,005 vs 9,368). *Observed.*
 - **An evidence-derived state bound is unsound (GEB, v0.13.0).** EB (bound = smallest non-empty bounded region + 1) issued 91 false certificates in 11,355 (switch3 47, ood4 42, cycle3 2); EB2 (+2) 8 false (ood4). *Observed.*
 - **A wrong-family library licensed one false certificate (GS_a3, GS_c3, v0.13.0).** DLFn and RSXn each issued 1 false certificate on one case (ood4 seed 8140016, mask 0.35); RG4, RSX4, RSXp and DLFp issued 0. The v0.12.0 DLF record of 0 false with a wrong library does not hold on these seeds. None was public. *Observed.*
@@ -66,7 +70,7 @@ It is a sound, narrow, exact reasoner over small deterministic worlds: at most 6
 
 1. **Speed.** Use incremental solving and symmetry breaking everywhere, and project each stream's runtime before the run starts with a watchdog stop rule. The 288-case cross-check went from ~5 cases/h to all 288 cases in about 5 minutes.
 2. **Planning.** Score experiments by the expected collapse of the next forecast coordinate instead of by raw model-count reduction. Certify before a jump is observed, using a one-step jump hull.
-3. **Abstraction and transfer.** Learn to select families and grow the model class, so that structure carries from one world to the next. v0.10.0 showed a speedup from a right prior (S 20.18 steps) and confident errors from a wrong one. v0.11.0 showed that counting confirmations cannot make a wrong prior safe; v0.12.0 made transfer sound by letting a library license an answer only when a bounded region also forces it (0 false on 600 aliasing-stress pairs). The value it adds over the library-free bound is small (1.64 steps, one family). Next: experiments that split the bounded region, and evidence-derived bounds.
+3. **Abstraction and transfer.** Learn to select families and grow the model class, so that structure carries from one world to the next. v0.10.0 showed a speedup from a right prior (S 20.18 steps) and confident errors from a wrong one. v0.11.0 showed that counting confirmations cannot make a wrong prior safe; v0.12.0 made transfer sound by letting a library license an answer only when a bounded region also forces it (0 false on 600 aliasing-stress pairs). The value it adds over the library-free bound is small (1.64 steps, one family). v0.13.0 showed that splitting the bounded region from the start delays the first certificate; v0.14.0 showed that deferring the split until the first certificate keeps the speed and adds coverage (dC +0.049). Next: a license whose bound cannot fall below the true size.
 4. **Real data.** Add stochastic worlds with credal regions, grounding beyond templates, and independent replication.
 
 Details: [`docs/ROADMAP_TO_GI.md`](docs/ROADMAP_TO_GI.md) (gated steps toward general reasoning; transfer had its first test in v0.10.0), [`NEXT_ITERATION.md`](NEXT_ITERATION.md), [`docs/ROADMAP.md`](docs/ROADMAP.md), [`HANDOFF.md`](HANDOFF.md).
@@ -76,12 +80,13 @@ Details: [`docs/ROADMAP_TO_GI.md`](docs/ROADMAP_TO_GI.md) (gated steps toward ge
 ```bash
 git clone https://github.com/jacksonjp0311-gif/Brute.git && cd Brute
 python -m pip install -r requirements.txt
-for k in 004 005 006 007 008 009 010 011 012 013 014 015; do python scripts/study${k}_storage.py restore; done   # rebuild sealed traces, checked against SEAL.json
-PYTHONPATH=. python scripts/verify_release_0130.py   # (--long adds the 15-case transfer + ood5 re-run + second-implementation audit) seals, freezes, ledger chain, manifest, git order; regenerates paired/repro/gates byte-for-byte
-PYTHONPATH=. python scripts/make_gates_015.py --check   # GATES_015.json alone
+for k in 004 005 006 007 008 009 010 011 012 013 014 015 016; do python scripts/study${k}_storage.py restore; done   # rebuild sealed traces, checked against SEAL.json
+PYTHONPATH=. python scripts/verify_release_0140.py   # (--long adds the 18-case transfer + ood5 re-run + second-implementation audit) seals, freezes, ledger chain, manifest, git order; regenerates paired/repro/gates byte-for-byte
+PYTHONPATH=. python scripts/make_gates_016.py --check   # GATES_016.json alone
 PYTHONPATH=. python -c "from brute.api.certify import certify; print(certify([(0,1)],[],0))"   # embeddable API brute.certify/1
 PYTHONPATH=. python -c "from brute.api.certify2 import certify2; print(certify2([(0,1)],[],0))"   # brute.certify/2 (UNKNOWN, reason burn-in)
 PYTHONPATH=. python -c "from brute.api.certify3 import suggest3; print(suggest3([(0,1)],[]))"   # brute.certify/3 action suggestion
+PYTHONPATH=. python -c "from brute.api.certify4 import suggest4; print(suggest4([(0,1)],[]))"   # brute.certify/4 deferred-split suggestion
 ```
 
 No GPU, network or model weights are needed. CPU only, Python 3.11+ (the release was run on 3.13.5).
@@ -91,6 +96,28 @@ No GPU, network or model weights are needed. CPU only, Python 3.11+ (the release
 Brute is built on **BGR v0.90.0, "BITWORK — Geometric Reasoning"**, James's earlier research system. Its exact symbolic support over Moore machines, the study-001 evidence and the `bgr*/` code are carried forward byte-identical, with full credit in [`FORK.md`](FORK.md) and [`docs/research/bgr-v0.90.0/`](docs/research/bgr-v0.90.0/).
 
 ---
+
+## v0.14.0 at a glance: 11 of 14 gated criteria pass; the deferred region split adds coverage at RG4's speed (GDS PASS); a wrong-family library licensed false certificates again (GS_a4, GS_c4 FAIL); one box pause failed G_HB
+
+Study-016 was pre-registered as a transfer block: 360 held-out target cases (cycle3, switch3, unaliased2 × 24 seeds, ood4 × 48 seeds, × masks 0.1 / 0.35 / 0.6), 72 ood5 cases and 25,920 aliasing-stress pairs. The plan was frozen at `498d768` before any code. The seen-data diagnosis of the v0.13.0 false certificate was ledgered before the source freeze (`afb89a9`). Source freeze `c7ed80e`; scoring scripts `0e9113c`, ledgered before run_start 04:34:02 EDT; seal `6a82c35`. The run finished in 2,326 s of a 7,200 s cap; no stream stopped and the watchdog never fired (*Observed*).
+
+| Gate | Result | Numbers (*Observed*) |
+| --- | --- | --- |
+| **GDS deferred split (headline)** | **PASS** | RSXL4 0 false in 14,491; S(RSXL4) = S(RG4) on 360/360 cases (13.69 [12.61, 14.74]); dC = C(RSXL4) − C(RG4) +0.049 [0.041, 0.057]; higher on 224 cases, lower on 65, equal on 71 |
+| GS_a4 soundness | **FAIL** | DLFn 2 false in 12,944; RSXLn 2 in 14,495 (both ood4 8240010, mask 0.6); RG4, RG5, RSXL4, RSXLp, DLFp, DLF2p, DLF2n, RSX4 0 |
+| GS_c4 wrong-family control | **FAIL** | clauses i, ii fail (the false certificates above); iii passes (DLFn − RG4 0.017 [0, 0.05]) |
+| G_HB heartbeat | **FAIL** | 1,023 beats; one gap of 285.065 s (04:41:38–04:46:23 EDT), attributed to a whole-box pause (*Inferred*) |
+| GS_b4 containment | PASS | 432/432 cases |
+| G_alias4_stress | PASS | 984 stress pairs: AT6 2,736 false, RSXL 0, DLF on SP8 0 |
+| GS_ref4 reference audit | PASS | 432/432, 0 mismatches; mutation 20/20 |
+| GAPI4 `brute.certify/4` | PASS | 4/4 contract tests inside GTI |
+| G_recount, G10, G12, G13, GTI, G_RT | PASS | 0 recount mismatches; unknown fraction 0.0; repro 144/144 identical; GTI 533 = 533 tests, failures only the declared K sets; kill drill 0.223 s |
+
+Reported only (*Observed*): coverage SP8 0.146, RG5 0.235, RG4 0.408, DLFp 0.464, RSXL4 0.457, RSX4 0.471, EB 0.479, RSXLp 0.518. Speedup over SP8: RG4 13.69, RSXLp and DLFp 15.13 (TV +1.44 [1.12, 1.76]), RSX4 9.01 (TV −4.68), EB 16.97 (111 false), RG5 6.81. Per-family dC(RSXL4): switch3 0.081, cycle3 0.058, ood4 0.038, unaliased2 0.030 [0.012, 0.048]. DLF2 (license needs n_L ≥ 2) equals RG4 everywhere (*Exact* by construction). ood5 (R_BV): RG4 155 false in 457 certificates in 49 of 72 cases, 148 of them before the 4-state region went empty (it did on 70 of 72); RG5 0 false in 111. Stress (all 25,920 pairs): DLF 48 and RSXL 48 false, all 48 on pairs outside the exact license bound.
+
+Diagnosis of the v0.13.0 false certificate (seen data, *Observed*): on ood4 seed 8140016 the library came from an unaliased2 source with min_n 2, so the license bound was 3, below the true size 4; one surviving library hypothesis certified 0 where the truth was 1 at step 9, when RG4 and RG5 did not certify and RG2 and RG3 certified the same wrong reading. Inside the license guarantee DLFp had 0 false in 1,542 and RSXp 0 in 1,854; outside it DLFn had 1 in 3 and RSXn 1 in 2 (`results/diag-016/DIAG_LICENSE_016.json`).
+
+What this means (*Inferred*): the region-split chooser costs speed only when it acts before the first certificate; after that, splitting the region is pure gain. The library license fails exactly when the library's state bound is below the target's, so the fix is a bound check, not more evidence. Release gates: GLV `--long` 18 cases, 0 mismatches, 217 s of 900 s; GCC clean clone PASS (`results/study-016/CLEAN_CLONE_016.json`). Deviations in [`BRUTE_DEVIATIONS_016.md`](docs/research/BRUTE_DEVIATIONS_016.md) and #80–#83 in [`BRUTE_DEVIATIONS_016_ADDENDUM.md`](docs/research/BRUTE_DEVIATIONS_016_ADDENDUM.md).
 
 ## v0.13.0 at a glance: 11 of 15 gated criteria pass; region-split experiments are sound but slower (GRS FAIL); the evidence-derived bound is unsound (GEB FAIL)
 
@@ -496,7 +523,16 @@ Findings and their math: [`docs/research/DISCOVERIES.md`](docs/research/DISCOVER
 
 ## What Brute can't do yet
 
-New in v0.13.0:
+New in v0.14.0:
+
+- **Its library license is still unsound when the library's bound is below the target's size.** DLFn and RSXLn issued 2 false certificates each on ood4 seed 8240010; on stress pairs DLF and RSXL issued 48 each, all outside the exact license bound. *Observed.*
+- **It cannot trust a 4-state bound on a 5-state world.** On ood5, RG4 issued 155 false certificates, mostly before its own region went empty; only RG5 was sound. *Observed.*
+- **Its evidence-derived bound EB is still unsound** (111 false). *Observed.*
+- **It has not shown a heartbeat-clean run on a shared box** (one 285 s pause in study-016). *Observed.*
+- **The deferred split adds coverage, not speed.** First-certificate time equals RG4's by construction; only a right-family library (RSXLp) is faster (+1.44 steps). *Exact* / *Observed.*
+- **`brute.certify/4` is still a small-family library call** (deterministic Moore, ≤ 4 states, 2 actions, 2 bits, caller-attested bound). *Exact.*
+
+Carried from v0.13.0 (still true unless superseded above):
 
 - **It cannot pick experiments that speed up certification.** Neither library-guided (LX, v0.11.0), discriminating (DX, v0.12.0) nor region-splitting (RSX, v0.13.0) action choice beat the default planner on time to first certificate; RSX was 5.27 steps slower. *Observed.*
 - **It cannot derive its own state bound from the evidence.** EB issued 91 false certificates; the caller must still attest the family bound, and a wrong attested bound is unsound (ood5: RG4 121 false). *Observed.*
