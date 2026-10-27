@@ -1,0 +1,120 @@
+{
+ "blocks": {
+  "repro/transfer": {
+   "case_count": 120,
+   "complete": true,
+   "expected_case_count": 120,
+   "missing_job_keys": 0,
+   "seal_sha256": "88ac6b568780189469187d1b32238b8e5678d0db48adb228576ead02a9a8f150"
+  },
+  "transfer": {
+   "case_count": 360,
+   "complete": true,
+   "expected_case_count": 360,
+   "missing_job_keys": 0,
+   "seal_sha256": "654606c6f41dac5fd2eb57ec3f8d898e0c0b5ecad09effbd96b73ba40722df5e"
+  }
+ },
+ "files_sha256": {
+  "HEARTBEAT_015.jsonl": "e6bcb2917a44f59503e13a93dcb1d211181bbea6c34c4acd45384522cd5741f7",
+  "KILL_DRILL_015.json": "d39f72d60e41b4a105ccd392da84f118329a73ea20be191e0b99ec77f88c3195",
+  "PROGRESS_015.json": "9275cf935016ee288dc7577503199f6fc247b1f2e06d8f6a98897d76ff94eb7f",
+  "RUN_015.log": "154aa182e75fcb66725d68ffccf15587ee693db64f29f0827bfa3334f3de81e4",
+  "RUN_DONE_015.json": "ffc95c62b28f4bdcad38eba400501ea9e3331391a5471dcdf099ad0e7b972634",
+  "RUN_STATE_015.json": "dcdef57eb305dfbb10367eee198765684e2209c2515b718ea9c1fc44e199d9d7",
+  "RUN_T0": "e8c3580cec7cc9036f127d650cde1bcea7221b3fac559d373b156557d824fb67",
+  "SECOND_IMPLEMENTATION_015.json": "c3fe66fcccf952f54e74b4f0895a73bffa0ce074c0fcce883409eb9e68459904",
+  "SECOND_IMPLEMENTATION_015_CHECKPOINT.jsonl": "cffa9b51c948dc3361835bf6f9807c552c68a763851b0df298bf43937058ef3c",
+  "TEST_SUITE_015.json": "e915f57a7d381dd1e7830883c002828e11b89e822f79bdcaf21b68a99c6ae4bb",
+  "WATCHDOG_015.log": "864ef3a680dc435663ad89b8fff7dfe3ed822b74d3014cfbafdc190d42823f54",
+  "logs/g11.log": "c73b9cc48a2f0768ae7e2d3512bcf1a36a30d6be1404bd095e65d44be8df558c",
+  "logs/gti.log": "3b60f12b0e83928629a9b790d21eb610e9d54458cc90c710e1cd2c6acc86a62d",
+  "logs/repro.log": "540e1c8c1a35b3de35e3681325a44a7aecbaac68af8a815027285b2f1c686354",
+  "logs/transfer.log": "5fb4b26d05e2dee20952242b93a22ddb5f75d8e9358daf94b01295ce85d7abd8",
+  "repro/transfer/CHECKPOINT.jsonl": "ebbdfa98f54d87f758254386d156ad20c003fb3d5cd17242d96bdfa2fd4825c0",
+  "repro/transfer/RESULTS.json": "bbc5dd87d93df10366ee22a2a194a5ff5a86a52adc015b27137eb88c94b9d970",
+  "repro/transfer/SCIENTIFIC.json": "6846329ee0e712ff6fdfe449ddfc5c0e486f67158daa244996a3d7e51827a79b",
+  "repro/transfer/SEAL.json": "88ac6b568780189469187d1b32238b8e5678d0db48adb228576ead02a9a8f150",
+  "transfer/CHECKPOINT.jsonl": "4f34bc4fbaa9e796ba72c5f3923df6c265e85949956ded45f24f8850e5bfb734",
+  "transfer/RESULTS.json": "8d173f46c6f5ae814684f8b656220c0451ade0caf3a78ca093faf43bb4f61202",
+  "transfer/SCIENTIFIC.json": "886667f7cf9e8274584eb0c32a2649fd2393ddda18e23a8c5c2c1202710184c6",
+  "transfer/SEAL.json": "654606c6f41dac5fd2eb57ec3f8d898e0c0b5ecad09effbd96b73ba40722df5e"
+ },
+ "heartbeat": {
+  "beats": 923,
+  "first_wall": 1793082015.229,
+  "gaps_over_10s": [],
+  "last_wall": 1793083859.229,
+  "max_gap_s": 2.03
+ },
+ "run_done": {
+  "completed_at": {
+   "g11": 1793083037.533804,
+   "gti": 1793083857.878231,
+   "repro": 1793082237.08975,
+   "transfer": 1793082169.0358207
+  },
+  "elapsed_s": 1844,
+  "events": {
+   "g11": {
+    "audit_done": {
+     "event": "audit_done",
+     "t": 1793082993.236781
+    },
+    "done": {
+     "event": "done",
+     "t": 1793083036.6265194
+    },
+    "mutation": {
+     "detected_injected": 20,
+     "distinct_cases": 20,
+     "event": "mutation",
+     "flagged_not_injected": 0,
+     "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+     "injected": 20,
+     "injected_on_already_mismatching_case": 0,
+     "kinds": {
+      "bounded": 5,
+      "dlf": 3,
+      "eb": 3,
+      "rg": 2,
+      "rsx": 4,
+      "stress": 3
+     },
+     "passed": true,
+     "rng": "random.Random(20261027)"
+    },
+    "start": {
+     "event": "start",
+     "t": 1793082170.977635
+    }
+   }
+  },
+  "finished": {
+   "g11": "2026-10-27T02:37:17-0400",
+   "gti": "2026-10-27T02:50:57-0400",
+   "repro": "2026-10-27T02:23:57-0400",
+   "transfer": "2026-10-27T02:22:49-0400"
+  },
+  "finished_at": "2026-10-27T02:50:57-0400",
+  "mandatory": {
+   "g11": true,
+   "gti": true,
+   "repro": true,
+   "transfer": true
+  },
+  "spent": {
+   "g11": 868,
+   "gti": 1843,
+   "repro": 68,
+   "transfer": 154
+  },
+  "stopped": {},
+  "t0": 1793082013.8703046
+ },
+ "sealed_at": "2026-10-27T02:58:28-0400",
+ "stop_orchestrator": null,
+ "stop_rule_fired": false,
+ "stop_watchdog": null,
+ "study": "BRUTE-0130-REGION-SPLIT-015"
+}
