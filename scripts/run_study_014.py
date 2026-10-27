@@ -15,7 +15,8 @@ checkpoint as it is (--seal-partial / --summarize-only; never a new case) and wr
 watchdog writes STOP_014.json). Every stream completion is stamped (wall epoch) in RUN_STATE_014.json 'completed_at'.
 PROGRESS_014.json (read-only projection) is written at t0 + 360 s.
 Dry-run hooks (only with SMOKE=1 and a directory outside results/study-014): CAP_S, BUDGET_S, LIMIT, SKIP_GTI.
-With SMOKE=1 the transfer and repro streams run block smoke-transfer (smoke seeds 7190001-7190008).
+With SMOKE=1 the transfer and repro streams run block smoke-transfer (smoke seeds 7190001-7190008); with SMOKE=1 and
+BRUTE_SMOKE_DRILL=1 (the kill drill) they run block smoke-drill (7190013-7190015).
 """
 from __future__ import annotations
 import json,os,shlex,signal,subprocess,sys,time
@@ -36,7 +37,7 @@ DRY_BUDGET=int(os.environ['BUDGET_S']) if SM and os.environ.get('BUDGET_S') else
 LIM=['--limit',os.environ['LIMIT']] if SM and os.environ.get('LIMIT') else []
 
 
-BLOCK='smoke-transfer' if SM else 'transfer'
+BLOCK=('smoke-drill' if os.environ.get('BRUTE_SMOKE_DRILL') else 'smoke-transfer') if SM else 'transfer'
 
 
 def study(workers,out,extra=()):

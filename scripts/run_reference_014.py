@@ -105,7 +105,7 @@ def main(argv=None):
             if 'audit_done' not in events:events['audit_done']={'event':'audit_done','t':time.time()};_append(fh,events['audit_done'])
             if a.mutate and 'mutation' not in events:
                 events['mutation']=mutation(cases,plan,a.workers,audited,a.mutate);_append(fh,events['mutation'])
-                log(f"mutation {events['mutation']['detected_injected']}/{events['mutation']['injected']} passed={events['mutation']['passed']}")
+                m=events['mutation'];log(f"mutation {m.get('detected_injected')}/{m.get('injected')} passed={m['passed']} {m.get('skipped','')}")
             if 'done' not in events:events['done']={'event':'done','t':time.time()};_append(fh,events['done'])
     rep=summarize(cases,plan,audited,events,a.results,src)
     out=Path(a.output);out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(rep,indent=1,sort_keys=True)+'\n')
