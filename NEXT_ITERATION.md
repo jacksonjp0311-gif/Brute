@@ -1,3 +1,5 @@
+> **Status (2026-10-27):** pre-registered as `experiments/BRUTE_PLAN_020.json` on `plan/v0.18.0` (docs only; not built).
+
 # Brute v0.17.0 → v0.18.0: next iteration (to be pre-registered as BRUTE_PLAN_020 on `plan/v0.18.0`; ledger preregistration_020)
 
 The previous note is in `docs/research/v0.17.0/NEXT_ITERATION_FROM_v0.16.0.md`. Labels are as in the README. Nothing here counts as evidence until it runs on fresh seeds.

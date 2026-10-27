@@ -4,6 +4,9 @@ _Kept current on the working branch during a release and on `main` at release. L
 
 ## Current version and state
 
+<!-- V0180 -->
+- **Pre-registered (docs only, NOT built): v0.18.0** — study BRUTE-0180-HORIZON-020 on `plan/v0.18.0` (from main `375a904`): `experiments/BRUTE_PLAN_020.json`, `experiments/BRUTE_PLAN_FREEZE_020.json`, `docs/research/v0.18.0/PLAN_020.md`. Headline GLH (RGNB4 on 88-step traces, late-window C ≥ 0.10, CI lower > 0.05, soundness as GNB a/b); per-bit certificates reported only. Seeds 8610001–8640048, smoke 8690001–8690030. No code, seed or run exists. Building needs a new owner request.
+
 <!-- V0170 -->
 - **Released: v0.17.0** — tag `v0.17.0` on `1cc76e1`, release https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.17.0; `main` fast-forwarded `e92a7c4..1cc76e1` (no force); fresh-clone short verify of `plan/v0.17.0@1cc76e1` passed (428 receipts) (study BRUTE-0170-SEQUENTIAL-MARGIN-019, branch `plan/v0.17.0` from main `e92a7c4`). **12 of 13 gated pass.**
   - **SEQUENTIAL MARGIN (headline GNB): FAIL on clauses (c) and (d).** (a) RGNB4 0 false on 240/240 noisy cases, 0 crossings; (b) CP95 upper 0.0124 ≤ 0.05; (c) dC(RGNB4 − RGN4) eps 0.02 = +0.0017 [−0.0005, +0.0041], CI lower not > 0; (d) C(RGNB4) eps 0.02 = 0.052 [0.041, 0.065] < 0.10.

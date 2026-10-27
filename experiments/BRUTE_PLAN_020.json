@@ -1,0 +1,201 @@
+{
+ "schema": "brute.plan.v1",
+ "status": "PRE-REGISTERED (frozen at the commit that adds this file; no v0.18.0 horizon code, per-bit certifier, API, reference code, held-out world, seed or run exists at that commit)",
+ "study": "BRUTE-0180-HORIZON-020",
+ "version_under_test": "0.18.0",
+ "parent_study": "BRUTE-0170-SEQUENTIAL-MARGIN-019",
+ "owner_request": {
+  "recorded_at": "2026-10-27 12:08 EDT (America/New_York), relayed by the coordinating agent",
+  "summary": "Finish and release v0.17.0; then write NEXT_ITERATION and pre-register v0.18.0 (docs only). Do NOT start building v0.18.0. Standing rules unchanged: push after every step; no force-push; never edit frozen or ledger-hashed files; no GitHub Actions and no workflows; evidence labels Exact / Observed / Simulated / Inferred / Rejected / Open; host-agnostic core API; do not touch brute-bridge or BGR-v0.90.0; publish whatever happens."
+ },
+ "build_status": "NOT STARTED. This commit is pre-registration only; building v0.18.0 needs a new owner request.",
+ "breadth_decision": {
+  "decision": "DEPTH headline (horizon: longer traces, late-window coverage of the frozen v0.17.0 sequential-margin region) plus a reported BREADTH block (per-bit partial certificates).",
+  "reasons": [
+   "v0.17.0 GNB failed on usefulness only (c, d): RGNB4 was sound (0 false in 240, CP95 0.0124) but C at eps 0.02 was 0.052 [0.041, 0.065] and dC over RGN4 was +0.0017 [-0.0005, +0.0041] (Observed, GATES_019).",
+   "The sequential boundary grows like eps_bar*b + O(sqrt(b)) while a wrong hypothesis gathers mismatches at a rate set by its distance from the truth; on 28-step traces the two are not yet separated (Inferred). Longer traces test this without changing the region.",
+   "The oracle RGN4_or reached C 0.339 at eps 0.02 with 0 false (Observed), so there is coverage to recover.",
+   "Per-bit certificates are a cheap breadth extension that keeps the same conditional soundness argument (Inferred)."
+  ],
+  "label": "Inferred (design judgement, recorded before any v0.18.0 code or data exists)"
+ },
+ "branch_base": {
+  "requested": "main after the v0.17.0 RELEASED HANDOFF commit",
+  "used": "plan/v0.18.0 branched from main 375a904",
+  "exact": "git merge-base --is-ancestor 375a904 <plan commit> holds"
+ },
+ "freeze_rule": "The commit that adds this file must be an ancestor of every v0.18.0 code, data and result commit; the criteria canonical hash is recorded in experiments/BRUTE_PLAN_FREEZE_020.json and ledger entry preregistration_020.",
+ "adopted_files": "frozen v0.17.0 modules are imported unchanged; new behaviour goes in new files (suffix _020 / 0180) or an ADDENDUM; a superseded freeze gets _R1",
+ "noise_model": "as study-019 (independent bit flips at rate eps on each 2-bit reading; mask 0.35)",
+ "mask_rate": 0.35,
+ "actions_per_case": 44,
+ "burn_in": 8,
+ "family_bound_FB": {
+  "main": 4,
+  "alphabet3": 4,
+  "note": "caller attestation; targets generated with n* <= 4 (Exact by generator)"
+ },
+ "horizon": {
+  "steps": 88,
+  "late_window": [
+   45,
+   88
+  ],
+  "early_window": [
+   1,
+   44
+  ],
+  "note": "study-019 traces were 28 steps after burn-in; the region, boundary and arms are frozen v0.17.0 code run longer"
+ },
+ "perbit_block": {
+  "definition": "at step t, bit j of the next reading is certified when every hypothesis surviving the RGNB4 region agrees on it",
+  "scoring": "per-bit coverage and per-bit false-certificate count on the main cases; reported only",
+  "soundness_argument": "same conditional lemma as GNB (a): a per-bit certificate is implied by the truth surviving the region (Inferred until proved in the build)"
+ },
+ "heldout_ranges": {
+  "targets": {
+   "cycle3": [
+    8610001,
+    8610024
+   ],
+   "switch3": [
+    8620001,
+    8620024
+   ],
+   "unaliased2": [
+    8630001,
+    8630024
+   ],
+   "ood4": [
+    8640001,
+    8640048
+   ]
+  },
+  "notes": "no library / source worlds"
+ },
+ "smoke_seeds": {
+  "range": [
+   8690001,
+   8690030
+  ],
+  "rule": "smoke/debug runs of v0.18.0 code may use ONLY seeds 8690001-8690030 or the study-019 smoke seeds 8590001-8590030; held-out seeds are never generated, simulated or inspected before run_start of the held-out run. Sealed data of studies 001-019 may be used for development (seen data)."
+ },
+ "cases": {
+  "main": "120 two-action target seeds x eps in {0, 0.01, 0.02} at mask 0.35 = 360 cases, 88 steps each",
+  "stress": "the same 120 seeds at eps 0.05 = 120 cases, reported only"
+ },
+ "trajectory": "SP8 actions computed from the NOISY observations, identical across arms within a case (as study-019), extended to 88 steps",
+ "arms": {
+  "RGNB4": "HEADLINE: frozen v0.17.0 sequential-margin region, run to 88 steps",
+  "RGN4": "frozen study-018 fixed-margin region (comparator)",
+  "RG4": "frozen noise-unaware baseline (reported)",
+  "RGN4_or": "oracle m = realized flips (reported)",
+  "SP8": "frozen comparator",
+  "RGNB4_bit": "per-bit certificates from RGNB4 survivors (reported)"
+ },
+ "metrics": {
+  "C_late": "mean over cases of the fraction of steps 45-88 with a certificate",
+  "C_curve": "per-step coverage curve, steps 1-88 (reported)",
+  "false": "certificates whose predicted reading differs from the noiseless truth",
+  "CI": "case-level bootstrap 95%, 10000 resamples, seed fixed in the scoring freeze"
+ },
+ "criteria": {
+  "GLH_horizon": {
+   "gated": true,
+   "clauses": {
+    "a": "RGNB4 0 false certificates on all 240 noisy main cases (eps 0.01, 0.02) over all 88 steps",
+    "b": "CP95 upper bound on the case-level false rate <= 0.05",
+    "c": "C_late(RGNB4) at eps 0.02 >= 0.10",
+    "d": "its 95% CI lower bound > 0.05"
+   },
+   "prediction": "Open"
+  },
+  "GLH_early_control": {
+   "gated": true,
+   "rule": "C over steps 1-28 of RGNB4 at eps 0.02 reproduces the study-019 value within its CI (frozen-code check)"
+  },
+  "GS_a8_soundness": {
+   "gated": true,
+   "rule": "RGNB4 0 false at eps 0 on all 120 cases over 88 steps"
+  },
+  "G_recount": {
+   "gated": true,
+   "rule": "independent numpy second implementation recounts every gated number exactly"
+  },
+  "GS_ref8_reference_audit": {
+   "gated": true,
+   "rule": "reference audit on all gated cases, 0 mismatching; mutation kill >= 20/20"
+  },
+  "GAPI8": {
+   "gated": true,
+   "rule": "brute.certify/7 unchanged; brute.certify/8 added only if needed, additive, host-agnostic"
+  },
+  "G10_compute": {
+   "gated": true,
+   "rule": "as study-019"
+  },
+  "G12_reproducibility": {
+   "gated": true,
+   "rule": "repro set re-run bit-identical"
+  },
+  "G13_frozen_controls_reproduce": {
+   "gated": true,
+   "rule": "frozen v0.17.0 controls reproduce"
+  },
+  "GTI_test_isolation": {
+   "gated": true,
+   "rule": "full suite passes with declared K_0170; undeclared failures []"
+  },
+  "G_RT_study_runtime": {
+   "gated": true,
+   "rule": "held-out run within the 2 h cap"
+  },
+  "G_HB_heartbeat_gap": {
+   "gated": true,
+   "rule": "heartbeat max gap <= 10 s"
+  }
+ },
+ "release_gates": {
+  "GCC_clean_clone": "scripts/clean_clone_020.py PASS",
+  "GLV_long_verify": "verify_release_0180 --long: 12 main cases re-run from scratch, 0 mismatches, 900 s cap"
+ },
+ "non_gated_reports": [
+  "C_curve per step",
+  "per-bit coverage and false counts",
+  "stress eps 0.05",
+  "RG4 / RGN4_or / SP8 coverage",
+  "rate math projected vs observed"
+ ],
+ "second_implementation": "numpy reimplementation of RGNB4 at 88 steps and of the per-bit rule, written before run_start",
+ "stop_rule": {
+  "cap": "2 h 00 min (7200 s) wall clock from RUN_T0",
+  "at_cap": "every unfinished stream is stopped and sealed as is; NO extension and NO rerun",
+  "scoring": "every gate whose inputs are incomplete at the cap is FAIL (STUDY_BUDGET)",
+  "rate_math": "as study-019 (x 1.75 margin), on smoke seeds, before the source freeze"
+ },
+ "process_controls": [
+  "source freeze before the scoring freeze; scoring freeze >= 600 s before run_start",
+  "one held-out run",
+  "ledger sources must name ARTIFACTS (e.g. results/study-020/SEAL.json), not producing scripts (fix from v0.17.0)",
+  "declare K_0170 in the test-isolation rules",
+  "strip SMOKE from the GTI environment in dry runs",
+  "no GitHub Actions or workflows",
+  "push after every step; no force-push"
+ ],
+ "deviation_policy": "after freeze, any change is a ledger 'deviation_020' entry with its reason in docs/research/BRUTE_DEVIATIONS_020.md before the affected run; the original criterion is still reported. Study-020 deviations continue the project-wide numbering after study-019.",
+ "what_counts_as_failure": [
+  "any gated criterion not meeting its threshold is FAIL and is published as FAIL everywhere",
+  "GLH (c) or (d) FAIL means longer horizons do not make the sequential margin useful at eps 0.02",
+  "GLH (a) or GS_a8 FAIL would refute the conditional lemma or the implementation at long horizons"
+ ],
+ "carried_defects": [
+  "v0.17.0 double ledger receipts (script then artifact) for run_end_019, seal_019, gates_019, clean_clone_019; kept, append-only"
+ ],
+ "limitations": [
+  "2 or 3 actions, 2-bit readings, n = 4 hypotheses",
+  "iid bit-flip noise only",
+  "coverage remains low on short traces"
+ ],
+ "brand": "charcoal/sage; no purple, neon, emoji, mascots or gold",
+ "labels": "Every claim in study-020 documents carries one of Exact / Observed / Simulated / Inferred / Rejected / Open; predictions in this plan are Inferred or Open unless marked otherwise."
+}

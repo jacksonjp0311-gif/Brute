@@ -1,0 +1,11 @@
+{
+ "schema": "brute.plan-freeze.v1",
+ "study": "BRUTE-0180-HORIZON-020",
+ "plan": "experiments/BRUTE_PLAN_020.json",
+ "plan_sha256": "47c2fd6cbe8c786d588e250155bc2783650373aea81facd3c1647f7a92a265aa",
+ "criteria_canonical_json_sha256": "3ec898f2323b246667c06cce95ddb5586b7a1f8f183e2c474ff2af9919f3bd6f",
+ "criteria_hash_method": "sha256 of json.dumps(plan['criteria'], sort_keys=True, separators=(',', ':'), ensure_ascii=False) (same as preregistration_019)",
+ "readable_plan": "docs/research/v0.18.0/PLAN_020.md (the JSON wins if they differ)",
+ "frozen_at": "the commit that adds this file (recorded in the ledger entry preregistration_020)",
+ "note": "no v0.18.0 horizon code, per-bit certifier, API, reference code, held-out world, seed or run exists at this commit"
+}
