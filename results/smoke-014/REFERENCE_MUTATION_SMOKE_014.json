@@ -1,0 +1,37 @@
+{
+ "detected": 20,
+ "distinct_smoke_cases": 15,
+ "first_differences": [
+  "VerificationError: DLFp trace",
+  "VerificationError: DLFp trace",
+  "VerificationError: stress 19 AT6_false",
+  "VerificationError: stress 4 DLF_false",
+  "VerificationError: DXn first_cert_step",
+  "VerificationError: RG4 trace",
+  "VerificationError: SP8 n=5 step 8 b=0 support",
+  "VerificationError: DLFn trace",
+  "VerificationError: stress 4 DLF_license",
+  "VerificationError: SP8 n=5 step 20 b=1 support",
+  "VerificationError: RG4 trace",
+  "VerificationError: DLFn trace",
+  "VerificationError: SP8 n=3 step 4 b=1 support",
+  "VerificationError: SP8 n=3 step 26 b=0 support",
+  "VerificationError: stress 2 DLF_false",
+  "VerificationError: SP8 n=5 step 22 b=1 support",
+  "VerificationError: SP8 n=5 step 6 b=0 support",
+  "VerificationError: DXn first_cert_step",
+  "VerificationError: DLFp trace",
+  "VerificationError: DLFn trace"
+ ],
+ "injected": 20,
+ "kinds": {
+  "bounded": 6,
+  "dlf": 6,
+  "dx": 2,
+  "rg": 2,
+  "stress": 4
+ },
+ "label": "Observed, smoke seeds only (smoke-transfer 8, smoke-drill 3, smoke-api 4 cases, 5 duplicated to reach 20 indices); outside the cap; not GS_ref evidence",
+ "schema": "brute.reference-mutation-smoke.v1",
+ "unmutated_audit_ok": 15
+}

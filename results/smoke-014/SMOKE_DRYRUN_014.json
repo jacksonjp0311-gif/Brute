@@ -1,0 +1,110 @@
+{
+ "completed_after_t0_s": {
+  "g11": 46.1,
+  "repro": 10.1,
+  "transfer": 6.1
+ },
+ "heartbeat": {
+  "beats": 25,
+  "first_wall": 1793071393.249,
+  "gaps_over_10s": [],
+  "last_wall": 1793071441.249,
+  "max_gap_s": 2.001
+ },
+ "label": "Observed, smoke seeds only (smoke-transfer 8 cases, mask 0.35), CAP_S/BUDGET_S hooks, outside the cap; not study evidence",
+ "repro_seal": {
+  "block": "smoke-transfer",
+  "case_count": 3,
+  "complete": true,
+  "expected_case_count": 3,
+  "freeze_sha256": null,
+  "job_selection": {
+   "every": 3,
+   "limit": null,
+   "offset": 0
+  },
+  "plan_sha256": "f32c48b979de6d53544da1012044c82714948644d9d523d937de03d762ae56f8",
+  "results_sha256": "edc14e454be127edb85fdba80e23fc029c171a251522ecf7d99805b26c7ec2ee",
+  "scientific_sha256": "8f6dd63739e54e6e3514ae8ed55ac4f3e3f22bceeeb1100c82e27ed83875fd9c",
+  "smoke": true,
+  "study": "BRUTE-0120-BOUNDED-TRANSFER-014"
+ },
+ "run_done": {
+  "completed_at": {
+   "g11": 1793071439.3628383,
+   "repro": 1793071403.3487313,
+   "transfer": 1793071399.3444054
+  },
+  "elapsed_s": 46,
+  "events": {
+   "g11": {
+    "audit_done": {
+     "event": "audit_done",
+     "t": 1793071438.1591923
+    },
+    "done": {
+     "event": "done",
+     "t": 1793071438.2016346
+    },
+    "mutation": {
+     "event": "mutation",
+     "passed": null,
+     "skipped": "8 cases < 20 (smoke only)"
+    },
+    "start": {
+     "event": "start",
+     "t": 1793071399.5637205
+    }
+   }
+  },
+  "finished": {
+   "g11": "2026-10-26T23:23:59-0400",
+   "repro": "2026-10-26T23:23:23-0400",
+   "transfer": "2026-10-26T23:23:19-0400"
+  },
+  "finished_at": "2026-10-26T23:23:59-0400",
+  "mandatory": {
+   "g11": true,
+   "repro": true,
+   "transfer": true
+  },
+  "spent": {
+   "g11": 40,
+   "repro": 4,
+   "transfer": 6
+  },
+  "stopped": {},
+  "t0": 1793071393.2153275
+ },
+ "schema": "brute.smoke-dryrun.v1",
+ "second_implementation": {
+  "cases_audited": 8,
+  "cases_expected": 8,
+  "cases_not_reached": 0,
+  "mismatching_cases": 0,
+  "passed": false
+ },
+ "spent_s": {
+  "g11": 40.01573157310486,
+  "repro": 4.002537727355957,
+  "transfer": 6.002509355545044
+ },
+ "stopped": {},
+ "transfer_seal": {
+  "block": "smoke-transfer",
+  "case_count": 8,
+  "complete": true,
+  "expected_case_count": 8,
+  "freeze_sha256": null,
+  "job_selection": {
+   "every": 1,
+   "limit": null,
+   "offset": 0
+  },
+  "plan_sha256": "f32c48b979de6d53544da1012044c82714948644d9d523d937de03d762ae56f8",
+  "results_sha256": "24a887de3394c9f8464b0461730d0788158f03587c6f864b3e223a608dfafc9b",
+  "scientific_sha256": "6560d48a0e59c4c0cf71381df1d0fbcdfc114e505dc7c368dcbff14862a4cd6a",
+  "smoke": true,
+  "study": "BRUTE-0120-BOUNDED-TRANSFER-014"
+ }
+}
