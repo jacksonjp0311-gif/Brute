@@ -1,4 +1,4 @@
-# Brute v0.15.0 → v0.16.0: next iteration (pre-registered as BRUTE_PLAN_018 on `plan/v0.16.0`)
+# Brute v0.15.0 → v0.16.0: next iteration (pre-registered as BRUTE_PLAN_018 on `plan/v0.16.0`, commit 9beb459, ledger 34901f8)
 
 The previous note is in `docs/research/v0.15.0/NEXT_ITERATION_FROM_v0.14.0.md`. Labels are as in the README. Nothing here counts as evidence until it runs on fresh seeds. The longer path is in `docs/ROADMAP_TO_GI.md`.
 

@@ -1,8 +1,16 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~09:17 EDT (v0.15.0 RELEASED on `main`)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~09:22 EDT (v0.15.0 RELEASED on `main`; v0.16.0 pre-registered on `plan/v0.16.0`)._
 
 ## Current version and state
+
+<!-- V0160 -->
+- **In progress: v0.16.0** (study BRUTE-0160-NOISY-OBSERVATION-018, branch `plan/v0.16.0` from main `c255873`). **Pre-registered only:** `experiments/BRUTE_PLAN_018.json` (sha256 b6471275…32ecf) + `BRUTE_PLAN_FREEZE_018.json`, commit 9beb459, ledger `preregistration_018` 34901f8. Summary `docs/research/v0.16.0/PLAN_018.md` (the JSON wins). No v0.16.0 code, world, seed or run exists yet.
+  - Breadth choice: noisy observations (iid bit flips eps ∈ {0, 0.01, 0.02}; stress 0.05; attested eps_bar 0.02); larger alphabets deferred to v0.17.0. Headline arm RGN4(m), flip budget m from Bin(B, 0.02) at δ 0.01.
+  - Seeds (Exact, disjoint from all 178 prior ranges): targets 8410001–8410024, 8420001–8420024, 8430001–8430024, 8440001–8440048; smoke 8490001–8490030. 360 main cases at mask 0.35 + 120 stress.
+  - Gates: GNS (headline), GN0, GS_a6, G_recount, GS_ref6, GAPI6, G10, G12, G13, GTI (K_0150, K_096), G_RT, G_HB; release GCC + GLV `--long`.
+  - New stop rules: `g11_rate_projection` (per-cell smoke under concurrency, slowest × 1.75, act pre-freeze if > 0.8 of budget; `scripts/rate_math_018.py` in the freeze) and `operator_wait` (≤ 240 s blocking checks). Deviations numbered from #97.
+  - Next: implement noise model + RGN4 + reference in new files; smoke on 849xxxx only; rate_math_018; source freeze; then one held-out run under the 2 h cap.
 
 <!-- V0150 -->
 - **Released: v0.15.0** (study BRUTE-0150-BOUNDED-LOOKAHEAD-017, branch `plan/v0.15.0` from main `d1f462b`). **9 of 13 gated pass.**
