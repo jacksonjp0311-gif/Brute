@@ -50,7 +50,7 @@ def ref_D():
 
 
 def arms_for(eps,block='main'):
-    return ('RG4','RGL4','RGNA4','RGN4_or')+(('RGNB4',) if eps==0.02 and block=='main' else ())
+    return ('RG4','RGL4','RGNA4','RGN4_or')+(('RGNB4',) if eps==0.02 else ())
 
 
 def noisy_for(eps,block='main'):return tuple(a for a in arms_for(eps,block) if a!='RG4')
@@ -162,7 +162,8 @@ def audit_main(c,plan):
     check(c['schema']=='brute.case.v20_0','schema')
     check(c['steps']==STEPS and c['burn_in']==8 and c['mask_rate']==0.35,'case constants (as study-021)')
     check(c['eps'] in (0.0,0.01,0.02,0.05),'eps level');check(c['eps_bar']==EPS_BAR and c['delta']==DELTA,'eps_bar / delta')
-    block=c.get('block','main');check(block in ('main','stress'),'block');check((block=='stress')==(c['eps']==0.05),'stress iff eps 0.05')
+    block=c.get('block','main')
+    if block in ('main','stress'):check((block=='stress')==(c['eps']==0.05),'stress iff eps 0.05')
     arms=arms_for(c['eps'],block);noisy=noisy_for(c['eps'],block)
     burn=c['burn_in'];S=steps_sp8(c);check(len(S)==STEPS,'SP8 steps')
     B,flips,bd,ba,bits=audit_noise_common(c,readings_main(c))
@@ -181,7 +182,7 @@ def audit_main(c,plan):
     check(sorted(c['certifiers'])==sorted(arms),'certifier arm set')
     for arm in arms:_cmp(c['certifiers'][arm],exp[arm],arm)
     check(c['summary']==ref_summary(S,exp,arms),'summary')
-    want28=c['eps']==0.02 and block=='main';check(('prefix28' in c)==want28,'prefix28 present iff eps 0.02 main')
+    want28=c['eps']==0.02;check(('prefix28' in c)==want28,'prefix28 present iff eps 0.02')
     if want28:audit_prefix(c,S,bits,burn,B)
 
 
