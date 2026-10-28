@@ -1,0 +1,42 @@
+{
+  "clone": "https://github.com/jacksonjp0311-gif/Brute.git branch plan/v0.18.0",
+  "commit": "71e80a1",
+  "long_verify": {
+    "GLV_long_verify": {
+      "cap_s": 900,
+      "case_list": [
+        "main/cycle3/8610001/0.0",
+        "main/cycle3/8610002/0.01",
+        "main/cycle3/8610003/0.02",
+        "main/switch3/8620001/0.0",
+        "main/switch3/8620002/0.01",
+        "main/switch3/8620003/0.02",
+        "main/unaliased2/8630001/0.0",
+        "main/unaliased2/8630002/0.01",
+        "main/unaliased2/8630003/0.02",
+        "main/ood4/8640001/0.0",
+        "main/ood4/8640002/0.01",
+        "main/ood4/8640003/0.02"
+      ],
+      "cases": 12,
+      "mismatching_cases": 0,
+      "passed": true,
+      "wall_s": 177.8
+    },
+    "status": "passed",
+    "wall_s_process": 227
+  },
+  "python": "/workspace/bgr/venv (3.13)",
+  "run_at": "2026-10-28 13:53-14:06 EDT",
+  "short_verify": {
+    "ledger_receipts": 448,
+    "status": "passed"
+  },
+  "tests": {
+    "module": "tests.test_release_0180",
+    "ran": 7,
+    "result": "OK",
+    "wall_s": 97.2
+  },
+  "what": "fresh GitHub clone verification of v0.18.0"
+}
