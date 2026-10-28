@@ -1,41 +1,26 @@
-# Brute v0.18.0 → v0.19.0: next iteration (proposal; docs only)
+# Brute v0.19.0 → v0.20.0: next iteration (proposal; docs only)
 
-The previous note is in `docs/research/v0.18.0/NEXT_ITERATION_FROM_v0.17.0.md`. Labels are as in the README. Nothing here
+The previous note is in `docs/research/v0.19.0/NEXT_ITERATION_FROM_v0.18.0.md`. Labels are as in the README. Nothing here
 counts as evidence until it runs on fresh seeds.
 
-## Where v0.18.0 leaves things (Observed, study-020, 10 of 12 gated pass)
+## Where v0.19.0 leaves things (Observed, study-021, 12 of 14 gated pass)
 
-- **Long horizons make the sequential margin useful (GLH_horizon PASS).** On 88-step traces, RGNB4 has:
-  - 0 false certificates on all 240 noisy main cases, with 0 margin crossings and a CP95 upper bound of 0.0124;
-  - C_late(eps 0.02) = 0.482 [0.430, 0.537], against the 0.10 bar;
-  - a late-window gain over RGN4 of dC +0.053 [0.043, 0.063].
+- **The anytime margin is sound (GAH_anytime a, b, d pass).** RGNA4: 0 false certificates on 240 noisy main cases, CP95
+  upper 0.0124; C_late(eps 0.02) 0.265 [0.215, 0.317]; stress (eps 0.05) 0 false on 120 cases.
+- **It does not certify earlier (clause c FAIL).** dC_early28(RGNA4 - RGNB4, eps 0.02) = -0.0040 [-0.0068, -0.0018];
+  late it gives up 22.8 points (RGNB4 0.493).
+- **Why (Exact from code, eps_bar 0.02, delta 0.01).** The 6/(π²b²) schedule spends most of delta in the first bits, so
+  its margin m_a(b) grows faster than the planned margin: m_a vs m(B = 176) is 2 vs 3 at bit 10, 4 vs 4 at bit 28, 7 vs 5
+  at bit 56, 9 vs 6 at bit 88, 13 vs 9 at bit 176. Why early coverage is still lower when m_a ≤ m before bit 28 is *Open*.
+- **GTI FAIL (#107)** came from committing release tests before run_start. Heartbeat clean (3.3 s); run 4801 s of 7200 s.
 
-  For comparison, on 28-step traces in study-019 it reached only C 0.052.
-- **Partial answers help (reported).** Per-bit late coverage is 0.596 at eps 0.02, with 0 false bits on the 360 main cases.
-- **The early-window control fails (GLH_early_control FAIL).** C over steps 1-28 is 0.0025, against study-019's 0.052.
-  The mechanism is Exact from code: `boundary(B)` spends the crossing budget as delta·b/B. At B = 176 the margin is
-  m = 4 at bit 28 and 5 at bit 56; at B = 56 it is 3 and 4. A longer planned horizon therefore buys late coverage with
-  early coverage. The control was mis-specified (#106).
-- **G_HB failed** because of the box restart (1083.5 s) and four 27-58 s gaps after the relaunch. The frozen resume rule
-  worked: every stream resumed from its checkpoint, and the run finished at 6740 s of the 7200 s cap.
-- **Stress** (eps 0.05, no guarantee): RGNB4 was false on 5 of 120 cases and RGN4_or on 0.
+## Proposal for v0.20.0 (headline GAS: a flatter anytime schedule)
 
-## Proposal for v0.19.0 (depth headline GAH: anytime margin)
-
-1. **Anytime boundary (RGNA4).** Spend the crossing budget with a horizon-free schedule, delta·6/(π²·b²) per bit (sum ≤
-   delta). No planned B is needed, and early margins do not grow with the horizon.
-   - Gates: soundness as GLH (a, b) on 88-step noisy main cases (Exact lemma written before code).
-   - Usefulness: C_early28(RGNA4, eps 0.02) > C_early28(RGNB4) with CI lower > 0, and C_late(RGNA4) ≥ 0.10.
-   - Reported: the anytime-vs-planned trade-off curve.
-2. **Streaming API `brute.certify/8`.** Callers can ask for certificates without declaring the trace length.
-3. **Breadth (reported or soundness-gated).** 3 actions at 88 steps.
-4. **Process.**
-   - A pre-registered resume drill (kill and relaunch inside the smoke).
-   - G_HB stays as frozen (max gap ≤ 10 s). Restart gaps are reported separately and are not excused.
-   - The early control is replaced by a same-B frozen-code check.
-5. **Same discipline.** Fresh disjoint seeds, a numpy reference, rate math, a source freeze, a scoring freeze ≥ 600 s
-   before run_start, a 2 h cap, the watchdog and the sentinel.
-
-## No CI
-
-No `.github` directory and no GitHub Actions workflows.
+1. **Heavier-tailed schedule (RGNA5).** Spend delta per bit ∝ 1/(b·ln²(b+1)), normalised so the sum is at most delta. It is
+   still horizon-free, and spends more than 1/b² late. Exact lemma and DP reference before code.
+   - Gate GAS: soundness as GAH (a, b); usefulness C_late(RGNA5, eps 0.02) - C_late(RGNA4) > 0 with CI lower > 0.
+   - Reported: the gap to RGNB4 at each window; the early-window puzzle above, as a diagnostic.
+2. **3-action alphabet at 88 steps (reported, soundness-gated).** RGNA5_3 on 96 cases; 0 false certificates required.
+3. **GTI tooling-order rule.** Release tests enter the tree only after run_end; GTI fails a run that finds a
+   test_release file for the version under test at start. A pre-run check enforces it.
+4. Carried: hard 2 h cap, independent watchdog, sentinel, frozen resume rule, rate math with the x1.75 rule.

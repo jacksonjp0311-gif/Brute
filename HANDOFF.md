@@ -1,8 +1,18 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-28 ~14:06 EDT (v0.18.0 RELEASED on `main`)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-28 ~17:45 EDT (v0.19.0 release in progress on `plan/v0.19.0`)._
 
 ## Current version and state
+
+<!-- V0190 -->
+- **Releasing: v0.19.0** (study BRUTE-0190-ANYTIME-021, branch `plan/v0.19.0` from main `4a644a9`). **12 of 14 gated pass.** RECEIPT_PENDING
+  - **ANYTIME (headline GAH_anytime): FAIL on clause (c).** (a) RGNA4 0 false on 240/240 noisy main cases; (b) CP95 upper 0.0124; (d) C_late eps 0.02 = 0.265 [0.215, 0.317]. (c) dC_early28(RGNA4 - RGNB4, eps 0.02) = -0.0040 [-0.0068, -0.0018], bar > 0. dC_late -0.228.
+  - **FAIL: GTI** (6 undeclared failures in `tests/test_release_0190.py`; release tooling `0977173` was committed before run_start; #107).
+  - **PASS:** G_recount, GAH_prefix_control, GAH_frozen_control, GS_a9, GS_ref9 (480 audited, mutation 20/20), GAPI9 (`brute.certify/8` new, /7../1 unchanged), G10, G12 (60/60), G13, G_RD, G_RT, G_HB (max gap 3.294 s). Release gates: GCC PASS; GLV below.
+  - **Run:** run_start 16:02:34 EDT; RUN_DONE 17:22:35 EDT at 4801 s of 7200 s. Streams: gti 3638 s, transfer 4130 s, repro 244 s, g11 669 s. No stop.
+  - **Chain:** plan `a51275e` → implementation `94d49b7` `30595c3` `df915e5` → tooling `0977173` → rate math `162d714` → source freeze `07beaa0` → scoring freeze `0894fcc` → run_start `ea114fe` → run_end `9c2a7fa` → seal `ffda8a1` → gates `ff96381` → #107 `c2b8633` → clean clone `e0441ab` → release freeze `08e18fc`.
+  - **No CI:** no `.github`, no workflows. `brute-bridge` worktree and /tmp/wt-state untouched.
+  - **Next:** `NEXT_ITERATION.md` (flatter anytime schedule GAS, 3 actions at 88 steps, GTI tooling-order rule).
 
 <!-- V0180 -->
 - **Released: v0.18.0** — tag `v0.18.0` (annotated) on `71e80a1`, release https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.18.0; `main` fast-forwarded `375a904..71e80a1` (no force); fresh GitHub clone of `plan/v0.18.0@71e80a1`: short verify passed (448 receipts), `--long` GLV 12 cases / 0 mismatching / 177.8 s (cap 900 s), `tests.test_release_0180` 7 OK; record `docs/research/v0.18.0/FRESH_CLONE_VERIFY_0180.json` (`d1a03ec`; its run_at field reads 13:53–14:06, actual 13:52:54–14:03:44 EDT). Study BRUTE-0180-HORIZON-020, branch `plan/v0.18.0` from main `375a904`. **10 of 12 gated pass.**

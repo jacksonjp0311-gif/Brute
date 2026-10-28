@@ -1,5 +1,30 @@
 # Brute changelog
 
+## v0.19.0: anytime sequential margin RGNA4, streaming API brute.certify/8 (study BRUTE-0190-ANYTIME-021)
+
+**12 of 14 gated criteria pass. GAH_anytime (headline) FAILS on clause (c); its soundness and late-coverage clauses pass. GTI FAILS (#107).** *Observed*; scoring rules fixed before the data (*Exact*).
+
+### Timeline (author's clock, EDT, 2026-10-28)
+
+- **Pre-registration.** Plan `a51275e` (ledger preregistration_021, 14:17:42); seed check; reference before code.
+- **Preparation.** Implementation `94d49b7`, `30595c3`, `df915e5`; drills (kill 0.224 s, resume i-iv, API 4/4); release tooling `0977173`; rate math `162d714` (critical path did not fit; mean path 4864.9 s).
+- **Freezes.** Source `07beaa0`; scoring `0894fcc` (15:51:56, 638 s before run_start).
+- **Held-out run.** run_start `ea114fe`, 16:02:34 EDT, 2 h cap; RUN_DONE 17:22:35 (4801 s); no stream stopped.
+- **After the run.** run_end `9c2a7fa`; seal `ffda8a1`; GATES_021 `ff96381`; #107 `c2b8633`; clean clone `e0441ab` PASS; release freeze `08e18fc`.
+
+### Code
+
+- `brute/anytimemargin.py` (RGNA_n, horizon-free boundary δ·6/(π²b²)), `brute/api/certify8.py` (brute.certify/8, streaming); `experiments/v0190_reference.py` (second implementation).
+- Release: `scripts/verify_release_0190.py` (short, `--long`), `tests/test_release_0190.py`, `scripts/make_release_freeze_0190.py`.
+
+### Results (*Observed*)
+
+- **GAH_anytime FAIL (c).** RGNA4 0 false on 240/240 noisy main cases, CP95 0.0124; C_late eps 0.02 = 0.265 [0.215, 0.317]; dC_early28 vs RGNB4 -0.0040 [-0.0068, -0.0018]; dC_late -0.228.
+- **Controls.** GAH_prefix_control and GAH_frozen_control PASS (RGNB4 C_early28 0.0060, CI overlaps study-020); RGN4_or C_late 0.832; RGNB4 0.493.
+- **Stress (eps 0.05, no guarantee).** RGNA4 0 false on 120; RG4 false on 48.
+- **Process.** GS_ref9 PASS (480 audited, mutation 20/20), G12 60/60, G_RT PASS, G_HB PASS (3.3 s), GTI FAIL (6 release tests, #107); GCC PASS.
+
+
 ## v0.18.0: long-horizon test of the sequential margin, per-bit partial certificates (study BRUTE-0180-HORIZON-020)
 
 **10 of 12 gated criteria pass. GLH_horizon (headline) PASSES; GLH_early_control and G_HB FAIL.** *Observed*; scoring rules fixed before the data (*Exact*).

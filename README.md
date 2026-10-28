@@ -3,7 +3,7 @@
 </p>
 
 <p align="center"><b>Exact geometric reasoning about hidden worlds. Brute keeps every explanation the evidence still allows, and it certifies an answer only when all of them agree. Otherwise it says "I don't know."</b><br>
-<sub>Brute v0.18.0 · built on BGR v0.90.0 (BITWORK — Geometric Reasoning) · research preview · not general intelligence</sub></p>
+<sub>Brute v0.19.0 · built on BGR v0.90.0 (BITWORK — Geometric Reasoning) · research preview · not general intelligence</sub></p>
 
 ---
 
@@ -17,6 +17,7 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 | **The SAT engine makes the same decision as brute-force enumeration on all 25,344 steps** (v0.5.0, GX1), and the constraint region matches enumeration on 1.25 M items (v0.4.0, GR1/GR1b) | `results/study-007/`, `results/study-006/` | *Observed* |
 | **Second-encoding cross-check, 288/288 breadth cases: 0 mismatching traces in 1,358,721 SAT queries, 0 unknowns, 0 witness failures.** This was an incremental CaDiCaL re-run of the v0.6.0 cross-check: 310 s on 4 workers, against ~8.8 h for 46 cases before. It is post-release verification and does not change the frozen GX2′ FAIL | branch [`verify/xcheck-incremental`](https://github.com/jacksonjp0311-gif/Brute/tree/verify/xcheck-incremental), `results/verify-xcheck-incremental/` | *Observed* |
 | **v0.8.0 ran every pre-registered stream inside a hard 2 h cap** with an independent watchdog: the whole study finished in 1,970 s (cap 7,200 s), the second implementation agreed on 648/648 + 144/144 mandatory traces and caught 20/20 injected mutations, and in-cap test isolation passed (294 tests). The kill drill stopped 8 process groups in 0.239 s | `results/study-010/GATES_010.json` (G11, GX2_010, GTI, G_RT ii/iii) | *Observed* |
+| **v0.19.0: an anytime margin stays sound but does not certify earlier (GAH_anytime FAIL on clause c; 12 of 14 gated).** RGNA4 needs no planned trace length. On 88-step traces it issued 0 false certificates on all 240 noisy main cases (CP95 0.0124) and certified 26.5% of late slots at eps 0.02 (CI95 [21.5%, 31.7%], bar 10%). Over steps 1-28 it certified less than the planned-horizon RGNB4 (dC -0.0040 [-0.0068, -0.0018]; bar > 0) and late it gave up 22.8 points. GTI also failed: six release tests committed before the run ran against the pre-release tree (#107). Heartbeat clean (max gap 3.3 s) | `results/study-021/GATES_021.json` (GAH_anytime, GTI, GS_ref9, G_HB) | *Observed* |
 | **v0.18.0: on long traces the sequential margin is sound and useful (GLH_horizon PASS; 10 of 12 gated).** On 88-step traces RGNB4 issued 0 false certificates on all 240 noisy main cases (CP95 0.0124) and certified 48.2% of late-window slots at eps 0.02 (CI95 [43.0%, 53.7%], bar 10%), +5.3 points over RGN4. Two gates FAIL: the early-window control (C 0.0025 over steps 1-28; the boundary spends delta as delta·b/B, so a longer planned horizon raises early margins) and the heartbeat gate (1083.5 s box-restart gap; the run resumed from checkpoints under the frozen rule and finished at 6740 s of 7200 s) | `results/study-020/GATES_020.json` (GLH_horizon, GLH_early_control, G_HB, GS_ref8) | *Observed* / *Exact* (mechanism) |
 | **v0.17.0: a sequential flip margin stays sound but does not recover coverage (GNB FAIL on clauses c, d; 12 of 13 gated).** RGNB4 recomputes the flip margin from the bits seen so far. 0 false certificates on all 240 noisy cases (CP95 0.0124), but C 0.052 [0.041, 0.065] at eps 0.02 and no measurable gain over RGN4 (dC +0.0017 [−0.0005, +0.0041]). First 3-action block GA3 PASS. **New API `brute.certify/7`** | `results/study-019/GATES_019.json` (GNB, GA3, GS_ref7, GAPI7) | *Observed* |
 | **v0.16.0: under noisy readings the tolerant region stays sound but certifies too little (GNS FAIL on coverage, 10 of 12 gated).** With each observed bit flipped at random (eps 0.01 or 0.02), RGN4 keeps every hypothesis that explains the readings with at most m flipped bits (m = 4 or 5, set so that more flips have probability <= 0.01). It issued 0 false certificates on all 240 noisy cases (one-sided CP95 bound on the case-false rate 0.0124), while the noise-blind RG4 was wrong on 20% of cases at eps 0.02. But RGN4 covered only 6.6% of slots at eps 0.02 (CI95 [5.1%, 8.1%]) against a pre-registered bar of 10%, so the headline fails. GN0 failed on 2 burn-in slots, as predicted before the run. **New API `brute.certify/6`** (probabilistic soundness) | `results/study-018/GATES_018.json` (GNS, GN0, GS_ref6, GAPI6) | *Observed* |
@@ -35,7 +36,8 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 
 | Version | Study | Gates | What it added | Key result |
 | --- | --- | --- | --- | --- |
-| **v0.18.0** (current) | BRUTE-0180-HORIZON-020, 360 main + 120 stress held-out cases on 88-step traces | **10 / 12** | long-horizon test of RGNB4, per-bit partial certificates (reported), checkpoint resume after a box restart | GLH_horizon PASS: 0 false in 240 noisy cases, C_late 0.482 [0.430, 0.537] at eps 0.02; GLH_early_control FAIL (0.0025, horizon-dependent boundary); G_HB FAIL (1083.5 s restart gap) *Observed* |
+| **v0.19.0** (current) | BRUTE-0190-ANYTIME-021, 360 main + 120 stress held-out cases on 88-step traces | **12 / 14** | anytime margin RGNA4, streaming API brute.certify/8 | GAH_anytime FAIL (c): 0 false in 240 noisy cases, C_late 0.265 [0.215, 0.317] at eps 0.02, but dC_early28 vs RGNB4 -0.0040; GTI FAIL (release tests pre-run, #107); G_HB PASS (3.3 s) *Observed* |
+| **v0.18.0** | BRUTE-0180-HORIZON-020, 360 main + 120 stress held-out cases on 88-step traces | **10 / 12** | long-horizon test of RGNB4, per-bit partial certificates (reported), checkpoint resume after a box restart | GLH_horizon PASS: 0 false in 240 noisy cases, C_late 0.482 [0.430, 0.537] at eps 0.02; GLH_early_control FAIL (0.0025, horizon-dependent boundary); G_HB FAIL (1083.5 s restart gap) *Observed* |
 | **v0.17.0** | BRUTE-0170-SEQUENTIAL-MARGIN-019, 360 main + 120 stress + 96 alphabet3 held-out cases | **12 / 13** | sequential flip margin RGNB4, 3-action block, `brute.certify/7` | GNB FAIL on (c), (d): 0 false in 240 noisy cases but C 0.052 at eps 0.02, dC vs RGN4 +0.0017 (CI includes 0); GA3 PASS; all process gates pass *Observed* |
 | **v0.16.0** | BRUTE-0160-NOISY-OBSERVATION-018, 360 main held-out cases (eps 0 / 0.01 / 0.02) + 120 stress (eps 0.05) | **10 / 12** | noise model, tolerant bounded region RGN4(m), oracle-margin arm, parallel clean-tag GTI, `brute.certify/6` | GNS FAIL on clause (c) only: 0 false in 240 noisy cases (CP95 0.0124) but C 0.066 [0.051, 0.081] < 0.10 at eps 0.02; RG4 false on 24/120; GN0 FAIL (2 burn-in slots, predicted); all process gates pass *Observed* |
 | v0.15.0 | BRUTE-0150-BOUNDED-LOOKAHEAD-017, 360 transfer held-out cases (ood4 doubled) + 72 ood5 + 25,920 stress pairs | **9 / 13** | bounded-region lookahead chooser RGLX / RGL, deferred-split replication, attested license DLFa, RSXL5 on ood5, heartbeat sentinel, `brute.certify/5` | GRL PASS (TV +2.84 [2.21, 3.46], 0 false); GDS2 PASS (dC +0.037); GS_ref5 FAIL (audit 308/432 at budget, 0 mismatches); GTI FAIL (#96, declared); G_RT FAIL (g11 stopped); G_HB FAIL (425.7 s, 316.5 s gaps) *Observed* |
@@ -96,6 +98,7 @@ Details: [`docs/ROADMAP_TO_GI.md`](docs/ROADMAP_TO_GI.md) (gated steps toward ge
 git clone https://github.com/jacksonjp0311-gif/Brute.git && cd Brute
 python -m pip install -r requirements.txt
 for k in 004 005 006 007 008 009 010 011 012 013 014 015 016 017; do python scripts/study${k}_storage.py restore; done   # rebuild sealed traces, checked against SEAL.json
+PYTHONPATH=. python scripts/verify_release_0190.py   # v0.19.0 (--long adds GLV)
 PYTHONPATH=. python scripts/verify_release_0180.py   # v0.18.0 (--long adds GLV: 12 main cases re-run and audited, 900 s cap)
 PYTHONPATH=. python scripts/verify_release_0150.py   # (--long adds the 18-case transfer + ood5 re-run + second-implementation audit) seals, freezes, ledger chain, manifest, git order; regenerates paired/repro/gates byte-for-byte
 PYTHONPATH=. python scripts/make_gates_017.py --check   # GATES_017.json alone
@@ -113,6 +116,10 @@ No GPU, network or model weights are needed. CPU only, Python 3.11+ (the release
 Brute is built on **BGR v0.90.0, "BITWORK — Geometric Reasoning"**, James's earlier research system. Its exact symbolic support over Moore machines, the study-001 evidence and the `bgr*/` code are carried forward byte-identical, with full credit in [`FORK.md`](FORK.md) and [`docs/research/bgr-v0.90.0/`](docs/research/bgr-v0.90.0/).
 
 ---
+
+## v0.19.0 at a glance: 12 of 14 gated criteria pass; the anytime margin is sound but certifies less than the planned one, early and late (GAH_anytime FAIL on clause c); GTI fails on a tooling-order mistake
+
+Study-021 ran RGNA4 (brute.certify/8), a sequential flip margin with a horizon-free boundary, beside the frozen RGNB4 on 88-step traces. On 240 noisy main cases RGNA4 issued 0 false certificates (CP95 upper 0.0124). Late coverage at eps 0.02 was 0.265 [0.215, 0.317], above the 0.10 bar, but RGNB4 reached 0.493. Over steps 1-28 RGNA4 certified 0.0019 against RGNB4's 0.0060, so the pre-registered "earlier certificates" clause failed. *Observed.* GTI failed because the v0.19.0 release tests were committed before run_start and ran against the 0.18.0 release state (#107). *Exact.* The run finished in 4801 s of the 7200 s cap with a max heartbeat gap of 3.3 s. *Observed.*
 
 ## v0.18.0 at a glance: 10 of 12 gated criteria pass; on 88-step traces the sequential margin is sound and certifies 48% of late slots (GLH_horizon PASS); the early control and the heartbeat gate fail
 
@@ -580,7 +587,13 @@ Findings and their math: [`docs/research/DISCOVERIES.md`](docs/research/DISCOVER
 
 ## What Brute can't do yet
 
-New in v0.18.0:
+New in v0.19.0:
+
+- **It cannot yet certify early on noisy traces, with or without a planned horizon.** The anytime margin RGNA4 certifies 0.19% of slots in steps 1-28 at eps 0.02, below RGNB4's 0.60%. *Observed.*
+- **A horizon-free guarantee costs coverage.** RGNA4 certifies 26.5% of late slots at eps 0.02, against 49.3% for RGNB4, which must know the trace length. *Observed.*
+- **Its test-isolation discipline has a gap.** Release tests committed before a run fail inside that run's GTI stream (#107). *Exact.*
+
+Carried from v0.18.0 (still true; the trace-length item is narrowed above):
 
 - **It needs a long trace before noisy certificates become useful, and it must know the trace length in advance.** RGNB4 certifies 0.25% of slots in steps 1-28 at eps 0.02 on an 88-step plan; the boundary depends on the planned bit count B. *Observed* / *Exact.*
 - **It has not shown a heartbeat-clean run that survives a host restart.** Resume from checkpoints worked, but the gap fails G_HB. *Observed.*
