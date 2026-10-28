@@ -1,14 +1,14 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-28 ~13:52 EDT (v0.18.0 release candidate on `plan/v0.18.0`)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-28 ~14:06 EDT (v0.18.0 RELEASED on `main`)._
 
 ## Current version and state
 
 <!-- V0180 -->
-- **Release candidate: v0.18.0** (study BRUTE-0180-HORIZON-020, branch `plan/v0.18.0` from main `375a904`). **10 of 12 gated pass.** Tag and release pending fresh-clone verification.
+- **Released: v0.18.0** — tag `v0.18.0` (annotated) on `71e80a1`, release https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.18.0; `main` fast-forwarded `375a904..71e80a1` (no force); fresh GitHub clone of `plan/v0.18.0@71e80a1`: short verify passed (448 receipts), `--long` GLV 12 cases / 0 mismatching / 177.8 s (cap 900 s), `tests.test_release_0180` 7 OK; record `docs/research/v0.18.0/FRESH_CLONE_VERIFY_0180.json` (`d1a03ec`; its run_at field reads 13:53–14:06, actual 13:52:54–14:03:44 EDT). Study BRUTE-0180-HORIZON-020, branch `plan/v0.18.0` from main `375a904`. **10 of 12 gated pass.**
   - **HORIZON (headline GLH_horizon): PASS.** (a) RGNB4 0 false on 240/240 noisy main cases, 0 crossings; (b) CP95 upper 0.0124; (c) C_late eps 0.02 = 0.482 ≥ 0.10; (d) CI [0.430, 0.537], lower > 0.05. dC_late vs RGN4 +0.053 [0.043, 0.063].
   - **FAIL: GLH_early_control** (C_early28 0.00253 vs study-019 CI [0.0405, 0.0654]; boundary spends delta·b/B, so B = 176 raises early margins; #106) and **G_HB** (max gap 1083.5 s from the box restart, plus 4 gaps of 27–58 s after relaunch).
-  - **PASS:** G_recount, GS_a8, GS_ref8 (480 audited, 0 mismatching, mutation 20/20), GAPI8 (`brute.certify/7` unchanged), G10, G12 (120/120), G13, GTI (733 tests, undeclared []), G_RT (streams inside the cap). Release gates: GCC PASS; GLV see the ledger.
+  - **PASS:** G_recount, GS_a8, GS_ref8 (480 audited, 0 mismatching, mutation 20/20), GAPI8 (`brute.certify/7` unchanged), G10, G12 (120/120), G13, GTI (733 tests, undeclared []), G_RT (streams inside the cap). Release gates: GCC PASS; GLV PASS (12 cases, 0 mismatching).
   - **Run:** run_start 11:51:38 EDT; box restart ~12:19:42 killed every process; resumed 12:37:58 from checkpoints under the frozen rule (#105); RUN_DONE 13:43:58 EDT at 6740 s of 7200 s (dead interval counted). Streams: transfer 4467 s, gti 5443 s, repro 1176 s, g11 402 s.
   - **Chain:** plan `8048c95` → seeds `5e6407a` → #103 `b5ec732` → reference `5ac2ec9` → implementation `2549157` → rate math `44ca110` → source freeze `152c379` → scoring freeze `adc4d2a` → run_start `668a588` → #105 `6d8f1fd` → seal `8430b47` → gates `35a03bb` → clean clone `7053791` → #106 `fc648cf` → tooling `b2c68a0` → release freeze `d20cf05` → RELEASE.json `1abaabe`.
   - **Ledger notes (#106):** seal_020 note time reads 13:47:00 (commit 13:45:00); clean_clone_020 ran at `c3aca37`. Kept (append-only).
