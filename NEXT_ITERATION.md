@@ -1,33 +1,41 @@
-> **Status (2026-10-27):** pre-registered as `experiments/BRUTE_PLAN_020.json` on `plan/v0.18.0` (docs only; not built).
+# Brute v0.18.0 → v0.19.0: next iteration (proposal; docs only)
 
-# Brute v0.17.0 → v0.18.0: next iteration (to be pre-registered as BRUTE_PLAN_020 on `plan/v0.18.0`; ledger preregistration_020)
+The previous note is in `docs/research/v0.18.0/NEXT_ITERATION_FROM_v0.17.0.md`. Labels are as in the README. Nothing here
+counts as evidence until it runs on fresh seeds.
 
-The previous note is in `docs/research/v0.17.0/NEXT_ITERATION_FROM_v0.16.0.md`. Labels are as in the README. Nothing here counts as evidence until it runs on fresh seeds.
+## Where v0.18.0 leaves things (Observed, study-020, 10 of 12 gated pass)
 
-## Where v0.17.0 leaves things (Observed, study-019, 12 of 13 gated pass)
+- **Long horizons make the sequential margin useful (GLH_horizon PASS).** On 88-step traces, RGNB4 has:
+  - 0 false certificates on all 240 noisy main cases, with 0 margin crossings and a CP95 upper bound of 0.0124;
+  - C_late(eps 0.02) = 0.482 [0.430, 0.537], against the 0.10 bar;
+  - a late-window gain over RGN4 of dC +0.053 [0.043, 0.063].
 
-- **The sequential margin is sound.** RGNB4 0 false certificates on 240/240 noisy main cases, 0 boundary crossings, CP95 upper bound 0.0124 (GNB a, b PASS). GA3 (3 actions) PASS: RG4_3 0 false at eps 0, RGNB4_3 0 case-false at eps 0.02 (CP95 0.0605).
-- **It does not recover coverage (GNB c, d FAIL).** dC(RGNB4 − RGN4) at eps 0.02 = +0.0017 [−0.0005, +0.0041]; C(RGNB4) at eps 0.02 = 0.052 [0.041, 0.065] < 0.10.
-- **The gap is not about eps.** C(RGNB4) is 0.055 at eps 0, against RG4 0.453 and the oracle RGN4_or 0.339 at eps 0.02 (Observed). Any margin m ≥ 1 already costs most of the coverage on 44-step traces: with one tolerated mismatch, a wrong hypothesis that differs from the truth on a single observed bit survives and keeps the support non-singleton (Inferred from the eps-0 numbers; not separately measured).
-- **All process gates passed**: GS_ref7 (mutation 20/20), G12 152/152, GTI 691 tests, heartbeat max gap 2.0 s, RUN_DONE at 1274 s of 7200 s. Rate math over-projected by 1.5–1.95x.
+  For comparison, on 28-step traces in study-019 it reached only C 0.052.
+- **Partial answers help (reported).** Per-bit late coverage is 0.596 at eps 0.02, with 0 false bits on the 360 main cases.
+- **The early-window control fails (GLH_early_control FAIL).** C over steps 1-28 is 0.0025, against study-019's 0.052.
+  The mechanism is Exact from code: `boundary(B)` spends the crossing budget as delta·b/B. At B = 176 the margin is
+  m = 4 at bit 28 and 5 at bit 56; at B = 56 it is 3 and 4. A longer planned horizon therefore buys late coverage with
+  early coverage. The control was mis-specified (#106).
+- **G_HB failed** because of the box restart (1083.5 s) and four 27-58 s gaps after the relaunch. The frozen resume rule
+  worked: every stream resumed from its checkpoint, and the run finished at 6740 s of the 7200 s cap.
+- **Stress** (eps 0.05, no guarantee): RGNB4 was false on 5 of 120 cases and RGN4_or on 0.
 
-## What GNB (c) and (d) mean
+## Proposal for v0.19.0 (depth headline GAH: anytime margin)
 
-- **(c)** asked whether recomputing the margin from the bits seen so far certifies more than the fixed planned-bits margin. It did not by a measurable amount: both margins are ≥ 1 almost from the start, and the step from m = 1 to m = 4 matters far less than the step from 0 to 1.
-- **(d)** is the usefulness bar carried from study-018 (mean C ≥ 0.10 at eps 0.02 with CI lower > 0.05). Neither tolerant arm has reached it.
-
-## Proposal for v0.18.0 (depth headline; docs only until BRUTE_PLAN_020 is frozen)
-
-1. **Depth (headline GLH): horizon.** A wrong hypothesis gathers mismatches at a rate set by how far it is from the truth; the sequential boundary grows like eps_bar·b + O(√b). On longer traces the separation should open. Run RGNB4 (frozen, v0.17.0) and RGN4 on 88-step traces and score coverage on steps 45–88 at eps 0.02. Gate: soundness (a, b as GNB) and mean late-window C ≥ 0.10 with CI lower > 0.05. Report the per-step coverage curve. *Open.*
-2. **Breadth (reported): per-bit partial certificates.** Certify each bit of the 2-bit reading when every surviving hypothesis agrees on it. Same conditional soundness; coverage scored per bit. *Open.*
-3. **The same discipline:** fresh seed ranges (86xxxxx), a numpy second implementation, rate math, a source freeze, a scoring freeze ≥ 600 s before run_start, one held-out run under a 2 h cap, a new additive API (`brute.certify/8`) only if needed.
-
-## Fixes carried into BRUTE_PLAN_020
-
-1. Ledger receipts must name the artifact as source (study-019 needed correction receipts for run_end, seal, gates and clean_clone).
-2. Declare K_0170 (test_release_0170 version / API / RELEASE.json key tests after the bump) in GTI.
-3. Strip SMOKE from the GTI environment in dry runs (study-019's dry-run GTI failed only on that leak).
+1. **Anytime boundary (RGNA4).** Spend the crossing budget with a horizon-free schedule, delta·6/(π²·b²) per bit (sum ≤
+   delta). No planned B is needed, and early margins do not grow with the horizon.
+   - Gates: soundness as GLH (a, b) on 88-step noisy main cases (Exact lemma written before code).
+   - Usefulness: C_early28(RGNA4, eps 0.02) > C_early28(RGNB4) with CI lower > 0, and C_late(RGNA4) ≥ 0.10.
+   - Reported: the anytime-vs-planned trade-off curve.
+2. **Streaming API `brute.certify/8`.** Callers can ask for certificates without declaring the trace length.
+3. **Breadth (reported or soundness-gated).** 3 actions at 88 steps.
+4. **Process.**
+   - A pre-registered resume drill (kill and relaunch inside the smoke).
+   - G_HB stays as frozen (max gap ≤ 10 s). Restart gaps are reported separately and are not excused.
+   - The early control is replaced by a same-B frozen-code check.
+5. **Same discipline.** Fresh disjoint seeds, a numpy reference, rate math, a source freeze, a scoring freeze ≥ 600 s
+   before run_start, a 2 h cap, the watchdog and the sentinel.
 
 ## No CI
 
-Brute has no `.github` directory and uses no GitHub Actions; add no workflows.
+No `.github` directory and no GitHub Actions workflows.

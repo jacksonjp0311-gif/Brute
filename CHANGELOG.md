@@ -1,5 +1,32 @@
 # Brute changelog
 
+## v0.18.0: long-horizon test of the sequential margin, per-bit partial certificates (study BRUTE-0180-HORIZON-020)
+
+**10 of 12 gated criteria pass. GLH_horizon (headline) PASSES; GLH_early_control and G_HB FAIL.** *Observed*; scoring rules fixed before the data (*Exact*).
+
+### Timeline (author's clock, EDT, 2026-10-27/28)
+
+- **Pre-registration.** Plan `8048c95` (ledger preregistration_020, 2026-10-27); seed check `5e6407a`; deviations #103 `b5ec732`; numpy reference `5ac2ec9`.
+- **Preparation.** Implementation `2549157`; rate math, smoke dry run and kill drill `44ca110`.
+- **Freezes.** Source `152c379`; scoring `adc4d2a` (11:41:13 EDT, 625 s before run_start).
+- **Held-out run.** run_start `668a588`, 11:51:38 EDT, 2 h cap. A box restart killed every process at ~12:19:42 (1683 s in); deviation #105 `6d8f1fd`; resumed from checkpoints at 12:37:58 under the frozen resume rule (cap not extended, stream budgets charged). RUN_DONE 13:43:58 EDT after 6740 s; no stream stopped.
+- **After the run.** Seal `8430b47`; GATES_020 `35a03bb`; clean clone `7053791` PASS; #106 `fc648cf`; release tooling `b2c68a0`; release freeze `d20cf05`; RELEASE.json `1abaabe`.
+
+### Code
+
+- `experiments/brute_study_020.py`, `experiments/brute_common_020.py`: 88-step runner for RG4 / RGN4 / RGNB4 / RGN4_or / SP8; `brute/perbit.py`: per-bit partial certificates.
+- `experiments/v0180_reference.py`: numpy second implementation.
+- Release: `scripts/verify_release_0180.py` (short, `--long`), `tests/test_release_0180.py`, `scripts/make_release_freeze_0180.py`. API unchanged: `brute.certify/7`.
+
+### Results (*Observed*)
+
+- **GLH_horizon PASS.** RGNB4 0 false on 240/240 noisy main cases, 0 crossings, CP95 upper 0.0124; C_late eps 0.02 = 0.482 [0.430, 0.537]; dC_late(RGNB4 − RGN4) +0.053 [0.043, 0.063]. GS_a8: 0 false at eps 0.
+- **GLH_early_control FAIL.** C_early28 0.00253 [0.00119, 0.00417] vs study-019 CI [0.0405, 0.0654]; mechanism: the boundary spends delta·b/B (#106).
+- **Controls.** RGN4_or C_late 0.849; RG4 false on 15 / 28 of 120 cases at eps 0.01 / 0.02; SP8 C_late 0.055 at eps 0.02.
+- **Per-bit (reported).** Late per-bit coverage 0.596 [0.545, 0.646] at eps 0.02; 0 false bits on main; stress 10 false bits on 8 cases.
+- **Stress (eps 0.05, no guarantee).** RGNB4 false on 5/120, RGN4 4/120, RGN4_or 0.
+- **Process.** GS_ref8 PASS (480 audited, mutation 20/20), G12 120/120, GTI PASS (733 tests), G_RT PASS, G_HB FAIL (1083.5 s); GCC PASS.
+
 
 ## v0.17.0: sequential flip margin RGNB4, 3-action alphabet block, brute.certify/7 (study BRUTE-0170-SEQUENTIAL-MARGIN-019)
 

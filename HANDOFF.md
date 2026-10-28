@@ -1,11 +1,21 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-27 ~13:10 EDT (v0.17.0 RELEASED on `main`; v0.18.0 to be pre-registered on `plan/v0.18.0`, docs only)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-28 ~13:52 EDT (v0.18.0 release candidate on `plan/v0.18.0`)._
 
 ## Current version and state
 
 <!-- V0180 -->
-- **Pre-registered (docs only, NOT built): v0.18.0** — study BRUTE-0180-HORIZON-020 on `plan/v0.18.0` (from main `375a904`): `experiments/BRUTE_PLAN_020.json`, `experiments/BRUTE_PLAN_FREEZE_020.json`, `docs/research/v0.18.0/PLAN_020.md`. Headline GLH (RGNB4 on 88-step traces, late-window C ≥ 0.10, CI lower > 0.05, soundness as GNB a/b); per-bit certificates reported only. Seeds 8610001–8640048, smoke 8690001–8690030. No code, seed or run exists. Building needs a new owner request.
+- **Release candidate: v0.18.0** (study BRUTE-0180-HORIZON-020, branch `plan/v0.18.0` from main `375a904`). **10 of 12 gated pass.** Tag and release pending fresh-clone verification.
+  - **HORIZON (headline GLH_horizon): PASS.** (a) RGNB4 0 false on 240/240 noisy main cases, 0 crossings; (b) CP95 upper 0.0124; (c) C_late eps 0.02 = 0.482 ≥ 0.10; (d) CI [0.430, 0.537], lower > 0.05. dC_late vs RGN4 +0.053 [0.043, 0.063].
+  - **FAIL: GLH_early_control** (C_early28 0.00253 vs study-019 CI [0.0405, 0.0654]; boundary spends delta·b/B, so B = 176 raises early margins; #106) and **G_HB** (max gap 1083.5 s from the box restart, plus 4 gaps of 27–58 s after relaunch).
+  - **PASS:** G_recount, GS_a8, GS_ref8 (480 audited, 0 mismatching, mutation 20/20), GAPI8 (`brute.certify/7` unchanged), G10, G12 (120/120), G13, GTI (733 tests, undeclared []), G_RT (streams inside the cap). Release gates: GCC PASS; GLV see the ledger.
+  - **Run:** run_start 11:51:38 EDT; box restart ~12:19:42 killed every process; resumed 12:37:58 from checkpoints under the frozen rule (#105); RUN_DONE 13:43:58 EDT at 6740 s of 7200 s (dead interval counted). Streams: transfer 4467 s, gti 5443 s, repro 1176 s, g11 402 s.
+  - **Chain:** plan `8048c95` → seeds `5e6407a` → #103 `b5ec732` → reference `5ac2ec9` → implementation `2549157` → rate math `44ca110` → source freeze `152c379` → scoring freeze `adc4d2a` → run_start `668a588` → #105 `6d8f1fd` → seal `8430b47` → gates `35a03bb` → clean clone `7053791` → #106 `fc648cf` → tooling `b2c68a0` → release freeze `d20cf05` → RELEASE.json `1abaabe`.
+  - **Ledger notes (#106):** seal_020 note time reads 13:47:00 (commit 13:45:00); clean_clone_020 ran at `c3aca37`. Kept (append-only).
+  - **K_0180 (expected, 0.18.0 tree):** v0.19.0 must declare K_0180.
+  - **Lost in the restart:** /tmp scratch incl. /tmp/wt-state (not deleted by the operator). `brute-bridge` worktree untouched.
+  - **No CI:** no `.github`, no workflows.
+  - **Next:** `NEXT_ITERATION.md` (anytime margin GAH, streaming `brute.certify/8`). Not pre-registered or built.
 
 <!-- V0170 -->
 - **Released: v0.17.0** — tag `v0.17.0` on `1cc76e1`, release https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.17.0; `main` fast-forwarded `e92a7c4..1cc76e1` (no force); fresh-clone short verify of `plan/v0.17.0@1cc76e1` passed (428 receipts) (study BRUTE-0170-SEQUENTIAL-MARGIN-019, branch `plan/v0.17.0` from main `e92a7c4`). **12 of 13 gated pass.**
