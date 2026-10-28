@@ -1,0 +1,4258 @@
+{
+  "GAH": false,
+  "G_HB": true,
+  "G_RT": true,
+  "all_gated_pass": false,
+  "criteria_registered": [
+    "G10_compute",
+    "G12_reproducibility",
+    "G13_frozen_controls_reproduce",
+    "GAH_anytime",
+    "GAH_frozen_control",
+    "GAH_prefix_control",
+    "GAPI9",
+    "GS_a9_soundness",
+    "GS_ref9_reference_audit",
+    "GTI_test_isolation",
+    "G_HB_heartbeat_gap",
+    "G_RD_resume_drill",
+    "G_RT_study_runtime",
+    "G_recount"
+  ],
+  "criteria_scored": [
+    "G10_compute",
+    "G12_reproducibility",
+    "G13_frozen_controls_reproduce",
+    "GAH_anytime",
+    "GAH_frozen_control",
+    "GAH_prefix_control",
+    "GAPI9",
+    "GS_a9_soundness",
+    "GS_ref9_reference_audit",
+    "GTI_test_isolation",
+    "G_HB_heartbeat_gap",
+    "G_RD_resume_drill",
+    "G_RT_study_runtime",
+    "G_recount"
+  ],
+  "failed": [
+    "GAH_anytime",
+    "GTI_test_isolation"
+  ],
+  "gates": {
+    "G10_compute": {
+      "gated": true,
+      "observed": {
+        "by_part": {
+          "main": 360,
+          "stress": 120
+        },
+        "cases": 480,
+        "expected": 480,
+        "prefix28_expected": 120,
+        "prefix28_records": 120,
+        "queries": {
+          "RGN4_or": {
+            "queries": 84480,
+            "unknown_gt0": 0
+          },
+          "RGNA4": {
+            "queries": 84480,
+            "unknown_gt0": 0
+          },
+          "RGNB4": {
+            "queries": 42240,
+            "unknown_gt0": 0
+          },
+          "bounded4": {
+            "queries": 84480,
+            "unknown_gt0": 0
+          },
+          "prefix28": {
+            "queries": 6720,
+            "unknown_gt0": 0
+          }
+        },
+        "traces_88_steps": {
+          "RG4": true,
+          "RGN4_or": true,
+          "RGNA4": true,
+          "RGNB4": true,
+          "SP8": true,
+          "perbit": true,
+          "prefix28": true
+        },
+        "unknown_gt0_fraction": {
+          "RGN4_or": 0.0,
+          "RGNA4": 0.0,
+          "RGNB4": 0.0,
+          "bounded4": 0.0,
+          "prefix28": 0.0
+        }
+      },
+      "pass": true
+    },
+    "G12_reproducibility": {
+      "gated": true,
+      "observed": {
+        "transfer": {
+          "byte_identical": 60,
+          "expected": 60,
+          "failing_differences": [],
+          "main_scientific_sha256": "bd1210bab9738c8f17d45e7c186389cb460ba9a751ce58bddc6288a95196cbde",
+          "missing": [],
+          "passed": true,
+          "repro_complete": true,
+          "repro_scientific_sha256": "4250195b6f39e500445def9951589e770c3a64ed6bcaf2ff5203120dcef8a2f5",
+          "rerun": 60,
+          "unexpected": []
+        }
+      },
+      "pass": true
+    },
+    "G13_frozen_controls_reproduce": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "cases_use_plan013_tau6": true,
+          "freeze_chain_holds": true,
+          "rg4_reproduces": true,
+          "rg_sp8_are_frozen_v0120": true,
+          "rgn_arm_is_frozen_v0160": true,
+          "rgn_rule_reproduces_RGNA4_RGNB4_RGN4_or": true,
+          "seal_of_current_plan_and_freeze": true,
+          "v0170_sources_frozen": true,
+          "v0180_sources_frozen": true
+        },
+        "freeze_error": null,
+        "rg4_not_reproduced": [],
+        "rgn_not_reproduced": [],
+        "smoke_dry_run_relaxed": false
+      },
+      "pass": true
+    },
+    "GAH_anytime": {
+      "gated": true,
+      "observed": {
+        "C_early28_RGNA4_eps2": [
+          0.001935,
+          [
+            0.000446,
+            0.003869
+          ]
+        ],
+        "C_full_RGNA4_eps2": [
+          0.14214,
+          [
+            0.114487,
+            0.171308
+          ]
+        ],
+        "C_late_RGNA4_eps0": [
+          0.257386,
+          [
+            0.222538,
+            0.29214
+          ]
+        ],
+        "C_late_RGNA4_eps1": [
+          0.225568,
+          [
+            0.185511,
+            0.267519
+          ]
+        ],
+        "C_late_RGNA4_eps2": [
+          0.265057,
+          [
+            0.214962,
+            0.317332
+          ]
+        ],
+        "C_late_RGNB4_eps2": [
+          0.493277,
+          [
+            0.434564,
+            0.55303
+          ]
+        ],
+        "case_false": 0,
+        "case_false_examples": [],
+        "case_false_with_anytime_crossing": 0,
+        "cases_with_anytime_crossing": 3,
+        "cases_with_planned_crossing": 4,
+        "clauses": {
+          "a_zero_false_all_noisy_main": true,
+          "b_cp_upper_le_0.05": true,
+          "c_dC_early28_eps2_mean_gt_0_and_ci_lower_gt_0": false,
+          "d_C_late_eps2_mean_ge_0.10_and_ci_lower_gt_0.05": true
+        },
+        "cp_upper_95_one_sided": 0.01240464,
+        "dC_early28_RGNA4_RGNB4_eps1": [
+          -0.001488,
+          [
+            -0.002679,
+            -0.000595
+          ]
+        ],
+        "dC_early28_RGNA4_RGNB4_eps2": [
+          -0.004018,
+          [
+            -0.006845,
+            -0.001786
+          ]
+        ],
+        "dC_late_RGNA4_RGNB4_eps2": [
+          -0.22822,
+          [
+            -0.262689,
+            -0.192801
+          ]
+        ],
+        "false_certificates_RGNA4": 0,
+        "noisy_cases": 240
+      },
+      "pass": false
+    },
+    "GAH_frozen_control": {
+      "gated": true,
+      "observed": {
+        "C_early28_RGNB4_eps2": [
+          0.005952,
+          [
+            0.002679,
+            0.00997
+          ]
+        ],
+        "rule": "95% CI intersects the study-020 CI (inclusive)",
+        "study020_ci": [
+          0.00119,
+          0.004167
+        ]
+      },
+      "pass": true
+    },
+    "GAH_prefix_control": {
+      "gated": true,
+      "observed": {
+        "boundary_prefix_stable": {
+          "0": true,
+          "176": true,
+          "28": true,
+          "511": true,
+          "56": true,
+          "88": true
+        },
+        "eps2_cases": 120,
+        "mismatches": [],
+        "prefix_records": 120
+      },
+      "pass": true
+    },
+    "GAPI9": {
+      "gated": true,
+      "observed": {
+        "api_check": {
+          "api": "brute.certify/8",
+          "cases_checked": 4,
+          "gate": "GAPI9 (smoke-api part)",
+          "passed": true,
+          "results_file": "/tmp/s21/api/RESULTS.json",
+          "results_sha256": "0de6dee965655a7d7273b50ecdc10effed95fd7963c187c113c2ebbb269be94a",
+          "schema": "brute.api-check-021.v1",
+          "wall_informational": 148.3
+        },
+        "certify8_probe": {
+          "error": null,
+          "matches": true,
+          "soundness": {
+            "anytime": true,
+            "conditional_on": "running flips <= m_a(b) and n* <= family_bound",
+            "delta": 0.01,
+            "kind": "probabilistic"
+          }
+        },
+        "clauses": {
+          "certify7_soundness_unchanged": true,
+          "certify7_unchanged": true,
+          "certify8_present": true,
+          "certify8_soundness_anytime": true,
+          "host_agnostic_source_scan": true,
+          "smoke_api_supports_equal": true,
+          "tests_ok_inside_gti": true
+        },
+        "results": {
+          "test_anytime_0190.py": {
+            "test_anytime_0190.Anytime0190.test_reference_and_prefix": [
+              "ok",
+              null
+            ],
+            "test_anytime_0190.Anytime0190.test_region_space_equals_fixed_boundary": [
+              "ok",
+              null
+            ],
+            "test_anytime_0190.Anytime0190.test_validation": [
+              "ok",
+              null
+            ]
+          },
+          "test_certify8_0190.py": {
+            "test_certify8_0190.Certify80190.test_host_agnostic": [
+              "ok",
+              null
+            ],
+            "test_certify8_0190.Certify80190.test_older_apis_unchanged": [
+              "ok",
+              null
+            ],
+            "test_certify8_0190.Certify80190.test_stream_equals_batch_and_supports": [
+              "ok",
+              null
+            ],
+            "test_certify8_0190.Certify80190.test_three_actions": [
+              "ok",
+              null
+            ],
+            "test_certify8_0190.Certify80190.test_validation": [
+              "ok",
+              null
+            ]
+          }
+        }
+      },
+      "pass": true
+    },
+    "GS_a9_soundness": {
+      "gated": true,
+      "observed": {
+        "RG4_false_eps0": 0,
+        "RGNA4_recomputed_false": 0,
+        "RGNA4_recorded_false": 0,
+        "eps0_cases": 120
+      },
+      "pass": true
+    },
+    "GS_ref9_reference_audit": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "all_gated_cases_audited": true,
+          "mutation_20_of_20": true,
+          "results_sha_matches_seal": true,
+          "zero_gated_mismatching": true
+        },
+        "gated_expected": 360,
+        "mutation": {
+          "detected_injected": 20,
+          "distinct_cases": 20,
+          "event": "mutation",
+          "flagged_not_injected": 0,
+          "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+          "injected": 20,
+          "injected_on_already_mismatching_case": 0,
+          "kinds": {
+            "B": 1,
+            "anytime": 1,
+            "boundary": 1,
+            "counts": 2,
+            "crossing": 1,
+            "flips": 1,
+            "latent": 1,
+            "observed": 1,
+            "perbit": 1,
+            "prefix": 1,
+            "prefix28": 1,
+            "rg4_cert": 1,
+            "rgn_cert": 2,
+            "support": 3,
+            "wrong": 2
+          },
+          "passed": true,
+          "rng": "random.Random(20261028)"
+        },
+        "report": {
+          "audit_wall_informational": 650.6,
+          "cases_audited": 480,
+          "cases_expected": 480,
+          "cases_not_reached": 0,
+          "gated_cases_audited": 360,
+          "gated_cases_expected": 360,
+          "gated_mismatching_cases": 0,
+          "mismatching_cases": 0,
+          "passed": true,
+          "results_file": "/workspace/brute/results/study-021/transfer/RESULTS.json",
+          "results_sha256": "f509aedcd3c29ab32bd233d625b5adb6dfae34b7108fd0db119a0f81560e9734",
+          "schema": "brute.second-implementation-021.v1",
+          "scope": "88-step main and stress cases: RGNA4 (own anytime boundary DP) / RGNB4 (eps 0.01, 0.02) / RGN4_or supports (every complete <= 4-state 2-action Moore machine, per-state mismatch costs, per-step bound, sticky emptiness), RegionSpace(4) supports at m = 0, B / m / boundary / anytime boundary / prefix counts / crossings / flips over 89 readings (tag-21 flips), RG4 and RGN-rule certificates, RGNA4_bit per-bit certificates, counts, window summaries (late 45-88, early 1-28, per step), and the 28-action prefix control on eps-0.02 cases",
+          "source_sha256": "d40248da11f82856b74eec755b8c416f1702eb5c9cc90496927d8124d7c1f38d",
+          "study": "BRUTE-0190-ANYTIME-021",
+          "wording": "second implementation by the same author, no brute import; not an independent or third-party audit"
+        },
+        "wording": "second implementation by the same author"
+      },
+      "pass": true
+    },
+    "GTI_test_isolation": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "tracked_tree_clean_at_start": true,
+          "verdict_passed": false
+        },
+        "clean_tag_runs": {
+          "0100": {
+            "test_release_0100.Corruption0100.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0110": {
+            "test_release_0110.Corruption0110.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0120": {
+            "test_release_0120.Corruption0120.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0130": {
+            "test_release_0130.Corruption0130.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0140": {
+            "test_release_0140.Corruption0140.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0140.Release0140.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0140.Release0140.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0140.Release0140.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0140.Release0140.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0140.Release0140.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0140.Release0140.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0150": {
+            "test_release_0150.Corruption0150.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0150.Release0150.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0150.Release0150.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0150.Release0150.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0150.Release0150.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0150.Release0150.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0150.Release0150.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0160": {
+            "test_release_0160.Corruption0160.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0160.Release0160.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0160.Release0160.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0160.Release0160.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0160.Release0160.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0160.Release0160.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0160.Release0160.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0170": {
+            "test_release_0170.Corruption0170.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0170.Release0170.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0170.Release0170.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0170.Release0170.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0170.Release0170.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0170.Release0170.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0170.Release0170.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0180": {
+            "test_release_0180.Corruption0180.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0180.Release0180.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0180.Release0180.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0180.Release0180.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0180.Release0180.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0180.Release0180.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0180.Release0180.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "060": {
+            "test_release_060.GT1.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_060.GT1.test_frozen_050_defect_still_recorded": [
+              "ok",
+              null
+            ],
+            "test_release_060.Release060.test_fast_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_060.Release060.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_060.Release060.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "070": {
+            "test_release_070.Corruption070.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_070.Release070.test_fast_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_070.Release070.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_070.Release070.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_070.Release070.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "080": {
+            "test_release_080.Corruption080.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_080.Release080.test_fast_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_080.Release080.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_080.Release080.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_080.Release080.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "090": {
+            "test_release_090.Corruption090.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_version_consistent": [
+              "ok",
+              null
+            ]
+          }
+        },
+        "dirty_tracked_files": [],
+        "head": "ea114fe3074977a24b8f8b056b9aa77833d898fb",
+        "run": "in-cap",
+        "tracked_tree_dirty": false,
+        "verdict": {
+          "clauses": {
+            "i_only_declared_failures": false,
+            "ii_test_study_005_six_pass": true,
+            "iii_counts_match_plain": true,
+            "iv_frozen_unchanged": true,
+            "v_new_tests_pass": false
+          },
+          "failing": [
+            "test_brute_repro.BruteRepro.test_verify_fails_under_tampered_results",
+            "test_release_0100.Release0100.test_short_verify_passes",
+            "test_release_0100.Release0100.test_untampered_copy_passes",
+            "test_release_0100.Release0100.test_version_consistent",
+            "test_release_011.ReleaseV011.test_fast_verify_passes",
+            "test_release_0110.Release0110.test_embeddable_api_answers",
+            "test_release_0110.Release0110.test_short_verify_passes",
+            "test_release_0110.Release0110.test_untampered_copy_passes",
+            "test_release_0110.Release0110.test_version_consistent",
+            "test_release_0120.Release0120.test_embeddable_api_answers",
+            "test_release_0120.Release0120.test_short_verify_passes",
+            "test_release_0120.Release0120.test_untampered_copy_passes",
+            "test_release_0120.Release0120.test_version_consistent",
+            "test_release_0130.Release0130.test_embeddable_api_answers",
+            "test_release_0130.Release0130.test_short_verify_passes",
+            "test_release_0130.Release0130.test_untampered_copy_passes",
+            "test_release_0130.Release0130.test_version_consistent",
+            "test_release_0140.Release0140.test_embeddable_api_answers",
+            "test_release_0140.Release0140.test_short_verify_passes",
+            "test_release_0140.Release0140.test_untampered_copy_passes",
+            "test_release_0140.Release0140.test_version_consistent",
+            "test_release_0150.Release0150.test_embeddable_api_answers",
+            "test_release_0150.Release0150.test_short_verify_passes",
+            "test_release_0150.Release0150.test_untampered_copy_passes",
+            "test_release_0150.Release0150.test_version_consistent",
+            "test_release_0160.Release0160.test_embeddable_api_answers",
+            "test_release_0160.Release0160.test_short_verify_passes",
+            "test_release_0160.Release0160.test_untampered_copy_passes",
+            "test_release_0160.Release0160.test_version_consistent",
+            "test_release_0170.Release0170.test_short_verify_passes",
+            "test_release_0170.Release0170.test_untampered_copy_passes",
+            "test_release_0170.Release0170.test_version_consistent",
+            "test_release_0180.Release0180.test_short_verify_passes",
+            "test_release_0180.Release0180.test_untampered_copy_passes",
+            "test_release_0190.Corruption0190.test_every_artifact_every_mode_raises_verification_error",
+            "test_release_0190.Release0190.test_embeddable_api_answers",
+            "test_release_0190.Release0190.test_scoring_inputs_tracked",
+            "test_release_0190.Release0190.test_short_verify_passes",
+            "test_release_0190.Release0190.test_untampered_copy_passes",
+            "test_release_0190.Release0190.test_version_consistent",
+            "test_release_020.ReleaseV020.test_fast_verify_passes",
+            "test_release_030.ReleaseV030.test_fast_verify_passes",
+            "test_release_040.ReleaseVersioned.test_fast_verify_passes",
+            "test_release_040.ReleaseVersioned.test_git_order",
+            "test_release_040.ReleaseVersioned.test_tampered_copies_fail",
+            "test_release_040.ReleaseVersioned.test_untampered_copy_passes",
+            "test_release_040.ReleaseVersioned.test_version_consistent",
+            "test_release_050.ReleaseVersioned.test_fast_verify_passes",
+            "test_release_050.ReleaseVersioned.test_git_order",
+            "test_release_050.ReleaseVersioned.test_tampered_copies_fail",
+            "test_release_050.ReleaseVersioned.test_untampered_copy_passes",
+            "test_release_050.ReleaseVersioned.test_version_consistent",
+            "test_release_060.Release060.test_fast_verify_passes",
+            "test_release_060.Release060.test_untampered_copy_passes",
+            "test_release_060.Release060.test_version_consistent",
+            "test_release_070.Release070.test_fast_verify_passes",
+            "test_release_070.Release070.test_untampered_copy_passes",
+            "test_release_070.Release070.test_version_consistent",
+            "test_release_080.Release080.test_fast_verify_passes",
+            "test_release_080.Release080.test_untampered_copy_passes",
+            "test_release_080.Release080.test_version_consistent",
+            "test_release_090.Release090.test_short_verify_passes",
+            "test_release_090.Release090.test_untampered_copy_passes",
+            "test_release_090.Release090.test_version_consistent",
+            "test_scripts_017.Orchestrator017.test_streams"
+          ],
+          "k_rules": {
+            "0100": {
+              "applied": true,
+              "failures": [
+                "test_release_0100.Release0100.test_short_verify_passes",
+                "test_release_0100.Release0100.test_untampered_copy_passes",
+                "test_release_0100.Release0100.test_version_consistent"
+              ]
+            },
+            "0110": {
+              "applied": true,
+              "failures": [
+                "test_release_0110.Release0110.test_embeddable_api_answers",
+                "test_release_0110.Release0110.test_short_verify_passes",
+                "test_release_0110.Release0110.test_untampered_copy_passes",
+                "test_release_0110.Release0110.test_version_consistent"
+              ]
+            },
+            "0120": {
+              "applied": true,
+              "failures": [
+                "test_release_0120.Release0120.test_embeddable_api_answers",
+                "test_release_0120.Release0120.test_short_verify_passes",
+                "test_release_0120.Release0120.test_untampered_copy_passes",
+                "test_release_0120.Release0120.test_version_consistent"
+              ]
+            },
+            "0130": {
+              "applied": true,
+              "failures": [
+                "test_release_0130.Release0130.test_embeddable_api_answers",
+                "test_release_0130.Release0130.test_short_verify_passes",
+                "test_release_0130.Release0130.test_untampered_copy_passes",
+                "test_release_0130.Release0130.test_version_consistent"
+              ]
+            },
+            "0140": {
+              "applied": true,
+              "failures": [
+                "test_release_0140.Release0140.test_embeddable_api_answers",
+                "test_release_0140.Release0140.test_short_verify_passes",
+                "test_release_0140.Release0140.test_untampered_copy_passes",
+                "test_release_0140.Release0140.test_version_consistent"
+              ]
+            },
+            "0150": {
+              "applied": true,
+              "failures": [
+                "test_release_0150.Release0150.test_embeddable_api_answers",
+                "test_release_0150.Release0150.test_short_verify_passes",
+                "test_release_0150.Release0150.test_untampered_copy_passes",
+                "test_release_0150.Release0150.test_version_consistent"
+              ]
+            },
+            "0160": {
+              "applied": true,
+              "failures": [
+                "test_release_0160.Release0160.test_embeddable_api_answers",
+                "test_release_0160.Release0160.test_short_verify_passes",
+                "test_release_0160.Release0160.test_untampered_copy_passes",
+                "test_release_0160.Release0160.test_version_consistent"
+              ]
+            },
+            "0170": {
+              "applied": true,
+              "failures": [
+                "test_release_0170.Release0170.test_short_verify_passes",
+                "test_release_0170.Release0170.test_untampered_copy_passes",
+                "test_release_0170.Release0170.test_version_consistent"
+              ]
+            },
+            "0180": {
+              "applied": true,
+              "failures": [
+                "test_release_0180.Release0180.test_short_verify_passes",
+                "test_release_0180.Release0180.test_untampered_copy_passes"
+              ]
+            },
+            "060": {
+              "applied": true,
+              "failures": [
+                "test_release_060.Release060.test_fast_verify_passes",
+                "test_release_060.Release060.test_untampered_copy_passes",
+                "test_release_060.Release060.test_version_consistent"
+              ]
+            },
+            "070": {
+              "applied": true,
+              "failures": [
+                "test_release_070.Release070.test_fast_verify_passes",
+                "test_release_070.Release070.test_untampered_copy_passes",
+                "test_release_070.Release070.test_version_consistent"
+              ]
+            },
+            "080": {
+              "applied": true,
+              "failures": [
+                "test_release_080.Release080.test_fast_verify_passes",
+                "test_release_080.Release080.test_untampered_copy_passes",
+                "test_release_080.Release080.test_version_consistent"
+              ]
+            },
+            "090": {
+              "applied": true,
+              "failures": [
+                "test_release_090.Release090.test_short_verify_passes",
+                "test_release_090.Release090.test_untampered_copy_passes",
+                "test_release_090.Release090.test_version_consistent"
+              ]
+            },
+            "096": {
+              "applied": true,
+              "failures": [
+                "test_scripts_017.Orchestrator017.test_streams"
+              ]
+            }
+          },
+          "new_test_failures": [
+            "test_release_0190.Corruption0190.test_every_artifact_every_mode_raises_verification_error",
+            "test_release_0190.Release0190.test_embeddable_api_answers",
+            "test_release_0190.Release0190.test_scoring_inputs_tracked",
+            "test_release_0190.Release0190.test_short_verify_passes",
+            "test_release_0190.Release0190.test_untampered_copy_passes",
+            "test_release_0190.Release0190.test_version_consistent"
+          ],
+          "new_test_modules_missing": [],
+          "new_tests": [
+            "test_anytime_0190.py",
+            "test_certify8_0190.py",
+            "test_reference_0190.py",
+            "test_release_0190.py",
+            "test_scoring_021.py",
+            "test_scripts_021.py",
+            "test_seeds_0190.py",
+            "test_study_0190.py"
+          ],
+          "passed": false,
+          "skipped_per_module": [],
+          "skipped_plain": [],
+          "test_study_005": {
+            "test_study_005.Study005.test_aggregate": "ok",
+            "test_study_005.Study005.test_deterministic": "ok",
+            "test_study_005.Study005.test_jobs_match_plan": "ok",
+            "test_study_005.Study005.test_reference_agrees": "ok",
+            "test_study_005.Study005.test_reference_detects_tampering": "ok",
+            "test_study_005.Study005.test_reference_imports_no_brute": "ok"
+          },
+          "tests_run_per_module_total": 783,
+          "tests_run_plain": 783,
+          "undeclared_failures": [
+            "test_release_0190.Corruption0190.test_every_artifact_every_mode_raises_verification_error",
+            "test_release_0190.Release0190.test_embeddable_api_answers",
+            "test_release_0190.Release0190.test_scoring_inputs_tracked",
+            "test_release_0190.Release0190.test_short_verify_passes",
+            "test_release_0190.Release0190.test_untampered_copy_passes",
+            "test_release_0190.Release0190.test_version_consistent"
+          ]
+        },
+        "workers": 1
+      },
+      "pass": false
+    },
+    "G_HB_heartbeat_gap": {
+      "gated": true,
+      "observed": {
+        "beats": 2401,
+        "gaps_over_10s_attributed": [],
+        "max_gap_s": 3.294
+      },
+      "pass": true
+    },
+    "G_RD_resume_drill": {
+      "gated": true,
+      "observed": {
+        "cases_rd": 12,
+        "cases_ref": 12,
+        "checkpoints": {
+          "repro/smoke": {
+            "duplicates": 0,
+            "lines": 4
+          },
+          "transfer": {
+            "duplicates": 0,
+            "lines": 12
+          }
+        },
+        "clauses": {
+          "i_all_streams_complete": true,
+          "ii_scientific_identical_per_case": true,
+          "iii_spent_includes_pre_kill_time": true,
+          "iv_no_duplicate_checkpoint_keys": true
+        },
+        "differing_cases": [],
+        "kill_after_launch_s": 45.006,
+        "killed_at": "2026-10-28T14:38:05-0400",
+        "killed_process_groups": [
+          92004,
+          92020
+        ],
+        "label": "Observed (block smoke-drill; outside the cap; scratch directories).",
+        "orphan_log_lines": [
+          "[2026-10-28T14:38:11-0400] transfer: orphan from an interrupted orchestrator stopped; charged 44 s; will resume"
+        ],
+        "passed": true,
+        "pids_before_kill": [
+          92004
+        ],
+        "reference_returncode": 0,
+        "relaunch_returncode": 0,
+        "schema": "brute.resume-drill.v1",
+        "setup": "SMOKE=1 SKIP_GTI=1 BRUTE_SMOKE_DRILL=1 CAP_S=3000; REF /tmp/s21/rd_ref uninterrupted; RD /tmp/s21/rd SIGKILL of the whole orchestrator session at 45 s, relaunched once; REF and RD ran concurrently",
+        "spent_final": {
+          "g11": 20.014426231384277,
+          "repro": 126.06521797180176,
+          "transfer": 276.21046137809753
+        },
+        "state_at_kill": {
+          "finished": {},
+          "running": {
+            "transfer": {
+              "pgid": 92020,
+              "since": 1793212640.3991194,
+              "spent_before": 0
+            }
+          },
+          "spent": {}
+        },
+        "stopped_final": {},
+        "survivors": [],
+        "transfer_elapsed_before_kill_s": 44.071
+      },
+      "pass": true
+    },
+    "G_RT_study_runtime": {
+      "gated": true,
+      "observed": {
+        "cap_s": 7200,
+        "clauses": {
+          "i_streams_inside_cap_not_stopped": true,
+          "ii_watchdog_whole_run": true,
+          "iii_kill_drill_latency_le_15s": true
+        },
+        "completion_s_after_t0": {
+          "g11": 4800.8,
+          "gti": 3639.6,
+          "repro": 4375.9,
+          "transfer": 4131.8
+        },
+        "kill_drill": {
+          "fire_delay_s": 0.0,
+          "kill_latency_s": 0.224,
+          "label": "Observed (block smoke-drill; outside the cap; scratch directory).",
+          "sigkill_used": false,
+          "survivors": []
+        },
+        "run_done": {
+          "completed_at": {
+            "g11": 1793222555.4326699,
+            "gti": 1793221394.1786618,
+            "repro": 1793222130.5341012,
+            "transfer": 1793221886.3989363
+          },
+          "elapsed_s": 4801,
+          "events": {
+            "g11": {
+              "audit_done": {
+                "event": "audit_done",
+                "t": 1793222539.5032306
+              },
+              "done": {
+                "event": "done",
+                "t": 1793222554.660414
+              },
+              "mutation": {
+                "detected_injected": 20,
+                "distinct_cases": 20,
+                "event": "mutation",
+                "flagged_not_injected": 0,
+                "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+                "injected": 20,
+                "injected_on_already_mismatching_case": 0,
+                "kinds": {
+                  "B": 1,
+                  "anytime": 1,
+                  "boundary": 1,
+                  "counts": 2,
+                  "crossing": 1,
+                  "flips": 1,
+                  "latent": 1,
+                  "observed": 1,
+                  "perbit": 1,
+                  "prefix": 1,
+                  "prefix28": 1,
+                  "rg4_cert": 1,
+                  "rgn_cert": 2,
+                  "support": 3,
+                  "wrong": 2
+                },
+                "passed": true,
+                "rng": "random.Random(20261028)"
+              },
+              "start": {
+                "event": "start",
+                "t": 1793221888.0894403
+              }
+            }
+          },
+          "finished": {
+            "g11": "2026-10-28T17:22:35-0400",
+            "gti": "2026-10-28T17:03:14-0400",
+            "repro": "2026-10-28T17:15:30-0400",
+            "transfer": "2026-10-28T17:11:26-0400"
+          },
+          "finished_at": "2026-10-28T17:22:35-0400",
+          "mandatory": {
+            "g11": true,
+            "gti": true,
+            "repro": true,
+            "transfer": true
+          },
+          "spent": {
+            "g11": 669,
+            "gti": 3638,
+            "repro": 244,
+            "transfer": 4130
+          },
+          "stopped": {},
+          "t0": 1793217754.593824
+        },
+        "spent_s": {
+          "g11": 669,
+          "gti": 3638,
+          "repro": 244,
+          "transfer": 4130
+        },
+        "stop_orchestrator": null,
+        "stop_watchdog": null,
+        "stopped_streams": {},
+        "streams": {
+          "g11": true,
+          "gti": true,
+          "repro": true,
+          "transfer": true
+        }
+      },
+      "pass": true
+    },
+    "G_recount": {
+      "gated": true,
+      "observed": {
+        "arms_not_recounted": [],
+        "certificate_count_mismatches": [],
+        "mismatches": [],
+        "misplaced_prefix_records": [],
+        "per_subset_arm": {
+          "main": {
+            "RG4": {
+              "mismatching_records": 0,
+              "recomputed_false": 198,
+              "recorded_false": 198,
+              "records": 360
+            },
+            "RGN4_or": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "RGNA4": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "RGNB4": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 240
+            },
+            "SP8": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            }
+          },
+          "stress": {
+            "RG4": {
+              "mismatching_records": 0,
+              "recomputed_false": 127,
+              "recorded_false": 127,
+              "records": 120
+            },
+            "RGN4_or": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 120
+            },
+            "RGNA4": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 120
+            },
+            "SP8": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 120
+            }
+          }
+        },
+        "perbit_mismatches": [],
+        "wrong_flag_mismatches": []
+      },
+      "pass": true
+    },
+    "R_C_curve": {
+      "gated": false,
+      "observed": {
+        "eps0": {
+          "RG4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.0625,
+            0.054167,
+            0.0875,
+            0.1,
+            0.1125,
+            0.1375,
+            0.225,
+            0.245833,
+            0.275,
+            0.3375,
+            0.366667,
+            0.395833,
+            0.4625,
+            0.5,
+            0.483333,
+            0.520833,
+            0.5625,
+            0.629167,
+            0.654167,
+            0.65,
+            0.675,
+            0.695833,
+            0.758333,
+            0.720833,
+            0.7625,
+            0.770833,
+            0.770833,
+            0.804167,
+            0.8,
+            0.808333,
+            0.816667,
+            0.8125,
+            0.820833,
+            0.8,
+            0.825,
+            0.820833,
+            0.8375,
+            0.829167,
+            0.825,
+            0.816667,
+            0.854167,
+            0.8375,
+            0.816667,
+            0.841667,
+            0.820833,
+            0.820833,
+            0.816667,
+            0.8125,
+            0.845833,
+            0.8375,
+            0.8,
+            0.841667,
+            0.854167,
+            0.820833,
+            0.8375,
+            0.833333,
+            0.845833,
+            0.8375,
+            0.829167,
+            0.8375,
+            0.8375,
+            0.833333,
+            0.825,
+            0.854167,
+            0.845833,
+            0.825,
+            0.825,
+            0.85,
+            0.829167,
+            0.833333,
+            0.833333,
+            0.8375,
+            0.845833,
+            0.833333,
+            0.820833,
+            0.833333,
+            0.841667,
+            0.825,
+            0.833333,
+            0.841667
+          ],
+          "RGN4_or": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.054167,
+            0.0875,
+            0.1,
+            0.1125,
+            0.1375,
+            0.225,
+            0.245833,
+            0.275,
+            0.3375,
+            0.366667,
+            0.395833,
+            0.4625,
+            0.5,
+            0.483333,
+            0.520833,
+            0.5625,
+            0.629167,
+            0.654167,
+            0.65,
+            0.675,
+            0.695833,
+            0.758333,
+            0.720833,
+            0.7625,
+            0.770833,
+            0.770833,
+            0.804167,
+            0.8,
+            0.808333,
+            0.816667,
+            0.8125,
+            0.820833,
+            0.8,
+            0.825,
+            0.820833,
+            0.8375,
+            0.829167,
+            0.825,
+            0.816667,
+            0.854167,
+            0.8375,
+            0.816667,
+            0.841667,
+            0.820833,
+            0.820833,
+            0.816667,
+            0.8125,
+            0.845833,
+            0.8375,
+            0.8,
+            0.841667,
+            0.854167,
+            0.820833,
+            0.8375,
+            0.833333,
+            0.845833,
+            0.8375,
+            0.829167,
+            0.8375,
+            0.8375,
+            0.833333,
+            0.825,
+            0.854167,
+            0.845833,
+            0.825,
+            0.825,
+            0.85,
+            0.829167,
+            0.833333,
+            0.833333,
+            0.8375,
+            0.845833,
+            0.833333,
+            0.820833,
+            0.833333,
+            0.841667,
+            0.825,
+            0.833333,
+            0.841667
+          ],
+          "RGNA4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.0,
+            0.0,
+            0.004167,
+            0.0,
+            0.0,
+            0.008333,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.008333,
+            0.004167,
+            0.0125,
+            0.008333,
+            0.0125,
+            0.0125,
+            0.016667,
+            0.0375,
+            0.0375,
+            0.033333,
+            0.0375,
+            0.0375,
+            0.045833,
+            0.054167,
+            0.066667,
+            0.075,
+            0.0625,
+            0.1125,
+            0.083333,
+            0.104167,
+            0.125,
+            0.1,
+            0.1375,
+            0.154167,
+            0.1375,
+            0.15,
+            0.166667,
+            0.2,
+            0.195833,
+            0.1875,
+            0.191667,
+            0.195833,
+            0.225,
+            0.2375,
+            0.241667,
+            0.25,
+            0.279167,
+            0.25,
+            0.270833,
+            0.275,
+            0.279167,
+            0.308333,
+            0.325,
+            0.325,
+            0.366667,
+            0.35,
+            0.329167,
+            0.345833,
+            0.358333,
+            0.3875,
+            0.354167,
+            0.383333,
+            0.383333,
+            0.395833,
+            0.4,
+            0.395833,
+            0.395833,
+            0.4125,
+            0.420833
+          ],
+          "SP8": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.0125,
+            0.008333,
+            0.020833,
+            0.008333,
+            0.0125,
+            0.0125,
+            0.016667,
+            0.020833,
+            0.029167,
+            0.05,
+            0.05,
+            0.079167,
+            0.0875,
+            0.116667,
+            0.116667,
+            0.145833,
+            0.166667,
+            0.204167,
+            0.220833,
+            0.241667,
+            0.245833,
+            0.245833,
+            0.258333,
+            0.266667,
+            0.270833,
+            0.291667,
+            0.308333,
+            0.316667,
+            0.320833,
+            0.320833,
+            0.320833,
+            0.341667,
+            0.354167,
+            0.3375,
+            0.345833,
+            0.354167,
+            0.366667,
+            0.379167,
+            0.3625,
+            0.345833,
+            0.375,
+            0.383333,
+            0.35,
+            0.379167,
+            0.383333,
+            0.379167,
+            0.379167,
+            0.366667,
+            0.375,
+            0.391667,
+            0.3625,
+            0.383333,
+            0.395833,
+            0.379167,
+            0.370833,
+            0.3875,
+            0.395833,
+            0.370833,
+            0.383333,
+            0.395833,
+            0.391667,
+            0.379167,
+            0.383333,
+            0.395833,
+            0.391667,
+            0.3875,
+            0.375,
+            0.404167,
+            0.3875,
+            0.370833,
+            0.391667,
+            0.4,
+            0.383333,
+            0.395833,
+            0.3875,
+            0.383333,
+            0.395833,
+            0.379167,
+            0.383333,
+            0.4
+          ]
+        },
+        "eps1": {
+          "RG4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.066667,
+            0.066667,
+            0.108333,
+            0.120833,
+            0.141667,
+            0.141667,
+            0.216667,
+            0.25,
+            0.25,
+            0.2875,
+            0.304167,
+            0.316667,
+            0.345833,
+            0.383333,
+            0.379167,
+            0.404167,
+            0.433333,
+            0.483333,
+            0.441667,
+            0.445833,
+            0.441667,
+            0.458333,
+            0.475,
+            0.4625,
+            0.433333,
+            0.454167,
+            0.441667,
+            0.445833,
+            0.429167,
+            0.4375,
+            0.416667,
+            0.433333,
+            0.4125,
+            0.4,
+            0.408333,
+            0.425,
+            0.4,
+            0.416667,
+            0.379167,
+            0.375,
+            0.391667,
+            0.395833,
+            0.370833,
+            0.395833,
+            0.375,
+            0.366667,
+            0.370833,
+            0.370833,
+            0.383333,
+            0.370833,
+            0.345833,
+            0.354167,
+            0.358333,
+            0.35,
+            0.320833,
+            0.325,
+            0.3375,
+            0.3,
+            0.304167,
+            0.308333,
+            0.304167,
+            0.295833,
+            0.291667,
+            0.3,
+            0.291667,
+            0.291667,
+            0.279167,
+            0.291667,
+            0.2875,
+            0.283333,
+            0.275,
+            0.283333,
+            0.275,
+            0.258333,
+            0.2625,
+            0.2625,
+            0.2625,
+            0.258333,
+            0.25,
+            0.245833
+          ],
+          "RGN4_or": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.020833,
+            0.033333,
+            0.029167,
+            0.041667,
+            0.0375,
+            0.0625,
+            0.083333,
+            0.083333,
+            0.1125,
+            0.129167,
+            0.170833,
+            0.175,
+            0.229167,
+            0.270833,
+            0.279167,
+            0.2625,
+            0.3125,
+            0.3875,
+            0.4125,
+            0.429167,
+            0.479167,
+            0.475,
+            0.533333,
+            0.554167,
+            0.583333,
+            0.6,
+            0.620833,
+            0.6375,
+            0.675,
+            0.679167,
+            0.7125,
+            0.6875,
+            0.708333,
+            0.745833,
+            0.7625,
+            0.779167,
+            0.75,
+            0.791667,
+            0.7875,
+            0.783333,
+            0.795833,
+            0.820833,
+            0.820833,
+            0.8375,
+            0.804167,
+            0.833333,
+            0.841667,
+            0.829167,
+            0.825,
+            0.858333,
+            0.829167,
+            0.870833,
+            0.841667,
+            0.866667,
+            0.841667,
+            0.854167,
+            0.858333,
+            0.870833,
+            0.85,
+            0.866667,
+            0.870833,
+            0.8625,
+            0.870833,
+            0.8875,
+            0.8875,
+            0.891667,
+            0.866667,
+            0.895833,
+            0.891667,
+            0.904167,
+            0.895833,
+            0.9125,
+            0.9,
+            0.891667,
+            0.9125,
+            0.9125,
+            0.908333,
+            0.9,
+            0.908333,
+            0.9125
+          ],
+          "RGNA4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.0,
+            0.0,
+            0.004167,
+            0.0,
+            0.0,
+            0.008333,
+            0.0,
+            0.004167,
+            0.004167,
+            0.0125,
+            0.0125,
+            0.016667,
+            0.008333,
+            0.008333,
+            0.016667,
+            0.016667,
+            0.033333,
+            0.020833,
+            0.033333,
+            0.041667,
+            0.045833,
+            0.041667,
+            0.058333,
+            0.054167,
+            0.066667,
+            0.075,
+            0.104167,
+            0.104167,
+            0.095833,
+            0.116667,
+            0.1,
+            0.145833,
+            0.133333,
+            0.145833,
+            0.141667,
+            0.158333,
+            0.170833,
+            0.170833,
+            0.1625,
+            0.170833,
+            0.183333,
+            0.191667,
+            0.204167,
+            0.216667,
+            0.241667,
+            0.241667,
+            0.2375,
+            0.220833,
+            0.25,
+            0.2375,
+            0.258333,
+            0.258333,
+            0.3,
+            0.304167,
+            0.295833,
+            0.2625,
+            0.308333,
+            0.2875,
+            0.329167,
+            0.279167,
+            0.345833,
+            0.316667,
+            0.345833,
+            0.3375,
+            0.375,
+            0.325,
+            0.358333,
+            0.35
+          ],
+          "RGNB4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.0,
+            0.004167,
+            0.0,
+            0.0,
+            0.004167,
+            0.0,
+            0.0,
+            0.004167,
+            0.0,
+            0.0,
+            0.016667,
+            0.008333,
+            0.020833,
+            0.033333,
+            0.045833,
+            0.054167,
+            0.05,
+            0.091667,
+            0.083333,
+            0.083333,
+            0.125,
+            0.120833,
+            0.116667,
+            0.129167,
+            0.15,
+            0.158333,
+            0.170833,
+            0.183333,
+            0.208333,
+            0.241667,
+            0.254167,
+            0.25,
+            0.295833,
+            0.304167,
+            0.354167,
+            0.354167,
+            0.35,
+            0.416667,
+            0.35,
+            0.429167,
+            0.395833,
+            0.441667,
+            0.379167,
+            0.420833,
+            0.416667,
+            0.4625,
+            0.425,
+            0.4625,
+            0.45,
+            0.5,
+            0.4875,
+            0.520833,
+            0.520833,
+            0.5375,
+            0.508333,
+            0.541667,
+            0.541667,
+            0.5625,
+            0.554167,
+            0.570833,
+            0.558333,
+            0.575,
+            0.579167,
+            0.579167,
+            0.579167,
+            0.6,
+            0.6125,
+            0.6125,
+            0.6125,
+            0.604167,
+            0.575,
+            0.608333,
+            0.604167
+          ],
+          "SP8": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.0125,
+            0.008333,
+            0.0125,
+            0.008333,
+            0.008333,
+            0.0125,
+            0.016667,
+            0.020833,
+            0.029167,
+            0.0375,
+            0.041667,
+            0.0625,
+            0.070833,
+            0.095833,
+            0.1,
+            0.1125,
+            0.1375,
+            0.133333,
+            0.145833,
+            0.141667,
+            0.141667,
+            0.1375,
+            0.15,
+            0.158333,
+            0.145833,
+            0.145833,
+            0.154167,
+            0.154167,
+            0.166667,
+            0.1625,
+            0.15,
+            0.1625,
+            0.179167,
+            0.158333,
+            0.1625,
+            0.170833,
+            0.166667,
+            0.170833,
+            0.1625,
+            0.154167,
+            0.179167,
+            0.166667,
+            0.158333,
+            0.175,
+            0.175,
+            0.158333,
+            0.170833,
+            0.158333,
+            0.170833,
+            0.166667,
+            0.154167,
+            0.154167,
+            0.154167,
+            0.15,
+            0.1375,
+            0.129167,
+            0.15,
+            0.129167,
+            0.133333,
+            0.133333,
+            0.133333,
+            0.129167,
+            0.129167,
+            0.120833,
+            0.120833,
+            0.129167,
+            0.116667,
+            0.125,
+            0.120833,
+            0.1125,
+            0.120833,
+            0.125,
+            0.1125,
+            0.108333,
+            0.116667,
+            0.108333,
+            0.104167,
+            0.108333,
+            0.108333,
+            0.104167
+          ]
+        },
+        "eps2": {
+          "RG4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.095833,
+            0.075,
+            0.108333,
+            0.154167,
+            0.145833,
+            0.2,
+            0.270833,
+            0.295833,
+            0.329167,
+            0.329167,
+            0.270833,
+            0.283333,
+            0.3125,
+            0.3375,
+            0.3,
+            0.35,
+            0.3375,
+            0.358333,
+            0.370833,
+            0.379167,
+            0.375,
+            0.370833,
+            0.358333,
+            0.3375,
+            0.3375,
+            0.35,
+            0.325,
+            0.325,
+            0.316667,
+            0.3125,
+            0.291667,
+            0.2875,
+            0.283333,
+            0.266667,
+            0.266667,
+            0.275,
+            0.266667,
+            0.25,
+            0.245833,
+            0.254167,
+            0.2375,
+            0.2375,
+            0.229167,
+            0.220833,
+            0.225,
+            0.216667,
+            0.191667,
+            0.204167,
+            0.204167,
+            0.195833,
+            0.166667,
+            0.175,
+            0.179167,
+            0.166667,
+            0.154167,
+            0.1625,
+            0.158333,
+            0.1625,
+            0.145833,
+            0.1375,
+            0.133333,
+            0.141667,
+            0.120833,
+            0.1375,
+            0.1125,
+            0.108333,
+            0.104167,
+            0.104167,
+            0.1,
+            0.104167,
+            0.091667,
+            0.108333,
+            0.091667,
+            0.095833,
+            0.083333,
+            0.0875,
+            0.079167,
+            0.083333,
+            0.075,
+            0.083333
+          ],
+          "RGN4_or": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.008333,
+            0.008333,
+            0.004167,
+            0.0125,
+            0.029167,
+            0.0375,
+            0.029167,
+            0.05,
+            0.058333,
+            0.054167,
+            0.091667,
+            0.091667,
+            0.129167,
+            0.1625,
+            0.170833,
+            0.154167,
+            0.208333,
+            0.220833,
+            0.2625,
+            0.3125,
+            0.295833,
+            0.341667,
+            0.370833,
+            0.366667,
+            0.416667,
+            0.425,
+            0.4375,
+            0.445833,
+            0.508333,
+            0.533333,
+            0.5875,
+            0.541667,
+            0.6125,
+            0.629167,
+            0.658333,
+            0.654167,
+            0.7,
+            0.679167,
+            0.691667,
+            0.679167,
+            0.7375,
+            0.7125,
+            0.725,
+            0.733333,
+            0.766667,
+            0.7375,
+            0.783333,
+            0.795833,
+            0.770833,
+            0.7875,
+            0.7875,
+            0.804167,
+            0.8125,
+            0.820833,
+            0.825,
+            0.816667,
+            0.858333,
+            0.854167,
+            0.879167,
+            0.879167,
+            0.870833,
+            0.870833,
+            0.8875,
+            0.8875,
+            0.891667,
+            0.883333,
+            0.908333,
+            0.891667,
+            0.904167,
+            0.8875,
+            0.9375,
+            0.925,
+            0.933333,
+            0.920833,
+            0.945833,
+            0.933333,
+            0.945833,
+            0.95,
+            0.954167
+          ],
+          "RGNA4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.0,
+            0.008333,
+            0.0,
+            0.004167,
+            0.004167,
+            0.0,
+            0.004167,
+            0.0125,
+            0.004167,
+            0.0125,
+            0.004167,
+            0.025,
+            0.016667,
+            0.020833,
+            0.029167,
+            0.033333,
+            0.029167,
+            0.045833,
+            0.045833,
+            0.0625,
+            0.075,
+            0.066667,
+            0.083333,
+            0.070833,
+            0.095833,
+            0.0875,
+            0.083333,
+            0.120833,
+            0.1375,
+            0.125,
+            0.129167,
+            0.15,
+            0.120833,
+            0.166667,
+            0.179167,
+            0.183333,
+            0.179167,
+            0.1875,
+            0.204167,
+            0.191667,
+            0.220833,
+            0.195833,
+            0.229167,
+            0.2375,
+            0.270833,
+            0.2375,
+            0.270833,
+            0.258333,
+            0.266667,
+            0.25,
+            0.304167,
+            0.2875,
+            0.3125,
+            0.320833,
+            0.341667,
+            0.325,
+            0.345833,
+            0.320833,
+            0.329167,
+            0.35,
+            0.333333,
+            0.366667,
+            0.3625,
+            0.366667,
+            0.358333,
+            0.416667,
+            0.383333,
+            0.416667,
+            0.4125,
+            0.4125
+          ],
+          "RGNB4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.0,
+            0.008333,
+            0.004167,
+            0.008333,
+            0.004167,
+            0.008333,
+            0.020833,
+            0.029167,
+            0.025,
+            0.041667,
+            0.0625,
+            0.079167,
+            0.1,
+            0.104167,
+            0.116667,
+            0.116667,
+            0.120833,
+            0.104167,
+            0.116667,
+            0.1375,
+            0.141667,
+            0.158333,
+            0.191667,
+            0.166667,
+            0.220833,
+            0.2375,
+            0.283333,
+            0.283333,
+            0.291667,
+            0.325,
+            0.308333,
+            0.35,
+            0.3875,
+            0.404167,
+            0.420833,
+            0.4125,
+            0.4375,
+            0.420833,
+            0.458333,
+            0.45,
+            0.416667,
+            0.408333,
+            0.454167,
+            0.441667,
+            0.475,
+            0.483333,
+            0.516667,
+            0.533333,
+            0.504167,
+            0.520833,
+            0.554167,
+            0.516667,
+            0.558333,
+            0.554167,
+            0.554167,
+            0.583333,
+            0.554167,
+            0.595833,
+            0.575,
+            0.566667,
+            0.595833,
+            0.616667,
+            0.604167,
+            0.620833,
+            0.591667,
+            0.629167,
+            0.604167,
+            0.6125,
+            0.604167,
+            0.625
+          ],
+          "SP8": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.0125,
+            0.008333,
+            0.016667,
+            0.008333,
+            0.0125,
+            0.008333,
+            0.0125,
+            0.0125,
+            0.020833,
+            0.041667,
+            0.041667,
+            0.05,
+            0.0625,
+            0.070833,
+            0.075,
+            0.091667,
+            0.108333,
+            0.116667,
+            0.125,
+            0.133333,
+            0.129167,
+            0.129167,
+            0.133333,
+            0.1125,
+            0.120833,
+            0.116667,
+            0.1125,
+            0.120833,
+            0.1125,
+            0.108333,
+            0.125,
+            0.116667,
+            0.1125,
+            0.1125,
+            0.116667,
+            0.120833,
+            0.120833,
+            0.116667,
+            0.116667,
+            0.108333,
+            0.1,
+            0.1125,
+            0.104167,
+            0.091667,
+            0.1,
+            0.104167,
+            0.083333,
+            0.091667,
+            0.083333,
+            0.0875,
+            0.075,
+            0.075,
+            0.083333,
+            0.075,
+            0.0625,
+            0.070833,
+            0.075,
+            0.070833,
+            0.070833,
+            0.0625,
+            0.058333,
+            0.0625,
+            0.0625,
+            0.070833,
+            0.054167,
+            0.058333,
+            0.058333,
+            0.05,
+            0.05,
+            0.05,
+            0.05,
+            0.058333,
+            0.041667,
+            0.045833,
+            0.041667,
+            0.045833,
+            0.0375,
+            0.041667,
+            0.041667,
+            0.041667
+          ]
+        },
+        "label": "per step t = 1..88: mean certificates / 2 (PAIRED_ANALYSIS_021)",
+        "noisy": {
+          "RG4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.08125,
+            0.070833,
+            0.108333,
+            0.1375,
+            0.14375,
+            0.170833,
+            0.24375,
+            0.272917,
+            0.289583,
+            0.308333,
+            0.2875,
+            0.3,
+            0.329167,
+            0.360417,
+            0.339583,
+            0.377083,
+            0.385417,
+            0.420833,
+            0.40625,
+            0.4125,
+            0.408333,
+            0.414583,
+            0.416667,
+            0.4,
+            0.385417,
+            0.402083,
+            0.383333,
+            0.385417,
+            0.372917,
+            0.375,
+            0.354167,
+            0.360417,
+            0.347917,
+            0.333333,
+            0.3375,
+            0.35,
+            0.333333,
+            0.333333,
+            0.3125,
+            0.314583,
+            0.314583,
+            0.316667,
+            0.3,
+            0.308333,
+            0.3,
+            0.291667,
+            0.28125,
+            0.2875,
+            0.29375,
+            0.283333,
+            0.25625,
+            0.264583,
+            0.26875,
+            0.258333,
+            0.2375,
+            0.24375,
+            0.247917,
+            0.23125,
+            0.225,
+            0.222917,
+            0.21875,
+            0.21875,
+            0.20625,
+            0.21875,
+            0.202083,
+            0.2,
+            0.191667,
+            0.197917,
+            0.19375,
+            0.19375,
+            0.183333,
+            0.195833,
+            0.183333,
+            0.177083,
+            0.172917,
+            0.175,
+            0.170833,
+            0.170833,
+            0.1625,
+            0.164583
+          ],
+          "RGN4_or": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0125,
+            0.020833,
+            0.01875,
+            0.022917,
+            0.025,
+            0.045833,
+            0.060417,
+            0.05625,
+            0.08125,
+            0.09375,
+            0.1125,
+            0.133333,
+            0.160417,
+            0.2,
+            0.220833,
+            0.216667,
+            0.233333,
+            0.297917,
+            0.316667,
+            0.345833,
+            0.395833,
+            0.385417,
+            0.4375,
+            0.4625,
+            0.475,
+            0.508333,
+            0.522917,
+            0.5375,
+            0.560417,
+            0.59375,
+            0.622917,
+            0.6375,
+            0.625,
+            0.679167,
+            0.695833,
+            0.71875,
+            0.702083,
+            0.745833,
+            0.733333,
+            0.7375,
+            0.7375,
+            0.779167,
+            0.766667,
+            0.78125,
+            0.76875,
+            0.8,
+            0.789583,
+            0.80625,
+            0.810417,
+            0.814583,
+            0.808333,
+            0.829167,
+            0.822917,
+            0.839583,
+            0.83125,
+            0.839583,
+            0.8375,
+            0.864583,
+            0.852083,
+            0.872917,
+            0.875,
+            0.866667,
+            0.870833,
+            0.8875,
+            0.8875,
+            0.891667,
+            0.875,
+            0.902083,
+            0.891667,
+            0.904167,
+            0.891667,
+            0.925,
+            0.9125,
+            0.9125,
+            0.916667,
+            0.929167,
+            0.920833,
+            0.922917,
+            0.929167,
+            0.933333
+          ],
+          "RGNA4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.002083,
+            0.0,
+            0.00625,
+            0.0,
+            0.002083,
+            0.004167,
+            0.0,
+            0.002083,
+            0.010417,
+            0.002083,
+            0.008333,
+            0.004167,
+            0.01875,
+            0.014583,
+            0.01875,
+            0.01875,
+            0.020833,
+            0.022917,
+            0.03125,
+            0.039583,
+            0.041667,
+            0.054167,
+            0.054167,
+            0.064583,
+            0.05625,
+            0.077083,
+            0.070833,
+            0.075,
+            0.097917,
+            0.120833,
+            0.114583,
+            0.1125,
+            0.133333,
+            0.110417,
+            0.15625,
+            0.15625,
+            0.164583,
+            0.160417,
+            0.172917,
+            0.1875,
+            0.18125,
+            0.191667,
+            0.183333,
+            0.20625,
+            0.214583,
+            0.2375,
+            0.227083,
+            0.25625,
+            0.25,
+            0.252083,
+            0.235417,
+            0.277083,
+            0.2625,
+            0.285417,
+            0.289583,
+            0.320833,
+            0.314583,
+            0.320833,
+            0.291667,
+            0.31875,
+            0.31875,
+            0.33125,
+            0.322917,
+            0.354167,
+            0.341667,
+            0.352083,
+            0.377083,
+            0.379167,
+            0.370833,
+            0.385417,
+            0.38125
+          ],
+          "RGNB4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.002083,
+            0.004167,
+            0.002083,
+            0.0,
+            0.00625,
+            0.002083,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.010417,
+            0.022917,
+            0.016667,
+            0.03125,
+            0.047917,
+            0.0625,
+            0.077083,
+            0.077083,
+            0.104167,
+            0.1,
+            0.102083,
+            0.114583,
+            0.11875,
+            0.127083,
+            0.135417,
+            0.154167,
+            0.175,
+            0.16875,
+            0.202083,
+            0.222917,
+            0.2625,
+            0.26875,
+            0.270833,
+            0.310417,
+            0.30625,
+            0.352083,
+            0.370833,
+            0.377083,
+            0.41875,
+            0.38125,
+            0.433333,
+            0.408333,
+            0.45,
+            0.414583,
+            0.41875,
+            0.4125,
+            0.458333,
+            0.433333,
+            0.46875,
+            0.466667,
+            0.508333,
+            0.510417,
+            0.5125,
+            0.520833,
+            0.545833,
+            0.5125,
+            0.55,
+            0.547917,
+            0.558333,
+            0.56875,
+            0.5625,
+            0.577083,
+            0.575,
+            0.572917,
+            0.5875,
+            0.597917,
+            0.602083,
+            0.616667,
+            0.602083,
+            0.620833,
+            0.604167,
+            0.59375,
+            0.60625,
+            0.614583
+          ],
+          "SP8": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.0125,
+            0.008333,
+            0.014583,
+            0.008333,
+            0.010417,
+            0.010417,
+            0.014583,
+            0.016667,
+            0.025,
+            0.039583,
+            0.041667,
+            0.05625,
+            0.066667,
+            0.083333,
+            0.0875,
+            0.102083,
+            0.122917,
+            0.125,
+            0.135417,
+            0.1375,
+            0.135417,
+            0.133333,
+            0.141667,
+            0.135417,
+            0.133333,
+            0.13125,
+            0.133333,
+            0.1375,
+            0.139583,
+            0.135417,
+            0.1375,
+            0.139583,
+            0.145833,
+            0.135417,
+            0.139583,
+            0.145833,
+            0.14375,
+            0.14375,
+            0.139583,
+            0.13125,
+            0.139583,
+            0.139583,
+            0.13125,
+            0.133333,
+            0.1375,
+            0.13125,
+            0.127083,
+            0.125,
+            0.127083,
+            0.127083,
+            0.114583,
+            0.114583,
+            0.11875,
+            0.1125,
+            0.1,
+            0.1,
+            0.1125,
+            0.1,
+            0.102083,
+            0.097917,
+            0.095833,
+            0.095833,
+            0.095833,
+            0.095833,
+            0.0875,
+            0.09375,
+            0.0875,
+            0.0875,
+            0.085417,
+            0.08125,
+            0.085417,
+            0.091667,
+            0.077083,
+            0.077083,
+            0.079167,
+            0.077083,
+            0.070833,
+            0.075,
+            0.075,
+            0.072917
+          ]
+        },
+        "stress": {
+          "RG4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.091667,
+            0.075,
+            0.1375,
+            0.191667,
+            0.183333,
+            0.183333,
+            0.229167,
+            0.245833,
+            0.254167,
+            0.245833,
+            0.225,
+            0.208333,
+            0.204167,
+            0.220833,
+            0.204167,
+            0.216667,
+            0.220833,
+            0.220833,
+            0.220833,
+            0.191667,
+            0.166667,
+            0.195833,
+            0.179167,
+            0.175,
+            0.133333,
+            0.125,
+            0.1,
+            0.120833,
+            0.095833,
+            0.1125,
+            0.091667,
+            0.083333,
+            0.075,
+            0.083333,
+            0.079167,
+            0.075,
+            0.0625,
+            0.058333,
+            0.054167,
+            0.0625,
+            0.041667,
+            0.045833,
+            0.041667,
+            0.0375,
+            0.033333,
+            0.0375,
+            0.033333,
+            0.0375,
+            0.033333,
+            0.033333,
+            0.020833,
+            0.025,
+            0.020833,
+            0.025,
+            0.0125,
+            0.016667,
+            0.0125,
+            0.016667,
+            0.0125,
+            0.016667,
+            0.0125,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.004167
+          ],
+          "RGN4_or": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.008333,
+            0.008333,
+            0.004167,
+            0.016667,
+            0.016667,
+            0.020833,
+            0.025,
+            0.020833,
+            0.0125,
+            0.0375,
+            0.041667,
+            0.0625,
+            0.070833,
+            0.0625,
+            0.070833,
+            0.104167,
+            0.1125,
+            0.1125,
+            0.125,
+            0.116667,
+            0.158333,
+            0.1875,
+            0.204167,
+            0.208333,
+            0.266667,
+            0.254167,
+            0.304167,
+            0.2875,
+            0.333333,
+            0.354167,
+            0.3375,
+            0.395833,
+            0.379167,
+            0.429167,
+            0.441667,
+            0.445833,
+            0.508333,
+            0.5375,
+            0.575,
+            0.545833,
+            0.591667,
+            0.575,
+            0.604167,
+            0.625,
+            0.6375,
+            0.675,
+            0.704167,
+            0.708333,
+            0.7625,
+            0.7625,
+            0.7625,
+            0.808333,
+            0.783333,
+            0.779167,
+            0.791667,
+            0.820833,
+            0.858333,
+            0.854167,
+            0.875,
+            0.9125,
+            0.8875,
+            0.908333,
+            0.920833,
+            0.929167,
+            0.891667,
+            0.920833,
+            0.9125,
+            0.9375,
+            0.933333,
+            0.9625,
+            0.958333,
+            0.95
+          ],
+          "RGNA4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.004167,
+            0.016667,
+            0.008333,
+            0.016667,
+            0.0125,
+            0.029167,
+            0.029167,
+            0.029167,
+            0.0125,
+            0.0125,
+            0.033333,
+            0.029167,
+            0.041667,
+            0.045833,
+            0.066667,
+            0.1,
+            0.091667,
+            0.0875,
+            0.154167,
+            0.145833,
+            0.170833,
+            0.175,
+            0.179167,
+            0.208333,
+            0.195833,
+            0.220833,
+            0.254167,
+            0.191667,
+            0.254167,
+            0.220833,
+            0.2625,
+            0.2875,
+            0.308333,
+            0.304167,
+            0.320833,
+            0.354167,
+            0.3625,
+            0.4125,
+            0.4625,
+            0.404167,
+            0.433333,
+            0.445833,
+            0.441667,
+            0.441667,
+            0.441667,
+            0.45,
+            0.491667,
+            0.45,
+            0.5375,
+            0.516667,
+            0.520833,
+            0.5625,
+            0.55,
+            0.5375,
+            0.583333,
+            0.5875,
+            0.608333,
+            0.6,
+            0.641667,
+            0.625,
+            0.620833,
+            0.629167,
+            0.633333,
+            0.6375
+          ],
+          "SP8": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.0,
+            0.008333,
+            0.0,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.0125,
+            0.020833,
+            0.0375,
+            0.033333,
+            0.045833,
+            0.0375,
+            0.05,
+            0.045833,
+            0.054167,
+            0.054167,
+            0.054167,
+            0.058333,
+            0.0625,
+            0.058333,
+            0.058333,
+            0.054167,
+            0.0625,
+            0.054167,
+            0.058333,
+            0.0625,
+            0.054167,
+            0.054167,
+            0.05,
+            0.041667,
+            0.054167,
+            0.054167,
+            0.05,
+            0.0375,
+            0.033333,
+            0.029167,
+            0.029167,
+            0.029167,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.0125,
+            0.0125,
+            0.0125,
+            0.0125,
+            0.0125,
+            0.0125,
+            0.0125,
+            0.0125,
+            0.0125,
+            0.0125,
+            0.0125,
+            0.0125,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.004167
+          ]
+        }
+      },
+      "pass": null
+    },
+    "R_boundary": {
+      "gated": false,
+      "observed": {
+        "0.0": {
+          "B_range": [
+            97,
+            129
+          ],
+          "anytime_crossing_rate": 0.0,
+          "cases": 120,
+          "mean_bound_P_flips_gt_m": 0.0,
+          "mean_fixed_m": 6.333333,
+          "mean_m_a_b": 6.286174,
+          "mean_planned_m_b": null,
+          "observed_flips_gt_m_rate": 0.0,
+          "planned_crossing_rate": 0.0
+        },
+        "0.01": {
+          "B_range": [
+            97,
+            129
+          ],
+          "anytime_crossing_rate": 0.008333,
+          "cases": 120,
+          "mean_bound_P_flips_gt_m": 0.00011254,
+          "mean_fixed_m": 6.333333,
+          "mean_m_a_b": 6.286174,
+          "mean_planned_m_b": 4.709091,
+          "observed_flips_gt_m_rate": 0.0,
+          "planned_crossing_rate": 0.008333
+        },
+        "0.02": {
+          "B_range": [
+            97,
+            129
+          ],
+          "anytime_crossing_rate": 0.016667,
+          "cases": 120,
+          "mean_bound_P_flips_gt_m": 0.00625141,
+          "mean_fixed_m": 6.333333,
+          "mean_m_a_b": 6.286174,
+          "mean_planned_m_b": 4.709091,
+          "observed_flips_gt_m_rate": 0.016667,
+          "planned_crossing_rate": 0.025
+        },
+        "0.05": {
+          "B_range": [
+            97,
+            129
+          ],
+          "anytime_crossing_rate": 0.133333,
+          "cases": 120,
+          "mean_bound_P_flips_gt_m": 0.30937759,
+          "mean_fixed_m": 6.333333,
+          "mean_m_a_b": 6.286174,
+          "mean_planned_m_b": null,
+          "observed_flips_gt_m_rate": 0.291667,
+          "planned_crossing_rate": 0.275
+        }
+      },
+      "pass": null
+    },
+    "R_coverage": {
+      "gated": false,
+      "observed": {
+        "C_early28": {
+          "RGNA4": {
+            "eps0": [
+              0.000893,
+              [
+                0.0,
+                0.002381
+              ]
+            ],
+            "eps1": [
+              0.000744,
+              [
+                0.0,
+                0.002083
+              ]
+            ],
+            "eps2": [
+              0.001935,
+              [
+                0.000446,
+                0.003869
+              ]
+            ],
+            "noisy": [
+              0.001339,
+              [
+                0.000372,
+                0.00253
+              ]
+            ],
+            "stress": [
+              0.001786,
+              [
+                0.000595,
+                0.003125
+              ]
+            ]
+          },
+          "RGNB4": {
+            "eps0": [
+              null,
+              null
+            ],
+            "eps1": [
+              0.002232,
+              [
+                0.000595,
+                0.004464
+              ]
+            ],
+            "eps2": [
+              0.005952,
+              [
+                0.002679,
+                0.00997
+              ]
+            ],
+            "noisy": [
+              0.004092,
+              [
+                0.002232,
+                0.006324
+              ]
+            ],
+            "stress": [
+              null,
+              null
+            ]
+          }
+        },
+        "C_late": {
+          "RG4": {
+            "eps0": [
+              0.833049,
+              [
+                0.79858,
+                0.865909
+              ]
+            ],
+            "eps1": [
+              0.323106,
+              [
+                0.253598,
+                0.393561
+              ]
+            ],
+            "eps2": [
+              0.155303,
+              [
+                0.107197,
+                0.207105
+              ]
+            ],
+            "noisy": [
+              0.239205,
+              [
+                0.195737,
+                0.284946
+              ]
+            ],
+            "stress": [
+              0.021307,
+              [
+                0.007576,
+                0.038163
+              ]
+            ]
+          },
+          "RGN4_or": {
+            "eps0": [
+              0.833049,
+              [
+                0.79858,
+                0.865909
+              ]
+            ],
+            "eps1": [
+              0.859375,
+              [
+                0.82585,
+                0.891004
+              ]
+            ],
+            "eps2": [
+              0.832292,
+              [
+                0.797064,
+                0.86553
+              ]
+            ],
+            "noisy": [
+              0.845833,
+              [
+                0.821828,
+                0.869223
+              ]
+            ],
+            "stress": [
+              0.71108,
+              [
+                0.667043,
+                0.753598
+              ]
+            ]
+          },
+          "RGNA4": {
+            "eps0": [
+              0.257386,
+              [
+                0.222538,
+                0.29214
+              ]
+            ],
+            "eps1": [
+              0.225568,
+              [
+                0.185511,
+                0.267519
+              ]
+            ],
+            "eps2": [
+              0.265057,
+              [
+                0.214962,
+                0.317332
+              ]
+            ],
+            "noisy": [
+              0.245312,
+              [
+                0.213304,
+                0.278931
+              ]
+            ],
+            "stress": [
+              0.421307,
+              [
+                0.368277,
+                0.475284
+              ]
+            ]
+          },
+          "RGNB4": {
+            "eps0": [
+              null,
+              null
+            ],
+            "eps1": [
+              0.477273,
+              [
+                0.425187,
+                0.529167
+              ]
+            ],
+            "eps2": [
+              0.493277,
+              [
+                0.434564,
+                0.55303
+              ]
+            ],
+            "noisy": [
+              0.485275,
+              [
+                0.446354,
+                0.525806
+              ]
+            ],
+            "stress": [
+              null,
+              null
+            ]
+          },
+          "SP8": {
+            "eps0": [
+              0.382008,
+              [
+                0.326515,
+                0.438731
+              ]
+            ],
+            "eps1": [
+              0.13892,
+              [
+                0.097917,
+                0.18201
+              ]
+            ],
+            "eps2": [
+              0.071875,
+              [
+                0.042898,
+                0.103883
+              ]
+            ],
+            "noisy": [
+              0.105398,
+              [
+                0.078835,
+                0.133191
+              ]
+            ],
+            "stress": [
+              0.012595,
+              [
+                0.00246,
+                0.026042
+              ]
+            ]
+          }
+        },
+        "RG4": {
+          "0.0": {
+            "anytime_crossings": 0,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.245536,
+            "coverage_full": 0.636269,
+            "coverage_late": 0.833049,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 0,
+            "false_certificates": 0
+          },
+          "0.01": {
+            "anytime_crossings": 1,
+            "case_false": 26,
+            "case_false_rate": 0.216667,
+            "cases": 120,
+            "coverage_early28": 0.2,
+            "coverage_full": 0.304451,
+            "coverage_late": 0.323106,
+            "cp_upper_95_one_sided": 0.28768171,
+            "crossings": 1,
+            "false_certificates": 95
+          },
+          "0.02": {
+            "anytime_crossings": 2,
+            "case_false": 38,
+            "case_false_rate": 0.316667,
+            "cases": 120,
+            "coverage_early28": 0.189881,
+            "coverage_full": 0.195786,
+            "coverage_late": 0.155303,
+            "cp_upper_95_one_sided": 0.39358987,
+            "crossings": 3,
+            "false_certificates": 103
+          },
+          "0.05": {
+            "anytime_crossings": 16,
+            "case_false": 48,
+            "case_false_rate": 0.4,
+            "cases": 120,
+            "coverage_early28": 0.141815,
+            "coverage_full": 0.077273,
+            "coverage_late": 0.021307,
+            "cp_upper_95_one_sided": 0.47898842,
+            "crossings": 33,
+            "false_certificates": 127
+          }
+        },
+        "RGN4_or": {
+          "0.0": {
+            "anytime_crossings": 0,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.245089,
+            "coverage_full": 0.636127,
+            "coverage_late": 0.833049,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 0,
+            "false_certificates": 0
+          },
+          "0.01": {
+            "anytime_crossings": 1,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.127232,
+            "coverage_full": 0.586458,
+            "coverage_late": 0.859375,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 1,
+            "false_certificates": 0
+          },
+          "0.02": {
+            "anytime_crossings": 2,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.063839,
+            "coverage_full": 0.521496,
+            "coverage_late": 0.832292,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 3,
+            "false_certificates": 0
+          },
+          "0.05": {
+            "anytime_crossings": 16,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.010714,
+            "coverage_full": 0.389015,
+            "coverage_late": 0.71108,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 33,
+            "false_certificates": 0
+          }
+        },
+        "RGNA4": {
+          "0.0": {
+            "anytime_crossings": 0,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.000893,
+            "coverage_full": 0.133854,
+            "coverage_late": 0.257386,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 0,
+            "false_certificates": 0
+          },
+          "0.01": {
+            "anytime_crossings": 1,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.000744,
+            "coverage_full": 0.11785,
+            "coverage_late": 0.225568,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 1,
+            "false_certificates": 0
+          },
+          "0.02": {
+            "anytime_crossings": 2,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.001935,
+            "coverage_full": 0.14214,
+            "coverage_late": 0.265057,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 3,
+            "false_certificates": 0
+          },
+          "0.05": {
+            "anytime_crossings": 16,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.001786,
+            "coverage_full": 0.221686,
+            "coverage_late": 0.421307,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 33,
+            "false_certificates": 0
+          }
+        },
+        "RGNB4": {
+          "0.01": {
+            "anytime_crossings": 1,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.002232,
+            "coverage_full": 0.259848,
+            "coverage_late": 0.477273,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 1,
+            "false_certificates": 0
+          },
+          "0.02": {
+            "anytime_crossings": 2,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.005952,
+            "coverage_full": 0.273248,
+            "coverage_late": 0.493277,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 3,
+            "false_certificates": 0
+          }
+        },
+        "SP8": {
+          "0.0": {
+            "anytime_crossings": 0,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.058333,
+            "coverage_full": 0.265246,
+            "coverage_late": 0.382008,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 0,
+            "false_certificates": 0
+          },
+          "0.01": {
+            "anytime_crossings": 1,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.043601,
+            "coverage_full": 0.111742,
+            "coverage_late": 0.13892,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 1,
+            "false_certificates": 0
+          },
+          "0.02": {
+            "anytime_crossings": 2,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.037202,
+            "coverage_full": 0.069366,
+            "coverage_late": 0.071875,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 3,
+            "false_certificates": 0
+          },
+          "0.05": {
+            "anytime_crossings": 16,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.019048,
+            "coverage_full": 0.022206,
+            "coverage_late": 0.012595,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 33,
+            "false_certificates": 0
+          }
+        },
+        "labels": {
+          "RG4": "expected > 0 false under noise",
+          "RGN4_or": "oracle m = realized flips, evaluator-only"
+        }
+      },
+      "pass": null
+    },
+    "R_first_cert": {
+      "gated": false,
+      "observed": {
+        "label": "informational, ungated; SP8 censored at the inherited CENSOR = 45 (ambiguous at 88 steps; deviation addendum)",
+        "mean_first_cert_step": {
+          "RG4": {
+            "0.0": 17.217,
+            "0.01": 17.725,
+            "0.02": 17.408,
+            "0.05": 20.367
+          },
+          "RGN4_or": {
+            "0.0": 17.242,
+            "0.01": 23.8,
+            "0.02": 29.9,
+            "0.05": 46.083
+          },
+          "RGNA4": {
+            "0.0": 53.817,
+            "0.01": 53.217,
+            "0.02": 51.883,
+            "0.05": 51.525
+          },
+          "RGNB4": {
+            "0.0": null,
+            "0.01": 46.067,
+            "0.02": 44.458,
+            "0.05": null
+          },
+          "SP8": {
+            "0.0": 32.767,
+            "0.01": 35.942,
+            "0.02": 37.758,
+            "0.05": 41.017
+          }
+        }
+      },
+      "pass": null
+    },
+    "R_heartbeat_attribution": {
+      "gated": false,
+      "observed": {
+        "label": "Inferred; diagnostic, changes no verdict",
+        "sentinel_attribution": {
+          "class_counts": {
+            "box_pause": 0,
+            "clock_step": 0,
+            "suspend": 0,
+            "unattributed": 0,
+            "watchdog_stall": 0
+          },
+          "gaps_over_10s": [],
+          "max_sentinel_tick_gap_s": 2.187,
+          "max_watchdog_gap_s": 3.294,
+          "sentinel_records": 2390
+        },
+        "watchdog_gaps_over_10s": []
+      },
+      "pass": null
+    },
+    "R_perbit": {
+      "gated": false,
+      "observed": {
+        "arm": "RGNA4",
+        "ci": {
+          "eps0": {
+            "case_false_bit": [
+              0.0,
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            "full": [
+              0.19349,
+              [
+                0.175497,
+                0.211341
+              ]
+            ],
+            "late": [
+              0.360748,
+              [
+                0.328362,
+                0.393419
+              ]
+            ]
+          },
+          "eps1": {
+            "case_false_bit": [
+              0.0,
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            "full": [
+              0.17732,
+              [
+                0.15438,
+                0.200758
+              ]
+            ],
+            "late": [
+              0.32964,
+              [
+                0.287167,
+                0.372918
+              ]
+            ]
+          },
+          "eps2": {
+            "case_false_bit": [
+              0.0,
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            "full": [
+              0.203788,
+              [
+                0.175402,
+                0.233381
+              ]
+            ],
+            "late": [
+              0.373153,
+              [
+                0.322347,
+                0.426043
+              ]
+            ]
+          },
+          "noisy": {
+            "case_false_bit": [
+              0.0,
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            "full": [
+              0.190554,
+              [
+                0.172668,
+                0.209778
+              ]
+            ],
+            "late": [
+              0.351397,
+              [
+                0.319081,
+                0.385985
+              ]
+            ]
+          },
+          "stress": {
+            "case_false_bit": [
+              0.0,
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            "full": [
+              0.294152,
+              [
+                0.265862,
+                0.322562
+              ]
+            ],
+            "late": [
+              0.539347,
+              [
+                0.489205,
+                0.589867
+              ]
+            ]
+          }
+        },
+        "per_eps": {
+          "0.0": {
+            "cases": 120,
+            "cases_with_false_bit": 0,
+            "certified_bits": 8173,
+            "coverage_full": 0.19349,
+            "coverage_late": 0.360748,
+            "false_bits": 0,
+            "late_certified_bits": 7619,
+            "late_false_bits": 0
+          },
+          "0.01": {
+            "cases": 120,
+            "cases_with_false_bit": 0,
+            "certified_bits": 7490,
+            "coverage_full": 0.17732,
+            "coverage_late": 0.32964,
+            "false_bits": 0,
+            "late_certified_bits": 6962,
+            "late_false_bits": 0
+          },
+          "0.02": {
+            "cases": 120,
+            "cases_with_false_bit": 0,
+            "certified_bits": 8608,
+            "coverage_full": 0.203788,
+            "coverage_late": 0.373153,
+            "false_bits": 0,
+            "late_certified_bits": 7881,
+            "late_false_bits": 0
+          },
+          "0.05": {
+            "cases": 120,
+            "cases_with_false_bit": 0,
+            "certified_bits": 12425,
+            "coverage_full": 0.294152,
+            "coverage_late": 0.539347,
+            "false_bits": 0,
+            "late_certified_bits": 11391,
+            "late_false_bits": 0
+          }
+        }
+      },
+      "pass": null
+    },
+    "R_rates": {
+      "gated": false,
+      "observed": {
+        "g11": {
+          "budget_s": 1400,
+          "fraction_of_budget": 0.478,
+          "projected_s": 1360.6,
+          "raw_projection_s": 777.5,
+          "spent_s": 669.0
+        },
+        "gti": {
+          "budget_s": 6400,
+          "fraction_of_budget": 0.568,
+          "projected_s": 6281.1,
+          "raw_projection_s": 3589.2,
+          "spent_s": 3638.0
+        },
+        "rate_math": {
+          "file": "docs/research/v0.19.0/RATE_MATH_021.json",
+          "fits": false,
+          "sha256": "788f69c0ebad83f93a3b08b9927b76b749988ea8567ab059a53f2936201ab8d1"
+        },
+        "repro": {
+          "budget_s": 1400,
+          "fraction_of_budget": 0.174,
+          "projected_s": 775.4,
+          "raw_projection_s": 443.1,
+          "spent_s": 244.1
+        },
+        "solver_cost": {
+          "RG4": {
+            "cases": 480,
+            "ms_per_step": 1.0029,
+            "total_s": 42.364
+          },
+          "RGN4_or": {
+            "cases": 480,
+            "ms_per_step": 97.4608,
+            "total_s": 4116.744
+          },
+          "RGNA4": {
+            "cases": 480,
+            "ms_per_step": 417.0581,
+            "total_s": 17616.535
+          },
+          "RGNB4": {
+            "cases": 240,
+            "ms_per_step": 294.9104,
+            "total_s": 6228.508
+          },
+          "prefix28": {
+            "cases": 120,
+            "ms_per_step": 3.7047,
+            "total_s": 39.122
+          },
+          "timing_source": "transfer/RESULTS.json (informational, unsealed)"
+        },
+        "transfer": {
+          "budget_s": 5800,
+          "fraction_of_budget": 0.712,
+          "projected_s": 8948.6,
+          "raw_projection_s": 5113.5,
+          "spent_s": 4130.3
+        }
+      },
+      "pass": null
+    },
+    "R_stress": {
+      "gated": false,
+      "observed": {
+        "RG4": {
+          "anytime_crossings": 16,
+          "case_false": 48,
+          "case_false_rate": 0.4,
+          "cases": 120,
+          "coverage_early28": 0.141815,
+          "coverage_full": 0.077273,
+          "coverage_late": 0.021307,
+          "cp_upper_95_one_sided": 0.47898842,
+          "crossings": 33,
+          "false_certificates": 127
+        },
+        "RGN4_or": {
+          "anytime_crossings": 16,
+          "case_false": 0,
+          "case_false_rate": 0.0,
+          "cases": 120,
+          "coverage_early28": 0.010714,
+          "coverage_full": 0.389015,
+          "coverage_late": 0.71108,
+          "cp_upper_95_one_sided": 0.0246554,
+          "crossings": 33,
+          "false_certificates": 0
+        },
+        "RGNA4": {
+          "anytime_crossings": 16,
+          "case_false": 0,
+          "case_false_rate": 0.0,
+          "cases": 120,
+          "coverage_early28": 0.001786,
+          "coverage_full": 0.221686,
+          "coverage_late": 0.421307,
+          "cp_upper_95_one_sided": 0.0246554,
+          "crossings": 33,
+          "false_certificates": 0
+        },
+        "RGNA4_case_false_with_anytime_crossing": 0,
+        "RGNA4_case_false_without_anytime_crossing": 0,
+        "cases": 120,
+        "cases_with_anytime_crossing": 16,
+        "label": "outside the attestation; no guarantee"
+      },
+      "pass": null
+    }
+  },
+  "passed": [
+    "G_recount",
+    "GAH_prefix_control",
+    "GAH_frozen_control",
+    "GS_a9_soundness",
+    "GS_ref9_reference_audit",
+    "GAPI9",
+    "G10_compute",
+    "G12_reproducibility",
+    "G13_frozen_controls_reproduce",
+    "G_RD_resume_drill",
+    "G_RT_study_runtime",
+    "G_HB_heartbeat_gap"
+  ],
+  "pending": [],
+  "plan_sha256": "4054f7ccc1fe76af80381240c4a3768a99d65db1678fdeafe627d68b3cc4a845",
+  "schema": "brute.gates.v19_0",
+  "scientific_sha256": "bd1210bab9738c8f17d45e7c186389cb460ba9a751ce58bddc6288a95196cbde",
+  "smoke_dry_run": false,
+  "stop_rule_fired": false,
+  "study": "BRUTE-0190-ANYTIME-021"
+}
