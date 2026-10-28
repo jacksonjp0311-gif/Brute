@@ -1,0 +1,251 @@
+{
+ "audit_wall_informational": 650.6,
+ "cases_audited": 480,
+ "cases_expected": 480,
+ "cases_not_reached": 0,
+ "events": {
+  "audit_done": {
+   "event": "audit_done",
+   "t": 1793222539.5032306
+  },
+  "done": {
+   "event": "done",
+   "t": 1793222554.660414
+  },
+  "mutation": {
+   "detected_injected": 20,
+   "distinct_cases": 20,
+   "event": "mutation",
+   "flagged_not_injected": 0,
+   "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+   "injected": 20,
+   "injected_on_already_mismatching_case": 0,
+   "kinds": {
+    "B": 1,
+    "anytime": 1,
+    "boundary": 1,
+    "counts": 2,
+    "crossing": 1,
+    "flips": 1,
+    "latent": 1,
+    "observed": 1,
+    "perbit": 1,
+    "prefix": 1,
+    "prefix28": 1,
+    "rg4_cert": 1,
+    "rgn_cert": 2,
+    "support": 3,
+    "wrong": 2
+   },
+   "passed": true,
+   "rng": "random.Random(20261028)"
+  },
+  "start": {
+   "event": "start",
+   "t": 1793221888.0894403
+  }
+ },
+ "gated_cases_audited": 360,
+ "gated_cases_expected": 360,
+ "gated_mismatching_cases": 0,
+ "mismatches": [],
+ "mismatching_cases": 0,
+ "mutation_test": {
+  "details": [
+   {
+    "case": "cycle3/8710007/0.01",
+    "changed_sections": [
+     "noisy"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGNB4 step 48 action 0: [1, 2, 3] != [0, 1, 2, 3]"
+   },
+   {
+    "case": "cycle3/8710010/0.01",
+    "changed_sections": [
+     "perbit"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: perbit trace"
+   },
+   {
+    "case": "cycle3/8710015/0.0",
+    "changed_sections": [
+     "noisy"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGNA4 step 43 action 1: [2, 3] != [0, 2, 3]"
+   },
+   {
+    "case": "cycle3/8710015/0.02",
+    "changed_sections": [
+     "boundary"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: boundary"
+   },
+   {
+    "case": "cycle3/8710021/0.02",
+    "changed_sections": [
+     "prefix28"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: prefix28 certifier trace"
+   },
+   {
+    "case": "ood4/8740008/0.0",
+    "changed_sections": [
+     "B"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: B 121 != 120"
+   },
+   {
+    "case": "ood4/8740012/0.0",
+    "changed_sections": [
+     "certifiers"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGN4_or trace"
+   },
+   {
+    "case": "ood4/8740020/0.02",
+    "changed_sections": [
+     "noisy"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGNB4 step 24 action 1: [1, 2, 3] != [0, 1, 2, 3]"
+   },
+   {
+    "case": "ood4/8740033/0.0",
+    "changed_sections": [
+     "certifiers"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGN4_or trace"
+   },
+   {
+    "case": "ood4/8740040/0.02",
+    "changed_sections": [
+     "certifiers"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RG4 trace"
+   },
+   {
+    "case": "ood4/8740041/0.01",
+    "changed_sections": [
+     "arms"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: reading 82 bit 0: observed 1 vs latent 0 flip 0"
+   },
+   {
+    "case": "ood4/8740045/0.0",
+    "changed_sections": [
+     "certifiers"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGNA4 trace"
+   },
+   {
+    "case": "ood4/8740045/0.02",
+    "changed_sections": [
+     "certifiers"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGNB4 false_certificates"
+   },
+   {
+    "case": "switch3/8720010/0.01",
+    "changed_sections": [
+     "certifiers"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGNB4 certificates"
+   },
+   {
+    "case": "switch3/8720011/0.02",
+    "changed_sections": [
+     "anytime_boundary"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: anytime boundary"
+   },
+   {
+    "case": "switch3/8720012/0.02",
+    "changed_sections": [
+     "crossing"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: crossing None != None"
+   },
+   {
+    "case": "switch3/8720013/0.01",
+    "changed_sections": [
+     "certifiers"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RG4 trace"
+   },
+   {
+    "case": "unaliased2/8730012/0.0",
+    "changed_sections": [
+     "arms"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: reading 82 bit 0: observed 0 vs latent 3 flip 0"
+   },
+   {
+    "case": "unaliased2/8730013/0.0",
+    "changed_sections": [
+     "prefix_bits"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: prefix_bits"
+   },
+   {
+    "case": "unaliased2/8730022/0.01",
+    "changed_sections": [
+     "realized_flips"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: realized_flips 2 != 1"
+   }
+  ],
+  "detected_injected": 20,
+  "distinct_cases": 20,
+  "event": "mutation",
+  "flagged_not_injected": 0,
+  "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+  "injected": 20,
+  "injected_on_already_mismatching_case": 0,
+  "kinds": {
+   "B": 1,
+   "anytime": 1,
+   "boundary": 1,
+   "counts": 2,
+   "crossing": 1,
+   "flips": 1,
+   "latent": 1,
+   "observed": 1,
+   "perbit": 1,
+   "prefix": 1,
+   "prefix28": 1,
+   "rg4_cert": 1,
+   "rgn_cert": 2,
+   "support": 3,
+   "wrong": 2
+  },
+  "passed": true,
+  "rng": "random.Random(20261028)"
+ },
+ "passed": true,
+ "results_file": "/workspace/brute/results/study-021/transfer/RESULTS.json",
+ "results_sha256": "f509aedcd3c29ab32bd233d625b5adb6dfae34b7108fd0db119a0f81560e9734",
+ "schema": "brute.second-implementation-021.v1",
+ "scope": "88-step main and stress cases: RGNA4 (own anytime boundary DP) / RGNB4 (eps 0.01, 0.02) / RGN4_or supports (every complete <= 4-state 2-action Moore machine, per-state mismatch costs, per-step bound, sticky emptiness), RegionSpace(4) supports at m = 0, B / m / boundary / anytime boundary / prefix counts / crossings / flips over 89 readings (tag-21 flips), RG4 and RGN-rule certificates, RGNA4_bit per-bit certificates, counts, window summaries (late 45-88, early 1-28, per step), and the 28-action prefix control on eps-0.02 cases",
+ "source_sha256": "d40248da11f82856b74eec755b8c416f1702eb5c9cc90496927d8124d7c1f38d",
+ "study": "BRUTE-0190-ANYTIME-021",
+ "wording": "second implementation by the same author, no brute import; not an independent or third-party audit"
+}

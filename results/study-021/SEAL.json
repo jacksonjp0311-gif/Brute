@@ -1,0 +1,131 @@
+{
+ "blocks": {
+  "repro/reproset": {
+   "case_count": 60,
+   "complete": true,
+   "expected_case_count": 60,
+   "missing_job_keys": 0,
+   "seal_sha256": "5bb24fd416311f708080abde873d19b31d0af8925d52f45ef189eb4999d74a8b"
+  },
+  "transfer": {
+   "case_count": 480,
+   "complete": true,
+   "expected_case_count": 480,
+   "missing_job_keys": 0,
+   "seal_sha256": "36846b58b87401d2e0782b176791d4d061b79d186d76f2dc4b68777ca4b26b0e"
+  }
+ },
+ "files_sha256": {
+  "HBS.log": "f8e4756072331d88df5c2b3549ca9c7cdacd5466e1de333d25773b8dc020308d",
+  "HB_SENTINEL_021.jsonl": "9f47c545a365a4535d95534e60e7244dc1de21b6cee45319bfc2863973cfbd89",
+  "HEARTBEAT_021.jsonl": "1813e1cf01a8e3cefdfd42c1321079b87c68c25a97df2883f3c83cd457533b65",
+  "PROGRESS_021.json": "f11914db73650e5e14beaf7ae6966aa01c9987417ba0a5ddf9b3431d8ca3ec6b",
+  "PROGRESS_G11_021.json": "3019659d2468a9b6a95d5ad54d80368bebf3cca1f9761749330db5f657a52f2f",
+  "RUN_021.log": "0b9182b0c4c34a72e78a24ccdba5ef70d678557ec1e8b782d22bd115997e7913",
+  "RUN_DONE_021.json": "a2e55ea10841df7418df25932db3ce7c82ce38873a470be76d259c8ce51f4e0f",
+  "RUN_STATE_021.json": "f3703749622a90ae6b754465554f7868cbff98f03084934fb88239691e059ad6",
+  "RUN_T0": "8a8e77091ebfd0bc38ca6f1f0949370741dda64d7abd95caf8fb766542c8c124",
+  "SECOND_IMPLEMENTATION_021.json": "b6fed3dbc79780704904aa0cce70ef9a3eaebf1da74036bf45bdf0e20a9e688c",
+  "SECOND_IMPLEMENTATION_021_CHECKPOINT.jsonl": "15729e5e1c6effc3cab672beae4a291b8ebe0f3737928e008ac655535f7a7a30",
+  "TEST_SUITE_021.json": "f4227485f9d914f51a6562b5a4dfe14196b46f1fae236d0bde88cd4ee387da2d",
+  "WATCHDOG_021.log": "403f4127123b1a68af8425466584360398cb59c31d6a9e8454fcb6eb92ca8ac6",
+  "logs/g11.log": "a464a7496df5a97b8d382cb943ac6fa3fc298e1990bdf5d7886311cb89ab618a",
+  "logs/gti.log": "9c52f82f722b296fcf559fa08e0bba2f16c942c778bd366823df63ae89123cbc",
+  "logs/repro.log": "f8cdeb32d8628b3970284054b38bf11af17241146fe35af045df8a95d93a1f8a",
+  "logs/transfer.log": "06c39ec6d668af7f99b6c48fb4aa490f486dd9846629f9212db92d734f033f0b",
+  "repro/reproset/CHECKPOINT.jsonl": "0f41da7c4473412765920c08e80f1cd7cf4c7c55770dddd3f13ab5f2564e60b7",
+  "repro/reproset/RESULTS.json": "4ddb75718196716e11ce422b8a0b8a0dfa2c60246f7edfd1cf67bf24507ef039",
+  "repro/reproset/SCIENTIFIC.json": "4250195b6f39e500445def9951589e770c3a64ed6bcaf2ff5203120dcef8a2f5",
+  "repro/reproset/SEAL.json": "5bb24fd416311f708080abde873d19b31d0af8925d52f45ef189eb4999d74a8b",
+  "transfer/CHECKPOINT.jsonl": "92a8bd57c687be08e03749baa19ea3bac9735941a569f86d12cd7139f8bd09f3",
+  "transfer/RESULTS.json": "f509aedcd3c29ab32bd233d625b5adb6dfae34b7108fd0db119a0f81560e9734",
+  "transfer/SCIENTIFIC.json": "bd1210bab9738c8f17d45e7c186389cb460ba9a751ce58bddc6288a95196cbde",
+  "transfer/SEAL.json": "36846b58b87401d2e0782b176791d4d061b79d186d76f2dc4b68777ca4b26b0e"
+ },
+ "heartbeat": {
+  "beats": 2401,
+  "first_wall": 1793217756.008,
+  "gaps_over_10s": [],
+  "last_wall": 1793222556.008,
+  "max_gap_s": 3.295
+ },
+ "run_done": {
+  "completed_at": {
+   "g11": 1793222555.4326699,
+   "gti": 1793221394.1786618,
+   "repro": 1793222130.5341012,
+   "transfer": 1793221886.3989363
+  },
+  "elapsed_s": 4801,
+  "events": {
+   "g11": {
+    "audit_done": {
+     "event": "audit_done",
+     "t": 1793222539.5032306
+    },
+    "done": {
+     "event": "done",
+     "t": 1793222554.660414
+    },
+    "mutation": {
+     "detected_injected": 20,
+     "distinct_cases": 20,
+     "event": "mutation",
+     "flagged_not_injected": 0,
+     "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+     "injected": 20,
+     "injected_on_already_mismatching_case": 0,
+     "kinds": {
+      "B": 1,
+      "anytime": 1,
+      "boundary": 1,
+      "counts": 2,
+      "crossing": 1,
+      "flips": 1,
+      "latent": 1,
+      "observed": 1,
+      "perbit": 1,
+      "prefix": 1,
+      "prefix28": 1,
+      "rg4_cert": 1,
+      "rgn_cert": 2,
+      "support": 3,
+      "wrong": 2
+     },
+     "passed": true,
+     "rng": "random.Random(20261028)"
+    },
+    "start": {
+     "event": "start",
+     "t": 1793221888.0894403
+    }
+   }
+  },
+  "finished": {
+   "g11": "2026-10-28T17:22:35-0400",
+   "gti": "2026-10-28T17:03:14-0400",
+   "repro": "2026-10-28T17:15:30-0400",
+   "transfer": "2026-10-28T17:11:26-0400"
+  },
+  "finished_at": "2026-10-28T17:22:35-0400",
+  "mandatory": {
+   "g11": true,
+   "gti": true,
+   "repro": true,
+   "transfer": true
+  },
+  "spent": {
+   "g11": 669,
+   "gti": 3638,
+   "repro": 244,
+   "transfer": 4130
+  },
+  "stopped": {},
+  "t0": 1793217754.593824
+ },
+ "sealed_at": "2026-10-28T17:24:16-0400",
+ "stop_orchestrator": null,
+ "stop_rule_fired": false,
+ "stop_watchdog": null,
+ "study": "BRUTE-0190-ANYTIME-021"
+}
