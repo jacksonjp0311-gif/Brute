@@ -1,0 +1,64 @@
+{
+  "commit": "f9ff4bc449092b07ff97a217e566c007227ab03a",
+  "elapsed_informational_s": 17.5,
+  "passed": true,
+  "schema": "brute.clean-clone.v3",
+  "scoring_inputs": {
+    "gz_restored": [
+      "results/study-021/transfer/RESULTS.json",
+      "results/study-021/transfer/SCIENTIFIC.json",
+      "results/study-021/repro/reproset/RESULTS.json",
+      "results/study-021/repro/reproset/SCIENTIFIC.json"
+    ],
+    "tracked": [
+      "results/study-021/transfer/SEAL.json",
+      "results/study-021/repro/reproset/SEAL.json",
+      "results/study-021/PAIRED_ANALYSIS_021.json",
+      "results/study-021/REPRODUCIBILITY_021.json",
+      "results/study-021/SECOND_IMPLEMENTATION_021.json",
+      "results/study-021/TEST_SUITE_021.json",
+      "results/study-021/RUN_STATE_021.json",
+      "results/study-021/RUN_T0",
+      "results/study-021/HEARTBEAT_021.jsonl",
+      "results/study-021/SEAL.json",
+      "results/study-021/GATES_021.json",
+      "results/smoke-021/KILL_DRILL_021.json",
+      "results/smoke-021/RESUME_DRILL_021.json",
+      "results/smoke-021/API_CHECK_021.json"
+    ],
+    "tracked_if_present": [
+      "results/study-021/RUN_DONE_021.json",
+      "results/study-021/STOP_021.json",
+      "results/study-021/STOP_021_ORCHESTRATOR.json",
+      "results/study-021/HB_SENTINEL_021.jsonl",
+      "results/study-021/HEARTBEAT_ATTRIBUTION_021.json"
+    ]
+  },
+  "steps": {
+    "make_gates_021": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "GATES_021.json reproduces\n"
+    },
+    "make_paired_021": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "PAIRED_ANALYSIS_021 reproduces\n"
+    },
+    "make_reproducibility_021": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "REPRODUCIBILITY_021 reproduces\n"
+    },
+    "restore": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "True\n"
+    }
+  },
+  "tracked": {
+    "missing_from_tree": [],
+    "passed": true,
+    "raw_json_committed_unexpectedly": []
+  }
+}
