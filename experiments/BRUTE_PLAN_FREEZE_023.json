@@ -1,0 +1,11 @@
+{
+ "schema": "brute.plan-freeze.v1",
+ "study": "BRUTE-0200-LR-ANYTIME-023",
+ "plan": "experiments/BRUTE_PLAN_023.json",
+ "plan_sha256": "4d9a6255cf536e328a9a509bf2b7df40d6ff7ed95701a9aeee124fb94e580a57",
+ "criteria_canonical_json_sha256": "775b0d82d6ab3a8abd62a5fa20c354c4c8c24a93a3d0c869841eebe7e45c7ad9",
+ "criteria_hash_method": "sha256 of json.dumps(plan['criteria'], sort_keys=True, separators=(',', ':'), ensure_ascii=False) (same as preregistration_021/022)",
+ "readable_plan": "docs/research/v0.20.0/PLAN_023.md (the JSON wins if they differ)",
+ "frozen_at": "the commit that adds this file (recorded in the ledger entry preregistration_023)",
+ "note": "plan only; no v0.20.0 LR code, reference, held-out world, seed or run exists at this commit; supersedes withdrawn BRUTE-0200-FLAT-ANYTIME-022"
+}

@@ -1,0 +1,183 @@
+{
+ "schema": "brute.plan.v1",
+ "status": "PRE-REGISTERED (frozen at the commit that adds this file; no v0.20.0 likelihood-ratio code, reference code, held-out world, seed or run exists at that commit). PLAN ONLY: build is NOT authorized by this commit.",
+ "study": "BRUTE-0200-LR-ANYTIME-023",
+ "version_under_test": "0.20.0",
+ "parent_study": "BRUTE-0190-ANYTIME-021",
+ "supersedes": "BRUTE-0200-FLAT-ANYTIME-022 (WITHDRAWN before build; docs/research/v0.20.0/WITHDRAWN_022.md, ledger withdrawal_022)",
+ "owner_request": {
+  "recorded_at": "2026-10-28 17:56 EDT (America/New_York), James, card t125s484, relayed by the coordinating agent",
+  "summary": "'Drop the current v0.20.0 plan and design a stronger one first.' Withdraw 022 openly, pre-register a stronger Phase 1 (robust perception) design, freeze, do NOT build or run."
+ },
+ "build_status": "NOT AUTHORIZED; plan only. A later explicit owner request is needed to build or run.",
+ "branch_base": {
+  "used": "plan/v0.20.0 (main 4e98663 + withdrawn 022 plan + withdrawal_022)",
+  "exact": "git merge-base --is-ancestor 4e98663 <plan commit> holds"
+ },
+ "freeze_rule": "The commit that adds this file must be an ancestor of every v0.20.0 code, data and result commit; the criteria canonical hash is in experiments/BRUTE_PLAN_FREEZE_023.json and ledger entry preregistration_023.",
+ "adopted_files": "frozen v0.19.0 and earlier modules are imported unchanged; new behaviour goes in new files (brute/lrregion.py, *_023 / 0200) or an ADDENDUM; a superseded freeze gets _R1",
+ "motivation": {
+  "Observed_study021": "C_late eps 0.02: RGNA4 (anytime) 0.265 [0.215, 0.317], RGNB4 (planned horizon) 0.493, RGN4_or (oracle) 0.832. RGNA4 0 false on 240 noisy main and 120 stress cases.",
+  "Exact_from_code": "every margin rule so far bounds the true model's absolute flip count F(b), whose slack grows with b; any horizon-free schedule pays that growth (RGNA4 m_a = 9 at bit 88, 13 at 176 vs RGNB4 6 / 9).",
+  "Idea": "replace the absolute bound by a relative one: eliminate a model only when its likelihood is 1/delta-times smaller than a prior-weighted witness model. The threshold is then fmin + constant, horizon-free by Ville's inequality."
+ },
+ "candidates_scratch_checked": {
+  "note": "Simulated scratch checks on 2026-10-28 (scratch under /tmp/s22, deleted; nothing committed). Coverage checks used 30 SEEN study-021 eps 0.02 main cases (cycle3 8710001-06, switch3 8720001-06, unaliased2 8730001-06, ood4 8740001-12) with the frozen SP8 trajectory and frozen region engine; study-021 data is sealed seen data.",
+  "flat_schedule_S5": "Simulated margins within 1 flip of RGNA4 (WITHDRAWN_022.md). Rejected: tweak.",
+  "horizon_doubling_RGNB4_wrapper": "pointwise min over epochs B_k = B0*2^k (B0 8/11/16/22, ratio 1.5 or 2) of boundary(B_k, delta_k), delta_k = delta*6/(pi^2 (k+1)^2) or delta/2^(k+1), linear or constant spend: Simulated margin at bit 88 = 8-10, at 176 = 12-15; sum of margins over bits 89-176 = 901-1120 vs RGNB4 686 and RGNA4 982. Inferred C_late close to RGNA4. Rejected.",
+  "per_model_absolute_margins": "Exact: under iid noise the true model's flip count is Bin(b, eps) whatever the model, so a per-model absolute margin equals the global one; per-model gains only arise through relative (likelihood) tests. Subsumed by the LR candidate.",
+  "eps_estimation": "Exact: the observable best fit fmin(b) is only a lower bound on F(b) (Simulated: cycle3 8710001 has fmin_4 = 0 with F = 2), so no data-driven upper confidence bound on eps exists from the trace alone; a plug-in eps would be unsound. Rejected.",
+  "bayesian_posterior": "sound only on average over the prior (not per world). Rejected as a certificate; its frequentist form (mixture likelihood ratio + Ville) is the chosen design.",
+  "LR_relative_threshold": "Simulated, 30 cases: C_late 0.438 (truth-n approximation; the exact rule is never looser). Real rule (min over n of witness fmin_n + D_n) on 8 of the cases: identical per case to the approximation.",
+  "LR_and_RGNA4_combined (CHOSEN, RGL4)": "Simulated, 30 cases: C_late 0.463 vs RGNA4 0.338 and RGNB4 0.566 on the same cases; paired dC_late(RGL4 - RGNA4) mean +0.125 (sd 0.131); per family gain cycle3 +0.208, switch3 +0.176, unaliased2 +0.150, ood4 +0.045; 0 false certificates; C_early28 0.004 (RGNB4 0.014). Projected population C_late (021 per-family RGNA4 + subset gain) 0.39 (Inferred)."
+ },
+ "method": {
+  "name": "RGL4: likelihood-ratio anytime region, <= 4 states",
+  "hypothesis_class": "H = union over n = 1..4 of H_n = RegionK representations (start state, transition table [n]x[2]->[n], emission [n]->{0..3}); |H_n| = n * n^(2n) * 4^n = {1: 4, 2: 512, 3: 139968, 4: 67108864}",
+  "prior": "pi(g) = 1 / (4 |H_n|) for g in H_n (sum = 1); fixed before any held-out data",
+  "statistic": "f_g(b) = observed (unmasked) bits along the actual action history whose reading disagrees with g's prediction; r = eps_bar/(1-eps_bar) = 1/49 at eps_bar 0.02",
+  "lr_threshold": "D_n = least integer D with 49^D >= 4 |H_n| / delta_L (exact integer arithmetic); delta_L = 0.005 gives D = {1: 3, 2: 4, 3: 5, 4: 7}. At each step, for each n, a witness g_n in H_n with f_{g_n} = w_n is obtained (smallest w found by feasibility search; any witness is valid). T_L(b) = min_n (w_n + D_n) - 1.",
+  "combined_bound": "T(b) = min(T_L(b), m_a(b; eps_bar 0.02, delta 0.005)) with m_a the frozen v0.19.0 anytime boundary; survivors = models with f_h(b) <= T(b); certification rule, burn-in and sticky contradiction as RGNA4",
+  "lemma": "Exact (to be written as docs/research/v0.20.0/LR_LEMMA_023.md before code): if the noise is iid Bernoulli(e) with e <= eps_bar, independent of actions and masking, and the true world h* is in H, then E_t = sum_g pi(g) r^(f_g - f_{h*}) is a nonnegative supermartingale with E_0 = 1 (per unmasked bit where g and h* differ, E[ratio] = 49e + (1-e)/49 <= 1); by Ville P(sup_t E_t >= 1/delta_L) <= delta_L. h* eliminated by T_L implies E_t >= pi(g_n) 49^(D_n) >= 1/delta_L. Union with the RGNA4 event (delta 0.005): P(h* ever eliminated) <= 0.01. Soundness does not depend on UNSAT claims: only exhibited witnesses lower T_L.",
+  "horizon_free": "RGL4 never reads B or the number of planned steps; prefix-stable by construction"
+ },
+ "noise_model": "as study-021 (tag 23 flip array: np.random.default_rng([seed, round(1000 eps), 23]))",
+ "mask_rate": "as study-021",
+ "horizon": "88 steps; 176 planned bits used ONLY by the RGNB4 reference",
+ "heldout_ranges": {
+  "targets": {
+   "cycle3": [
+    8910001,
+    8910024
+   ],
+   "switch3": [
+    8920001,
+    8920024
+   ],
+   "unaliased2": [
+    8930001,
+    8930024
+   ],
+   "ood4": [
+    8940001,
+    8940048
+   ]
+  },
+  "notes": "proposed; disjoint from 001-022 (022 ranges 88x0001 retired unused); checked by scripts/check_seeds_023.py before any run"
+ },
+ "smoke_seeds": {
+  "range": [
+   8990001,
+   8990030
+  ],
+  "rule": "smoke/debug runs may use ONLY 8990001-8990030 or seen data of studies 001-021; held-out seeds are never generated before run_start"
+ },
+ "cases": "360 main (eps 0, 0.01, 0.02) + 60 stress (eps 0.05; first half of each family range) held-out cases",
+ "arms": {
+  "RGL4": "HEADLINE, every case",
+  "RGNA4": "frozen v0.19.0 anytime margin, every case (comparator)",
+  "RGNB4": "frozen planned-horizon margin, eps 0.02 main only (reference)",
+  "RGN4_or": "oracle (reported)",
+  "RG4": "frozen baseline (reported)",
+  "SP8": "trajectory policy (reported)",
+  "RGL4_prefix28": "RGL4 on the first 28 actions, eps 0.02 main (prefix-stability check)"
+ },
+ "metrics": "C_late = certified slots / slots over steps 45-88; C_early28 over steps 1-28; per-case false certificates; paired bootstrap (10000 resamples, seed 23) over cases, as study-021",
+ "criteria": {
+  "GLR": {
+   "gated": true,
+   "clauses": {
+    "a": "RGL4 0 false certificates (recorded and recomputed) on all 240 noisy main cases over all 88 steps, unconditional",
+    "b": "CP95 upper bound on the RGL4 case-false rate over those 240 cases <= 0.05",
+    "c": "C_late(RGL4) at eps 0.02 >= 0.35 and its 95% bootstrap CI lower bound > 0.30",
+    "d": "dC_late(RGL4 - RGNA4) at eps 0.02: paired mean >= 0.08 and paired 95% CI lower bound > 0.05",
+    "e": "RGL4_prefix28 identical (supports, bounds, certificates) to the first 28 steps of the full RGL4 run on all 120 eps 0.02 main cases"
+   },
+   "prediction": "Inferred from the Simulated check: (a, b, e) hold; (c) C_late ~0.39, likely but not certain; (d) ~+0.12, likely"
+  },
+  "GLR_lemma": {
+   "gated": true,
+   "rule": "LR_LEMMA_023.md committed before any RGL4 code; D_n table {1: 3, 2: 4, 3: 5, 4: 7} recomputed by the reference in exact integers; |H_n| recount from the RegionK encoding equals the plan"
+  },
+  "GAS_frozen_control": {
+   "gated": true,
+   "rule": "C_late(RGNA4, eps 0.02) 95% CI intersects the study-021 CI [0.214962, 0.317332] (inclusive)"
+  },
+  "GS_a10": {
+   "gated": true,
+   "rule": "0 false RGL4 certificates on eps-0 main cases"
+  },
+  "GS_ref10": {
+   "gated": true,
+   "rule": "numpy second implementation audits every gated case: exhaustive fmin_n for n <= 3, witness recheck for n = 4, T(b), supports-to-certificates; 0 mismatching; mutation 20/20 detected, 0 false flags"
+  },
+  "GAPI10": {
+   "gated": true,
+   "rule": "brute.certify/9 present (method parameter 'lr' default, 'anytime' = /8 behaviour); brute.certify/8 ... /1 unchanged"
+  },
+  "G_recount": {
+   "gated": true
+  },
+  "G10": {
+   "gated": true
+  },
+  "G12": {
+   "gated": true,
+   "rule": "reproset byte-identical"
+  },
+  "G13": {
+   "gated": true
+  },
+  "GTI": {
+   "gated": true,
+   "rule": "as study-021 with declared K_0190, plus clause vi: no tests/test_release_0200*.py and no scripts/verify_release_0200*.py exist in the tree at run_start (tooling-order rule, from #107)"
+  },
+  "G_RT": {
+   "gated": true
+  },
+  "G_HB": {
+   "gated": true,
+   "rule": "max watchdog gap <= 10 s"
+  }
+ },
+ "release_gates": {
+  "GCC": "clean clone rescoring byte-identical",
+  "GLV": "verify_release_0200 --long"
+ },
+ "non_gated_reports": [
+  "C_late(RGL4)/C_late(RGNB4) at eps 0.02",
+  "RGL4 vs RGNA4 at eps 0 and 0.01",
+  "C_early28 for all arms (no early claim; Simulated RGL4 early is below RGNB4)",
+  "which n attains T_L per step",
+  "stress eps 0.05 false certificates (no guarantee: eps > eps_bar)",
+  "per-step RGL4 wall time"
+ ],
+ "second_implementation": "numpy reference written from the lemma doc, not from brute/lrregion.py",
+ "stop_rule": {
+  "cap": "2 h 00 min (7200 s) wall clock from RUN_T0",
+  "at_cap": "every unfinished stream is stopped and sealed as is; NO extension and NO rerun",
+  "scoring": "every gate whose inputs are incomplete at the cap is FAIL (STUDY_BUDGET)",
+  "restart": "resume from checkpoints, charging time already spent"
+ },
+ "runtime_estimate": "Inferred: ~5800 s mean path (study-021 4801 s, minus 60 stress cases and RGNB4 at eps 0.01, plus RGL4 ~35 s/case-worker over 420 cases on 7 workers). Pre-declared contingency: if the smoke rate math projects a mean path > 6000 s, the stress block drops to 30 cases before the source freeze (numbered deviation); nothing else changes.",
+ "process_controls": {
+  "tooling_order": "release tooling (verify_release_0200, test_release_0200, make_release_freeze_0200) is written and committed only after run_end_023 (fix for #107); a pre-run check script asserts it",
+  "freezes": "source freeze, then scoring freeze >= 600 s before run_start",
+  "run": "fully detached (setsid nohup) with watchdog and sentinel; rate math with the x1.75 rule and the mean path, on smoke seeds, before the source freeze"
+ },
+ "deviation_policy": "every departure is numbered from #108 and disclosed in docs/research/BRUTE_DEVIATIONS_023*.md before release; no verdict is changed after scoring",
+ "what_counts_as_failure": "any gated clause false; failures are published, not re-run",
+ "carried_defects": [
+  "#107 GTI tooling order (fixed by process control)",
+  "Open from 021: early-window gap of anytime arms vs RGNB4"
+ ],
+ "limitations": [
+  "synthetic iid noise with known eps_bar only (r is fixed by eps_bar)",
+  "bounded deterministic Moore worlds (<= 4 states); guarantee void if the true world is outside H",
+  "prior and D_n are tied to |H_n|, so larger state bounds cost log|H_n|/ln 49 flips of slack",
+  "no early-window gain expected",
+  "same-author second implementation"
+ ],
+ "brand": "charcoal/sage; no purple, neon, emoji, mascots or gold",
+ "labels": "Every claim in study-023 documents carries one of Exact / Observed / Simulated / Inferred / Rejected / Open; predictions here are Inferred or Simulated unless marked otherwise."
+}
