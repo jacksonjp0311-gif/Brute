@@ -1,0 +1,249 @@
+{
+ "audit_wall_informational": 766.7,
+ "cases_audited": 480,
+ "cases_expected": 480,
+ "cases_not_reached": 0,
+ "events": {
+  "audit_done": {
+   "event": "audit_done",
+   "t": 1793208651.2118838
+  },
+  "done": {
+   "event": "done",
+   "t": 1793208662.0554166
+  },
+  "mutation": {
+   "detected_injected": 20,
+   "distinct_cases": 20,
+   "event": "mutation",
+   "flagged_not_injected": 0,
+   "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+   "injected": 20,
+   "injected_on_already_mismatching_case": 0,
+   "kinds": {
+    "B": 1,
+    "boundary": 1,
+    "counts": 2,
+    "crossing": 1,
+    "flips": 1,
+    "latent": 1,
+    "m": 1,
+    "observed": 1,
+    "perbit": 2,
+    "prefix": 1,
+    "rg4_cert": 1,
+    "rgn_cert": 2,
+    "support": 3,
+    "wrong": 2
+   },
+   "passed": true,
+   "rng": "random.Random(20261028)"
+  },
+  "start": {
+   "event": "start",
+   "t": 1793208264.7140741
+  }
+ },
+ "gated_cases_audited": 360,
+ "gated_cases_expected": 360,
+ "gated_mismatching_cases": 0,
+ "mismatches": [],
+ "mismatching_cases": 0,
+ "mutation_test": {
+  "details": [
+   {
+    "case": "cycle3/8610007/0.01",
+    "changed_sections": [
+     "bounded"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: bounded 4 step 21 action 0: [2] != [0, 2]"
+   },
+   {
+    "case": "cycle3/8610010/0.01",
+    "changed_sections": [
+     "perbit"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: perbit trace"
+   },
+   {
+    "case": "cycle3/8610015/0.0",
+    "changed_sections": [
+     "noisy"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGNB4 step 30 action 1: [2, 3] != [0, 2, 3]"
+   },
+   {
+    "case": "cycle3/8610015/0.02",
+    "changed_sections": [
+     "boundary"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: boundary"
+   },
+   {
+    "case": "ood4/8640008/0.0",
+    "changed_sections": [
+     "B"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: B 109 != 108"
+   },
+   {
+    "case": "ood4/8640012/0.0",
+    "changed_sections": [
+     "certifiers"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGNB4 trace"
+   },
+   {
+    "case": "ood4/8640020/0.02",
+    "changed_sections": [
+     "noisy"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGN4 step 81 action 0: [2] != [1]"
+   },
+   {
+    "case": "ood4/8640033/0.0",
+    "changed_sections": [
+     "certifiers"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGN4 trace"
+   },
+   {
+    "case": "ood4/8640040/0.02",
+    "changed_sections": [
+     "certifiers"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGNB4 trace"
+   },
+   {
+    "case": "ood4/8640041/0.01",
+    "changed_sections": [
+     "arms"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: reading 73 bit 0: observed 0 vs latent 2 flip 0"
+   },
+   {
+    "case": "ood4/8640045/0.0",
+    "changed_sections": [
+     "certifiers"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGNB4 trace"
+   },
+   {
+    "case": "ood4/8640045/0.02",
+    "changed_sections": [
+     "certifiers"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGN4 certificates"
+   },
+   {
+    "case": "switch3/8620003/0.01",
+    "changed_sections": [
+     "perbit"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: perbit trace"
+   },
+   {
+    "case": "switch3/8620010/0.01",
+    "changed_sections": [
+     "certifiers"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGNB4 false_certificates"
+   },
+   {
+    "case": "switch3/8620011/0.02",
+    "changed_sections": [
+     "m"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: m 8 != m_rule(119)"
+   },
+   {
+    "case": "switch3/8620012/0.02",
+    "changed_sections": [
+     "crossing"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: crossing None != None"
+   },
+   {
+    "case": "switch3/8620013/0.01",
+    "changed_sections": [
+     "certifiers"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RG4 trace"
+   },
+   {
+    "case": "unaliased2/8630012/0.0",
+    "changed_sections": [
+     "arms"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: reading 8 bit 0: observed 1 vs latent 1 flip 0"
+   },
+   {
+    "case": "unaliased2/8630013/0.0",
+    "changed_sections": [
+     "prefix_bits"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: prefix_bits"
+   },
+   {
+    "case": "unaliased2/8630022/0.01",
+    "changed_sections": [
+     "realized_flips"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: realized_flips 3 != 2"
+   }
+  ],
+  "detected_injected": 20,
+  "distinct_cases": 20,
+  "event": "mutation",
+  "flagged_not_injected": 0,
+  "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+  "injected": 20,
+  "injected_on_already_mismatching_case": 0,
+  "kinds": {
+   "B": 1,
+   "boundary": 1,
+   "counts": 2,
+   "crossing": 1,
+   "flips": 1,
+   "latent": 1,
+   "m": 1,
+   "observed": 1,
+   "perbit": 2,
+   "prefix": 1,
+   "rg4_cert": 1,
+   "rgn_cert": 2,
+   "support": 3,
+   "wrong": 2
+  },
+  "passed": true,
+  "rng": "random.Random(20261028)"
+ },
+ "passed": true,
+ "results_file": "/workspace/brute/results/study-020/transfer/RESULTS.json",
+ "results_sha256": "479ee351838d6974ea313d772dff200c1e90fb2a4a3b00f5e6cf7db4da274c97",
+ "schema": "brute.second-implementation-020.v1",
+ "scope": "88-step main and stress cases: RGN4 / RGNB4 / RGN4_or supports (every complete <= 4-state 2-action Moore machine, per-state mismatch costs, per-step bound, sticky emptiness), RegionSpace(4) supports at m = 0, B / m / boundary / prefix counts / crossing / flips over 89 readings (tag-20 flips), RG4 and RGN-rule certificates, RGNB4_bit per-bit certificates, counts, window summaries (late 45-88, early 1-28, per step)",
+ "source_sha256": "dee8d1652de6781ddc22331cefa134aa6aeef007cf83847c49f15b9da3540ea9",
+ "study": "BRUTE-0180-HORIZON-020",
+ "wording": "second implementation by the same author, no brute import; not an independent or third-party audit"
+}

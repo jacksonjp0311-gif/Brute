@@ -1,0 +1,108 @@
+{
+ "G_HB_unchanged": "max watchdog heartbeat gap <= 30 s (gated separately in GATES_020)",
+ "class_counts": {
+  "box_pause": 0,
+  "clock_step": 3,
+  "suspend": 0,
+  "unattributed": 2,
+  "watchdog_stall": 0
+ },
+ "gaps_over_10s": [
+  {
+   "ckpt_bytes_written": null,
+   "class": "clock_step",
+   "d_boot_s": -286913.012,
+   "d_mono_s": -286913.012,
+   "from_wall": 1793204382.211,
+   "gap_wall_s": 1083.496,
+   "jiffies_delta": null,
+   "label": "Inferred",
+   "n_desc": 0,
+   "sentinel_stall_s": 0.0,
+   "workers_cpu_s": null
+  },
+  {
+   "ckpt_bytes_written": 189769,
+   "class": "unattributed",
+   "d_boot_s": 26.698,
+   "d_mono_s": 26.698,
+   "from_wall": 1793207973.708,
+   "gap_wall_s": 26.698,
+   "jiffies_delta": {
+    "idle": 0,
+    "iowait": 0,
+    "steal": 1,
+    "system": 155,
+    "user": 3572
+   },
+   "label": "Inferred",
+   "n_desc": 10,
+   "sentinel_stall_s": 25.36,
+   "workers_cpu_s": 212.09
+  },
+  {
+   "ckpt_bytes_written": 0,
+   "class": "clock_step",
+   "d_boot_s": 2.585,
+   "d_mono_s": 2.585,
+   "from_wall": 1793208806.406,
+   "gap_wall_s": 57.545,
+   "jiffies_delta": {
+    "idle": 247,
+    "iowait": 39,
+    "steal": 117,
+    "system": 323,
+    "user": 1419
+   },
+   "label": "Inferred",
+   "n_desc": 8,
+   "sentinel_stall_s": 1.986,
+   "workers_cpu_s": 20.53
+  },
+  {
+   "ckpt_bytes_written": 0,
+   "class": "unattributed",
+   "d_boot_s": 32.457,
+   "d_mono_s": 32.457,
+   "from_wall": 1793209325.366,
+   "gap_wall_s": 32.458,
+   "jiffies_delta": {
+    "idle": 20439,
+    "iowait": 3,
+    "steal": 1,
+    "system": 60,
+    "user": 935
+   },
+   "label": "Inferred",
+   "n_desc": 6,
+   "sentinel_stall_s": 31.06,
+   "workers_cpu_s": 69.17
+  },
+  {
+   "ckpt_bytes_written": 0,
+   "class": "clock_step",
+   "d_boot_s": 2.002,
+   "d_mono_s": 2.001,
+   "from_wall": 1793209371.824,
+   "gap_wall_s": 28.53,
+   "jiffies_delta": {
+    "idle": 1693,
+    "iowait": 4,
+    "steal": 3,
+    "system": 308,
+    "user": 1697
+   },
+   "label": "Inferred",
+   "n_desc": 6,
+   "sentinel_stall_s": 1.031,
+   "workers_cpu_s": 9.02
+  }
+ ],
+ "gated": false,
+ "heartbeats": 2763,
+ "label": "Inferred (classes are readings of clock / CPU evidence)",
+ "max_sentinel_tick_gap_s": 31.06,
+ "max_watchdog_gap_s": 1083.496,
+ "schema": "brute.heartbeat-attribution.v1",
+ "sentinel_records": 2747
+}

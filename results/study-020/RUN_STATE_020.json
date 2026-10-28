@@ -1,0 +1,79 @@
+{
+ "completed_at": {
+  "g11": 1793208664.8958147,
+  "gti": 1793209238.341835,
+  "repro": 1793209438.4412398,
+  "transfer": 1793208262.5857086
+ },
+ "events": {
+  "g11": {
+   "audit_done": {
+    "event": "audit_done",
+    "t": 1793208651.2118838
+   },
+   "done": {
+    "event": "done",
+    "t": 1793208662.0554166
+   },
+   "mutation": {
+    "detected_injected": 20,
+    "distinct_cases": 20,
+    "event": "mutation",
+    "flagged_not_injected": 0,
+    "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+    "injected": 20,
+    "injected_on_already_mismatching_case": 0,
+    "kinds": {
+     "B": 1,
+     "boundary": 1,
+     "counts": 2,
+     "crossing": 1,
+     "flips": 1,
+     "latent": 1,
+     "m": 1,
+     "observed": 1,
+     "perbit": 2,
+     "prefix": 1,
+     "rg4_cert": 1,
+     "rgn_cert": 2,
+     "support": 3,
+     "wrong": 2
+    },
+    "passed": true,
+    "rng": "random.Random(20261028)"
+   },
+   "start": {
+    "event": "start",
+    "t": 1793208264.7140741
+   }
+  }
+ },
+ "finished": {
+  "g11": "2026-10-28T13:31:04-0400",
+  "gti": "2026-10-28T13:40:38-0400",
+  "repro": "2026-10-28T13:43:58-0400",
+  "transfer": "2026-10-28T13:24:22-0400"
+ },
+ "heartbeat": 1793209438.4399827,
+ "mandatory": {
+  "g11": true,
+  "gti": true,
+  "repro": true,
+  "transfer": true
+ },
+ "orchestrator_pid": 15510,
+ "running": {},
+ "spent": {
+  "g11": 402.2950699329376,
+  "gti": 5442.7206065654755,
+  "repro": 1175.84126496315,
+  "transfer": 4466.963995456696
+ },
+ "started_at": {
+  "g11": 1793208262.600564,
+  "gti": 1793202699.409883,
+  "repro": 1793208262.5992885,
+  "transfer": 1793202699.4089358
+ },
+ "stopped": {}
+}
