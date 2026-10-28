@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-28 ~17:45 EDT (v0.19.0 release in progress on `plan/v0.19.0`)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-28 ~17:50 EDT (v0.19.0 release in progress on `plan/v0.19.0`)._
 
 ## Current version and state
 
 <!-- V0190 -->
-- **Releasing: v0.19.0** (study BRUTE-0190-ANYTIME-021, branch `plan/v0.19.0` from main `4a644a9`). **12 of 14 gated pass.** RECEIPT_PENDING
+- **Releasing: v0.19.0** (study BRUTE-0190-ANYTIME-021, branch `plan/v0.19.0` from main `4a644a9`). **12 of 14 gated pass.** Fresh GitHub clone of `plan/v0.19.0@3f77b17`: short verify passed (469 receipts), `--long` GLV 12 cases / 0 mismatching / 165.0 s (cap 900 s), `tests.test_release_0190` 7 OK; record `docs/research/v0.19.0/FRESH_CLONE_VERIFY_0190.json`. Local `--long`: 12 / 0 / 152.0 s. #107 header says written ~17:35 EDT; the commit is earlier (see git log), kept (ledger-hashed).
   - **ANYTIME (headline GAH_anytime): FAIL on clause (c).** (a) RGNA4 0 false on 240/240 noisy main cases; (b) CP95 upper 0.0124; (d) C_late eps 0.02 = 0.265 [0.215, 0.317]. (c) dC_early28(RGNA4 - RGNB4, eps 0.02) = -0.0040 [-0.0068, -0.0018], bar > 0. dC_late -0.228.
   - **FAIL: GTI** (6 undeclared failures in `tests/test_release_0190.py`; release tooling `0977173` was committed before run_start; #107).
   - **PASS:** G_recount, GAH_prefix_control, GAH_frozen_control, GS_a9, GS_ref9 (480 audited, mutation 20/20), GAPI9 (`brute.certify/8` new, /7../1 unchanged), G10, G12 (60/60), G13, G_RD, G_RT, G_HB (max gap 3.294 s). Release gates: GCC PASS; GLV below.

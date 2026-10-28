@@ -1,0 +1,28 @@
+{
+ "schema": "brute.fresh-clone-verify.v1",
+ "version": "0.19.0",
+ "source": "https://github.com/jacksonjp0311-gif/Brute.git branch plan/v0.19.0",
+ "commit": "3f77b17",
+ "run_at": "2026-10-28 17:32:20-17:48:31 EDT (short 17:32:20-17:33:25; tests 17:33:25-~17:34:50; --long 17:44:53-17:48:31; an earlier --long attempt 17:40:59 was cut off by the operator's 230 s shell timeout, rc 124, not a verifier failure)",
+ "short": {
+  "status": "passed",
+  "ledger_receipts": 469
+ },
+ "long": {
+  "status": "passed",
+  "GLV_long_verify": {
+   "cases": 12,
+   "mismatching_cases": 0,
+   "wall_s": 165.0,
+   "cap_s": 900,
+   "passed": true
+  }
+ },
+ "tests": {
+  "module": "tests.test_release_0190",
+  "ran": 7,
+  "result": "OK",
+  "wall_s": 84.663
+ },
+ "labels": "Observed"
+}
