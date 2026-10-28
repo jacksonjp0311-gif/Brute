@@ -34,7 +34,7 @@ MAX_WORKERS=8
 GRACE=10
 PROGRESS_AT=360
 # name: (workers, budget_s). Fixed by scripts/rate_math_020.py (docs/research/v0.18.0/RATE_MATH_020.md) before the source freeze.
-STREAMS={'transfer':(6,4500),'gti':(2,6000),'repro':(4,2400),'g11':(2,2400)}
+STREAMS={'transfer':(7,5400),'gti':(1,6000),'repro':(5,1800),'g11':(2,1800)}
 SM=['--smoke'] if os.environ.get('SMOKE') else []
 if SM and os.environ.get('CAP_S'):CAP=int(os.environ['CAP_S'])
 DRY_BUDGET=int(os.environ['BUDGET_S']) if SM and os.environ.get('BUDGET_S') else None

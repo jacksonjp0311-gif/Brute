@@ -35,7 +35,7 @@ def build(implementation_commits):
                              'experiments/BRUTE_RELEASE_FREEZE_0130.json','experiments/BRUTE_RELEASE_FREEZE_0140.json',
                              'experiments/BRUTE_RELEASE_FREEZE_0150.json','experiments/BRUTE_RELEASE_FREEZE_0160.json','experiments/BRUTE_RELEASE_FREEZE_0170.json'],
             'plan_sha256':sha(PLAN),'preregistration_commit':'8048c95','deviations_commit':'b5ec732','seedcheck_commit':'5e6407a',
-            'reference_commits':['5ac2ec9'],'implementation_commits':implementation_commits,'deviations_in_force':[103],
+            'reference_commits':['5ac2ec9'],'implementation_commits':implementation_commits,'deviations_in_force':[103,104],
             'sha256_files':{rel:sha(ROOT/rel) for rel in FILES}}
 
 
