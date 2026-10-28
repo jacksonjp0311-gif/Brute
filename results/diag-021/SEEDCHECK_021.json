@@ -1,0 +1,198 @@
+{
+ "schema": "brute.seedcheck.v21",
+ "v0190_ranges": {
+  "target/cycle3": [
+   8710001,
+   8710024
+  ],
+  "target/switch3": [
+   8720001,
+   8720024
+  ],
+  "target/unaliased2": [
+   8730001,
+   8730024
+  ],
+  "target/ood4": [
+   8740001,
+   8740048
+  ],
+  "smoke": [
+   8790001,
+   8790030
+  ]
+ },
+ "prior_files": [
+  "PLAN.json",
+  "BRUTE_PLAN_002.json",
+  "BRUTE_PLAN_003.json",
+  "BRUTE_PLAN_004.json",
+  "BRUTE_PLAN_005.json",
+  "BRUTE_PLAN_006.json",
+  "BRUTE_PLAN_007.json",
+  "BRUTE_PLAN_008.json",
+  "BRUTE_PLAN_009.json",
+  "BRUTE_PLAN_010.json",
+  "BRUTE_PLAN_011.json",
+  "BRUTE_PLAN_012.json",
+  "BRUTE_PLAN_013.json",
+  "BRUTE_PLAN_014.json",
+  "BRUTE_PLAN_015.json",
+  "BRUTE_PLAN_016.json",
+  "BRUTE_PLAN_017.json",
+  "BRUTE_PLAN_018.json",
+  "BRUTE_PLAN_019.json",
+  "BRUTE_PLAN_020.json"
+ ],
+ "prior_range_count": 194,
+ "pairwise_overlaps": [],
+ "prior_overlaps": [],
+ "negative_controls": [
+  [
+   "smoke",
+   901,
+   "refused"
+  ],
+  [
+   "smoke",
+   8010001,
+   "refused"
+  ],
+  [
+   "smoke",
+   8590001,
+   "refused"
+  ],
+  [
+   "smoke",
+   8610001,
+   "refused"
+  ],
+  [
+   "smoke",
+   8710001,
+   "refused"
+  ],
+  [
+   "smoke",
+   8790031,
+   "refused"
+  ],
+  [
+   "target",
+   8710025,
+   "refused"
+  ],
+  [
+   "target",
+   8610001,
+   "refused"
+  ],
+  [
+   "target",
+   8690001,
+   "refused"
+  ],
+  [
+   "target",
+   8740049,
+   "refused"
+  ],
+  [
+   "target",
+   8710001,
+   "refused"
+  ],
+  [
+   "target",
+   8790001,
+   "refused"
+  ],
+  [
+   "target",
+   8640048,
+   "refused"
+  ],
+  [
+   "target",
+   9000001,
+   "refused"
+  ],
+  [
+   "source",
+   8350001,
+   "refused"
+  ],
+  [
+   "ood5",
+   8360001,
+   "refused"
+  ]
+ ],
+ "smoke_layout": [
+  [
+   8790001,
+   "cycle3"
+  ],
+  [
+   8790002,
+   "cycle3"
+  ],
+  [
+   8790003,
+   "switch3"
+  ],
+  [
+   8790004,
+   "switch3"
+  ],
+  [
+   8790005,
+   "unaliased2"
+  ],
+  [
+   8790006,
+   "unaliased2"
+  ],
+  [
+   8790007,
+   "ood4"
+  ],
+  [
+   8790008,
+   "ood4"
+  ],
+  [
+   8790009,
+   "cycle3"
+  ],
+  [
+   8790010,
+   "switch3"
+  ],
+  [
+   8790011,
+   "unaliased2"
+  ],
+  [
+   8790012,
+   "ood4"
+  ],
+  [
+   8790013,
+   "cycle3"
+  ],
+  [
+   8790014,
+   "switch3"
+  ],
+  [
+   8790015,
+   "unaliased2"
+  ]
+ ],
+ "target_seeds": 120,
+ "cases": 360,
+ "stress_cases": 120,
+ "PASS": true
+}
