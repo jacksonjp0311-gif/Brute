@@ -1,0 +1,155 @@
+{
+ "schema": "brute.plan.v1",
+ "status": "PRE-REGISTERED (frozen at the commit that adds this file; no v0.20.0 schedule code, reference code, held-out world, seed or run exists at that commit). PLAN ONLY: build is NOT authorized by this commit.",
+ "study": "BRUTE-0200-FLAT-ANYTIME-022",
+ "version_under_test": "0.20.0",
+ "parent_study": "BRUTE-0190-ANYTIME-021",
+ "owner_request": {
+  "recorded_at": "2026-10-28 (America/New_York), relayed by the coordinating agent",
+  "summary": "'Take us there': after releasing v0.19.0, pre-register v0.20.0 (plan only) and stop. Standing rules unchanged."
+ },
+ "build_status": "NOT AUTHORIZED; plan only. A later owner request is needed to build or run.",
+ "branch_base": {
+  "requested": "main 4e98663 (v0.19.0 Released HANDOFF)",
+  "used": "plan/v0.20.0 branched from main 4e98663",
+  "exact": "git merge-base --is-ancestor 4e98663 <plan commit> holds"
+ },
+ "freeze_rule": "The commit that adds this file must be an ancestor of every v0.20.0 code, data and result commit; the criteria canonical hash is in experiments/BRUTE_PLAN_FREEZE_022.json and ledger entry preregistration_022.",
+ "adopted_files": "frozen v0.19.0 and earlier modules are imported unchanged; new behaviour goes in new files (suffix _022 / 0200) or an ADDENDUM; a superseded freeze gets _R1",
+ "motivation": {
+  "Exact_from_code": "at eps_bar 0.02, delta 0.01 the v0.19.0 anytime margin m_a(b) vs the planned margin m(B=176) is 2 vs 3 at bit 10, 4 vs 4 at 28, 7 vs 5 at 56, 9 vs 6 at 88, 13 vs 9 at 176: the 6/(pi^2 b^2) schedule spends delta too early",
+  "Observed_study021": "RGNA4 0 false on 240 noisy main cases; C_late eps 0.02 0.265 [0.215, 0.317] vs RGNB4 0.493; dC_early28 -0.0040 [-0.0068, -0.0018] (GAH clause c FAIL)",
+  "Open": "why C_early28(RGNA4) < C_early28(RGNB4) although m_a <= m up to bit 28; diagnosed by R_early_diag"
+ },
+ "schedule": {
+  "name": "flat anytime schedule S5",
+  "rule": "crossing budget per bit w(b) = delta * c / (b * ln(b+1)^2), c chosen in exact rationals (rational upper bound on the series) so that sum_b w(b) <= delta; horizon-free",
+  "lemma": "Exact lemma (Ville / union bound over bits) and a DP reference written before code; prefix-stable at L in {0, 28, 56, 88, 176, 511}"
+ },
+ "noise_model": "as study-021",
+ "horizon": "88 steps (176 planned bits for the RGNB4 comparator)",
+ "heldout_ranges": {
+  "targets": {
+   "cycle3": [
+    8810001,
+    8810024
+   ],
+   "switch3": [
+    8820001,
+    8820024
+   ],
+   "unaliased2": [
+    8830001,
+    8830024
+   ],
+   "ood4": [
+    8840001,
+    8840048
+   ],
+   "alphabet3": [
+    8850001,
+    8850096
+   ]
+  },
+  "notes": "proposed; disjointness from every earlier plan checked by scripts/check_seeds_022.py before any run"
+ },
+ "cases": "360 main (eps 0, 0.01, 0.02) + 120 stress (eps 0.05) + 96 alphabet3 (3 actions, eps 0.02) held-out cases",
+ "arms": {
+  "RGNA5": "HEADLINE: flat anytime schedule S5, every case",
+  "RGNA4": "frozen v0.19.0 anytime margin, noisy main only (comparator)",
+  "RGNB4": "frozen planned-horizon margin, noisy main only (reference, reported)",
+  "RGN4_or": "oracle (reported)",
+  "RG4": "frozen baseline (reported)",
+  "RGNA5_3": "S5 on the 3-action alphabet block"
+ },
+ "criteria": {
+  "GAS_flat": {
+   "gated": true,
+   "clauses": {
+    "a": "RGNA5 0 false certificates (recorded and recomputed) on all 240 noisy main cases over all 88 steps, unconditional",
+    "b": "CP95 upper bound on the RGNA5 case-false rate over those 240 cases <= 0.05",
+    "c": "dC_late(RGNA5 - RGNA4) at eps 0.02: paired mean > 0 and paired 95% CI lower bound > 0",
+    "d": "C_late(RGNA5) at eps 0.02 >= 0.20 and its 95% CI lower bound > 0.15"
+   },
+   "prediction": "Inferred: (a, b, c) hold; (d) likely; RGNA5 stays below RGNB4 late"
+  },
+  "GAS_3action": {
+   "gated": true,
+   "clauses": {
+    "a": "RGNA5_3 0 false certificates on all 96 alphabet3 cases",
+    "b": "CP95 upper bound <= 0.05"
+   },
+   "prediction": "Inferred: holds; coverage reported only"
+  },
+  "GAS_frozen_control": {
+   "gated": true,
+   "rule": "C_late(RGNA4, eps 0.02) 95% CI intersects the study-021 CI [0.214962, 0.317332] (inclusive)"
+  },
+  "GS_a10": {
+   "gated": true,
+   "rule": "0 false RGNA5 certificates on eps-0 main cases"
+  },
+  "GS_ref10": {
+   "gated": true,
+   "rule": "numpy second implementation audits every gated case, 0 mismatching; mutation 20/20 detected, 0 false flags"
+  },
+  "GAPI10": {
+   "gated": true,
+   "rule": "brute.certify/9 present (schedule parameter, default S5); brute.certify/8 ... /1 unchanged"
+  },
+  "G_recount": {
+   "gated": true
+  },
+  "G10": {
+   "gated": true
+  },
+  "G12": {
+   "gated": true,
+   "rule": "reproset byte-identical"
+  },
+  "G13": {
+   "gated": true
+  },
+  "GTI": {
+   "gated": true,
+   "rule": "as study-021 with declared K_0190, plus clause vi: no tests/test_release_0200*.py and no scripts/verify_release_0200*.py exist in the tree at run_start (tooling-order rule, from #107)"
+  },
+  "G_RT": {
+   "gated": true
+  },
+  "G_HB": {
+   "gated": true,
+   "rule": "max watchdog gap <= 10 s"
+  }
+ },
+ "release_gates": {
+  "GCC": "clean clone rescoring byte-identical",
+  "GLV": "verify_release_0200 --long"
+ },
+ "non_gated_reports": [
+  "R_early_diag: per-case decomposition of the early-window gap (RGNA4/RGNA5 vs RGNB4)",
+  "trade-off curve C(window) for RGNA4, RGNA5, RGNB4",
+  "per-bit coverage",
+  "stress (eps 0.05, no guarantee)"
+ ],
+ "process_controls": {
+  "tooling_order": "release tooling (verify_release_0200, test_release_0200, make_release_freeze_0200) is written and committed only after run_end_022 (fix for #107); a pre-run check script asserts it",
+  "freezes": "source freeze, then scoring freeze >= 600 s before run_start",
+  "run": "fully detached (setsid nohup) with watchdog and sentinel; rate math with the x1.75 rule and the mean path, on smoke seeds, before the source freeze"
+ },
+ "stop_rule": {
+  "cap": "2 h 00 min (7200 s) wall clock from RUN_T0",
+  "at_cap": "every unfinished stream is stopped and sealed as is; NO extension and NO rerun",
+  "scoring": "every gate whose inputs are incomplete at the cap is FAIL (STUDY_BUDGET)",
+  "restart": "resume from checkpoints, charging time already spent"
+ },
+ "deviation_policy": "every departure is numbered from #108 and disclosed in docs/research/BRUTE_DEVIATIONS_022*.md before release; no verdict is changed after scoring",
+ "what_counts_as_failure": "any gated clause false; failures are published, not re-run",
+ "limitations": [
+  "synthetic iid noise only",
+  "bounded deterministic Moore worlds (<= 4 states)",
+  "same-author second implementation"
+ ],
+ "brand": "charcoal/sage; no purple, neon, emoji, mascots or gold",
+ "labels": "Every claim in study-022 documents carries one of Exact / Observed / Simulated / Inferred / Rejected / Open; predictions here are Inferred or Open unless marked otherwise."
+}
