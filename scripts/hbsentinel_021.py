@@ -1,6 +1,6 @@
 """Heartbeat sentinel for study-021 (deviation #90, as study-018). REPORTED, UNGATED diagnostic:
 it never kills, never touches the watchdog (scripts/watchdog_021.py -> frozen watchdog_014, byte-identical) and does not
-change G_HB (max watchdog heartbeat gap <= 30 s).
+change G_HB (max watchdog heartbeat gap <= 10 s, BRUTE_PLAN_021).
 
 A tight loop ticks every 0.25 s on CLOCK_MONOTONIC. Every 2 s (monotonic) one JSON line is appended to
 HB_SENTINEL_021.jsonl (buffered write + flush; fsync every 30 s):

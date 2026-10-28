@@ -1,0 +1,44 @@
+{
+ "all_gone_at": "2026-10-28T14:36:45-0400",
+ "cap_s": 15,
+ "deadline": "2026-10-28T14:36:45-0400",
+ "deadline_epoch": 1793212605.237101,
+ "fire_delay_monotonic_s": 0.0,
+ "fire_delay_s": 0.0,
+ "fired_at": "2026-10-28T14:36:45-0400",
+ "heartbeat": {
+  "beats": 9,
+  "gaps_over_10s": [],
+  "max_gap_s": 2.003
+ },
+ "kill_latency_monotonic_s": 0.224,
+ "kill_latency_s": 0.224,
+ "kill_thread_disk_io_before_kill": false,
+ "label": "Observed (block smoke-drill; outside the cap; scratch directory).",
+ "orchestrator_log": [
+  "[2026-10-28T14:36:30-0400] orchestrator start pid 91446; cap 600 s, deadline 2026-10-28T14:46:30-0400",
+  "[2026-10-28T14:36:30-0400] transfer: start (7 workers, spent 0 s, budget 5800)"
+ ],
+ "orchestrator_pids": [
+  91446
+ ],
+ "orchestrator_returncode": -15,
+ "partial_checkpoint": {
+  "all_lines_parse": true,
+  "case_lines": 3
+ },
+ "passed": true,
+ "process_groups": [
+  91454
+ ],
+ "schema": "brute.kill-drill.v2",
+ "setup": "SMOKE=1 SKIP_GTI=1 BRUTE_SMOKE_DRILL=1, orchestrator CAP_S=600, watchdog_021 --dir /tmp/s21/drill --cap 15",
+ "sigkill_used": false,
+ "survivors": [],
+ "t0": 1793212590.237101,
+ "watchdog_stdout_tail": [
+  "[2026-10-28T14:36:31-0400] watchdog_021 start pid 91475; deadline 2026-10-28T14:36:45-0400 (cap 15 s)",
+  "[2026-10-28T14:36:45-0400] STOP_021.json written: latency 0.224 s, survivors []",
+  "[2026-10-28T14:36:47-0400] kill done; gaps>10s []"
+ ]
+}

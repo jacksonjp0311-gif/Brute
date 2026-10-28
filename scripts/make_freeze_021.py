@@ -15,7 +15,7 @@ FILES=sorted(['brute/anytimemargin.py','brute/api/certify8.py','brute/release_ve
     'experiments/brute_study_021.py','experiments/v0190_reference.py',
     'scripts/check_seeds_021.py','scripts/make_freeze_021.py','scripts/run_reference_021.py','scripts/rate_math_021.py',
     'scripts/run_tests_0190.py','scripts/run_study_021.py','scripts/seal_021.py','scripts/watchdog_021.py','scripts/study021_storage.py',
-    'scripts/hbsentinel_021.py','scripts/hb_attribution_021.py','scripts/api_check_021.py',
+    'scripts/hbsentinel_021.py','scripts/hb_attribution_021.py','scripts/api_check_021.py','scripts/drill_021.py',
     'requirements.txt','requirements-gmc.txt',
     'tests/test_seeds_0190.py','tests/test_study_0190.py','tests/test_anytime_0190.py','tests/test_certify8_0190.py',
     'tests/test_reference_0190.py','tests/test_scripts_021.py',
