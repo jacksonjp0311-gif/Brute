@@ -1,0 +1,11 @@
+{
+ "schema": "brute.plan-freeze.v1",
+ "study": "BRUTE-0190-ANYTIME-021",
+ "plan": "experiments/BRUTE_PLAN_021.json",
+ "plan_sha256": "4054f7ccc1fe76af80381240c4a3768a99d65db1678fdeafe627d68b3cc4a845",
+ "criteria_canonical_json_sha256": "21604395d1f14bb5088d3a8588d282551e8ad0fac3688873f2cb1d87b18100bb",
+ "criteria_hash_method": "sha256 of json.dumps(plan['criteria'], sort_keys=True, separators=(',', ':'), ensure_ascii=False) (same as preregistration_020)",
+ "readable_plan": "docs/research/v0.19.0/PLAN_021.md (the JSON wins if they differ)",
+ "frozen_at": "the commit that adds this file (recorded in the ledger entry preregistration_021)",
+ "note": "no v0.19.0 anytime-margin code, streaming API, reference code, held-out world, seed or run exists at this commit"
+}

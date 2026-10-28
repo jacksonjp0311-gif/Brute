@@ -1,0 +1,214 @@
+{
+ "schema": "brute.plan.v1",
+ "status": "PRE-REGISTERED (frozen at the commit that adds this file; no v0.19.0 anytime-margin code, streaming API, reference code, held-out world, seed or run exists at that commit)",
+ "study": "BRUTE-0190-ANYTIME-021",
+ "version_under_test": "0.19.0",
+ "parent_study": "BRUTE-0180-HORIZON-020",
+ "owner_request": {
+  "recorded_at": "2026-10-28 14:12 EDT (America/New_York), relayed by the coordinating agent",
+  "summary": "'Take us there' after the 6-phase roadmap: pre-register v0.19.0 from NEXT_ITERATION.md (GAH anytime margin, streaming brute.certify/8, pre-registered resume drill, #106 early control fixed by design), build, run and release it under the same discipline; then pre-register v0.20.0 (plan only) and stop. Standing rules unchanged."
+ },
+ "build_status": "AUTHORIZED (owner request above); build follows this commit",
+ "branch_base": {
+  "requested": "main 4a644a9 (v0.18.0 Released HANDOFF)",
+  "used": "plan/v0.19.0 branched from main 4a644a9",
+  "exact": "git merge-base --is-ancestor 4a644a9 <plan commit> holds"
+ },
+ "freeze_rule": "The commit that adds this file must be an ancestor of every v0.19.0 code, data and result commit; the criteria canonical hash is recorded in experiments/BRUTE_PLAN_FREEZE_021.json and ledger entry preregistration_021.",
+ "adopted_files": "frozen v0.18.0 and earlier modules are imported unchanged; new behaviour goes in new files (suffix _021 / 0190) or an ADDENDUM; a superseded freeze gets _R1",
+ "noise_model": "as study-020 (independent bit flips at rate eps on each observed bit of a 2-bit reading; mask 0.35); flip array numpy default_rng([seed, round(1000*eps), 21]).random((89, 2)) < eps",
+ "mask_rate": 0.35,
+ "actions_per_case": 44,
+ "burn_in": 8,
+ "family_bound_FB": {
+  "main": 4,
+  "note": "caller attestation; targets generated with n* <= 4 (Exact by generator)"
+ },
+ "horizon": {
+  "steps": 88,
+  "late_window": [
+   45,
+   88
+  ],
+  "early_window": [
+   1,
+   28
+  ],
+  "note": "same 88-action horizon and SP8 trajectory rule as study-020"
+ },
+ "anytime_margin": {
+  "name": "RGNA4",
+  "schedule": "cumulative crossing allowance after b observed bits A(b) = delta * (6 / pi_u^2) * sum_{j=1..b} 1/j^2, pi_u = 355/113 (a rational upper bound on pi), so A(b) < delta * (6/pi^2) * (pi^2/6) = delta for every b (Exact)",
+  "boundary_rule": "the frozen brute.seqmargin.boundary dynamic program (exact Fractions over the binomial(eps_bar) flip path, raise m(b) until the probability of a first crossing by bit b <= A(b)) with A(b) in place of delta*b/B; eps_bar 0.02, delta 0.01",
+  "horizon_free": "m(b) depends only on b, eps_bar and delta (no planned B); prefix-stable: the boundary computed to any length L agrees with the boundary to L' > L on 0..L (Exact by construction; tested)",
+  "region": "frozen brute.seqmargin.SeqMarginRegionSpace(4, boundary, k) with the anytime boundary; certificates = the frozen RGN rule (singleton support after burn-in 8)",
+  "soundness_lemma": "If the true machine has <= 4 states and the running flip count never exceeds m(b), the true machine survives and every certificate equals the noise-free reading (Exact; same lemma as v0.17.0 GNB). P(any crossing) <= sum of first-crossing probabilities <= lim A(b) < delta under iid flips with eps <= eps_bar (Exact). Written as docs/research/v0.19.0/ANYTIME_LEMMA_021.md before the study code.",
+  "why": "v0.18.0 Exact: the planned boundary spends delta*b/B, so a longer planned horizon raises early margins (#106). The anytime schedule spends most of delta on the first bits and needs no B."
+ },
+ "heldout_ranges": {
+  "targets": {
+   "cycle3": [
+    8710001,
+    8710024
+   ],
+   "switch3": [
+    8720001,
+    8720024
+   ],
+   "unaliased2": [
+    8730001,
+    8730024
+   ],
+   "ood4": [
+    8740001,
+    8740048
+   ]
+  },
+  "notes": "no library / source worlds; disjoint from every earlier plan (scripts/check_seeds_021.py)"
+ },
+ "smoke_seeds": {
+  "range": [
+   8790001,
+   8790030
+  ],
+  "rule": "smoke/debug runs of v0.19.0 code may use ONLY seeds 8790001-8790030 or the study-020 smoke seeds 8690001-8690030; held-out seeds are never generated, simulated or inspected before run_start of the held-out run. Sealed data of studies 001-020 may be used for development (seen data)."
+ },
+ "cases": {
+  "main": "120 two-action target seeds x eps in {0, 0.01, 0.02} at mask 0.35 = 360 cases, 88 steps each",
+  "stress": "the same 120 seeds at eps 0.05 = 120 cases, reported only",
+  "prefix_control": "the 120 eps-0.02 main cases re-run on their first 28 actions (RGNA4 only)"
+ },
+ "trajectory": "SP8 actions computed from the NOISY observations (frozen experiments.brute_study_012.trajectory_2x2, 88-action in-memory learner plan, as study-020), identical across arms within a case",
+ "arms": {
+  "RGNA4": "HEADLINE: anytime-margin region (new brute/anytimemargin.py + frozen SeqMarginRegionSpace), every case",
+  "RGNB4": "frozen v0.17.0 planned-horizon sequential margin boundary(B), comparator, NOISY MAIN cases only (eps 0.01, 0.02; 240)",
+  "RG4": "frozen noise-unaware baseline, every case (reported)",
+  "RGN4_or": "oracle m = realized flips (evaluator-only), every case (reported)",
+  "SP8": "frozen comparator, every case",
+  "RGNA4_bit": "per-bit certificates from RGNA4 survivors (frozen brute.perbit rule), every case (reported)",
+  "dropped_from_study_020": "RGN4 (fixed margin; its comparison was settled in study-020) and RGNB4 on eps-0 and stress cases: removed to fit the 2 h cap with the added RGNA4 arm (rate math, Inferred)",
+  "not_in_scope": "3 actions at 88 steps (NEXT_ITERATION item 3): deferred to v0.20.0 for cost; not run, not claimed"
+ },
+ "metrics": {
+  "C_late": "mean over cases of certificates in steps 45-88 / 88",
+  "C_early28": "mean over cases of certificates in steps 1-28 / 56",
+  "dC_early28": "paired per case C_early28(RGNA4) - C_early28(RGNB4)",
+  "C_curve": "per-step coverage curve, steps 1-88 (reported)",
+  "false": "certificates whose predicted reading differs from the noiseless truth",
+  "CI": "case-level bootstrap 95%, 10000 resamples, numpy default_rng(20261028), percentile 2.5 / 97.5; paired contrasts resample the same cases",
+  "CP95": "one-sided Clopper-Pearson 95% upper bound on the case-false rate"
+ },
+ "criteria": {
+  "GAH_anytime": {
+   "gated": true,
+   "clauses": {
+    "a": "RGNA4 0 false certificates (recorded and recomputed) on all 240 noisy main cases (eps 0.01, 0.02) over all 88 steps, unconditional (crossings included)",
+    "b": "CP95 upper bound on the RGNA4 case-false rate over those 240 cases <= 0.05",
+    "c": "dC_early28(RGNA4 - RGNB4) at eps 0.02: paired mean > 0 and paired 95% CI lower bound > 0",
+    "d": "C_late(RGNA4) at eps 0.02 >= 0.10 and its 95% CI lower bound > 0.05"
+   },
+   "prediction": "Inferred: (a, b) hold; (c) holds because A(b) >= 0.6*delta from the first bit while the planned schedule has spent only delta*28/B by bit 28; (d) holds with C_late slightly below RGNB4's (A(b) < delta*b/B near b = B)"
+  },
+  "GAH_prefix_control": {
+   "gated": true,
+   "rule": "#106 fixed by design. On every eps-0.02 main case, the RGNA4 supports, unknown counts and certificates at steps 1-28 of the 28-action prefix run are identical to steps 1-28 of the 88-step run (Exact identity), and anytime_boundary(512)[0..L] == anytime_boundary(L) for L in {0, 28, 56, 88, 176, 511}"
+  },
+  "GAH_frozen_control": {
+   "gated": true,
+   "rule": "same-B frozen-code check (NEXT_ITERATION 4): the 95% CI of C_early28(RGNB4) at eps 0.02 intersects the study-020 CI [0.00119, 0.004167] (inclusive)"
+  },
+  "GS_a9_soundness": {
+   "gated": true,
+   "rule": "RGNA4 0 false at eps 0 on all 120 eps-0 main cases over 88 steps"
+  },
+  "G_recount": {
+   "gated": true,
+   "rule": "every arm's false and certificate counts, windows and RGNA4_bit recounted from the traces; realized flips and crossings consistent"
+  },
+  "GS_ref9_reference_audit": {
+   "gated": true,
+   "rule": "numpy second implementation (experiments/v0190_reference.py, same author, no brute import) audits all 360 main cases (supports, anytime boundary, certificates, per-bit, prefix control, summaries), 0 mismatching; mutation test 20/20"
+  },
+  "GAPI9": {
+   "gated": true,
+   "rule": "brute/api/certify7.py byte-identical to its study-019 freeze hash; new brute/api/certify8.py: streaming (observe one reading at a time, no planned length), additive, host-agnostic (no I/O, network, threads, child processes or global state), its supports equal the RGNA4 study supports on the smoke-api cases; its tests pass inside GTI"
+  },
+  "G10_compute": {
+   "gated": true,
+   "rule": "480 transfer cases + 120 prefix-control records, seal complete, every trace 88 steps (28 for prefix records), unknown > 0 fraction <= 1% for every support kind"
+  },
+  "G12_reproducibility": {
+   "gated": true,
+   "rule": "repro set main[::6] (60 cases) re-run bit-identical (scientific sha of every case equal)"
+  },
+  "G13_frozen_controls_reproduce": {
+   "gated": true,
+   "rule": "freeze chain holds; RG4 / RGNB4 / RGN4_or certificates recomputed by the frozen rules; frozen sources unchanged"
+  },
+  "GTI_test_isolation": {
+   "gated": true,
+   "rule": "full suite passes with declared K_0180 (test_release_0180 version / API / short verify / untampered copy, allowed only if passing on a clean worktree of tag v0.18.0); undeclared failures []"
+  },
+  "G_RD_resume_drill": {
+   "gated": true,
+   "rule": "smoke (pre-run): SMOKE=1 orchestrator on block smoke-drill with SKIP_GTI is SIGKILLed (orchestrator and every stream process group) 45 s after start and relaunched once; PASS iff (i) every stream completes after the relaunch, (ii) the resumed transfer SCIENTIFIC cases are byte-identical per case to an uninterrupted run of the same block, (iii) RUN_STATE spent includes the pre-kill time (charged, not excused), (iv) no checkpoint key appears twice. Recorded in results/smoke-021/RESUME_DRILL_021.json before the source freeze"
+  },
+  "G_RT_study_runtime": {
+   "gated": true,
+   "rule": "every stream inside the 7200 s cap and not stopped; watchdog covers the whole run; kill drill latency <= 15 s"
+  },
+  "G_HB_heartbeat_gap": {
+   "gated": true,
+   "rule": "max heartbeat gap <= 10 s over the whole run (frozen; restart gaps are reported separately and NOT excused)"
+  }
+ },
+ "release_gates": {
+  "GCC_clean_clone": "scripts/clean_clone_021.py PASS",
+  "GLV_long_verify": "verify_release_0190 --long: 12 main cases re-run from scratch, 0 mismatches, 900 s cap"
+ },
+ "non_gated_reports": [
+  "C_curve per step (RGNA4 vs RGNB4 trade-off)",
+  "dC_late(RGNA4 - RGNB4) at eps 0.01 / 0.02",
+  "per-bit coverage and false counts (RGNA4_bit)",
+  "stress eps 0.05",
+  "RG4 / RGN4_or / SP8 coverage",
+  "anytime vs planned boundary table",
+  "rate math projected vs observed",
+  "heartbeat attribution (sentinel)"
+ ],
+ "second_implementation": "numpy reimplementation of the anytime boundary (independent Fraction code), the RGNA4 / RGNB4 supports by full-table cost enumeration, the per-bit rule and the prefix control, written before run_start",
+ "stop_rule": {
+  "cap": "2 h 00 min (7200 s) wall clock from RUN_T0",
+  "at_cap": "every unfinished stream is stopped and sealed as is; NO extension and NO rerun",
+  "scoring": "every gate whose inputs are incomplete at the cap is FAIL (STUDY_BUDGET)",
+  "rate_math": "as study-020 (x 1.75 margin on the slowest smoke case per cell; the mean-based path is also published), on smoke seeds, before the source freeze",
+  "restart": "a restarted orchestrator resumes every stream from its checkpoint and charges the time already spent (as study-020)"
+ },
+ "process_controls": [
+  "source freeze before the scoring freeze; scoring freeze >= 600 s before run_start",
+  "one held-out run, launched detached (setsid nohup) with the independent watchdog and the heartbeat sentinel",
+  "ledger sources name ARTIFACTS, not producing scripts",
+  "declare K_0180 in the test-isolation rules",
+  "strip SMOKE from the GTI environment in dry runs",
+  "no GitHub Actions or workflows",
+  "push after every step; no force-push"
+ ],
+ "deviation_policy": "after freeze, any change is a ledger 'deviation_021' entry with its reason in docs/research/BRUTE_DEVIATIONS_021.md before the affected run; the original criterion is still reported. Numbering continues after study-020 (#107 onward).",
+ "what_counts_as_failure": [
+  "any gated criterion not meeting its threshold is FAIL and is published as FAIL everywhere",
+  "GAH (a), (b) or GS_a9 FAIL would refute the anytime lemma or the implementation",
+  "GAH (c) FAIL means the anytime schedule does not recover early coverage",
+  "GAH (d) FAIL means the horizon-free schedule costs too much late coverage"
+ ],
+ "carried_defects": [
+  "FRESH_CLONE_VERIFY_0180.json run_at window off by about a minute (disclosed in HANDOFF; file unchanged)",
+  "study-020 G_HB and GLH_early_control FAIL stand as published"
+ ],
+ "limitations": [
+  "2 actions, 2-bit readings, n = 4 hypotheses",
+  "iid bit-flip noise only, eps <= eps_bar attested by the caller",
+  "coverage remains near zero for the first ~10 steps (burn-in 8 plus margin)"
+ ],
+ "brand": "charcoal/sage; no purple, neon, emoji, mascots or gold",
+ "labels": "Every claim in study-021 documents carries one of Exact / Observed / Simulated / Inferred / Rejected / Open; predictions in this plan are Inferred or Open unless marked otherwise."
+}
