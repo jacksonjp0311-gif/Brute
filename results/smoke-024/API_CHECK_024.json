@@ -1,0 +1,40 @@
+{
+ "api": "brute.certify/10",
+ "cases": [
+  {
+   "case": "cycle3/9090009/0.02",
+   "certificates": 26,
+   "equal": true,
+   "first_differences": [],
+   "steps": 88
+  },
+  {
+   "case": "switch3/9090010/0.02",
+   "certificates": 21,
+   "equal": true,
+   "first_differences": [],
+   "steps": 88
+  },
+  {
+   "case": "unaliased2/9090011/0.02",
+   "certificates": 18,
+   "equal": true,
+   "first_differences": [],
+   "steps": 88
+  },
+  {
+   "case": "ood4/9090012/0.02",
+   "certificates": 107,
+   "equal": true,
+   "first_differences": [],
+   "steps": 88
+  }
+ ],
+ "cases_checked": 4,
+ "gate": "GAPI10 (smoke-api part)",
+ "passed": true,
+ "results_file": "/tmp/s24/api/RESULTS.json",
+ "results_sha256": "338af86bad53b9d166b22cca9c761b8f4b8c881cc0810de6aeb0f2e762f1c250",
+ "schema": "brute.api-check-024.v1",
+ "wall_informational": 91.1
+}
