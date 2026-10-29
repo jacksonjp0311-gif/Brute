@@ -1,0 +1,171 @@
+{
+  "also_requires": [
+    "experiments/BRUTE_SOURCE_FREEZE_023.json",
+    "experiments/BRUTE_RELEASE_FREEZE_0200.json",
+    "experiments/BRUTE_RELEASE_FREEZE_0200_R1.json",
+    "(and through brute_common_023.check_freeze every earlier source / release freeze)"
+  ],
+  "commit_order": {
+    "commits": [
+      {
+        "commit": "52deedbfbdbaec3c6a5be41c3a1fca254fb3b5fa",
+        "commit_time": "2026-10-28T22:52:31-04:00",
+        "event": "preregistration_024",
+        "ledger_note_time": "2026-10-28T22:52:31-04:00",
+        "order": 0,
+        "short": "52deedb",
+        "why": "plan BRUTE_PLAN_024 (plan only)"
+      },
+      {
+        "commit": "a138b00ad425e1d27236b154341fde4bffaf4e2c",
+        "commit_time": "2026-10-29T04:18:40-04:00",
+        "event": "build_authorization_024",
+        "ledger_note_time": "2026-10-29T04:18:40-04:00",
+        "order": 1,
+        "short": "a138b00",
+        "why": "owner card t126s506"
+      },
+      {
+        "commit": "35bb8909f32837d87975eb490c4c687410dca55f",
+        "commit_time": "2026-10-29T04:19:58-04:00",
+        "event": "stitched_lemma_024",
+        "ledger_note_time": "2026-10-29T04:19:58-04:00",
+        "order": 2,
+        "short": "35bb890",
+        "why": "STITCHED_LEMMA_024 before reference and RGL5 code"
+      },
+      {
+        "commit": "eedd13a6280378840a4d6c7d777fe6e746deb9e7",
+        "commit_time": "2026-10-29T04:21:06-04:00",
+        "event": "reference_024",
+        "ledger_note_time": "2026-10-29T04:21:06-04:00",
+        "order": 3,
+        "short": "eedd13a",
+        "why": "independent reference v0210_reference before RGL5 code"
+      },
+      {
+        "commit": "acb6aa9225348479e2dae2f41e48a0f291ecfac0",
+        "commit_time": "2026-10-29T04:21:42-04:00",
+        "event": "seedcheck_024",
+        "ledger_note_time": "2026-10-29T04:21:42-04:00",
+        "order": 4,
+        "short": "acb6aa9",
+        "why": "seed ranges disjoint"
+      },
+      {
+        "commit": "d5026df7c222056d6e2f5c18c6bb3475e07f786e",
+        "commit_time": "2026-10-29T04:27:26-04:00",
+        "event": "deviation_024_115",
+        "ledger_note_time": "2026-10-29T04:27:26-04:00",
+        "order": 5,
+        "short": "d5026df",
+        "why": "deviation #115 before RGL5 code"
+      },
+      {
+        "commit": "6215a538895e2152600e72b963db4276a5d4e8ea",
+        "commit_time": "2026-10-29T04:27:29-04:00",
+        "event": "rgl5_code_024",
+        "ledger_note_time": "2026-10-29T04:27:29-04:00",
+        "order": 6,
+        "short": "6215a53",
+        "why": "first RGL5 code"
+      },
+      {
+        "commit": "b6d7edd33fb45ec40a04c26a0786f33030d50820",
+        "commit_time": "2026-10-29T04:37:50-04:00",
+        "event": "process_scripts_024",
+        "ledger_note_time": "2026-10-29T04:37:50-04:00",
+        "order": 7,
+        "short": "b6d7edd",
+        "why": "process scripts and deviation #116"
+      }
+    ],
+    "label": "Exact",
+    "plan": "BRUTE-0210-STITCHED-LR-024",
+    "purpose": "G_PROC (c): the only input for the git-history gates (GLS_lemma, GAS ordering, GTI tooling order). Each commit is an ancestor of the next (checked when written). Written and ledgered before the source freeze; gates read this file, not live git log.",
+    "release_tooling_rule": "no brute/release_*0210* tooling beyond release_version_0210.py, scripts/*release*0210*, or tests/test_release_0210* before run_start_024",
+    "required_order": [
+      [
+        "stitched_lemma_024",
+        "rgl5_code_024"
+      ],
+      [
+        "reference_024",
+        "rgl5_code_024"
+      ],
+      [
+        "deviation_024_115",
+        "rgl5_code_024"
+      ],
+      [
+        "build_authorization_024",
+        "stitched_lemma_024"
+      ]
+    ],
+    "schema": "brute.commit-order-024.v1"
+  },
+  "commit_order_sha256": "b2913a7720961b308552676684388b16b87de518ff43b36b35fb5abc14d365f9",
+  "deviations_in_force": [
+    115,
+    116,
+    117
+  ],
+  "implementation_commits": [
+    "6215a53",
+    "b6d7edd",
+    "e3bba8c",
+    "d07cce8"
+  ],
+  "plan_021_sha256": "4054f7ccc1fe76af80381240c4a3768a99d65db1678fdeafe627d68b3cc4a845",
+  "plan_sha256": "40841f85d7e6f7400825ea1c728d437ae0319be34688026058b9180bba1c31a5",
+  "schema": "brute.source-freeze.v1",
+  "sha256_files": {
+    "brute/api/certify10.py": "0a8bae6efd41703d3855c0a26fc1329c53d75aac1ebf781ecd295f3dc7125cf9",
+    "brute/release_version_0210.py": "c486ec2445b5ea5d0053aacf3dc39240f768474812bf4803170d716efbe952c4",
+    "brute/stitchedregion.py": "a912d0f15443979eb56591b5b6e7739d183e2b56152178966bd66b2e0f58c8ef",
+    "docs/research/BRUTE_DEVIATIONS_024_115.md": "c37914876c01959a8a9b12bd1bd6a15db84781f3f4c697981c81694269fd752b",
+    "docs/research/BRUTE_DEVIATIONS_024_116.md": "1d7b12a726a00e82a61884e2a2ea8957accd628de56f376bdba8dd9d85162104",
+    "docs/research/BRUTE_DEVIATIONS_024_117.md": "d31c7f3b4e0e1e6bd62b4c2d309cf6850451cefbcb700167ea911d1a409858c7",
+    "docs/research/v0.21.0/BUILD_AUTHORIZATION_024.md": "52b78a6aaa69b1e76e4d19c22e954615fb64132f1ab2cd3e7ea7d59f3b454410",
+    "docs/research/v0.21.0/PLAN_024.md": "afbd4f44c5f2466a3c1ca1f90556b8e5f6535b36a25a04286af0e42568dad964",
+    "docs/research/v0.21.0/RATE_MATH_024.json": "9bda5ded7df78a1bc36b58721d46aeec781fbb6d6e8d8b9d6c29e1f977735fb4",
+    "docs/research/v0.21.0/RATE_MATH_024.md": "f091ab8ca8a5df10a33f664fbf4bdaeaf50f3f4a5cad8c98b06a9e5d8fed26a6",
+    "docs/research/v0.21.0/RATE_MATH_024_PRECUT.json": "23f9479b40034fa7017ec6714f9836b2c9f46d413affed2169aff7c195662893",
+    "docs/research/v0.21.0/STITCHED_LEMMA_024.md": "a54cc619c607bdbccf45002ef0a4ad16197919137d17d1c871a8fe323ba94456",
+    "experiments/BRUTE_PLAN_021.json": "4054f7ccc1fe76af80381240c4a3768a99d65db1678fdeafe627d68b3cc4a845",
+    "experiments/BRUTE_PLAN_024.json": "40841f85d7e6f7400825ea1c728d437ae0319be34688026058b9180bba1c31a5",
+    "experiments/COMMIT_ORDER_024.json": "b2913a7720961b308552676684388b16b87de518ff43b36b35fb5abc14d365f9",
+    "experiments/brute_common_024.py": "27205ebe6d82f45f9a16fced56bfa0f317e4f5292f4e72efd9639aa0d873a7bc",
+    "experiments/brute_study_024.py": "7cdb431187a79e136073133bb846640eadc034937bd5d75edd89016ce27fd55d",
+    "experiments/v0210_reference.py": "1deca4ee4cea6660b1080d829602950e2778ffc06fb84d84ce368d38d6c5dc72",
+    "results/diag-024/HN_RECOUNT_024.json": "778642da6ee06990c761ff849a4d1c2188236d8cae50bc3e2623d062b5f2b542",
+    "results/diag-024/SEEDCHECK_024.json": "0e992b65f9a823b65928ed55edd9de70d4bf484a23f4602a5c5b9f96ff68f439",
+    "results/smoke-024/API_CHECK_024.json": "b5b1167c49ef92dd50c257c455b2ef9c13e612d9152af8643d9e8096b955ea49",
+    "results/smoke-024/KILL_DRILL_024.json": "9598971ccc3b3e6023c8f2f496f2e5ab44c4dd9f7eb442ed0cf75ced2c5f66ab",
+    "results/smoke-024/RESUME_DRILL_024.json": "24a087ce2b553f0f24bdd1264569cae038e8e190b5263a97dac965b6418e1522",
+    "scripts/api_check_024.py": "28961c99387d824b477a74be122aa865538e889a252c45d551bcee2d5caccffd",
+    "scripts/check_seeds_024.py": "b38aba998dfb44d300464c662aa5a3cc73f3af971751b0480de178a2317c64ed",
+    "scripts/drill_024.py": "8c7d3a9db73a83eb292fafa7c4ced964a915d6c4d6e8fb33182c5fac0b6d41cf",
+    "scripts/hb_attribution_024.py": "2a9c0431bab3d8d9ba2f1f26c229f46ef4f37fee8ee695179482ef5272f759e0",
+    "scripts/hbsentinel_024.py": "d9792ad3383249ef3a1ba2c45513c4cae13faa623718736c1fb0cd66cc45ff38",
+    "scripts/hn_recount_024.py": "4b27b1e5485e9ab05d81777921375db63ecd4f3111059322f416bc7e4f5fd0b6",
+    "scripts/launch_study_024.py": "9303931d39bc3676fa4cdbb99d991c78a8d2db689e7e885a7de9d6d950e73daf",
+    "scripts/make_freeze_024.py": "a951d7314ee5a2a5f8340d8732bdddb3a816b69e86949faa2c575a8bb6b3110b",
+    "scripts/prerun_check_024.py": "6aaead5dd9880489155fa6dff282efe16650640d4c97c81b6c827ddf3a346484",
+    "scripts/rate_math_024.py": "49d6e51d2632690d4be049dfd5f02c2984366abc6ffd79940bb5b71a7f075646",
+    "scripts/run_reference_024.py": "53a74a54d18a18700784b46ab1928d2b00b233c5a44ee2f1e8662b3f45fb468d",
+    "scripts/run_study_024.py": "0aeabcf75b91b2f8a2d2ccf8b9f2ca6180748792f6f15f121460ea55b682ca1f",
+    "scripts/run_tests_0210.py": "46fbe950fbf7ce6a857a5950d91355625f9d1b1b1e8c24a47e458d52130b6951",
+    "scripts/seal_024.py": "568552ec11429b4543c7aa0524c9c55d263b9d7f48c8edb4c092d78e5b047e5d",
+    "scripts/study024_storage.py": "9351c3430c6a78665c1866c24a728c6d017c00196ffb1afa87336cc8b9dab1a6",
+    "scripts/watchdog_024.py": "de5a6f407ccf738c7e547c28c1ffd3b69ea3014d46cfe53afca86c737781d641",
+    "tests/test_certify10_0210.py": "8cce4594dc76b765cd1ef108fbb9e496bd1466f2b7b58cd133d080b2801200f0",
+    "tests/test_reference_0210.py": "374839639e736987f35ae46ac339cb2d82333d41d8f4e0caa712666b1b371706",
+    "tests/test_scripts_024.py": "3e1a7a3293db7981ca4b9b23386db7b96d65debcff94a6aba19082491abddcfa",
+    "tests/test_seeds_0210.py": "2dc0d2c3b6c08531a40729d137e4e382fb46148276ae7da6b2337e5cd5c861b7",
+    "tests/test_stitchedregion_0210.py": "18988544f4ce62b35fd70ecd815c9a65397d2034eac7d5b3006c086844f761a7",
+    "tests/test_study_0210.py": "a2bf03110238f5b6c623146f03dd3c3a544dde9f6133da5c121bb6dfcadbf41f"
+  },
+  "status": "frozen",
+  "study": "BRUTE-0210-STITCHED-LR-024"
+}
