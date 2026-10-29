@@ -1,0 +1,58 @@
+{
+ "cases_rd": 12,
+ "cases_ref": 12,
+ "checkpoints": {
+  "repro/smoke": {
+   "duplicates": 0,
+   "lines": 4
+  },
+  "transfer": {
+   "duplicates": 0,
+   "lines": 12
+  }
+ },
+ "clauses": {
+  "i_all_streams_complete": true,
+  "ii_scientific_identical_per_case": true,
+  "iii_spent_includes_pre_kill_time": true,
+  "iv_no_duplicate_checkpoint_keys": true
+ },
+ "differing_cases": [],
+ "kill_after_launch_s": 45.006,
+ "killed_at": "2026-10-29T05:04:15-0400",
+ "killed_process_groups": [
+  438464,
+  438480
+ ],
+ "label": "Observed (block smoke-drill; outside the cap; scratch directories).",
+ "orphan_log_lines": [
+  "[2026-10-29T05:04:21-0400] transfer: orphan from an interrupted orchestrator stopped; charged 44 s; will resume"
+ ],
+ "passed": true,
+ "pids_before_kill": [
+  438464
+ ],
+ "reference_returncode": 0,
+ "relaunch_returncode": 0,
+ "schema": "brute.resume-drill.v1",
+ "setup": "SMOKE=1 SKIP_GTI=1 BRUTE_SMOKE_DRILL=1 CAP_S=3000; REF /tmp/s24/rd_ref uninterrupted; RD /tmp/s24/rd SIGKILL of the whole orchestrator session at 45 s, relaunched once; REF and RD ran concurrently",
+ "spent_final": {
+  "g11": 34.025920152664185,
+  "repro": 124.06176447868347,
+  "transfer": 290.1855094432831
+ },
+ "state_at_kill": {
+  "finished": {},
+  "running": {
+   "transfer": {
+    "pgid": 438480,
+    "since": 1793264610.4023027,
+    "spent_before": 0
+   }
+  },
+  "spent": {}
+ },
+ "stopped_final": {},
+ "survivors": [],
+ "transfer_elapsed_before_kill_s": 44.036
+}
