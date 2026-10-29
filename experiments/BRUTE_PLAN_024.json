@@ -1,0 +1,125 @@
+{
+  "arms": [
+    "RGL5 (new)",
+    "RGL4 (frozen /9)",
+    "RGNB4 (planned-B comparator)",
+    "RGNA4 (frozen anytime)",
+    "RGN4_or (oracle ceiling)",
+    "RG4",
+    "SP8"
+  ],
+  "branch_base": "main at the v0.20.0 tag",
+  "brand": "charcoal/sage; no purple, neon, emoji or gold",
+  "build_status": "not authorized; needs a separate owner instruction",
+  "carried_defects": [
+    "K_0200: G_HB host-pause gaps (Inferred cause)",
+    "#112 git-history clause not evaluable from git archive (fixed by G_PROC c if built)",
+    "#113 frozen verify_release_0200 dual-role bug (use verify_release_0200_r1)"
+  ],
+  "cases": {
+    "main": 360,
+    "note": "Same design as study-023. Stress is fixed at 30 (the #110 size) and declared here, not cut later.",
+    "reproset": 60,
+    "stress": 30
+  },
+  "criteria": {
+    "GLS_headline": {
+      "a": "RGL5 false certificates 0 on all noisy main cases; CP95 upper <= 0.02",
+      "b": "RGL5 false certificates 0 on stress",
+      "c": "dC_late(RGL5 - RGL4, eps 0.02) mean >= 0.04 and paired-bootstrap CI95 lower > 0",
+      "d": "dC_late(RGL5 - RGNB4, eps 0.02) CI95 lower > -0.06",
+      "e": "RGL5 prefix28 identical to RGL4 on all eps-0.02 cases, or a pre-declared bound on the difference"
+    },
+    "GLS_lemma": "lemma and DP reference committed before RGL5 code, checked from a tracked commit-order file (see G_PROC)",
+    "G_PROC": {
+      "a": "the launcher refuses to start if SMOKE or any STUDY_DIR_* dry-run hook is set (unit test plus a live refusal at run_start)",
+      "b": "the orchestrator writes its resolved study directory and RUN_T0 on its first log line",
+      "c": "gate clauses that read git history read experiments/COMMIT_ORDER_024.json, written and ledgered before the source freeze, so a git-archive clean clone can evaluate them",
+      "d": "ledger note times come from the clock (date -Iseconds), never typed by hand"
+    },
+    "carried": [
+      "G_recount",
+      "GAS_frozen_control (RGL4 reproduces its study-023 C_late interval)",
+      "GS_a10",
+      "GS_ref10 (mutation 20/20)",
+      "GAPI10 (/10 new, /9 to /1 unchanged)",
+      "G10",
+      "G12 (reproset byte-identical)",
+      "G13",
+      "GTI (release tooling after run_end)",
+      "G_RT",
+      "G_HB (10 s, not loosened)"
+    ]
+  },
+  "deviation_policy": "Every departure is published as docs/research/BRUTE_DEVIATIONS_024_<n>.md with a ledger entry, including failures.",
+  "freeze_rule": "This file and docs/research/v0.21.0/PLAN_024.md are ledgered (preregistration_024) before any v0.21.0 code. Any change after that is an ADDENDUM file plus its own ledger entry, never an edit.",
+  "heldout_ranges": {
+    "note": "Fresh ranges following the study-number convention (023 used 89x0001). Same sizes as study-023, disjoint from every earlier plan. They are reserved here and drawn only after a ledgered seedcheck_024.",
+    "targets": {
+      "cycle3": [
+        9010001,
+        9010024
+      ],
+      "ood4": [
+        9040001,
+        9040048
+      ],
+      "switch3": [
+        9020001,
+        9020024
+      ],
+      "unaliased2": [
+        9030001,
+        9030024
+      ]
+    }
+  },
+  "horizon": 88,
+  "labels": "Exact / Observed / Simulated / Inferred / Rejected / Open",
+  "limitations": "bounded deterministic Moore worlds (<= 4 states, 2 actions, 2 bits); i.i.d. observation flips; 88-step traces; not general intelligence",
+  "method": {
+    "api": "brute.certify/10: method 'stitched' is new; 'lr' = /9 and 'anytime' = /8, unchanged. /9 to /1 carried.",
+    "arm_new": "RGL5",
+    "definition": "Within epoch k (steps in (28*2^(k-1), 28*2^k], with epoch 0 = steps 1-28), apply the planned-horizon LR threshold for H_k=28*2^k at confidence delta_k=delta/((k+1)(k+2)). A certificate, once issued, is kept only while every later epoch's test also holds. Same family bound, burn-in, eps_bar and delta=0.01 as RGL4.",
+    "lemma_first": "An exact union-bound lemma (sum of delta_k <= delta) and a DP reference implementation are committed and ledgered before any RGL5 code."
+  },
+  "metrics": [
+    "C_late",
+    "C_full",
+    "C_early28",
+    "false-certificate records",
+    "CP95 upper bounds"
+  ],
+  "motivation": {
+    "hypothesis": "Stitching the LR bound over a geometric grid of horizons, with delta_k proportional to 1/((k+1)(k+2)), recovers most of the planned-horizon margin and stays anytime-valid (Open).",
+    "observed_v0200": "RGL4 sound (0/240 noisy false; CP95 0.0124), C_late 0.417 at eps 0.02, but it trails planned-B RGNB4 (0.530; dC -0.113 [-0.155,-0.073]). C_early28 is about 0 for every robust arm (RGL4 0.0024). G_HB FAIL (6 gaps over 10 s). GCC FAIL (#112). False-start orchestrator (#111). Frozen verifier bug (#113). Hand-typed ledger times (#114)."
+  },
+  "noise_model": "as BRUTE_PLAN_023 (eps in {0, 0.01, 0.02} main; 0.05 stress)",
+  "non_gated_reports": {
+    "early_window_diagnostic": "For steps <= 28, report the minimum number of consistent observations a robust arm needs to certify a bit, against what each trace supplies (explains C_early28 about 0; Open).",
+    "host_pause_probe": "A 10-minute heartbeat-only probe before run_start records host pauses; reported next to G_HB and never used to excuse it."
+  },
+  "parent_study": "BRUTE-0200-LR-ANYTIME-023",
+  "process_controls": [
+    "never force-push",
+    "no .github / workflows",
+    "git and gh with env -u GITHUB_TOKEN -u GH_TOKEN",
+    "push after every step",
+    "append-only ledger",
+    "frozen files never edited (new files or ADDENDUM)"
+  ],
+  "release_gates": {
+    "GCC": "clean clone from git archive plus the COMMIT_ORDER file; must regenerate every gate byte for byte",
+    "GLV": "--long re-runs 12 cases inside a 900 s cap",
+    "verifier_self_test": "the release verifier's process-order check is unit-tested against the real source freeze before the release freeze (lesson of #113)"
+  },
+  "runtime_estimate": "Rate math is committed before the source freeze using the x1.75 rule. If the path at x1.75 does not fit the cap, the cut is pre-declared in the rate-math file before the run.",
+  "schema": "brute.plan.v1",
+  "second_implementation": "v0210_reference: independent DP audit of every RGL5 certificate; mutation test 20/20",
+  "status": "PRE-REGISTERED (frozen at the commit that adds this file; no v0.21.0 stitched-bound code, reference code, held-out world, seed draw or run exists at that commit). PLAN ONLY: build is NOT authorized by this commit.",
+  "stop_rule": "as BRUTE_PLAN_023 (hard 2 h cap from RUN_T0, independent watchdog, sentinel, frozen resume rule)",
+  "study": "BRUTE-0210-STITCHED-LR-024",
+  "supersedes": null,
+  "version_under_test": "0.21.0",
+  "what_counts_as_failure": "Any GLS clause false, or any carried gate false, is reported as FAIL. No re-run, no re-scoring with changed rules."
+}
