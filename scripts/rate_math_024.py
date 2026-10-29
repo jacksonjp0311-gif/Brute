@@ -9,7 +9,7 @@ scripts/run_study_024.STREAMS: transfer + gti from t0, then repro + g11):
 A held-out cell with no smoke measurement is an error.
 Projection per stream (rule (2)): sum over cells of (held-out cases in the cell x the cell's SLOWEST smoke case) / workers
 x 1.75; gti (rule (6)): max(sum of module walls / workers, slowest single module) x 1.75. A stream fits if the
-projection <= 0.8 x budget. Repro projects block reproset (main[::6], 60 cases). The critical path is
+projection <= 0.8 x budget. Repro projects block reproset (main[::12], 30 cases after the #117 cut; main[::6], 60 before). The critical path is
 max(transfer, -) + max(repro, g11) next to gti, all from t0; it must be <= 0.8 x 7200 s.
 """
 from __future__ import annotations

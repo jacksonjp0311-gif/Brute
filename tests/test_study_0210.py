@@ -1,4 +1,4 @@
-"""Study-024 runner tests: job layout (360 main + 30 stress; reproset main[::6]; smoke blocks), seed checks, arm sets, and
+"""Study-024 runner tests: job layout (360 main + 30 stress; reproset main[::12] (#117); smoke blocks), seed checks, arm sets, and
 one eps-0.02 smoke case audited by experiments/v0210_reference.py (0 mismatches; RGL5 plus the carried arms via strip)."""
 import unittest
 import experiments.v0210_reference as REF
@@ -11,7 +11,7 @@ class Study0210(unittest.TestCase):
         plan=load(PLAN);J=jobs_for(plan,'transfer')
         self.assertEqual(len(J),390);self.assertEqual(len({key(j) for j in J}),390)
         self.assertEqual([j[0] for j in J],['main']*360+['stress']*30);self.assertEqual(jobs_for(plan,'main'),J[:360])
-        self.assertEqual(jobs_for(plan,'reproset'),J[:360][::6]);self.assertEqual(len(jobs_for(plan,'reproset')),60)
+        self.assertEqual(jobs_for(plan,'reproset'),J[:360][::12]);self.assertEqual(len(jobs_for(plan,'reproset')),30)
         self.assertEqual({j[3] for j in J[:360]},{0.0,0.01,0.02});self.assertEqual({j[3] for j in J[360:]},{0.05})
         self.assertEqual(len(jobs_for(plan,'smoke-transfer')),32);self.assertEqual(len(jobs_for(plan,'smoke-api')),4)
         for j in jobs_for(plan,'smoke-transfer')+J[:3]+J[-3:]:check_job(j,plan)

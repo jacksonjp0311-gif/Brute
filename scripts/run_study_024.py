@@ -11,7 +11,7 @@ stream budget with the time already spent (RUN_STATE_024.json).
 Streams (plan stop_rule.streams_and_budgets: fixed by scripts/rate_math_024.py before the source freeze; STREAMS below;
 at most 8 worker processes at once):
   MANDATORY at t0:     transfer (360 main + 30 stress, 88-step traces) | gti (scripts/run_tests_0210.py, parallel per-module runner)
-  after transfer:      repro (block reproset = main[::6], 60 cases) | g11 (scripts/run_reference_024.py: audit
+  after transfer:      repro (block reproset = main[::12], 30 cases; #117) | g11 (scripts/run_reference_024.py: audit
                        of all 390 transfer cases, then the mutation test on 20 main cases; PROGRESS_G11_024.json every 60 s)
 Stops: at RUN_T0 + 7200 s the orchestrator stops every running stream (SIGTERM, SIGKILL after 10 s), seals each
 checkpoint as it is (--seal-partial / --summarize-only; never a new case) and writes STOP_024_ORCHESTRATOR.json (the
@@ -36,7 +36,7 @@ MAX_WORKERS=8
 GRACE=10
 PROGRESS_AT=360
 # name: (workers, budget_s). Fixed by scripts/rate_math_024.py (docs/research/v0.21.0/RATE_MATH_024.md) before the source freeze.
-STREAMS={'transfer':(7,6000),'gti':(1,7000),'repro':(4,1200),'g11':(3,1200)}
+STREAMS={'transfer':(7,6400),'gti':(1,7000),'repro':(3,800),'g11':(4,800)}   # #117 item 7 (pre-cut 7/6000, 1/7000, 4/1200, 3/1200)
 SM=['--smoke'] if os.environ.get('SMOKE') else []
 if SM and os.environ.get('CAP_S'):CAP=int(os.environ['CAP_S'])
 DRY_BUDGET=int(os.environ['BUDGET_S']) if SM and os.environ.get('BUDGET_S') else None

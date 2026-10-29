@@ -2,7 +2,7 @@
 Adapted from experiments/brute_study_023.py (frozen, unchanged).
 
 Stream transfer = 360 main cases (eps 0 / 0.01 / 0.02), then 30 stress cases (eps 0.05, first quarter of each family range;
-fixed by BRUTE_PLAN_024 cases), one stream. Block reproset = main[::6] (G12, 60 cases). Each case runs 88 actions (89
+fixed by BRUTE_PLAN_024 cases), one stream. Block reproset = main[::12] (G12, 30 cases; #117 rate-math cut from main[::6] = 60). Each case runs 88 actions (89
 readings): every study-023 arm exactly as experiments/brute_study_023.py (same tag-23 flip array: noise model "as
 BRUTE_PLAN_023"), plus RGL5 = brute.stitchedregion (stitched LR bound over horizons 28 / 56 / 112, HEADLINE) and, at eps 0.02,
 prefix28_rgl5 = RGL5 on the first 28 actions (GLS e1). Record format brute.case.v21_0: experiments/v0210_reference.py
@@ -162,7 +162,7 @@ def jobs_for(plan,block):
     stress=[('stress',fam,seed,0.05) for fam in MAIN_FAMILIES for seed in range(R[fam][0],R[fam][0]+(R[fam][1]-R[fam][0]+1)//4)]   # BRUTE_PLAN_024 cases.stress = 30 (first quarter)
     if block=='transfer':return main+stress
     if block=='main':return main
-    if block=='reproset':return main[::6]
+    if block=='reproset':return main[::12]   # deviation #117 item 7: rate-math cut 60 -> 30 (subset of the plan's main[::6])
     if block=='smoke-all':return jobs_for(plan,'smoke-transfer')
     if block in SMOKE_BLOCKS:
         Es=(0.02,) if block=='smoke-api' else E+(0.05,)
