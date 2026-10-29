@@ -5,7 +5,7 @@ run_start; nothing is tuned after results are seen.
 Resampling: the n cases of a subset (at a fixed eps a case is a seed) are resampled with replacement, statistic = case mean;
 every contrast restarts the generator (np.random.default_rng(23)), so the two arms of a difference see the same resampled
 cases. Per case the recorded summary is used (make_gates_023 recounts it from the traces; GS_ref10 audits it).
-Subsets of the transfer block: eps0 / eps1 / eps2 (120 main cases each), noisy (eps1 + eps2, 240), stress (eps 0.05, 60).
+Subsets of the transfer block: eps0 / eps1 / eps2 (120 main cases each), noisy (eps1 + eps2, 240), stress (eps 0.05, 30; deviation #110).
 For every subset and every arm X in SP8, RG4, RGL4, RGNA4, RGNB4, RGN4_or that ALL cases of the subset carry (RGNB4 only at
 eps 0.02, deviation #109 / plan arms):
   C_late_<X>_<sub>     = certificates in steps 45..88 / 88        (GLR (c) on RGL4 / eps2; GAS_frozen_control on RGNA4 / eps2)

@@ -1,7 +1,7 @@
 """Gates for study-023 (BRUTE_PLAN_023 criteria; adapted from make_gates_021). Committed and ledgered (scoring_freeze_023)
 before the held-out run_start; nothing is tuned after results are seen.
 
-Inputs (study dir D = results/study-023): D/transfer/{SCIENTIFIC,SEAL}.json (420 cases = 360 main + 60 stress, 88 steps;
+Inputs (study dir D = results/study-023): D/transfer/{SCIENTIFIC,SEAL}.json (390 cases = 360 main + 30 stress (deviation #110), 88 steps;
 120 prefix28 records on the eps-0.02 main cases), D/PAIRED_ANALYSIS_023.json, D/REPRODUCIBILITY_023.json,
 D/SECOND_IMPLEMENTATION_023.json, D/TEST_SUITE_023.json, D/RUN_STATE_023.json, D/RUN_T0, D/HEARTBEAT_023.jsonl,
 results/smoke-023/{KILL_DRILL_023,RESUME_DRILL_023,API_CHECK_023}.json, results/diag-023/HN_RECOUNT_023.json, optional
@@ -27,7 +27,7 @@ Gated (plan criteria, one entry each):
   G_recount           every arm's false / certificate counts, windows and summaries recounted from the traces; RGL4
                       bound rule T = min(m_a(b; 0.02, 0.005), witness w + D_n - 1) recomputed from the records; T == RGL4 m;
                       realized flips; crossings; anytime boundary == brute.anytimemargin.anytime_boundary.
-  G10                 420 cases + 120 prefix28 records, seal complete, traces 88 steps (prefix 28), unknown > 0 fraction
+  G10                 390 cases + 120 prefix28 records, seal complete, traces 88 steps (prefix 28), unknown > 0 fraction
                       <= 1% for every support kind.
   G12                 REPRODUCIBILITY_023 G12_pass, 60 expected, main sha == transfer seal (reproset byte-identical).
   G13                 freeze chain holds; tau6; RG4 by the frozen v0.12.0 rg_arm; RGL4 / RGNA4 / RGNB4 / RGN4_or certificates
@@ -57,7 +57,7 @@ from scripts.make_gates_015 import wrong,opt
 from scripts.make_gates_018 import cp_upper,p_exceed
 from scripts.run_study_023 import STREAMS as RUN_STREAMS,CAP
 
-STEPS=88;FB=4;SLOTS=176;LATE=(45,88);EARLY=28;PREFIX=28;EXPECTED={'main':360,'stress':60};REPRO_EXPECTED=60
+STEPS=88;FB=4;SLOTS=176;LATE=(45,88);EARLY=28;PREFIX=28;EXPECTED={'main':360,'stress':30};REPRO_EXPECTED=60
 FROZEN_CI=(0.214962,0.317332)
 ARMS=('RG4','RGL4','RGNA4','RGNB4','RGN4_or');ALL_ARMS=('SP8',)+ARMS
 D_TABLE=[3,4,5,7];DELTA_A=0.005
@@ -109,6 +109,14 @@ def recount(c,act):
         flags=all(len(r['certificate'])==2 and r['wrong'][b]==(r['certificate'][b] is not None and r['certificate'][b]!=act[i][b]) for i,r in enumerate(A['trace']) for b in (0,1)) if A['trace'] and 'wrong' in A['trace'][0] else True
         out.append((arm,A['false_certificates'],wrong(A['trace'],act),flags))
     return out
+
+
+def _dlist(d):
+    """HN_RECOUNT stores D as {'1':3,'2':4,...}; normalise to [D_1..D_4] (a list passes through)."""
+    if isinstance(d,dict):
+        try:return [d[k] for k in sorted(d,key=int)]
+        except (ValueError,TypeError):return None
+    return d
 
 
 def lr_check(c,lr,steps,where='lr'):
@@ -269,7 +277,7 @@ def build(study=STUDY_DIR,smoke=False):
     try:rd=REF.ref_D()
     except Exception as e_:rd=f'{type(e_).__name__}: {e_}'
     hn=opt(ROOT/'results/diag-023/HN_RECOUNT_023.json')
-    lm={'lemma_committed_before_rgl4_code':before,'D_table_exact_3_4_5_7':rd==D_TABLE,'hn_recount_passed':bool(hn) and hn.get('PASS') is True and hn.get('D')==D_TABLE}
+    lm={'lemma_committed_before_rgl4_code':before,'D_table_exact_3_4_5_7':rd==D_TABLE,'hn_recount_passed':bool(hn) and hn.get('PASS') is True and _dlist(hn.get('D'))==D_TABLE}
     gate('GLR_lemma',all(lm.values()),{'clauses':lm,'lemma_commit':lem[-1] if lem else None,'first_lrregion_commit':first_lr,'ref_D':rd,
          'hn_recount':None if hn is None else {k_:v for k_,v in hn.items() if k_ in ('PASS','H','D')}})
     me,cie=pv('C_late_RGNA4_eps2')

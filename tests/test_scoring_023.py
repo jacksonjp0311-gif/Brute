@@ -24,7 +24,7 @@ def _case():
 class T(unittest.TestCase):
     def test_constants(self):
         self.assertEqual(G.FROZEN_CI,(0.214962,0.317332));self.assertEqual(G.REPRO_EXPECTED,60);self.assertEqual(G.PREFIX,28)
-        self.assertEqual(G.EXPECTED,{'main':360,'stress':60});self.assertEqual(G.D_TABLE,[3,4,5,7])
+        self.assertEqual(G.EXPECTED,{'main':360,'stress':30});self.assertEqual(G.D_TABLE,[3,4,5,7])
         self.assertEqual((P.SEED,P.B),(23,10000));self.assertIn('RGL4',P.ARMS)
         self.assertTrue(any('API_CHECK_023' in x for x in CC.TRACKED) and any('RESUME_DRILL_023' in x for x in CC.TRACKED))
     def test_arms(self):

@@ -21,10 +21,10 @@ FILES=sorted(['brute/lrregion.py','brute/api/certify9.py','brute/release_version
     'tests/test_reference_0200.py','tests/test_scripts_023.py',
     'docs/research/v0.20.0/PLAN_023.md','docs/research/v0.20.0/LR_LEMMA_023.md','docs/research/v0.20.0/BUILD_AUTHORIZATION_023.md',
     'docs/research/v0.20.0/RATE_MATH_023.md','docs/research/v0.20.0/RATE_MATH_023.json',
-    'docs/research/BRUTE_DEVIATIONS_023.md','docs/research/BRUTE_DEVIATIONS_023_109.md',
+    'docs/research/BRUTE_DEVIATIONS_023.md','docs/research/BRUTE_DEVIATIONS_023_109.md','docs/research/BRUTE_DEVIATIONS_023_110.md','docs/research/v0.20.0/RATE_MATH_023_PRECUT.json',
     'results/diag-023/SEEDCHECK_023.json','results/diag-023/HN_RECOUNT_023.json',
     'results/smoke-023/KILL_DRILL_023.json','results/smoke-023/RESUME_DRILL_023.json','results/smoke-023/API_CHECK_023.json'])
-DEVS=[108,109]   # deviation numbers in force at the freeze (BRUTE_DEVIATIONS_023*.md, #108 onward)
+DEVS=[108,109,110]   # deviation numbers in force at the freeze (BRUTE_DEVIATIONS_023*.md, #108 onward)
 EXTRA=[x for x in sys.argv[1:] if x.startswith('+')]   # '+path' adds a file written after this script (e.g. a deviations addendum)
 FILES=sorted(FILES+[x[1:] for x in EXTRA])
 

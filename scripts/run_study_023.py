@@ -8,9 +8,9 @@ stream budget with the time already spent (RUN_STATE_023.json).
 
 Streams (plan stop_rule.streams_and_budgets: fixed by scripts/rate_math_023.py before the source freeze; STREAMS below;
 at most 8 worker processes at once):
-  MANDATORY at t0:     transfer (360 main + 60 stress, 88-step traces) | gti (scripts/run_tests_0200.py, parallel per-module runner)
+  MANDATORY at t0:     transfer (360 main + 30 stress (#110), 88-step traces) | gti (scripts/run_tests_0200.py, parallel per-module runner)
   after transfer:      repro (block reproset = main[::6], 60 cases) | g11 (scripts/run_reference_023.py: audit
-                       of all 420 transfer cases, then the mutation test on 20 main cases; PROGRESS_G11_023.json every 60 s)
+                       of all 390 transfer cases, then the mutation test on 20 main cases; PROGRESS_G11_023.json every 60 s)
 Stops: at RUN_T0 + 7200 s the orchestrator stops every running stream (SIGTERM, SIGKILL after 10 s), seals each
 checkpoint as it is (--seal-partial / --summarize-only; never a new case) and writes STOP_023_ORCHESTRATOR.json (the
 watchdog writes STOP_023.json). Every stream completion is stamped (wall epoch) in RUN_STATE_023.json 'completed_at'.
@@ -34,7 +34,7 @@ MAX_WORKERS=8
 GRACE=10
 PROGRESS_AT=360
 # name: (workers, budget_s). Fixed by scripts/rate_math_023.py (docs/research/v0.20.0/RATE_MATH_023.md) before the source freeze.
-STREAMS={'transfer':(7,5800),'gti':(1,6400),'repro':(6,1400),'g11':(1,1400)}
+STREAMS={'transfer':(7,6000),'gti':(1,7000),'repro':(4,1200),'g11':(3,1200)}
 SM=['--smoke'] if os.environ.get('SMOKE') else []
 if SM and os.environ.get('CAP_S'):CAP=int(os.environ['CAP_S'])
 DRY_BUDGET=int(os.environ['BUDGET_S']) if SM and os.environ.get('BUDGET_S') else None

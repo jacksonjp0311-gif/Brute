@@ -1,7 +1,7 @@
 """Study BRUTE-0200-LR-ANYTIME-023 runner (experiments/BRUTE_PLAN_023.json; docs/research/v0.20.0/LR_LEMMA_023.md).
 Adapted from experiments/brute_study_021.py (frozen, unchanged).
 
-Stream transfer = 360 main cases (eps 0 / 0.01 / 0.02), then 60 stress cases (eps 0.05, first half of each family range),
+Stream transfer = 360 main cases (eps 0 / 0.01 / 0.02), then 30 stress cases (eps 0.05, first quarter of each family range; deviation #110, pre-declared contingency),
 one stream. Block reproset =
 main[::6] (G12, 60 cases). Each case runs 88 actions (89 readings): the frozen SP8 trajectory (experiments.brute_study_012.
 trajectory_2x2 with the in-memory 88-action learner plan) on a NoisyWorld proxy with the tag-23 flip array; bounded['4'] =
@@ -144,7 +144,7 @@ def run_case(seed,family,eps,plan,block='main'):
 def jobs_for(plan,block):
     R=plan['heldout_ranges']['targets'];E=(0.0,0.01,0.02)
     main=[('main',fam,seed,e) for fam in MAIN_FAMILIES for seed in range(R[fam][0],R[fam][1]+1) for e in E]
-    stress=[('stress',fam,seed,0.05) for fam in MAIN_FAMILIES for seed in range(R[fam][0],R[fam][0]+(R[fam][1]-R[fam][0]+1)//2)]
+    stress=[('stress',fam,seed,0.05) for fam in MAIN_FAMILIES for seed in range(R[fam][0],R[fam][0]+(R[fam][1]-R[fam][0]+1)//4)]   # #110: stress 60 -> 30 (first quarter)
     if block=='transfer':return main+stress
     if block=='main':return main
     if block=='reproset':return main[::6]
