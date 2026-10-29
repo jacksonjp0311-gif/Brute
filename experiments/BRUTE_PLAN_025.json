@@ -1,0 +1,123 @@
+{
+  "arms": [
+    "RGB6 (new: betting-CS eps-adaptive LR)",
+    "RGL5 (frozen /10 stitched)",
+    "RGL4 (frozen /9 lr)",
+    "RGNB4 (planned-B comparator)",
+    "RGN4_or (oracle ceiling)",
+    "RG4",
+    "SP8"
+  ],
+  "branch_base": "main at the v0.21.0 tag",
+  "brand": "charcoal/sage; no purple, neon, emoji or gold",
+  "build_status": "not authorized; needs a separate owner instruction",
+  "carried_defects": [
+    "K_0210: G_HB wall-clock gaps attributed clock_step (Inferred)",
+    "K_0200_113: frozen verify_release_0200 dual-role bug (use _r1)"
+  ],
+  "cases": {
+    "main": 360,
+    "note": "Same design as study-024; reproset 30 is declared here (the #117 size), not cut later.",
+    "reproset": 30,
+    "stress": 30
+  },
+  "criteria": {
+    "G10": "unknown fraction 0 on all transfer cases",
+    "G12": "reproset 30/30 byte-identical",
+    "G13": "as BRUTE_PLAN_024",
+    "GAPI11": "brute.certify/11 new; /10 to /1 byte-identical on their smoke cases",
+    "GAS_frozen_control": "RGL5 and RGL4 C_late CI95 at eps 0.02 intersect their study-024 CIs ([0.37822, 0.461742] and [0.371591, 0.452654])",
+    "GBC_headline": {
+      "a": "RGB6 false certificates 0 on all noisy main cases; CP95 upper <= 0.02",
+      "b": "RGB6 false certificates 0 on stress cases with eps <= eps_bar; stress cases with eps > eps_bar are outside the guarantee and reported, not gated (declared here before any data, informed by #118 item 4)",
+      "c": "dC_late(RGB6 - RGL4, eps 0.02) mean >= 0.04 and paired-bootstrap CI95 lower > 0",
+      "d": "dC_late(RGB6 - RGNB4, eps 0.02) CI95 lower > -0.06",
+      "e": "RGB6 issues 0 certificates in steps 1-28 that RGL4 would not issue, or the difference has a pre-declared bound of 0 false"
+    },
+    "GBC_lemma": "lemma and DP reference committed before RGB6 code, checked from the tracked COMMIT_ORDER_025 file",
+    "GS_a11": "API smoke: certify/11 betting == RGB6 on the API check cases",
+    "GS_ref11": "v0220_reference audits every gated RGB6 certificate; 0 mismatching; mutation test 20/20",
+    "GTI": "tracked tree clean at start; only declared K failures; release tooling committed after run_end_025",
+    "G_HB": "watchdog heartbeat: 0 gaps over 10 s on the monotonic clock; wall-clock-only gaps (clock_step) are counted and reported separately (declared before data; study-024 had 2 wall gaps with monotonic max 6.3 s, Inferred clock_step)",
+    "G_PROC": "as BRUTE_PLAN_024 (a-d)",
+    "G_RT": "run inside the hard 2 h cap",
+    "G_recount": "independent recount of every false certificate"
+  },
+  "deviation_policy": "Every departure is published as docs/research/BRUTE_DEVIATIONS_025_<n>.md with a ledger entry, including failures.",
+  "freeze_rule": "This file and docs/research/v0.22.0/PLAN_025.md are ledgered (preregistration_025) before any v0.22.0 code. Any change after that is an ADDENDUM file plus its own ledger entry, never an edit.",
+  "heldout_ranges": {
+    "note": "Fresh ranges following the study-number convention (024 used 90x0001). Same sizes as study-024, disjoint from every earlier plan. Drawn only after a ledgered seedcheck_025.",
+    "targets": {
+      "cycle3": [
+        9110001,
+        9110024
+      ],
+      "ood4": [
+        9140001,
+        9140048
+      ],
+      "switch3": [
+        9120001,
+        9120024
+      ],
+      "unaliased2": [
+        9130001,
+        9130024
+      ]
+    }
+  },
+  "horizon": 88,
+  "labels": "Exact / Observed / Simulated / Inferred / Rejected / Open",
+  "limitations": [
+    "bounded deterministic Moore worlds only (<= 4 states, 2 actions, 2 bits)",
+    "guarantee conditional on iid flips with eps <= eps_bar independent of actions and mask",
+    "same author for arm and reference; not an independent audit",
+    "not general intelligence"
+  ],
+  "method": {
+    "api": "brute.certify/11: method 'betting' is new; 'stitched' = /10, 'lr' = /9, 'anytime' = /8, unchanged. /10 to /1 carried.",
+    "arm_new": "RGB6",
+    "definition": "Maintain a predictable-plug-in betting confidence sequence (hedged capital process, alpha = delta/2) for the flip rate eps on observed mismatches under the leading hypothesis; at each step use its upper end eps_hat_u (capped at eps_bar) in place of eps_bar in the RGL4 LR threshold at confidence delta/2. Same family bound, burn-in, eps_bar 0.02 and total delta 0.01 as RGL4.",
+    "lemma_first": "An exact lemma (betting CS validity at alpha=delta/2 plus the LR test at delta/2 union to delta, under iid flips with eps <= eps_bar independent of actions and mask) and a DP reference implementation are committed and ledgered before any RGB6 code."
+  },
+  "metrics": [
+    "C_late",
+    "C_full",
+    "C_early28",
+    "false-certificate records",
+    "CP95 upper bounds",
+    "eps_hat_u trace summary (non-gated)"
+  ],
+  "motivation": "Study-024 (Observed): stitching the LR bound across epochs kept RGL5 sound on the noisy main set (0/240 false, CP95 0.0124) but added only +0.0076 [0.0032, 0.0128] late coverage over RGL4 and trailed the planned-B margin RGNB4 by 0.036 and the oracle by 0.417 (ratio 0.501). The bound's price is now in the union over epochs and in the worst-case eps_bar, not in the horizon. The oracle gap (Inferred) is mostly the cost of not knowing eps. v0.22.0 tests whether a betting confidence sequence for the flip rate, used to set an eps-adaptive LR margin, closes part of that gap without losing soundness.",
+  "noise_model": "as BRUTE_PLAN_024 (eps in {0, 0.01, 0.02} main; 0.05 stress)",
+  "non_gated_reports": [
+    "dC_late(RGB6 - RGL5) at each eps",
+    "ratio RGB6/oracle late",
+    "eps_hat_u coverage of the true eps",
+    "stress cases with eps > eps_bar"
+  ],
+  "parent_study": "BRUTE-0210-STITCHED-LR-024",
+  "process_controls": [
+    "never force-push",
+    "no .github / workflows",
+    "git and gh with env -u GITHUB_TOKEN -u GH_TOKEN",
+    "push after every step",
+    "append-only ledger",
+    "frozen files never edited (new files or ADDENDUM)",
+    "ledger times from date -Iseconds"
+  ],
+  "release_gates": {
+    "GCC": "clean clone from git archive plus COMMIT_ORDER_025; regenerate every gate byte for byte",
+    "GLV": "--long re-runs 12 cases inside a 900 s cap",
+    "verifier_self_test": "process-order check unit-tested against the real source freeze before the release freeze"
+  },
+  "runtime_estimate": "Rate math committed before the source freeze using the x1.75 rule; if the path at x1.75 does not fit, the cut is pre-declared in the rate-math file before the run.",
+  "schema": "brute.plan.v1",
+  "second_implementation": "v0220_reference: DP audit of every RGB6 certificate; mutation test 20/20",
+  "status": "PRE-REGISTERED (frozen at the commit that adds this file; no v0.22.0 arm code, reference code, held-out world, seed draw or run exists at that commit). PLAN ONLY: build is NOT authorized by this commit.",
+  "stop_rule": "as BRUTE_PLAN_024 (hard 2 h cap from RUN_T0, independent watchdog, sentinel, frozen resume rule)",
+  "study": "BRUTE-0220-BETTING-CS-025",
+  "supersedes": null,
+  "version_under_test": "0.22.0",
+  "what_counts_as_failure": "Any gated clause false. Published as FAIL with no threshold change and no rerun."
+}
