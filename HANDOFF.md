@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-29 (v0.21.0)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-29 (v0.21.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0210 -->
-- **v0.21.0: RELEASE IN PROGRESS** 2026-10-29 (branch `plan/v0.21.0`). Study BRUTE-0210-STITCHED-LR-024. **12 of 14 gated pass; GLS and G_HB fail.**
+- **v0.21.0: RELEASED** 2026-10-29 (tag `v0.21.0` (annotated, object `73e28e7`) -> `7f30e92`; main fast-forwarded `4d4c39b..7f30e92` (no force); https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.21.0; fresh GitHub clone of `plan/v0.21.0@138ea6f` passed short, --long (GLV 12/0, 296.1 s of 900) and `tests.test_release_0210` 12 OK; `docs/research/v0.21.0/FRESH_CLONE_VERIFY_0210.json`). Study BRUTE-0210-STITCHED-LR-024. **12 of 14 gated pass; GLS and G_HB fail.**
   - **Headline GLS (stitched likelihood-ratio bound RGL5, `brute.certify/10` method stitched): FAIL.** Clauses a and e pass; b, c and d fail.
     - RGL5: 0 false certificates on 240 of 240 noisy main cases; CP95 0.0124; prefix28 identical on 120 of 120 eps 0.02 cases.
     - C_late at eps 0.02: RGL5 0.419 [0.378, 0.462]; RGL4 0.411 [0.372, 0.453]; RGNB4 0.455 [0.401, 0.509]; oracle RGN4_or 0.836 [0.802, 0.868].
