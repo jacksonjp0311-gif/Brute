@@ -1,0 +1,33 @@
+{
+ "schema": "brute.fresh-clone-verify.v1",
+ "version": "0.20.0",
+ "source": "https://github.com/jacksonjp0311-gif/Brute.git branch plan/v0.20.0",
+ "commit": "af45d61",
+ "verifier": "scripts/verify_release_0200_r1.py (deviation #113; the frozen verify_release_0200 rejects dual-role commit 9e0ca70)",
+ "run_at": "2026-10-28 22:44:18-22:51:34 EDT (short 22:44:18-22:45:36; tests to 22:47:14; --long to 22:51:34). An earlier attempt at 22:42:54 was discarded: two verifier chains started at once and raced on raw-file decompression (FileNotFoundError on a .partial rename). Both were killed, the repository was re-cloned and the run was repeated once.",
+ "short": {
+  "status": "passed",
+  "ledger_receipts": 498,
+  "gates_failed": [
+   "G_HB"
+  ]
+ },
+ "long": {
+  "status": "passed",
+  "GLV_long_verify": {
+   "cases": 12,
+   "mismatching_cases": 0,
+   "wall_s": 204.9,
+   "cap_s": 900,
+   "passed": true
+  }
+ },
+ "tests": {
+  "module": "tests.test_release_0200_r1",
+  "ran": 4,
+  "result": "OK",
+  "wall_s": 98.34
+ },
+ "frozen_test_note": "tests.test_release_0200 in the working tree: 6 of 7 pass; test_short_verify_passes errors with the #113 message, as expected",
+ "labels": "Observed"
+}
