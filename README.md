@@ -100,7 +100,7 @@ Details: [`docs/ROADMAP_TO_GI.md`](docs/ROADMAP_TO_GI.md) (gated steps toward ge
 git clone https://github.com/jacksonjp0311-gif/Brute.git && cd Brute
 python -m pip install -r requirements.txt
 for k in 004 005 006 007 008 009 010 011 012 013 014 015 016 017; do python scripts/study${k}_storage.py restore; done   # rebuild sealed traces, checked against SEAL.json
-PYTHONPATH=. python scripts/verify_release_0200.py   # v0.20.0 (--long adds GLV)
+PYTHONPATH=. python scripts/verify_release_0200_r1.py   # v0.20.0 (--long adds GLV); the frozen verify_release_0200 rejects a dual-role commit (#113)
 PYTHONPATH=. python scripts/verify_release_0190.py   # v0.19.0 (--long adds GLV)
 PYTHONPATH=. python scripts/verify_release_0180.py   # v0.18.0 (--long adds GLV: 12 main cases re-run and audited, 900 s cap)
 PYTHONPATH=. python scripts/verify_release_0150.py   # (--long adds the 18-case transfer + ood5 re-run + second-implementation audit) seals, freezes, ledger chain, manifest, git order; regenerates paired/repro/gates byte-for-byte
@@ -604,6 +604,7 @@ New in v0.20.0:
 - **The horizon-free bound still costs late coverage.** RGL4 sits 11.3 points below the planned-horizon RGNB4 (CI [-15.5, -7.3]). *Observed.*
 - **Its runs cannot yet keep a clean heartbeat on this host.** 6 gaps over 10 s; the cause is not identified for 2 of them. *Inferred.*
 - **A gate that reads git history cannot be rescored from a git-archive tree** (#112). *Exact.*
+- **The frozen v0.20.0 release verifier had a bug** (#113). It rejected the commit `9e0ca70`, which is legitimately both the last reference commit and the first implementation commit. Verification uses `verify_release_0200_r1`. *Exact.*
 
 New in v0.19.0:
 

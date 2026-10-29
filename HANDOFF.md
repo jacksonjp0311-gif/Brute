@@ -26,7 +26,8 @@ _Kept current on the working branch during a release and on `main` at release. L
   - **Chain:** plan `f88ad1e` → lemma `e50967d` → implementation `9e0ca70` `cc53f4d` → rate math `56566e7` (#110) →
     source freeze `6bbe5ba` → scoring freeze `2d73745` → run_start `fb64c86` → run_end `5c2f0e3` → seal `7ac0edc` →
     gates `91f4af6` → #111 `d3b7020` → clean clone `bfc6c49` → #112 `40ad4c0` → git-clone rescoring `3add4b9` →
-    tooling `7435c9f` → release freeze `3a30555`.
+    tooling `7435c9f` → release freeze `3a30555` → release `fc7e082` → #113 verifier r1.
+  - **#113.** The frozen `verify_release_0200` rejects dual-role commit `9e0ca70`. Verify with `scripts/verify_release_0200_r1.py`.
   - **K_0190 declared.** v0.21.0 must declare K_0200.
   - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
   - **Next:** `NEXT_ITERATION.md` and the v0.21.0 plan (`BRUTE_PLAN_024`, plan only).

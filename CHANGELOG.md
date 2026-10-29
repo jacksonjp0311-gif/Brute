@@ -37,7 +37,7 @@
 
 ### Deviations
 
-#110 (stress cut), #111 (false start), #112 (GCC FAIL).
+#110 (stress cut), #111 (false start), #112 (GCC FAIL), #113 (the frozen release verifier rejected dual-role commit `9e0ca70`; `verify_release_0200_r1` fixes only that check).
 
 ## v0.19.0: anytime sequential margin RGNA4, streaming API brute.certify/8 (study BRUTE-0190-ANYTIME-021)
 
