@@ -1,0 +1,70 @@
+{
+  "schema": "brute.fresh_clone_verify.v1",
+  "version": "0.21.0",
+  "source": "git clone --branch plan/v0.21.0 https://github.com/jacksonjp0311-gif/Brute.git (env -u GITHUB_TOKEN -u GH_TOKEN)",
+  "cloned_head": "138ea6fbe0d241b1b488def8f8a97c776fa43174",
+  "clone_dir": "/tmp/s24/fresh0210 (scratch, removed after)",
+  "tree_dirty_after_clone": false,
+  "python": "/workspace/bgr/venv/bin/python",
+  "PYTHONPATH": ".",
+  "short": {
+    "command": "python scripts/verify_release_0210.py",
+    "rc": 0,
+    "status": "passed",
+    "ledger_receipts": 526,
+    "manifest_files": 1617,
+    "gates_passed": [
+      "G_recount",
+      "GLS_lemma",
+      "GAS_frozen_control",
+      "GS_a10",
+      "GS_ref10",
+      "GAPI10",
+      "G10",
+      "G12",
+      "G13",
+      "GTI",
+      "G_RT",
+      "G_PROC"
+    ],
+    "gates_failed": [
+      "GLS",
+      "G_HB"
+    ],
+    "api": "brute.certify/10",
+    "started": "2026-10-29T07:52:48-04:00",
+    "ended": "2026-10-29T07:54:11-04:00"
+  },
+  "long": {
+    "command": "python scripts/verify_release_0210.py --long",
+    "rc": 0,
+    "status": "passed",
+    "GLV_long_verify": {
+      "cases": 12,
+      "mismatching_cases": 0,
+      "wall_s": 296.1,
+      "cap_s": 900,
+      "passed": true
+    },
+    "ended": "2026-10-29T07:59:55-04:00"
+  },
+  "tests": {
+    "command": "python -m unittest tests.test_release_0210",
+    "rc": 0,
+    "ran": 12,
+    "result": "OK",
+    "wall_s": 120.379,
+    "ended": "2026-10-29T08:01:55-04:00"
+  },
+  "local_worktree_reference": {
+    "short": "passed",
+    "long_GLV": {
+      "cases": 12,
+      "mismatching_cases": 0,
+      "wall_s": 305.7
+    },
+    "tests": "12 OK"
+  },
+  "passed": true,
+  "label": "Observed"
+}
