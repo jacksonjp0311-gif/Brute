@@ -1,0 +1,133 @@
+{
+ "G_HB_unchanged": "max watchdog heartbeat gap <= 30 s (gated separately in GATES_023)",
+ "class_counts": {
+  "box_pause": 0,
+  "clock_step": 4,
+  "suspend": 0,
+  "unattributed": 2,
+  "watchdog_stall": 0
+ },
+ "gaps_over_10s": [
+  {
+   "ckpt_bytes_written": 0,
+   "class": "unattributed",
+   "d_boot_s": 31.413,
+   "d_mono_s": 31.413,
+   "from_wall": 1793236768.713,
+   "gap_wall_s": 31.413,
+   "jiffies_delta": {
+    "idle": 0,
+    "iowait": 0,
+    "steal": 2,
+    "system": 232,
+    "user": 3577
+   },
+   "label": "Inferred",
+   "n_desc": 10,
+   "sentinel_stall_s": 30.861,
+   "workers_cpu_s": 252.1
+  },
+  {
+   "ckpt_bytes_written": 0,
+   "class": "unattributed",
+   "d_boot_s": 24.27,
+   "d_mono_s": 24.27,
+   "from_wall": 1793237730.126,
+   "gap_wall_s": 24.27,
+   "jiffies_delta": {
+    "idle": 2,
+    "iowait": 1,
+    "steal": 0,
+    "system": 306,
+    "user": 2925
+   },
+   "label": "Inferred",
+   "n_desc": 10,
+   "sentinel_stall_s": 24.174,
+   "workers_cpu_s": 173.56
+  },
+  {
+   "ckpt_bytes_written": 0,
+   "class": "clock_step",
+   "d_boot_s": 7.493,
+   "d_mono_s": 7.492,
+   "from_wall": 1793237784.397,
+   "gap_wall_s": 39.815,
+   "jiffies_delta": {
+    "idle": 3,
+    "iowait": 0,
+    "steal": 23,
+    "system": 722,
+    "user": 3008
+   },
+   "label": "Inferred",
+   "n_desc": 10,
+   "sentinel_stall_s": 7.122,
+   "workers_cpu_s": 73.45
+  },
+  {
+   "ckpt_bytes_written": 0,
+   "class": "clock_step",
+   "d_boot_s": 7.515,
+   "d_mono_s": 7.515,
+   "from_wall": 1793238266.128,
+   "gap_wall_s": 47.558,
+   "jiffies_delta": {
+    "idle": 0,
+    "iowait": 1,
+    "steal": 5,
+    "system": 621,
+    "user": 3963
+   },
+   "label": "Inferred",
+   "n_desc": 10,
+   "sentinel_stall_s": 6.031,
+   "workers_cpu_s": 77.95
+  },
+  {
+   "ckpt_bytes_written": 187338,
+   "class": "clock_step",
+   "d_boot_s": 4.118,
+   "d_mono_s": 4.118,
+   "from_wall": 1793238793.645,
+   "gap_wall_s": 32.155,
+   "jiffies_delta": {
+    "idle": 283,
+    "iowait": 5,
+    "steal": 4,
+    "system": 390,
+    "user": 4125
+   },
+   "label": "Inferred",
+   "n_desc": 8,
+   "sentinel_stall_s": 2.71,
+   "workers_cpu_s": 49.55
+  },
+  {
+   "ckpt_bytes_written": 310,
+   "class": "clock_step",
+   "d_boot_s": 5.42,
+   "d_mono_s": 5.42,
+   "from_wall": 1793239753.773,
+   "gap_wall_s": 31.293,
+   "jiffies_delta": {
+    "idle": 190,
+    "iowait": 0,
+    "steal": 4,
+    "system": 214,
+    "user": 2825
+   },
+   "label": "Inferred",
+   "n_desc": 9,
+   "sentinel_stall_s": 4.261,
+   "workers_cpu_s": 49.69
+  }
+ ],
+ "gated": false,
+ "heartbeats": 2511,
+ "label": "Inferred (classes are readings of clock / CPU evidence)",
+ "max_sentinel_tick_gap_s": 30.861,
+ "max_watchdog_gap_s": 47.558,
+ "schema": "brute.heartbeat-attribution.v1",
+ "sentinel_records": 2498
+}
