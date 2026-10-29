@@ -1,0 +1,74 @@
+{
+  "commit": "f0ac6d40061fa5055d92692f23ab7783f9d2b12a",
+  "elapsed_informational_s": 23.7,
+  "passed": true,
+  "schema": "brute.clean-clone.v4",
+  "scoring_inputs": {
+    "gz_restored": [
+      "results/study-024/transfer/RESULTS.json",
+      "results/study-024/transfer/SCIENTIFIC.json",
+      "results/study-024/repro/reproset/RESULTS.json",
+      "results/study-024/repro/reproset/SCIENTIFIC.json"
+    ],
+    "tracked": [
+      "results/study-024/transfer/SEAL.json",
+      "results/study-024/repro/reproset/SEAL.json",
+      "results/study-024/PAIRED_ANALYSIS_024.json",
+      "results/study-024/REPRODUCIBILITY_024.json",
+      "results/study-024/SECOND_IMPLEMENTATION_024.json",
+      "results/study-024/TEST_SUITE_024.json",
+      "results/study-024/RUN_STATE_024.json",
+      "results/study-024/RUN_T0",
+      "results/study-024/HEARTBEAT_024.jsonl",
+      "results/study-024/SEAL.json",
+      "results/study-024/GATES_024.json",
+      "results/study-024/RUN_024.log",
+      "results/study-024/LAUNCH_024.json",
+      "results/study-024/LIVE_REFUSAL_024.json",
+      "experiments/COMMIT_ORDER_024.json",
+      "experiments/BRUTE_SOURCE_FREEZE_024.json",
+      "results/RESEARCH_LEDGER.jsonl",
+      "results/study-023/PAIRED_ANALYSIS_023.json",
+      "results/diag-024/HN_RECOUNT_024.json",
+      "results/smoke-024/KILL_DRILL_024.json",
+      "results/smoke-024/RESUME_DRILL_024.json",
+      "results/smoke-024/API_CHECK_024.json"
+    ],
+    "tracked_if_present": [
+      "results/study-024/RUN_DONE_024.json",
+      "results/study-024/STOP_024.json",
+      "results/study-024/STOP_024_ORCHESTRATOR.json",
+      "results/study-024/HB_SENTINEL_024.jsonl",
+      "results/study-024/HEARTBEAT_ATTRIBUTION_024.json",
+      "results/diag-024/EARLY_WINDOW_024.json",
+      "results/diag-024/HOST_PAUSE_PROBE_024.json"
+    ]
+  },
+  "steps": {
+    "make_gates_024": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "GATES_024.json reproduces\n"
+    },
+    "make_paired_024": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "PAIRED_ANALYSIS_024 reproduces\n"
+    },
+    "make_reproducibility_024": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "REPRODUCIBILITY_024 reproduces\n"
+    },
+    "restore": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "True\n"
+    }
+  },
+  "tracked": {
+    "missing_from_tree": [],
+    "passed": true,
+    "raw_json_committed_unexpectedly": []
+  }
+}
