@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-28 ~22:45 EDT (v0.20.0 release in progress on `plan/v0.20.0`)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-28 ~22:55 EDT (v0.20.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0200 -->
-- **v0.20.0: release in progress** (study BRUTE-0200-LR-ANYTIME-023, branch `plan/v0.20.0`). **12 of 13 gated pass.**
+- **v0.20.0: RELEASED** 2026-10-28 (tag `v0.20.0` → `c42e6f4`; main fast-forwarded; https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.20.0; fresh-clone verify passed short and --long with `verify_release_0200_r1`). Study BRUTE-0200-LR-ANYTIME-023. **12 of 13 gated pass.**
   - **Headline GLR (likelihood-ratio anytime bound): PASS, clauses a-e.**
     - RGL4: 0 false certificates on 240 of 240 noisy main cases; CP95 0.0124.
     - C_late at eps 0.02: 0.417 [0.376, 0.459].
@@ -30,7 +30,8 @@ _Kept current on the working branch during a release and on `main` at release. L
   - **#113.** The frozen `verify_release_0200` rejects dual-role commit `9e0ca70`. Verify with `scripts/verify_release_0200_r1.py`.
   - **K_0190 declared.** v0.21.0 must declare K_0200.
   - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
-  - **Next:** `NEXT_ITERATION.md` and the v0.21.0 plan (`BRUTE_PLAN_024`, plan only).
+  - **#114.** Five post-run ledger notes carry hand-typed times; git commit times are authoritative.
+  - **Next:** `NEXT_ITERATION.md` and the v0.21.0 plan (`BRUTE_PLAN_024` on branch `plan/v0.21.0`, plan only; build not authorized).
 
 <!-- V0190 -->
 - **Released: v0.19.0** — tag `v0.19.0` (annotated, object `bbd1c61`) on `f0bbfb6`, release https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.19.0; `main` fast-forwarded `4a644a9..f0bbfb6` (no force) (study BRUTE-0190-ANYTIME-021, branch `plan/v0.19.0` from main `4a644a9`). **12 of 14 gated pass.** Fresh GitHub clone of `plan/v0.19.0@3f77b17`: short verify passed (469 receipts), `--long` GLV 12 cases / 0 mismatching / 165.0 s (cap 900 s), `tests.test_release_0190` 7 OK; record `docs/research/v0.19.0/FRESH_CLONE_VERIFY_0190.json`. Local `--long`: 12 / 0 / 152.0 s. #107 header says written ~17:35 EDT; the commit is earlier (see git log), kept (ledger-hashed).
