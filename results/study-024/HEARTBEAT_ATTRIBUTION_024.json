@@ -1,0 +1,57 @@
+{
+ "G_HB_unchanged": "max watchdog heartbeat gap <= 10 s, not loosened (gated separately in GATES_024)",
+ "class_counts": {
+  "box_pause": 0,
+  "clock_step": 2,
+  "suspend": 0,
+  "unattributed": 0,
+  "watchdog_stall": 0
+ },
+ "gaps_over_10s": [
+  {
+   "ckpt_bytes_written": 0,
+   "class": "clock_step",
+   "d_boot_s": 4.301,
+   "d_mono_s": 4.301,
+   "from_wall": 1793268317.91,
+   "gap_wall_s": 31.674,
+   "jiffies_delta": {
+    "idle": 3,
+    "iowait": 0,
+    "steal": 4,
+    "system": 507,
+    "user": 3470
+   },
+   "label": "Inferred",
+   "n_desc": 10,
+   "sentinel_stall_s": 3.125,
+   "workers_cpu_s": 45.54
+  },
+  {
+   "ckpt_bytes_written": 195012,
+   "class": "clock_step",
+   "d_boot_s": 6.325,
+   "d_mono_s": 6.325,
+   "from_wall": 1793271261.584,
+   "gap_wall_s": 35.829,
+   "jiffies_delta": {
+    "idle": 3,
+    "iowait": 0,
+    "steal": 3,
+    "system": 466,
+    "user": 3838
+   },
+   "label": "Inferred",
+   "n_desc": 10,
+   "sentinel_stall_s": 4.51,
+   "workers_cpu_s": 61.4
+  }
+ ],
+ "gated": false,
+ "heartbeats": 2891,
+ "label": "Inferred (classes are readings of clock / CPU evidence)",
+ "max_sentinel_tick_gap_s": 4.51,
+ "max_watchdog_gap_s": 35.829,
+ "schema": "brute.heartbeat-attribution.v1",
+ "sentinel_records": 2881
+}

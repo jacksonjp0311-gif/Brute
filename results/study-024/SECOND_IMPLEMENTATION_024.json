@@ -1,0 +1,255 @@
+{
+ "audit_wall_informational": 2390.1,
+ "cases_audited": 390,
+ "cases_expected": 390,
+ "cases_not_reached": 0,
+ "events": {
+  "audit_done": {
+   "event": "audit_done",
+   "t": 1793273463.867942
+  },
+  "done": {
+   "event": "done",
+   "t": 1793273485.423848
+  },
+  "mutation": {
+   "detected_injected": 20,
+   "distinct_cases": 20,
+   "event": "mutation",
+   "flagged_not_injected": 0,
+   "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+   "injected": 20,
+   "injected_on_already_mismatching_case": 0,
+   "kinds": {
+    "B": 1,
+    "M": 1,
+    "T": 1,
+    "T5": 2,
+    "attain5": 1,
+    "counts5": 1,
+    "epoch": 1,
+    "epochs_delta": 1,
+    "flips": 1,
+    "observed": 1,
+    "prefix28_rgl5": 1,
+    "rgl5_cert": 2,
+    "rgl_cert": 1,
+    "support": 1,
+    "support5": 2,
+    "witness5": 1,
+    "wrong5": 1
+   },
+   "passed": true,
+   "rng": "random.Random(20261029)"
+  },
+  "start": {
+   "event": "start",
+   "t": 1793272864.5995376
+  }
+ },
+ "gated_cases_audited": 360,
+ "gated_cases_expected": 360,
+ "gated_mismatching_cases": 0,
+ "mismatches": [],
+ "mismatching_cases": 0,
+ "mutation_test": {
+  "details": [
+   {
+    "case": "cycle3/9010015/0.01",
+    "changed_sections": [
+     "certifiers"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGL4 trace"
+   },
+   {
+    "case": "cycle3/9010018/0.0",
+    "changed_sections": [
+     "B"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: B 111 != 110"
+   },
+   {
+    "case": "cycle3/9010018/0.02",
+    "changed_sections": [
+     "prefix28_rgl5"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: prefix28_rgl5 certifier trace"
+   },
+   {
+    "case": "cycle3/9010021/0.02",
+    "changed_sections": [
+     "noisy"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGL4 step 43 action 0: [1, 2, 3] != [0, 1, 2, 3]"
+   },
+   {
+    "case": "cycle3/9010023/0.02",
+    "changed_sections": [
+     "noisy"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGL5 step 40 action 0: [3] != [1, 3]"
+   },
+   {
+    "case": "ood4/9040004/0.0",
+    "changed_sections": [
+     "lr"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: lr step 2 T 2 != witness rule 1"
+   },
+   {
+    "case": "ood4/9040014/0.01",
+    "changed_sections": [
+     "lr5"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: lr5 step 59 attain"
+   },
+   {
+    "case": "ood4/9040015/0.01",
+    "changed_sections": [
+     "lr5"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: lr5 step 55 T 8 != witness rule 7"
+   },
+   {
+    "case": "ood4/9040018/0.0",
+    "changed_sections": [
+     "lr5"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: lr5 step 83 witness n=4 flips 0 > -1"
+   },
+   {
+    "case": "ood4/9040028/0.02",
+    "changed_sections": [
+     "lr5"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: lr5 stitched margin M"
+   },
+   {
+    "case": "ood4/9040038/0.0",
+    "changed_sections": [
+     "lr5"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: lr5 step 58 T 7 != witness rule 6"
+   },
+   {
+    "case": "switch3/9020010/0.01",
+    "changed_sections": [
+     "lr5"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: lr5 epochs"
+   },
+   {
+    "case": "switch3/9020010/0.02",
+    "changed_sections": [
+     "realized_flips"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: realized_flips 1 != 0"
+   },
+   {
+    "case": "switch3/9020011/0.01",
+    "changed_sections": [
+     "certifiers"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGL5 trace"
+   },
+   {
+    "case": "switch3/9020018/0.02",
+    "changed_sections": [
+     "certifiers"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGL5 false_certificates"
+   },
+   {
+    "case": "switch3/9020020/0.01",
+    "changed_sections": [
+     "lr5"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: lr5 epoch per step"
+   },
+   {
+    "case": "switch3/9020024/0.02",
+    "changed_sections": [
+     "arms"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: reading 39 bit 1: observed 0 vs latent 3 flip 0"
+   },
+   {
+    "case": "unaliased2/9030006/0.01",
+    "changed_sections": [
+     "noisy"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGL5 step 78 action 0: [1, 3] != [0, 1, 3]"
+   },
+   {
+    "case": "unaliased2/9030014/0.02",
+    "changed_sections": [
+     "certifiers"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGL5 trace"
+   },
+   {
+    "case": "unaliased2/9030020/0.01",
+    "changed_sections": [
+     "certifiers"
+    ],
+    "detected": true,
+    "first_difference": "VerificationError: RGL5 trace"
+   }
+  ],
+  "detected_injected": 20,
+  "distinct_cases": 20,
+  "event": "mutation",
+  "flagged_not_injected": 0,
+  "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+  "injected": 20,
+  "injected_on_already_mismatching_case": 0,
+  "kinds": {
+   "B": 1,
+   "M": 1,
+   "T": 1,
+   "T5": 2,
+   "attain5": 1,
+   "counts5": 1,
+   "epoch": 1,
+   "epochs_delta": 1,
+   "flips": 1,
+   "observed": 1,
+   "prefix28_rgl5": 1,
+   "rgl5_cert": 2,
+   "rgl_cert": 1,
+   "support": 1,
+   "support5": 2,
+   "witness5": 1,
+   "wrong5": 1
+  },
+  "passed": true,
+  "rng": "random.Random(20261029)"
+ },
+ "passed": true,
+ "results_file": "/workspace/brute/results/study-024/transfer/RESULTS.json",
+ "results_sha256": "58dedb3dd279375e9e5964b43ecbfa653e203c89364b42019482f4eca4f4e69a",
+ "schema": "brute.second-implementation-024.v1",
+ "scope": "88-step main and stress cases: RGL5 (stitched margin M from exact epoch deltas, T5 witness rule vs exhaustive fmin_n, supports, certificates, summary, prefix28_rgl5), RGL4 (exhaustive fmin_n for n <= 3, witness recheck for n = 4, D_n, T(b) = min(T_L, m_a), supports and certificates), RGNA4 / RGNB4 (eps 0.02) / RGN4_or supports, RegionSpace(4) supports at m = 0, RG4 certificates, counts, window summaries (late 45-88, early 1-28, per step), and the 28-action RGL4 prefix control on eps-0.02 cases",
+ "source_sha256": "1deca4ee4cea6660b1080d829602950e2778ffc06fb84d84ce368d38d6c5dc72",
+ "study": "BRUTE-0210-STITCHED-LR-024",
+ "wording": "second implementation by the same author, no brute import; not an independent or third-party audit"
+}
