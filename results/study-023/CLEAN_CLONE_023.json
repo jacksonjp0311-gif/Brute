@@ -1,0 +1,64 @@
+{
+  "commit": "e881b6b18c899bb8179a23e1e404566ad2a174ea",
+  "elapsed_informational_s": 21.4,
+  "passed": false,
+  "schema": "brute.clean-clone.v3",
+  "scoring_inputs": {
+    "gz_restored": [
+      "results/study-023/transfer/RESULTS.json",
+      "results/study-023/transfer/SCIENTIFIC.json",
+      "results/study-023/repro/reproset/RESULTS.json",
+      "results/study-023/repro/reproset/SCIENTIFIC.json"
+    ],
+    "tracked": [
+      "results/study-023/transfer/SEAL.json",
+      "results/study-023/repro/reproset/SEAL.json",
+      "results/study-023/PAIRED_ANALYSIS_023.json",
+      "results/study-023/REPRODUCIBILITY_023.json",
+      "results/study-023/SECOND_IMPLEMENTATION_023.json",
+      "results/study-023/TEST_SUITE_023.json",
+      "results/study-023/RUN_STATE_023.json",
+      "results/study-023/RUN_T0",
+      "results/study-023/HEARTBEAT_023.jsonl",
+      "results/study-023/SEAL.json",
+      "results/study-023/GATES_023.json",
+      "results/smoke-023/KILL_DRILL_023.json",
+      "results/smoke-023/RESUME_DRILL_023.json",
+      "results/smoke-023/API_CHECK_023.json"
+    ],
+    "tracked_if_present": [
+      "results/study-023/RUN_DONE_023.json",
+      "results/study-023/STOP_023.json",
+      "results/study-023/STOP_023_ORCHESTRATOR.json",
+      "results/study-023/HB_SENTINEL_023.jsonl",
+      "results/study-023/HEARTBEAT_ATTRIBUTION_023.json"
+    ]
+  },
+  "steps": {
+    "make_gates_023": {
+      "returncode": 1,
+      "stderr_tail": "Traceback (most recent call last):\n  File \"/tmp/brute-clean-023-292izdv_/scripts/make_gates_023.py\", line 456, in <module>\n    if a.check:check(out.read_bytes()==dumps(obj),out.name+' does not reproduce');print(out.name,'reproduces')\n               ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/brute-clean-023-292izdv_/experiments/brute_common.py\", line 15, in check\n    if not cond:raise VerificationError(msg)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nexperiments.brute_common.VerificationError: GATES_023.json does not reproduce\n",
+      "stdout_tail": ""
+    },
+    "make_paired_023": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "PAIRED_ANALYSIS_023 reproduces\n"
+    },
+    "make_reproducibility_023": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "REPRODUCIBILITY_023 reproduces\n"
+    },
+    "restore": {
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "True\n"
+    }
+  },
+  "tracked": {
+    "missing_from_tree": [],
+    "passed": true,
+    "raw_json_committed_unexpectedly": []
+  }
+}
