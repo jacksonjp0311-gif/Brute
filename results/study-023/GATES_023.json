@@ -1,0 +1,5652 @@
+{
+  "GLR": true,
+  "G_HB": false,
+  "G_RT": true,
+  "all_gated_pass": false,
+  "criteria_registered": [
+    "G10",
+    "G12",
+    "G13",
+    "GAPI10",
+    "GAS_frozen_control",
+    "GLR",
+    "GLR_lemma",
+    "GS_a10",
+    "GS_ref10",
+    "GTI",
+    "G_HB",
+    "G_RT",
+    "G_recount"
+  ],
+  "criteria_scored": [
+    "G10",
+    "G12",
+    "G13",
+    "GAPI10",
+    "GAS_frozen_control",
+    "GLR",
+    "GLR_lemma",
+    "GS_a10",
+    "GS_ref10",
+    "GTI",
+    "G_HB",
+    "G_RT",
+    "G_recount"
+  ],
+  "failed": [
+    "G_HB"
+  ],
+  "gates": {
+    "G10": {
+      "gated": true,
+      "observed": {
+        "by_part": {
+          "main": 360,
+          "stress": 30
+        },
+        "cases": 390,
+        "expected": 390,
+        "prefix28_expected": 120,
+        "prefix28_records": 120,
+        "queries": {
+          "RGL4": {
+            "queries": 68640,
+            "unknown_gt0": 0
+          },
+          "RGN4_or": {
+            "queries": 68640,
+            "unknown_gt0": 0
+          },
+          "RGNA4": {
+            "queries": 68640,
+            "unknown_gt0": 0
+          },
+          "RGNB4": {
+            "queries": 21120,
+            "unknown_gt0": 0
+          },
+          "bounded4": {
+            "queries": 68640,
+            "unknown_gt0": 0
+          },
+          "prefix28": {
+            "queries": 6720,
+            "unknown_gt0": 0
+          }
+        },
+        "traces_88_steps": {
+          "RG4": true,
+          "RGL4": true,
+          "RGN4_or": true,
+          "RGNA4": true,
+          "RGNB4": true,
+          "SP8": true,
+          "prefix28": true
+        },
+        "unknown_gt0_fraction": {
+          "RGL4": 0.0,
+          "RGN4_or": 0.0,
+          "RGNA4": 0.0,
+          "RGNB4": 0.0,
+          "bounded4": 0.0,
+          "prefix28": 0.0
+        }
+      },
+      "pass": true
+    },
+    "G12": {
+      "gated": true,
+      "observed": {
+        "transfer": {
+          "byte_identical": 60,
+          "expected": 60,
+          "failing_differences": [],
+          "main_scientific_sha256": "91ce7bc9f3c278e7cff1464a8e655dec86f8234980c8845f180922b2c1b399a0",
+          "missing": [],
+          "passed": true,
+          "repro_complete": true,
+          "repro_scientific_sha256": "ae1c4fa46af6829e42698090b00f8b9878f1ac40c2428362ed154ede24aeef1a",
+          "rerun": 60,
+          "unexpected": []
+        }
+      },
+      "pass": true
+    },
+    "G13": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "cases_use_plan013_tau6": true,
+          "cert_arm_is_frozen_v0170": true,
+          "cert_rule_reproduces_RGL4_RGNA4_RGNB4_RGN4_or": true,
+          "freeze_chain_holds": true,
+          "rg4_reproduces": true,
+          "rg_sp8_are_frozen_v0120": true,
+          "seal_of_current_plan_and_freeze": true,
+          "v0170_sources_frozen": true,
+          "v0180_sources_frozen": true,
+          "v0190_sources_frozen": true
+        },
+        "freeze_error": null,
+        "rg4_not_reproduced": [],
+        "rgn_not_reproduced": [],
+        "smoke_dry_run_relaxed": false
+      },
+      "pass": true
+    },
+    "GAPI10": {
+      "gated": true,
+      "observed": {
+        "api_check": {
+          "api": "brute.certify/9",
+          "cases_checked": 4,
+          "gate": "GAPI10 (smoke-api part)",
+          "passed": true,
+          "results_file": "/tmp/s23/api/RESULTS.json",
+          "results_sha256": "c5268ed0288f8d33dd8e41a4cada040732beb8c74e02d332e65d7e10aafc1137",
+          "schema": "brute.api-check-023.v1",
+          "wall_informational": 57.5
+        },
+        "certify9_probe": {
+          "anytime_equals_certify8": true,
+          "api": "brute.certify/9",
+          "default_answer_method": "lr",
+          "default_method": "lr",
+          "error": null,
+          "methods": [
+            "lr",
+            "anytime"
+          ],
+          "soundness_lr": {
+            "anytime": true,
+            "conditional_on": "iid flips with eps <= eps_bar independent of actions and mask, and n* <= family_bound",
+            "delta": 0.01,
+            "kind": "probabilistic",
+            "method": "lr"
+          }
+        },
+        "clauses": {
+          "anytime_equals_certify8": true,
+          "certify7_unchanged": true,
+          "certify8_unchanged": true,
+          "certify9_present": true,
+          "default_method_lr": true,
+          "host_agnostic_source_scan": true,
+          "methods_lr_anytime": true,
+          "smoke_api_supports_equal": true,
+          "tests_ok_inside_gti": true
+        },
+        "results": {
+          "test_certify9_0200.py": {
+            "test_certify9_0200.Certify90200.test_anytime_equals_certify8": [
+              "ok",
+              null
+            ],
+            "test_certify9_0200.Certify90200.test_host_agnostic": [
+              "ok",
+              null
+            ],
+            "test_certify9_0200.Certify90200.test_lr_stream_equals_batch": [
+              "ok",
+              null
+            ],
+            "test_certify9_0200.Certify90200.test_older_apis_unchanged": [
+              "ok",
+              null
+            ],
+            "test_certify9_0200.Certify90200.test_three_actions": [
+              "ok",
+              null
+            ],
+            "test_certify9_0200.Certify90200.test_validation": [
+              "ok",
+              null
+            ]
+          },
+          "test_lrregion_0200.py": {
+            "test_lrregion_0200.LRRegion0200.test_bound_equals_reference": [
+              "ok",
+              null
+            ],
+            "test_lrregion_0200.LRRegion0200.test_eps0_is_exact": [
+              "ok",
+              null
+            ],
+            "test_lrregion_0200.LRRegion0200.test_offsets": [
+              "ok",
+              null
+            ]
+          }
+        }
+      },
+      "pass": true
+    },
+    "GAS_frozen_control": {
+      "gated": true,
+      "observed": {
+        "C_late_RGNA4_eps2": [
+          0.225095,
+          [
+            0.185414,
+            0.267708
+          ]
+        ],
+        "rule": "95% CI intersects the study-021 CI (inclusive)",
+        "study021_ci": [
+          0.214962,
+          0.317332
+        ]
+      },
+      "pass": true
+    },
+    "GLR": {
+      "gated": true,
+      "observed": {
+        "C_late_RGL4_eps2": [
+          0.41714,
+          [
+            0.376039,
+            0.458523
+          ]
+        ],
+        "C_late_RGN4_or_eps2": [
+          0.81875,
+          [
+            0.782102,
+            0.854261
+          ]
+        ],
+        "C_late_RGNA4_eps2": [
+          0.225095,
+          [
+            0.185414,
+            0.267708
+          ]
+        ],
+        "C_late_RGNB4_eps2": [
+          0.530398,
+          [
+            0.476894,
+            0.584375
+          ]
+        ],
+        "case_false": 0,
+        "case_false_examples": [],
+        "clauses": {
+          "a_zero_false_all_noisy_main": true,
+          "b_cp_upper_le_0.05": true,
+          "c_C_late_eps2_mean_ge_0.35_and_ci_lower_gt_0.30": true,
+          "d_dC_late_RGL4_RGNA4_eps2_mean_ge_0.08_and_ci_lower_gt_0.05": true,
+          "e_prefix28_identical_all_eps2": true
+        },
+        "cp_upper_95_one_sided": 0.01240464,
+        "dC_late_RGL4_RGNA4_eps2": [
+          0.192045,
+          [
+            0.161645,
+            0.223106
+          ]
+        ],
+        "false_certificates_RGL4": 0,
+        "noisy_cases": 240,
+        "prefix28": {
+          "eps2_cases": 120,
+          "mismatches": [],
+          "records": 120
+        }
+      },
+      "pass": true
+    },
+    "GLR_lemma": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "D_table_exact_3_4_5_7": true,
+          "hn_recount_passed": true,
+          "lemma_committed_before_rgl4_code": true
+        },
+        "first_lrregion_commit": "9e0ca7085af8aca590acf296d4df0df8f1142ff7",
+        "hn_recount": {
+          "D": {
+            "1": 3,
+            "2": 4,
+            "3": 5,
+            "4": 7
+          },
+          "H": {
+            "1": 4,
+            "2": 512,
+            "3": 139968,
+            "4": 67108864
+          },
+          "PASS": true
+        },
+        "lemma_commit": "e50967d15e5d82da122f302439faff893d8fa780",
+        "ref_D": [
+          3,
+          4,
+          5,
+          7
+        ]
+      },
+      "pass": true
+    },
+    "GS_a10": {
+      "gated": true,
+      "observed": {
+        "RG4_false_eps0": 0,
+        "RGL4_recomputed_false": 0,
+        "RGL4_recorded_false": 0,
+        "RGNA4_false_eps0": 0,
+        "eps0_cases": 120
+      },
+      "pass": true
+    },
+    "GS_ref10": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "all_gated_cases_audited": true,
+          "mutation_20_of_20": true,
+          "results_sha_matches_seal": true,
+          "zero_gated_mismatching": true
+        },
+        "gated_expected": 360,
+        "mutation": {
+          "detected_injected": 20,
+          "distinct_cases": 20,
+          "event": "mutation",
+          "flagged_not_injected": 0,
+          "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+          "injected": 20,
+          "injected_on_already_mismatching_case": 0,
+          "kinds": {
+            "B": 1,
+            "T": 2,
+            "anytime": 1,
+            "attain": 1,
+            "boundary": 1,
+            "counts": 1,
+            "crossing": 1,
+            "flips": 1,
+            "lr_boundary": 1,
+            "observed": 1,
+            "prefix28": 1,
+            "rg4_cert": 1,
+            "rgl_cert": 2,
+            "rgn_cert": 1,
+            "support": 2,
+            "witness": 1,
+            "wrong": 1
+          },
+          "passed": true,
+          "rng": "random.Random(20261028)"
+        },
+        "report": {
+          "audit_wall_informational": 1688.6,
+          "cases_audited": 390,
+          "cases_expected": 390,
+          "cases_not_reached": 0,
+          "gated_cases_audited": 360,
+          "gated_cases_expected": 360,
+          "gated_mismatching_cases": 0,
+          "mismatching_cases": 0,
+          "passed": true,
+          "results_file": "/workspace/brute/results/study-023/transfer/RESULTS.json",
+          "results_sha256": "6ff1d0004cd1cbeb844c6da374ef4005dcb32d551516358cf67e2f6bbdcbd602",
+          "schema": "brute.second-implementation-023.v1",
+          "scope": "88-step main and stress cases: RGL4 (exhaustive fmin_n for n <= 3, witness recheck for n = 4, D_n, T(b) = min(T_L, m_a), supports and certificates), RGNA4 / RGNB4 (eps 0.02) / RGN4_or supports, RegionSpace(4) supports at m = 0, RG4 certificates, counts, window summaries (late 45-88, early 1-28, per step), and the 28-action RGL4 prefix control on eps-0.02 cases",
+          "source_sha256": "f9ff014de6418f7f5adeae0cf79f749e8439a8a3f3d10f7f9137c82935272c7b",
+          "study": "BRUTE-0200-LR-ANYTIME-023",
+          "wording": "second implementation by the same author, no brute import; not an independent or third-party audit"
+        },
+        "wording": "second implementation by the same author"
+      },
+      "pass": true
+    },
+    "GTI": {
+      "gated": true,
+      "observed": {
+        "clauses": {
+          "K_0190_declared": true,
+          "clause_vi_tooling_order": true,
+          "tracked_tree_clean_at_start": true,
+          "verdict_passed": true
+        },
+        "clean_tag_runs": {
+          "0100": {
+            "test_release_0100.Corruption0100.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0100.Release0100.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0110": {
+            "test_release_0110.Corruption0110.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0110.Release0110.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0120": {
+            "test_release_0120.Corruption0120.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0120.Release0120.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0130": {
+            "test_release_0130.Corruption0130.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0130.Release0130.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0140": {
+            "test_release_0140.Corruption0140.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0140.Release0140.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0140.Release0140.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0140.Release0140.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0140.Release0140.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0140.Release0140.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0140.Release0140.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0150": {
+            "test_release_0150.Corruption0150.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0150.Release0150.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0150.Release0150.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0150.Release0150.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0150.Release0150.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0150.Release0150.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0150.Release0150.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0160": {
+            "test_release_0160.Corruption0160.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0160.Release0160.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0160.Release0160.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0160.Release0160.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0160.Release0160.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0160.Release0160.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0160.Release0160.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0170": {
+            "test_release_0170.Corruption0170.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0170.Release0170.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0170.Release0170.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0170.Release0170.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0170.Release0170.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0170.Release0170.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0170.Release0170.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0180": {
+            "test_release_0180.Corruption0180.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_0180.Release0180.test_embeddable_api_answers": [
+              "ok",
+              null
+            ],
+            "test_release_0180.Release0180.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_0180.Release0180.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0180.Release0180.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_0180.Release0180.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_0180.Release0180.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "0190": null,
+          "060": {
+            "test_release_060.GT1.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_060.GT1.test_frozen_050_defect_still_recorded": [
+              "ok",
+              null
+            ],
+            "test_release_060.Release060.test_fast_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_060.Release060.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_060.Release060.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "070": {
+            "test_release_070.Corruption070.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_070.Release070.test_fast_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_070.Release070.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_070.Release070.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_070.Release070.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "080": {
+            "test_release_080.Corruption080.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_080.Release080.test_fast_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_080.Release080.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_080.Release080.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_080.Release080.test_version_consistent": [
+              "ok",
+              null
+            ]
+          },
+          "090": {
+            "test_release_090.Corruption090.test_every_artifact_every_mode_raises_verification_error": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_scoring_inputs_tracked": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_short_verify_passes": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_storage_round_trip": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_untampered_copy_passes": [
+              "ok",
+              null
+            ],
+            "test_release_090.Release090.test_version_consistent": [
+              "ok",
+              null
+            ]
+          }
+        },
+        "dirty_tracked_files": [],
+        "head": "fb64c86b9b08a6de64a66d68c29892b7957a8221",
+        "run": "in-cap",
+        "tracked_tree_dirty": false,
+        "verdict": {
+          "clauses": {
+            "i_only_declared_failures": true,
+            "ii_test_study_005_six_pass": true,
+            "iii_counts_match_plain": true,
+            "iv_frozen_unchanged": true,
+            "v_new_tests_pass": true,
+            "vi_tooling_order": true
+          },
+          "failing": [
+            "test_brute_repro.BruteRepro.test_verify_fails_under_tampered_results",
+            "test_release_0100.Release0100.test_short_verify_passes",
+            "test_release_0100.Release0100.test_untampered_copy_passes",
+            "test_release_0100.Release0100.test_version_consistent",
+            "test_release_011.ReleaseV011.test_fast_verify_passes",
+            "test_release_0110.Release0110.test_embeddable_api_answers",
+            "test_release_0110.Release0110.test_short_verify_passes",
+            "test_release_0110.Release0110.test_untampered_copy_passes",
+            "test_release_0110.Release0110.test_version_consistent",
+            "test_release_0120.Release0120.test_embeddable_api_answers",
+            "test_release_0120.Release0120.test_short_verify_passes",
+            "test_release_0120.Release0120.test_untampered_copy_passes",
+            "test_release_0120.Release0120.test_version_consistent",
+            "test_release_0130.Release0130.test_embeddable_api_answers",
+            "test_release_0130.Release0130.test_short_verify_passes",
+            "test_release_0130.Release0130.test_untampered_copy_passes",
+            "test_release_0130.Release0130.test_version_consistent",
+            "test_release_0140.Release0140.test_embeddable_api_answers",
+            "test_release_0140.Release0140.test_short_verify_passes",
+            "test_release_0140.Release0140.test_untampered_copy_passes",
+            "test_release_0140.Release0140.test_version_consistent",
+            "test_release_0150.Release0150.test_embeddable_api_answers",
+            "test_release_0150.Release0150.test_short_verify_passes",
+            "test_release_0150.Release0150.test_untampered_copy_passes",
+            "test_release_0150.Release0150.test_version_consistent",
+            "test_release_0160.Release0160.test_embeddable_api_answers",
+            "test_release_0160.Release0160.test_short_verify_passes",
+            "test_release_0160.Release0160.test_untampered_copy_passes",
+            "test_release_0160.Release0160.test_version_consistent",
+            "test_release_0170.Release0170.test_embeddable_api_answers",
+            "test_release_0170.Release0170.test_short_verify_passes",
+            "test_release_0170.Release0170.test_untampered_copy_passes",
+            "test_release_0170.Release0170.test_version_consistent",
+            "test_release_0180.Release0180.test_embeddable_api_answers",
+            "test_release_0180.Release0180.test_short_verify_passes",
+            "test_release_0180.Release0180.test_untampered_copy_passes",
+            "test_release_0180.Release0180.test_version_consistent",
+            "test_release_020.ReleaseV020.test_fast_verify_passes",
+            "test_release_030.ReleaseV030.test_fast_verify_passes",
+            "test_release_040.ReleaseVersioned.test_fast_verify_passes",
+            "test_release_040.ReleaseVersioned.test_git_order",
+            "test_release_040.ReleaseVersioned.test_tampered_copies_fail",
+            "test_release_040.ReleaseVersioned.test_untampered_copy_passes",
+            "test_release_040.ReleaseVersioned.test_version_consistent",
+            "test_release_050.ReleaseVersioned.test_fast_verify_passes",
+            "test_release_050.ReleaseVersioned.test_git_order",
+            "test_release_050.ReleaseVersioned.test_tampered_copies_fail",
+            "test_release_050.ReleaseVersioned.test_untampered_copy_passes",
+            "test_release_050.ReleaseVersioned.test_version_consistent",
+            "test_release_060.Release060.test_fast_verify_passes",
+            "test_release_060.Release060.test_untampered_copy_passes",
+            "test_release_060.Release060.test_version_consistent",
+            "test_release_070.Release070.test_fast_verify_passes",
+            "test_release_070.Release070.test_untampered_copy_passes",
+            "test_release_070.Release070.test_version_consistent",
+            "test_release_080.Release080.test_fast_verify_passes",
+            "test_release_080.Release080.test_untampered_copy_passes",
+            "test_release_080.Release080.test_version_consistent",
+            "test_release_090.Release090.test_short_verify_passes",
+            "test_release_090.Release090.test_untampered_copy_passes",
+            "test_release_090.Release090.test_version_consistent",
+            "test_scripts_017.Orchestrator017.test_streams"
+          ],
+          "k_rules": {
+            "0100": {
+              "applied": true,
+              "failures": [
+                "test_release_0100.Release0100.test_short_verify_passes",
+                "test_release_0100.Release0100.test_untampered_copy_passes",
+                "test_release_0100.Release0100.test_version_consistent"
+              ]
+            },
+            "0110": {
+              "applied": true,
+              "failures": [
+                "test_release_0110.Release0110.test_embeddable_api_answers",
+                "test_release_0110.Release0110.test_short_verify_passes",
+                "test_release_0110.Release0110.test_untampered_copy_passes",
+                "test_release_0110.Release0110.test_version_consistent"
+              ]
+            },
+            "0120": {
+              "applied": true,
+              "failures": [
+                "test_release_0120.Release0120.test_embeddable_api_answers",
+                "test_release_0120.Release0120.test_short_verify_passes",
+                "test_release_0120.Release0120.test_untampered_copy_passes",
+                "test_release_0120.Release0120.test_version_consistent"
+              ]
+            },
+            "0130": {
+              "applied": true,
+              "failures": [
+                "test_release_0130.Release0130.test_embeddable_api_answers",
+                "test_release_0130.Release0130.test_short_verify_passes",
+                "test_release_0130.Release0130.test_untampered_copy_passes",
+                "test_release_0130.Release0130.test_version_consistent"
+              ]
+            },
+            "0140": {
+              "applied": true,
+              "failures": [
+                "test_release_0140.Release0140.test_embeddable_api_answers",
+                "test_release_0140.Release0140.test_short_verify_passes",
+                "test_release_0140.Release0140.test_untampered_copy_passes",
+                "test_release_0140.Release0140.test_version_consistent"
+              ]
+            },
+            "0150": {
+              "applied": true,
+              "failures": [
+                "test_release_0150.Release0150.test_embeddable_api_answers",
+                "test_release_0150.Release0150.test_short_verify_passes",
+                "test_release_0150.Release0150.test_untampered_copy_passes",
+                "test_release_0150.Release0150.test_version_consistent"
+              ]
+            },
+            "0160": {
+              "applied": true,
+              "failures": [
+                "test_release_0160.Release0160.test_embeddable_api_answers",
+                "test_release_0160.Release0160.test_short_verify_passes",
+                "test_release_0160.Release0160.test_untampered_copy_passes",
+                "test_release_0160.Release0160.test_version_consistent"
+              ]
+            },
+            "0170": {
+              "applied": true,
+              "failures": [
+                "test_release_0170.Release0170.test_embeddable_api_answers",
+                "test_release_0170.Release0170.test_short_verify_passes",
+                "test_release_0170.Release0170.test_untampered_copy_passes",
+                "test_release_0170.Release0170.test_version_consistent"
+              ]
+            },
+            "0180": {
+              "applied": true,
+              "failures": [
+                "test_release_0180.Release0180.test_embeddable_api_answers",
+                "test_release_0180.Release0180.test_short_verify_passes",
+                "test_release_0180.Release0180.test_untampered_copy_passes",
+                "test_release_0180.Release0180.test_version_consistent"
+              ]
+            },
+            "0190": {
+              "applied": false,
+              "failures": []
+            },
+            "060": {
+              "applied": true,
+              "failures": [
+                "test_release_060.Release060.test_fast_verify_passes",
+                "test_release_060.Release060.test_untampered_copy_passes",
+                "test_release_060.Release060.test_version_consistent"
+              ]
+            },
+            "070": {
+              "applied": true,
+              "failures": [
+                "test_release_070.Release070.test_fast_verify_passes",
+                "test_release_070.Release070.test_untampered_copy_passes",
+                "test_release_070.Release070.test_version_consistent"
+              ]
+            },
+            "080": {
+              "applied": true,
+              "failures": [
+                "test_release_080.Release080.test_fast_verify_passes",
+                "test_release_080.Release080.test_untampered_copy_passes",
+                "test_release_080.Release080.test_version_consistent"
+              ]
+            },
+            "090": {
+              "applied": true,
+              "failures": [
+                "test_release_090.Release090.test_short_verify_passes",
+                "test_release_090.Release090.test_untampered_copy_passes",
+                "test_release_090.Release090.test_version_consistent"
+              ]
+            },
+            "096": {
+              "applied": true,
+              "failures": [
+                "test_scripts_017.Orchestrator017.test_streams"
+              ]
+            }
+          },
+          "new_test_failures": [],
+          "new_test_modules_missing": [],
+          "new_tests": [
+            "test_certify9_0200.py",
+            "test_lrregion_0200.py",
+            "test_reference_0200.py",
+            "test_scoring_023.py",
+            "test_scripts_023.py",
+            "test_seeds_0200.py",
+            "test_study_0200.py"
+          ],
+          "passed": true,
+          "skipped_per_module": [],
+          "skipped_plain": [],
+          "test_study_005": {
+            "test_study_005.Study005.test_aggregate": "ok",
+            "test_study_005.Study005.test_deterministic": "ok",
+            "test_study_005.Study005.test_jobs_match_plan": "ok",
+            "test_study_005.Study005.test_reference_agrees": "ok",
+            "test_study_005.Study005.test_reference_detects_tampering": "ok",
+            "test_study_005.Study005.test_reference_imports_no_brute": "ok"
+          },
+          "tests_run_per_module_total": 819,
+          "tests_run_plain": 819,
+          "tooling_present_at_start": [],
+          "undeclared_failures": []
+        },
+        "workers": 1
+      },
+      "pass": true
+    },
+    "G_HB": {
+      "gated": true,
+      "observed": {
+        "beats": 2511,
+        "gaps_over_10s_attributed": [
+          {
+            "d_boottime": 31.413,
+            "d_cpu_s": 0.001,
+            "d_monotonic": 31.413,
+            "d_psi_io_full_us": 0,
+            "d_psi_io_some_us": 4260,
+            "gap_s": 31.413,
+            "wall_from": 1793236768.713
+          },
+          {
+            "d_boottime": 24.27,
+            "d_cpu_s": 0.0,
+            "d_monotonic": 24.27,
+            "d_psi_io_full_us": 0,
+            "d_psi_io_some_us": 1632,
+            "gap_s": 24.27,
+            "wall_from": 1793237730.126
+          },
+          {
+            "d_boottime": 7.493,
+            "d_cpu_s": 0.129,
+            "d_monotonic": 7.492,
+            "d_psi_io_full_us": 91,
+            "d_psi_io_some_us": 30388,
+            "gap_s": 39.815,
+            "wall_from": 1793237784.397
+          },
+          {
+            "d_boottime": 7.515,
+            "d_cpu_s": 0.129,
+            "d_monotonic": 7.515,
+            "d_psi_io_full_us": 881,
+            "d_psi_io_some_us": 53914,
+            "gap_s": 47.558,
+            "wall_from": 1793238266.128
+          },
+          {
+            "d_boottime": 4.118,
+            "d_cpu_s": 0.109,
+            "d_monotonic": 4.118,
+            "d_psi_io_full_us": 32,
+            "d_psi_io_some_us": 1700,
+            "gap_s": 32.155,
+            "wall_from": 1793238793.645
+          },
+          {
+            "d_boottime": 5.42,
+            "d_cpu_s": 0.187,
+            "d_monotonic": 5.42,
+            "d_psi_io_full_us": 65,
+            "d_psi_io_some_us": 178,
+            "gap_s": 31.293,
+            "wall_from": 1793239753.773
+          }
+        ],
+        "max_gap_s": 47.558
+      },
+      "pass": false
+    },
+    "G_RT": {
+      "gated": true,
+      "observed": {
+        "cap_s": 7200,
+        "clauses": {
+          "i_streams_inside_cap_not_stopped": true,
+          "ii_watchdog_whole_run": true,
+          "iii_kill_drill_latency_le_15s": true
+        },
+        "completion_s_after_t0": {
+          "g11": 5104.9,
+          "gti": 3667.9,
+          "repro": 5220.9,
+          "transfer": 4515.8
+        },
+        "kill_drill": {
+          "fire_delay_s": 0.0,
+          "kill_latency_s": 0.224,
+          "label": "Observed (block smoke-drill; outside the cap; scratch directory).",
+          "sigkill_used": false,
+          "survivors": []
+        },
+        "run_done": {
+          "completed_at": {
+            "g11": 1793239825.5570552,
+            "gti": 1793238388.625436,
+            "repro": 1793239941.6188893,
+            "transfer": 1793239236.4455855
+          },
+          "elapsed_s": 5221,
+          "events": {
+            "g11": {
+              "audit_done": {
+                "event": "audit_done",
+                "t": 1793239803.8134136
+              },
+              "done": {
+                "event": "done",
+                "t": 1793239823.015863
+              },
+              "mutation": {
+                "detected_injected": 20,
+                "distinct_cases": 20,
+                "event": "mutation",
+                "flagged_not_injected": 0,
+                "flagged_not_injected_basis": "Exact: uninjected cases asserted unchanged",
+                "injected": 20,
+                "injected_on_already_mismatching_case": 0,
+                "kinds": {
+                  "B": 1,
+                  "T": 2,
+                  "anytime": 1,
+                  "attain": 1,
+                  "boundary": 1,
+                  "counts": 1,
+                  "crossing": 1,
+                  "flips": 1,
+                  "lr_boundary": 1,
+                  "observed": 1,
+                  "prefix28": 1,
+                  "rg4_cert": 1,
+                  "rgl_cert": 2,
+                  "rgn_cert": 1,
+                  "support": 2,
+                  "witness": 1,
+                  "wrong": 1
+                },
+                "passed": true,
+                "rng": "random.Random(20261028)"
+              },
+              "start": {
+                "event": "start",
+                "t": 1793239237.9755127
+              }
+            }
+          },
+          "finished": {
+            "g11": "2026-10-28T22:10:25-0400",
+            "gti": "2026-10-28T21:46:28-0400",
+            "repro": "2026-10-28T22:12:21-0400",
+            "transfer": "2026-10-28T22:00:36-0400"
+          },
+          "finished_at": "2026-10-28T22:12:21-0400",
+          "mandatory": {
+            "g11": true,
+            "gti": true,
+            "repro": true,
+            "transfer": true
+          },
+          "spent": {
+            "g11": 589,
+            "gti": 3627,
+            "repro": 705,
+            "transfer": 4475
+          },
+          "stopped": {},
+          "t0": 1793234720.679685
+        },
+        "spent_s": {
+          "g11": 589,
+          "gti": 3627,
+          "repro": 705,
+          "transfer": 4475
+        },
+        "stop_orchestrator": null,
+        "stop_watchdog": null,
+        "stopped_streams": {},
+        "streams": {
+          "g11": true,
+          "gti": true,
+          "repro": true,
+          "transfer": true
+        }
+      },
+      "pass": true
+    },
+    "G_recount": {
+      "gated": true,
+      "observed": {
+        "arms_not_recounted": [],
+        "certificate_and_lr_mismatches": [],
+        "mismatches": [],
+        "misplaced_prefix_records": [],
+        "per_subset_arm": {
+          "main": {
+            "RG4": {
+              "mismatching_records": 0,
+              "recomputed_false": 173,
+              "recorded_false": 173,
+              "records": 360
+            },
+            "RGL4": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "RGN4_or": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "RGNA4": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            },
+            "RGNB4": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 120
+            },
+            "SP8": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 360
+            }
+          },
+          "stress": {
+            "RG4": {
+              "mismatching_records": 0,
+              "recomputed_false": 27,
+              "recorded_false": 27,
+              "records": 30
+            },
+            "RGL4": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 30
+            },
+            "RGN4_or": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 30
+            },
+            "RGNA4": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 30
+            },
+            "SP8": {
+              "mismatching_records": 0,
+              "recomputed_false": 0,
+              "recorded_false": 0,
+              "records": 30
+            }
+          }
+        },
+        "wrong_flag_mismatches": []
+      },
+      "pass": true
+    },
+    "R_C_curve": {
+      "gated": false,
+      "observed": {
+        "eps0": {
+          "RG4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.0125,
+            0.045833,
+            0.070833,
+            0.083333,
+            0.108333,
+            0.120833,
+            0.195833,
+            0.195833,
+            0.254167,
+            0.283333,
+            0.333333,
+            0.366667,
+            0.458333,
+            0.491667,
+            0.504167,
+            0.5625,
+            0.579167,
+            0.591667,
+            0.6625,
+            0.654167,
+            0.725,
+            0.725,
+            0.75,
+            0.716667,
+            0.7875,
+            0.770833,
+            0.791667,
+            0.775,
+            0.779167,
+            0.804167,
+            0.829167,
+            0.829167,
+            0.825,
+            0.829167,
+            0.816667,
+            0.833333,
+            0.841667,
+            0.854167,
+            0.85,
+            0.85,
+            0.841667,
+            0.841667,
+            0.85,
+            0.858333,
+            0.845833,
+            0.841667,
+            0.858333,
+            0.854167,
+            0.854167,
+            0.85,
+            0.845833,
+            0.854167,
+            0.833333,
+            0.854167,
+            0.85,
+            0.854167,
+            0.854167,
+            0.85,
+            0.845833,
+            0.85,
+            0.858333,
+            0.870833,
+            0.854167,
+            0.858333,
+            0.85,
+            0.858333,
+            0.858333,
+            0.858333,
+            0.858333,
+            0.8625,
+            0.854167,
+            0.866667,
+            0.845833,
+            0.866667,
+            0.85,
+            0.85,
+            0.858333,
+            0.854167,
+            0.858333,
+            0.8625,
+            0.85
+          ],
+          "RGL4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.0,
+            0.0,
+            0.004167,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.016667,
+            0.020833,
+            0.0375,
+            0.029167,
+            0.041667,
+            0.058333,
+            0.075,
+            0.075,
+            0.104167,
+            0.116667,
+            0.1375,
+            0.133333,
+            0.166667,
+            0.166667,
+            0.208333,
+            0.229167,
+            0.220833,
+            0.245833,
+            0.266667,
+            0.283333,
+            0.275,
+            0.2875,
+            0.295833,
+            0.320833,
+            0.35,
+            0.320833,
+            0.341667,
+            0.35,
+            0.379167,
+            0.383333,
+            0.366667,
+            0.375,
+            0.404167,
+            0.425,
+            0.441667,
+            0.433333,
+            0.4875,
+            0.475,
+            0.483333,
+            0.508333,
+            0.491667,
+            0.5,
+            0.508333,
+            0.5375,
+            0.545833,
+            0.533333,
+            0.566667,
+            0.575,
+            0.5875,
+            0.6,
+            0.595833,
+            0.6125,
+            0.6125,
+            0.6125,
+            0.645833,
+            0.625,
+            0.658333,
+            0.654167,
+            0.666667,
+            0.679167,
+            0.666667,
+            0.675,
+            0.683333
+          ],
+          "RGN4_or": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.045833,
+            0.070833,
+            0.083333,
+            0.108333,
+            0.120833,
+            0.195833,
+            0.195833,
+            0.254167,
+            0.283333,
+            0.333333,
+            0.366667,
+            0.458333,
+            0.491667,
+            0.504167,
+            0.5625,
+            0.579167,
+            0.591667,
+            0.6625,
+            0.654167,
+            0.725,
+            0.725,
+            0.75,
+            0.716667,
+            0.7875,
+            0.770833,
+            0.791667,
+            0.775,
+            0.779167,
+            0.804167,
+            0.829167,
+            0.829167,
+            0.825,
+            0.829167,
+            0.816667,
+            0.833333,
+            0.841667,
+            0.854167,
+            0.85,
+            0.85,
+            0.841667,
+            0.841667,
+            0.85,
+            0.858333,
+            0.845833,
+            0.841667,
+            0.858333,
+            0.854167,
+            0.854167,
+            0.85,
+            0.845833,
+            0.854167,
+            0.833333,
+            0.854167,
+            0.85,
+            0.854167,
+            0.854167,
+            0.85,
+            0.845833,
+            0.85,
+            0.858333,
+            0.870833,
+            0.854167,
+            0.858333,
+            0.85,
+            0.858333,
+            0.858333,
+            0.858333,
+            0.858333,
+            0.8625,
+            0.854167,
+            0.866667,
+            0.845833,
+            0.866667,
+            0.85,
+            0.85,
+            0.858333,
+            0.854167,
+            0.858333,
+            0.8625,
+            0.85
+          ],
+          "RGNA4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.008333,
+            0.008333,
+            0.004167,
+            0.016667,
+            0.004167,
+            0.016667,
+            0.020833,
+            0.020833,
+            0.016667,
+            0.025,
+            0.020833,
+            0.033333,
+            0.029167,
+            0.045833,
+            0.0375,
+            0.075,
+            0.05,
+            0.079167,
+            0.058333,
+            0.0875,
+            0.091667,
+            0.104167,
+            0.104167,
+            0.1125,
+            0.108333,
+            0.116667,
+            0.1125,
+            0.1375,
+            0.133333,
+            0.170833,
+            0.158333,
+            0.191667,
+            0.183333,
+            0.191667,
+            0.179167,
+            0.225,
+            0.179167,
+            0.229167,
+            0.195833,
+            0.254167,
+            0.225,
+            0.233333,
+            0.216667,
+            0.254167,
+            0.229167,
+            0.279167,
+            0.2625,
+            0.295833,
+            0.254167,
+            0.291667,
+            0.258333,
+            0.295833,
+            0.279167,
+            0.308333,
+            0.308333,
+            0.341667,
+            0.320833,
+            0.341667,
+            0.320833,
+            0.3375,
+            0.3375,
+            0.383333
+          ],
+          "SP8": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.0125,
+            0.0,
+            0.008333,
+            0.0125,
+            0.008333,
+            0.008333,
+            0.0125,
+            0.016667,
+            0.0375,
+            0.05,
+            0.091667,
+            0.079167,
+            0.083333,
+            0.116667,
+            0.129167,
+            0.1375,
+            0.15,
+            0.183333,
+            0.2,
+            0.195833,
+            0.208333,
+            0.25,
+            0.25,
+            0.258333,
+            0.2875,
+            0.2875,
+            0.304167,
+            0.325,
+            0.295833,
+            0.3375,
+            0.333333,
+            0.320833,
+            0.320833,
+            0.3375,
+            0.304167,
+            0.345833,
+            0.354167,
+            0.3375,
+            0.3625,
+            0.358333,
+            0.35,
+            0.354167,
+            0.366667,
+            0.358333,
+            0.370833,
+            0.379167,
+            0.3625,
+            0.366667,
+            0.366667,
+            0.354167,
+            0.379167,
+            0.375,
+            0.345833,
+            0.391667,
+            0.370833,
+            0.379167,
+            0.375,
+            0.375,
+            0.3625,
+            0.4,
+            0.366667,
+            0.366667,
+            0.3875,
+            0.391667,
+            0.35,
+            0.3875,
+            0.383333,
+            0.366667,
+            0.3875,
+            0.3875,
+            0.383333,
+            0.391667,
+            0.375,
+            0.379167,
+            0.395833,
+            0.3875,
+            0.3625,
+            0.3875,
+            0.4,
+            0.375,
+            0.3875
+          ]
+        },
+        "eps1": {
+          "RG4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.008333,
+            0.033333,
+            0.070833,
+            0.091667,
+            0.1125,
+            0.129167,
+            0.204167,
+            0.208333,
+            0.2375,
+            0.275,
+            0.295833,
+            0.3375,
+            0.354167,
+            0.383333,
+            0.404167,
+            0.420833,
+            0.445833,
+            0.45,
+            0.5125,
+            0.458333,
+            0.508333,
+            0.5,
+            0.5125,
+            0.4625,
+            0.525,
+            0.475,
+            0.504167,
+            0.458333,
+            0.454167,
+            0.45,
+            0.470833,
+            0.45,
+            0.45,
+            0.4375,
+            0.429167,
+            0.433333,
+            0.433333,
+            0.429167,
+            0.441667,
+            0.420833,
+            0.420833,
+            0.408333,
+            0.420833,
+            0.408333,
+            0.420833,
+            0.391667,
+            0.391667,
+            0.383333,
+            0.391667,
+            0.375,
+            0.358333,
+            0.345833,
+            0.345833,
+            0.3375,
+            0.358333,
+            0.341667,
+            0.354167,
+            0.3375,
+            0.3375,
+            0.325,
+            0.354167,
+            0.3375,
+            0.341667,
+            0.329167,
+            0.329167,
+            0.3125,
+            0.325,
+            0.304167,
+            0.325,
+            0.3125,
+            0.316667,
+            0.291667,
+            0.283333,
+            0.283333,
+            0.275,
+            0.2625,
+            0.2625,
+            0.25,
+            0.2375,
+            0.2125,
+            0.216667
+          ],
+          "RGL4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.0,
+            0.0,
+            0.004167,
+            0.008333,
+            0.008333,
+            0.0125,
+            0.0125,
+            0.020833,
+            0.029167,
+            0.020833,
+            0.045833,
+            0.054167,
+            0.045833,
+            0.058333,
+            0.070833,
+            0.083333,
+            0.095833,
+            0.091667,
+            0.108333,
+            0.1,
+            0.141667,
+            0.15,
+            0.154167,
+            0.170833,
+            0.1875,
+            0.191667,
+            0.195833,
+            0.191667,
+            0.208333,
+            0.25,
+            0.225,
+            0.2375,
+            0.270833,
+            0.2625,
+            0.3,
+            0.304167,
+            0.291667,
+            0.3,
+            0.304167,
+            0.345833,
+            0.329167,
+            0.366667,
+            0.4,
+            0.370833,
+            0.416667,
+            0.45,
+            0.433333,
+            0.466667,
+            0.4625,
+            0.479167,
+            0.508333,
+            0.525,
+            0.558333,
+            0.5875,
+            0.575,
+            0.591667,
+            0.5625,
+            0.595833,
+            0.533333,
+            0.620833,
+            0.6,
+            0.6,
+            0.629167,
+            0.670833,
+            0.633333,
+            0.670833,
+            0.675,
+            0.675,
+            0.675
+          ],
+          "RGN4_or": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.025,
+            0.020833,
+            0.0375,
+            0.033333,
+            0.066667,
+            0.0875,
+            0.0875,
+            0.108333,
+            0.145833,
+            0.158333,
+            0.170833,
+            0.216667,
+            0.245833,
+            0.245833,
+            0.3125,
+            0.3375,
+            0.3375,
+            0.379167,
+            0.458333,
+            0.441667,
+            0.479167,
+            0.508333,
+            0.55,
+            0.554167,
+            0.604167,
+            0.604167,
+            0.620833,
+            0.645833,
+            0.6875,
+            0.654167,
+            0.666667,
+            0.7125,
+            0.741667,
+            0.729167,
+            0.791667,
+            0.745833,
+            0.791667,
+            0.783333,
+            0.808333,
+            0.758333,
+            0.8,
+            0.804167,
+            0.816667,
+            0.808333,
+            0.829167,
+            0.804167,
+            0.829167,
+            0.829167,
+            0.816667,
+            0.820833,
+            0.841667,
+            0.820833,
+            0.841667,
+            0.854167,
+            0.866667,
+            0.845833,
+            0.8875,
+            0.85,
+            0.879167,
+            0.879167,
+            0.866667,
+            0.891667,
+            0.916667,
+            0.875,
+            0.9125,
+            0.895833,
+            0.9,
+            0.875,
+            0.883333,
+            0.9125,
+            0.9,
+            0.908333,
+            0.9125,
+            0.916667,
+            0.925,
+            0.916667,
+            0.9375,
+            0.933333,
+            0.95
+          ],
+          "RGNA4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.0,
+            0.008333,
+            0.008333,
+            0.008333,
+            0.020833,
+            0.0125,
+            0.0125,
+            0.020833,
+            0.025,
+            0.033333,
+            0.029167,
+            0.033333,
+            0.029167,
+            0.0375,
+            0.05,
+            0.041667,
+            0.0625,
+            0.066667,
+            0.070833,
+            0.075,
+            0.083333,
+            0.095833,
+            0.0875,
+            0.1,
+            0.079167,
+            0.091667,
+            0.0875,
+            0.091667,
+            0.1125,
+            0.120833,
+            0.133333,
+            0.133333,
+            0.154167,
+            0.145833,
+            0.145833,
+            0.158333,
+            0.166667,
+            0.15,
+            0.154167,
+            0.166667,
+            0.170833,
+            0.179167,
+            0.158333,
+            0.170833,
+            0.1875,
+            0.204167,
+            0.233333,
+            0.2125,
+            0.225,
+            0.241667,
+            0.2375,
+            0.2125,
+            0.25,
+            0.233333,
+            0.25,
+            0.245833,
+            0.270833,
+            0.266667,
+            0.308333,
+            0.283333,
+            0.3,
+            0.3125,
+            0.325
+          ],
+          "SP8": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.008333,
+            0.0,
+            0.004167,
+            0.008333,
+            0.004167,
+            0.004167,
+            0.008333,
+            0.0125,
+            0.025,
+            0.0375,
+            0.066667,
+            0.066667,
+            0.066667,
+            0.0875,
+            0.095833,
+            0.104167,
+            0.104167,
+            0.145833,
+            0.154167,
+            0.133333,
+            0.141667,
+            0.170833,
+            0.1625,
+            0.166667,
+            0.175,
+            0.175,
+            0.183333,
+            0.191667,
+            0.179167,
+            0.191667,
+            0.1875,
+            0.195833,
+            0.179167,
+            0.183333,
+            0.170833,
+            0.191667,
+            0.179167,
+            0.175,
+            0.191667,
+            0.183333,
+            0.170833,
+            0.183333,
+            0.170833,
+            0.175,
+            0.191667,
+            0.175,
+            0.1625,
+            0.166667,
+            0.1625,
+            0.1625,
+            0.170833,
+            0.166667,
+            0.154167,
+            0.170833,
+            0.158333,
+            0.1625,
+            0.158333,
+            0.158333,
+            0.15,
+            0.1625,
+            0.145833,
+            0.154167,
+            0.166667,
+            0.1625,
+            0.133333,
+            0.154167,
+            0.145833,
+            0.141667,
+            0.154167,
+            0.145833,
+            0.158333,
+            0.145833,
+            0.129167,
+            0.1375,
+            0.145833,
+            0.120833,
+            0.120833,
+            0.129167,
+            0.120833,
+            0.108333,
+            0.120833
+          ]
+        },
+        "eps2": {
+          "RG4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.016667,
+            0.070833,
+            0.095833,
+            0.120833,
+            0.154167,
+            0.145833,
+            0.2,
+            0.191667,
+            0.275,
+            0.279167,
+            0.304167,
+            0.366667,
+            0.391667,
+            0.408333,
+            0.3875,
+            0.3875,
+            0.375,
+            0.4,
+            0.408333,
+            0.425,
+            0.4375,
+            0.408333,
+            0.425,
+            0.4,
+            0.395833,
+            0.3625,
+            0.354167,
+            0.333333,
+            0.308333,
+            0.3125,
+            0.3,
+            0.279167,
+            0.270833,
+            0.254167,
+            0.241667,
+            0.245833,
+            0.220833,
+            0.2375,
+            0.229167,
+            0.208333,
+            0.2,
+            0.1875,
+            0.1875,
+            0.183333,
+            0.2,
+            0.179167,
+            0.179167,
+            0.179167,
+            0.170833,
+            0.166667,
+            0.1875,
+            0.166667,
+            0.154167,
+            0.15,
+            0.1375,
+            0.1375,
+            0.145833,
+            0.129167,
+            0.125,
+            0.125,
+            0.125,
+            0.120833,
+            0.129167,
+            0.116667,
+            0.116667,
+            0.116667,
+            0.1125,
+            0.108333,
+            0.116667,
+            0.1125,
+            0.108333,
+            0.116667,
+            0.1125,
+            0.104167,
+            0.1,
+            0.1,
+            0.0875,
+            0.095833,
+            0.091667,
+            0.083333,
+            0.083333
+          ],
+          "RGL4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.0,
+            0.0,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.008333,
+            0.016667,
+            0.020833,
+            0.0125,
+            0.033333,
+            0.041667,
+            0.041667,
+            0.045833,
+            0.070833,
+            0.058333,
+            0.070833,
+            0.091667,
+            0.0875,
+            0.091667,
+            0.125,
+            0.120833,
+            0.125,
+            0.141667,
+            0.154167,
+            0.175,
+            0.154167,
+            0.175,
+            0.175,
+            0.208333,
+            0.166667,
+            0.216667,
+            0.2,
+            0.233333,
+            0.275,
+            0.283333,
+            0.279167,
+            0.295833,
+            0.283333,
+            0.325,
+            0.308333,
+            0.329167,
+            0.358333,
+            0.3375,
+            0.391667,
+            0.383333,
+            0.375,
+            0.395833,
+            0.416667,
+            0.445833,
+            0.445833,
+            0.470833,
+            0.491667,
+            0.495833,
+            0.508333,
+            0.545833,
+            0.545833,
+            0.566667,
+            0.566667,
+            0.629167,
+            0.608333,
+            0.616667,
+            0.6375,
+            0.658333,
+            0.65,
+            0.683333,
+            0.666667,
+            0.679167,
+            0.7
+          ],
+          "RGN4_or": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0125,
+            0.016667,
+            0.020833,
+            0.016667,
+            0.016667,
+            0.029167,
+            0.041667,
+            0.0375,
+            0.054167,
+            0.066667,
+            0.091667,
+            0.095833,
+            0.104167,
+            0.1,
+            0.1375,
+            0.158333,
+            0.170833,
+            0.1625,
+            0.2125,
+            0.25,
+            0.291667,
+            0.275,
+            0.3,
+            0.333333,
+            0.358333,
+            0.358333,
+            0.375,
+            0.404167,
+            0.4125,
+            0.416667,
+            0.45,
+            0.466667,
+            0.525,
+            0.495833,
+            0.579167,
+            0.620833,
+            0.595833,
+            0.6625,
+            0.6375,
+            0.695833,
+            0.683333,
+            0.729167,
+            0.7,
+            0.758333,
+            0.695833,
+            0.775,
+            0.729167,
+            0.775,
+            0.7375,
+            0.804167,
+            0.804167,
+            0.8125,
+            0.791667,
+            0.791667,
+            0.766667,
+            0.820833,
+            0.8,
+            0.829167,
+            0.804167,
+            0.845833,
+            0.841667,
+            0.8625,
+            0.870833,
+            0.883333,
+            0.891667,
+            0.866667,
+            0.891667,
+            0.866667,
+            0.9,
+            0.8625,
+            0.908333,
+            0.891667,
+            0.9,
+            0.929167,
+            0.933333,
+            0.916667,
+            0.925,
+            0.945833,
+            0.95,
+            0.941667
+          ],
+          "RGNA4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.016667,
+            0.008333,
+            0.016667,
+            0.020833,
+            0.033333,
+            0.0125,
+            0.025,
+            0.029167,
+            0.033333,
+            0.025,
+            0.0375,
+            0.0375,
+            0.066667,
+            0.066667,
+            0.070833,
+            0.066667,
+            0.1,
+            0.0875,
+            0.091667,
+            0.108333,
+            0.083333,
+            0.095833,
+            0.108333,
+            0.1,
+            0.133333,
+            0.141667,
+            0.1375,
+            0.129167,
+            0.145833,
+            0.170833,
+            0.1625,
+            0.175,
+            0.208333,
+            0.179167,
+            0.2125,
+            0.195833,
+            0.216667,
+            0.216667,
+            0.204167,
+            0.225,
+            0.25,
+            0.245833,
+            0.279167,
+            0.283333,
+            0.279167,
+            0.266667,
+            0.304167,
+            0.2875,
+            0.279167,
+            0.345833,
+            0.366667,
+            0.345833,
+            0.354167,
+            0.35,
+            0.370833,
+            0.391667,
+            0.391667,
+            0.408333,
+            0.408333
+          ],
+          "RGNB4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.008333,
+            0.016667,
+            0.008333,
+            0.008333,
+            0.0375,
+            0.025,
+            0.054167,
+            0.0625,
+            0.079167,
+            0.075,
+            0.083333,
+            0.133333,
+            0.15,
+            0.1125,
+            0.145833,
+            0.125,
+            0.1375,
+            0.141667,
+            0.170833,
+            0.195833,
+            0.245833,
+            0.2375,
+            0.308333,
+            0.3,
+            0.370833,
+            0.329167,
+            0.395833,
+            0.358333,
+            0.408333,
+            0.4125,
+            0.441667,
+            0.425,
+            0.441667,
+            0.4,
+            0.4375,
+            0.445833,
+            0.45,
+            0.4375,
+            0.491667,
+            0.466667,
+            0.5,
+            0.516667,
+            0.541667,
+            0.4875,
+            0.529167,
+            0.545833,
+            0.570833,
+            0.5875,
+            0.6125,
+            0.625,
+            0.6375,
+            0.604167,
+            0.654167,
+            0.625,
+            0.654167,
+            0.625,
+            0.691667,
+            0.616667,
+            0.670833,
+            0.65,
+            0.670833,
+            0.6625,
+            0.7,
+            0.658333,
+            0.6875,
+            0.691667
+          ],
+          "SP8": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.016667,
+            0.0,
+            0.008333,
+            0.004167,
+            0.004167,
+            0.004167,
+            0.008333,
+            0.008333,
+            0.0375,
+            0.033333,
+            0.058333,
+            0.0625,
+            0.054167,
+            0.0875,
+            0.070833,
+            0.0875,
+            0.0875,
+            0.1125,
+            0.125,
+            0.125,
+            0.1375,
+            0.145833,
+            0.145833,
+            0.145833,
+            0.15,
+            0.158333,
+            0.15,
+            0.158333,
+            0.1375,
+            0.15,
+            0.1375,
+            0.133333,
+            0.133333,
+            0.120833,
+            0.116667,
+            0.1125,
+            0.104167,
+            0.108333,
+            0.116667,
+            0.1,
+            0.104167,
+            0.104167,
+            0.108333,
+            0.1,
+            0.104167,
+            0.1,
+            0.095833,
+            0.091667,
+            0.091667,
+            0.0875,
+            0.104167,
+            0.0875,
+            0.070833,
+            0.075,
+            0.070833,
+            0.066667,
+            0.070833,
+            0.0625,
+            0.0625,
+            0.066667,
+            0.0625,
+            0.058333,
+            0.070833,
+            0.058333,
+            0.054167,
+            0.058333,
+            0.058333,
+            0.05,
+            0.058333,
+            0.054167,
+            0.058333,
+            0.058333,
+            0.054167,
+            0.045833,
+            0.054167,
+            0.05,
+            0.041667,
+            0.045833,
+            0.045833,
+            0.0375,
+            0.0375
+          ]
+        },
+        "label": "per step t = 1..88: mean certificates / 2 (PAIRED_ANALYSIS_023)",
+        "noisy": {
+          "RG4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.002083,
+            0.0125,
+            0.052083,
+            0.083333,
+            0.10625,
+            0.133333,
+            0.1375,
+            0.202083,
+            0.2,
+            0.25625,
+            0.277083,
+            0.3,
+            0.352083,
+            0.372917,
+            0.395833,
+            0.395833,
+            0.404167,
+            0.410417,
+            0.425,
+            0.460417,
+            0.441667,
+            0.472917,
+            0.454167,
+            0.46875,
+            0.43125,
+            0.460417,
+            0.41875,
+            0.429167,
+            0.395833,
+            0.38125,
+            0.38125,
+            0.385417,
+            0.364583,
+            0.360417,
+            0.345833,
+            0.335417,
+            0.339583,
+            0.327083,
+            0.333333,
+            0.335417,
+            0.314583,
+            0.310417,
+            0.297917,
+            0.304167,
+            0.295833,
+            0.310417,
+            0.285417,
+            0.285417,
+            0.28125,
+            0.28125,
+            0.270833,
+            0.272917,
+            0.25625,
+            0.25,
+            0.24375,
+            0.247917,
+            0.239583,
+            0.25,
+            0.233333,
+            0.23125,
+            0.225,
+            0.239583,
+            0.229167,
+            0.235417,
+            0.222917,
+            0.222917,
+            0.214583,
+            0.21875,
+            0.20625,
+            0.220833,
+            0.2125,
+            0.2125,
+            0.204167,
+            0.197917,
+            0.19375,
+            0.1875,
+            0.18125,
+            0.175,
+            0.172917,
+            0.164583,
+            0.147917,
+            0.15
+          ],
+          "RGL4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004167,
+            0.0,
+            0.0,
+            0.004167,
+            0.00625,
+            0.00625,
+            0.008333,
+            0.010417,
+            0.01875,
+            0.025,
+            0.016667,
+            0.039583,
+            0.047917,
+            0.04375,
+            0.052083,
+            0.070833,
+            0.070833,
+            0.083333,
+            0.091667,
+            0.097917,
+            0.095833,
+            0.133333,
+            0.135417,
+            0.139583,
+            0.15625,
+            0.170833,
+            0.183333,
+            0.175,
+            0.183333,
+            0.191667,
+            0.229167,
+            0.195833,
+            0.227083,
+            0.235417,
+            0.247917,
+            0.2875,
+            0.29375,
+            0.285417,
+            0.297917,
+            0.29375,
+            0.335417,
+            0.31875,
+            0.347917,
+            0.379167,
+            0.354167,
+            0.404167,
+            0.416667,
+            0.404167,
+            0.43125,
+            0.439583,
+            0.4625,
+            0.477083,
+            0.497917,
+            0.525,
+            0.541667,
+            0.541667,
+            0.56875,
+            0.554167,
+            0.58125,
+            0.55,
+            0.625,
+            0.604167,
+            0.608333,
+            0.633333,
+            0.664583,
+            0.641667,
+            0.677083,
+            0.670833,
+            0.677083,
+            0.6875
+          ],
+          "RGN4_or": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.008333,
+            0.020833,
+            0.020833,
+            0.027083,
+            0.025,
+            0.047917,
+            0.064583,
+            0.0625,
+            0.08125,
+            0.10625,
+            0.125,
+            0.133333,
+            0.160417,
+            0.172917,
+            0.191667,
+            0.235417,
+            0.254167,
+            0.25,
+            0.295833,
+            0.354167,
+            0.366667,
+            0.377083,
+            0.404167,
+            0.441667,
+            0.45625,
+            0.48125,
+            0.489583,
+            0.5125,
+            0.529167,
+            0.552083,
+            0.552083,
+            0.566667,
+            0.61875,
+            0.61875,
+            0.654167,
+            0.70625,
+            0.670833,
+            0.727083,
+            0.710417,
+            0.752083,
+            0.720833,
+            0.764583,
+            0.752083,
+            0.7875,
+            0.752083,
+            0.802083,
+            0.766667,
+            0.802083,
+            0.783333,
+            0.810417,
+            0.8125,
+            0.827083,
+            0.80625,
+            0.816667,
+            0.810417,
+            0.84375,
+            0.822917,
+            0.858333,
+            0.827083,
+            0.8625,
+            0.860417,
+            0.864583,
+            0.88125,
+            0.9,
+            0.883333,
+            0.889583,
+            0.89375,
+            0.883333,
+            0.8875,
+            0.872917,
+            0.910417,
+            0.895833,
+            0.904167,
+            0.920833,
+            0.925,
+            0.920833,
+            0.920833,
+            0.941667,
+            0.941667,
+            0.945833
+          ],
+          "RGNA4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.002083,
+            0.0,
+            0.00625,
+            0.00625,
+            0.00625,
+            0.01875,
+            0.010417,
+            0.014583,
+            0.020833,
+            0.029167,
+            0.022917,
+            0.027083,
+            0.03125,
+            0.03125,
+            0.03125,
+            0.04375,
+            0.039583,
+            0.064583,
+            0.066667,
+            0.070833,
+            0.070833,
+            0.091667,
+            0.091667,
+            0.089583,
+            0.104167,
+            0.08125,
+            0.09375,
+            0.097917,
+            0.095833,
+            0.122917,
+            0.13125,
+            0.135417,
+            0.13125,
+            0.15,
+            0.158333,
+            0.154167,
+            0.166667,
+            0.1875,
+            0.164583,
+            0.183333,
+            0.18125,
+            0.19375,
+            0.197917,
+            0.18125,
+            0.197917,
+            0.21875,
+            0.225,
+            0.25625,
+            0.247917,
+            0.252083,
+            0.254167,
+            0.270833,
+            0.25,
+            0.264583,
+            0.289583,
+            0.308333,
+            0.295833,
+            0.3125,
+            0.308333,
+            0.339583,
+            0.3375,
+            0.345833,
+            0.360417,
+            0.366667
+          ],
+          "SP8": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.002083,
+            0.0125,
+            0.0,
+            0.00625,
+            0.00625,
+            0.004167,
+            0.004167,
+            0.008333,
+            0.010417,
+            0.03125,
+            0.035417,
+            0.0625,
+            0.064583,
+            0.060417,
+            0.0875,
+            0.083333,
+            0.095833,
+            0.095833,
+            0.129167,
+            0.139583,
+            0.129167,
+            0.139583,
+            0.158333,
+            0.154167,
+            0.15625,
+            0.1625,
+            0.166667,
+            0.166667,
+            0.175,
+            0.158333,
+            0.170833,
+            0.1625,
+            0.164583,
+            0.15625,
+            0.152083,
+            0.14375,
+            0.152083,
+            0.141667,
+            0.141667,
+            0.154167,
+            0.141667,
+            0.1375,
+            0.14375,
+            0.139583,
+            0.1375,
+            0.147917,
+            0.1375,
+            0.129167,
+            0.129167,
+            0.127083,
+            0.125,
+            0.1375,
+            0.127083,
+            0.1125,
+            0.122917,
+            0.114583,
+            0.114583,
+            0.114583,
+            0.110417,
+            0.10625,
+            0.114583,
+            0.104167,
+            0.10625,
+            0.11875,
+            0.110417,
+            0.09375,
+            0.10625,
+            0.102083,
+            0.095833,
+            0.10625,
+            0.1,
+            0.108333,
+            0.102083,
+            0.091667,
+            0.091667,
+            0.1,
+            0.085417,
+            0.08125,
+            0.0875,
+            0.083333,
+            0.072917,
+            0.079167
+          ]
+        },
+        "stress": {
+          "RG4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.05,
+            0.1,
+            0.116667,
+            0.15,
+            0.15,
+            0.166667,
+            0.233333,
+            0.283333,
+            0.2,
+            0.216667,
+            0.166667,
+            0.15,
+            0.116667,
+            0.166667,
+            0.166667,
+            0.15,
+            0.183333,
+            0.15,
+            0.133333,
+            0.15,
+            0.133333,
+            0.183333,
+            0.116667,
+            0.116667,
+            0.1,
+            0.116667,
+            0.083333,
+            0.1,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "RGL4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.016667,
+            0.0,
+            0.0,
+            0.0,
+            0.033333,
+            0.016667,
+            0.016667,
+            0.033333,
+            0.016667,
+            0.05,
+            0.083333,
+            0.083333,
+            0.1,
+            0.05,
+            0.133333,
+            0.066667,
+            0.133333,
+            0.116667,
+            0.15,
+            0.116667,
+            0.183333,
+            0.183333,
+            0.183333,
+            0.183333,
+            0.216667,
+            0.166667,
+            0.25,
+            0.233333,
+            0.216667,
+            0.25,
+            0.3,
+            0.3,
+            0.266667,
+            0.333333,
+            0.366667,
+            0.3,
+            0.366667,
+            0.283333,
+            0.333333,
+            0.366667,
+            0.416667,
+            0.4,
+            0.5,
+            0.466667,
+            0.533333,
+            0.616667,
+            0.516667,
+            0.566667,
+            0.583333,
+            0.616667,
+            0.533333,
+            0.683333,
+            0.683333,
+            0.666667,
+            0.6,
+            0.766667,
+            0.666667,
+            0.716667,
+            0.7,
+            0.75,
+            0.7,
+            0.75,
+            0.783333,
+            0.833333,
+            0.766667,
+            0.7
+          ],
+          "RGN4_or": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.016667,
+            0.05,
+            0.066667,
+            0.05,
+            0.033333,
+            0.05,
+            0.033333,
+            0.066667,
+            0.066667,
+            0.1,
+            0.1,
+            0.15,
+            0.15,
+            0.15,
+            0.2,
+            0.166667,
+            0.166667,
+            0.2,
+            0.183333,
+            0.2,
+            0.233333,
+            0.25,
+            0.25,
+            0.316667,
+            0.35,
+            0.383333,
+            0.466667,
+            0.5,
+            0.45,
+            0.516667,
+            0.45,
+            0.55,
+            0.583333,
+            0.583333,
+            0.6,
+            0.65,
+            0.65,
+            0.633333,
+            0.633333,
+            0.666667,
+            0.683333,
+            0.683333,
+            0.716667,
+            0.766667,
+            0.766667,
+            0.85,
+            0.833333,
+            0.866667,
+            0.816667,
+            0.816667,
+            0.85,
+            0.85,
+            0.783333,
+            0.933333,
+            0.95,
+            0.95,
+            0.9,
+            0.933333,
+            0.95,
+            0.966667,
+            0.983333,
+            0.966667,
+            0.966667,
+            0.95,
+            0.966667,
+            0.95,
+            0.933333,
+            1.0
+          ],
+          "RGNA4": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.016667,
+            0.0,
+            0.0,
+            0.0,
+            0.033333,
+            0.016667,
+            0.033333,
+            0.033333,
+            0.016667,
+            0.066667,
+            0.116667,
+            0.1,
+            0.116667,
+            0.083333,
+            0.116667,
+            0.1,
+            0.116667,
+            0.083333,
+            0.166667,
+            0.083333,
+            0.133333,
+            0.166667,
+            0.166667,
+            0.2,
+            0.2,
+            0.166667,
+            0.233333,
+            0.25,
+            0.233333,
+            0.283333,
+            0.3,
+            0.25,
+            0.233333,
+            0.3,
+            0.283333,
+            0.266667,
+            0.3,
+            0.3,
+            0.316667,
+            0.316667,
+            0.366667,
+            0.333333,
+            0.433333,
+            0.383333,
+            0.45,
+            0.483333,
+            0.483333,
+            0.466667,
+            0.466667,
+            0.55,
+            0.433333,
+            0.6,
+            0.533333,
+            0.566667,
+            0.55,
+            0.6,
+            0.516667,
+            0.566667,
+            0.516667,
+            0.566667,
+            0.483333,
+            0.666667,
+            0.55,
+            0.683333,
+            0.65,
+            0.633333
+          ],
+          "SP8": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.033333,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.033333,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.05,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.016667,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "pass": null
+    },
+    "R_attain": {
+      "gated": false,
+      "observed": {
+        "0.0": {
+          "attain_n_histogram_over_steps": {
+            "1": 371,
+            "2": 1978,
+            "3": 3167,
+            "4": 2192,
+            "None": 2852
+          },
+          "cases": 120,
+          "fraction_steps_witness_lowered": 0.729924,
+          "per_step_cases_with_witness": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            4,
+            5,
+            6,
+            6,
+            6,
+            6,
+            11,
+            15,
+            20,
+            25,
+            39,
+            49,
+            58,
+            64,
+            68,
+            77,
+            83,
+            84,
+            85,
+            85,
+            85,
+            85,
+            86,
+            86,
+            87,
+            87,
+            86,
+            88,
+            92,
+            97,
+            97,
+            102,
+            104,
+            108,
+            112,
+            115,
+            116,
+            119,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120
+          ],
+          "witness_calls": 10685,
+          "witness_unknowns": 0
+        },
+        "0.01": {
+          "attain_n_histogram_over_steps": {
+            "1": 284,
+            "2": 1887,
+            "3": 3093,
+            "4": 1815,
+            "None": 3481
+          },
+          "cases": 120,
+          "fraction_steps_witness_lowered": 0.67036,
+          "per_step_cases_with_witness": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3,
+            5,
+            7,
+            6,
+            6,
+            5,
+            10,
+            12,
+            16,
+            23,
+            31,
+            39,
+            45,
+            49,
+            54,
+            62,
+            66,
+            68,
+            69,
+            68,
+            71,
+            71,
+            75,
+            77,
+            81,
+            81,
+            80,
+            80,
+            84,
+            85,
+            86,
+            88,
+            89,
+            92,
+            96,
+            100,
+            100,
+            100,
+            100,
+            100,
+            104,
+            107,
+            108,
+            107,
+            108,
+            108,
+            108,
+            108,
+            111,
+            112,
+            113,
+            114,
+            113,
+            114,
+            114,
+            114,
+            113,
+            114,
+            114,
+            114,
+            116,
+            116,
+            117,
+            117,
+            117,
+            117,
+            117,
+            116,
+            117,
+            118,
+            118,
+            118,
+            118,
+            119,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120
+          ],
+          "witness_calls": 9772,
+          "witness_unknowns": 0
+        },
+        "0.02": {
+          "attain_n_histogram_over_steps": {
+            "1": 228,
+            "2": 1663,
+            "3": 2860,
+            "4": 1245,
+            "None": 4564
+          },
+          "cases": 120,
+          "fraction_steps_witness_lowered": 0.567803,
+          "per_step_cases_with_witness": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            3,
+            4,
+            4,
+            4,
+            4,
+            3,
+            6,
+            8,
+            12,
+            13,
+            19,
+            24,
+            34,
+            38,
+            44,
+            49,
+            54,
+            57,
+            59,
+            62,
+            63,
+            61,
+            65,
+            66,
+            69,
+            68,
+            67,
+            68,
+            72,
+            73,
+            73,
+            73,
+            72,
+            73,
+            73,
+            76,
+            72,
+            77,
+            79,
+            82,
+            83,
+            84,
+            84,
+            84,
+            83,
+            83,
+            84,
+            87,
+            88,
+            91,
+            95,
+            94,
+            96,
+            98,
+            99,
+            101,
+            101,
+            101,
+            100,
+            99,
+            100,
+            100,
+            102,
+            103,
+            103,
+            104,
+            104,
+            104,
+            105,
+            106,
+            106,
+            106,
+            106,
+            107,
+            108,
+            109,
+            112,
+            113,
+            113,
+            113,
+            113
+          ],
+          "witness_calls": 8852,
+          "witness_unknowns": 0
+        },
+        "0.05": {
+          "attain_n_histogram_over_steps": {
+            "1": 8,
+            "2": 297,
+            "3": 458,
+            "4": 58,
+            "None": 1819
+          },
+          "cases": 30,
+          "fraction_steps_witness_lowered": 0.310985,
+          "per_step_cases_with_witness": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            2,
+            4,
+            3,
+            2,
+            3,
+            4,
+            4,
+            5,
+            6,
+            6,
+            8,
+            10,
+            10,
+            11,
+            12,
+            12,
+            13,
+            13,
+            13,
+            11,
+            10,
+            10,
+            11,
+            12,
+            12,
+            13,
+            13,
+            11,
+            11,
+            12,
+            11,
+            13,
+            12,
+            12,
+            12,
+            11,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            14,
+            14,
+            13,
+            13,
+            13,
+            13,
+            13,
+            13,
+            13,
+            13,
+            13,
+            13,
+            13,
+            13,
+            13,
+            13,
+            14,
+            14,
+            14,
+            14,
+            14,
+            14,
+            14,
+            13,
+            13,
+            13,
+            14,
+            14,
+            15,
+            15
+          ],
+          "witness_calls": 1557,
+          "witness_unknowns": 0
+        },
+        "label": "which n attains T; None = the anytime bound m_a(b) was the minimum"
+      },
+      "pass": null
+    },
+    "R_boundary": {
+      "gated": false,
+      "observed": {
+        "0.0": {
+          "B_range": [
+            98,
+            133
+          ],
+          "T_below_m_a_rate": 0.691383,
+          "anytime_crossing_rate": 0.0,
+          "cases": 120,
+          "mean_T_RGL4": 4.019223,
+          "mean_bound_P_flips_gt_m": 0.0,
+          "mean_fixed_m": 6.416667,
+          "mean_m_a_b": 6.322159,
+          "mean_planned_m_b": null,
+          "observed_flips_gt_m_rate": 0.0,
+          "planned_crossing_rate": 0.0
+        },
+        "0.01": {
+          "B_range": [
+            98,
+            133
+          ],
+          "T_below_m_a_rate": 0.623864,
+          "anytime_crossing_rate": 0.008333,
+          "cases": 120,
+          "mean_T_RGL4": 4.541477,
+          "mean_bound_P_flips_gt_m": 0.00010236,
+          "mean_fixed_m": 6.416667,
+          "mean_m_a_b": 6.322159,
+          "mean_planned_m_b": null,
+          "observed_flips_gt_m_rate": 0.0,
+          "planned_crossing_rate": 0.0
+        },
+        "0.02": {
+          "B_range": [
+            98,
+            133
+          ],
+          "T_below_m_a_rate": 0.511269,
+          "anytime_crossing_rate": 0.016667,
+          "cases": 120,
+          "mean_T_RGL4": 5.154924,
+          "mean_bound_P_flips_gt_m": 0.00587924,
+          "mean_fixed_m": 6.416667,
+          "mean_m_a_b": 6.322159,
+          "mean_planned_m_b": 4.735038,
+          "observed_flips_gt_m_rate": 0.008333,
+          "planned_crossing_rate": 0.016667
+        },
+        "0.05": {
+          "B_range": [
+            106,
+            132
+          ],
+          "T_below_m_a_rate": 0.272727,
+          "anytime_crossing_rate": 0.1,
+          "cases": 30,
+          "mean_T_RGL4": 6.015152,
+          "mean_bound_P_flips_gt_m": 0.30552166,
+          "mean_fixed_m": 6.433333,
+          "mean_m_a_b": 6.3375,
+          "mean_planned_m_b": null,
+          "observed_flips_gt_m_rate": 0.333333,
+          "planned_crossing_rate": 0.3
+        }
+      },
+      "pass": null
+    },
+    "R_coverage": {
+      "gated": false,
+      "observed": {
+        "C_full": {
+          "RG4": {
+            "eps0": [
+              0.654025,
+              [
+                0.626799,
+                0.679167
+              ]
+            ],
+            "eps1": [
+              0.321544,
+              [
+                0.271542,
+                0.371638
+              ]
+            ],
+            "eps2": [
+              0.195265,
+              [
+                0.157576,
+                0.23381
+              ]
+            ],
+            "noisy": [
+              0.258404,
+              [
+                0.225663,
+                0.292022
+              ]
+            ],
+            "stress": [
+              0.049432,
+              [
+                0.030871,
+                0.071591
+              ]
+            ]
+          },
+          "RGL4": {
+            "eps0": [
+              0.275047,
+              [
+                0.257054,
+                0.293229
+              ]
+            ],
+            "eps1": [
+              0.241146,
+              [
+                0.220737,
+                0.261411
+              ]
+            ],
+            "eps2": [
+              0.224242,
+              [
+                0.202699,
+                0.246165
+              ]
+            ],
+            "noisy": [
+              0.232694,
+              [
+                0.21733,
+                0.247964
+              ]
+            ],
+            "stress": [
+              0.261553,
+              [
+                0.208333,
+                0.318182
+              ]
+            ]
+          },
+          "RGN4_or": {
+            "eps0": [
+              0.653835,
+              [
+                0.62661,
+                0.67893
+              ]
+            ],
+            "eps1": [
+              0.583097,
+              [
+                0.557006,
+                0.608571
+              ]
+            ],
+            "eps2": [
+              0.505492,
+              [
+                0.478078,
+                0.533333
+              ]
+            ],
+            "noisy": [
+              0.544295,
+              [
+                0.524266,
+                0.564039
+              ]
+            ],
+            "stress": [
+              0.414773,
+              [
+                0.361932,
+                0.465909
+              ]
+            ]
+          },
+          "RGNA4": {
+            "eps0": [
+              0.116051,
+              [
+                0.097489,
+                0.134944
+              ]
+            ],
+            "eps1": [
+              0.097585,
+              [
+                0.077367,
+                0.118988
+              ]
+            ],
+            "eps2": [
+              0.118371,
+              [
+                0.097016,
+                0.140956
+              ]
+            ],
+            "noisy": [
+              0.107978,
+              [
+                0.092826,
+                0.12377
+              ]
+            ],
+            "stress": [
+              0.224242,
+              [
+                0.158333,
+                0.295076
+              ]
+            ]
+          },
+          "RGNB4": {
+            "eps0": [
+              null,
+              null
+            ],
+            "eps1": [
+              null,
+              null
+            ],
+            "eps2": [
+              0.290862,
+              [
+                0.260652,
+                0.321165
+              ]
+            ],
+            "noisy": [
+              null,
+              null
+            ],
+            "stress": [
+              null,
+              null
+            ]
+          }
+        },
+        "C_late": {
+          "RG4": {
+            "eps0": [
+              0.853314,
+              [
+                0.817614,
+                0.886458
+              ]
+            ],
+            "eps1": [
+              0.338826,
+              [
+                0.267803,
+                0.410511
+              ]
+            ],
+            "eps2": [
+              0.141477,
+              [
+                0.092517,
+                0.19375
+              ]
+            ],
+            "noisy": [
+              0.240152,
+              [
+                0.19517,
+                0.286932
+              ]
+            ],
+            "stress": [
+              0.001515,
+              [
+                0.0,
+                0.004545
+              ]
+            ]
+          },
+          "RGL4": {
+            "eps0": [
+              0.495928,
+              [
+                0.465149,
+                0.527464
+              ]
+            ],
+            "eps1": [
+              0.444129,
+              [
+                0.406155,
+                0.482197
+              ]
+            ],
+            "eps2": [
+              0.41714,
+              [
+                0.376039,
+                0.458523
+              ]
+            ],
+            "noisy": [
+              0.430634,
+              [
+                0.402131,
+                0.459328
+              ]
+            ],
+            "stress": [
+              0.487121,
+              [
+                0.394318,
+                0.583712
+              ]
+            ]
+          },
+          "RGN4_or": {
+            "eps0": [
+              0.853314,
+              [
+                0.817614,
+                0.886458
+              ]
+            ],
+            "eps1": [
+              0.860038,
+              [
+                0.827083,
+                0.891477
+              ]
+            ],
+            "eps2": [
+              0.81875,
+              [
+                0.782102,
+                0.854261
+              ]
+            ],
+            "noisy": [
+              0.839394,
+              [
+                0.814487,
+                0.863352
+              ]
+            ],
+            "stress": [
+              0.755682,
+              [
+                0.672348,
+                0.831818
+              ]
+            ]
+          },
+          "RGNA4": {
+            "eps0": [
+              0.220455,
+              [
+                0.186553,
+                0.255116
+              ]
+            ],
+            "eps1": [
+              0.182102,
+              [
+                0.144979,
+                0.220836
+              ]
+            ],
+            "eps2": [
+              0.225095,
+              [
+                0.185414,
+                0.267708
+              ]
+            ],
+            "noisy": [
+              0.203598,
+              [
+                0.175473,
+                0.233003
+              ]
+            ],
+            "stress": [
+              0.412121,
+              [
+                0.299621,
+                0.529934
+              ]
+            ]
+          },
+          "RGNB4": {
+            "eps0": [
+              null,
+              null
+            ],
+            "eps1": [
+              null,
+              null
+            ],
+            "eps2": [
+              0.530398,
+              [
+                0.476894,
+                0.584375
+              ]
+            ],
+            "noisy": [
+              null,
+              null
+            ],
+            "stress": [
+              null,
+              null
+            ]
+          },
+          "SP8": {
+            "eps0": [
+              0.373674,
+              [
+                0.317043,
+                0.428788
+              ]
+            ],
+            "eps1": [
+              0.155114,
+              [
+                0.110225,
+                0.201705
+              ]
+            ],
+            "eps2": [
+              0.071875,
+              [
+                0.042045,
+                0.106252
+              ]
+            ],
+            "noisy": [
+              0.113494,
+              [
+                0.085748,
+                0.142187
+              ]
+            ],
+            "stress": [
+              0.001515,
+              [
+                0.0,
+                0.004545
+              ]
+            ]
+          }
+        },
+        "RG4": {
+          "0.0": {
+            "anytime_crossings": 0,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.260863,
+            "coverage_full": 0.654025,
+            "coverage_late": 0.853314,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 0,
+            "false_certificates": 0
+          },
+          "0.01": {
+            "anytime_crossings": 1,
+            "case_false": 24,
+            "case_false_rate": 0.2,
+            "cases": 120,
+            "coverage_early28": 0.212202,
+            "coverage_full": 0.321544,
+            "coverage_late": 0.338826,
+            "cp_upper_95_one_sided": 0.2695814,
+            "crossings": 0,
+            "false_certificates": 70
+          },
+          "0.02": {
+            "anytime_crossings": 2,
+            "case_false": 37,
+            "case_false_rate": 0.308333,
+            "cases": 120,
+            "coverage_early28": 0.20878,
+            "coverage_full": 0.195265,
+            "coverage_late": 0.141477,
+            "cp_upper_95_one_sided": 0.38491855,
+            "crossings": 2,
+            "false_certificates": 103
+          },
+          "0.05": {
+            "anytime_crossings": 3,
+            "case_false": 15,
+            "case_false_rate": 0.5,
+            "cases": 30,
+            "coverage_early28": 0.114286,
+            "coverage_full": 0.049432,
+            "coverage_late": 0.001515,
+            "cp_upper_95_one_sided": 0.66110734,
+            "crossings": 9,
+            "false_certificates": 27
+          }
+        },
+        "RGL4": {
+          "0.0": {
+            "anytime_crossings": 0,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.003869,
+            "coverage_full": 0.275047,
+            "coverage_late": 0.495928,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 0,
+            "false_certificates": 0
+          },
+          "0.01": {
+            "anytime_crossings": 1,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.003571,
+            "coverage_full": 0.241146,
+            "coverage_late": 0.444129,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 0,
+            "false_certificates": 0
+          },
+          "0.02": {
+            "anytime_crossings": 2,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.002381,
+            "coverage_full": 0.224242,
+            "coverage_late": 0.41714,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 2,
+            "false_certificates": 0
+          },
+          "0.05": {
+            "anytime_crossings": 3,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 30,
+            "coverage_early28": 0.002381,
+            "coverage_full": 0.261553,
+            "coverage_late": 0.487121,
+            "cp_upper_95_one_sided": 0.09503385,
+            "crossings": 9,
+            "false_certificates": 0
+          }
+        },
+        "RGN4_or": {
+          "0.0": {
+            "anytime_crossings": 0,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.260268,
+            "coverage_full": 0.653835,
+            "coverage_late": 0.853314,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 0,
+            "false_certificates": 0
+          },
+          "0.01": {
+            "anytime_crossings": 1,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.124256,
+            "coverage_full": 0.583097,
+            "coverage_late": 0.860038,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 0,
+            "false_certificates": 0
+          },
+          "0.02": {
+            "anytime_crossings": 2,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.064137,
+            "coverage_full": 0.505492,
+            "coverage_late": 0.81875,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 2,
+            "false_certificates": 0
+          },
+          "0.05": {
+            "anytime_crossings": 3,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 30,
+            "coverage_early28": 0.013095,
+            "coverage_full": 0.414773,
+            "coverage_late": 0.755682,
+            "cp_upper_95_one_sided": 0.09503385,
+            "crossings": 9,
+            "false_certificates": 0
+          }
+        },
+        "RGNA4": {
+          "0.0": {
+            "anytime_crossings": 0,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.000595,
+            "coverage_full": 0.116051,
+            "coverage_late": 0.220455,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 0,
+            "false_certificates": 0
+          },
+          "0.01": {
+            "anytime_crossings": 1,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.000744,
+            "coverage_full": 0.097585,
+            "coverage_late": 0.182102,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 0,
+            "false_certificates": 0
+          },
+          "0.02": {
+            "anytime_crossings": 2,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.000298,
+            "coverage_full": 0.118371,
+            "coverage_late": 0.225095,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 2,
+            "false_certificates": 0
+          },
+          "0.05": {
+            "anytime_crossings": 3,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 30,
+            "coverage_early28": 0.002381,
+            "coverage_full": 0.224242,
+            "coverage_late": 0.412121,
+            "cp_upper_95_one_sided": 0.09503385,
+            "crossings": 9,
+            "false_certificates": 0
+          }
+        },
+        "RGNB4": {
+          "0.02": {
+            "anytime_crossings": 2,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.003869,
+            "coverage_full": 0.290862,
+            "coverage_late": 0.530398,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 2,
+            "false_certificates": 0
+          }
+        },
+        "SP8": {
+          "0.0": {
+            "anytime_crossings": 0,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.062351,
+            "coverage_full": 0.2625,
+            "coverage_late": 0.373674,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 0,
+            "false_certificates": 0
+          },
+          "0.01": {
+            "anytime_crossings": 1,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.045685,
+            "coverage_full": 0.124858,
+            "coverage_late": 0.155114,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 0,
+            "false_certificates": 0
+          },
+          "0.02": {
+            "anytime_crossings": 2,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 120,
+            "coverage_early28": 0.040625,
+            "coverage_full": 0.073864,
+            "coverage_late": 0.071875,
+            "cp_upper_95_one_sided": 0.0246554,
+            "crossings": 2,
+            "false_certificates": 0
+          },
+          "0.05": {
+            "anytime_crossings": 3,
+            "case_false": 0,
+            "case_false_rate": 0.0,
+            "cases": 30,
+            "coverage_early28": 0.007143,
+            "coverage_full": 0.006629,
+            "coverage_late": 0.001515,
+            "cp_upper_95_one_sided": 0.09503385,
+            "crossings": 9,
+            "false_certificates": 0
+          }
+        },
+        "labels": {
+          "RG4": "expected > 0 false under noise",
+          "RGN4_or": "oracle m = realized flips, evaluator-only"
+        }
+      },
+      "pass": null
+    },
+    "R_early28": {
+      "gated": false,
+      "observed": {
+        "RG4": {
+          "eps0": [
+            0.260863,
+            [
+              0.236607,
+              0.284821
+            ]
+          ],
+          "eps1": [
+            0.212202,
+            [
+              0.186752,
+              0.237798
+            ]
+          ],
+          "eps2": [
+            0.20878,
+            [
+              0.182589,
+              0.234528
+            ]
+          ],
+          "noisy": [
+            0.210491,
+            [
+              0.191964,
+              0.228795
+            ]
+          ],
+          "stress": [
+            0.114286,
+            [
+              0.075,
+              0.160119
+            ]
+          ]
+        },
+        "RGL4": {
+          "eps0": [
+            0.003869,
+            [
+              0.001339,
+              0.006994
+            ]
+          ],
+          "eps1": [
+            0.003571,
+            [
+              0.00119,
+              0.006548
+            ]
+          ],
+          "eps2": [
+            0.002381,
+            [
+              0.000595,
+              0.004762
+            ]
+          ],
+          "noisy": [
+            0.002976,
+            [
+              0.001414,
+              0.004911
+            ]
+          ],
+          "stress": [
+            0.002381,
+            [
+              0.0,
+              0.005357
+            ]
+          ]
+        },
+        "RGN4_or": {
+          "eps0": [
+            0.260268,
+            [
+              0.236012,
+              0.284226
+            ]
+          ],
+          "eps1": [
+            0.124256,
+            [
+              0.101488,
+              0.148214
+            ]
+          ],
+          "eps2": [
+            0.064137,
+            [
+              0.04494,
+              0.085417
+            ]
+          ],
+          "noisy": [
+            0.094196,
+            [
+              0.078644,
+              0.110789
+            ]
+          ],
+          "stress": [
+            0.013095,
+            [
+              0.002381,
+              0.027976
+            ]
+          ]
+        },
+        "RGNA4": {
+          "eps0": [
+            0.000595,
+            [
+              0.0,
+              0.001339
+            ]
+          ],
+          "eps1": [
+            0.000744,
+            [
+              0.000149,
+              0.001637
+            ]
+          ],
+          "eps2": [
+            0.000298,
+            [
+              0.0,
+              0.000744
+            ]
+          ],
+          "noisy": [
+            0.000521,
+            [
+              0.000149,
+              0.000967
+            ]
+          ],
+          "stress": [
+            0.002381,
+            [
+              0.0,
+              0.005357
+            ]
+          ]
+        },
+        "RGNB4": {
+          "eps0": [
+            null,
+            null
+          ],
+          "eps1": [
+            null,
+            null
+          ],
+          "eps2": [
+            0.003869,
+            [
+              0.001786,
+              0.00625
+            ]
+          ],
+          "noisy": [
+            null,
+            null
+          ],
+          "stress": [
+            null,
+            null
+          ]
+        },
+        "SP8": {
+          "eps0": [
+            0.062351,
+            [
+              0.047173,
+              0.078274
+            ]
+          ],
+          "eps1": [
+            0.045685,
+            [
+              0.031845,
+              0.060565
+            ]
+          ],
+          "eps2": [
+            0.040625,
+            [
+              0.02753,
+              0.054911
+            ]
+          ],
+          "noisy": [
+            0.043155,
+            [
+              0.033557,
+              0.053125
+            ]
+          ],
+          "stress": [
+            0.007143,
+            [
+              0.0,
+              0.020833
+            ]
+          ]
+        }
+      },
+      "pass": null
+    },
+    "R_eps_compare": {
+      "gated": false,
+      "observed": {
+        "eps0": {
+          "C_late_RGL4": [
+            0.495928,
+            [
+              0.465149,
+              0.527464
+            ]
+          ],
+          "C_late_RGNA4": [
+            0.220455,
+            [
+              0.186553,
+              0.255116
+            ]
+          ],
+          "dC_early28_RGL4_RGNA4": [
+            0.003274,
+            [
+              0.001042,
+              0.006101
+            ]
+          ],
+          "dC_late_RGL4_RGNA4": [
+            0.275473,
+            [
+              0.249998,
+              0.301136
+            ]
+          ]
+        },
+        "eps1": {
+          "C_late_RGL4": [
+            0.444129,
+            [
+              0.406155,
+              0.482197
+            ]
+          ],
+          "C_late_RGNA4": [
+            0.182102,
+            [
+              0.144979,
+              0.220836
+            ]
+          ],
+          "dC_early28_RGL4_RGNA4": [
+            0.002827,
+            [
+              0.000595,
+              0.005506
+            ]
+          ],
+          "dC_late_RGL4_RGNA4": [
+            0.262027,
+            [
+              0.232197,
+              0.291667
+            ]
+          ]
+        },
+        "eps2": {
+          "C_late_RGL4": [
+            0.41714,
+            [
+              0.376039,
+              0.458523
+            ]
+          ],
+          "C_late_RGNA4": [
+            0.225095,
+            [
+              0.185414,
+              0.267708
+            ]
+          ],
+          "dC_early28_RGL4_RGNA4": [
+            0.002083,
+            [
+              0.000298,
+              0.004464
+            ]
+          ],
+          "dC_late_RGL4_RGNA4": [
+            0.192045,
+            [
+              0.161645,
+              0.223106
+            ]
+          ]
+        },
+        "noisy": {
+          "C_late_RGL4": [
+            0.430634,
+            [
+              0.402131,
+              0.459328
+            ]
+          ],
+          "C_late_RGNA4": [
+            0.203598,
+            [
+              0.175473,
+              0.233003
+            ]
+          ],
+          "dC_early28_RGL4_RGNA4": [
+            0.002455,
+            [
+              0.000967,
+              0.004241
+            ]
+          ],
+          "dC_late_RGL4_RGNA4": [
+            0.227036,
+            [
+              0.205254,
+              0.24929
+            ]
+          ]
+        },
+        "stress": {
+          "C_late_RGL4": [
+            0.487121,
+            [
+              0.394318,
+              0.583712
+            ]
+          ],
+          "C_late_RGNA4": [
+            0.412121,
+            [
+              0.299621,
+              0.529934
+            ]
+          ],
+          "dC_early28_RGL4_RGNA4": [
+            0.0,
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "dC_late_RGL4_RGNA4": [
+            0.075,
+            [
+              0.0125,
+              0.142045
+            ]
+          ]
+        }
+      },
+      "pass": null
+    },
+    "R_first_cert": {
+      "gated": false,
+      "observed": {
+        "label": "informational, ungated; SP8 censored at the inherited CENSOR = 45 (ambiguous at 88 steps; deviation addendum)",
+        "mean_first_cert_step": {
+          "RG4": {
+            "0.0": 16.733,
+            "0.01": 17.717,
+            "0.02": 16.092,
+            "0.05": 18.867
+          },
+          "RGL4": {
+            "0.0": 43.642,
+            "0.01": 47.725,
+            "0.02": 49.45,
+            "0.05": 50.633
+          },
+          "RGN4_or": {
+            "0.0": 16.825,
+            "0.01": 24.533,
+            "0.02": 32.85,
+            "0.05": 43.167
+          },
+          "RGNA4": {
+            "0.0": 53.3,
+            "0.01": 53.267,
+            "0.02": 54.242,
+            "0.05": 51.4
+          },
+          "RGNB4": {
+            "0.0": null,
+            "0.01": null,
+            "0.02": 43.567,
+            "0.05": null
+          },
+          "SP8": {
+            "0.0": 31.708,
+            "0.01": 35.867,
+            "0.02": 35.692,
+            "0.05": 42.333
+          }
+        }
+      },
+      "pass": null
+    },
+    "R_heartbeat_attribution": {
+      "gated": false,
+      "observed": {
+        "label": "Inferred; diagnostic, changes no verdict",
+        "sentinel_attribution": {
+          "class_counts": {
+            "box_pause": 0,
+            "clock_step": 4,
+            "suspend": 0,
+            "unattributed": 2,
+            "watchdog_stall": 0
+          },
+          "gaps_over_10s": [
+            {
+              "ckpt_bytes_written": 0,
+              "class": "unattributed",
+              "d_boot_s": 31.413,
+              "d_mono_s": 31.413,
+              "from_wall": 1793236768.713,
+              "gap_wall_s": 31.413,
+              "jiffies_delta": {
+                "idle": 0,
+                "iowait": 0,
+                "steal": 2,
+                "system": 232,
+                "user": 3577
+              },
+              "label": "Inferred",
+              "n_desc": 10,
+              "sentinel_stall_s": 30.861,
+              "workers_cpu_s": 252.1
+            },
+            {
+              "ckpt_bytes_written": 0,
+              "class": "unattributed",
+              "d_boot_s": 24.27,
+              "d_mono_s": 24.27,
+              "from_wall": 1793237730.126,
+              "gap_wall_s": 24.27,
+              "jiffies_delta": {
+                "idle": 2,
+                "iowait": 1,
+                "steal": 0,
+                "system": 306,
+                "user": 2925
+              },
+              "label": "Inferred",
+              "n_desc": 10,
+              "sentinel_stall_s": 24.174,
+              "workers_cpu_s": 173.56
+            },
+            {
+              "ckpt_bytes_written": 0,
+              "class": "clock_step",
+              "d_boot_s": 7.493,
+              "d_mono_s": 7.492,
+              "from_wall": 1793237784.397,
+              "gap_wall_s": 39.815,
+              "jiffies_delta": {
+                "idle": 3,
+                "iowait": 0,
+                "steal": 23,
+                "system": 722,
+                "user": 3008
+              },
+              "label": "Inferred",
+              "n_desc": 10,
+              "sentinel_stall_s": 7.122,
+              "workers_cpu_s": 73.45
+            },
+            {
+              "ckpt_bytes_written": 0,
+              "class": "clock_step",
+              "d_boot_s": 7.515,
+              "d_mono_s": 7.515,
+              "from_wall": 1793238266.128,
+              "gap_wall_s": 47.558,
+              "jiffies_delta": {
+                "idle": 0,
+                "iowait": 1,
+                "steal": 5,
+                "system": 621,
+                "user": 3963
+              },
+              "label": "Inferred",
+              "n_desc": 10,
+              "sentinel_stall_s": 6.031,
+              "workers_cpu_s": 77.95
+            },
+            {
+              "ckpt_bytes_written": 187338,
+              "class": "clock_step",
+              "d_boot_s": 4.118,
+              "d_mono_s": 4.118,
+              "from_wall": 1793238793.645,
+              "gap_wall_s": 32.155,
+              "jiffies_delta": {
+                "idle": 283,
+                "iowait": 5,
+                "steal": 4,
+                "system": 390,
+                "user": 4125
+              },
+              "label": "Inferred",
+              "n_desc": 8,
+              "sentinel_stall_s": 2.71,
+              "workers_cpu_s": 49.55
+            },
+            {
+              "ckpt_bytes_written": 310,
+              "class": "clock_step",
+              "d_boot_s": 5.42,
+              "d_mono_s": 5.42,
+              "from_wall": 1793239753.773,
+              "gap_wall_s": 31.293,
+              "jiffies_delta": {
+                "idle": 190,
+                "iowait": 0,
+                "steal": 4,
+                "system": 214,
+                "user": 2825
+              },
+              "label": "Inferred",
+              "n_desc": 9,
+              "sentinel_stall_s": 4.261,
+              "workers_cpu_s": 49.69
+            }
+          ],
+          "max_sentinel_tick_gap_s": 30.861,
+          "max_watchdog_gap_s": 47.558,
+          "sentinel_records": 2498
+        },
+        "watchdog_gaps_over_10s": [
+          {
+            "d_boottime": 31.413,
+            "d_cpu_s": 0.001,
+            "d_monotonic": 31.413,
+            "d_psi_io_full_us": 0,
+            "d_psi_io_some_us": 4260,
+            "gap_s": 31.413,
+            "wall_from": 1793236768.713
+          },
+          {
+            "d_boottime": 24.27,
+            "d_cpu_s": 0.0,
+            "d_monotonic": 24.27,
+            "d_psi_io_full_us": 0,
+            "d_psi_io_some_us": 1632,
+            "gap_s": 24.27,
+            "wall_from": 1793237730.126
+          },
+          {
+            "d_boottime": 7.493,
+            "d_cpu_s": 0.129,
+            "d_monotonic": 7.492,
+            "d_psi_io_full_us": 91,
+            "d_psi_io_some_us": 30388,
+            "gap_s": 39.815,
+            "wall_from": 1793237784.397
+          },
+          {
+            "d_boottime": 7.515,
+            "d_cpu_s": 0.129,
+            "d_monotonic": 7.515,
+            "d_psi_io_full_us": 881,
+            "d_psi_io_some_us": 53914,
+            "gap_s": 47.558,
+            "wall_from": 1793238266.128
+          },
+          {
+            "d_boottime": 4.118,
+            "d_cpu_s": 0.109,
+            "d_monotonic": 4.118,
+            "d_psi_io_full_us": 32,
+            "d_psi_io_some_us": 1700,
+            "gap_s": 32.155,
+            "wall_from": 1793238793.645
+          },
+          {
+            "d_boottime": 5.42,
+            "d_cpu_s": 0.187,
+            "d_monotonic": 5.42,
+            "d_psi_io_full_us": 65,
+            "d_psi_io_some_us": 178,
+            "gap_s": 31.293,
+            "wall_from": 1793239753.773
+          }
+        ]
+      },
+      "pass": null
+    },
+    "R_rates": {
+      "gated": false,
+      "observed": {
+        "g11": {
+          "budget_s": 1200,
+          "fraction_of_budget": 0.491,
+          "projected_s": 999.5,
+          "raw_projection_s": 571.1,
+          "spent_s": 589.1
+        },
+        "gti": {
+          "budget_s": 7000,
+          "fraction_of_budget": 0.518,
+          "projected_s": 6521.2,
+          "raw_projection_s": 3726.4,
+          "spent_s": 3627.0
+        },
+        "rate_math": {
+          "file": "docs/research/v0.20.0/RATE_MATH_023.json",
+          "fits": false,
+          "sha256": "a714912024abb5aeec55167e405df21ff07410b5fb738969a204d2cd99e4f806"
+        },
+        "repro": {
+          "budget_s": 1200,
+          "fraction_of_budget": 0.588,
+          "projected_s": 1581.3,
+          "raw_projection_s": 903.6,
+          "spent_s": 705.2
+        },
+        "solver_cost": {
+          "RG4": {
+            "cases": 390,
+            "ms_per_step": 1.1334,
+            "total_s": 38.897
+          },
+          "RGL4": {
+            "cases": 390,
+            "ms_per_step": 322.5561,
+            "total_s": 11070.124
+          },
+          "RGN4_or": {
+            "cases": 390,
+            "ms_per_step": 62.3361,
+            "total_s": 2139.373
+          },
+          "RGNA4": {
+            "cases": 390,
+            "ms_per_step": 380.4215,
+            "total_s": 13056.067
+          },
+          "RGNB4": {
+            "cases": 120,
+            "ms_per_step": 330.7352,
+            "total_s": 3492.564
+          },
+          "prefix28": {
+            "cases": 120,
+            "ms_per_step": 2.5599,
+            "total_s": 27.032
+          },
+          "timing_source": "transfer/RESULTS.json (informational, unsealed)"
+        },
+        "transfer": {
+          "budget_s": 6000,
+          "fraction_of_budget": 0.746,
+          "projected_s": 10435.7,
+          "raw_projection_s": 5963.3,
+          "spent_s": 4474.8
+        }
+      },
+      "pass": null
+    },
+    "R_ratio_RGL4_RGNB4": {
+      "gated": false,
+      "observed": {
+        "C_late_RGL4_eps2": [
+          0.41714,
+          [
+            0.376039,
+            0.458523
+          ]
+        ],
+        "C_late_RGNB4_eps2": [
+          0.530398,
+          [
+            0.476894,
+            0.584375
+          ]
+        ],
+        "dC_early28_RGL4_RGNB4_eps2": [
+          -0.001488,
+          [
+            -0.003869,
+            0.001042
+          ]
+        ],
+        "dC_late_RGL4_RGNB4_eps2": [
+          -0.113258,
+          [
+            -0.154735,
+            -0.072822
+          ]
+        ],
+        "label": "RGNB4 is planned-B (not anytime); comparison only",
+        "ratio_late": 0.786467
+      },
+      "pass": null
+    },
+    "R_resume_drill": {
+      "gated": false,
+      "observed": {
+        "drill_passed": true,
+        "label": "process control (not a plan criterion in 023)",
+        "report": {
+          "cases_rd": 12,
+          "cases_ref": 12,
+          "checkpoints": {
+            "repro/smoke": {
+              "duplicates": 0,
+              "lines": 4
+            },
+            "transfer": {
+              "duplicates": 0,
+              "lines": 12
+            }
+          },
+          "clauses": {
+            "i_all_streams_complete": true,
+            "ii_scientific_identical_per_case": true,
+            "iii_spent_includes_pre_kill_time": true,
+            "iv_no_duplicate_checkpoint_keys": true
+          },
+          "differing_cases": [],
+          "kill_after_launch_s": 45.008,
+          "killed_at": "2026-10-28T19:44:08-0400",
+          "killed_process_groups": [
+            279951,
+            279966
+          ],
+          "label": "Observed (block smoke-drill; outside the cap; scratch directories).",
+          "orphan_log_lines": [
+            "[2026-10-28T19:44:14-0400] transfer: orphan from an interrupted orchestrator stopped; charged 44 s; will resume"
+          ],
+          "passed": true,
+          "pids_before_kill": [
+            279951
+          ],
+          "reference_returncode": 0,
+          "relaunch_returncode": 0,
+          "schema": "brute.resume-drill.v1",
+          "setup": "SMOKE=1 SKIP_GTI=1 BRUTE_SMOKE_DRILL=1 CAP_S=3000; REF /tmp/s23/rd_ref uninterrupted; RD /tmp/s23/rd SIGKILL of the whole orchestrator session at 45 s, relaunched once; REF and RD ran concurrently",
+          "spent_final": {
+            "g11": 56.04172682762146,
+            "repro": 152.0892632007599,
+            "transfer": 258.2292950153351
+          },
+          "state_at_kill": {
+            "finished": {},
+            "running": {
+              "transfer": {
+                "pgid": 279966,
+                "since": 1793231003.4343388,
+                "spent_before": 0
+              }
+            },
+            "spent": {}
+          },
+          "stopped_final": {},
+          "survivors": [],
+          "transfer_elapsed_before_kill_s": 44.057
+        }
+      },
+      "pass": null
+    },
+    "R_step_wall": {
+      "gated": false,
+      "observed": {
+        "RGL4_step_wall_s": null,
+        "label": "informational wall clock, unsealed"
+      },
+      "pass": null
+    },
+    "R_stress": {
+      "gated": false,
+      "observed": {
+        "RG4": {
+          "anytime_crossings": 3,
+          "case_false": 15,
+          "case_false_rate": 0.5,
+          "cases": 30,
+          "coverage_early28": 0.114286,
+          "coverage_full": 0.049432,
+          "coverage_late": 0.001515,
+          "cp_upper_95_one_sided": 0.66110734,
+          "crossings": 9,
+          "false_certificates": 27
+        },
+        "RGL4": {
+          "anytime_crossings": 3,
+          "case_false": 0,
+          "case_false_rate": 0.0,
+          "cases": 30,
+          "coverage_early28": 0.002381,
+          "coverage_full": 0.261553,
+          "coverage_late": 0.487121,
+          "cp_upper_95_one_sided": 0.09503385,
+          "crossings": 9,
+          "false_certificates": 0
+        },
+        "RGL4_case_false": 0,
+        "RGL4_case_false_with_lr_anytime_crossing": 0,
+        "RGL4_false_certificates": 0,
+        "RGN4_or": {
+          "anytime_crossings": 3,
+          "case_false": 0,
+          "case_false_rate": 0.0,
+          "cases": 30,
+          "coverage_early28": 0.013095,
+          "coverage_full": 0.414773,
+          "coverage_late": 0.755682,
+          "cp_upper_95_one_sided": 0.09503385,
+          "crossings": 9,
+          "false_certificates": 0
+        },
+        "RGNA4": {
+          "anytime_crossings": 3,
+          "case_false": 0,
+          "case_false_rate": 0.0,
+          "cases": 30,
+          "coverage_early28": 0.002381,
+          "coverage_full": 0.224242,
+          "coverage_late": 0.412121,
+          "cp_upper_95_one_sided": 0.09503385,
+          "crossings": 9,
+          "false_certificates": 0
+        },
+        "RGNA4_case_false": 0,
+        "cases": 30,
+        "cases_with_anytime_crossing": 3,
+        "label": "outside the attestation; no guarantee"
+      },
+      "pass": null
+    }
+  },
+  "passed": [
+    "G_recount",
+    "GLR",
+    "GLR_lemma",
+    "GAS_frozen_control",
+    "GS_a10",
+    "GS_ref10",
+    "GAPI10",
+    "G10",
+    "G12",
+    "G13",
+    "GTI",
+    "G_RT"
+  ],
+  "pending": [],
+  "plan_sha256": "4d9a6255cf536e328a9a509bf2b7df40d6ff7ed95701a9aeee124fb94e580a57",
+  "schema": "brute.gates.v20_0",
+  "scientific_sha256": "91ce7bc9f3c278e7cff1464a8e655dec86f8234980c8845f180922b2c1b399a0",
+  "smoke_dry_run": false,
+  "stop_rule_fired": false,
+  "study": "BRUTE-0200-LR-ANYTIME-023"
+}
