@@ -1,8 +1,24 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-28 ~22:55 EDT (v0.20.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-29 (v0.21.0)._
 
 ## Current version and state
+
+<!-- V0210 -->
+- **v0.21.0: RELEASE IN PROGRESS** 2026-10-29 (branch `plan/v0.21.0`). Study BRUTE-0210-STITCHED-LR-024. **12 of 14 gated pass; GLS and G_HB fail.**
+  - **Headline GLS (stitched likelihood-ratio bound RGL5, `brute.certify/10` method stitched): FAIL.** Clauses a and e pass; b, c and d fail.
+    - RGL5: 0 false certificates on 240 of 240 noisy main cases; CP95 0.0124; prefix28 identical on 120 of 120 eps 0.02 cases.
+    - C_late at eps 0.02: RGL5 0.419 [0.378, 0.462]; RGL4 0.411 [0.372, 0.453]; RGNB4 0.455 [0.401, 0.509]; oracle RGN4_or 0.836 [0.802, 0.868].
+    - (c) dC_late RGL5 - RGL4: +0.0076 [0.0032, 0.0128], bar mean >= 0.04. (d) dC_late RGL5 - RGNB4: -0.036 [-0.066, -0.007], bar CI lower > -0.06.
+    - (b) 3 RGL5 false certificates in 1 of 30 stress cases (switch3 9020005, eps 0.05 > eps_bar 0.02; outside the attested condition). RGL4 0 on stress.
+    - C_early28 at eps 0.02: RGL5 0.0043 [0.0012, 0.0082]; RGL4 0.0036; RGNB4 0.0036; oracle 0.053.
+  - **FAIL: G_HB.** 2891 beats, max gap 35.829 s, 2 gaps over 10 s (clock_step 2, Inferred). The pre-run 600 s probe had 0 gaps.
+  - **PASS:** G_recount, GLS_lemma, GAS_frozen_control (RGL4 CI overlaps study-023), GS_a10, GS_ref10 (mutation 20/20), GAPI10 (`brute.certify/10` new; /9 to /1 unchanged), G10, G12 (30/30), G13, GTI (K_0200_113; tooling after run_end), G_RT, G_PROC. Release gate GCC PASS.
+  - **Run.** RUN_T0 05:53:57 EDT; RUN_DONE 07:31:26 EDT at 5850 s of 7200 s. Streams: transfer 5220 s, gti 3843 s, repro 598 s, g11 624 s. No stop.
+  - **Chain:** plan `52deedb` -> authorization `a138b00` -> lemma `35bb890` -> reference `eedd13a` -> RGL5 code `6215a53` -> process `b6d7edd` -> commit order `e3bba8c` -> rate math `d07cce8` (#117 cut) -> source freeze `5850088` -> scoring freeze `2a6aba7` -> run_start `a5b6954` -> seal `612d651` -> gates `47b83a4` -> #118 `58b93fb` -> clean clone `7871cab` -> tooling `fca0f18` -> release freeze `41ec9b2`.
+  - **Deviations:** #115, #116, #117 (pre-run), #118 (run outcome).
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
+  - **Next:** the v0.22.0 plan (`BRUTE_PLAN_025` on branch `plan/v0.22.0`, plan only; build not authorized).
 
 <!-- V0200 -->
 - **v0.20.0: RELEASED** 2026-10-28 (tag `v0.20.0` → `c42e6f4`; main fast-forwarded; https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.20.0; fresh-clone verify passed short and --long with `verify_release_0200_r1`). Study BRUTE-0200-LR-ANYTIME-023. **12 of 13 gated pass.**

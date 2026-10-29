@@ -1,5 +1,31 @@
 # Brute changelog
 
+## v0.21.0: stitched likelihood-ratio bound RGL5, API brute.certify/10 (study BRUTE-0210-STITCHED-LR-024)
+
+**12 of 14 gated criteria pass. GLS (headline) FAILS on clauses b, c and d. G_HB FAILS. Release gate GCC PASSES.** *Observed*; scoring rules were fixed before the data (*Exact*).
+
+### Timeline (author's clock, EDT, 2026-10-29)
+
+- **Pre-registration.** Plan `52deedb` (2026-10-28 22:52). Owner build authorisation 04:15 (card t126s506). Lemma `35bb890` and reference `eedd13a` before RGL5 code `6215a53`.
+- **Preparation.** Process `b6d7edd`, commit order `e3bba8c`, rate math `d07cce8` (#117: reproset 60 -> 30, streams re-split). Source freeze `5850088` (05:43:02), scoring freeze `2a6aba7` (05:43:17), host-pause probe 600 s with 0 gaps.
+- **Run.** RUN_T0 05:53:57; RUN_DONE 07:31:26 (5850 s of 7200 s); transfer 5220 s, gti 3843 s, repro 598 s, g11 624 s; no stop.
+- **After.** Seal `612d651`, gates `47b83a4`, #118 `58b93fb`, clean clone `7871cab` (PASS), tooling `fca0f18`, release freeze `41ec9b2`.
+
+### Results (eps 0.02, 120 cases, CI95 bootstrap)
+
+| arm | C_late | C_early28 |
+|---|---|---|
+| RGL5 (stitched, new) | 0.419 [0.378, 0.462] | 0.0043 [0.0012, 0.0082] |
+| RGL4 (frozen lr) | 0.411 [0.372, 0.453] | 0.0036 [0.0006, 0.0073] |
+| RGNB4 (planned B) | 0.455 [0.401, 0.509] | 0.0036 [0.0009, 0.0071] |
+| RGNA4 (anytime margin) | 0.197 [0.152, 0.246] | 0.0007 [0.0, 0.0019] |
+| RGN4_or (oracle) | 0.836 [0.802, 0.868] | 0.053 [0.039, 0.069] |
+
+- dC_late RGL5 - RGL4: +0.0076 [0.0032, 0.0128] (bar >= 0.04: FAIL). dC_late RGL5 - RGNB4: -0.036 [-0.066, -0.007] (bar CI lower > -0.06: FAIL).
+- False certificates: RGL5 0 on 240 noisy main cases (CP95 0.0124); 3 in 1 of 30 stress cases (eps 0.05 > eps_bar; clause b FAIL). RGL4, RGNA4, RGN4_or 0 on stress.
+- G_HB FAIL: max gap 35.829 s, 2 gaps over 10 s (clock_step, Inferred).
+- Deviations #115-#118. Verify: `PYTHONPATH=. python scripts/verify_release_0210.py [--long]`.
+
 ## v0.20.0: likelihood-ratio anytime bound RGL4, API brute.certify/9 (study BRUTE-0200-LR-ANYTIME-023)
 
 **12 of 13 gated criteria pass. GLR (headline) PASSES on all five clauses. G_HB FAILS. Release gate GCC FAILS (#112).** *Observed*; scoring rules were fixed before the data (*Exact*).
