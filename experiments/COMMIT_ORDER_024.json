@@ -1,0 +1,99 @@
+{
+ "schema": "brute.commit-order-024.v1",
+ "plan": "BRUTE-0210-STITCHED-LR-024",
+ "purpose": "G_PROC (c): the only input for the git-history gates (GLS_lemma, GAS ordering, GTI tooling order). Each commit is an ancestor of the next (checked when written). Written and ledgered before the source freeze; gates read this file, not live git log.",
+ "label": "Exact",
+ "commits": [
+  {
+   "order": 0,
+   "event": "preregistration_024",
+   "commit": "52deedbfbdbaec3c6a5be41c3a1fca254fb3b5fa",
+   "short": "52deedb",
+   "commit_time": "2026-10-28T22:52:31-04:00",
+   "ledger_note_time": "2026-10-28T22:52:31-04:00",
+   "why": "plan BRUTE_PLAN_024 (plan only)"
+  },
+  {
+   "order": 1,
+   "event": "build_authorization_024",
+   "commit": "a138b00ad425e1d27236b154341fde4bffaf4e2c",
+   "short": "a138b00",
+   "commit_time": "2026-10-29T04:18:40-04:00",
+   "ledger_note_time": "2026-10-29T04:18:40-04:00",
+   "why": "owner card t126s506"
+  },
+  {
+   "order": 2,
+   "event": "stitched_lemma_024",
+   "commit": "35bb8909f32837d87975eb490c4c687410dca55f",
+   "short": "35bb890",
+   "commit_time": "2026-10-29T04:19:58-04:00",
+   "ledger_note_time": "2026-10-29T04:19:58-04:00",
+   "why": "STITCHED_LEMMA_024 before reference and RGL5 code"
+  },
+  {
+   "order": 3,
+   "event": "reference_024",
+   "commit": "eedd13a6280378840a4d6c7d777fe6e746deb9e7",
+   "short": "eedd13a",
+   "commit_time": "2026-10-29T04:21:06-04:00",
+   "ledger_note_time": "2026-10-29T04:21:06-04:00",
+   "why": "independent reference v0210_reference before RGL5 code"
+  },
+  {
+   "order": 4,
+   "event": "seedcheck_024",
+   "commit": "acb6aa9225348479e2dae2f41e48a0f291ecfac0",
+   "short": "acb6aa9",
+   "commit_time": "2026-10-29T04:21:42-04:00",
+   "ledger_note_time": "2026-10-29T04:21:42-04:00",
+   "why": "seed ranges disjoint"
+  },
+  {
+   "order": 5,
+   "event": "deviation_024_115",
+   "commit": "d5026df7c222056d6e2f5c18c6bb3475e07f786e",
+   "short": "d5026df",
+   "commit_time": "2026-10-29T04:27:26-04:00",
+   "ledger_note_time": "2026-10-29T04:27:26-04:00",
+   "why": "deviation #115 before RGL5 code"
+  },
+  {
+   "order": 6,
+   "event": "rgl5_code_024",
+   "commit": "6215a538895e2152600e72b963db4276a5d4e8ea",
+   "short": "6215a53",
+   "commit_time": "2026-10-29T04:27:29-04:00",
+   "ledger_note_time": "2026-10-29T04:27:29-04:00",
+   "why": "first RGL5 code"
+  },
+  {
+   "order": 7,
+   "event": "process_scripts_024",
+   "commit": "b6d7edd33fb45ec40a04c26a0786f33030d50820",
+   "short": "b6d7edd",
+   "commit_time": "2026-10-29T04:37:50-04:00",
+   "ledger_note_time": "2026-10-29T04:37:50-04:00",
+   "why": "process scripts and deviation #116"
+  }
+ ],
+ "required_order": [
+  [
+   "stitched_lemma_024",
+   "rgl5_code_024"
+  ],
+  [
+   "reference_024",
+   "rgl5_code_024"
+  ],
+  [
+   "deviation_024_115",
+   "rgl5_code_024"
+  ],
+  [
+   "build_authorization_024",
+   "stitched_lemma_024"
+  ]
+ ],
+ "release_tooling_rule": "no brute/release_*0210* tooling beyond release_version_0210.py, scripts/*release*0210*, or tests/test_release_0210* before run_start_024"
+}
