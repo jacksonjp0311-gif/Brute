@@ -1,8 +1,35 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-28 ~17:58 EDT (v0.19.0 RELEASED on `main`)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-28 ~22:45 EDT (v0.20.0 release in progress on `plan/v0.20.0`)._
 
 ## Current version and state
+
+<!-- V0200 -->
+- **v0.20.0: release in progress** (study BRUTE-0200-LR-ANYTIME-023, branch `plan/v0.20.0`). **12 of 13 gated pass.**
+  - **Headline GLR (likelihood-ratio anytime bound): PASS, clauses a-e.**
+    - RGL4: 0 false certificates on 240 of 240 noisy main cases; CP95 0.0124.
+    - C_late at eps 0.02: 0.417 [0.376, 0.459].
+    - dC_late vs RGNA4: +0.192 [0.162, 0.223].
+    - prefix28 identical on 120 of 120 cases.
+    - RGL4 still trails RGNB4 (C_late 0.530) and has C_early28 0.0024.
+  - **FAIL: G_HB.** 2511 beats, max gap 47.558 s, 6 gaps over 10 s (clock_step 4, unattributed 2).
+  - **FAIL: release gate GCC (#112).** The frozen git-archive clean clone cannot evaluate GLR_lemma's git-history clause.
+    A supplementary git-clone rescoring passes byte for byte (ungated).
+  - **PASS:** G_recount, GLR_lemma, GAS_frozen_control, GS_a10, GS_ref10 (mutation 20/20), GAPI10 (`brute.certify/9` is
+    new; /8 to /1 unchanged), G10, G12 (60/60), G13, GTI (tooling after run_end), G_RT.
+  - **Run.**
+    - RUN_T0 20:45:20 EDT.
+    - A false-start orchestrator ran at 20:45:20 because leaked SMOKE/STUDY_DIR_023 made it read the dry-run directory.
+      It was relaunched at 20:46:01 with the same RUN_T0 (#111); the 41 s counted against the cap.
+    - RUN_DONE 22:12:21 EDT at 5221 s of 7200 s.
+    - Streams: transfer 4475 s, gti 3627 s, repro 705 s, g11 589 s. No stop.
+  - **Chain:** plan `f88ad1e` → lemma `e50967d` → implementation `9e0ca70` `cc53f4d` → rate math `56566e7` (#110) →
+    source freeze `6bbe5ba` → scoring freeze `2d73745` → run_start `fb64c86` → run_end `5c2f0e3` → seal `7ac0edc` →
+    gates `91f4af6` → #111 `d3b7020` → clean clone `bfc6c49` → #112 `40ad4c0` → git-clone rescoring `3add4b9` →
+    tooling `7435c9f` → release freeze `3a30555`.
+  - **K_0190 declared.** v0.21.0 must declare K_0200.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
+  - **Next:** `NEXT_ITERATION.md` and the v0.21.0 plan (`BRUTE_PLAN_024`, plan only).
 
 <!-- V0190 -->
 - **Released: v0.19.0** — tag `v0.19.0` (annotated, object `bbd1c61`) on `f0bbfb6`, release https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.19.0; `main` fast-forwarded `4a644a9..f0bbfb6` (no force) (study BRUTE-0190-ANYTIME-021, branch `plan/v0.19.0` from main `4a644a9`). **12 of 14 gated pass.** Fresh GitHub clone of `plan/v0.19.0@3f77b17`: short verify passed (469 receipts), `--long` GLV 12 cases / 0 mismatching / 165.0 s (cap 900 s), `tests.test_release_0190` 7 OK; record `docs/research/v0.19.0/FRESH_CLONE_VERIFY_0190.json`. Local `--long`: 12 / 0 / 152.0 s. #107 header says written ~17:35 EDT; the commit is earlier (see git log), kept (ledger-hashed).

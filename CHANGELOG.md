@@ -1,5 +1,44 @@
 # Brute changelog
 
+## v0.20.0: likelihood-ratio anytime bound RGL4, API brute.certify/9 (study BRUTE-0200-LR-ANYTIME-023)
+
+**12 of 13 gated criteria pass. GLR (headline) PASSES on all five clauses. G_HB FAILS. Release gate GCC FAILS (#112).** *Observed*; scoring rules were fixed before the data (*Exact*).
+
+### Timeline (author's clock, EDT, 2026-10-28)
+
+- **Pre-registration.** Plan `f88ad1e` (ledger preregistration_023, 18:34:14). Owner build authorisation 18:57 (card t126s492). Seed check. Lemma `e50967d` before the RGL4 code.
+- **Preparation.**
+  - Implementation `9e0ca70`, `cc53f4d`.
+  - Rate math `56566e7`. The mean path before the cut was 7357.7 s, so the pre-declared contingency #110 cut stress to 30 cases (the first quarter of each family). The mean path after the cut was 5632.1 s.
+  - Drills: kill 0.224 s; resume clauses i-iv passed; API check passed.
+- **Freezes.** Source `6bbe5ba`. Scoring `2d73745` at 20:34:31, 649 s before run_start.
+- **Held-out run.**
+  - run_start `fb64c86`. RUN_T0 20:45:20 EDT; 2 h cap to 22:45:20.
+  - A false-start orchestrator ran at 20:45:20 and was relaunched at 20:46:01 with the same RUN_T0 (#111). The 41 s counted against the cap.
+  - RUN_DONE 22:12:21 (5221 s). No stream stopped.
+- **After the run.**
+  - Seal `7ac0edc`, gates `91f4af6`, #111 `d3b7020`.
+  - Clean clone FAIL `bfc6c49` (#112 `40ad4c0`); supplementary git-clone rescoring PASS `3add4b9`.
+  - Release tooling `7435c9f`, committed after run_end (GTI clause vi). Release freeze `3a30555`.
+
+### Results
+
+- **GLR PASS (a-e).**
+  - RGL4: 0 false certificates on 240 noisy main cases; CP95 0.0124.
+  - C_late at eps 0.02: 0.417 [0.376, 0.459].
+  - dC_late vs RGNA4: +0.192 [0.162, 0.223].
+  - prefix28 identical on all 120 cases.
+- **Pass:** G_recount, GLR_lemma, GAS_frozen_control (RGNA4 C_late 0.225 [0.185, 0.268] vs study-021 [0.215, 0.317]), GS_a10, GS_ref10 (360 gated, 0 mismatching, mutation 20/20), GAPI10, G10, G12 (60/60), G13, GTI, G_RT.
+- **FAIL: G_HB.** 2511 beats, max gap 47.558 s, 6 gaps over 10 s (clock_step 4, unattributed 2).
+- **Reported only:**
+  - RGNB4 C_late at eps 0.02 is 0.530 (dC_late of RGL4 vs RGNB4: -0.113).
+  - C_early28 at eps 0.02: RGL4 0.0024, RGNA4 0.0003.
+  - Stress: RGL4 0 false of 30, C_late 0.487.
+
+### Deviations
+
+#110 (stress cut), #111 (false start), #112 (GCC FAIL).
+
 ## v0.19.0: anytime sequential margin RGNA4, streaming API brute.certify/8 (study BRUTE-0190-ANYTIME-021)
 
 **12 of 14 gated criteria pass. GAH_anytime (headline) FAILS on clause (c); its soundness and late-coverage clauses pass. GTI FAILS (#107).** *Observed*; scoring rules fixed before the data (*Exact*).
