@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.26.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.26.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0260 -->
-- **v0.26.0: release in progress** 2026-10-30 (study BRUTE-0260-QUERY-THROUGHPUT-029, LEAN, standing go t133s553, build authorization ledger `78336bd`, amendment A1 `34ce968`)
+- **v0.26.0: RELEASED** 2026-10-30 as tag `v0.26.0` (annotated `027cc5a` -> `81f8415`), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.26.0. A fresh clone of the tag passed restore, verify_release_0260 and run_tests_0260 (6/6 modules). Released (study BRUTE-0260-QUERY-THROUGHPUT-029, LEAN, standing go t133s553, build authorization ledger `78336bd`, amendment A1 `34ce968`)
   - **Run complete (Observed).** 51/51 cases, 1345.9 s of 1800 s, normal exit. 5 checkpoint snapshots were pushed. The resume clause was NOT approved and was not needed.
   - **PASS:** G10, GAPI14 (certify/14; stream 4/4), GS_ref14 (mutations 20/20), GTI (58 tests run, all OK), G_PROC, G_RT, G_recount. **FAIL:** GSC4_headline (b and c; a and d pass), GTP, GQB.
   - **Headline numbers (Observed).**
