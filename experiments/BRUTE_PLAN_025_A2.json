@@ -1,0 +1,89 @@
+{
+ "amendment": "A2",
+ "amends": [
+  "experiments/BRUTE_PLAN_025.json",
+  "experiments/BRUTE_PLAN_025_A1.json"
+ ],
+ "amends_a1_sha256": "0eb8fc28f44c6ef51b4bff72d5bd773cd6e2b8e0739f67d1436c6301694e7a73",
+ "amends_sha256": "d9a82d41123d26dff61736f1380aa4d423f983bd1faba1dbc29739ba126d690f",
+ "authorization": {
+  "answered_at": "2026-10-29T23:45:00-04:00",
+  "card": "t130s540",
+  "follow_up": "'Push us there don't stop' (2026-10-29 23:50 EDT)",
+  "owner": "James",
+  "text": "switch to the LEAN process now, including v0.22.0"
+ },
+ "cases": {
+  "block": "lean",
+  "eps2_main": 20,
+  "main": "every 6th seed of each held-out family range (seed - start) % 6 == 0, all of eps 0, 0.01, 0.02: cycle3 4 + switch3 4 + unaliased2 4 + ood4 8 = 20 seeds x 3 = 60",
+  "noisy_main": 40,
+  "stress": "the BRUTE_PLAN_025 stress set unchanged: first quarter of each range at eps 0.05 = 30",
+  "total": 90
+ },
+ "effective_criteria": {
+  "G10": "unknown fraction 0 on all 90 lean cases",
+  "G12": "DROPPED (lean): no reproducibility re-run in the cap; a 3-case scratch re-run is reported, not gated",
+  "G13": "as BRUTE_PLAN_024",
+  "GAPI11": "brute.certify/11 new; certify.py .. certify10.py byte-identical to their earliest freeze; probe: method stitched == certify10, lr == certify9, anytime == certify9 anytime",
+  "GAS_frozen_control": "RGL5 and RGL4 C_late CI95 at eps 0.02 (20 lean cases) intersect their study-024 CIs ([0.37822, 0.461742] and [0.371591, 0.452654])",
+  "GBC_headline": {
+   "a": "RGB6 false certificates 0 on all 40 noisy main cases of the lean block (exact recount). The CP95 upper bound is REPORTED, not gated: with n = 40 and 0 failures it is 0.0722, and no n below 149 can reach 0.02 (A2 item 4)",
+   "b": "RGB6 false certificates 0 on ALL 30 stress cases (eps 0.05), including eps above eps_bar; STRICT (A1, kept)",
+   "c": "dC_late(RGB6 - RGL4, eps 0.02, 20 lean cases) mean >= 0.04 and paired-bootstrap CI95 lower > 0 (unchanged; 20 cases)",
+   "d": "dC_late(RGB6 - RGNB4, eps 0.02, 20 lean cases) CI95 lower > -0.06 (unchanged; 20 cases)",
+   "e": "RGB6 certificates in steps 1-28 at a slot where RGL4 issues none: count 0 or all of them true, over all 90 lean cases (deviation #119 item 4 reading)"
+  },
+  "GBC_lemma": "lemma and DP reference committed before RGB6 code, checked from the tracked COMMIT_ORDER_025 file",
+  "GS_a11": "API check: certify/11 betting == RGB6 (supports, unknown, m, certificates) on 4 eps-0.02 lean cases (the first 4 in job order)",
+  "GS_ref11": "v0220_reference audits all 90 lean cases (stress included under A1); 0 mismatching; mutation test 20/20 on 20 distinct main cases",
+  "GTI": "LEAN: the v0.22.0 test modules (tests/test_*_0220.py, test_scripts_025.py) pass on the release head and in the one fresh GitHub clone; the full-suite isolation runner is not run",
+  "G_HB": "DROPPED (lean): no watchdog / heartbeat sentinel; the cap is enforced by timeout(1) in the launch command",
+  "G_PROC": "LEAN: (c) commit order lemma < reference < RGB6 code read from the ledger; (d) ledger note times non-decreasing; (a), (b) launcher / first-log-line controls dropped",
+  "G_RT": "transfer run inside the 30 min (1800 s) cap of A2; a cap stop seals partial and every data gate FAILS (INCOMPLETE_INPUT)",
+  "G_recount": "independent recount of every false certificate"
+ },
+ "labels": {
+  "cp95_n40": "Exact: 1 - 0.05^(1/40) = 0.0722; least n with 1 - 0.05^(1/n) <= 0.02 is 149"
+ },
+ "note": "Lean lowers statistical power: 20 eps-0.02 cases give wider CIs than 120. GBC c was already predicted to FAIL (lemma section 4, Exact non-activation) and is not touched.",
+ "process": {
+  "dropped": [
+   "kill drill",
+   "resume drill",
+   "host-pause probe",
+   "watchdog + heartbeat sentinel (G_HB)",
+   "launcher / first-log-line controls (G_PROC a, b)",
+   "separate scoring-freeze 600 s wait (scoring scripts are committed in the same freeze, before run_start)",
+   "second (git archive) clean clone: one fresh GitHub clone short verify plus the tests is kept",
+   "full-suite GTI isolation runner",
+   "G12 reproducibility re-run in the cap",
+   "rate-math file (one inline estimate below)"
+  ],
+  "kept": [
+   "plan / amendments locked before data",
+   "exact recount of every false certificate",
+   "strict stress gate (A1)",
+   "failures published",
+   "evidence labels",
+   "push after every step",
+   "never force-push",
+   "no .github / Actions",
+   "git and gh with env -u GITHUB_TOKEN -u GH_TOKEN",
+   "append-only ledger, times from date -Iseconds",
+   "frozen files never edited",
+   "lemma and reference before RGB6 code (done: 55dd41f, 8f31080 < 19987c8)"
+  ],
+  "scratch_checks": "allowed outside results/study-025 and never used as evidence for a gate"
+ },
+ "run": {
+  "cap_s": 1800,
+  "command": "setsid nohup timeout 1800 $PY -m experiments.brute_study_025 --block lean --workers 8 --output results/study-025/transfer",
+  "estimate": "smoke 9190001 eps 0.02 case = 102 s (prefixes incl.); mean ~85 s/case x 90 = ~7650 case-s / 8 = ~960 s; x1.75 = ~1670 s < 1800 s (Inferred)",
+  "on_cap": "seal partial (--seal-partial); data gates FAIL INCOMPLETE_INPUT; no relaunch",
+  "workers": 8
+ },
+ "schema": "brute.plan-amendment.v1",
+ "status": "locked before any held-out data",
+ "study": "BRUTE-0220-BETTING-CS-025"
+}
