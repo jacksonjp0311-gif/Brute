@@ -1,5 +1,39 @@
 # Brute changelog
 
+## v0.32.0: adaptive noise budget (A10: A9 with B = 0 until the exact search contradicts the trace) for active identification on noisy traces (study BRUTE-0320-NOISY-ACTIVE-ID-035, LEAN process)
+
+**9 of 11 gates pass (GNR10, GAD10, G_sound, G10, GS_ref, GTI, G_PROC, G_RT, G_recount). GA10_headline FAILS on a, b, c and d; GQB10 FAILS (S7 query 10.538 s; bound 10.5 s). Secondary G16 fails (A10 ID 0/6).** All 48 cases ran once and were sealed (342.7 s of 1800 s). *Observed*
+
+### Timeline (EDT, 2026-10-30)
+
+- Plan `a66b74a` (18:11); build authorization (ledger `6941bf9`, 18:12, standing go t133s553, ledger 76b30d5); seedcheck `154d4c9` (ledger `c75bda0`, 18:32, before any seed); A10 `984f653`, `5bea1cf`; runner `be50919`; recount `5d55043`; CNF reference `57a44b3`, fix `461e1c3` (pre-data); gates `cf6788f`; tooling `5ec021e`, `1751321`; release tooling `9441ba5`; pre-freeze sealed-smoke gates `dc8b99c`; #142 `f8d4b6d`; source freeze `1764462` (18:53).
+- Run start (ledger `3588e27`, 18:53:55); 2 pushed checkpoint snapshots `aafa3c7`, `ade7093`; run end (ledger `10f47c4`); seal `6ea1450`; recount `bf38714`; reference `3cce54f`; tests `0f1b0d7`; gates `76a0ddf`; #143 `f190bd5`.
+
+### Results (labels per case, ID / IDF / AMB / WRONG / IDU; Wilson 95% CI on ID, WRONG and IDU; paired contrasts seed-bootstrap 95% CI; mean extra actions)
+
+| arm | noisy12 ID | WRONG | IDU | noisy8 ID / IDF / AMB / WRONG / IDU | clean12 ID / IDF / AMB / WRONG / IDU | scale16 ID / AMB / IDU | controls ID | extra actions clean12 / noisy |
+|---|---|---|---|---|---|---|---|---|
+| A10 | 0/12 [0, 0.24] | 0 [0, 0.24] | 12 [0.76, 1] | 0 / 0 / 0 / 0 / 12 | 7 [0.32, 0.81] / 4 / 1 / 0 / 0 | 0 / 0 / 6 | 6/6 | 22.2 / 0 |
+| A10_fixed (B = 27 from the start) | 0/12 | 0 | 12 | 0 / 0 / 0 / 0 / 12 | 0 / 0 / 0 / 0 / 12 | 0 / 0 / 6 | 6/6 | 0 / 0 |
+| A9 (v0.31.0, not noise-aware) | 0/12 | 12 [0.76, 1] (not gated) | 0 | 0 / 0 / 0 / 12 / 0 | 7 / 4 / 1 / 0 / 0 | 0 / 0 / 6 | 6/6 | 22.2 / 0 |
+| S7 (passive, noise budget) | 0/12 | 0 | 12 | 0 / 0 / 0 / 0 / 12 | 0 / 0 / 0 / 0 / 12 | 0 / 0 / 6 | 6/6 | 0 |
+| S5 (passive, clean) | 0/12 | 9 [0.47, 0.91] | 3 | 0 / 0 / 0 / 6 / 6 | 0 / 0 / 12 / 0 / 0 | 0 / 4 / 2 | 6/6 | 0 |
+
+- GA10 a: A10 and S7 recounted WRONG 0 on all 48 cases (all within budget); S5 WRONG 15 of 24 noisy cases: FAIL. b: ID(A10) - ID(S7) at noisy12 0.00 [0.00, 0.00] (bar 0.25): FAIL. c: ID + IDF 0/12 (bar 4): FAIL. d: IDU 12/12 (bar <= 3): FAIL.
+- GNR10: A10 labels equal A9 labels on all 18 clean12 and control cases; B_final 0 on every clean case: PASS. GAD10: ID(A10) - ID(A10_fixed) clean12 +0.58 [0.33, 0.83] (bar 0.17), noisy12 0.00 (bar >= 0): PASS.
+- Diagnosis (Observed): on all 24 noisy cases the B = 0 search was UNSAT, then the upward least-budget search hit the 10 s cap after 9-12 queries, below the true flip count (13-23 in 177 readings), so B stayed 0, no word was executed and A10 stopped IDU.
+- GQB10: S7 10.523 s and 10.538 s on noisy_scale8 10110001 and 10110003; A10 max 10.289 s: FAIL. G_sound: 116 words re-simulated, 0 unsound. GS_ref: 12/12 noisy_scale8 A10 cases decided, 0 mismatches, mutations 20/20 (B = 0 verdicts only). G_RT 342.7 s.
+
+### What Brute can't do yet
+
+- It cannot identify a machine from noisy readings: A10 finished 0 of 24 noisy worlds because the least-budget search is capped before the true flip count. *Observed / Inferred.*
+- Its in-solver cap still overshoots (S7 10.538 s against 10.5 s). *Observed.*
+- It does not finish 16-state worlds (A10 ID 0/6, all IDU). *Observed.*
+- Raised-budget verdicts were never exercised on main data, so the reference audit checked only B = 0. *Inferred.*
+- Its soundness still assumes the declared size N and the declared noise rate. *Exact / Open.*
+
+Deviations #142 (pre-run) and #143 (post-run). Verify: `python scripts/study035_storage.py restore && PYTHONPATH=. python scripts/verify_release_0320.py`.
+
 ## v0.31.0: sound active identification (A9: stop only when no consistent rival remains at any size up to the declared N) for hidden machines (study BRUTE-0310-SOUND-ACTIVE-ID-034, LEAN process)
 
 **11 of 12 gates pass (GA9_headline, GDIAG8, GIDF9, GCH9, G_sound, G10, GS_ref, GTI, G_PROC, G_RT, G_recount). GQB9 FAILS (one A9 query took 10.888 s; bound 10.5 s).** All 36 cases ran once and were sealed (124.8 s of 1800 s). *Observed*
