@@ -1,5 +1,37 @@
 # Brute changelog
 
+## v0.30.0: active experiments (A8: Brute chooses inputs that separate two consistent machines) for identifying hidden machines (study BRUTE-0300-ACTIVE-EXPERIMENTS-033, LEAN process)
+
+**9 of 10 gates pass (GCH8, G10, GQB8, GS_ref, GTI, G_PROC, G_RT, G_recount, G_sound). GAE8 (headline) FAILS on clauses a (5 WRONG) and c (ID 5/12, bar 6).** All 36 cases ran once and were sealed (116.0 s of 1800 s). *Observed*
+
+### Timeline (EDT, 2026-10-30)
+
+- Plan `af07e35` (ledger 16:39); build authorization (ledger `cf62a8c`, 16:42, standing go t133s553); seedcheck `0e8bb67` (ledger `ab6ff21`, 16:55, before any seed); A8 `fa0c690`; runner `8661d42`; recount and CNF reference `51317f4`; gates `1b7c264`; tooling `23c033a`; release tooling `c3e6f05`; smoke-found runner fix and pre-freeze sealed-smoke gates `8b23acf`; #138 `dec7b5d`/`ac26d3c`; source freeze `09afb81` (17:05).
+- Run start (ledger `9970615`, 17:05:54); 1 pushed checkpoint snapshot `4b67a3b`; run end (ledger `8f2910e`); seal `9b50062`; recount `ec0049e`; reference `8a9d525`; tests `a4867b1`; gates `b3d604b`; #139 `2c5f225`.
+
+### Results (labels per case; Wilson 95% CI; paired contrasts seed-bootstrap 95% CI)
+
+| arm | scale12 ID | AMB | WRONG | IDU | scale8 ID / AMB / WRONG | scale16 ID / AMB / IDU | controls ID | actions used, scale12 mean |
+|---|---|---|---|---|---|---|---|---|
+| A8 | 5/12 [0.19, 0.68] | 3 | 4 [0.14, 0.61] | 0 | 7 / 4 / 1 | 1 / 1 / 4 | 6/6 | 17.4 (11.2 on ID cases) |
+| A8_random (same count, random inputs) | 0/12 [0, 0.24] | 12 | 0 | 0 | 3 / 9 / 0 | 0 / 3 / 3 | 6/6 | 17.4 |
+| S5 (passive) | 0/12 [0, 0.24] | 12 | 0 | 0 | 3 / 9 / 0 | 0 / 6 / 0 | 6/6 | 0 |
+| S1 (passive) | 0/12 [0, 0.24] | 12 | 0 | 0 | 3 / 9 / 0 | 0 / 4 / 2 | 6/6 | 0 |
+
+- GAE8 a: recounted WRONG 5 for A8 (scale12 9920002, 9920005, 9920009, 9920012; scale8 9910012), 0 for every other arm: FAIL. b: paired ID(A8) - ID(S5) at 12 states +0.417 [0.167, 0.667] (bar 0.33, CI lower > 0): PASS. c: ID(A8) 5/12 (bar 6): FAIL. d: IDU(A8) 0/12 (bar <= 2): PASS.
+- GCH8: ID(A8) - ID(A8_random) at 12 states +0.417 [0.167, 0.667] (bar 0.17): PASS. Chosen inputs, not more data, made the difference.
+- G_sound: 109 separating words re-simulated, 0 unsound; the truth stayed consistent with every round and every final trace. G10: controls ID 6/6 for A8 and S5. GS_ref: CNF reference 12/12 scale8 cases decided, 0 mismatches, mutations 20/20. GQB8: max query 10.24 s (bar 10.5).
+- Mechanism (Inferred, deviation #139): every WRONG stopped 'unique' at a size below the truth's (11/12, 11/12, 11/12, 10/12, 6/8). Uniqueness at the least consistent size is not identification. All 8 'indistinguishable' stops are same_future: start-state ambiguity that no input can resolve.
+
+### What Brute can't do yet
+
+- Its active stop rule claims identification too early: 5 of 36 A8 answers named a machine smaller than the truth. *Observed / Inferred.*
+- It cannot resolve start-state ambiguity: 8 cases end with two machines that agree on every future input. *Observed.*
+- It does not finish most 16-state worlds even with experiments (IDU 4/6 under the 10 s per-query cap). *Observed.*
+- Active experiments were tested only without noise; combining them with the noise budget is untested. *Open.*
+
+Deviations #138 (pre-run) and #139 (post-run). Verify: `python scripts/study033_storage.py restore && PYTHONPATH=. python scripts/verify_release_0300.py`.
+
 ## v0.29.0: exact search S7 (S5 plus a noise-budgeted flip encoding) for robust perception on noisy traces (study BRUTE-0290-ROBUST-PERCEPTION-032, LEAN process)
 
 **6 of 9 gates pass (GQB7, GS_ref, GTI, G_PROC, G_RT, G_recount). GRP7 (headline) FAILS on clause d; GNR7 and G10 FAIL.** All 48 cases ran and were sealed (1246.3 s of 1800 s). *Observed*
