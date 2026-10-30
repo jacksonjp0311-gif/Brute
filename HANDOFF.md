@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.29.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.29.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0290 -->
-- **v0.29.0: release in progress** 2026-10-30 on branch `plan/v0.29.0` (study BRUTE-0290-ROBUST-PERCEPTION-032, LEAN, standing go t133s553, build authorization ledger `7d4242f`)
+- **v0.29.0: RELEASED** 2026-10-30 as tag `v0.29.0` (`4429c6e`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.29.0). main was fast-forwarded. A fresh clone of the tag restored, verified and passed 5/5 test modules on branch `plan/v0.29.0` (study BRUTE-0290-ROBUST-PERCEPTION-032, LEAN, standing go t133s553, build authorization ledger `7d4242f`)
   - **Run complete (Observed).** 48/48 cases, 1246.3 s of 1800 s, normal exit. 5 checkpoint snapshots were pushed (last `0ec1f9b`). Nothing was relaunched. The resume clause was NOT approved and was not needed. The box clock was checked against the GitHub Date header 10 times and did not stall (#137 item 3).
   - **PASS (6/9):** GQB7 (S7 max query 9.35 s), GS_ref (0 mismatches, mutations 20/20), GTI (5/5 modules), G_PROC, G_RT, G_recount. **FAIL:** GRP7_headline (d; a, b, c and e pass), GNR7, G10.
   - **Headline numbers (Observed).**
