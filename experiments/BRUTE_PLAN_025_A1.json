@@ -1,0 +1,48 @@
+{
+  "amendment": "A1",
+  "amends": "experiments/BRUTE_PLAN_025.json",
+  "amends_commit": "4f6c4dd",
+  "amends_ledger": "2e4168f (preregistration_025)",
+  "amends_sha256": "d9a82d41123d26dff61736f1380aa4d423f983bd1faba1dbc29739ba126d690f",
+  "authorization": "owner James, card t128s531, 2026-10-29 23:35 EDT (docs/research/v0.22.0/BUILD_AUTHORIZATION_025.md, ledger build_authorization_025)",
+  "effective_criteria": {
+    "G10": "unknown fraction 0 on all transfer cases",
+    "G12": "reproset 30/30 byte-identical",
+    "G13": "as BRUTE_PLAN_024",
+    "GAPI11": "brute.certify/11 new; /10 to /1 byte-identical on their smoke cases",
+    "GAS_frozen_control": "RGL5 and RGL4 C_late CI95 at eps 0.02 intersect their study-024 CIs ([0.37822, 0.461742] and [0.371591, 0.452654])",
+    "GBC_headline": {
+      "a": "RGB6 false certificates 0 on all noisy main cases; CP95 upper <= 0.02",
+      "b": "RGB6 false certificates 0 on ALL 30 stress cases (eps 0.05), including eps above eps_bar; STRICT gate, as BRUTE_PLAN_024 GLS b",
+      "c": "dC_late(RGB6 - RGL4, eps 0.02) mean >= 0.04 and paired-bootstrap CI95 lower > 0",
+      "d": "dC_late(RGB6 - RGNB4, eps 0.02) CI95 lower > -0.06",
+      "e": "RGB6 issues 0 certificates in steps 1-28 that RGL4 would not issue, or the difference has a pre-declared bound of 0 false"
+    },
+    "GBC_lemma": "lemma and DP reference committed before RGB6 code, checked from the tracked COMMIT_ORDER_025 file",
+    "GS_a11": "API smoke: certify/11 betting == RGB6 on the API check cases",
+    "GS_ref11": "v0220_reference audits every gated RGB6 certificate; 0 mismatching; mutation test 20/20",
+    "GTI": "tracked tree clean at start; only declared K failures; release tooling committed after run_end_025",
+    "G_HB": "watchdog heartbeat: 0 gaps over 10 s on the monotonic clock; wall-clock-only gaps (clock_step) are counted and reported separately (declared before data; study-024 had 2 wall gaps with monotonic max 6.3 s, Inferred clock_step)",
+    "G_PROC": "as BRUTE_PLAN_024 (a-d)",
+    "G_RT": "run inside the hard 2 h cap",
+    "G_recount": "independent recount of every false certificate"
+  },
+  "kept": [
+    "all arms, method, delta, eps_bar, family bound, burn-in",
+    "GBC_headline a, c, d, e",
+    "G_HB on the monotonic clock with wall-clock-only gaps reported separately",
+    "all other criteria, cases, held-out ranges, stop rule, runtime estimate rule, release gates, process controls"
+  ],
+  "labels": "Exact / Observed / Simulated / Inferred / Rejected / Open",
+  "reason": "Owner decision: do not move the goalposts right after v0.21.0 failed this exact clause (GLS b: 3 RGL5 false certificates in 1 of 30 stress cases at eps 0.05 > eps_bar). The guarantee is still conditional on eps <= eps_bar; the strict gate tests behaviour outside that condition and is kept anyway.",
+  "replacement": {
+    "GBC_headline.b": "RGB6 false certificates 0 on ALL 30 stress cases (eps 0.05), including eps above eps_bar; STRICT gate, as BRUTE_PLAN_024 GLS b"
+  },
+  "schema": "brute.plan_amendment.v1",
+  "status": "SUPERSEDES clause GBC_headline.b of BRUTE_PLAN_025.json; every other field of BRUTE_PLAN_025.json is kept unchanged",
+  "study": "BRUTE-0220-BETTING-CS-025",
+  "superseded": {
+    "GBC_headline.b": "RGB6 false certificates 0 on stress cases with eps <= eps_bar; stress cases with eps > eps_bar are outside the guarantee and reported, not gated (declared here before any data, informed by #118 item 4)"
+  },
+  "timing": "committed and ledgered before any v0.22.0 build work, code, seed draw or data"
+}
