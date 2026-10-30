@@ -1,5 +1,29 @@
 # Brute changelog
 
+## v0.24.0: full replay of the 8-16 state scale study, informational S2_tight (study BRUTE-0240-SCALE-REPLAY-027, LEAN process)
+
+**6 of 8 gates pass (GAPI12, GS_ref12, GTI, G_PROC, G_RT, G_recount). GSC (headline) FAILS on clauses b, c and e; G10 FAILS.** All 93 cases ran and were sealed (1454.3 s of 1800 s). *Observed*
+
+### Timeline (EDT, 2026-10-30)
+
+- Plan `9f49ab1`; build authorization `e55a639` (10:46, standing go t133s553; resume-after-reboot clause NOT approved); seedcheck `4e00fad`; study code + #126 `5d924b7`; scoring `0da7e3f`; tooling `d99a930`; source freeze `5261f4e`.
+- Run start `d119d25` (about 10:55:50); 5 pushed checkpoint snapshots; run end `0952c8f`; seal `32eb7d9`; recount `d817f28`; reference `13d6af1`; tests `fd472dd`; API check `71db876`; gates `f8167f1`; #127 + diagnosis `d66b54c`.
+
+### Results (main block; Wilson 95% CIs)
+
+| arm | scale8 X | scale12 X | scale16 X | U scale16 |
+|---|---|---|---|---|
+| S1 | 9/24 [0.212, 0.573] | 1/24 [0.007, 0.202] | 2/24 [0.023, 0.258] | 0.420 |
+| S2 | 3/24 [0.043, 0.310] | 0/24 [0.000, 0.138] | 0/24 [0.000, 0.138] | 0.590 |
+| S2_tight (eps 0 only, informational) | 9/12 [0.468, 0.911] | 0/12 [0.000, 0.242] | 0/12 [0.000, 0.242] | 0.589 |
+
+- Clause a: 24,568 S2 queries compared with exact truth, 0 mismatches. False certificates (exact recount): S2 0, RGB6 0, S2_tight 0, S1 3 (eps 0.02).
+- scale8 eps-0 recovery (ID): S2 1/12 [0.015, 0.354]; S2_tight 4/12 [0.138, 0.609]. ID at 12 and 16 states: 0/12 for both.
+- Certificates: S1 13, S2 0, RGB6 0, S2_tight 5046 (3043 on scale8 eps 0).
+- Diagnosis (informational, *Inferred*): at 12-16 states more than 99% of UNKNOWNs are not-run queries (arm deadline); solver UNKNOWNs are 0.25-0.36%. The proven lower bound n_lo never reaches n (mean 10.25 for S2 at both 12 and 16 states). Single support calls run 13-19 s on average at the per-case maximum (up to 48 s), well over the nominal 10 s query budget. Tightening n_max to n does not help at 12 states (2.1 vs 1.5 steps/s, 0 full cases). The bottleneck is solver cost per step, not the search cap. The cap matters only at 8 states.
+
+Deviations #123, #124, #126 (pre-run) and #127 (post-run process events). Verify: `python scripts/study027_storage.py restore && PYTHONPATH=. python scripts/verify_release_0240.py`.
+
 ## v0.23.0: exact search S2 at 8-16 states, API brute.certify/12 (study BRUTE-0230-SCALE-026, LEAN process)
 
 **2 of 8 gates pass (GTI, G_PROC). GSC (headline), G10, GAPI12, GS_ref12, G_RT and G_recount FAIL with INCOMPLETE_INPUT.** A host reboot at about 10:22 EDT stopped the detached run after 38 of 93 cases. The run was not relaunched (standing rule; deviation #125). *Observed*
