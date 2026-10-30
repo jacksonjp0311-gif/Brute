@@ -4,8 +4,22 @@ _Kept current on the working branch during a release and on `main` at release. L
 
 ## Current version and state
 
+<!-- V0280 -->
+- **v0.28.0: release in progress** 2026-10-30 (study BRUTE-0280-SIXTEEN-STATE-ID-031, LEAN, standing go t133s553, build authorization ledger `4a0eb8d`)
+  - **Run complete (Observed).** 54/54 cases, 1028.1 s of 1800 s, normal exit. 4 checkpoint snapshots were pushed (last `6131470`). Nothing was relaunched. The resume clause was NOT approved and was not needed.
+  - **PASS (6/9):** G10 (6/6 controls), GS_ref (mutations 20/20), GTI (7/7 modules; 67 counted tests, all OK), G_PROC, G_RT, G_recount. **FAIL:** GSC6_headline (b and c; a and d pass), GID6 (b; a and c pass), GQB6 (10.857 s on one stress case; bound 10.5).
+  - **Headline numbers (Observed).**
+    - U at 16 states: S6 0.222 [0.158, 0.288], S6_noorder 0.226, S5 0.218 [0.157, 0.281], S1 0.336 [0.289, 0.381]. Paired S6 - S5 +0.004 [-0.008, 0.016] (bar -0.06).
+    - X at 8/12/16 states: S6 12/12, 6/12, 0/18; S5 12/12, 6/12, 0/18; S1 11/12, 2/12, 0/18.
+    - Identify probe at 12 states: S6 ID 0/12, AMB 11/12, NR 1/12; WRONG 0 for every arm.
+    - F: 0 for all arms, main and stress. Stress U: S1 0.370, S5 0.568, S6 0.568.
+  - **Mechanism (Inferred).** S6 removed build cost but hit the per-query cap more (cap stops per scale16 case 45.8 vs 1.3), so solve time did not fall. AMB comes from unexercised truth transitions in the traces.
+  - **Deviations:** #134 (pre-run) and #135 (post-run).
+  - **Chain:** plan `ec7bd75` -> authorization `4a0eb8d` -> seedcheck `059fe1a` -> runner `2a3790b` -> tooling `3688135` -> release tooling `76d3476` -> diag `f4bd80e` -> pre-freeze test `f48aac0` -> #134 `fd80635` -> freeze `e74469a` -> run_start `1ba5397` -> run_end `e27bde1` -> seal `b3b8519` -> recount `5877d4d` -> reference `4f2c9fc` -> tests `6afab8f` -> gates `604d19c` -> #135 `d086433` -> RELEASE.json `435280f` -> docs `91b48d5`.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
+
 <!-- V0270 -->
-- **v0.27.0: RELEASED** 2026-10-30 as tag `v0.27.0` (annotated `77c5b08` -> `9cf2969`), main fast-forwarded `91f2406..9cf2969`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.27.0. A fresh clone of the tag passed restore, verify_release_0270 and run_tests_0270 (6/6 modules; ledger `fae4f59`). Released (study BRUTE-0270-SYMMETRY-FREE-030, LEAN, standing go t133s553, build authorization ledger `30ccd58`)
+- **v0.27.0: RELEASED** (previous) 2026-10-30 as tag `v0.27.0` (annotated `77c5b08` -> `9cf2969`), main fast-forwarded `91f2406..9cf2969`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.27.0. A fresh clone of the tag passed restore, verify_release_0270 and run_tests_0270 (6/6 modules; ledger `fae4f59`). Released (study BRUTE-0270-SYMMETRY-FREE-030, LEAN, standing go t133s553, build authorization ledger `30ccd58`)
   - **Run complete (Observed).** 51/51 cases, 978.9 s of 1800 s, normal exit. 4 checkpoint snapshots were pushed (last `189826c`). The host interrupted the agent at 14:47 EDT, after the run had ended; nothing was rerun. The resume clause was NOT approved and was not needed.
   - **PASS (8/8):** GQB5 (S5 max query 8.52 s), GSC5_headline (a-d), G10 (6/6 controls), GS_ref (mutations 20/20), GTI (55 tests run, 54 counted, all OK), G_PROC, G_RT, G_recount. **FAIL:** none.
   - **Headline numbers (Observed).**
