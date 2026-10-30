@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.25.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.25.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0250 -->
-- **v0.25.0: release in progress** 2026-10-30 (study BRUTE-0250-SOLVER-COST-028, LEAN, standing go t133s553, build authorization `13e570c`)
+- **v0.25.0: RELEASED** 2026-10-30. Tag object `6dd318c` points to `bfda373`; main fast-forwarded `30a2c02..bfda373`; https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.25.0. Fresh-clone verify passed (verify_release_0250b, 43/43 tests) (study BRUTE-0250-SOLVER-COST-028, LEAN, standing go t133s553, build authorization `13e570c`)
   - **Run complete (Observed).** 51/51 cases, 1053.8 s of 1800 s, normal exit. 4 checkpoint snapshots were pushed. The resume-after-reboot clause was NOT approved and was not needed.
   - **PASS:** GQB (S3 max query 10.03 s), G10 (S3 0 UNKNOWN on 6/6 controls), GAPI13 (certify/13; stream 4/4), GS_ref13 (mutation 20/20), GTI (43/43), G_PROC, G_RT, G_recount. **FAIL:** GSC3_headline (b and c; a and d pass).
   - **Headline numbers (Observed).**
