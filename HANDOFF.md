@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.27.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.28.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0280 -->
-- **v0.28.0: release in progress** 2026-10-30 (study BRUTE-0280-SIXTEEN-STATE-ID-031, LEAN, standing go t133s553, build authorization ledger `4a0eb8d`)
+- **v0.28.0: RELEASED** 2026-10-30 as tag `v0.28.0` (annotated `7b59641` -> `1131c8f`), main fast-forwarded `b917b4c..1131c8f`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.28.0. A fresh clone of the tag passed restore, verify_release_0280 and run_tests_0280 (7/7 modules; ledger `7cc6dbb`). Released (study BRUTE-0280-SIXTEEN-STATE-ID-031, LEAN, standing go t133s553, build authorization ledger `4a0eb8d`)
   - **Run complete (Observed).** 54/54 cases, 1028.1 s of 1800 s, normal exit. 4 checkpoint snapshots were pushed (last `6131470`). Nothing was relaunched. The resume clause was NOT approved and was not needed.
   - **PASS (6/9):** G10 (6/6 controls), GS_ref (mutations 20/20), GTI (7/7 modules; 67 counted tests, all OK), G_PROC, G_RT, G_recount. **FAIL:** GSC6_headline (b and c; a and d pass), GID6 (b; a and c pass), GQB6 (10.857 s on one stress case; bound 10.5).
   - **Headline numbers (Observed).**
