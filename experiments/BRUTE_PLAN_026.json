@@ -1,0 +1,116 @@
+{
+ "arms": {
+  "RGB6_on_S2": "the v0.22.0 RGB6 certifier run unchanged on top of S2 regions (noise eps 0.02 only)",
+  "S1": "frozen exact search: brute.region RegionSpace via bigstate.big(), family cap raised to n_max = 16 by the same wrapper pattern (no frozen file edited)",
+  "S2": "new exact search (new file brute/scalesearch.py): (i) incremental SAT with assumptions, one solver kept across steps (clauses only added); (ii) BFS-canonical symmetry breaking (first-visit order + lexicographic successor tables); (iii) iterative state-count deepening n = 1..n_max, stopping at the least n with a model; (iv) a passive state-merging witness (RPNI-style) used only as a solver phase hint, never as a result. Answers must equal S1's wherever S1 finishes",
+  "SP8": "the frozen v0.5.0 default policy control"
+ },
+ "branch_base": "main @ c750fef (v0.22.0 released)",
+ "brand": "charcoal/sage; no purple, neon, emoji or gold",
+ "budgets": {
+  "main_run_cap_s": 1800,
+  "on_cap": "timeout(1) stops the run; seal partial; every data gate FAILS (INCOMPLETE_INPUT); never relaunch",
+  "per_case_s": 120,
+  "per_exact_query_s": 10,
+  "workers": 8
+ },
+ "cases": {
+  "declared_before_data": true,
+  "horizon": "176 steps (twice the 025 horizon, so larger worlds can be explored)",
+  "main": "every seed of each range at eps 0 and 0.02: (12 + 12 + 12 + 6) seeds x 2 = 84",
+  "stress": "first 3 seeds of scale8 / scale12 / scale16 at eps 0.05 = 9",
+  "total": 93
+ },
+ "criteria": {
+  "G10": "control_cycle3: S2 == S1 and UNKNOWN 0",
+  "GAPI12": "brute.certify/12 adds search='s2'; certify.py .. certify11.py byte-identical to their earliest freeze",
+  "GSC_headline": {
+   "a": "S2 answers == S1 answers on every query where both finish (exact comparison of supports and unknown flags)",
+   "b": "X(S2, scale12) >= X(S1, scale12) + 0.25 and X(S2, scale8) >= 0.9",
+   "c": "U(S2, scale16) <= 0.10",
+   "d": "F = 0 for S2 and for RGB6_on_S2 on all 93 cases, stress included (STRICT, as v0.22.0 A1)",
+   "e": "ID(S2, scale8, eps 0) >= 0.8"
+  },
+  "GS_ref12": "a second implementation (experiments/v0230_reference.py, brute-force enumeration for scale8 only, CaDiCaL-free) audits every scale8 query; 0 mismatching; mutation test 20/20",
+  "GTI": "LEAN: the v0.23.0 test modules pass on the release head and in one fresh GitHub clone",
+  "G_PROC": "LEAN: plan < build authorization < seedcheck < S2 code < freeze < run_start, read from the ledger; ledger times non-decreasing",
+  "G_RT": "main run within the 1800 s cap",
+  "G_recount": "independent recount of every false certificate"
+ },
+ "deviation_policy": "numbered from #123 onward (v0.22.0 used through #122), each published before the step it covers",
+ "freeze_rule": "source and scoring frozen together in one lean freeze before run_start_026",
+ "heldout_ranges": {
+  "note": "Fresh ranges following the study-number convention (025 used 91x0001). Disjoint from every earlier plan. Drawn only after a ledgered seedcheck_026.",
+  "targets": {
+   "control_cycle3": [
+    9240001,
+    9240006
+   ],
+   "scale12": [
+    9220001,
+    9220012
+   ],
+   "scale16": [
+    9230001,
+    9230012
+   ],
+   "scale8": [
+    9210001,
+    9210012
+   ]
+  }
+ },
+ "labels": "Exact / Observed / Simulated / Inferred / Rejected / Open",
+ "lessons_from_025": [
+  "v0.22.0 RGB6 never activated at 178 bits; v0.23.0 does not reuse a betting threshold it cannot reach",
+  "both r1 fixes (#121, #122) came from code paths that no test exercised: every v0.23.0 script gets a test on the real artifact layout before the freeze"
+ ],
+ "limitations": [
+  "random minimal machines are easier than adversarial ones; no claim beyond the generator",
+  "16 states is still tiny next to real environments",
+  "same author writes S2 and the reference; not an independent audit",
+  "not general intelligence"
+ ],
+ "metrics": {
+  "C_late": "certificate coverage, steps 89-176, RGB6_on_S2 at eps 0.02",
+  "F": "false certificates (exact recount, independent second implementation)",
+  "ID": "fraction of eps-0 cases where the region collapses to the true machine (up to isomorphism) by step 176",
+  "Q": "median and p90 wall time per exact query (informational, Observed)",
+  "U": "fraction of region queries ending UNKNOWN (budget hit), by arm and world size",
+  "X": "exact-finish rate: cases with no UNKNOWN query"
+ },
+ "motivation": "Every study through 025 runs on worlds of at most 4 hidden states (cycle3, switch3, unaliased2, ood4) with learner families capped at 5 (big() at 8). v0.23.0 asks whether the exact certified region learner scales to 8-16 state worlds when the exact search is made smarter, without giving up 0 false certificates.",
+ "parent_study": "BRUTE-0220-BETTING-CS-025 (v0.22.0)",
+ "process": "LEAN (owner card t130s540, 2026-10-29 23:45 EDT; first used by BRUTE_PLAN_025_A2)",
+ "process_controls": {
+  "dropped": [
+   "kill and resume drills",
+   "host-pause probe",
+   "double fresh-clone check (one fresh-clone short verify plus tests kept)",
+   "separate scoring-freeze wait"
+  ],
+  "kept": [
+   "plan or amendment locked before data",
+   "exact false-certificate recount",
+   "strict stress gate",
+   "failures published",
+   "evidence labels",
+   "push after each step",
+   "no force-push",
+   "no GitHub Actions / workflows"
+  ]
+ },
+ "question": "On deterministic Moore worlds with 8, 12 and 16 hidden states, does a smarter exact search (S2) keep the region exact (no budget UNKNOWN) on far more cases than the frozen search (S1), with identical answers wherever both finish and 0 false certificates?",
+ "runtime_estimate": "Inferred, not measured: S1 is expected to hit the 10 s query budget often at 12-16 states; S2 cost is unknown. A scratch timing check on non-held-out seeds (outside every range) is allowed before the freeze and must be reported; if the estimate exceeds 1800 s the case counts may be cut only by a ledgered amendment before any held-out data.",
+ "schema": "brute.preregistration.v1",
+ "status": "preregistered (plan only; no build authorized, no code, no data)",
+ "study": "BRUTE-0230-SCALE-026",
+ "version_under_test": "0.23.0",
+ "what_counts_as_failure": "Any of GSC a-e false, any mismatch with the reference, any false certificate, or a cap stop. Failures are published as they are; no criterion is changed after data.",
+ "worlds": {
+  "control_cycle3": "the study-025 cycle3 family (frozen generator), to show S2 == S1 where S1 is known to finish",
+  "scale12": "same generator, 12 states",
+  "scale16": "same generator, 16 states",
+  "scale8": "random strongly connected deterministic Moore machines, 8 states, 3 actions, 2-bit observations, minimal (pairwise distinguishable)"
+ }
+}
