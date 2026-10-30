@@ -1,0 +1,3265 @@
+{
+  "all_gated_pass": false,
+  "failed": [
+    "GA10_headline",
+    "GQB10"
+  ],
+  "gates": {
+    "G10": {
+      "observed": {
+        "cases": [
+          [
+            10150001,
+            "ID",
+            "ID"
+          ],
+          [
+            10150002,
+            "ID",
+            "ID"
+          ],
+          [
+            10150003,
+            "ID",
+            "ID"
+          ],
+          [
+            10150004,
+            "ID",
+            "ID"
+          ],
+          [
+            10150005,
+            "ID",
+            "ID"
+          ],
+          [
+            10150006,
+            "ID",
+            "ID"
+          ]
+        ],
+        "rule": "A10 and S5 ID on every control"
+      },
+      "pass": true
+    },
+    "GA10_headline": {
+      "observed": {
+        "a": {
+          "WRONG_gated": [
+            [
+              "main/noisy_scale12/10120001",
+              "S5"
+            ],
+            [
+              "main/noisy_scale12/10120004",
+              "S5"
+            ],
+            [
+              "main/noisy_scale12/10120005",
+              "S5"
+            ],
+            [
+              "main/noisy_scale12/10120006",
+              "S5"
+            ],
+            [
+              "main/noisy_scale12/10120007",
+              "S5"
+            ],
+            [
+              "main/noisy_scale12/10120008",
+              "S5"
+            ],
+            [
+              "main/noisy_scale12/10120009",
+              "S5"
+            ],
+            [
+              "main/noisy_scale12/10120010",
+              "S5"
+            ],
+            [
+              "main/noisy_scale12/10120012",
+              "S5"
+            ],
+            [
+              "main/noisy_scale8/10110001",
+              "S5"
+            ],
+            [
+              "main/noisy_scale8/10110002",
+              "S5"
+            ],
+            [
+              "main/noisy_scale8/10110006",
+              "S5"
+            ],
+            [
+              "main/noisy_scale8/10110008",
+              "S5"
+            ],
+            [
+              "main/noisy_scale8/10110009",
+              "S5"
+            ],
+            [
+              "main/noisy_scale8/10110010",
+              "S5"
+            ]
+          ],
+          "WRONG_not_gated_reported": [
+            [
+              "main/noisy_scale12/10120001",
+              "A9"
+            ],
+            [
+              "main/noisy_scale12/10120002",
+              "A9"
+            ],
+            [
+              "main/noisy_scale12/10120003",
+              "A9"
+            ],
+            [
+              "main/noisy_scale12/10120004",
+              "A9"
+            ],
+            [
+              "main/noisy_scale12/10120005",
+              "A9"
+            ],
+            [
+              "main/noisy_scale12/10120006",
+              "A9"
+            ],
+            [
+              "main/noisy_scale12/10120007",
+              "A9"
+            ],
+            [
+              "main/noisy_scale12/10120008",
+              "A9"
+            ],
+            [
+              "main/noisy_scale12/10120009",
+              "A9"
+            ],
+            [
+              "main/noisy_scale12/10120010",
+              "A9"
+            ],
+            [
+              "main/noisy_scale12/10120011",
+              "A9"
+            ],
+            [
+              "main/noisy_scale12/10120012",
+              "A9"
+            ],
+            [
+              "main/noisy_scale8/10110001",
+              "A9"
+            ],
+            [
+              "main/noisy_scale8/10110002",
+              "A9"
+            ],
+            [
+              "main/noisy_scale8/10110003",
+              "A9"
+            ],
+            [
+              "main/noisy_scale8/10110004",
+              "A9"
+            ],
+            [
+              "main/noisy_scale8/10110005",
+              "A9"
+            ],
+            [
+              "main/noisy_scale8/10110006",
+              "A9"
+            ],
+            [
+              "main/noisy_scale8/10110007",
+              "A9"
+            ],
+            [
+              "main/noisy_scale8/10110008",
+              "A9"
+            ],
+            [
+              "main/noisy_scale8/10110009",
+              "A9"
+            ],
+            [
+              "main/noisy_scale8/10110010",
+              "A9"
+            ],
+            [
+              "main/noisy_scale8/10110011",
+              "A9"
+            ],
+            [
+              "main/noisy_scale8/10110012",
+              "A9"
+            ]
+          ],
+          "gated_cases": {
+            "A10": 48,
+            "S5": 48,
+            "S7": 48
+          },
+          "label_mismatch": [],
+          "pass": false,
+          "recount_pass": true,
+          "rule": "recounted WRONG = 0 for A10, S7, S5 on clean and within-budget noisy cases"
+        },
+        "b": {
+          "ci95_seed_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "labels_A10_fixed_noisy_scale12": {
+            "AMB": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "ID": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "IDF": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "IDU": {
+              "ci95": [
+                0.7575059933447591,
+                1.0
+              ],
+              "rate": 1.0,
+              "x": 12
+            },
+            "WRONG": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "n": 12
+          },
+          "labels_A10_noisy_scale12": {
+            "AMB": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "ID": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "IDF": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "IDU": {
+              "ci95": [
+                0.7575059933447591,
+                1.0
+              ],
+              "rate": 1.0,
+              "x": 12
+            },
+            "WRONG": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "n": 12
+          },
+          "labels_A9_noisy_scale12": {
+            "AMB": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "ID": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "IDF": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "IDU": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "WRONG": {
+              "ci95": [
+                0.7575059933447591,
+                1.0
+              ],
+              "rate": 1.0,
+              "x": 12
+            },
+            "n": 12
+          },
+          "labels_S5_noisy_scale12": {
+            "AMB": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "ID": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "IDF": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "IDU": {
+              "ci95": [
+                0.08894166839405473,
+                0.5323053349335657
+              ],
+              "rate": 0.25,
+              "x": 3
+            },
+            "WRONG": {
+              "ci95": [
+                0.46769466506643437,
+                0.9110583316059452
+              ],
+              "rate": 0.75,
+              "x": 9
+            },
+            "n": 12
+          },
+          "labels_S7_noisy_scale12": {
+            "AMB": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "ID": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "IDF": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "IDU": {
+              "ci95": [
+                0.7575059933447591,
+                1.0
+              ],
+              "rate": 1.0,
+              "x": 12
+            },
+            "WRONG": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "n": 12
+          },
+          "mean_diff_ID_A10_minus_S7": 0.0,
+          "pass": false,
+          "per_seed": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "rule": "mean(ID A10 - ID S7, noisy_scale12) >= 0.25 and CI lower > 0"
+        },
+        "c": {
+          "ID_plus_IDF_A10_noisy_scale12": 0,
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "of": 12,
+          "pass": false,
+          "rule": ">= 4/12"
+        },
+        "d": {
+          "IDU_A10_noisy_scale12": {
+            "ci95": [
+              0.7575059933447591,
+              1.0
+            ],
+            "rate": 1.0,
+            "x": 12
+          },
+          "pass": false,
+          "rule": "<= 3/12"
+        }
+      },
+      "pass": false
+    },
+    "GAD10": {
+      "observed": {
+        "clean_scale12": {
+          "ci95_seed_bootstrap": [
+            0.3333,
+            0.8333
+          ],
+          "mean": 0.5833,
+          "per_seed": [
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0
+          ]
+        },
+        "noisy_scale12": {
+          "ci95_seed_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "mean": 0.0,
+          "per_seed": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "rule": "noisy12 mean >= 0; clean12 mean >= 0.17 and CI lower > 0"
+      },
+      "pass": true
+    },
+    "GNR10": {
+      "observed": {
+        "B_final_nonzero": [],
+        "cases_compared": 18,
+        "clean_cases": 24,
+        "label_differences": []
+      },
+      "pass": true
+    },
+    "GQB10": {
+      "observed": {
+        "A10_fixed_max_s": 10.48249368499819,
+        "A10_max_s": 10.289076589000615,
+        "A9_max_s": 10.204090033999819,
+        "S5_max_s": 10.293506931000593,
+        "S7_max_s": 10.538360885999282,
+        "bound_s": 10.5,
+        "max_s": 10.538,
+        "over": [
+          [
+            "main/noisy_scale8/10110001",
+            "S7",
+            10.523
+          ],
+          [
+            "main/noisy_scale8/10110003",
+            "S7",
+            10.538
+          ]
+        ]
+      },
+      "pass": false
+    },
+    "GS_ref": {
+      "observed": {
+        "PASS": true,
+        "arm_audited": "A10",
+        "cases": 12,
+        "decided_items": 12,
+        "key": "noisy_scale8",
+        "labels_checked": 12,
+        "mismatch_count": 0,
+        "mutations": 20,
+        "of": 20,
+        "undecided_items": 0
+      },
+      "pass": true
+    },
+    "GTI": {
+      "observed": {
+        "test_release_0320": {
+          "returncode": 0,
+          "tests": 5
+        },
+        "test_scalesearch10_0320": {
+          "returncode": 0,
+          "tests": 6
+        },
+        "test_scalesearch8_0300": {
+          "returncode": 0,
+          "tests": 5
+        },
+        "test_scalesearch9_0310": {
+          "returncode": 0,
+          "tests": 5
+        },
+        "test_scalesearch_0230": {
+          "returncode": 0,
+          "tests": 11
+        },
+        "test_scripts_035": {
+          "returncode": 0,
+          "tests": 10
+        }
+      },
+      "pass": true
+    },
+    "G_PROC": {
+      "observed": {
+        "clauses": {
+          "all_events": true,
+          "commit_order_file": true,
+          "ledger_times_non_decreasing": true,
+          "ledger_times_parse": true,
+          "main_sealed": true,
+          "order": true
+        },
+        "events": [
+          "preregistration_035",
+          "build_authorization_035",
+          "seedcheck_035",
+          "prefreeze_smoke_035",
+          "deviation_142",
+          "source_freeze_035",
+          "run_start_035",
+          "run_end_035"
+        ]
+      },
+      "pass": true
+    },
+    "G_RT": {
+      "observed": {
+        "cap_s": 1800,
+        "cases": 48,
+        "elapsed_s": 342.661075693999
+      },
+      "pass": true
+    },
+    "G_recount": {
+      "observed": {
+        "PASS": true,
+        "cases": 48,
+        "labels": {
+          "A10": {
+            "AMB": 1,
+            "ID": 13,
+            "IDF": 4,
+            "IDU": 30,
+            "WRONG": 0
+          },
+          "A10_fixed": {
+            "AMB": 0,
+            "ID": 6,
+            "IDF": 0,
+            "IDU": 42,
+            "WRONG": 0
+          },
+          "A9": {
+            "AMB": 1,
+            "ID": 13,
+            "IDF": 4,
+            "IDU": 6,
+            "WRONG": 24
+          },
+          "S5": {
+            "AMB": 16,
+            "ID": 6,
+            "IDF": 0,
+            "IDU": 11,
+            "WRONG": 15
+          },
+          "S7": {
+            "AMB": 0,
+            "ID": 6,
+            "IDF": 0,
+            "IDU": 42,
+            "WRONG": 0
+          }
+        },
+        "mismatching_cases": 0,
+        "words_checked": 116,
+        "words_unsound": 0
+      },
+      "pass": true
+    },
+    "G_sound": {
+      "observed": {
+        "recount_words_checked": 116,
+        "recount_words_unsound": 0,
+        "truth_over_Bmax_rounds_reported": 0,
+        "word_machines_unfit": 0,
+        "words_checked": 116,
+        "words_unsound": 0
+      },
+      "pass": true
+    }
+  },
+  "not_exercised": [],
+  "process": "lean",
+  "reports": {
+    "A10_B_final": {
+      "clean_scale12": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "noisy_scale12": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "noisy_scale8": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale16_clean": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "A10_B_history": {
+      "clean_scale12": [
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ]
+      ],
+      "control": [
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ]
+      ],
+      "noisy_scale12": [
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ]
+      ],
+      "noisy_scale8": [
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ]
+      ],
+      "scale16_clean": [
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ],
+        [
+          [
+            176,
+            0,
+            "start"
+          ]
+        ]
+      ]
+    },
+    "arm_wall_mean_s": {
+      "A10/clean_scale12": 3.684,
+      "A10/control": 0.017,
+      "A10/noisy_scale12": 14.406,
+      "A10/noisy_scale8": 16.033,
+      "A10/scale16_clean": 53.224,
+      "A10_fixed/clean_scale12": 13.93,
+      "A10_fixed/control": 0.567,
+      "A10_fixed/noisy_scale12": 13.525,
+      "A10_fixed/noisy_scale8": 14.096,
+      "A10_fixed/scale16_clean": 14.065,
+      "A9/clean_scale12": 3.793,
+      "A9/control": 0.017,
+      "A9/noisy_scale12": 0.255,
+      "A9/noisy_scale8": 0.077,
+      "A9/scale16_clean": 53.241,
+      "S5/clean_scale12": 0.277,
+      "S5/control": 0.012,
+      "S5/noisy_scale12": 7.063,
+      "S5/noisy_scale8": 10.53,
+      "S5/scale16_clean": 8.702,
+      "S7/clean_scale12": 13.939,
+      "S7/control": 0.279,
+      "S7/noisy_scale12": 13.595,
+      "S7/noisy_scale8": 14.422,
+      "S7/scale16_clean": 14.14
+    },
+    "budget_used": {
+      "A10/clean_scale12": {
+        "extra_actions_mean": 22.25,
+        "per_seed": [
+          8,
+          34,
+          29,
+          8,
+          9,
+          10,
+          29,
+          64,
+          4,
+          13,
+          19,
+          40
+        ],
+        "reads_mean": 199.25
+      },
+      "A10/control": {
+        "extra_actions_mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "reads_mean": 177.0
+      },
+      "A10/noisy_scale12": {
+        "extra_actions_mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "reads_mean": 177.0
+      },
+      "A10/noisy_scale8": {
+        "extra_actions_mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "reads_mean": 177.0
+      },
+      "A10/scale16_clean": {
+        "extra_actions_mean": 18.333,
+        "per_seed": [
+          44,
+          56,
+          0,
+          3,
+          7,
+          0
+        ],
+        "reads_mean": 195.333
+      },
+      "A10_fixed/clean_scale12": {
+        "extra_actions_mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "reads_mean": 177.0
+      },
+      "A10_fixed/control": {
+        "extra_actions_mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "reads_mean": 177.0
+      },
+      "A10_fixed/noisy_scale12": {
+        "extra_actions_mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "reads_mean": 177.0
+      },
+      "A10_fixed/noisy_scale8": {
+        "extra_actions_mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "reads_mean": 177.0
+      },
+      "A10_fixed/scale16_clean": {
+        "extra_actions_mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "reads_mean": 177.0
+      },
+      "A9/clean_scale12": {
+        "extra_actions_mean": 22.25,
+        "per_seed": [
+          8,
+          34,
+          29,
+          8,
+          9,
+          10,
+          29,
+          64,
+          4,
+          13,
+          19,
+          40
+        ],
+        "reads_mean": null
+      },
+      "A9/control": {
+        "extra_actions_mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "reads_mean": null
+      },
+      "A9/noisy_scale12": {
+        "extra_actions_mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "reads_mean": null
+      },
+      "A9/noisy_scale8": {
+        "extra_actions_mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "reads_mean": null
+      },
+      "A9/scale16_clean": {
+        "extra_actions_mean": 18.333,
+        "per_seed": [
+          44,
+          56,
+          0,
+          3,
+          7,
+          0
+        ],
+        "reads_mean": null
+      }
+    },
+    "contrasts": {
+      "ID(A10)-ID(A10_fixed)/clean_scale12": {
+        "ci95_seed_bootstrap": [
+          0.3333,
+          0.8333
+        ],
+        "mean": 0.5833,
+        "per_seed": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      "ID(A10)-ID(A10_fixed)/control": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10)-ID(A10_fixed)/noisy_scale12": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10)-ID(A10_fixed)/noisy_scale8": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10)-ID(A10_fixed)/scale16_clean": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10)-ID(A9)/clean_scale12": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10)-ID(A9)/control": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10)-ID(A9)/noisy_scale12": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10)-ID(A9)/noisy_scale8": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10)-ID(A9)/scale16_clean": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10)-ID(S5)/clean_scale12": {
+        "ci95_seed_bootstrap": [
+          0.3333,
+          0.8333
+        ],
+        "mean": 0.5833,
+        "per_seed": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      "ID(A10)-ID(S5)/control": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10)-ID(S5)/noisy_scale12": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10)-ID(S5)/noisy_scale8": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10)-ID(S5)/scale16_clean": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10)-ID(S7)/clean_scale12": {
+        "ci95_seed_bootstrap": [
+          0.3333,
+          0.8333
+        ],
+        "mean": 0.5833,
+        "per_seed": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      "ID(A10)-ID(S7)/control": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10)-ID(S7)/noisy_scale12": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10)-ID(S7)/noisy_scale8": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10)-ID(S7)/scale16_clean": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10_fixed)-ID(S7)/clean_scale12": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10_fixed)-ID(S7)/control": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10_fixed)-ID(S7)/noisy_scale12": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10_fixed)-ID(S7)/noisy_scale8": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A10_fixed)-ID(S7)/scale16_clean": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A9)-ID(S5)/clean_scale12": {
+        "ci95_seed_bootstrap": [
+          0.3333,
+          0.8333
+        ],
+        "mean": 0.5833,
+        "per_seed": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      "ID(A9)-ID(S5)/control": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A9)-ID(S5)/noisy_scale12": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A9)-ID(S5)/noisy_scale8": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A9)-ID(S5)/scale16_clean": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "labels": {
+      "A10/clean_scale12": {
+        "AMB": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "rate": 0.08333333333333333,
+          "x": 1
+        },
+        "ID": {
+          "ci95": [
+            0.3195113125495498,
+            0.8067396863412435
+          ],
+          "rate": 0.5833333333333334,
+          "x": 7
+        },
+        "IDF": {
+          "ci95": [
+            0.13812009109121315,
+            0.6093779111272004
+          ],
+          "rate": 0.3333333333333333,
+          "x": 4
+        },
+        "IDU": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 12
+      },
+      "A10/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 6
+      },
+      "A10/noisy_scale12": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.7575059933447591,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 12
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 12
+      },
+      "A10/noisy_scale8": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.7575059933447591,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 12
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 12
+      },
+      "A10/scale16_clean": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 6
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 6
+      },
+      "A10_fixed/clean_scale12": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.7575059933447591,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 12
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 12
+      },
+      "A10_fixed/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 6
+      },
+      "A10_fixed/noisy_scale12": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.7575059933447591,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 12
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 12
+      },
+      "A10_fixed/noisy_scale8": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.7575059933447591,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 12
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 12
+      },
+      "A10_fixed/scale16_clean": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 6
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 6
+      },
+      "A9/clean_scale12": {
+        "AMB": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "rate": 0.08333333333333333,
+          "x": 1
+        },
+        "ID": {
+          "ci95": [
+            0.3195113125495498,
+            0.8067396863412435
+          ],
+          "rate": 0.5833333333333334,
+          "x": 7
+        },
+        "IDF": {
+          "ci95": [
+            0.13812009109121315,
+            0.6093779111272004
+          ],
+          "rate": 0.3333333333333333,
+          "x": 4
+        },
+        "IDU": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 12
+      },
+      "A9/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 6
+      },
+      "A9/noisy_scale12": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            0.7575059933447591,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 12
+        },
+        "n": 12
+      },
+      "A9/noisy_scale8": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            0.7575059933447591,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 12
+        },
+        "n": 12
+      },
+      "A9/scale16_clean": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 6
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 6
+      },
+      "S5/clean_scale12": {
+        "AMB": {
+          "ci95": [
+            0.7575059933447591,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 12
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 12
+      },
+      "S5/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 6
+      },
+      "S5/noisy_scale12": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.08894166839405473,
+            0.5323053349335657
+          ],
+          "rate": 0.25,
+          "x": 3
+        },
+        "WRONG": {
+          "ci95": [
+            0.46769466506643437,
+            0.9110583316059452
+          ],
+          "rate": 0.75,
+          "x": 9
+        },
+        "n": 12
+      },
+      "S5/noisy_scale8": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.2537815976337061,
+            0.7462184023662939
+          ],
+          "rate": 0.5,
+          "x": 6
+        },
+        "WRONG": {
+          "ci95": [
+            0.2537815976337061,
+            0.7462184023662939
+          ],
+          "rate": 0.5,
+          "x": 6
+        },
+        "n": 12
+      },
+      "S5/scale16_clean": {
+        "AMB": {
+          "ci95": [
+            0.299993315138392,
+            0.9032285888942195
+          ],
+          "rate": 0.6666666666666666,
+          "x": 4
+        },
+        "ID": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.09677141110578043,
+            0.7000066848616079
+          ],
+          "rate": 0.3333333333333333,
+          "x": 2
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 6
+      },
+      "S7/clean_scale12": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.7575059933447591,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 12
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 12
+      },
+      "S7/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 6
+      },
+      "S7/noisy_scale12": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.7575059933447591,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 12
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 12
+      },
+      "S7/noisy_scale8": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.7575059933447591,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 12
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 12
+      },
+      "S7/scale16_clean": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 6
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 6
+      }
+    },
+    "mean_case_wall": 52.9,
+    "prefix_truth_flips": {
+      "clean_scale12": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "noisy_scale12": [
+        20,
+        19,
+        21,
+        16,
+        20,
+        13,
+        20,
+        16,
+        23,
+        16,
+        16,
+        13
+      ],
+      "noisy_scale8": [
+        16,
+        23,
+        17,
+        15,
+        15,
+        20,
+        15,
+        13,
+        22,
+        14,
+        15,
+        20
+      ],
+      "scale16_clean": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "query_max_s": {
+      "A10/clean_scale12": 1.9489864630013471,
+      "A10/control": 0.0004908539995085448,
+      "A10/noisy_scale12": 10.289076589000615,
+      "A10/noisy_scale8": 10.132742442001472,
+      "A10/scale16_clean": 10.148590419001266,
+      "A10_fixed/clean_scale12": 10.277962815998762,
+      "A10_fixed/control": 0.29698264800026664,
+      "A10_fixed/noisy_scale12": 10.48249368499819,
+      "A10_fixed/noisy_scale8": 10.29330645400114,
+      "A10_fixed/scale16_clean": 10.153250573999685,
+      "A9/clean_scale12": 2.218873904999782,
+      "A9/control": 0.0003898920003848616,
+      "A9/noisy_scale12": 0.28032845899724634,
+      "A9/noisy_scale8": 0.0059298570013197605,
+      "A9/scale16_clean": 10.204090033999819,
+      "S5/clean_scale12": 0.2815200659970287,
+      "S5/control": 0.003945919997931924,
+      "S5/noisy_scale12": 10.052856539001368,
+      "S5/noisy_scale8": 10.168785056997876,
+      "S5/scale16_clean": 10.293506931000593,
+      "S7/clean_scale12": 10.396634044998791,
+      "S7/control": 0.30779410699688015,
+      "S7/noisy_scale12": 10.499154065997573,
+      "S7/noisy_scale8": 10.538360885999282,
+      "S7/scale16_clean": 10.264129441999103
+    },
+    "stops": {
+      "A10/clean_scale12": {
+        "ID": 7,
+        "IDF": 4,
+        "K_spent": 1
+      },
+      "A10/control": {
+        "ID": 6
+      },
+      "A10/noisy_scale12": {
+        "unknown": 12
+      },
+      "A10/noisy_scale8": {
+        "unknown": 12
+      },
+      "A10/scale16_clean": {
+        "unknown": 6
+      },
+      "A10_fixed/clean_scale12": {
+        "unknown": 12
+      },
+      "A10_fixed/control": {
+        "ID": 6
+      },
+      "A10_fixed/noisy_scale12": {
+        "unknown": 12
+      },
+      "A10_fixed/noisy_scale8": {
+        "unknown": 12
+      },
+      "A10_fixed/scale16_clean": {
+        "unknown": 6
+      },
+      "A9/clean_scale12": {
+        "ID": 7,
+        "IDF": 4,
+        "K_spent": 1
+      },
+      "A9/control": {
+        "ID": 6
+      },
+      "A9/noisy_scale12": {
+        "none": 12
+      },
+      "A9/noisy_scale8": {
+        "none": 12
+      },
+      "A9/scale16_clean": {
+        "unknown": 6
+      },
+      "S5/clean_scale12": {
+        "done": 12
+      },
+      "S5/control": {
+        "done": 6
+      },
+      "S5/noisy_scale12": {
+        "done": 9,
+        "unknown": 3
+      },
+      "S5/noisy_scale8": {
+        "done": 6,
+        "unknown": 6
+      },
+      "S5/scale16_clean": {
+        "done": 4,
+        "unknown": 2
+      },
+      "S7/clean_scale12": {
+        "unknown": 12
+      },
+      "S7/control": {
+        "done": 6
+      },
+      "S7/noisy_scale12": {
+        "unknown": 12
+      },
+      "S7/noisy_scale8": {
+        "unknown": 12
+      },
+      "S7/scale16_clean": {
+        "unknown": 6
+      }
+    },
+    "within_budget": {
+      "A10/clean_scale12": 12,
+      "A10/control": 6,
+      "A10/noisy_scale12": 12,
+      "A10/noisy_scale8": 12,
+      "A10/scale16_clean": 6,
+      "A10_fixed/clean_scale12": 12,
+      "A10_fixed/control": 6,
+      "A10_fixed/noisy_scale12": 12,
+      "A10_fixed/noisy_scale8": 12,
+      "A10_fixed/scale16_clean": 6,
+      "A9/clean_scale12": 12,
+      "A9/control": 6,
+      "A9/noisy_scale12": 12,
+      "A9/noisy_scale8": 12,
+      "A9/scale16_clean": 6,
+      "S5/clean_scale12": 12,
+      "S5/control": 6,
+      "S5/noisy_scale12": 12,
+      "S5/noisy_scale8": 12,
+      "S5/scale16_clean": 6,
+      "S7/clean_scale12": 12,
+      "S7/control": 6,
+      "S7/noisy_scale12": 12,
+      "S7/noisy_scale8": 12,
+      "S7/scale16_clean": 6
+    }
+  },
+  "schema": "brute.gates.v32_0",
+  "sealed_input_verified": true,
+  "secondary": {
+    "G16": {
+      "observed": {
+        "A10_scale16_clean": {
+          "AMB": {
+            "ci95": [
+              3.384324554477539e-17,
+              0.39033428790216534
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "ID": {
+            "ci95": [
+              3.384324554477539e-17,
+              0.39033428790216534
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "IDF": {
+            "ci95": [
+              3.384324554477539e-17,
+              0.39033428790216534
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "IDU": {
+            "ci95": [
+              0.6096657120978346,
+              1.0
+            ],
+            "rate": 1.0,
+            "x": 6
+          },
+          "WRONG": {
+            "ci95": [
+              3.384324554477539e-17,
+              0.39033428790216534
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "n": 6
+        },
+        "rule": "ID >= 2/6 and WRONG 0 (secondary)"
+      },
+      "pass": false
+    }
+  },
+  "secondary_failed": [
+    "G16"
+  ],
+  "study": "BRUTE-0320-NOISY-ACTIVE-ID-035"
+}
