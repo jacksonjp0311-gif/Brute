@@ -1,0 +1,484 @@
+{
+  "PASS": true,
+  "label": "Observed",
+  "note": "PASS here means the tooling ran end to end on a sealed block (recount reproduces, gates reproduce); the reference result is recorded, not required (it may be undecided on smoke)",
+  "purpose": "Pre-freeze smoke-gates test for study-036 (plan 036 process: \"pre-freeze gates test on a sealed smoke block\"; the #129",
+  "recount": {
+    "PASS": true,
+    "cases": 8,
+    "labels": {
+      "A10": {
+        "AMB": 0,
+        "ID": 2,
+        "IDF": 1,
+        "IDU": 5,
+        "WRONG": 0
+      },
+      "A11_r3": {
+        "AMB": 0,
+        "ID": 3,
+        "IDF": 1,
+        "IDU": 4,
+        "WRONG": 0
+      },
+      "A11_r3_up": {
+        "AMB": 0,
+        "ID": 4,
+        "IDF": 1,
+        "IDU": 3,
+        "WRONG": 0
+      },
+      "A11_r5": {
+        "AMB": 0,
+        "ID": 7,
+        "IDF": 1,
+        "IDU": 0,
+        "WRONG": 0
+      },
+      "S5": {
+        "AMB": 2,
+        "ID": 1,
+        "IDF": 0,
+        "IDU": 1,
+        "WRONG": 4
+      },
+      "S7": {
+        "AMB": 0,
+        "ID": 1,
+        "IDF": 0,
+        "IDU": 7,
+        "WRONG": 0
+      }
+    },
+    "mismatching_cases": 0,
+    "words_checked": 146,
+    "words_unsound": 0
+  },
+  "recount_rc": 0,
+  "reference_on_smoke": {
+    "PASS": true,
+    "cases": 2,
+    "decided_items": 27,
+    "labels_checked": 2,
+    "mismatch_count": 0,
+    "mutations": 20,
+    "of": 20,
+    "raised_B_decided": 25,
+    "undecided_items": 0
+  },
+  "reference_rc": 0,
+  "relabelled": {
+    "check_returncode": 0,
+    "check_stdout": "GATES_036 reproduces",
+    "crashed": false,
+    "gate_status": {
+      "G10": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "GBIS11": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "GNR11": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "GQB11": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "GR11_headline": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "GS_ref": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "GTI": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (TEST_SUITE_036 missing)"
+      },
+      "G_PROC": {
+        "pass": false
+      },
+      "G_RT": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "G_recount": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "G_sound": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      }
+    },
+    "recount_rc": 0,
+    "reports_keys": [
+      "B_final",
+      "B_history",
+      "arm_wall_mean_s",
+      "contrasts",
+      "cost",
+      "labels",
+      "labels_pooled_noisy12",
+      "mean_case_wall",
+      "query_max_s",
+      "stops",
+      "truth_flips_trace",
+      "within_budget"
+    ],
+    "sealed_input_verified": true,
+    "secondary": {
+      "GRB11": false
+    }
+  },
+  "runtime_projection": {
+    "cap_s": 1800,
+    "drop_extra_threshold_s": 1500,
+    "greedy_makespan_s": 301.6,
+    "ideal_parallel_s": 270.5,
+    "label": "Inferred",
+    "mean_case_wall_by_key": {
+      "clean_scale12": 42.2,
+      "control": 0.5,
+      "noisy_scale12": 58.6,
+      "noisy_scale12_extra": 60.6,
+      "noisy_scale8": 49.0
+    },
+    "serial_s": 2163.9,
+    "smoke_total_elapsed_s": 61.70694898199872,
+    "workers": 8
+  },
+  "smoke_cases": [
+    [
+      "noisy_scale12",
+      10290001,
+      {
+        "A10": "IDU",
+        "A11_r3": "IDU",
+        "A11_r3_up": "IDU",
+        "A11_r5": "ID",
+        "S5": "WRONG",
+        "S7": "IDU"
+      },
+      {
+        "A10": [
+          0,
+          176,
+          177
+        ],
+        "A11_r3": [
+          0,
+          176,
+          531
+        ],
+        "A11_r3_up": [
+          0,
+          176,
+          531
+        ],
+        "A11_r5": [
+          0,
+          219,
+          1100
+        ]
+      },
+      60.7
+    ],
+    [
+      "noisy_scale12",
+      10290002,
+      {
+        "A10": "IDU",
+        "A11_r3": "IDU",
+        "A11_r3_up": "IDU",
+        "A11_r5": "ID",
+        "S5": "WRONG",
+        "S7": "IDU"
+      },
+      {
+        "A10": [
+          0,
+          176,
+          177
+        ],
+        "A11_r3": [
+          0,
+          176,
+          531
+        ],
+        "A11_r3_up": [
+          0,
+          176,
+          531
+        ],
+        "A11_r5": [
+          0,
+          202,
+          1015
+        ]
+      },
+      56.5
+    ],
+    [
+      "noisy_scale12_extra",
+      10290003,
+      {
+        "A10": "IDU",
+        "A11_r3": "IDU",
+        "A11_r3_up": "IDU",
+        "A11_r5": "ID",
+        "S5": "WRONG",
+        "S7": "IDU"
+      },
+      {
+        "A10": [
+          0,
+          176,
+          177
+        ],
+        "A11_r3": [
+          0,
+          176,
+          531
+        ],
+        "A11_r3_up": [
+          0,
+          176,
+          531
+        ],
+        "A11_r5": [
+          0,
+          194,
+          975
+        ]
+      },
+      60.6
+    ],
+    [
+      "clean_scale12",
+      10290004,
+      {
+        "A10": "IDF",
+        "A11_r3": "IDF",
+        "A11_r3_up": "IDF",
+        "A11_r5": "IDF",
+        "S5": "AMB",
+        "S7": "IDU"
+      },
+      {
+        "A10": [
+          0,
+          233,
+          234
+        ],
+        "A11_r3": [
+          0,
+          233,
+          702
+        ],
+        "A11_r3_up": [
+          0,
+          233,
+          702
+        ],
+        "A11_r5": [
+          0,
+          233,
+          1170
+        ]
+      },
+      61.7
+    ],
+    [
+      "clean_scale12",
+      10290005,
+      {
+        "A10": "ID",
+        "A11_r3": "ID",
+        "A11_r3_up": "ID",
+        "A11_r5": "ID",
+        "S5": "AMB",
+        "S7": "IDU"
+      },
+      {
+        "A10": [
+          0,
+          201,
+          202
+        ],
+        "A11_r3": [
+          0,
+          201,
+          606
+        ],
+        "A11_r3_up": [
+          0,
+          201,
+          606
+        ],
+        "A11_r5": [
+          0,
+          201,
+          1010
+        ]
+      },
+      22.7
+    ],
+    [
+      "noisy_scale8",
+      10290006,
+      {
+        "A10": "IDU",
+        "A11_r3": "ID",
+        "A11_r3_up": "ID",
+        "A11_r5": "ID",
+        "S5": "IDU",
+        "S7": "IDU"
+      },
+      {
+        "A10": [
+          0,
+          176,
+          177
+        ],
+        "A11_r3": [
+          2,
+          188,
+          567
+        ],
+        "A11_r3_up": [
+          2,
+          188,
+          567
+        ],
+        "A11_r5": [
+          0,
+          195,
+          980
+        ]
+      },
+      51.9
+    ],
+    [
+      "noisy_scale8",
+      10290007,
+      {
+        "A10": "IDU",
+        "A11_r3": "IDU",
+        "A11_r3_up": "ID",
+        "A11_r5": "ID",
+        "S5": "WRONG",
+        "S7": "IDU"
+      },
+      {
+        "A10": [
+          0,
+          176,
+          177
+        ],
+        "A11_r3": [
+          0,
+          176,
+          531
+        ],
+        "A11_r3_up": [
+          3,
+          176,
+          531
+        ],
+        "A11_r5": [
+          1,
+          176,
+          885
+        ]
+      },
+      46.1
+    ],
+    [
+      "control",
+      10290008,
+      {
+        "A10": "ID",
+        "A11_r3": "ID",
+        "A11_r3_up": "ID",
+        "A11_r5": "ID",
+        "S5": "ID",
+        "S7": "ID"
+      },
+      {
+        "A10": [
+          0,
+          176,
+          177
+        ],
+        "A11_r3": [
+          0,
+          176,
+          531
+        ],
+        "A11_r3_up": [
+          0,
+          176,
+          531
+        ],
+        "A11_r5": [
+          0,
+          176,
+          885
+        ]
+      },
+      0.5
+    ]
+  ],
+  "smoke_gate_status": {
+    "G10": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "GBIS11": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "GNR11": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "GQB11": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "GR11_headline": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "GS_ref": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "GTI": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (TEST_SUITE_036 missing)"
+    },
+    "G_PROC": {
+      "pass": false
+    },
+    "G_RT": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "G_recount": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "G_sound": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    }
+  },
+  "smoke_sealed_input_verified": true
+}
