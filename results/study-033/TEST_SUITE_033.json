@@ -1,0 +1,72 @@
+{
+ "modules": [
+  "test_scalesearch8_0300",
+  "test_scalesearch_0230",
+  "test_scripts_033",
+  "test_release_0300"
+ ],
+ "passed": true,
+ "per_module": {
+  "test_release_0300": {
+   "results": {
+    "test_gate_list_mismatch": "ok",
+    "test_missing_key": "ok",
+    "test_release_ok": "ok",
+    "test_wrong_version": "ok"
+   },
+   "returncode": 0,
+   "tail": "test_gate_list_mismatch (tests.test_release_0300.TestRelease0300.test_gate_list_mismatch) ... ok\ntest_missing_key (tests.test_release_0300.TestRelease0300.test_missing_key) ... ok\ntest_release_ok (tests.test_release_0300.TestRelease0300.test_release_ok) ... ok\ntest_wrong_version (tests.test_release_0300.TestRelease0300.test_wrong_version) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.002s\n\nOK\n",
+   "tests": 4,
+   "wall_informational": 0.1
+  },
+  "test_scalesearch8_0300": {
+   "results": {
+    "test_equals_identify6": "ok",
+    "test_query_cap": "ok",
+    "test_shortest_and_none": "ok",
+    "test_sound_loop": "ok",
+    "test_source": "ok"
+   },
+   "returncode": 0,
+   "tail": "test_sound_loop (tests.test_scalesearch8_0300.Active.test_sound_loop) ... ok\ntest_source (tests.test_scalesearch8_0300.HostAgnostic.test_source) ... ok\ntest_equals_identify6 (tests.test_scalesearch8_0300.Identify.test_equals_identify6) ... ok\ntest_query_cap (tests.test_scalesearch8_0300.Identify.test_query_cap) ... ok\ntest_shortest_and_none (tests.test_scalesearch8_0300.Word.test_shortest_and_none) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.329s\n\nOK\n",
+   "tests": 5,
+   "wall_informational": 0.5
+  },
+  "test_scalesearch_0230": {
+   "results": {
+    "test_canonical_bfs": "ok",
+    "test_cycle3_identified": "ok",
+    "test_equals_frozen_tolerant": "ok",
+    "test_greedy_fold_consistent": "ok",
+    "test_masked_and_contradicted": "ok",
+    "test_no_io": "ok",
+    "test_pool_and_chain_machines_consistent": "ok",
+    "test_random_small": "ok",
+    "test_scale_worlds_minimal_strong": "ok",
+    "test_trajectory": "ok",
+    "test_unexercised_not_unique": "ok"
+   },
+   "returncode": 0,
+   "tail": "test_canonical_bfs (tests.test_scalesearch_0230.Witnesses.test_canonical_bfs) ... ok\ntest_greedy_fold_consistent (tests.test_scalesearch_0230.Witnesses.test_greedy_fold_consistent) ... ok\ntest_pool_and_chain_machines_consistent (tests.test_scalesearch_0230.Witnesses.test_pool_and_chain_machines_consistent) ... ok\ntest_scale_worlds_minimal_strong (tests.test_scalesearch_0230.Worlds.test_scale_worlds_minimal_strong) ... ok\ntest_trajectory (tests.test_scalesearch_0230.Worlds.test_trajectory) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.145s\n\nOK\n",
+   "tests": 11,
+   "wall_informational": 0.3
+  },
+  "test_scripts_033": {
+   "results": {
+    "test_arms_and_reproduces": "ok",
+    "test_constants": "ok",
+    "test_counts": "ok",
+    "test_empty_study_fails_incomplete": "ok",
+    "test_files_exist": "ok",
+    "test_reference_on_case": "ok",
+    "test_tamper_detected": "ok"
+   },
+   "returncode": 0,
+   "tail": "cripts_033.Jobs.test_counts) ... ok\ntest_arms_and_reproduces (tests.test_scripts_033.Recount.test_arms_and_reproduces) ... ok\ntest_reference_on_case (tests.test_scripts_033.Recount.test_reference_on_case) ... ok\ntest_sealed_block_gates_check (tests.test_scripts_033.Recount.test_sealed_block_gates_check)\nPre-freeze: seal a full-shape block with the runner's _write, recount it, run make_gates_033, then --check. ... ok\ntest_tamper_detected (tests.test_scripts_033.Recount.test_tamper_detected) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 1.595s\n\nOK\n",
+   "tests": 7,
+   "wall_informational": 1.7
+  }
+ },
+ "process": "lean",
+ "schema": "brute.test-suite-033.v1"
+}
