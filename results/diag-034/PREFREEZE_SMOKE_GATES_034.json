@@ -1,0 +1,266 @@
+{
+  "PASS": true,
+  "label": "Observed",
+  "purpose": "Pre-freeze smoke-gates test for study-034 (plan 034 process: \"pre-freeze gates test on a sealed smoke block\"; the #129",
+  "recount": {
+    "PASS": true,
+    "cases": 6,
+    "labels": {
+      "A8": {
+        "AMB": 1,
+        "ID": 4,
+        "IDF": 0,
+        "IDU": 0,
+        "WRONG": 1
+      },
+      "A9": {
+        "AMB": 0,
+        "ID": 4,
+        "IDF": 1,
+        "IDU": 1,
+        "WRONG": 0
+      },
+      "A9_random": {
+        "AMB": 4,
+        "ID": 2,
+        "IDF": 0,
+        "IDU": 0,
+        "WRONG": 0
+      },
+      "S1": {
+        "AMB": 4,
+        "ID": 2,
+        "IDF": 0,
+        "IDU": 0,
+        "WRONG": 0
+      },
+      "S5": {
+        "AMB": 4,
+        "ID": 2,
+        "IDF": 0,
+        "IDU": 0,
+        "WRONG": 0
+      }
+    },
+    "mismatching_cases": 0,
+    "words_checked": 54,
+    "words_unsound": 0
+  },
+  "recount_rc": 0,
+  "reference_on_smoke_scale8": {
+    "PASS": true,
+    "cases": 2,
+    "decided": 2,
+    "mismatch_count": 0,
+    "mutations": 20,
+    "not_reached": 0,
+    "of": 20,
+    "verdicts_checked": 5,
+    "words_checked": 1
+  },
+  "reference_rc": 0,
+  "relabelled": {
+    "check_returncode": 0,
+    "check_stdout": "GATES_034 reproduces",
+    "crashed": false,
+    "gate_status": {
+      "G10": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "GA9_headline": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "GCH9": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "GDIAG8": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "GIDF9": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "GQB9": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "GS_ref": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "GTI": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (TEST_SUITE_034 missing)"
+      },
+      "G_PROC": {
+        "pass": false
+      },
+      "G_RT": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "G_recount": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "G_sound": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      }
+    },
+    "recount_rc": 0,
+    "reports_keys": [
+      "A8_WRONG_detail",
+      "A8_stop",
+      "A9_random_stop",
+      "A9_rounds",
+      "A9_stop",
+      "IDF_diagnosis",
+      "N_declared",
+      "actions_used",
+      "arm_wall_mean_s",
+      "capped_queries",
+      "contrasts",
+      "labels",
+      "mean_case_wall",
+      "n_min_vs_truth",
+      "query_max_s",
+      "truth_reachable"
+    ],
+    "sealed_input_verified": true
+  },
+  "smoke_cases": [
+    [
+      "scale16",
+      10090001,
+      {
+        "A8": "WRONG",
+        "A9": "IDU",
+        "A9_random": "AMB",
+        "S1": "AMB",
+        "S5": "AMB"
+      },
+      23,
+      "unknown"
+    ],
+    [
+      "scale12",
+      10090002,
+      {
+        "A8": "ID",
+        "A9": "ID",
+        "A9_random": "AMB",
+        "S1": "AMB",
+        "S5": "AMB"
+      },
+      15,
+      "ID"
+    ],
+    [
+      "scale12",
+      10090003,
+      {
+        "A8": "ID",
+        "A9": "ID",
+        "A9_random": "AMB",
+        "S1": "AMB",
+        "S5": "AMB"
+      },
+      50,
+      "ID"
+    ],
+    [
+      "scale8",
+      10090004,
+      {
+        "A8": "AMB",
+        "A9": "IDF",
+        "A9_random": "AMB",
+        "S1": "AMB",
+        "S5": "AMB"
+      },
+      4,
+      "IDF"
+    ],
+    [
+      "scale8",
+      10090005,
+      {
+        "A8": "ID",
+        "A9": "ID",
+        "A9_random": "ID",
+        "S1": "ID",
+        "S5": "ID"
+      },
+      0,
+      "ID"
+    ],
+    [
+      "control_cycle3",
+      10090006,
+      {
+        "A8": "ID",
+        "A9": "ID",
+        "A9_random": "ID",
+        "S1": "ID",
+        "S5": "ID"
+      },
+      0,
+      "ID"
+    ]
+  ],
+  "smoke_gate_status": {
+    "G10": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "GA9_headline": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "GCH9": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "GDIAG8": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "GIDF9": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "GQB9": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "GS_ref": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "GTI": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (TEST_SUITE_034 missing)"
+    },
+    "G_PROC": {
+      "pass": false
+    },
+    "G_RT": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "G_recount": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "G_sound": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    }
+  },
+  "smoke_sealed_input_verified": true
+}
