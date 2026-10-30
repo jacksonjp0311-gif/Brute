@@ -5,7 +5,7 @@ _Kept current on the working branch during a release and on `main` at release. L
 ## Current version and state
 
 <!-- V0230 -->
-- **v0.23.0: RELEASED** 2026-10-30 (tag `v0.23.0`; see the release entry below for the tag object, the main fast-forward and the fresh-clone verify). Study BRUTE-0230-SCALE-026, LEAN. **2 of 8 gated pass (GTI, G_PROC).**
+- **v0.23.0: RELEASED** 2026-10-30 (tag `v0.23.0` (annotated, object `1b398de`) -> `ddffd12`; main fast-forwarded `c750fef..ddffd12` (no force); https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.23.0; one fresh GitHub clone of the tag passed `verify_release_0230` and 27/27 tests). Study BRUTE-0230-SCALE-026, LEAN. **2 of 8 gated pass (GTI, G_PROC).**
   - **The run was interrupted (Observed).** The box rebooted at about 10:22 EDT, about 10 minutes into the detached run. 38 of 93 cases were sealed as PARTIAL. The run was not relaunched (standing rule). See deviation #125.
   - **FAIL (INCOMPLETE_INPUT):** GSC_headline, G10, GS_ref12, G_RT, G_recount. **GAPI12 FAIL:** stream check had no scale8 case; probe, source scan and certify/11 unchanged all pass.
   - **Descriptive, 38 cases:** recount PASS (S2 0 false certificates, RGB6 0, S1 2); clause a 8771 compared, 0 mismatches; X(S2,scale16) 0/24 [0, 0.138]; U(S2,scale16) 0.566; certificates S1 14, S2 0.
