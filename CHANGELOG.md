@@ -1,5 +1,25 @@
 # Brute changelog
 
+## v0.23.0: exact search S2 at 8-16 states, API brute.certify/12 (study BRUTE-0230-SCALE-026, LEAN process)
+
+**2 of 8 gates pass (GTI, G_PROC). GSC (headline), G10, GAPI12, GS_ref12, G_RT and G_recount FAIL with INCOMPLETE_INPUT.** A host reboot at about 10:22 EDT stopped the detached run after 38 of 93 cases. The run was not relaunched (standing rule; deviation #125). *Observed*
+
+### Timeline (EDT, 2026-10-30)
+
+- Plan `7a6acdd` (00:34); build authorization `835161f` (09:06, card t133s553); seedcheck `234dc08`; #123 `ccdf0df`; S2 code `b41b82d`; scoring scripts `f205e20`; #124 `8d67e13`; source freeze `9837d1d`.
+- Run start `bc30b93` (10:12:09); reboot about 10:22; interruption `e2ed8db`; partial seal `fe7b757`; gates `965879b`; #125 `d0c82f2`; release freeze `66d296e`.
+
+### Descriptive results on the 38 sealed cases (they decide no gate)
+
+- False certificates (exact recount, PASS): S2 0, RGB6 0, S1 2 (1 main, 1 stress).
+- Clause a: 8771 S2 queries compared with exact truth, 0 mismatches (11293 excluded as inexact).
+- X (exact-complete cases): S2 scale16 0/24 [0.000, 0.138]; S1 scale16 1/24 [0.007, 0.202]; S1 and S2 scale12 0/8 [0.000, 0.324]. scale8 had no cases.
+- U (unknown fraction): S2 scale16 0.566, scale12 0.513; S1 0.454 and 0.390; RGB6 0.595 and 0.550.
+- Certificates: S1 14, S2 0, RGB6 0. ID: no eps-0 scale8 or scale12 case; scale16 ID 0 of 12.
+- Mean case wall 121.9 s.
+
+Deviations #123, #124 (pre-run) and #125 (host interruption). Verify: `python scripts/study026_storage.py restore && PYTHONPATH=. python scripts/verify_release_0230.py`.
+
 ## v0.22.0: betting confidence sequence RGB6, API brute.certify/11 (study BRUTE-0220-BETTING-CS-025, LEAN process)
 
 **11 of 12 gated criteria pass. GBC (headline) FAILS on clauses c and d.** *Observed*. The scoring rules were fixed before the data (*Exact*).
