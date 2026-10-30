@@ -1,5 +1,39 @@
 # Brute changelog
 
+## v0.28.0: exact search S6 (S5 with one incremental solver per trace and query ordering) and a trace-only identify probe (study BRUTE-0280-SIXTEEN-STATE-ID-031, LEAN process)
+
+**6 of 9 gates pass (G10, GS_ref, GTI, G_PROC, G_RT, G_recount). GSC6 (headline) FAILS on clauses b and c; GID6 FAILS on b; GQB6 FAILS.** All 54 cases ran and were sealed (1028.1 s of 1800 s). *Observed*
+
+### Timeline (EDT, 2026-10-30)
+
+- Plan `ec7bd75` (15:04); build authorization (ledger `4a0eb8d`, 15:06, standing go t133s553); seedcheck `059fe1a` (ledger `1ff404d`, 15:16, before any seed); runner `2a3790b`; scoring and tooling `3688135`; release tooling `76d3476`; scratch diagnosis `f4bd80e`; pre-freeze sealed-smoke gates test `f48aac0`; #134 `fd80635`; source freeze `e74469a`.
+- Run start (ledger `1ba5397`, 15:23:36); 4 pushed checkpoint snapshots (last `6131470`); run end `e27bde1` (15:41); seal `b3b8519`; recount `5877d4d`; reference `4f2c9fc`; tests `6afab8f`; gates `604d19c`; #135 `d086433`.
+
+### Results (main block, eps 0; X and ID Wilson 95% CI, U seed-bootstrap 95% CI)
+
+| arm | X scale8 | X scale12 | X scale16 | U scale12 | U scale16 | ID scale8 | ID scale12 | max query main/stress (s) | F main/stress |
+|---|---|---|---|---|---|---|---|---|---|
+| S6 | 12/12 [0.758, 1] | 6/12 [0.254, 0.746] | 0/18 [0, 0.176] | 0.033 [0.001, 0.090] | 0.222 [0.158, 0.288] | 4/12 [0.138, 0.609] | 0/12 [0, 0.242] | 9.98 / 10.86 | 0/0 |
+| S6_noorder (ablation) | 12/12 | 6/12 | 0/18 | 0.036 [0.002, 0.094] | 0.226 [0.162, 0.292] | 4/12 | 0/12 | 9.98 / 9.96 | 0/0 |
+| S5 | 12/12 | 6/12 | 0/18 | 0.030 [0.001, 0.080] | 0.218 [0.157, 0.281] | 4/12 | 1/12 [0.015, 0.354] | 7.39 / 8.35 | 0/0 |
+| S1 | 11/12 [0.646, 0.985] | 2/12 [0.047, 0.448] | 0/18 | 0.151 [0.085, 0.221] | 0.336 [0.289, 0.381] | 4/12 | 0/12 | 23.15 / 27.70 | 0/0 |
+
+- GSC6 a: 0 mismatches (21,345 vs S1, 23,232 vs S5; 21,966 truth-checked, 0 missing). b: paired U(S6) - U(S5) at 16 states +0.004 [-0.008, 0.016] (bar <= -0.06, CI below 0): FAIL. c: X(S6, scale16) 0/18 (bar 4/18): FAIL. d: F(S6) 0 on main and stress: PASS.
+- GID6 a: WRONG 0 for every arm: PASS. b: ID(S6, scale12) 0/12 (bar 4/12): FAIL; S6 labels at 12 states AMB 11, NR 1. c: IDU + NR 1/12 (bar <= 2/12): PASS. The probe found unexercised truth transitions in 11/12 scale12 and 18/18 scale16 traces.
+- GQB6: S6 max query 10.857 s on stress/scale16/9730003 (bound 10.5): FAIL. G10: controls 6/6 with U 0 and ID. GS_ref: 0 mismatches, mutations 20/20.
+- Mechanism (descriptive, from counters): S6 build time per scale16 case 0.14 s vs S5 2.39 s, solve time 54.2 s vs 51.4 s, cap stops 45.8 vs 1.3. Throughput S6/S5 at 16 states median 0.99, mean 0.98 [0.95, 1.01]. Ordering had no effect (U(S6) - U(S6_noorder) -0.004 [-0.017, 0.007]).
+- Stress (eps 0.05) U over both scales: S1 0.370 [0.147, 0.578], S5 0.568 [0.455, 0.666], S6 0.568 [0.451, 0.667], S6_noorder 0.566; at 16 states S1 X 2/3, S5/S6 0/3.
+
+### What Brute can't do yet
+
+- It does not finish 16-state worlds (0/18 for every arm). *Observed.*
+- An incremental solver does not lower 16-state unknowns; rebuild cost was not the bottleneck. *Observed / Inferred.*
+- It cannot single out 12- or 16-state machines from one passive trace: a second least machine exists in most cases. *Observed / Inferred.*
+- The symmetry-free line (S5, S6) is worse than S1 on noisy traces. *Observed.*
+- The per-query cap can overrun under load (10.86 s vs 10.5 s). *Observed.*
+
+Deviations #134 (pre-run) and #135 (post-run). Verify: `python scripts/study031_storage.py restore && PYTHONPATH=. python scripts/verify_release_0280.py`.
+
 ## v0.27.0: exact search S5 without symmetry-breaking clauses, hard per-query cap (study BRUTE-0270-SYMMETRY-FREE-030, LEAN process)
 
 **8 of 8 gates pass (GQB5, GSC5_headline, G10, GS_ref, GTI, G_PROC, G_RT, G_recount).** All 51 cases ran and were sealed (978.9 s of 1800 s). *Observed*
