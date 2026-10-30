@@ -1,5 +1,31 @@
 # Brute changelog
 
+## v0.22.0: betting confidence sequence RGB6, API brute.certify/11 (study BRUTE-0220-BETTING-CS-025, LEAN process)
+
+**11 of 12 gated criteria pass. GBC (headline) FAILS on clauses c and d.** *Observed*. The scoring rules were fixed before the data (*Exact*).
+
+### Timeline (author's clock, EDT)
+
+- **Pre-registration.** Plan `4f6c4dd` (2026-10-29 08:08). Build authorisation 23:39 (card t128s531). A1 `1f49928` made the stress gate strict. Lemma `55dd41f` and reference `8f31080` came before the RGB6 code `19987c8`.
+- **Lean switch.** A2 `15cc245` (23:54; owner card t130s540, 23:45) cut the run to 60 main + 30 stress cases under a 30 min cap. It dropped the drills, the host-pause probe, the double clone, G12 and G_HB. Process scripts `35e4333`, #120 `e96b3aa`, source + scoring freeze `d1390e5` (23:58:38).
+- **Run.** RUN_T0 23:58:50; exit 0 at 00:22:55 (Oct 30); 1365.8 s of 1800 s.
+- **After.** run_end `e489213`, #121 `30428fd`, seal `72b52e8`, gates `0a98405`, tooling `be8d077`, release freeze `b9fd583`.
+
+### Results (eps 0.02, 20 cases, CI95 bootstrap)
+
+| arm | C_late | C_early28 |
+|---|---|---|
+| RGB6 (betting, new) | 0.315 [0.226, 0.413] | 0.0027 [0.0, 0.0071] |
+| RGL5 (stitched) | 0.332 [0.239, 0.436] | 0.0027 [0.0, 0.0071] |
+| RGL4 (lr) | 0.320 [0.228, 0.420] | 0.0027 [0.0, 0.0071] |
+| RGNB4 (planned B) | 0.418 [0.289, 0.551] | 0.0018 [0.0, 0.0045] |
+| RGN4_or (oracle) | 0.806 [0.709, 0.893] | 0.026 [0.008, 0.048] |
+
+- dC_late RGB6 - RGL4: -0.0045 [-0.0108, 0.0] (bar mean >= 0.04 and CI lower > 0: FAIL). dC_late RGB6 - RGNB4: -0.102 [-0.195, -0.015] (bar CI lower > -0.06: FAIL). dC_late RGB6 - RGL5: -0.017 [-0.035, -0.003].
+- Betting activation: 0 of 90 cases reached K >= 800 at any level, so RGB6 ran as its level-0 bound (delta 1/400) throughout (*Observed*; predicted in #120).
+- False certificates (exact recount): RGB6 0 on 40 noisy main cases (CP95 0.0722, reported, not gated) and 0 on 30 stress cases (clause b PASS, strict). RGL4 1 on stress (ood4 9140009), RG4 31.
+- Deviations #119, #120 (pre-run), #121 (an api_check t0 bug, fixed in a new r1 file before the gates). Verify: `PYTHONPATH=. python scripts/verify_release_0220.py`.
+
 ## v0.21.0: stitched likelihood-ratio bound RGL5, API brute.certify/10 (study BRUTE-0210-STITCHED-LR-024)
 
 **12 of 14 gated criteria pass. GLS (headline) FAILS on clauses b, c and d. G_HB FAILS. Release gate GCC PASSES.** *Observed*; scoring rules were fixed before the data (*Exact*).
