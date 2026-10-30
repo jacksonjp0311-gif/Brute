@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.32.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.32.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0320 -->
-- **v0.32.0: release in progress** on branch `plan/v0.32.0` (BRUTE_PLAN_035, NOISY ACTIVE IDENTIFICATION; LEAN; STANDING GO t133s553, build authorization ledger `6941bf9`).
+- **v0.32.0: RELEASED** 2026-10-30 as tag `v0.32.0` (annotated `a8a2316` -> `872fac2`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.32.0). main was fast-forwarded `9491aee..872fac2`. A fresh clone of the tag restored, verified (commit chain 8) and passed 6/6 test modules (42 tests); ledger `1bff998`. Built on branch `plan/v0.32.0` (BRUTE_PLAN_035, NOISY ACTIVE IDENTIFICATION; LEAN; STANDING GO t133s553, build authorization ledger `6941bf9`).
   - **Run complete (Observed).** 48/48 cases, 342.7 s of 1800 s, normal exit, run once. 2 checkpoint snapshots were pushed (`aafa3c7`, `ade7093`). Nothing was relaunched. The resume clause was NOT approved and was not needed. The session was interrupted after the run, before the reference commit; REFERENCE_035.json was complete and was committed without a rerun (#143 item 2). The box clock matched GitHub's Date header at 19:04:42 EDT.
   - **PASS (9/11):** GNR10, GAD10, G_sound (116 words, 0 unsound), G10, GS_ref (12/12 decided, 0 mismatches, mutations 20/20), GTI (6 modules, 42 tests), G_PROC, G_RT, G_recount. **FAIL:** GA10_headline (a: S5 WRONG 15 on noisy; b: ID(A10) - ID(S7) noisy12 0.00 [0, 0]; c: ID+IDF 0/12; d: IDU 12/12), GQB10 (S7 10.538 s; bound 10.5 s). Secondary G16 fails (A10 ID 0/6).
   - **Headline numbers (Observed).** noisy12 and noisy8: A10, A10_fixed and S7 IDU 12/12 [0.76, 1] each; A9 WRONG 12/12 on both; S5 WRONG 9 (noisy12) and 6 (noisy8). clean12: A10 = A9 ID 7/12 [0.32, 0.81], IDF 4, AMB 1, WRONG 0; A10_fixed and S7 IDU 12; S5 AMB 12. GAD10 clean12 +0.58 [0.33, 0.83]. Controls ID 6/6 for every arm.
