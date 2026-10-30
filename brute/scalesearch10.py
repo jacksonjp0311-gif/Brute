@@ -11,7 +11,7 @@ passes a hook, the host is asked to interrupt the solver at min(deadline, query 
 UNKNOWN. hook is any object with arm(fn, seconds) -> token and disarm(token); the core never creates threads or timers.
 least10 / differ10 / search10: least9 / differ9 / search9 under the current B (M2 must have <= B flips; decoded models are
 re-checked by simulation: exact consistency at B = 0, machine_flips <= B at B > 0). bmin10: the least B in lo..B_max with
-some machine of <= N states (binary search; SAT at N is monotone in B).
+some machine of <= N states (searched upward from lo; the first SAT B is the least).
 active10: each round runs the A9 stop check under B. If no machine <= N fits under B and the arm is adaptive, B rises to
 bmin10(B + 1, B_max) and never falls (n search restarts at 1); a fixed arm stops 'none'. A rival M2 -> the shortest
 separating word is executed; at B > 0 each reading of the word is read r times (the step's reading plus r - 1 re-reads of
@@ -155,23 +155,16 @@ def least10(o,tr,B,k,m,N,deadline,n_lo=1,solver=SOLVER4):
 
 
 def bmin10(o,tr,k,m,N,lo,B_max,deadline,solver=SOLVER4):
-    """('ok', B) least B in lo..B_max with a machine of <= N states | ('none', None) | ('unknown', None)."""
-    if lo>B_max:return 'none',None
-    def sat(B):
-        if perf_counter()>=deadline:return None
+    """('ok', B) least B in lo..B_max with a machine of <= N states (searched upward, B = lo, lo + 1, ...; the first SAT B
+    is the least) | ('none', None) every B UNSAT | ('unknown', None) a query was capped or the deadline passed."""
+    for B in range(lo,B_max+1):
+        if perf_counter()>=deadline:return 'unknown',None
         R=_region(o,N,k,m,tr,B,solver);R._dl=deadline
-        try:return R._solve([])
+        try:r=R._solve([])
         finally:R.close()
-    r=sat(B_max)
-    if r is None:return 'unknown',None
-    if r is False:return 'none',None
-    a,b=lo,B_max
-    while a<b:
-        c=(a+b)//2;r=sat(c)
         if r is None:return 'unknown',None
-        if r:b=c
-        else:a=c+1
-    return 'ok',a
+        if r:return 'ok',B
+    return 'none',None
 
 
 def _eo(R,xs):
