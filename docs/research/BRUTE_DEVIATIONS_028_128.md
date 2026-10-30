@@ -49,3 +49,10 @@ Observed, Simulated, Inferred, Rejected, Open.
 14. **Manual cap enforcement (Exact).** There is no watchdog script. The run is monitored, and if wall time reaches
     1800 s it is stopped and sealed partial with `--snapshot`. G_RT and the data gates then FAIL, and nothing is
     relaunched. The resume-after-reboot clause remains NOT approved.
+15. **Pre-freeze smoke (Observed; scratch, not published as data).** The smoke block ran from 12:28 to 12:31 EDT
+    with output in /tmp/s29/smoke and was cut by a 215 s tool timeout after 6 of 7 cases. The unfinished case is
+    scratch; nothing was rerun. On the 6 finished cases the recount reproduced, clause a had 0 mismatches against S2
+    and S1, and F = 0 for S3, S3_tight and S2. The S3 maximum query was 10.0 s and the maximum observe was 1.89 s.
+    S1 had F = 1 on stress scale16/9490002, which S1 is not gated on. On scale8/9490005 eps 0, S3 (family bound 16)
+    reached 143/176 steps with U 98, while S3_tight (bound = n, 25 s) and S2 finished with U 0. Case walls were
+    34-196 s, consistent with the roughly 1290 s main estimate (Inferred).
