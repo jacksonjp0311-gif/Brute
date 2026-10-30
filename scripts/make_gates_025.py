@@ -112,7 +112,7 @@ def build(study=STUDY_DIR):
     bf=lambda x,y:x in pos and y in pos and pos[x]<pos[y]
     lem={'commit_order_file':order is not None,'authorization_before_lemma':bf('build_authorization_025','betting_lemma_025'),
          'lemma_before_rgb6_code':bf('betting_lemma_025','rgb6_code_025'),'reference_before_rgb6_code':bf('reference_025','rgb6_code_025'),
-         'hn_recount_passed':bool(hn) and hn.get('passed') is True}
+         'hn_recount_passed':bool(hn) and hn.get('PASS') is True}
     gate('GBC_lemma',all(lem.values()),lem)
     # GAS
     gas={a:{'ci95':pv(f'C_late_{a}_eps2')[1],'ctrl_024':CTRL_024[a]} for a in CTRL_024}
