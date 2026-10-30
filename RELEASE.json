@@ -1,20 +1,21 @@
 {
-  "version": "0.25.0",
+  "version": "0.26.0",
   "name": "Brute",
   "forked_from": "BGR v0.90.0 (tag bgr-v0.90.0-fork)",
-  "mission": "general intelligence research toward a geometric reasoning system; this release tests whether a hard per-query budget (exact search S3, two-solver portfolio m22+mcb, capped deepening) cuts solver cost per step at 8-16 states, LEAN process: 51 cases, 30 min cap; not general intelligence",
-  "study": "BRUTE-0250-SOLVER-COST-028",
-  "preregistration": "experiments/BRUTE_PLAN_028.json",
-  "preregistration_commit": "914ce05",
-  "process": "LEAN (t130s540, standing go t133s553, build authorization 13e570c): plan locked before data; exact false-certificate recount; strict stress gate; failures published; one fresh-clone short verify plus tests",
-  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_028.json",
-  "source_freeze_commit": "fb84e6a",
-  "release_freeze": "none: release tooling is inside the source freeze (deviation #126 item 8, kept by #128); post-run addenda make_gates_028b and verify_release_0250b (#129)",
-  "run_start": "12:32:46 EDT 2026-10-30 (ledger c215ed5)",
-  "run_end": "complete 51/51, 1053.8 s of 1800 s, normal exit (ledger 386a2cd); 4 checkpoint snapshots pushed; resume clause not approved and not needed",
-  "seal_commit": "86ae1a2",
-  "gates_commit": "1b13aed",
-  "results_dir": "results/study-028",
+  "mission": "general intelligence research toward a geometric reasoning system; this release tests whether throughput changes on the S1 search (one reused solver per step, witness reuse, batched queries, 10 s per-query cap) let exact search finish worlds at 12 states, LEAN process: 51 cases, 30 min cap; not general intelligence",
+  "study": "BRUTE-0260-QUERY-THROUGHPUT-029",
+  "preregistration": "experiments/BRUTE_PLAN_029.json",
+  "preregistration_commit": "c06bcfe",
+  "amendment": "experiments/BRUTE_PLAN_029_A1.json (34ce968; ledger e8514f4): S4 = S1 plus throughput, headline vs S1, written before any data",
+  "process": "LEAN (standing go t133s553, build authorization 78336bd): plan and amendment locked before data; exact false-certificate recount; strict stress gate; pre-freeze gates test on a sealed smoke block; failures published; one fresh-clone short verify plus tests",
+  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_029.json",
+  "source_freeze_commit": "7337c11",
+  "release_freeze": "none: release tooling is inside the source freeze (deviation #126 item 8, kept by #128 and #130)",
+  "run_start": "13:25:43 EDT 2026-10-30 (ledger 263204d)",
+  "run_end": "complete 51/51, 1345.9 s of 1800 s, normal exit (ledger 10201fa); 5 checkpoint snapshots pushed; resume clause not approved and not needed",
+  "seal_commit": "0fb95ef",
+  "gates_commit": "417036b",
+  "results_dir": "results/study-029",
   "case_count": {
     "sealed": 51,
     "expected": 51,
@@ -22,25 +23,27 @@
   },
   "gates_passed": [
     "G10",
-    "GAPI13",
-    "GQB",
-    "GS_ref13",
+    "GAPI14",
+    "GS_ref14",
     "GTI",
     "G_PROC",
     "G_RT",
     "G_recount"
   ],
   "gates_failed": [
-    "GSC3_headline"
+    "GQB",
+    "GSC4_headline",
+    "GTP"
   ],
-  "headline": "GSC3 FAIL on clauses b and c (a and d pass): S3 held every query to 10.03 s max (GQB pass; S2 max 18.0 s) and issued 0 false certificates (main and stress); clause a 15380 compared with S2 / 0 mismatches, 14234 truth-checked / 0 missing; but U(S3,scale12)=0.398 [0.333,0.450] vs U(S2,scale12)=0.399, paired diff -0.001 [-0.020,0.019] (bar -0.15); X(S3,scale12)=0/12 (bar 3/12). G10 passes (S3 0 UNKNOWN on 6/6 controls). >98% of S3 UNKNOWNs at 12-16 states are not-run queries: capping each query did not raise throughput",
-  "api": "brute.certify/13 (new: search s3; region and s2 equal certify/12; certify/12 and earlier unchanged; stream check 4/4 equal)",
+  "headline": "GSC4 FAIL on clauses b and c (a and d pass); GTP FAIL; GQB FAIL. At 12 states U(S4)=0.161 [0.095,0.230] vs U(S1)=0.180 [0.112,0.246], paired diff -0.019 [-0.035,-0.006] (bar -0.08); X(S4,scale12)=2/12 (bar 5/12; S1 1/12, S3 0/12); throughput S4/S1 median 1.056, mean 1.119 [1.054,1.199] (bar median 2, CI lower 1.5); S4 max query 15.33 s on 3 scale16 cases (bound 10.5). 0 false certificates for every arm on main and stress; clause a 0 mismatches (19392 vs S1, 15838 vs S3), 17470 truth-checked. Descriptive: S4_nosym (no symmetry clauses) U 0.079 [0.020,0.149] and X 6/12 at 12 states, confirming the scratch diagnosis (symmetry clauses are the cost)",
+  "api": "brute.certify/14 (new: search s4; region, s2 and s3 delegate to certify/13; certify/13 and earlier unchanged; stream check 4/4 equal)",
   "deviations": [
     "docs/research/BRUTE_DEVIATIONS_026_123.md",
     "docs/research/BRUTE_DEVIATIONS_026_124.md",
     "docs/research/BRUTE_DEVIATIONS_027_126.md",
     "docs/research/BRUTE_DEVIATIONS_028_128.md",
-    "docs/research/BRUTE_DEVIATIONS_028_129.md"
+    "docs/research/BRUTE_DEVIATIONS_029_130.md",
+    "docs/research/BRUTE_DEVIATIONS_029_131.md"
   ],
-  "verify": "python scripts/study028_storage.py restore && PYTHONPATH=. python scripts/verify_release_0250b.py"
+  "verify": "python scripts/study029_storage.py restore && PYTHONPATH=. python scripts/verify_release_0260.py"
 }
