@@ -3,7 +3,7 @@
 </p>
 
 <p align="center"><b>Exact geometric reasoning about hidden worlds. Brute keeps every explanation the evidence still allows, and it certifies an answer only when all of them agree. Otherwise it says "I don't know."</b><br>
-<sub>Brute v0.28.0 · built on BGR v0.90.0 (BITWORK — Geometric Reasoning) · research preview · not general intelligence</sub></p>
+<sub>Brute v0.29.0 · built on BGR v0.90.0 (BITWORK — Geometric Reasoning) · research preview · not general intelligence</sub></p>
 
 ---
 
@@ -17,6 +17,7 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 | **The SAT engine makes the same decision as brute-force enumeration on all 25,344 steps** (v0.5.0, GX1), and the constraint region matches enumeration on 1.25 M items (v0.4.0, GR1/GR1b) | `results/study-007/`, `results/study-006/` | *Observed* |
 | **Second-encoding cross-check, 288/288 breadth cases: 0 mismatching traces in 1,358,721 SAT queries, 0 unknowns, 0 witness failures.** This was an incremental CaDiCaL re-run of the v0.6.0 cross-check: 310 s on 4 workers, against ~8.8 h for 46 cases before. It is post-release verification and does not change the frozen GX2′ FAIL | branch [`verify/xcheck-incremental`](https://github.com/jacksonjp0311-gif/Brute/tree/verify/xcheck-incremental), `results/verify-xcheck-incremental/` | *Observed* |
 | **v0.8.0 ran every pre-registered stream inside a hard 2 h cap** with an independent watchdog: the whole study finished in 1,970 s (cap 7,200 s), the second implementation agreed on 648/648 + 144/144 mandatory traces and caught 20/20 injected mutations, and in-cap test isolation passed (294 tests). The kill drill stopped 8 process groups in 0.239 s | `results/study-010/GATES_010.json` (G11, GX2_010, GTI, G_RT ii/iii) | *Observed* |
+| **v0.29.0: a noise-budgeted exact encoding (S7) is sound on noisy traces and lowers noisy unknowns, but finishes no noisy world and regresses on clean ones (GRP7 FAIL on d; GNR7 and G10 FAIL; 6 of 9 gated; LEAN process).** All 48 cases sealed in 1246 s. S7 issued 0 false certificates against the true machine on all 45 checked cases. At noisy 12 states U_inf(S7) 0.467 [0.437, 0.499] against S5 0.576 [0.542, 0.609] and S1 0.644 [0.560, 0.749] (paired S7 - S5 -0.109 [-0.154, -0.054]; S7 - S1 -0.178 [-0.283, -0.084]). But X_inf is 0/12 for every arm (bar 3/12). On clean 12-state traces U(S7) - U(S5) is +0.362 [0.348, 0.377], and S7 leaves unknowns on controls (U 0.085). S1 issued 12 false certificates against the truth on noisy traces | `results/study-032/GATES_032.json` | *Observed* |
 | **v0.28.0: an incremental solver with query ordering (S6) does not improve 16-state search (GSC6 FAIL on b and c; 6 of 9 gated; LEAN process).** All 54 cases sealed in 1028 s. S6 issued 0 false certificates and agreed with S1 on 21,345 of 21,345 and with S5 on 23,232 of 23,232 comparable queries. At 16 states U(S6) 0.222 [0.158, 0.288] against S5 0.218 [0.157, 0.281] and S1 0.336 [0.289, 0.381] (paired S6 - S5 +0.004 [-0.008, 0.016]; bar -0.06); X 0/18 for every arm. S6 cut solver build time (2.39 s to 0.14 s per case) but hit the per-query cap more often, so solve time did not fall. A trace-only identify probe found 0 WRONG; at 12 states it labelled 11/12 AMB (a second least machine exists), ID(S6) 0/12 (GID6 FAIL). One stress query took 10.86 s (bound 10.5; GQB6 FAIL) | `results/study-031/GATES_031.json` | *Observed* |
 | **v0.27.0: exact search without symmetry-breaking clauses finishes 5 of 12 twelve-state worlds (GSC5 PASS on a-d; 8 of 8 gated; LEAN process).** All 51 cases sealed in 979 s. The new search S5 (S4 without symmetry clauses, plus a hard per-query cap) issued 0 false certificates on main and stress and agreed with S1 on 19,925 of 19,925 and with S4 on 20,242 of 20,242 comparable queries. At 12 states its unknown fraction was 0.047 [0.004, 0.093] against S1 0.200 [0.144, 0.256] (paired difference -0.153 [-0.198, -0.110]; bar -0.08); X(S5) 12/12, 5/12, 0/12 at 8/12/16 states (S1 8/12, 1/12, 0/12). Max query 8.52 s (bound 10.5). The no-hard-cap ablation was indistinguishable, so the gain is from dropping symmetry clauses. Exact recovery (ID) is still 0/12 at 12 and 16 states | `results/study-030/GATES_030.json` | *Observed* |
 | **v0.26.0: throughput changes on the S1 search do not reach the bar (GSC4 FAIL on clauses b, c; GTP and GQB FAIL; 7 of 10 gated; LEAN process).** All 51 cases sealed in 1346 s. The new search S4 (S1 plus one reused solver per step, witness reuse, batched queries, 10 s cap) issued 0 false certificates and agreed with S1 on 19,392 of 19,392 comparable queries. At 12 states its unknown fraction was 0.161 [0.095, 0.230] against S1 0.180 (paired difference -0.019 [-0.035, -0.006]; bar -0.08). It finished exact on 2/12 scale12 cases (bar 5/12) and was 1.06x S1 throughput (median; bar 2x). A descriptive variant without symmetry clauses reached U 0.079 and 6/12 at 12 states | `results/study-029/GATES_029.json` | *Observed* |
@@ -45,7 +46,8 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 
 | Version | Study | Gates | What it added | Key result |
 | --- | --- | --- | --- | --- |
-| **v0.28.0** (current) | BRUTE-0280-SIXTEEN-STATE-ID-031, LEAN: 54 cases on 8-16 state worlds, 30 min cap, all sealed | **6 / 9** | exact search S6 (S5 with one incremental solver per trace and query ordering); trace-only identify probe; API unchanged (certify/14) | GSC6, GID6, GQB6 FAIL: S6 0 false certificates; U(S6,scale16) 0.222 vs S5 0.218; X(S6) 12/12, 6/12, 0/18 at 8/12/16 states; probe 0 WRONG, AMB 11/12 at 12 states *Observed* |
+| **v0.29.0** (current) | BRUTE-0290-ROBUST-PERCEPTION-032, LEAN: 48 cases (30 noisy at eps 0.05, 12 clean, 6 controls), 30 min cap, all sealed | **6 / 9** | exact search S7 (S5 plus flip literals with a fixed noise budget B_end 27); S7_contra ablation; API unchanged (certify/14) | GRP7 d, GNR7, G10 FAIL: S7 F_truth 0; noisy-12 U_inf S7 0.467 vs S5 0.576; X_inf 0/12; clean-12 U +0.362 vs S5 *Observed* |
+| **v0.28.0** | BRUTE-0280-SIXTEEN-STATE-ID-031, LEAN: 54 cases on 8-16 state worlds, 30 min cap, all sealed | **6 / 9** | exact search S6 (S5 with one incremental solver per trace and query ordering); trace-only identify probe; API unchanged (certify/14) | GSC6, GID6, GQB6 FAIL: S6 0 false certificates; U(S6,scale16) 0.222 vs S5 0.218; X(S6) 12/12, 6/12, 0/18 at 8/12/16 states; probe 0 WRONG, AMB 11/12 at 12 states *Observed* |
 | **v0.27.0** | BRUTE-0270-SYMMETRY-FREE-030, LEAN: 51 cases on 8-16 state worlds, 30 min cap, all sealed | **8 / 8** | exact search S5 (no symmetry clauses, hard per-query cap); API unchanged (certify/14) | GSC5 PASS: S5 0 false certificates; U(S5,scale12) 0.047 vs S1 0.200; X(S5) 12/12, 5/12, 0/12 at 8/12/16 states; ID 6/12, 0/12, 0/12 *Observed* |
 | **v0.26.0** | BRUTE-0260-QUERY-THROUGHPUT-029, LEAN: 51 cases on 8-16 state worlds, 30 min cap, all sealed | **7 / 10** | exact search S4 (S1 plus throughput changes), API brute.certify/14 (s4) | GSC4 FAIL (b, c), GTP FAIL, GQB FAIL: S4 0 false certificates; U(S4,scale12) 0.161 vs S1 0.180; X(S4) 9/12, 2/12, 0/12 at 8/12/16 states *Observed* |
 | **v0.25.0** | BRUTE-0250-SOLVER-COST-028, LEAN: 51 cases on 8-16 state worlds, 30 min cap, all sealed | **8 / 9** | exact search S3 (hard per-query budget, solver portfolio), API brute.certify/13 (s3) | GSC3 FAIL (b, c): S3 max query 10.03 s, 0 false certificates; U(S3,scale12) 0.398 vs S2 0.399; X(S3) 1/12, 0/12, 0/12 at 8/12/16 states *Observed* |
@@ -116,6 +118,7 @@ Details: [`docs/ROADMAP_TO_GI.md`](docs/ROADMAP_TO_GI.md) (gated steps toward ge
 git clone https://github.com/jacksonjp0311-gif/Brute.git && cd Brute
 python -m pip install -r requirements.txt
 for k in 004 005 006 007 008 009 010 011 012 013 014 015 016 017; do python scripts/study${k}_storage.py restore; done   # rebuild sealed traces, checked against SEAL.json
+python scripts/study032_storage.py restore && PYTHONPATH=. python scripts/verify_release_0290.py   # v0.29.0 (lean short verify)
 python scripts/study031_storage.py restore && PYTHONPATH=. python scripts/verify_release_0280.py   # v0.28.0 (lean short verify)
 python scripts/study030_storage.py restore && PYTHONPATH=. python scripts/verify_release_0270.py   # v0.27.0 (lean short verify)
 python scripts/study029_storage.py restore && PYTHONPATH=. python scripts/verify_release_0260.py   # v0.26.0 (lean short verify)
@@ -621,6 +624,15 @@ C (frozen v0.1.1, passive, `GATES.json` G6 `C_v011_coverage_post`) for context: 
 Findings and their math: [`docs/research/DISCOVERIES.md`](docs/research/DISCOVERIES.md) D11–D16. Study-005 deviations: [`BRUTE_DEVIATIONS_005.md`](docs/research/BRUTE_DEVIATIONS_005.md).
 
 ## What Brute can't do yet
+
+New in v0.29.0:
+
+- **It finishes no noisy world.** X_inf at noisy 12 states was 0/12 for S7 and for every other arm (bar 3/12). *Observed.*
+- **Noise tolerance costs it on clean traces.** The flip budget is fixed from the declared rate (27 flips over a trace) and applies even when there is no noise, so U(S7) - U(S5) on clean 12-state traces was +0.362 [0.348, 0.377], and S7 left unknowns on the easy controls (U 0.085). *Observed / Inferred.*
+- **Soundness holds only inside the budget.** S7 had 0 false certificates against the truth, but 3 of 12 noisy 8-state traces had more flips than the budget allowed at some step; there, soundness is not guaranteed. *Observed / Exact.*
+- **The reference could not confirm that S7 rules anything out.** On noisy 8-state traces it confirmed 0 codes impossible. S7's exact answers there were not shown to be informative. *Observed.*
+- **Only one noise model was tested.** That was independent reading flips at a correctly declared rate. A mis-declared rate, action noise and burst noise are untested. *Open.*
+- **It still cannot single out 12-state machines from a passive trace (v0.28.0).** Active experiments are pre-registered for v0.30.0 but not built. *Observed / Open.*
 
 New in v0.28.0:
 

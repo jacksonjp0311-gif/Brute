@@ -1,5 +1,39 @@
 # Brute changelog
 
+## v0.29.0: exact search S7 (S5 plus a noise-budgeted flip encoding) for robust perception on noisy traces (study BRUTE-0290-ROBUST-PERCEPTION-032, LEAN process)
+
+**6 of 9 gates pass (GQB7, GS_ref, GTI, G_PROC, G_RT, G_recount). GRP7 (headline) FAILS on clause d; GNR7 and G10 FAIL.** All 48 cases ran and were sealed (1246.3 s of 1800 s). *Observed*
+
+### Timeline (EDT, 2026-10-30)
+
+- Plan `5a00625` (15:50); build authorization (ledger `7d4242f`, 15:51, standing go t133s553); seedcheck `cad2416` (ledger `25ce5a7`, 16:01, before any seed); S7 `47e3006`; runner `d2eeb34`; reference, recount, gates and tooling `7885e02`; release tooling `6143c15`; pre-freeze sealed-smoke gates test `7429720`; #136 `b0c86e9`; source freeze `fd17c82`.
+- Run start (ledger `fb5519c`, 16:09:44); 5 pushed checkpoint snapshots (last `0ec1f9b`); run end `c67472e` (16:30); seal `cbc801e`; recount `9975157`; reference `6e4684b`; tests `39e671a`; gates `7c4d197`; #137 `86ffb89`.
+
+### Results (noisy cases at eps 0.05, clean cases at eps 0; X Wilson 95% CI, U seed-bootstrap 95% CI)
+
+| arm | U_inf noisy 8 | U_inf noisy 12 | U_inf noisy 16 | X_inf noisy 12 | U clean 12 | U clean 16 | controls U / X | F_truth | contradiction verdicts |
+|---|---|---|---|---|---|---|---|---|---|
+| S7 | 0.443 [0.404, 0.486] | 0.467 [0.437, 0.499] | 0.495 [0.455, 0.541] | 0/12 [0, 0.242] | 0.407 [0.356, 0.460] | 0.444 [0.407, 0.479] | 0.085 / 0/6 | 0 | 0 |
+| S7_contra (ablation) | 0.524 [0.452, 0.596] | 0.673 [0.567, 0.791] | 0.591 [0.542, 0.648] | 0/12 | 0.045 [0.003, 0.094] | 0.316 [0.258, 0.369] | 0 / 6/6 | 0 | 3 (9820003, 9820007, 9820010) |
+| S5 | 0.524 [0.451, 0.596] | 0.576 [0.542, 0.609] | 0.590 [0.541, 0.648] | 0/12 | 0.044 [0.003, 0.094] | 0.320 [0.265, 0.369] | 0 / 6/6 | 0 | 0 |
+| S1 | 0.561 [0.465, 0.669] | 0.644 [0.560, 0.749] | 0.643 [0.543, 0.793] | 0/12 | 0.219 [0.176, 0.269] | 0.383 [0.342, 0.426] | 0 / 6/6 | 12 | 4 (9810001, 9820003, 9820007, 9830002) |
+
+- GRP7 a: F_truth(S7) 0 on 45 checked cases (27 noisy within B, 18 clean and control); 3 noisy 8-state cases were outside B (S7 F_truth 0 there too): PASS. b: paired U_inf(S7) - U_inf(S5) at noisy 12 states -0.109 [-0.154, -0.054]: PASS. c: vs S1 -0.178 [-0.283, -0.084]: PASS. d: X_inf(S7) 0/12 (bar 3/12): FAIL. e: S7 grammar_contradicted 0: PASS.
+- GNR7: clean 12-state U(S7) - U(S5) +0.362 [0.348, 0.377] (bar <= +0.05, CI upper <= +0.08): FAIL; S5_in_S7 0 mismatches in 5566 eps-0 comparisons.
+- G10: S7 on controls U 0.085 [0.042, 0.129], F_truth 0: FAIL. GQB7: S7 max query 9.35 s (S7_contra 10.68 s, informational). GS_ref: 0 mismatches over 3526 exact S7 answers, mutations 20/20; 0 codes decided impossible.
+- Mechanism (Inferred, counters): the budget B_end 27 applies on clean traces too. S7/S5 throughput is 0.53 at clean 12 states and 0.10 on controls.
+
+### What Brute can't do yet
+
+- It finishes no noisy world (X_inf 0/12 at 12 states for every arm). *Observed.*
+- A fixed noise budget costs it on clean traces (+0.362 U at 12 states; controls no longer finish). *Observed / Inferred.*
+- It is sound only inside the declared budget; 3/12 noisy 8-state traces exceeded it. *Observed / Exact.*
+- It was not shown that S7's noisy answers exclude anything (the reference confirmed 0 impossible codes). *Observed.*
+- One noise model at a correctly declared rate; mis-declared rates and burst noise are untested. *Open.*
+- Passive traces still leave 12-state machines ambiguous; active experiments are only pre-registered (v0.30.0). *Observed / Open.*
+
+Deviations #136 (pre-run) and #137 (post-run). Verify: `python scripts/study032_storage.py restore && PYTHONPATH=. python scripts/verify_release_0290.py`.
+
 ## v0.28.0: exact search S6 (S5 with one incremental solver per trace and query ordering) and a trace-only identify probe (study BRUTE-0280-SIXTEEN-STATE-ID-031, LEAN process)
 
 **6 of 9 gates pass (G10, GS_ref, GTI, G_PROC, G_RT, G_recount). GSC6 (headline) FAILS on clauses b and c; GID6 FAILS on b; GQB6 FAILS.** All 54 cases ran and were sealed (1028.1 s of 1800 s). *Observed*
