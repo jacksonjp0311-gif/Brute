@@ -1,0 +1,592 @@
+{
+ "label": "Observed",
+ "not_used_for": "no gate decision, no tuning; smoke seeds are disjoint from the main seeds (SEEDCHECK_029)",
+ "purpose": "plan 029 A1 GTI pre-freeze test on real data: the sealed smoke block (7 cases, 8 workers, contended) was read by make_gates_029.build; then the same cases were relabelled block main/stress, re-sealed with the runner _write (stand-in freeze hash) and gated, and make_gates_029 --check was run on the result",
+ "relabelled": {
+  "check_returncode": 0,
+  "check_stdout": "GATES_029 reproduces",
+  "crashed": false,
+  "gate_status": {
+   "G10": {
+    "pass": false,
+    "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+   },
+   "GAPI14": {
+    "pass": false,
+    "reason": "INCOMPLETE_INPUT (API_CHECK_029 missing)"
+   },
+   "GQB": {
+    "pass": false,
+    "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+   },
+   "GSC4_headline": {
+    "pass": false,
+    "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+   },
+   "GS_ref14": {
+    "pass": false,
+    "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+   },
+   "GTI": {
+    "pass": false,
+    "reason": "INCOMPLETE_INPUT (TEST_SUITE_029 missing)"
+   },
+   "GTP": {
+    "pass": false,
+    "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+   },
+   "G_PROC": {
+    "pass": false,
+    "reason": ""
+   },
+   "G_RT": {
+    "pass": false,
+    "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+   },
+   "G_recount": {
+    "pass": false,
+    "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+   }
+  },
+  "reports": {
+   "S4_timing_mean_s": {
+    "S4/control_cycle3": {
+     "build": 7.894,
+     "pool": 0.006,
+     "solve": 8.661
+    },
+    "S4/scale12": {
+     "build": 3.038,
+     "pool": 0.003,
+     "solve": 51.999
+    },
+    "S4/scale16": {
+     "build": 2.633,
+     "pool": 0.002,
+     "solve": 52.307
+    },
+    "S4/scale8": {
+     "build": 3.605,
+     "pool": 0.003,
+     "solve": 51.422
+    },
+    "S4_nosym/control_cycle3": {
+     "build": 5.941,
+     "pool": 0.003,
+     "solve": 2.877
+    },
+    "S4_nosym/scale12": {
+     "build": 5.026,
+     "pool": 0.004,
+     "solve": 50.064
+    },
+    "S4_nosym/scale16": {
+     "build": 2.619,
+     "pool": 0.002,
+     "solve": 52.424
+    },
+    "S4_nosym/scale8": {
+     "build": 4.54,
+     "pool": 0.003,
+     "solve": 16.375
+    },
+    "S4_nowit/control_cycle3": {
+     "build": 7.535,
+     "pool": 0.0,
+     "solve": 11.108
+    },
+    "S4_nowit/scale12": {
+     "build": 2.94,
+     "pool": 0.0,
+     "solve": 51.789
+    },
+    "S4_nowit/scale16": {
+     "build": 1.966,
+     "pool": 0.0,
+     "solve": 52.926
+    },
+    "S4_nowit/scale8": {
+     "build": 4.384,
+     "pool": 0.0,
+     "solve": 50.216
+    }
+   },
+   "TP_ratio": {
+    "S4/S1/control_cycle3": {
+     "ci95_seed_bootstrap": [
+      0.9963,
+      0.9963
+     ],
+     "mean": 0.996,
+     "median": 0.996
+    },
+    "S4/S1/scale12": {
+     "ci95_seed_bootstrap": [
+      1.0496,
+      1.0496
+     ],
+     "mean": 1.05,
+     "median": 1.05
+    },
+    "S4/S1/scale16": {
+     "ci95_seed_bootstrap": [
+      1.3565,
+      1.3565
+     ],
+     "mean": 1.356,
+     "median": 1.356
+    },
+    "S4/S1/scale8": {
+     "ci95_seed_bootstrap": [
+      1.025,
+      1.025
+     ],
+     "mean": 1.025,
+     "median": 1.025
+    },
+    "S4/S3/control_cycle3": {
+     "ci95_seed_bootstrap": [
+      1.5763,
+      1.5763
+     ],
+     "mean": 1.576,
+     "median": 1.576
+    },
+    "S4/S3/scale12": {
+     "ci95_seed_bootstrap": [
+      1.2631,
+      1.2631
+     ],
+     "mean": 1.263,
+     "median": 1.263
+    },
+    "S4/S3/scale16": {
+     "ci95_seed_bootstrap": [
+      1.1424,
+      1.1424
+     ],
+     "mean": 1.142,
+     "median": 1.142
+    },
+    "S4/S3/scale8": {
+     "ci95_seed_bootstrap": [
+      1.2804,
+      1.2804
+     ],
+     "mean": 1.28,
+     "median": 1.28
+    }
+   },
+   "U": {
+    "S1/control_cycle3": {
+     "U": 0.0,
+     "ci95_seed_bootstrap": [
+      0.0,
+      0.0
+     ],
+     "planned": 352,
+     "unknown": 0
+    },
+    "S1/scale12": {
+     "U": 0.3162878787878788,
+     "ci95_seed_bootstrap": [
+      0.3163,
+      0.3163
+     ],
+     "planned": 528,
+     "unknown": 167
+    },
+    "S1/scale16": {
+     "U": 0.42045454545454547,
+     "ci95_seed_bootstrap": [
+      0.4205,
+      0.4205
+     ],
+     "planned": 528,
+     "unknown": 222
+    },
+    "S1/scale8": {
+     "U": 0.23295454545454544,
+     "ci95_seed_bootstrap": [
+      0.233,
+      0.233
+     ],
+     "planned": 528,
+     "unknown": 123
+    },
+    "S3/control_cycle3": {
+     "U": 0.0,
+     "ci95_seed_bootstrap": [
+      0.0,
+      0.0
+     ],
+     "planned": 352,
+     "unknown": 0
+    },
+    "S3/scale12": {
+     "U": 0.4621212121212121,
+     "ci95_seed_bootstrap": [
+      0.4621,
+      0.4621
+     ],
+     "planned": 528,
+     "unknown": 244
+    },
+    "S3/scale16": {
+     "U": 0.48484848484848486,
+     "ci95_seed_bootstrap": [
+      0.4848,
+      0.4848
+     ],
+     "planned": 528,
+     "unknown": 256
+    },
+    "S3/scale8": {
+     "U": 0.4015151515151515,
+     "ci95_seed_bootstrap": [
+      0.4015,
+      0.4015
+     ],
+     "planned": 528,
+     "unknown": 212
+    },
+    "S4/control_cycle3": {
+     "U": 0.0,
+     "ci95_seed_bootstrap": [
+      0.0,
+      0.0
+     ],
+     "planned": 352,
+     "unknown": 0
+    },
+    "S4/scale12": {
+     "U": 0.3181818181818182,
+     "ci95_seed_bootstrap": [
+      0.3182,
+      0.3182
+     ],
+     "planned": 528,
+     "unknown": 168
+    },
+    "S4/scale16": {
+     "U": 0.4109848484848485,
+     "ci95_seed_bootstrap": [
+      0.411,
+      0.411
+     ],
+     "planned": 528,
+     "unknown": 217
+    },
+    "S4/scale8": {
+     "U": 0.23106060606060605,
+     "ci95_seed_bootstrap": [
+      0.2311,
+      0.2311
+     ],
+     "planned": 528,
+     "unknown": 122
+    },
+    "S4_nosym/control_cycle3": {
+     "U": 0.0,
+     "ci95_seed_bootstrap": [
+      0.0,
+      0.0
+     ],
+     "planned": 352,
+     "unknown": 0
+    },
+    "S4_nosym/scale12": {
+     "U": 0.03409090909090909,
+     "ci95_seed_bootstrap": [
+      0.0341,
+      0.0341
+     ],
+     "planned": 528,
+     "unknown": 18
+    },
+    "S4_nosym/scale16": {
+     "U": 0.2746212121212121,
+     "ci95_seed_bootstrap": [
+      0.2746,
+      0.2746
+     ],
+     "planned": 528,
+     "unknown": 145
+    },
+    "S4_nosym/scale8": {
+     "U": 0.003787878787878788,
+     "ci95_seed_bootstrap": [
+      0.0038,
+      0.0038
+     ],
+     "planned": 528,
+     "unknown": 2
+    },
+    "S4_nowit/control_cycle3": {
+     "U": 0.0,
+     "ci95_seed_bootstrap": [
+      0.0,
+      0.0
+     ],
+     "planned": 352,
+     "unknown": 0
+    },
+    "S4_nowit/scale12": {
+     "U": 0.32954545454545453,
+     "ci95_seed_bootstrap": [
+      0.3295,
+      0.3295
+     ],
+     "planned": 528,
+     "unknown": 174
+    },
+    "S4_nowit/scale16": {
+     "U": 0.39015151515151514,
+     "ci95_seed_bootstrap": [
+      0.3902,
+      0.3902
+     ],
+     "planned": 528,
+     "unknown": 206
+    },
+    "S4_nowit/scale8": {
+     "U": 0.24053030303030304,
+     "ci95_seed_bootstrap": [
+      0.2405,
+      0.2405
+     ],
+     "planned": 528,
+     "unknown": 127
+    }
+   },
+   "U_contrasts": {
+    "U(S4)-U(S3)/control_cycle3": {
+     "ci95_seed_bootstrap": [
+      0.0,
+      0.0
+     ],
+     "mean": 0.0
+    },
+    "U(S4)-U(S3)/scale12": {
+     "ci95_seed_bootstrap": [
+      -0.1439,
+      -0.1439
+     ],
+     "mean": -0.1439
+    },
+    "U(S4)-U(S3)/scale16": {
+     "ci95_seed_bootstrap": [
+      -0.0739,
+      -0.0739
+     ],
+     "mean": -0.0739
+    },
+    "U(S4)-U(S3)/scale8": {
+     "ci95_seed_bootstrap": [
+      -0.1705,
+      -0.1705
+     ],
+     "mean": -0.1705
+    },
+    "U(S4)-U(S4_nowit)/control_cycle3": {
+     "ci95_seed_bootstrap": [
+      0.0,
+      0.0
+     ],
+     "mean": 0.0
+    },
+    "U(S4)-U(S4_nowit)/scale12": {
+     "ci95_seed_bootstrap": [
+      -0.0114,
+      -0.0114
+     ],
+     "mean": -0.0114
+    },
+    "U(S4)-U(S4_nowit)/scale16": {
+     "ci95_seed_bootstrap": [
+      0.0208,
+      0.0208
+     ],
+     "mean": 0.0208
+    },
+    "U(S4)-U(S4_nowit)/scale8": {
+     "ci95_seed_bootstrap": [
+      -0.0095,
+      -0.0095
+     ],
+     "mean": -0.0095
+    },
+    "U(S4_nosym)-U(S1)/control_cycle3": {
+     "ci95_seed_bootstrap": [
+      0.0,
+      0.0
+     ],
+     "mean": 0.0
+    },
+    "U(S4_nosym)-U(S1)/scale12": {
+     "ci95_seed_bootstrap": [
+      -0.2822,
+      -0.2822
+     ],
+     "mean": -0.2822
+    },
+    "U(S4_nosym)-U(S1)/scale16": {
+     "ci95_seed_bootstrap": [
+      -0.1458,
+      -0.1458
+     ],
+     "mean": -0.1458
+    },
+    "U(S4_nosym)-U(S1)/scale8": {
+     "ci95_seed_bootstrap": [
+      -0.2292,
+      -0.2292
+     ],
+     "mean": -0.2292
+    },
+    "U(S4_nosym)-U(S4)/control_cycle3": {
+     "ci95_seed_bootstrap": [
+      0.0,
+      0.0
+     ],
+     "mean": 0.0
+    },
+    "U(S4_nosym)-U(S4)/scale12": {
+     "ci95_seed_bootstrap": [
+      -0.2841,
+      -0.2841
+     ],
+     "mean": -0.2841
+    },
+    "U(S4_nosym)-U(S4)/scale16": {
+     "ci95_seed_bootstrap": [
+      -0.1364,
+      -0.1364
+     ],
+     "mean": -0.1364
+    },
+    "U(S4_nosym)-U(S4)/scale8": {
+     "ci95_seed_bootstrap": [
+      -0.2273,
+      -0.2273
+     ],
+     "mean": -0.2273
+    }
+   },
+   "exact_answers": {
+    "S1/control_cycle3": 352,
+    "S1/scale12": 361,
+    "S1/scale16": 306,
+    "S1/scale8": 405,
+    "S3/control_cycle3": 352,
+    "S3/scale12": 284,
+    "S3/scale16": 272,
+    "S3/scale8": 316,
+    "S4/control_cycle3": 352,
+    "S4/scale12": 360,
+    "S4/scale16": 311,
+    "S4/scale8": 406,
+    "S4_nosym/control_cycle3": 352,
+    "S4_nosym/scale12": 510,
+    "S4_nosym/scale16": 383,
+    "S4_nosym/scale8": 526,
+    "S4_nowit/control_cycle3": 352,
+    "S4_nowit/scale12": 354,
+    "S4_nowit/scale16": 322,
+    "S4_nowit/scale8": 401
+   },
+   "query_max_s": {
+    "S1/control_cycle3": {
+     "max": 0.4251691080007731,
+     "mean_case_max": 0.425
+    },
+    "S1/scale12": {
+     "max": 9.920287296999959,
+     "mean_case_max": 9.92
+    },
+    "S1/scale16": {
+     "max": 28.14059148599881,
+     "mean_case_max": 28.141
+    },
+    "S1/scale8": {
+     "max": 4.208776663999743,
+     "mean_case_max": 4.209
+    },
+    "S3/control_cycle3": {
+     "max": 1.5794726249987434,
+     "mean_case_max": 1.579
+    },
+    "S3/scale12": {
+     "max": 10.012384334999297,
+     "mean_case_max": 10.012
+    },
+    "S3/scale16": {
+     "max": 10.031947417999618,
+     "mean_case_max": 10.032
+    },
+    "S3/scale8": {
+     "max": 10.002077983999698,
+     "mean_case_max": 10.002
+    },
+    "S4/control_cycle3": {
+     "max": 0.5421549299990147,
+     "mean_case_max": 0.542
+    },
+    "S4/scale12": {
+     "max": 10.007971303999511,
+     "mean_case_max": 10.008
+    },
+    "S4/scale16": {
+     "max": 10.387881242999356,
+     "mean_case_max": 10.388
+    },
+    "S4/scale8": {
+     "max": 5.050882638000985,
+     "mean_case_max": 5.051
+    },
+    "S4_nosym/control_cycle3": {
+     "max": 0.20301422200100205,
+     "mean_case_max": 0.203
+    },
+    "S4_nosym/scale12": {
+     "max": 1.8782864020013221,
+     "mean_case_max": 1.878
+    },
+    "S4_nosym/scale16": {
+     "max": 7.876617707999685,
+     "mean_case_max": 7.877
+    },
+    "S4_nosym/scale8": {
+     "max": 3.49571142700006,
+     "mean_case_max": 3.496
+    },
+    "S4_nowit/control_cycle3": {
+     "max": 0.41950539400022535,
+     "mean_case_max": 0.42
+    },
+    "S4_nowit/scale12": {
+     "max": 8.667360770001324,
+     "mean_case_max": 8.667
+    },
+    "S4_nowit/scale16": {
+     "max": 10.38574425400111,
+     "mean_case_max": 10.386
+    },
+    "S4_nowit/scale8": {
+     "max": 6.032144860000699,
+     "mean_case_max": 6.032
+    }
+   }
+  },
+  "sealed_input_verified": true
+ },
+ "schema": "brute.prefreeze-smoke-gates.v1",
+ "smoke_block_as_sealed": {
+  "crashed": false,
+  "data_gates": "INCOMPLETE (block is smoke)",
+  "sealed_input_verified": true
+ },
+ "smoke_results_sha256": "4aa99e8074c9054f0d948b51bd587498858b4f10ac6dcde9d651bf3cdfe15d94",
+ "smoke_seal_sha256": "1a7d078374265b26b5efb2094b08ad165c57b8c11717bc70d41527d8d96985f1",
+ "study": "BRUTE-0260-QUERY-THROUGHPUT-029"
+}
