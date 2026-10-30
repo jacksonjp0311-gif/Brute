@@ -1,11 +1,25 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.26.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.27.0 release in progress)._
 
 ## Current version and state
 
+<!-- V0270 -->
+- **v0.27.0: release in progress** 2026-10-30 (study BRUTE-0270-SYMMETRY-FREE-030, LEAN, standing go t133s553, build authorization ledger `30ccd58`)
+  - **Run complete (Observed).** 51/51 cases, 978.9 s of 1800 s, normal exit. 4 checkpoint snapshots were pushed (last `189826c`). The host interrupted the agent at 14:47 EDT, after the run had ended; nothing was rerun. The resume clause was NOT approved and was not needed.
+  - **PASS (8/8):** GQB5 (S5 max query 8.52 s), GSC5_headline (a-d), G10 (6/6 controls), GS_ref (mutations 20/20), GTI (55 tests run, 54 counted, all OK), G_PROC, G_RT, G_recount. **FAIL:** none.
+  - **Headline numbers (Observed).**
+    - U at 12 states: S5 0.047 [0.004, 0.093], S5_softcap 0.048, S4 0.172 [0.113, 0.232], S1 0.200 [0.144, 0.256]. Paired S5 - S1 -0.153 [-0.198, -0.110] (bar -0.08).
+    - X at 8/12/16 states: S5 12/12, 5/12, 0/12; S1 8/12, 1/12, 0/12.
+    - ID at 12 and 16 states: 0/12 for every arm; at 8 states S5 6/12.
+    - F: 0 for all arms, main and stress.
+  - **Ablation (Observed, descriptive).** S5_softcap equals S5 within noise, so the gain comes from removing symmetry clauses, not the hard cap.
+  - **Deviations:** #132 (pre-run) and #133 (post-run).
+  - **Chain:** plan `803a920` -> authorization `30ccd58` -> seedcheck `2f34fcd` -> diag `6bea49a` -> S5 `3377447` -> runner `8ded63f` -> scoring `d55b77b` -> tooling `01a7910` -> pre-freeze test `0d264d7` -> #132 `88b33d8` -> freeze `f68ac76` -> run_start `a40eeef` -> run_end `734812d` -> seal `6bbaa4f` -> recount `bf780a1` -> reference `ad0a2cb` -> tests `fb10d83` -> gates `04a4c5d` -> #133 `29d8e59` -> RELEASE.json `34b0c6a` -> docs `09bc503`.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
+
 <!-- V0260 -->
-- **v0.26.0: RELEASED** 2026-10-30 as tag `v0.26.0` (annotated `027cc5a` -> `81f8415`), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.26.0. A fresh clone of the tag passed restore, verify_release_0260 and run_tests_0260 (6/6 modules). Released (study BRUTE-0260-QUERY-THROUGHPUT-029, LEAN, standing go t133s553, build authorization ledger `78336bd`, amendment A1 `34ce968`)
+- **v0.26.0: RELEASED** (previous) 2026-10-30 as tag `v0.26.0` (annotated `027cc5a` -> `81f8415`), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.26.0. A fresh clone of the tag passed restore, verify_release_0260 and run_tests_0260 (6/6 modules). Released (study BRUTE-0260-QUERY-THROUGHPUT-029, LEAN, standing go t133s553, build authorization ledger `78336bd`, amendment A1 `34ce968`)
   - **Run complete (Observed).** 51/51 cases, 1345.9 s of 1800 s, normal exit. 5 checkpoint snapshots were pushed. The resume clause was NOT approved and was not needed.
   - **PASS:** G10, GAPI14 (certify/14; stream 4/4), GS_ref14 (mutations 20/20), GTI (58 tests run, all OK), G_PROC, G_RT, G_recount. **FAIL:** GSC4_headline (b and c; a and d pass), GTP, GQB.
   - **Headline numbers (Observed).**
