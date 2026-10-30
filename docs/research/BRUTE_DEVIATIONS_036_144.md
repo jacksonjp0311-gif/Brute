@@ -35,7 +35,8 @@ Exact, Observed, Simulated, Inferred, Rejected, Open. Times are box-local EDT (U
 10. **Dev trial (Observed; not gated, no tuning).** Before the smoke, smoke-range seeds 10290030 (control) and 10290029
    (noisy_scale8) were run in-process (scratch /tmp/s37/try.py). Control: all arms ID in 0.5 s. noisy_scale8 (case wall
    82.9 s): A11_r5 ID (194 steps, 975 reads); A11_r3 IDU with probes [6 SAT], [3 UNSAT], [5 capped] and truth flips 5;
-   A11_r3_up IDU; A10 IDU (truth flips 11); S7 IDU; S5 IDU (one query 10.34 s, before the 9.5 s hook was applied to S5).
+   A11_r3_up IDU; A10 IDU (truth flips 11); S7 IDU; S5 IDU (one query 10.34 s with the 9.5 s hook in place:
+   the interrupt latency on S5 is larger than on the g3 arms, still under the 10.5 s bound; Observed, not tuned).
    The cd195 reference decided B = 3 UNSAT quickly on that trace (Inferred: a candidate diagnosis for v0.34, a direct
    least-B solve). No design value changed after this trial. Unit tests used old seeds only (10050001, 10090005).
 11. **Smoke (Observed).** Smoke block 10290001-10290008, launched 19:41:08 EDT, 8 workers, wall 61.7 s, output
