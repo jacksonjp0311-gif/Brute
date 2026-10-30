@@ -1,0 +1,231 @@
+{
+  "PASS": true,
+  "arm_audited": "A8",
+  "cases": 12,
+  "decided": 12,
+  "elapsed_informational": 1.0269613359996583,
+  "family": "scale8",
+  "mismatch_count": 0,
+  "mismatches": [],
+  "mutation_test": {
+    "detected": 20,
+    "items": [
+      {
+        "detected": true,
+        "key": "scale8/9910010",
+        "kind": "label"
+      },
+      {
+        "detected": true,
+        "key": "scale8/9910006",
+        "kind": "n_min_plus"
+      },
+      {
+        "detected": true,
+        "key": "scale8/9910006",
+        "kind": "n_min_minus"
+      },
+      {
+        "detected": true,
+        "key": "scale8/9910001",
+        "kind": "label"
+      },
+      {
+        "detected": true,
+        "key": "scale8/9910008",
+        "kind": "label"
+      },
+      {
+        "detected": true,
+        "key": "scale8/9910006",
+        "kind": "n_min_plus"
+      },
+      {
+        "detected": true,
+        "key": "scale8/9910009",
+        "kind": "n_min_minus"
+      },
+      {
+        "detected": true,
+        "key": "scale8/9910007",
+        "kind": "word"
+      },
+      {
+        "detected": true,
+        "key": "scale8/9910002",
+        "kind": "label"
+      },
+      {
+        "detected": true,
+        "key": "scale8/9910007",
+        "kind": "n_min_plus"
+      },
+      {
+        "detected": true,
+        "key": "scale8/9910006",
+        "kind": "n_min_minus"
+      },
+      {
+        "detected": true,
+        "key": "scale8/9910006",
+        "kind": "word"
+      },
+      {
+        "detected": true,
+        "key": "scale8/9910010",
+        "kind": "label"
+      },
+      {
+        "detected": true,
+        "key": "scale8/9910009",
+        "kind": "n_min_plus"
+      },
+      {
+        "detected": true,
+        "key": "scale8/9910009",
+        "kind": "n_min_minus"
+      },
+      {
+        "detected": true,
+        "key": "scale8/9910001",
+        "kind": "label"
+      },
+      {
+        "detected": true,
+        "key": "scale8/9910012",
+        "kind": "label"
+      },
+      {
+        "detected": true,
+        "key": "scale8/9910002",
+        "kind": "n_min_plus"
+      },
+      {
+        "detected": true,
+        "key": "scale8/9910005",
+        "kind": "n_min_minus"
+      },
+      {
+        "detected": true,
+        "key": "scale8/9910005",
+        "kind": "label"
+      }
+    ],
+    "mutations": 20,
+    "pass": true
+  },
+  "not_reached": 0,
+  "per_case": [
+    {
+      "decided": true,
+      "key": "scale8/9910001",
+      "label": "AMB",
+      "mismatches": [],
+      "n_min": 8,
+      "unique": false,
+      "wall_informational": 0.091199834998406
+    },
+    {
+      "decided": true,
+      "key": "scale8/9910002",
+      "label": "ID",
+      "mismatches": [],
+      "n_min": 8,
+      "unique": true,
+      "wall_informational": 0.1061750459994073
+    },
+    {
+      "decided": true,
+      "key": "scale8/9910003",
+      "label": "ID",
+      "mismatches": [],
+      "n_min": 8,
+      "unique": true,
+      "wall_informational": 0.09307600900137913
+    },
+    {
+      "decided": true,
+      "key": "scale8/9910004",
+      "label": "ID",
+      "mismatches": [],
+      "n_min": 8,
+      "unique": true,
+      "wall_informational": 0.12119980500210659
+    },
+    {
+      "decided": true,
+      "key": "scale8/9910005",
+      "label": "ID",
+      "mismatches": [],
+      "n_min": 8,
+      "unique": true,
+      "wall_informational": 0.11551944299935712
+    },
+    {
+      "decided": true,
+      "key": "scale8/9910006",
+      "label": "AMB",
+      "mismatches": [],
+      "n_min": 8,
+      "unique": false,
+      "wall_informational": 0.10775267600183724
+    },
+    {
+      "decided": true,
+      "key": "scale8/9910007",
+      "label": "ID",
+      "mismatches": [],
+      "n_min": 8,
+      "unique": true,
+      "wall_informational": 0.12637456099764677
+    },
+    {
+      "decided": true,
+      "key": "scale8/9910008",
+      "label": "AMB",
+      "mismatches": [],
+      "n_min": 8,
+      "unique": false,
+      "wall_informational": 0.14574353599891765
+    },
+    {
+      "decided": true,
+      "key": "scale8/9910009",
+      "label": "ID",
+      "mismatches": [],
+      "n_min": 8,
+      "unique": true,
+      "wall_informational": 0.14097802100150147
+    },
+    {
+      "decided": true,
+      "key": "scale8/9910010",
+      "label": "ID",
+      "mismatches": [],
+      "n_min": 8,
+      "unique": true,
+      "wall_informational": 0.13487063899810892
+    },
+    {
+      "decided": true,
+      "key": "scale8/9910011",
+      "label": "AMB",
+      "mismatches": [],
+      "n_min": 8,
+      "unique": false,
+      "wall_informational": 0.6192843220014765
+    },
+    {
+      "decided": true,
+      "key": "scale8/9910012",
+      "label": "WRONG",
+      "mismatches": [],
+      "n_min": 6,
+      "unique": true,
+      "wall_informational": 0.04216194199761958
+    }
+  ],
+  "schema": "brute.reference.v30_0",
+  "study_results_sha256": "1c88aaaa49bf572047f8c313907b3c9a19ce5b10ef8836dc3a48bebb51f92d0d",
+  "words_checked": 17
+}
