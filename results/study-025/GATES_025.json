@@ -1,0 +1,761 @@
+{
+  "all_gated_pass": false,
+  "dropped_under_A2": [
+    "G12",
+    "G_HB",
+    "G_PROC a",
+    "G_PROC b"
+  ],
+  "failed": [
+    "GBC_headline"
+  ],
+  "gates": {
+    "G10": {
+      "observed": {
+        "cases": 90,
+        "prefix28_rgb6_records": 20,
+        "queries": 66880,
+        "traces_88": true,
+        "unknown_gt0": 0
+      },
+      "pass": true
+    },
+    "G13": {
+      "observed": {
+        "clauses": {
+          "a2_in_freeze": true,
+          "cert_rule_reproduces": true,
+          "freeze_chain_holds": true,
+          "rg4_reproduces": true,
+          "seal_of_plan_and_freeze": true,
+          "tau6": true
+        },
+        "freeze_error": null,
+        "rg_bad": [],
+        "rgn_bad": []
+      },
+      "pass": true
+    },
+    "GAPI11": {
+      "observed": {
+        "clauses": {
+          "anytime_equals_certify9_anytime": true,
+          "api_certify11": true,
+          "certify_to_certify10_unchanged": true,
+          "default_betting": true,
+          "host_agnostic_source_scan": true,
+          "lr_equals_certify9": true,
+          "methods": true,
+          "stitched_equals_certify10": true
+        },
+        "older": {
+          "brute/api/certify.py": true,
+          "brute/api/certify10.py": true,
+          "brute/api/certify2.py": true,
+          "brute/api/certify3.py": true,
+          "brute/api/certify4.py": true,
+          "brute/api/certify5.py": true,
+          "brute/api/certify6.py": true,
+          "brute/api/certify7.py": true,
+          "brute/api/certify8.py": true,
+          "brute/api/certify9.py": true
+        },
+        "probe": {
+          "anytime_equals_certify9_anytime": true,
+          "api": "brute.certify/11",
+          "default_answer_method": "betting",
+          "default_method": "betting",
+          "error": null,
+          "lr_equals_certify9": true,
+          "methods": [
+            "betting",
+            "stitched",
+            "lr",
+            "anytime"
+          ],
+          "stitched_equals_certify10": true
+        }
+      },
+      "pass": true
+    },
+    "GAS_frozen_control": {
+      "observed": {
+        "RGL4": {
+          "ci95": [
+            0.227841,
+            0.419886
+          ],
+          "ctrl_024": [
+            0.371591,
+            0.452654
+          ],
+          "intersects": true
+        },
+        "RGL5": {
+          "ci95": [
+            0.238636,
+            0.436364
+          ],
+          "ctrl_024": [
+            0.37822,
+            0.461742
+          ],
+          "intersects": true
+        }
+      },
+      "pass": true
+    },
+    "GBC_headline": {
+      "observed": {
+        "a": {
+          "cases_with_false": 0,
+          "cp95_upper_reported_not_gated": 0.07215752,
+          "false_noisy": 0,
+          "noisy_cases": 40,
+          "pass": true
+        },
+        "b": {
+          "false_stress": 0,
+          "pass": true,
+          "stress_cases": 30,
+          "strict": true
+        },
+        "c": {
+          "ci95": [
+            -0.010795,
+            0.0
+          ],
+          "mean": -0.004545,
+          "pass": false
+        },
+        "d": {
+          "ci95": [
+            -0.195455,
+            -0.014773
+          ],
+          "mean": -0.102273,
+          "pass": false
+        },
+        "e": {
+          "extra_certificates_steps_1_28": 0,
+          "extra_false": 0,
+          "first": [],
+          "pass": true
+        },
+        "false_by_arm_block_eps": {
+          "RG4": {
+            "main_eps0.0": 0,
+            "main_eps0.01": 4,
+            "main_eps0.02": 10,
+            "stress_eps0.05": 31
+          },
+          "RGB6": {
+            "main_eps0.0": 0,
+            "main_eps0.01": 0,
+            "main_eps0.02": 0,
+            "stress_eps0.05": 0
+          },
+          "RGL4": {
+            "main_eps0.0": 0,
+            "main_eps0.01": 0,
+            "main_eps0.02": 0,
+            "stress_eps0.05": 1
+          },
+          "RGL5": {
+            "main_eps0.0": 0,
+            "main_eps0.01": 0,
+            "main_eps0.02": 0,
+            "stress_eps0.05": 0
+          },
+          "RGN4_or": {
+            "main_eps0.0": 0,
+            "main_eps0.01": 0,
+            "main_eps0.02": 0,
+            "stress_eps0.05": 0
+          },
+          "RGNB4": {
+            "main_eps0.02": 0
+          },
+          "SP8": {
+            "main_eps0.0": 0,
+            "main_eps0.01": 0,
+            "main_eps0.02": 1,
+            "stress_eps0.05": 0
+          }
+        }
+      },
+      "pass": false
+    },
+    "GBC_lemma": {
+      "observed": {
+        "authorization_before_lemma": true,
+        "commit_order_file": true,
+        "hn_recount_passed": true,
+        "lemma_before_rgb6_code": true,
+        "reference_before_rgb6_code": true
+      },
+      "pass": true
+    },
+    "GS_a11": {
+      "observed": {
+        "api": "brute.certify/11",
+        "cases_checked": 4,
+        "gate": "GS_a11 / GAPI11 (A2: first 4 eps-0.02 lean main cases, or smoke-api)",
+        "passed": true,
+        "results_file": "results/study-025/transfer/RESULTS.json",
+        "results_sha256": "fa66c315cac18ef8a98d06e6a606289293335a064c75b710e6bfb14a3e289786",
+        "schema": "brute.api-check-025.v1",
+        "wall_informational": 135.4
+      },
+      "pass": true
+    },
+    "GS_ref11": {
+      "observed": {
+        "cases_audited": 90,
+        "first_mismatches": [],
+        "gated_cases_audited": 90,
+        "gated_mismatching_cases": 0,
+        "mismatching_cases": 0,
+        "mutation": {
+          "detected_injected": 20,
+          "distinct_cases": 20,
+          "injected": 20,
+          "passed": true
+        },
+        "passed": true,
+        "results_sha256": "fa66c315cac18ef8a98d06e6a606289293335a064c75b710e6bfb14a3e289786"
+      },
+      "pass": true
+    },
+    "GTI": {
+      "observed": {
+        "test_bettingregion_0220": {
+          "returncode": 0,
+          "tests": 6
+        },
+        "test_certify11_0220": {
+          "returncode": 0,
+          "tests": 4
+        },
+        "test_scripts_025": {
+          "returncode": 0,
+          "tests": 5
+        },
+        "test_study_0220": {
+          "returncode": 0,
+          "tests": 4
+        }
+      },
+      "pass": true
+    },
+    "G_PROC": {
+      "observed": {
+        "clauses": {
+          "commit_order": true,
+          "ledger_times_non_decreasing": true,
+          "ledger_times_parse": true,
+          "run_start_ledgered": true
+        },
+        "events": [
+          "build_authorization_025",
+          "plan_amendment_025_A1",
+          "wt_state_check_025",
+          "betting_lemma_025",
+          "reference_025",
+          "seedcheck_025",
+          "deviation_025_119",
+          "rgb6_code_025",
+          "plan_amendment_025_A2",
+          "process_scripts_025",
+          "deviation_025_120",
+          "source_freeze_025",
+          "run_start_025"
+        ]
+      },
+      "pass": true
+    },
+    "G_RT": {
+      "observed": {
+        "cap_s": 1800,
+        "complete": true,
+        "elapsed_s": 1365.8215894940004
+      },
+      "pass": true
+    },
+    "G_recount": {
+      "observed": {
+        "b6_rule": {},
+        "cases": 90,
+        "counts": {},
+        "recount_mismatch": []
+      },
+      "pass": true
+    }
+  },
+  "process": "lean (BRUTE_PLAN_025_A2)",
+  "reports": {
+    "R_activation": {
+      "K_max": {
+        "1": 1.0,
+        "2": 1.0
+      },
+      "cases_any_level_active": 0
+    },
+    "R_case_wall": 114.0,
+    "R_coverage": {
+      "C_early28_RG4_eps2": [
+        0.150893,
+        [
+          0.092857,
+          0.219643
+        ]
+      ],
+      "C_early28_RG4_noisy": [
+        0.156696,
+        [
+          0.116964,
+          0.199554
+        ]
+      ],
+      "C_early28_RG4_stress": [
+        0.122024,
+        [
+          0.081533,
+          0.167262
+        ]
+      ],
+      "C_early28_RGB6_eps2": [
+        0.002679,
+        [
+          0.0,
+          0.007143
+        ]
+      ],
+      "C_early28_RGB6_noisy": [
+        0.003125,
+        [
+          0.000446,
+          0.00625
+        ]
+      ],
+      "C_early28_RGB6_stress": [
+        0.000595,
+        [
+          0.0,
+          0.001786
+        ]
+      ],
+      "C_early28_RGL4_eps2": [
+        0.002679,
+        [
+          0.0,
+          0.007143
+        ]
+      ],
+      "C_early28_RGL4_noisy": [
+        0.003125,
+        [
+          0.000446,
+          0.00625
+        ]
+      ],
+      "C_early28_RGL4_stress": [
+        0.001786,
+        [
+          0.0,
+          0.004762
+        ]
+      ],
+      "C_early28_RGL5_eps2": [
+        0.002679,
+        [
+          0.0,
+          0.007143
+        ]
+      ],
+      "C_early28_RGL5_noisy": [
+        0.003125,
+        [
+          0.000446,
+          0.00625
+        ]
+      ],
+      "C_early28_RGL5_stress": [
+        0.007143,
+        [
+          0.00119,
+          0.016071
+        ]
+      ],
+      "C_early28_RGN4_or_eps2": [
+        0.025893,
+        [
+          0.008036,
+          0.048214
+        ]
+      ],
+      "C_early28_RGN4_or_noisy": [
+        0.053125,
+        [
+          0.028571,
+          0.080357
+        ]
+      ],
+      "C_early28_RGN4_or_stress": [
+        0.007143,
+        [
+          0.0,
+          0.016071
+        ]
+      ],
+      "C_early28_RGNB4_eps2": [
+        0.001786,
+        [
+          0.0,
+          0.004464
+        ]
+      ],
+      "C_late_RG4_eps2": [
+        0.1,
+        [
+          0.0125,
+          0.220455
+        ]
+      ],
+      "C_late_RG4_noisy": [
+        0.203409,
+        [
+          0.113636,
+          0.303409
+        ]
+      ],
+      "C_late_RG4_stress": [
+        0.009848,
+        [
+          0.0,
+          0.025379
+        ]
+      ],
+      "C_late_RGB6_eps2": [
+        0.315341,
+        [
+          0.225568,
+          0.4125
+        ]
+      ],
+      "C_late_RGB6_noisy": [
+        0.359943,
+        [
+          0.296016,
+          0.425852
+        ]
+      ],
+      "C_late_RGB6_stress": [
+        0.401136,
+        [
+          0.308333,
+          0.495076
+        ]
+      ],
+      "C_late_RGL4_eps2": [
+        0.319886,
+        [
+          0.227841,
+          0.419886
+        ]
+      ],
+      "C_late_RGL4_noisy": [
+        0.362216,
+        [
+          0.297727,
+          0.429261
+        ]
+      ],
+      "C_late_RGL4_stress": [
+        0.423864,
+        [
+          0.326515,
+          0.522737
+        ]
+      ],
+      "C_late_RGL5_eps2": [
+        0.332386,
+        [
+          0.238636,
+          0.436364
+        ]
+      ],
+      "C_late_RGL5_noisy": [
+        0.370739,
+        [
+          0.304261,
+          0.439773
+        ]
+      ],
+      "C_late_RGL5_stress": [
+        0.475758,
+        [
+          0.369697,
+          0.583712
+        ]
+      ],
+      "C_late_RGN4_or_eps2": [
+        0.805682,
+        [
+          0.709091,
+          0.893182
+        ]
+      ],
+      "C_late_RGN4_or_noisy": [
+        0.826989,
+        [
+          0.760504,
+          0.889773
+        ]
+      ],
+      "C_late_RGN4_or_stress": [
+        0.707576,
+        [
+          0.62196,
+          0.788636
+        ]
+      ],
+      "C_late_RGNB4_eps2": [
+        0.417614,
+        [
+          0.289205,
+          0.551136
+        ]
+      ],
+      "dC_early28_RGB6_RGL4_eps2": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "dC_early28_RGB6_RGL4_noisy": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "dC_early28_RGB6_RGL4_stress": [
+        -0.00119,
+        [
+          -0.003571,
+          0.0
+        ]
+      ],
+      "dC_early28_RGB6_RGL5_eps2": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "dC_early28_RGB6_RGL5_noisy": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "dC_early28_RGB6_RGL5_stress": [
+        -0.006548,
+        [
+          -0.014881,
+          -0.00119
+        ]
+      ],
+      "dC_early28_RGB6_RGN4_or_eps2": [
+        -0.023214,
+        [
+          -0.045536,
+          -0.00625
+        ]
+      ],
+      "dC_early28_RGB6_RGN4_or_noisy": [
+        -0.05,
+        [
+          -0.075893,
+          -0.027232
+        ]
+      ],
+      "dC_early28_RGB6_RGN4_or_stress": [
+        -0.006548,
+        [
+          -0.014881,
+          0.0
+        ]
+      ],
+      "dC_early28_RGB6_RGNB4_eps2": [
+        0.000893,
+        [
+          0.0,
+          0.002679
+        ]
+      ],
+      "dC_early28_RGL4_RGNB4_eps2": [
+        0.000893,
+        [
+          0.0,
+          0.002679
+        ]
+      ],
+      "dC_early28_RGL5_RGL4_eps2": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "dC_early28_RGL5_RGL4_noisy": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "dC_early28_RGL5_RGL4_stress": [
+        0.005357,
+        [
+          0.00119,
+          0.01131
+        ]
+      ],
+      "dC_late_RGB6_RGL4_eps2": [
+        -0.004545,
+        [
+          -0.010795,
+          0.0
+        ]
+      ],
+      "dC_late_RGB6_RGL4_noisy": [
+        -0.002273,
+        [
+          -0.005398,
+          0.0
+        ]
+      ],
+      "dC_late_RGB6_RGL4_stress": [
+        -0.022727,
+        [
+          -0.035227,
+          -0.011742
+        ]
+      ],
+      "dC_late_RGB6_RGL5_eps2": [
+        -0.017045,
+        [
+          -0.035227,
+          -0.002841
+        ]
+      ],
+      "dC_late_RGB6_RGL5_noisy": [
+        -0.010795,
+        [
+          -0.021023,
+          -0.002273
+        ]
+      ],
+      "dC_late_RGB6_RGL5_stress": [
+        -0.074621,
+        [
+          -0.106818,
+          -0.045076
+        ]
+      ],
+      "dC_late_RGB6_RGN4_or_eps2": [
+        -0.490341,
+        [
+          -0.592614,
+          -0.391463
+        ]
+      ],
+      "dC_late_RGB6_RGN4_or_noisy": [
+        -0.467045,
+        [
+          -0.545739,
+          -0.387784
+        ]
+      ],
+      "dC_late_RGB6_RGN4_or_stress": [
+        -0.306439,
+        [
+          -0.397727,
+          -0.220076
+        ]
+      ],
+      "dC_late_RGB6_RGNB4_eps2": [
+        -0.102273,
+        [
+          -0.195455,
+          -0.014773
+        ]
+      ],
+      "dC_late_RGL4_RGNB4_eps2": [
+        -0.097727,
+        [
+          -0.188651,
+          -0.011932
+        ]
+      ],
+      "dC_late_RGL5_RGL4_eps2": [
+        0.0125,
+        [
+          0.002273,
+          0.025568
+        ]
+      ],
+      "dC_late_RGL5_RGL4_noisy": [
+        0.008523,
+        [
+          0.002273,
+          0.016761
+        ]
+      ],
+      "dC_late_RGL5_RGL4_stress": [
+        0.051894,
+        [
+          0.031439,
+          0.074242
+        ]
+      ]
+    },
+    "R_ratio": {
+      "ratio_late_RGB6_RGL4_eps0": 1.0,
+      "ratio_late_RGB6_RGL4_eps1": 1.0,
+      "ratio_late_RGB6_RGL4_eps2": 0.98579,
+      "ratio_late_RGB6_RGL4_noisy": 0.993725,
+      "ratio_late_RGB6_RGL4_stress": 0.946381,
+      "ratio_late_RGB6_RGL5_eps0": 1.0,
+      "ratio_late_RGB6_RGL5_eps1": 0.988889,
+      "ratio_late_RGB6_RGL5_eps2": 0.948718,
+      "ratio_late_RGB6_RGL5_noisy": 0.970881,
+      "ratio_late_RGB6_RGL5_stress": 0.843153,
+      "ratio_late_RGB6_RGN4_or_eps0": 0.529528,
+      "ratio_late_RGB6_RGN4_or_eps1": 0.476892,
+      "ratio_late_RGB6_RGN4_or_eps2": 0.391396,
+      "ratio_late_RGB6_RGN4_or_noisy": 0.435246,
+      "ratio_late_RGB6_RGN4_or_stress": 0.566916,
+      "ratio_late_RGB6_RGNB4_eps2": 0.755102,
+      "ratio_late_RGL4_RGNB4_eps2": 0.765986,
+      "ratio_late_RGL5_RGL4_eps0": 1.0,
+      "ratio_late_RGL5_RGL4_eps1": 1.011236,
+      "ratio_late_RGL5_RGL4_eps2": 1.039076,
+      "ratio_late_RGL5_RGL4_noisy": 1.023529,
+      "ratio_late_RGL5_RGL4_stress": 1.122431
+    },
+    "R_stress_false_by_arm": {
+      "RG4": 31,
+      "RGB6": 0,
+      "RGL4": 1,
+      "RGL5": 0,
+      "RGN4_or": 0
+    }
+  },
+  "schema": "brute.gates.v22_0",
+  "study": "BRUTE-0220-BETTING-CS-025"
+}

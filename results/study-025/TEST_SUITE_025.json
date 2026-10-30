@@ -1,0 +1,64 @@
+{
+ "modules": [
+  "test_bettingregion_0220",
+  "test_certify11_0220",
+  "test_study_0220",
+  "test_scripts_025"
+ ],
+ "passed": true,
+ "per_module": {
+  "test_bettingregion_0220": {
+   "results": {
+    "test_activation_bits": "ok",
+    "test_default_levels": "ok",
+    "test_eps_bar_range": "ok",
+    "test_lambdas": "ok",
+    "test_no_activation_at_178_bits": "ok",
+    "test_wealth_validation": "ok"
+   },
+   "returncode": 0,
+   "tail": "_activation_bits) ... ok\ntest_default_levels (tests.test_bettingregion_0220.BettingLevels.test_default_levels) ... ok\ntest_eps_bar_range (tests.test_bettingregion_0220.BettingLevels.test_eps_bar_range) ... ok\ntest_lambdas (tests.test_bettingregion_0220.BettingLevels.test_lambdas) ... ok\ntest_no_activation_at_178_bits (tests.test_bettingregion_0220.BettingLevels.test_no_activation_at_178_bits) ... ok\ntest_wealth_validation (tests.test_bettingregion_0220.BettingLevels.test_wealth_validation) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.837s\n\nOK\n",
+   "tests": 6,
+   "wall_informational": 0.9
+  },
+  "test_certify11_0220": {
+   "results": {
+    "test_api_and_methods": "ok",
+    "test_delegation": "ok",
+    "test_host_agnostic": "ok",
+    "test_unknown_method": "ok"
+   },
+   "returncode": 0,
+   "tail": "test_api_and_methods (tests.test_certify11_0220.Certify11.test_api_and_methods) ... ok\ntest_delegation (tests.test_certify11_0220.Certify11.test_delegation) ... ok\ntest_host_agnostic (tests.test_certify11_0220.Certify11.test_host_agnostic) ... ok\ntest_unknown_method (tests.test_certify11_0220.Certify11.test_unknown_method) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.113s\n\nOK\n",
+   "tests": 4,
+   "wall_informational": 0.2
+  },
+  "test_scripts_025": {
+   "results": {
+    "test_arms": "ok",
+    "test_b6_check_detects": "ok",
+    "test_cp95_declared": "ok",
+    "test_expected": "ok",
+    "test_probe": "ok"
+   },
+   "returncode": 0,
+   "tail": "test_arms (tests.test_scripts_025.Scripts025.test_arms) ... ok\ntest_b6_check_detects (tests.test_scripts_025.Scripts025.test_b6_check_detects) ... ok\ntest_cp95_declared (tests.test_scripts_025.Scripts025.test_cp95_declared) ... ok\ntest_expected (tests.test_scripts_025.Scripts025.test_expected) ... ok\ntest_probe (tests.test_scripts_025.Scripts025.test_probe) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.113s\n\nOK\n",
+   "tests": 5,
+   "wall_informational": 0.2
+  },
+  "test_study_0220": {
+   "results": {
+    "test_a2_declares_counts": "ok",
+    "test_counts": "ok",
+    "test_heldout": "ok",
+    "test_jobs_valid": "ok"
+   },
+   "returncode": 0,
+   "tail": "test_a2_declares_counts (tests.test_study_0220.LeanBlock.test_a2_declares_counts) ... ok\ntest_counts (tests.test_study_0220.LeanBlock.test_counts) ... ok\ntest_heldout (tests.test_study_0220.LeanBlock.test_heldout) ... ok\ntest_jobs_valid (tests.test_study_0220.LeanBlock.test_jobs_valid) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.001s\n\nOK\n",
+   "tests": 4,
+   "wall_informational": 0.1
+  }
+ },
+ "process": "lean (A2)",
+ "schema": "brute.test-suite-025.v1"
+}
