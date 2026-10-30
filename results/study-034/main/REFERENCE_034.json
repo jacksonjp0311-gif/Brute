@@ -1,0 +1,221 @@
+{
+  "N": 8,
+  "PASS": true,
+  "arm_audited": "A9",
+  "cases": 12,
+  "decided": 12,
+  "elapsed_informational": 2.7507695149979554,
+  "family": "scale8",
+  "mismatch_count": 0,
+  "mismatches": [],
+  "mutation_test": {
+    "detected": 20,
+    "items": [
+      {
+        "detected": true,
+        "key": "scale8/10010009",
+        "kind": "label"
+      },
+      {
+        "detected": true,
+        "key": "scale8/10010002",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "key": "scale8/10010011",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "key": "scale8/10010010",
+        "kind": "word"
+      },
+      {
+        "detected": true,
+        "key": "scale8/10010007",
+        "kind": "label"
+      },
+      {
+        "detected": true,
+        "key": "scale8/10010012",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "key": "scale8/10010003",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "key": "scale8/10010006",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "key": "scale8/10010006",
+        "kind": "label"
+      },
+      {
+        "detected": true,
+        "key": "scale8/10010012",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "key": "scale8/10010011",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "key": "scale8/10010005",
+        "kind": "word"
+      },
+      {
+        "detected": true,
+        "key": "scale8/10010005",
+        "kind": "label"
+      },
+      {
+        "detected": true,
+        "key": "scale8/10010001",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "key": "scale8/10010002",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "key": "scale8/10010010",
+        "kind": "word"
+      },
+      {
+        "detected": true,
+        "key": "scale8/10010007",
+        "kind": "label"
+      },
+      {
+        "detected": true,
+        "key": "scale8/10010005",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "key": "scale8/10010002",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "key": "scale8/10010003",
+        "kind": "word"
+      }
+    ],
+    "mutations": 20,
+    "pass": true
+  },
+  "not_reached": 0,
+  "per_case": [
+    {
+      "decided": true,
+      "key": "scale8/10010001",
+      "label": "IDF",
+      "mismatches": [],
+      "verdicts_checked": 4,
+      "wall_informational": 0.5844634230015799
+    },
+    {
+      "decided": true,
+      "key": "scale8/10010002",
+      "label": "ID",
+      "mismatches": [],
+      "verdicts_checked": 4,
+      "wall_informational": 0.33856456200010143
+    },
+    {
+      "decided": true,
+      "key": "scale8/10010003",
+      "label": "ID",
+      "mismatches": [],
+      "verdicts_checked": 7,
+      "wall_informational": 0.7451261480018729
+    },
+    {
+      "decided": true,
+      "key": "scale8/10010004",
+      "label": "ID",
+      "mismatches": [],
+      "verdicts_checked": 3,
+      "wall_informational": 0.29385992899915436
+    },
+    {
+      "decided": true,
+      "key": "scale8/10010005",
+      "label": "IDF",
+      "mismatches": [],
+      "verdicts_checked": 5,
+      "wall_informational": 1.364850137000758
+    },
+    {
+      "decided": true,
+      "key": "scale8/10010006",
+      "label": "ID",
+      "mismatches": [],
+      "verdicts_checked": 2,
+      "wall_informational": 0.19902283500050544
+    },
+    {
+      "decided": true,
+      "key": "scale8/10010007",
+      "label": "IDF",
+      "mismatches": [],
+      "verdicts_checked": 26,
+      "wall_informational": 2.707721336999384
+    },
+    {
+      "decided": true,
+      "key": "scale8/10010008",
+      "label": "ID",
+      "mismatches": [],
+      "verdicts_checked": 2,
+      "wall_informational": 0.22200788400004967
+    },
+    {
+      "decided": true,
+      "key": "scale8/10010009",
+      "label": "IDF",
+      "mismatches": [],
+      "verdicts_checked": 15,
+      "wall_informational": 1.2544488340026874
+    },
+    {
+      "decided": true,
+      "key": "scale8/10010010",
+      "label": "ID",
+      "mismatches": [],
+      "verdicts_checked": 4,
+      "wall_informational": 0.40144451100059086
+    },
+    {
+      "decided": true,
+      "key": "scale8/10010011",
+      "label": "ID",
+      "mismatches": [],
+      "verdicts_checked": 2,
+      "wall_informational": 0.15361783700063825
+    },
+    {
+      "decided": true,
+      "key": "scale8/10010012",
+      "label": "ID",
+      "mismatches": [],
+      "verdicts_checked": 3,
+      "wall_informational": 0.3116852530001779
+    }
+  ],
+  "schema": "brute.reference.v31_0",
+  "study_results_sha256": "20ba448005b40cdf3d12b717388f0cd5442c2ba2f568ff00b162cdee89c4f3f1",
+  "verdicts_checked": 77,
+  "words_checked": 46
+}
