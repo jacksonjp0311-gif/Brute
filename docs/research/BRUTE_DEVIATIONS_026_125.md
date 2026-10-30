@@ -1,0 +1,10 @@
+# Deviation #125 — study 026 host interruption (v0.23.0)
+
+Written after the run. It changes no frozen file and no gate.
+
+1. **Host interruption (Observed).** The box rebooted at about 10:22 EDT on 2026-10-30, about 10 minutes into the detached main run (started 10:12:09 EDT, ledger run_start_026). The runner process was gone afterward. The workspace on disk came back as a snapshot that holds 38 completed cases in CHECKPOINT. Log reads before the revert showed more progress ("done 62/93", "done 86/93"). Those records are lost (Inferred: the snapshot is from about 10:21 EDT).
+2. **Not relaunched (rule).** Under the standing rule "never relaunch a live run", the run was not resumed or restarted. The 38 cases were sealed as PARTIAL (SEAL.json complete=false, expected 93, missing_job_keys listed).
+3. **Gates fail as designed (Exact).** make_gates_026 treats a partial block as INCOMPLETE_INPUT. GSC_headline, G10, GS_ref12, G_RT and G_recount fail for that reason. GAPI12 fails because no scale8 case was sealed, so its stream check has no case. GTI and G_PROC pass. The descriptive numbers for the 38 cases are reported but decide nothing.
+4. **Environment recreated (Observed).** The reboot wiped /tmp, including /tmp/wt-state (not deleted by the agent), and removed /workspace/bgr/venv. The venv was rebuilt with python3 -m venv, numpy==2.5.4 and python-sat==1.9.dev17, as pinned. check_freeze passed against BRUTE_SOURCE_FREEZE_026 afterward.
+5. **Release tooling written after run_start.** Release tooling was written after run_start_026, outside the source freeze, and is frozen separately in BRUTE_RELEASE_FREEZE_0230: scripts/study026_storage.py (raw RESULTS/SCIENTIFIC committed as deterministic gzip, the same scheme as 025), scripts/verify_release_0230.py, scripts/make_release_freeze_0230.py and tests/test_release_0230.py.
+6. **Ledger wording.** The seal_026 ledger note contains a garbled phrase ("16 scale16 main, 3 scale16? see SEAL"). The correct composition is 24 scale16 main (12 eps 0, 12 eps 0.02), 8 scale12 main eps 0.02, 3 scale16 stress and 3 scale12 stress. The ledger is append-only, so this document carries the correction.
