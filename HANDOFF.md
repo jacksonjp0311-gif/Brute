@@ -1,11 +1,25 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.28.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.29.0 release in progress)._
 
 ## Current version and state
 
+<!-- V0290 -->
+- **v0.29.0: release in progress** 2026-10-30 on branch `plan/v0.29.0` (study BRUTE-0290-ROBUST-PERCEPTION-032, LEAN, standing go t133s553, build authorization ledger `7d4242f`)
+  - **Run complete (Observed).** 48/48 cases, 1246.3 s of 1800 s, normal exit. 5 checkpoint snapshots were pushed (last `0ec1f9b`). Nothing was relaunched. The resume clause was NOT approved and was not needed. The box clock was checked against the GitHub Date header 10 times and did not stall (#137 item 3).
+  - **PASS (6/9):** GQB7 (S7 max query 9.35 s), GS_ref (0 mismatches, mutations 20/20), GTI (5/5 modules), G_PROC, G_RT, G_recount. **FAIL:** GRP7_headline (d; a, b, c and e pass), GNR7, G10.
+  - **Headline numbers (Observed).**
+    - U_inf at noisy 12 states: S7 0.467 [0.437, 0.499], S7_contra 0.673, S5 0.576 [0.542, 0.609], S1 0.644 [0.560, 0.749]. Paired S7 - S5 -0.109 [-0.154, -0.054]; S7 - S1 -0.178 [-0.283, -0.084].
+    - X_inf at noisy 12 states: 0/12 for every arm (bar 3/12).
+    - Clean 12 states: U(S7) - U(S5) +0.362 [0.348, 0.377]. Controls: S7 U 0.085, with 0/6 finished.
+    - F_truth: S7 0, S7_contra 0, S5 0, S1 12. Contradiction verdicts: S1 4, S7_contra 3, S5 0, S7 0.
+  - **Mechanism (Inferred).** The fixed budget (B_end 27) applies on clean traces too, so S7 searches a wider space.
+  - **Deviations:** #136 (pre-run) and #137 (post-run).
+  - **Chain:** plan `5a00625` -> authorization `7d4242f` -> seedcheck `cad2416` -> S7 `47e3006` -> runner `d2eeb34` -> tooling `7885e02` -> release tooling `6143c15` -> pre-freeze test `7429720` -> #136 `b0c86e9` -> freeze `fd17c82` -> run_start `fb5519c` -> run_end `c67472e` -> seal `cbc801e` -> recount `9975157` -> reference `6e4684b` -> tests `39e671a` -> gates `7c4d197` -> #137 `86ffb89` -> RELEASE.json `9c091a2` -> docs `d080911`.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
+
 <!-- V0280 -->
-- **v0.28.0: RELEASED** 2026-10-30 as tag `v0.28.0` (annotated `7b59641` -> `1131c8f`), main fast-forwarded `b917b4c..1131c8f`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.28.0. A fresh clone of the tag passed restore, verify_release_0280 and run_tests_0280 (7/7 modules; ledger `7cc6dbb`). Released (study BRUTE-0280-SIXTEEN-STATE-ID-031, LEAN, standing go t133s553, build authorization ledger `4a0eb8d`)
+- **v0.28.0: RELEASED** (previous) 2026-10-30 as tag `v0.28.0` (annotated `7b59641` -> `1131c8f`), main fast-forwarded `b917b4c..1131c8f`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.28.0. A fresh clone of the tag passed restore, verify_release_0280 and run_tests_0280 (7/7 modules; ledger `7cc6dbb`). Released (study BRUTE-0280-SIXTEEN-STATE-ID-031, LEAN, standing go t133s553, build authorization ledger `4a0eb8d`)
   - **Run complete (Observed).** 54/54 cases, 1028.1 s of 1800 s, normal exit. 4 checkpoint snapshots were pushed (last `6131470`). Nothing was relaunched. The resume clause was NOT approved and was not needed.
   - **PASS (6/9):** G10 (6/6 controls), GS_ref (mutations 20/20), GTI (7/7 modules; 67 counted tests, all OK), G_PROC, G_RT, G_recount. **FAIL:** GSC6_headline (b and c; a and d pass), GID6 (b; a and c pass), GQB6 (10.857 s on one stress case; bound 10.5).
   - **Headline numbers (Observed).**
