@@ -1,0 +1,60 @@
+{
+ "schema": "brute.plan-amendment/1",
+ "amendment": "A1",
+ "study": "BRUTE-0260-QUERY-THROUGHPUT-029",
+ "amends": "experiments/BRUTE_PLAN_029.json",
+ "amends_commit": "c06bcfe",
+ "amends_ledger": "bc7174c (preregistration_029)",
+ "amends_sha256": "b78c3453d4db1a792430b387d3cb33ed5adc18fb0c74c0bfe9e0c6120b6a971a",
+ "authorization": "owner James, STANDING GO card t133s553 (ledger 76b30d5); design change relayed 2026-10-30 12:59 EDT; ledger build_authorization_029 (78336bd)",
+ "timing": "published before any study-029 data, before seedcheck_029 and before the source freeze; the frozen plan file is not edited",
+ "reason": {
+  "label": "Observed (studies 027 and 028)",
+  "text": "Across v0.24.0 and v0.25.0 the original S1 search beat S2 and S3 at 8 and 12 states (at 12 states S1 X 3/12, U 0.158; S3 X 0/12, U 0.398). Building S4 on S3 builds on the losing lineage, so S4 is rebuilt on S1 and the headline compares S4 with S1."
+ },
+ "scratch_diagnosis": {
+  "label": "Observed (scratch, smoke seeds 9590001-9590003, scale8 and scale12, 3 seeds each, 55 s eps 0; partly CPU-contended; never a gate input)",
+  "artifact": "results/diag-029/S1_COST_029.json (scripts/diag_029.py; commit 86856da, ledger 4701cc4)",
+  "prior_partial_check": "bd587ab (S2_ABLATION_028) ablated S2 internals only and never compared S2 or S3 with S1; this is the first S1-vs-S2/S3 mechanism check",
+  "mechanism": "symmetry-breaking clauses. S2/S3's BFS-canonical clauses (auxiliaries t, p, mm; O(n^3 k) clauses) make the SAT witness solves that answer support queries slow. Removing only those clauses (S2_nobfs) moved S2 from U counts [134, 227, 229] to [0, 97, 164] at 12 states (S1: [20, 54, 174]) and from [2, 4, 74] to [0, 0, 0] at 8 states. The same mechanism, weaker, is inside S1: removing S1's first-visit symmetry (S1_nosym) moved S1 at 12 states from [20, 54, 174] to [0, 0, 61].",
+  "not_the_mechanism": {
+   "lower_bound_proofs": "UNSAT solves are few and cheap (mean 0-3.3 s per run at 12 states; S1 had 0 UNSAT solves: at a 16-state bound every code stays possible in these worlds)",
+   "support_chain": "the _chain suffix witness is cheap (028 scratch) and S2_nodist / S2_g3 changed little or hurt",
+   "incremental_solver": "a fresh solver per step (S2_fresh) helped at 8 states ([2, 4, 74] -> [0, 0, 0]) but not at 12 states ([134, 227, 229] -> [136, 160, 249]): a secondary cost at 8 states only"
+  },
+  "time_split": "S2 at 12 states: per run mean 35.2 s in SAT support solves, 23.3 s in solves cut by the deadline (UNKNOWN), 3.3 s in UNSAT; S1: 48.9 s in 1932 SAT solves, 7.3 s building one CNF per step",
+  "consequence": "S4 keeps the S1 encoding as instructed (first-visit symmetry included). A pre-declared secondary arm S4_nosym (S4 with RegionK symmetry=False; same projection, so the same exact answers) measures the diagnosed mechanism; it is descriptive here and is the candidate for v0.27.0."
+ },
+ "effective_design": {
+  "arms": {
+   "S4": "brute/scalesearch4.py ScaleRegion4(16): the frozen S1 RegionK encoding (brute.region, imported unchanged) plus (i) one lazily built solver per step answering every query by assumptions; (ii) witness reuse: every SAT model is a concrete <=16-state machine kept in a pool of 32, re-simulated on each reading and used as a witness for every action (unexercised transitions witness visited-state codes, and all codes when a state is unvisited); (iii) several queries in one solve: one assumption OR(nc[b][c] : c not yet witnessed), UNSAT proves them all impossible, SAT witnesses one code and is harvested, repeat; (iv) S3's hard 10 s per-query wall cap by conflict chunks with a wall check before each chunk, plus S1's 100000-conflict budget per solve. Solver: chosen on smoke seeds before the source freeze, among g3 (S1's) and m22; recorded in deviation #130",
+   "S4_nowit": "ablation: S4 without witness reuse (no pool, no harvesting beyond the single code a SAT answer shows)",
+   "S4_nosym": "secondary, descriptive: S4 with symmetry=False (tests the scratch diagnosis)",
+   "S1": "baseline, unchanged (experiments.brute_study_026._S1)",
+   "S3": "frozen control, unchanged (brute.scalesearch3.ScaleRegion3)",
+   "S2": "dropped from the run for runtime (S3 is the frozen exact control; S2 equals S3 on exact answers in study 028)"
+  },
+  "budgets": "eps 0: S4 55 s, S4_nowit 55 s, S4_nosym 55 s, S1 55 s, S3 55 s, identify 10 s per exact arm that finished all 176 steps; eps 0.05 stress: S4, S1, S3 at 40 s (F only)",
+  "seeds_and_cases": "unchanged from BRUTE_PLAN_029 (51 cases; smoke range 9590001-9590030)"
+ },
+ "effective_criteria": {
+  "GSC4_headline": {
+   "a": "0 mismatches of S4 vs S1 and vs S3 (queries both answered exactly) and 0 exact S4 supports missing the latent truth, on main and stress eps 0 records",
+   "b": "paired over the 12 scale12 seeds: mean of U(S4) - U(S1) <= -0.08 and the seed-bootstrap 95% CI (10000 resamples, random.Random(29)) of the mean has upper end < 0",
+   "c": "X(S4, scale12) >= 5/12",
+   "d": "F(S4) = 0 on main and stress (exact recount)"
+  },
+  "GTP": "throughput TP(arm, case) = exactly answered queries / arm wall seconds; per scale12 seed ratio TP(S4)/TP(S1): median >= 2 and seed-bootstrap 95% CI lower end of the mean ratio > 1.5 (revised from S3 to S1, as the headline; S4/S3 reported)",
+  "GQB": "S4 max(query, observe) <= 10.5 s on every main case",
+  "G10": "S4 U_count 0 and clause a mismatches 0 on 6/6 controls",
+  "GAPI14": "brute.certify/14 adds search='s4'; streamed equal to arm S4 on exact answers (4 scale8 cases, 60 steps); certify.py to certify13.py unchanged; host-agnostic scan",
+  "GS_ref": "frozen exact reference (experiments/v0230_reference.py) on S4 at scale8: 0 mismatches, decided > 0, mutations 20/20",
+  "GTI": "all v0.26.0 test modules pass, including the pre-freeze test that seals a smoke block and runs make_gates_029 --check on the sealed RESULTS/SCIENTIFIC files",
+  "G_PROC": "preregistration_029, build_authorization_029, scratch_diag_029, plan_amendment_029_A1, seedcheck_029, source_freeze_029, run_start_029 in order with parseable, non-decreasing ledger times",
+  "G_RT": "main run <= 1800 s",
+  "G_recount": "exact F/U/certificate recount reproduces",
+  "reported_not_gated": "X, U (seed-bootstrap CI), ID (Wilson CI), TP and F for S4, S4_nowit, S4_nosym, S1, S3 per family; S4 - S4_nowit (ablation); S4_nosym - S4 (diagnosis); ID for S1 uses the S4 identify routine on S1's trace when S1 finished all steps (S1 has no identify of its own)"
+ },
+ "unchanged": "everything in BRUTE_PLAN_029 not named here: seeds, cases, eps, horizon, certificate rule rgn_decide(i+1, 8, .) on exact answers only, failure publication, freeze rule, brand",
+ "what_counts_as_failure": "any gate miss is published as FAIL; no rerun, no reseeding, no threshold change after data"
+}
