@@ -36,9 +36,9 @@ Exact, Observed, Simulated, Inferred, Rejected, Open. Times are box-local EDT (U
    product BFS (shortest-word length), plus 20 seeded mutations (label, n_min +1/-1, one action of an executed word).
 10. **Smoke (Exact; Observed).** The smoke block is 6 cases on 9990001-9990006 (scale16, scale12 x2, scale8 x2, control).
     Test fixtures use 9990029/9990030. Seedcheck_033 passed before any of them ran.
-11. **Smoke finding and fix (Observed; process).** The first smoke run (17:02 EDT start 16:59) crashed on a K_spent round:
+11. **Smoke finding and fix (Observed; process).** The first smoke run (started 16:59 EDT) crashed on a K_spent round:
     the runner read the predictions of a word that is not executed. Fixed in experiments/brute_study_033.py (8b23acf;
-    predictions are compared only when present); the smoke block was run once more from an empty output directory and
+    predictions are compared only when present); the smoke block was run once more (17:02 EDT) from an empty output directory and
     passed (results/diag-033/PREFREEZE_SMOKE_GATES_033.json). This is a pre-freeze build fix, not a main-block rerun.
 12. **Process (Exact).** LEAN: build_authorization_033 under James's STANDING GO (t133s553, ledger 76b30d5); seedcheck_033
     before any seed; the source freeze (make_freeze_033) before run_start_033; one main run, no tuning, no reruns, no
