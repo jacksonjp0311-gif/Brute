@@ -1,11 +1,21 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.31.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.32.0 release in progress)._
 
 ## Current version and state
 
+<!-- V0320 -->
+- **v0.32.0: release in progress** on branch `plan/v0.32.0` (BRUTE_PLAN_035, NOISY ACTIVE IDENTIFICATION; LEAN; STANDING GO t133s553, build authorization ledger `6941bf9`).
+  - **Run complete (Observed).** 48/48 cases, 342.7 s of 1800 s, normal exit, run once. 2 checkpoint snapshots were pushed (`aafa3c7`, `ade7093`). Nothing was relaunched. The resume clause was NOT approved and was not needed. The session was interrupted after the run, before the reference commit; REFERENCE_035.json was complete and was committed without a rerun (#143 item 2). The box clock matched GitHub's Date header at 19:04:42 EDT.
+  - **PASS (9/11):** GNR10, GAD10, G_sound (116 words, 0 unsound), G10, GS_ref (12/12 decided, 0 mismatches, mutations 20/20), GTI (6 modules, 42 tests), G_PROC, G_RT, G_recount. **FAIL:** GA10_headline (a: S5 WRONG 15 on noisy; b: ID(A10) - ID(S7) noisy12 0.00 [0, 0]; c: ID+IDF 0/12; d: IDU 12/12), GQB10 (S7 10.538 s; bound 10.5 s). Secondary G16 fails (A10 ID 0/6).
+  - **Headline numbers (Observed).** noisy12 and noisy8: A10, A10_fixed and S7 IDU 12/12 [0.76, 1] each; A9 WRONG 12/12 on both; S5 WRONG 9 (noisy12) and 6 (noisy8). clean12: A10 = A9 ID 7/12 [0.32, 0.81], IDF 4, AMB 1, WRONG 0; A10_fixed and S7 IDU 12; S5 AMB 12. GAD10 clean12 +0.58 [0.33, 0.83]. Controls ID 6/6 for every arm.
+  - **Mechanism (Observed / Inferred).** On all 24 noisy cases B = 0 was UNSAT, then the upward least-budget search hit the 10 s cap after 9-12 queries, below the true flip count (13-23), so B stayed 0 and A10 stopped IDU. The UNSAT proofs just below the least B are the hard queries (Inferred). Per the plan's next_if_fail, v0.33.0 is a diagnose plan.
+  - **Deviations:** #142 (pre-run) and #143 (post-run).
+  - **Chain:** plan `a66b74a` -> authorization `6941bf9` -> seedcheck `154d4c9` -> A10 `984f653` -> runner `be50919` -> recount `5d55043` -> reference `57a44b3` -> gates `cf6788f` -> release tooling `9441ba5` -> pre-freeze smoke `dc8b99c` -> #142 `f8d4b6d` -> freeze `1764462` -> run start `3588e27` -> run end `10f47c4` -> seal `6ea1450` -> recount `bf38714` -> reference `3cce54f` -> tests `0f1b0d7` -> gates `76a0ddf` -> #143 `f190bd5` -> RELEASE.json `1767081` -> docs `c20aa14`.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
+
 <!-- V0310 -->
-- **v0.31.0: RELEASED** 2026-10-30 as tag `v0.31.0` (annotated `819b0d5` -> `4093709`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.31.0). main was fast-forwarded `3740ace..4093709`. A fresh clone of the tag restored, verified (commit chain 6) and passed 5/5 test modules (34 tests); ledger `1b8da7f`. Built on branch `plan/v0.31.0` (BRUTE_PLAN_034, SOUND ACTIVE IDENTIFICATION; LEAN; STANDING GO t133s553, build authorization ledger `b84deba`).
+- **v0.31.0: RELEASED** (previous) 2026-10-30 as tag `v0.31.0` (annotated `819b0d5` -> `4093709`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.31.0). main was fast-forwarded `3740ace..4093709`. A fresh clone of the tag restored, verified (commit chain 6) and passed 5/5 test modules (34 tests); ledger `1b8da7f`. Built on branch `plan/v0.31.0` (BRUTE_PLAN_034, SOUND ACTIVE IDENTIFICATION; LEAN; STANDING GO t133s553, build authorization ledger `b84deba`).
   - **Run complete (Observed).** 36/36 cases, 124.8 s of 1800 s, normal exit, run once. 1 checkpoint snapshot was pushed (`ffdb5b5`). Nothing was relaunched. The resume clause was NOT approved and was not needed. The box clock read about 9 s ahead of GitHub's Date header at 18:05:34 EDT, with no stall.
   - **PASS (11/12):** GA9_headline (a-d), GDIAG8, GIDF9, GCH9, G_sound, G10, GS_ref, GTI (5 modules, 34 tests), G_PROC, G_RT, G_recount. **FAIL:** GQB9 (A9 max query 10.888 s; bound 10.5 s).
   - **Headline numbers (Observed).**
