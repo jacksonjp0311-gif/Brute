@@ -37,8 +37,8 @@ by construction of the code; Observed = seen in the smoke only (not gated eviden
    SCIENTIFIC.json are git-ignored and committed as deterministic .json.gz bound to the block SEAL; CHECKPOINT files
    are git-ignored.
 9. **GS_ref12 mutation seed (Exact).** run_reference_027 is run_reference_026 with mutation seed 240 (026 used 230).
-10. **GAPI12 unchanged-API check (Exact).** certify.py ... certify12.py (11 files) must be unchanged against the 026
-    freeze.
+10. **GAPI12 unchanged-API check (Exact).** brute/api/certify.py and certify2.py-certify12.py (12 files) must match the earliest source
+    freeze that lists each of them (certify12.py: the 026 freeze).
 11. **Smoke timing and projection (Observed / Inferred).** Smoke case walls: scale8 eps0 54 s, scale12 eps0 140 s,
     scale16 eps0 145 s (each including S2_tight 25 s + identify), control eps0 36 s, eps > 0 cases 117-135 s.
     Projected total for 93 cases on 8 workers: about 1350 s of packed work plus a tail, about 1450-1500 s (Inferred),
