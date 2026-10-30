@@ -1,0 +1,59 @@
+{
+ "modules": [
+  "test_scalesearch_0230",
+  "test_certify12_0230",
+  "test_scripts_026"
+ ],
+ "passed": true,
+ "per_module": {
+  "test_certify12_0230": {
+   "results": {
+    "test_host_agnostic": "ok",
+    "test_refusals": "ok",
+    "test_region_default_equals_11": "ok",
+    "test_s2_betting_runs": "ok",
+    "test_s2_certificate_on_cycle": "ok",
+    "test_s2_exact_equals_regionk": "ok"
+   },
+   "returncode": 0,
+   "tail": "y12.test_host_agnostic) ... ok\ntest_refusals (tests.test_certify12_0230.Certify12.test_refusals) ... ok\ntest_region_default_equals_11 (tests.test_certify12_0230.Certify12.test_region_default_equals_11) ... ok\ntest_s2_betting_runs (tests.test_certify12_0230.Certify12.test_s2_betting_runs) ... ok\ntest_s2_certificate_on_cycle (tests.test_certify12_0230.Certify12.test_s2_certificate_on_cycle) ... ok\ntest_s2_exact_equals_regionk (tests.test_certify12_0230.Certify12.test_s2_exact_equals_regionk) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.108s\n\nOK\n",
+   "tests": 6,
+   "wall_informational": 0.2
+  },
+  "test_scalesearch_0230": {
+   "results": {
+    "test_canonical_bfs": "ok",
+    "test_cycle3_identified": "ok",
+    "test_equals_frozen_tolerant": "ok",
+    "test_greedy_fold_consistent": "ok",
+    "test_masked_and_contradicted": "ok",
+    "test_no_io": "ok",
+    "test_pool_and_chain_machines_consistent": "ok",
+    "test_random_small": "ok",
+    "test_scale_worlds_minimal_strong": "ok",
+    "test_trajectory": "ok",
+    "test_unexercised_not_unique": "ok"
+   },
+   "returncode": 0,
+   "tail": "test_canonical_bfs (tests.test_scalesearch_0230.Witnesses.test_canonical_bfs) ... ok\ntest_greedy_fold_consistent (tests.test_scalesearch_0230.Witnesses.test_greedy_fold_consistent) ... ok\ntest_pool_and_chain_machines_consistent (tests.test_scalesearch_0230.Witnesses.test_pool_and_chain_machines_consistent) ... ok\ntest_scale_worlds_minimal_strong (tests.test_scalesearch_0230.Worlds.test_scale_worlds_minimal_strong) ... ok\ntest_trajectory (tests.test_scalesearch_0230.Worlds.test_trajectory) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.142s\n\nOK\n",
+   "tests": 11,
+   "wall_informational": 0.3
+  },
+  "test_scripts_026": {
+   "results": {
+    "test_api_probe_and_older_api": "ok",
+    "test_clause_a": "ok",
+    "test_empty_study_fails_incomplete": "ok",
+    "test_files_exist": "ok",
+    "test_reproduces": "ok",
+    "test_tamper_detected": "ok"
+   },
+   "returncode": 0,
+   "tail": "test_files_exist (tests.test_scripts_026.Freeze.test_files_exist) ... ok\ntest_api_probe_and_older_api (tests.test_scripts_026.Gates.test_api_probe_and_older_api) ... ok\ntest_empty_study_fails_incomplete (tests.test_scripts_026.Gates.test_empty_study_fails_incomplete) ... ok\ntest_clause_a (tests.test_scripts_026.Recount.test_clause_a) ... ok\ntest_reproduces (tests.test_scripts_026.Recount.test_reproduces) ... ok\ntest_tamper_detected (tests.test_scripts_026.Recount.test_tamper_detected) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 14.255s\n\nOK\n",
+   "tests": 6,
+   "wall_informational": 14.4
+  }
+ },
+ "process": "lean",
+ "schema": "brute.test-suite-026.v1"
+}
