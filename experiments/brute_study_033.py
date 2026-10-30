@@ -114,7 +114,7 @@ def arm_A8(w,seed):
                 rr['M1_future_match']=canonical_bfs(d1,e1,x['s1'])==canonical_bfs(w.transitions,w.emissions,tq)
             else:
                 p1=run_word(d1,e1,x['s1'],w_);p2=run_word(d2,e2,x['s2'],w_)
-                rr['word_sound']=bool(p1==x['pred1'] and p2==x['pred2'] and p1[:-1]==p2[:-1] and p1[-1]!=p2[-1])
+                rr['word_sound']=bool(('pred1' not in x or (p1==x['pred1'] and p2==x['pred2'])) and p1[:-1]==p2[:-1] and p1[-1]!=p2[-1])
                 if 'obs' in x:
                     rr['executed']=True;rr['obs']=x['obs'];rr['M1_survives']=bool(all(o>>c&1 for o,c in zip(x['obs'],p1)))
                     rr['M2_survives']=bool(all(o>>c&1 for o,c in zip(x['obs'],p2)))

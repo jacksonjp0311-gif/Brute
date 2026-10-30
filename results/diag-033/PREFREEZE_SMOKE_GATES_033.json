@@ -1,0 +1,227 @@
+{
+  "PASS": true,
+  "label": "Observed",
+  "purpose": "Pre-freeze smoke-gates test for study-033 (plan 033 process: \"pre-freeze gates test on a sealed smoke block\"; the #129",
+  "recount": {
+    "PASS": true,
+    "cases": 6,
+    "labels": {
+      "A8": {
+        "AMB": 1,
+        "ID": 4,
+        "IDU": 1,
+        "WRONG": 0
+      },
+      "A8_random": {
+        "AMB": 3,
+        "ID": 2,
+        "IDU": 1,
+        "WRONG": 0
+      },
+      "S1": {
+        "AMB": 3,
+        "ID": 2,
+        "IDU": 1,
+        "WRONG": 0
+      },
+      "S5": {
+        "AMB": 3,
+        "ID": 2,
+        "IDU": 1,
+        "WRONG": 0
+      }
+    },
+    "mismatching_cases": 0,
+    "words_checked": 19,
+    "words_unsound": 0
+  },
+  "recount_rc": 0,
+  "reference_on_smoke_scale8": {
+    "PASS": true,
+    "cases": 2,
+    "decided": 2,
+    "mismatch_count": 0,
+    "mutations": 20,
+    "not_reached": 0,
+    "of": 20,
+    "words_checked": 2
+  },
+  "reference_rc": 0,
+  "relabelled": {
+    "check_returncode": 0,
+    "check_stdout": "GATES_033 reproduces",
+    "crashed": false,
+    "gate_status": {
+      "G10": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "GAE8_headline": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "GCH8": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "GQB8": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "GS_ref": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "GTI": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (TEST_SUITE_033 missing)"
+      },
+      "G_PROC": {
+        "pass": false
+      },
+      "G_RT": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "G_recount": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      },
+      "G_sound": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+      }
+    },
+    "recount_rc": 0,
+    "reports_keys": [
+      "A8_capped_queries",
+      "A8_rounds",
+      "A8_stop",
+      "actions_used",
+      "arm_wall_mean_s",
+      "contrasts",
+      "indistinguishable_diagnosis",
+      "labels",
+      "mean_case_wall",
+      "n_min_vs_truth",
+      "query_max_s"
+    ],
+    "sealed_input_verified": true
+  },
+  "smoke_cases": [
+    [
+      "scale16",
+      9990001,
+      {
+        "A8": "IDU",
+        "A8_random": "IDU",
+        "S1": "IDU",
+        "S5": "IDU"
+      },
+      0,
+      "unknown"
+    ],
+    [
+      "scale12",
+      9990002,
+      {
+        "A8": "ID",
+        "A8_random": "AMB",
+        "S1": "AMB",
+        "S5": "AMB"
+      },
+      13,
+      "unique"
+    ],
+    [
+      "scale12",
+      9990003,
+      {
+        "A8": "AMB",
+        "A8_random": "AMB",
+        "S1": "AMB",
+        "S5": "AMB"
+      },
+      58,
+      "K_spent"
+    ],
+    [
+      "scale8",
+      9990004,
+      {
+        "A8": "ID",
+        "A8_random": "ID",
+        "S1": "ID",
+        "S5": "ID"
+      },
+      0,
+      "unique"
+    ],
+    [
+      "scale8",
+      9990005,
+      {
+        "A8": "ID",
+        "A8_random": "AMB",
+        "S1": "AMB",
+        "S5": "AMB"
+      },
+      6,
+      "unique"
+    ],
+    [
+      "control_cycle3",
+      9990006,
+      {
+        "A8": "ID",
+        "A8_random": "ID",
+        "S1": "ID",
+        "S5": "ID"
+      },
+      0,
+      "unique"
+    ]
+  ],
+  "smoke_gate_status": {
+    "G10": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "GAE8_headline": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "GCH8": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "GQB8": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "GS_ref": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "GTI": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (TEST_SUITE_033 missing)"
+    },
+    "G_PROC": {
+      "pass": false
+    },
+    "G_RT": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "G_recount": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    },
+    "G_sound": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial or not matching its seal)"
+    }
+  },
+  "smoke_sealed_input_verified": true
+}
