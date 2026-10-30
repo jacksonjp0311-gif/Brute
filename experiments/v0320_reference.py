@@ -42,7 +42,9 @@ def _trace(v,cl,acts,readings,n,k,m,B):
         for q in range(n):
             for c in range(m):
                 diff=[j for j in range(sb) if _bit(c,j,sb)!=readings[t][j]]
-                if diff:cl.append([-x[t][q],-e[q][c]]+([f[t][j] for j in diff] if B>0 else []))
+                if diff and B>0:
+                    for j in diff:cl.append([-x[t][q],-e[q][c],f[t][j]])
+                elif diff:cl.append([-x[t][q],-e[q][c]])
     for t,a in enumerate(acts):
         for q in range(n):
             for r in range(n):cl.append([-x[t][q],-d[q][a][r],x[t+1][r]])
