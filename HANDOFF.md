@@ -1,8 +1,31 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.23.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.24.0 release in progress)._
 
 ## Current version and state
+
+<!-- V0240 -->
+- **v0.24.0: RELEASE IN PROGRESS** 2026-10-30 (study BRUTE-0240-SCALE-REPLAY-027, LEAN, standing go t133s553, build authorization `e55a639`)
+  - **Run complete (Observed).** 93/93 cases, 1454.3 s of 1800 s, normal exit. 5 checkpoint snapshots were pushed. The resume-after-reboot clause was NOT approved and was not needed.
+  - **PASS:** GAPI12 (6/6 stream equal), GS_ref12 (mutation 20/20), GTI (27/27), G_PROC, G_RT, G_recount. **FAIL:** GSC_headline (b, c and e; a and d pass) and G10 (control UNKNOWNs at eps 0.02).
+  - **X (Wilson 95% CI), main block:**
+    - S1: 9/24, 1/24, 2/24 at 8/12/16 states.
+    - S2: 3/24 [0.043, 0.310], 0/24 [0, 0.138], 0/24 [0, 0.138].
+    - S2_tight (eps 0, informational): 9/12, 0/12, 0/12.
+    - U(S2, scale16) 0.590.
+  - **Recovery and soundness.**
+    - scale8 eps-0 ID: S2 1/12 [0.015, 0.354]; S2_tight 4/12 [0.138, 0.609].
+    - Clause a: 24,568 compared, 0 mismatches.
+    - False certificates: S2 0, RGB6 0, S2_tight 0, S1 3.
+  - **Diagnosis (Inferred, `results/study-027/DIAGNOSIS_027.json`).** At 12-16 states:
+    - over 99% of UNKNOWNs are not run (arm deadline);
+    - n_lo stalls below n;
+    - single support calls exceed the 10 s budget (per-case max 13-19 s on average);
+    - S2_tight (n_max = n) does not fix 12 states.
+    - The bottleneck is solver cost per step, not the search cap.
+  - **Chain:** plan `9f49ab1` -> authorization `e55a639` -> seedcheck `4e00fad` -> code + #126 `5d924b7` -> scoring `0da7e3f` -> tooling `d99a930` -> freeze `5261f4e` -> run_start `d119d25` -> run_end `0952c8f` -> seal `32eb7d9` -> recount `d817f28` -> reference `13d6af1` -> tests `fd472dd` -> api `71db876` -> gates `f8167f1` -> #127 `d66b54c` -> RELEASE.json `e118656` -> docs `448e215`.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
+  - **Next:** the v0.25.0 plan (`BRUTE_PLAN_028`) targets solver cost per step. Plan only.
 
 <!-- V0230 -->
 - **v0.23.0: RELEASED** 2026-10-30 (tag `v0.23.0` (annotated, object `1b398de`) -> `ddffd12`; main fast-forwarded `c750fef..ddffd12` (no force); https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.23.0; one fresh GitHub clone of the tag passed `verify_release_0230` and 27/27 tests). Study BRUTE-0230-SCALE-026, LEAN. **2 of 8 gated pass (GTI, G_PROC).**
