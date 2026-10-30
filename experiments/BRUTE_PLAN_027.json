@@ -1,0 +1,56 @@
+{
+  "schema": "brute.preregistration.v1",
+  "study": "BRUTE-0240-SCALE-REPLAY-027",
+  "version_under_test": "0.24.0",
+  "parent_study": "BRUTE-0230-SCALE-026 (v0.23.0; interrupted by a host reboot at 38/93 cases)",
+  "status": "preregistered (plan only; no build authorized, no code, no data)",
+  "process": "LEAN (owner card t130s540; standing go t133s553 covers building this locked version under the lean process)",
+  "question": "Does the frozen S2 exact search (brute.certify/12, method s2, unchanged from v0.23.0) meet the GSC clauses on a full, uninterrupted 93-case run on fresh seeds?",
+  "motivation": [
+    "v0.23.0 decided nothing: a host reboot stopped the run after 38 of 93 cases, and no scale8 or control case was reached (deviation #125).",
+    "On the 38 sealed cases (descriptive only), S2 finished exact on 0 of 24 scale16 cases, its unknown fraction U was 0.566, it issued 0 certificates, and the smoke showed S2 slower than S1 at 12-16 states. Clause c is unlikely to pass. v0.24.0 publishes the result either way."
+  ],
+  "design": "Same worlds, arms, horizon (176), budgets (120 s per case, 10 s per query, 8 workers, 1800 s cap), criteria a-e, G10, GAPI12, GS_ref12 and G_recount as BRUTE_PLAN_026. The S2 code and the 026 scoring scripts are reused byte-identical; only the new items below differ.",
+  "heldout_ranges": {
+    "note": "Fresh ranges, following the study-number convention (026 used 92x0001). Disjoint from every earlier plan. Drawn only after a ledgered seedcheck_027.",
+    "targets": {
+      "scale8": [
+        9310001,
+        9310012
+      ],
+      "scale12": [
+        9320001,
+        9320012
+      ],
+      "scale16": [
+        9330001,
+        9330012
+      ],
+      "control_cycle3": [
+        9340001,
+        9340006
+      ]
+    }
+  },
+  "cases": {
+    "declared_before_data": true,
+    "main": "(12+12+12+6) seeds x eps {0, 0.02} = 84",
+    "stress": "first 3 seeds of scale8/12/16 at eps 0.05 = 9",
+    "total": 93
+  },
+  "new_items": {
+    "job_order": "Cases are dispatched in the order control_cycle3, scale8, stress, scale12, scale16. The gates that need the small worlds (G10, GS_ref12, clauses b and e) then get their data first. 026 dispatched scale16 first.",
+    "durable_checkpoint": "After each case finishes, the runner appends to CHECKPOINT.jsonl and calls fsync. A host-side watcher, separate from the core API, commits and pushes a gzip snapshot of CHECKPOINT to plan/v0.24.0 every 5 minutes, so a disk revert loses at most 5 minutes of cases.",
+    "interruption_policy": "PROPOSED, NEEDS OWNER APPROVAL. It would change the standing rule 'never relaunch a live run'. A host interruption is defined as follows: the runner process is gone, no timeout fired, and uptime shows a reboot. On such an interruption the run may resume at most once. The resume is ledgered first (event resume_027) and skips the job keys in the last pushed snapshot. G_RT counts the summed active run segments against 1800 s. Without owner approval the 026 rule stands: seal partial, every data gate FAILS (INCOMPLETE_INPUT), and nothing is relaunched.",
+    "informational_arm": "S2_tight: S2 with n_max set to the family's true state count, so that n_max = n. It is reported only, not gated, and tests whether certificates are about 0 because n_max is larger than n (a smoke finding)."
+  },
+  "criteria": "identical to BRUTE_PLAN_026 criteria (GSC_headline a-e, G10, GAPI12, GS_ref12, GTI, G_PROC, G_RT, G_recount); G_PROC order: preregistration_027 < build_authorization_027 < seedcheck_027 < source_freeze_027 < run_start_027",
+  "runtime_estimate": "Inferred from the 026 partial run: mean case wall 121.9 s, 93 cases over 8 workers, about 1420-1500 s against the 1800 s cap. The margin is thin. If the seedcheck-time smoke projects more than 1700 s, the stress cases are the first to be cut, and only by a ledgered amendment before any held-out data.",
+  "what_counts_as_failure": "Any clause or gate that does not pass, including an INCOMPLETE_INPUT after an interruption. It is published as it stands.",
+  "limitations": [
+    "This is a replication of the same design, not a new method. A pass shows the 026 design holds on fresh seeds, nothing more.",
+    "The interruption policy, if approved, weakens the single-segment guarantee; G_RT then measures active time only."
+  ],
+  "brand": "charcoal and sage; no purple, neon, emoji or gold",
+  "freeze_rule": "BRUTE_SOURCE_FREEZE_027 before run_start_027; frozen and ledger-hashed files are never edited"
+}
