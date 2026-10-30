@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.27.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.27.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0270 -->
-- **v0.27.0: release in progress** 2026-10-30 (study BRUTE-0270-SYMMETRY-FREE-030, LEAN, standing go t133s553, build authorization ledger `30ccd58`)
+- **v0.27.0: RELEASED** 2026-10-30 as tag `v0.27.0` (annotated `77c5b08` -> `9cf2969`), main fast-forwarded `91f2406..9cf2969`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.27.0. A fresh clone of the tag passed restore, verify_release_0270 and run_tests_0270 (6/6 modules; ledger `fae4f59`). Released (study BRUTE-0270-SYMMETRY-FREE-030, LEAN, standing go t133s553, build authorization ledger `30ccd58`)
   - **Run complete (Observed).** 51/51 cases, 978.9 s of 1800 s, normal exit. 4 checkpoint snapshots were pushed (last `189826c`). The host interrupted the agent at 14:47 EDT, after the run had ended; nothing was rerun. The resume clause was NOT approved and was not needed.
   - **PASS (8/8):** GQB5 (S5 max query 8.52 s), GSC5_headline (a-d), G10 (6/6 controls), GS_ref (mutations 20/20), GTI (55 tests run, 54 counted, all OK), G_PROC, G_RT, G_recount. **FAIL:** none.
   - **Headline numbers (Observed).**
