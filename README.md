@@ -3,7 +3,7 @@
 </p>
 
 <p align="center"><b>Exact geometric reasoning about hidden worlds. Brute keeps every explanation the evidence still allows, and it certifies an answer only when all of them agree. Otherwise it says "I don't know."</b><br>
-<sub>Brute v0.25.0 · built on BGR v0.90.0 (BITWORK — Geometric Reasoning) · research preview · not general intelligence</sub></p>
+<sub>Brute v0.26.0 · built on BGR v0.90.0 (BITWORK — Geometric Reasoning) · research preview · not general intelligence</sub></p>
 
 ---
 
@@ -17,6 +17,7 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 | **The SAT engine makes the same decision as brute-force enumeration on all 25,344 steps** (v0.5.0, GX1), and the constraint region matches enumeration on 1.25 M items (v0.4.0, GR1/GR1b) | `results/study-007/`, `results/study-006/` | *Observed* |
 | **Second-encoding cross-check, 288/288 breadth cases: 0 mismatching traces in 1,358,721 SAT queries, 0 unknowns, 0 witness failures.** This was an incremental CaDiCaL re-run of the v0.6.0 cross-check: 310 s on 4 workers, against ~8.8 h for 46 cases before. It is post-release verification and does not change the frozen GX2′ FAIL | branch [`verify/xcheck-incremental`](https://github.com/jacksonjp0311-gif/Brute/tree/verify/xcheck-incremental), `results/verify-xcheck-incremental/` | *Observed* |
 | **v0.8.0 ran every pre-registered stream inside a hard 2 h cap** with an independent watchdog: the whole study finished in 1,970 s (cap 7,200 s), the second implementation agreed on 648/648 + 144/144 mandatory traces and caught 20/20 injected mutations, and in-cap test isolation passed (294 tests). The kill drill stopped 8 process groups in 0.239 s | `results/study-010/GATES_010.json` (G11, GX2_010, GTI, G_RT ii/iii) | *Observed* |
+| **v0.26.0: throughput changes on the S1 search do not reach the bar (GSC4 FAIL on clauses b, c; GTP and GQB FAIL; 7 of 10 gated; LEAN process).** All 51 cases sealed in 1346 s. The new search S4 (S1 plus one reused solver per step, witness reuse, batched queries, 10 s cap) issued 0 false certificates and agreed with S1 on 19,392 of 19,392 comparable queries. At 12 states its unknown fraction was 0.161 [0.095, 0.230] against S1 0.180 (paired difference -0.019 [-0.035, -0.006]; bar -0.08). It finished exact on 2/12 scale12 cases (bar 5/12) and was 1.06x S1 throughput (median; bar 2x). A descriptive variant without symmetry clauses reached U 0.079 and 6/12 at 12 states | `results/study-029/GATES_029.json` | *Observed* |
 | **v0.25.0: a hard per-query budget holds, but it does not make exact search faster (GSC3 FAIL on clauses b, c; 8 of 9 gated; LEAN process).** All 51 cases sealed in 1054 s. The new search S3 (two-solver portfolio, capped deepening) held every single query to 10.03 s at most (S2 reached 18.0 s), issued 0 false certificates on main and stress, and agreed with S2 on 15,380 of 15,380 comparable queries. But at 12 states its unknown fraction was 0.398 [0.333, 0.450] against S2 0.399 (paired difference -0.001 [-0.020, 0.019]; bar -0.15), and it finished exact on 0/12 scale12 cases. Over 98% of its unknowns at 12-16 states are queries never reached before the arm deadline | `results/study-028/GATES_028.json` | *Observed* |
 | **v0.24.0: the full scale replay ran to completion and the exact search S2 does not scale (GSC FAIL on clauses b, c, e; 6 of 8 gated; LEAN process).** All 93 cases sealed in 1454 s. S2 issued 0 false certificates and agreed with exact truth on 24,568 of 24,568 comparable queries, but finished exact on only 3/24 scale8 cases [0.04, 0.31] and 0/24 at 12 and 16 states (U at 16 states 0.590). An informational variant capped at the true state count (S2_tight) finished 9/12 scale8 eps-0 cases and identified 4/12, but still 0/12 at 12 and 16 states. Over 99% of the unknowns at 12-16 states are queries never reached before the arm deadline, so the bottleneck is solver cost per step, not the query budget | `results/study-027/GATES_027.json`, `results/study-027/DIAGNOSIS_027.json` | *Observed* (diagnosis *Inferred*) |
 | **v0.23.0: the scale study was cut short by a host reboot, so nothing was decided (GSC FAIL, INCOMPLETE_INPUT; 2 of 8 gated; LEAN process).** 38 of 93 cases were sealed (all scale16 main, 8 scale12 eps 0.02, 6 stress). On those, descriptively: the new exact search S2 issued 0 false certificates (exact recount), agreed with the reference on 8771 of 8771 comparable queries, but finished exact on 0 of 24 scale16 cases (unknown fraction 0.566). No scale8 or control case ran. The run was not relaunched (standing rule) | `results/study-026/GATES_026.json`, deviation #125 | *Observed* |
@@ -42,7 +43,8 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 
 | Version | Study | Gates | What it added | Key result |
 | --- | --- | --- | --- | --- |
-| **v0.25.0** (current) | BRUTE-0250-SOLVER-COST-028, LEAN: 51 cases on 8-16 state worlds, 30 min cap, all sealed | **8 / 9** | exact search S3 (hard per-query budget, solver portfolio), API brute.certify/13 (s3) | GSC3 FAIL (b, c): S3 max query 10.03 s, 0 false certificates; U(S3,scale12) 0.398 vs S2 0.399; X(S3) 1/12, 0/12, 0/12 at 8/12/16 states *Observed* |
+| **v0.26.0** (current) | BRUTE-0260-QUERY-THROUGHPUT-029, LEAN: 51 cases on 8-16 state worlds, 30 min cap, all sealed | **7 / 10** | exact search S4 (S1 plus throughput changes), API brute.certify/14 (s4) | GSC4 FAIL (b, c), GTP FAIL, GQB FAIL: S4 0 false certificates; U(S4,scale12) 0.161 vs S1 0.180; X(S4) 9/12, 2/12, 0/12 at 8/12/16 states *Observed* |
+| **v0.25.0** | BRUTE-0250-SOLVER-COST-028, LEAN: 51 cases on 8-16 state worlds, 30 min cap, all sealed | **8 / 9** | exact search S3 (hard per-query budget, solver portfolio), API brute.certify/13 (s3) | GSC3 FAIL (b, c): S3 max query 10.03 s, 0 false certificates; U(S3,scale12) 0.398 vs S2 0.399; X(S3) 1/12, 0/12, 0/12 at 8/12/16 states *Observed* |
 | **v0.24.0** | BRUTE-0240-SCALE-REPLAY-027, LEAN: 93 cases on 8-16 state worlds, 30 min cap, all sealed | **6 / 8** | S2_tight (informational), durable pushed checkpoints | GSC FAIL (b, c, e): S2 0 false certificates; X(S2) 3/24, 0/24, 0/24 at 8/12/16 states *Observed* |
 | **v0.23.0** | BRUTE-0230-SCALE-026, LEAN: 93 planned cases on 8-16 state worlds, 30 min cap; 38 sealed after a host reboot | **2 / 8** | exact search S2, API brute.certify/12 (s2) | GSC FAIL (INCOMPLETE_INPUT): S2 0 false certificates, clause a 0 mismatches in 8771, X(S2,scale16) 0/24 *Observed* |
 | **v0.22.0** | BRUTE-0220-BETTING-CS-025, LEAN: 60 main + 30 stress held-out cases on 88-step traces, 30 min cap | **11 / 12** | betting confidence sequence RGB6, API brute.certify/11 (betting default; stitched = /10) | GBC FAIL: 0 false in 40 noisy + 30 stress cases; no level activated; C_late 0.315 [0.226, 0.413], dC_late vs RGL4 -0.005 (bar 0.04), vs RGNB4 -0.102 *Observed* |
@@ -110,6 +112,7 @@ Details: [`docs/ROADMAP_TO_GI.md`](docs/ROADMAP_TO_GI.md) (gated steps toward ge
 git clone https://github.com/jacksonjp0311-gif/Brute.git && cd Brute
 python -m pip install -r requirements.txt
 for k in 004 005 006 007 008 009 010 011 012 013 014 015 016 017; do python scripts/study${k}_storage.py restore; done   # rebuild sealed traces, checked against SEAL.json
+python scripts/study029_storage.py restore && PYTHONPATH=. python scripts/verify_release_0260.py   # v0.26.0 (lean short verify)
 python scripts/study028_storage.py restore && PYTHONPATH=. python scripts/verify_release_0250b.py   # v0.25.0 (lean short verify; 0250b per #129)
 python scripts/study027_storage.py restore && PYTHONPATH=. python scripts/verify_release_0240.py   # v0.24.0 (lean short verify)
 python scripts/study026_storage.py restore && PYTHONPATH=. python scripts/verify_release_0230.py   # v0.23.0 (lean short verify)
@@ -612,6 +615,14 @@ C (frozen v0.1.1, passive, `GATES.json` G6 `C_v011_coverage_post`) for context: 
 Findings and their math: [`docs/research/DISCOVERIES.md`](docs/research/DISCOVERIES.md) D11–D16. Study-005 deviations: [`BRUTE_DEVIATIONS_005.md`](docs/research/BRUTE_DEVIATIONS_005.md).
 
 ## What Brute can't do yet
+
+New in v0.26.0:
+
+- **Exact search still does not finish most 12-state worlds within 55 s per step.** The best gated arm, S4, finished 2/12 [0.05, 0.45], and every arm finished 0/12 at 16 states. *Observed.*
+- **Throughput tricks on S1 give about 1.1x, not 2x.** These are a reused solver, witness reuse and batched queries. The measured median is 1.06x. *Observed.*
+- **Its per-query cap is not hard.** S4 reached 15.33 s against a 10 s cap at 16 states. The likely cause is an unchecked solver build or a Glucose chunk overrun. *Inferred.*
+- **It recovers no 12- or 16-state machine exactly.** ID is 0/12 for every arm. *Observed.*
+- **Dropping symmetry clauses looks much better, but it is untested as a gated claim.** S4_nosym had U 0.079 and X 6/12 at 12 states, but it was descriptive only. *Observed / Open.*
 
 New in v0.20.0:
 

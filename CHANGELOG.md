@@ -1,5 +1,37 @@
 # Brute changelog
 
+## v0.26.0: exact search S4 (S1 plus throughput changes), API brute.certify/14 (study BRUTE-0260-QUERY-THROUGHPUT-029, LEAN process)
+
+**7 of 10 gates pass (G10, GAPI14, GS_ref14, GTI, G_PROC, G_RT, G_recount). GSC4 (headline) FAILS on clauses b and c; GTP and GQB FAIL.** All 51 cases ran and were sealed (1345.9 s of 1800 s). *Observed*
+
+### Design change before data (amendment A1, *Exact*)
+
+S1 beat S2 and S3 at 8 and 12 states in v0.24.0 and v0.25.0, so S4 was built on S1, not S3. S4 = S1's encoding and first-visit symmetry plus one reused solver per step, witness reuse, batched queries and a 10 s per-query cap. The headline is against S1. A scratch diagnosis (`results/diag-029/S1_COST_029.json`) named symmetry-breaking clauses as what costs S2/S3 (and S1) the most.
+
+### Timeline (EDT, 2026-10-30)
+
+- Plan `c06bcfe`; build authorization (ledger `78336bd`, 12:59, standing go t133s553); scratch diagnosis `86856da`; amendment A1 `34ce968`; seedcheck `6bc7579`; S4 + certify/14 `e04d202`; runner `47d73a4`; scoring `89f85e6`; tooling `232e052`; pre-freeze sealed-smoke gates test `e93e3e6`; #130 `5a775b9`; source freeze `7337c11`.
+- Run start (ledger `263204d`, 13:25:43); 5 pushed checkpoint snapshots; run end `d1752d6`; seal `0fb95ef`; recount `b82ee07`; API check `448f12c`; reference `2cf72ca`; tests `f4a906f`; gates `417036b`; #131 `86c91c8`.
+
+### Results (main block, eps 0; X Wilson 95% CI, U seed-bootstrap 95% CI)
+
+| arm | X scale8 | X scale12 | X scale16 | U scale8 | U scale12 | U scale16 | TP scale12 (answers/s) |
+|---|---|---|---|---|---|---|---|
+| S4 | 9/12 [0.468, 0.911] | 2/12 [0.047, 0.448] | 0/12 [0, 0.242] | 0.038 [0, 0.086] | 0.161 [0.095, 0.230] | 0.377 [0.312, 0.431] | 8.73 |
+| S1 | 9/12 [0.468, 0.911] | 1/12 [0.015, 0.354] | 0/12 [0, 0.242] | 0.040 [0, 0.086] | 0.180 [0.112, 0.246] | 0.396 [0.339, 0.443] | 7.76 |
+| S3 (frozen control) | 2/12 [0.047, 0.448] | 0/12 [0, 0.242] | 0/12 [0, 0.242] | 0.124 [0.052, 0.210] | 0.439 [0.387, 0.484] | 0.531 [0.503, 0.555] | 5.39 |
+| S4_nowit (ablation) | 9/12 | 1/12 | 0/12 | 0.048 | 0.193 [0.125, 0.259] | 0.393 | 7.83 |
+| S4_nosym (descriptive) | 12/12 [0.758, 1] | 6/12 [0.254, 0.746] | 0/12 [0, 0.242] | 0.000 | 0.079 [0.020, 0.149] | 0.327 [0.263, 0.382] | 13.18 |
+
+- GSC4 b: paired U(S4) - U(S1) at 12 states -0.019, CI [-0.035, -0.006] (bar <= -0.08 with CI below 0): FAIL. c: X(S4, scale12) 2/12 (bar 5/12): FAIL. a: 0 mismatches (19,392 vs S1, 15,838 vs S3; 17,470 truth-checked). d: F(S4) 0 (main and stress): PASS.
+- GTP: TP(S4)/TP(S1) at 12 states, median 1.056, mean 1.119 [1.054, 1.199] (bar median 2, CI lower 1.5): FAIL.
+- GQB: S4 max query 15.33 s on scale16 9530003 (also 12.27 s and 11.07 s on two other scale16 cases; bound 10.5): FAIL.
+- False certificates (exact recount): 0 for every arm, main and stress (S1 included).
+- Recovery (ID, eps 0): scale8 3/12 [0.089, 0.532] for S4, S1, S4_nowit and S4_nosym, 1/12 for S3; 0/12 at 12 and 16 states for every arm; controls 6/6.
+- Ablations: witness reuse lowers U at 12 states by 0.032 [0.020, 0.045] (S4 vs S4_nowit). Removing symmetry clauses lowers it by 0.082 [0.046, 0.118] (S4_nosym vs S4), *Observed*, descriptive.
+
+Deviations #130 (pre-run) and #131 (post-run). Verify: `python scripts/study029_storage.py restore && PYTHONPATH=. python scripts/verify_release_0260.py`.
+
 ## v0.25.0: exact search S3 with a hard per-query budget, API brute.certify/13 (study BRUTE-0250-SOLVER-COST-028, LEAN process)
 
 **8 of 9 gates pass (GQB, G10, GAPI13, GS_ref13, GTI, G_PROC, G_RT, G_recount). GSC3 (headline) FAILS on clauses b and c.** All 51 cases ran and were sealed (1053.8 s of 1800 s). *Observed*
