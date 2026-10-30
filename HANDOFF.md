@@ -1,8 +1,23 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.25.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.26.0 release in progress)._
 
 ## Current version and state
+
+<!-- V0260 -->
+- **v0.26.0: release in progress** 2026-10-30 (study BRUTE-0260-QUERY-THROUGHPUT-029, LEAN, standing go t133s553, build authorization ledger `78336bd`, amendment A1 `34ce968`)
+  - **Run complete (Observed).** 51/51 cases, 1345.9 s of 1800 s, normal exit. 5 checkpoint snapshots were pushed. The resume clause was NOT approved and was not needed.
+  - **PASS:** G10, GAPI14 (certify/14; stream 4/4), GS_ref14 (mutations 20/20), GTI (58 tests run, all OK), G_PROC, G_RT, G_recount. **FAIL:** GSC4_headline (b and c; a and d pass), GTP, GQB.
+  - **Headline numbers (Observed).**
+    - U at 12 states: S4 0.161 [0.095, 0.230], S1 0.180 [0.112, 0.246], S3 0.439. Paired S4 - S1 -0.019 [-0.035, -0.006] (bar -0.08).
+    - X at 12 states: S4 2/12, S1 1/12, S3 0/12.
+    - Throughput S4/S1: median 1.056 (bar 2).
+    - S4 max query 15.33 s (bound 10.5).
+    - F: 0 for all arms.
+  - **Diagnosis (Observed, descriptive).** Symmetry clauses are the main cost: S4_nosym had U 0.079 and X 6/12 at 12 states, with F 0.
+  - **Deviations:** #130 (pre-run) and #131 (post-run).
+  - **Chain:** plan `c06bcfe` -> authorization `78336bd` -> diag `86856da` -> A1 `34ce968` -> seedcheck `6bc7579` -> S4 `e04d202` -> runner `47d73a4` -> scoring `89f85e6` -> tooling `232e052` -> pre-freeze test `e93e3e6` -> #130 `5a775b9` -> freeze `7337c11` -> run_start `263204d` -> run_end `d1752d6` -> seal `0fb95ef` -> recount `b82ee07` -> api `448f12c` -> reference `2cf72ca` -> tests `f4a906f` -> gates `417036b` -> #131 `86c91c8` -> RELEASE.json `faedde7` -> docs `701fbbd`.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
 
 <!-- V0250 -->
 - **v0.25.0: RELEASED** 2026-10-30. Tag object `6dd318c` points to `bfda373`; main fast-forwarded `30a2c02..bfda373`; https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.25.0. Fresh-clone verify passed (verify_release_0250b, 43/43 tests) (study BRUTE-0250-SOLVER-COST-028, LEAN, standing go t133s553, build authorization `13e570c`)
