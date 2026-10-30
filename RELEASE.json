@@ -1,61 +1,44 @@
 {
-  "version": "0.22.0",
+  "version": "0.23.0",
   "name": "Brute",
   "forked_from": "BGR v0.90.0 (tag bgr-v0.90.0-fork)",
-  "mission": "general intelligence research toward a geometric reasoning system; this release tests a BETTING (mixture e-process) confidence sequence: RGB6 (brute.certify/11, method betting), three levels with sticky activation, against the frozen RGL5 (certify/10), RGL4 (certify/9), the planned-B margin RGNB4 and the oracle RGN4_or, on 88-step traces, LEAN process (A2): 60 main + 30 stress cases, 30 min cap; not general intelligence",
-  "study": "BRUTE-0220-BETTING-CS-025",
-  "preregistration": "experiments/BRUTE_PLAN_025.json",
-  "preregistration_commit": "4f6c4dd",
-  "amendments": [
-    "experiments/BRUTE_PLAN_025_A1.json (1f49928; strict stress gate, card t128s531)",
-    "experiments/BRUTE_PLAN_025_A2.json (15cc245; LEAN process, card t130s540, 2026-10-29 23:45 EDT)"
-  ],
-  "process": "LEAN (A2): plan/amendment locked before data; exact false-certificate recount; strict stress gate; failures published; one fresh-clone short verify plus tests. Dropped: kill/resume drills, host-pause probe, double fresh-clone check, separate scoring-freeze wait, G12, G_HB",
-  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_025.json",
-  "source_freeze_commit": "d1390e5",
-  "release_freeze": "experiments/BRUTE_RELEASE_FREEZE_0220.json + experiments/BRUTE_RELEASE_FREEZE_0220_R1.json (#122)",
-  "seal_commit": "72b52e8",
-  "gates_commit": "0a98405",
-  "run_start": "2026-10-29T23:58:50-04:00 (RUN_T0; ledger run_start_025); exit 0 at 2026-10-30T00:22:55-04:00; elapsed 1365.8 s of the 1800 s cap",
-  "results_dir": "results/study-025",
+  "mission": "general intelligence research toward a geometric reasoning system; this release tests scaling exact certification to 8-16 state worlds with a smarter exact search S2 (brute.certify/12, method s2) against S1 and RGB6, LEAN process: 93 cases, 30 min cap; not general intelligence",
+  "study": "BRUTE-0230-SCALE-026",
+  "preregistration": "experiments/BRUTE_PLAN_026.json",
+  "preregistration_commit": "7a6acdd",
+  "process": "LEAN (t130s540, standing go t133s553): plan locked before data; exact false-certificate recount; strict stress gate; failures published; one fresh-clone short verify plus tests",
+  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_026.json",
+  "source_freeze_commit": "9837d1d",
+  "release_freeze": "experiments/BRUTE_RELEASE_FREEZE_0230.json",
+  "release_freeze_commit": "66d296e",
+  "run_start": "2026-10-30T10:12:09-04:00 (ledger bc30b93)",
+  "run_interrupted": "host reboot about 10:22 EDT (ledger e2ed8db); not relaunched",
+  "seal_commit": "fe7b757",
+  "gates_commit": "965879b",
+  "results_dir": "results/study-026",
   "case_count": {
-    "main": 60,
-    "noisy_main": 40,
-    "eps2_main": 20,
-    "stress": 30,
-    "total": 90
+    "sealed": 38,
+    "expected": 93,
+    "complete": false
   },
-  "gates": "results/study-025/GATES_025.json",
   "gates_passed": [
-    "G10",
-    "G13",
-    "GAPI11",
-    "GAS_frozen_control",
-    "GBC_lemma",
-    "GS_a11",
-    "GS_ref11",
     "GTI",
-    "G_PROC",
+    "G_PROC"
+  ],
+  "gates_failed": [
+    "G10",
+    "GAPI12",
+    "GSC_headline",
+    "GS_ref12",
     "G_RT",
     "G_recount"
   ],
-  "gates_failed": [
-    "GBC_headline"
+  "headline": "GSC FAIL (INCOMPLETE_INPUT): the run was cut by a host reboot after 38 of 93 cases; on those 38 (descriptive, not gating) S2 issued 0 false certificates, clause a 8771 compared / 0 mismatches, X(S2,scale16)=0/24, U(S2,scale16)=0.566, no scale8 or control case was reached",
+  "api": "brute.certify/12 (Certifier12, method s2 new; certify/11 and earlier unchanged; probe and source-scan clauses pass, stream check has no case)",
+  "deviations": [
+    "docs/research/BRUTE_DEVIATIONS_026_123.md",
+    "docs/research/BRUTE_DEVIATIONS_026_124.md",
+    "docs/research/BRUTE_DEVIATIONS_026_125.md"
   ],
-  "api": "brute.certify/11",
-  "gate_summary": "11 of 12 gated pass; GBC_headline fails (clauses c, d)",
-  "headline": "GBC FAIL (clauses a, b, e pass; c, d fail). RGB6 is sound: 0 false certificates on 40 noisy main cases and on all 30 stress cases at eps 0.05 (Exact recount; CP95 upper 0.0722 reported, not gated). But no betting level ever activated (0 of 90 cases reach K >= 800), so RGB6 runs as its level-0 bound: C_late(eps 0.02) RGB6 0.315 [0.226, 0.413] vs RGL4 0.320 [0.228, 0.420], RGL5 0.332 [0.239, 0.436], RGNB4 0.418 [0.289, 0.551], oracle RGN4_or 0.806 [0.709, 0.893]. dC_late RGB6-RGL4 -0.0045 [-0.0108, 0.0] (bar mean >= 0.04, CI lower > 0); RGB6-RGNB4 -0.102 [-0.195, -0.015] (bar CI lower > -0.06). C_early28 RGB6 0.0027 [0.0, 0.0071] = RGL4; oracle 0.026.",
-  "stress": "R_stress (eps 0.05): false certificates RGB6 0, RGL5 0, RGN4_or 0, RGL4 1 (1 case, ood4 9140009), RG4 31. C_late stress RGB6 0.401 [0.308, 0.495], RGL4 0.424, RGL5 0.476, oracle 0.708.",
-  "embeddable_api": "brute/api/certify11.py, interface brute.certify/11 (new; method betting default; stitched = certify10, lr = certify9); brute.certify/10 ... /1 unchanged (GAPI11 PASS).",
-  "second_implementation": "experiments/v0220_reference.py; GS_ref11 PASS (90 of 90 audited, 0 mismatching; mutation 20/20 detected, 0 false flags); same author, not an independent audit",
-  "deviations": "docs/research/BRUTE_DEVIATIONS_025_119.md, _120.md (pre-run), _121.md (api_check t0 bug fixed in api_check_025_r1.py, before gates), _122.md (release verifier key bug fixed in verify_release_0220_r1.py)",
-  "release_gates": {
-    "fresh_clone": "one fresh GitHub clone: verify_release_0220 short + tests (docs/research/v0.22.0/FRESH_CLONE_VERIFY_0220.json)"
-  },
-  "language_adapter": "template-only, grounded in brute.api responses; no language model connected",
-  "baseline": "baseline/IDENTITY.json (zip not included in the fork)",
-  "default_policy": "unchanged: v0.5.0 rule (Y1k, LU-R); RGB6 and the other arms are research arms and the brute.certify/11 API, not the default learner",
-  "no_workflows": "no .github directory and no GitHub Actions workflows in this repository",
-  "other_projects_modified": false,
-  "verifier": "PYTHONPATH=. python scripts/verify_release_0220_r1.py (the frozen verify_release_0220 fails on the COMMIT_ORDER key, #122)"
+  "verify": "python scripts/study026_storage.py restore && PYTHONPATH=. python scripts/verify_release_0230.py"
 }
