@@ -1,11 +1,25 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.29.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.30.0 release in progress)._
 
 ## Current version and state
 
+<!-- V0300 -->
+- **v0.30.0: release in progress** 2026-10-30 on `plan/v0.30.0` (BRUTE_PLAN_033, ACTIVE EXPERIMENTS; LEAN; STANDING GO t133s553, build authorization ledger `cf62a8c`).
+  - **Run complete (Observed).** 36/36 cases, 116.0 s of 1800 s, normal exit, run once. 1 checkpoint snapshot was pushed (`4b67a3b`). Nothing was relaunched. The resume clause was NOT approved and was not needed. The box clock matched GitHub's Date header (0 s at 17:09:41 EDT).
+  - **PASS (9/10):** GCH8, G_sound, G10, GS_ref, GQB8 (max query 10.24 s), GTI (4 modules, 27 tests), G_PROC, G_RT, G_recount. **FAIL:** GAE8_headline (a: WRONG 5; c: ID 5/12; b and d pass).
+  - **Headline numbers (Observed).**
+    - 12 states: A8 ID 5/12 [0.19, 0.68], AMB 3, WRONG 4, IDU 0; A8_random, S5 and S1 ID 0/12, AMB 12/12.
+    - Paired ID(A8) - ID(S5) +0.417 [0.167, 0.667]; ID(A8) - ID(A8_random) +0.417 [0.167, 0.667].
+    - A8 extra actions at 12 states: mean 17.4 (11.2 on ID cases), max 38 of K = 64.
+    - Separation soundness: 109 words re-simulated, 0 unsound; truth consistent on every round.
+  - **Mechanism (Inferred).** Every WRONG stopped 'unique' below the truth's size (uniqueness at n_min is not identification). All 8 'indistinguishable' stops are same_future (start-state ambiguity).
+  - **Deviations:** #138 (pre-run) and #139 (post-run).
+  - **Chain:** plan `af07e35` -> authorization `cf62a8c` -> seedcheck `0e8bb67` -> A8 `fa0c690` -> runner `8661d42` -> recount/reference `51317f4` -> gates `1b7c264` -> tooling `23c033a` -> release tooling `c3e6f05` -> smoke fix and pre-freeze test `8b23acf` -> #138 `ac26d3c` -> freeze `09afb81` -> run start `9970615` -> seal `9b50062` -> gates `b3d604b` -> #139 `2c5f225` -> RELEASE.json `bfc65f0` -> docs `28cc77d`.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
+
 <!-- V0290 -->
-- **v0.29.0: RELEASED** 2026-10-30 as tag `v0.29.0` (`4429c6e`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.29.0). main was fast-forwarded. A fresh clone of the tag restored, verified and passed 5/5 test modules on branch `plan/v0.29.0` (study BRUTE-0290-ROBUST-PERCEPTION-032, LEAN, standing go t133s553, build authorization ledger `7d4242f`)
+- **v0.29.0: RELEASED** (previous) 2026-10-30 as tag `v0.29.0` (`4429c6e`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.29.0). main was fast-forwarded. A fresh clone of the tag restored, verified and passed 5/5 test modules on branch `plan/v0.29.0` (study BRUTE-0290-ROBUST-PERCEPTION-032, LEAN, standing go t133s553, build authorization ledger `7d4242f`)
   - **Run complete (Observed).** 48/48 cases, 1246.3 s of 1800 s, normal exit. 5 checkpoint snapshots were pushed (last `0ec1f9b`). Nothing was relaunched. The resume clause was NOT approved and was not needed. The box clock was checked against the GitHub Date header 10 times and did not stall (#137 item 3).
   - **PASS (6/9):** GQB7 (S7 max query 9.35 s), GS_ref (0 mismatches, mutations 20/20), GTI (5/5 modules), G_PROC, G_RT, G_recount. **FAIL:** GRP7_headline (d; a, b, c and e pass), GNR7, G10.
   - **Headline numbers (Observed).**
