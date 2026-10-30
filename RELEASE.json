@@ -1,44 +1,44 @@
 {
-  "version": "0.23.0",
+  "version": "0.24.0",
   "name": "Brute",
   "forked_from": "BGR v0.90.0 (tag bgr-v0.90.0-fork)",
-  "mission": "general intelligence research toward a geometric reasoning system; this release tests scaling exact certification to 8-16 state worlds with a smarter exact search S2 (brute.certify/12, method s2) against S1 and RGB6, LEAN process: 93 cases, 30 min cap; not general intelligence",
-  "study": "BRUTE-0230-SCALE-026",
-  "preregistration": "experiments/BRUTE_PLAN_026.json",
-  "preregistration_commit": "7a6acdd",
-  "process": "LEAN (t130s540, standing go t133s553): plan locked before data; exact false-certificate recount; strict stress gate; failures published; one fresh-clone short verify plus tests",
-  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_026.json",
-  "source_freeze_commit": "9837d1d",
-  "release_freeze": "experiments/BRUTE_RELEASE_FREEZE_0230.json",
-  "release_freeze_commit": "66d296e",
-  "run_start": "2026-10-30T10:12:09-04:00 (ledger bc30b93)",
-  "run_interrupted": "host reboot about 10:22 EDT (ledger e2ed8db); not relaunched",
-  "seal_commit": "fe7b757",
-  "gates_commit": "965879b",
-  "results_dir": "results/study-026",
+  "mission": "general intelligence research toward a geometric reasoning system; this release replays the v0.23.0 scale study in full (8-16 state worlds; exact search S2 vs S1 and RGB6, plus an informational S2_tight with n_max = true n), LEAN process: 93 cases, 30 min cap; not general intelligence",
+  "study": "BRUTE-0240-SCALE-REPLAY-027",
+  "preregistration": "experiments/BRUTE_PLAN_027.json",
+  "preregistration_commit": "9f49ab1",
+  "process": "LEAN (t130s540, standing go t133s553, build authorization e55a639): plan locked before data; exact false-certificate recount; strict stress gate; failures published; one fresh-clone short verify plus tests",
+  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_027.json",
+  "source_freeze_commit": "5261f4e",
+  "release_freeze": "none: release tooling is inside the source freeze (deviation #126 item 8)",
+  "run_start": "about 10:55:50 EDT 2026-10-30 (ledger d119d25)",
+  "run_end": "complete 93/93, 1454.3 s of 1800 s, normal exit (ledger 0952c8f); 5 checkpoint snapshots pushed; resume clause not approved and not needed",
+  "seal_commit": "32eb7d9",
+  "gates_commit": "f8167f1",
+  "results_dir": "results/study-027",
   "case_count": {
-    "sealed": 38,
+    "sealed": 93,
     "expected": 93,
-    "complete": false
+    "complete": true
   },
   "gates_passed": [
-    "GTI",
-    "G_PROC"
-  ],
-  "gates_failed": [
-    "G10",
     "GAPI12",
-    "GSC_headline",
     "GS_ref12",
+    "GTI",
+    "G_PROC",
     "G_RT",
     "G_recount"
   ],
-  "headline": "GSC FAIL (INCOMPLETE_INPUT): the run was cut by a host reboot after 38 of 93 cases; on those 38 (descriptive, not gating) S2 issued 0 false certificates, clause a 8771 compared / 0 mismatches, X(S2,scale16)=0/24, U(S2,scale16)=0.566, no scale8 or control case was reached",
-  "api": "brute.certify/12 (Certifier12, method s2 new; certify/11 and earlier unchanged; probe and source-scan clauses pass, stream check has no case)",
+  "gates_failed": [
+    "G10",
+    "GSC_headline"
+  ],
+  "headline": "GSC FAIL on clauses b, c, e (a and d pass): S2 0 false certificates, clause a 24568 compared / 0 mismatches; X(S2,scale8)=3/24 [0.043,0.310], X(S2,scale12)=0/24, X(S2,scale16)=0/24, U(S2,scale16)=0.590; scale8 eps-0 ID 1/12 [0.015,0.354]. Informational S2_tight (n_max = n) on eps 0: scale8 X 9/12, ID 4/12, 3043 certificates; scale12 and scale16 X 0/12. UNKNOWNs at 12-16 are >99% not-run (arm deadline), not solver UNKNOWN",
+  "api": "brute.certify/12 (unchanged since v0.23.0; certify/11 and earlier unchanged; stream check 6/6 equal)",
   "deviations": [
     "docs/research/BRUTE_DEVIATIONS_026_123.md",
     "docs/research/BRUTE_DEVIATIONS_026_124.md",
-    "docs/research/BRUTE_DEVIATIONS_026_125.md"
+    "docs/research/BRUTE_DEVIATIONS_027_126.md",
+    "docs/research/BRUTE_DEVIATIONS_027_127.md"
   ],
-  "verify": "python scripts/study026_storage.py restore && PYTHONPATH=. python scripts/verify_release_0230.py"
+  "verify": "python scripts/study027_storage.py restore && PYTHONPATH=. python scripts/verify_release_0240.py"
 }
