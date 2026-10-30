@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.24.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.24.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0240 -->
-- **v0.24.0: RELEASE IN PROGRESS** 2026-10-30 (study BRUTE-0240-SCALE-REPLAY-027, LEAN, standing go t133s553, build authorization `e55a639`)
+- **v0.24.0: RELEASED** 2026-10-30 (tag `v0.24.0` (annotated, object `f5b7655`) -> `03f4e3f`; main fast-forwarded `7746fa1..03f4e3f` (no force); https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.24.0; one fresh GitHub clone of the tag passed restore + verify_release_0240 + 27 unit tests; study BRUTE-0240-SCALE-REPLAY-027, LEAN, standing go t133s553, build authorization `e55a639`)
   - **Run complete (Observed).** 93/93 cases, 1454.3 s of 1800 s, normal exit. 5 checkpoint snapshots were pushed. The resume-after-reboot clause was NOT approved and was not needed.
   - **PASS:** GAPI12 (6/6 stream equal), GS_ref12 (mutation 20/20), GTI (27/27), G_PROC, G_RT, G_recount. **FAIL:** GSC_headline (b, c and e; a and d pass) and G10 (control UNKNOWNs at eps 0.02).
   - **X (Wilson 95% CI), main block:**

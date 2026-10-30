@@ -1,0 +1,25 @@
+{
+  "release": "v0.24.0",
+  "tag_object": "f5b7655",
+  "tag_commit": "03f4e3f",
+  "clone": "fresh GitHub clone of tag v0.24.0 in /tmp/s28/fc",
+  "restore": true,
+  "verify_release_0240": {
+    "passed": true,
+    "commit_chain": 9,
+    "gates_check": "GATES_027 reproduces",
+    "manifest": true,
+    "source_freeze": "ok"
+  },
+  "unittest": {
+    "modules": [
+      "tests.test_certify12_0230",
+      "tests.test_release_0240",
+      "tests.test_scalesearch_0230",
+      "tests.test_scripts_027"
+    ],
+    "tests": 27,
+    "result": "OK"
+  },
+  "release_url": "https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.24.0"
+}
