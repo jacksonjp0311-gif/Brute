@@ -1,5 +1,31 @@
 # Brute changelog
 
+## v0.25.0: exact search S3 with a hard per-query budget, API brute.certify/13 (study BRUTE-0250-SOLVER-COST-028, LEAN process)
+
+**8 of 9 gates pass (GQB, G10, GAPI13, GS_ref13, GTI, G_PROC, G_RT, G_recount). GSC3 (headline) FAILS on clauses b and c.** All 51 cases ran and were sealed (1053.8 s of 1800 s). *Observed*
+
+### Timeline (EDT, 2026-10-30)
+
+- Plan `914ce05` (11:47); build authorization `13e570c` (11:48, standing go t133s553; resume-after-reboot clause NOT approved); scratch S2 ablation `bd587ab`; seedcheck `d930593`; S3 portfolio selection `e5dc91f`; certify/13 + tests `946309d`; runner `246a591`; scoring `48e3cf3`; tooling `4c8add6`; #128 `32495af`, `d9ad217`; source freeze `fb84e6a`.
+- Run start `c215ed5` (12:32:46); 4 pushed checkpoint snapshots; run end `b781e55`; seal `86ae1a2`; recount `679ab9c`; reference `80adbd6`; API check `9214a43`; tests `10ec8ac`; gates `1b13aed` (scored by the addendum make_gates_028b, #129); #129 `ea5b81a`.
+
+### Results (main block, eps 0; X Wilson 95% CI, U seed-bootstrap 95% CI)
+
+| arm | X scale8 | X scale12 | X scale16 | U scale8 | U scale12 | U scale16 | max query s (8/12/16) |
+|---|---|---|---|---|---|---|---|
+| S3 | 1/12 [0.015, 0.354] | 0/12 [0, 0.242] | 0/12 [0, 0.242] | 0.135 [0.058, 0.216] | 0.398 [0.333, 0.450] | 0.554 [0.524, 0.583] | 10.03 / 10.01 / 10.01 |
+| S2 | 3/12 [0.089, 0.532] | 0/12 [0, 0.242] | 0/12 [0, 0.242] | 0.158 [0.086, 0.229] | 0.399 [0.315, 0.465] | 0.559 [0.525, 0.590] | 18.00 / 16.53 / 17.61 |
+| S1 | 7/12 [0.320, 0.807] | 3/12 [0.089, 0.532] | 0/12 [0, 0.242] | 0.067 [0.019, 0.126] | 0.158 [0.097, 0.218] | 0.412 [0.354, 0.466] | 8.76 / 11.14 / 26.33 |
+| S3_tight (informational) | 5/12 | 0/12 | 0/12 | 0.392 | 0.610 | 0.588 | 10.58 / 10.00 / 10.00 |
+
+- GSC3 b: paired U(S3) - U(S2) at 12 states -0.0011, CI [-0.0199, 0.0193] (bar <= -0.15 with CI below 0): FAIL. c: X(S3, scale12) 0/12 (bar 3/12): FAIL.
+- Clause a: S3 vs S2 15,380 compared, vs S1 16,043, 0 mismatches; 14,234 exact S3 supports contain the true next code. False certificates (exact recount): S3 0, S3_tight 0, S2 0 (main and stress); S1 3 (stress, eps 0.05; not gated).
+- Controls: S3 0 UNKNOWN on 6/6 (G10 PASS); S2 2 solver UNKNOWNs.
+- Recovery (ID, eps 0): scale8 S3 3/12 [0.089, 0.532], S2 1/12, S3_tight 2/12; 0/12 at 12 and 16 states for every exact arm; controls 6/6.
+- Diagnosis (*Inferred*): S3's unknowns at 12-16 states are >98% not-run queries; S3 spends ~52 s of its 55 s arm budget in support solves at 12-16 states; capping each query removed the overruns (S3 observe max 2.2 s vs S2 46.4 s) but did not raise steps per second. The bottleneck is the number and cost of support queries per step, not single-query overruns.
+
+Deviations #123, #124, #126, #128 (pre-run) and #129 (post-run: frozen make_gates_028 KeyError on wall-clock fields, fixed by addendum). Verify: `python scripts/study028_storage.py restore && PYTHONPATH=. python scripts/verify_release_0250b.py`.
+
 ## v0.24.0: full replay of the 8-16 state scale study, informational S2_tight (study BRUTE-0240-SCALE-REPLAY-027, LEAN process)
 
 **6 of 8 gates pass (GAPI12, GS_ref12, GTI, G_PROC, G_RT, G_recount). GSC (headline) FAILS on clauses b, c and e; G10 FAILS.** All 93 cases ran and were sealed (1454.3 s of 1800 s). *Observed*
