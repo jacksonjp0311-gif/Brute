@@ -1,27 +1,27 @@
 {
-  "version": "0.28.0",
+  "version": "0.29.0",
   "name": "Brute",
   "forked_from": "BGR v0.90.0 (tag bgr-v0.90.0-fork)",
-  "mission": "general intelligence research toward a geometric reasoning system; this release tests whether an incremental solver with query ordering (S6) finishes worlds at 16 states, and whether a trace-only probe identifies the machine at 12 states; LEAN process: 54 cases, 30 min cap; not general intelligence",
-  "study": "BRUTE-0280-SIXTEEN-STATE-ID-031",
-  "preregistration": "experiments/BRUTE_PLAN_031.json",
-  "preregistration_commit": "ec7bd75",
-  "process": "LEAN (standing go t133s553, build authorization ledger 4a0eb8d): plan locked before data; seedcheck before any seed (ledger 1ff404d); scratch diagnosis on study-030 traces; exact false-certificate recount; pre-freeze gates test on a sealed smoke block; failures published; one fresh-clone short verify plus tests",
-  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_031.json",
-  "source_freeze_commit": "e74469a",
-  "release_freeze": "none: release tooling is inside the source freeze (deviation #126 item 8, kept by #128, #130, #132 and #134)",
-  "run_start": "15:23:36 EDT 2026-10-30 (ledger 1ba5397)",
-  "run_end": "complete 54/54, 1028.1 s of 1800 s, normal exit (ledger a976182); 4 checkpoint snapshots pushed (last 6131470); resume clause not approved and not needed",
-  "seal_commit": "b3b8519",
-  "gates_commit": "604d19c",
-  "results_dir": "results/study-031",
+  "mission": "general intelligence research toward a geometric reasoning system; this release tests whether a noise-budgeted exact encoding (S7: flip literals with a cardinality bound fixed from the declared noise rate) keeps sound, informative answers on noisy traces; LEAN process: 48 cases, 30 min cap; not general intelligence",
+  "study": "BRUTE-0290-ROBUST-PERCEPTION-032",
+  "preregistration": "experiments/BRUTE_PLAN_032.json",
+  "preregistration_commit": "5a00625",
+  "process": "LEAN (standing go t133s553, build authorization ledger 7d4242f): plan locked before data; seedcheck before any seed (ledger 25ce5a7); exact false-certificate recount against the true machine; pre-freeze gates test on a sealed smoke block (7429720); failures published; one fresh-clone short verify plus tests",
+  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_032.json",
+  "source_freeze_commit": "fd17c82",
+  "release_freeze": "none: release tooling is inside the source freeze (deviation #126 item 8, kept by #128 to #136)",
+  "run_start": "16:09:44 EDT 2026-10-30 (ledger fb5519c)",
+  "run_end": "complete 48/48, 1246.3 s of 1800 s, normal exit (ledger 08a622c); 5 checkpoint snapshots pushed (last 0ec1f9b); resume clause not approved and not needed",
+  "seal_commit": "cbc801e",
+  "gates_commit": "7c4d197",
+  "results_dir": "results/study-032",
   "case_count": {
-    "sealed": 54,
-    "expected": 54,
+    "sealed": 48,
+    "expected": 48,
     "complete": true
   },
   "gates_passed": [
-    "G10",
+    "GQB7",
     "GS_ref",
     "GTI",
     "G_PROC",
@@ -29,12 +29,12 @@
     "G_recount"
   ],
   "gates_failed": [
-    "GID6",
-    "GQB6",
-    "GSC6_headline"
+    "G10",
+    "GNR7",
+    "GRP7_headline"
   ],
-  "headline": "6 of 9 gates pass; the headline fails. GSC6: at 16 states U(S6)=0.222 [0.158,0.288] vs U(S5)=0.218 [0.157,0.281] and U(S1)=0.336 [0.289,0.381]; paired U(S6)-U(S5) +0.004 [-0.008,0.016] (bar <= -0.06, CI below 0): FAIL; X(S6,scale16)=0/18 [0,0.176] (bar 4/18; S5 0/18, S1 0/18): FAIL; clause a 0 mismatches (21345 vs S1, 23232 vs S5), 21966 truth-checked; F 0 for every arm on main and stress. GID6: WRONG 0 for every arm; ID(S6,scale12)=0/12 [0,0.242] (bar 4/12): FAIL; AMB 11/12, IDU+NR 1/12. GQB6: S6 max query 10.857 s on stress/scale16/9730003 (bound 10.5): FAIL; main max 9.98 s. Mechanism (Inferred): S6 cut build time (2.39 s to 0.14 s per scale16 case) but solve time did not fall and cap stops rose (1.3 to 45.8 per case). Stress U: S1 0.370, S5 0.568, S6 0.568. S6_noorder is indistinguishable from S6",
-  "api": "unchanged: brute.certify/14 is the latest API; S6 is brute/scalesearch6.ScaleRegion6 (no API gate in plan 031; no certify/15)",
+  "headline": "6 of 9 gates pass; the headline fails on clause d. GRP7: F_truth(S7)=0 on all 45 checked cases (27 noisy within B, 18 clean/control): PASS; paired U_inf(S7)-U_inf(S5) at noisy scale12 -0.109 [-0.154,-0.054]: PASS; vs S1 -0.178 [-0.283,-0.084]: PASS; X_inf(S7,noisy scale12)=0/12 [0,0.242] (bar 3/12; every arm 0/12): FAIL; S7 grammar_contradicted 0: PASS. GNR7: clean scale12 U(S7)-U(S5) +0.362 [0.348,0.377] (bar +0.05): FAIL; S5_in_S7 0 mismatches of 5566. G10: S7 controls U 0.085 [0.042,0.129], F_truth 0: FAIL. GQB7: S7 max query 9.35 s: PASS. GS_ref: 0 mismatches, mutations 20/20, but 0 codes decided impossible. F_truth: S7 0, S7_contra 0, S5 0, S1 12. Contradiction verdicts: S1 4 noisy cases, S7_contra 3, S5 0, S7 0. Mechanism (Inferred): the fixed flip budget (B_end 27) also applies on clean traces, so S7 searches a wider space and answers less (throughput vs S5 0.53 at clean scale12, 0.10 on controls)",
+  "api": "unchanged: brute.certify/14 is the latest API; S7 is brute/scalesearch7 (no API gate in plan 032; no certify/15)",
   "deviations": [
     "docs/research/BRUTE_DEVIATIONS_026_123.md",
     "docs/research/BRUTE_DEVIATIONS_026_124.md",
@@ -45,7 +45,9 @@
     "docs/research/BRUTE_DEVIATIONS_030_132.md",
     "docs/research/BRUTE_DEVIATIONS_030_133.md",
     "docs/research/BRUTE_DEVIATIONS_031_134.md",
-    "docs/research/BRUTE_DEVIATIONS_031_135.md"
+    "docs/research/BRUTE_DEVIATIONS_031_135.md",
+    "docs/research/BRUTE_DEVIATIONS_032_136.md",
+    "docs/research/BRUTE_DEVIATIONS_032_137.md"
   ],
-  "verify": "python scripts/study031_storage.py restore && PYTHONPATH=. python scripts/verify_release_0280.py"
+  "verify": "python scripts/study032_storage.py restore && PYTHONPATH=. python scripts/verify_release_0290.py"
 }
