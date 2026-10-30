@@ -1,0 +1,45 @@
+# PLAN_032: v0.29.0, robust perception on noisy traces (plan only)
+
+Status: **preregistered (plan only; no build authorized, no code, no data)**. Study BRUTE-0290-ROBUST-PERCEPTION-032. Parent: BRUTE-0280-SIXTEEN-STATE-ID-031.
+
+## Question
+Can Brute keep its symmetry-free scale gains on noisy traces by inferring under a declared noise budget (robust perception), so that noisy traces yield sound, informative answers instead of an unknown or a vacuous contradiction?
+
+## Why
+Studies 030 and 031 (Observed). Stress U (eps 0.05) was S5 0.585 vs S4 0.370 at 12 states in 030, and S5 0.568 [0.455, 0.666] vs S1 0.370 [0.147, 0.578] in 031. Per case, the gap comes from the 3 of 15 stress cases where S1/S4 proved the noisy trace contradicts every machine of up to n states (grammar_contradicted, U 0) and S5 did not (031: stress scale16 9730001 and 9730003; 030: 9620003). On the other 12 stress cases S5's unknown count was at or below S1's in 11 (Observed). So the noise weakness is not slower search on noisy traces (Rejected); it is (i) S5 does not prove whole-trace contradiction, likely because symmetry clauses speed UNSAT proofs (Inferred), and (ii) a contradiction gives U 0 but tells Brute nothing about the world (Inferred). The exact-match encoding treats every reading as true, so on noisy traces the best it can do is a vacuous contradiction. 16-state search (031: S6 gave no gain, cap stops up) and identifiability (031: AMB 11/12 at 12 states from unexercised truth transitions) remain open and are not targeted here.
+
+## Arms
+- **S7**: S5 (symmetry-free, hard per-query cap) with a noise-tolerant encoding: one flip literal per sensor reading, and a cardinality constraint (sequential counter) allowing at most B flipped readings over the trace so far. A code is certified impossible only by an UNSAT proof over the frozen S1 transition encoding plus flips. B is fixed before data from the declared noise rate: B(t) = ceil(eps_assumed * t + 2 * sqrt(eps_assumed * t)) at step t, eps_assumed 0.05, on every case including clean ones
+- **S7_contra**: descriptive ablation: S5 plus, at each step, a symmetry-on whole-trace consistency check (the S1 grammar check) so it reports grammar_contradicted like S1 does; separates vacuity from robustness
+- **S5**: v0.27.0 arm, unchanged (control)
+- **S1**: baseline, unchanged (comparator)
+
+Informative unknowns: U_inf(arm, case) = U, except that a case whose arm status is grammar_contradicted counts every query as UNKNOWN (a vacuous answer carries no information about the world). X_inf = cases with U_inf 0.
+
+Truth soundness: F_truth(arm) = certificates (code reported impossible) that the true machine contradicts. Under noise, S1/S5 certificates are exact only for the noisy trace; F_truth is reported for every arm and gated for S7 on cases where the realised flips are <= B (the simulator knows the realised flips; coverage = fraction of noisy cases with realised flips <= B is reported).
+
+Budget: 55 s per step, 10 s per query hard cap, as in studies 028-031. No identify gate in this study. Soundness: every S7 certificate rechecked by an exact reference with the same flip budget; at eps 0 with B > 0, S7 answers may be weaker than S5's (fewer certificates) but must never contradict S5's exact answers.
+
+## Seeds (fresh, 98x0001)
+noisy scale8 9810001-9810012, noisy scale12 9820001-9820012, noisy scale16 9830001-9830006 (all eps 0.05), control 9840001-9840006 (eps 0), smoke 9890001-9890030. Clean regression: the first 6 noisy_scale12 and first 6 noisy_scale16 seeds re-run at eps 0. Noisy 30 plus clean 18 = 48 cases. A ledgered seedcheck_032 must confirm disjointness before any seed is drawn.
+
+## Gates
+- GRP7 (headline): a) F_truth(S7) = 0 on every noisy case with realised flips <= B, and F_truth(S7) = 0 on every clean case; b) U_inf(S7, noisy_scale12) - U_inf(S5, noisy_scale12) <= -0.10, paired seed-bootstrap 95% CI upper bound < 0; c) U_inf(S7, noisy_scale12) - U_inf(S1, noisy_scale12) <= -0.05, paired CI upper < 0 (the gain holds against the symmetry-on baseline too); d) X_inf(S7, noisy_scale12) >= 3/12; e) S7 reports grammar_contradicted on 0 noisy cases with realised flips <= B.
+- GNR7: no clean regression: U(S7, clean scale12) - U(S5, clean scale12) <= +0.05 (paired CI upper <= +0.08), and 0 mismatches where both answer at eps 0.
+- GQB7: S7 max query time <= 10.5 s on every case (main and noisy). G10: S7 U 0 and F_truth 0 on every clean control. GS_ref: exact flip-budget reference on S7 (scale8): 0 mismatches, mutation detection 20/20. GTI, G_PROC, G_RT (<= 1800 s), G_recount as in study 031.
+- Informational: coverage of B (realised flips <= B); U_inf and X_inf at noisy scale8 and scale16; S7_contra vacuity rate vs S1; S7 vs S5 throughput; reported, not gated.
+
+## If the noise target were not allowed
+not used: the 031 results allow the noise target. Had they not, the plan would target the measured 16-state bottleneck (per-query hardness under the cap) or identifiability (AMB from unexercised truth transitions, via longer or actively chosen traces).
+
+## Failure
+any GRP7 clause failing, GNR7 or GQB7 failing, any false certificate against the truth inside the budget; failures are published, not tuned.
+
+## Limits
+- sound against the truth only when realised flips <= B; cases outside the budget are reported, not hidden
+- eps_assumed is fixed at 0.05 and equals the stress eps; robustness to a mis-declared noise rate is not tested
+- one noise model (independent reading flips); action noise and burst noise are not tested
+- one hardware profile, one author; no independent replication
+- 16 states and exact recovery are not targeted; both remain open
+
+No build until a ledgered build_authorization_032.
