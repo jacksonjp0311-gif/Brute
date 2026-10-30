@@ -1,0 +1,140 @@
+{
+ "schema": "brute.plan/1",
+ "study": "BRUTE-0300-ACTIVE-EXPERIMENTS-033",
+ "version_under_test": "0.30.0",
+ "parent_study": "BRUTE-0290-ROBUST-PERCEPTION-032",
+ "status": "preregistered (plan only; no build authorized, no code, no data)",
+ "process": "LEAN (standing go t133s553 still needs a ledgered build_authorization_033 before any code): plan locked before data; seedcheck_033 before seeds are drawn; exact recount of ID/AMB/WRONG labels against the true machine; pre-freeze gates test on a sealed smoke block; failures published; evidence labels; one run, no tuning, no reruns",
+ "question": "Can Brute pick its own actions to tell apart the machines that a passive trace cannot (active experiments, roadmap phase 4), so that 12-state worlds are exactly identified, soundly, where passive search leaves them ambiguous?",
+ "motivation": "Studies 031 and 032 (Observed). In 031 the identify probe on S6 at 12 states gave ID 0/12, AMB 11/12 [0.646, 0.985], IDU 0/12, WRONG 0/12. S1 gave ID 0/12 at 12 states and 4/12 at 8 states. Inferred: the 176-step passive trace never exercises some truth transitions, so two or more non-isomorphic machines stay consistent. In 032, X_inf at noisy 12 states was 0/12 for every arm (S7, S7_contra, S5, S1). Better search on a fixed passive trace has not identified any 12-state world. The remaining lever is the data itself.",
+ "design": {
+  "arms": {
+   "A8": "active: the same seeded passive 176-step prefix as every arm, then up to K = 64 extra actions chosen by Brute. Each round: (1) exact SAT search (S5 encoding, symmetry-free) for a least consistent machine M1, then a second consistent machine M2 not isomorphic to M1 (the 031 blocking clause); if none, stop with ID or WRONG; (2) BFS the product of M1 and M2 from their current states for the shortest input word w on which their output sequences differ (exists because they are non-isomorphic and minimal; else stop and report); (3) execute w on the world through the step-only wrapper, append the real readings, repeat until a single class remains or K is spent. Sound by construction: a model is eliminated only by real observations, and every final certificate is the S5 certificate on the extended trace",
+   "A8_random": "descriptive control for chosen vs more data: the same passive prefix plus exactly the number of extra actions A8 used on that seed (capped at K), drawn from the seeded random policy; then the same identify probe",
+   "S5": "passive v0.27.0 arm with the 031 identify probe on the 176-step trace, unchanged",
+   "S1": "passive baseline with the identify probe, unchanged (comparator)"
+  },
+  "world_access": "a step-only wrapper over experiments/worlds_026.py: reset(seed) then step(action) -> reading; arms never see latent state, transitions or the true machine; the truth is used only by the scorer",
+  "labels": "per case, as in 031: ID (exactly one class, equal to truth), AMB (two or more non-isomorphic consistent machines remain), WRONG (single class not equal to truth: a soundness failure), IDU (budget ran out). A8 also records rounds, extra actions used, and each distinguishing word",
+  "budget": "experiment plus identify budget 120 s per case, the same for every arm; 10 s per SAT query hard cap; K = 64 extra actions; eps 0 (noise is out of scope here)",
+  "soundness": "every distinguishing word is rechecked by simulation of M1 and M2 (outputs must differ), and the true machine is rechecked to stay consistent with the extended trace after every round"
+ },
+ "heldout_ranges": {
+  "note": "Fresh ranges following the study-number convention (032 used 98x0001). Drawn only after a ledgered seedcheck_033 confirms they are disjoint from every earlier plan, result and sealed archive. Pre-plan scan (Observed, 2026-10-30): no standalone token in these ranges in tracked text files; only float substrings such as 1793028496.9990056. The sealed .gz scan found no hits",
+  "scale8": [
+   9910001,
+   9910002,
+   9910003,
+   9910004,
+   9910005,
+   9910006,
+   9910007,
+   9910008,
+   9910009,
+   9910010,
+   9910011,
+   9910012
+  ],
+  "scale12": [
+   9920001,
+   9920002,
+   9920003,
+   9920004,
+   9920005,
+   9920006,
+   9920007,
+   9920008,
+   9920009,
+   9920010,
+   9920011,
+   9920012
+  ],
+  "scale16_informational": [
+   9930001,
+   9930002,
+   9930003,
+   9930004,
+   9930005,
+   9930006
+  ],
+  "control": [
+   9940001,
+   9940002,
+   9940003,
+   9940004,
+   9940005,
+   9940006
+  ],
+  "smoke": [
+   9990001,
+   9990002,
+   9990003,
+   9990004,
+   9990005,
+   9990006,
+   9990007,
+   9990008,
+   9990009,
+   9990010,
+   9990011,
+   9990012,
+   9990013,
+   9990014,
+   9990015,
+   9990016,
+   9990017,
+   9990018,
+   9990019,
+   9990020,
+   9990021,
+   9990022,
+   9990023,
+   9990024,
+   9990025,
+   9990026,
+   9990027,
+   9990028,
+   9990029,
+   9990030
+  ]
+ },
+ "cases": {
+  "declared_before_data": true,
+  "scale8": 12,
+  "scale12": 12,
+  "scale16_informational": 6,
+  "control": 6,
+  "eps": 0,
+  "total": 36
+ },
+ "criteria": {
+  "GAE8_headline": {
+   "a": "WRONG = 0 for every arm on every case",
+   "b": "ID(A8, scale12) - ID(S5, scale12) >= +0.33 (4/12), paired seed-bootstrap 95% CI lower bound > 0",
+   "c": "ID(A8, scale12) >= 6/12",
+   "d": "IDU(A8, scale12) <= 2/12 (so an ID shortfall is not just budget)"
+  },
+  "GCH8": "ID(A8, scale12) - ID(A8_random, scale12) >= +0.17, paired CI lower bound > 0 (chosen data beats more data)",
+  "G_sound": "every distinguishing word rechecked (M1 and M2 outputs differ); truth consistent with every extended trace; 0 failures",
+  "G10": "controls: ID 6/6 for A8 and S5",
+  "GS_ref": "exact reference on A8 (scale8): 0 label mismatches, mutation detection 20/20",
+  "GQB8": "A8 max SAT query <= 10.5 s",
+  "G_RT": "whole run <= 1800 s",
+  "G_recount": "independent recount reproduces every label",
+  "GTI": "all test modules pass",
+  "G_PROC": "process chain complete (plan, authorization, seedcheck, freeze, run_start, run_end, seal, before gates)",
+  "informational": "ID/AMB at scale8 and scale16; extra actions used per ID; rounds; A8 vs S1; reported, not gated"
+ },
+ "runtime_estimate": "about 1000-1500 s on 8 workers (36 cases, 4 arms, up to 120 s each); cap 1800 s, G_RT fails above it",
+ "what_counts_as_failure": "any GAE8 clause failing, GCH8 or G_sound failing, any WRONG label; failures are published, not tuned",
+ "limitations": [
+  "noise-free only (eps 0); active experiments on noisy worlds are not tested",
+  "K = 64 and the 120 s budget are fixed in advance and not tuned",
+  "the shortest distinguishing word for one pair is greedy, not an optimal experiment design over all surviving models",
+  "A8_random matches A8's action count per seed, so it inherits A8's stopping time",
+  "one world family (worlds_026), one hardware profile, one author; no independent replication",
+  "16-state identification is informational only"
+ ],
+ "brand": "charcoal and sage; no purple, neon, emoji or gold",
+ "freeze_rule": "BRUTE_SOURCE_FREEZE_033 before run_start_033; frozen and ledger-hashed files are never edited"
+}
