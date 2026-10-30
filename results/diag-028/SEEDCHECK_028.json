@@ -1,0 +1,126 @@
+{
+ "schema": "brute.seedcheck.v26",
+ "v0250_ranges": {
+  "target/scale8": [
+   9410001,
+   9410012
+  ],
+  "target/scale12": [
+   9420001,
+   9420012
+  ],
+  "target/scale16": [
+   9430001,
+   9430012
+  ],
+  "target/control_cycle3": [
+   9440001,
+   9440006
+  ],
+  "smoke": [
+   9490001,
+   9490030
+  ]
+ },
+ "prior_files": [
+  "PLAN.json",
+  "BRUTE_PLAN_002.json",
+  "BRUTE_PLAN_003.json",
+  "BRUTE_PLAN_004.json",
+  "BRUTE_PLAN_005.json",
+  "BRUTE_PLAN_006.json",
+  "BRUTE_PLAN_007.json",
+  "BRUTE_PLAN_008.json",
+  "BRUTE_PLAN_009.json",
+  "BRUTE_PLAN_010.json",
+  "BRUTE_PLAN_011.json",
+  "BRUTE_PLAN_012.json",
+  "BRUTE_PLAN_013.json",
+  "BRUTE_PLAN_014.json",
+  "BRUTE_PLAN_015.json",
+  "BRUTE_PLAN_016.json",
+  "BRUTE_PLAN_017.json",
+  "BRUTE_PLAN_018.json",
+  "BRUTE_PLAN_019.json",
+  "BRUTE_PLAN_020.json",
+  "BRUTE_PLAN_021.json",
+  "BRUTE_PLAN_022.json",
+  "BRUTE_PLAN_023.json",
+  "BRUTE_PLAN_024.json",
+  "BRUTE_PLAN_025.json",
+  "BRUTE_PLAN_025_A1.json",
+  "BRUTE_PLAN_025_A2.json",
+  "BRUTE_PLAN_026.json",
+  "BRUTE_PLAN_027.json"
+ ],
+ "prior_range_count": 229,
+ "pairwise_overlaps": [],
+ "prior_overlaps": [],
+ "negative_controls": [
+  [
+   "target",
+   9499001,
+   "refused"
+  ],
+  [
+   "smoke",
+   9499001,
+   "refused"
+  ],
+  [
+   "target",
+   9490001,
+   "refused"
+  ],
+  [
+   "smoke",
+   9410001,
+   "refused"
+  ],
+  [
+   "target",
+   9410013,
+   "refused"
+  ],
+  [
+   "target",
+   9420001,
+   "refused"
+  ],
+  [
+   "target",
+   9440007,
+   "refused"
+  ],
+  [
+   "target",
+   9310001,
+   "refused"
+  ],
+  [
+   "smoke",
+   9390001,
+   "refused"
+  ],
+  [
+   "target",
+   9430013,
+   "refused"
+  ],
+  [
+   "smoke",
+   9490031,
+   "refused"
+  ],
+  [
+   "target",
+   9409999,
+   "refused"
+  ]
+ ],
+ "target_seeds": 42,
+ "main_cases": 42,
+ "stress_cases": 9,
+ "total_cases": 51,
+ "PASS": true
+}
