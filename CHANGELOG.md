@@ -1,5 +1,30 @@
 # Brute changelog
 
+## v0.27.0: exact search S5 without symmetry-breaking clauses, hard per-query cap (study BRUTE-0270-SYMMETRY-FREE-030, LEAN process)
+
+**8 of 8 gates pass (GQB5, GSC5_headline, G10, GS_ref, GTI, G_PROC, G_RT, G_recount).** All 51 cases ran and were sealed (978.9 s of 1800 s). *Observed*
+
+### Timeline (EDT, 2026-10-30)
+
+- Plan `803a920` (13:56); build authorization (ledger `30ccd58`, 13:58, standing go t133s553); seedcheck `2f34fcd` (overlap concern cleared before any seed); scratch overrun diagnosis `6bea49a`; S5 `3377447`; runner `8ded63f`; scoring `d55b77b`; tooling `01a7910`; pre-freeze sealed-smoke gates test `0d264d7`; #132 `88b33d8`; source freeze `f68ac76`.
+- Run start (ledger `a40eeef`, 14:28:58); 4 pushed checkpoint snapshots (last `189826c`); run end `734812d`; seal `6bbaa4f`; recount `bf780a1`; reference `ad0a2cb`; tests `fb10d83`; gates `04a4c5d`; #133 `29d8e59`.
+
+### Results (main block, eps 0; X and ID Wilson 95% CI, U seed-bootstrap 95% CI)
+
+| arm | X scale8 | X scale12 | X scale16 | U scale12 | U scale16 | ID scale8 | max query (s) | F main/stress |
+|---|---|---|---|---|---|---|---|---|
+| S5 | 12/12 [0.758, 1] | 5/12 [0.193, 0.680] | 0/12 [0, 0.242] | 0.047 [0.004, 0.093] | 0.240 [0.171, 0.308] | 6/12 [0.254, 0.746] | 8.52 | 0/0 |
+| S5_softcap (ablation) | 12/12 [0.758, 1] | 5/12 [0.193, 0.680] | 0/12 [0, 0.242] | 0.048 [0.004, 0.098] | 0.242 [0.172, 0.311] | 6/12 [0.254, 0.746] | 8.38 | 0/- |
+| S4 | 9/12 [0.468, 0.911] | 1/12 [0.015, 0.354] | 0/12 [0, 0.242] | 0.172 [0.113, 0.232] | 0.303 [0.247, 0.358] | 4/12 [0.138, 0.609] | 10.16 | 0/0 |
+| S1 | 8/12 [0.391, 0.862] | 1/12 [0.015, 0.354] | 0/12 [0, 0.242] | 0.200 [0.144, 0.256] | 0.324 [0.271, 0.376] | 4/12 [0.138, 0.609] | 21.03 | 0/0 |
+
+- GSC5 a: 0 mismatches (19,925 vs S1, 20,242 vs S4; 19,302 truth-checked). b: paired U(S5) - U(S1) at 12 states -0.153 [-0.198, -0.110] (bar <= -0.08, CI below 0): PASS. c: X(S5, scale12) 5/12 (bar 5/12): PASS. d: F(S5) 0 on main and stress: PASS.
+- GQB5: S5 max query 8.52 s (bound 10.5): PASS. G10: controls 6/6 with U 0. GS_ref: 0 mismatches, mutations 20/20.
+- ID at 12 and 16 states: 0/12 [0, 0.242] for every arm. Controls ID 6/6 for every arm.
+- Descriptive: U(S5) - U(S5_softcap) at 12 states -0.001 [-0.009, 0.006], so the gain comes from removing symmetry clauses, not from the hard cap. Throughput S5/S1 at 12 states median 2.02, mean 2.01 [1.64, 2.39]. Stress (eps 0.05) U at 12 states: S5 0.585, S4 0.370, S1 0.371.
+
+Deviations #132 (pre-run) and #133 (post-run). Verify: `python scripts/study030_storage.py restore && PYTHONPATH=. python scripts/verify_release_0270.py`.
+
 ## v0.26.0: exact search S4 (S1 plus throughput changes), API brute.certify/14 (study BRUTE-0260-QUERY-THROUGHPUT-029, LEAN process)
 
 **7 of 10 gates pass (G10, GAPI14, GS_ref14, GTI, G_PROC, G_RT, G_recount). GSC4 (headline) FAILS on clauses b and c; GTP and GQB FAIL.** All 51 cases ran and were sealed (1345.9 s of 1800 s). *Observed*
