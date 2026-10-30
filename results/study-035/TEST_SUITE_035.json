@@ -1,0 +1,105 @@
+{
+ "modules": [
+  "test_scalesearch10_0320",
+  "test_scalesearch9_0310",
+  "test_scalesearch8_0300",
+  "test_scalesearch_0230",
+  "test_scripts_035",
+  "test_release_0320"
+ ],
+ "passed": true,
+ "per_module": {
+  "test_release_0320": {
+   "results": {
+    "test_gate_list_mismatch": "ok",
+    "test_missing_key": "ok",
+    "test_release_ok": "ok",
+    "test_secondary_mismatch": "ok",
+    "test_wrong_version": "ok"
+   },
+   "returncode": 0,
+   "tail": "test_gate_list_mismatch (tests.test_release_0320.TestRelease0320.test_gate_list_mismatch) ... ok\ntest_missing_key (tests.test_release_0320.TestRelease0320.test_missing_key) ... ok\ntest_release_ok (tests.test_release_0320.TestRelease0320.test_release_ok) ... ok\ntest_secondary_mismatch (tests.test_release_0320.TestRelease0320.test_secondary_mismatch) ... ok\ntest_wrong_version (tests.test_release_0320.TestRelease0320.test_wrong_version) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.003s\n\nOK\n",
+   "tests": 5,
+   "wall_informational": 0.1
+  },
+  "test_scalesearch10_0320": {
+   "results": {
+    "test_B0_equals_A9_on_clean_traces": "ok",
+    "test_bmin_is_least": "ok",
+    "test_fixed_never_raises_and_K_respected": "ok",
+    "test_host_agnostic": "ok",
+    "test_least_and_differ_equal_enumeration_under_B": "ok",
+    "test_majority_and_cap": "ok"
+   },
+   "returncode": 0,
+   "tail": "_is_least (tests.test_scalesearch10_0320.T10.test_bmin_is_least) ... ok\ntest_fixed_never_raises_and_K_respected (tests.test_scalesearch10_0320.T10.test_fixed_never_raises_and_K_respected) ... ok\ntest_host_agnostic (tests.test_scalesearch10_0320.T10.test_host_agnostic) ... ok\ntest_least_and_differ_equal_enumeration_under_B (tests.test_scalesearch10_0320.T10.test_least_and_differ_equal_enumeration_under_B) ... ok\ntest_majority_and_cap (tests.test_scalesearch10_0320.T10.test_majority_and_cap) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 1.103s\n\nOK\n",
+   "tests": 6,
+   "wall_informational": 1.2
+  },
+  "test_scalesearch8_0300": {
+   "results": {
+    "test_equals_identify6": "ok",
+    "test_query_cap": "ok",
+    "test_shortest_and_none": "ok",
+    "test_sound_loop": "ok",
+    "test_source": "ok"
+   },
+   "returncode": 0,
+   "tail": "test_sound_loop (tests.test_scalesearch8_0300.Active.test_sound_loop) ... ok\ntest_source (tests.test_scalesearch8_0300.HostAgnostic.test_source) ... ok\ntest_equals_identify6 (tests.test_scalesearch8_0300.Identify.test_equals_identify6) ... ok\ntest_query_cap (tests.test_scalesearch8_0300.Identify.test_query_cap) ... ok\ntest_shortest_and_none (tests.test_scalesearch8_0300.Word.test_shortest_and_none) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.277s\n\nOK\n",
+   "tests": 5,
+   "wall_informational": 0.4
+  },
+  "test_scalesearch9_0310": {
+   "results": {
+    "test_against_enumeration": "ok",
+    "test_cap_unknown": "ok",
+    "test_host_agnostic": "ok",
+    "test_sound_loop": "ok",
+    "test_word_bound": "ok"
+   },
+   "returncode": 0,
+   "tail": "test_cap_unknown (tests.test_scalesearch9_0310.Active.test_cap_unknown) ... ok\ntest_host_agnostic (tests.test_scalesearch9_0310.Active.test_host_agnostic) ... ok\ntest_sound_loop (tests.test_scalesearch9_0310.Active.test_sound_loop) ... ok\ntest_against_enumeration (tests.test_scalesearch9_0310.Differ.test_against_enumeration) ... ok\ntest_word_bound (tests.test_scalesearch9_0310.Differ.test_word_bound) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.624s\n\nOK\n",
+   "tests": 5,
+   "wall_informational": 0.7
+  },
+  "test_scalesearch_0230": {
+   "results": {
+    "test_canonical_bfs": "ok",
+    "test_cycle3_identified": "ok",
+    "test_equals_frozen_tolerant": "ok",
+    "test_greedy_fold_consistent": "ok",
+    "test_masked_and_contradicted": "ok",
+    "test_no_io": "ok",
+    "test_pool_and_chain_machines_consistent": "ok",
+    "test_random_small": "ok",
+    "test_scale_worlds_minimal_strong": "ok",
+    "test_trajectory": "ok",
+    "test_unexercised_not_unique": "ok"
+   },
+   "returncode": 0,
+   "tail": "test_canonical_bfs (tests.test_scalesearch_0230.Witnesses.test_canonical_bfs) ... ok\ntest_greedy_fold_consistent (tests.test_scalesearch_0230.Witnesses.test_greedy_fold_consistent) ... ok\ntest_pool_and_chain_machines_consistent (tests.test_scalesearch_0230.Witnesses.test_pool_and_chain_machines_consistent) ... ok\ntest_scale_worlds_minimal_strong (tests.test_scalesearch_0230.Worlds.test_scale_worlds_minimal_strong) ... ok\ntest_trajectory (tests.test_scalesearch_0230.Worlds.test_trajectory) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.127s\n\nOK\n",
+   "tests": 11,
+   "wall_informational": 0.2
+  },
+  "test_scripts_035": {
+   "results": {
+    "test_arms_and_reproduces": "ok",
+    "test_constants": "ok",
+    "test_counts": "ok",
+    "test_empty_study_fails_incomplete": "ok",
+    "test_exists_different_two_bit_against_enumeration": "ok",
+    "test_exists_machine_against_enumeration": "ok",
+    "test_files_exist": "ok",
+    "test_reference_on_case": "ok",
+    "test_sealed_block_gates_check": "ok",
+    "test_tamper_detected": "ok"
+   },
+   "returncode": 0,
+   "tail": "st_scripts_035.Recount.test_reference_on_case) ... ok\ntest_sealed_block_gates_check (tests.test_scripts_035.Recount.test_sealed_block_gates_check) ... ok\ntest_tamper_detected (tests.test_scripts_035.Recount.test_tamper_detected) ... ok\ntest_exists_different_two_bit_against_enumeration (tests.test_scripts_035.Reference.test_exists_different_two_bit_against_enumeration) ... ok\ntest_exists_machine_against_enumeration (tests.test_scripts_035.Reference.test_exists_machine_against_enumeration) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 55.057s\n\nOK\n",
+   "tests": 10,
+   "wall_informational": 55.2
+  }
+ },
+ "process": "lean",
+ "schema": "brute.test-suite-035.v1"
+}
