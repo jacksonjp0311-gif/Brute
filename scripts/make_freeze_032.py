@@ -25,9 +25,9 @@ def main():
     L=[json.loads(x) for x in (ROOT/'results/RESEARCH_LEDGER.jsonl').read_text().splitlines() if x.strip()]
     i0=next(i for i,e in enumerate(L) if e.get('event')=='preregistration_032')
     ev=[{'event':e['event'],'commit':e.get('commit'),'note_time':str(e.get('note',''))[:25]} for e in L[i0:]]
-    write_new(ORDER,{'schema':'brute.commit-order.v1','study':'BRUTE-0280-ROBUST-PERCEPTION-032','order':[e['event'] for e in ev],'entries':ev})
+    write_new(ORDER,{'schema':'brute.commit-order.v1','study':'BRUTE-0290-ROBUST-PERCEPTION-032','order':[e['event'] for e in ev],'entries':ev})
     files={f:sha(ROOT/f) for f in sorted(FILES)}
-    write_new(FREEZE,{'schema':'brute.source-freeze.v1','study':'BRUTE-0280-ROBUST-PERCEPTION-032','process':'lean','plan_sha256':sha(PLAN),
+    write_new(FREEZE,{'schema':'brute.source-freeze.v1','study':'BRUTE-0290-ROBUST-PERCEPTION-032','process':'lean','plan_sha256':sha(PLAN),
                       'sha256_files':files})
     print(len(files),'files frozen')
 
