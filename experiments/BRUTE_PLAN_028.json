@@ -1,0 +1,91 @@
+{
+  "schema": "brute.plan/1",
+  "study": "BRUTE-0250-SOLVER-COST-028",
+  "version_under_test": "0.25.0",
+  "parent_study": "BRUTE-0240-SCALE-REPLAY-027",
+  "status": "preregistered (plan only; no build authorized, no code, no data)",
+  "process": "LEAN (t130s540; standing go t133s553): plan locked before data; exact false-certificate recount; strict stress gate; failures published; evidence labels; one fresh-clone short verify plus tests",
+  "question": "If the per-step solver cost of exact search is bounded (hard per-query budget, deadlined chain, n_lo deepening off the per-step path), does exact search finish at 12-16 states, where S2 finished 0/24?",
+  "motivation": {
+    "label": "Inferred from Observed DIAGNOSIS_027",
+    "facts": [
+      "at 12-16 states over 99% of S2 UNKNOWNs are not run (arm deadline); solver UNKNOWN <= 0.4%",
+      "the mean per-case max single query is 13-19 s against a nominal 10 s budget (overall max 48 s)",
+      "S2 makes 1.3-1.5 steps/s at 12-16 states; no arm finishes 176 steps",
+      "the proven lower bound n_lo stalls at 8.75-10.25 and never reaches n",
+      "S2_tight (n_max = n) does not help at 12 states (0/12), so the search cap is not the 12-16 bottleneck; it is at 8 states (S2_tight 9/12 vs S2 3/12)"
+    ],
+    "target": "solver cost per step"
+  },
+  "design": {
+    "arms": {
+      "S3": "new file brute/scalesearch3.py: ScaleRegion variant with (1) a hard per-query budget enforced by small conflict chunks (about 2000) with a time check between chunks (no threads, no child processes); (2) a deadline on the support chain; (3) n_lo deepening removed from each observe step and done only in identify or from cheap bounds; (4) informational per-phase timing (chain, solve, feasible)",
+      "S3_tight": "S3 with n_max = n (informational, not gated)",
+      "S2": "frozen v0.23.0 ScaleRegion (control)",
+      "S1": "frozen (control)"
+    },
+    "budgets": "same as 027: query 10 s, arm deadline as 027, 8 workers, 30 min cap",
+    "api": "brute.certify/13 adds method s3; certify/12 and earlier unchanged",
+    "host_agnostic": "core API keeps no I/O, threads or child processes"
+  },
+  "heldout_ranges": {
+    "note": "Fresh ranges following the study-number convention (027 used 93x0001). Disjoint from every earlier plan. Drawn only after a ledgered seedcheck_028.",
+    "targets": {
+      "scale8": [
+        9410001,
+        9410012
+      ],
+      "scale12": [
+        9420001,
+        9420012
+      ],
+      "scale16": [
+        9430001,
+        9430012
+      ],
+      "control_cycle3": [
+        9440001,
+        9440006
+      ]
+    }
+  },
+  "cases": {
+    "declared_before_data": true,
+    "main": "(12+12+12+6) seeds at eps 0 = 42",
+    "stress": "first 3 seeds of scale8/12/16 at eps 0.05 = 9 (F only)",
+    "total": 51
+  },
+  "new_items": [
+    "brute/scalesearch3.py",
+    "brute/api/certify13.py",
+    "scripts for study-028 (run, recount, gates, storage, verify_release_0250)",
+    "tests for S3"
+  ],
+  "criteria": {
+    "GQB_budget": "max single query wall of S3 <= 10.5 s on every main case (budget enforcement)",
+    "GSC3_headline": {
+      "a": "every decided S3 answer agrees with exact truth where comparable (0 mismatches)",
+      "b": "U(S3, scale12 eps0) <= U(S2, scale12 eps0) - 0.15 (paired over seeds; bootstrap 95% CI on the difference excludes 0)",
+      "c": "X(S3, scale12) >= 3/12",
+      "d": "F = 0 for S3 on main and stress (exact recount)",
+      "e": "ID and certificates reported per state count (descriptive, not gated)"
+    },
+    "G10": "control eps-0 cases: 0 solver UNKNOWN for S3",
+    "GAPI13": "certify/13 new; certify/12 and earlier unchanged; stream check",
+    "GS_ref13": "reference cross-check and mutation 20/20",
+    "GTI": "unit tests pass",
+    "G_PROC": "preregistration_028 < build_authorization_028 < seedcheck_028 < source_freeze_028 < run_start_028",
+    "G_RT": "whole run within 1800 s",
+    "G_recount": "exact recount reproduces sealed F"
+  },
+  "runtime_estimate": "about 1000 s on 8 workers (51 cases; 4 arms on main eps 0)",
+  "what_counts_as_failure": "any S3 false certificate; any query over 10.5 s; U not reduced by 0.15 at 12 states; the run not finishing in 30 min; on a reboot, seal what is there, fail the gates, do not relaunch (resume clause not approved)",
+  "limitations": [
+    "controls are frozen S2/S1 from 027 code; seeds are new so results are not paired with 027",
+    "eps 0 only for main cases; noise robustness is left to stress F",
+    "the 10 s query budget is not itself varied",
+    "success here would show finishing, not general reasoning"
+  ],
+  "brand": "charcoal and sage; no purple, neon, emoji or gold",
+  "freeze_rule": "BRUTE_SOURCE_FREEZE_028 before run_start_028; frozen and ledger-hashed files are never edited"
+}
