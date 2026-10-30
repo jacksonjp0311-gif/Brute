@@ -1,4 +1,4 @@
-"""Brute v0.24.0 release verification, lean process (BRUTE_PLAN_027 + deviations #123/#124). New file; earlier verifiers
+"""Brute v0.24.0 release verification, lean process (BRUTE_PLAN_027 + deviations #123/#124/#126). New file; earlier verifiers
 stay frozen. Short verify:
   1. RELEASE.json parses, version 0.24.0, required keys present, gate lists match results/study-027/GATES_027.json;
   2. MANIFEST.sha256 matches the tree; BRUTE_SOURCE_FREEZE_027 (check_freeze, incl. the 025 and 026 freezes) holds;
