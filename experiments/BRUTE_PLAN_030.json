@@ -1,0 +1,77 @@
+{
+  "schema": "brute.plan/1",
+  "study": "BRUTE-0270-SYMMETRY-FREE-030",
+  "version_under_test": "0.27.0",
+  "parent_study": "BRUTE-0260-QUERY-THROUGHPUT-029",
+  "status": "preregistered (plan only; no build authorized, no code, no data)",
+  "process": "LEAN (standing go t133s553 still needs a ledgered build_authorization_030 before any code): plan locked before data; exact false-certificate recount; strict stress gate; pre-freeze gates test on a sealed smoke block; failures published; evidence labels; one fresh-clone short verify plus tests",
+  "question": "Does removing symmetry-breaking clauses from S4 and making the per-query cap hard, as S5, let exact search finish 12-state worlds that S1 cannot?",
+  "motivation": "In study 029 the gated S4 matched S1 (U diff -0.019 at 12 states; GSC4 b, c FAIL). The descriptive arm S4_nosym reached U 0.079 [0.020, 0.149] and X 6/12 at 12 states, with F 0 and 0 mismatches vs S1 on 17,207 queries. That arm was seen after data, so it must be tested on fresh seeds before any claim. S4 also broke the 10.5 s query bound (15.33 s on scale16; GQB FAIL), and the inferred cause is an unchecked RegionK build or a Glucose chunk overrun",
+  "design": {
+    "arms": {
+      "S5": "S4 with no symmetry-breaking clauses (S4_nosym promoted unchanged in search logic), plus a hard query cap: the region build inside a query checks the wall clock, and each solver chunk is bounded by a conflict budget sized so that a chunk cannot pass the remaining cap; a query that would pass the cap returns unknown",
+      "S4": "v0.26.0 arm, unchanged (control)",
+      "S1": "baseline, unchanged (headline comparator)",
+      "S5_softcap": "ablation: S5 with S4's soft cap (separates the cap fix from symmetry removal)"
+    },
+    "same_budget": "55 s per step, 10 s per query cap, as in studies 028 and 029",
+    "soundness": "every S5 certificate rechecked by the frozen exact reference; any mismatch with S1/S4 or truth on an answered query is a FAIL"
+  },
+  "heldout_ranges": {
+    "note": "Fresh ranges following the study-number convention (029 used 95x0001). Disjoint from every earlier plan. Drawn only after a ledgered seedcheck_030.",
+    "targets": {
+      "scale8": [
+        9610001,
+        9610012
+      ],
+      "scale12": [
+        9620001,
+        9620012
+      ],
+      "scale16": [
+        9630001,
+        9630012
+      ],
+      "control_cycle3": [
+        9640001,
+        9640006
+      ]
+    },
+    "smoke": [
+      9690001,
+      9690030
+    ]
+  },
+  "cases": {
+    "declared_before_data": true,
+    "main": "(12+12+12+6) seeds at eps 0 = 42",
+    "stress": "first 3 seeds of scale8/12/16 at eps 0.05 = 9 (F only)",
+    "total": 51
+  },
+  "criteria": {
+    "GSC5_headline": {
+      "a": "0 mismatches of S5 vs S1/S4 and vs truth on answered queries",
+      "b": "U(S5, scale12) - U(S1, scale12) <= -0.08, paired seed-bootstrap 95% CI upper bound < 0",
+      "c": "X(S5, scale12) >= 5/12",
+      "d": "F(S5)=0 on main and stress"
+    },
+    "GQB5": "S5 max query time <= 10.5 s on every case",
+    "G10": "S5 U=0 on 6/6 controls",
+    "GS_ref": "mutation detection 20/20",
+    "GTI": "all tests pass",
+    "G_PROC": "process items",
+    "G_RT": "run <= 1800 s",
+    "G_recount": "exact F recount reproduces",
+    "informational": "S5 vs S5_softcap U difference; S5 vs S4 U difference; throughput ratios S5/S1; reported, not gated"
+  },
+  "runtime_estimate": "about 1300 s on 8 workers (51 cases; 4 arms; study 029 took 1345.9 s with 5 arms)",
+  "what_counts_as_failure": "any GSC5 clause failing, GQB5 above 10.5 s, or any false certificate; failures are published, not tuned",
+  "limitations": [
+    "noise-free masks for the headline; eps 0.05 stress checks F only",
+    "one hardware profile",
+    "S4_nosym's 029 result was seen before this plan; only fresh seeds test it",
+    "16-state worlds are expected to remain mostly unknown"
+  ],
+  "brand": "charcoal and sage; no purple, neon, emoji or gold",
+  "freeze_rule": "BRUTE_SOURCE_FREEZE_030 before run_start_030; frozen and ledger-hashed files are never edited"
+}
