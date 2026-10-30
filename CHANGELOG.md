@@ -1,5 +1,40 @@
 # Brute changelog
 
+## v0.31.0: sound active identification (A9: stop only when no consistent rival remains at any size up to the declared N) for hidden machines (study BRUTE-0310-SOUND-ACTIVE-ID-034, LEAN process)
+
+**11 of 12 gates pass (GA9_headline, GDIAG8, GIDF9, GCH9, G_sound, G10, GS_ref, GTI, G_PROC, G_RT, G_recount). GQB9 FAILS (one A9 query took 10.888 s; bound 10.5 s).** All 36 cases ran once and were sealed (124.8 s of 1800 s). *Observed*
+
+### Timeline (EDT, 2026-10-30)
+
+- Plan `52b50be` (ledger `ea170d2`, 17:17); build authorization (ledger `b84deba`, 17:18, standing go t133s553); seedcheck `3426af5` (ledger `5576d08`, 17:24, before any seed); A9 `211f9b7`; runner `8ddfe0b`; recount `1649b71`; CNF reference `604a6d2`; gates `eb6b61d`; tooling `f78c07a`; release tooling `9480b23`; pre-freeze sealed-smoke gates `96e54de`; #140 `7f19efd`; source freeze `389e837` (17:55).
+- Run start (ledger `5ab16bd`, 17:56:34); 1 pushed checkpoint snapshot `ffdb5b5`; run end (ledger `75b3eae`); seal `adb8563`; recount `3f3f052`; reference `74dd224`; tests `898bf08`; gates `b630337`; #141 `c2f5094`.
+
+### Results (labels per case; Wilson 95% CI; paired contrasts seed-bootstrap 95% CI; IDF = identified up to the start state)
+
+| arm | scale12 ID | IDF | AMB | WRONG | IDU | scale8 ID / IDF / AMB / WRONG | scale16 ID / AMB / WRONG / IDU | controls ID | actions used, scale12 mean |
+|---|---|---|---|---|---|---|---|---|---|
+| A9 | 9/12 [0.47, 0.91] | 1 | 1 | 0 [0, 0.24] | 1 | 8 / 4 / 0 / 0 | 0 / 2 / 0 / 4 | 6/6 | 28.8 (29.2 on ID cases) |
+| A9_random (same count, random inputs) | 0/12 [0, 0.24] | 0 | 11 | 0 | 1 | 3 / 0 / 9 / 0 | 0 / 4 / 0 / 2 | 6/6 | 28.8 |
+| A8 (v0.30.0 rule) | 8/12 [0.39, 0.86] | 0 | 2 | 1 [0.01, 0.35] | 1 | 8 / 0 / 4 / 0 | 1 / 2 / 1 / 2 | 6/6 | 31.9 (29.5 on ID cases) |
+| S5 (passive) | 0/12 [0, 0.24] | 0 | 12 | 0 | 0 | 3 / 0 / 9 / 0 | 0 / 6 / 0 / 0 | 6/6 | 0 |
+| S1 (passive) | 0/12 [0, 0.24] | 0 | 11 | 0 | 1 | 3 / 0 / 9 / 0 | 0 / 5 / 0 / 1 | 6/6 | 0 |
+
+- GA9 a: recounted WRONG 0 for A9, A9_random, S5 and S1 on all 36 cases: PASS. b: paired ID(A9) - ID(S5) at 12 states +0.75 [0.50, 1.00] (bar 0.33, CI lower > 0): PASS. c: ID(A9) 9/12 (bar 5): PASS. d: IDU(A9) 1/12 (bar <= 2): PASS.
+- GCH9: ID(A9) - ID(A9_random) at 12 states +0.75 [0.50, 1.00] (bar 0.17): PASS. GIDF9: ID + IDF (A9, 12 states) 10/12 [0.55, 0.95] (bar 8): PASS.
+- GDIAG8: A8 WRONG 2 of 36 (scale16 10030003, n_min 14 of 16; scale12 10020007, n_min 11 of 12). Both stopped 'unique' below the truth's size: PASS. This replicates the #139 diagnosis.
+- G_sound: 407 separating words re-simulated (235 A9), 0 unsound; the truth stayed consistent with every round. G10: controls ID 6/6 for A9 and S5. GS_ref: CNF reference 12/12 scale8 A9 cases decided, 77 verdicts and 46 words checked, 0 mismatches, mutations 20/20. GQB9: A9 max query 10.888 s on scale12 10020005 (bound 10.5): FAIL.
+- IDF (Observed): all 5 A9 IDF answers match the truth on every future input. Only the start state is undetermined.
+
+### What Brute can't do yet
+
+- It does not finish 16-state worlds even with sound experiments (A9 ID 0/6: 4 IDU, 2 AMB with the budget spent). *Observed.*
+- It cannot resolve start-state ambiguity (5 IDF cases). *Observed.*
+- Its per-query time cap can overshoot (10.888 s against a 10.5 s bound). *Observed / Inferred.*
+- Its soundness assumes the declared size N bounds the truth. An unknown or wrong N is untested. *Exact / Open.*
+- Experiments are still untested with noise. *Open.*
+
+Deviations #140 (pre-run) and #141 (post-run). Verify: `python scripts/study034_storage.py restore && PYTHONPATH=. python scripts/verify_release_0310.py`.
+
 ## v0.30.0: active experiments (A8: Brute chooses inputs that separate two consistent machines) for identifying hidden machines (study BRUTE-0300-ACTIVE-EXPERIMENTS-033, LEAN process)
 
 **9 of 10 gates pass (GCH8, G10, GQB8, GS_ref, GTI, G_PROC, G_RT, G_recount, G_sound). GAE8 (headline) FAILS on clauses a (5 WRONG) and c (ID 5/12, bar 6).** All 36 cases ran once and were sealed (116.0 s of 1800 s). *Observed*
