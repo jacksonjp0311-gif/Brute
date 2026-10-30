@@ -104,7 +104,7 @@ Details: [`docs/ROADMAP_TO_GI.md`](docs/ROADMAP_TO_GI.md) (gated steps toward ge
 git clone https://github.com/jacksonjp0311-gif/Brute.git && cd Brute
 python -m pip install -r requirements.txt
 for k in 004 005 006 007 008 009 010 011 012 013 014 015 016 017; do python scripts/study${k}_storage.py restore; done   # rebuild sealed traces, checked against SEAL.json
-python scripts/study025_storage.py restore && PYTHONPATH=. python scripts/verify_release_0220.py   # v0.22.0 (lean short verify)
+python scripts/study025_storage.py restore && PYTHONPATH=. python scripts/verify_release_0220_r1.py   # v0.22.0 (lean short verify; r1 per #122)
 PYTHONPATH=. python scripts/verify_release_0210.py   # v0.21.0 (--long adds GLV: 12 main cases re-run and audited, 900 s cap)
 PYTHONPATH=. python scripts/verify_release_0200_r1.py   # v0.20.0 (--long adds GLV); the frozen verify_release_0200 rejects a dual-role commit (#113)
 PYTHONPATH=. python scripts/verify_release_0190.py   # v0.19.0 (--long adds GLV)

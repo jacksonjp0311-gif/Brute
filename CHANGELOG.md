@@ -24,7 +24,7 @@
 - dC_late RGB6 - RGL4: -0.0045 [-0.0108, 0.0] (bar mean >= 0.04 and CI lower > 0: FAIL). dC_late RGB6 - RGNB4: -0.102 [-0.195, -0.015] (bar CI lower > -0.06: FAIL). dC_late RGB6 - RGL5: -0.017 [-0.035, -0.003].
 - Betting activation: 0 of 90 cases reached K >= 800 at any level, so RGB6 ran as its level-0 bound (delta 1/400) throughout (*Observed*; predicted in #120).
 - False certificates (exact recount): RGB6 0 on 40 noisy main cases (CP95 0.0722, reported, not gated) and 0 on 30 stress cases (clause b PASS, strict). RGL4 1 on stress (ood4 9140009), RG4 31.
-- Deviations #119, #120 (pre-run), #121 (an api_check t0 bug, fixed in a new r1 file before the gates). Verify: `PYTHONPATH=. python scripts/verify_release_0220.py`.
+- Deviations #119, #120 (pre-run), #121 (an api_check t0 bug, fixed in a new r1 file before the gates), #122 (a release verifier key bug, r1). Verify: `PYTHONPATH=. python scripts/verify_release_0220_r1.py` (#122: the frozen verify_release_0220 reads the wrong COMMIT_ORDER key).
 
 ## v0.21.0: stitched likelihood-ratio bound RGL5, API brute.certify/10 (study BRUTE-0210-STITCHED-LR-024)
 

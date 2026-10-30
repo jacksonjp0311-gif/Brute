@@ -13,7 +13,7 @@
   "process": "LEAN (A2): plan/amendment locked before data; exact false-certificate recount; strict stress gate; failures published; one fresh-clone short verify plus tests. Dropped: kill/resume drills, host-pause probe, double fresh-clone check, separate scoring-freeze wait, G12, G_HB",
   "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_025.json",
   "source_freeze_commit": "d1390e5",
-  "release_freeze": "experiments/BRUTE_RELEASE_FREEZE_0220.json",
+  "release_freeze": "experiments/BRUTE_RELEASE_FREEZE_0220.json + experiments/BRUTE_RELEASE_FREEZE_0220_R1.json (#122)",
   "seal_commit": "72b52e8",
   "gates_commit": "0a98405",
   "run_start": "2026-10-29T23:58:50-04:00 (RUN_T0; ledger run_start_025); exit 0 at 2026-10-30T00:22:55-04:00; elapsed 1365.8 s of the 1800 s cap",
@@ -48,7 +48,7 @@
   "stress": "R_stress (eps 0.05): false certificates RGB6 0, RGL5 0, RGN4_or 0, RGL4 1 (1 case, ood4 9140009), RG4 31. C_late stress RGB6 0.401 [0.308, 0.495], RGL4 0.424, RGL5 0.476, oracle 0.708.",
   "embeddable_api": "brute/api/certify11.py, interface brute.certify/11 (new; method betting default; stitched = certify10, lr = certify9); brute.certify/10 ... /1 unchanged (GAPI11 PASS).",
   "second_implementation": "experiments/v0220_reference.py; GS_ref11 PASS (90 of 90 audited, 0 mismatching; mutation 20/20 detected, 0 false flags); same author, not an independent audit",
-  "deviations": "docs/research/BRUTE_DEVIATIONS_025_119.md, _120.md (pre-run), _121.md (api_check t0 bug fixed in api_check_025_r1.py, before gates)",
+  "deviations": "docs/research/BRUTE_DEVIATIONS_025_119.md, _120.md (pre-run), _121.md (api_check t0 bug fixed in api_check_025_r1.py, before gates), _122.md (release verifier key bug fixed in verify_release_0220_r1.py)",
   "release_gates": {
     "fresh_clone": "one fresh GitHub clone: verify_release_0220 short + tests (docs/research/v0.22.0/FRESH_CLONE_VERIFY_0220.json)"
   },
@@ -56,5 +56,6 @@
   "baseline": "baseline/IDENTITY.json (zip not included in the fork)",
   "default_policy": "unchanged: v0.5.0 rule (Y1k, LU-R); RGB6 and the other arms are research arms and the brute.certify/11 API, not the default learner",
   "no_workflows": "no .github directory and no GitHub Actions workflows in this repository",
-  "other_projects_modified": false
+  "other_projects_modified": false,
+  "verifier": "PYTHONPATH=. python scripts/verify_release_0220_r1.py (the frozen verify_release_0220 fails on the COMMIT_ORDER key, #122)"
 }
