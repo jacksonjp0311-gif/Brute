@@ -1,44 +1,46 @@
 {
-  "version": "0.24.0",
+  "version": "0.25.0",
   "name": "Brute",
   "forked_from": "BGR v0.90.0 (tag bgr-v0.90.0-fork)",
-  "mission": "general intelligence research toward a geometric reasoning system; this release replays the v0.23.0 scale study in full (8-16 state worlds; exact search S2 vs S1 and RGB6, plus an informational S2_tight with n_max = true n), LEAN process: 93 cases, 30 min cap; not general intelligence",
-  "study": "BRUTE-0240-SCALE-REPLAY-027",
-  "preregistration": "experiments/BRUTE_PLAN_027.json",
-  "preregistration_commit": "9f49ab1",
-  "process": "LEAN (t130s540, standing go t133s553, build authorization e55a639): plan locked before data; exact false-certificate recount; strict stress gate; failures published; one fresh-clone short verify plus tests",
-  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_027.json",
-  "source_freeze_commit": "5261f4e",
-  "release_freeze": "none: release tooling is inside the source freeze (deviation #126 item 8)",
-  "run_start": "about 10:55:50 EDT 2026-10-30 (ledger d119d25)",
-  "run_end": "complete 93/93, 1454.3 s of 1800 s, normal exit (ledger 0952c8f); 5 checkpoint snapshots pushed; resume clause not approved and not needed",
-  "seal_commit": "32eb7d9",
-  "gates_commit": "f8167f1",
-  "results_dir": "results/study-027",
+  "mission": "general intelligence research toward a geometric reasoning system; this release tests whether a hard per-query budget (exact search S3, two-solver portfolio m22+mcb, capped deepening) cuts solver cost per step at 8-16 states, LEAN process: 51 cases, 30 min cap; not general intelligence",
+  "study": "BRUTE-0250-SOLVER-COST-028",
+  "preregistration": "experiments/BRUTE_PLAN_028.json",
+  "preregistration_commit": "914ce05",
+  "process": "LEAN (t130s540, standing go t133s553, build authorization 13e570c): plan locked before data; exact false-certificate recount; strict stress gate; failures published; one fresh-clone short verify plus tests",
+  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_028.json",
+  "source_freeze_commit": "fb84e6a",
+  "release_freeze": "none: release tooling is inside the source freeze (deviation #126 item 8, kept by #128); post-run addenda make_gates_028b and verify_release_0250b (#129)",
+  "run_start": "12:32:46 EDT 2026-10-30 (ledger c215ed5)",
+  "run_end": "complete 51/51, 1053.8 s of 1800 s, normal exit (ledger 386a2cd); 4 checkpoint snapshots pushed; resume clause not approved and not needed",
+  "seal_commit": "86ae1a2",
+  "gates_commit": "1b13aed",
+  "results_dir": "results/study-028",
   "case_count": {
-    "sealed": 93,
-    "expected": 93,
+    "sealed": 51,
+    "expected": 51,
     "complete": true
   },
   "gates_passed": [
-    "GAPI12",
-    "GS_ref12",
+    "G10",
+    "GAPI13",
+    "GQB",
+    "GS_ref13",
     "GTI",
     "G_PROC",
     "G_RT",
     "G_recount"
   ],
   "gates_failed": [
-    "G10",
-    "GSC_headline"
+    "GSC3_headline"
   ],
-  "headline": "GSC FAIL on clauses b, c, e (a and d pass): S2 0 false certificates, clause a 24568 compared / 0 mismatches; X(S2,scale8)=3/24 [0.043,0.310], X(S2,scale12)=0/24, X(S2,scale16)=0/24, U(S2,scale16)=0.590; scale8 eps-0 ID 1/12 [0.015,0.354]. Informational S2_tight (n_max = n) on eps 0: scale8 X 9/12, ID 4/12, 3043 certificates; scale12 and scale16 X 0/12. UNKNOWNs at 12-16 are >99% not-run (arm deadline), not solver UNKNOWN",
-  "api": "brute.certify/12 (unchanged since v0.23.0; certify/11 and earlier unchanged; stream check 6/6 equal)",
+  "headline": "GSC3 FAIL on clauses b and c (a and d pass): S3 held every query to 10.03 s max (GQB pass; S2 max 18.0 s) and issued 0 false certificates (main and stress); clause a 15380 compared with S2 / 0 mismatches, 14234 truth-checked / 0 missing; but U(S3,scale12)=0.398 [0.333,0.450] vs U(S2,scale12)=0.399, paired diff -0.001 [-0.020,0.019] (bar -0.15); X(S3,scale12)=0/12 (bar 3/12). G10 passes (S3 0 UNKNOWN on 6/6 controls). >98% of S3 UNKNOWNs at 12-16 states are not-run queries: capping each query did not raise throughput",
+  "api": "brute.certify/13 (new: search s3; region and s2 equal certify/12; certify/12 and earlier unchanged; stream check 4/4 equal)",
   "deviations": [
     "docs/research/BRUTE_DEVIATIONS_026_123.md",
     "docs/research/BRUTE_DEVIATIONS_026_124.md",
     "docs/research/BRUTE_DEVIATIONS_027_126.md",
-    "docs/research/BRUTE_DEVIATIONS_027_127.md"
+    "docs/research/BRUTE_DEVIATIONS_028_128.md",
+    "docs/research/BRUTE_DEVIATIONS_028_129.md"
   ],
-  "verify": "python scripts/study027_storage.py restore && PYTHONPATH=. python scripts/verify_release_0240.py"
+  "verify": "python scripts/study028_storage.py restore && PYTHONPATH=. python scripts/verify_release_0250b.py"
 }
