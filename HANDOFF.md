@@ -1,8 +1,18 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.22.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.23.0 RELEASED)._
 
 ## Current version and state
+
+<!-- V0230 -->
+- **v0.23.0: RELEASED** 2026-10-30 (tag `v0.23.0`; see the release entry below for the tag object, the main fast-forward and the fresh-clone verify). Study BRUTE-0230-SCALE-026, LEAN. **2 of 8 gated pass (GTI, G_PROC).**
+  - **The run was interrupted (Observed).** The box rebooted at about 10:22 EDT, about 10 minutes into the detached run. 38 of 93 cases were sealed as PARTIAL. The run was not relaunched (standing rule). See deviation #125.
+  - **FAIL (INCOMPLETE_INPUT):** GSC_headline, G10, GS_ref12, G_RT, G_recount. **GAPI12 FAIL:** stream check had no scale8 case; probe, source scan and certify/11 unchanged all pass.
+  - **Descriptive, 38 cases:** recount PASS (S2 0 false certificates, RGB6 0, S1 2); clause a 8771 compared, 0 mismatches; X(S2,scale16) 0/24 [0, 0.138]; U(S2,scale16) 0.566; certificates S1 14, S2 0.
+  - **Chain:** plan `7a6acdd` -> authorization `835161f` -> seedcheck `234dc08` -> #123 `ccdf0df` -> S2 `b41b82d` -> scripts `f205e20` -> #124 `8d67e13` -> freeze `9837d1d` -> run_start `bc30b93` -> interrupted `e2ed8db` -> seal `fe7b757` -> gates `965879b` -> #125 `d0c82f2` -> release freeze `66d296e` -> RELEASE `d04c7b9`.
+  - **Environment:** the reboot wiped /tmp (including /tmp/wt-state, not deleted by the agent) and the venv `/workspace/bgr/venv`. The venv was rebuilt from the pyproject pins.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
+  - **Next:** the v0.24.0 plan (`BRUTE_PLAN_027`): a fresh-seed rerun of the 026 design with a pre-registered resume policy. Plan only; build not authorized.
 
 <!-- V0220 -->
 - **v0.22.0: RELEASED** 2026-10-30 (tag `v0.22.0` (annotated, object `5d68568`) -> `df79133`; main fast-forwarded `d9333c5..df79133` (no force); https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.22.0; one fresh GitHub clone of `plan/v0.22.0@551d60e` passed `verify_release_0220_r1` and the tests; `docs/research/v0.22.0/FRESH_CLONE_VERIFY_0220.json`). LEAN process (A2). Study BRUTE-0220-BETTING-CS-025. **11 of 12 gated pass; GBC_headline fails (c, d).**
