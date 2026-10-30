@@ -1,11 +1,24 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.30.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.31.0 release in progress)._
 
 ## Current version and state
 
+<!-- V0310 -->
+- **v0.31.0: release in progress** 2026-10-30 on `plan/v0.31.0` (BRUTE_PLAN_034, SOUND ACTIVE IDENTIFICATION; LEAN; STANDING GO t133s553, build authorization ledger `b84deba`).
+  - **Run complete (Observed).** 36/36 cases, 124.8 s of 1800 s, normal exit, run once. 1 checkpoint snapshot was pushed (`ffdb5b5`). Nothing was relaunched. The resume clause was NOT approved and was not needed. The box clock read about 9 s ahead of GitHub's Date header at 18:05:34 EDT, with no stall.
+  - **PASS (11/12):** GA9_headline (a-d), GDIAG8, GIDF9, GCH9, G_sound, G10, GS_ref, GTI (5 modules, 34 tests), G_PROC, G_RT, G_recount. **FAIL:** GQB9 (A9 max query 10.888 s; bound 10.5 s).
+  - **Headline numbers (Observed).**
+    - 12 states: A9 ID 9/12 [0.47, 0.91], IDF 1, AMB 1, WRONG 0, IDU 1. A9_random ID 0/12 (AMB 11, IDU 1). A8 ID 8/12 (WRONG 1). S5 ID 0/12 (AMB 12). S1 ID 0/12 (AMB 11, IDU 1).
+    - Paired ID(A9) - ID(S5) +0.75 [0.50, 1.00]; ID(A9) - ID(A9_random) +0.75 [0.50, 1.00].
+    - WRONG: A9 0/36; A8 2/36, both below the truth's size (GDIAG8).
+    - 407 separating words re-simulated, 0 unsound.
+  - **Deviations:** #140 (pre-run) and #141 (post-run; it also corrects the run_end note's "about 4 min" to about 2 min).
+  - **Chain:** plan `52b50be` -> authorization `b84deba` -> seedcheck `3426af5` -> A9 `211f9b7` -> runner `8ddfe0b` -> recount `1649b71` -> reference `604a6d2` -> gates `eb6b61d` -> tooling `f78c07a` -> release tooling `9480b23` -> pre-freeze test `96e54de` -> #140 `7f19efd` -> freeze `389e837` -> run start `5ab16bd` -> seal `adb8563` -> gates `b630337` -> #141 `c2f5094` -> RELEASE.json `1193bea` -> docs `9d8e813`.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
+
 <!-- V0300 -->
-- **v0.30.0: RELEASED** 2026-10-30 as tag `v0.30.0` (annotated `b386465` -> `bcecd4c`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.30.0). main was fast-forwarded `5a9854f..bcecd4c`. A fresh clone of the tag restored, verified and passed 4/4 test modules (27 tests). (BRUTE_PLAN_033, ACTIVE EXPERIMENTS; LEAN; STANDING GO t133s553, build authorization ledger `cf62a8c`).
+- **v0.30.0: RELEASED** (previous) 2026-10-30 as tag `v0.30.0` (annotated `b386465` -> `bcecd4c`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.30.0). main was fast-forwarded `5a9854f..bcecd4c`. A fresh clone of the tag restored, verified and passed 4/4 test modules (27 tests). (BRUTE_PLAN_033, ACTIVE EXPERIMENTS; LEAN; STANDING GO t133s553, build authorization ledger `cf62a8c`).
   - **Run complete (Observed).** 36/36 cases, 116.0 s of 1800 s, normal exit, run once. 1 checkpoint snapshot was pushed (`4b67a3b`). Nothing was relaunched. The resume clause was NOT approved and was not needed. The box clock matched GitHub's Date header (0 s at 17:09:41 EDT).
   - **PASS (9/10):** GCH8, G_sound, G10, GS_ref, GQB8 (max query 10.24 s), GTI (4 modules, 27 tests), G_PROC, G_RT, G_recount. **FAIL:** GAE8_headline (a: WRONG 5; c: ID 5/12; b and d pass).
   - **Headline numbers (Observed).**
