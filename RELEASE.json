@@ -1,20 +1,20 @@
 {
-  "version": "0.32.0",
+  "version": "0.33.0",
   "name": "Brute",
   "forked_from": "BGR v0.90.0 (tag bgr-v0.90.0-fork)",
-  "mission": "general intelligence research toward a geometric reasoning system; this release tests whether sound active identification survives reading noise when the noise budget stays at zero until the exact search contradicts the trace (A10: A9 plus an adaptive least budget), and whether the in-solver cap reaches 16 states; LEAN process: 48 cases, 30 min cap; not general intelligence",
-  "study": "BRUTE-0320-NOISY-ACTIVE-ID-035",
-  "preregistration": "experiments/BRUTE_PLAN_035.json",
-  "preregistration_commit": "a66b74a",
-  "process": "LEAN (standing go t133s553, ledger 76b30d5; build authorization ledger 6941bf9): plan locked before data; seedcheck before any seed (ledger c75bda0); independent recount; CNF/CaDiCaL reference audit of A10 on noisy_scale8 with 20 mutations; pre-freeze gates test on a sealed smoke block (ledger ab883d7); failures published; one fresh-clone verify plus tests",
-  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_035.json",
-  "source_freeze_commit": "1764462",
-  "release_freeze": "none: release tooling is inside the source freeze (deviation #126 item 8, kept by #128 to #143)",
-  "run_start": "18:53:55 EDT 2026-10-30 (ledger 3588e27)",
-  "run_end": "complete 48/48, 342.7 s of 1800 s, normal exit at 18:59:38 EDT (ledger 10f47c4); 2 checkpoint snapshots pushed (aafa3c7, ade7093); resume clause not approved and not needed",
-  "seal_commit": "6ea1450",
-  "gates_commit": "76a0ddf",
-  "results_dir": "results/study-035",
+  "mission": "general intelligence research toward a geometric reasoning system; this release tests whether repeated reads (a per-bit majority of r = 3 or 5 reads per position, with a smaller noise budget B_max(r)) make sound active identification work on noisy 12-state traces where the v0.32.0 noise budget alone did not; LEAN process: 48 cases, 30 min cap; not general intelligence",
+  "study": "BRUTE-0330-REPEATED-READS-036",
+  "preregistration": "experiments/BRUTE_PLAN_036.json",
+  "preregistration_commit": "3ab989d",
+  "process": "LEAN (standing go t133s553, ledger 76b30d5; build authorization ledger ed8452b): plan locked before data; seedcheck before any seed (ledger 0eac98d); independent recount; CNF reference audit of A11_r3 on noisy_scale8 with 20 mutations incl. probe mutations; pre-freeze gates test on a sealed smoke block (34456cb); failures published; one fresh-clone verify plus tests",
+  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_036.json",
+  "source_freeze_commit": "730aef4",
+  "release_freeze": "none: release tooling is inside the source freeze (deviation #126 item 8, kept by #128 to #145)",
+  "run_start": "19:47:07 EDT 2026-10-30 (ledger e972a23)",
+  "run_end": "complete 48/48, 420.3 s of 1800 s, normal exit at about 19:54:12 EDT (ledger bd46789); 3 checkpoint snapshots pushed (43b5e2f, 21fdeca, 0bfe2b7); resume clause not approved and not needed",
+  "seal_commit": "d89c1ea",
+  "gates_commit": "bff753f",
+  "results_dir": "results/study-036",
   "case_count": {
     "sealed": 48,
     "expected": 48,
@@ -22,8 +22,7 @@
   },
   "gates_passed": [
     "G10",
-    "GAD10",
-    "GNR10",
+    "GNR11",
     "GS_ref",
     "GTI",
     "G_PROC",
@@ -32,15 +31,16 @@
     "G_sound"
   ],
   "gates_failed": [
-    "GA10_headline",
-    "GQB10"
+    "GBIS11",
+    "GQB11",
+    "GR11_headline"
   ],
   "gates_not_exercised": [],
   "secondary": {
-    "G16": false
+    "GRB11": false
   },
-  "headline": "9 of 11 gates pass; the headline GA10 FAILS on all four clauses and GQB10 fails. noisy_scale12 (n=12, Wilson 95%): A10 ID 0 [0,0.24] IDF 0 AMB 0 WRONG 0 IDU 12 [0.76,1]; A10_fixed IDU 12; S7 IDU 12; A9 WRONG 12 (none stop, not gated); S5 WRONG 9 [0.47,0.91] IDU 3. Paired ID(A10)-ID(S7) 0.00 [0,0] (bar 0.25): FAIL; ID+IDF 0/12 (bar 4): FAIL; IDU 12/12 (bar 3): FAIL; clause a fails on S5 WRONG 15 of 24 gated noisy cases (A10 and S7 WRONG 0 of 48). Diagnosis (Observed): on every noisy case the upward least-budget search hit the 10 s query cap before reaching the true flip count (13-23), so B stayed 0 and A10 stopped IDU with 0 extra actions. clean_scale12: A10 ID 7 [0.32,0.81] IDF 4 AMB 1 WRONG 0, equal to A9 on every case (GNR10 PASS); A10_fixed and S7 IDU 12; GAD10 PASS (+0.58 [0.33,0.83] clean, 0.00 noisy). GQB10 FAIL: S7 10.538 s > 10.5 s (A10 max 10.289 s). G16 (secondary) FAIL: A10 ID 0/6 [0,0.39], IDU 6. Controls ID 6/6 all arms. G_RT 342.7 s of 1800 s",
-  "api": "unchanged: brute.certify/14 is the latest API; A10 is brute/scalesearch10 (no API gate in plan 035; no certify/15)",
+  "headline": "8 of 11 gates pass; the headline GR11 FAILS on all four clauses, GBIS11 and GQB11 fail; secondary GRB11 fails. noisy_scale12 (n=12, Wilson 95%): A11_r3 ID 2 [0.05,0.45] IDF 0 AMB 0 WRONG 0 IDU 10 [0.55,0.95]; A11_r5 ID 4 [0.14,0.61] IDF 1 AMB 2 WRONG 0 IDU 5 [0.19,0.68]; A11_r3_up ID 3 [0.09,0.53] IDU 9; A10 IDU 12 [0.76,1]; S7 IDU 12; S5 WRONG 12 (not gated). Paired ID(A11_r3)-ID(A10) +0.17 [0.00,0.42] (bar 0.25, lower > 0): FAIL; ID+IDF 2/12 (bar 4): FAIL; IDU 10/12 (bar 3): FAIL; clause a fails on one A11_r3 WRONG (noisy_scale8 10210002, least B 1 below the truth's 2 flips). Reported, not gated: ID(A11_r5)-ID(A10) +0.33 [0.08,0.58]. Diagnosis (Observed): the majority cut the truth's base flips from 13-20 to 0-5, but on 9 of 10 IDU cases the first probe at B_max = 6 hit the 9.5 s cap. Reads per step: A11_r3 3.0, A11_r5 5.0, A10/S7 1.0; mean B_final noisy12 r3 0.25, r5 0.33. GQB11: A11_r3_up 10.513 s > 10.5 s. Controls ID 6/6 all arms. G_RT 420.3 s of 1800 s",
+  "api": "unchanged: brute.certify/14 is the latest API; A11 is brute/scalesearch11 (no API gate in plan 036; no certify/15)",
   "deviations": [
     "docs/research/BRUTE_DEVIATIONS_026_123.md",
     "docs/research/BRUTE_DEVIATIONS_026_124.md",
@@ -59,7 +59,9 @@
     "docs/research/BRUTE_DEVIATIONS_034_140.md",
     "docs/research/BRUTE_DEVIATIONS_034_141.md",
     "docs/research/BRUTE_DEVIATIONS_035_142.md",
-    "docs/research/BRUTE_DEVIATIONS_035_143.md"
+    "docs/research/BRUTE_DEVIATIONS_035_143.md",
+    "docs/research/BRUTE_DEVIATIONS_036_144.md",
+    "docs/research/BRUTE_DEVIATIONS_036_145.md"
   ],
-  "verify": "python scripts/study035_storage.py restore && PYTHONPATH=. python scripts/verify_release_0320.py"
+  "verify": "python scripts/study036_storage.py restore && PYTHONPATH=. python scripts/verify_release_0330.py"
 }
