@@ -1,0 +1,148 @@
+{
+ "schema": "brute.seedcheck.v29",
+ "v0290_ranges": {
+  "target/noisy_scale8": [
+   9810001,
+   9810012
+  ],
+  "target/noisy_scale12": [
+   9820001,
+   9820012
+  ],
+  "target/noisy_scale16": [
+   9830001,
+   9830006
+  ],
+  "target/control_cycle3": [
+   9840001,
+   9840006
+  ],
+  "smoke": [
+   9890001,
+   9890030
+  ]
+ },
+ "prior_files": [
+  "PLAN.json",
+  "BRUTE_PLAN_002.json",
+  "BRUTE_PLAN_003.json",
+  "BRUTE_PLAN_004.json",
+  "BRUTE_PLAN_005.json",
+  "BRUTE_PLAN_006.json",
+  "BRUTE_PLAN_007.json",
+  "BRUTE_PLAN_008.json",
+  "BRUTE_PLAN_009.json",
+  "BRUTE_PLAN_010.json",
+  "BRUTE_PLAN_011.json",
+  "BRUTE_PLAN_012.json",
+  "BRUTE_PLAN_013.json",
+  "BRUTE_PLAN_014.json",
+  "BRUTE_PLAN_015.json",
+  "BRUTE_PLAN_016.json",
+  "BRUTE_PLAN_017.json",
+  "BRUTE_PLAN_018.json",
+  "BRUTE_PLAN_019.json",
+  "BRUTE_PLAN_020.json",
+  "BRUTE_PLAN_021.json",
+  "BRUTE_PLAN_022.json",
+  "BRUTE_PLAN_023.json",
+  "BRUTE_PLAN_024.json",
+  "BRUTE_PLAN_025.json",
+  "BRUTE_PLAN_025_A1.json",
+  "BRUTE_PLAN_025_A2.json",
+  "BRUTE_PLAN_026.json",
+  "BRUTE_PLAN_027.json",
+  "BRUTE_PLAN_028.json",
+  "BRUTE_PLAN_029.json",
+  "BRUTE_PLAN_029_A1.json",
+  "BRUTE_PLAN_030.json",
+  "BRUTE_PLAN_031.json"
+ ],
+ "prior_range_count": 251,
+ "pairwise_overlaps": [],
+ "prior_overlaps": [],
+ "token_scan": {
+  "files_scanned": 686,
+  "standalone_tokens_in_032_ranges": [],
+  "occurrences_any_in_032_ranges": 205,
+  "embedded_only": 205
+ },
+ "negative_controls": [
+  [
+   "target",
+   9899001,
+   "refused"
+  ],
+  [
+   "smoke",
+   9899001,
+   "refused"
+  ],
+  [
+   "target",
+   9890001,
+   "refused"
+  ],
+  [
+   "smoke",
+   9810001,
+   "refused"
+  ],
+  [
+   "target",
+   9810013,
+   "refused"
+  ],
+  [
+   "target",
+   9820001,
+   "refused"
+  ],
+  [
+   "target",
+   9840007,
+   "refused"
+  ],
+  [
+   "target",
+   9710001,
+   "refused"
+  ],
+  [
+   "smoke",
+   9790001,
+   "refused"
+  ],
+  [
+   "target",
+   9830007,
+   "refused"
+  ],
+  [
+   "smoke",
+   9890031,
+   "refused"
+  ],
+  [
+   "target",
+   9809999,
+   "refused"
+  ],
+  [
+   "target",
+   9820013,
+   "refused"
+  ],
+  [
+   "target",
+   9840022,
+   "refused"
+  ]
+ ],
+ "target_seeds": 36,
+ "noisy_cases": 30,
+ "clean_cases": 12,
+ "control_cases": 6,
+ "total_cases": 48,
+ "PASS": true
+}
