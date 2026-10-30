@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.30.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.30.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0300 -->
-- **v0.30.0: release in progress** 2026-10-30 on `plan/v0.30.0` (BRUTE_PLAN_033, ACTIVE EXPERIMENTS; LEAN; STANDING GO t133s553, build authorization ledger `cf62a8c`).
+- **v0.30.0: RELEASED** 2026-10-30 as tag `v0.30.0` (annotated `b386465` -> `bcecd4c`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.30.0). main was fast-forwarded `5a9854f..bcecd4c`. A fresh clone of the tag restored, verified and passed 4/4 test modules (27 tests). (BRUTE_PLAN_033, ACTIVE EXPERIMENTS; LEAN; STANDING GO t133s553, build authorization ledger `cf62a8c`).
   - **Run complete (Observed).** 36/36 cases, 116.0 s of 1800 s, normal exit, run once. 1 checkpoint snapshot was pushed (`4b67a3b`). Nothing was relaunched. The resume clause was NOT approved and was not needed. The box clock matched GitHub's Date header (0 s at 17:09:41 EDT).
   - **PASS (9/10):** GCH8, G_sound, G10, GS_ref, GQB8 (max query 10.24 s), GTI (4 modules, 27 tests), G_PROC, G_RT, G_recount. **FAIL:** GAE8_headline (a: WRONG 5; c: ID 5/12; b and d pass).
   - **Headline numbers (Observed).**
