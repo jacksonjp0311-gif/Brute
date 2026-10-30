@@ -1,8 +1,22 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.24.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.25.0 release in progress)._
 
 ## Current version and state
+
+<!-- V0250 -->
+- **v0.25.0: release in progress** 2026-10-30 (study BRUTE-0250-SOLVER-COST-028, LEAN, standing go t133s553, build authorization `13e570c`)
+  - **Run complete (Observed).** 51/51 cases, 1053.8 s of 1800 s, normal exit. 4 checkpoint snapshots were pushed. The resume-after-reboot clause was NOT approved and was not needed.
+  - **PASS:** GQB (S3 max query 10.03 s), G10 (S3 0 UNKNOWN on 6/6 controls), GAPI13 (certify/13; stream 4/4), GS_ref13 (mutation 20/20), GTI (43/43), G_PROC, G_RT, G_recount. **FAIL:** GSC3_headline (b and c; a and d pass).
+  - **Headline numbers (Observed).**
+    - U at 12 states: S3 0.398 [0.333, 0.450], S2 0.399; paired diff -0.001 [-0.020, 0.019] (bar -0.15).
+    - X(S3): 1/12, 0/12, 0/12 at 8/12/16 states.
+    - False certificates: S3, S3_tight and S2 0; S1 3 (stress).
+    - Clause a: 0 mismatches (15,380 vs S2).
+  - **Diagnosis (Inferred).** S3 removed per-query overruns, but steps per second did not rise. More than 98% of its UNKNOWNs at 12-16 states are not run.
+  - **Deviations:** #128 (pre-run) and #129 (post-run). Under #129 the frozen make_gates_028 hit a KeyError on wall-clock fields, so gates are scored by the addendum make_gates_028b and verified with verify_release_0250b.
+  - **Chain:** plan `914ce05` -> authorization `13e570c` -> seedcheck `d930593` -> S3 `e5dc91f` -> certify13 `946309d` -> runner `246a591` -> scoring `48e3cf3` -> tooling `4c8add6` -> #128 `32495af` -> freeze `fb84e6a` -> run_start `c215ed5` -> run_end `b781e55` -> seal `86ae1a2` -> recount `679ab9c` -> reference `80adbd6` -> api `9214a43` -> tests `10ec8ac` -> gates `1b13aed` -> #129 `ea5b81a` -> RELEASE.json `23fbfeb` -> docs `be47753`.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
 
 <!-- V0240 -->
 - **v0.24.0: RELEASED** 2026-10-30 (tag `v0.24.0` (annotated, object `f5b7655`) -> `03f4e3f`; main fast-forwarded `7746fa1..03f4e3f` (no force); https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.24.0; one fresh GitHub clone of the tag passed restore + verify_release_0240 + 27 unit tests; study BRUTE-0240-SCALE-REPLAY-027, LEAN, standing go t133s553, build authorization `e55a639`)
