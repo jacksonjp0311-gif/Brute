@@ -1,18 +1,20 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.22.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.22.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0220 -->
-- **v0.22.0: RELEASE IN PROGRESS** on `plan/v0.22.0` (LEAN process, A2). Study BRUTE-0220-BETTING-CS-025. **11 of 12 gated pass; GBC_headline fails (c, d).**
+- **v0.22.0: RELEASED** 2026-10-30 (tag `v0.22.0` (annotated, object `5d68568`) -> `df79133`; main fast-forwarded `d9333c5..df79133` (no force); https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.22.0; one fresh GitHub clone of `plan/v0.22.0@551d60e` passed `verify_release_0220_r1` and the tests; `docs/research/v0.22.0/FRESH_CLONE_VERIFY_0220.json`). LEAN process (A2). Study BRUTE-0220-BETTING-CS-025. **11 of 12 gated pass; GBC_headline fails (c, d).**
   - **Headline GBC (betting confidence sequence RGB6, `brute.certify/11` method betting): FAIL.** Clauses a, b and e pass; c and d fail.
     - RGB6 had 0 false certificates on 40 noisy main cases and 0 on 30 stress cases at eps 0.05 (exact recount).
     - No betting level activated in any of the 90 cases. RGB6 = its level-0 bound.
     - C_late at eps 0.02: RGB6 0.315 [0.226, 0.413], RGL4 0.320, RGL5 0.332, RGNB4 0.418, oracle 0.806. dC RGB6-RGL4 -0.0045 [-0.0108, 0.0]; RGB6-RGNB4 -0.102 [-0.195, -0.015].
   - **PASS:** G_recount, GBC_lemma, GAS_frozen_control, GS_a11, GS_ref11 (90/90, mutation 20/20), GAPI11, G10, G13, GTI (lean), G_PROC (lean), G_RT (1365.8 s of 1800 s).
   - **Chain:** plan `4f6c4dd` -> authorization `b23f13c` -> A1 `1f49928` -> lemma `55dd41f` -> reference `8f31080` -> seedcheck `44db0c9` -> #119 `53ea79a` -> RGB6 code `19987c8` -> A2 `15cc245` -> process `35e4333` -> #120 `e96b3aa` -> freeze `d1390e5` -> run_start `20c1a65` -> run_end `e489213` -> #121 `30428fd` -> seal `72b52e8` -> gates `0a98405` -> tooling `be8d077` -> release freeze `b9fd583`.
+  - **Deviations:** #119, #120 (pre-run), #121 (api_check t0), #122 (release verifier key).
   - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
+  - **Next:** the v0.23.0 plan (`BRUTE_PLAN_026`, SCALE: 8-16 state worlds, smarter exact search) on branch `plan/v0.23.0`, plan only; build not authorized.
 
 <!-- V0210 -->
 - **v0.21.0: RELEASED** 2026-10-29 (tag `v0.21.0` (annotated, object `73e28e7`) -> `7f30e92`; main fast-forwarded `4d4c39b..7f30e92` (no force); https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.21.0; fresh GitHub clone of `plan/v0.21.0@138ea6f` passed short, --long (GLV 12/0, 296.1 s of 900) and `tests.test_release_0210` 12 OK; `docs/research/v0.21.0/FRESH_CLONE_VERIFY_0210.json`). Study BRUTE-0210-STITCHED-LR-024. **12 of 14 gated pass; GLS and G_HB fail.**
