@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.31.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.31.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0310 -->
-- **v0.31.0: release in progress** 2026-10-30 on `plan/v0.31.0` (BRUTE_PLAN_034, SOUND ACTIVE IDENTIFICATION; LEAN; STANDING GO t133s553, build authorization ledger `b84deba`).
+- **v0.31.0: RELEASED** 2026-10-30 as tag `v0.31.0` (annotated `819b0d5` -> `4093709`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.31.0). main was fast-forwarded `3740ace..4093709`. A fresh clone of the tag restored, verified (commit chain 6) and passed 5/5 test modules (34 tests); ledger `1b8da7f`. Built on branch `plan/v0.31.0` (BRUTE_PLAN_034, SOUND ACTIVE IDENTIFICATION; LEAN; STANDING GO t133s553, build authorization ledger `b84deba`).
   - **Run complete (Observed).** 36/36 cases, 124.8 s of 1800 s, normal exit, run once. 1 checkpoint snapshot was pushed (`ffdb5b5`). Nothing was relaunched. The resume clause was NOT approved and was not needed. The box clock read about 9 s ahead of GitHub's Date header at 18:05:34 EDT, with no stall.
   - **PASS (11/12):** GA9_headline (a-d), GDIAG8, GIDF9, GCH9, G_sound, G10, GS_ref, GTI (5 modules, 34 tests), G_PROC, G_RT, G_recount. **FAIL:** GQB9 (A9 max query 10.888 s; bound 10.5 s).
   - **Headline numbers (Observed).**
