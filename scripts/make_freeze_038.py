@@ -13,7 +13,7 @@ FILES=['brute/region.py','brute/scalesearch.py','brute/scalesearch4.py','brute/s
        'experiments/brute_common_009.py','experiments/brute_common_026.py','experiments/worlds_026.py','experiments/brute_common_032.py',
        'experiments/brute_common_033.py','experiments/brute_study_033.py','experiments/v0300_reference.py','experiments/brute_common_034.py',
        'experiments/brute_study_034.py','experiments/brute_common_035.py','experiments/v0320_reference.py','experiments/brute_common_036.py',
-       'experiments/brute_study_036.py','experiments/brute_common_038.py','experiments/brute_study_037.py','experiments/BRUTE_PLAN_037.json',
+       'experiments/brute_study_036.py','experiments/brute_common_037.py','experiments/brute_study_037.py','experiments/BRUTE_PLAN_037.json',
        'experiments/brute_common_038.py','experiments/brute_study_038.py','experiments/BRUTE_PLAN_038.json',
        'scripts/check_seeds_035.py','scripts/check_seeds_036.py','scripts/check_seeds_037.py','scripts/check_seeds_038.py',
        'scripts/recount_033.py','scripts/recount_035.py','scripts/make_gates_034.py','scripts/recount_037.py','scripts/run_reference_037.py',
