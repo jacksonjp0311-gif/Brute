@@ -163,7 +163,7 @@ def build(study=STUDY_DIR,fresh=None,parts=None):
                 if q>bound:sink.append([f'{ckey(c)}/{a}','query',None,round(q,3)])
             if a in ('API16D','API16D_b'):
                 cc=[v for r in ar['rounds'] for v in r.get('call_conflicts',[])];y=conf.setdefault(a,{'calls':0,'max':0,'capped':0,'spent':0})
-                y['calls']+=len(cc);y['max']=max([y['max']]+cc);y['capped']+=sum(v for r in ar['rounds'] for v in r.get('call_capped',[]));y['spent']+=ar.get('conflicts_spent') or 0
+                y['calls']+=len(cc);y['max']=max([y['max']]+cc);y['capped']+=sum(v is not None for r in ar['rounds'] for v in r.get('call_capped',[]));y['spent']+=ar.get('conflicts_spent') or 0
     gate('GQB22',complete and bool(per) and not over,{'max_s_by_arm':{a:round(v,3) for a,v in sorted(per.items())},'bound_s':QB,'over':over,
          'API16_replay_over_10_5_reported':rep_over,'calls_logged':ncalls,'conflicts':conf},why=wb)
     # GS_ref
