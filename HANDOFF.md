@@ -1,13 +1,14 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.39.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.39.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0390 -->
-- **v0.39.0: release in progress** 2026-10-31 (EDT). Built on branch `plan/v0.39.0` (BRUTE_PLAN_042, A16 vs frozen A14 on fresh scale16; LEAN; STANDING GO t133s553, build authorization ledger `2c1ed4b`).
+- **v0.39.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.39.0 (annotated tag `675e20d` -> `384e401`, ledger release_042 `9330d99`). main fast-forwarded `9f7558c..` the HANDOFF RELEASED ledger commit. Built on branch `plan/v0.39.0` (BRUTE_PLAN_042, A16 vs frozen A14 on fresh scale16; LEAN; STANDING GO t133s553, build authorization ledger `2c1ed4b`). Next: BRUTE_PLAN_043 (v0.40.0, plan only).
   - **Run complete (Observed).** 60/60 arm jobs (30 cases), 240.1 s of 1800 s, normal exit about 02:10:35 EDT, run once; 1 checkpoint snapshot (`a6603b9`); nothing relaunched; resume clause not approved, not used. Hard per-call cap: 0 kills, max call 9.515 s. Box clock about 5 s ahead of GitHub's Date header at 02:24 EDT.
   - **PASS (11/11):** G16 (A16 scale16 ID 8/12 [0.39, 0.86], A14 0/12 [0, 0.24], gain 8), G16_sem, GPERM17 (11/11 [0.74, 1.00]), GQB17, G_sound (311 words, 0 unsound), G10, GS_ref (9 decided, 0 mismatches, 20/20 mutations), GTI, G_PROC, G_RT, G_recount. Secondary GT16 0.82 [0.71, 0.95], GRR041, GPH17 reported only.
+  - **Fresh clone (Observed, ledger `2e762dd`, about 02:28 EDT):** restore + verify_release_0390 passed (chain 7 links, 1 authorization exception); run_tests_0390 passed 5 modules, 36 tests (scratch output). Release notes written fresh from GATES_042.
   - **Deviations:** #157 (pre-run), #158 (post-run: reference path error before any check, interrupted commit chain, next step vs next_if_pass).
   - **Chain:** plan `c5cf6bd` -> erratum `29ef4d5` -> authorization `2c1ed4b` -> seedcheck `8247cf7` -> A16 `fa3da46` -> common/runner `0f4a56a` -> recount `9cd9409` -> reference `e5af6e0` -> gates `4cfd873`/`8445e48` -> tooling `538622b`..`c8eedf1`/`d708dea` -> tests `da9a212` -> pre-freeze smoke `e6ea45d` -> #157 `6ef93ad` -> freeze `4af660b` -> run start `405f17b` -> seal `719953c` -> recount `ca43ced` -> reference `6af5717` -> tests `f33750b` -> gates `d774d8c` -> #158 `4302227` -> RELEASE.json and docs `e657553`.
   - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
