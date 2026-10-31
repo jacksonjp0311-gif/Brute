@@ -1,5 +1,58 @@
 # Brute changelog
 
+## v0.35.0: an incremental totalizer (A13: one incremental SAT instance per step for the least-B search, and a single-query B_max confirmation at n = N) for active identification on noisy traces (study BRUTE-0350-INCREMENTAL-LEASTB-038, LEAN process)
+
+**10 of 12 gates pass (GSAFE13, GINC13, GQB13, G_sound, G10, GS_ref, GTI, G_PROC, G_RT, G_recount). GR13_headline FAILS on b, c and d (a passes); GNR13 FAILS. Secondary GH2 and GPR13 fail.** All 42 cases ran once and were sealed (451.0 s of 1800 s). *Observed*
+
+### Timeline (EDT, 2026-10-30)
+
+- Plan `e070773` (ledger `23c5a63`); build authorization (ledger `bbda857`, 20:58, standing go t133s553, ledger 76b30d5); seedcheck `12d0fde` (ledger `f8aa0e7`, before any seed); A13 `1796a72`; tests `7616856`; common `41cb3fd`; runner `f294fbf`, `1fb01fc`; recount `c0851ac`; CNF reference `a44fe94`; gates `fd455a3`; checkpoint and storage `dda4057`, `5803493`, `424df2b`; release tooling `fd616ef`, `53093fe`, `901acf8`, `41b982f`; freeze tooling `de7725c`, `fbe6225`; smoke tooling `e900aef`; script tests `91d8dce`; #148 `97447a1`, `ee78778`, `91bc6df`; pre-freeze sealed-smoke gates `54d49a2` (21:21-21:31); source freeze `e5f45a0` (ledger `0ca5360`).
+- Run start (ledger `6000c37`, 21:40:30); runner 21:40:42-21:48:03; 2 pushed checkpoint snapshots `9d59f40`, `f4d4b79`; agent session interrupted while polling after the run (run unaffected, nothing relaunched; #149 item 2); seal `b78314c` (run end ledger `e6cca77`); recount `bbb3111`; reference `37024f1`; tests `53fba90`; gates `bbd1023`; #149 `4f64c6b`; RELEASE.json `96da542`.
+
+### Results (labels per case x [Wilson 95% CI]; capped-confirmation cases Wilson; reads and B_final means with seed-bootstrap 95% CI)
+
+| arm / key | ID | IDF | AMB | WRONG | IDU | capped-confirmation cases | reads mean [CI] | B_final mean [CI] |
+|---|---|---|---|---|---|---|---|---|
+| A13_r5 / noisy_scale8 | 2 [0.05,0.45] | 8 [0.39,0.86] | 1 [0.01,0.35] | 0 [0.00,0.24] | 1 [0.01,0.35] | 1/12 [0.01,0.35] | 976 [939,1025] | 0.25 [0.00,0.50] |
+| A13_r3 / noisy_scale8 | 0 [0.00,0.24] | 0 [0.00,0.24] | 0 [0.00,0.24] | 0 [0.00,0.24] | 12 [0.76,1.00] | 10/12 [0.55,0.95] | 574 [554,596] | 2.08 [1.33,2.83] |
+| A12_r5 / noisy_scale8 | 2 [0.05,0.45] | 8 [0.39,0.86] | 1 [0.01,0.35] | 0 [0.00,0.24] | 1 [0.01,0.35] | 1/12 [0.01,0.35] | 972 [937,1021] | 0.25 [0.00,0.50] |
+| A12_r3 / noisy_scale8 | 0 [0.00,0.24] | 0 [0.00,0.24] | 0 [0.00,0.24] | 0 [0.00,0.24] | 12 [0.76,1.00] | 10/12 [0.55,0.95] | 562 [544,584] | 1.67 [1.00,2.25] |
+| A11_r3 / noisy_scale8 | 5 [0.19,0.68] | 1 [0.01,0.35] | 0 [0.00,0.24] | 0 [0.00,0.24] | 6 [0.25,0.75] | n/a | 546 [534,560] | 0.83 [0.25,1.42] |
+| S7 / noisy_scale8 | 0 [0.00,0.24] | 0 [0.00,0.24] | 0 [0.00,0.24] | 0 [0.00,0.24] | 12 [0.76,1.00] | n/a | 177 [177,177] | 27.00 [27.00,27.00] |
+| A13_r5 / noisy_scale12 | 1 [0.01,0.35] | 0 [0.00,0.24] | 0 [0.00,0.24] | 0 [0.00,0.24] | 11 [0.65,0.99] | 7/12 [0.32,0.81] | 973 [922,1034] | 0.33 [0.08,0.58] |
+| A13_r3 / noisy_scale12 | 0 [0.00,0.24] | 0 [0.00,0.24] | 0 [0.00,0.24] | 0 [0.00,0.24] | 12 [0.76,1.00] | 0/12 [0.00,0.24] | 532 [531,536] | 0.17 [0.00,0.50] |
+| A12_r5 / noisy_scale12 | 0 [0.00,0.24] | 0 [0.00,0.24] | 0 [0.00,0.24] | 0 [0.00,0.24] | 12 [0.76,1.00] | 9/12 [0.47,0.91] | 959 [915,1011] | 0.42 [0.08,0.83] |
+| A12_r3 / noisy_scale12 | 0 [0.00,0.24] | 0 [0.00,0.24] | 0 [0.00,0.24] | 0 [0.00,0.24] | 12 [0.76,1.00] | 0/12 [0.00,0.24] | 532 [531,536] | 0.33 [0.00,0.83] |
+| A11_r3 / noisy_scale12 | 0 [0.00,0.24] | 0 [0.00,0.24] | 0 [0.00,0.24] | 0 [0.00,0.24] | 12 [0.76,1.00] | n/a | 531 [531,531] | 0.00 [0.00,0.00] |
+| S7 / noisy_scale12 | 0 [0.00,0.24] | 0 [0.00,0.24] | 0 [0.00,0.24] | 0 [0.00,0.24] | 12 [0.76,1.00] | n/a | 177 [177,177] | 27.00 [27.00,27.00] |
+| A13_r5 / clean_scale12 | 0 [0.00,0.24] | 0 [0.00,0.24] | 3 [0.09,0.53] | 0 [0.00,0.24] | 9 [0.47,0.91] | 8/12 [0.39,0.86] | 1054 [988,1119] | 0.00 [0.00,0.00] |
+| A13_r3 / clean_scale12 | 0 [0.00,0.24] | 0 [0.00,0.24] | 3 [0.09,0.53] | 0 [0.00,0.24] | 9 [0.47,0.91] | 8/12 [0.39,0.86] | 632 [592,672] | 0.00 [0.00,0.00] |
+| A12_r5 / clean_scale12 | 0 [0.00,0.24] | 0 [0.00,0.24] | 3 [0.09,0.53] | 0 [0.00,0.24] | 9 [0.47,0.91] | 8/12 [0.39,0.86] | 1054 [988,1119] | 0.00 [0.00,0.00] |
+| A12_r3 / clean_scale12 | 0 [0.00,0.24] | 0 [0.00,0.24] | 3 [0.09,0.53] | 0 [0.00,0.24] | 9 [0.47,0.91] | 8/12 [0.39,0.86] | 632 [592,672] | 0.00 [0.00,0.00] |
+| A11_r3 / clean_scale12 | 7 [0.32,0.81] | 1 [0.01,0.35] | 3 [0.09,0.53] | 0 [0.00,0.24] | 1 [0.01,0.35] | n/a | 632 [592,672] | 0.00 [0.00,0.00] |
+| S7 / clean_scale12 | 0 [0.00,0.24] | 0 [0.00,0.24] | 0 [0.00,0.24] | 0 [0.00,0.24] | 12 [0.76,1.00] | n/a | 177 [177,177] | 27.00 [27.00,27.00] |
+| A13_r5 / control | 6 [0.61,1.00] | 0 [0.00,0.39] | 0 [0.00,0.39] | 0 [0.00,0.39] | 0 [0.00,0.39] | 0/6 [0.00,0.39] | 885 [885,885] | 0.00 [0.00,0.00] |
+| A13_r3 / control | 6 [0.61,1.00] | 0 [0.00,0.39] | 0 [0.00,0.39] | 0 [0.00,0.39] | 0 [0.00,0.39] | 0/6 [0.00,0.39] | 531 [531,531] | 0.00 [0.00,0.00] |
+| A12_r5 / control | 6 [0.61,1.00] | 0 [0.00,0.39] | 0 [0.00,0.39] | 0 [0.00,0.39] | 0 [0.00,0.39] | 0/6 [0.00,0.39] | 885 [885,885] | 0.00 [0.00,0.00] |
+| A12_r3 / control | 6 [0.61,1.00] | 0 [0.00,0.39] | 0 [0.00,0.39] | 0 [0.00,0.39] | 0 [0.00,0.39] | 0/6 [0.00,0.39] | 531 [531,531] | 0.00 [0.00,0.00] |
+| A11_r3 / control | 6 [0.61,1.00] | 0 [0.00,0.39] | 0 [0.00,0.39] | 0 [0.00,0.39] | 0 [0.00,0.39] | n/a | 531 [531,531] | 0.00 [0.00,0.00] |
+| S7 / control | 6 [0.61,1.00] | 0 [0.00,0.39] | 0 [0.00,0.39] | 0 [0.00,0.39] | 0 [0.00,0.39] | n/a | 177 [177,177] | 27.00 [27.00,27.00] |
+
+- GR13 a: recounted WRONG 0 for A13_r5 and A13_r3 on all 42 gated cases, no label mismatch: PASS. b: IDU(A12_r3) - IDU(A13_r3) noisy12 0.00 [0.00, 0.00] (bar 0.25, lower > 0): FAIL. c: ID + IDF(A13_r5, noisy12) 1/12 [0.01, 0.35] (bar 5): FAIL. d: capped-confirmation cases A13_r5 clean12 8/12 [0.39, 0.86] (bar <= 2): FAIL.
+- GSAFE13 (Exact): the sealed v0.33.0 WRONG trace (noisy_scale8 10210002) gives AMB under confirm13 (future SAT at n = 8, rival n 8), the same verdict as A12. PASS. GINC13: 13 decided items of the sealed 037 reference set, 13 at raised B, 0 mismatches (2 skipped where A12 was capped). PASS.
+- GNR13: B_final 0 on every clean case, but 18 label differences (A13 IDU where A11_r3 ID/IDF on 9 clean12 cases per A13 arm): every B_max confirmation that ran on clean12 hit the 9 s cap (8/8 per A13 arm, walls 9.01-9.25 s; the pre-freeze smoke had shown it, #148 item 11). FAIL.
+- GH2 (secondary): capped-confirmation cases A12 36 vs A13 34 (bar 6): FAIL. GPR13 (secondary): capped least-B probes A13_r3 11 vs A12_r3 10: FAIL. GQB13: max 9.711 s (S7; A13 9.249 s). G_sound: 999 words, 82 from confirmations, 0 unsound. GS_ref: A13_r3 noisy8, 343 decided (322 at raised B), 25 confirmation items, 0 mismatches, mutations 20/20. G_RT 451.0 s.
+
+### What Brute can't do yet
+
+- It cannot yet identify a noisy 12-state machine with a sound stop: A13_r5 ID+IDF 1/12, A13_r3 0/12. *Observed.*
+- An incremental totalizer does not bring the least-B or confirmation queries under the 9 s cap at 12 states. *Observed.*
+- Its B_max confirmation costs more than the cap even on clean 12-state traces with B 0. *Observed.*
+- Its soundness still assumes the declared size N and the declared noise rate. *Exact / Open.*
+- 16-state worlds and other world families were not tested this release. *Open.*
+
+Deviations #148 (pre-run), #149 (post-run). Verify: `python scripts/study038_storage.py restore && PYTHONPATH=. python scripts/verify_release_0350.py`.
+
 ## v0.34.0: a sound noisy stop (A12: doubling-then-bisection least-B search and a confirmation at B_max before any ID claim) for active identification on noisy traces (study BRUTE-0340-SOUND-NOISY-STOP-037, LEAN process)
 
 **9 of 11 gates pass (GSAFE12, GQB12, G_sound, G10, GS_ref, GTI, G_PROC, G_RT, G_recount). GR12_headline FAILS on b, c and d (a passes); GNR12 FAILS. Secondary GPR12 passes.** All 42 cases ran once and were sealed (443.1 s of 1800 s). *Observed*
