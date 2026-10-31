@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.42.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.42.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0420 -->
-- **v0.42.0: RELEASE IN PROGRESS** 2026-10-31 (EDT). Built on branch `plan/v0.42.0` (BRUTE_PLAN_045, N-free stop: A16_N vs A16_nf1 vs A16_nf2 on fresh scale16 plus controls; LEAN; STANDING GO t133s553, build authorization ledger `887980b` at plan commit `27d7946`).
+- **v0.42.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.42.0 (annotated tag at `24e5501`, ledger release_045 `78b82fe`). Fresh-clone verify of the tag passed (ledger `c693091`): verify_release_0420 (5 links, 0 exceptions) and 42 tests. Box clock 0 s from GitHub's Date header at 05:32:20 EDT. Built on branch `plan/v0.42.0` (BRUTE_PLAN_045, N-free stop: A16_N vs A16_nf1 vs A16_nf2 on fresh scale16 plus controls; LEAN; STANDING GO t133s553, build authorization ledger `887980b` at plan commit `27d7946`).
   - **Run complete (Observed).** 54/54 arm jobs (18 cases), 443.0 s of 3600 s, normal exit about 05:18:04 EDT, run once; 2 checkpoint snapshots (`ec3f718`, `c70c6c3`); nothing relaunched; resume clause not approved, not used. 0 hard kills in 4170 calls; max calls 9.225 / 9.337 / 9.331 s.
   - **PASS (10/12):** GNF_bound (21 nf decided, all audited at n_min+delta, 0 mismatches, 20/20), GNF_misfire (0/6 [0, 0.39] each nf arm), GLO_sem, GQB20, G_sound (902 words, 0 unsound), GS_ref (37 decided, all audited), GTI, G_PROC, G_RT, G_recount. **FAIL:** GNF_agree (A16_nf2 scale16 0/12 [0, 0.24]; agree 0/10 [0, 0.28]) and G10 (nf arms IDF on 6/6 controls). Secondary GREP16b (A16_N 10/12 [0.55, 0.95], replicates 043), GNF_cost reported only.
   - **Claim scope (Exact):** nf labels are bounded ("unique among machines with at most n_min+delta states"), not full N-freedom.
