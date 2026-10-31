@@ -59,7 +59,7 @@ def ghost():
     try:net=json.loads(p.stdout.strip().splitlines()[-1])
     except (ValueError,IndexError):net={'error':p.stderr.strip()[-400:]}
     lp=net.get('loop',[None,None])
-    net_ok=p.returncode==0 and net.get('socket_attempts')==0 and lp[0]=='brute.certify/20c' and lp[1] in ('ID','IDF')
+    net_ok=p.returncode==0 and net.get('socket_attempts')==0 and lp[0]=='brute.certify/20c' and lp[1] in ('ID','IDF','IDU')  # #183: a completed loop with no network; the plan does not require a decision
     cl_ok={m:sorted(C[m])==prev[m] for m in ('brute.api.certify16e','brute.api.certify16n','brute.api.certify16s','brute.api.certify20t')}
     out={'closures':{m:sorted(v) for m,v in C.items()},'closures_054':{m:prev[m] for m in cl_ok},'closures_unchanged':cl_ok,
          'frozen_api_sha256':shas,'frozen_api_unchanged':sha_ok,'no_network_run':net,'no_network_returncode':p.returncode,
