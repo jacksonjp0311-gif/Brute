@@ -1,0 +1,146 @@
+{
+ "modules": [
+  "test_scalesearch12_0340",
+  "test_scalesearch11_0330",
+  "test_scalesearch10_0320",
+  "test_scalesearch9_0310",
+  "test_scalesearch8_0300",
+  "test_scalesearch_0230",
+  "test_scripts_037",
+  "test_release_0340"
+ ],
+ "passed": true,
+ "per_module": {
+  "test_release_0340": {
+   "results": {
+    "test_gate_list_mismatch": "ok",
+    "test_missing_key": "ok",
+    "test_release_ok": "ok",
+    "test_run_tests_default_is_scratch": "ok",
+    "test_run_tests_refuses_overwrite": "ok",
+    "test_secondary_mismatch": "ok",
+    "test_wrong_version": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": ". ok\ntest_release_ok (tests.test_release_0340.TestRelease0340.test_release_ok) ... ok\ntest_run_tests_default_is_scratch (tests.test_release_0340.TestRelease0340.test_run_tests_default_is_scratch) ... ok\ntest_run_tests_refuses_overwrite (tests.test_release_0340.TestRelease0340.test_run_tests_refuses_overwrite) ... ok\ntest_secondary_mismatch (tests.test_release_0340.TestRelease0340.test_secondary_mismatch) ... ok\ntest_wrong_version (tests.test_release_0340.TestRelease0340.test_wrong_version) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.004s\n\nOK\n",
+   "tests": 7,
+   "wall_informational": 0.1
+  },
+  "test_scalesearch10_0320": {
+   "results": {
+    "test_B0_equals_A9_on_clean_traces": "ok",
+    "test_bmin_is_least": "ok",
+    "test_fixed_never_raises_and_K_respected": "ok",
+    "test_host_agnostic": "ok",
+    "test_least_and_differ_equal_enumeration_under_B": "ok",
+    "test_majority_and_cap": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "_is_least (tests.test_scalesearch10_0320.T10.test_bmin_is_least) ... ok\ntest_fixed_never_raises_and_K_respected (tests.test_scalesearch10_0320.T10.test_fixed_never_raises_and_K_respected) ... ok\ntest_host_agnostic (tests.test_scalesearch10_0320.T10.test_host_agnostic) ... ok\ntest_least_and_differ_equal_enumeration_under_B (tests.test_scalesearch10_0320.T10.test_least_and_differ_equal_enumeration_under_B) ... ok\ntest_majority_and_cap (tests.test_scalesearch10_0320.T10.test_majority_and_cap) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 1.019s\n\nOK\n",
+   "tests": 6,
+   "wall_informational": 1.1
+  },
+  "test_scalesearch11_0330": {
+   "results": {
+    "test_bisect_equals_upward_and_enumeration": "ok",
+    "test_cap_returns_unknown": "ok",
+    "test_clean_equals_A10": "ok",
+    "test_host_agnostic": "ok",
+    "test_majority_rate_and_bmax": "ok",
+    "test_noisy_loop_K_steps_and_searches_agree": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "tion) ... ok\ntest_cap_returns_unknown (tests.test_scalesearch11_0330.T11.test_cap_returns_unknown) ... ok\ntest_clean_equals_A10 (tests.test_scalesearch11_0330.T11.test_clean_equals_A10) ... ok\ntest_host_agnostic (tests.test_scalesearch11_0330.T11.test_host_agnostic) ... ok\ntest_majority_rate_and_bmax (tests.test_scalesearch11_0330.T11.test_majority_rate_and_bmax) ... ok\ntest_noisy_loop_K_steps_and_searches_agree (tests.test_scalesearch11_0330.T11.test_noisy_loop_K_steps_and_searches_agree) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.448s\n\nOK\n",
+   "tests": 6,
+   "wall_informational": 0.5
+  },
+  "test_scalesearch12_0340": {
+   "results": {
+    "test_GSAFE12_sealed_036_trace": "ok",
+    "test_a11_stop_with_doubling_equals_active11": "ok",
+    "test_doubling_candidates": "ok",
+    "test_doubling_equals_bisect_and_enumeration": "ok",
+    "test_host_agnostic": "ok",
+    "test_sound_ID_checked_by_enumeration": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "\nGSAFE12 {\"verdict\": \"AMB\", \"future\": [[1, \"UNSAT\"], [2, \"UNSAT\"], [3, \"UNSAT\"], [4, \"UNSAT\"], [5, \"UNSAT\"], [6, \"UNSAT\"], [7, \"UNSAT\"], [8, \"SAT\"]], \"start\": null, \"rival_n\": 8}\n",
+   "tail": "est_scalesearch12_0340.T12.test_a11_stop_with_doubling_equals_active11) ... ok\ntest_doubling_candidates (tests.test_scalesearch12_0340.T12.test_doubling_candidates) ... ok\ntest_doubling_equals_bisect_and_enumeration (tests.test_scalesearch12_0340.T12.test_doubling_equals_bisect_and_enumeration) ... ok\ntest_host_agnostic (tests.test_scalesearch12_0340.T12.test_host_agnostic) ... ok\ntest_sound_ID_checked_by_enumeration (tests.test_scalesearch12_0340.T12.test_sound_ID_checked_by_enumeration) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 28.189s\n\nOK\n",
+   "tests": 6,
+   "wall_informational": 28.3
+  },
+  "test_scalesearch8_0300": {
+   "results": {
+    "test_equals_identify6": "ok",
+    "test_query_cap": "ok",
+    "test_shortest_and_none": "ok",
+    "test_sound_loop": "ok",
+    "test_source": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_sound_loop (tests.test_scalesearch8_0300.Active.test_sound_loop) ... ok\ntest_source (tests.test_scalesearch8_0300.HostAgnostic.test_source) ... ok\ntest_equals_identify6 (tests.test_scalesearch8_0300.Identify.test_equals_identify6) ... ok\ntest_query_cap (tests.test_scalesearch8_0300.Identify.test_query_cap) ... ok\ntest_shortest_and_none (tests.test_scalesearch8_0300.Word.test_shortest_and_none) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.280s\n\nOK\n",
+   "tests": 5,
+   "wall_informational": 0.4
+  },
+  "test_scalesearch9_0310": {
+   "results": {
+    "test_against_enumeration": "ok",
+    "test_cap_unknown": "ok",
+    "test_host_agnostic": "ok",
+    "test_sound_loop": "ok",
+    "test_word_bound": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_cap_unknown (tests.test_scalesearch9_0310.Active.test_cap_unknown) ... ok\ntest_host_agnostic (tests.test_scalesearch9_0310.Active.test_host_agnostic) ... ok\ntest_sound_loop (tests.test_scalesearch9_0310.Active.test_sound_loop) ... ok\ntest_against_enumeration (tests.test_scalesearch9_0310.Differ.test_against_enumeration) ... ok\ntest_word_bound (tests.test_scalesearch9_0310.Differ.test_word_bound) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.607s\n\nOK\n",
+   "tests": 5,
+   "wall_informational": 0.7
+  },
+  "test_scalesearch_0230": {
+   "results": {
+    "test_canonical_bfs": "ok",
+    "test_cycle3_identified": "ok",
+    "test_equals_frozen_tolerant": "ok",
+    "test_greedy_fold_consistent": "ok",
+    "test_masked_and_contradicted": "ok",
+    "test_no_io": "ok",
+    "test_pool_and_chain_machines_consistent": "ok",
+    "test_random_small": "ok",
+    "test_scale_worlds_minimal_strong": "ok",
+    "test_trajectory": "ok",
+    "test_unexercised_not_unique": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_canonical_bfs (tests.test_scalesearch_0230.Witnesses.test_canonical_bfs) ... ok\ntest_greedy_fold_consistent (tests.test_scalesearch_0230.Witnesses.test_greedy_fold_consistent) ... ok\ntest_pool_and_chain_machines_consistent (tests.test_scalesearch_0230.Witnesses.test_pool_and_chain_machines_consistent) ... ok\ntest_scale_worlds_minimal_strong (tests.test_scalesearch_0230.Worlds.test_scale_worlds_minimal_strong) ... ok\ntest_trajectory (tests.test_scalesearch_0230.Worlds.test_trajectory) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.126s\n\nOK\n",
+   "tests": 11,
+   "wall_informational": 0.2
+  },
+  "test_scripts_037": {
+   "results": {
+    "test_arms_and_reproduces": "ok",
+    "test_constants": "ok",
+    "test_counts": "ok",
+    "test_empty_study_fails_incomplete": "ok",
+    "test_exists_different_two_bit_against_enumeration": "ok",
+    "test_exists_machine_against_enumeration": "ok",
+    "test_files_exist": "ok",
+    "test_reference_on_case": "ok",
+    "test_sealed_block_gates_check": "ok",
+    "test_sound_stop_confirmed": "ok",
+    "test_tamper_detected": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "{\"schema\": \"brute.recount.v34_0\", \"results_sha256\": \"d54e3d7331d9665b4ed4fe3dad2074ac1e57434acff4b41e2435f9098755cf43\", \"cases\": 42, \"labels\": {\"A12_r5\": {\"ID\": 42, \"IDF\": 0, \"AMB\": 0, \"WRONG\": 0, \"IDU\": 0}, \"A12_r3\": {\"ID\": 18, \"IDF\": 0, \"AMB\": 0, \"WRONG\": 0, \"IDU\": 24}, \"A12_r3_nostop\": {\"ID\": 18, \"IDF\": 0, \"AMB\": 0, \"WRONG\": 0, \"IDU\": 24}, \"A11_r3\": {\"ID\": 18, \"IDF\": 0, \"AMB\": 0, \"WRONG\": 0, \"IDU\": 24}, \"A11_r5\": {\"ID\": 42, \"IDF\": 0, \"AMB\": 0, \"WRONG\": 0, \"IDU\": 0}, \"S7\": {\"ID\": 18, \"IDF\": 0, \"AMB\": 0, \"WRONG\": 0, \"IDU\": 24}}, \"B_max\": {\"A12_r5\": 2, \"A12_r3\": 6, \"A12_r3_nostop\": 6, \"A11_r3\": 6, \"A11_r5\": 2, \"S7\": 27}, \"words_unsound\": 0, \"words_checked\": 48, \"mismatching_cases\": 0, \"mismatches\": {}, \"PASS\": true}\n",
+   "tail": "est_scripts_037.Recount.test_sealed_block_gates_check) ... ok\ntest_sound_stop_confirmed (tests.test_scripts_037.Recount.test_sound_stop_confirmed) ... ok\ntest_tamper_detected (tests.test_scripts_037.Recount.test_tamper_detected) ... ok\ntest_exists_different_two_bit_against_enumeration (tests.test_scripts_037.Reference.test_exists_different_two_bit_against_enumeration) ... ok\ntest_exists_machine_against_enumeration (tests.test_scripts_037.Reference.test_exists_machine_against_enumeration) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 56.893s\n\nOK\n",
+   "tests": 11,
+   "wall_informational": 57.1
+  }
+ },
+ "process": "lean",
+ "schema": "brute.test-suite-037.v1"
+}
