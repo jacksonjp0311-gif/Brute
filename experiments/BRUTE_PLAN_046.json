@@ -1,0 +1,80 @@
+{
+ "schema": "brute.plan.v1",
+ "study": "BRUTE-0430-CERTIFY16-046",
+ "version_under_test": "0.43.0",
+ "parent_study": "BRUTE-0420-A16-NFREE-STOP-045",
+ "status": "preregistered (plan only; no build code, no data for 046)",
+ "branch_taken": "plan 045 next_if_fail, third clause (Exact, GATES_045 81b3a76, ledger 3f8d199): GNF_agree fails (A16_nf2 scale16 ID+IDF 0/12 [0.00, 0.24]; agree 0/10 [0.00, 0.28]) while GNF_bound and GNF_misfire pass. The clause reads: the nf stop is sound but weaker; record it and move to certify/16 with A16_N",
+ "brand": "charcoal and sage; no purple, neon, emoji or gold",
+ "question": "Can the A16_N declared-N exact stop (brute/scalesearch16, frozen) be exposed as an additive, host-agnostic embeddable API brute.certify/16 that reproduces the study arm's labels and models exactly, keeps certify/14 behaviour unchanged, and stays sound on fresh 16-state worlds?",
+ "hypotheses": {
+  "H1": "certify/16 driven step by step through its public interface reaches the same stop label and an equivalent canonical model as the study arm A16_N on every replayed sealed 045 trace",
+  "H2": "on fresh scale16 worlds certify/16 decides about as many cases as A16_N did in 043 and 045 (10/12 in 045) and never issues a WRONG certificate",
+  "H3": "adding certify/16 changes no certify/14 output"
+ },
+ "design": {
+  "api": "new file brute/api/certify16.py (additive; certify14.py and every frozen file untouched): Certifier16(initial, num_actions, family_bound<=16, search='a16') with current(), observe(action, reading), propose() (the next experiment word chosen by the A16 policy) and close(); certify16(initial, actions, observations, ...) one-shot form; returns {'api': 'brute.certify/16', 'label': ID|IDF|AMB|IDU, 'model', 'n_min', 'family_bound', 'calls', 'unknown'}; search values 'region','s2','s3','s4' delegate to certify/14 unchanged. Host-agnostic: no I/O, threads, subprocess or os in brute/; the per-call cap is a solver-side conflict/time budget passed in, never a child process",
+  "arms": {
+   "API16": "certify/16 driven only through its public interface by the study runner (declared N=16, soft cap 9.0 s, BUDGET 240 s, K=128: the 045 A16_N setting)",
+   "A16_N": "frozen brute/scalesearch16 study arm, same settings (reference arm)"
+  },
+  "claim": "exact conditional on noise-free readings and true size <= family_bound (declared N); the nf bounded stop of 045 is not part of certify/16",
+  "parts": {
+   "a_replay": "replay the 18 sealed 045 A16_N traces (12 scale16, 6 control) through API16 observation by observation: compare stop label, n_min and canonical model at the same step",
+   "b_fresh": "18 fresh cases (12 scale16, 6 control) x 2 arms, run once"
+  },
+  "unchanged": "encoding, clauses, cube split, rival query, distinguishing-word rule, labels and recount rule are those of 043/045"
+ },
+ "cases": {
+  "replay_045": 18,
+  "scale16": 12,
+  "control": 6,
+  "arms_fresh": 2,
+  "jobs_fresh": 36,
+  "total_fresh": 18,
+  "declared_before_data": true
+ },
+ "heldout_ranges": {
+  "scale16": "11230001-11230012",
+  "control": "11270001-11270006",
+  "note": "candidate prefixes 1123 and 1127 had 0 word-bounded 1123/1127+00NN tokens in tracked text at plan time (Observed, git grep, 2026-10-31 05:3x EDT); seedcheck_046 scans every tracked file including .gz archives before any seed is used; any hit moves the range to the next unused odd prefix (1131, 1133), declared in the pre-run deviation"
+ },
+ "smoke_range": "11370001-11370006 (pre-freeze smoke only; never gated)",
+ "criteria": {
+  "GAPI16_replay": "headline 1: on all 18 replayed sealed 045 A16_N traces, API16 reaches the same stop label, the same n_min and an equivalent canonical model as the sealed record (18/18; 0 differences)",
+  "GAPI16_fresh": "headline 2: fresh scale16: API16 WRONG = 0 and API16 ID+IDF >= 8/12 (Wilson 95% CI reported), and API16 and A16_N give the same label on >= 11/12 cases (a capped-call unknown on one side is reported, not a WRONG)",
+  "GAPI14_compat": "certify/14 outputs unchanged: the frozen certify/14 test modules pass and a recorded certify14 output sample is reproduced byte for byte through certify16 with search='s4'",
+  "GHOST16": "host-agnostic: static check finds no import of os, subprocess, threading, multiprocessing, socket or file I/O in brute/api/certify16.py or anything it newly imports; and certify16 runs with no network",
+  "G10": "API16 and A16_N ID on each of the 6 fresh controls",
+  "GQB21": "max logged call wall <= soft cap + 1.5 s in each arm (10.5 s)",
+  "GS_ref": "CNF reference audit (bound N=16) of every decided fresh case in each arm: 0 mismatches, 20 mutations detected",
+  "G_sound": "0 unsound separating words in study and recount; 0 truth inconsistencies",
+  "G_recount": "the independent recount reproduces every fresh label; 0 mismatches",
+  "GTI": "gated test files ok in a fresh clone",
+  "G_PROC": "ledger order preregistration, build_authorization, seedcheck, source_freeze, run_start, run_end (all _046), checked as a subsequence",
+  "G_RT": "main run (replay plus fresh) <= 3600 s"
+ },
+ "secondary": {
+  "GREP16c": "API16 and A16_N scale16 ID+IDF beside 043 (9/12) and 045 (10/12), reported only",
+  "GAPI_cost": "API16 wall and calls against A16_N (wrapper overhead), reported only"
+ },
+ "gate_dependency_rule": "each gate is scored from its own counts; GAPI16_fresh uses recounted labels if G_recount passes, else study labels with the failure stated",
+ "what_counts_as_failure": "any gated criterion false; a killed call is unknown, not a failure of soundness",
+ "freeze_rule": "no file named in the source freeze is edited after the freeze; new behaviour goes in new files or a deviation addendum",
+ "runtime_estimate": "Open: set by the pre-freeze LPT projection with 8 workers; worst case fresh 36 x 240 s / 8 = 1080 s plus replay (bounded by the sealed 045 A16_N walls, 538 s summed on scale16); below 3600 s, no cut rule",
+ "process": "LEAN (standing go t133s553, ledger 76b30d5; a ledgered build_authorization_046 citing it is required before any code; ledgered BEFORE seedcheck_046): plan locked before data; seedcheck before seeds; independent recount; CNF reference audit; pre-freeze smoke with the real release verifier chain; one main run, no tuning, no reruns; failures published; one fresh-clone verify plus tests",
+ "next_if_pass": "all headline gates pass: certify/16 becomes the latest certified API; next scale-20 replication with API16 (maintainer order)",
+ "next_if_fail": "GAPI16_replay fails: the wrapper is not faithful; fix fidelity before anything else and re-plan. GAPI16_fresh fails on WRONG: soundness first, nothing else. GAPI16_fresh fails on count only with replay passing: the A16_N result does not replicate at this size; publish and re-plan before scale-20. GAPI14_compat or GHOST16 fails: certify/16 is not released as an API; record it and re-plan",
+ "limitations": [
+  "12 scale16 cases give wide CIs",
+  "certify/16 still needs a declared size N (the N-free stop of 045 was sound but weaker and is not included)",
+  "clean worlds only; lowobs12 stays beyond A16 (044)",
+  "the per-call cap inside a host-agnostic API is a solver budget, so walls depend on the host"
+ ],
+ "open_items": [
+  "full N-freedom: Open (045 bounded stop sound but decided 0/12 scale16)",
+  "scale-20 replication: after this study",
+  "noise at 12 states: Open",
+  "lowobs12 beyond A16 at 044 budgets: Open"
+ ]
+}
