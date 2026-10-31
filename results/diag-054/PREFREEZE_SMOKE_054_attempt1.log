@@ -1,0 +1,134 @@
+{"schema": "brute.recount.v51_0", "results_sha256": "2acf291842056d956181140510c4243885851180a0b59b7db5e04e3e32ec5f8c", "cases": 4, "recounted": 4, "labels": {"scale20t": {"API20T": {"ID": 0, "IDF": 0, "AMB": 0, "WRONG": 0, "IDU": 2}, "API20T_b": {"ID": 0, "IDF": 0, "AMB": 0, "WRONG": 0, "IDU": 2}, "API16E20": {"ID": 0, "IDF": 0, "AMB": 0, "WRONG": 0, "IDU": 2}}, "compat20t": {"API20T": {"ID": 2, "IDF": 0, "AMB": 0, "WRONG": 0, "IDU": 0}, "API16E": {"ID": 2, "IDF": 0, "AMB": 0, "WRONG": 0, "IDU": 0}}}, "compat": {"smoke/compat20t/12210003": {"label": "ID", "control_label": "ID", "label_equal": true, "canon16e_equal": false, "rule": "same machine from start state 0", "machine_equal": true, "equal": true}, "smoke/compat20t/12210004": {"label": "ID", "control_label": "ID", "label_equal": true, "canon16e_equal": false, "rule": "same machine from start state 0", "machine_equal": true, "equal": true}}, "compat_equal": 2, "misfires": {"API20T": 0, "API20T_b": 0, "API16E20": 0, "API16E": 0}, "amb_rule_applied": 0, "words_unsound": 0, "words_checked": 127, "truth_inconsistent": 0, "mismatching_cases": 0, "mismatches": {}, "PASS": true}
+{
+ "schema": "brute.reference.v51_0",
+ "study_results_sha256": "2acf291842056d956181140510c4243885851180a0b59b7db5e04e3e32ec5f8c",
+ "block": "smoke",
+ "scope": {
+  "budget_12_s": 2400.0,
+  "workers_12": 8,
+  "order": [
+   "API20T",
+   "API20T_b"
+  ],
+  "key_order": [
+   "scale20t",
+   "compat20t"
+  ]
+ },
+ "records": 6,
+ "decided": 2,
+ "audited": 2,
+ "not_audited": [],
+ "not_reached": 4,
+ "complete": true,
+ "per_arm": {
+  "API20T": {
+   "records": 4,
+   "decided": 2,
+   "audited": 2,
+   "mismatches": 0,
+   "misfires": 0
+  },
+  "API20T_b": {
+   "records": 2,
+   "decided": 0,
+   "audited": 0,
+   "mismatches": 0,
+   "misfires": 0
+  }
+ },
+ "per_key": {
+  "scale20t": {
+   "decided": 0,
+   "audited": 0,
+   "mismatches": 0
+  },
+  "compat20t": {
+   "decided": 2,
+   "audited": 2,
+   "mismatches": 0
+  }
+ },
+ "k_spent_as_amb": 0,
+ "verdicts_checked": 4,
+ "mismatch_count": 0,
+ "misfires": [],
+ "walls_informational": {
+  "smoke/compat20t/12210003/API20T": 94.4,
+  "smoke/compat20t/12210004/API20T": 164.9
+ },
+ "elapsed_informational": {
+  "r12": 165.0635069909913
+ },
+ "vacuous": false,
+ "PASS": true
+} 
+mutations 20 / 20
+{"schema": "brute.recount.v51_0", "results_sha256": "005e0d31b3e212fdffb8518fca5dd9304c80c646c9c113c192536a571efffed0", "cases": 4, "recounted": 4, "labels": {"scale20t": {"API20T": {"ID": 0, "IDF": 0, "AMB": 0, "WRONG": 0, "IDU": 2}, "API20T_b": {"ID": 0, "IDF": 0, "AMB": 0, "WRONG": 0, "IDU": 2}, "API16E20": {"ID": 0, "IDF": 0, "AMB": 0, "WRONG": 0, "IDU": 2}}, "compat20t": {"API20T": {"ID": 2, "IDF": 0, "AMB": 0, "WRONG": 0, "IDU": 0}, "API16E": {"ID": 2, "IDF": 0, "AMB": 0, "WRONG": 0, "IDU": 0}}}, "compat": {"main/compat20t/12210003": {"label": "ID", "control_label": "ID", "label_equal": true, "canon16e_equal": false, "rule": "same machine from start state 0", "machine_equal": true, "equal": true}, "main/compat20t/12210004": {"label": "ID", "control_label": "ID", "label_equal": true, "canon16e_equal": false, "rule": "same machine from start state 0", "machine_equal": true, "equal": true}}, "compat_equal": 2, "misfires": {"API20T": 0, "API20T_b": 0, "API16E20": 0, "API16E": 0}, "amb_rule_applied": 0, "words_unsound": 0, "words_checked": 127, "truth_inconsistent": 0, "mismatching_cases": 0, "mismatches": {}, "PASS": true}
+{
+ "schema": "brute.reference.v51_0",
+ "study_results_sha256": "005e0d31b3e212fdffb8518fca5dd9304c80c646c9c113c192536a571efffed0",
+ "block": "main",
+ "scope": {
+  "budget_12_s": 2400.0,
+  "workers_12": 8,
+  "order": [
+   "API20T",
+   "API20T_b"
+  ],
+  "key_order": [
+   "scale20t",
+   "compat20t"
+  ]
+ },
+ "records": 6,
+ "decided": 2,
+ "audited": 2,
+ "not_audited": [],
+ "not_reached": 4,
+ "complete": true,
+ "per_arm": {
+  "API20T": {
+   "records": 4,
+   "decided": 2,
+   "audited": 2,
+   "mismatches": 0,
+   "misfires": 0
+  },
+  "API20T_b": {
+   "records": 2,
+   "decided": 0,
+   "audited": 0,
+   "mismatches": 0,
+   "misfires": 0
+  }
+ },
+ "per_key": {
+  "scale20t": {
+   "decided": 0,
+   "audited": 0,
+   "mismatches": 0
+  },
+  "compat20t": {
+   "decided": 2,
+   "audited": 2,
+   "mismatches": 0
+  }
+ },
+ "k_spent_as_amb": 0,
+ "verdicts_checked": 4,
+ "mismatch_count": 0,
+ "misfires": [],
+ "walls_informational": {
+  "main/compat20t/12210003/API20T": 94.5,
+  "main/compat20t/12210004/API20T": 166.7
+ },
+ "elapsed_informational": {
+  "r12": 167.04996212299739
+ },
+ "vacuous": false,
+ "PASS": true
+} 
+mutations 20 / 20
+{"label": "Observed", "purpose": "Pre-freeze smoke-gates, runtime projection and cut order for study-054 (plan 054 runtime_estimate, unchanged by 054a; pre-run", "stops_present": {"ID": 4, "unknown": 6}, "smoke_record_columns": ["block", "key", "seed", "arm: label, stop, conflicts, chunks, case wall s, max chunk wall s, wall_guard, n_min, api"], "smoke_wall_guard_records": [], "smoke_determinism": [["scale20t", 12210001, true], ["scale20t", 12210002, true]], "hook_arms": {"scale20t/12210001/API16E20": 0, "scale20t/12210001/API20T": 0, "scale20t/12210001/API20T_b": 0, "scale20t/12210002/API16E20": 0, "scale20t/12210002/API20T": 0, "scale20t/12210002/API20T_b": 0, "compat20t/12210003/API16E": 0, "compat20t/12210003/API20T": 0, "compat20t/12210004/API16E": 0, "compat20t/12210004/API20T": 0}, "smoke_compat": [[12210003, {"label": "ID", "control_label": "ID", "label_equal": true, "canon16e_equal": false, "rule": "same machine from start state 0", "machine_equal": true, "equal": true}], [12210004, {"label": "ID", "control_label": "ID", "label_equal": true, "canon16e_equal": false, "rule": "same machine from start state 0", "machine_equal": true, "equal": true}]], "runtime_projection": {"label": "Inferred", "mean_wall_by_key": {"compat20t": 28.66, "scale20t": 280.77}, "smoke_slowest_rate": 5911.9, "rate_declared": 4503.0, "r_min": 4503.0, "worst_per_job_s": {"scale20t": 454.1, "compat20t": 676.2}, "workers": {"scale20t": 4, "compat20t": 4}, "cap_s": 3300.0, "candidates": {"N20T=6,NC20T=6": {"scale20t": {"jobs": 18, "worst_s": 2270.7, "mean_s": 1403.8}, "compat20t": {"jobs": 12, "worst_s": 2028.7, "mean_s": 86.0}, "worst_run_s": 2270.7, "mean_run_s": 1403.8}, "N20T=6,NC20T=4": {"scale20t": {"jobs": 18, "worst_s": 2270.7, "mean_s": 1403.8}, "compat20t": {"jobs": 8, "worst_s": 1352.4, "mean_s": 57.3}, "worst_run_s": 2270.7, "mean_run_s": 1403.8}, "N20T=4,NC20T=6": {"scale20t": {"jobs": 12, "worst_s": 1362.4, "mean_s": 842.3}, "compat20t": {"jobs": 12, "worst_s": 2028.7, "mean_s": 86.0}, "worst_run_s": 2028.7, "mean_run_s": 842.3}, "N20T=4,NC20T=4": {"scale20t": {"jobs": 12, "worst_s": 1362.4, "mean_s": 842.3}, "compat20t": {"jobs": 8, "worst_s": 1352.4, "mean_s": 57.3}, "worst_run_s": 1362.4, "mean_run_s": 842.3}}, "required": {"N20T": 6, "NC20T": 6}, "chosen_projection": {"scale20t": {"jobs": 18, "worst_s": 2270.7, "mean_s": 1403.8}, "compat20t": {"jobs": 12, "worst_s": 2028.7, "mean_s": 86.0}, "worst_run_s": 2270.7, "mean_run_s": 1403.8}, "cut_exhausted": false, "runner": {"N20T": 6, "NC20T": 6}, "cut_consistent": true, "cut_applied": {"scale20t": false, "compat20t": false}, "projected_main_worst_s": 2270.7, "caveat": "two smoke seeds per key; the worst case assumes every job spends its whole B at r_min; the two pools run concurrently"}, "recount_rc": 0, "recount": {"labels": {"compat20t": {"API16E": {"AMB": 0, "ID": 2, "IDF": 0, "IDU": 0, "WRONG": 0}, "API20T": {"AMB": 0, "ID": 2, "IDF": 0, "IDU": 0, "WRONG": 0}}, "scale20t": {"API16E20": {"AMB": 0, "ID": 0, "IDF": 0, "IDU": 2, "WRONG": 0}, "API20T": {"AMB": 0, "ID": 0, "IDF": 0, "IDU": 2, "WRONG": 0}, "API20T_b": {"AMB": 0, "ID": 0, "IDF": 0, "IDU": 2, "WRONG": 0}}}, "compat_equal": 2, "misfires": {"API16E": 0, "API16E20": 0, "API20T": 0, "API20T_b": 0}, "words_checked": 127, "words_unsound": 0, "truth_inconsistent": 0, "mismatching_cases": 0, "PASS": true}, "reference_rc": 0, "reference_smoke": {"records": 6, "decided": 2, "audited": 2, "complete": true, "per_key": {"compat20t": {"audited": 2, "decided": 2, "mismatches": 0}, "scale20t": {"audited": 0, "decided": 0, "mismatches": 0}}, "mismatch_count": 0, "vacuous": false, "PASS": true, "elapsed_informational": {"r12": 165.0635069909913}, "scope": {"budget_12_s": 2400.0, "key_order": ["scale20t", "compat20t"], "order": ["API20T", "API20T_b"], "workers_12": 8}, "mutations": 20, "of": 20}, "api_checks_rc": 0, "api_checks": {"PASS": true, "ghost": {"PASS54": true, "closures_053": {"brute.api.certify16e": ["brute.active", "brute.align", "brute.anytimemargin", "brute.api", "brute.api.certify", "brute.api.certify10", "brute.api.certify11", "brute.api.certify12", "brute.api.certify13", "brute.api.certify14", "brute.api.certify16", "brute.api.certify16d", "brute.api.certify16e", "brute.api.certify8", "brute.api.certify9", "brute.bettingregion", "brute.boundedtransfer", "brute.breadth", "brute.changepoint", "brute.core.learner", "brute.driftsound", "brute.encaudit16", "brute.fallback", "brute.lrregion", "brute.noisyregion", "brute.region", "brute.region_learner", "brute.resume", "brute.scalebetting", "brute.scalesearch", "brute.scalesearch10", "brute.scalesearch14", "brute.scalesearch15", "brute.scalesearch16", "brute.scalesearch3", "brute.scalesearch4", "brute.scalesearch5", "brute.scalesearch7", "brute.scalesearch8", "brute.scalesearch9", "brute.seqmargin", "brute.stitchedregion", "brute.syncevent", "brute.transfer"], "brute.api.certify16n": ["brute.active", "brute.align", "brute.anytimemargin", "brute.api", "brute.api.certify", "brute.api.certify10", "brute.api.certify11", "brute.api.certify12", "brute.api.certify13", "brute.api.certify14", "brute.api.certify16", "brute.api.certify16d", "brute.api.certify16e", "brute.api.certify16n", "brute.api.certify8", "brute.api.certify9", "brute.bettingregion", "brute.boundedtransfer", "brute.breadth", "brute.changepoint", "brute.core.learner", "brute.driftsound", "brute.encaudit16", "brute.fallback", "brute.lrregion", "brute.noisyregion", "brute.region", "brute.region_learner", "brute.resume", "brute.scalebetting", "brute.scalesearch", "brute.scalesearch10", "brute.scalesearch14", "brute.scalesearch15", "brute.scalesearch16", "brute.scalesearch3", "brute.scalesearch4", "brute.scalesearch5", "brute.scalesearch7", "brute.scalesearch8", "brute.scalesearch9", "brute.seqmargin", "brute.stitchedregion", "brute.syncevent", "brute.transfer"], "brute.api.certify16s": ["brute.active", "brute.align", "brute.anytimemargin", "brute.api", "brute.api.certify", "brute.api.cer
+{"GDET54": {"pass": true}, "GFID54": {"pass": false}, "GS20T_sound54": {"pass": true}, "GS20T_gain54": {"pass": false}, "GCOMPAT20T54": {"pass": true}, "GHOST54": {"pass": false}, "GS_ref": {"pass": true}, "G_sound": {"pass": true}, "G_recount": {"pass": true}, "GTI": {"pass": false}, "GTEST": {"pass": false, "reason": "INCOMPLETE_INPUT (TEST_SUITE_054 missing)"}, "G_PROC": {"pass": false}, "G_RT": {"pass": true}}
