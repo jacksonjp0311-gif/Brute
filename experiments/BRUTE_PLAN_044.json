@@ -1,0 +1,106 @@
+{
+ "branch_taken": "plan 043 next_if_fail, first clause (Exact): GLO FAIL (A16 lowobs12 ID+IDF 0/12 [0, 0.24], A14 0/12, gain 0) with GREP16 PASS (A16 scale16_rep ID 9/12 [0.47, 0.91]). The clause reads: one-bit observations need a different experiment policy, not a new encoding; plan a lowobs budget/K audit using GLO_cause. Maintainer order (James, 2026-10-31 02:28 EDT): lowobs first; certify/16 after the N-free stop. The N-free stop, certify/16 and the scale-20 replication stay deferred, not dropped",
+ "brand": "charcoal and sage; no purple, neon, emoji or gold",
+ "cases": {
+  "arms": 3,
+  "control": 6,
+  "declared_before_data": true,
+  "jobs": 54,
+  "lowobs12": 12,
+  "total_fresh": 18
+ },
+ "criteria": {
+  "G10": "every arm ID on each of the 6 controls",
+  "GLO_cap": "headline 1: fresh lowobs12 (recounted labels): A16_c30 ID+IDF >= 3/12 AND A16_c30 ID+IDF - A16_c9 ID+IDF >= 2; Wilson 95% CIs reported",
+  "GLO_pol": "headline 2: fresh lowobs12 (recounted labels): A16_xf ID+IDF >= 3/12 AND A16_xf ID+IDF - A16_c9 ID+IDF >= 2; Wilson 95% CIs reported",
+  "GLO_sem": "WRONG 0 in every arm on every fresh case; any two decided arms agree on n_min and canonical model",
+  "GQB19": "max logged call wall <= soft cap + 1.5 s in each arm (10.5 s for c9 and xf, 31.5 s for c30)",
+  "GS_ref": "CNF reference audit of every decided lowobs12 case: 0 mismatches and all 20 mutations detected (vacuous-pass stated if 0 decided)",
+  "GTI": "gated test files ok in a fresh clone",
+  "G_PROC": "ledger order as declared (preregistration, build_authorization, seedcheck, source_freeze, run_start, run_end; all _044), checked as a subsequence",
+  "G_RT": "main run <= 3600 s",
+  "G_recount": "the independent recount reproduces every label; 0 mismatches",
+  "G_sound": "0 unsound separating words in study and recount; 0 truth inconsistencies (scored from its own counts)"
+ },
+ "design": {
+  "arms": {
+   "A16_c30": "the same code; soft cap 30.0 s, SIGKILL 1.0 s later; BUDGET 600 s; K=128 (only the cap and budget change)",
+   "A16_c9": "brute/scalesearch16 as frozen at 4af660b; soft cap 9.0 s, SIGKILL 1.0 s later; BUDGET 240 s; K=128 (the 043 setting, replicated as the baseline)",
+   "A16_xf": "new file brute/lowobspolicy17.py wrapping A16 unchanged: before the first least-model search it spends E experiments from a fixed seeded schedule (all action words of length <= 3 from the start, then seeded random words of length 6 until E = 32 or the budget ends), then runs A16 as frozen with the remaining K; soft cap 9.0 s, BUDGET 240 s, K=128 total"
+  },
+  "budgets": "the 043 lowobs12 action budgets and n_max, copied, not tuned; the 30 s / 600 s pair and E = 32 are declared now and not tuned after any data",
+  "recount": "the 043 recount and adapter reused unchanged; a new file only if A16_xf records need one, declared in the pre-run deviation",
+  "reference": "CNF reference audit of every decided lowobs12 case in every arm, 20 mutations",
+  "unchanged": "encoding, clauses, cube split, rival query, recount rule and stop rules are those of 043; no new encoding",
+  "worlds": "lowobs12 from the frozen experiments/worlds_040.py generator via worlds_043 dispatch, unchanged; controls as in 043"
+ },
+ "diagnosis_043": {
+  "GLO_cause": "all 24 lowobs12 arm runs stopped unknown after a call hit the 9.0 s soft cap; A14 12/12 in the first least-model phase with 0 experiments; A16 9 least-phase and 3 future-phase stops, 7/12 with 0 experiments, at most 16 of K=128 experiments used, n_min 11 or 12 reached on 3 cases (Observed)",
+  "GPH18": "lowobs capped calls: A14 least 12/114, A16 cube 15/160, A16 least 11/141, A16 rival 4/21 (Observed)",
+  "budget": "longest lowobs12 arm run 62.6 s of the 240 s budget, mean 23.4 s (Observed)",
+  "headline": "GLO FAIL, GREP16 PASS; 10 of 11 gates; WRONG 0; 354 words, 0 unsound (Observed)",
+  "reading": "the binding limit is the per-call cap in the least-model phase, not K and not the case budget; whether a longer cap or an experiment-first policy changes the outcome is Open (Inferred)"
+ },
+ "freeze_rule": "no file named in the source freeze is edited after the freeze; new behaviour goes in new files or a deviation addendum",
+ "gate_dependency_rule": "each gate is scored from its own counts; GLO_cap and GLO_pol use recounted labels if G_recount passes, else study labels with the failure stated",
+ "heldout_ranges": {
+  "control": [
+   10970001,
+   10970002,
+   10970003,
+   10970004,
+   10970005,
+   10970006
+  ],
+  "lowobs12": [
+   10930001,
+   10930002,
+   10930003,
+   10930004,
+   10930005,
+   10930006,
+   10930007,
+   10930008,
+   10930009,
+   10930010,
+   10930011,
+   10930012
+  ],
+  "note": "fresh 109x00NN ranges; seedcheck_044 scans every tracked file including .gz archives before any seed is used; the 043 smoke-counter lesson applies: a cpu_jiffies-only hit is adjudicated by a declared rule written before the scan, not after"
+ },
+ "hypotheses": {
+  "H1": "cap: A16 with a 30 s soft cap and a 600 s case budget decides (ID+IDF) more fresh lowobs12 machines than A16 at 9 s / 240 s",
+  "H2": "policy: A16_xf, which runs a fixed experiment-first schedule (declared below) before its first least-model search, at the 9 s cap and 240 s budget, decides more fresh lowobs12 machines than A16 at 9 s / 240 s",
+  "H3": "both stay sound under one-bit observations (0 WRONG, 0 unsound words)"
+ },
+ "limitations": [
+  "12 lowobs cases give wide CIs",
+  "clean worlds only; noise at 12 states stays Open",
+  "soundness still assumes the declared size N",
+  "the 30 s cap, 600 s budget and E = 32 are single declared points, not a sweep",
+  "A16_xf is a new wrapper and needs its own tests before the freeze"
+ ],
+ "next_if_fail": "both GLO_cap and GLO_pol fail: one-bit 12-state worlds are beyond A16 at these budgets; publish it and move to the N-free stop as v0.42.0, then certify/16 (maintainer order). G_sound shows a true unsound word: soundness first, nothing else. G10 fails: audit the arm before any reading",
+ "next_if_pass": "GLO_cap passes, GLO_pol fails: the cap binds; plan a faster least-model search (incremental solving across calls) at the 9 s cap. GLO_pol passes: adopt the experiment-first policy and replicate it on fresh lowobs12 and scale16 before any API. Both pass: replicate the cheaper one",
+ "open_items": [
+  "N-free stop: Open, deferred",
+  "certify/16 API study: deferred until after the N-free stop",
+  "scale-20 replication: deferred",
+  "noise at 12 states: Open"
+ ],
+ "parent_study": "BRUTE-0400-A16-LOWOBS-043",
+ "process": "LEAN (standing go t133s553, ledger 76b30d5; a ledgered build_authorization_044 citing it is required before any code; it is ledgered BEFORE seedcheck_044): plan locked before data; seedcheck before seeds; independent recount; CNF reference audit; pre-freeze smoke with the real release verifier chain; one main run, no tuning, no reruns; failures published; one fresh-clone verify plus tests",
+ "question": "On fresh one-bit-observation 12-state worlds, is A16's failure set by the per-call cap (fixed by a longer cap and case budget) or by its experiment policy (fixed by spending experiments before the first least-model search), with K and the encoding unchanged?",
+ "runtime_estimate": "Open: set by the pre-freeze LPT projection with 8 workers; worst case is bounded by 12 x 600 s for A16_c30. If the projection exceeds 3600 s, A16_c30 runs on the first 8 lowobs12 seeds and its bar becomes >= 2/8 with gain >= 2 on those seeds (rule declared now; no other cut)",
+ "schema": "brute.plan.v1",
+ "secondary": {
+  "GC9": "A16_c9 ID+IDF compared with 043 A16 0/12 (replication of the baseline; reported only)",
+  "GLO_cause2": "per lowobs12 case and arm: final stop, phase of the last call, experiments used, capped calls, run wall (reported only)",
+  "GPH19": "calls and capped calls by arm and phase"
+ },
+ "smoke_range": "10990001-10990006 (pre-freeze smoke only; never gated); must contain every stop kind it can reach and run the real release verifier chain",
+ "status": "preregistered (plan only; no build code, no data for 044)",
+ "study": "BRUTE-0410-A16-LOWOBS-AUDIT-044",
+ "version_under_test": "0.41.0",
+ "what_counts_as_failure": "any gated criterion false; a killed call is unknown, not a failure of soundness"
+}
