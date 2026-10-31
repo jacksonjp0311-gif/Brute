@@ -1,0 +1,65 @@
+{
+ "branch_taken": "plan 044 next_if_fail, first clause (Exact, GATES_044 fa9a493): both GLO_cap and GLO_pol fail (A16_c30 lowobs12 ID+IDF 2/12, A16_xf 2/12, A16_c9 0/12; bar >= 3/12). The clause reads: one-bit 12-state worlds are beyond A16 at these budgets; publish it and move to the N-free stop as v0.42.0, then certify/16 (maintainer order)",
+ "brand": "charcoal and sage; no purple, neon, emoji or gold",
+ "cases": {"arms": 3, "scale16": 12, "control": 6, "declared_before_data": true, "jobs": 54, "total_fresh": 18},
+ "criteria": {
+  "GNF_bound": "headline 1: for every A16_nf1 and A16_nf2 ID or IDF stop, the CNF reference audit run with size bound n_min+delta finds no rival (0 mismatches, all 20 mutations detected); the bounded claim is never false",
+  "GNF_agree": "headline 2: fresh scale16 (recounted labels): A16_nf2 ID+IDF >= 8/12 AND on every case where A16_N is ID or IDF, A16_nf2 reaches the same stop kind and an equivalent canonical model in >= 90% of those cases; Wilson 95% CIs reported",
+  "GNF_misfire": "A16_nf2 misfires (ID or IDF whose model is not equivalent to the true machine) = 0 on fresh scale16 and controls; A16_nf1 misfires reported with a Wilson CI, not gated",
+  "G10": "every arm ID on each of the 6 controls",
+  "GLO_sem": "A16_N WRONG 0 on every fresh case; decided arms agree on n_min",
+  "GQB20": "max logged call wall <= soft cap + 1.5 s in each arm (10.5 s)",
+  "GS_ref": "CNF reference audit of every decided case in every arm (N for A16_N, n_min+delta for nf arms): 0 mismatches, 20 mutations detected",
+  "GTI": "gated test files ok in a fresh clone",
+  "G_PROC": "ledger order preregistration, build_authorization, seedcheck, source_freeze, run_start, run_end (all _045), checked as a subsequence",
+  "G_RT": "main run <= 3600 s",
+  "G_recount": "the independent recount reproduces every label, with the nf bound applied; 0 mismatches",
+  "G_sound": "0 unsound separating words in study and recount; 0 truth inconsistencies"
+ },
+ "design": {
+  "arms": {
+   "A16_N": "brute/scalesearch16 as frozen; declared N=16; soft cap 9.0 s; BUDGET 240 s; K=128 (baseline, the 042 scale16 setting)",
+   "A16_nf1": "new file brute/nfstop18.py wrapping the frozen stop_check14/active16 calls unchanged: the least-model search runs up to a compute ceiling only (16, never claimed); after n_min is found the future and start rival searches run with the size bound n_min+1 instead of N; the stop label is ID_d/IDF_d meaning unique (or unique up to start) among machines with <= n_min+delta states; soft cap 9.0 s, BUDGET 240 s, K=128",
+   "A16_nf2": "the same wrapper with delta=2"
+  },
+  "claim": "an nf stop certifies uniqueness only among machines with <= n_min+delta states; it never claims the true size; reports and RELEASE text must state the bound",
+  "unchanged": "encoding, clauses, cube split, rival query, distinguishing-word rule and recount rule are those of 043/044; no new encoding; delta values 1 and 2 declared now, not tuned",
+  "worlds": "scale16 from the frozen worlds_043 dispatch; controls as in 043"
+ },
+ "freeze_rule": "no file named in the source freeze is edited after the freeze; new behaviour goes in new files or a deviation addendum",
+ "gate_dependency_rule": "each gate is scored from its own counts; GNF_agree uses recounted labels if G_recount passes, else study labels with the failure stated",
+ "heldout_ranges": {
+  "scale16": "11130001-11130012",
+  "control": "11190001-11190006",
+  "note": "candidate prefixes 1113 and 1119 had 0 tracked-text hits at plan time (Observed, git grep); seedcheck_045 scans every tracked file including .gz archives before any seed is used; a hit is adjudicated by a rule written before the scan: any hit moves the range to the next unused odd prefix (1121, 1129), declared in the pre-run deviation"
+ },
+ "hypotheses": {
+  "H1": "on fresh scale16 worlds an N-free stop with delta=2 decides about as many cases as the N=16 stop and never misfires",
+  "H2": "delta=1 is cheaper but misfires on some cases (measured, not gated)",
+  "H3": "the bounded claim is never false under the CNF reference (0 WRONG for the bounded claim)"
+ },
+ "limitations": [
+  "12 scale16 cases give wide CIs",
+  "the least-model search still uses a compute ceiling of 16; a case whose n_min exceeds it is unknown, not ID",
+  "clean worlds only; lowobs12 stays beyond A16 (044)",
+  "delta 1 and 2 are two declared points, not a sweep",
+  "a bounded claim cannot rule out a larger true machine; misfire is measured against known truth only"
+ ],
+ "next_if_fail": "GNF_bound fails: soundness of the bounded claim first, nothing else. GNF_misfire fails for delta=2: the N-free stop needs a larger delta or a different rule; publish and re-plan before certify/16. GNF_agree fails with GNF_bound and GNF_misfire passing: the nf stop is sound but weaker; record it and move to certify/16 with A16_N",
+ "next_if_pass": "all headline gates pass: adopt A16_nf2 as the default stop and run certify/16 as v0.43.0 (maintainer order), then scale-20",
+ "open_items": ["certify/16 API study: next after this study", "scale-20 replication: deferred", "noise at 12 states: Open", "lowobs12 beyond A16 at 044 budgets: Open"],
+ "parent_study": "BRUTE-0410-A16-LOWOBS-AUDIT-044",
+ "process": "LEAN (standing go t133s553, ledger 76b30d5; a ledgered build_authorization_045 citing it is required before any code; ledgered BEFORE seedcheck_045): plan locked before data; seedcheck before seeds; independent recount; CNF reference audit; pre-freeze smoke with the real release verifier chain; one main run, no tuning, no reruns; failures published; one fresh-clone verify plus tests",
+ "question": "Can A16 stop soundly without a declared size N, by certifying uniqueness only among machines with at most n_min+delta states, and does that bounded stop agree with the N-based stop on fresh 16-state worlds?",
+ "runtime_estimate": "Open: set by the pre-freeze LPT projection with 8 workers; worst case 54 x 240 s / 8 = 1620 s; no cut rule is needed below 3600 s",
+ "schema": "brute.plan.v1",
+ "secondary": {
+  "GNF_cost": "per arm: rival-search calls and wall, nf against N (reported only)",
+  "GREP16b": "A16_N ID+IDF compared with 043 GREP16 9/12 (replication; reported only)"
+ },
+ "smoke_range": "11290001-11290006 (pre-freeze smoke only; never gated)",
+ "status": "preregistered (plan only; no build code, no data for 045)",
+ "study": "BRUTE-0420-A16-NFREE-STOP-045",
+ "version_under_test": "0.42.0",
+ "what_counts_as_failure": "any gated criterion false; a killed call is unknown, not a failure of soundness"
+}
