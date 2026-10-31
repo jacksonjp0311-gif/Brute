@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.45.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.45.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0450 -->
-- **v0.45.0: RELEASE IN PROGRESS** 2026-10-31 (EDT). Built on branch `plan/v0.45.0` (BRUTE_PLAN_048, certify/16d at C 50000, B 1500000 for 16 states and 1000000 for 20; two independent passes on 26 fresh cases (12 scale16, 8 scale20, 6 controls) plus 18 API16D replays of sealed 046 A16_N traces; LEAN; STANDING GO t133s553, build authorization at plan commit `4dea7ef`).
+- **v0.45.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.45.0 (annotated tag object `5fdf32a` at `b332e94`, ledger release_048 `3bd8155`). Fresh-clone verify of the tag passed: study 045, 046, 047 and 048 raw data restored, verify_release_0450 (5 links, 0 exceptions, GATES_048 reproduces) and 71 tests in 7 modules, 0 failures. Box clock about 8 s ahead of GitHub's Date header at 08:31:23 EDT. Built on branch `plan/v0.45.0` (BRUTE_PLAN_048, certify/16d at C 50000, B 1500000 for 16 states and 1000000 for 20; two independent passes on 26 fresh cases (12 scale16, 8 scale20, 6 controls) plus 18 API16D replays of sealed 046 A16_N traces; LEAN; STANDING GO t133s553, build authorization at plan commit `4dea7ef`).
   - **Run complete (Observed).** 70/70 jobs (52 fresh arm jobs on 26 cases, 18 replays), 107.0 s of 3600 s, normal exit, run once; 1 checkpoint snapshot (`7078d94`); nothing relaunched; resume clause not approved, not used.
   - **PASS (13/14 gated):** GDET48 (26/26 [0.87, 1.00], 0 guard firings on 70 records), GWALL_r (0/18), GFID48 (26/26 [0.87, 1.00]), GS20_sound (vacuous: 0 of 8 decided, WRONG 0), GHOST48, G10 (6/6 ID both arms), GQB23 (max call 7.79 s), GS_ref (16/16 audited, 0 mismatches, 20/20), G_sound, G_recount, GTI, G_PROC, G_RT. **FAIL:** GAPI16D_fresh48 on count only (scale16 ID+IDF 0/12 [0.00, 0.24], bar 7/12; WRONG 0).
   - **Reading (Inferred):** the per-call cap binds, not B (largest record 36 % of B; every IDU stopped on a capped call).
