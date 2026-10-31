@@ -266,7 +266,8 @@ def seal_partial(output,block,reason='study cap'):
 
 def run(output,block):
     output=Path(output);plan=load(PLAN)
-    if block=='main':check_freeze()
+    if block=='main':
+        fz=check_freeze();check((fz.get('n_noise12_b'),fz.get('n_compat'))==(N12B,NCOMPAT),'N12B / NCOMPAT differ from the freeze')
     for nm in ('RESULTS.json','SCIENTIFIC.json','SEAL.json'):check(not (output/nm).exists(),'refusing overwrite '+str(output/nm))
     t0=time.perf_counter();jobs=jobs_for(plan,block)
     output.mkdir(parents=True,exist_ok=True);ck=Checkpoint(output/'CHECKPOINT.jsonl')
