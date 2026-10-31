@@ -1,0 +1,187 @@
+{
+ "schema": "brute.seedcheck.v34",
+ "v0340_ranges": {
+  "target/noisy_scale8": [
+   10310001,
+   10310012
+  ],
+  "target/noisy_scale12": [
+   10320001,
+   10320012
+  ],
+  "target/clean_scale12": [
+   10330001,
+   10330012
+  ],
+  "target/control": [
+   10360001,
+   10360006
+  ],
+  "smoke": [
+   10390001,
+   10390030
+  ]
+ },
+ "prior_files": [
+  "PLAN.json",
+  "BRUTE_PLAN_002.json",
+  "BRUTE_PLAN_003.json",
+  "BRUTE_PLAN_004.json",
+  "BRUTE_PLAN_005.json",
+  "BRUTE_PLAN_006.json",
+  "BRUTE_PLAN_007.json",
+  "BRUTE_PLAN_008.json",
+  "BRUTE_PLAN_009.json",
+  "BRUTE_PLAN_010.json",
+  "BRUTE_PLAN_011.json",
+  "BRUTE_PLAN_012.json",
+  "BRUTE_PLAN_013.json",
+  "BRUTE_PLAN_014.json",
+  "BRUTE_PLAN_015.json",
+  "BRUTE_PLAN_016.json",
+  "BRUTE_PLAN_017.json",
+  "BRUTE_PLAN_018.json",
+  "BRUTE_PLAN_019.json",
+  "BRUTE_PLAN_020.json",
+  "BRUTE_PLAN_021.json",
+  "BRUTE_PLAN_022.json",
+  "BRUTE_PLAN_023.json",
+  "BRUTE_PLAN_024.json",
+  "BRUTE_PLAN_025.json",
+  "BRUTE_PLAN_025_A1.json",
+  "BRUTE_PLAN_025_A2.json",
+  "BRUTE_PLAN_026.json",
+  "BRUTE_PLAN_027.json",
+  "BRUTE_PLAN_028.json",
+  "BRUTE_PLAN_029.json",
+  "BRUTE_PLAN_029_A1.json",
+  "BRUTE_PLAN_030.json",
+  "BRUTE_PLAN_031.json",
+  "BRUTE_PLAN_032.json",
+  "BRUTE_PLAN_033.json",
+  "BRUTE_PLAN_034.json",
+  "BRUTE_PLAN_035.json",
+  "BRUTE_PLAN_036.json"
+ ],
+ "prior_range_count": 283,
+ "pairwise_overlaps": [],
+ "prior_overlaps": [],
+ "token_scan": {
+  "files_scanned": 752,
+  "standalone_tokens_in_037_ranges": [],
+  "occurrences_any_in_037_ranges": 25,
+  "embedded_only": 25
+ },
+ "negative_controls": [
+  [
+   "target",
+   10399001,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   10399001,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   10390001,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   10310001,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   10310013,
+   "noisy_scale8",
+   "refused"
+  ],
+  [
+   "target",
+   10320001,
+   "noisy_scale8",
+   "refused"
+  ],
+  [
+   "target",
+   10330001,
+   "noisy_scale12",
+   "refused"
+  ],
+  [
+   "target",
+   10320001,
+   "clean_scale12",
+   "refused"
+  ],
+  [
+   "target",
+   10360007,
+   "control",
+   "refused"
+  ],
+  [
+   "target",
+   10210001,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   10290001,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   10240001,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   10390031,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   10309999,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   10360001,
+   "clean_scale12",
+   "refused"
+  ],
+  [
+   "target",
+   10350001,
+   null,
+   "refused"
+  ]
+ ],
+ "cases_by_key": {
+  "noisy_scale8": 12,
+  "noisy_scale12": 12,
+  "clean_scale12": 12,
+  "control": 6
+ },
+ "total_cases": 42,
+ "eps_by_key": {
+  "noisy_scale8": 0.05,
+  "noisy_scale12": 0.05,
+  "clean_scale12": 0.0,
+  "control": 0.0
+ },
+ "PASS": true
+}
