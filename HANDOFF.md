@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.33.0 in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.33.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0330 -->
-- **v0.33.0: IN PROGRESS (release pending)** on branch `plan/v0.33.0` (BRUTE_PLAN_036, REPEATED READS; LEAN; STANDING GO t133s553, build authorization ledger `ed8452b`).
+- **v0.33.0: RELEASED** 2026-10-30 as tag `v0.33.0` (annotated `b797b0e` -> `f96c738`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.33.0). main was fast-forwarded `0e52483..f96c738`. A fresh clone of the tag restored, verified (commit chain 6) and passed 7/7 test modules (48 tests); ledger `77845a8`. Built on branch `plan/v0.33.0` (BRUTE_PLAN_036, REPEATED READS; LEAN; STANDING GO t133s553, build authorization ledger `ed8452b`).
   - **Run complete (Observed).** 48/48 cases, 420.3 s of 1800 s, normal exit, run once. 3 checkpoint snapshots were pushed (`43b5e2f`, `21fdeca`, `0bfe2b7`). Nothing was relaunched. The resume clause was NOT approved and was not needed. The box clock read about 7 s ahead of GitHub's Date header at 19:58:35 EDT.
   - **PASS (8/11):** GNR11, G_sound (674 words, 0 unsound), G10, GS_ref (88 decided, 75 at raised B, 0 mismatches, mutations 20/20), GTI (7 modules, 48 tests), G_PROC, G_RT, G_recount. **FAIL:** GR11_headline (a: A11_r3 WRONG 1 on noisy_scale8 10210002; b: ID(A11_r3) - ID(A10) noisy12 +0.17 [0, 0.42]; c: ID+IDF 2/12; d: IDU 10/12), GBIS11 (IDU 10 vs 9 for the upward ablation), GQB11 (A11_r3_up 10.513 s). Secondary GRB11 fails.
   - **Headline numbers (Observed).** noisy12: A11_r3 2/0/0/0/10; A11_r5 4/1/2/0/5; A11_r3_up 3/0/0/0/9; A10 and S7 IDU 12; S5 WRONG 12. noisy8: A11_r5 ID 8/12 [0.39, 0.86]. clean12: every A11 arm equals A10 (6/3/2/0/1). Controls ID 6/6 for every arm.
