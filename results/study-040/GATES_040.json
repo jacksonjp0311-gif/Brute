@@ -1,0 +1,3540 @@
+{
+  "all_gated_pass": false,
+  "failed": [
+    "GC15_headline",
+    "GFAM15",
+    "GINC15",
+    "GQB15",
+    "GTI"
+  ],
+  "gates": {
+    "G10": {
+      "observed": {
+        "cases": [
+          [
+            10660001,
+            {
+              "A14": "ID",
+              "A15": "ID",
+              "A15_cube": "ID"
+            }
+          ],
+          [
+            10660002,
+            {
+              "A14": "ID",
+              "A15": "ID",
+              "A15_cube": "ID"
+            }
+          ],
+          [
+            10660003,
+            {
+              "A14": "ID",
+              "A15": "ID",
+              "A15_cube": "ID"
+            }
+          ],
+          [
+            10660004,
+            {
+              "A14": "ID",
+              "A15": "ID",
+              "A15_cube": "ID"
+            }
+          ],
+          [
+            10660005,
+            {
+              "A14": "ID",
+              "A15": "ID",
+              "A15_cube": "ID"
+            }
+          ],
+          [
+            10660006,
+            {
+              "A14": "ID",
+              "A15": "ID",
+              "A15_cube": "ID"
+            }
+          ]
+        ],
+        "rule": "every arm ID on every control"
+      },
+      "pass": true
+    },
+    "GC15_headline": {
+      "observed": {
+        "a": {
+          "WRONG_gated": [],
+          "WRONG_other_arms_reported": [],
+          "label_mismatch": [],
+          "pass": true,
+          "recount_pass": true,
+          "rule": "recounted WRONG = 0 for A15 and A15_cube on every case, no recount label mismatch"
+        },
+        "b": {
+          "ID_plus_IDF_A15_cube_scale16": 7,
+          "ci95": [
+            0.3195113125495498,
+            0.8067396863412435
+          ],
+          "of": 12,
+          "pass": true,
+          "rule": ">= 4/12"
+        },
+        "c": {
+          "ci95_seed_bootstrap": [
+            -0.1667,
+            0.3333
+          ],
+          "labels_A14_scale16": {
+            "AMB": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "ID": {
+              "ci95": [
+                0.04696514218385378,
+                0.44803086225297345
+              ],
+              "rate": 0.16666666666666666,
+              "x": 2
+            },
+            "ID+IDF": {
+              "ci95": [
+                0.13812009109121315,
+                0.6093779111272004
+              ],
+              "x": 4
+            },
+            "IDF": {
+              "ci95": [
+                0.04696514218385378,
+                0.44803086225297345
+              ],
+              "rate": 0.16666666666666666,
+              "x": 2
+            },
+            "IDU": {
+              "ci95": [
+                0.39062208887279953,
+                0.8618799089087867
+              ],
+              "rate": 0.6666666666666666,
+              "x": 8
+            },
+            "WRONG": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "n": 12
+          },
+          "labels_A15_cube_scale16": {
+            "AMB": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "ID": {
+              "ci95": [
+                0.08894166839405473,
+                0.5323053349335657
+              ],
+              "rate": 0.25,
+              "x": 3
+            },
+            "ID+IDF": {
+              "ci95": [
+                0.3195113125495498,
+                0.8067396863412435
+              ],
+              "x": 7
+            },
+            "IDF": {
+              "ci95": [
+                0.13812009109121315,
+                0.6093779111272004
+              ],
+              "rate": 0.3333333333333333,
+              "x": 4
+            },
+            "IDU": {
+              "ci95": [
+                0.19326031365875665,
+                0.6804886874504503
+              ],
+              "rate": 0.4166666666666667,
+              "x": 5
+            },
+            "WRONG": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "n": 12
+          },
+          "labels_A15_scale16": {
+            "AMB": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "ID": {
+              "ci95": [
+                0.014865094404917095,
+                0.35387991114111694
+              ],
+              "rate": 0.08333333333333333,
+              "x": 1
+            },
+            "ID+IDF": {
+              "ci95": [
+                0.08894166839405473,
+                0.5323053349335657
+              ],
+              "x": 3
+            },
+            "IDF": {
+              "ci95": [
+                0.04696514218385378,
+                0.44803086225297345
+              ],
+              "rate": 0.16666666666666666,
+              "x": 2
+            },
+            "IDU": {
+              "ci95": [
+                0.46769466506643437,
+                0.9110583316059452
+              ],
+              "rate": 0.75,
+              "x": 9
+            },
+            "WRONG": {
+              "ci95": [
+                2.1025014877572554e-17,
+                0.24249400665524087
+              ],
+              "rate": 0.0,
+              "x": 0
+            },
+            "n": 12
+          },
+          "mean_diff_ID_A15_cube_minus_A14_scale16": 0.0833,
+          "pass": false,
+          "per_seed": [
+            0,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "rule": "mean(ID A15_cube - ID A14, scale16) >= 0.25 and CI lower > 0"
+        },
+        "d": {
+          "capped_cases_A15_cube_scale16": 9,
+          "ci95": [
+            0.46769466506643437,
+            0.9110583316059452
+          ],
+          "of": 12,
+          "pass": false,
+          "rule": "<= 6/12 (any capped call)",
+          "seeds": [
+            10610001,
+            10610003,
+            10610004,
+            10610005,
+            10610006,
+            10610007,
+            10610009,
+            10610011,
+            10610012
+          ]
+        }
+      },
+      "pass": false
+    },
+    "GFAM15": {
+      "observed": {
+        "ID_plus_IDF_A15_cube_lowobs12": 0,
+        "WRONG": [],
+        "ci95": [
+          2.1025014877572554e-17,
+          0.24249400665524087
+        ],
+        "labels_A14_lowobs12": {
+          "AMB": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "ID": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "ID+IDF": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "x": 0
+          },
+          "IDF": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "IDU": {
+            "ci95": [
+              0.7575059933447591,
+              1.0
+            ],
+            "rate": 1.0,
+            "x": 12
+          },
+          "WRONG": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "n": 12
+        },
+        "labels_A15_cube_lowobs12": {
+          "AMB": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "ID": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "ID+IDF": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "x": 0
+          },
+          "IDF": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "IDU": {
+            "ci95": [
+              0.7575059933447591,
+              1.0
+            ],
+            "rate": 1.0,
+            "x": 12
+          },
+          "WRONG": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "n": 12
+        },
+        "labels_A15_lowobs12": {
+          "AMB": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "ID": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "ID+IDF": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "x": 0
+          },
+          "IDF": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "IDU": {
+            "ci95": [
+              0.7575059933447591,
+              1.0
+            ],
+            "rate": 1.0,
+            "x": 12
+          },
+          "WRONG": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "n": 12
+        },
+        "mean_extra_actions_A15_cube": 14.833,
+        "of": 12,
+        "rule": "ID+IDF(A15_cube, lowobs12) >= 6/12 and WRONG 0 for A15, A15_cube; not exercised if mean extra actions < 3"
+      },
+      "pass": false
+    },
+    "GINC15": {
+      "observed": {
+        "module": "test_scalesearch15_0370",
+        "result": "FAIL",
+        "stdout_tail": "",
+        "test": "test_GINC15_sealed_039_traces"
+      },
+      "pass": false
+    },
+    "GQB15": {
+      "observed": {
+        "A14_max_s": 9.2500753610002,
+        "A15_cube_max_s": 11.014468638997641,
+        "A15_max_s": 9.131777059999877,
+        "bound_s": 10.5,
+        "max_s": 11.014,
+        "over": [
+          [
+            "main/lowobs12/10630011",
+            "A15_cube",
+            11.014
+          ]
+        ]
+      },
+      "pass": false
+    },
+    "GREP15": {
+      "observed": {
+        "ID_plus_IDF_A14_scale14": 9,
+        "ID_plus_IDF_A15_cube_scale14": 9,
+        "labels_A14_scale14": {
+          "AMB": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "ID": {
+            "ci95": [
+              0.39062208887279953,
+              0.8618799089087867
+            ],
+            "rate": 0.6666666666666666,
+            "x": 8
+          },
+          "ID+IDF": {
+            "ci95": [
+              0.46769466506643437,
+              0.9110583316059452
+            ],
+            "x": 9
+          },
+          "IDF": {
+            "ci95": [
+              0.014865094404917095,
+              0.35387991114111694
+            ],
+            "rate": 0.08333333333333333,
+            "x": 1
+          },
+          "IDU": {
+            "ci95": [
+              0.08894166839405473,
+              0.5323053349335657
+            ],
+            "rate": 0.25,
+            "x": 3
+          },
+          "WRONG": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "n": 12
+        },
+        "labels_A15_cube_scale14": {
+          "AMB": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "ID": {
+            "ci95": [
+              0.39062208887279953,
+              0.8618799089087867
+            ],
+            "rate": 0.6666666666666666,
+            "x": 8
+          },
+          "ID+IDF": {
+            "ci95": [
+              0.46769466506643437,
+              0.9110583316059452
+            ],
+            "x": 9
+          },
+          "IDF": {
+            "ci95": [
+              0.014865094404917095,
+              0.35387991114111694
+            ],
+            "rate": 0.08333333333333333,
+            "x": 1
+          },
+          "IDU": {
+            "ci95": [
+              0.08894166839405473,
+              0.5323053349335657
+            ],
+            "rate": 0.25,
+            "x": 3
+          },
+          "WRONG": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "n": 12
+        },
+        "labels_A15_scale14": {
+          "AMB": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "ID": {
+            "ci95": [
+              0.2537815976337061,
+              0.7462184023662939
+            ],
+            "rate": 0.5,
+            "x": 6
+          },
+          "ID+IDF": {
+            "ci95": [
+              0.3195113125495498,
+              0.8067396863412435
+            ],
+            "x": 7
+          },
+          "IDF": {
+            "ci95": [
+              0.014865094404917095,
+              0.35387991114111694
+            ],
+            "rate": 0.08333333333333333,
+            "x": 1
+          },
+          "IDU": {
+            "ci95": [
+              0.19326031365875665,
+              0.6804886874504503
+            ],
+            "rate": 0.4166666666666667,
+            "x": 5
+          },
+          "WRONG": {
+            "ci95": [
+              2.1025014877572554e-17,
+              0.24249400665524087
+            ],
+            "rate": 0.0,
+            "x": 0
+          },
+          "n": 12
+        },
+        "of": 12,
+        "rule": "ID+IDF(A15_cube) >= ID+IDF(A14) - 1 on scale14"
+      },
+      "pass": true
+    },
+    "GS_ref": {
+      "observed": {
+        "N": 14,
+        "PASS": true,
+        "arm_audited": "A15_cube",
+        "cases": 12,
+        "decided": 9,
+        "family": "scale14",
+        "mismatch_count": 0,
+        "mutations": 20,
+        "not_reached": 3,
+        "of": 20,
+        "verdicts_checked": 123,
+        "words_checked": 175
+      },
+      "pass": true
+    },
+    "GTI": {
+      "observed": {
+        "test_release_0370": {
+          "returncode": 0,
+          "tests": 7
+        },
+        "test_scalesearch10_0320": {
+          "returncode": 0,
+          "tests": 6
+        },
+        "test_scalesearch11_0330": {
+          "returncode": 0,
+          "tests": 6
+        },
+        "test_scalesearch12_0340": {
+          "returncode": 0,
+          "tests": 6
+        },
+        "test_scalesearch13_0350": {
+          "returncode": 0,
+          "tests": 7
+        },
+        "test_scalesearch14_0360": {
+          "returncode": 0,
+          "tests": 7
+        },
+        "test_scalesearch15_0370": {
+          "returncode": 1,
+          "tests": 8
+        },
+        "test_scalesearch8_0300": {
+          "returncode": 0,
+          "tests": 5
+        },
+        "test_scalesearch9_0310": {
+          "returncode": 0,
+          "tests": 5
+        },
+        "test_scalesearch_0230": {
+          "returncode": 0,
+          "tests": 11
+        },
+        "test_scripts_040": {
+          "returncode": 0,
+          "tests": 9
+        }
+      },
+      "pass": false
+    },
+    "G_PROC": {
+      "observed": {
+        "clauses": {
+          "all_events": true,
+          "commit_order_file": true,
+          "ledger_times_non_decreasing": true,
+          "ledger_times_parse": true,
+          "main_sealed": true,
+          "order": true
+        },
+        "events": [
+          "preregistration_040",
+          "build_authorization_040",
+          "seedcheck_040",
+          "source_freeze_040",
+          "run_start_040",
+          "run_end_040",
+          "recount_040",
+          "reference_040",
+          "tests_040"
+        ]
+      },
+      "pass": true
+    },
+    "G_RT": {
+      "observed": {
+        "cap_s": 1800,
+        "cases": 42,
+        "elapsed_s": 374.0754027080038
+      },
+      "pass": true
+    },
+    "G_recount": {
+      "observed": {
+        "PASS": true,
+        "cases": 42,
+        "labels": {
+          "A14": {
+            "AMB": 0,
+            "ID": 16,
+            "IDF": 3,
+            "IDU": 23,
+            "WRONG": 0
+          },
+          "A15": {
+            "AMB": 0,
+            "ID": 13,
+            "IDF": 3,
+            "IDU": 26,
+            "WRONG": 0
+          },
+          "A15_cube": {
+            "AMB": 0,
+            "ID": 17,
+            "IDF": 5,
+            "IDU": 20,
+            "WRONG": 0
+          }
+        },
+        "mismatching_cases": 0,
+        "words_checked": 1019,
+        "words_unsound": 0
+      },
+      "pass": true
+    },
+    "G_sound": {
+      "observed": {
+        "recount_truth_inconsistent": 0,
+        "recount_words_checked": 1019,
+        "recount_words_unsound": 0,
+        "words_checked": 1019,
+        "words_unsound": 0
+      },
+      "pass": true
+    }
+  },
+  "not_exercised": [],
+  "process": "lean",
+  "reports": {
+    "clique": {
+      "A15/control": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "A15/lowobs12": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        8,
+        6,
+        8,
+        8,
+        6,
+        6,
+        7
+      ],
+      "A15/scale14": [
+        12,
+        12,
+        14,
+        13,
+        10,
+        13,
+        11,
+        12,
+        10,
+        7,
+        13,
+        12
+      ],
+      "A15/scale16": [
+        14,
+        14,
+        12,
+        13,
+        10,
+        14,
+        12,
+        14,
+        13,
+        16,
+        9,
+        14
+      ],
+      "A15_cube/control": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "A15_cube/lowobs12": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        8,
+        6,
+        8,
+        8,
+        6,
+        6,
+        7
+      ],
+      "A15_cube/scale14": [
+        12,
+        12,
+        14,
+        13,
+        10,
+        13,
+        11,
+        12,
+        10,
+        7,
+        13,
+        12
+      ],
+      "A15_cube/scale16": [
+        14,
+        14,
+        12,
+        13,
+        10,
+        14,
+        12,
+        14,
+        13,
+        16,
+        9,
+        14
+      ]
+    },
+    "contrasts": {
+      "ID(A15)-ID(A14)/control": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A15)-ID(A14)/lowobs12": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A15)-ID(A14)/scale14": {
+        "ci95_seed_bootstrap": [
+          -0.4167,
+          0.0
+        ],
+        "mean": -0.1667,
+        "per_seed": [
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A15)-ID(A14)/scale16": {
+        "ci95_seed_bootstrap": [
+          -0.25,
+          0.0
+        ],
+        "mean": -0.0833,
+        "per_seed": [
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A15_cube)-ID(A14)/control": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A15_cube)-ID(A14)/lowobs12": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A15_cube)-ID(A14)/scale14": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A15_cube)-ID(A14)/scale16": {
+        "ci95_seed_bootstrap": [
+          -0.1667,
+          0.3333
+        ],
+        "mean": 0.0833,
+        "per_seed": [
+          0,
+          0,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "ID(A15_cube)-ID(A15)/control": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A15_cube)-ID(A15)/lowobs12": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A15_cube)-ID(A15)/scale14": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.4167
+        ],
+        "mean": 0.1667,
+        "per_seed": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "ID(A15_cube)-ID(A15)/scale16": {
+        "ci95_seed_bootstrap": [
+          0.0,
+          0.4167
+        ],
+        "mean": 0.1667,
+        "per_seed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    "cost": {
+      "A14/control": {
+        "T_final": {
+          "ci95_bootstrap": [
+            176.0,
+            176.0
+          ],
+          "mean": 176.0,
+          "n": 6
+        },
+        "arm_wall_informational": {
+          "ci95_bootstrap": [
+            0.0072,
+            0.0103
+          ],
+          "mean": 0.008,
+          "n": 6
+        },
+        "capped": {
+          "ci95_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "mean": 0.0,
+          "n": 6
+        },
+        "n_rounds": {
+          "ci95_bootstrap": [
+            1.0,
+            1.0
+          ],
+          "mean": 1.0,
+          "n": 6
+        },
+        "queries": {
+          "ci95_bootstrap": [
+            4.0,
+            4.0
+          ],
+          "mean": 4.0,
+          "n": 6
+        },
+        "query_max_s": {
+          "ci95_bootstrap": [
+            0.0013,
+            0.0031
+          ],
+          "mean": 0.002,
+          "n": 6
+        },
+        "used": {
+          "ci95_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "mean": 0.0,
+          "n": 6
+        }
+      },
+      "A14/lowobs12": {
+        "T_final": {
+          "ci95_bootstrap": [
+            176.0,
+            176.0
+          ],
+          "mean": 176.0,
+          "n": 12
+        },
+        "arm_wall_informational": {
+          "ci95_bootstrap": [
+            10.6908,
+            12.428
+          ],
+          "mean": 11.509,
+          "n": 12
+        },
+        "capped": {
+          "ci95_bootstrap": [
+            1.0,
+            1.0
+          ],
+          "mean": 1.0,
+          "n": 12
+        },
+        "n_rounds": {
+          "ci95_bootstrap": [
+            1.0,
+            1.0
+          ],
+          "mean": 1.0,
+          "n": 12
+        },
+        "queries": {
+          "ci95_bootstrap": [
+            9.0,
+            9.6667
+          ],
+          "mean": 9.333,
+          "n": 12
+        },
+        "query_max_s": {
+          "ci95_bootstrap": [
+            9.0249,
+            9.0969
+          ],
+          "mean": 9.055,
+          "n": 12
+        },
+        "used": {
+          "ci95_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "mean": 0.0,
+          "n": 12
+        }
+      },
+      "A14/scale14": {
+        "T_final": {
+          "ci95_bootstrap": [
+            195.0,
+            224.25
+          ],
+          "mean": 208.417,
+          "n": 12
+        },
+        "arm_wall_informational": {
+          "ci95_bootstrap": [
+            9.5103,
+            16.6911
+          ],
+          "mean": 12.988,
+          "n": 12
+        },
+        "capped": {
+          "ci95_bootstrap": [
+            0.0,
+            0.5
+          ],
+          "mean": 0.25,
+          "n": 12
+        },
+        "n_rounds": {
+          "ci95_bootstrap": [
+            7.25,
+            14.0
+          ],
+          "mean": 10.583,
+          "n": 12
+        },
+        "queries": {
+          "ci95_bootstrap": [
+            24.9167,
+            39.0833
+          ],
+          "mean": 31.917,
+          "n": 12
+        },
+        "query_max_s": {
+          "ci95_bootstrap": [
+            3.9539,
+            7.0974
+          ],
+          "mean": 5.524,
+          "n": 12
+        },
+        "used": {
+          "ci95_bootstrap": [
+            19.0,
+            48.25
+          ],
+          "mean": 32.417,
+          "n": 12
+        }
+      },
+      "A14/scale16": {
+        "T_final": {
+          "ci95_bootstrap": [
+            195.25,
+            246.8333
+          ],
+          "mean": 219.5,
+          "n": 12
+        },
+        "arm_wall_informational": {
+          "ci95_bootstrap": [
+            15.7651,
+            25.3295
+          ],
+          "mean": 19.575,
+          "n": 12
+        },
+        "capped": {
+          "ci95_bootstrap": [
+            0.4167,
+            0.9167
+          ],
+          "mean": 0.667,
+          "n": 12
+        },
+        "n_rounds": {
+          "ci95_bootstrap": [
+            6.3333,
+            19.9167
+          ],
+          "mean": 12.833,
+          "n": 12
+        },
+        "queries": {
+          "ci95_bootstrap": [
+            24.3333,
+            54.1667
+          ],
+          "mean": 38.417,
+          "n": 12
+        },
+        "query_max_s": {
+          "ci95_bootstrap": [
+            7.8898,
+            8.9385
+          ],
+          "mean": 8.453,
+          "n": 12
+        },
+        "used": {
+          "ci95_bootstrap": [
+            19.25,
+            70.8333
+          ],
+          "mean": 43.5,
+          "n": 12
+        }
+      },
+      "A15/control": {
+        "T_final": {
+          "ci95_bootstrap": [
+            176.0,
+            176.0
+          ],
+          "mean": 176.0,
+          "n": 6
+        },
+        "arm_wall_informational": {
+          "ci95_bootstrap": [
+            0.0105,
+            0.0159
+          ],
+          "mean": 0.013,
+          "n": 6
+        },
+        "capped": {
+          "ci95_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "mean": 0.0,
+          "n": 6
+        },
+        "n_rounds": {
+          "ci95_bootstrap": [
+            1.0,
+            1.0
+          ],
+          "mean": 1.0,
+          "n": 6
+        },
+        "queries": {
+          "ci95_bootstrap": [
+            3.0,
+            3.0
+          ],
+          "mean": 3.0,
+          "n": 6
+        },
+        "query_max_s": {
+          "ci95_bootstrap": [
+            0.0007,
+            0.0027
+          ],
+          "mean": 0.001,
+          "n": 6
+        },
+        "used": {
+          "ci95_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "mean": 0.0,
+          "n": 6
+        }
+      },
+      "A15/lowobs12": {
+        "T_final": {
+          "ci95_bootstrap": [
+            177.9167,
+            187.1667
+          ],
+          "mean": 182.167,
+          "n": 12
+        },
+        "arm_wall_informational": {
+          "ci95_bootstrap": [
+            10.6675,
+            17.4144
+          ],
+          "mean": 13.764,
+          "n": 12
+        },
+        "capped": {
+          "ci95_bootstrap": [
+            1.0,
+            1.0
+          ],
+          "mean": 1.0,
+          "n": 12
+        },
+        "n_rounds": {
+          "ci95_bootstrap": [
+            1.5833,
+            4.25
+          ],
+          "mean": 2.833,
+          "n": 12
+        },
+        "queries": {
+          "ci95_bootstrap": [
+            6.3333,
+            12.5
+          ],
+          "mean": 9.25,
+          "n": 12
+        },
+        "query_max_s": {
+          "ci95_bootstrap": [
+            9.0245,
+            9.0847
+          ],
+          "mean": 9.054,
+          "n": 12
+        },
+        "used": {
+          "ci95_bootstrap": [
+            1.9167,
+            11.1667
+          ],
+          "mean": 6.167,
+          "n": 12
+        }
+      },
+      "A15/scale14": {
+        "T_final": {
+          "ci95_bootstrap": [
+            205.25,
+            247.0833
+          ],
+          "mean": 225.083,
+          "n": 12
+        },
+        "arm_wall_informational": {
+          "ci95_bootstrap": [
+            4.8793,
+            12.9363
+          ],
+          "mean": 8.488,
+          "n": 12
+        },
+        "capped": {
+          "ci95_bootstrap": [
+            0.1667,
+            0.6667
+          ],
+          "mean": 0.417,
+          "n": 12
+        },
+        "n_rounds": {
+          "ci95_bootstrap": [
+            10.3333,
+            21.1667
+          ],
+          "mean": 15.583,
+          "n": 12
+        },
+        "queries": {
+          "ci95_bootstrap": [
+            23.3333,
+            47.0833
+          ],
+          "mean": 34.833,
+          "n": 12
+        },
+        "query_max_s": {
+          "ci95_bootstrap": [
+            3.2876,
+            7.2586
+          ],
+          "mean": 5.291,
+          "n": 12
+        },
+        "used": {
+          "ci95_bootstrap": [
+            29.25,
+            71.0833
+          ],
+          "mean": 49.083,
+          "n": 12
+        }
+      },
+      "A15/scale16": {
+        "T_final": {
+          "ci95_bootstrap": [
+            213.5,
+            236.5833
+          ],
+          "mean": 225.167,
+          "n": 12
+        },
+        "arm_wall_informational": {
+          "ci95_bootstrap": [
+            8.7927,
+            12.2529
+          ],
+          "mean": 10.449,
+          "n": 12
+        },
+        "capped": {
+          "ci95_bootstrap": [
+            0.5,
+            1.0
+          ],
+          "mean": 0.75,
+          "n": 12
+        },
+        "n_rounds": {
+          "ci95_bootstrap": [
+            11.6667,
+            18.5
+          ],
+          "mean": 15.0,
+          "n": 12
+        },
+        "queries": {
+          "ci95_bootstrap": [
+            26.25,
+            40.1667
+          ],
+          "mean": 33.167,
+          "n": 12
+        },
+        "query_max_s": {
+          "ci95_bootstrap": [
+            7.2568,
+            9.0142
+          ],
+          "mean": 8.269,
+          "n": 12
+        },
+        "used": {
+          "ci95_bootstrap": [
+            37.5,
+            60.5833
+          ],
+          "mean": 49.167,
+          "n": 12
+        }
+      },
+      "A15_cube/control": {
+        "T_final": {
+          "ci95_bootstrap": [
+            176.0,
+            176.0
+          ],
+          "mean": 176.0,
+          "n": 6
+        },
+        "arm_wall_informational": {
+          "ci95_bootstrap": [
+            0.0087,
+            0.0114
+          ],
+          "mean": 0.01,
+          "n": 6
+        },
+        "capped": {
+          "ci95_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "mean": 0.0,
+          "n": 6
+        },
+        "n_rounds": {
+          "ci95_bootstrap": [
+            1.0,
+            1.0
+          ],
+          "mean": 1.0,
+          "n": 6
+        },
+        "queries": {
+          "ci95_bootstrap": [
+            3.0,
+            3.0
+          ],
+          "mean": 3.0,
+          "n": 6
+        },
+        "query_max_s": {
+          "ci95_bootstrap": [
+            0.0003,
+            0.003
+          ],
+          "mean": 0.002,
+          "n": 6
+        },
+        "used": {
+          "ci95_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "mean": 0.0,
+          "n": 6
+        }
+      },
+      "A15_cube/lowobs12": {
+        "T_final": {
+          "ci95_bootstrap": [
+            181.4167,
+            202.0
+          ],
+          "mean": 190.833,
+          "n": 12
+        },
+        "arm_wall_informational": {
+          "ci95_bootstrap": [
+            80.1717,
+            168.3468
+          ],
+          "mean": 121.819,
+          "n": 12
+        },
+        "capped": {
+          "ci95_bootstrap": [
+            7.25,
+            14.4167
+          ],
+          "mean": 10.75,
+          "n": 12
+        },
+        "n_rounds": {
+          "ci95_bootstrap": [
+            2.75,
+            8.3333
+          ],
+          "mean": 5.417,
+          "n": 12
+        },
+        "queries": {
+          "ci95_bootstrap": [
+            23.0833,
+            50.0
+          ],
+          "mean": 36.0,
+          "n": 12
+        },
+        "query_max_s": {
+          "ci95_bootstrap": [
+            9.3868,
+            10.0288
+          ],
+          "mean": 9.685,
+          "n": 12
+        },
+        "used": {
+          "ci95_bootstrap": [
+            5.4167,
+            26.0
+          ],
+          "mean": 14.833,
+          "n": 12
+        }
+      },
+      "A15_cube/scale14": {
+        "T_final": {
+          "ci95_bootstrap": [
+            205.25,
+            247.0833
+          ],
+          "mean": 225.083,
+          "n": 12
+        },
+        "arm_wall_informational": {
+          "ci95_bootstrap": [
+            5.922,
+            28.5573
+          ],
+          "mean": 15.577,
+          "n": 12
+        },
+        "capped": {
+          "ci95_bootstrap": [
+            0.25,
+            2.5833
+          ],
+          "mean": 1.167,
+          "n": 12
+        },
+        "n_rounds": {
+          "ci95_bootstrap": [
+            10.3333,
+            21.1667
+          ],
+          "mean": 15.583,
+          "n": 12
+        },
+        "queries": {
+          "ci95_bootstrap": [
+            26.3333,
+            55.6667
+          ],
+          "mean": 40.583,
+          "n": 12
+        },
+        "query_max_s": {
+          "ci95_bootstrap": [
+            3.2686,
+            7.282
+          ],
+          "mean": 5.293,
+          "n": 12
+        },
+        "used": {
+          "ci95_bootstrap": [
+            29.25,
+            71.0833
+          ],
+          "mean": 49.083,
+          "n": 12
+        }
+      },
+      "A15_cube/scale16": {
+        "T_final": {
+          "ci95_bootstrap": [
+            213.6667,
+            237.5
+          ],
+          "mean": 225.667,
+          "n": 12
+        },
+        "arm_wall_informational": {
+          "ci95_bootstrap": [
+            13.4622,
+            34.7173
+          ],
+          "mean": 22.864,
+          "n": 12
+        },
+        "capped": {
+          "ci95_bootstrap": [
+            0.8333,
+            2.5833
+          ],
+          "mean": 1.583,
+          "n": 12
+        },
+        "n_rounds": {
+          "ci95_bootstrap": [
+            11.6667,
+            18.5833
+          ],
+          "mean": 15.083,
+          "n": 12
+        },
+        "queries": {
+          "ci95_bootstrap": [
+            36.4167,
+            56.4167
+          ],
+          "mean": 46.333,
+          "n": 12
+        },
+        "query_max_s": {
+          "ci95_bootstrap": [
+            7.2082,
+            9.0124
+          ],
+          "mean": 8.224,
+          "n": 12
+        },
+        "used": {
+          "ci95_bootstrap": [
+            37.6667,
+            61.5
+          ],
+          "mean": 49.667,
+          "n": 12
+        }
+      }
+    },
+    "group_wall_mean_s": {
+      "A14/control": 0.01,
+      "A14/lowobs12": 11.51,
+      "A14/scale14": 12.989,
+      "A14/scale16": 19.577,
+      "A15/control": 0.015,
+      "A15/lowobs12": 13.766,
+      "A15/scale14": 8.489,
+      "A15/scale16": 10.45,
+      "A15_cube/control": 0.011,
+      "A15_cube/lowobs12": 121.821,
+      "A15_cube/scale14": 15.579,
+      "A15_cube/scale16": 22.865
+    },
+    "inc_guards": {
+      "A15/control": {
+        "ci95_bootstrap": [
+          2.0,
+          2.0
+        ],
+        "mean": 2.0,
+        "n": 6
+      },
+      "A15/lowobs12": {
+        "ci95_bootstrap": [
+          0.75,
+          3.75
+        ],
+        "mean": 2.167,
+        "n": 12
+      },
+      "A15/scale14": {
+        "ci95_bootstrap": [
+          11.4167,
+          22.9167
+        ],
+        "mean": 16.917,
+        "n": 12
+      },
+      "A15/scale16": {
+        "ci95_bootstrap": [
+          12.3333,
+          19.0
+        ],
+        "mean": 15.583,
+        "n": 12
+      },
+      "A15_cube/control": {
+        "ci95_bootstrap": [
+          2.0,
+          2.0
+        ],
+        "mean": 2.0,
+        "n": 6
+      },
+      "A15_cube/lowobs12": {
+        "ci95_bootstrap": [
+          2.0833,
+          8.1667
+        ],
+        "mean": 5.0,
+        "n": 12
+      },
+      "A15_cube/scale14": {
+        "ci95_bootstrap": [
+          11.4167,
+          22.9167
+        ],
+        "mean": 16.917,
+        "n": 12
+      },
+      "A15_cube/scale16": {
+        "ci95_bootstrap": [
+          12.5,
+          19.5
+        ],
+        "mean": 15.917,
+        "n": 12
+      }
+    },
+    "labels": {
+      "A14/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 6
+        },
+        "ID+IDF": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 6
+      },
+      "A14/lowobs12": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID+IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.7575059933447591,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 12
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 12
+      },
+      "A14/scale14": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.39062208887279953,
+            0.8618799089087867
+          ],
+          "rate": 0.6666666666666666,
+          "x": 8
+        },
+        "ID+IDF": {
+          "ci95": [
+            0.46769466506643437,
+            0.9110583316059452
+          ],
+          "x": 9
+        },
+        "IDF": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "rate": 0.08333333333333333,
+          "x": 1
+        },
+        "IDU": {
+          "ci95": [
+            0.08894166839405473,
+            0.5323053349335657
+          ],
+          "rate": 0.25,
+          "x": 3
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 12
+      },
+      "A14/scale16": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.04696514218385378,
+            0.44803086225297345
+          ],
+          "rate": 0.16666666666666666,
+          "x": 2
+        },
+        "ID+IDF": {
+          "ci95": [
+            0.13812009109121315,
+            0.6093779111272004
+          ],
+          "x": 4
+        },
+        "IDF": {
+          "ci95": [
+            0.04696514218385378,
+            0.44803086225297345
+          ],
+          "rate": 0.16666666666666666,
+          "x": 2
+        },
+        "IDU": {
+          "ci95": [
+            0.39062208887279953,
+            0.8618799089087867
+          ],
+          "rate": 0.6666666666666666,
+          "x": 8
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 12
+      },
+      "A15/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 6
+        },
+        "ID+IDF": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 6
+      },
+      "A15/lowobs12": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID+IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.7575059933447591,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 12
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 12
+      },
+      "A15/scale14": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.2537815976337061,
+            0.7462184023662939
+          ],
+          "rate": 0.5,
+          "x": 6
+        },
+        "ID+IDF": {
+          "ci95": [
+            0.3195113125495498,
+            0.8067396863412435
+          ],
+          "x": 7
+        },
+        "IDF": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "rate": 0.08333333333333333,
+          "x": 1
+        },
+        "IDU": {
+          "ci95": [
+            0.19326031365875665,
+            0.6804886874504503
+          ],
+          "rate": 0.4166666666666667,
+          "x": 5
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 12
+      },
+      "A15/scale16": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "rate": 0.08333333333333333,
+          "x": 1
+        },
+        "ID+IDF": {
+          "ci95": [
+            0.08894166839405473,
+            0.5323053349335657
+          ],
+          "x": 3
+        },
+        "IDF": {
+          "ci95": [
+            0.04696514218385378,
+            0.44803086225297345
+          ],
+          "rate": 0.16666666666666666,
+          "x": 2
+        },
+        "IDU": {
+          "ci95": [
+            0.46769466506643437,
+            0.9110583316059452
+          ],
+          "rate": 0.75,
+          "x": 9
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 12
+      },
+      "A15_cube/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 6
+        },
+        "ID+IDF": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 6
+      },
+      "A15_cube/lowobs12": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID+IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.7575059933447591,
+            1.0
+          ],
+          "rate": 1.0,
+          "x": 12
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 12
+      },
+      "A15_cube/scale14": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.39062208887279953,
+            0.8618799089087867
+          ],
+          "rate": 0.6666666666666666,
+          "x": 8
+        },
+        "ID+IDF": {
+          "ci95": [
+            0.46769466506643437,
+            0.9110583316059452
+          ],
+          "x": 9
+        },
+        "IDF": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "rate": 0.08333333333333333,
+          "x": 1
+        },
+        "IDU": {
+          "ci95": [
+            0.08894166839405473,
+            0.5323053349335657
+          ],
+          "rate": 0.25,
+          "x": 3
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 12
+      },
+      "A15_cube/scale16": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.08894166839405473,
+            0.5323053349335657
+          ],
+          "rate": 0.25,
+          "x": 3
+        },
+        "ID+IDF": {
+          "ci95": [
+            0.3195113125495498,
+            0.8067396863412435
+          ],
+          "x": 7
+        },
+        "IDF": {
+          "ci95": [
+            0.13812009109121315,
+            0.6093779111272004
+          ],
+          "rate": 0.3333333333333333,
+          "x": 4
+        },
+        "IDU": {
+          "ci95": [
+            0.19326031365875665,
+            0.6804886874504503
+          ],
+          "rate": 0.4166666666666667,
+          "x": 5
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "rate": 0.0,
+          "x": 0
+        },
+        "n": 12
+      }
+    },
+    "labels_per_seed": {
+      "A14/control": [
+        "ID",
+        "ID",
+        "ID",
+        "ID",
+        "ID",
+        "ID"
+      ],
+      "A14/lowobs12": [
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU"
+      ],
+      "A14/scale14": [
+        "ID",
+        "ID",
+        "ID",
+        "ID",
+        "IDU",
+        "ID",
+        "ID",
+        "IDF",
+        "IDU",
+        "IDU",
+        "ID",
+        "ID"
+      ],
+      "A14/scale16": [
+        "IDU",
+        "IDU",
+        "ID",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDF",
+        "IDF",
+        "IDU",
+        "ID",
+        "IDU",
+        "IDU"
+      ],
+      "A15/control": [
+        "ID",
+        "ID",
+        "ID",
+        "ID",
+        "ID",
+        "ID"
+      ],
+      "A15/lowobs12": [
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU"
+      ],
+      "A15/scale14": [
+        "ID",
+        "IDU",
+        "ID",
+        "ID",
+        "IDU",
+        "ID",
+        "IDU",
+        "IDF",
+        "IDU",
+        "IDU",
+        "ID",
+        "ID"
+      ],
+      "A15/scale16": [
+        "IDU",
+        "IDF",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDF",
+        "IDU",
+        "ID",
+        "IDU",
+        "IDU"
+      ],
+      "A15_cube/control": [
+        "ID",
+        "ID",
+        "ID",
+        "ID",
+        "ID",
+        "ID"
+      ],
+      "A15_cube/lowobs12": [
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU",
+        "IDU"
+      ],
+      "A15_cube/scale14": [
+        "ID",
+        "ID",
+        "ID",
+        "ID",
+        "IDU",
+        "ID",
+        "ID",
+        "IDF",
+        "IDU",
+        "IDU",
+        "ID",
+        "ID"
+      ],
+      "A15_cube/scale16": [
+        "IDF",
+        "IDF",
+        "IDU",
+        "IDF",
+        "IDU",
+        "ID",
+        "IDU",
+        "IDF",
+        "IDU",
+        "ID",
+        "IDU",
+        "ID"
+      ]
+    },
+    "n_min": {
+      "A14/control": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "A14/lowobs12": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "A14/scale14": [
+        14,
+        14,
+        14,
+        14,
+        null,
+        14,
+        14,
+        14,
+        13,
+        null,
+        14,
+        14
+      ],
+      "A14/scale16": [
+        null,
+        16,
+        16,
+        null,
+        15,
+        16,
+        16,
+        16,
+        null,
+        16,
+        13,
+        16
+      ],
+      "A15/control": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "A15/lowobs12": [
+        null,
+        null,
+        11,
+        11,
+        null,
+        null,
+        null,
+        null,
+        12,
+        12,
+        null,
+        null
+      ],
+      "A15/scale14": [
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        13,
+        14,
+        14,
+        14
+      ],
+      "A15/scale16": [
+        16,
+        16,
+        15,
+        16,
+        15,
+        16,
+        15,
+        16,
+        16,
+        16,
+        13,
+        16
+      ],
+      "A15_cube/control": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "A15_cube/lowobs12": [
+        null,
+        null,
+        12,
+        11,
+        12,
+        null,
+        null,
+        null,
+        12,
+        12,
+        null,
+        12
+      ],
+      "A15_cube/scale14": [
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        13,
+        14,
+        14,
+        14
+      ],
+      "A15_cube/scale16": [
+        16,
+        16,
+        15,
+        16,
+        15,
+        16,
+        15,
+        16,
+        16,
+        16,
+        13,
+        16
+      ]
+    },
+    "query_max_s": {
+      "A14/control": 0.004243921001034323,
+      "A14/lowobs12": 9.2500753610002,
+      "A14/scale14": 9.141226087005634,
+      "A14/scale16": 9.092983837996144,
+      "A15/control": 0.004654749995097518,
+      "A15/lowobs12": 9.131777059999877,
+      "A15/scale14": 9.023651625997445,
+      "A15/scale16": 9.047762647001946,
+      "A15_cube/control": 0.004373973002657294,
+      "A15_cube/lowobs12": 11.014468638997641,
+      "A15_cube/scale14": 9.487615723002818,
+      "A15_cube/scale16": 9.064567374000035
+    },
+    "stops": {
+      "A14/control": {
+        "ID": 6
+      },
+      "A14/lowobs12": {
+        "unknown": 12
+      },
+      "A14/scale14": {
+        "ID": 8,
+        "IDF": 1,
+        "unknown": 3
+      },
+      "A14/scale16": {
+        "ID": 2,
+        "IDF": 2,
+        "unknown": 8
+      },
+      "A15/control": {
+        "ID": 6
+      },
+      "A15/lowobs12": {
+        "unknown": 12
+      },
+      "A15/scale14": {
+        "ID": 6,
+        "IDF": 1,
+        "unknown": 5
+      },
+      "A15/scale16": {
+        "ID": 1,
+        "IDF": 2,
+        "unknown": 9
+      },
+      "A15_cube/control": {
+        "ID": 6
+      },
+      "A15_cube/lowobs12": {
+        "unknown": 12
+      },
+      "A15_cube/scale14": {
+        "ID": 8,
+        "IDF": 1,
+        "unknown": 3
+      },
+      "A15_cube/scale16": {
+        "ID": 3,
+        "IDF": 4,
+        "unknown": 5
+      }
+    },
+    "truth_reachable": {
+      "control": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "lowobs12": [
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12
+      ],
+      "scale14": [
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14
+      ],
+      "scale16": [
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16
+      ]
+    }
+  },
+  "schema": "brute.gates.v37_0",
+  "sealed_input_verified": true,
+  "secondary": {
+    "GCAP15": {
+      "observed": {
+        "A14/control": {
+          "IDU_last_phase": {
+            "None": 0,
+            "future": 0,
+            "least": 0,
+            "start": 0
+          },
+          "K_spent": 0,
+          "capped_calls": 0,
+          "capped_cases": 0,
+          "cases": 6,
+          "cube": {
+            "cube_sat": 0,
+            "cube_unsat": 0,
+            "cubes": 0
+          },
+          "used": {
+            "ci95_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "mean": 0.0,
+            "n": 6
+          },
+          "used_per_seed": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "A14/lowobs12": {
+          "IDU_last_phase": {
+            "None": 0,
+            "future": 0,
+            "least": 12,
+            "start": 0
+          },
+          "K_spent": 0,
+          "capped_calls": 12,
+          "capped_cases": 12,
+          "cases": 12,
+          "cube": {
+            "cube_sat": 0,
+            "cube_unsat": 0,
+            "cubes": 0
+          },
+          "used": {
+            "ci95_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "mean": 0.0,
+            "n": 12
+          },
+          "used_per_seed": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "A14/scale14": {
+          "IDU_last_phase": {
+            "None": 0,
+            "future": 1,
+            "least": 2,
+            "start": 0
+          },
+          "K_spent": 0,
+          "capped_calls": 3,
+          "capped_cases": 3,
+          "cases": 12,
+          "cube": {
+            "cube_sat": 0,
+            "cube_unsat": 0,
+            "cubes": 0
+          },
+          "used": {
+            "ci95_bootstrap": [
+              19.0,
+              48.25
+            ],
+            "mean": 32.417,
+            "n": 12
+          },
+          "used_per_seed": [
+            4,
+            37,
+            22,
+            24,
+            0,
+            32,
+            88,
+            16,
+            63,
+            16,
+            20,
+            67
+          ]
+        },
+        "A14/scale16": {
+          "IDU_last_phase": {
+            "None": 0,
+            "future": 5,
+            "least": 3,
+            "start": 0
+          },
+          "K_spent": 0,
+          "capped_calls": 8,
+          "capped_cases": 8,
+          "cases": 12,
+          "cube": {
+            "cube_sat": 0,
+            "cube_unsat": 0,
+            "cubes": 0
+          },
+          "used": {
+            "ci95_bootstrap": [
+              19.25,
+              70.8333
+            ],
+            "mean": 43.5,
+            "n": 12
+          },
+          "used_per_seed": [
+            0,
+            40,
+            125,
+            0,
+            77,
+            0,
+            126,
+            53,
+            0,
+            31,
+            70,
+            0
+          ]
+        },
+        "A15/control": {
+          "IDU_last_phase": {
+            "None": 0,
+            "future": 0,
+            "least": 0,
+            "start": 0
+          },
+          "K_spent": 0,
+          "capped_calls": 0,
+          "capped_cases": 0,
+          "cases": 6,
+          "cube": {
+            "cube_sat": 0,
+            "cube_unsat": 0,
+            "cubes": 0
+          },
+          "used": {
+            "ci95_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "mean": 0.0,
+            "n": 6
+          },
+          "used_per_seed": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "A15/lowobs12": {
+          "IDU_last_phase": {
+            "None": 0,
+            "future": 4,
+            "least": 8,
+            "start": 0
+          },
+          "K_spent": 0,
+          "capped_calls": 12,
+          "capped_cases": 12,
+          "cases": 12,
+          "cube": {
+            "cube_sat": 0,
+            "cube_unsat": 0,
+            "cubes": 0
+          },
+          "used": {
+            "ci95_bootstrap": [
+              1.9167,
+              11.1667
+            ],
+            "mean": 6.167,
+            "n": 12
+          },
+          "used_per_seed": [
+            0,
+            0,
+            26,
+            3,
+            10,
+            0,
+            0,
+            0,
+            5,
+            17,
+            13,
+            0
+          ]
+        },
+        "A15/scale14": {
+          "IDU_last_phase": {
+            "None": 0,
+            "future": 3,
+            "least": 0,
+            "start": 2
+          },
+          "K_spent": 0,
+          "capped_calls": 5,
+          "capped_cases": 5,
+          "cases": 12,
+          "cube": {
+            "cube_sat": 0,
+            "cube_unsat": 0,
+            "cubes": 0
+          },
+          "used": {
+            "ci95_bootstrap": [
+              29.25,
+              71.0833
+            ],
+            "mean": 49.083,
+            "n": 12
+          },
+          "used_per_seed": [
+            4,
+            18,
+            16,
+            28,
+            41,
+            51,
+            107,
+            25,
+            104,
+            106,
+            15,
+            74
+          ]
+        },
+        "A15/scale16": {
+          "IDU_last_phase": {
+            "None": 0,
+            "future": 7,
+            "least": 0,
+            "start": 2
+          },
+          "K_spent": 0,
+          "capped_calls": 9,
+          "capped_cases": 9,
+          "cases": 12,
+          "cube": {
+            "cube_sat": 0,
+            "cube_unsat": 0,
+            "cubes": 0
+          },
+          "used": {
+            "ci95_bootstrap": [
+              37.5,
+              60.5833
+            ],
+            "mean": 49.167,
+            "n": 12
+          },
+          "used_per_seed": [
+            71,
+            27,
+            70,
+            24,
+            69,
+            58,
+            72,
+            70,
+            36,
+            30,
+            46,
+            17
+          ]
+        },
+        "A15_cube/control": {
+          "IDU_last_phase": {
+            "None": 0,
+            "future": 0,
+            "least": 0,
+            "start": 0
+          },
+          "K_spent": 0,
+          "capped_calls": 0,
+          "capped_cases": 0,
+          "cases": 6,
+          "cube": {
+            "cube_sat": 0,
+            "cube_unsat": 0,
+            "cubes": 0
+          },
+          "used": {
+            "ci95_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "mean": 0.0,
+            "n": 6
+          },
+          "used_per_seed": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "A15_cube/lowobs12": {
+          "IDU_last_phase": {
+            "None": 0,
+            "future": 6,
+            "least": 6,
+            "start": 0
+          },
+          "K_spent": 0,
+          "capped_calls": 129,
+          "capped_cases": 12,
+          "cases": 12,
+          "cube": {
+            "cube_sat": 12,
+            "cube_unsat": 136,
+            "cubes": 253
+          },
+          "used": {
+            "ci95_bootstrap": [
+              5.4167,
+              26.0
+            ],
+            "mean": 14.833,
+            "n": 12
+          },
+          "used_per_seed": [
+            0,
+            0,
+            60,
+            3,
+            25,
+            0,
+            0,
+            0,
+            14,
+            40,
+            13,
+            23
+          ]
+        },
+        "A15_cube/scale14": {
+          "IDU_last_phase": {
+            "None": 0,
+            "future": 3,
+            "least": 0,
+            "start": 0
+          },
+          "K_spent": 0,
+          "capped_calls": 14,
+          "capped_cases": 5,
+          "cases": 12,
+          "cube": {
+            "cube_sat": 0,
+            "cube_unsat": 60,
+            "cubes": 69
+          },
+          "used": {
+            "ci95_bootstrap": [
+              29.25,
+              71.0833
+            ],
+            "mean": 49.083,
+            "n": 12
+          },
+          "used_per_seed": [
+            4,
+            18,
+            16,
+            28,
+            41,
+            51,
+            107,
+            25,
+            104,
+            106,
+            15,
+            74
+          ]
+        },
+        "A15_cube/scale16": {
+          "IDU_last_phase": {
+            "None": 0,
+            "future": 5,
+            "least": 0,
+            "start": 0
+          },
+          "K_spent": 0,
+          "capped_calls": 19,
+          "capped_cases": 9,
+          "cases": 12,
+          "cube": {
+            "cube_sat": 0,
+            "cube_unsat": 144,
+            "cubes": 153
+          },
+          "used": {
+            "ci95_bootstrap": [
+              37.6667,
+              61.5
+            ],
+            "mean": 49.667,
+            "n": 12
+          },
+          "used_per_seed": [
+            71,
+            27,
+            76,
+            24,
+            69,
+            58,
+            72,
+            70,
+            36,
+            30,
+            46,
+            17
+          ]
+        }
+      },
+      "pass": null,
+      "rule": "reported: capped cases and calls, IDU last phase, cube counts, extra actions used and K_spent per arm and family"
+    },
+    "GSYM15": {
+      "observed": {
+        "ID(A15)-ID(A14)/control": {
+          "ci95_seed_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "mean": 0.0,
+          "per_seed": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "ID(A15)-ID(A14)/lowobs12": {
+          "ci95_seed_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "mean": 0.0,
+          "per_seed": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "ID(A15)-ID(A14)/scale14": {
+          "ci95_seed_bootstrap": [
+            -0.4167,
+            0.0
+          ],
+          "mean": -0.1667,
+          "per_seed": [
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "ID(A15)-ID(A14)/scale16": {
+          "ci95_seed_bootstrap": [
+            -0.25,
+            0.0
+          ],
+          "mean": -0.0833,
+          "per_seed": [
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "ID(A15_cube)-ID(A15)/control": {
+          "ci95_seed_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "mean": 0.0,
+          "per_seed": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "ID(A15_cube)-ID(A15)/lowobs12": {
+          "ci95_seed_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "mean": 0.0,
+          "per_seed": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "ID(A15_cube)-ID(A15)/scale14": {
+          "ci95_seed_bootstrap": [
+            0.0,
+            0.4167
+          ],
+          "mean": 0.1667,
+          "per_seed": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "ID(A15_cube)-ID(A15)/scale16": {
+          "ci95_seed_bootstrap": [
+            0.0,
+            0.4167
+          ],
+          "mean": 0.1667,
+          "per_seed": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      },
+      "pass": null,
+      "rule": "reported, not gated: encoding effect A15 - A14, cube effect A15_cube - A15"
+    }
+  },
+  "study": "BRUTE-0370-APART-CUBE-040"
+}
