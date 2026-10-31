@@ -1,0 +1,112 @@
+{
+  "schema": "brute.plan/1",
+  "study": "BRUTE-0380-ENCODING-AUDIT-041",
+  "version_under_test": "0.38.0",
+  "parent_study": "BRUTE-0370-APART-CUBE-040",
+  "status": "preregistered (plan only; no build code, no data for 041)",
+  "diagnosis_040": {
+    "label": "Observed (sealed results/study-040; GATES_040.json, TEST_SUITE_040.json, deviation #153)",
+    "scale16": "A15_cube 3/4/0/0/5, A15 1/2/0/0/9, A14 2/2/0/0/8 (ID/IDF/AMB/WRONG/IDU); A15 without the cube lost A14 decisions on 10610003 and 10610007 and gained 10610002; the cube split rescued 10610001, 10610004 (IDF), 10610006, 10610012 (ID); 153 cube calls, 0 SAT, 144 UNSAT, 9 capped; 9/12 A15_cube cases capped at least once",
+    "GINC15": "3/60 checks: on sealed 039 perm12 10540007 (A15) and 10540008 (A15, A15_cube) A14 decided ID at n_min 12 and the new encoding returned unknown (cap); no decided verdict contradicted A14; pre-freeze single-case wall A14 7.3 s, A15 15.7 s, A15_cube about 24 s",
+    "GQB15": "one A15_cube call 11.014 s on lowobs12 10630011 (bound 10.5 s, cap 9.0 s)",
+    "lowobs12": "IDU 12/12 for every arm; A14 capped on the passive least-machine query on all 12",
+    "cause": "Inferred: the apartness / fixed-colour CNF is slower than A14's first-visit symmetry CNF on some traces; which component is responsible is Open"
+  },
+  "branch_taken": "plan 040 next_if_fail: 'if a or GINC15 fails, the encoding changed semantics: an encoding audit, not a new arm' (GINC15 failed); also 'if GFAM15 fails while b passes, the gain is family-specific' (reported in v0.37.0). No new method arm is added; the audit decomposes A15 into its declared components",
+  "process": "LEAN (standing go t133s553, ledger 76b30d5, covers each next locked version; a ledgered build_authorization_041 citing it is still required before any code): plan locked before data; seedcheck_041 before seeds are drawn; independent recount; CNF reference audit; pre-freeze gates test on a sealed smoke block; single main run, never relaunched or resumed; failures published",
+  "question": "Which declared component of the A15 encoding (apartness clauses, fixed-colour clique, or their combination) makes some stop checks slower than A14, and does the new encoding ever change a decided verdict?",
+  "hypotheses": {
+    "H1": "Exact expectation: no variant ever returns a decided stop label or n_min that differs from E0's decided result on the same trace (semantics preserved; only cost differs)",
+    "H2": "Inferred: the GINC15 unknowns are caused by one component; which one is Open (no prediction is made)",
+    "H3": "Inferred: E3 (full A15) per-call wall is higher than E0 on the paired replay set"
+  },
+  "design": {
+    "variants": {
+      "E0": "A14 per-size CNF (brute/scalesearch14, frozen) with first-visit symmetry clauses",
+      "E1": "E0 plus apartness clauses x[t] != x[u] for every apart pair; first-visit symmetry clauses kept; no fixed colours",
+      "E2": "first-visit symmetry clauses replaced by the fixed-colour greedy clique only (x[c_i] = i, position 0 colour 0); apartness clauses only between clique members (implied by the colours)",
+      "E3": "A15 as frozen (brute/scalesearch15): apartness clauses plus fixed colours",
+      "E4": "A15_cube as frozen (E3 plus the per-size cube split on capped queries)"
+    },
+    "note": "E0, E3 and E4 are the frozen v0.36.0/v0.37.0 code paths, called unchanged; E1 and E2 are configurations of a new audit file brute/encaudit16.py that reuses the frozen clause builders; they are audit variants, not candidate methods, and none is promoted by this study",
+    "part1_replay": "stop-check replays on sealed final traces, no new world data: (a) the 30 sealed study-039 cases A14 decided (scale12, perm12, control) under E0-E4, once each; (b) the 2 GINC15 traces (perm12 10540007, 10540008) under E0-E4, 3 declared repeats each (repeats measure timing variance; they are part of the design, not reruns); (c) the 12 sealed study-040 scale16 final A14 traces under E0-E4, once each. Every replay uses the 9.0 s query cap and the 240 s case budget",
+    "part2_fresh": "active runs of the frozen arms A14, A15, A15_cube (no new arm) on 12 fresh perm12 worlds and 6 fresh controls, K = 128, 240 s case budget, 9.0 s cap, eps 0, to replicate GINC15 on unseen data",
+    "workers": 8,
+    "per_call_logging": "every SAT call records variant, size n, phase, wall, cap hit, clause and variable counts"
+  },
+  "heldout_ranges": {
+    "note": "fresh 107x00NN ranges; pre-plan scan (Observed, 2026-10-31 EDT): no word-bounded 107[0-9]00NN token in tracked uncompressed text; the full scan including the .gz archives is seedcheck_041's job",
+    "perm12": [
+      10710001,
+      10710002,
+      10710003,
+      10710004,
+      10710005,
+      10710006,
+      10710007,
+      10710008,
+      10710009,
+      10710010,
+      10710011,
+      10710012
+    ],
+    "control": [
+      10760001,
+      10760002,
+      10760003,
+      10760004,
+      10760005,
+      10760006
+    ]
+  },
+  "smoke_range": "10780001-10780006 (pre-freeze smoke only; declared here, never gated)",
+  "cases": {
+    "declared_before_data": true,
+    "replay_sealed_039": 30,
+    "replay_ginc15_repeats": "2 traces x 5 variants x 3",
+    "replay_sealed_040_scale16": 12,
+    "perm12": 12,
+    "control": 6,
+    "eps": 0,
+    "total_fresh": 18
+  },
+  "criteria": {
+    "GAUD_sem": "Exact: over every replay and every fresh case, no variant's decided stop label or n_min differs from E0 (replay) or A14 (fresh) on the same trace; unknown is allowed; WRONG 0 for every variant and arm",
+    "GAUD_loc": "exactly one of E1, E2 returns unknown on at least 2 of the 3 GINC15 cells in at least 2 of 3 repeats while the other matches E0 in at least 2 of 3; pass names that component; fail (both or neither) leaves the cause Open",
+    "GAUD_time": "reported with a gate reading: paired per-trace median call wall ratio E3/E0 over part 1 (a) and (c) (42 traces), seed-bootstrap 95% CI (10000 resamples, random.Random(41)); pass if the CI lower bound > 1 (H3 confirmed)",
+    "GAUD_stab": "in part 1 (b), the stop label is identical across the 3 repeats in at least 9 of the 10 (trace, variant) cells",
+    "GPERM16": "fresh perm12: on every case A14 decides, A15 and A15_cube give A14's stop label and n_min (fresh GINC15)",
+    "GQB16": "max single SAT-call wall <= 10.5 s for every variant and arm; every overrun is listed with its phase",
+    "G_sound": "0 unsound separating words over all arms in study and recount, equal word counts, 0 truth inconsistencies",
+    "G10": "every arm ID on every fresh control (6/6 each)",
+    "GS_ref": "CNF reference audit of E1 and E2 on the 12 sealed 040 scale16 traces: 0 mismatches against the reference CNF checker, decided > 0, mutations 20/20",
+    "GTI": "TEST_SUITE_041 all modules returncode 0 (test_scalesearch15_0370 is frozen and expected to keep failing; it is reported, and GTI counts only the 041 modules, by declaration here, before data)",
+    "G_PROC": "ledger events preregistration, build_authorization, seedcheck, source_freeze, run_start, run_end, recount, reference, tests (041) present, in order, non-decreasing times; commit-order file; main sealed",
+    "G_RT": "total elapsed <= 1800 s",
+    "G_recount": "RECOUNT_041 PASS on the sealed results, 0 mismatches"
+  },
+  "secondary": {
+    "GCLS16": "clause and variable counts per variant and size (reported only)",
+    "GPH16": "capped calls by phase (least, future, start, cube) per variant (reported only)"
+  },
+  "runtime_estimate": "Inferred: part 1 is 30x5 + 30 + 12x5 = 240 stop-check replays (most decided in under 1 s; at most about 60 capped at about 9-30 s each), part 2 is 18 cases x 3 arms; about 400-1200 s on 8 workers. If the pre-freeze smoke projection exceeds 1500 s, part 1 (a) drops E1 and E2 (keeping them on (b) and (c)) by a ledgered pre-run deviation before the freeze, never after",
+  "what_counts_as_failure": "any gated criterion failing, or any WRONG or contradicting decided verdict; failures are published, not tuned",
+  "next_if_pass": "v0.39.0: keep the identified harmless component, drop the costly one, and re-run the clean 16-state headline of plan 040 on fresh seeds with the repaired encoding plus the cube split",
+  "next_if_fail": "if GAUD_sem fails, the encoding is unsound and A15/A15_cube are withdrawn from every later study; if GAUD_loc fails with both components slow, the clique and apartness clauses interact and v0.39.0 tests a non-SAT candidate generator (state merging over the apartness graph) with SAT used only to confirm; if GAUD_loc fails with neither slow, the slow-down is timing noise and GAUD_stab decides: unstable labels mean the 9 s cap is too close to the solve time and v0.39.0 pre-registers a cap-sensitivity study; if GPERM16 fails, the GINC15 regression replicates on fresh data; if GQB16 fails, the cap needs a hard per-call bound (separate process or solver interrupt) before any later timing gate",
+  "open_items": [
+    "noise at 12 states: GR11-GR13 failed (Observed; Open)",
+    "the declared bound N is a prior (Exact / Open)",
+    "one-bit-observation worlds at 12 states (lowobs12 0/12, v0.37.0; Open)",
+    "16 states without caps (Open)"
+  ],
+  "limitations": [
+    "clean traces only (eps 0)",
+    "replays use sealed traces, so they audit the stop check, not the action choice",
+    "E1 and E2 are audit configurations, not candidate methods",
+    "per-call walls depend on machine load; 3 repeats only on the GINC15 traces",
+    "n = 12 fresh perm12 cases; intervals are wide",
+    "one hardware profile, one author"
+  ],
+  "brand": "charcoal and sage; no purple, neon, emoji or gold",
+  "freeze_rule": "BRUTE_SOURCE_FREEZE_041 before run_start_041; frozen and ledger-hashed files are never edited; scalesearch14, scalesearch15, worlds_026 and worlds_040 stay frozen; the audit is a new file (brute/encaudit16.py)"
+}
