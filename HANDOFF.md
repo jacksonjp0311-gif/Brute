@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.49.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.49.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0490 -->
-- **v0.49.0: RELEASE IN PROGRESS** 2026-10-31 (EDT). Built on branch `plan/v0.49.0` (BRUTE_PLAN_052: certify/16n, eps 0.05, eps_bar 0.10, delta 0.001, C 50000, B 1500000, on 24 fresh noisy 12-state worlds run twice, 12 fresh worlds at eps 0.10, and 6 eps-0 compatibility cases against certify/16e; 72 jobs, one phase on 8 workers, 60 min cap). Under James's STANDING GO t133s553 (ledger `76b30d5`).
+- **v0.49.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.49.0 (annotated tag object `ac0e5f4` at `ad61d9b`, ledger release_052 `ad65a8d`). Fresh-clone verify of the tag passed: study 045 to 052 restored, verify_release_0490 passed, 98/98 tests (ledger fresh_clone_verify_052 `70f5a14`). Built on branch `plan/v0.49.0` (BRUTE_PLAN_052: certify/16n, eps 0.05, eps_bar 0.10, delta 0.001, C 50000, B 1500000, on 24 fresh noisy 12-state worlds run twice, 12 fresh worlds at eps 0.10, and 6 eps-0 compatibility cases against certify/16e; 72 jobs, one phase on 8 workers, 60 min cap). Under James's STANDING GO t133s553 (ledger `76b30d5`).
   - **Run complete (Observed).** 72/72 jobs, 70.8 s of 3600 s, normal exit about 14:52 EDT, run once; 1 checkpoint snapshot; nothing relaunched; resume clause not approved, not used.
   - **PASS (13/13 gated):** GDET52 24/24 [0.86, 1.00] (0 guard firings); GFID52 72/72 [0.95, 1.00]; GN12_sound52 (eps 0.05 ID+IDF 23/24 [0.80, 0.99]; eps 0.10 12/12 [0.76, 1.00]; WRONG 0/60 [0.00, 0.06], 0 majority errors); GCOMPAT16N52 6/6 [0.61, 1.00]; GHOST52; GQB26 (max chunk 7.6 s, max case 47.7 s); GS_ref (70/70 audited, 0 mismatches, 20/20 mutations); G_sound (687 words, 0 unsound); G_recount; GTI; GTEST (81 gated tests); G_PROC; G_RT (70.8 s).
   - **IDF rule (Exact):** plan 052's IDF-equivalence rule was introduced after 051's GCOMPAT16S / G10 IDF failures and is applied only to 052 data, not retroactively.
