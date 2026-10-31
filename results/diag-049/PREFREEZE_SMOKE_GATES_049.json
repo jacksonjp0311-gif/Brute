@@ -1,0 +1,943 @@
+{
+  "PASS": true,
+  "api_checks": {
+    "PASS": true,
+    "compat": true,
+    "ghost": {
+      "PASS49": true,
+      "certify16d_closure_unchanged": true,
+      "frozen_api_unchanged": true,
+      "new_flagged": {},
+      "newly_imported": [
+        "brute.api",
+        "brute.api.certify16e"
+      ],
+      "socket_attempts": 0
+    }
+  },
+  "api_checks_rc": 0,
+  "label": "Observed",
+  "note": "PASS here means the tooling ran end to end on a sealed block, gates reproduce, the self-replay is exact, the cut order was applied as declared and the real commit-order check passes; gate outcomes on smoke are recorded, not required",
+  "purpose": "Pre-freeze smoke-gates, runtime projection and cut order for study-049 (plan 049 runtime_estimate; pre-run deviation #171).",
+  "recount": {
+    "PASS": true,
+    "cases": 6,
+    "labels_c": {
+      "control": {
+        "AMB": 0,
+        "ID": 1,
+        "IDF": 0,
+        "IDU": 0,
+        "WRONG": 0
+      },
+      "scale16": {
+        "AMB": 1,
+        "ID": 0,
+        "IDF": 0,
+        "IDU": 0,
+        "WRONG": 0
+      },
+      "scale20": {
+        "AMB": 0,
+        "ID": 0,
+        "IDF": 0,
+        "IDU": 0,
+        "WRONG": 0
+      }
+    },
+    "labels_r": {
+      "control": {
+        "AMB": 0,
+        "ID": 1,
+        "IDF": 0,
+        "IDU": 0,
+        "WRONG": 0
+      },
+      "scale16": {
+        "AMB": 1,
+        "ID": 0,
+        "IDF": 0,
+        "IDU": 0,
+        "WRONG": 0
+      },
+      "scale20": {
+        "AMB": 0,
+        "ID": 0,
+        "IDF": 0,
+        "IDU": 0,
+        "WRONG": 0
+      }
+    },
+    "mismatches": {},
+    "mismatching_cases": 0,
+    "part_c": {
+      "canon16d_equal": 2,
+      "classes": {
+        "cap-timing": 0,
+        "infidelity": 0,
+        "none": 2,
+        "word-divergence": 0
+      },
+      "contradictions": 0,
+      "gain": 0,
+      "gain_by_key": {
+        "control": 0,
+        "scale16": 0,
+        "scale20": 0
+      },
+      "n": 2,
+      "same": 2
+    },
+    "part_r": {
+      "canon16d_equal": 1,
+      "classes": {
+        "cap-timing": 0,
+        "infidelity": 0,
+        "none": 2,
+        "word-divergence": 0
+      },
+      "contradictions": 0,
+      "gain": 0,
+      "gain_by_key": {
+        "control": 0,
+        "scale16": 0,
+        "scale20": 0
+      },
+      "n": 2,
+      "same": 2
+    },
+    "replay_wrong": {
+      "c": 0,
+      "r": 0
+    },
+    "replays": 4,
+    "words_checked": 158
+  },
+  "recount_rc": 0,
+  "reference_rc": 0,
+  "reference_smoke": {
+    "PASS": true,
+    "audited": 6,
+    "complete": true,
+    "decided": 6,
+    "elapsed_informational": 90.05987350200303,
+    "mismatch_count": 0,
+    "mutations": 20,
+    "of": 20,
+    "per_key": {
+      "control": {
+        "audited": 4,
+        "decided": 4,
+        "mismatches": 0
+      },
+      "scale16": {
+        "audited": 2,
+        "decided": 2,
+        "mismatches": 0
+      },
+      "scale20": {
+        "audited": 0,
+        "decided": 0,
+        "mismatches": 0
+      }
+    },
+    "records": 12,
+    "scope": {
+      "budget_s": 2400.0,
+      "key_order": [
+        "control",
+        "scale16",
+        "scale20"
+      ],
+      "order": [
+        "API16E",
+        "API16E_b"
+      ],
+      "workers": 8
+    },
+    "vacuous": false
+  },
+  "release_ok_synthetic": true,
+  "runtime_projection": {
+    "candidates": {
+      "R20=False,N20=0": {
+        "jobs": 80,
+        "mean_lpt_s": 324.7,
+        "worst_case_lpt_s": 1166.7,
+        "worst_serial_s": 8615.5
+      },
+      "R20=False,N20=4": {
+        "jobs": 88,
+        "mean_lpt_s": 431.6,
+        "worst_case_lpt_s": 1460.2,
+        "worst_serial_s": 10963.1
+      },
+      "R20=False,N20=6": {
+        "jobs": 92,
+        "mean_lpt_s": 487.1,
+        "worst_case_lpt_s": 1520.3,
+        "worst_serial_s": 12136.9
+      },
+      "R20=False,N20=8": {
+        "jobs": 96,
+        "mean_lpt_s": 538.5,
+        "worst_case_lpt_s": 1753.6,
+        "worst_serial_s": 13310.7
+      },
+      "R20=True,N20=8": {
+        "jobs": 104,
+        "mean_lpt_s": 645.4,
+        "worst_case_lpt_s": 2047.1,
+        "worst_serial_s": 15658.2
+      }
+    },
+    "cap_s": 3600,
+    "caveat": "two scale16, two scale20, two control smoke seeds and two sealed traces per part r / c; the worst case assumes every long job exhausts its budget at r_min",
+    "cut_applied": false,
+    "cut_consistent": true,
+    "label": "Inferred",
+    "mean_wall_by_key": {
+      "c/control": 0.08,
+      "c/scale16": 10.7,
+      "control": 0.02,
+      "r/control": 0.06,
+      "r/scale16": 10.64,
+      "scale16": 93.96,
+      "scale20": 106.89
+    },
+    "r_min_by_key": {
+      "scale16": 6716.0,
+      "scale20": 3528.0
+    },
+    "rate_declared": {
+      "scale16": 6716.0,
+      "scale20": 3528.0
+    },
+    "required": {
+      "N20": 8,
+      "R20": true
+    },
+    "runner": {
+      "N20": 8,
+      "R20": true
+    },
+    "smoke_slowest_rate_by_key": {
+      "scale16": 10771.8,
+      "scale20": 8851.5
+    },
+    "workers": 8
+  },
+  "smoke_determinism": [
+    [
+      "scale16",
+      11690001,
+      true
+    ],
+    [
+      "scale16",
+      11690002,
+      true
+    ],
+    [
+      "control",
+      11690005,
+      true
+    ],
+    [
+      "control",
+      11690006,
+      true
+    ],
+    [
+      "scale20",
+      11690003,
+      true
+    ],
+    [
+      "scale20",
+      11690004,
+      true
+    ]
+  ],
+  "smoke_part_c_canon16d_equal": [
+    [
+      "scale16",
+      11510002,
+      true
+    ],
+    [
+      "control",
+      11530001,
+      true
+    ]
+  ],
+  "smoke_record_columns": [
+    "block",
+    "key",
+    "seed",
+    "arm: label, stop, conflicts, chunks, case wall s, max chunk wall s, wall_guard",
+    "replay class",
+    "canon16d_equal"
+  ],
+  "smoke_records": [
+    [
+      "c",
+      "scale16",
+      11510002,
+      {
+        "API16E_c1": [
+          "AMB",
+          "K_spent",
+          198958,
+          100,
+          10.65,
+          2.366,
+          0
+        ]
+      },
+      "none",
+      true
+    ],
+    [
+      "c",
+      "control",
+      11530001,
+      {
+        "API16E_c1": [
+          "ID",
+          "ID",
+          80,
+          4,
+          0.02,
+          0.0,
+          0
+        ]
+      },
+      "none",
+      true
+    ],
+    [
+      "r",
+      "scale16",
+      11510002,
+      {
+        "API16E": [
+          "AMB",
+          "K_spent",
+          198958,
+          86,
+          10.52,
+          2.345,
+          0
+        ]
+      },
+      "none",
+      false
+    ],
+    [
+      "r",
+      "control",
+      11530001,
+      {
+        "API16E": [
+          "ID",
+          "ID",
+          80,
+          4,
+          0.01,
+          0.0,
+          0
+        ]
+      },
+      "none",
+      true
+    ],
+    [
+      "smoke",
+      "scale16",
+      11690001,
+      {
+        "API16E": [
+          "IDU",
+          "unknown",
+          1500151,
+          70,
+          137.74,
+          7.345,
+          0
+        ],
+        "API16E_b": [
+          "IDU",
+          "unknown",
+          1500151,
+          70,
+          139.27,
+          7.42,
+          0
+        ]
+      },
+      null,
+      null
+    ],
+    [
+      "smoke",
+      "scale16",
+      11690002,
+      {
+        "API16E": [
+          "ID",
+          "ID",
+          1155764,
+          51,
+          49.01,
+          3.695,
+          0
+        ],
+        "API16E_b": [
+          "ID",
+          "ID",
+          1155764,
+          51,
+          49.8,
+          3.812,
+          0
+        ]
+      },
+      null,
+      null
+    ],
+    [
+      "smoke",
+      "control",
+      11690005,
+      {
+        "API16E": [
+          "ID",
+          "ID",
+          82,
+          4,
+          0.03,
+          0.0,
+          0
+        ],
+        "API16E_b": [
+          "ID",
+          "ID",
+          82,
+          4,
+          0.02,
+          0.0,
+          0
+        ]
+      },
+      null,
+      null
+    ],
+    [
+      "smoke",
+      "control",
+      11690006,
+      {
+        "API16E": [
+          "ID",
+          "ID",
+          79,
+          4,
+          0.02,
+          0.0,
+          0
+        ],
+        "API16E_b": [
+          "ID",
+          "ID",
+          79,
+          4,
+          0.02,
+          0.003,
+          0
+        ]
+      },
+      null,
+      null
+    ],
+    [
+      "smoke",
+      "scale20",
+      11690003,
+      {
+        "API16E": [
+          "IDU",
+          "unknown",
+          1010880,
+          60,
+          101.05,
+          7.75,
+          0
+        ],
+        "API16E_b": [
+          "IDU",
+          "unknown",
+          1010880,
+          60,
+          100.2,
+          7.826,
+          0
+        ]
+      },
+      null,
+      null
+    ],
+    [
+      "smoke",
+      "scale20",
+      11690004,
+      {
+        "API16E": [
+          "IDU",
+          "unknown",
+          1001779,
+          30,
+          113.11,
+          10.685,
+          0
+        ],
+        "API16E_b": [
+          "IDU",
+          "unknown",
+          1001779,
+          30,
+          113.18,
+          11.025,
+          0
+        ]
+      },
+      null,
+      null
+    ]
+  ],
+  "smoke_wall_guard_records": [],
+  "stops_present": {
+    "ID": 8,
+    "K_spent": 2,
+    "unknown": 6
+  },
+  "synthetic": {
+    "G10": {
+      "cases": [
+        [
+          11690005,
+          {
+            "API16E": "ID",
+            "API16E_b": "ID"
+          }
+        ],
+        [
+          11690006,
+          {
+            "API16E": "ID",
+            "API16E_b": "ID"
+          }
+        ]
+      ]
+    },
+    "GCOMPAT16D": {
+      "ci95": [
+        0.3423802275066531,
+        1.0
+      ],
+      "equal": 2,
+      "of": 2,
+      "per_case": [
+        [
+          "scale16",
+          11510002,
+          true,
+          [
+            "AMB",
+            "AMB"
+          ]
+        ],
+        [
+          "control",
+          11530001,
+          true,
+          [
+            "ID",
+            "ID"
+          ]
+        ]
+      ],
+      "rule": "part c (max_chunks 1) canon16d byte-identical to the sealed 048 API16D record on 26/26; comparison from RECOUNT_049"
+    },
+    "GDET49": {
+      "ci95": [
+        0.6096657120978346,
+        1.0
+      ],
+      "columns": [
+        "key",
+        "seed",
+        "canon16e_equal",
+        "API16E",
+        "API16E_b"
+      ],
+      "identical": 6,
+      "of": 6,
+      "per_case": [
+        [
+          "scale16",
+          11690001,
+          true,
+          "IDU",
+          "IDU"
+        ],
+        [
+          "scale16",
+          11690002,
+          true,
+          "ID",
+          "ID"
+        ],
+        [
+          "control",
+          11690005,
+          true,
+          "ID",
+          "ID"
+        ],
+        [
+          "control",
+          11690006,
+          true,
+          "ID",
+          "ID"
+        ],
+        [
+          "scale20",
+          11690003,
+          true,
+          "IDU",
+          "IDU"
+        ],
+        [
+          "scale20",
+          11690004,
+          true,
+          "IDU",
+          "IDU"
+        ]
+      ],
+      "records_checked_for_guard": 16,
+      "rule": "canon16e identical on 18/18 and N20/N20; wall_guard 0 on every certify/16e record (a, d, r, c)",
+      "scale16_control": [
+        4,
+        18
+      ],
+      "scale20": [
+        2,
+        2
+      ],
+      "wall_guard_fired": []
+    },
+    "GFID49": {
+      "bound": true,
+      "ci95": [
+        0.6096657120978346,
+        1.0
+      ],
+      "exact": 6,
+      "expected": 20,
+      "failures": {},
+      "of": 6,
+      "per_key": {
+        "control": 2,
+        "scale16": 2,
+        "scale20": 2
+      }
+    },
+    "GQB24": {
+      "case_bound_s": 600.0,
+      "chunk_bound_s": 30.0,
+      "chunks_by_part": {
+        "a": {
+          "budget_spent_records": 2,
+          "calls": 214,
+          "capped_calls": 34,
+          "chunks": 258,
+          "max_call_conflicts": 616131,
+          "max_chunks_per_call": 11,
+          "records": 8,
+          "spent": 5312152
+        },
+        "c": {
+          "budget_spent_records": 0,
+          "calls": 104,
+          "capped_calls": 1,
+          "chunks": 104,
+          "max_call_conflicts": 50286,
+          "max_chunks_per_call": 1,
+          "records": 2,
+          "spent": 199038
+        },
+        "d": {
+          "budget_spent_records": 4,
+          "calls": 198,
+          "capped_calls": 76,
+          "chunks": 180,
+          "max_call_conflicts": 744147,
+          "max_chunks_per_call": 14,
+          "records": 4,
+          "spent": 4025318
+        },
+        "r": {
+          "budget_spent_records": 0,
+          "calls": 89,
+          "capped_calls": 0,
+          "chunks": 90,
+          "max_call_conflicts": 62685,
+          "max_chunks_per_call": 2,
+          "records": 2,
+          "spent": 199038
+        }
+      },
+      "max_case_wall_s_by_part": {
+        "a": 139.267,
+        "c": 10.651,
+        "d": 113.176,
+        "r": 10.522
+      },
+      "max_chunk_wall_s_by_part": {
+        "a": 7.42,
+        "c": 2.366,
+        "d": 11.025,
+        "r": 2.345
+      },
+      "over_case": [],
+      "over_chunk": []
+    },
+    "GR49_sound": {
+      "WRONG": [],
+      "contradictions": [],
+      "n": 2,
+      "per_case": [
+        [
+          "scale16",
+          11510002,
+          [
+            "AMB",
+            "AMB"
+          ],
+          "none",
+          false
+        ],
+        [
+          "control",
+          11530001,
+          [
+            "ID",
+            "ID"
+          ],
+          "none",
+          false
+        ]
+      ],
+      "rule": "no part-r decided record contradicts a sealed 048 decided record (recount_049 rule); WRONG 0"
+    },
+    "GS20_sound49": {
+      "API16E_ID_IDF": 0,
+      "WRONG": [],
+      "ci95": [
+        0.0,
+        0.6576197724933469
+      ],
+      "decided_records": 0,
+      "of": 2,
+      "per_case": [
+        [
+          11690003,
+          "IDU",
+          "unknown",
+          "IDU"
+        ],
+        [
+          11690004,
+          "IDU",
+          "unknown",
+          "IDU"
+        ]
+      ],
+      "reference_bound": true,
+      "reference_scale20": {
+        "audited": 0,
+        "decided": 0,
+        "mismatches": 0
+      },
+      "rule": "scale20 WRONG 0; every decided scale20 record audited at bound 20 with 0 mismatches; a pass with 0 decided is vacuous and carries no N <= 20 claim",
+      "vacuous": true
+    },
+    "GS_ref": {
+      "PASS": true,
+      "audited": 6,
+      "block": "main",
+      "complete": true,
+      "decided": 6,
+      "elapsed_informational": 87.04875497000467,
+      "k_spent_as_amb": 0,
+      "mismatch_count": 0,
+      "mutations": 20,
+      "not_audited": [],
+      "not_reached": 6,
+      "of": 20,
+      "per_arm": {
+        "API16E": {
+          "audited": 3,
+          "decided": 3,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 6
+        },
+        "API16E_b": {
+          "audited": 3,
+          "decided": 3,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 6
+        }
+      },
+      "per_key": {
+        "control": {
+          "audited": 4,
+          "decided": 4,
+          "mismatches": 0
+        },
+        "scale16": {
+          "audited": 2,
+          "decided": 2,
+          "mismatches": 0
+        },
+        "scale20": {
+          "audited": 0,
+          "decided": 0,
+          "mismatches": 0
+        }
+      },
+      "records": 12,
+      "scope": {
+        "budget_s": 2400.0,
+        "key_order": [
+          "control",
+          "scale16",
+          "scale20"
+        ],
+        "order": [
+          "API16E",
+          "API16E_b"
+        ],
+        "workers": 8
+      },
+      "vacuous": false,
+      "verdicts_checked": 12
+    },
+    "cases": {
+      "control": 2,
+      "scale16": 2,
+      "scale20": 2
+    },
+    "fidelity_self_replay": {
+      "PASS": true,
+      "cases": 6,
+      "exact": 6,
+      "expected": 6,
+      "per_key": {
+        "control": 2,
+        "scale16": 2,
+        "scale20": 2
+      },
+      "study_results_sha256": "294b22b87697c62dbff754088f8c34f1f3f2fd5d61fcdc02e3a2813c1b164296"
+    },
+    "gate_status": {
+      "G10": {
+        "pass": false
+      },
+      "GAPI16E_fresh49": {
+        "pass": false
+      },
+      "GCOMPAT16D": {
+        "pass": true
+      },
+      "GDET49": {
+        "pass": false
+      },
+      "GFID49": {
+        "pass": false
+      },
+      "GHOST49": {
+        "pass": false
+      },
+      "GQB24": {
+        "pass": true
+      },
+      "GR49_sound": {
+        "pass": true
+      },
+      "GS20_sound49": {
+        "pass": true
+      },
+      "GS_ref": {
+        "pass": true
+      },
+      "GTI": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (TEST_SUITE_049 missing)"
+      },
+      "G_PROC": {
+        "pass": false
+      },
+      "G_RT": {
+        "pass": true
+      },
+      "G_recount": {
+        "pass": true
+      },
+      "G_sound": {
+        "pass": true
+      }
+    },
+    "label_source": "recount",
+    "note": "synthetic: smoke fresh cases as main with expected counts patched; GDET49 and GFID49 fail here by their 18 + N20 count, GAPI16E_fresh49 by its 12-case count, G10 by its 6-control count, GHOST49 by design (no 049 freeze yet), GTI and G_PROC by design",
+    "recount_rc": 0,
+    "reference_rc": 0,
+    "replays_c": 2,
+    "replays_r": 2,
+    "reproduces": true,
+    "sealed_input_verified": true,
+    "secondary": [
+      "GCOST49",
+      "GREP16f",
+      "GR_gain",
+      "GS20_rate49"
+    ]
+  },
+  "verifier_chain": {
+    "authorization_exceptions": 0,
+    "entries": [
+      [
+        "preregistration_049",
+        "611dc9e"
+      ],
+      [
+        "build_authorization_049",
+        "611dc9e"
+      ],
+      [
+        "seedcheck_049",
+        "c458de5"
+      ]
+    ],
+    "head": "8605e69",
+    "links": 5,
+    "passed": true
+  }
+}
