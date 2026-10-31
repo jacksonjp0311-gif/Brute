@@ -1,5 +1,39 @@
 # Brute changelog
 
+## v0.34.0: a sound noisy stop (A12: doubling-then-bisection least-B search and a confirmation at B_max before any ID claim) for active identification on noisy traces (study BRUTE-0340-SOUND-NOISY-STOP-037, LEAN process)
+
+**9 of 11 gates pass (GSAFE12, GQB12, G_sound, G10, GS_ref, GTI, G_PROC, G_RT, G_recount). GR12_headline FAILS on b, c and d (a passes); GNR12 FAILS. Secondary GPR12 passes.** All 42 cases ran once and were sealed (443.1 s of 1800 s). *Observed*
+
+### Timeline (EDT, 2026-10-30)
+
+- Plan `de168d1` (20:09; ledger `9d6a70e`); build authorization (ledger `b789fb9`, 20:10, standing go t133s553, ledger 76b30d5); seedcheck `18b3e90` (ledger `dbbc74a`, 20:21, before any seed); A12 `20f8fd8`; tests `e79f245`; common `b4b4bf4`; runner `4dfb973`; recount `4eff368`; CNF reference `d82e850`; gates `19d737c`, `4dc608a`; checkpoint and storage `1ec9a8c`; release tooling with the scratch-default test runner `5d85377`; freeze and smoke tooling `90fe99c`; script tests `18ce605`; #146 `eb34849`, `fbd6865`; pre-freeze sealed-smoke gates `726c7c6`; source freeze `d9402a1` (20:39; ledger `115b0cc`).
+- Run start (ledger `730e9b3`, 20:39:17); 2 pushed checkpoint snapshots `4bb4b36`, `e2b381c`; seal `116e9e9` (run end ledger `47654af`, 20:47); recount `794e56d`; reference `d1b5860`; tests `57d5da4`; gates `15c64a1`; #147 `ac0d829` and erratum `a994746`; RELEASE.json `96776d2`.
+
+### Results (labels per case, ID / IDF / AMB / WRONG / IDU; Wilson 95% CI; paired contrasts and means seed-bootstrap 95% CI)
+
+| arm | B_max | noisy12 (n=12) | noisy12 ID CI | noisy12 IDU CI | noisy12 reads/case | noisy8 (n=12) | clean12 (n=12) | controls ID |
+|---|---|---|---|---|---|---|---|---|
+| A12_r5 | 2 | 0 / 0 / 1 / 0 / 11 | [0, 0.24] | [0.65, 0.99] | 993 [940, 1053] | 4 / 7 / 0 / 0 / 1 | 0 / 0 / 1 / 0 / 11 | 6/6 |
+| A12_r3 | 6 | 0 / 0 / 0 / 0 / 12 | [0, 0.24] | [0.76, 1] | 536 [531, 545] | 0 / 0 / 0 / 0 / 12 | 0 / 0 / 1 / 0 / 11 | 6/6 |
+| A12_r3_nostop | 6 | 1 / 0 / 0 / 0 / 11 | [0.01, 0.35] | [0.65, 0.99] | 536 [531, 545] | 6 / 3 / 0 / 0 / 3 | 8 / 2 / 1 / 0 / 1 | 6/6 |
+| A11_r3 (v0.33.0) | 6 | 0 / 0 / 0 / 0 / 12 | [0, 0.24] | [0.76, 1] | 531 [531, 531] | 0 / 1 / 0 / 0 / 11 | 8 / 2 / 1 / 0 / 1 | 6/6 |
+| A11_r5 (v0.33.0) | 2 | 5 / 0 / 1 / 0 / 6 | [0.19, 0.68] | [0.25, 0.75] | 982 [926, 1044] | 8 / 4 / 0 / 0 / 0 | 8 / 2 / 1 / 0 / 1 | 6/6 |
+| S7 (passive) | 27 | 0 / 0 / 0 / 0 / 12 | [0, 0.24] | [0.76, 1] | 177 | 0 / 0 / 0 / 0 / 12 | 0 / 0 / 0 / 0 / 12 | 6/6 |
+
+- GR12 a: recounted WRONG 0 for A12_r5 and A12_r3 on all 42 gated cases, no label mismatch: PASS. b: IDU(A11_r3) - IDU(A12_r3) noisy12 0.00 [0.00, 0.00] (bar 0.25, lower > 0): FAIL. c: ID + IDF(A12_r5) 0/12 (bar 5): FAIL. d: ID(A12_r5) - ID(A11_r5) -0.42 [-0.67, -0.17] (bar >= -1/12): FAIL.
+- GSAFE12 (Exact): the sealed v0.33.0 WRONG trace (noisy_scale8 10210002) now gives AMB: future mode UNSAT for n = 1..7, SAT at n = 8. PASS.
+- GNR12: B_final 0 on every clean case, but 20 label differences (A12_r5 and A12_r3 IDU where A11_r3 ID/IDF on 10 clean12 cases each): the B_max confirmation hit the 9 s cap. FAIL. A12_r3_nostop: no differences.
+- GPR12 (secondary): capped least-B probes A12_r3 11 against A11_r3 12; first probe capped 6/12 against 12/12: PASS. GQB12: max 10.332 s (S7). G_sound: 678 words, 18 from confirmations, 0 unsound. GS_ref: A12_r3 noisy8, 240 decided (225 at raised B), 54 confirmation items, 0 mismatches, mutations 20/20. G_RT 443.1 s.
+
+### What Brute can't do yet
+
+- It cannot yet identify a noisy 12-state machine with a sound stop: A12_r5 ID 0/12, A12_r3 0/12. *Observed.*
+- Its B_max confirmation query costs more than the 9 s cap at 12 states, even on clean traces. *Observed.*
+- Its per-B least-budget chain still hits the cap on every noisy 12-state A12_r3 case. *Observed.*
+- Its soundness still assumes the declared size N and the declared noise rate. *Exact / Open.*
+
+Deviations #146 (pre-run), #147 and its erratum (post-run). Verify: `python scripts/study037_storage.py restore && PYTHONPATH=. python scripts/verify_release_0340.py`.
+
 ## v0.33.0: repeated reads (A11: a per-bit majority of r reads with a smaller noise budget B_max(r) and a bisection least-B search) for active identification on noisy traces (study BRUTE-0330-REPEATED-READS-036, LEAN process)
 
 **8 of 11 gates pass (GNR11, G_sound, G10, GS_ref, GTI, G_PROC, G_RT, G_recount). GR11_headline FAILS on a, b, c and d; GBIS11 FAILS; GQB11 FAILS (A11_r3_up query 10.513 s; bound 10.5 s). Secondary GRB11 fails.** All 48 cases ran once and were sealed (420.3 s of 1800 s). *Observed*
