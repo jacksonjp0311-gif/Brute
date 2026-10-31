@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.47.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.47.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0470 -->
-- **v0.47.0: RELEASE IN PROGRESS** 2026-10-31 (EDT). Built on branch `plan/v0.47.0` (BRUTE_PLAN_050: certify/16e at B20 4000000, C 50000 on 24 fresh 20-state worlds, 12 run twice, plus 6 controls; new certify/16n, an anytime majority-vote front end, eps 0.05, eps_bar 0.10, delta 0.001, on 12 fresh noisy 12-state worlds run twice and 6 eps-0 compatibility cases; 78 jobs, 60 min cap).
+- **v0.47.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.47.0 (annotated tag object `90f06e8` at `a5ac2e8`, ledger release_050 `0486732`). Fresh-clone verify of the tag passed: study 045 to 050 restored, verify_release_0470 passed, 92/92 tests. Built on branch `plan/v0.47.0` (BRUTE_PLAN_050: certify/16e at B20 4000000, C 50000 on 24 fresh 20-state worlds, 12 run twice, plus 6 controls; new certify/16n, an anytime majority-vote front end, eps 0.05, eps_bar 0.10, delta 0.001, on 12 fresh noisy 12-state worlds run twice and 6 eps-0 compatibility cases; 78 jobs, 60 min cap).
   - **Run complete (Observed).** 78/78 jobs, 2611.5 s of 3600 s, normal exit, run once; 10 checkpoint snapshots; nothing relaunched; resume clause not approved, not used. The reference audit and api_checks each ran once across agent interruptions and were committed as-is (#174 item 2).
   - **PASS (9/15 gated):** GN12_sound (WRONG 0, 0 majority errors; API16N 11/12 [0.65, 0.99]), GCOMPAT16N (6/6 [0.61, 1.00]), GHOST50, G_sound (811 words, 0 unsound), G_recount, GTI, GTEST (92 tests), G_PROC, G_RT (2611.5 s).
   - **FAIL (6):** GDET50 20/30 [0.49, 0.81] (scale20 2/12; the 600 s wall guard fired on 29 scale20 records); GFID50 21/42 [0.36, 0.64] (scale20 3/24); GS20_sound50 (1/24 decided [0.01, 0.20], WRONG 0, but the decided case was not audited); G10 5/6 (control 11750001 IDU, budget spent); GQB25 (26 chunks over 30 s, max 90.5 s; 25 cases over 600 s); GS_ref (32/34 audited, 0 mismatches, 20/20 mutations, incomplete at 2400 s).
