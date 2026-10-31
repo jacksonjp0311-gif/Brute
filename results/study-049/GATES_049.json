@@ -1,0 +1,2130 @@
+{
+  "all_gated_pass": true,
+  "budget_conflicts": {
+    "control": 1500000,
+    "scale16": 1500000,
+    "scale20": 1000000
+  },
+  "claim": "certify/16e ID/IDF is exact conditional on noise-free readings and true size <= the declared N (family_bound)",
+  "conflict_cap": 50000,
+  "failed": [],
+  "gates": {
+    "G10": {
+      "observed": {
+        "cases": [
+          [
+            11650001,
+            {
+              "API16E": "ID",
+              "API16E_b": "ID"
+            }
+          ],
+          [
+            11650002,
+            {
+              "API16E": "ID",
+              "API16E_b": "ID"
+            }
+          ],
+          [
+            11650003,
+            {
+              "API16E": "ID",
+              "API16E_b": "ID"
+            }
+          ],
+          [
+            11650004,
+            {
+              "API16E": "ID",
+              "API16E_b": "ID"
+            }
+          ],
+          [
+            11650005,
+            {
+              "API16E": "ID",
+              "API16E_b": "ID"
+            }
+          ],
+          [
+            11650006,
+            {
+              "API16E": "ID",
+              "API16E_b": "ID"
+            }
+          ]
+        ]
+      },
+      "pass": true
+    },
+    "GAPI16E_fresh49": {
+      "observed": {
+        "API16E_b_ID_IDF": 7,
+        "ID_IDF": 7,
+        "WRONG": [],
+        "bar": 7,
+        "budget_spent_cases": 4,
+        "ci95": [
+          0.3195113125495498,
+          0.8067396863412435
+        ],
+        "label_source": "recount",
+        "of": 12,
+        "per_case": [
+          [
+            11630001,
+            "IDF",
+            "IDF",
+            1367699,
+            66
+          ],
+          [
+            11630002,
+            "IDU",
+            "unknown",
+            1508802,
+            62
+          ],
+          [
+            11630003,
+            "ID",
+            "ID",
+            673615,
+            46
+          ],
+          [
+            11630004,
+            "ID",
+            "ID",
+            1072087,
+            55
+          ],
+          [
+            11630005,
+            "IDU",
+            "unknown",
+            1500806,
+            96
+          ],
+          [
+            11630006,
+            "ID",
+            "ID",
+            857972,
+            42
+          ],
+          [
+            11630007,
+            "ID",
+            "ID",
+            316514,
+            58
+          ],
+          [
+            11630008,
+            "IDU",
+            "unknown",
+            1500418,
+            92
+          ],
+          [
+            11630009,
+            "ID",
+            "ID",
+            648351,
+            66
+          ],
+          [
+            11630010,
+            "IDU",
+            "unknown",
+            1503820,
+            104
+          ],
+          [
+            11630011,
+            "ID",
+            "ID",
+            619994,
+            45
+          ],
+          [
+            11630012,
+            "AMB",
+            "K_spent",
+            787577,
+            88
+          ]
+        ]
+      },
+      "pass": true
+    },
+    "GCOMPAT16D": {
+      "observed": {
+        "ci95": [
+          0.8712710781407846,
+          1.0
+        ],
+        "equal": 26,
+        "of": 26,
+        "per_case": [
+          [
+            "scale16",
+            11510001,
+            true,
+            [
+              "IDU",
+              "IDU"
+            ]
+          ],
+          [
+            "scale16",
+            11510002,
+            true,
+            [
+              "AMB",
+              "AMB"
+            ]
+          ],
+          [
+            "scale16",
+            11510003,
+            true,
+            [
+              "IDU",
+              "IDU"
+            ]
+          ],
+          [
+            "scale16",
+            11510004,
+            true,
+            [
+              "IDU",
+              "IDU"
+            ]
+          ],
+          [
+            "scale16",
+            11510005,
+            true,
+            [
+              "IDU",
+              "IDU"
+            ]
+          ],
+          [
+            "scale16",
+            11510006,
+            true,
+            [
+              "AMB",
+              "AMB"
+            ]
+          ],
+          [
+            "scale16",
+            11510007,
+            true,
+            [
+              "IDU",
+              "IDU"
+            ]
+          ],
+          [
+            "scale16",
+            11510008,
+            true,
+            [
+              "IDU",
+              "IDU"
+            ]
+          ],
+          [
+            "scale16",
+            11510009,
+            true,
+            [
+              "IDU",
+              "IDU"
+            ]
+          ],
+          [
+            "scale16",
+            11510010,
+            true,
+            [
+              "IDU",
+              "IDU"
+            ]
+          ],
+          [
+            "scale16",
+            11510011,
+            true,
+            [
+              "IDU",
+              "IDU"
+            ]
+          ],
+          [
+            "scale16",
+            11510012,
+            true,
+            [
+              "IDU",
+              "IDU"
+            ]
+          ],
+          [
+            "control",
+            11530001,
+            true,
+            [
+              "ID",
+              "ID"
+            ]
+          ],
+          [
+            "control",
+            11530002,
+            true,
+            [
+              "ID",
+              "ID"
+            ]
+          ],
+          [
+            "control",
+            11530003,
+            true,
+            [
+              "ID",
+              "ID"
+            ]
+          ],
+          [
+            "control",
+            11530004,
+            true,
+            [
+              "ID",
+              "ID"
+            ]
+          ],
+          [
+            "control",
+            11530005,
+            true,
+            [
+              "ID",
+              "ID"
+            ]
+          ],
+          [
+            "control",
+            11530006,
+            true,
+            [
+              "ID",
+              "ID"
+            ]
+          ],
+          [
+            "scale20",
+            11610001,
+            true,
+            [
+              "IDU",
+              "IDU"
+            ]
+          ],
+          [
+            "scale20",
+            11610002,
+            true,
+            [
+              "IDU",
+              "IDU"
+            ]
+          ],
+          [
+            "scale20",
+            11610003,
+            true,
+            [
+              "IDU",
+              "IDU"
+            ]
+          ],
+          [
+            "scale20",
+            11610004,
+            true,
+            [
+              "IDU",
+              "IDU"
+            ]
+          ],
+          [
+            "scale20",
+            11610005,
+            true,
+            [
+              "IDU",
+              "IDU"
+            ]
+          ],
+          [
+            "scale20",
+            11610006,
+            true,
+            [
+              "IDU",
+              "IDU"
+            ]
+          ],
+          [
+            "scale20",
+            11610007,
+            true,
+            [
+              "IDU",
+              "IDU"
+            ]
+          ],
+          [
+            "scale20",
+            11610008,
+            true,
+            [
+              "IDU",
+              "IDU"
+            ]
+          ]
+        ],
+        "rule": "part c (max_chunks 1) canon16d byte-identical to the sealed 048 API16D record on 26/26; comparison from RECOUNT_049"
+      },
+      "pass": true
+    },
+    "GDET49": {
+      "observed": {
+        "ci95": [
+          0.8712710781407846,
+          1.0
+        ],
+        "columns": [
+          "key",
+          "seed",
+          "canon16e_equal",
+          "API16E",
+          "API16E_b"
+        ],
+        "identical": 26,
+        "of": 26,
+        "per_case": [
+          [
+            "scale16",
+            11630001,
+            true,
+            "IDF",
+            "IDF"
+          ],
+          [
+            "scale16",
+            11630002,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale16",
+            11630003,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "scale16",
+            11630004,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "scale16",
+            11630005,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale16",
+            11630006,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "scale16",
+            11630007,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "scale16",
+            11630008,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale16",
+            11630009,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "scale16",
+            11630010,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale16",
+            11630011,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "scale16",
+            11630012,
+            true,
+            "AMB",
+            "AMB"
+          ],
+          [
+            "control",
+            11650001,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "control",
+            11650002,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "control",
+            11650003,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "control",
+            11650004,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "control",
+            11650005,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "control",
+            11650006,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "scale20",
+            11670001,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale20",
+            11670002,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale20",
+            11670003,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale20",
+            11670004,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale20",
+            11670005,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale20",
+            11670006,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale20",
+            11670007,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale20",
+            11670008,
+            true,
+            "IDU",
+            "IDU"
+          ]
+        ],
+        "records_checked_for_guard": 104,
+        "rule": "canon16e identical on 18/18 and N20/N20; wall_guard 0 on every certify/16e record (a, d, r, c)",
+        "scale16_control": [
+          18,
+          18
+        ],
+        "scale20": [
+          8,
+          8
+        ],
+        "wall_guard_fired": []
+      },
+      "pass": true
+    },
+    "GFID49": {
+      "observed": {
+        "bound": true,
+        "ci95": [
+          0.8712710781407846,
+          1.0
+        ],
+        "exact": 26,
+        "expected": 26,
+        "failures": {},
+        "of": 26,
+        "per_key": {
+          "control": 6,
+          "scale16": 12,
+          "scale20": 8
+        }
+      },
+      "pass": true
+    },
+    "GHOST49": {
+      "observed": {
+        "bound_to_freeze_049": true,
+        "certify16d_closure_unchanged": true,
+        "frozen_api_unchanged": true,
+        "new_flagged": {},
+        "newly_imported_vs_certify16d": [
+          "brute.api",
+          "brute.api.certify16e"
+        ],
+        "no_network_run": {
+          "loop": [
+            "brute.certify/16e",
+            "ID",
+            3,
+            0
+          ],
+          "one_shot": [
+            "brute.certify/16e",
+            "ID",
+            3
+          ],
+          "socket_attempts": 0
+        },
+        "socket_attempts": 0
+      },
+      "pass": true
+    },
+    "GQB24": {
+      "observed": {
+        "case_bound_s": 600.0,
+        "chunk_bound_s": 30.0,
+        "chunks_by_part": {
+          "a": {
+            "budget_spent_records": 8,
+            "calls": 1454,
+            "capped_calls": 132,
+            "chunks": 1688,
+            "max_call_conflicts": 734957,
+            "max_chunks_per_call": 14,
+            "records": 36,
+            "spent": 24716270
+          },
+          "c": {
+            "budget_spent_records": 0,
+            "calls": 1174,
+            "capped_calls": 50,
+            "chunks": 1174,
+            "max_call_conflicts": 67008,
+            "max_chunks_per_call": 1,
+            "records": 26,
+            "spent": 4980970
+          },
+          "d": {
+            "budget_spent_records": 16,
+            "calls": 662,
+            "capped_calls": 310,
+            "chunks": 626,
+            "max_call_conflicts": 747425,
+            "max_chunks_per_call": 15,
+            "records": 16,
+            "spent": 16037216
+          },
+          "r": {
+            "budget_spent_records": 12,
+            "calls": 1229,
+            "capped_calls": 224,
+            "chunks": 1296,
+            "max_call_conflicts": 827459,
+            "max_chunks_per_call": 17,
+            "records": 26,
+            "spent": 19326772
+          }
+        },
+        "max_case_wall_s_by_part": {
+          "a": 153.193,
+          "c": 45.782,
+          "d": 114.073,
+          "r": 141.292
+        },
+        "max_chunk_wall_s_by_part": {
+          "a": 14.443,
+          "c": 7.979,
+          "d": 9.889,
+          "r": 12.881
+        },
+        "over_case": [],
+        "over_chunk": []
+      },
+      "pass": true
+    },
+    "GR49_sound": {
+      "observed": {
+        "WRONG": [],
+        "contradictions": [],
+        "n": 26,
+        "per_case": [
+          [
+            "scale16",
+            11510001,
+            [
+              "ID",
+              "IDU"
+            ],
+            "word-divergence",
+            false
+          ],
+          [
+            "scale16",
+            11510002,
+            [
+              "AMB",
+              "AMB"
+            ],
+            "none",
+            false
+          ],
+          [
+            "scale16",
+            11510003,
+            [
+              "ID",
+              "IDU"
+            ],
+            "word-divergence",
+            false
+          ],
+          [
+            "scale16",
+            11510004,
+            [
+              "ID",
+              "IDU"
+            ],
+            "cap-timing",
+            false
+          ],
+          [
+            "scale16",
+            11510005,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "word-divergence",
+            false
+          ],
+          [
+            "scale16",
+            11510006,
+            [
+              "AMB",
+              "AMB"
+            ],
+            "none",
+            false
+          ],
+          [
+            "scale16",
+            11510007,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "word-divergence",
+            false
+          ],
+          [
+            "scale16",
+            11510008,
+            [
+              "ID",
+              "IDU"
+            ],
+            "cap-timing",
+            false
+          ],
+          [
+            "scale16",
+            11510009,
+            [
+              "IDF",
+              "IDU"
+            ],
+            "cap-timing",
+            false
+          ],
+          [
+            "scale16",
+            11510010,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "word-divergence",
+            false
+          ],
+          [
+            "scale16",
+            11510011,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "word-divergence",
+            false
+          ],
+          [
+            "scale16",
+            11510012,
+            [
+              "AMB",
+              "IDU"
+            ],
+            "word-divergence",
+            false
+          ],
+          [
+            "control",
+            11530001,
+            [
+              "ID",
+              "ID"
+            ],
+            "none",
+            false
+          ],
+          [
+            "control",
+            11530002,
+            [
+              "ID",
+              "ID"
+            ],
+            "none",
+            false
+          ],
+          [
+            "control",
+            11530003,
+            [
+              "ID",
+              "ID"
+            ],
+            "none",
+            false
+          ],
+          [
+            "control",
+            11530004,
+            [
+              "ID",
+              "ID"
+            ],
+            "none",
+            false
+          ],
+          [
+            "control",
+            11530005,
+            [
+              "ID",
+              "ID"
+            ],
+            "none",
+            false
+          ],
+          [
+            "control",
+            11530006,
+            [
+              "ID",
+              "ID"
+            ],
+            "none",
+            false
+          ],
+          [
+            "scale20",
+            11610001,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "none",
+            false
+          ],
+          [
+            "scale20",
+            11610002,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "none",
+            false
+          ],
+          [
+            "scale20",
+            11610003,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "none",
+            false
+          ],
+          [
+            "scale20",
+            11610004,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "word-divergence",
+            false
+          ],
+          [
+            "scale20",
+            11610005,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "word-divergence",
+            false
+          ],
+          [
+            "scale20",
+            11610006,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "cap-timing",
+            false
+          ],
+          [
+            "scale20",
+            11610007,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "word-divergence",
+            false
+          ],
+          [
+            "scale20",
+            11610008,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "cap-timing",
+            false
+          ]
+        ],
+        "rule": "no part-r decided record contradicts a sealed 048 decided record (recount_049 rule); WRONG 0"
+      },
+      "pass": true
+    },
+    "GS20_sound49": {
+      "observed": {
+        "API16E_ID_IDF": 0,
+        "WRONG": [],
+        "ci95": [
+          0.0,
+          0.32440756488388023
+        ],
+        "decided_records": 0,
+        "of": 8,
+        "per_case": [
+          [
+            11670001,
+            "IDU",
+            "unknown",
+            "IDU"
+          ],
+          [
+            11670002,
+            "IDU",
+            "unknown",
+            "IDU"
+          ],
+          [
+            11670003,
+            "IDU",
+            "unknown",
+            "IDU"
+          ],
+          [
+            11670004,
+            "IDU",
+            "unknown",
+            "IDU"
+          ],
+          [
+            11670005,
+            "IDU",
+            "unknown",
+            "IDU"
+          ],
+          [
+            11670006,
+            "IDU",
+            "unknown",
+            "IDU"
+          ],
+          [
+            11670007,
+            "IDU",
+            "unknown",
+            "IDU"
+          ],
+          [
+            11670008,
+            "IDU",
+            "unknown",
+            "IDU"
+          ]
+        ],
+        "reference_bound": true,
+        "reference_scale20": {
+          "audited": 0,
+          "decided": 0,
+          "mismatches": 0
+        },
+        "rule": "scale20 WRONG 0; every decided scale20 record audited at bound 20 with 0 mismatches; a pass with 0 decided is vacuous and carries no N <= 20 claim",
+        "vacuous": true
+      },
+      "pass": true
+    },
+    "GS_ref": {
+      "observed": {
+        "PASS": true,
+        "audited": 28,
+        "block": "main",
+        "complete": true,
+        "decided": 28,
+        "elapsed_informational": 333.11423375101003,
+        "k_spent_as_amb": 2,
+        "mismatch_count": 0,
+        "mutations": 20,
+        "not_audited": [],
+        "not_reached": 24,
+        "of": 20,
+        "per_arm": {
+          "API16E": {
+            "audited": 14,
+            "decided": 14,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 26
+          },
+          "API16E_b": {
+            "audited": 14,
+            "decided": 14,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 26
+          }
+        },
+        "per_key": {
+          "control": {
+            "audited": 12,
+            "decided": 12,
+            "mismatches": 0
+          },
+          "scale16": {
+            "audited": 16,
+            "decided": 16,
+            "mismatches": 0
+          },
+          "scale20": {
+            "audited": 0,
+            "decided": 0,
+            "mismatches": 0
+          }
+        },
+        "records": 52,
+        "scope": {
+          "budget_s": 2400.0,
+          "key_order": [
+            "control",
+            "scale16",
+            "scale20"
+          ],
+          "order": [
+            "API16E",
+            "API16E_b"
+          ],
+          "workers": 8
+        },
+        "vacuous": false,
+        "verdicts_checked": 54
+      },
+      "pass": true
+    },
+    "GTI": {
+      "observed": {
+        "gated": {
+          "test_certify16": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16d": {
+            "returncode": 0,
+            "tests": 11
+          },
+          "test_certify16e": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_release_0460": {
+            "returncode": 0,
+            "tests": 9
+          },
+          "test_scalesearch4_0260": {
+            "returncode": 0,
+            "tests": 14
+          },
+          "test_scripts_049": {
+            "returncode": 0,
+            "tests": 7
+          }
+        },
+        "reported": {
+          "test_release_0450": {
+            "returncode": 0,
+            "tests": 9
+          },
+          "test_scripts_048": {
+            "returncode": 0,
+            "tests": 7
+          }
+        }
+      },
+      "pass": true
+    },
+    "G_PROC": {
+      "observed": {
+        "clauses": {
+          "commit_order_file": true,
+          "ledger_times_non_decreasing": true,
+          "ledger_times_parse": true,
+          "main_sealed": true,
+          "order": true
+        },
+        "events": [
+          "preregistration_049",
+          "build_authorization_049",
+          "seedcheck_049",
+          "source_freeze_049",
+          "run_start_049",
+          "run_end_049"
+        ],
+        "required_order": [
+          "preregistration_049",
+          "build_authorization_049",
+          "seedcheck_049",
+          "source_freeze_049",
+          "run_start_049",
+          "run_end_049"
+        ]
+      },
+      "pass": true
+    },
+    "G_RT": {
+      "observed": {
+        "cap_s": 3600,
+        "cases": 26,
+        "compat": 26,
+        "elapsed_s": 606.7821684820083,
+        "n_scale20": 8,
+        "r_scale20": true,
+        "replays": 26
+      },
+      "pass": true
+    },
+    "G_recount": {
+      "observed": {
+        "PASS": true,
+        "amb_rule_applied": 7,
+        "cases": 26,
+        "labels_c": {
+          "control": {
+            "AMB": 0,
+            "ID": 6,
+            "IDF": 0,
+            "IDU": 0,
+            "WRONG": 0
+          },
+          "scale16": {
+            "AMB": 2,
+            "ID": 0,
+            "IDF": 0,
+            "IDU": 10,
+            "WRONG": 0
+          },
+          "scale20": {
+            "AMB": 0,
+            "ID": 0,
+            "IDF": 0,
+            "IDU": 8,
+            "WRONG": 0
+          }
+        },
+        "labels_control_main": {
+          "API16E": {
+            "AMB": 0,
+            "ID": 6,
+            "IDF": 0,
+            "IDU": 0,
+            "WRONG": 0
+          },
+          "API16E_b": {
+            "AMB": 0,
+            "ID": 6,
+            "IDF": 0,
+            "IDU": 0,
+            "WRONG": 0
+          }
+        },
+        "labels_main": {
+          "API16E": {
+            "AMB": 1,
+            "ID": 12,
+            "IDF": 1,
+            "IDU": 12,
+            "WRONG": 0
+          },
+          "API16E_b": {
+            "AMB": 1,
+            "ID": 12,
+            "IDF": 1,
+            "IDU": 12,
+            "WRONG": 0
+          }
+        },
+        "labels_r": {
+          "control": {
+            "AMB": 0,
+            "ID": 6,
+            "IDF": 0,
+            "IDU": 0,
+            "WRONG": 0
+          },
+          "scale16": {
+            "AMB": 3,
+            "ID": 4,
+            "IDF": 1,
+            "IDU": 4,
+            "WRONG": 0
+          },
+          "scale20": {
+            "AMB": 0,
+            "ID": 0,
+            "IDF": 0,
+            "IDU": 8,
+            "WRONG": 0
+          }
+        },
+        "labels_scale16_main": {
+          "API16E": {
+            "AMB": 1,
+            "ID": 6,
+            "IDF": 1,
+            "IDU": 4,
+            "WRONG": 0
+          },
+          "API16E_b": {
+            "AMB": 1,
+            "ID": 6,
+            "IDF": 1,
+            "IDU": 4,
+            "WRONG": 0
+          }
+        },
+        "labels_scale20_main": {
+          "API16E": {
+            "AMB": 0,
+            "ID": 0,
+            "IDF": 0,
+            "IDU": 8,
+            "WRONG": 0
+          },
+          "API16E_b": {
+            "AMB": 0,
+            "ID": 0,
+            "IDF": 0,
+            "IDU": 8,
+            "WRONG": 0
+          }
+        },
+        "misfires_main": {
+          "API16E": 0,
+          "API16E_b": 0
+        },
+        "mismatching_cases": 0,
+        "part_c": {
+          "canon16d_equal": 26,
+          "classes": {
+            "cap-timing": 0,
+            "infidelity": 0,
+            "none": 26,
+            "word-divergence": 0
+          },
+          "contradictions": 0,
+          "gain": 0,
+          "gain_by_key": {
+            "control": 0,
+            "scale16": 0,
+            "scale20": 0
+          },
+          "n": 26,
+          "same": 26
+        },
+        "part_r": {
+          "canon16d_equal": 7,
+          "classes": {
+            "cap-timing": 5,
+            "infidelity": 0,
+            "none": 11,
+            "word-divergence": 10
+          },
+          "contradictions": 0,
+          "gain": 5,
+          "gain_by_key": {
+            "control": 0,
+            "scale16": 5,
+            "scale20": 0
+          },
+          "n": 26,
+          "same": 11
+        },
+        "replay_wrong": {
+          "c": 0,
+          "r": 0
+        },
+        "replays": 52,
+        "truth_inconsistent": 0,
+        "words_checked": 1077,
+        "words_unsound": 0
+      },
+      "pass": true
+    },
+    "G_sound": {
+      "observed": {
+        "recount_bound": true,
+        "recount_truth_inconsistent": 0,
+        "recount_words_checked": 1077,
+        "recount_words_unsound": 0,
+        "words_checked": 1077,
+        "words_unsound": 0
+      },
+      "pass": true
+    }
+  },
+  "label_source": "recount",
+  "max_chunks": {
+    "API16E": null,
+    "API16E_b": null,
+    "API16E_c1": 1
+  },
+  "n_scale20": 8,
+  "not_exercised": [],
+  "process": "lean",
+  "r_scale20": true,
+  "reports": {
+    "fresh_labels": {
+      "API16E/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "n": 6,
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "API16E/scale16": {
+        "AMB": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "ID": {
+          "ci95": [
+            0.2537815976337061,
+            0.7462184023662939
+          ],
+          "n": 12,
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "IDU": {
+          "ci95": [
+            0.13812009109121315,
+            0.6093779111272004
+          ],
+          "n": 12,
+          "x": 4
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "API16E/scale20": {
+        "AMB": {
+          "ci95": [
+            0.0,
+            0.32440756488388023
+          ],
+          "n": 8,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.0,
+            0.32440756488388023
+          ],
+          "n": 8,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            0.0,
+            0.32440756488388023
+          ],
+          "n": 8,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.6755924351161198,
+            1.0
+          ],
+          "n": 8,
+          "x": 8
+        },
+        "WRONG": {
+          "ci95": [
+            0.0,
+            0.32440756488388023
+          ],
+          "n": 8,
+          "x": 0
+        }
+      },
+      "API16E_b/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "n": 6,
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "API16E_b/scale16": {
+        "AMB": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "ID": {
+          "ci95": [
+            0.2537815976337061,
+            0.7462184023662939
+          ],
+          "n": 12,
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "IDU": {
+          "ci95": [
+            0.13812009109121315,
+            0.6093779111272004
+          ],
+          "n": 12,
+          "x": 4
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "API16E_b/scale20": {
+        "AMB": {
+          "ci95": [
+            0.0,
+            0.32440756488388023
+          ],
+          "n": 8,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.0,
+            0.32440756488388023
+          ],
+          "n": 8,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            0.0,
+            0.32440756488388023
+          ],
+          "n": 8,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.6755924351161198,
+            1.0
+          ],
+          "n": 8,
+          "x": 8
+        },
+        "WRONG": {
+          "ci95": [
+            0.0,
+            0.32440756488388023
+          ],
+          "n": 8,
+          "x": 0
+        }
+      }
+    }
+  },
+  "schema": "brute.gates.v46_0",
+  "sealed_input_verified": true,
+  "secondary": {
+    "GCOST49": {
+      "observed": {
+        "API16E/a/control": {
+          "arm_wall_s": 0.1,
+          "budget_spent": 0,
+          "calls": 24,
+          "capped_calls": 0,
+          "chunks": 24,
+          "conflicts": 480,
+          "records": 6
+        },
+        "API16E/a/scale16": {
+          "arm_wall_s": 666.3,
+          "budget_spent": 4,
+          "calls": 703,
+          "capped_calls": 66,
+          "chunks": 820,
+          "conflicts": 12357655,
+          "records": 12
+        },
+        "API16E/d/scale20": {
+          "arm_wall_s": 767.7,
+          "budget_spent": 8,
+          "calls": 331,
+          "capped_calls": 155,
+          "chunks": 313,
+          "conflicts": 8018608,
+          "records": 8
+        },
+        "API16E/r/control": {
+          "arm_wall_s": 0.1,
+          "budget_spent": 0,
+          "calls": 24,
+          "capped_calls": 0,
+          "chunks": 24,
+          "conflicts": 495,
+          "records": 6
+        },
+        "API16E/r/scale16": {
+          "arm_wall_s": 602.6,
+          "budget_spent": 4,
+          "calls": 805,
+          "capped_calls": 66,
+          "chunks": 903,
+          "conflicts": 11284104,
+          "records": 12
+        },
+        "API16E/r/scale20": {
+          "arm_wall_s": 929.5,
+          "budget_spent": 8,
+          "calls": 400,
+          "capped_calls": 158,
+          "chunks": 369,
+          "conflicts": 8042173,
+          "records": 8
+        },
+        "API16E_b/a/control": {
+          "arm_wall_s": 0.1,
+          "budget_spent": 0,
+          "calls": 24,
+          "capped_calls": 0,
+          "chunks": 24,
+          "conflicts": 480,
+          "records": 6
+        },
+        "API16E_b/a/scale16": {
+          "arm_wall_s": 626.7,
+          "budget_spent": 4,
+          "calls": 703,
+          "capped_calls": 66,
+          "chunks": 820,
+          "conflicts": 12357655,
+          "records": 12
+        },
+        "API16E_b/d/scale20": {
+          "arm_wall_s": 791.7,
+          "budget_spent": 8,
+          "calls": 331,
+          "capped_calls": 155,
+          "chunks": 313,
+          "conflicts": 8018608,
+          "records": 8
+        },
+        "API16E_c1/c/control": {
+          "arm_wall_s": 0.1,
+          "budget_spent": 0,
+          "calls": 24,
+          "capped_calls": 0,
+          "chunks": 24,
+          "conflicts": 495,
+          "records": 6
+        },
+        "API16E_c1/c/scale16": {
+          "arm_wall_s": 149.6,
+          "budget_spent": 0,
+          "calls": 812,
+          "capped_calls": 28,
+          "chunks": 812,
+          "conflicts": 2924393,
+          "records": 12
+        },
+        "API16E_c1/c/scale20": {
+          "arm_wall_s": 142.8,
+          "budget_spent": 0,
+          "calls": 338,
+          "capped_calls": 22,
+          "chunks": 338,
+          "conflicts": 2056082,
+          "records": 8
+        }
+      },
+      "pass": null,
+      "rule": "reported: wall, calls, chunks, capped calls, conflicts, budget-spent records per arm/part/key"
+    },
+    "GREP16f": {
+      "observed": {
+        "API16E_ID_IDF": 7,
+        "ci95": [
+          0.3195113125495498,
+          0.8067396863412435
+        ],
+        "of": 12,
+        "prior_047_C294000": [
+          10,
+          12
+        ],
+        "prior_047_ci95": [
+          0.5519691377470266,
+          0.9530348578161463
+        ],
+        "prior_048_C50000_no_resume": [
+          0,
+          12
+        ],
+        "prior_048_ci95": [
+          2.1025014877572554e-17,
+          0.24249400665524087
+        ]
+      },
+      "pass": null,
+      "rule": "reported: API16E scale16 ID+IDF beside 048 (0/12) and 047 (10/12)"
+    },
+    "GR_gain": {
+      "observed": {
+        "classes": {
+          "cap-timing": 5,
+          "infidelity": 0,
+          "none": 11,
+          "word-divergence": 10
+        },
+        "gain_by_key": {
+          "control": 0,
+          "scale16": 5,
+          "scale20": 0
+        },
+        "n": 26,
+        "per_case": [
+          [
+            "scale16",
+            11510001,
+            [
+              "ID",
+              "IDU"
+            ],
+            "word-divergence",
+            true
+          ],
+          [
+            "scale16",
+            11510002,
+            [
+              "AMB",
+              "AMB"
+            ],
+            "none",
+            false
+          ],
+          [
+            "scale16",
+            11510003,
+            [
+              "ID",
+              "IDU"
+            ],
+            "word-divergence",
+            true
+          ],
+          [
+            "scale16",
+            11510004,
+            [
+              "ID",
+              "IDU"
+            ],
+            "cap-timing",
+            true
+          ],
+          [
+            "scale16",
+            11510005,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "word-divergence",
+            false
+          ],
+          [
+            "scale16",
+            11510006,
+            [
+              "AMB",
+              "AMB"
+            ],
+            "none",
+            false
+          ],
+          [
+            "scale16",
+            11510007,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "word-divergence",
+            false
+          ],
+          [
+            "scale16",
+            11510008,
+            [
+              "ID",
+              "IDU"
+            ],
+            "cap-timing",
+            true
+          ],
+          [
+            "scale16",
+            11510009,
+            [
+              "IDF",
+              "IDU"
+            ],
+            "cap-timing",
+            true
+          ],
+          [
+            "scale16",
+            11510010,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "word-divergence",
+            false
+          ],
+          [
+            "scale16",
+            11510011,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "word-divergence",
+            false
+          ],
+          [
+            "scale16",
+            11510012,
+            [
+              "AMB",
+              "IDU"
+            ],
+            "word-divergence",
+            false
+          ],
+          [
+            "control",
+            11530001,
+            [
+              "ID",
+              "ID"
+            ],
+            "none",
+            false
+          ],
+          [
+            "control",
+            11530002,
+            [
+              "ID",
+              "ID"
+            ],
+            "none",
+            false
+          ],
+          [
+            "control",
+            11530003,
+            [
+              "ID",
+              "ID"
+            ],
+            "none",
+            false
+          ],
+          [
+            "control",
+            11530004,
+            [
+              "ID",
+              "ID"
+            ],
+            "none",
+            false
+          ],
+          [
+            "control",
+            11530005,
+            [
+              "ID",
+              "ID"
+            ],
+            "none",
+            false
+          ],
+          [
+            "control",
+            11530006,
+            [
+              "ID",
+              "ID"
+            ],
+            "none",
+            false
+          ],
+          [
+            "scale20",
+            11610001,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "none",
+            false
+          ],
+          [
+            "scale20",
+            11610002,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "none",
+            false
+          ],
+          [
+            "scale20",
+            11610003,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "none",
+            false
+          ],
+          [
+            "scale20",
+            11610004,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "word-divergence",
+            false
+          ],
+          [
+            "scale20",
+            11610005,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "word-divergence",
+            false
+          ],
+          [
+            "scale20",
+            11610006,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "cap-timing",
+            false
+          ],
+          [
+            "scale20",
+            11610007,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "word-divergence",
+            false
+          ],
+          [
+            "scale20",
+            11610008,
+            [
+              "IDU",
+              "IDU"
+            ],
+            "cap-timing",
+            false
+          ]
+        ],
+        "same": 11
+      },
+      "pass": null,
+      "rule": "reported: part r cases certify/16e decided where the sealed certify/16d record was IDU"
+    },
+    "GS20_rate49": {
+      "observed": {
+        "ID_IDF": 0,
+        "ci95": [
+          0.0,
+          0.32440756488388023
+        ],
+        "cost": {
+          "API16E/d/scale20": {
+            "arm_wall_s": 767.7,
+            "budget_spent": 8,
+            "calls": 331,
+            "capped_calls": 155,
+            "chunks": 313,
+            "conflicts": 8018608,
+            "records": 8
+          },
+          "API16E_b/d/scale20": {
+            "arm_wall_s": 791.7,
+            "budget_spent": 8,
+            "calls": 331,
+            "capped_calls": 155,
+            "chunks": 313,
+            "conflicts": 8018608,
+            "records": 8
+          }
+        },
+        "of": 8
+      },
+      "pass": null,
+      "rule": "reported"
+    }
+  },
+  "study": "BRUTE-0460-CERTIFY16E-RESUME-SCALE20-049"
+}
