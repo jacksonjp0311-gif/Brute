@@ -84,9 +84,9 @@ def canon16e(r):
 
 
 def canon16n(r):
-    """#173: canon16e plus k per observation, eps_bar, delta, reads and the per-observation per-bit vote counts."""
-    return dumps({'e':canon16e(r),'reads_per_obs':r.get('reads_per_obs'),'votes':r.get('votes'),'eps_bar':r.get('eps_bar'),
-                  'delta':r.get('delta'),'reads':r.get('reads')})
+    """#173: canon16e plus k per observation, eps_bar, noise_delta (the majority failure probability; the arm field 'delta' stays the 047 family-bound offset, None), reads and the per-observation per-bit vote counts."""
+    return dumps({'e':canon16e(r).decode(),'reads_per_obs':r.get('reads_per_obs'),'votes':r.get('votes'),'eps_bar':r.get('eps_bar'),
+                  'noise_delta':r.get('noise_delta'),'reads':r.get('reads')})
 
 
 def truth_codes(w,acts):
@@ -119,7 +119,7 @@ def run_fresh(seed,key,arm):
         if arm in N_ARMS:
             nw=_STATE['nw'];eps,reads=NOISE_OF[arm]
             tc=truth_codes(w,res['acts']);a['majority_errors']=sum(1 for m,t in zip(res['masks'],tc) if m!=1<<t)
-            a.update(reads_per_obs=list(res['reads_per_obs']),votes=[list(v) for v in res['votes']],eps=eps,eps_bar=EPS_BAR,delta=DELTA,
+            a.update(reads_per_obs=list(res['reads_per_obs']),votes=[list(v) for v in res['votes']],eps=eps,eps_bar=EPS_BAR,noise_delta=DELTA,
                      reads=reads,reads_total=sum(res['reads_per_obs']),reads_max=max(res['reads_per_obs']),bits_flipped=nw.flipped,world_reads=nw.reads)
     return {'schema':SCHEMA_CASE,'key':key,'family':fam,'seed':seed,'eps':NOISE_OF[arm][0] if arm in N_ARMS else 0.0,'n':w.n,'k':w.k,'N':N,
             'group':arm,'arms':{arm:a},'truth_reachable':len(S47.canonical_bfs(w.transitions,w.emissions,w.start)[1])}
