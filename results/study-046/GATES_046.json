@@ -1,0 +1,1103 @@
+{
+  "all_gated_pass": false,
+  "claim": "certify/16 ID/IDF is exact conditional on noise-free readings and true size <= the declared N (family_bound)",
+  "failed": [
+    "GAPI16_replay",
+    "GAPI16_fresh"
+  ],
+  "gates": {
+    "G10": {
+      "observed": {
+        "cases": [
+          [
+            11270001,
+            {
+              "A16_N": "ID",
+              "API16": "ID"
+            }
+          ],
+          [
+            11270002,
+            {
+              "A16_N": "ID",
+              "API16": "ID"
+            }
+          ],
+          [
+            11270003,
+            {
+              "A16_N": "ID",
+              "API16": "ID"
+            }
+          ],
+          [
+            11270004,
+            {
+              "A16_N": "ID",
+              "API16": "ID"
+            }
+          ],
+          [
+            11270005,
+            {
+              "A16_N": "ID",
+              "API16": "ID"
+            }
+          ],
+          [
+            11270006,
+            {
+              "A16_N": "ID",
+              "API16": "ID"
+            }
+          ]
+        ],
+        "rule": "API16 and A16_N ID on every fresh control (IDF is not ID)"
+      },
+      "pass": true
+    },
+    "GAPI14_compat": {
+      "observed": {
+        "bound_to_freeze": true,
+        "cases": [
+          {
+            "byte_equal": true,
+            "name": "D_s4_fb3",
+            "search": "s4"
+          },
+          {
+            "byte_equal": true,
+            "name": "D_s4_fb4",
+            "search": "s4"
+          },
+          {
+            "byte_equal": true,
+            "name": "D2_s4_fb3",
+            "search": "s4"
+          },
+          {
+            "byte_equal": true,
+            "name": "D_s3_fb3",
+            "search": "s3"
+          },
+          {
+            "byte_equal": true,
+            "name": "D_region",
+            "search": "region"
+          }
+        ],
+        "s4_cases": 3,
+        "sample_sha256": "a455fb0f5311042d921265783ff09146c08573493eca14aa6e8689a3f30a96ae",
+        "tests": {
+          "tests.test_scalesearch4_0260": {
+            "ok": true,
+            "returncode": 0,
+            "tests": 14
+          }
+        }
+      },
+      "pass": true
+    },
+    "GAPI16_fresh": {
+      "observed": {
+        "API16_ID_IDF": 6,
+        "API16_WRONG": [],
+        "agree": 11,
+        "agree_ci95": [
+          0.646120088858883,
+          0.9851349055950828
+        ],
+        "all_WRONG": [],
+        "ci95": [
+          0.2537815976337061,
+          0.7462184023662939
+        ],
+        "disagreements": [
+          {
+            "A16_N": "IDF",
+            "API16": "IDU",
+            "capped_unknown": [
+              "API16"
+            ],
+            "seed": 11230005
+          }
+        ],
+        "label_source": "recount",
+        "of": 12,
+        "per_case": [
+          [
+            11230001,
+            "ID",
+            "ID"
+          ],
+          [
+            11230002,
+            "IDU",
+            "IDU"
+          ],
+          [
+            11230003,
+            "IDF",
+            "IDF"
+          ],
+          [
+            11230004,
+            "IDU",
+            "IDU"
+          ],
+          [
+            11230005,
+            "IDU",
+            "IDF"
+          ],
+          [
+            11230006,
+            "ID",
+            "ID"
+          ],
+          [
+            11230007,
+            "ID",
+            "ID"
+          ],
+          [
+            11230008,
+            "IDU",
+            "IDU"
+          ],
+          [
+            11230009,
+            "IDU",
+            "IDU"
+          ],
+          [
+            11230010,
+            "IDF",
+            "IDF"
+          ],
+          [
+            11230011,
+            "IDU",
+            "IDU"
+          ],
+          [
+            11230012,
+            "IDF",
+            "IDF"
+          ]
+        ],
+        "rule": "API16 WRONG 0; API16 ID+IDF >= 8/12; same label as A16_N on >= 11/12 (capped unknowns reported)"
+      },
+      "pass": false
+    },
+    "GAPI16_replay": {
+      "observed": {
+        "ci95": [
+          0.7424269921812741,
+          0.9901248090216969
+        ],
+        "columns": [
+          "key",
+          "seed",
+          "label[api,sealed]",
+          "n_min[api,sealed]",
+          "canonical_model_equal",
+          "same",
+          "same_step",
+          "words_equal",
+          "first_word_divergence",
+          "capped[api,sealed]"
+        ],
+        "of": 18,
+        "per_case": [
+          [
+            "scale16",
+            11130001,
+            [
+              "ID",
+              "ID"
+            ],
+            [
+              16,
+              16
+            ],
+            true,
+            true,
+            true,
+            true,
+            null,
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            "scale16",
+            11130002,
+            [
+              "IDU",
+              "IDU"
+            ],
+            [
+              15,
+              15
+            ],
+            true,
+            true,
+            true,
+            true,
+            null,
+            [
+              8,
+              6
+            ]
+          ],
+          [
+            "scale16",
+            11130003,
+            [
+              "ID",
+              "ID"
+            ],
+            [
+              16,
+              16
+            ],
+            true,
+            true,
+            true,
+            true,
+            null,
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            "scale16",
+            11130004,
+            [
+              "ID",
+              "ID"
+            ],
+            [
+              16,
+              16
+            ],
+            true,
+            true,
+            true,
+            true,
+            null,
+            [
+              1,
+              1
+            ]
+          ],
+          [
+            "scale16",
+            11130005,
+            [
+              "ID",
+              "ID"
+            ],
+            [
+              16,
+              16
+            ],
+            true,
+            true,
+            true,
+            true,
+            null,
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            "scale16",
+            11130006,
+            [
+              "IDU",
+              "ID"
+            ],
+            [
+              16,
+              16
+            ],
+            true,
+            false,
+            false,
+            true,
+            null,
+            [
+              5,
+              3
+            ]
+          ],
+          [
+            "scale16",
+            11130007,
+            [
+              "IDF",
+              "IDF"
+            ],
+            [
+              16,
+              16
+            ],
+            true,
+            true,
+            true,
+            true,
+            null,
+            [
+              1,
+              1
+            ]
+          ],
+          [
+            "scale16",
+            11130008,
+            [
+              "IDU",
+              "IDU"
+            ],
+            [
+              16,
+              16
+            ],
+            true,
+            true,
+            false,
+            false,
+            6,
+            [
+              3,
+              3
+            ]
+          ],
+          [
+            "scale16",
+            11130009,
+            [
+              "ID",
+              "ID"
+            ],
+            [
+              16,
+              16
+            ],
+            true,
+            true,
+            true,
+            true,
+            null,
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            "scale16",
+            11130010,
+            [
+              "ID",
+              "ID"
+            ],
+            [
+              16,
+              16
+            ],
+            true,
+            true,
+            true,
+            true,
+            null,
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            "scale16",
+            11130011,
+            [
+              "ID",
+              "ID"
+            ],
+            [
+              16,
+              16
+            ],
+            true,
+            true,
+            true,
+            true,
+            null,
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            "scale16",
+            11130012,
+            [
+              "ID",
+              "ID"
+            ],
+            [
+              16,
+              16
+            ],
+            true,
+            true,
+            true,
+            true,
+            null,
+            [
+              1,
+              1
+            ]
+          ],
+          [
+            "control",
+            11190001,
+            [
+              "ID",
+              "ID"
+            ],
+            [
+              3,
+              3
+            ],
+            true,
+            true,
+            true,
+            true,
+            null,
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            "control",
+            11190002,
+            [
+              "ID",
+              "ID"
+            ],
+            [
+              3,
+              3
+            ],
+            true,
+            true,
+            true,
+            true,
+            null,
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            "control",
+            11190003,
+            [
+              "ID",
+              "ID"
+            ],
+            [
+              3,
+              3
+            ],
+            true,
+            true,
+            true,
+            true,
+            null,
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            "control",
+            11190004,
+            [
+              "ID",
+              "ID"
+            ],
+            [
+              3,
+              3
+            ],
+            true,
+            true,
+            true,
+            true,
+            null,
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            "control",
+            11190005,
+            [
+              "ID",
+              "ID"
+            ],
+            [
+              3,
+              3
+            ],
+            true,
+            true,
+            true,
+            true,
+            null,
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            "control",
+            11190006,
+            [
+              "ID",
+              "ID"
+            ],
+            [
+              3,
+              3
+            ],
+            true,
+            true,
+            true,
+            true,
+            null,
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "rule": "same label, same n_min and equal canonical model as the sealed 045 A16_N record, 18/18",
+        "same": 17,
+        "same_step": 16,
+        "source": "recount",
+        "words_equal": 17
+      },
+      "pass": false
+    },
+    "GHOST16": {
+      "observed": {
+        "bound_to_freeze": true,
+        "closure_flagged_reported": {},
+        "network_pass": true,
+        "new_flagged": {},
+        "newly_imported": [
+          "brute.api.certify16",
+          "brute.encaudit16",
+          "brute.scalesearch10",
+          "brute.scalesearch14",
+          "brute.scalesearch15",
+          "brute.scalesearch16",
+          "brute.scalesearch5",
+          "brute.scalesearch7",
+          "brute.scalesearch8",
+          "brute.scalesearch9"
+        ],
+        "no_network_run": {
+          "loop": [
+            "brute.certify/16",
+            "ID",
+            3,
+            0
+          ],
+          "one_shot": [
+            "brute.certify/16",
+            "ID",
+            3
+          ],
+          "socket_attempts": 0
+        },
+        "static_pass": true
+      },
+      "pass": true
+    },
+    "GQB21": {
+      "observed": {
+        "bound_s": 10.5,
+        "calls_logged": 2592,
+        "hard_kills": 2,
+        "max_s_by_arm": {
+          "A16_N": 10.015,
+          "API16": 10.033
+        },
+        "over": []
+      },
+      "pass": true
+    },
+    "GS_ref": {
+      "observed": {
+        "PASS": true,
+        "audited": 25,
+        "block": "main",
+        "complete": true,
+        "decided": 25,
+        "elapsed_informational": 614.1374762899941,
+        "k_spent_as_amb": 0,
+        "mismatch_count": 0,
+        "mutations": 20,
+        "not_audited": [],
+        "not_reached": 11,
+        "of": 20,
+        "per_arm": {
+          "A16_N": {
+            "audited": 13,
+            "decided": 13,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 18
+          },
+          "API16": {
+            "audited": 12,
+            "decided": 12,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 18
+          }
+        },
+        "records": 36,
+        "scope": {
+          "budget_s": 1800.0,
+          "key_order": [
+            "control",
+            "scale16"
+          ],
+          "order": [
+            "API16",
+            "A16_N"
+          ],
+          "workers": 8
+        },
+        "vacuous": false,
+        "verdicts_checked": 50
+      },
+      "pass": true
+    },
+    "GTI": {
+      "observed": {
+        "gated": {
+          "test_certify16": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_release_0430": {
+            "returncode": 0,
+            "tests": 9
+          },
+          "test_scripts_046": {
+            "returncode": 0,
+            "tests": 8
+          }
+        },
+        "reported": {
+          "test_scalesearch16_0390": {
+            "returncode": 0,
+            "tests": 5
+          },
+          "test_scalesearch4_0260": {
+            "returncode": 0,
+            "tests": 14
+          },
+          "test_scripts_045": {
+            "returncode": 0,
+            "tests": 9
+          }
+        }
+      },
+      "pass": true
+    },
+    "G_PROC": {
+      "observed": {
+        "clauses": {
+          "commit_order_file": true,
+          "ledger_times_non_decreasing": true,
+          "ledger_times_parse": true,
+          "main_sealed": true,
+          "order": true
+        },
+        "events": [
+          "preregistration_046",
+          "build_authorization_046",
+          "seedcheck_046",
+          "source_freeze_046",
+          "run_start_046",
+          "run_end_046"
+        ],
+        "reported_seedcheck_046_PASS": true,
+        "required_order": [
+          "preregistration_046",
+          "build_authorization_046",
+          "seedcheck_046",
+          "source_freeze_046",
+          "run_start_046",
+          "run_end_046"
+        ]
+      },
+      "pass": true
+    },
+    "G_RT": {
+      "observed": {
+        "cap_s": 3600,
+        "cases": 18,
+        "elapsed_s": 319.75702484100475,
+        "replays": 18
+      },
+      "pass": true
+    },
+    "G_recount": {
+      "observed": {
+        "PASS": true,
+        "amb_rule_applied": 0,
+        "cases": 18,
+        "labels_main": {
+          "A16_N": {
+            "AMB": 0,
+            "ID": 9,
+            "IDF": 4,
+            "IDU": 5,
+            "WRONG": 0
+          },
+          "API16": {
+            "AMB": 0,
+            "ID": 9,
+            "IDF": 3,
+            "IDU": 6,
+            "WRONG": 0
+          }
+        },
+        "labels_scale16_main": {
+          "A16_N": {
+            "AMB": 0,
+            "ID": 3,
+            "IDF": 4,
+            "IDU": 5,
+            "WRONG": 0
+          },
+          "API16": {
+            "AMB": 0,
+            "ID": 3,
+            "IDF": 3,
+            "IDU": 6,
+            "WRONG": 0
+          }
+        },
+        "misfires_main": {
+          "A16_N": 0,
+          "API16": 0
+        },
+        "mismatching_cases": 0,
+        "replay_labels": {
+          "AMB": 0,
+          "ID": 14,
+          "IDF": 1,
+          "IDU": 3,
+          "WRONG": 0
+        },
+        "replay_same": 17,
+        "replay_same_step": 16,
+        "replays": 18,
+        "truth_inconsistent": 0,
+        "words_checked": 638,
+        "words_unsound": 0
+      },
+      "pass": true
+    },
+    "G_sound": {
+      "observed": {
+        "recount_bound": true,
+        "recount_truth_inconsistent": 0,
+        "recount_words_checked": 638,
+        "recount_words_unsound": 0,
+        "words_checked": 638,
+        "words_unsound": 0
+      },
+      "pass": true
+    }
+  },
+  "label_source": "recount",
+  "not_exercised": [],
+  "process": "lean",
+  "reports": {
+    "fresh_labels": {
+      "A16_N/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "n": 6,
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "A16_N/scale16": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.08894166839405473,
+            0.5323053349335657
+          ],
+          "n": 12,
+          "x": 3
+        },
+        "IDF": {
+          "ci95": [
+            0.13812009109121315,
+            0.6093779111272004
+          ],
+          "n": 12,
+          "x": 4
+        },
+        "IDU": {
+          "ci95": [
+            0.19326031365875665,
+            0.6804886874504503
+          ],
+          "n": 12,
+          "x": 5
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "API16/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "n": 6,
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "API16/scale16": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.08894166839405473,
+            0.5323053349335657
+          ],
+          "n": 12,
+          "x": 3
+        },
+        "IDF": {
+          "ci95": [
+            0.08894166839405473,
+            0.5323053349335657
+          ],
+          "n": 12,
+          "x": 3
+        },
+        "IDU": {
+          "ci95": [
+            0.2537815976337061,
+            0.7462184023662939
+          ],
+          "n": 12,
+          "x": 6
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      }
+    }
+  },
+  "schema": "brute.gates.v43_0",
+  "sealed_input_verified": true,
+  "secondary": {
+    "GAPI_cost": {
+      "observed": {
+        "A16_N/main/control": {
+          "arm_wall_s": 0.4,
+          "call_wall_s": 0.2,
+          "calls": 24,
+          "capped_calls": 0,
+          "records": 6
+        },
+        "A16_N/main/scale16": {
+          "arm_wall_s": 655.1,
+          "call_wall_s": 642.4,
+          "calls": 823,
+          "capped_calls": 25,
+          "records": 12
+        },
+        "API16/main/control": {
+          "arm_wall_s": 0.4,
+          "call_wall_s": 0.3,
+          "calls": 24,
+          "capped_calls": 0,
+          "records": 6
+        },
+        "API16/main/scale16": {
+          "arm_wall_s": 663.2,
+          "call_wall_s": 650.6,
+          "calls": 809,
+          "capped_calls": 26,
+          "records": 12
+        },
+        "API16/replay/control": {
+          "arm_wall_s": 0.4,
+          "call_wall_s": 0.3,
+          "calls": 24,
+          "capped_calls": 0,
+          "records": 6
+        },
+        "API16/replay/scale16": {
+          "arm_wall_s": 582.8,
+          "call_wall_s": 567.5,
+          "calls": 888,
+          "capped_calls": 19,
+          "records": 12
+        }
+      },
+      "pass": null,
+      "rule": "reported: arm wall, calls, capped calls, call wall per arm/block/key (informational walls)"
+    },
+    "GREP16c": {
+      "observed": {
+        "A16_N_ID_IDF": 7,
+        "API16_ID_IDF": 6,
+        "ci95": {
+          "A16_N": [
+            0.3195113125495498,
+            0.8067396863412435
+          ],
+          "API16": [
+            0.2537815976337061,
+            0.7462184023662939
+          ]
+        },
+        "of": 12,
+        "study_043": [
+          9,
+          12
+        ],
+        "study_043_ci95": [
+          0.46769466506643437,
+          0.9110583316059452
+        ],
+        "study_045_A16_N": [
+          10,
+          12
+        ],
+        "study_045_ci95": [
+          0.5519691377470266,
+          0.9530348578161463
+        ]
+      },
+      "pass": null,
+      "rule": "reported: scale16 ID+IDF beside 043 (9/12) and 045 (10/12)"
+    }
+  },
+  "study": "BRUTE-0430-CERTIFY16-046"
+}
