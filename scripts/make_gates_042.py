@@ -80,7 +80,7 @@ def build(study=STUDY_DIR,exp=None):
     allc=[c for c in (res or {}).get('cases',[]) if c['block']=='main'] if sealed else []
     G=lambda k:sorted([c for c in allc if c['key']==k],key=lambda c:c['seed'])
     complete=(sealed and seal.get('complete') is True and all(len(G(k))==n for k,n in exp.items()) and len(allc)==sum(exp.values())
-              and all(tuple(c['arms'])==ARMS for c in allc))
+              and all(sorted(c['arms'])==sorted(ARMS) for c in allc))
     wb=None if complete else 'INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)'
     def gate(name,ok,obs,why=None):Gt[name]={'pass':bool(ok) and why is None,'observed':obs,**({'reason':why} if why else {})}
     pc=(rc or {}).get('per_case') or {}
