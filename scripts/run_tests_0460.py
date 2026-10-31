@@ -1,11 +1,11 @@
 """Lean GTI runner for v0.46.0 (built from scripts/run_tests_0450.py, frozen). Runs each module in its own subprocess
 (python -m unittest -v) and writes a JSON report (refuses overwrite). GTI (plan 049) counts only the GATED modules:
 test_certify16e (the certify/16e API under test), test_scripts_049, test_release_0460, and the frozen certify/16d, certify/16 and certify/14
-modules test_certify16 and test_scalesearch4_0260. REPORTED (run for the record): test_scripts_048, test_release_0450.
+modules test_certify16d, test_certify16 and test_scalesearch4_0260. REPORTED (run for the record): test_scripts_048, test_release_0450.
 The sealed 045 to 049 raw RESULTS must be restored first (scripts/study04{5,6,7,8,9}_storage.py restore). Default
 output is a scratch path outside the tree (deviation #146 lesson); the official GTI input is written only with --official
 (results/study-049/TEST_SUITE_049.json).
-  PYTHONPATH=. python scripts/run_tests_0450.py [--output PATH | --official] [--modules m1 m2 ...]"""
+  PYTHONPATH=. python scripts/run_tests_0460.py [--output PATH | --official] [--modules m1 m2 ...]"""
 from __future__ import annotations
 import argparse,json,os,sys,tempfile,time
 from pathlib import Path
