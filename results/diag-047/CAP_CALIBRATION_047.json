@@ -1,0 +1,84 @@
+{
+  "budget_conflicts": 7840000,
+  "chunk": 2000,
+  "conflict_cap": 294000,
+  "label": "Observed (smoke range only; never gated)",
+  "median_rate_conflicts_per_s": 32761.800935015548,
+  "min_solve_wall_s": 1.0,
+  "rates_used": [
+    22331.68560394421,
+    40538.666832963,
+    31156.005612123303,
+    34367.5962579078
+  ],
+  "rule": "C = floor(median smoke conflict rate x 9.0 / 2000) x 2000; B = floor(240/9 x C)",
+  "schema": "brute.capcal.v44",
+  "smoke_cases": [
+    {
+      "capped_queries": 0,
+      "case_wall": 8.225055374001386,
+      "chunks": 101,
+      "conflicts": 149175,
+      "key": "scale16",
+      "rate": 22331.68560394421,
+      "seed": 11570001,
+      "solve_wall": 6.679970452998532,
+      "stop": "K_spent"
+    },
+    {
+      "capped_queries": 0,
+      "case_wall": 12.045108232996427,
+      "chunks": 109,
+      "conflicts": 433108,
+      "key": "scale16",
+      "rate": 40538.666832963,
+      "seed": 11570002,
+      "solve_wall": 10.68382445294992,
+      "stop": "ID"
+    },
+    {
+      "capped_queries": 2,
+      "case_wall": 29.184957499004668,
+      "chunks": 156,
+      "conflicts": 885846,
+      "key": "scale16",
+      "rate": 31156.005612123303,
+      "seed": 11570003,
+      "solve_wall": 28.432592130979174,
+      "stop": "ID"
+    },
+    {
+      "capped_queries": 0,
+      "case_wall": 17.327762564003933,
+      "chunks": 94,
+      "conflicts": 567215,
+      "key": "scale16",
+      "rate": 34367.5962579078,
+      "seed": 11570004,
+      "solve_wall": 16.504354734133813,
+      "stop": "ID"
+    },
+    {
+      "capped_queries": 0,
+      "case_wall": 0.01605974099948071,
+      "chunks": 4,
+      "conflicts": 87,
+      "key": "control",
+      "rate": 183299.5199897868,
+      "seed": 11570005,
+      "solve_wall": 0.0004746329941553995,
+      "stop": "ID"
+    },
+    {
+      "capped_queries": 0,
+      "case_wall": 0.022035948000848293,
+      "chunks": 4,
+      "conflicts": 72,
+      "key": "control",
+      "rate": 146521.3435013574,
+      "seed": 11570006,
+      "solve_wall": 0.0004913959855912253,
+      "stop": "ID"
+    }
+  ]
+}
