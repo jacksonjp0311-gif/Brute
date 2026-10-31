@@ -1,11 +1,21 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.32.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.33.0 in progress)._
 
 ## Current version and state
 
+<!-- V0330 -->
+- **v0.33.0: IN PROGRESS (release pending)** on branch `plan/v0.33.0` (BRUTE_PLAN_036, REPEATED READS; LEAN; STANDING GO t133s553, build authorization ledger `ed8452b`).
+  - **Run complete (Observed).** 48/48 cases, 420.3 s of 1800 s, normal exit, run once. 3 checkpoint snapshots were pushed (`43b5e2f`, `21fdeca`, `0bfe2b7`). Nothing was relaunched. The resume clause was NOT approved and was not needed. The box clock read about 7 s ahead of GitHub's Date header at 19:58:35 EDT.
+  - **PASS (8/11):** GNR11, G_sound (674 words, 0 unsound), G10, GS_ref (88 decided, 75 at raised B, 0 mismatches, mutations 20/20), GTI (7 modules, 48 tests), G_PROC, G_RT, G_recount. **FAIL:** GR11_headline (a: A11_r3 WRONG 1 on noisy_scale8 10210002; b: ID(A11_r3) - ID(A10) noisy12 +0.17 [0, 0.42]; c: ID+IDF 2/12; d: IDU 10/12), GBIS11 (IDU 10 vs 9 for the upward ablation), GQB11 (A11_r3_up 10.513 s). Secondary GRB11 fails.
+  - **Headline numbers (Observed).** noisy12: A11_r3 2/0/0/0/10; A11_r5 4/1/2/0/5; A11_r3_up 3/0/0/0/9; A10 and S7 IDU 12; S5 WRONG 12. noisy8: A11_r5 ID 8/12 [0.39, 0.86]. clean12: every A11 arm equals A10 (6/3/2/0/1). Controls ID 6/6 for every arm.
+  - **Mechanism (Observed / Inferred).** The majority cut the truth's flips to 0-5, but the first bisection probe at B_max = 6 hit the 9.5 s cap on 9 of 10 A11_r3 IDU cases. The WRONG stopped at least B 1 below the truth's 2 flips. Per the plan, v0.34.0 is a diagnose plan.
+  - **Deviations:** #144 (pre-run) and #145 (post-run).
+  - **Chain:** plan `3ab989d` -> authorization `ed8452b` -> seedcheck `0a9ae7c` -> A11 `9b5260c` -> runner `528a47d` -> recount `5ce8af9` -> reference `fe4d776` -> gates `fb7825d` -> release tooling `58fe718` -> pre-freeze smoke `34456cb` -> #144 `f095643` -> freeze `730aef4` -> run start `e972a23` -> seal `d89c1ea` -> recount `40f009d` -> reference `faaf741` -> tests `088da1e` -> gates `bff753f` -> #145 `7e16c0a` -> RELEASE.json `02d6dcb` -> docs `887e1cb`.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
+
 <!-- V0320 -->
-- **v0.32.0: RELEASED** 2026-10-30 as tag `v0.32.0` (annotated `a8a2316` -> `872fac2`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.32.0). main was fast-forwarded `9491aee..872fac2`. A fresh clone of the tag restored, verified (commit chain 8) and passed 6/6 test modules (42 tests); ledger `1bff998`. Built on branch `plan/v0.32.0` (BRUTE_PLAN_035, NOISY ACTIVE IDENTIFICATION; LEAN; STANDING GO t133s553, build authorization ledger `6941bf9`).
+- **v0.32.0: RELEASED** (previous) 2026-10-30 as tag `v0.32.0` (annotated `a8a2316` -> `872fac2`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.32.0). main was fast-forwarded `9491aee..872fac2`. A fresh clone of the tag restored, verified (commit chain 8) and passed 6/6 test modules (42 tests); ledger `1bff998`. Built on branch `plan/v0.32.0` (BRUTE_PLAN_035, NOISY ACTIVE IDENTIFICATION; LEAN; STANDING GO t133s553, build authorization ledger `6941bf9`).
   - **Run complete (Observed).** 48/48 cases, 342.7 s of 1800 s, normal exit, run once. 2 checkpoint snapshots were pushed (`aafa3c7`, `ade7093`). Nothing was relaunched. The resume clause was NOT approved and was not needed. The session was interrupted after the run, before the reference commit; REFERENCE_035.json was complete and was committed without a rerun (#143 item 2). The box clock matched GitHub's Date header at 19:04:42 EDT.
   - **PASS (9/11):** GNR10, GAD10, G_sound (116 words, 0 unsound), G10, GS_ref (12/12 decided, 0 mismatches, mutations 20/20), GTI (6 modules, 42 tests), G_PROC, G_RT, G_recount. **FAIL:** GA10_headline (a: S5 WRONG 15 on noisy; b: ID(A10) - ID(S7) noisy12 0.00 [0, 0]; c: ID+IDF 0/12; d: IDU 12/12), GQB10 (S7 10.538 s; bound 10.5 s). Secondary G16 fails (A10 ID 0/6).
   - **Headline numbers (Observed).** noisy12 and noisy8: A10, A10_fixed and S7 IDU 12/12 [0.76, 1] each; A9 WRONG 12/12 on both; S5 WRONG 9 (noisy12) and 6 (noisy8). clean12: A10 = A9 ID 7/12 [0.32, 0.81], IDF 4, AMB 1, WRONG 0; A10_fixed and S7 IDU 12; S5 AMB 12. GAD10 clean12 +0.58 [0.33, 0.83]. Controls ID 6/6 for every arm.
