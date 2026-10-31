@@ -1,0 +1,90 @@
+{
+  "schema": "brute.plan.v1",
+  "study": "BRUTE-0510-SCALE20-TREECOLOR-054",
+  "version_under_test": "0.51.0",
+  "parent_study": "BRUTE-0500-NOISE16-SCALE20-CONFLICTSTOP-053",
+  "status": "preregistered amendment 054a (plan only; supersedes BRUTE_PLAN_054 at 29e8697 before any build code, seed use or data; BRUTE_PLAN_054.json is left untouched)",
+  "branch_taken": "plan 053 next_if_pass (Exact, GATES_053 8725569: 13/13 gated pass, certified_16n_N16 true; non-blocking GS20C_det53 pass 3/3, GS20C_sound53 pass, 0/3 decided): certify/16n is certified for declared N <= 16 under iid flips with eps <= 0.10 at per-record failure probability <= 0.001. Because GS20C_det53 passed, the conflict-only stop is kept as the fix for run-to-run variance at 20 states, and this version raises 20-state decisions with a different encoding and search, not more budget (B20 stays 2000000, C20 50000).",
+  "brand": "charcoal and sage; no purple, neon, emoji or gold",
+  "question": "Does certify/20t (certify/16e with the rival queries asked once at size N; no fixed-colour clique) decide more fresh noise-free 20-state worlds than certify/16e at the same conflict budget (B20 2000000, C20 50000), while staying sound, deterministic under a conflict-only stop, faithful, and equal to certify/16e at bound 16?",
+  "hypotheses": {
+    "H1": "certify/20t issues no WRONG certificate on 6 fresh 20-state worlds over two passes (12 records) or on 6 eps-0 16-state controls",
+    "H2": "with a conflict-only stop on a 4-worker pool, the two certify/20t passes give byte-identical canonical records on 6/6 cases with 0 hard kills (053 showed this on 1 worker only)",
+    "H3": "every certify/20t record is reproduced exactly by api_checks driving certify/20t observation by observation (run once)",
+    "H4": "at bound 16 certify/20t gives the same label as certify/16e on 6/6 fresh clean 16-state controls, and the same canonical machine for ID (the 052 IDF-equivalence rule, unchanged). Inferred risk declared pre-data: stop-check verdicts are equal by the padding argument, but M2 and so the experiments may differ, so a label can differ without any unsoundness; that is still a GCOMPAT20T54 failure",
+    "H5": "certify/20t decides (ID+IDF) at least 2 of 6 fresh 20-state worlds and strictly more than certify/16e (API16E20, conflict-only stop) on the same 6 seeds; the exact count is reported, not predicted. Inferred risk declared pre-data from study-053's sealed API16E20 records: most budget went to the least-machine search and to SAT rivals at n_min; the per-size rival loop spent extra conflicts only when a smaller size was UNSAT first (12110002: four rounds with 17 UNSAT then 18 SAT, about 1.26M conflicts), so the gain may be small and H5 may fail"
+  },
+  "design": {
+    "api": "one new module brute/api/certify20t.py (certify/20t); no change to certify/16n (FREEZE_050), certify/16e (FREEZE_049), certify/16s (FREEZE_051) or any earlier module, which are imported only. certify/20t is certify/16e (A16: first-visit symmetry clauses, apartness clauses, the cube split on capped queries, chunked conflict resume; observe / propose / result interface, labels, K) with ONE change to the search: the rival queries ('future' and 'start') are asked once, on the size-N instance only, instead of at every size n_min..N. The least-machine search (sizes from n_lo upward) is unchanged. NO fixed-colour clique (amendment 054a; study-041). Soundness (Exact argument, checked by GCOMPAT20T54 and the CNF reference): a rival with n' <= N states consistent with the trace becomes an N-state rival by adding N - n' states that the trace never visits; first-visit numbers visited states 0..v-1 in first-visit order, so the padded machine satisfies the first-visit and apartness clauses and differs from M1 on the same word; hence the size-N rival query is UNSAT iff every size n_min..N rival query is UNSAT, and a SAT answer is a rival with at most N states. Verdicts of each stop check are unchanged; the rival model M2 (and so the next experiment word) may differ. The conflict-only stop is kept: wall guards record walls and never change a result; hard job kill at 900 s. The exact readings are fixed in pre-run deviation #181 before the freeze.",
+    "parts": {
+      "scale20t": "6 fresh clean 20-state worlds (generator as 050/051/053 scale20), arms API20T and API20T_b (certify/20t at bound 20) and baseline API16E20 (certify/16e at bound 20, once), all at C20 50000, B20 2000000, conflict-only stop",
+      "compat20t": "6 fresh clean 16-state controls (generator as 049 scale16): API20T at bound 16 vs API16E at bound 16, B 3000000, C 50000, conflict-only stop"
+    },
+    "caps": "C 50000 per chunk everywhere; B20 2000000 for scale20t (same as 051 and 053; not raised); B 3000000 for compat20t (as 053 compat16); wall guards record only; hard job kill at 900 s for every job",
+    "workers": "8 in one phase: a 4-worker pool for scale20t (18 jobs) and a 4-worker pool for compat20t (12 jobs), run concurrently",
+    "labels": "ID, IDF (identified from the current state, not the start), AMB, IDU, WRONG; scored against the clean truth"
+  },
+  "cases": {
+    "scale20t": 6,
+    "compat20t": 6,
+    "jobs": "scale20t 6 x 3 = 18; compat20t 6 x 2 = 12; total 30",
+    "declared_before_data": true
+  },
+  "heldout_ranges": {
+    "scale20t": "12170001-12170006",
+    "compat20t": "12190001-12190006",
+    "note": "prefixes 1217, 1219, 1221, 1223, 1225 and 1227 had 0 word-bounded tokens prefix+00NN in tracked text files at plan time (Observed, git grep -I, 2026-10-31 EDT); compressed files were not scanned at plan time. seedcheck_054 scans every tracked file, .gz included, before any seed is used; a hit there moves the part to the next unused prefix (1223, then 1225) by a ledgered deviation before any data."
+  },
+  "smoke_range": "12210001-12210006 (pre-freeze smoke and projection only; never gated; never used to set B, C or k)",
+  "criteria": {
+    "GDET54": "canon(API20T) == canon(API20T_b) byte-identical on 6/6 scale20t cases, identical conflict counts, 0 hard kills",
+    "GFID54": "api_checks fidelity exact on all 12 API20T scale20t records and 6 API20T compat20t records, bound to the sealed RESULTS sha",
+    "GS20T_sound54": "WRONG 0 on all 12 API20T and 6 API16E20 scale20t records and on all 12 compat20t records, against the clean truth",
+    "GS20T_gain54": "API20T ID+IDF >= 2/6 on scale20t AND API20T ID+IDF > API16E20 ID+IDF on the same 6 seeds (pass 1 labels; Wilson CIs reported)",
+    "GCOMPAT20T54": "6/6 controls: API20T at bound 16 gives the same label as API16E at bound 16; for ID the same canonical machine from the start state; for IDF the same machine up to isomorphism with matching future from the current state (the 052 rule, unchanged)",
+    "GHOST54": "no network; closures of certify/16n, 16e and 16s unchanged",
+    "GS_ref": "CNF reference (unchanged from 053, bound set per record) audits every decided API20T record with 0 mismatches and 20/20 mutations caught; complete within 2400 s, else a published GS_ref failure",
+    "G_sound": "every certified word is consistent with the truth",
+    "G_recount": "independent recount matches every label",
+    "GTI": "seedcheck PASS and no target token in prior text",
+    "GTEST": "official tests pass",
+    "G_PROC": "ledger order and times",
+    "G_RT": "total run <= 3600 s"
+  },
+  "certification_rule": "certify/20t becomes certified for declared N <= 20 on noise-free traces iff every gated criterion passes, GS20T_gain54 included. If every gate except GS20T_gain54 passes, certify/20t is published as sound but not certified, and nothing at 20 states is certified. certify/16n, certify/16e and their certifications are not changed by this study.",
+  "secondary": {
+    "GS20T_rate54": "ID+IDF of 6 per arm with Wilson CIs, conflicts per decided case, conflicts/s per chunk and per case, max chunk wall (walls never used for a decision)",
+    "GS20T_paired54": "per-seed paired table API20T vs API16E20: label and conflicts spent",
+    "GCOST54": "conflicts, chunks, clauses and wall per part"
+  },
+  "gate_dependency_rule": "each gate is scored from its own counts; label gates use recounted labels if G_recount passes, else the study labels with the failure stated; an unfinished reference is a GS_ref failure, published as-is",
+  "what_counts_as_failure": "any gated criterion false; any hard kill fails GDET54; AMB and IDU are not soundness failures",
+  "freeze_rule": "no file named in the source freeze is edited after the freeze; new behaviour in new files or a deviation addendum. Caps, the stop rule, the encoding readings of #181, workers and case lists are part of the freeze",
+  "runtime_estimate": "worst case at 050's slowest observed rate 4503 conflicts/s: scale20t 18 x (2000000/4503 + 10) = 18 x 454 = 8172 s on 4 workers = 5 rounds x 454 = 2270 s; compat20t 12 x (3000000/4503 + 10) = 12 x 676 = 8112 s on 4 workers = 3 rounds x 676 = 2028 s; both pools run concurrently, worst case about 2270 s <= 3300 s. Cut rule: if the pre-freeze smoke projection at its slowest rate exceeds 3300 s, scale20t drops to 4 cases and then compat20t to 4, declared in #181 before the freeze.",
+  "process": "LEAN, under a standing go only if one is in force and cited; a ledgered build_authorization_054 before any code and before seedcheck_054. Plan locked before data; seedcheck before seeds; no cap calibration; pre-freeze smoke with the real release verifier chain; independent recount; CNF reference audit; api_checks once after the run; main runs once with nohup and is never relaunched; failures published; one fresh-clone verify plus tests",
+  "next_if_pass": "certify/20t becomes certified for declared N <= 20 on noise-free traces (Exact conditional on the declared N). Next: noise at 20 states (the certify/16n majority front end over certify/20t) and a replication of the gain on more fresh 20-state worlds.",
+  "next_if_fail": "GS20T_gain54 fails with every soundness gate passing: asking the rival once at size N does not raise decisions at 20 states; next try a different search at the same budget (cube-and-conquer over distinguishing-word prefixes with a deterministic cube order). GS20T_sound54, G_sound or GS_ref fails on a mismatch: certify/20t is unsound; withdraw it and find the cause before any 20-state work. GDET54 fails: the conflict-only stop is not deterministic on a shared pool; return 20-state jobs to 1 worker. GCOMPAT20T54 fails: an encoding bug at 16 states; fix it before scaling. GQB-style or G_RT failure: publish and cut cases, not budget.",
+  "limitations": [
+    "6 cases per part give wide CIs (Wilson 95% for 2/6 is [0.10, 0.70])",
+    "noise-free only at 20 states; noise at 20 states stays Open",
+    "still needs a declared size N",
+    "walls depend on the host; walls never decide a result",
+    "the baseline API16E20 is run once, so its count is not double-checked for determinism in this study (053 did that on 1 worker)",
+    "the change affects only the rival queries; the least-machine search, which used most of study-053's part B budget, is unchanged"
+  ],
+  "open_items": [
+    "full N-freedom: Open",
+    "certify/16n under correlated noise: Open",
+    "noise at 20 states: Open",
+    "IDF that fixes the start state: Open"
+  ],
+  "claim_scope": "conditional on the declared N: an ID or IDF means unique among machines with at most N states consistent with the trace; IDF identifies the machine from the current state, not the start. Inferred reason: a larger machine can copy the true machine on every visited state and differ only on states the trace never reached, so no finite trace rules it out.",
+  "evidence_labels": "Exact, Observed, Simulated, Inferred, Rejected, Open",
+  "amends": {
+    "plan": "experiments/BRUTE_PLAN_054.json",
+    "plan_commit": "29e8697",
+    "ledger": "fdcc51f",
+    "when": "pre-data: before build_authorization_054, before any 054 code, before seedcheck_054"
+  },
+  "amendment_reason": "Plan 054 design.api (c) fixes a greedy max clique of pairwise-apart nodes to colours 0..m-1. That is the same mechanism as scalesearch15's Pool15/Inc15 (greedy_clique over apart trace positions, each clique member fixed to its own colour), which the v0.38.0 encoding audit (study BRUTE-0380-ENCODING-AUDIT-041; GATES_041 at 40d1484; deviations #154 and #155) isolated as encaudit16 variant E2. GAUD_loc passed with component 'fixed-colour clique': E2 alone reproduced the GINC15 decision loss in 3/3 repeats while E1 (apartness clauses, no colours) matched E0 (A14) in 3/3; E2 also decided 28/30 sealed 039 A14 decisions (E0 and E1 30/30) and cost a mean per-trace call-wall ratio of 4.18 [2.53, 6.46] against E0 (E1: 1.11 [1.01, 1.24]) (Observed, study-041). A16 (v0.39.0, brute/scalesearch16, deviation #157) therefore dropped the fixed colours and kept first-visit symmetry plus apartness. Plan 054's clique is a tree-node clique rather than a trace-position clique, but in Brute's active setting there is no reset: every experiment word is appended to the one trace, so the observation tree of the trace is a single path whose nodes are exactly the trace positions. The plan's tree colouring (a) and tree apartness (b) are then A16's position encoding x[t][q] and A16's apartness clauses, and (c) is E2's fixed-colour clique (Exact by construction; the harm is Observed in study-041). Under the user's instruction (2026-10-31 16:50 EDT) the clique is dropped."
+}
