@@ -61,3 +61,5 @@ Labels: Exact, Observed, Simulated, Inferred, Rejected, Open. Times are box-loca
 12. **Runtime rule (Inferred).** Greedy makespan projection for the 42-case main block on 8 workers: 574 s (ideal 552 s,
     serial 4415 s; mean case wall clean_scale12 219 s, noisy_scale12 81 s, noisy_scale8 68 s, control 0.7 s), under the
     plan's 1500 s threshold, so A11_r3 is not reduced; no arm is changed.
+13. **Freeze list fix (Exact; disclosed).** make_freeze_038 as first committed (de7725c) listed experiments/brute_common_038.py
+    twice and omitted experiments/brute_common_037.py (a 037 -> 038 rename slip); fixed before the freeze ran (fbe6225).
