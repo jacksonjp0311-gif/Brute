@@ -1,0 +1,340 @@
+{
+  "PASS": true,
+  "audited": 6,
+  "block": "main",
+  "complete": true,
+  "decided": 6,
+  "elapsed_informational": {
+    "r12": 421.0948918119975
+  },
+  "k_spent_as_amb": 0,
+  "misfires": [],
+  "mismatch_count": 0,
+  "mismatches": [],
+  "mutation_test": {
+    "detected": 20,
+    "items": [
+      {
+        "detected": true,
+        "id": "main/compat20t/12190001/API20T",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12190006/API20T",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12190003/API20T",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12190005/API20T",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12190006/API20T",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12190006/API20T",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12190004/API20T",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12190004/API20T",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12190003/API20T",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12190001/API20T",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12190005/API20T",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12190001/API20T",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12190002/API20T",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12190003/API20T",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12190005/API20T",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12190004/API20T",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12190002/API20T",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12190006/API20T",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12190001/API20T",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12190001/API20T",
+        "kind": "s1"
+      }
+    ],
+    "mutations": 20,
+    "pass": true
+  },
+  "not_audited": [],
+  "not_reached": 12,
+  "per_arm": {
+    "API20T": {
+      "audited": 6,
+      "decided": 6,
+      "misfires": 0,
+      "mismatches": 0,
+      "records": 12
+    },
+    "API20T_b": {
+      "audited": 0,
+      "decided": 0,
+      "misfires": 0,
+      "mismatches": 0,
+      "records": 6
+    }
+  },
+  "per_key": {
+    "compat20t": {
+      "audited": 6,
+      "decided": 6,
+      "mismatches": 0
+    },
+    "scale20t": {
+      "audited": 0,
+      "decided": 0,
+      "mismatches": 0
+    }
+  },
+  "per_record": [
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12170001/API20T",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12170002/API20T",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12170003/API20T",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12170004/API20T",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12170005/API20T",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12170006/API20T",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "N_audited": 16,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/compat20t/12190001/API20T",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 16,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/compat20t/12190002/API20T",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 16,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/compat20t/12190003/API20T",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 16,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/compat20t/12190004/API20T",
+      "label": "IDF",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "IDF",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 16,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/compat20t/12190005/API20T",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 16,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/compat20t/12190006/API20T",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12170001/API20T_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12170002/API20T_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12170003/API20T_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12170004/API20T_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12170005/API20T_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12170006/API20T_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    }
+  ],
+  "records": 18,
+  "schema": "brute.reference.v51_0",
+  "scope": {
+    "budget_12_s": 2400.0,
+    "key_order": [
+      "scale20t",
+      "compat20t"
+    ],
+    "order": [
+      "API20T",
+      "API20T_b"
+    ],
+    "workers_12": 8
+  },
+  "study_results_sha256": "484531602a4a1f60adce69bd2e51acce51fbc7dfb4f7c3d7b453b4f5ad6e72a0",
+  "vacuous": false,
+  "verdicts_checked": 12,
+  "walls_informational": {
+    "main/compat20t/12190001/API20T": 13.2,
+    "main/compat20t/12190002/API20T": 420.5,
+    "main/compat20t/12190003/API20T": 319.2,
+    "main/compat20t/12190004/API20T": 12.9,
+    "main/compat20t/12190005/API20T": 223.3,
+    "main/compat20t/12190006/API20T": 136.0
+  }
+}
