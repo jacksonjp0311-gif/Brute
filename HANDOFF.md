@@ -1,14 +1,16 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.38.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.38.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0380 -->
-- **v0.38.0: release in progress** 2026-10-31 (EDT). Built on branch `plan/v0.38.0` (BRUTE_PLAN_041, ENCODING AUDIT; LEAN; STANDING GO t133s553, build authorization ledger `55c87e4`). Next: BRUTE_PLAN_042 (v0.39.0, plan only).
+- **v0.38.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.38.0 (tag v0.38.0 -> e33a542, ledger release_041). Built on branch `plan/v0.38.0` (BRUTE_PLAN_041, ENCODING AUDIT; LEAN; STANDING GO t133s553, build authorization ledger `55c87e4`). Next: BRUTE_PLAN_042 (v0.39.0, plan only).
   - **Run complete (Observed).** 294/294 jobs (240 replays, 18 fresh cases), 157.4 s of 1800 s, normal exit about 00:38:28 EDT, run once; 1 checkpoint snapshot (`2b71565`); nothing relaunched; resume clause not approved, not used. Hard per-call cap: 15 kills, max call 10.012 s. Box clock about 10 s ahead of GitHub's Date header at 00:35 EDT.
   - **PASS (8/13):** GAUD_loc (fixed-colour clique: E2 loses the GINC15 decisions 3/3 repeats, E1 matches A14 3/3), GAUD_stab (10/10 [0.72, 1.00]), GAUD_time (E3/E0 mean 16.11 [5.13, 31.74]), GQB16, GS_ref (E1/E2 part c, 20 decided, 0 mismatches, 20/20 mutations), GTI, G_PROC, G_RT. **FAIL:** G_recount (25 AMB replays not covered by the frozen recount), GAUD_sem, G10, G_sound (each requires the recount; own conditions hold), GPERM16 (10/11 [0.62, 0.98], 10710005).
-  - **Deviations:** #154 (pre-run), #155 (post-run).
+  - **Deviations:** #154 (pre-run), #155 (post-run), #156 (release-time: the frozen verify_release_0380 fails its commit-order item because the build authorization names the plan it authorizes; verify with the addendum verify_release_0380a).
+  - **Fresh clone (Observed, ledger b4d4ec8, about 01:29 EDT):** restore + verify_release_0380a passed; run_tests_0380 passed (scratch output). The release notes were first published from a stale notes file and corrected with gh release edit about 01:26 EDT.
+  - **Soundness (Observed):** 0 WRONG, 0 unsound separating words of 21 (study and recount), 0 truth inconsistencies, controls 6/6 ID in every arm; G10 and G_sound fail only because they require G_recount.
   - **Chain:** plan `18cc782` -> seedcheck `ada2447` -> authorization `55c87e4` -> encaudit16 `2317f61` -> proxy `a647be6` -> common `5bb6385` -> runner `e34a624` -> tests `fd0a628` -> recount `8e46c45` -> reference `2839145` -> test runner `cb5e04f` -> gates `5041256` -> tooling `27f9c6f`/`4dd310c`/`bb26a0c`/`7fccafc`/`0f2febb` -> pre-freeze smoke `bb29ed4` -> #154 `27e70eb` -> freeze `a649dd2` -> run start `a24ceb5` -> seal `5221d1c` -> recount `d9e27fd` -> reference `2fcb46c` -> tests `4aaab70` -> gates `40d1484` -> #155 `67371f6` -> RELEASE.json and docs `c478ea1`.
   - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
 
