@@ -3,7 +3,8 @@ scripts/prefreeze_smoke_041.py (frozen). Input: a sealed smoke block written by 
 (outside results/study-042). It
   1. checks the smoke contains at least one record of every stop the runner can emit (ID, IDF, AMB, K_spent, unknown);
   2. runs recount_042 and run_reference_042 (blocks smoke and probe) on a copy and gates it (incomplete by design);
-  3. builds a synthetic complete block in a temp dir (the smoke and probe cases relabelled block 'main', the expected counts
+  3. builds a synthetic complete block in a temp dir (the 6 fresh smoke cases relabelled block 'main'; the probes repeat smoke seeds, so they are
+     checked in step 2 only; the expected counts
      patched to them in this process only), re-sealed with the runner's _write (stand-in freeze hash), recounted, referenced and
      gated twice (the two dumps must be identical); exercises verify_release_0390.release_ok on a synthetic RELEASE.json;
   4. runs the real verify_release_0390.chain on this repository with the real ledger entries since preregistration_042 (the
@@ -85,7 +86,7 @@ def main(argv=None):
         for nm in ('RESULTS.json','SCIENTIFIC.json','SEAL.json','RECOUNT_042.json'):(sd/'main'/nm).write_bytes((C/nm).read_bytes())
         g=MG.build(sd);out['smoke_gate_status']=status(g);out['smoke_sealed_input_verified']=g['sealed_input_verified']
         D=Path(d)/'synthetic';(D/'main').mkdir(parents=True);fz=Path(d)/'FREEZE_STANDIN.json';fz.write_text('{}')
-        cases=[dict(copy.deepcopy(c),block='main') for c in res['cases']];P=load(PLAN)
+        cases=[dict(copy.deepcopy(c),block='main') for c in res['cases'] if c['block']=='smoke'];P=load(PLAN)
         with mock.patch.object(ST,'FREEZE',fz):
             ST._write(D/'main',P,'main',[f'synthetic:{i}' for i in range(2*len(cases))],([],cases),True,{'total_elapsed_informational':res.get('total_elapsed_informational')})
         rr=recount([str(D/'main')]);rf2=reference([str(D/'main'),'--workers','4'])
@@ -94,7 +95,8 @@ def main(argv=None):
         out['synthetic']={'cases':exp,'recount_rc':rr,'reference_rc':rf2,'crashed':False,'gate_status':status(g1),'secondary':sorted(g1['secondary']),
                           'GT16':g1['secondary']['GT16']['observed'],'G16':g1['gates']['G16']['observed'],
                           'sealed_input_verified':g1['sealed_input_verified'],'reproduces':dumps(g1)==dumps(g2),'reports_keys':sorted(g1['reports']),
-                          'note':'synthetic: the 8 smoke + probe cases as main; G10 fails here by its fixed count (6 controls), G16 by the 12-case thresholds, GTI and G_PROC by design (no TEST_SUITE_042, no 042 run events)'}
+                          'label_source':g1['gates']['G16']['observed']['label_source'],
+                          'note':'synthetic: the 6 fresh smoke cases as main with expected counts patched to them; G10 can fail here only on its labels, G16 by the 12-case thresholds, GTI and G_PROC by design (no TEST_SUITE_042, no 042 run events)'}
         Rd=Path(d)/'rel';(Rd/V.STUDY).mkdir(parents=True);(Rd/V.STUDY/'GATES_042.json').write_bytes(dumps(g1))
         Rel={k:'x' for k in V.RELEASE_KEYS};Rel.update(version=V.VERSION,gates_passed=sorted(k for k,v in g1['gates'].items() if v['pass'] is True),
              gates_failed=sorted(k for k,v in g1['gates'].items() if v['pass'] is False),gates_not_exercised=[],secondary={k:v['pass'] for k,v in g1['secondary'].items()})
@@ -107,7 +109,8 @@ def main(argv=None):
     vc=out['verifier_chain']
     out['PASS']=(not out['stops_missing'] and out['recount_rc']==0 and all(v==0 for v in out['reference_rc'].values()) and out['synthetic']['recount_rc']==0
                  and out['synthetic']['reference_rc']==0 and out['synthetic']['reproduces'] and out['synthetic']['sealed_input_verified']
-                 and all(out['synthetic']['gate_status'][k]['pass'] is not None for k in out['synthetic']['gate_status'])
+                 and not any('INCOMPLETE_INPUT (main' in v.get('reason','') for v in out['synthetic']['gate_status'].values())
+                 and out['synthetic']['gate_status']['G_recount']['pass'] is True and out['synthetic']['label_source']=='recount'
                  and out['release_ok_synthetic'] is True and vc['passed'] and vc.get('authorization_exceptions')==1)
     out['note']='PASS here means every stop kind is present, the tooling ran end to end on a sealed block, gates reproduce and the real commit-order check passes; gate outcomes on smoke are recorded, not required'
     write_new(OUT,out);print(json.dumps({k:v for k,v in out.items() if k not in ('smoke_replays','smoke_cases','stop_examples')},default=str)[:6000]);return 0 if out['PASS'] else 1
