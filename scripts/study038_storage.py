@@ -5,8 +5,8 @@ deterministic gzip (level 9, mtime 0, no file name) of the exact sealed bytes. R
 block SEAL.json, so the seals bind the raw bytes. Per-case CHECKPOINT*.jsonl files are not committed (they are
 reproduced by RESULTS.json; the study SEAL.json records their sha256).
 
-  python scripts/study037_storage.py pack      # write *.json.gz for every sealed raw file (refuses overwrite)
-  python scripts/study037_storage.py restore   # restore missing raw files from *.json.gz and check them against the seals
+  python scripts/study038_storage.py pack      # write *.json.gz for every sealed raw file (refuses overwrite)
+  python scripts/study038_storage.py restore   # restore missing raw files from *.json.gz and check them against the seals
 """
 from __future__ import annotations
 import gzip,io,sys
