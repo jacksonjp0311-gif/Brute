@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.37.0 RELEASING)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.37.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0370 -->
-- **v0.37.0: RELEASING** 2026-10-31 (EDT) from branch `plan/v0.37.0` (BRUTE_PLAN_040, APARTNESS + CUBE; LEAN; STANDING GO t133s553, build authorization ledger `43b9592`).
+- **v0.37.0: RELEASED** 2026-10-31 (EDT) as tag `v0.37.0` (annotated `70f53e9` -> `1026db1`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.37.0). main was fast-forwarded `9bcddc4..1026db1`. A fresh clone of the tag restored, verified (commit chain 6) and ran 11 test modules (77 tests): 10 ok, test_scalesearch15_0370 fails the same 3 GINC15 checks as the official suite, with the test output on its scratch default; ledger `82ecd12`. Built on branch `plan/v0.37.0` (BRUTE_PLAN_040, APARTNESS + CUBE; LEAN; STANDING GO t133s553, build authorization ledger `43b9592`). Next: BRUTE_PLAN_041 (v0.38.0 encoding audit, plan only).
   - **Run complete (Observed).** 42/42 cases, 126/126 jobs, 374.1 s of 1800 s, normal exit about 23:43:37 EDT 2026-10-30, run once. 2 checkpoint snapshots were pushed (`66b9a3a`, `c2f4f3a`). Nothing was relaunched. The resume clause was NOT approved and was not needed. The agent session was interrupted while the reference audit ran; the audit finished on its own, was checked complete and committed as is, not rerun (#153 item 2). Pre-freeze projection 391.6 s; no runtime amendment. The box clock read about 10 s ahead of GitHub's Date header at 00:00:34 EDT.
   - **PASS (7/12):** GREP15 (scale14 A15_cube 9 vs A14 9 [0.47, 0.91]), G_sound (1019 words, 0 unsound), G10, GS_ref (A15_cube scale14: 9 decided, 3 not reached, 123 verdicts, 0 mismatches, mutations 20/20), G_PROC, G_RT (374.1 s), G_recount. **FAIL:** GC15_headline (a passes; b passes: ID+IDF(A15_cube, scale16) 7/12 [0.32, 0.81]; c: ID(A15_cube) - ID(A14) scale16 +0.083 [-0.167, 0.333]; d: capped cases 9/12 [0.47, 0.91]), GFAM15 (lowobs12 0/12 [0, 0.24], exercised), GINC15 (3/60 sealed 039 checks unknown where A14 decided), GQB15 (max 11.014 s, A15_cube lowobs12 10630011), GTI (test_scalesearch15_0370 fails on the GINC15 cases; 11 modules, 77 tests). Secondary GCAP15, GSYM15 reported only.
   - **Headline numbers (Observed).** scale16: A15_cube 3/4/0/0/5; A15 1/2/0/0/9; A14 2/2/0/0/8. scale14: A15_cube = A14 8/1/0/0/3; A15 6/1/0/0/5. lowobs12: IDU 12 for every arm. Controls ID 6/6 for every arm.
