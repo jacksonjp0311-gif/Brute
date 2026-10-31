@@ -1,0 +1,95 @@
+{
+  "schema": "brute.plan.v1",
+  "study": "BRUTE-0450-CERTIFY16D-WALLFREE-SCALE20-048",
+  "version_under_test": "0.45.0",
+  "parent_study": "BRUTE-0440-CERTIFY16D-SCALE20-047",
+  "status": "preregistered (plan only; no build code, no data for 048)",
+  "branch_taken": "plan 047 next_if_fail, GDET clause (Exact, GATES_047 c0b59d5, ledger 9b28e89): 'GDET fails: the conflict cap is not deterministic on this solver; find the nondeterminism source before anything else.' GDET failed only on its wall_guard clause: canon16d was byte-identical between API16D and API16D_b on 18/18 fresh cases [0.824, 1.000] with 0 firings in the main block, but the 30 s wall guard fired 7 times on 3 a3_046 replay records (11230004, 11230008, 11230009) whose calls ran at 6716 to 9797 conflicts/s, below the 294000 / 30 s = 9800/s needed to reach C first. GQB22 also failed (A16_N 16.718 s vs 10.5 s; API16D 43.778 s vs 30 s). GFID16D, GFID_wall and GAPI16D_fresh passed (10/12 [0.552, 0.953], WRONG 0). Candidate source (Inferred, #168 item 3): the cap is too large for the slowest calls under load, so the clock enters through the guard. The maintainer also asked that scale-20 be made feasible within 3600 s; this plan does both in one run, with the scale-20 claim conditional on the determinism gate",
+  "brand": "charcoal and sage; no purple, neon, emoji or gold",
+  "question": "Is the 047 GDET failure explained by the conflict cap being too large, so that the wall guard decides slow calls? With a smaller fixed cap (C = 50000, chosen so the slowest call rate seen in 047 reaches C in under half the 30 s guard), does certify/16d run with 0 guard firings and byte-identical passes, on fresh 16-state worlds, on the sealed 046 traces that fired the guard in 047, and on a first set of fresh 20-state worlds, inside a 3600 s run? Does it stay sound at N = 20?",
+  "hypotheses": {
+    "H1": "at C = 50000 the wall guard fires 0 times on every certify/16d record, including the 3 sealed 046 traces (11230004, 11230008, 11230009) that fired it in 047",
+    "H2": "with no guard firing, two independent passes of certify/16d give byte-identical canonical records on every fresh case (scale16, control and scale20)",
+    "H3": "on fresh scale16 worlds certify/16d at C = 50000 issues no WRONG certificate and decides at least 7/12 (the A16_N 046 count, as 047)",
+    "H4": "scale-20 (exploratory): at family_bound 20 certify/16d stays sound (WRONG 0, every decided record audited true at bound 20); the decided count is reported, not predicted",
+    "H5": "the smaller cap costs decided cases relative to 047 (10/12 at C 294000); reported, not gated"
+  },
+  "design": {
+    "api": "no new API code: the frozen brute/api/certify16d.py (v0.44.0, sha as in BRUTE_SOURCE_FREEZE_047) is driven only through its public interface with new parameter values. The wall guard stays at the certify/16d defaults (30 s per call, 600 s per case) and is not tuned. Any new behaviour (runner, canonical record, recount, reference, gates) goes in new _048 files; every frozen file is imported only",
+    "cap_rule": "fixed NOW, before any 048 data, from sealed 047 public results only (Exact): conflict_cap C = 50000 for every part. Reason (Inferred): the slowest 047 rate on any certify/16d call is 6716 conflicts/s (scale16, a3_046 11230004, a guard-stopped call, so a lower bound on that call), giving 7.4 s per capped call at scale16; the slowest smoke scale20 rate was 9112.8/s unloaded, and scaling by the 047 load ratio 6716/17332.9 = 0.387 gives about 3528/s loaded, i.e. 14.2 s per capped scale20 call, under half the 30 s guard. Case budgets: B16 = 1500000 conflicts (scale16 and control, 30 capped calls), B20 = 1000000 (scale20, 20 capped calls). No calibration step and no 048 smoke data choose C or B; the smoke only checks the projection",
+    "arms": {
+      "API16D": "certify/16d through its public interface, C 50000, B16 or B20, K = 128, declared N = 16 (scale16, control) or 20 (scale20)",
+      "API16D_b": "the same arm run as a second independent pass in separate processes, cases in reverse seed order (determinism check only)"
+    },
+    "parts": {
+      "a_fresh16": "18 fresh cases (12 scale16, 6 control), API16D and API16D_b (36 jobs)",
+      "r_replay046": "API16D (one pass) replays the 18 sealed 046 A16_N fresh traces (12 scale16, 6 control) observation by observation, as part a3_046 of 047 but at C = 50000 (18 jobs). The 3 traces that fired the guard in 047 are named in advance: 11230004, 11230008, 11230009. Differences from the sealed record are classified with the 047 classes (#167 item 9) and reported, not gated",
+      "d_scale20": "8 fresh scale20 worlds (generator experiments/worlds_047.py, scale20 family, unchanged), API16D and API16D_b (16 jobs)"
+    },
+    "canonical_record": "canon16d as in 047 (no wall fields: label, n_min, model, every proposed word, per-call conflicts and capped flags)",
+    "claim": "certify/16d ID/IDF is exact conditional on noise-free readings and true size <= the declared N (family_bound); reason (Inferred): a larger machine can copy the true machine on every visited state, so some size bound is inherent",
+    "dropped": "the wall-capped arms A16_N and API16 are not run: the question is about certify/16d alone, and their GQB22 overrun stays Open (reported in #168). No 045 replays",
+    "unchanged": "encoding, clauses, cube split, rival query, distinguishing-word rule, K, labels, AMB/K_spent rule and recount rule are those of 047"
+  },
+  "cases": {
+    "scale16": 12,
+    "control": 6,
+    "scale20": 8,
+    "replay_046": 18,
+    "fresh_jobs": "18 x 2 arms + 8 x 2 arms = 52",
+    "replay_jobs": 18,
+    "total_jobs": 70,
+    "declared_before_data": true
+  },
+  "heldout_ranges": {
+    "scale16": "11510001-11510012",
+    "control": "11530001-11530006",
+    "scale20": "11610001-11610008",
+    "note": "the prefixes 1151, 1153 and 1161 had 0 word-bounded tokens of the form prefix+00NN in tracked text at plan time (Observed, git grep, 2026-10-31 EDT); 1155 had 1 hit and was skipped. seedcheck_048 scans every tracked file, .gz archives included, before any seed is used. Any hit moves that range to the next unused odd prefix (1163, 1165), declared in the pre-run deviation"
+  },
+  "smoke_range": "11590001-11590006 (pre-freeze smoke and projection only; never gated; never used to set C or B)",
+  "criteria": {
+    "GDET48": "headline 1, determinism and wall-freedom: API16D and API16D_b give byte-identical canon16d records on 18/18 fresh scale16+control and 8/8 scale20 cases, AND wall_guard fires 0 times on every certify/16d record (parts a, r and d)",
+    "GWALL_r": "headline 2: in part r, wall_guard fires 0 times on all 18 replays, including 11230004, 11230008 and 11230009 (the 047 firings)",
+    "GFID48": "headline 3, fidelity: API16D driven observation by observation over its own part-a and part-d traces reproduces 26/26 records exactly (api_checks)",
+    "GAPI16D_fresh48": "headline 4: fresh scale16: API16D WRONG = 0 and ID+IDF >= 7/12 (Wilson 95% CI reported). A capped unknown is not a WRONG",
+    "GS20_sound": "headline 5 (scale-20): API16D WRONG = 0 on the 8 fresh scale20 worlds, and every decided scale20 record passes the CNF reference audit at bound 20. ID+IDF is reported with its CI, ungated. A vacuous pass (0 decided) is stated as such. If part d is cut under the runtime rule, this gate is 'not run' (not a pass)",
+    "GHOST48": "host-agnostic: the static check of brute/api/certify16d.py and its closure finds no new import since the 047 freeze; it runs with no network (0 socket attempts)",
+    "G10": "API16D and API16D_b each ID on the 6 fresh controls",
+    "GQB23": "every logged certify/16d call wall <= 30 s (the guard), reported with the conflict counts and the max per part",
+    "GS_ref": "CNF reference audit (bound 16 or 20) of every decided fresh record in each arm: 0 mismatches, 20 mutations detected; one total wall budget of 2400 s with 8 workers, declared now (scale20 audits are new and slower; any record not audited fails the gate)",
+    "G_sound": "0 unsound separating words in study and recount; 0 truth inconsistencies",
+    "G_recount": "the independent recount reproduces every fresh label (scale16, control, scale20); 0 mismatches",
+    "GTI": "gated test files pass in a fresh clone (after every needed storage restore, the 046, 047 and 048 raw data included, as documented)",
+    "G_PROC": "ledger order preregistration, build_authorization, seedcheck, source_freeze, run_start, run_end (all _048), checked as a subsequence",
+    "G_RT": "main run (all parts) <= 3600 s"
+  },
+  "secondary": {
+    "GS20_rate": "API16D scale20 ID+IDF with Wilson CI and its wall and conflict cost, reported only",
+    "GREP16e": "API16D scale16 ID+IDF at C 50000 beside 047 at C 294000 (10/12), reported only",
+    "GR_class": "part r difference classes against the sealed 046 records, reported only",
+    "GCOST48": "conflicts, capped calls and wall per part and key, reported only"
+  },
+  "gate_dependency_rule": "each gate is scored from its own counts. GAPI16D_fresh48 and GS20_sound use the recounted labels if G_recount passes, else the study labels with the failure stated. GS20_sound is not run if part d is cut",
+  "what_counts_as_failure": "any gated criterion false. A capped call is unknown, not a failure of soundness. A wall_guard firing is a GDET48 failure (and a GWALL_r failure in part r)",
+  "freeze_rule": "no file named in the source freeze is edited after the freeze; new behaviour goes in new files or a deviation addendum. C, B16, B20 and the case lists are part of the freeze",
+  "runtime_estimate": "declared now, using the #167 item 13 worst-case definition with the stricter rates: r_min(key) = the smaller of the 048 smoke slowest rate and the 047 loaded rate (scale16 6716/s; scale20 3528/s estimated). Per job: min(600 s case guard, B / r_min + 10 s); controls count their smoke mean. Worst case: part a scale16 24 x (1500000/6716 + 10 = 233.3 s) = 5599 s; part r scale16 12 x 233.3 = 2800 s; part d 16 x (1000000/3528 + 10 = 293.4 s) = 4694 s; controls about 30 s; total about 13123 job-seconds; LPT on 8 workers about 1640 s plus at most one 293 s tail, about 1940 s, below 3600 s. Cut rule, declared now: if the pre-freeze worst-case LPT projection is above 3600 s, part d is reduced to 6 scale20 cases (seeds 11610001-11610006), then to 4 (11610001-11610004); if 4 still projects above 3600 s, part d is dropped and scale-20 gets its own version (v0.46.0). Nothing else is cut. The cut is declared in the pre-run deviation before the freeze",
+  "process": "LEAN (standing go t133s553, ledger 76b30d5). A ledgered build_authorization_048 citing it is required before any code, ledgered BEFORE seedcheck_048. Plan locked before data; seedcheck before seeds; no cap calibration (C and B fixed here); independent recount; CNF reference audit; api_checks (fidelity, ghost, no-network) once after the freeze; pre-freeze smoke on 11590001-11590006 with the real release verifier chain; one main run, 8 workers, no tuning, no reruns, no relaunch if interrupted (the resume clause is not approved); failures published; one fresh-clone verify plus tests",
+  "next_if_pass": "all headline gates pass: certify/16d at C 50000 becomes the latest certified API for declared N <= 16, and for N <= 20 if GS20_sound passes non-vacuously (exact conditional on the declared N and noise-free readings); next, a 24-world scale-20 replication and a noise study at 12 states",
+  "next_if_fail": "GDET48 fails with 0 guard firings: the nondeterminism is inside the solver path, not the clock; find it, ship nothing new. GDET48 or GWALL_r fails on guard firings only: the cap is still too large for this host under load; re-plan C from this run's slowest rate. GFID48 fails: the wrapper is unfaithful; fix it, ship nothing new. GAPI16D_fresh48 fails on WRONG: soundness first. GAPI16D_fresh48 fails on count only: record it; the smaller cap trades decided cases for wall-freedom; re-plan B. GS20_sound fails: soundness at 20 first; do not scale further. G_RT fails: publish it; scale-20 gets its own version",
+  "limitations": [
+    "12 scale16 and 8 scale20 cases give wide CIs",
+    "still needs a declared size N",
+    "clean worlds only; noise and lowobs12 not covered",
+    "walls still depend on the host; only the guard firing count is gated beside the conflict-count record",
+    "the scale20 loaded rate (3528/s) is an Inferred estimate, not a measurement",
+    "the wall-capped A16_N overrun (GQB22 in 047) is not studied here"
+  ],
+  "open_items": [
+    "full N-freedom: Open",
+    "noise at 12 states: Open",
+    "lowobs12 beyond A16: Open",
+    "why A16_N's 9 s kill overran to 16.7 s under load in 047: Open",
+    "whether C 50000 is wall-free on other hosts: Open"
+  ]
+}
