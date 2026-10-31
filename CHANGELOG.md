@@ -1,5 +1,30 @@
 # Brute changelog
 
+## v0.43.0: brute.certify/16, an additive host-agnostic API wrapping the declared-N arm A16_N, tested by replay of sealed 045 records and on fresh 16-state worlds (study BRUTE-0430-CERTIFY16-046, LEAN process)
+
+**10 of 12 gates pass (GAPI14_compat, GHOST16, G10, GQB21, GS_ref, G_sound, G_recount, GTI, G_PROC, G_RT). GAPI16_replay and GAPI16_fresh FAIL. Secondary GREP16c and GAPI_cost reported only.** All 54 jobs (36 fresh arm jobs on 18 cases, 18 replays) ran once and were sealed (319.8 s of 3600 s). certify/16 ships as an additive, uncertified API; certify/14 is unchanged and still the latest certified API. *Observed*
+
+Claim scope (*Exact*; reason *Inferred*): a certify/16 ID or IDF is exact only conditional on noise-free readings and a true size at most the declared N (family_bound). A larger machine can copy the true machine on every visited state and differ only where the trace never reaches, so no finite trace rules it out; a size bound is inherent.
+
+### Timeline (EDT, 2026-10-31)
+
+- Plan `7d691cc` (preregistration ledger `8930ad3`, 05:34:39; build authorization `d09da5e`, 05:35:36); seedcheck `b127415` PASS (ledger `57ebd9a`, 05:40:34); certify16 `ba32ba9`; runner and tooling `bd22bd3`..`9d21522`; prefreeze smoke `31dd85d` (PASS false: AMB and K_spent stops absent, covered by test_certify16); recount key fix `579960b`; deviation #165 `8c0925e`; source freeze `dcfb009` (195 files, ledger `f3a8948`, 06:03:20).
+- Run start (ledger `c79b6ee`, 06:03:33); runner to about 06:08:56; snapshots `70e10f2`, `8dd4720`; seal `6b947df` (ledger `d18a506`); recount `3c05044` (PASS, ledger `2a257b1`); reference `09d3e31` (ledger `9f89156`); api checks `884dfc3` (ledger `78bec36`); tests `bb14079` (ledger `97055b4`); gates `71995fb` (ledger `ec4c702`); deviation #166 (ledger `746a6d8`).
+
+### Results (recount labels; Wilson 95% in GATES_046.json)
+
+| part | API16 (certify/16) | A16_N | WRONG |
+|---|---|---|---|
+| replay of 18 sealed 045 A16_N cases | same 17/18 [0.74, 0.99] (same_step 16, words_equal 17) | sealed | 0 |
+| fresh scale16 (12) ID+IDF | 6 [0.25, 0.75] (ID 3, IDF 3, unknown 6) | 7 [0.32, 0.81] (ID 3, IDF 4, unknown 5) | 0 |
+| fresh control (6) | 6 ID | 6 ID | 0 |
+
+- GAPI16_replay FAIL: 11130006 ended IDU against the sealed ID; same words, n_min 16 and canonical model; capped calls 5 against 3. All 13 replays with no capped call were identical. Reading: wall-clock cap timing (*Inferred*); wrapper infidelity not ruled out (*Open*).
+- GAPI16_fresh FAIL on count (bar 8/12); WRONG 0; same label 11/12 [0.65, 0.99] (bar met; the one difference, 11230005, is a capped API16 unknown against A16_N IDF).
+- GAPI14_compat PASS (5/5 certify14 sample cases byte-equal, certify14 tests 14 OK); GHOST16 PASS (no forbidden import or call in the new closure; 0 socket attempts). G10 12/12 ID. GQB21 max call 10.033 s (bound 10.5 s), 2592 calls, 2 hard kills. GS_ref: 25 decided, 25 audited, 0 mismatches, 20/20 mutations (614 s of 1800 s).
+- GREP16c: A16_N 7/12 beside 043 9/12 and 045 10/12 (reported). GAPI_cost: scale16 arm wall API16 663.2 s, A16_N 655.1 s.
+- Deviations #165 (pre-run), #166 (post-run). Next: plan 046 next_if_fail clause 1, fix replay fidelity (v0.44.0, plan only).
+
 ## v0.42.0: an N-free stop for A16: bounded rival search at n_min+1 (A16_nf1) and n_min+2 (A16_nf2) against the declared-N stop (A16_N) on fresh 16-state worlds (study BRUTE-0420-A16-NFREE-STOP-045, LEAN process)
 
 **10 of 12 gates pass (GNF_bound, GNF_misfire, GLO_sem, GQB20, G_sound, GS_ref, GTI, G_PROC, G_RT, G_recount). GNF_agree and G10 FAIL. Secondary GREP16b and GNF_cost reported only.** All 54 arm jobs (18 cases) ran once and were sealed (443.0 s of 3600 s). *Observed*
