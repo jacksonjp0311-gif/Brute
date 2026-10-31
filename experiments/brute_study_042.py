@@ -7,9 +7,10 @@ Every SAT call runs in a per-job solver child (experiments.solver_proxy_041) und
 Main (fresh, eps 0, worlds_039): arms A14 / A16, K = 128, 240 s per case, declared bound N = the family size, on scale16
 10810001-12, perm12 10820001-12, control_cycle3 10860001-06: 60 jobs, one per (case, arm), scale16 first, 8 workers.
 Smoke (pre-freeze only, never gated; outside results/study-042): fresh arms on 10880001-06 (scale16 x 2, perm12 x 2, control x 2);
-replays (stop check only, no world stepped) of the sealed 041 part-c traces 10610001, 10610004, 10610012 (E1 ended AMB there)
+replays (stop check only, no world stepped) of the sealed 041 part-c traces 10610001, 10610004, 10610012 (E1 ended AMB there) and 10610008 (E1 ended IDF)
 under A14 (E0) and A16 (stop_check16); and two smoke-only probes that force the remaining stop kinds through the real code
-path: K = 0 on perm12 10880003 (any AMB round ends K_spent) and a 0.5 s case budget on scale16 10880001 (ends unknown).
+path: K = 0 on scale16 10880002 (its first round is AMB, so it ends K_spent; the
+first smoke used perm12 10880003, which ended ID with no AMB round, so the probe was moved) and a 0.5 s case budget on scale16 10880001 (ends unknown).
   PYTHONPATH=. python experiments/brute_study_042.py --block main --workers 8
   PYTHONPATH=. python experiments/brute_study_042.py --block smoke --output /tmp/x --workers 8
 """
@@ -39,8 +40,8 @@ ARMS=('A16','A14')
 SCHEMA_CASE='brute.case.v39_0';SCHEMA_REPLAY='brute.replay.v39_0'
 K=S16.K14;BUDGET=S16.BUDGET14
 SMOKE_KEYS=('scale16','scale16','perm12','perm12','control','control')
-SMOKE_REPLAY=(10610001,10610004,10610012)
-PROBES={'K0':('perm12',SMOKE[0]+2,0,BUDGET),'B05':('scale16',SMOKE[0],K,0.5)}
+SMOKE_REPLAY=(10610001,10610004,10610008,10610012)
+PROBES={'K0':('scale16',SMOKE[0]+1,0,BUDGET),'B05':('scale16',SMOKE[0],K,0.5)}
 
 
 def _active(arm,masks,acts,k,N,obs,deadline,Kc,H,srv):
