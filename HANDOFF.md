@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.46.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.46.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0460 -->
-- **v0.46.0: RELEASE IN PROGRESS** 2026-10-31 (EDT). Built on branch `plan/v0.46.0` (BRUTE_PLAN_049, certify/16e: chunked continuation of capped SAT calls, chunk C 50000, B 1500000 for 16 states and 1000000 for 20; two independent passes on 26 fresh cases (12 scale16, 8 scale20, 6 controls), 26 API16E replays and 26 max_chunks-1 compatibility replays of sealed 048 traces; LEAN process, 60 min cap).
+- **v0.46.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.46.0 (annotated tag object `365e8d8` at `203861c`, ledger release_049 `984a249`). Fresh-clone verify of the tag passed: study 045, 046, 047, 048 and 049 raw data restored, verify_release_0460 (5 links, 0 authorization exceptions, GATES_049 reproduces), run_tests_0460 81 tests passed. Built on branch `plan/v0.46.0` (BRUTE_PLAN_049, certify/16e: chunked continuation of capped SAT calls, chunk C 50000, B 1500000 for 16 states and 1000000 for 20; two independent passes on 26 fresh cases (12 scale16, 8 scale20, 6 controls), 26 API16E replays and 26 max_chunks-1 compatibility replays of sealed 048 traces; LEAN process, 60 min cap).
   - **Run complete (Observed).** 104/104 jobs, 606.8 s of 3600 s, normal exit, run once; 3 checkpoint snapshots; nothing relaunched; resume clause not approved, not used. The reference audit and api_checks finished on their own across an agent interruption and were committed as-is (#172 item 2).
   - **PASS (15/15 gated):** GDET49 (26/26 [0.87, 1.00], 0 guard firings), GFID49 (26/26), GCOMPAT16D (26/26 byte-equal to sealed 048), GAPI16E_fresh49 (7/12 [0.32, 0.81], bar 7), GS20_sound49 (vacuous: 0 of 8 decided, WRONG 0), GR49_sound (0 contradictions), GHOST49, G10 (6/6), GQB24 (max chunk 14.4 s, max case 153.2 s), GS_ref (28/28 audited, 0 mismatches, 20/20), G_sound, G_recount, GTI, G_PROC, G_RT.
   - **Reading (Inferred):** resumption recovers decisions the fixed cap lost (0/12 -> 7/12) at no soundness cost, but the margin is thin; at 20 states B binds (all 8 spent it).
