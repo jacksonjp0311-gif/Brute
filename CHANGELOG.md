@@ -1,5 +1,43 @@
 # Brute changelog
 
+## v0.33.0: repeated reads (A11: a per-bit majority of r reads with a smaller noise budget B_max(r) and a bisection least-B search) for active identification on noisy traces (study BRUTE-0330-REPEATED-READS-036, LEAN process)
+
+**8 of 11 gates pass (GNR11, G_sound, G10, GS_ref, GTI, G_PROC, G_RT, G_recount). GR11_headline FAILS on a, b, c and d; GBIS11 FAILS; GQB11 FAILS (A11_r3_up query 10.513 s; bound 10.5 s). Secondary GRB11 fails.** All 48 cases ran once and were sealed (420.3 s of 1800 s). *Observed*
+
+### Timeline (EDT, 2026-10-30)
+
+- Plan `3ab989d` (19:20; ledger `67513fa`); build authorization (ledger `ed8452b`, 19:21, standing go t133s553, ledger 76b30d5); seedcheck `0a9ae7c` (ledger `0eac98d`, 19:32, before any seed); A11 `9b5260c`; runner `528a47d`; recount `5ce8af9`; CNF reference `fe4d776`; gates `fb7825d`; tooling `6707700`; release tooling `58fe718`, `8794035`, `3c09232`; pre-freeze sealed-smoke gates `34456cb`; #144 `f095643`, `fb2199a`; source freeze `730aef4` (19:46; ledger `2a393ff`).
+- Run start (ledger `e972a23`, 19:47:07); 3 pushed checkpoint snapshots `43b5e2f`, `21fdeca`, `0bfe2b7`; seal `d89c1ea` (run end ledger `bd46789`, about 19:54); recount `40f009d`; reference `faaf741`; tests `088da1e`; gates `bff753f`; #145 `7e16c0a`; RELEASE.json `02d6dcb`.
+
+### Results (labels per case, ID / IDF / AMB / WRONG / IDU; Wilson 95% CI; paired contrasts and mean B seed-bootstrap 95% CI; rps = reads per step)
+
+| arm | rps | noisy12 (n=12) | noisy12 ID CI | noisy12 IDU CI | noisy12 mean B_final | noisy12_extra (n=6) | noisy8 (n=12) | clean12 (n=12) | controls ID |
+|---|---|---|---|---|---|---|---|---|---|
+| A11_r3 (B_max 6) | 3 | 2 / 0 / 0 / 0 / 10 | [0.05, 0.45] | [0.55, 0.95] | 0.25 [0, 0.67] | 0 / 0 / 1 / 0 / 5 | 2 / 2 / 0 / 1 / 7 (B 1.0 [0.33, 1.83]) | 6 / 3 / 2 / 0 / 1 | 6/6 |
+| A11_r5 (B_max 2) | 5 | 4 / 1 / 2 / 0 / 5 | [0.14, 0.61] | [0.19, 0.68] | 0.33 [0, 0.75] | 2 / 1 / 0 / 0 / 3 | 8 [0.39, 0.86] / 4 / 0 / 0 / 0 | 6 / 3 / 2 / 0 / 1 | 6/6 |
+| A11_r3_up (upward least-B) | 3 | 3 / 0 / 0 / 0 / 9 | [0.09, 0.53] | [0.47, 0.91] | 0.33 | 0 / 0 / 1 / 0 / 5 | 4 / 3 / 0 / 1 / 4 (B 2.25) | 6 / 3 / 2 / 0 / 1 | 6/6 |
+| A10 (v0.32.0) | 1 | 0 / 0 / 0 / 0 / 12 | [0, 0.24] | [0.76, 1] | 0 | 0 / 0 / 0 / 0 / 6 | 0 / 0 / 0 / 0 / 12 | 6 / 3 / 2 / 0 / 1 | 6/6 |
+| S7 (passive, B = 27) | 1 | 0 / 0 / 0 / 0 / 12 | [0, 0.24] | [0.76, 1] | 27 | 0 / 0 / 0 / 0 / 6 | 0 / 0 / 0 / 0 / 12 | 0 / 0 / 0 / 0 / 12 | 6/6 |
+| S5 (passive, clean) | 1 | 0 / 0 / 0 / 12 / 0 (not gated) | [0, 0.24] | [0, 0.24] | - | 0 / 0 / 0 / 5 / 1 | 0 / 0 / 0 / 5 / 7 | 1 / 0 / 10 / 0 / 1 | 6/6 |
+
+Reads per case, noisy12: A10 177, A11_r3 559 [536, 588], A11_r5 998 [951, 1049].
+
+- GR11 a: A11_r3 recounted WRONG 1 (noisy_scale8 10210002, within budget): FAIL. b: ID(A11_r3) - ID(A10) noisy12 +0.17 [0.00, 0.42] (bar 0.25, lower > 0): FAIL. c: ID + IDF 2/12 (bar 4): FAIL. d: IDU 10/12 (bar <= 3): FAIL.
+- Reported, not gated: ID(A11_r5) - ID(A10) noisy12 +0.33 [0.08, 0.58]; ID(A11_r5) - ID(A11_r3) +0.17 [-0.17, 0.50]; ID(A11_r3) - ID(S7) +0.17 [0, 0.42].
+- GBIS11: IDU(A11_r3) 10/12 against IDU(A11_r3_up) 9/12, paired +0.08 [0, 0.25]: FAIL. GQB11: A11_r3_up 10.513 s on noisy_scale12_extra 10240002 (A11_r3 9.58, A11_r5 9.62, A10 9.84, S5 9.90, S7 10.06): FAIL. GRB11 (secondary): FAIL.
+- GNR11: A11 labels equal A10 labels on every clean case, B_final 0: PASS. G_sound: 674 words re-simulated, 0 unsound. GS_ref: 12 noisy_scale8 A11_r3 cases, 88 decided (75 at raised B), 1 undecided, 0 mismatches, mutations 20/20. G_RT 420.3 s.
+- Diagnosis (Observed): the majority of 3 reads cut the truth's base flips from 13-20 to 0-5, but on 9 of 10 A11_r3 IDU cases the first bisection probe, at B_max = 6, hit the 9.5 s query cap. The one WRONG stopped ID at least B 1 while the truth needed 2 flips on that trace; the model matched the truth's future from the final state but not from the start state. *Observed / Inferred.*
+
+### What Brute can't do yet
+
+- It still mostly cannot identify a 12-state machine from noisy readings: A11_r3 ID 2/12, A11_r5 ID 4/12. *Observed.*
+- Its least-budget ID claim is not sound under noise: one WRONG when the truth needed more flips than the least SAT budget. *Observed / Inferred.*
+- Probing B_max first at 12 states is as hard as the queries it was meant to avoid (9 of 10 IDU cases capped on the first probe). *Observed.*
+- Its in-solver cap still overshoots (10.513 s against 10.5 s). *Observed.*
+- Its soundness still assumes the declared size N and the declared noise rate. *Exact / Open.*
+
+Deviations #144 (pre-run) and #145 (post-run). Verify: `python scripts/study036_storage.py restore && PYTHONPATH=. python scripts/verify_release_0330.py`.
+
 ## v0.32.0: adaptive noise budget (A10: A9 with B = 0 until the exact search contradicts the trace) for active identification on noisy traces (study BRUTE-0320-NOISY-ACTIVE-ID-035, LEAN process)
 
 **9 of 11 gates pass (GNR10, GAD10, G_sound, G10, GS_ref, GTI, G_PROC, G_RT, G_recount). GA10_headline FAILS on a, b, c and d; GQB10 FAILS (S7 query 10.538 s; bound 10.5 s). Secondary G16 fails (A10 ID 0/6).** All 48 cases ran once and were sealed (342.7 s of 1800 s). *Observed*

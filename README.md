@@ -3,7 +3,7 @@
 </p>
 
 <p align="center"><b>Exact geometric reasoning about hidden worlds. Brute keeps every explanation the evidence still allows, and it certifies an answer only when all of them agree. Otherwise it says "I don't know."</b><br>
-<sub>Brute v0.32.0 · built on BGR v0.90.0 (BITWORK — Geometric Reasoning) · research preview · not general intelligence</sub></p>
+<sub>Brute v0.33.0 · built on BGR v0.90.0 (BITWORK — Geometric Reasoning) · research preview · not general intelligence</sub></p>
 
 ---
 
@@ -17,6 +17,7 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 | **The SAT engine makes the same decision as brute-force enumeration on all 25,344 steps** (v0.5.0, GX1), and the constraint region matches enumeration on 1.25 M items (v0.4.0, GR1/GR1b) | `results/study-007/`, `results/study-006/` | *Observed* |
 | **Second-encoding cross-check, 288/288 breadth cases: 0 mismatching traces in 1,358,721 SAT queries, 0 unknowns, 0 witness failures.** This was an incremental CaDiCaL re-run of the v0.6.0 cross-check: 310 s on 4 workers, against ~8.8 h for 46 cases before. It is post-release verification and does not change the frozen GX2′ FAIL | branch [`verify/xcheck-incremental`](https://github.com/jacksonjp0311-gif/Brute/tree/verify/xcheck-incremental), `results/verify-xcheck-incremental/` | *Observed* |
 | **v0.8.0 ran every pre-registered stream inside a hard 2 h cap** with an independent watchdog: the whole study finished in 1,970 s (cap 7,200 s), the second implementation agreed on 648/648 + 144/144 mandatory traces and caught 20/20 injected mutations, and in-cap test isolation passed (294 tests). The kill drill stopped 8 process groups in 0.239 s | `results/study-010/GATES_010.json` (G11, GX2_010, GTI, G_RT ii/iii) | *Observed* |
+| **v0.33.0: repeated reads (A11, a majority of r reads with a smaller noise budget) do not make active identification work on noisy 12-state traces (GR11 headline FAIL on a-d; 8 of 11 gated; GBIS11 and GQB11 FAIL; LEAN process).** All 48 cases sealed in 420 s. On noisy 12-state traces A11_r3 identified 2/12 [0.05, 0.45] and was IDU on 10/12 [0.55, 0.95]: the first bisection probe at B_max = 6 hit the 9.5 s cap on 9 of the 10. Paired ID(A11_r3) - ID(A10) +0.17 [0, 0.42] (bar 0.25). One A11_r3 WRONG on noisy 8 states (least budget below the truth's flips) fails clause a. Five reads (A11_r5) did best: ID 4/12, +0.33 [0.08, 0.58] over A10 (reported, not gated). Clean labels equal A10 (GNR11 PASS); 0 unsound words in 674 | `results/study-036/GATES_036.json` | *Observed* |
 | **v0.32.0: an adaptive noise budget (A10) does not make active identification work on noisy traces (GA10 headline FAIL on a-d; 9 of 11 gated; GQB10 FAIL; LEAN process).** All 48 cases sealed in 343 s. On noisy 12-state traces (eps 0.05) A10 identified 0/12 [0, 0.24] and was IDU on 12/12 [0.76, 1.00]: its upward least-budget search hit the 10 s query cap before reaching the true 13-23 flips, so the budget never left 0. Paired ID(A10) - ID(S7) 0.00 [0, 0] (bar 0.25). A10 and S7 gave 0 WRONG on all 48 cases; S5 gave 15 WRONG on the 24 noisy cases, which fails clause a. On clean traces the adaptive budget stayed 0 and matched A9 on every case (GNR10 PASS; clean-12 ID 7/12 [0.32, 0.81] against 0/12 for the fixed budget, +0.58 [0.33, 0.83], GAD10 PASS). One S7 query took 10.54 s (bound 10.5; GQB10 FAIL). 16 states (secondary): ID 0/6 | `results/study-035/GATES_035.json` | *Observed* |
 | **v0.31.0: sound active identification (A9) identifies 9 of 12 twelve-state machines with 0 WRONG answers (GA9 headline PASS on a-d; 11 of 12 gated; GQB9 FAIL; LEAN process).** All 36 cases sealed in 125 s. A9 checks for a consistent rival at every size from the least consistent size up to the declared size before it stops. At 12 states A9 identified 9/12 [0.47, 0.91] against 0/12 for S5 and for the same number of random inputs (paired A9 - S5 +0.75 [0.50, 1.00]; A9 - A9_random +0.75 [0.50, 1.00]); WRONG 0 of 36 for A9, against 2 for A8. One A9 SAT query took 10.89 s (bound 10.5; GQB9 FAIL). 407 separating words re-simulated, 0 unsound | `results/study-034/GATES_034.json` | *Observed* |
 | **v0.30.0: active experiments (A8) identify more 12-state machines than passive traces, but its stop rule names a too-small machine in 5 cases (GAE8 FAIL on a and c; 9 of 10 gated; LEAN process).** All 36 cases sealed in 116 s. At 12 states A8 identified 5/12 [0.19, 0.68] against 0/12 for S5, S1 and the same number of random inputs (paired A8 - S5 +0.417 [0.167, 0.667]; A8 - A8_random +0.417 [0.167, 0.667]). But A8 was WRONG on 5 of 36 cases: each stopped at a unique machine smaller than the truth. 109 separating words re-simulated, 0 unsound | `results/study-033/GATES_033.json` | *Observed* |
@@ -49,7 +50,8 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 
 | Version | Study | Gates | What it added | Key result |
 | --- | --- | --- | --- | --- |
-| **v0.32.0** (current) | BRUTE-0320-NOISY-ACTIVE-ID-035, LEAN: 48 cases (noisy 8/12, clean 12/16 states, controls), 30 min cap, all sealed | **9 / 11** | adaptive noise budget A10 (brute/scalesearch10: B = 0 until the exact search is UNSAT, then the least SAT budget up to 27; r = 3 majority re-reads); A10_fixed ablation; in-solver cap hook for every arm; API unchanged (certify/14) | GA10 FAIL: noisy-12 A10 ID 0/12, IDU 12/12 (least-budget search capped); GNR10 and GAD10 PASS; GQB10 FAIL (S7 10.54 s) *Observed* |
+| **v0.33.0** (current) | BRUTE-0330-REPEATED-READS-036, LEAN: 48 cases (noisy 8/12 states, clean 12, controls), 30 min cap, all sealed | **8 / 11** | repeated reads A11 (brute/scalesearch11: per-bit majority of r = 3 or 5 reads, B_max(r) 6 or 2, bisection least-B; A11_r3_up ablation); API unchanged (certify/14) | GR11 FAIL: noisy-12 A11_r3 ID 2/12, IDU 10/12 (B_max probe capped), 1 WRONG at least B; A11_r5 ID 4/12; GQB11 FAIL (10.513 s) *Observed* |
+| **v0.32.0** | BRUTE-0320-NOISY-ACTIVE-ID-035, LEAN: 48 cases (noisy 8/12, clean 12/16 states, controls), 30 min cap, all sealed | **9 / 11** | adaptive noise budget A10 (brute/scalesearch10: B = 0 until the exact search is UNSAT, then the least SAT budget up to 27; r = 3 majority re-reads); A10_fixed ablation; in-solver cap hook for every arm; API unchanged (certify/14) | GA10 FAIL: noisy-12 A10 ID 0/12, IDU 12/12 (least-budget search capped); GNR10 and GAD10 PASS; GQB10 FAIL (S7 10.54 s) *Observed* |
 | **v0.31.0** | BRUTE-0310-SOUND-ACTIVE-ID-034, LEAN: 36 cases on 8-16 state worlds plus controls, 30 min cap, all sealed | **11 / 12** | sound active identification A9 (brute/scalesearch9: rivals searched at every size n_min..N, bounded symbolic separating words, up to 64 extra actions); A9_random control; ID up to start state (IDF) label; API unchanged (certify/14) | GA9 PASS: ID(A9, 12 states) 9/12 vs 0/12 passive; WRONG 0/36; GQB9 FAIL (10.89 s query) *Observed* |
 | **v0.30.0** | BRUTE-0300-ACTIVE-EXPERIMENTS-033, LEAN: 36 cases on 8-16 state worlds plus controls, 30 min cap, all sealed | **9 / 10** | active experiments A8 (brute/scalesearch8: separate two consistent machines with a shortest distinguishing word, up to 64 extra actions); A8_random control; API unchanged (certify/14) | GAE8 a, c FAIL: ID(A8, 12 states) 5/12 vs 0/12 passive; WRONG 5/36 (stop below truth size) *Observed* |
 | **v0.29.0** | BRUTE-0290-ROBUST-PERCEPTION-032, LEAN: 48 cases (30 noisy at eps 0.05, 12 clean, 6 controls), 30 min cap, all sealed | **6 / 9** | exact search S7 (S5 plus flip literals with a fixed noise budget B_end 27); S7_contra ablation; API unchanged (certify/14) | GRP7 d, GNR7, G10 FAIL: S7 F_truth 0; noisy-12 U_inf S7 0.467 vs S5 0.576; X_inf 0/12; clean-12 U +0.362 vs S5 *Observed* |
@@ -82,6 +84,7 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 | v0.1.0–v0.2.0 | studies 002–004 | see `results/` | exact version space, open-world fallback, active experiments | active coverage +0.115 pooled *Observed* |
 
 ## Published failures (they stay failed)
+- **Repeated reads do not finish noisy 12-state worlds (GR11, v0.33.0).** A11_r3 noisy-12 ID 2/12, ID+IDF 2/12, IDU 10/12; on 9 of the 10 IDU cases the first probe at B_max = 6 hit the 9.5 s cap. Clause a fails on one A11_r3 WRONG (noisy_scale8 10210002: least B 1, truth flips 2). GBIS11: bisection did not beat the upward search (IDU 10 vs 9). GQB11: A11_r3_up 10.513 s > 10.5 s. *Observed* (mechanism *Inferred*).
 - **The adaptive noise budget finishes no noisy world (GA10, v0.32.0).** A10 noisy-12 ID 0/12, ID+IDF 0/12, IDU 12/12; on every noisy case the upward least-budget search (B = 1, 2, ...) hit the 10 s query cap after 9-12 queries, below the true flip count. Clause a also fails on the passive clean arm S5 (15 WRONG on noisy traces). GQB10: S7 10.538 s > 10.5 s. *Observed* (mechanism *Inferred*).
 - **The early-window control failed (GLH_early_control, v0.18.0).** C(RGNB4) over steps 1-28 at eps 0.02 was 0.0025 [0.0012, 0.0042], outside the study-019 CI [0.0405, 0.0654]. The control assumed the first 28 steps are horizon-independent; they are not, because the boundary spends delta as delta·b/B (m at bit 56: 5 for B = 176, 4 for B = 56). *Observed* / *Exact* (mechanism).
 - **A box restart broke the heartbeat (G_HB, v0.18.0).** Max gap 1083.5 s (12:19:42-12:37:58 EDT), plus four 27-58 s gaps after the relaunch. Streams resumed from checkpoints under the frozen rule; the cap was not extended. *Observed.*
@@ -125,6 +128,7 @@ Details: [`docs/ROADMAP_TO_GI.md`](docs/ROADMAP_TO_GI.md) (gated steps toward ge
 git clone https://github.com/jacksonjp0311-gif/Brute.git && cd Brute
 python -m pip install -r requirements.txt
 for k in 004 005 006 007 008 009 010 011 012 013 014 015 016 017; do python scripts/study${k}_storage.py restore; done   # rebuild sealed traces, checked against SEAL.json
+python scripts/study036_storage.py restore && PYTHONPATH=. python scripts/verify_release_0330.py   # v0.33.0 (lean short verify)
 python scripts/study035_storage.py restore && PYTHONPATH=. python scripts/verify_release_0320.py   # v0.32.0 (lean short verify)
 python scripts/study034_storage.py restore && PYTHONPATH=. python scripts/verify_release_0310.py   # v0.31.0 (lean short verify)
 python scripts/study033_storage.py restore && PYTHONPATH=. python scripts/verify_release_0300.py   # v0.30.0 (lean short verify)
@@ -634,6 +638,14 @@ C (frozen v0.1.1, passive, `GATES.json` G6 `C_v011_coverage_post`) for context: 
 Findings and their math: [`docs/research/DISCOVERIES.md`](docs/research/DISCOVERIES.md) D11–D16. Study-005 deviations: [`BRUTE_DEVIATIONS_005.md`](docs/research/BRUTE_DEVIATIONS_005.md).
 
 ## What Brute can't do yet
+
+New in v0.33.0:
+
+- **It still mostly cannot identify a machine from noisy readings.** With 3 re-reads per position A11 identified 2 of 12 noisy 12-state worlds; with 5 re-reads, 4 of 12. *Observed.*
+- **Its least-budget ID claim is not sound under noise.** In one case the least budget that fit the fused trace was below the truth's flip count, and Brute named a machine that is wrong from the start state. *Observed / Inferred.*
+- **Checking the largest budget first is itself too slow at 12 states.** 9 of 10 unfinished A11_r3 cases stopped on that first probe. *Observed.*
+- **Its in-solver cap still overshoots.** One query ran 10.513 s (bound 10.5). *Observed.*
+- **16-state noisy worlds were not tested this release.** *Open.*
 
 New in v0.32.0:
 
