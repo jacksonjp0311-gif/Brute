@@ -136,6 +136,10 @@ class SolverServer:
             if self.p is not None:
                 try:self.p.wait(5)
                 except Exception:self.kill('close')
+        if self.p is not None:
+            for f in (self.p.stdin,self.p.stdout):
+                try:f.close()
+                except Exception:pass
         self.p=None
 
 
