@@ -1,8 +1,19 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.42.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.43.0 release in progress)._
 
 ## Current version and state
+
+<!-- V0430 -->
+- **v0.43.0: RELEASE IN PROGRESS** 2026-10-31 (EDT). Built on branch `plan/v0.43.0` (BRUTE_PLAN_046, certify/16: API16 wrapping A16_N, replay of the 18 sealed 045 A16_N cases plus fresh scale16 and controls; LEAN; STANDING GO t133s553, build authorization ledger `d09da5e` at plan commit `7d691cc`).
+  - **Run complete (Observed).** 54/54 jobs (36 fresh arm jobs on 18 cases, 18 replays), 319.8 s of 3600 s, normal exit about 06:08:56 EDT, run once; 2 checkpoint snapshots (`70e10f2`, `8dd4720`); nothing relaunched; resume clause not approved, not used. 2 hard kills in 2592 calls; max calls 10.033 / 10.015 s.
+  - **PASS (10/12):** GAPI14_compat, GHOST16, G10 (12/12 ID), GQB21, GS_ref (25 decided, all audited, 0 mismatches, 20/20), G_sound (638 words, 0 unsound), G_recount, GTI, G_PROC, G_RT. **FAIL:** GAPI16_replay (same 17/18 [0.74, 0.99]; 11130006 IDU vs sealed ID with identical words and model, capped 5 vs 3) and GAPI16_fresh (API16 6/12 [0.25, 0.75], bar 8; A16_N 7/12; agree 11/12; WRONG 0). Secondary GREP16c, GAPI_cost reported only.
+  - **Claim scope (Exact; reason Inferred):** certify/16 ID/IDF is conditional on the declared N; a larger machine can copy the true one on every visited state, so a size bound is inherent.
+  - **API:** brute/api/certify16.py ships additive and uncertified; certify/14 unchanged and still the latest certified API.
+  - **Branch taken:** plan 046 next_if_fail clause 1 (replay fails: fix fidelity, re-plan). v0.44.0 is BRUTE_PLAN_047 (plan only) on `plan/v0.44.0`.
+  - **Deviations:** #165 (pre-run: replay comparison, readings, host cap, compat/ghost method, reference scope, N-conditional claim, smoke PASS false, recount key fix), #166 (post-run).
+  - **Chain:** plan `7d691cc` -> seedcheck `b127415` -> certify16 `ba32ba9` -> tooling `bd22bd3`..`9d21522` -> pre-freeze smoke `31dd85d` -> recount fix `579960b` -> #165 `8c0925e` -> freeze `dcfb009` -> run start `c79b6ee` -> seal `6b947df` -> recount `3c05044` -> reference `09d3e31` -> api checks `884dfc3` -> tests `bb14079` -> gates `71995fb` -> #166 -> RELEASE.json `1a14261`.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
 
 <!-- V0420 -->
 - **v0.42.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.42.0 (annotated tag at `24e5501`, ledger release_045 `78b82fe`). Fresh-clone verify of the tag passed (ledger `c693091`): verify_release_0420 (5 links, 0 exceptions) and 42 tests. Box clock 0 s from GitHub's Date header at 05:32:20 EDT. Built on branch `plan/v0.42.0` (BRUTE_PLAN_045, N-free stop: A16_N vs A16_nf1 vs A16_nf2 on fresh scale16 plus controls; LEAN; STANDING GO t133s553, build authorization ledger `887980b` at plan commit `27d7946`).
