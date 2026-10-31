@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.50.0 release candidate on plan/v0.50.0)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.50.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0500 -->
-- **v0.50.0: RELEASE CANDIDATE** 2026-10-31 (EDT) on branch `plan/v0.50.0` (BRUTE_PLAN_053: certify/16n at declared bound 16, eps 0.05 and eps_bar 0.10, delta 0.001, C 50000, B 1500000; compat against certify/16e at bound 16; non-blocking part B: certify/16e at 20 states with a conflict-only stop on 1 worker). Tag, release and fresh-clone verify pending.
+- **v0.50.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.50.0 (annotated tag object `ef3e49b` at `a92831d`, ledger release_053 `0a42894`). Fresh-clone verify of the tag passed: study 045 to 053 restored, verify_release_0500 passed, 103/103 tests (84 gated, 19 reported; ledger fresh_clone_verify_053 `b384e23`). Built on branch `plan/v0.50.0` (BRUTE_PLAN_053: certify/16n at declared bound 16, eps 0.05 and eps_bar 0.10, delta 0.001, C 50000, B 1500000; compat against certify/16e at bound 16; non-blocking part B: certify/16e at 20 states with a conflict-only stop on 1 worker).
   - **Run complete (Observed).** 48/48 jobs, 27 cases, 1048.2 s of 3600 s, launched 15:49:39 EDT, normal exit about 16:07 EDT, run once; 4 checkpoint snapshots; nothing relaunched; resume clause not approved, not used. Declared cut: N16BAR 6, N20C 3.
   - **PASS (13/13 gated):** GDET53 12/12 [0.76, 1.00] (0 guard firings); GFID53 42/42 [0.92, 1.00]; GN16_sound53 (eps 0.05 ID+IDF 7/12 [0.32, 0.81]; eps 0.10 4/6 [0.30, 0.90]; WRONG 0/30 [0.00, 0.11], 0 majority errors); GCOMPAT16N53 6/6 [0.61, 1.00]; GHOST53; GQB27 (max chunk 9.0 s, max case 165.9 s); GS_ref (31/31 audited, 0 mismatches, 20/20 mutations); G_sound (900 words, 0 unsound); G_recount; GTI; GTEST (84 gated tests); G_PROC; G_RT. certified_16n_N16 true.
   - **Non-blocking (both pass):** GS20C_det53 3/3 [0.44, 1.00], identical conflict counts, 0 hard kills; GS20C_sound53 WRONG 0/6 but 0/3 decided (vacuous).
