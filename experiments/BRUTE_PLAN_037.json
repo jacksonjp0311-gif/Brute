@@ -1,0 +1,134 @@
+{
+  "schema": "brute.plan/1",
+  "study": "BRUTE-0340-SOUND-NOISY-STOP-037",
+  "version_under_test": "0.34.0",
+  "parent_study": "BRUTE-0330-REPEATED-READS-036",
+  "status": "preregistered (plan only; no build authorized, no code, no data)",
+  "branch_taken": "The user's rule: if GR11 passes, go to 16 states or a more general world family; otherwise diagnose. GR11 failed on a-d (study 036: noisy12 A11_r3 ID 2/12 [0.05,0.45], IDU 10/12 [0.55,0.95]; paired ID(A11_r3)-ID(A10) +0.17 [0,0.42]; one A11_r3 WRONG on noisy_scale8 10210002), so this plan diagnoses. Plan 036 next_if_fail: 'if b fails with IDU still high, replace the per-B UNSAT chain ...; if a fails, the majority trace's within-budget rule is wrong'. Both fired; this plan tests the two narrow fixes the 036 diagnosis points to, and no 16-state cases",
+  "process": "LEAN (standing go t133s553 covers each next locked version; a ledgered build_authorization_037 citing it is still required before any code): plan locked before data; seedcheck_037 before seeds are drawn; independent recount; CNF reference audit; pre-freeze gates test on a sealed smoke block; failures published; evidence labels; one run, no tuning, no reruns, no resume",
+  "question": "Under 5% reading noise, does (1) a sound stop rule (claim ID only when no start-state-distinct rival fits the fused trace with up to B_max flips, not merely at the least SAT budget) remove the least-B WRONG, and (2) an upward-doubling least-B probe (B = 0, 1, 2, 4, ... capped at B_max, then bisection inside the last bracket) avoid the capped B_max-first probe that left A11_r3 IDU on 9 of 10 noisy 12-state cases?",
+  "motivation": "Study 036 (Observed): the majority of 3 reads cut the truth's base flips from 13-20 to 0-5, but on 9 of 10 A11_r3 IDU noisy12 cases the first bisection probe at B = B_max = 6 hit the 9.5 s cap. On noisy_scale8 10210002 A11_r3 and A11_r3_up stopped ID at least B 1 while the truth needed 2 flips on the fused trace; the model matched the truth's future from the final state but not from the start state (label9 WRONG). A11_r5 (B_max 2) had the best noisy12 result (ID 4/12; +0.33 [0.08,0.58] over A10, reported, not gated). GQB11: A11_r3_up 10.513 s > 10.5 s. Inferred: a least-B ID is not sound under noise, and probing the largest budget first is the expensive query",
+  "hypotheses": {
+    "H1_sound": "A12 arms give WRONG 0 on every clean and within-budget noisy case, including the 036 failure pattern (replayed as an Exact unit test on the sealed 036 trace of noisy_scale8 10210002)",
+    "H2_probe": "A12_r3 (upward-doubling probe) is IDU on fewer noisy12 cases than A11_r3 (frozen, re-run as the control): paired IDU(A11_r3) - IDU(A12_r3) >= +0.25 with CI lower bound > 0",
+    "H3_r5": "A12_r5 keeps the A11_r5 gain with the sound stop: ID + IDF(A12_r5, noisy12) >= 5/12",
+    "H4_cap": "a lower solver timer (9.0 s) keeps every query <= 10.5 s"
+  },
+  "design": {
+    "arms": {
+      "A12_r5": "new file brute/scalesearch12.py: A11 (frozen scalesearch11) logic with r = 5 majority reads, B_max(5) = 2, two changes. (1) Sound stop: after the least-B search returns a model M at budget b, run one confirmation query at B_max asking for a machine with <= N states, <= B_max flips on the fused trace, that differs from M from the START state on some word of length <= the declared bound; SAT -> execute the separating word (as a rival pair) and continue; UNSAT -> ID; capped -> IDU. (2) Least-B probe order: B = 0, 1, 2, 4, ... up to B_max, stopping at the first SAT, then bisection inside the last UNSAT/SAT bracket",
+      "A12_r3": "A12 with r = 3, B_max(3) = 6",
+      "A12_r3_nostop": "ablation: A12_r3 probe order with the frozen A11 least-B stop (isolates the probe-order effect)",
+      "A11_r3": "frozen brute/scalesearch11 r = 3 control (036 headline arm)",
+      "A11_r5": "frozen brute/scalesearch11 r = 5 control",
+      "S7": "frozen passive noise-budget arm, B = 27 (context; not gated on ID)"
+    },
+    "K": 64,
+    "query_timer_s": 9.0,
+    "query_bound_s": 10.5,
+    "per_case_cap_s": 120,
+    "study_cap_s": 1800,
+    "workers": 8,
+    "labels": "label9 (frozen): ID only if the returned machine is behaviour-equal to the truth from the start state; IDF; AMB; WRONG; IDU",
+    "within_budget": "the truth's flip count on the arm's fused trace <= B_max(r) (unchanged from 036); reported per case",
+    "api": "unchanged: brute.certify/14; no certify/15"
+  },
+  "heldout_ranges": {
+    "note": "fresh 103x00NN ranges; pre-plan scan (Observed, 2026-10-30 20:07 EDT): 0 word-bounded tokens 1030-1049 followed by 00NN in tracked text and 0 in the sealed .gz archives. Drawn only after a ledgered seedcheck_037",
+    "noisy_scale8": [
+      10310001,
+      10310002,
+      10310003,
+      10310004,
+      10310005,
+      10310006,
+      10310007,
+      10310008,
+      10310009,
+      10310010,
+      10310011,
+      10310012
+    ],
+    "noisy_scale12": [
+      10320001,
+      10320002,
+      10320003,
+      10320004,
+      10320005,
+      10320006,
+      10320007,
+      10320008,
+      10320009,
+      10320010,
+      10320011,
+      10320012
+    ],
+    "clean_scale12": [
+      10330001,
+      10330002,
+      10330003,
+      10330004,
+      10330005,
+      10330006,
+      10330007,
+      10330008,
+      10330009,
+      10330010,
+      10330011,
+      10330012
+    ],
+    "control": [
+      10360001,
+      10360002,
+      10360003,
+      10360004,
+      10360005,
+      10360006
+    ]
+  },
+  "cases": {
+    "declared_before_data": true,
+    "noisy_scale8": 12,
+    "noisy_scale12": 12,
+    "clean_scale12": 12,
+    "control": 6,
+    "eps_noisy": 0.05,
+    "eps_clean": 0,
+    "total": 42
+  },
+  "criteria": {
+    "GR12_headline": {
+      "a": "WRONG = 0 for A12_r5 and A12_r3 on every clean case and every within-budget noisy case (A12_r3_nostop and the A11 controls are reported, not gated)",
+      "b": "IDU(A11_r3, noisy_scale12) - IDU(A12_r3, noisy_scale12) >= +0.25 (3/12), paired seed-bootstrap 95% CI lower bound > 0",
+      "c": "ID + IDF (A12_r5, noisy_scale12) >= 5/12",
+      "d": "ID(A12_r5, noisy_scale12) >= ID(A11_r5, noisy_scale12) - 1/12 (the sound stop costs at most one identification)"
+    },
+    "GSAFE12": "Exact unit test (inside GTI): on the sealed 036 fused trace of noisy_scale8 10210002 the A12 confirmation query at B_max is SAT for a start-state-distinct rival, so A12 does not claim ID at B 1",
+    "GNR12": "on clean_scale12 and control cases every A12 arm has B_final 0 and the same label as A11_r3",
+    "GQB12": "max single query wall <= 10.5 s for every arm",
+    "G_sound": "every executed separating word re-simulated on both models; 0 unsound",
+    "G10": "controls ID 6/6 for every arm",
+    "GS_ref": "frozen CNF reference audit on A12_r3 noisy_scale8 decisions incl. the confirmation verdicts, 0 mismatches, mutations 20/20",
+    "GTI": "all release test modules pass",
+    "G_PROC": "ledger order plan -> authorization -> seedcheck -> freeze -> run_start -> run_end -> recount -> reference -> tests -> gates",
+    "G_RT": "main run <= 1800 s",
+    "G_recount": "independent recount 0 mismatches",
+    "secondary": {
+      "GPR12": "mean probes per least-B search and capped-probe count, A12_r3 vs A11_r3 (reported curve, not gated)"
+    }
+  },
+  "runtime_estimate": "about 450-900 s on 8 workers (036: 420 s for 48 cases and 6 arms; the confirmation query adds one B_max query per ID claim). If the pre-freeze projection exceeds 1500 s, A12_r3_nostop is dropped by a ledgered pre-run deviation before the freeze, never after (Inferred)",
+  "what_counts_as_failure": "any GR12 clause, GSAFE12, GNR12, GQB12, G_sound, G10 or GS_ref failing, or any A12 WRONG on a clean or within-budget case; failures are published, not tuned",
+  "next_if_pass": "v0.35.0: A12_r5 at 16 states or a more general world family as the headline",
+  "next_if_fail": "if a fails, soundness needs the truth's flips bounded independently of the fused trace (e.g. a noise-model likelihood bound); if b fails with the first probe still capped, replace the per-B UNSAT chain with an incremental totalizer or MaxSAT least-B solve; if c fails with AMB, the confirmation query's separating words cost too many actions against K",
+  "limitations": [
+    "repeated reads assume independent per-read noise; correlated or sticky noise is untested",
+    "the declared bound N and the noise rate are priors the arms are given",
+    "r in {3,5}, K, B_max, timers fixed in advance",
+    "no 16-state cases",
+    "one world family (worlds_026), one hardware profile, one author",
+    "the sound stop is sound only relative to B_max(r); a truth needing more flips than B_max is out of budget and not gated"
+  ],
+  "brand": "charcoal and sage; no purple, neon, emoji or gold",
+  "freeze_rule": "BRUTE_SOURCE_FREEZE_037 before run_start_037; frozen and ledger-hashed files are never edited; scalesearch11 stays frozen and A12 is a new file (brute/scalesearch12.py)"
+}
