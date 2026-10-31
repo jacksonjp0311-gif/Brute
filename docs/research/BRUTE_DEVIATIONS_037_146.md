@@ -51,5 +51,12 @@ Exact, Observed, Simulated, Inferred, Rejected, Open. Times are box-local EDT (U
    text already carried one. The ledger is append-only; it stays as written. make_gates_037 parses the first 25 characters.
 10. **Clock (Observed).** Box clock vs GitHub's Date header: 20:09:56 EDT vs 00:10:23 GMT at build authorization;
     20:32:29 EDT vs 00:32:16 GMT during the build (offsets within about 30 s, sign changed; cause Open, no stall seen).
-11. **Pre-freeze smoke and runtime rule (Inferred; filled from results/diag-037/PREFREEZE_SMOKE_GATES_037.json).** The
-    plan drops A12_r3_nostop before the freeze if the pre-freeze projection exceeds 1500 s. See item 12.
+11. **Pre-freeze smoke (Observed).** Smoke block (7 cases, seeds 10390001-10390007, output under /tmp, 7 workers) took 164 s.
+    prefreeze_smoke_037 PASS (results/diag-037/PREFREEZE_SMOKE_GATES_037.json): recount_037 PASS (7 cases, 128 words, 0
+    unsound), run_reference_037 on the 2 noisy_scale8 smoke cases PASS (49 decided items, 47 at B > 0, 6 confirmation
+    items, 0 mismatches, mutations 20/20), the relabelled sealed block gates and make_gates_037 --check reproduces.
+    Smoke labels (Observed, not a result): control ID for all arms; on the 2 clean_scale12 smoke cases A12_r5 and A12_r3
+    were IDU (a capped least-B probe or confirmation, 'unknown') while A11_r3 was IDF / IDU, so GNR12 is at risk; on one
+    noisy_scale12 smoke case A12_r3_nostop was WRONG (not gated). Max query walls 9.0-9.8 s (<= 10.5). Nothing was tuned.
+12. **Runtime rule (Inferred).** Greedy makespan projection for the 42-case main block on 8 workers: 488 s (ideal 457 s,
+    serial 3659 s), under the plan's 1500 s threshold, so A12_r3_nostop stays in; no arm is dropped.
