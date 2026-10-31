@@ -1,8 +1,19 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.43.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.44.0 release in progress)._
 
 ## Current version and state
+
+<!-- V0440 -->
+- **v0.44.0: RELEASE IN PROGRESS** 2026-10-31 (EDT). Built on branch `plan/v0.44.0` (BRUTE_PLAN_047, certify/16d: per-call conflict cap C 294000, case budget B 7840000; two independent passes, A16_N self-replay, certify/16 and certify/16d over sealed 045/046 traces, fresh scale16 plus controls; scale-20 cut before the freeze by the declared rule; LEAN; STANDING GO t133s553, build authorization at plan commit `168e821`).
+  - **Run complete (Observed).** 126/126 jobs (54 fresh arm jobs on 18 cases, 72 replays), 661.6 s of 3600 s, normal exit, run once; the session was interrupted mid-run and the run (PID 968081) was waited on, not relaunched, restarted or killed; 3 checkpoint snapshots (`0ddf98b`, `c3eea46`, `865fc83`); resume clause not approved, not used.
+  - **PASS (12/14 exercised):** GFID16D (self-replay 18/18 [0.82, 1.00]; uncapped sealed replays 19/19 [0.83, 1.00]), GFID_wall (0 infidelity a1/a2), GAPI16D_fresh (10/12 [0.55, 0.95], WRONG 0; A16_N 8/12), GAPI16_compat, GHOST16D, G10 (6/6 ID, all arms), GS_ref (48/48 audited, 0 mismatches, 20/20), G_sound (1498 words, 0 unsound), G_recount, GTI, G_PROC, G_RT. **FAIL:** GDET (canon16d identical 18/18 [0.82, 1.00] but 7 wall-guard firings on 3 a3_046 replays) and GQB22 (A16_N 16.718 s vs 10.5 s; API16D 43.778 s vs 30 s). **Not run:** GS20_sound (part d cut).
+  - **Claim scope (Exact; reason Inferred):** certify/16d ID/IDF is conditional on the declared N; a larger machine can copy the true one on every visited state, so a size bound is inherent.
+  - **API:** brute/api/certify16d.py ships additive and uncertified; certify/14 unchanged and still the latest certified API.
+  - **Branch taken:** plan 047 next_if_fail GDET clause (find the nondeterminism source first). v0.45.0 is BRUTE_PLAN_048 (plan only) on `plan/v0.45.0`.
+  - **Deviations:** #167 (pre-run: cap calibration, guard, canon16d, replay classes, worst-case definition and cut), #168 (post-run).
+  - **Chain:** plan `168e821` -> seedcheck `2cf91a6` -> calibration `d615dcc` -> cut `44e4380` -> smoke `5351043` -> freeze `bfd3a5b` -> run start `8dffef4` -> seal `89ea522` -> recount `4968e1a` -> reference `f1843ce` -> api checks `7a81e0b` -> tests `85865b3` -> gates `c0b59d5` -> #168 `2bdb78a` -> RELEASE.json `71eb91e`.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
 
 <!-- V0430 -->
 - **v0.43.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.43.0 (annotated tag object `8c48343` at `a9b6045`, ledger release_046 `526983d`). Fresh-clone verify of the tag passed (ledger `f8e4bf9`): verify_release_0430 (5 links, 0 exceptions, GATES_046 reproduces) and 43 gated tests. The tests needed the study 045 raw data restored in the clone first. Box clock 0 s from GitHub's Date header at 06:26:00 EDT. Built on branch `plan/v0.43.0` (BRUTE_PLAN_046, certify/16: API16 wrapping A16_N, replay of the 18 sealed 045 A16_N cases plus fresh scale16 and controls; LEAN; STANDING GO t133s553, build authorization ledger `d09da5e` at plan commit `7d691cc`).
