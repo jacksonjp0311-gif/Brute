@@ -1,0 +1,720 @@
+{
+  "PASS": false,
+  "certify16s_sha256": "2793a75ade79c9ebb83e707c350a8ba414b8372cf1de81dd52e3e5bd04cae35b",
+  "compat": {
+    "PASS": true,
+    "sample_046": {
+      "PASS": true,
+      "all_byte_equal": true,
+      "cases": [
+        {
+          "byte_equal": true,
+          "name": "D_s4_fb3",
+          "search": "s4"
+        },
+        {
+          "byte_equal": true,
+          "name": "D_s4_fb4",
+          "search": "s4"
+        },
+        {
+          "byte_equal": true,
+          "name": "D2_s4_fb3",
+          "search": "s4"
+        },
+        {
+          "byte_equal": true,
+          "name": "D_s3_fb3",
+          "search": "s3"
+        },
+        {
+          "byte_equal": true,
+          "name": "D_region",
+          "search": "region"
+        }
+      ],
+      "s4_cases": 3,
+      "sample_sha256": "a455fb0f5311042d921265783ff09146c08573493eca14aa6e8689a3f30a96ae",
+      "tests": {
+        "tests.test_scalesearch4_0260": {
+          "ok": true,
+          "returncode": 0,
+          "tests": 14
+        }
+      },
+      "tests_pass": true
+    },
+    "tests": {
+      "tests.test_certify16": {
+        "ok": true,
+        "returncode": 0,
+        "tests": 12
+      },
+      "tests.test_scalesearch4_0260": {
+        "ok": true,
+        "returncode": 0,
+        "tests": 14
+      }
+    },
+    "tests_pass": true
+  },
+  "fidelity": {
+    "PASS": false,
+    "cases": 30,
+    "exact": 25,
+    "exact_per_arm": {
+      "API16E": 6,
+      "API16N": 12,
+      "API16S": 7
+    },
+    "expected": 30,
+    "per_case": {
+      "control/11850001/API16E": {
+        "diffs": [],
+        "exact": true
+      },
+      "control/11850002/API16E": {
+        "diffs": [],
+        "exact": true
+      },
+      "control/11850003/API16E": {
+        "diffs": [],
+        "exact": true
+      },
+      "control/11850004/API16E": {
+        "diffs": [],
+        "exact": true
+      },
+      "control/11850005/API16E": {
+        "diffs": [],
+        "exact": true
+      },
+      "control/11850006/API16E": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11870001/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11870002/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11870003/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11870004/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11870005/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11870006/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11870007/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11870008/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11870009/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11870010/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11870011/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11870012/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/11830001/API16S": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/11830002/API16S": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/11830003/API16S": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/11830004/API16S": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/11830005/API16S": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/11830006/API16S": {
+        "diffs": [
+          "api_result",
+          [
+            3,
+            "capped"
+          ],
+          [
+            3,
+            "call_conflicts"
+          ],
+          [
+            3,
+            "call_capped"
+          ],
+          [
+            3,
+            "call_chunks"
+          ],
+          [
+            3,
+            "chunk_conflicts"
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11830007/API16S": {
+        "diffs": [
+          "api_result",
+          [
+            0,
+            "call_conflicts"
+          ],
+          [
+            0,
+            "call_chunks"
+          ],
+          [
+            0,
+            "chunk_conflicts"
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11830008/API16S": {
+        "diffs": [
+          [
+            "word_beyond_or_differs_from_trace",
+            0
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11830009/API16S": {
+        "diffs": [
+          "api_result",
+          [
+            11,
+            "capped"
+          ],
+          [
+            11,
+            "call_conflicts"
+          ],
+          [
+            11,
+            "call_capped"
+          ],
+          [
+            11,
+            "call_chunks"
+          ],
+          [
+            11,
+            "chunk_conflicts"
+          ],
+          [
+            13,
+            "capped"
+          ],
+          [
+            13,
+            "call_conflicts"
+          ],
+          [
+            13,
+            "call_capped"
+          ],
+          [
+            13,
+            "call_chunks"
+          ],
+          [
+            13,
+            "chunk_conflicts"
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11830010/API16S": {
+        "diffs": [
+          "api_result",
+          [
+            0,
+            "capped"
+          ],
+          [
+            0,
+            "call_conflicts"
+          ],
+          [
+            0,
+            "call_capped"
+          ],
+          [
+            0,
+            "call_chunks"
+          ],
+          [
+            0,
+            "chunk_conflicts"
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11830011/API16S": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/11830012/API16S": {
+        "diffs": [],
+        "exact": true
+      }
+    },
+    "per_key": {
+      "control": 6,
+      "noise12": 12,
+      "scale20": 12
+    },
+    "study_results_sha256": "b95733ec235122b4362d60c4edfdf2c66d8ddd36abf47c6380cddfdca7a78c16",
+    "workers": {
+      "A": 4,
+      "B": 8
+    }
+  },
+  "ghost": {
+    "PASS51": true,
+    "closures": {
+      "brute.api.certify14": [
+        "brute.active",
+        "brute.align",
+        "brute.anytimemargin",
+        "brute.api.certify",
+        "brute.api.certify10",
+        "brute.api.certify11",
+        "brute.api.certify12",
+        "brute.api.certify13",
+        "brute.api.certify14",
+        "brute.api.certify8",
+        "brute.api.certify9",
+        "brute.bettingregion",
+        "brute.boundedtransfer",
+        "brute.breadth",
+        "brute.changepoint",
+        "brute.core.learner",
+        "brute.driftsound",
+        "brute.fallback",
+        "brute.lrregion",
+        "brute.noisyregion",
+        "brute.region",
+        "brute.region_learner",
+        "brute.resume",
+        "brute.scalebetting",
+        "brute.scalesearch",
+        "brute.scalesearch3",
+        "brute.scalesearch4",
+        "brute.seqmargin",
+        "brute.stitchedregion",
+        "brute.syncevent",
+        "brute.transfer"
+      ],
+      "brute.api.certify16": [
+        "brute.active",
+        "brute.align",
+        "brute.anytimemargin",
+        "brute.api.certify",
+        "brute.api.certify10",
+        "brute.api.certify11",
+        "brute.api.certify12",
+        "brute.api.certify13",
+        "brute.api.certify14",
+        "brute.api.certify16",
+        "brute.api.certify8",
+        "brute.api.certify9",
+        "brute.bettingregion",
+        "brute.boundedtransfer",
+        "brute.breadth",
+        "brute.changepoint",
+        "brute.core.learner",
+        "brute.driftsound",
+        "brute.encaudit16",
+        "brute.fallback",
+        "brute.lrregion",
+        "brute.noisyregion",
+        "brute.region",
+        "brute.region_learner",
+        "brute.resume",
+        "brute.scalebetting",
+        "brute.scalesearch",
+        "brute.scalesearch10",
+        "brute.scalesearch14",
+        "brute.scalesearch15",
+        "brute.scalesearch16",
+        "brute.scalesearch3",
+        "brute.scalesearch4",
+        "brute.scalesearch5",
+        "brute.scalesearch7",
+        "brute.scalesearch8",
+        "brute.scalesearch9",
+        "brute.seqmargin",
+        "brute.stitchedregion",
+        "brute.syncevent",
+        "brute.transfer"
+      ],
+      "brute.api.certify16d": [
+        "brute.active",
+        "brute.align",
+        "brute.anytimemargin",
+        "brute.api.certify",
+        "brute.api.certify10",
+        "brute.api.certify11",
+        "brute.api.certify12",
+        "brute.api.certify13",
+        "brute.api.certify14",
+        "brute.api.certify16",
+        "brute.api.certify16d",
+        "brute.api.certify8",
+        "brute.api.certify9",
+        "brute.bettingregion",
+        "brute.boundedtransfer",
+        "brute.breadth",
+        "brute.changepoint",
+        "brute.core.learner",
+        "brute.driftsound",
+        "brute.encaudit16",
+        "brute.fallback",
+        "brute.lrregion",
+        "brute.noisyregion",
+        "brute.region",
+        "brute.region_learner",
+        "brute.resume",
+        "brute.scalebetting",
+        "brute.scalesearch",
+        "brute.scalesearch10",
+        "brute.scalesearch14",
+        "brute.scalesearch15",
+        "brute.scalesearch16",
+        "brute.scalesearch3",
+        "brute.scalesearch4",
+        "brute.scalesearch5",
+        "brute.scalesearch7",
+        "brute.scalesearch8",
+        "brute.scalesearch9",
+        "brute.seqmargin",
+        "brute.stitchedregion",
+        "brute.syncevent",
+        "brute.transfer"
+      ],
+      "brute.api.certify16e": [
+        "brute.active",
+        "brute.align",
+        "brute.anytimemargin",
+        "brute.api",
+        "brute.api.certify",
+        "brute.api.certify10",
+        "brute.api.certify11",
+        "brute.api.certify12",
+        "brute.api.certify13",
+        "brute.api.certify14",
+        "brute.api.certify16",
+        "brute.api.certify16d",
+        "brute.api.certify16e",
+        "brute.api.certify8",
+        "brute.api.certify9",
+        "brute.bettingregion",
+        "brute.boundedtransfer",
+        "brute.breadth",
+        "brute.changepoint",
+        "brute.core.learner",
+        "brute.driftsound",
+        "brute.encaudit16",
+        "brute.fallback",
+        "brute.lrregion",
+        "brute.noisyregion",
+        "brute.region",
+        "brute.region_learner",
+        "brute.resume",
+        "brute.scalebetting",
+        "brute.scalesearch",
+        "brute.scalesearch10",
+        "brute.scalesearch14",
+        "brute.scalesearch15",
+        "brute.scalesearch16",
+        "brute.scalesearch3",
+        "brute.scalesearch4",
+        "brute.scalesearch5",
+        "brute.scalesearch7",
+        "brute.scalesearch8",
+        "brute.scalesearch9",
+        "brute.seqmargin",
+        "brute.stitchedregion",
+        "brute.syncevent",
+        "brute.transfer"
+      ],
+      "brute.api.certify16n": [
+        "brute.active",
+        "brute.align",
+        "brute.anytimemargin",
+        "brute.api",
+        "brute.api.certify",
+        "brute.api.certify10",
+        "brute.api.certify11",
+        "brute.api.certify12",
+        "brute.api.certify13",
+        "brute.api.certify14",
+        "brute.api.certify16",
+        "brute.api.certify16d",
+        "brute.api.certify16e",
+        "brute.api.certify16n",
+        "brute.api.certify8",
+        "brute.api.certify9",
+        "brute.bettingregion",
+        "brute.boundedtransfer",
+        "brute.breadth",
+        "brute.changepoint",
+        "brute.core.learner",
+        "brute.driftsound",
+        "brute.encaudit16",
+        "brute.fallback",
+        "brute.lrregion",
+        "brute.noisyregion",
+        "brute.region",
+        "brute.region_learner",
+        "brute.resume",
+        "brute.scalebetting",
+        "brute.scalesearch",
+        "brute.scalesearch10",
+        "brute.scalesearch14",
+        "brute.scalesearch15",
+        "brute.scalesearch16",
+        "brute.scalesearch3",
+        "brute.scalesearch4",
+        "brute.scalesearch5",
+        "brute.scalesearch7",
+        "brute.scalesearch8",
+        "brute.scalesearch9",
+        "brute.seqmargin",
+        "brute.stitchedregion",
+        "brute.syncevent",
+        "brute.transfer"
+      ],
+      "brute.api.certify16s": [
+        "brute.active",
+        "brute.align",
+        "brute.anytimemargin",
+        "brute.api",
+        "brute.api.certify",
+        "brute.api.certify10",
+        "brute.api.certify11",
+        "brute.api.certify12",
+        "brute.api.certify13",
+        "brute.api.certify14",
+        "brute.api.certify16",
+        "brute.api.certify16d",
+        "brute.api.certify16e",
+        "brute.api.certify16s",
+        "brute.api.certify8",
+        "brute.api.certify9",
+        "brute.bettingregion",
+        "brute.boundedtransfer",
+        "brute.breadth",
+        "brute.changepoint",
+        "brute.core.learner",
+        "brute.driftsound",
+        "brute.encaudit16",
+        "brute.fallback",
+        "brute.lrregion",
+        "brute.noisyregion",
+        "brute.region",
+        "brute.region_learner",
+        "brute.resume",
+        "brute.scalebetting",
+        "brute.scalesearch",
+        "brute.scalesearch10",
+        "brute.scalesearch14",
+        "brute.scalesearch15",
+        "brute.scalesearch16",
+        "brute.scalesearch3",
+        "brute.scalesearch4",
+        "brute.scalesearch5",
+        "brute.scalesearch7",
+        "brute.scalesearch8",
+        "brute.scalesearch9",
+        "brute.seqmargin",
+        "brute.stitchedregion",
+        "brute.syncevent",
+        "brute.transfer"
+      ]
+    },
+    "closures_050": {
+      "brute.api.certify16e": [
+        "brute.active",
+        "brute.align",
+        "brute.anytimemargin",
+        "brute.api",
+        "brute.api.certify",
+        "brute.api.certify10",
+        "brute.api.certify11",
+        "brute.api.certify12",
+        "brute.api.certify13",
+        "brute.api.certify14",
+        "brute.api.certify16",
+        "brute.api.certify16d",
+        "brute.api.certify16e",
+        "brute.api.certify8",
+        "brute.api.certify9",
+        "brute.bettingregion",
+        "brute.boundedtransfer",
+        "brute.breadth",
+        "brute.changepoint",
+        "brute.core.learner",
+        "brute.driftsound",
+        "brute.encaudit16",
+        "brute.fallback",
+        "brute.lrregion",
+        "brute.noisyregion",
+        "brute.region",
+        "brute.region_learner",
+        "brute.resume",
+        "brute.scalebetting",
+        "brute.scalesearch",
+        "brute.scalesearch10",
+        "brute.scalesearch14",
+        "brute.scalesearch15",
+        "brute.scalesearch16",
+        "brute.scalesearch3",
+        "brute.scalesearch4",
+        "brute.scalesearch5",
+        "brute.scalesearch7",
+        "brute.scalesearch8",
+        "brute.scalesearch9",
+        "brute.seqmargin",
+        "brute.stitchedregion",
+        "brute.syncevent",
+        "brute.transfer"
+      ],
+      "brute.api.certify16n": [
+        "brute.active",
+        "brute.align",
+        "brute.anytimemargin",
+        "brute.api",
+        "brute.api.certify",
+        "brute.api.certify10",
+        "brute.api.certify11",
+        "brute.api.certify12",
+        "brute.api.certify13",
+        "brute.api.certify14",
+        "brute.api.certify16",
+        "brute.api.certify16d",
+        "brute.api.certify16e",
+        "brute.api.certify16n",
+        "brute.api.certify8",
+        "brute.api.certify9",
+        "brute.bettingregion",
+        "brute.boundedtransfer",
+        "brute.breadth",
+        "brute.changepoint",
+        "brute.core.learner",
+        "brute.driftsound",
+        "brute.encaudit16",
+        "brute.fallback",
+        "brute.lrregion",
+        "brute.noisyregion",
+        "brute.region",
+        "brute.region_learner",
+        "brute.resume",
+        "brute.scalebetting",
+        "brute.scalesearch",
+        "brute.scalesearch10",
+        "brute.scalesearch14",
+        "brute.scalesearch15",
+        "brute.scalesearch16",
+        "brute.scalesearch3",
+        "brute.scalesearch4",
+        "brute.scalesearch5",
+        "brute.scalesearch7",
+        "brute.scalesearch8",
+        "brute.scalesearch9",
+        "brute.seqmargin",
+        "brute.stitchedregion",
+        "brute.syncevent",
+        "brute.transfer"
+      ]
+    },
+    "closures_unchanged": {
+      "brute.api.certify16e": true,
+      "brute.api.certify16n": true
+    },
+    "frozen_api_sha256": {
+      "brute/api/certify14.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_047.json",
+        "frozen": "0c789ee206e8341ac610d00980c24976e5c027af5a02a5af4edb3c9068818ac6",
+        "now": "0c789ee206e8341ac610d00980c24976e5c027af5a02a5af4edb3c9068818ac6"
+      },
+      "brute/api/certify16.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_047.json",
+        "frozen": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1",
+        "now": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1"
+      },
+      "brute/api/certify16d.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_047.json",
+        "frozen": "98406b659e8abcbe9252da66da49b90317bdc544e1052711d8ec99a482992d25",
+        "now": "98406b659e8abcbe9252da66da49b90317bdc544e1052711d8ec99a482992d25"
+      },
+      "brute/api/certify16e.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_049.json",
+        "frozen": "99a6f3315d0ac7f9944dd6519fc968200543dc9ec50a991657dd33766a7112fb",
+        "now": "99a6f3315d0ac7f9944dd6519fc968200543dc9ec50a991657dd33766a7112fb"
+      },
+      "brute/api/certify16n.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_050.json",
+        "frozen": "46dc1ee28144e9f59af6db85e86d12ffd1b04c69cb8d12cbd85fd790ac95d19a",
+        "now": "46dc1ee28144e9f59af6db85e86d12ffd1b04c69cb8d12cbd85fd790ac95d19a"
+      }
+    },
+    "frozen_api_unchanged": true,
+    "network_pass": true,
+    "new_flagged": {},
+    "newly_imported": [
+      "brute.api.certify16s"
+    ],
+    "no_network_returncode": 0,
+    "no_network_run": {
+      "loop": [
+        "brute.certify/16s",
+        "ID",
+        12,
+        22,
+        81586
+      ],
+      "socket_attempts": 0
+    },
+    "socket_attempts": 0,
+    "static_pass": true
+  },
+  "schema": "brute.api-checks.v48"
+}
