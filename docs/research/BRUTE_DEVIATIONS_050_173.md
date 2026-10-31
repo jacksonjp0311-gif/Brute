@@ -24,8 +24,9 @@ Inferred, Rejected, Open.
 4. **k rule (Exact; stated more strongly than the plan).** The plan writes T exp(-2k(1/2-eps_bar)^2) <= delta with T the number of
    observations; T is not known in advance, so certify/16n uses the anytime form: k_t is the smallest odd k with
    2 exp(-2k(1/2-eps_bar)^2) <= delta 6/(pi^2 t^2) for observation t (t = 1 is the initial reading). Summed over t the per-observation
-   bound is <= delta for any T (Exact, sum 1/t^2 = pi^2/6; the factor 2 is a two-sided Hoeffding bound per bit-majority, a union over
-   S_BITS bits is absorbed because majority is taken per bit and each bit's bound is the same: Inferred tightness, Exact direction).
+   bound is <= delta for any T (Exact, sum 1/t^2 = pi^2/6). The factor 2 is the union over the S_BITS = 2 bits of a reading, each
+   bit's majority of k iid reads wrong with probability <= exp(-2k(1/2-eps)^2) <= exp(-2k(1/2-eps_bar)^2) when eps <= eps_bar
+   (one-sided Hoeffding; Exact under the iid model).
    eps_bar 0.10, delta 0.001: k_1 = 27, k_10 = 41, k_100 = 55, k_1000 = 69, k_5000 = 79. Every k_t >= the plan's T-form value for
    T <= t (Exact), so the plan's guarantee is implied.
 5. **Noise arms (Exact).** API16N and API16N_b: eps 0.05, anytime k, same noise seed on both passes (so GDET50 compares
