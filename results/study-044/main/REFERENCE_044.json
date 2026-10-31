@@ -1,0 +1,373 @@
+{
+  "PASS": true,
+  "arm": [
+    "A16_c9",
+    "A16_c30",
+    "A16_xf"
+  ],
+  "block": "main",
+  "decided": 4,
+  "decided_by_arm": {
+    "A16_c30": 2,
+    "A16_c9": 0,
+    "A16_xf": 2
+  },
+  "decided_by_key": {
+    "lowobs12": 4
+  },
+  "elapsed_informational": 1888.0142933479947,
+  "k_spent_as_amb": 0,
+  "key": [
+    "lowobs12"
+  ],
+  "mismatch_count": 0,
+  "mismatches": [],
+  "mutation_test": {
+    "detected": 20,
+    "items": [
+      {
+        "detected": true,
+        "id": "main/lowobs12/10930006/A16_c30",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/lowobs12/10930006/A16_c30",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/lowobs12/10930010/A16_xf",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/lowobs12/10930008/A16_c30",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/lowobs12/10930006/A16_c30",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/lowobs12/10930010/A16_xf",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/lowobs12/10930008/A16_c30",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/lowobs12/10930008/A16_c30",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/lowobs12/10930012/A16_xf",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/lowobs12/10930006/A16_c30",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/lowobs12/10930006/A16_c30",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/lowobs12/10930006/A16_c30",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/lowobs12/10930010/A16_xf",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/lowobs12/10930008/A16_c30",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/lowobs12/10930012/A16_xf",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/lowobs12/10930012/A16_xf",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/lowobs12/10930010/A16_xf",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/lowobs12/10930008/A16_c30",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/lowobs12/10930012/A16_xf",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/lowobs12/10930012/A16_xf",
+        "kind": "s1"
+      }
+    ],
+    "mutations": 20,
+    "pass": true
+  },
+  "not_reached": 32,
+  "per_record": [
+    {
+      "decided": true,
+      "id": "main/lowobs12/10930006/A16_c30",
+      "label": "IDF",
+      "mismatches": [],
+      "stop_recorded": "IDF",
+      "verdicts_checked": 2
+    },
+    {
+      "decided": true,
+      "id": "main/lowobs12/10930008/A16_c30",
+      "label": "ID",
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "decided": true,
+      "id": "main/lowobs12/10930010/A16_xf",
+      "label": "ID",
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "decided": true,
+      "id": "main/lowobs12/10930012/A16_xf",
+      "label": "ID",
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930001/A16_c9",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930001/A16_c30",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930001/A16_xf",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930002/A16_c9",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930002/A16_c30",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930002/A16_xf",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930003/A16_c9",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930003/A16_c30",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930003/A16_xf",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930004/A16_c9",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930004/A16_c30",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930004/A16_xf",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930005/A16_c9",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930005/A16_c30",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930005/A16_xf",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930006/A16_c9",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930006/A16_xf",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930007/A16_c9",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930007/A16_c30",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930007/A16_xf",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930008/A16_c9",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930008/A16_xf",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930009/A16_c9",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930009/A16_c30",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930009/A16_xf",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930010/A16_c9",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930010/A16_c30",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930011/A16_c9",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930011/A16_c30",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930011/A16_xf",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930012/A16_c9",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/lowobs12/10930012/A16_c30",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    }
+  ],
+  "records": 36,
+  "records_by_key": {
+    "lowobs12": 36
+  },
+  "schema": "brute.reference.v41_0",
+  "study_results_sha256": "145f2fc36c1a64d6cb294bbaca1ceec72a51ff2bb51a0dd4909772478acbeb1f",
+  "vacuous": false,
+  "verdicts_checked": 8,
+  "walls_informational": {
+    "main/lowobs12/10930006/A16_c30": 701.3,
+    "main/lowobs12/10930008/A16_c30": 1888.0,
+    "main/lowobs12/10930010/A16_xf": 200.3,
+    "main/lowobs12/10930012/A16_xf": 98.3
+  }
+}
