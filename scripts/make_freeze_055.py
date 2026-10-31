@@ -14,7 +14,7 @@ from scripts.make_freeze_054 import FILES as FILES_054
 ORDER=ROOT/'experiments/COMMIT_ORDER_055.json'
 STUDY='BRUTE-0520-SCALE20-CUBECONQUER-055'
 NEW=['brute/api/certify20c.py','brute/release_version_0520.py','experiments/brute_common_055.py','experiments/brute_study_055.py',
-     'scripts/check_seeds_055.py','scripts/api_checks_055.py','scripts/recount_055.py','scripts/run_reference_055.py','scripts/make_gates_055.py',
+     'scripts/check_seeds_055.py','scripts/api_checks_055.py','scripts/recount_055.py','scripts/run_reference_055.py','scripts/cube_audit_055.py','scripts/make_gates_055.py',
      'scripts/make_freeze_055.py','scripts/push_checkpoint_055.py','scripts/study055_storage.py','scripts/verify_release_0520.py',
      'scripts/run_tests_0520.py','scripts/prefreeze_smoke_055.py','tests/test_certify20c.py','tests/test_scripts_055.py','tests/test_release_0520.py',
      'docs/research/BRUTE_DEVIATIONS_055_183.md','results/diag-055/SEEDCHECK_055.json','results/diag-055/PREFREEZE_SMOKE_GATES_055.json']

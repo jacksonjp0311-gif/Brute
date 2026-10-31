@@ -7,6 +7,8 @@ scale20t (bound 20) and every decided API20C record of compat20t (bound 16); API
 G_recount only. One total wall budget of 2400 s on 8 workers (run_reference_047.run_pool); one mutation test (20 mutations, seed
 470) over every audited decided record. A decided record not finished in its budget is 'not_audited' and GS_ref fails; with no
 decided record the audit is vacuous (reported). Runs after the main run and outside G_RT.
+Also (GCUBE55 input, #183): scripts/cube_audit_055.audit over every API20C / API20C_b record of the block (decided or not):
+cube plan recomputed from the trace, pruned cubes checked UNSAT by an exhibited distinguishing word, conflict accounting.
 Writes <study>/REFERENCE_055.json (refuses overwrite).
   PYTHONPATH=. python scripts/run_reference_055.py results/study-055/main [--block main] [--workers 8]"""
 import argparse,json,sys
@@ -15,6 +17,7 @@ ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from experiments.brute_common import load,write_new,sha
 from experiments import worlds_050 as W50
 from scripts import run_reference_047 as R47
+from scripts import cube_audit_055 as CA
 BUDGET_12=2400.0;OUTPUT_NAME='REFERENCE_055.json'
 ORDER=('API20C','API20C_b');KEYS=('scale20t','compat20t')
 R47.ORDER=ORDER;R47.DELTA={a:None for a in ORDER};R47.KEYS=KEYS;R47.W43=W50
@@ -46,11 +49,11 @@ def main(argv=None):
          'complete':not na,'per_arm':per_arm,'per_key':per_key,'k_spent_as_amb':sum(r['stop_recorded']=='K_spent' for r in todo),
          'verdicts_checked':sum(x.get('verdicts_checked',0) for x in reports),'mismatches':mism,'mismatch_count':len(mism),'misfires':fires,
          'mutation_test':mt,'per_record':reports,'walls_informational':{k:round(v[2],1) for k,v in done.items()},
-         'elapsed_informational':{'r12':el12}}
+         'elapsed_informational':{'r12':el12},'cube_audit':CA.audit(res,a.block,ORDER,KEYS)}
     out['vacuous']=out['decided']==0
     out['PASS']=out['mismatch_count']==0 and out['complete'] and (out['vacuous'] or mt['pass'])
     write_new(d/OUTPUT_NAME,out)
-    print(json.dumps({k:v for k,v in out.items() if k not in ('per_record','mutation_test','mismatches')},indent=1),'\nmutations',mt['detected'],'/',mt['mutations'])
+    print(json.dumps({k:v for k,v in out.items() if k not in ('per_record','mutation_test','mismatches','cube_audit')},indent=1),'\ncube_audit',{k:v for k,v in out['cube_audit'].items() if k!='per_record'},'\nmutations',mt['detected'],'/',mt['mutations'])
     return 0 if out['PASS'] else 1
 
 
