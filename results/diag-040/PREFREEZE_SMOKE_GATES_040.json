@@ -1,0 +1,498 @@
+{
+  "PASS": true,
+  "label": "Observed",
+  "note": "PASS here means the tooling ran end to end on a sealed block (recount reproduces, gates reproduce); the reference result is recorded, not required",
+  "purpose": "Pre-freeze smoke-gates test for study-040 (plan 040 process: \"pre-freeze gates test on a sealed smoke block\"; the #129",
+  "recount": {
+    "PASS": true,
+    "cases": 12,
+    "labels": {
+      "A14": {
+        "AMB": 0,
+        "ID": 5,
+        "IDF": 0,
+        "IDU": 7,
+        "WRONG": 0
+      },
+      "A15": {
+        "AMB": 0,
+        "ID": 4,
+        "IDF": 0,
+        "IDU": 8,
+        "WRONG": 0
+      },
+      "A15_cube": {
+        "AMB": 0,
+        "ID": 4,
+        "IDF": 1,
+        "IDU": 7,
+        "WRONG": 0
+      }
+    },
+    "mismatching_cases": 0,
+    "words_checked": 271,
+    "words_unsound": 0
+  },
+  "recount_rc": 0,
+  "reference_on_smoke": {
+    "PASS": true,
+    "cases": 3,
+    "decided": 2,
+    "mismatch_count": 0,
+    "mutations": 20,
+    "not_reached": 1,
+    "of": 20,
+    "verdicts_checked": 38,
+    "wall_s_informational": 50.3,
+    "words_checked": 52,
+    "workers": 3
+  },
+  "reference_rc": 0,
+  "relabelled": {
+    "check_returncode": 0,
+    "check_stdout": "GATES_040 reproduces",
+    "crashed": false,
+    "gate_status": {
+      "G10": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+      },
+      "GC15_headline": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+      },
+      "GFAM15": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+      },
+      "GINC15": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (TEST_SUITE_040 missing)"
+      },
+      "GQB15": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+      },
+      "GREP15": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+      },
+      "GS_ref": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+      },
+      "GTI": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (TEST_SUITE_040 missing)"
+      },
+      "G_PROC": {
+        "pass": false
+      },
+      "G_RT": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+      },
+      "G_recount": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+      },
+      "G_sound": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+      }
+    },
+    "recount_rc": 0,
+    "reports_keys": [
+      "clique",
+      "contrasts",
+      "cost",
+      "group_wall_mean_s",
+      "inc_guards",
+      "labels",
+      "labels_per_seed",
+      "n_min",
+      "query_max_s",
+      "stops",
+      "truth_reachable"
+    ],
+    "sealed_input_verified": true,
+    "secondary": {
+      "GCAP15": null,
+      "GSYM15": null
+    }
+  },
+  "runtime_projection": {
+    "cap_s": 1800,
+    "full_plan": {
+      "ideal_parallel_s": 389.6,
+      "jobs": 126,
+      "lpt_makespan_s": 391.6,
+      "serial_s": 3116.9
+    },
+    "label": "Inferred",
+    "mean_group_wall_by_group_key": {
+      "A14/control": 0.0,
+      "A14/lowobs12": 11.9,
+      "A14/scale14": 21.5,
+      "A14/scale16": 18.2,
+      "A15/control": 0.0,
+      "A15/lowobs12": 23.3,
+      "A15/scale14": 8.3,
+      "A15/scale16": 10.7,
+      "A15_cube/control": 0.0,
+      "A15_cube/lowobs12": 116.2,
+      "A15_cube/scale14": 11.1,
+      "A15_cube/scale16": 38.6
+    },
+    "reduce_A15": false,
+    "reduced_A15_scale16_only": {
+      "ideal_parallel_s": 342.2,
+      "jobs": 96,
+      "lpt_makespan_s": 346.4,
+      "serial_s": 2737.3
+    },
+    "smoke_total_elapsed_s": 124.88203443800012,
+    "threshold_s": 1500,
+    "workers": 8
+  },
+  "smoke_cases": [
+    [
+      "scale16",
+      10680001,
+      {
+        "A14": "IDU",
+        "A15": "IDU",
+        "A15_cube": "IDU"
+      },
+      {
+        "A14": 22,
+        "A15": 13,
+        "A15_cube": 45
+      },
+      {
+        "A14": 9.04,
+        "A15": 9.0,
+        "A15_cube": 9.06
+      },
+      {
+        "A14": 26.2,
+        "A15": 13.3,
+        "A15_cube": 102.1
+      }
+    ],
+    [
+      "scale16",
+      10680002,
+      {
+        "A14": "IDU",
+        "A15": "IDU",
+        "A15_cube": "IDF"
+      },
+      {
+        "A14": 0,
+        "A15": 22,
+        "A15_cube": 22
+      },
+      {
+        "A14": 9.11,
+        "A15": 9.04,
+        "A15_cube": 9.01
+      },
+      {
+        "A14": 15.8,
+        "A15": 9.5,
+        "A15_cube": 14.4
+      }
+    ],
+    [
+      "scale16",
+      10680003,
+      {
+        "A14": "IDU",
+        "A15": "IDU",
+        "A15_cube": "IDU"
+      },
+      {
+        "A14": 0,
+        "A15": 56,
+        "A15_cube": 56
+      },
+      {
+        "A14": 9.01,
+        "A15": 9.0,
+        "A15_cube": 9.03
+      },
+      {
+        "A14": 14.3,
+        "A15": 10.2,
+        "A15_cube": 19.2
+      }
+    ],
+    [
+      "scale16",
+      10680004,
+      {
+        "A14": "IDU",
+        "A15": "IDU",
+        "A15_cube": "IDU"
+      },
+      {
+        "A14": 0,
+        "A15": 22,
+        "A15_cube": 22
+      },
+      {
+        "A14": 9.25,
+        "A15": 9.05,
+        "A15_cube": 9.07
+      },
+      {
+        "A14": 16.2,
+        "A15": 9.6,
+        "A15_cube": 18.7
+      }
+    ],
+    [
+      "scale14",
+      10680005,
+      {
+        "A14": "ID",
+        "A15": "ID",
+        "A15_cube": "ID"
+      },
+      {
+        "A14": 37,
+        "A15": 44,
+        "A15_cube": 44
+      },
+      {
+        "A14": 1.56,
+        "A15": 1.03,
+        "A15_cube": 0.99
+      },
+      {
+        "A14": 3.6,
+        "A15": 2.2,
+        "A15_cube": 2.0
+      }
+    ],
+    [
+      "scale14",
+      10680006,
+      {
+        "A14": "ID",
+        "A15": "ID",
+        "A15_cube": "ID"
+      },
+      {
+        "A14": 70,
+        "A15": 40,
+        "A15_cube": 40
+      },
+      {
+        "A14": 4.69,
+        "A15": 4.48,
+        "A15_cube": 4.44
+      },
+      {
+        "A14": 35.7,
+        "A15": 12.7,
+        "A15_cube": 12.1
+      }
+    ],
+    [
+      "scale14",
+      10680007,
+      {
+        "A14": "ID",
+        "A15": "IDU",
+        "A15_cube": "IDU"
+      },
+      {
+        "A14": 52,
+        "A15": 64,
+        "A15_cube": 64
+      },
+      {
+        "A14": 5.9,
+        "A15": 9.03,
+        "A15_cube": 9.05
+      },
+      {
+        "A14": 25.2,
+        "A15": 10.2,
+        "A15_cube": 19.2
+      }
+    ],
+    [
+      "lowobs12",
+      10680008,
+      {
+        "A14": "IDU",
+        "A15": "IDU",
+        "A15_cube": "IDU"
+      },
+      {
+        "A14": 0,
+        "A15": 0,
+        "A15_cube": 0
+      },
+      {
+        "A14": 9.01,
+        "A15": 9.04,
+        "A15_cube": 9.9
+      },
+      {
+        "A14": 10.5,
+        "A15": 9.1,
+        "A15_cube": 124.8
+      }
+    ],
+    [
+      "lowobs12",
+      10680009,
+      {
+        "A14": "IDU",
+        "A15": "IDU",
+        "A15_cube": "IDU"
+      },
+      {
+        "A14": 0,
+        "A15": 17,
+        "A15_cube": 30
+      },
+      {
+        "A14": 9.03,
+        "A15": 9.18,
+        "A15_cube": 9.32
+      },
+      {
+        "A14": 14.3,
+        "A15": 35.0,
+        "A15_cube": 111.1
+      }
+    ],
+    [
+      "lowobs12",
+      10680010,
+      {
+        "A14": "IDU",
+        "A15": "IDU",
+        "A15_cube": "IDU"
+      },
+      {
+        "A14": 0,
+        "A15": 15,
+        "A15_cube": 15
+      },
+      {
+        "A14": 9.04,
+        "A15": 9.01,
+        "A15_cube": 10.12
+      },
+      {
+        "A14": 10.8,
+        "A15": 25.7,
+        "A15_cube": 112.7
+      }
+    ],
+    [
+      "control",
+      10680011,
+      {
+        "A14": "ID",
+        "A15": "ID",
+        "A15_cube": "ID"
+      },
+      {
+        "A14": 0,
+        "A15": 0,
+        "A15_cube": 0
+      },
+      {
+        "A14": 0.0,
+        "A15": 0.0,
+        "A15_cube": 0.0
+      },
+      {
+        "A14": 0.0,
+        "A15": 0.0,
+        "A15_cube": 0.0
+      }
+    ],
+    [
+      "control",
+      10680012,
+      {
+        "A14": "ID",
+        "A15": "ID",
+        "A15_cube": "ID"
+      },
+      {
+        "A14": 0,
+        "A15": 0,
+        "A15_cube": 0
+      },
+      {
+        "A14": 0.0,
+        "A15": 0.0,
+        "A15_cube": 0.0
+      },
+      {
+        "A14": 0.0,
+        "A15": 0.0,
+        "A15_cube": 0.0
+      }
+    ]
+  ],
+  "smoke_gate_status": {
+    "G10": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GC15_headline": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GFAM15": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GINC15": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (TEST_SUITE_040 missing)"
+    },
+    "GQB15": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GREP15": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GS_ref": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GTI": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (TEST_SUITE_040 missing)"
+    },
+    "G_PROC": {
+      "pass": false
+    },
+    "G_RT": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "G_recount": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "G_sound": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    }
+  },
+  "smoke_sealed_input_verified": true
+}
