@@ -1,5 +1,25 @@
 # Brute changelog
 
+## v0.41.0: lowobs audit: a longer per-call cap (A16_c30) and an experiment-first schedule (A16_xf) against the 043 setting (A16_c9) on fresh one-bit-observation 12-state worlds (study BRUTE-0410-A16-LOWOBS-AUDIT-044, LEAN process)
+
+**9 of 11 gates pass (GLO_sem, GQB19, G_sound, G10, GS_ref, GTI, G_PROC, G_RT, G_recount). GLO_cap and GLO_pol FAIL. Secondary GC9, GLO_cause2 and GPH19 reported only.** All 54 arm jobs (18 cases) ran once and were sealed (490.4 s of 3600 s). *Observed*
+
+### Timeline (EDT, 2026-10-31)
+
+- Plan `d55ec61` (preregistration 03:03:59; build authorization 03:04:48); seedcheck `81d6150` FAILED (03:11:24), post-scan adjudication 044b `3a3f0ec` PASS (03:11:55); release and test tooling `6b29624`..`c754d12`; prefreeze smoke `abddc72` (LPT projection 308.6 s, worst case 1720.0 s, no cut); #161 `b66c9e5`; source freeze `1f7d147` (ledger `3bb6deb`, 03:55:07).
+- Run start (ledger `b620bfc`, 03:55:09); runner to about 04:03:28; snapshots `09229e3`, `f4c162f`; seal `db7e84e` (ledger `ea27599`); recount `ae1d155` (PASS, ledger `776cd64`); reference `8fd768c` (ledger `59e8154`); tests `e4a3ddf` (ledger `87a0a83`); gates `fa9a493` (ledger `a676e8a`); #162 `2abdcc2` (ledger `4825891`).
+
+### Results (recount labels; Wilson 95% in GATES_044.json)
+
+| key | A16_c9 ID+IDF | A16_c30 ID+IDF | A16_xf ID+IDF | WRONG |
+|---|---|---|---|---|
+| lowobs12 (12) | 0 [0, 0.24] | 2 [0.05, 0.45] (ID 1, IDF 1) | 2 [0.05, 0.45] (ID 2) | 0 |
+| control (6) | 6 [0.61, 1.00] | 6 [0.61, 1.00] | 6 [0.61, 1.00] | 0 |
+
+- GLO_cap FAIL (c30 2/12, bar 3; gain 2, bar 2). GLO_pol FAIL (xf 2/12, bar 3; gain 2, bar 2). GQB19 max call 9.561 / 30.604 / 10.009 s (bounds 10.5 / 31.5 / 10.5 s), 1 hard kill (xf, 10930004, recorded unknown), 1068 calls. G_sound 83 words, 0 unsound. GS_ref 4 decided, 0 mismatches, 20/20 mutations. *Observed*
+- GLO_cause2: undecided lowobs12 runs stopped in the least-model search (c9 9, c30 9, xf 8) or the future-rival search (3, 1, 2). Longest arm walls 58.9 s, 421.7 s and 61.8 s. *Observed*
+- GC9: A16_c9 0/12 replicates 043. Deviations #161 (pre-run), #162 (post-run). Next: plan 044 next_if_fail, the N-free stop as v0.42.0.
+
 ## v0.40.0: arm A16 against frozen A14 on fresh one-bit-observation 12-state worlds, plus a fresh 16-state replication (study BRUTE-0400-A16-LOWOBS-043, LEAN process)
 
 **10 of 11 gates pass (GREP16, GLO_sem, GQB18, G_sound, G10, GS_ref, GTI, G_PROC, G_RT, G_recount). GLO FAILS. Secondary GT17, GPH18 and GLO_cause reported only.** All 60 arm jobs (30 cases) ran once and were sealed (159.7 s of 1800 s). *Observed*
