@@ -24,8 +24,8 @@ Definitions (deviation #146):
   GS_ref: REFERENCE_037 audits A12_r3 on the 12 noisy_scale8 cases incl. the confirmation verdicts: 0 mismatches, decided > 0,
      mutations 20/20 and at least one decided item at B > 0 (else 'raised-B not exercised');
   G_RT: total elapsed <= 1800 s; G_recount: RECOUNT_037 PASS on the sealed RESULTS; GTI: TEST_SUITE_037 all modules 0;
-  G_PROC: ledger events preregistration, build_authorization, seedcheck, source_freeze, run_start, run_end (037) present,
-     in order, parseable non-decreasing times, the commit-order file present and the main block sealed.
+  G_PROC: ledger events preregistration, build_authorization, seedcheck, source_freeze, run_start, run_end, recount, reference,
+     tests (037; the plan's order, gates is the step that reads them) present, in order, parseable non-decreasing times, the commit-order file present and the main block sealed.
   GPR12 (secondary; not in all_gated_pass): mean probes per least-B search and capped-probe count, A12_r3 vs A11_r3, on
      noisy_scale12; passes (as a reported direction) iff A12_r3 has no more capped probes than A11_r3.
 Reports (not gated): labels with Wilson CIs per (arm, key); B_final, capped, steps, reads per (arm, key) with bootstrap CIs;
@@ -43,7 +43,8 @@ CLEAN=('clean_scale12','control')
 CAP=1800;QB=10.5;IDU_DIFF=0.25;IDF_MIN=5;D_SLACK=1
 ARMS=('A12_r5','A12_r3','A12_r3_nostop','A11_r3','A11_r5','S7');ACTIVE=ARMS[:5];A12=('A12_r5','A12_r3','A12_r3_nostop')
 LABELS=('ID','IDF','AMB','WRONG','IDU');NO_WRONG=('A12_r5','A12_r3')
-PROC_ORDER=('preregistration_037','build_authorization_037','seedcheck_037','source_freeze_037','run_start_037','run_end_037')
+PROC_ORDER=('preregistration_037','build_authorization_037','seedcheck_037','source_freeze_037','run_start_037','run_end_037','recount_037',
+            'reference_037','tests_037')
 GSAFE_MOD='test_scalesearch12_0340';GSAFE_TEST='test_GSAFE12_sealed_036_trace'
 
 
@@ -75,7 +76,7 @@ def ledger():
         try:t=datetime.fromisoformat(str(e.get('note',''))[:25])
         except ValueError:t=None
         out.append((e['event'],t))
-        if e['event']=='run_end_037':break
+        if e['event']==PROC_ORDER[-1]:break
     return out
 
 

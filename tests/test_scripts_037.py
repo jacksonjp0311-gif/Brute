@@ -129,7 +129,7 @@ class Gates(unittest.TestCase):
 
     def test_constants(self):
         self.assertEqual((MG.IDU_DIFF,MG.IDF_MIN,MG.D_SLACK,MG.QB,MG.CAP),(0.25,5,1,10.5,1800))
-        self.assertEqual(MG.PROC_ORDER,('preregistration_037','build_authorization_037','seedcheck_037','source_freeze_037','run_start_037','run_end_037'))
+        self.assertEqual(MG.PROC_ORDER,('preregistration_037','build_authorization_037','seedcheck_037','source_freeze_037','run_start_037','run_end_037','recount_037','reference_037','tests_037'))
         self.assertEqual(MG.EXPECTED,{'noisy_scale12':12,'clean_scale12':12,'noisy_scale8':12,'control':6})
 
 
