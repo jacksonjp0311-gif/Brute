@@ -56,6 +56,17 @@ def check_run_seeds(block,seeds,plan=None,key=None):
     check(not bad,f'{block} seed outside its declared range: {bad[:5]}');return True
 
 
+OWN=re.compile(r'^(experiments|scripts|tests)/[a-z0-9_]+_(055|0520)\.py$')
+
+
+def rule_l(f,v,ranges):
+    """Rule L (deviation #183, declared after attempt 1 failed, before any run): a standalone token that lies in the 055 smoke range
+    and in no 055 target range is allowed in this study's own tooling source (experiments|scripts|tests/*_055.py or *_0520.py),
+    where the plan's smoke seeds are declared. Target-range tokens are never allowed by L."""
+    hit=[k for k,(a,b) in ranges.items() if a<=v<=b];smoke_only=hit==['smoke'];own=bool(OWN.match(f))
+    return {'file':f,'token':v,'ranges':hit,'smoke_only':smoke_only,'own_study_source':own,'allowed':smoke_only and own}
+
+
 def token_scan(ranges):
     files=subprocess.run(['git','ls-files'],cwd=ROOT,capture_output=True,text=True,check=True).stdout.split()
     files=[f for f in files if not any(s in Path(f).name for s in SELF)]
@@ -72,9 +83,10 @@ def token_scan(ranges):
             v=int(m.group(1));block+=1
             if inr(v) and [f,v] not in tok:tok.append([f,v])
         emb+=sum(1 for m in ANY.finditer(b) if inr(int(m.group(0))))
-    J=[c45.rule_j(f,v,ranges) for f,v in tok];K=[c45.rule_k(f,v) for f,v in tok]
+    J=[c45.rule_j(f,v,ranges) for f,v in tok];K=[c45.rule_k(f,v) for f,v in tok];L=[rule_l(f,v,ranges) for f,v in tok]
     return {'files_scanned':scanned,'gz_files_decompressed':gz,'standalone_tokens_in_055_ranges':tok,'occurrences_any_in_055_ranges':emb,
-            'standalone_11_12_prefix_token_count':block,'rule_j':J,'rule_k':K,'allowed':[j['allowed'] or k['allowed'] for j,k in zip(J,K)]}
+            'standalone_11_12_prefix_token_count':block,'rule_j':J,'rule_k':K,'rule_l':L,
+            'allowed':[j['allowed'] or k['allowed'] or l['allowed'] for j,k,l in zip(J,K,L)]}
 
 
 NEGATIVE=(('target',12299001,None),('smoke',12299001,None),('target',12290001,None),('smoke',12250001,None),
@@ -86,7 +98,8 @@ NEGATIVE=(('target',12299001,None),('smoke',12299001,None),('target',12290001,No
 def main(argv=()):
     argv=list(argv);plan=load(PLAN);new=ranges_055(plan);prior=prior_ranges()
     rep={'schema':'brute.seedcheck.v52','v0520_ranges':new,'prior_files':[p.name for p in prior_files()],'prior_range_count':len(prior),
-         'rules_declared_before_scan':['J (cpu_jiffies, smoke only)','K (refused negative_controls probe in a SEEDCHECK file)'],
+         'rules_declared_before_scan':['J (cpu_jiffies, smoke only)','K (refused negative_controls probe in a SEEDCHECK file)',
+                                   'L (055 smoke-range token in study-055 own tooling source; #183, after attempt 1)'],
          'pairwise_overlaps':[],'prior_overlaps':[]}
     ks=list(new)
     for i,a in enumerate(ks):
