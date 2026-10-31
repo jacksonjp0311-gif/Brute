@@ -1,0 +1,99 @@
+{
+  "schema": "brute.plan.v1",
+  "study": "BRUTE-0460-CERTIFY16E-RESUME-SCALE20-049",
+  "version_under_test": "0.46.0",
+  "parent_study": "BRUTE-0450-CERTIFY16D-WALLFREE-SCALE20-048",
+  "status": "preregistered (plan only; no build code, no data for 049)",
+  "branch_taken": "plan 048 next_if_fail, count-only clause (Exact, GATES_048 73250f3, ledger a3d6179): 'GAPI16D_fresh48 fails on count only: record it; the smaller cap trades decided cases for wall-freedom; re-plan B.' GAPI16D_fresh48 failed with WRONG 0 and ID+IDF 0/12 [0.00, 0.24] (bar 7/12); every other gated criterion passed (13/14), including GDET48 (26/26 identical, 0 guard firings) and GQB23 (max call 7.79 s). Observed in 048: the largest record spent 541496 of 1500000 conflicts (36 %) at scale16 and 524232 of 1000000 at scale20; every IDU stopped on a call capped at C, so B never bound. Reading (Inferred, deviation #170 item 6): in certify/16d one capped call ends the case, so B is not a spending budget but only an upper limit; re-planning B means letting a capped call continue until B is spent",
+  "brand": "charcoal and sage; no purple, neon, emoji or gold",
+  "question": "If a capped call is resumed in fixed chunks of C = 50000 conflicts on the same incremental solver (learned clauses kept) until it answers or the case budget B is spent, does the identifier keep 048's wall-freedom and determinism and recover 047's decided rate (at least 7/12 fresh 16-state worlds) with no WRONG certificate, inside a 3600 s run? Does it decide anything at 20 states, and stay sound there?",
+  "hypotheses": {
+    "H1": "chunked resume keeps wall-freedom: the 30 s per-call guard (checked between chunks) and the 600 s case guard fire 0 times on every certify/16e record",
+    "H2": "two independent passes of certify/16e give byte-identical canonical records (canon16e) on every fresh case",
+    "H3": "on fresh scale16 worlds certify/16e issues no WRONG certificate and decides at least 7/12 (the 046 A16_N count, as 047 and 048)",
+    "H4": "scale-20 (exploratory): certify/16e stays sound at family_bound 20 (WRONG 0, every decided record audited true at bound 20); the decided count is reported, not predicted",
+    "H5": "over the 26 sealed 048 traces (part r) certify/16e decides at least as many cases as the sealed certify/16d records (reported only) and never contradicts a sealed decided record",
+    "H6": "with resume disabled (max_chunks 1) certify/16e reproduces the sealed 048 certify/16d records exactly (compatibility)"
+  },
+  "design": {
+    "api": "additive new module brute/api/certify16e.py (certify/16e, Certifier16E). It reuses the frozen certify/16d instance (H16D, Pool16D, CCounted) through imports only and replaces only the per-call solve: a call runs solve_limited with conf_budget(min(C, conflicts left in the case)); if the result is unknown because of the chunk cap and the case budget is not spent, the SAME solver is called again with the same assumptions and a fresh chunk, until it answers, the case budget B is spent, or a wall guard fires. The wall guard (30 s per call, 600 s per case, as certify/16d) is checked between chunks only, so a chunk boundary is a conflict count, never a clock reading. A parameter max_chunks (default unlimited; 1 = certify/16d behaviour) is public. Host-agnostic: no I/O, threads, subprocess or os in brute/; frozen certify16d.py, certify16.py and certify14 are not edited",
+    "cap_rule": "fixed NOW, before any 049 data, from sealed 048 results only (Exact): chunk C = 50000 (the 048 value, 0 guard firings in 048, max call 7.79 s); B16 = 1500000 and B20 = 1000000 (the 048 values). Not calibrated, not tuned. Reason (Inferred): 048 showed C 50000 wall-free on this host, and 047 decided 10/12 with calls up to 294000 conflicts, which B16 now allows as 6 chunks",
+    "canon16e": "the canon16d record plus per-call chunk counts and per-chunk conflict counts; wall fields excluded (as canon16d)",
+    "parts": {
+      "a": "fresh scale16 (12) and control (6), certify/16e two independent passes (API16E, API16E_b), family_bound 16, B16",
+      "d": "fresh scale20 (8), certify/16e two independent passes, family_bound 20, B20",
+      "r": "certify/16e (one pass) over the 26 sealed 048 traces (12 scale16, 6 control, 8 scale20 from results/study-048), compared with the sealed API16D records",
+      "c": "compatibility: certify/16e with max_chunks 1 over the same 26 sealed 048 traces, compared byte-for-byte with the sealed 048 canon16d records"
+    },
+    "arms": "API16E and API16E_b (two independent passes, fresh processes) in parts a and d; API16E in part r; API16E_c1 (max_chunks 1) in part c",
+    "worlds": "clean (noise-free) worlds from the frozen 048 generators, same sizes and observation rules as 048"
+  },
+  "cases": {
+    "scale16": 12,
+    "control": 6,
+    "scale20": 8,
+    "replay_048": 26,
+    "compat_048": 26,
+    "fresh_jobs": "18 x 2 arms + 8 x 2 arms = 52",
+    "replay_jobs": 26,
+    "compat_jobs": 26,
+    "total_jobs": 104,
+    "declared_before_data": true
+  },
+  "heldout_ranges": {
+    "scale16": "11630001-11630012",
+    "control": "11650001-11650006",
+    "scale20": "11670001-11670008",
+    "note": "the prefixes 1163, 1165 and 1167 had 0 word-bounded tokens of the form prefix+00NN in tracked text at plan time (Observed, git grep, 2026-10-31 EDT); 1171 and 1177 had 1 hit each and are not used. seedcheck_049 scans every tracked file, .gz archives included, before any seed is used. Any hit moves that range to the next unused odd prefix (1169, 1173, 1175), declared in the pre-run deviation"
+  },
+  "smoke_range": "11690001-11690006 (pre-freeze smoke and projection only; never gated; never used to set C or B)",
+  "criteria": {
+    "GDET49": "headline 1, determinism and wall-freedom: API16E and API16E_b give byte-identical canon16e records on 18/18 fresh scale16+control and 8/8 scale20 cases, AND neither wall guard fires on any certify/16e record (parts a, d, r and c)",
+    "GFID49": "headline 2, fidelity: API16E driven observation by observation over its own part-a and part-d traces reproduces 26/26 records exactly (api_checks)",
+    "GCOMPAT16D": "headline 3: part c reproduces 26/26 sealed 048 canon16d records byte-for-byte",
+    "GAPI16E_fresh49": "headline 4: fresh scale16: API16E WRONG = 0 and ID+IDF >= 7/12 (Wilson 95% CI reported). A budget-spent unknown is not a WRONG",
+    "GS20_sound49": "API16E scale20: WRONG = 0 and every decided record audited true at bound 20. If 0 records are decided it passes vacuously and is reported as vacuous (deviation #169 item 7 rule); a vacuous pass carries no N <= 20 claim",
+    "GR49_sound": "part r: no certify/16e decided record contradicts a sealed 048 decided record (2 AMB/K_spent and 6 control ID in 048), and WRONG = 0",
+    "GHOST49": "api_checks: frozen certify/14, certify/16 and certify/16d closures unchanged; 0 sockets opened",
+    "G10": "6/6 controls ID on both passes",
+    "GQB24": "max chunk wall <= 30 s and max case wall <= 600 s on every certify/16e record; chunk counts and capped chunks reported",
+    "GS_ref": "every decided record audited by the CNF reference at its family_bound, 0 mismatches; 20/20 mutations caught; reference scope 2400 s",
+    "G_sound": "recount: 0 unsound words",
+    "G_recount": "independent recount reproduces every label",
+    "GTI": "no held-out seed seen before the freeze (seedcheck_049 and tracked-text scan)",
+    "G_PROC": "process chain intact (plan, authorization, seedcheck, smoke, freeze, run start, seal, recount, reference, api checks, tests, gates)",
+    "G_RT": "main run total_elapsed <= 3600 s"
+  },
+  "secondary": {
+    "GS20_rate49": "API16E scale20 ID+IDF with Wilson CI and conflict and wall cost, reported only",
+    "GREP16f": "API16E scale16 ID+IDF beside 048 (0/12 at C 50000, no resume) and 047 (10/12 at C 294000), reported only",
+    "GR_gain": "part r: cases decided by certify/16e that the sealed certify/16d record left IDU, per key, reported only",
+    "GCOST49": "conflicts, chunks per call, budget-spent cases and wall per part and key, reported only"
+  },
+  "gate_dependency_rule": "each gate is scored from its own counts. GAPI16E_fresh49, GS20_sound49 and GR49_sound use the recounted labels if G_recount passes, else the study labels with the failure stated",
+  "what_counts_as_failure": "any gated criterion false. A budget-spent call is unknown, not a failure of soundness. A wall guard firing is a GDET49 failure",
+  "freeze_rule": "no file named in the source freeze is edited after the freeze; new behaviour goes in new files or a deviation addendum. C, B16, B20, max_chunks defaults and the case lists are part of the freeze",
+  "runtime_estimate": "declared now, using the #167 item 13 worst-case definition: every certify/16e case is assumed to spend its whole B (resume makes this the expected worst case). r_min = 6716/s at scale16 (047 slowest, Observed) and 3528/s at scale20 (Inferred; 048 Observed max call 7.79 s for at most 50000 conflicts, at least 6419/s). Per job: min(600 s case guard, B / r_min + 10 s). Part a scale16 24 x 233.3 = 5599 s; part d 16 x 293.4 = 4694 s; part r 12 x 233.3 + 8 x 293.4 = 5147 s; part c (no resume; 048 observed 107 s for 70 jobs) about 60 s; controls about 60 s; total about 15560 job-seconds; LPT on 8 workers about 1945 s plus at most one 293 s tail, about 2240 s, below 3600 s. Cut rule, declared now: if the pre-freeze worst-case LPT projection is above 3600 s, part r scale20 is dropped first, then part d is reduced to 6 then 4 cases, stated in the pre-run deviation; never after the freeze",
+  "process": "LEAN (standing go t133s553, ledger 76b30d5). A ledgered build_authorization_049 citing it is required before any code, ledgered BEFORE seedcheck_049. Plan locked before data; seedcheck before seeds; no cap calibration (C and B fixed here); independent recount; CNF reference audit; api_checks (fidelity, ghost, compatibility, no-network) once after the freeze; pre-freeze smoke on 11690001-11690006 with the real release verifier chain; one main run, 8 workers, no tuning, no reruns, no relaunch if interrupted (the resume clause is not approved); failures published; one fresh-clone verify plus tests",
+  "next_if_pass": "all headline gates pass: certify/16e at C 50000 with chunked resume becomes the latest certified API for declared N <= 16, and for N <= 20 if GS20_sound49 passes non-vacuously (exact conditional on the declared N and noise-free readings); next, a 24-world scale-20 replication and a noise study at 12 states",
+  "next_if_fail": "GDET49 fails with 0 guard firings: resume is not deterministic on this solver; find the source, ship nothing new. GDET49 or GQB24 fails on guard firings: a chunk or a resumed case is too slow on this host; re-plan C or the case guard from this run's slowest rate. GFID49 or GCOMPAT16D fails: the wrapper is unfaithful; fix it, ship nothing new. GAPI16E_fresh49 or GR49_sound fails on WRONG: soundness first. GAPI16E_fresh49 fails on count only with most cases budget-spent: B is too small at this size; re-plan B from this run's spend. GS20_sound49 fails: soundness at 20 first; do not scale further. G_RT fails: publish it; scale-20 gets its own version",
+  "limitations": [
+    "12 scale16 and 8 scale20 cases give wide CIs",
+    "still needs a declared size N",
+    "clean worlds only; noise and lowobs12 not covered",
+    "walls still depend on the host; only guard firings are gated beside the conflict-count record",
+    "the scale20 rate (3528/s) in the projection is an Inferred estimate",
+    "part r reuses sealed 048 traces, so it is not fresh evidence; only parts a and d are fresh",
+    "the wall-capped A16_N overrun (GQB22 in 047) is not studied here"
+  ],
+  "open_items": [
+    "full N-freedom: Open",
+    "noise at 12 states: Open",
+    "lowobs12 beyond A16: Open",
+    "why A16_N's 9 s kill overran to 16.7 s under load in 047: Open",
+    "whether C 50000 is wall-free on other hosts: Open",
+    "whether resumed chunks with kept learned clauses match one long call in decided rate: Open"
+  ],
+  "claim_scope": "conditional on the declared N: a certify/16e ID or IDF means unique among machines with at most N states consistent with the noise-free trace. Inferred reason: a larger machine can copy the true machine on every visited state and differ only where the trace never reaches, so a size bound is inherent",
+  "evidence_labels": "Exact, Observed, Simulated, Inferred, Rejected, Open"
+}
