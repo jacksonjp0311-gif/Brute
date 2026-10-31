@@ -48,6 +48,18 @@ class API(unittest.TestCase):
             with self.assertRaises(ValueError):c.observe((x[0]+1)%w.k,(0,0))
         c.close()
 
+    def test_stop_kinds_K_spent_and_unknown(self):
+        # pre-freeze (#165 item 8): the smoke probes on the smoke control seed decided ID from the passive prefix, so the
+        # K_spent -> AMB and unknown -> IDU stops are exercised here on a 2-step prefix of the development world
+        import time
+        w,sw,acts,rd=world()
+        c=C.Certifier16(rd[0],w.k,3,K=0,budget_s=60.0)
+        for a,o in zip(acts[:2],rd[1:3]):c.observe(a,o)
+        self.assertIsNone(c.propose());self.assertEqual((c.result()['stop'],c.result()['label']),('K_spent','AMB'))
+        c=C.Certifier16(rd[0],w.k,3,budget_s=1e-6)
+        for a,o in zip(acts[:2],rd[1:3]):c.observe(a,o)
+        time.sleep(0.01);self.assertIsNone(c.propose());self.assertEqual((c.result()['stop'],c.result()['label']),('unknown','IDU'))
+
     def test_argument_checks(self):
         for kw in ({'family_bound':17},{'family_bound':0},{'num_actions':5},{'K':-1},{'budget_s':0}):
             with self.assertRaises(ValueError,msg=str(kw)):C.Certifier16((0,1),**{'num_actions':3,'family_bound':3,**kw})
