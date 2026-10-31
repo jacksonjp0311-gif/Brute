@@ -71,8 +71,8 @@ def build(study=STUDY_DIR,expect=None):
     allc=[c for c in (res or {}).get('cases',[]) if c['block']=='main'] if sealed else []
     G=lambda k:sorted([c for c in allc if c['key']==k],key=lambda c:c['seed'])
     n12=G('noise12');nb=G('noise12_bar');cp=G('compat')
-    arms_ok=(all(list(c['arms'])==list(N2) for c in n12) and all(list(c['arms'])==['API16N_bar'] for c in nb)
-             and all(list(c['arms'])==list(CP) for c in cp))
+    arms_ok=(all(sorted(c['arms'])==sorted(N2) for c in n12) and all(sorted(c['arms'])==['API16N_bar'] for c in nb)
+             and all(sorted(c['arms'])==sorted(CP) for c in cp))  # arm sets; the runner's dict order is job order
     complete=(sealed and seal.get('complete') is True and len(n12)==E['noise12'] and len(nb)==E['noise12_bar'] and len(cp)==E['compat']
               and len(allc)==E['noise12']+E['noise12_bar']+E['compat'] and arms_ok)
     wb=None if complete else 'INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)'

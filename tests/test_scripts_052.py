@@ -78,6 +78,11 @@ class Gates(unittest.TestCase):
             for g in ('GDET52','GFID52','GN12_sound52','GCOMPAT16N52','GHOST52','GQB26','GS_ref','G_sound','G_recount','GTEST','G_RT'):
                 self.assertFalse(G['gates'][g]['pass'],g);self.assertIn('reason',G['gates'][g],g)
 
+    def test_arm_order_insensitive(self):
+        # the runner stores compat arms in job order (API16E, API16N_c); gates compare arm sets
+        import ast,inspect
+        src=inspect.getsource(MG.build);self.assertNotIn("list(c['arms'])==",src);self.assertIn("sorted(c['arms'])==sorted(CP)",src)
+
     def test_freeze_list(self):
         gen={'results/diag-052/PREFREEZE_SMOKE_GATES_052.json','docs/research/BRUTE_DEVIATIONS_052_177.md'}
         miss=[f for f in MF.FILES if not (ROOT/f).exists() and f not in gen];self.assertEqual(miss,[])
