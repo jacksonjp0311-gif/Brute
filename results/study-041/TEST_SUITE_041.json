@@ -1,0 +1,105 @@
+{
+ "gated_modules": [
+  "test_encaudit16_0380",
+  "test_scripts_041",
+  "test_release_0380"
+ ],
+ "modules": [
+  "test_encaudit16_0380",
+  "test_scripts_041",
+  "test_release_0380",
+  "test_scalesearch15_0370",
+  "test_scalesearch14_0360"
+ ],
+ "passed": true,
+ "per_module": {
+  "test_encaudit16_0380": {
+   "results": {
+    "test_active_arms_equal_frozen": "ok",
+    "test_capped_solve_reads_kill_as_capped": "ok",
+    "test_cube_path_forced": "ok",
+    "test_hard_kill_and_replay": "ok",
+    "test_host_agnostic": "ok",
+    "test_proxy_equals_native": "ok",
+    "test_stop_check_variants_equal_frozen": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "ads_kill_as_capped) ... ok\ntest_cube_path_forced (tests.test_encaudit16_0380.TAudit.test_cube_path_forced) ... ok\ntest_hard_kill_and_replay (tests.test_encaudit16_0380.TAudit.test_hard_kill_and_replay) ... ok\ntest_host_agnostic (tests.test_encaudit16_0380.TAudit.test_host_agnostic) ... ok\ntest_proxy_equals_native (tests.test_encaudit16_0380.TAudit.test_proxy_equals_native) ... ok\ntest_stop_check_variants_equal_frozen (tests.test_encaudit16_0380.TAudit.test_stop_check_variants_equal_frozen) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 6.334s\n\nOK\n",
+   "tests": 7,
+   "wall_informational": 6.4
+  },
+  "test_release_0380": {
+   "results": {
+    "test_gate_list_mismatch": "ok",
+    "test_missing_key": "ok",
+    "test_release_ok": "ok",
+    "test_run_tests_default_is_scratch": "ok",
+    "test_run_tests_refuses_overwrite": "ok",
+    "test_secondary_mismatch": "ok",
+    "test_wrong_version": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": ". ok\ntest_release_ok (tests.test_release_0380.TestRelease0380.test_release_ok) ... ok\ntest_run_tests_default_is_scratch (tests.test_release_0380.TestRelease0380.test_run_tests_default_is_scratch) ... ok\ntest_run_tests_refuses_overwrite (tests.test_release_0380.TestRelease0380.test_run_tests_refuses_overwrite) ... ok\ntest_secondary_mismatch (tests.test_release_0380.TestRelease0380.test_secondary_mismatch) ... ok\ntest_wrong_version (tests.test_release_0380.TestRelease0380.test_wrong_version) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.003s\n\nOK\n",
+   "tests": 7,
+   "wall_informational": 0.0
+  },
+  "test_scalesearch14_0360": {
+   "results": {
+    "test_GINC14_sealed_034_traces": "ok",
+    "test_ID_stop_checked_by_enumeration": "ok",
+    "test_constants_and_host_agnostic": "ok",
+    "test_differ14_equals_differ9": "ok",
+    "test_least_incremental_equals_fresh_and_enumeration": "ok",
+    "test_prefix_change_refused": "ok",
+    "test_stop_check14_equals_stop_check9": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "\nGINC14 {\"cases\": 36, \"n_min_checked\": 265, \"verdicts_checked\": 307, \"SAT\": 240, \"UNSAT\": 67, \"mismatches\": 0, \"wall_informational\": 81.6}\n",
+   "tail": "st_constants_and_host_agnostic) ... ok\ntest_differ14_equals_differ9 (tests.test_scalesearch14_0360.T14.test_differ14_equals_differ9) ... ok\ntest_least_incremental_equals_fresh_and_enumeration (tests.test_scalesearch14_0360.T14.test_least_incremental_equals_fresh_and_enumeration) ... ok\ntest_prefix_change_refused (tests.test_scalesearch14_0360.T14.test_prefix_change_refused) ... ok\ntest_stop_check14_equals_stop_check9 (tests.test_scalesearch14_0360.T14.test_stop_check14_equals_stop_check9) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 81.815s\n\nOK\n",
+   "tests": 7,
+   "wall_informational": 81.9
+  },
+  "test_scalesearch15_0370": {
+   "results": {
+    "test_GINC15_sealed_039_traces": "FAIL",
+    "test_ID_stop_checked_by_enumeration": "ok",
+    "test_apart_matrix_and_clique": "ok",
+    "test_constants_and_host_agnostic": "ok",
+    "test_cube_path_forced": "ok",
+    "test_least_equals_least14_and_enumeration": "ok",
+    "test_prefix_change_refused": "ok",
+    "test_stop_check15_equals_stop_check14": "ok"
+   },
+   "returncode": 1,
+   "stdout_tail": "",
+   "tail": "sertEqual(bad,[])\n                                 ~~~~~~~~~~~~~~~~^^^^^^^^\nAssertionError: Lists differ: [['perm12', 10540007, False, ['ID', 12], [[126 chars]12]]] != []\n\nFirst list contains 3 additional elements.\nFirst extra element 0:\n['perm12', 10540007, False, ['ID', 12], ['unknown', 12]]\n\n+ []\n- [['perm12', 10540007, False, ['ID', 12], ['unknown', 12]],\n-  ['perm12', 10540008, False, ['ID', 12], ['unknown', 12]],\n-  ['perm12', 10540008, True, ['ID', 12], ['unknown', 12]]]\n\n----------------------------------------------------------------------\nRan 8 tests in 169.994s\n\nFAILED (failures=1)\n",
+   "tests": 8,
+   "wall_informational": 170.1
+  },
+  "test_scripts_041": {
+   "results": {
+    "test_boot_seeded": "ok",
+    "test_check_job_refuses_foreign_seed": "ok",
+    "test_freeze_list": "ok",
+    "test_fresh_and_recount": "ok",
+    "test_incomplete_input": "ok",
+    "test_jobs_main": "ok",
+    "test_jobs_smoke": "ok",
+    "test_replay_and_recount": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "t_incomplete_input (tests.test_scripts_041.Gates.test_incomplete_input) ... ok\ntest_check_job_refuses_foreign_seed (tests.test_scripts_041.Runner.test_check_job_refuses_foreign_seed) ... ok\ntest_fresh_and_recount (tests.test_scripts_041.Runner.test_fresh_and_recount) ... ok\ntest_jobs_main (tests.test_scripts_041.Runner.test_jobs_main) ... ok\ntest_jobs_smoke (tests.test_scripts_041.Runner.test_jobs_smoke) ... ok\ntest_replay_and_recount (tests.test_scripts_041.Runner.test_replay_and_recount) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.273s\n\nOK\n",
+   "tests": 8,
+   "wall_informational": 0.5
+  }
+ },
+ "process": "lean",
+ "reported_modules": [
+  "test_scalesearch15_0370",
+  "test_scalesearch14_0360"
+ ],
+ "schema": "brute.test-suite-041.v1"
+}
