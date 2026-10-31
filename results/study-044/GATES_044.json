@@ -1,0 +1,1207 @@
+{
+  "all_gated_pass": false,
+  "cut_c30": false,
+  "failed": [
+    "GLO_cap",
+    "GLO_pol"
+  ],
+  "gates": {
+    "G10": {
+      "observed": {
+        "cases": [
+          [
+            10970001,
+            {
+              "A16_c30": "ID",
+              "A16_c9": "ID",
+              "A16_xf": "ID"
+            }
+          ],
+          [
+            10970002,
+            {
+              "A16_c30": "ID",
+              "A16_c9": "ID",
+              "A16_xf": "ID"
+            }
+          ],
+          [
+            10970003,
+            {
+              "A16_c30": "ID",
+              "A16_c9": "ID",
+              "A16_xf": "ID"
+            }
+          ],
+          [
+            10970004,
+            {
+              "A16_c30": "ID",
+              "A16_c9": "ID",
+              "A16_xf": "ID"
+            }
+          ],
+          [
+            10970005,
+            {
+              "A16_c30": "ID",
+              "A16_c9": "ID",
+              "A16_xf": "ID"
+            }
+          ],
+          [
+            10970006,
+            {
+              "A16_c30": "ID",
+              "A16_c9": "ID",
+              "A16_xf": "ID"
+            }
+          ]
+        ],
+        "rule": "every arm ID on every control"
+      },
+      "pass": true
+    },
+    "GLO_cap": {
+      "observed": {
+        "A16_c30_ID_IDF": 2,
+        "A16_c30_ci95": [
+          0.04696514218385378,
+          0.44803086225297345
+        ],
+        "A16_c9_ID_IDF": 0,
+        "A16_c9_ci95": [
+          2.1025014877572554e-17,
+          0.24249400665524087
+        ],
+        "cut_applied": false,
+        "gain": 2,
+        "label_source": "recount",
+        "of": 12,
+        "per_case": [
+          [
+            10930001,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10930002,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10930003,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10930004,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10930005,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10930006,
+            "IDF",
+            "IDU"
+          ],
+          [
+            10930007,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10930008,
+            "ID",
+            "IDU"
+          ],
+          [
+            10930009,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10930010,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10930011,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10930012,
+            "IDU",
+            "IDU"
+          ]
+        ],
+        "rule": "A16_c30 ID+IDF >= 3/12 and A16_c30 - A16_c9 (ID+IDF) >= 2"
+      },
+      "pass": false
+    },
+    "GLO_pol": {
+      "observed": {
+        "A16_c9_ID_IDF": 0,
+        "A16_c9_ci95": [
+          2.1025014877572554e-17,
+          0.24249400665524087
+        ],
+        "A16_xf_ID_IDF": 2,
+        "A16_xf_ci95": [
+          0.04696514218385378,
+          0.44803086225297345
+        ],
+        "gain": 2,
+        "label_source": "recount",
+        "of": 12,
+        "per_case": [
+          [
+            10930001,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10930002,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10930003,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10930004,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10930005,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10930006,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10930007,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10930008,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10930009,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10930010,
+            "ID",
+            "IDU"
+          ],
+          [
+            10930011,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10930012,
+            "ID",
+            "IDU"
+          ]
+        ],
+        "rule": "A16_xf ID+IDF >= 3/12 and A16_xf - A16_c9 (ID+IDF) >= 2"
+      },
+      "pass": false
+    },
+    "GLO_sem": {
+      "observed": {
+        "ID_models_differ": [],
+        "ID_vs_IDF_reported": [],
+        "WRONG": [],
+        "n_min_differs": [],
+        "rule": "WRONG 0 in every arm; any two arms both ID/IDF => same n_min; both ID => same canonical model"
+      },
+      "pass": true
+    },
+    "GQB19": {
+      "observed": {
+        "bound_s_by_arm": {
+          "A16_c30": 31.5,
+          "A16_c9": 10.5,
+          "A16_xf": 10.5
+        },
+        "calls_logged": 1068,
+        "hard_kills": 1,
+        "max_by_arm_phase": {
+          "A16_c30/cube": 30.604,
+          "A16_c30/least": 30.215,
+          "A16_c30/rival": 30.207,
+          "A16_c9/cube": 9.561,
+          "A16_c9/least": 9.281,
+          "A16_c9/rival": 9.282,
+          "A16_xf/cube": 10.009,
+          "A16_xf/least": 9.363,
+          "A16_xf/rival": 9.14
+        },
+        "max_s_by_arm": {
+          "A16_c30": 30.604,
+          "A16_c9": 9.561,
+          "A16_xf": 10.009
+        },
+        "over": []
+      },
+      "pass": true
+    },
+    "GS_ref": {
+      "observed": {
+        "PASS": true,
+        "arm": [
+          "A16_c9",
+          "A16_c30",
+          "A16_xf"
+        ],
+        "block": "main",
+        "decided": 4,
+        "decided_by_arm": {
+          "A16_c30": 2,
+          "A16_c9": 0,
+          "A16_xf": 2
+        },
+        "k_spent_as_amb": 0,
+        "key": [
+          "lowobs12"
+        ],
+        "mismatch_count": 0,
+        "mutations": 20,
+        "not_reached": 32,
+        "of": 20,
+        "records": 36,
+        "vacuous": false,
+        "vacuous_pass_stated": null,
+        "verdicts_checked": 8
+      },
+      "pass": true
+    },
+    "GTI": {
+      "observed": {
+        "gated": {
+          "test_lowobspolicy17": {
+            "returncode": 0,
+            "tests": 5
+          },
+          "test_release_0410": {
+            "returncode": 0,
+            "tests": 9
+          },
+          "test_scripts_044": {
+            "returncode": 0,
+            "tests": 10
+          }
+        },
+        "reported": {
+          "test_scalesearch16_0390": {
+            "returncode": 0,
+            "tests": 5
+          },
+          "test_scripts_043": {
+            "returncode": 0,
+            "tests": 9
+          },
+          "test_worlds_043": {
+            "returncode": 0,
+            "tests": 5
+          }
+        }
+      },
+      "pass": true
+    },
+    "G_PROC": {
+      "observed": {
+        "clauses": {
+          "commit_order_file": true,
+          "ledger_times_non_decreasing": true,
+          "ledger_times_parse": true,
+          "main_sealed": true,
+          "order": true
+        },
+        "events": [
+          "preregistration_044",
+          "build_authorization_044",
+          "seedcheck_044",
+          "seedcheck_044b",
+          "source_freeze_044",
+          "run_start_044",
+          "run_end_044"
+        ],
+        "note": "seedcheck_044 failed; seedcheck_044b is a post-scan adjudication (#161 item 2)",
+        "reported_seedcheck_044_PASS": false,
+        "reported_seedcheck_044b_PASS": true,
+        "required_order": [
+          "preregistration_044",
+          "build_authorization_044",
+          "seedcheck_044",
+          "seedcheck_044b",
+          "source_freeze_044",
+          "run_start_044",
+          "run_end_044"
+        ]
+      },
+      "pass": true
+    },
+    "G_RT": {
+      "observed": {
+        "cap_s": 3600,
+        "cases": 18,
+        "cut_applied": false,
+        "elapsed_s": 490.3939245740039
+      },
+      "pass": true
+    },
+    "G_recount": {
+      "observed": {
+        "PASS": true,
+        "amb_rule_applied": 0,
+        "cases": 18,
+        "labels_main": {
+          "A16_c30": {
+            "AMB": 0,
+            "ID": 7,
+            "IDF": 1,
+            "IDU": 10,
+            "WRONG": 0
+          },
+          "A16_c9": {
+            "AMB": 0,
+            "ID": 6,
+            "IDF": 0,
+            "IDU": 12,
+            "WRONG": 0
+          },
+          "A16_xf": {
+            "AMB": 0,
+            "ID": 8,
+            "IDF": 0,
+            "IDU": 10,
+            "WRONG": 0
+          }
+        },
+        "mismatching_cases": 0,
+        "truth_inconsistent": 0,
+        "words_checked": 83,
+        "words_unsound": 0
+      },
+      "pass": true
+    },
+    "G_sound": {
+      "observed": {
+        "recount_bound": true,
+        "recount_truth_inconsistent": 0,
+        "recount_words_checked": 83,
+        "recount_words_unsound": 0,
+        "words_checked": 83,
+        "words_unsound": 0
+      },
+      "pass": true
+    }
+  },
+  "label_source": "recount",
+  "not_exercised": [],
+  "process": "lean",
+  "reports": {
+    "fresh_labels": {
+      "A16_c30/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "n": 6,
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "A16_c30/lowobs12": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "IDF": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "IDU": {
+          "ci95": [
+            0.5519691377470266,
+            0.9530348578161463
+          ],
+          "n": 12,
+          "x": 10
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "A16_c9/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "n": 6,
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "A16_c9/lowobs12": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.7575059933447591,
+            1.0
+          ],
+          "n": 12,
+          "x": 12
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "A16_xf/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "n": 6,
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "A16_xf/lowobs12": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.04696514218385378,
+            0.44803086225297345
+          ],
+          "n": 12,
+          "x": 2
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.5519691377470266,
+            0.9530348578161463
+          ],
+          "n": 12,
+          "x": 10
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      }
+    }
+  },
+  "schema": "brute.gates.v41_0",
+  "sealed_input_verified": true,
+  "secondary": {
+    "GC9": {
+      "observed": {
+        "A16_c9_ID_IDF": 0,
+        "ci95": [
+          2.1025014877572554e-17,
+          0.24249400665524087
+        ],
+        "of": 12,
+        "study_043_A16": [
+          0,
+          12
+        ],
+        "study_043_ci95": [
+          2.1025014877572554e-17,
+          0.24249400665524087
+        ]
+      },
+      "pass": null,
+      "rule": "reported: A16_c9 replicates the 043 A16 baseline (0/12)"
+    },
+    "GLO_cause2": {
+      "observed": {
+        "10930001/A16_c30": {
+          "capped_calls": 2,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 30.377177991998906,
+          "run_wall_informational": 74.70614480299992,
+          "stop": "unknown",
+          "used": 0,
+          "xf_used": 0
+        },
+        "10930001/A16_c9": {
+          "capped_calls": 3,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.152728686996852,
+          "run_wall_informational": 30.686848237994127,
+          "stop": "unknown",
+          "used": 0,
+          "xf_used": 0
+        },
+        "10930001/A16_xf": {
+          "capped_calls": 4,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.377351767005166,
+          "run_wall_informational": 49.745541549003974,
+          "stop": "unknown",
+          "used": 32,
+          "xf_used": 32
+        },
+        "10930002/A16_c30": {
+          "capped_calls": 2,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 30.25376735500322,
+          "run_wall_informational": 68.67824789300357,
+          "stop": "unknown",
+          "used": 0,
+          "xf_used": 0
+        },
+        "10930002/A16_c9": {
+          "capped_calls": 2,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.107396432002133,
+          "run_wall_informational": 27.394047134002903,
+          "stop": "unknown",
+          "used": 0,
+          "xf_used": 0
+        },
+        "10930002/A16_xf": {
+          "capped_calls": 2,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.363294754999515,
+          "run_wall_informational": 20.852265100002114,
+          "stop": "unknown",
+          "used": 32,
+          "xf_used": 32
+        },
+        "10930003/A16_c30": {
+          "capped_calls": 2,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 30.08400816500216,
+          "run_wall_informational": 90.49336292800581,
+          "stop": "unknown",
+          "used": 0,
+          "xf_used": 0
+        },
+        "10930003/A16_c9": {
+          "capped_calls": 2,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.142393517999153,
+          "run_wall_informational": 19.586067545998958,
+          "stop": "unknown",
+          "used": 0,
+          "xf_used": 0
+        },
+        "10930003/A16_xf": {
+          "capped_calls": 4,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.222924273999524,
+          "run_wall_informational": 39.896513981999306,
+          "stop": "unknown",
+          "used": 32,
+          "xf_used": 32
+        },
+        "10930004/A16_c30": {
+          "capped_calls": 3,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 30.604112595996412,
+          "run_wall_informational": 115.62188579800568,
+          "stop": "unknown",
+          "used": 0,
+          "xf_used": 0
+        },
+        "10930004/A16_c9": {
+          "capped_calls": 4,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.024168308002118,
+          "run_wall_informational": 49.3257553509975,
+          "stop": "unknown",
+          "used": 0,
+          "xf_used": 0
+        },
+        "10930004/A16_xf": {
+          "capped_calls": 4,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 10.008621271997981,
+          "run_wall_informational": 49.327142494003056,
+          "stop": "unknown",
+          "used": 32,
+          "xf_used": 32
+        },
+        "10930005/A16_c30": {
+          "capped_calls": 3,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 30.214576607002527,
+          "run_wall_informational": 100.6009497289997,
+          "stop": "unknown",
+          "used": 0,
+          "xf_used": 0
+        },
+        "10930005/A16_c9": {
+          "capped_calls": 6,
+          "label": "IDU",
+          "last_phase": "future",
+          "n_min": 12,
+          "n_rounds": 1,
+          "query_max_s": 9.280801795001025,
+          "run_wall_informational": 58.86622694499965,
+          "stop": "unknown",
+          "used": 0,
+          "xf_used": 0
+        },
+        "10930005/A16_xf": {
+          "capped_calls": 3,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.025385127002664,
+          "run_wall_informational": 29.665222317998996,
+          "stop": "unknown",
+          "used": 32,
+          "xf_used": 32
+        },
+        "10930006/A16_c30": {
+          "capped_calls": 1,
+          "label": "IDF",
+          "last_phase": null,
+          "n_min": 12,
+          "n_rounds": 14,
+          "query_max_s": 30.1732020069976,
+          "run_wall_informational": 82.92666396500135,
+          "stop": "IDF",
+          "used": 32,
+          "xf_used": 0
+        },
+        "10930006/A16_c9": {
+          "capped_calls": 3,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 4,
+          "query_max_s": 9.043319819000317,
+          "run_wall_informational": 32.27235260300222,
+          "stop": "unknown",
+          "used": 7,
+          "xf_used": 0
+        },
+        "10930006/A16_xf": {
+          "capped_calls": 3,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.180232523998711,
+          "run_wall_informational": 29.965279920004832,
+          "stop": "unknown",
+          "used": 32,
+          "xf_used": 32
+        },
+        "10930007/A16_c30": {
+          "capped_calls": 3,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 30.165551484002208,
+          "run_wall_informational": 96.61199119800585,
+          "stop": "unknown",
+          "used": 0,
+          "xf_used": 0
+        },
+        "10930007/A16_c9": {
+          "capped_calls": 3,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.561254681997525,
+          "run_wall_informational": 34.15719700200134,
+          "stop": "unknown",
+          "used": 0,
+          "xf_used": 0
+        },
+        "10930007/A16_xf": {
+          "capped_calls": 3,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.283993091004959,
+          "run_wall_informational": 31.494898183998885,
+          "stop": "unknown",
+          "used": 32,
+          "xf_used": 32
+        },
+        "10930008/A16_c30": {
+          "capped_calls": 1,
+          "label": "ID",
+          "last_phase": null,
+          "n_min": 12,
+          "n_rounds": 12,
+          "query_max_s": 30.116757386000245,
+          "run_wall_informational": 145.36274696799956,
+          "stop": "ID",
+          "used": 50,
+          "xf_used": 0
+        },
+        "10930008/A16_c9": {
+          "capped_calls": 4,
+          "label": "IDU",
+          "last_phase": "future",
+          "n_min": 12,
+          "n_rounds": 9,
+          "query_max_s": 9.28225317900069,
+          "run_wall_informational": 56.86235591899458,
+          "stop": "unknown",
+          "used": 33,
+          "xf_used": 0
+        },
+        "10930008/A16_xf": {
+          "capped_calls": 2,
+          "label": "IDU",
+          "last_phase": "future",
+          "n_min": 12,
+          "n_rounds": 7,
+          "query_max_s": 9.030904813000234,
+          "run_wall_informational": 27.429280400996504,
+          "stop": "unknown",
+          "used": 50,
+          "xf_used": 32
+        },
+        "10930009/A16_c30": {
+          "capped_calls": 10,
+          "label": "IDU",
+          "last_phase": "future",
+          "n_min": 11,
+          "n_rounds": 20,
+          "query_max_s": 30.581370658997912,
+          "run_wall_informational": 421.67788251899765,
+          "stop": "unknown",
+          "used": 81,
+          "xf_used": 0
+        },
+        "10930009/A16_c9": {
+          "capped_calls": 3,
+          "label": "IDU",
+          "last_phase": "future",
+          "n_min": 11,
+          "n_rounds": 5,
+          "query_max_s": 9.041925432997232,
+          "run_wall_informational": 37.09798254100315,
+          "stop": "unknown",
+          "used": 17,
+          "xf_used": 0
+        },
+        "10930009/A16_xf": {
+          "capped_calls": 4,
+          "label": "IDU",
+          "last_phase": "future",
+          "n_min": 11,
+          "n_rounds": 14,
+          "query_max_s": 9.139839338000456,
+          "run_wall_informational": 61.83657906999724,
+          "stop": "unknown",
+          "used": 72,
+          "xf_used": 32
+        },
+        "10930010/A16_c30": {
+          "capped_calls": 2,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 30.161988408006437,
+          "run_wall_informational": 77.12901811800111,
+          "stop": "unknown",
+          "used": 0,
+          "xf_used": 0
+        },
+        "10930010/A16_c9": {
+          "capped_calls": 3,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.11886341200443,
+          "run_wall_informational": 28.72472717799974,
+          "stop": "unknown",
+          "used": 0,
+          "xf_used": 0
+        },
+        "10930010/A16_xf": {
+          "capped_calls": 0,
+          "label": "ID",
+          "last_phase": null,
+          "n_min": 12,
+          "n_rounds": 6,
+          "query_max_s": 4.054656300002534,
+          "run_wall_informational": 18.202651163002884,
+          "stop": "ID",
+          "used": 46,
+          "xf_used": 32
+        },
+        "10930011/A16_c30": {
+          "capped_calls": 3,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 30.571108919000835,
+          "run_wall_informational": 95.209310930004,
+          "stop": "unknown",
+          "used": 0,
+          "xf_used": 0
+        },
+        "10930011/A16_c9": {
+          "capped_calls": 3,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.228156175006006,
+          "run_wall_informational": 31.74978623700008,
+          "stop": "unknown",
+          "used": 0,
+          "xf_used": 0
+        },
+        "10930011/A16_xf": {
+          "capped_calls": 3,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.5763983249999,
+          "run_wall_informational": 30.649937614005466,
+          "stop": "unknown",
+          "used": 32,
+          "xf_used": 32
+        },
+        "10930012/A16_c30": {
+          "capped_calls": 2,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 30.282638857002894,
+          "run_wall_informational": 68.06937041399942,
+          "stop": "unknown",
+          "used": 0,
+          "xf_used": 0
+        },
+        "10930012/A16_c9": {
+          "capped_calls": 2,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.209000386996195,
+          "run_wall_informational": 26.065575619999436,
+          "stop": "unknown",
+          "used": 0,
+          "xf_used": 0
+        },
+        "10930012/A16_xf": {
+          "capped_calls": 0,
+          "label": "ID",
+          "last_phase": null,
+          "n_min": 12,
+          "n_rounds": 2,
+          "query_max_s": 6.169532006002555,
+          "run_wall_informational": 12.518159259998356,
+          "stop": "ID",
+          "used": 37,
+          "xf_used": 32
+        }
+      },
+      "pass": null,
+      "rule": "reported: per lowobs12 case and arm, the stop and what bound it"
+    },
+    "GPH19": {
+      "observed": {
+        "A16_c30/control/least": {
+          "calls": 12,
+          "capped": 0
+        },
+        "A16_c30/control/rival": {
+          "calls": 12,
+          "capped": 0
+        },
+        "A16_c30/lowobs12/cube": {
+          "calls": 126,
+          "capped": 18
+        },
+        "A16_c30/lowobs12/least": {
+          "calls": 168,
+          "capped": 10
+        },
+        "A16_c30/lowobs12/rival": {
+          "calls": 58,
+          "capped": 6
+        },
+        "A16_c9/control/least": {
+          "calls": 12,
+          "capped": 0
+        },
+        "A16_c9/control/rival": {
+          "calls": 12,
+          "capped": 0
+        },
+        "A16_c9/lowobs12/cube": {
+          "calls": 164,
+          "capped": 21
+        },
+        "A16_c9/lowobs12/least": {
+          "calls": 139,
+          "capped": 13
+        },
+        "A16_c9/lowobs12/rival": {
+          "calls": 19,
+          "capped": 4
+        },
+        "A16_xf/control/least": {
+          "calls": 12,
+          "capped": 0
+        },
+        "A16_xf/control/rival": {
+          "calls": 12,
+          "capped": 0
+        },
+        "A16_xf/lowobs12/cube": {
+          "calls": 138,
+          "capped": 19
+        },
+        "A16_xf/lowobs12/least": {
+          "calls": 152,
+          "capped": 10
+        },
+        "A16_xf/lowobs12/rival": {
+          "calls": 32,
+          "capped": 3
+        }
+      },
+      "pass": null,
+      "rule": "reported: calls / capped calls by arm, key and phase"
+    }
+  },
+  "study": "BRUTE-0410-A16-LOWOBS-AUDIT-044"
+}
