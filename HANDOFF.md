@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.44.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.44.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0440 -->
-- **v0.44.0: RELEASE IN PROGRESS** 2026-10-31 (EDT). Built on branch `plan/v0.44.0` (BRUTE_PLAN_047, certify/16d: per-call conflict cap C 294000, case budget B 7840000; two independent passes, A16_N self-replay, certify/16 and certify/16d over sealed 045/046 traces, fresh scale16 plus controls; scale-20 cut before the freeze by the declared rule; LEAN; STANDING GO t133s553, build authorization at plan commit `168e821`).
+- **v0.44.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.44.0 (annotated tag object `40ac1d0` at `0e6ee96`, ledger release_047). Fresh-clone verify of the tag passed: study 045, 046 and 047 raw data restored, verify_release_0440 (6 links, 0 exceptions, GATES_047 reproduces) and 77 tests in 8 modules. Box clock 1 s from GitHub's Date header at 07:59:16 EDT. Built on branch `plan/v0.44.0` (BRUTE_PLAN_047, certify/16d: per-call conflict cap C 294000, case budget B 7840000; two independent passes, A16_N self-replay, certify/16 and certify/16d over sealed 045/046 traces, fresh scale16 plus controls; scale-20 cut before the freeze by the declared rule; LEAN; STANDING GO t133s553, build authorization at plan commit `168e821`).
   - **Run complete (Observed).** 126/126 jobs (54 fresh arm jobs on 18 cases, 72 replays), 661.6 s of 3600 s, normal exit, run once; the session was interrupted mid-run and the run (PID 968081) was waited on, not relaunched, restarted or killed; 3 checkpoint snapshots (`0ddf98b`, `c3eea46`, `865fc83`); resume clause not approved, not used.
   - **PASS (12/14 exercised):** GFID16D (self-replay 18/18 [0.82, 1.00]; uncapped sealed replays 19/19 [0.83, 1.00]), GFID_wall (0 infidelity a1/a2), GAPI16D_fresh (10/12 [0.55, 0.95], WRONG 0; A16_N 8/12), GAPI16_compat, GHOST16D, G10 (6/6 ID, all arms), GS_ref (48/48 audited, 0 mismatches, 20/20), G_sound (1498 words, 0 unsound), G_recount, GTI, G_PROC, G_RT. **FAIL:** GDET (canon16d identical 18/18 [0.82, 1.00] but 7 wall-guard firings on 3 a3_046 replays) and GQB22 (A16_N 16.718 s vs 10.5 s; API16D 43.778 s vs 30 s). **Not run:** GS20_sound (part d cut).
   - **Claim scope (Exact; reason Inferred):** certify/16d ID/IDF is conditional on the declared N; a larger machine can copy the true one on every visited state, so a size bound is inherent.
