@@ -1,5 +1,31 @@
 # Brute changelog
 
+## v0.48.0: brute.certify/16s (BFS symmetry breaking) decides no 20-state world at B20 2000000; certify/16n replicates (study BRUTE-0480-SCALE20-ISOLATED-SYMBREAK-NOISE12-051, LEAN process)
+
+**9 of 15 gated pass (GN12_sound51, GHOST51, GS_ref, G_sound, G_recount, GTI, GTEST, G_PROC, G_RT); FAIL GDET51, GFID51, GS20_sound51, GCOMPAT16S, G10, GQB25. Secondary GCOST51, GRATE51, GS20_rate51, GN12_rate, GS20_vs50 reported.** Nothing new is certified: certify/16s ships uncertified, certify/16n stays uncertified (its own gate passed again), and certify/16e stays certified only for N <= 16 (v0.46.0).
+
+Claim scope (*Exact*; reason *Inferred*): an ID or IDF is exact only conditional on noise-free readings (certify/16n: every majority correct, probability >= 1 - delta under iid flips with eps <= eps_bar) and a true size at most the declared N. A larger machine can copy the true machine on every visited state, so no finite test separates them.
+
+### Timeline (EDT, 2026-10-31)
+
+- Plan `e510673` (preregistration 12:42:41; build authorization 12:43:40); seedcheck `2aa2832` PASS (12:48:46); pre-freeze smoke `8326099` (PASS; worst-case projection 3181.5 s, no cut); deviation #175 `11d2e7d` / `8326099`; source freeze `9c53632` (337 files).
+- Run start 13:11:44 (ledger `fc02fe0`); 6 snapshots `70911c0` to `221f493`; seal `b4cc653` (ledger `8a41ded`; 1656.2 s); recount `8c8afad`; reference `c2ae74b` (complete); api checks `44a5bb7` (PASS false); tests `e941117`; gates `e7138c5`; deviation #176 `47a2e25` and addendum 1 `4a45a7c`.
+
+### Results (recount labels; Wilson 95% in GATES_051.json)
+
+| part | result | WRONG |
+|---|---|---|
+| scale20, 12 fresh run twice (API16S, B20 2M, C20 12000) ID+IDF | 0 [0.00, 0.24] (IDU 11 budget spent, AMB 1); 050 certify/16e at 4M: 1/24 | 0 |
+| determinism (GDET51) | 26/30 [0.70, 0.95]: scale20 8/12, control 6/6, noise12 12/12; 30 s chunk guard fired on 5 scale20 records | 0 |
+| self-replay (GFID51) | 25/30 [0.66, 0.93]: API16S 7/12, API16E 6/6, API16N 12/12 | 0 |
+| controls (G10) | 4/6 ID both passes [0.30, 0.90]; 11850001 and 11850004 IDF both passes | 0 |
+| noise12, 12 fresh (API16N, eps 0.05) ID+IDF | 11 [0.65, 0.99] (ID 10, IDF 1, AMB 1); both passes identical; 0 majority errors; 53.5 reads per observation | 0 |
+| part c, certify/16s at bound 12 vs certify/16e (GCOMPAT16S) | 5/6 [0.44, 0.97]; 11850004 IDF on both sides, isomorphic machines with a different start state | 0 |
+
+- GQB25: 5 chunks over 30 s (max 54.3 s), 0 case walls over 600 s (max 352.2 s). GS_ref: 38/38 decided audited, 0 mismatches, 20/20 mutations, complete.
+- The run, the reference and api_checks each ran once across agent interruptions and were committed as-is (#176 item 2).
+- Deviations #175 (pre-run), #176 (post-run) and #176 addendum 1. Next: noise12 replicated, so v0.49.0 (BRUTE_PLAN_052, plan only) puts certifying certify/16n first.
+
 ## v0.47.0: certify/16e at 20 states with B20 4000000 hits the wall guard; new brute.certify/16n noise front end (study BRUTE-0470-SCALE20-REPLICATION-NOISE12-050, LEAN process)
 
 **9 of 15 gated pass (GN12_sound, GCOMPAT16N, GHOST50, G_sound, G_recount, GTI, GTEST, G_PROC, G_RT); FAIL GDET50, GFID50, GS20_sound50, G10, GQB25, GS_ref. Secondary GCOST50, GS20_rate50, GN12_rate, GS20_vs49 reported.** Nothing new is certified: certify/16n ships uncertified, and certify/16e stays certified only for N <= 16 (v0.46.0).
