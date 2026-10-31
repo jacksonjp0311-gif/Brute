@@ -1,8 +1,19 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.48.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.49.0 release in progress)._
 
 ## Current version and state
+
+<!-- V0490 -->
+- **v0.49.0: RELEASE IN PROGRESS** 2026-10-31 (EDT). Built on branch `plan/v0.49.0` (BRUTE_PLAN_052: certify/16n, eps 0.05, eps_bar 0.10, delta 0.001, C 50000, B 1500000, on 24 fresh noisy 12-state worlds run twice, 12 fresh worlds at eps 0.10, and 6 eps-0 compatibility cases against certify/16e; 72 jobs, one phase on 8 workers, 60 min cap). Under James's STANDING GO t133s553 (ledger `76b30d5`).
+  - **Run complete (Observed).** 72/72 jobs, 70.8 s of 3600 s, normal exit about 14:52 EDT, run once; 1 checkpoint snapshot; nothing relaunched; resume clause not approved, not used.
+  - **PASS (13/13 gated):** GDET52 24/24 [0.86, 1.00] (0 guard firings); GFID52 72/72 [0.95, 1.00]; GN12_sound52 (eps 0.05 ID+IDF 23/24 [0.80, 0.99]; eps 0.10 12/12 [0.76, 1.00]; WRONG 0/60 [0.00, 0.06], 0 majority errors); GCOMPAT16N52 6/6 [0.61, 1.00]; GHOST52; GQB26 (max chunk 7.6 s, max case 47.7 s); GS_ref (70/70 audited, 0 mismatches, 20/20 mutations); G_sound (687 words, 0 unsound); G_recount; GTI; GTEST (81 gated tests); G_PROC; G_RT (70.8 s).
+  - **IDF rule (Exact):** plan 052's IDF-equivalence rule was introduced after 051's GCOMPAT16S / G10 IDF failures and is applied only to 052 data, not retroactively.
+  - **Claim scope (Exact; reason Inferred):** certify/16n is certified for declared N <= 12 under iid flips with eps <= 0.10, per-record failure probability <= 0.001; conditional on the declared N, since a larger machine can copy the true machine on every visited state. certify/16e stays certified for N <= 16.
+  - **API:** certify/16n code unchanged since v0.47.0; no new API.
+  - **Deviations:** #177 (pre-run, incl. the pre-freeze arm-order gate fix `9a3a230`), #178 (post-run).
+  - **Chain:** plan `f43e1ba` -> seedcheck `83b0030` -> smoke `9599362` -> #177 `b90264a` -> freeze `fa0b559` -> run start `fb6b2d1` -> seal `36c1b44` -> recount `c292813` -> reference `d841758` -> api checks `f711fb9` -> tests `da3c407` -> gates `6c47f36` -> #178 `094cd81` -> RELEASE.json `334f476` -> docs `a6abd81`.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched. The user's computer was offline; network went through the box.
 
 <!-- V0480 -->
 - **v0.48.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.48.0 (annotated tag object `3714f7f` at `f1091f8`, ledger release_051 `876bcfa`). Fresh-clone verify of the tag passed: study 045 to 051 restored, verify_release_0480 passed, 96/96 tests (ledger fresh_clone_verify_051 `9d54997`). Built on branch `plan/v0.48.0` (BRUTE_PLAN_051: new certify/16s, BFS-form symmetry breaking over the certify/16e chunked search, C20 12000, B20 2000000, bound 20, on 12 fresh 20-state worlds run twice in an isolated phase A on 4 workers; 6 controls run twice; 6 part-c compatibility cases (certify/16s at bound 12 vs certify/16e); certify/16n replication on 12 fresh noisy 12-state worlds run twice; 66 jobs, 60 min cap).
