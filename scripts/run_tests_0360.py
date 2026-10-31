@@ -1,4 +1,4 @@
-"""Lean GTI runner for v0.36.0 (lean process; built from scripts/run_tests_0360.py, frozen). Runs each v0.36.0 test module
+"""Lean GTI runner for v0.36.0 (lean process; built from scripts/run_tests_0350.py, frozen). Runs each v0.36.0 test module
 in its own subprocess (python -m unittest -v) and writes a JSON report (refuses overwrite).
 Deviation #146 (release-verify fix, kept by #150): the DEFAULT output is a fresh scratch path outside the tree
 (<tempdir>/brute_tests_0360_<pid>_<time>.json), so a fresh-clone verify run never collides with the tracked, sealed
