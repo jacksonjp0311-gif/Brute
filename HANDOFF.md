@@ -1,8 +1,21 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.46.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.47.0 release in progress)._
 
 ## Current version and state
+
+<!-- V0470 -->
+- **v0.47.0: RELEASE IN PROGRESS** 2026-10-31 (EDT). Built on branch `plan/v0.47.0` (BRUTE_PLAN_050: certify/16e at B20 4000000, C 50000 on 24 fresh 20-state worlds, 12 run twice, plus 6 controls; new certify/16n, an anytime majority-vote front end, eps 0.05, eps_bar 0.10, delta 0.001, on 12 fresh noisy 12-state worlds run twice and 6 eps-0 compatibility cases; 78 jobs, 60 min cap).
+  - **Run complete (Observed).** 78/78 jobs, 2611.5 s of 3600 s, normal exit, run once; 10 checkpoint snapshots; nothing relaunched; resume clause not approved, not used. The reference audit and api_checks each ran once across agent interruptions and were committed as-is (#174 item 2).
+  - **PASS (9/15 gated):** GN12_sound (WRONG 0, 0 majority errors; API16N 11/12 [0.65, 0.99]), GCOMPAT16N (6/6 [0.61, 1.00]), GHOST50, G_sound (811 words, 0 unsound), G_recount, GTI, GTEST (92 tests), G_PROC, G_RT (2611.5 s).
+  - **FAIL (6):** GDET50 20/30 [0.49, 0.81] (scale20 2/12; the 600 s wall guard fired on 29 scale20 records); GFID50 21/42 [0.36, 0.64] (scale20 3/24); GS20_sound50 (1/24 decided [0.01, 0.20], WRONG 0, but the decided case was not audited); G10 5/6 (control 11750001 IDU, budget spent); GQB25 (26 chunks over 30 s, max 90.5 s; 25 cases over 600 s); GS_ref (32/34 audited, 0 mismatches, 20/20 mutations, incomplete at 2400 s).
+  - **Reading (Inferred):** at B20 4M on this host, 20-state cases run into the wall guard (slowest rate 4503 conflicts/s, half the declared 8766/s), which makes records wall-dependent; conflicts do not bound wall time at 20 states. Soundness held everywhere it was checked.
+  - **Claim scope (Exact; reason Inferred):** conditional on the declared N; a larger machine can copy the true machine on every visited state. Nothing new is certified: certify/16e stays certified only for N <= 16 (v0.46.0); certify/16n is not certified.
+  - **API:** certify/16n new (brute/api/certify16n.py), uncertified; certify/16e, 16d, 16 and 14 unchanged.
+  - **Branch taken:** plan 050 next_if_fail (guard firings: re-plan B20 from this run's slowest rate). v0.48.0 is BRUTE_PLAN_051 (plan only) on `plan/v0.48.0`.
+  - **Deviations:** #173 (pre-run), #174 (post-run).
+  - **Chain:** plan `dd1c41f` -> seedcheck `d02f816` -> smoke `ff5fbd6` -> #173 `ff05077` -> freeze `c9bb238` -> run start `6690a64` -> seal `f96649a` -> recount `889d697` -> reference `083d758` -> api checks `a39c0d9` -> tests `4cb7765` -> gates `5dd2299` -> #174 `a660de4` -> RELEASE.json `9adb580` -> docs `e7adf4b`.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched. The user's computer was offline; network went through the box.
 
 <!-- V0460 -->
 - **v0.46.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.46.0 (annotated tag object `365e8d8` at `203861c`, ledger release_049 `984a249`). Fresh-clone verify of the tag passed: study 045, 046, 047, 048 and 049 raw data restored, verify_release_0460 (5 links, 0 authorization exceptions, GATES_049 reproduces), run_tests_0460 81 tests passed. Built on branch `plan/v0.46.0` (BRUTE_PLAN_049, certify/16e: chunked continuation of capped SAT calls, chunk C 50000, B 1500000 for 16 states and 1000000 for 20; two independent passes on 26 fresh cases (12 scale16, 8 scale20, 6 controls), 26 API16E replays and 26 max_chunks-1 compatibility replays of sealed 048 traces; LEAN process, 60 min cap).
