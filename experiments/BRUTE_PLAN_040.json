@@ -1,0 +1,147 @@
+{
+ "schema": "brute.plan/1",
+ "study": "BRUTE-0370-APART-CUBE-040",
+ "version_under_test": "0.37.0",
+ "parent_study": "BRUTE-0360-CLEAN-SCALE-039",
+ "status": "preregistered (plan only; no build code, no data for 040)",
+ "diagnosis_039": {
+  "label": "Observed (scripts/diag_039_idu.py on the sealed results/study-039/main/RESULTS.json; results/diag-040/DIAG_039_IDU.json)",
+  "A14_scale16": "12/12 IDU, every one ended on a capped query (stop 'unknown', query max 9.01-9.49 s vs the 9.0 s cap); actions never ran out (max 41 of K = 128 used, 0 K_spent); the case budget never ran out (max arm wall 45.9 s of 240 s); last capped phase: least consistent machine 9/12 (6 of them in round 1 on the passive prefix with 0 extra actions), rival search 3/12 (future 2, start 1)",
+  "A14_k64_scale16": "identical pattern (12 query_cap; least 9, future 2, start 1)",
+  "A9_scale16": "11 IDU: 9 query cap, 2 case budget (120 s)",
+  "A14_scale14": "4 IDU, all query cap (least 3, future 1)",
+  "A14_random_scale16": "8 IDU, all query cap in the stop check",
+  "cause": "query cap, not actions and not the case budget; mostly the least-consistent-machine SAT/UNSAT query at n = 15/16, not only the rival query (Inferred refinement of the plan 039 wording)"
+ },
+ "branch_taken": "plan 039 next_if_fail: 'if b fails with IDU from caps dominant, the n = 16 rival query is the bottleneck and v0.37.0 tests a per-size cube split or symmetry-free fixed-start encoding'; also 'if d passes and b fails, 14 states is the current ceiling and is reported as such' (reported in v0.36.0). Both named remedies are tested, as two arms, on both the least and rival queries (they share one CNF)",
+ "process": "LEAN (standing go t133s553, ledger 76b30d5, covers each next locked version; a ledgered build_authorization_040 citing it is still required before any code): plan locked before data; seedcheck_040 before seeds are drawn; independent recount; CNF reference audit; pre-freeze gates test on a sealed smoke block; single main run, never relaunched or resumed; failures published",
+ "question": "On clean 16-state traces (eps 0, B = 0), does removing the query-cap bottleneck, via an apartness-clique fixed-colour encoding and a per-size cube split, turn A14's 0/12 into identifications without any WRONG?",
+ "motivation": "Observed (v0.36.0): A14 ID+IDF 0/12 at 16 states, 8/12 at 14, 12/12 on perm12; every 16-state failure is a capped SAT call, with actions and case time left over.",
+ "hypotheses": {
+  "H1_sound": "A15 and A15_cube give WRONG 0 on every case",
+  "H2_scale16": "ID+IDF(A15_cube, scale16) >= 4/12 and paired ID(A15_cube) - ID(A14) on scale16 >= +0.25 with CI lower bound > 0",
+  "H3_caps": "A15_cube capped cases on scale16 <= 6/12 (A14: 12/12)",
+  "H4_replicate": "on scale14, ID+IDF(A15_cube) >= ID+IDF(A14) - 1",
+  "H5_family": "on the new low-observation family lowobs12, ID+IDF(A15_cube) >= 6/12 with WRONG 0, counted only if the family actually needs actions",
+  "H6_equivalence": "the A15 encoding returns the same per-size verdicts, n_min and stop as A14 on sealed study-039 traces where A14 decided (Exact)"
+ },
+ "design": {
+  "arms": {
+   "A15": "new file brute/scalesearch15.py: A14 (brute/scalesearch14, frozen) logic, stop rule, K = 128, 240 s case budget and 9.0 s query cap, with one declared change to the per-size CNF: the trace first-visit symmetry clauses are replaced by (i) apartness clauses x[t] != x[u] for every pair of trace positions t < u that are apart on the trace (a common action continuation after which the observed masks are disjoint; Exact: such positions cannot share a state in any consistent deterministic machine) and (ii) fixed colours for a greedy clique of pairwise-apart positions that contains position 0, x[c_i] = i (symmetry breaking in the style of Heule and Verwer 2010; position 0 keeps state 0, so the start-mode rival check is unchanged). The clique is computed once per pool from the trace at pool creation; apartness only grows as the trace grows, so new apartness clauses are added incrementally. The size search starts at max(A14's lower bound, clique size)",
+   "A15_cube": "A15 plus a per-size cube split: when a size-n query (least or rival) returns capped, it is re-solved as at most n cubes, one per state q, under the added assumption x[t*][q], where t* is the first trace position outside the clique; each cube is a separate capped call (9.0 s); verdict SAT if any cube is SAT (its model used), UNSAT if every cube is UNSAT, unknown otherwise; bounded by the 240 s case deadline",
+   "A14": "frozen brute/scalesearch14.active14 (v0.36.0), unchanged, K 128, 240 s; the comparator"
+  },
+  "declared_bound": "N = the family's nominal size (16, 14, 12, controls 3), given to every arm as a prior",
+  "world_access": "step-only wrapper over a new file experiments/worlds_040.py: scale16/scale14 via the frozen experiments.worlds_026.scale_world(seed, n); control_cycle3 as in worlds_026; the new family lowobs12: 12 states, k = 3, uniform random transitions, emissions uniform over only 2 of the 4 codes ({0, 1}, one bit per step), accepted iff strongly connected and minimal (rejection sampling, rng random.Random(seed*140040+40040+n), a stream distinct from worlds_026 and worlds_039). The truth is used only by the scorer",
+  "labels": "as A14 (label9): ID, IDF, AMB, WRONG, IDU",
+  "jobs": "one job per (case, arm), arms dispatched A15_cube, A15, A14, longest family first, 8 workers",
+  "budget": "eps 0; query cap 9.0 s per SAT call (each cube is one call), GQB bound 10.5 s; whole-run cap 1800 s (G_RT)",
+  "soundness": "every separating word re-simulated by the recount; A15_cube 'no rival up to N' verdicts rechecked by the CNF reference on scale14"
+ },
+ "heldout_ranges": {
+  "note": "fresh 106x00NN ranges; pre-plan scan (Observed, 2026-10-30 EDT): the only word-bounded 106[0-9]00NN token in tracked text is 10690024 (results/study-023/HB_SENTINEL_023.jsonl), outside every range below; the full scan including the .gz archives is seedcheck_040's job",
+  "scale16": [
+   10610001,
+   10610002,
+   10610003,
+   10610004,
+   10610005,
+   10610006,
+   10610007,
+   10610008,
+   10610009,
+   10610010,
+   10610011,
+   10610012
+  ],
+  "scale14": [
+   10620001,
+   10620002,
+   10620003,
+   10620004,
+   10620005,
+   10620006,
+   10620007,
+   10620008,
+   10620009,
+   10620010,
+   10620011,
+   10620012
+  ],
+  "lowobs12": [
+   10630001,
+   10630002,
+   10630003,
+   10630004,
+   10630005,
+   10630006,
+   10630007,
+   10630008,
+   10630009,
+   10630010,
+   10630011,
+   10630012
+  ],
+  "control": [
+   10660001,
+   10660002,
+   10660003,
+   10660004,
+   10660005,
+   10660006
+  ]
+ },
+ "smoke_range": "10680001-10680012 (pre-freeze smoke only; declared here, never gated)",
+ "cases": {
+  "declared_before_data": true,
+  "scale16": 12,
+  "scale14": 12,
+  "lowobs12": 12,
+  "control": 6,
+  "eps": 0,
+  "total": 42
+ },
+ "criteria": {
+  "GC15_headline": {
+   "a": "recounted WRONG = 0 for A15 and A15_cube on every case, no recount label mismatch",
+   "b": "ID + IDF (A15_cube, scale16) >= 4/12",
+   "c": "paired ID(A15_cube) - ID(A14) on scale16 >= +0.25, seed-bootstrap 95% CI lower bound > 0 (10000 resamples, random.Random(34))",
+   "d": "capped cases (any capped call) of A15_cube on scale16 <= 6/12"
+  },
+  "GREP15": "ID + IDF (A15_cube, scale14) >= ID + IDF (A14, scale14) - 1",
+  "GFAM15": "ID + IDF (A15_cube, lowobs12) >= 6/12 and WRONG 0 for A15, A15_cube on lowobs12; not_exercised (pass null) if A15_cube's mean extra actions on lowobs12 < 3",
+  "GINC15": "Exact unit test (inside GTI): on the sealed study-039 final traces where A14 decided (scale12, perm12, control: 30 cases), A15 and A15_cube give A14's stop label and n_min",
+  "GQB15": "max single SAT-call wall <= 10.5 s for A15 and A15_cube on every case",
+  "G_sound": "0 unsound separating words over all arms in study and recount, equal word counts, 0 truth inconsistencies",
+  "G10": "every arm ID on every control (6/6 each)",
+  "GS_ref": "CNF reference audit of A15_cube on the 12 scale14 cases: 0 mismatches, decided > 0, mutations 20/20",
+  "GTI": "TEST_SUITE_040 all modules returncode 0",
+  "G_PROC": "ledger events preregistration, build_authorization, seedcheck, source_freeze, run_start, run_end, recount, reference, tests (040) present, in order, non-decreasing times; commit-order file; main sealed",
+  "G_RT": "total elapsed <= 1800 s",
+  "G_recount": "RECOUNT_040 PASS on the sealed RESULTS"
+ },
+ "secondary": {
+  "GSYM15": "reported: paired ID(A15) - ID(A14) (encoding effect) and ID(A15_cube) - ID(A15) (cube effect) per family",
+  "GCAP15": "reported: capped cases and last capped phase (least, future, start) per arm and family; extra actions used and K_spent"
+ },
+ "runtime_estimate": "Inferred: about 500-1500 s on 8 workers (A15_cube may use its full 240 s on up to 24 hard cases: about 720 s of worker time per 8 workers, plus A14 about 50 s per hard case). If the pre-freeze smoke projection exceeds 1500 s, A15 (needed only for GSYM15) is run on scale16 only, by a ledgered pre-run deviation before the freeze, never after",
+ "what_counts_as_failure": "any GC15 clause, GREP15, GFAM15 (if exercised), GINC15, GQB15, G_sound, G10, GS_ref, GTI, G_PROC, G_RT or G_recount failing, or any A15/A15_cube WRONG; failures are published, not tuned",
+ "next_if_pass": "v0.38.0: A15_cube as the clean default; extend to 20 states, and re-enter noise from the A15_cube base at 8 states",
+ "next_if_fail": "if a or GINC15 fails, the encoding changed semantics: an encoding audit, not a new arm; if b fails and d fails (caps still dominant), SAT confirmation at 16 states is the ceiling for this encoding family and v0.38.0 tests a non-SAT candidate generator (state merging over the apartness graph / an L*-style observation table) with SAT used only to confirm; if b fails and d passes (caps removed but no ID: AMB or K_spent), the separating-word choice is the bottleneck and v0.38.0 tests a distinguishing-word heuristic; if GFAM15 is not exercised, the family needs no actions and v0.38.0 screens a harder family by a declared passive-hardness test; if GFAM15 fails while b passes, the gain is family-specific; if GREP15 fails, GSYM15 localises which change lost identifications",
+ "open_items": [
+  "noise at 12 states: GR11-GR13 failed (Observed; Open)",
+  "the declared bound N is a prior (Exact / Open)",
+  "correlated or sticky noise untested (Open)",
+  "whether 16 states is reachable without SAT caps (this study; Open)"
+ ],
+ "limitations": [
+  "clean traces only (eps 0)",
+  "the declared bound N is a prior the arms are given",
+  "K, budgets, caps fixed in advance; A15 changes the encoding only, A15_cube adds the split; GSYM15 separates them",
+  "three world families (worlds_026 random, lowobs12, controls), one hardware profile, one author",
+  "per-call walls depend on earlier incremental steps; GQB15 bounds each call, not each step",
+  "n = 12 per family; Wilson and bootstrap intervals are wide"
+ ],
+ "brand": "charcoal and sage; no purple, neon, emoji or gold",
+ "freeze_rule": "BRUTE_SOURCE_FREEZE_040 before run_start_040; frozen and ledger-hashed files are never edited; scalesearch14 and worlds_026 stay frozen; A15 is a new file (brute/scalesearch15.py) and lowobs12 a new file (experiments/worlds_040.py)"
+}
