@@ -1,0 +1,1082 @@
+{
+  "PASS": false,
+  "certify16n_sha256": "46dc1ee28144e9f59af6db85e86d12ffd1b04c69cb8d12cbd85fd790ac95d19a",
+  "compat": {
+    "PASS": true,
+    "sample_046": {
+      "PASS": true,
+      "all_byte_equal": true,
+      "cases": [
+        {
+          "byte_equal": true,
+          "name": "D_s4_fb3",
+          "search": "s4"
+        },
+        {
+          "byte_equal": true,
+          "name": "D_s4_fb4",
+          "search": "s4"
+        },
+        {
+          "byte_equal": true,
+          "name": "D2_s4_fb3",
+          "search": "s4"
+        },
+        {
+          "byte_equal": true,
+          "name": "D_s3_fb3",
+          "search": "s3"
+        },
+        {
+          "byte_equal": true,
+          "name": "D_region",
+          "search": "region"
+        }
+      ],
+      "s4_cases": 3,
+      "sample_sha256": "a455fb0f5311042d921265783ff09146c08573493eca14aa6e8689a3f30a96ae",
+      "tests": {
+        "tests.test_scalesearch4_0260": {
+          "ok": true,
+          "returncode": 0,
+          "tests": 14
+        }
+      },
+      "tests_pass": true
+    },
+    "tests": {
+      "tests.test_certify16": {
+        "ok": true,
+        "returncode": 0,
+        "tests": 12
+      },
+      "tests.test_scalesearch4_0260": {
+        "ok": true,
+        "returncode": 0,
+        "tests": 14
+      }
+    },
+    "tests_pass": true
+  },
+  "fidelity": {
+    "PASS": false,
+    "cases": 42,
+    "exact": 21,
+    "exact_per_arm": {
+      "API16E": 9,
+      "API16N": 12
+    },
+    "expected": 42,
+    "per_case": {
+      "control/11750001/API16E": {
+        "diffs": [],
+        "exact": true
+      },
+      "control/11750002/API16E": {
+        "diffs": [],
+        "exact": true
+      },
+      "control/11750003/API16E": {
+        "diffs": [],
+        "exact": true
+      },
+      "control/11750004/API16E": {
+        "diffs": [],
+        "exact": true
+      },
+      "control/11750005/API16E": {
+        "diffs": [],
+        "exact": true
+      },
+      "control/11750006/API16E": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11790001/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11790002/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11790003/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11790004/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11790005/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11790006/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11790007/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11790008/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11790009/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11790010/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11790011/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "noise12/11790012/API16N": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/11730001/API16E": {
+        "diffs": [
+          "api_result",
+          [
+            17,
+            "capped"
+          ],
+          [
+            17,
+            "call_conflicts"
+          ],
+          [
+            17,
+            "call_capped"
+          ],
+          [
+            17,
+            "call_chunks"
+          ],
+          [
+            17,
+            "chunk_conflicts"
+          ],
+          [
+            26,
+            "capped"
+          ],
+          [
+            26,
+            "call_conflicts"
+          ],
+          [
+            26,
+            "call_capped"
+          ],
+          [
+            26,
+            "call_chunks"
+          ],
+          [
+            26,
+            "chunk_conflicts"
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11730002/API16E": {
+        "diffs": [
+          "api_result",
+          [
+            1,
+            "capped"
+          ],
+          [
+            1,
+            "call_conflicts"
+          ],
+          [
+            1,
+            "call_capped"
+          ],
+          [
+            1,
+            "call_chunks"
+          ],
+          [
+            1,
+            "chunk_conflicts"
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11730003/API16E": {
+        "diffs": [
+          "api_result",
+          [
+            0,
+            "capped"
+          ],
+          [
+            0,
+            "call_conflicts"
+          ],
+          [
+            0,
+            "call_capped"
+          ],
+          [
+            0,
+            "call_chunks"
+          ],
+          [
+            0,
+            "chunk_conflicts"
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11730004/API16E": {
+        "diffs": [
+          "api_result",
+          [
+            0,
+            "capped"
+          ],
+          [
+            0,
+            "call_conflicts"
+          ],
+          [
+            0,
+            "call_capped"
+          ],
+          [
+            0,
+            "call_chunks"
+          ],
+          [
+            0,
+            "chunk_conflicts"
+          ],
+          [
+            12,
+            "call_conflicts"
+          ],
+          [
+            12,
+            "call_capped"
+          ],
+          [
+            12,
+            "call_chunks"
+          ],
+          [
+            12,
+            "chunk_conflicts"
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11730005/API16E": {
+        "diffs": [
+          "api_result",
+          [
+            0,
+            "call_conflicts"
+          ],
+          [
+            0,
+            "call_chunks"
+          ],
+          [
+            0,
+            "chunk_conflicts"
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11730006/API16E": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/11730007/API16E": {
+        "diffs": [
+          [
+            "word_beyond_or_differs_from_trace",
+            26
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11730008/API16E": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/11730009/API16E": {
+        "diffs": [
+          "api_result",
+          [
+            26,
+            "capped"
+          ],
+          [
+            26,
+            "call_conflicts"
+          ],
+          [
+            26,
+            "call_capped"
+          ],
+          [
+            26,
+            "call_chunks"
+          ],
+          [
+            26,
+            "chunk_conflicts"
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11730010/API16E": {
+        "diffs": [
+          "api_result",
+          [
+            14,
+            "capped"
+          ],
+          [
+            14,
+            "call_conflicts"
+          ],
+          [
+            14,
+            "call_capped"
+          ],
+          [
+            14,
+            "call_chunks"
+          ],
+          [
+            14,
+            "chunk_conflicts"
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11730011/API16E": {
+        "diffs": [
+          "api_result",
+          [
+            1,
+            "call_conflicts"
+          ],
+          [
+            1,
+            "call_chunks"
+          ],
+          [
+            1,
+            "chunk_conflicts"
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11730012/API16E": {
+        "diffs": [
+          "api_result",
+          [
+            0,
+            "capped"
+          ],
+          [
+            0,
+            "call_conflicts"
+          ],
+          [
+            0,
+            "call_capped"
+          ],
+          [
+            0,
+            "call_chunks"
+          ],
+          [
+            0,
+            "chunk_conflicts"
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11730013/API16E": {
+        "diffs": [
+          [
+            "trace_not_consumed",
+            64,
+            65
+          ],
+          "api_result",
+          [
+            17,
+            "M2"
+          ],
+          [
+            17,
+            "s2"
+          ],
+          [
+            17,
+            "capped"
+          ],
+          [
+            17,
+            "call_conflicts"
+          ],
+          [
+            17,
+            "call_capped"
+          ],
+          [
+            17,
+            "call_chunks"
+          ],
+          [
+            17,
+            "chunk_conflicts"
+          ],
+          [
+            18,
+            "M1"
+          ],
+          [
+            18,
+            "word"
+          ],
+          [
+            18,
+            "M2"
+          ],
+          [
+            18,
+            "call_conflicts"
+          ],
+          [
+            18,
+            "call_chunks"
+          ],
+          [
+            18,
+            "chunk_conflicts"
+          ],
+          [
+            19,
+            "T"
+          ],
+          [
+            19,
+            "capped"
+          ],
+          [
+            19,
+            "call_conflicts"
+          ],
+          [
+            19,
+            "call_capped"
+          ],
+          [
+            19,
+            "call_chunks"
+          ],
+          [
+            19,
+            "chunk_conflicts"
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11730014/API16E": {
+        "diffs": [
+          [
+            "word_beyond_or_differs_from_trace",
+            37
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11730015/API16E": {
+        "diffs": [
+          "api_result",
+          [
+            7,
+            "capped"
+          ],
+          [
+            7,
+            "call_conflicts"
+          ],
+          [
+            7,
+            "call_capped"
+          ],
+          [
+            7,
+            "call_chunks"
+          ],
+          [
+            7,
+            "chunk_conflicts"
+          ],
+          [
+            18,
+            "capped"
+          ],
+          [
+            18,
+            "call_conflicts"
+          ],
+          [
+            18,
+            "call_capped"
+          ],
+          [
+            18,
+            "call_chunks"
+          ],
+          [
+            18,
+            "chunk_conflicts"
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11730016/API16E": {
+        "diffs": [
+          [
+            "word_beyond_or_differs_from_trace",
+            5
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11730017/API16E": {
+        "diffs": [
+          "api_result",
+          [
+            0,
+            "call_conflicts"
+          ],
+          [
+            0,
+            "call_chunks"
+          ],
+          [
+            0,
+            "chunk_conflicts"
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11730018/API16E": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/11730019/API16E": {
+        "diffs": [
+          "api_result",
+          [
+            31,
+            "capped"
+          ],
+          [
+            31,
+            "call_conflicts"
+          ],
+          [
+            31,
+            "call_capped"
+          ],
+          [
+            31,
+            "call_chunks"
+          ],
+          [
+            31,
+            "chunk_conflicts"
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11730020/API16E": {
+        "diffs": [
+          [
+            "trace_not_consumed",
+            29,
+            32
+          ],
+          "api_result",
+          [
+            "rounds",
+            9,
+            11
+          ],
+          [
+            3,
+            "capped"
+          ],
+          [
+            3,
+            "call_conflicts"
+          ],
+          [
+            3,
+            "call_capped"
+          ],
+          [
+            3,
+            "call_chunks"
+          ],
+          [
+            3,
+            "chunk_conflicts"
+          ],
+          [
+            5,
+            "capped"
+          ],
+          [
+            5,
+            "call_conflicts"
+          ],
+          [
+            5,
+            "call_capped"
+          ],
+          [
+            5,
+            "call_chunks"
+          ],
+          [
+            5,
+            "chunk_conflicts"
+          ],
+          [
+            8,
+            "check"
+          ],
+          [
+            8,
+            "word"
+          ],
+          [
+            8,
+            "M2"
+          ],
+          [
+            8,
+            "s2"
+          ],
+          [
+            8,
+            "capped"
+          ],
+          [
+            8,
+            "call_conflicts"
+          ],
+          [
+            8,
+            "call_capped"
+          ],
+          [
+            8,
+            "call_chunks"
+          ],
+          [
+            8,
+            "chunk_conflicts"
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11730021/API16E": {
+        "diffs": [
+          "api_result",
+          [
+            21,
+            "capped"
+          ],
+          [
+            21,
+            "call_conflicts"
+          ],
+          [
+            21,
+            "call_capped"
+          ],
+          [
+            21,
+            "call_chunks"
+          ],
+          [
+            21,
+            "chunk_conflicts"
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11730022/API16E": {
+        "diffs": [
+          "api_result",
+          [
+            0,
+            "call_conflicts"
+          ],
+          [
+            0,
+            "call_chunks"
+          ],
+          [
+            0,
+            "chunk_conflicts"
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11730023/API16E": {
+        "diffs": [
+          [
+            "word_beyond_or_differs_from_trace",
+            84
+          ]
+        ],
+        "exact": false
+      },
+      "scale20/11730024/API16E": {
+        "diffs": [
+          [
+            "word_beyond_or_differs_from_trace",
+            31
+          ]
+        ],
+        "exact": false
+      }
+    },
+    "per_key": {
+      "control": 6,
+      "noise12": 12,
+      "scale20": 24
+    },
+    "study_results_sha256": "6528bbc48056e76f79c4899730e419534399a48be654de83993afd0deedf2ffb"
+  },
+  "ghost": {
+    "PASS50": true,
+    "certify16e_closure_049": [
+      "brute.active",
+      "brute.align",
+      "brute.anytimemargin",
+      "brute.api",
+      "brute.api.certify",
+      "brute.api.certify10",
+      "brute.api.certify11",
+      "brute.api.certify12",
+      "brute.api.certify13",
+      "brute.api.certify14",
+      "brute.api.certify16",
+      "brute.api.certify16d",
+      "brute.api.certify16e",
+      "brute.api.certify8",
+      "brute.api.certify9",
+      "brute.bettingregion",
+      "brute.boundedtransfer",
+      "brute.breadth",
+      "brute.changepoint",
+      "brute.core.learner",
+      "brute.driftsound",
+      "brute.encaudit16",
+      "brute.fallback",
+      "brute.lrregion",
+      "brute.noisyregion",
+      "brute.region",
+      "brute.region_learner",
+      "brute.resume",
+      "brute.scalebetting",
+      "brute.scalesearch",
+      "brute.scalesearch10",
+      "brute.scalesearch14",
+      "brute.scalesearch15",
+      "brute.scalesearch16",
+      "brute.scalesearch3",
+      "brute.scalesearch4",
+      "brute.scalesearch5",
+      "brute.scalesearch7",
+      "brute.scalesearch8",
+      "brute.scalesearch9",
+      "brute.seqmargin",
+      "brute.stitchedregion",
+      "brute.syncevent",
+      "brute.transfer"
+    ],
+    "certify16e_closure_unchanged": true,
+    "closures": {
+      "brute.api.certify14": [
+        "brute.active",
+        "brute.align",
+        "brute.anytimemargin",
+        "brute.api.certify",
+        "brute.api.certify10",
+        "brute.api.certify11",
+        "brute.api.certify12",
+        "brute.api.certify13",
+        "brute.api.certify14",
+        "brute.api.certify8",
+        "brute.api.certify9",
+        "brute.bettingregion",
+        "brute.boundedtransfer",
+        "brute.breadth",
+        "brute.changepoint",
+        "brute.core.learner",
+        "brute.driftsound",
+        "brute.fallback",
+        "brute.lrregion",
+        "brute.noisyregion",
+        "brute.region",
+        "brute.region_learner",
+        "brute.resume",
+        "brute.scalebetting",
+        "brute.scalesearch",
+        "brute.scalesearch3",
+        "brute.scalesearch4",
+        "brute.seqmargin",
+        "brute.stitchedregion",
+        "brute.syncevent",
+        "brute.transfer"
+      ],
+      "brute.api.certify16": [
+        "brute.active",
+        "brute.align",
+        "brute.anytimemargin",
+        "brute.api.certify",
+        "brute.api.certify10",
+        "brute.api.certify11",
+        "brute.api.certify12",
+        "brute.api.certify13",
+        "brute.api.certify14",
+        "brute.api.certify16",
+        "brute.api.certify8",
+        "brute.api.certify9",
+        "brute.bettingregion",
+        "brute.boundedtransfer",
+        "brute.breadth",
+        "brute.changepoint",
+        "brute.core.learner",
+        "brute.driftsound",
+        "brute.encaudit16",
+        "brute.fallback",
+        "brute.lrregion",
+        "brute.noisyregion",
+        "brute.region",
+        "brute.region_learner",
+        "brute.resume",
+        "brute.scalebetting",
+        "brute.scalesearch",
+        "brute.scalesearch10",
+        "brute.scalesearch14",
+        "brute.scalesearch15",
+        "brute.scalesearch16",
+        "brute.scalesearch3",
+        "brute.scalesearch4",
+        "brute.scalesearch5",
+        "brute.scalesearch7",
+        "brute.scalesearch8",
+        "brute.scalesearch9",
+        "brute.seqmargin",
+        "brute.stitchedregion",
+        "brute.syncevent",
+        "brute.transfer"
+      ],
+      "brute.api.certify16d": [
+        "brute.active",
+        "brute.align",
+        "brute.anytimemargin",
+        "brute.api.certify",
+        "brute.api.certify10",
+        "brute.api.certify11",
+        "brute.api.certify12",
+        "brute.api.certify13",
+        "brute.api.certify14",
+        "brute.api.certify16",
+        "brute.api.certify16d",
+        "brute.api.certify8",
+        "brute.api.certify9",
+        "brute.bettingregion",
+        "brute.boundedtransfer",
+        "brute.breadth",
+        "brute.changepoint",
+        "brute.core.learner",
+        "brute.driftsound",
+        "brute.encaudit16",
+        "brute.fallback",
+        "brute.lrregion",
+        "brute.noisyregion",
+        "brute.region",
+        "brute.region_learner",
+        "brute.resume",
+        "brute.scalebetting",
+        "brute.scalesearch",
+        "brute.scalesearch10",
+        "brute.scalesearch14",
+        "brute.scalesearch15",
+        "brute.scalesearch16",
+        "brute.scalesearch3",
+        "brute.scalesearch4",
+        "brute.scalesearch5",
+        "brute.scalesearch7",
+        "brute.scalesearch8",
+        "brute.scalesearch9",
+        "brute.seqmargin",
+        "brute.stitchedregion",
+        "brute.syncevent",
+        "brute.transfer"
+      ],
+      "brute.api.certify16e": [
+        "brute.active",
+        "brute.align",
+        "brute.anytimemargin",
+        "brute.api",
+        "brute.api.certify",
+        "brute.api.certify10",
+        "brute.api.certify11",
+        "brute.api.certify12",
+        "brute.api.certify13",
+        "brute.api.certify14",
+        "brute.api.certify16",
+        "brute.api.certify16d",
+        "brute.api.certify16e",
+        "brute.api.certify8",
+        "brute.api.certify9",
+        "brute.bettingregion",
+        "brute.boundedtransfer",
+        "brute.breadth",
+        "brute.changepoint",
+        "brute.core.learner",
+        "brute.driftsound",
+        "brute.encaudit16",
+        "brute.fallback",
+        "brute.lrregion",
+        "brute.noisyregion",
+        "brute.region",
+        "brute.region_learner",
+        "brute.resume",
+        "brute.scalebetting",
+        "brute.scalesearch",
+        "brute.scalesearch10",
+        "brute.scalesearch14",
+        "brute.scalesearch15",
+        "brute.scalesearch16",
+        "brute.scalesearch3",
+        "brute.scalesearch4",
+        "brute.scalesearch5",
+        "brute.scalesearch7",
+        "brute.scalesearch8",
+        "brute.scalesearch9",
+        "brute.seqmargin",
+        "brute.stitchedregion",
+        "brute.syncevent",
+        "brute.transfer"
+      ],
+      "brute.api.certify16n": [
+        "brute.active",
+        "brute.align",
+        "brute.anytimemargin",
+        "brute.api",
+        "brute.api.certify",
+        "brute.api.certify10",
+        "brute.api.certify11",
+        "brute.api.certify12",
+        "brute.api.certify13",
+        "brute.api.certify14",
+        "brute.api.certify16",
+        "brute.api.certify16d",
+        "brute.api.certify16e",
+        "brute.api.certify16n",
+        "brute.api.certify8",
+        "brute.api.certify9",
+        "brute.bettingregion",
+        "brute.boundedtransfer",
+        "brute.breadth",
+        "brute.changepoint",
+        "brute.core.learner",
+        "brute.driftsound",
+        "brute.encaudit16",
+        "brute.fallback",
+        "brute.lrregion",
+        "brute.noisyregion",
+        "brute.region",
+        "brute.region_learner",
+        "brute.resume",
+        "brute.scalebetting",
+        "brute.scalesearch",
+        "brute.scalesearch10",
+        "brute.scalesearch14",
+        "brute.scalesearch15",
+        "brute.scalesearch16",
+        "brute.scalesearch3",
+        "brute.scalesearch4",
+        "brute.scalesearch5",
+        "brute.scalesearch7",
+        "brute.scalesearch8",
+        "brute.scalesearch9",
+        "brute.seqmargin",
+        "brute.stitchedregion",
+        "brute.syncevent",
+        "brute.transfer"
+      ]
+    },
+    "frozen_api_sha256": {
+      "brute/api/certify14.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_047.json",
+        "frozen": "0c789ee206e8341ac610d00980c24976e5c027af5a02a5af4edb3c9068818ac6",
+        "now": "0c789ee206e8341ac610d00980c24976e5c027af5a02a5af4edb3c9068818ac6"
+      },
+      "brute/api/certify16.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_047.json",
+        "frozen": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1",
+        "now": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1"
+      },
+      "brute/api/certify16d.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_047.json",
+        "frozen": "98406b659e8abcbe9252da66da49b90317bdc544e1052711d8ec99a482992d25",
+        "now": "98406b659e8abcbe9252da66da49b90317bdc544e1052711d8ec99a482992d25"
+      },
+      "brute/api/certify16e.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_049.json",
+        "frozen": "99a6f3315d0ac7f9944dd6519fc968200543dc9ec50a991657dd33766a7112fb",
+        "now": "99a6f3315d0ac7f9944dd6519fc968200543dc9ec50a991657dd33766a7112fb"
+      }
+    },
+    "frozen_api_unchanged": true,
+    "network_pass": true,
+    "new_flagged": {},
+    "newly_imported": [
+      "brute.api.certify16n"
+    ],
+    "no_network_returncode": 0,
+    "no_network_run": {
+      "loop": [
+        "brute.certify/16n",
+        "ID",
+        12,
+        56,
+        12637
+      ],
+      "socket_attempts": 0
+    },
+    "socket_attempts": 0,
+    "static_pass": true
+  },
+  "schema": "brute.api-checks.v47"
+}
