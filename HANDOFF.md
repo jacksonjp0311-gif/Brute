@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.48.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.48.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0480 -->
-- **v0.48.0: RELEASE IN PROGRESS** 2026-10-31 (EDT). Built on branch `plan/v0.48.0` (BRUTE_PLAN_051: new certify/16s, BFS-form symmetry breaking over the certify/16e chunked search, C20 12000, B20 2000000, bound 20, on 12 fresh 20-state worlds run twice in an isolated phase A on 4 workers; 6 controls run twice; 6 part-c compatibility cases (certify/16s at bound 12 vs certify/16e); certify/16n replication on 12 fresh noisy 12-state worlds run twice; 66 jobs, 60 min cap).
+- **v0.48.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.48.0 (annotated tag object `3714f7f` at `f1091f8`, ledger release_051 `876bcfa`). Fresh-clone verify of the tag passed: study 045 to 051 restored, verify_release_0480 passed, 96/96 tests (ledger fresh_clone_verify_051 `9d54997`). Built on branch `plan/v0.48.0` (BRUTE_PLAN_051: new certify/16s, BFS-form symmetry breaking over the certify/16e chunked search, C20 12000, B20 2000000, bound 20, on 12 fresh 20-state worlds run twice in an isolated phase A on 4 workers; 6 controls run twice; 6 part-c compatibility cases (certify/16s at bound 12 vs certify/16e); certify/16n replication on 12 fresh noisy 12-state worlds run twice; 66 jobs, 60 min cap).
   - **Run complete (Observed).** 66/66 jobs, 1656.2 s of 3600 s (phase A 1636.8 s, phase B 19.4 s), normal exit 13:39 EDT, run once; 6 checkpoint snapshots; nothing relaunched; resume clause not approved, not used. The run, the reference and api_checks each ran once across agent interruptions and were committed as-is (#176 item 2).
   - **PASS (9/15 gated):** GN12_sound51 (WRONG 0, 0 majority errors; API16N 11/12 [0.65, 0.99]), GHOST51, GS_ref (38/38 audited, 0 mismatches, 20/20 mutations, complete), G_sound (608 words, 0 unsound), G_recount, GTI, GTEST (79 gated tests), G_PROC, G_RT (1656.2 s).
   - **FAIL (6):** GDET51 26/30 [0.70, 0.95] (scale20 8/12; the 30 s chunk guard fired on 5 scale20 records); GFID51 25/30 [0.66, 0.93] (API16S 7/12); GS20_sound51 (0/12 decided [0.00, 0.24], WRONG 0; 11 IDU budget spent, 1 AMB); GCOMPAT16S 5/6 [0.44, 0.97] (11850004 IDF both sides, isomorphic with a different start state); G10 4/6 ID (2 IDF); GQB25 (5 chunks over 30 s, max 54.3 s; 0 cases over 600 s).
