@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.36.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.36.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0360 -->
-- **v0.36.0: RELEASING** 2026-10-30 from branch `plan/v0.36.0` (BRUTE_PLAN_039, CLEAN SCALE; LEAN; STANDING GO t133s553, build authorization ledger `0f90554`).
+- **v0.36.0: RELEASED** 2026-10-30 as tag `v0.36.0` (annotated `d099b5d` -> `f7f7d0d`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.36.0). main was fast-forwarded `8cd2eda..f7f7d0d`. A fresh clone of the tag restored, verified (commit chain 6) and passed 10/10 test modules (70 tests) with the test output on its scratch default; ledger `b3f53ee`. Built on branch `plan/v0.36.0` (BRUTE_PLAN_039, CLEAN SCALE; LEAN; STANDING GO t133s553, build authorization ledger `0f90554`).
   - **Run complete (Observed).** 54/54 cases, 162/162 jobs, 309.6 s of 1800 s, normal exit about 22:41:47 EDT, run once. 2 checkpoint snapshots were pushed (`0d20c04`, `963501f`). Nothing was relaunched. The resume clause was NOT approved and was not needed. Pre-freeze projection 312.1 s; no runtime amendment. The box clock read about 7 s ahead of GitHub's Date header at 22:56:00 EDT.
   - **PASS (12/13):** GFAM14 (perm12 A14 12/12 [0.76, 1]), GREP14 (scale12 12 vs A9 11), GCH14 (+0.292 [0.125, 0.458]), GINC14 (36 sealed 034 cases, 307 verdicts, 0 mismatches), GQB14 (max 9.563 s), G_sound (743 words, 0 unsound), G10, GS_ref (A14 scale14: 8 decided, 4 not reached, 114 verdicts, 0 mismatches, mutations 20/20), GTI (10 modules, 70 tests), G_PROC, G_RT, G_recount. **FAIL:** GC14_headline (a passes; b: ID+IDF(A14, scale16) 0/12 [0, 0.24]; c: ID(A14) - ID(A9) scale16 -0.083 [-0.25, 0]; d passes: scale14 8/12 [0.39, 0.86]). Secondary GK14, GACT14 reported only.
   - **Headline numbers (Observed).** scale16: A14, A14_k64 IDU 12 (all capped); A14_random 0/0/4/0/8; A9 1/0/0/0/11. scale14: A14 = A14_k64 = A9 7/1/0/0/4; A14_random 0/0/10/0/2. scale12: A14 10/2/0/0/0; A14_k64 and A9 9/2/1/0/0; A14_random AMB 12. perm12: A14 ID 12 (0.67 extra actions on average). Controls ID 6/6 for every arm.
