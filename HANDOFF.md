@@ -1,11 +1,21 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.33.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.34.0 IN PROGRESS)._
 
 ## Current version and state
 
+<!-- V0340 -->
+- **v0.34.0: IN PROGRESS** (release steps pending) on branch `plan/v0.34.0` (BRUTE_PLAN_037, SOUND NOISY STOP; LEAN; STANDING GO t133s553, build authorization ledger `b789fb9`).
+  - **Run complete (Observed).** 42/42 cases, 443.1 s of 1800 s, normal exit, run once. 2 checkpoint snapshots were pushed (`4bb4b36`, `e2b381c`). Nothing was relaunched. The resume clause was NOT approved and was not needed. The box clock read about 5 s ahead of GitHub's Date header at 20:39:09 EDT.
+  - **PASS (9/11):** GSAFE12 (Exact: sealed 036 WRONG trace now AMB), GQB12 (max 10.332 s), G_sound (678 words, 0 unsound), G10, GS_ref (240 decided, 225 at raised B, 54 confirmation items, 0 mismatches, mutations 20/20), GTI (8 modules, 57 tests), G_PROC, G_RT, G_recount. **FAIL:** GR12_headline (a passes; b: IDU(A11_r3) - IDU(A12_r3) noisy12 0.00 [0, 0]; c: ID+IDF(A12_r5) 0/12; d: ID(A12_r5) - ID(A11_r5) -0.42 [-0.67, -0.17]), GNR12 (20 clean12 label differences: B_max confirmation capped). Secondary GPR12 passes.
+  - **Headline numbers (Observed).** noisy12: A12_r5 0/0/1/0/11; A12_r3 0/0/0/0/12; A12_r3_nostop 1/0/0/0/11; A11_r3 0/0/0/0/12; A11_r5 5/0/1/0/6; S7 IDU 12. noisy8: A12_r5 4/7/0/0/1. clean12: A12_r5 and A12_r3 0/0/1/0/11; A12_r3_nostop = A11_r3 8/2/1/0/1. Controls ID 6/6 for every arm.
+  - **Mechanism (Observed / Inferred).** The B_max confirmation (one SAT query over n = 1..N) hit the 9 s cap on 10/12 clean12 cases even at least B 0; the least-B chain still capped on every noisy12 A12_r3 case (first probe capped 6/12, down from 12/12). Plan 037's b branch fires: v0.35.0 tests an incremental totalizer / MaxSAT least-B solve.
+  - **Deviations:** #146 (pre-run), #147 (post-run) and its erratum.
+  - **Chain:** plan `de168d1` -> authorization `b789fb9` -> seedcheck `18b3e90` -> A12 `20f8fd8` -> runner `4dfb973` -> recount `4eff368` -> reference `d82e850` -> gates `19d737c`/`4dc608a` -> release tooling `5d85377` -> pre-freeze smoke `726c7c6` -> #146 `eb34849`/`fbd6865` -> freeze `d9402a1` -> run start `730e9b3` -> seal `116e9e9` -> recount `794e56d` -> reference `d1b5860` -> tests `57d5da4` -> gates `15c64a1` -> #147 `ac0d829` -> erratum `a994746` -> RELEASE.json `96776d2` -> docs `76bbd90`.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
+
 <!-- V0330 -->
-- **v0.33.0: RELEASED** 2026-10-30 as tag `v0.33.0` (annotated `b797b0e` -> `f96c738`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.33.0). main was fast-forwarded `0e52483..f96c738`. A fresh clone of the tag restored, verified (commit chain 6) and passed 7/7 test modules (48 tests); ledger `77845a8`. Built on branch `plan/v0.33.0` (BRUTE_PLAN_036, REPEATED READS; LEAN; STANDING GO t133s553, build authorization ledger `ed8452b`).
+- **v0.33.0: RELEASED** (previous) 2026-10-30 as tag `v0.33.0` (annotated `b797b0e` -> `f96c738`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.33.0). main was fast-forwarded `0e52483..f96c738`. A fresh clone of the tag restored, verified (commit chain 6) and passed 7/7 test modules (48 tests); ledger `77845a8`. Built on branch `plan/v0.33.0` (BRUTE_PLAN_036, REPEATED READS; LEAN; STANDING GO t133s553, build authorization ledger `ed8452b`).
   - **Run complete (Observed).** 48/48 cases, 420.3 s of 1800 s, normal exit, run once. 3 checkpoint snapshots were pushed (`43b5e2f`, `21fdeca`, `0bfe2b7`). Nothing was relaunched. The resume clause was NOT approved and was not needed. The box clock read about 7 s ahead of GitHub's Date header at 19:58:35 EDT.
   - **PASS (8/11):** GNR11, G_sound (674 words, 0 unsound), G10, GS_ref (88 decided, 75 at raised B, 0 mismatches, mutations 20/20), GTI (7 modules, 48 tests), G_PROC, G_RT, G_recount. **FAIL:** GR11_headline (a: A11_r3 WRONG 1 on noisy_scale8 10210002; b: ID(A11_r3) - ID(A10) noisy12 +0.17 [0, 0.42]; c: ID+IDF 2/12; d: IDU 10/12), GBIS11 (IDU 10 vs 9 for the upward ablation), GQB11 (A11_r3_up 10.513 s). Secondary GRB11 fails.
   - **Headline numbers (Observed).** noisy12: A11_r3 2/0/0/0/10; A11_r5 4/1/2/0/5; A11_r3_up 3/0/0/0/9; A10 and S7 IDU 12; S5 WRONG 12. noisy8: A11_r5 ID 8/12 [0.39, 0.86]. clean12: every A11 arm equals A10 (6/3/2/0/1). Controls ID 6/6 for every arm.
