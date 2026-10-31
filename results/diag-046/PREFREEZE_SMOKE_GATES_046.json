@@ -1,0 +1,803 @@
+{
+  "PASS": false,
+  "api_checks": {
+    "PASS": true,
+    "compat": {
+      "PASS": true,
+      "cases": [
+        {
+          "byte_equal": true,
+          "name": "D_s4_fb3",
+          "search": "s4"
+        },
+        {
+          "byte_equal": true,
+          "name": "D_s4_fb4",
+          "search": "s4"
+        },
+        {
+          "byte_equal": true,
+          "name": "D2_s4_fb3",
+          "search": "s4"
+        },
+        {
+          "byte_equal": true,
+          "name": "D_s3_fb3",
+          "search": "s3"
+        },
+        {
+          "byte_equal": true,
+          "name": "D_region",
+          "search": "region"
+        }
+      ],
+      "s4_cases": 3,
+      "tests": {
+        "tests.test_scalesearch4_0260": {
+          "ok": true,
+          "returncode": 0,
+          "tests": 14
+        }
+      }
+    },
+    "ghost": {
+      "PASS": true,
+      "closure_flagged_reported": {},
+      "new_flagged": {},
+      "newly_imported": [
+        "brute.api.certify16",
+        "brute.encaudit16",
+        "brute.scalesearch10",
+        "brute.scalesearch14",
+        "brute.scalesearch15",
+        "brute.scalesearch16",
+        "brute.scalesearch5",
+        "brute.scalesearch7",
+        "brute.scalesearch8",
+        "brute.scalesearch9"
+      ],
+      "no_network_run": {
+        "loop": [
+          "brute.certify/16",
+          "ID",
+          3,
+          0
+        ],
+        "one_shot": [
+          "brute.certify/16",
+          "ID",
+          3
+        ],
+        "socket_attempts": 0
+      }
+    }
+  },
+  "api_checks_rc": 0,
+  "label": "Observed",
+  "note": "PASS here means every stop kind is present, the tooling ran end to end on a sealed block, gates reproduce and the real commit-order check passes; gate outcomes on smoke are recorded, not required",
+  "purpose": "Pre-freeze smoke-gates and release-verifier test for study-046 (plan 046 process). New file; built from",
+  "recount": {
+    "PASS": true,
+    "amb_rule_applied": 0,
+    "cases": 7,
+    "labels_all": {
+      "A16_N": {
+        "AMB": 0,
+        "ID": 4,
+        "IDF": 1,
+        "IDU": 1,
+        "WRONG": 0
+      },
+      "API16": {
+        "AMB": 0,
+        "ID": 5,
+        "IDF": 1,
+        "IDU": 1,
+        "WRONG": 0
+      }
+    },
+    "mismatching_cases": 0,
+    "replay_labels": {
+      "AMB": 0,
+      "ID": 2,
+      "IDF": 0,
+      "IDU": 0,
+      "WRONG": 0
+    },
+    "replay_same": 2,
+    "replay_same_step": 2,
+    "replays": 2,
+    "words_checked": 126
+  },
+  "recount_rc": 0,
+  "reference_probe": {
+    "PASS": true,
+    "audited": 1,
+    "complete": true,
+    "decided": 2,
+    "elapsed_informational": 1.01798803100246,
+    "k_spent_as_amb": 0,
+    "misfires": [],
+    "mismatch_count": 0,
+    "mutations": 20,
+    "not_audited": [],
+    "not_reached": 0,
+    "of": 20,
+    "per_arm": {
+      "A16_N": {
+        "audited": 0,
+        "decided": 0,
+        "idf_future_mismatch": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 0
+      },
+      "API16": {
+        "audited": 2,
+        "decided": 2,
+        "idf_future_mismatch": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 2
+      }
+    },
+    "records": 2,
+    "vacuous": false,
+    "verdicts_checked": 4,
+    "walls_informational": {
+      "probe/control/11370005/API16": 0.0
+    }
+  },
+  "reference_projection": {
+    "budget_s": 1800.0,
+    "caveat": "assumes every main record is decided like its smoke mean; unknown records are not audited (not_reached)",
+    "label": "Inferred",
+    "lpt_makespan_s": 356.6,
+    "mean_ref_wall_by_arm_key": {
+      "A16_N/control": 0.0,
+      "A16_N/scale16": 71.3,
+      "API16/control": 0.0,
+      "API16/scale16": 71.3
+    },
+    "records": 54,
+    "serial_s": 2567.6
+  },
+  "reference_rc": {
+    "probe": 0,
+    "smoke": 0
+  },
+  "reference_smoke": {
+    "PASS": true,
+    "audited": 10,
+    "complete": true,
+    "decided": 10,
+    "elapsed_informational": 158.05693268099276,
+    "k_spent_as_amb": 0,
+    "misfires": [],
+    "mismatch_count": 0,
+    "mutations": 20,
+    "not_audited": [],
+    "not_reached": 2,
+    "of": 20,
+    "per_arm": {
+      "A16_N": {
+        "audited": 5,
+        "decided": 5,
+        "idf_future_mismatch": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 6
+      },
+      "API16": {
+        "audited": 5,
+        "decided": 5,
+        "idf_future_mismatch": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 6
+      }
+    },
+    "records": 12,
+    "vacuous": false,
+    "verdicts_checked": 20,
+    "walls_informational": {
+      "smoke/control/11370005/A16_N": 0.0,
+      "smoke/control/11370005/API16": 0.0,
+      "smoke/control/11370006/A16_N": 0.0,
+      "smoke/control/11370006/API16": 0.0,
+      "smoke/scale16/11370001/A16_N": 157.0,
+      "smoke/scale16/11370001/API16": 157.4,
+      "smoke/scale16/11370002/A16_N": 11.8,
+      "smoke/scale16/11370002/API16": 11.9,
+      "smoke/scale16/11370003/A16_N": 45.1,
+      "smoke/scale16/11370003/API16": 44.7
+    }
+  },
+  "release_ok_synthetic": true,
+  "runtime_projection": {
+    "cap_s": 3600,
+    "caveat": "four scale16 and two control smoke seeds only; scale16 walls vary widely (unknown cases may run to the budget)",
+    "jobs": 54,
+    "label": "Inferred",
+    "lpt_makespan_s": 498.5,
+    "mean_fresh_wall_by_arm_key": {
+      "A16_N/control": 0.07,
+      "A16_N/scale16": 103.59,
+      "API16/control": 0.1,
+      "API16/scale16": 98.74
+    },
+    "serial_s": 3614.4,
+    "smoke_replay_walls": {
+      "control": [
+        0.1
+      ],
+      "scale16": [
+        12.3
+      ]
+    },
+    "workers": 8,
+    "worst_case_lpt_s": 1250.0
+  },
+  "smoke_cases": [
+    [
+      "smoke",
+      null,
+      "scale16",
+      11370001,
+      {
+        "A16_N": [
+          "ID",
+          "ID",
+          20
+        ],
+        "API16": [
+          "ID",
+          "ID",
+          20
+        ]
+      }
+    ],
+    [
+      "smoke",
+      null,
+      "scale16",
+      11370002,
+      {
+        "A16_N": [
+          "IDF",
+          "IDF",
+          25
+        ],
+        "API16": [
+          "IDF",
+          "IDF",
+          25
+        ]
+      }
+    ],
+    [
+      "smoke",
+      null,
+      "scale16",
+      11370003,
+      {
+        "A16_N": [
+          "ID",
+          "ID",
+          54
+        ],
+        "API16": [
+          "ID",
+          "ID",
+          54
+        ]
+      }
+    ],
+    [
+      "smoke",
+      null,
+      "scale16",
+      11370004,
+      {
+        "A16_N": [
+          "IDU",
+          "unknown",
+          98
+        ],
+        "API16": [
+          "IDU",
+          "unknown",
+          103
+        ]
+      }
+    ],
+    [
+      "smoke",
+      null,
+      "control",
+      11370005,
+      {
+        "A16_N": [
+          "ID",
+          "ID",
+          0
+        ],
+        "API16": [
+          "ID",
+          "ID",
+          0
+        ]
+      }
+    ],
+    [
+      "smoke",
+      null,
+      "control",
+      11370006,
+      {
+        "A16_N": [
+          "ID",
+          "ID",
+          0
+        ],
+        "API16": [
+          "ID",
+          "ID",
+          0
+        ]
+      }
+    ],
+    [
+      "probe",
+      "K0",
+      "control",
+      11370005,
+      {
+        "API16": [
+          "ID",
+          "ID",
+          0
+        ]
+      }
+    ],
+    [
+      "probe",
+      "B05",
+      "control",
+      11370005,
+      {
+        "API16": [
+          "ID",
+          "ID",
+          0
+        ]
+      }
+    ]
+  ],
+  "smoke_gate_status": {
+    "G10": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GAPI14_compat": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (API_CHECKS_046 missing)"
+    },
+    "GAPI16_fresh": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GAPI16_replay": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GHOST16": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (API_CHECKS_046 missing)"
+    },
+    "GQB21": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GS_ref": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GTI": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (TEST_SUITE_046 missing)"
+    },
+    "G_PROC": {
+      "pass": false
+    },
+    "G_RT": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "G_recount": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "G_sound": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    }
+  },
+  "smoke_replays": [
+    [
+      "scale16",
+      11130005,
+      {
+        "T_final": [
+          200,
+          200
+        ],
+        "canonical_model_equal": true,
+        "capped": [
+          0,
+          0
+        ],
+        "first_word_divergence": null,
+        "label": [
+          "ID",
+          "ID"
+        ],
+        "n_min": [
+          16,
+          16
+        ],
+        "same": true,
+        "same_step": true,
+        "stop": [
+          "ID",
+          "ID"
+        ],
+        "words_equal": true
+      }
+    ],
+    [
+      "control",
+      11190001,
+      {
+        "T_final": [
+          176,
+          176
+        ],
+        "canonical_model_equal": true,
+        "capped": [
+          0,
+          0
+        ],
+        "first_word_divergence": null,
+        "label": [
+          "ID",
+          "ID"
+        ],
+        "n_min": [
+          3,
+          3
+        ],
+        "same": true,
+        "same_step": true,
+        "stop": [
+          "ID",
+          "ID"
+        ],
+        "words_equal": true
+      }
+    ]
+  ],
+  "smoke_sealed_input_verified": true,
+  "stop_examples": {
+    "ID": [
+      "sreplay/scale16/11130005/API16",
+      "sreplay/control/11190001/API16",
+      "smoke/scale16/11370001/A16_N"
+    ],
+    "IDF": [
+      "smoke/scale16/11370002/A16_N",
+      "smoke/scale16/11370002/API16"
+    ],
+    "unknown": [
+      "smoke/scale16/11370004/A16_N",
+      "smoke/scale16/11370004/API16"
+    ]
+  },
+  "stops_missing": [
+    "AMB",
+    "K_spent"
+  ],
+  "stops_present": {
+    "ID": 12,
+    "IDF": 2,
+    "unknown": 2
+  },
+  "synthetic": {
+    "G10": {
+      "cases": [
+        [
+          11370005,
+          {
+            "A16_N": "ID",
+            "API16": "ID"
+          }
+        ],
+        [
+          11370006,
+          {
+            "A16_N": "ID",
+            "API16": "ID"
+          }
+        ]
+      ],
+      "rule": "API16 and A16_N ID on every fresh control (IDF is not ID)"
+    },
+    "GAPI16_fresh": {
+      "API16_ID_IDF": 3,
+      "API16_WRONG": [],
+      "agree": 4,
+      "agree_ci95": [
+        0.5101091635454027,
+        1.0
+      ],
+      "all_WRONG": [],
+      "ci95": [
+        0.3006418425824019,
+        0.9544127391902995
+      ],
+      "disagreements": [],
+      "label_source": "recount",
+      "of": 4,
+      "per_case": [
+        [
+          11370001,
+          "ID",
+          "ID"
+        ],
+        [
+          11370002,
+          "IDF",
+          "IDF"
+        ],
+        [
+          11370003,
+          "ID",
+          "ID"
+        ],
+        [
+          11370004,
+          "IDU",
+          "IDU"
+        ]
+      ],
+      "rule": "API16 WRONG 0; API16 ID+IDF >= 8/12; same label as A16_N on >= 11/12 (capped unknowns reported)"
+    },
+    "GAPI16_replay": {
+      "ci95": [
+        0.3423802275066531,
+        1.0
+      ],
+      "columns": [
+        "key",
+        "seed",
+        "label[api,sealed]",
+        "n_min[api,sealed]",
+        "canonical_model_equal",
+        "same",
+        "same_step",
+        "words_equal",
+        "first_word_divergence",
+        "capped[api,sealed]"
+      ],
+      "of": 2,
+      "per_case": [
+        [
+          "scale16",
+          11130005,
+          [
+            "ID",
+            "ID"
+          ],
+          [
+            16,
+            16
+          ],
+          true,
+          true,
+          true,
+          true,
+          null,
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          "control",
+          11190001,
+          [
+            "ID",
+            "ID"
+          ],
+          [
+            3,
+            3
+          ],
+          true,
+          true,
+          true,
+          true,
+          null,
+          [
+            0,
+            0
+          ]
+        ]
+      ],
+      "rule": "same label, same n_min and equal canonical model as the sealed 045 A16_N record, 18/18",
+      "same": 2,
+      "same_step": 2,
+      "source": "recount",
+      "words_equal": 2
+    },
+    "GREP16c": {
+      "A16_N_ID_IDF": 3,
+      "API16_ID_IDF": 3,
+      "ci95": {
+        "A16_N": [
+          0.3006418425824019,
+          0.9544127391902995
+        ],
+        "API16": [
+          0.3006418425824019,
+          0.9544127391902995
+        ]
+      },
+      "of": 4,
+      "study_043": [
+        9,
+        12
+      ],
+      "study_043_ci95": [
+        0.46769466506643437,
+        0.9110583316059452
+      ],
+      "study_045_A16_N": [
+        10,
+        12
+      ],
+      "study_045_ci95": [
+        0.5519691377470266,
+        0.9530348578161463
+      ]
+    },
+    "GS_ref": {
+      "PASS": true,
+      "audited": 10,
+      "block": "main",
+      "complete": true,
+      "decided": 10,
+      "elapsed_informational": 159.066618508994,
+      "k_spent_as_amb": 0,
+      "mismatch_count": 0,
+      "mutations": 20,
+      "not_audited": [],
+      "not_reached": 2,
+      "of": 20,
+      "per_arm": {
+        "A16_N": {
+          "audited": 5,
+          "decided": 5,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 6
+        },
+        "API16": {
+          "audited": 5,
+          "decided": 5,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 6
+        }
+      },
+      "records": 12,
+      "scope": {
+        "budget_s": 1800.0,
+        "key_order": [
+          "control",
+          "scale16"
+        ],
+        "order": [
+          "API16",
+          "A16_N"
+        ],
+        "workers": 8
+      },
+      "vacuous": false,
+      "verdicts_checked": 20
+    },
+    "cases": {
+      "control": 2,
+      "scale16": 4
+    },
+    "crashed": false,
+    "gate_status": {
+      "G10": {
+        "pass": true
+      },
+      "GAPI14_compat": {
+        "pass": false
+      },
+      "GAPI16_fresh": {
+        "pass": false
+      },
+      "GAPI16_replay": {
+        "pass": true
+      },
+      "GHOST16": {
+        "pass": false
+      },
+      "GQB21": {
+        "pass": true
+      },
+      "GS_ref": {
+        "pass": true
+      },
+      "GTI": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (TEST_SUITE_046 missing)"
+      },
+      "G_PROC": {
+        "pass": false
+      },
+      "G_RT": {
+        "pass": true
+      },
+      "G_recount": {
+        "pass": true
+      },
+      "G_sound": {
+        "pass": true
+      }
+    },
+    "label_source": "recount",
+    "note": "synthetic: the 6 fresh smoke cases as main with expected counts patched to them; G10 can fail here only on its labels, GAPI16_fresh by its 12-case thresholds, GAPI14_compat / GHOST16 by design (no source freeze to bind certify16.py to yet), GTI and G_PROC by design (no TEST_SUITE_046, no 046 run events)",
+    "recount_rc": 0,
+    "reference_rc": 0,
+    "replays": {
+      "control": 1,
+      "scale16": 1
+    },
+    "reports_keys": [
+      "fresh_labels"
+    ],
+    "reproduces": true,
+    "sealed_input_verified": true,
+    "secondary": [
+      "GAPI_cost",
+      "GREP16c"
+    ]
+  },
+  "verifier_chain": {
+    "authorization_exceptions": 0,
+    "entries": [
+      [
+        "preregistration_046",
+        "7d691cc"
+      ],
+      [
+        "build_authorization_046",
+        "7d691cc"
+      ],
+      [
+        "seedcheck_046",
+        "1b0ce4b"
+      ]
+    ],
+    "head": "9d21522",
+    "links": 5,
+    "passed": true
+  }
+}
