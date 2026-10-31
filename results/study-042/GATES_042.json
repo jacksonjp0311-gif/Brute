@@ -1,0 +1,840 @@
+{
+  "all_gated_pass": true,
+  "failed": [],
+  "gates": {
+    "G10": {
+      "observed": {
+        "cases": [
+          [
+            10860001,
+            {
+              "A14": "ID",
+              "A16": "ID"
+            }
+          ],
+          [
+            10860002,
+            {
+              "A14": "ID",
+              "A16": "ID"
+            }
+          ],
+          [
+            10860003,
+            {
+              "A14": "ID",
+              "A16": "ID"
+            }
+          ],
+          [
+            10860004,
+            {
+              "A14": "ID",
+              "A16": "ID"
+            }
+          ],
+          [
+            10860005,
+            {
+              "A14": "ID",
+              "A16": "ID"
+            }
+          ],
+          [
+            10860006,
+            {
+              "A14": "ID",
+              "A16": "ID"
+            }
+          ]
+        ],
+        "rule": "every arm ID on every control"
+      },
+      "pass": true
+    },
+    "G16": {
+      "observed": {
+        "A14_ID": 0,
+        "A14_ci95": [
+          2.1025014877572554e-17,
+          0.24249400665524087
+        ],
+        "A16_ID": 8,
+        "A16_ci95": [
+          0.39062208887279953,
+          0.8618799089087867
+        ],
+        "gain": 8,
+        "label_source": "recount",
+        "of": 12,
+        "per_case": [
+          [
+            10810001,
+            "ID",
+            "IDU"
+          ],
+          [
+            10810002,
+            "AMB",
+            "AMB"
+          ],
+          [
+            10810003,
+            "ID",
+            "IDU"
+          ],
+          [
+            10810004,
+            "ID",
+            "IDU"
+          ],
+          [
+            10810005,
+            "ID",
+            "IDU"
+          ],
+          [
+            10810006,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10810007,
+            "ID",
+            "IDU"
+          ],
+          [
+            10810008,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10810009,
+            "ID",
+            "IDU"
+          ],
+          [
+            10810010,
+            "ID",
+            "IDU"
+          ],
+          [
+            10810011,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10810012,
+            "ID",
+            "IDU"
+          ]
+        ],
+        "rule": "A16 ID >= 6/12 and A16 ID - A14 ID >= 3"
+      },
+      "pass": true
+    },
+    "G16_sem": {
+      "observed": {
+        "ID_models_differ": [],
+        "ID_vs_IDF_reported": [],
+        "WRONG": [],
+        "n_min_differs": [],
+        "rule": "WRONG 0 in both arms; both ID/IDF => same n_min; both ID => same canonical model"
+      },
+      "pass": true
+    },
+    "GPERM17": {
+      "observed": {
+        "A14_decided": 11,
+        "agree": 11,
+        "agree_ci95": [
+          0.7411670330319683,
+          1.0
+        ],
+        "differ": [],
+        "labels": {
+          "A14": [
+            "ID",
+            "IDU",
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID"
+          ],
+          "A16": [
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID"
+          ]
+        },
+        "of": 12,
+        "rule": "A16 (stop, n_min) equals A14 wherever A14 decides"
+      },
+      "pass": true
+    },
+    "GQB17": {
+      "observed": {
+        "bound_s": 10.5,
+        "calls_logged": 1494,
+        "hard_kills": 0,
+        "max_by_arm_phase": {
+          "A14/least": 9.515,
+          "A14/rival": 9.478,
+          "A16/cube": 9.057,
+          "A16/least": 9.101,
+          "A16/rival": 9.148
+        },
+        "max_s": 9.514945153001463,
+        "over_calls": [],
+        "over_queries": []
+      },
+      "pass": true
+    },
+    "GS_ref": {
+      "observed": {
+        "PASS": true,
+        "arm": "A16",
+        "block": "main",
+        "decided": 9,
+        "k_spent_as_amb": 1,
+        "key": "scale16",
+        "mismatch_count": 0,
+        "mutations": 20,
+        "not_reached": 3,
+        "of": 20,
+        "records": 12,
+        "verdicts_checked": 18
+      },
+      "pass": true
+    },
+    "GTI": {
+      "observed": {
+        "gated": {
+          "test_release_0390": {
+            "returncode": 0,
+            "tests": 8
+          },
+          "test_scalesearch16_0390": {
+            "returncode": 0,
+            "tests": 5
+          },
+          "test_scripts_042": {
+            "returncode": 0,
+            "tests": 9
+          }
+        },
+        "reported": {
+          "test_encaudit16_0380": {
+            "returncode": 0,
+            "tests": 7
+          },
+          "test_scalesearch14_0360": {
+            "returncode": 0,
+            "tests": 7
+          }
+        }
+      },
+      "pass": true
+    },
+    "G_PROC": {
+      "observed": {
+        "clauses": {
+          "commit_order_file": true,
+          "ledger_times_non_decreasing": true,
+          "ledger_times_parse": true,
+          "main_sealed": true,
+          "order": true
+        },
+        "events": [
+          "preregistration_042",
+          "plan_erratum_042",
+          "build_authorization_042",
+          "seedcheck_042",
+          "deviation_042_157",
+          "source_freeze_042",
+          "run_start_042",
+          "run_end_042"
+        ],
+        "required_order": [
+          "preregistration_042",
+          "build_authorization_042",
+          "seedcheck_042",
+          "source_freeze_042",
+          "run_start_042",
+          "run_end_042"
+        ]
+      },
+      "pass": true
+    },
+    "G_RT": {
+      "observed": {
+        "cap_s": 1800,
+        "cases": 30,
+        "elapsed_s": 240.13168865600164
+      },
+      "pass": true
+    },
+    "G_recount": {
+      "observed": {
+        "PASS": true,
+        "amb_rule_applied": 2,
+        "cases": 30,
+        "labels_main": {
+          "A14": {
+            "AMB": 1,
+            "ID": 17,
+            "IDF": 0,
+            "IDU": 12,
+            "WRONG": 0
+          },
+          "A16": {
+            "AMB": 1,
+            "ID": 26,
+            "IDF": 0,
+            "IDU": 3,
+            "WRONG": 0
+          }
+        },
+        "mismatching_cases": 0,
+        "truth_inconsistent": 0,
+        "words_checked": 311,
+        "words_unsound": 0
+      },
+      "pass": true
+    },
+    "G_sound": {
+      "observed": {
+        "recount_bound": true,
+        "recount_truth_inconsistent": 0,
+        "recount_words_checked": 311,
+        "recount_words_unsound": 0,
+        "words_checked": 311,
+        "words_unsound": 0
+      },
+      "pass": true
+    }
+  },
+  "label_source": "recount",
+  "not_exercised": [],
+  "process": "lean",
+  "reports": {
+    "fresh_labels": {
+      "A14/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "n": 6,
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "A14/perm12": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.646120088858883,
+            0.9851349055950828
+          ],
+          "n": 12,
+          "x": 11
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "A14/scale16": {
+        "AMB": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.646120088858883,
+            0.9851349055950828
+          ],
+          "n": 12,
+          "x": 11
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "A16/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "n": 6,
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "A16/perm12": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.7575059933447591,
+            1.0
+          ],
+          "n": 12,
+          "x": 12
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "A16/scale16": {
+        "AMB": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "ID": {
+          "ci95": [
+            0.39062208887279953,
+            0.8618799089087867
+          ],
+          "n": 12,
+          "x": 8
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.08894166839405473,
+            0.5323053349335657
+          ],
+          "n": 12,
+          "x": 3
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      }
+    }
+  },
+  "schema": "brute.gates.v39_0",
+  "sealed_input_verified": true,
+  "secondary": {
+    "GPH17": {
+      "observed": {
+        "A14/control/least": {
+          "calls": 12,
+          "capped": 0
+        },
+        "A14/control/rival": {
+          "calls": 12,
+          "capped": 0
+        },
+        "A14/perm12/least": {
+          "calls": 110,
+          "capped": 0
+        },
+        "A14/perm12/rival": {
+          "calls": 25,
+          "capped": 1
+        },
+        "A14/scale16/least": {
+          "calls": 238,
+          "capped": 8
+        },
+        "A14/scale16/rival": {
+          "calls": 104,
+          "capped": 3
+        },
+        "A16/control/least": {
+          "calls": 12,
+          "capped": 0
+        },
+        "A16/control/rival": {
+          "calls": 12,
+          "capped": 0
+        },
+        "A16/perm12/least": {
+          "calls": 110,
+          "capped": 0
+        },
+        "A16/perm12/rival": {
+          "calls": 25,
+          "capped": 0
+        },
+        "A16/scale16/cube": {
+          "calls": 175,
+          "capped": 3
+        },
+        "A16/scale16/least": {
+          "calls": 372,
+          "capped": 1
+        },
+        "A16/scale16/rival": {
+          "calls": 287,
+          "capped": 14
+        }
+      },
+      "pass": null,
+      "rule": "reported: calls / capped calls by phase"
+    },
+    "GRR041": {
+      "observed": {
+        "amb_rule_applied": 25,
+        "cases": 18,
+        "frozen_041_mismatching": 25,
+        "mismatching_cases": 0,
+        "replay_labels_amb_rule": {
+          "AMB": 25,
+          "ID": 159,
+          "IDF": 19,
+          "IDU": 37
+        },
+        "replay_labels_frozen_rule": {
+          "BAD_stop": 25,
+          "ID": 159,
+          "IDF": 19,
+          "IDU": 37
+        },
+        "replays": 240,
+        "source_sha256": "4c99e971960f7bee03fc1f4429723605ac726ad557e7d9666ae617ece94499dc"
+      },
+      "pass": null,
+      "rule": "reported: the sealed 041 recount re-run with the AMB-at-stop rule"
+    },
+    "GT16": {
+      "observed": {
+        "H3_upper_below_2": true,
+        "by_key": {
+          "control": {
+            "cases": 6,
+            "ci95": [
+              0.7818,
+              1.3672
+            ],
+            "mean_ratio": 1.0706
+          },
+          "perm12": {
+            "cases": 12,
+            "ci95": [
+              0.5931,
+              0.9975
+            ],
+            "mean_ratio": 0.7914
+          },
+          "scale16": {
+            "cases": 12,
+            "ci95": [
+              0.6202,
+              0.8492
+            ],
+            "mean_ratio": 0.7279
+          }
+        },
+        "cases": 30,
+        "ci95_seed_bootstrap": [
+          0.7067,
+          0.9455
+        ],
+        "dropped": [],
+        "mean_ratio": 0.8218,
+        "per_case": [
+          [
+            "main/scale16/10810001",
+            0.5658
+          ],
+          [
+            "main/scale16/10810002",
+            0.5147
+          ],
+          [
+            "main/scale16/10810003",
+            0.7212
+          ],
+          [
+            "main/scale16/10810004",
+            0.6591
+          ],
+          [
+            "main/scale16/10810005",
+            0.5951
+          ],
+          [
+            "main/scale16/10810006",
+            0.8128
+          ],
+          [
+            "main/scale16/10810007",
+            1.0384
+          ],
+          [
+            "main/scale16/10810008",
+            0.6209
+          ],
+          [
+            "main/scale16/10810009",
+            0.584
+          ],
+          [
+            "main/scale16/10810010",
+            1.0307
+          ],
+          [
+            "main/scale16/10810011",
+            1.0942
+          ],
+          [
+            "main/scale16/10810012",
+            0.498
+          ],
+          [
+            "main/perm12/10820001",
+            0.6836
+          ],
+          [
+            "main/perm12/10820002",
+            0.1781
+          ],
+          [
+            "main/perm12/10820003",
+            0.4501
+          ],
+          [
+            "main/perm12/10820004",
+            0.8812
+          ],
+          [
+            "main/perm12/10820005",
+            1.4731
+          ],
+          [
+            "main/perm12/10820006",
+            0.5376
+          ],
+          [
+            "main/perm12/10820007",
+            0.5938
+          ],
+          [
+            "main/perm12/10820008",
+            1.0796
+          ],
+          [
+            "main/perm12/10820009",
+            1.0255
+          ],
+          [
+            "main/perm12/10820010",
+            0.7629
+          ],
+          [
+            "main/perm12/10820011",
+            1.3071
+          ],
+          [
+            "main/perm12/10820012",
+            0.5243
+          ],
+          [
+            "main/control/10860001",
+            0.5729
+          ],
+          [
+            "main/control/10860002",
+            1.14
+          ],
+          [
+            "main/control/10860003",
+            1.6076
+          ],
+          [
+            "main/control/10860004",
+            0.8627
+          ],
+          [
+            "main/control/10860005",
+            1.4753
+          ],
+          [
+            "main/control/10860006",
+            0.765
+          ]
+        ]
+      },
+      "pass": null,
+      "rule": "reported: per-case mean call wall A16 / A14, mean over cases, seed-bootstrap 95% CI"
+    }
+  },
+  "study": "BRUTE-0390-A16-SCALE16-042"
+}
