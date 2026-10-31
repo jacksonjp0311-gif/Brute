@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.35.0 RELEASE PENDING)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.35.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0350 -->
-- **v0.35.0: RELEASE PENDING** 2026-10-30 (tag, main fast-forward, gh release and fresh-clone verify follow). Built on branch `plan/v0.35.0` (BRUTE_PLAN_038, INCREMENTAL LEAST-B; LEAN; STANDING GO t133s553, build authorization ledger `bbda857`).
+- **v0.35.0: RELEASED** 2026-10-30 as tag `v0.35.0` (annotated `c1fda2b` -> `4d4c3e3`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.35.0). main was fast-forwarded `eefc66c..4d4c3e3`. A fresh clone of the tag restored, verified (commit chain 6) and passed 9/9 test modules (64 tests) with the test output on its scratch default; ledger `1b74a12`. Built on branch `plan/v0.35.0` (BRUTE_PLAN_038, INCREMENTAL LEAST-B; LEAN; STANDING GO t133s553, build authorization ledger `bbda857`).
   - **Run complete (Observed).** 42/42 cases, 451.0 s of 1800 s, normal exit 21:48:03 EDT, run once. 2 checkpoint snapshots were pushed (`9d59f40`, `f4d4b79`). The agent session was interrupted while polling after the run had finished; nothing was relaunched (#149 item 2). The resume clause was NOT approved and was not used. The box clock read about 7 s ahead of GitHub's Date header at 22:00:36 EDT.
   - **PASS (10/12):** GSAFE13 (Exact: sealed 036 WRONG trace AMB under confirm13, same as A12), GINC13 (13/13 sealed 037 reference items, 0 mismatches), GQB13 (max 9.711 s, S7), G_sound (999 words, 82 from confirmations, 0 unsound), G10, GS_ref (343 decided, 322 at raised B, 25 confirmation items, 0 mismatches, mutations 20/20), GTI (9 modules, 64 tests), G_PROC, G_RT, G_recount. **FAIL:** GR13_headline (a passes; b: IDU(A12_r3) - IDU(A13_r3) noisy12 0.00 [0, 0]; c: ID+IDF(A13_r5) 1/12 [0.01, 0.35]; d: capped-confirmation cases A13_r5 clean12 8/12 [0.39, 0.86]), GNR13 (18 clean12 label differences against A11_r3). Secondary GH2 (36 vs 34, bar 6) and GPR13 (11 vs 10 capped probes) fail.
   - **Headline numbers (Observed).** noisy12: A13_r5 1/0/0/0/11; A13_r3, A12_r5, A12_r3, A11_r3, S7 IDU 12. noisy8: A13_r5 = A12_r5 2/8/1/0/1; A13_r3 IDU 12. clean12: A13 and A12 arms 0/0/3/0/9; A11_r3 7/1/3/0/1. Controls ID 6/6 for every arm.
