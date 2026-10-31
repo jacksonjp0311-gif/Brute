@@ -1,11 +1,20 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.40.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.41.0 release in progress)._
 
 ## Current version and state
 
+<!-- V0410 -->
+- **v0.41.0: RELEASE IN PROGRESS** 2026-10-31 (EDT) on branch `plan/v0.41.0` (BRUTE_PLAN_044, lowobs audit: A16_c9 vs A16_c30 vs A16_xf on fresh lowobs12 plus controls; LEAN; STANDING GO t133s553, build authorization ledger at plan commit `d55ec61`). Maintainer order: the N-free stop next, then certify/16.
+  - **Run complete (Observed).** 54/54 arm jobs (18 cases), 490.4 s of 3600 s, normal exit about 04:03:28 EDT, run once; 2 checkpoint snapshots (`09229e3`, `f4c162f`); nothing relaunched; resume clause not approved, not used; no A16_c30 cut (projection 308.6 s, worst case 1720.0 s < 1800 s). 1 hard kill (A16_xf, 10930004, unknown); max calls 9.561 / 30.604 / 10.009 s.
+  - **PASS (9/11):** GLO_sem, GQB19, G_sound (83 words, 0 unsound), G10 (6/6 every arm), GS_ref (4 decided, 0 mismatches, 20/20), GTI, G_PROC, G_RT, G_recount. **FAIL:** GLO_cap (A16_c30 ID+IDF 2/12 [0.05, 0.45] vs A16_c9 0/12 [0, 0.24], gain 2; bar 3/12) and GLO_pol (A16_xf 2/12 [0.05, 0.45], gain 2). Secondary GC9 (c9 0/12 replicates 043), GLO_cause2, GPH19 reported only.
+  - **Branch taken:** plan 044 next_if_fail (both fail): publish; the N-free stop is v0.42.0 (BRUTE_PLAN_045, plan only), then certify/16.
+  - **Deviations:** #161 (pre-run: authorization, xf reading, seedcheck 044b post-scan adjudication, 1800 s cut trigger, recount/reference scope, smoke and projection), #162 (post-run).
+  - **Chain:** plan `d55ec61` -> seedcheck `81d6150` (FAILED) -> 044b `3a3f0ec` -> tooling `6b29624`..`c754d12` -> pre-freeze smoke `abddc72` -> #161 `b66c9e5` -> freeze `1f7d147` -> run start `b620bfc` -> seal `db7e84e` -> recount `ae1d155` -> reference `8fd768c` -> tests `e4a3ddf` -> gates `fa9a493` -> #162 `2abdcc2` -> RELEASE.json and docs `a45c4da` -> this HANDOFF -> tag -> fresh-clone verify -> RELEASED note; then `main` fast-forward.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
+
 <!-- V0400 -->
-- **v0.40.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.40.0 (annotated tag at `69a8d47`, ledger release_043 `2bc983a`). Fresh-clone verify of the tag passed: verify_release_0400 (7 links, 0 exceptions) and 34 tests. Built on branch `plan/v0.40.0` (BRUTE_PLAN_043, A16 vs frozen A14 on fresh lowobs12 plus a scale16 replication; LEAN; STANDING GO t133s553, build authorization ledger `817d2ac`). Maintainer order: lowobs first; certify/16 after the N-free stop.
+- **v0.40.0: RELEASED** (previous) 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.40.0 (annotated tag at `69a8d47`, ledger release_043 `2bc983a`). Fresh-clone verify of the tag passed: verify_release_0400 (7 links, 0 exceptions) and 34 tests. Built on branch `plan/v0.40.0` (BRUTE_PLAN_043, A16 vs frozen A14 on fresh lowobs12 plus a scale16 replication; LEAN; STANDING GO t133s553, build authorization ledger `817d2ac`). Maintainer order: lowobs first; certify/16 after the N-free stop.
   - **Run complete (Observed).** 60/60 arm jobs (30 cases), 159.7 s of 1800 s, normal exit about 02:51:49 EDT, run once; 1 checkpoint snapshot (`e7bae0d`); nothing relaunched; resume clause not approved, not used. Hard per-call cap: 0 kills, max call 9.596 s. Box clock about 2 s ahead of GitHub's Date header at 02:59 EDT.
   - **PASS (10/11):** GREP16 (A16 scale16_rep ID 9/12 [0.47, 0.91], A14 1/12 [0.01, 0.35]), GLO_sem, GQB18, G_sound (354 words, 0 unsound), G10, GS_ref (10 decided, 0 mismatches, 20/20), GTI, G_PROC, G_RT, G_recount. **FAIL:** GLO (lowobs12 A16 ID+IDF 0/12 [0, 0.24], A14 0/12, gain 0). Secondary GT17 0.81 [0.72, 0.90], GPH18, GLO_cause reported only.
   - **Branch taken:** next_if_fail (GLO fails, GREP16 passes): a lowobs budget/K audit using GLO_cause, not a new encoding. The N-free stop waits.
