@@ -1,0 +1,208 @@
+{
+ "schema": "brute.seedcheck.v47",
+ "v0470_ranges": {
+  "target/scale20": [
+   11730001,
+   11730024
+  ],
+  "target/control": [
+   11750001,
+   11750006
+  ],
+  "target/noise12": [
+   11790001,
+   11790012
+  ],
+  "smoke": [
+   11810001,
+   11810006
+  ]
+ },
+ "prior_files": [
+  "PLAN.json",
+  "BRUTE_PLAN_002.json",
+  "BRUTE_PLAN_003.json",
+  "BRUTE_PLAN_004.json",
+  "BRUTE_PLAN_005.json",
+  "BRUTE_PLAN_006.json",
+  "BRUTE_PLAN_007.json",
+  "BRUTE_PLAN_008.json",
+  "BRUTE_PLAN_009.json",
+  "BRUTE_PLAN_010.json",
+  "BRUTE_PLAN_011.json",
+  "BRUTE_PLAN_012.json",
+  "BRUTE_PLAN_013.json",
+  "BRUTE_PLAN_014.json",
+  "BRUTE_PLAN_015.json",
+  "BRUTE_PLAN_016.json",
+  "BRUTE_PLAN_017.json",
+  "BRUTE_PLAN_018.json",
+  "BRUTE_PLAN_019.json",
+  "BRUTE_PLAN_020.json",
+  "BRUTE_PLAN_021.json",
+  "BRUTE_PLAN_022.json",
+  "BRUTE_PLAN_023.json",
+  "BRUTE_PLAN_024.json",
+  "BRUTE_PLAN_025.json",
+  "BRUTE_PLAN_025_A1.json",
+  "BRUTE_PLAN_025_A2.json",
+  "BRUTE_PLAN_026.json",
+  "BRUTE_PLAN_027.json",
+  "BRUTE_PLAN_028.json",
+  "BRUTE_PLAN_029.json",
+  "BRUTE_PLAN_029_A1.json",
+  "BRUTE_PLAN_030.json",
+  "BRUTE_PLAN_031.json",
+  "BRUTE_PLAN_032.json",
+  "BRUTE_PLAN_033.json",
+  "BRUTE_PLAN_034.json",
+  "BRUTE_PLAN_035.json",
+  "BRUTE_PLAN_036.json",
+  "BRUTE_PLAN_037.json",
+  "BRUTE_PLAN_038.json",
+  "BRUTE_PLAN_039.json",
+  "BRUTE_PLAN_040.json",
+  "BRUTE_PLAN_041.json",
+  "BRUTE_PLAN_042.json",
+  "BRUTE_PLAN_043.json",
+  "BRUTE_PLAN_044.json",
+  "BRUTE_PLAN_045.json",
+  "BRUTE_PLAN_046.json",
+  "BRUTE_PLAN_047.json",
+  "BRUTE_PLAN_048.json",
+  "BRUTE_PLAN_049.json"
+ ],
+ "prior_range_count": 349,
+ "rules_declared_before_scan": [
+  "J (cpu_jiffies, smoke only)",
+  "K (refused negative_controls probe in a SEEDCHECK file)"
+ ],
+ "pairwise_overlaps": [],
+ "prior_overlaps": [],
+ "token_scan": {
+  "files_scanned": 2532,
+  "standalone_tokens_in_050_ranges": [],
+  "occurrences_any_in_050_ranges": 18,
+  "standalone_11_prefix_token_count": 5293,
+  "rule_j": [],
+  "rule_k": [],
+  "allowed": []
+ },
+ "all_tokens_allowed": true,
+ "negative_controls": [
+  [
+   "target",
+   11819001,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   11819001,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   11810001,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   11730001,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   11730025,
+   "scale20",
+   "refused"
+  ],
+  [
+   "target",
+   11750001,
+   "scale20",
+   "refused"
+  ],
+  [
+   "target",
+   11750007,
+   "control",
+   "refused"
+  ],
+  [
+   "target",
+   11730001,
+   "control",
+   "refused"
+  ],
+  [
+   "target",
+   11790013,
+   "noise12",
+   "refused"
+  ],
+  [
+   "target",
+   11730001,
+   "noise12",
+   "refused"
+  ],
+  [
+   "target",
+   11790001,
+   "scale20",
+   "refused"
+  ],
+  [
+   "target",
+   11630001,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   11670001,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   11810007,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   11809999,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   11729999,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   11690001,
+   null,
+   "refused"
+  ]
+ ],
+ "cases_by_key": {
+  "scale20": 24,
+  "control": 6,
+  "noise12": 12
+ },
+ "total_cases": 42,
+ "eps_by_key": {
+  "scale20": 0.0,
+  "control": 0.0,
+  "noise12": 0.05
+ },
+ "PASS": true
+}
