@@ -1,0 +1,153 @@
+{
+  "schema": "brute.plan/1",
+  "study": "BRUTE-0360-CLEAN-SCALE-039",
+  "version_under_test": "0.36.0",
+  "parent_study": "BRUTE-0350-INCREMENTAL-LEASTB-038",
+  "status": "preregistered (plan only; no build authorized, no code, no data)",
+  "branch_taken": "Owner pivot (instruction 2026-10-30 21:48 EDT): 'If GR13 fails, the v0.36.0 plan should pivot away from noise at 12 states ... scale the clean active-identification line that already works (A9/A10 at B = 0) toward 16 states, and/or a second world family for generality. Keep noise as an Open item.' Study 038 (Observed): GR13_headline a passed (WRONG 0 on 42 gated cases), b failed (IDU(A12_r3)-IDU(A13_r3) noisy12 0.00 [0,0]), c failed through IDU (ID+IDF(A13_r5) 1/12 [0.01,0.35], 0 AMB on noisy12), d failed (capped-confirmation cases A13_r5 clean12 8/12 [0.39,0.86]); GNR13 failed (18 clean12 label differences, every clean12 B_max confirmation capped). Plan 038's own next_if_fail b/d branch (core-guided MaxSAT least-B plus a cheaper confirmation) would fire; per the owner it is NOT taken now and is kept as an Open item. This plan has no noisy cases",
+  "process": "LEAN (standing go t133s553 covers each next locked version; a ledgered build_authorization_039 citing it is still required before any code): plan locked before data; seedcheck_039 before seeds are drawn; independent recount; CNF reference audit; pre-freeze gates test on a sealed smoke block; failures published; evidence labels; one run, no tuning, no reruns, no resume",
+  "question": "On clean traces (eps 0, B = 0), does the sound active-identification line (A9: least consistent machine, rival search at every size n_min..N, shortest separating word, ID only when no rival exists up to N from the current and the start state) extend from 12 to 14 and 16 states when the rival checks reuse one incremental SAT instance per size and the action and per-case budgets are doubled, and does it carry over unchanged to a second, structurally different world family?",
+  "motivation": "Observed: A9 identified 9/12 clean 12-state machines (ID+IDF 10/12, WRONG 0; v0.31.0) and A10 matched it on clean12 (ID 7/12, v0.32.0); the clean B = 0 line is the only line with a passing headline. At 16 states it finished nothing: A9 ID 0/6 (2 cases K = 64 spent, 4 unknown at the 120 s case budget or 10 s query cap; v0.31.0, mean wall 46 s per case) and A10 ID 0/6 IDU 6/6 (v0.32.0 secondary G16). Inferred: at 16 states the cost is (i) re-encoding the rival query at every size and every round from scratch and (ii) the K and case budgets, not soundness. Every result so far uses one world family (worlds_026: random strongly connected minimal Moore machines, k = 3, 2 observation bits), so generality is untested (Open)",
+  "hypotheses": {
+    "H1_sound": "A14 and A14_k64 give WRONG 0 on every case (all clean)",
+    "H2_scale16": "ID+IDF(A14, scale16) >= 4/12 and paired ID(A14) - ID(A9) on scale16 >= +0.25 with seed-bootstrap 95% CI lower bound > 0",
+    "H3_scale14": "ID+IDF(A14, scale14) >= 6/12",
+    "H4_family": "on the second family perm12 (12 states), ID+IDF(A14) >= 6/12 with WRONG 0, i.e. the 12-state result is not specific to worlds_026",
+    "H5_replicate": "on scale12, ID+IDF(A14) >= ID+IDF(A9) - 1 (no loss from the incremental encoding)"
+  },
+  "design": {
+    "arms": {
+      "A14": "new file brute/scalesearch14.py: frozen A9 (brute/scalesearch9) logic and stop rule, B = 0, with two declared changes: (1) one incremental SAT instance per candidate size n, kept across rounds and steps (trace clauses only added as the trace grows; the rival-differs constraint and the start-state variant guarded by activation literals and solved under assumptions), and (2) K = 128 extra actions and a 240 s per-case budget (A9: 64 and 120 s). Query cap 9.0 s per call; labels ID, IDF, AMB, WRONG, IDU as in A9",
+      "A14_k64": "ablation: A14 with A9's budgets (K = 64, 120 s per case); separates the incremental-encoding effect from the budget effect",
+      "A14_random": "control for chosen vs more data: the passive prefix plus exactly A14's extra-action count of seeded random actions, then the A14 stop check without further actions",
+      "A9": "frozen brute/scalesearch9 (v0.31.0), unchanged, its own 10 s cap and 120 s budget; the comparator for H2 and H5"
+    },
+    "declared_bound": "N = the family's nominal size (12, 14, 16; perm12 12; controls 3), given to every arm as a prior and stated in the report",
+    "world_access": "step-only wrapper over a new file experiments/worlds_039.py: scale12/scale14/scale16 via the frozen experiments.worlds_026.scale_world(seed, n) (k = 3, 2 bits, strongly connected, minimal), control_cycle3 as in worlds_026, and the new family perm12: k = 3 actions each a permutation of the 12 states (reversible group automata), emissions uniform over 4 codes, accepted iff strongly connected and minimal (rejection sampling, seed-derived stream distinct from worlds_026). The truth is used only by the scorer",
+    "labels": "ID (a single behaviour class from the start state up to N, equal to the truth); IDF (from the current state on; start still ambiguous; not ID); AMB; WRONG; IDU (budget or cap)",
+    "budget": "eps 0 on every case; query cap 9.0 s (A14 arms), Q_BOUND 10.5 s; 8 workers; whole-run cap 1800 s (G_RT)",
+    "soundness": "every separating word re-simulated on M1 and M2 and on the truth by the recount; the A14 'no rival up to N' verdicts rechecked by the CNF reference on scale14"
+  },
+  "heldout_ranges": {
+    "note": "fresh 105x00NN ranges; pre-plan scan (Observed, 2026-10-30 22:08 EDT): 0 word-bounded tokens 1050-1059 followed by 00NN in tracked text and 0 in the 139 tracked .gz archives. Drawn only after a ledgered seedcheck_039",
+    "scale12": [
+      10510001,
+      10510002,
+      10510003,
+      10510004,
+      10510005,
+      10510006,
+      10510007,
+      10510008,
+      10510009,
+      10510010,
+      10510011,
+      10510012
+    ],
+    "scale14": [
+      10520001,
+      10520002,
+      10520003,
+      10520004,
+      10520005,
+      10520006,
+      10520007,
+      10520008,
+      10520009,
+      10520010,
+      10520011,
+      10520012
+    ],
+    "scale16": [
+      10530001,
+      10530002,
+      10530003,
+      10530004,
+      10530005,
+      10530006,
+      10530007,
+      10530008,
+      10530009,
+      10530010,
+      10530011,
+      10530012
+    ],
+    "perm12": [
+      10540001,
+      10540002,
+      10540003,
+      10540004,
+      10540005,
+      10540006,
+      10540007,
+      10540008,
+      10540009,
+      10540010,
+      10540011,
+      10540012
+    ],
+    "control": [
+      10560001,
+      10560002,
+      10560003,
+      10560004,
+      10560005,
+      10560006
+    ]
+  },
+  "smoke_range": "10590001-10590012 (pre-freeze smoke only; declared here, never gated)",
+  "cases": {
+    "declared_before_data": true,
+    "scale12": 12,
+    "scale14": 12,
+    "scale16": 12,
+    "perm12": 12,
+    "control": 6,
+    "eps": 0,
+    "total": 54
+  },
+  "criteria": {
+    "GC14_headline": {
+      "a": "recounted WRONG = 0 for A14 and A14_k64 on every case, no recount label mismatch",
+      "b": "ID + IDF (A14, scale16) >= 4/12",
+      "c": "paired ID(A14) - ID(A9) on scale16 >= +0.25 (3/12), seed-bootstrap 95% CI lower bound > 0",
+      "d": "ID + IDF (A14, scale14) >= 6/12"
+    },
+    "GFAM14": "ID + IDF (A14, perm12) >= 6/12 and WRONG 0 for A14 and A14_k64 on perm12",
+    "GREP14": "ID + IDF (A14, scale12) >= ID + IDF (A9, scale12) - 1",
+    "GCH14": "paired ID(A14) - ID(A14_random) on scale14 and scale16 pooled (n = 24) >= +0.17, seed-bootstrap 95% CI lower bound > 0",
+    "GINC14": "Exact unit test (inside GTI): on every sealed study-034 A9 trace with a decided rival verdict, the A14 incremental rival check returns the same verdict (SAT/UNSAT per size, same start/future mode) as the frozen A9 fresh check",
+    "GQB14": "max single SAT call wall <= Q_BOUND 10.5 s for A14, A14_k64 and A14_random (A9 reported, not gated: frozen 10 s cap)",
+    "G_sound": "every separating word used by any arm re-simulated by the recount: 0 unsound",
+    "G10": "every arm ID on every control case",
+    "GS_ref": "independent CNF reference on A14 scale14: every decided rival verdict matches, 0 mismatches; 20/20 injected mutations caught",
+    "GTI": "test suite (all prior scalesearch modules, scalesearch14, scripts_039, release_0360) passes with output on its scratch default",
+    "G_PROC": "plan, build authorization, seedcheck, source freeze, run start, seal, recount, reference, tests, gates in ledger order; COMMIT_ORDER_039 chain verifies",
+    "G_RT": "the run completes all 54 cases within 1800 s",
+    "G_recount": "independent recount reproduces every label"
+  },
+  "secondary": {
+    "GK14": "reported, not gated: paired ID(A14) - ID(A14_k64) on scale16 (budget effect) and ID(A14_k64) - ID(A9) (incremental effect)",
+    "GACT14": "reported: extra actions used and K_spent counts per arm and family"
+  },
+  "runtime_estimate": "Inferred: about 600-1400 s on 8 workers (v0.31.0 A9 scale16 46 s per case at a 120 s budget; A14 doubles the budget). If the pre-freeze smoke projection exceeds 1500 s, A14_k64 is reduced to scale16 only (it is needed only for GK14) by a ledgered pre-run deviation before the freeze, never after",
+  "what_counts_as_failure": "any GC14 clause, GFAM14, GREP14, GCH14, GINC14, GQB14, G_sound, G10, GS_ref, GTI, G_PROC, G_RT or G_recount failing, or any A14 WRONG; failures are published, not tuned",
+  "next_if_pass": "v0.37.0: A14 as the clean default; extend to 20 states or a third family, and re-enter noise from the A14 base at 8 states only (noise at 12 states stays Open until a cheaper confirmation exists)",
+  "next_if_fail": "if a fails, the incremental encoding changed semantics: GINC14 localises it and the fix is an encoding audit, not a new arm; if b fails with K_spent dominant (A14 spends 128 actions without the rival disappearing), the separating-word choice is the bottleneck and v0.37.0 tests a distinguishing-word heuristic that maximises rival elimination per action; if b fails with IDU from caps dominant, the n = 16 rival query is the bottleneck and v0.37.0 tests a per-size cube split or symmetry-free fixed-start encoding; if d passes and b fails, 14 states is the current ceiling and is reported as such; if GFAM14 fails while d passes, the line is family-specific and v0.37.0 diagnoses perm12 (generality stays Open); if GREP14 fails, the incremental instance loses identifications A9 had and A14_k64 localises it",
+  "open_items": [
+    "noise at 12 states: GR11 (v0.33.0), GR12 (v0.34.0) and GR13 (v0.35.0) all failed; no sound noisy stop finishes 12-state worlds (Observed; Open)",
+    "plan 038 b/d branch: core-guided MaxSAT least-B and a cheaper B_max confirmation, not taken per the owner's pivot (Open)",
+    "the declared bound N and the noise rate are priors the arms are given (Exact / Open)",
+    "correlated or sticky noise untested (Open)"
+  ],
+  "limitations": [
+    "clean traces only (eps 0); says nothing about noise",
+    "the declared bound N is a prior the arms are given",
+    "K, budgets and timers fixed in advance; A14 changes two things against A9 and A14_k64 separates them only on the gated families",
+    "two world families (worlds_026 random, perm12 reversible), one hardware profile, one author",
+    "incremental solving makes per-call wall time depend on earlier steps; GQB14 bounds each call, not each step",
+    "n = 12 per family; Wilson and bootstrap intervals are wide"
+  ],
+  "brand": "charcoal and sage; no purple, neon, emoji or gold",
+  "freeze_rule": "BRUTE_SOURCE_FREEZE_039 before run_start_039; frozen and ledger-hashed files are never edited; scalesearch9 and worlds_026 stay frozen; A14 is a new file (brute/scalesearch14.py) and perm12 a new file (experiments/worlds_039.py)"
+}
