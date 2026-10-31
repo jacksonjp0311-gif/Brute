@@ -1,0 +1,48 @@
+{
+ "PASS": true,
+ "clauses": {
+  "all_cpu_jiffies": true,
+  "counts": true,
+  "eps0": true,
+  "equals_declared": true,
+  "negatives_refused": true,
+  "only_failure_is_erratum": true,
+  "pairwise_overlaps_empty": true,
+  "prior_042": true,
+  "prior_overlaps_empty": true,
+  "schema": true,
+  "smoke_only": true
+ },
+ "declared_erratum": [
+  [
+   "results/study-023/HB_SENTINEL_023.jsonl",
+   10980005
+  ]
+ ],
+ "occurrences": [
+  {
+   "all_allowed": true,
+   "file": "results/study-023/HB_SENTINEL_023.jsonl",
+   "hits": [
+    {
+     "allowed": true,
+     "line": 1261,
+     "paths": [
+      [
+       "cpu_jiffies",
+       "user"
+      ]
+     ]
+    }
+   ],
+   "ranges": [
+    "smoke"
+   ],
+   "smoke_only": true,
+   "token": 10980005
+  }
+ ],
+ "schema": "brute.seedcheck043b.v40",
+ "source": "results/diag-043/SEEDCHECK_043.json",
+ "source_sha256": "f54e868d2953045e250ed0d4601ff81e915363e62b49781a7a2e847a1bb9185d"
+}
