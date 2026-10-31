@@ -1,16 +1,16 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.41.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.41.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0410 -->
-- **v0.41.0: RELEASE IN PROGRESS** 2026-10-31 (EDT) on branch `plan/v0.41.0` (BRUTE_PLAN_044, lowobs audit: A16_c9 vs A16_c30 vs A16_xf on fresh lowobs12 plus controls; LEAN; STANDING GO t133s553, build authorization ledger at plan commit `d55ec61`). Maintainer order: the N-free stop next, then certify/16.
+- **v0.41.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.41.0 (annotated tag at `e509bee`, ledger release_044 `6e7a90c`). Fresh-clone verify of the tag passed (ledger `059949e`): verify_release_0410 (6 links, 0 exceptions) and 43 tests. Box clock about 1 s ahead of GitHub's Date header at 04:41 EDT. Built on branch `plan/v0.41.0` (BRUTE_PLAN_044, lowobs audit: A16_c9 vs A16_c30 vs A16_xf on fresh lowobs12 plus controls; LEAN; STANDING GO t133s553, build authorization ledger at plan commit `d55ec61`). Maintainer order: the N-free stop next, then certify/16.
   - **Run complete (Observed).** 54/54 arm jobs (18 cases), 490.4 s of 3600 s, normal exit about 04:03:28 EDT, run once; 2 checkpoint snapshots (`09229e3`, `f4c162f`); nothing relaunched; resume clause not approved, not used; no A16_c30 cut (projection 308.6 s, worst case 1720.0 s < 1800 s). 1 hard kill (A16_xf, 10930004, unknown); max calls 9.561 / 30.604 / 10.009 s.
   - **PASS (9/11):** GLO_sem, GQB19, G_sound (83 words, 0 unsound), G10 (6/6 every arm), GS_ref (4 decided, 0 mismatches, 20/20), GTI, G_PROC, G_RT, G_recount. **FAIL:** GLO_cap (A16_c30 ID+IDF 2/12 [0.05, 0.45] vs A16_c9 0/12 [0, 0.24], gain 2; bar 3/12) and GLO_pol (A16_xf 2/12 [0.05, 0.45], gain 2). Secondary GC9 (c9 0/12 replicates 043), GLO_cause2, GPH19 reported only.
   - **Branch taken:** plan 044 next_if_fail (both fail): publish; the N-free stop is v0.42.0 (BRUTE_PLAN_045, plan only), then certify/16.
   - **Deviations:** #161 (pre-run: authorization, xf reading, seedcheck 044b post-scan adjudication, 1800 s cut trigger, recount/reference scope, smoke and projection), #162 (post-run).
-  - **Chain:** plan `d55ec61` -> seedcheck `81d6150` (FAILED) -> 044b `3a3f0ec` -> tooling `6b29624`..`c754d12` -> pre-freeze smoke `abddc72` -> #161 `b66c9e5` -> freeze `1f7d147` -> run start `b620bfc` -> seal `db7e84e` -> recount `ae1d155` -> reference `8fd768c` -> tests `e4a3ddf` -> gates `fa9a493` -> #162 `2abdcc2` -> RELEASE.json and docs `a45c4da` -> this HANDOFF -> tag -> fresh-clone verify -> RELEASED note; then `main` fast-forward.
+  - **Chain:** plan `d55ec61` -> seedcheck `81d6150` (FAILED) -> 044b `3a3f0ec` -> tooling `6b29624`..`c754d12` -> pre-freeze smoke `abddc72` -> #161 `b66c9e5` -> freeze `1f7d147` -> run start `b620bfc` -> seal `db7e84e` -> recount `ae1d155` -> reference `8fd768c` -> tests `e4a3ddf` -> gates `fa9a493` -> #162 `2abdcc2` -> RELEASE.json and docs `a45c4da` -> this HANDOFF -> tag -> fresh-clone verify -> this RELEASED note; `main` fast-forwarded here. Next: BRUTE_PLAN_045 (v0.42.0, N-free stop, plan only) on `plan/v0.42.0`.
   - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
 
 <!-- V0400 -->
