@@ -1,5 +1,29 @@
 # Brute changelog
 
+## v0.51.0: brute.certify/20t is sound but not certified; no decision gain at 20 states (study BRUTE-0510-SCALE20-TREECOLOR-054, LEAN process)
+
+**12 of 13 gated pass (GDET54, GFID54, GS20T_sound54, GCOMPAT20T54, GHOST54, GS_ref, G_sound, G_recount, GTI, GTEST, G_PROC, G_RT); GS20T_gain54 FAILS. Secondary GCOST54, GS20T_rate54, GS20T_paired54 reported. certified_20t_N20 false; sound_not_certified_20t true.** certify/20t (new: certify/16e with the rival asked once at size N; the plan 054 fixed-colour clique was dropped pre-data by amendment 054a per study-041) decided 0/6 fresh 20-state worlds [0.00, 0.39] in both passes, the same as certify/16e at bound 20 (0/6 [0.00, 0.39]; 5 IDU budget spent, 1 AMB K_spent). Nothing at 20 states is certified; certify/16n and certify/16e are unchanged.
+
+Claim scope (*Exact*; reason *Inferred*): an ID or IDF is exact only conditional on a true size at most the declared N. A larger machine can copy the true machine on every visited state, so no finite test separates them.
+
+### Timeline (EDT, 2026-10-31)
+
+- Plan `29e8697` (preregistration 16:49:41); amendment 054a `76c1e29` (16:52:11); build authorization 16:52:28; seedcheck PASS (16:57:35); pre-freeze smoke attempt 1 FAIL published `2df545e` (runner kept only the api name; fixed `32b3bae`); smoke2 `aa1a9d2` PASS (worst 2270.7 s, no cut); deviation #181 `2ff49a1`; source freeze `6762f86` (427 files, 17:53:11).
+- Run start about 17:53:02 (ledger `3c5013f`); 4 snapshots `f0fea94` to `94c52b0`; seal `eb695ff` (ledger `2ad16ac`; 1157.8 s); recount `a0573e7`; reference `e02c307` (complete); api checks `968cb1c` (PASS); tests `d69000a`; gates `6d9574f`; deviation #182 `d523486`; RELEASE.json `01e7811`.
+
+### Results (recount labels; Wilson 95% in GATES_054.json)
+
+| part | result | WRONG |
+|---|---|---|
+| scale20t, 6 fresh run twice (API20T / API20T_b, certify/20t, bound 20) ID+IDF | 0/6 [0.00, 0.39] both passes (6 IDU budget spent); canon-equal with identical conflicts 6/6 [0.61, 1.00]; 0 hard kills | 0 of 12 |
+| scale20t control (API16E20, certify/16e, bound 20) ID+IDF | 0/6 [0.00, 0.39] (5 IDU, 1 AMB) | 0 of 6 |
+| compat20t, certify/20t vs certify/16e at bound 16 (GCOMPAT20T54) | 6/6 [0.61, 1.00] (5 ID same machine, 1 IDF same machine from current state) | 0 of 12 |
+| self-replay (GFID54) | 18/18 gated [0.82, 1.00]; 12/12 reported | 0 |
+
+- GS_ref: 6/6 decided API20T records (all compat20t) audited, 0 mismatches, 20/20 mutations, complete (421 s). Rates: API20T about 7.96k conflicts/s, API16E20 9.78k.
+- Deviations #181 (pre-run, incl. the clique decision) and #182 (post-run). #182 item 4 gives the WRONG 0/30 interval as [0.00, 0.12]; the Wilson value is [0.00, 0.11] (#182 is ledger-hashed and left as written).
+- Next: v0.52.0 (BRUTE_PLAN_055, plan only), plan 054a next_if_fail gain branch: cube-and-conquer over distinguishing-word prefixes at the same budget.
+
 ## v0.50.0: brute.certify/16n certified for declared N <= 16 under iid flips with eps <= 0.10; conflict-only stop makes 20-state runs repeat exactly (study BRUTE-0500-NOISE16-SCALE20-CONFLICTSTOP-053, LEAN process)
 
 **13 of 13 gated pass (GDET53, GFID53, GN16_sound53, GCOMPAT16N53, GHOST53, GQB27, GS_ref, G_sound, G_recount, GTI, GTEST, G_PROC, G_RT). Non-blocking GS20C_det53 and GS20C_sound53 pass. Secondary GCOST53, GN16_rate53, GS20C_rate53 reported.** certify/16n (code unchanged since v0.47.0) is certified for declared N <= 16 under iid flips with eps <= eps_bar = 0.10 at per-record failure probability <= delta = 0.001, C 50000, B 1500000 (*Exact* conditional on the model and the declared N).
