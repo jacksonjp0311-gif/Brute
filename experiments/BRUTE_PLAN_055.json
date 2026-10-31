@@ -1,0 +1,88 @@
+{
+  "schema": "brute.plan.v1",
+  "study": "BRUTE-0520-SCALE20-CUBECONQUER-055",
+  "version_under_test": "0.52.0",
+  "parent_study": "BRUTE-0510-SCALE20-TREECOLOR-054",
+  "status": "preregistered (plan only; no build code, no seed use, no data). Build needs a ledgered build_authorization_055 under a standing go in force and cited",
+  "branch_taken": "plan 054a next_if_fail, gain branch (Exact, GATES_054 6d9574f: 12/13 gated pass, GS20T_gain54 FAIL with every soundness gate passing; certified_20t_N20 false, sound_not_certified_20t true): asking the rival once at size N does not raise decisions at 20 states; certify/20t 0/6 and certify/16e 0/6 at B20 2000000, every record at about 2.0M conflicts with identical counts across passes. So this version tries a different search at the SAME budget (B20 2000000, C20 50000): cube-and-conquer over distinguishing-word prefixes with a deterministic cube order. No budget increase.",
+  "brand": "charcoal and sage; no purple, neon, emoji or gold",
+  "question": "Does certify/20c (certify/16e's encoding with its capped size queries solved by deterministic cube-and-conquer over the colours of the first trace prefixes, pruned by distinguishing words) decide more fresh noise-free 20-state worlds than certify/16e at the same conflict budget (B20 2000000, C20 50000), while staying sound, deterministic under a conflict-only stop, faithful, and equal to certify/16e at bound 16?",
+  "hypotheses": {
+    "H1": "certify/20c issues no WRONG certificate on 6 fresh 20-state worlds over two passes (12 records) or on 6 eps-0 16-state controls",
+    "H2": "with a conflict-only stop on a 4-worker pool, the two certify/20c passes give byte-identical canonical records on 6/6 cases with identical conflict counts and 0 hard kills (054 showed this for certify/20t)",
+    "H3": "every certify/20c record is reproduced exactly by api_checks driving certify/20c observation by observation (run once)",
+    "H4": "at bound 16 certify/20c gives the same label as certify/16e on 6/6 fresh clean 16-state controls and the same canonical machine for ID (plan 052 IDF-equivalence rule, unchanged). Inferred risk declared pre-data: a satisfying cube may yield a different witness machine than the monolithic call, so canonical M2 may differ; labels may not",
+    "H5": "certify/20c ID+IDF >= 2/6 on scale20t and strictly more than certify/16e at bound 20 on the same seeds. Inferred risk declared pre-data: in 053 and 054 the least-machine search used most of the budget; splitting may only spread the same hardness over cubes"
+  },
+  "design": {
+    "api": "one new module brute/api/certify20c.py (certify/20c); certify/16n (FREEZE_050), certify/16e (FREEZE_049), certify/16s (FREEZE_051), certify/20t (FREEZE_054) and every earlier module are imported only, never edited. certify/20c keeps certify/16e's encoding (A16: first-visit symmetry clauses, apartness clauses, observe / propose / result interface, labels, K) and its query sequence (least-machine sizes n_lo upward, then the 'future' and 'start' rival queries at each size up to N). It changes only how each SAT query is solved once its first 50000-conflict chunk is capped: the query is split into cubes and conquered as below. Queries that answer inside the first chunk are solved exactly as in certify/16e.",
+    "cubes": "cube variables are the colours of the states reached by the first d = 5 trace prefixes (positions 0..4 of the trace, in trace order). Under first-visit symmetry these colourings are exactly the restricted-growth strings of length 5 (at most Bell(5) = 52). A cube is pruned before solving if it gives one colour to two prefixes proven apart by a distinguishing word (the apartness relation already in the encoding). Cube order is lexicographic in the restricted-growth string, fixed before solving; no wall time, randomness or solver statistics affect it.",
+    "conquer": "each surviving cube is solved under assumptions on one incremental CaDiCaL instance in round-robin chunks of C20 = 50000 conflicts, in the fixed cube order; a cube returning UNSAT is closed; any SAT cube answers SAT for the query with that witness; UNSAT on every cube answers UNSAT; conflicts across all cubes count against the same case budget B20 = 2000000 (B 3000000 at bound 16 for compat); budget spent -> unknown, exactly as certify/16e's chunked resume",
+    "soundness": "Exact argument, checked by tests and by GS_ref: the cubes partition the colourings allowed by first-visit symmetry of the first 5 prefixes, and pruned cubes are unsatisfiable by the apartness clauses, so SAT/UNSAT of the query equals the disjunction over cubes; labels follow certify/16e's rules unchanged",
+    "stop": "conflict-only stop for all arms; 900 s per-case hard kill as a safety net (any kill fails GDET55)",
+    "arms": {
+      "scale20t": "API20C pass 1, API20C_b pass 2 (certify/20c, bound 20), API16E20 (certify/16e, bound 20, control) on the same 6 seeds",
+      "compat20t": "API20C vs API16E at bound 16 on 6 fresh clean 16-state controls"
+    },
+    "workers": "4 + 4 (scale20t pool and compat20t pool concurrently), as 054",
+    "worlds": "experiments/worlds_050 generators, unchanged"
+  },
+  "cases": {
+    "scale20t": 6,
+    "compat20t": 6,
+    "jobs": "scale20t 6 x 3 = 18; compat20t 6 x 2 = 12; total 30",
+    "declared_before_data": true
+  },
+  "heldout_ranges": {
+    "scale20t": "12250001-12250006",
+    "compat20t": "12270001-12270006",
+    "note": "at plan time (2026-10-31 EDT, git grep -I -w) prefixes 1225, 1227 and 1229 had 0 tokens prefix+00NN in tracked text files and 1223 had 2, so 1223 is skipped; compressed files were not scanned. seedcheck_055 scans every tracked file, .gz included, before any seed; a hit moves the part to the next unused prefix (1231, then 1233) by a ledgered deviation before data"
+  },
+  "smoke_range": "12290001-12290006 (pre-freeze smoke and projection only; never gated; never used to set B, C, d or the cube order)",
+  "criteria": {
+    "GDET55": "canon(API20C) == canon(API20C_b) byte-identical on 6/6 scale20t cases, identical conflict counts, 0 hard kills on every record",
+    "GFID55": "api_checks fidelity exact on all 12 API20C scale20t records and 6 API20C compat20t records, bound to the sealed RESULTS sha",
+    "GS20C_sound55": "WRONG 0 on all scale20t records (API20C, API20C_b, API16E20) and all compat20t records, against the clean truth",
+    "GS20C_gain55": "API20C (pass 1) ID+IDF >= 2/6 on scale20t AND > API16E20 ID+IDF on the same 6 seeds (Wilson CIs reported)",
+    "GCOMPAT20C55": "6/6 controls equal under the plan 052 rule (same label; ID same machine from state 0; IDF future_match on both and the same machine from the current state)",
+    "GCUBE55": "on every capped query of every API20C record: cube list and order reproduce from the trace alone; pruned cubes are UNSAT when checked independently in the reference; the conflicts summed over cubes equal the record's conflicts_spent",
+    "GHOST55": "no network; frozen API files and the 16e / 16n / 16s / 20t closures unchanged; certify20c sha bound to BRUTE_SOURCE_FREEZE_055",
+    "GS_ref": "independent CaDiCaL reference audits every decided API20C record at its bound with 20 mutations, within 2400 s on 8 workers; vacuous only if no API20C record is decided (reported)",
+    "G_sound": "0 unsound words on every record (study and recount); 0 WRONG",
+    "G_recount": "independent recount agrees",
+    "GTI": "SEEDCHECK_055 PASS and its sha frozen",
+    "GTEST": "gated test modules pass (incl. a cube-partition test against brute-force colourings at small N)",
+    "G_PROC": "preregistration, build_authorization, seedcheck, prefreeze_smoke, source_freeze, run_start, run_end, recount, reference, api_checks, tests (all _055) in order; commit-order file; main sealed",
+    "G_RT": "main elapsed <= 3600 s"
+  },
+  "certification_rule": "certify/20c becomes certified for declared N <= 20 on noise-free traces iff every gated criterion passes, GS20C_gain55 included. If every gate except GS20C_gain55 passes, certify/20c is published as sound but not certified, and nothing at 20 states is certified. certify/16n, certify/16e and certify/20t and their status are not changed.",
+  "secondary": {
+    "GS20C_rate55": "ID+IDF of 6 per arm with Wilson CIs, conflicts per decided case, conflicts/s",
+    "GS20C_paired55": "per-seed paired table API20C vs API16E20: label and conflicts spent",
+    "GCUBE_stats55": "cubes generated, pruned, closed UNSAT, open at stop, per query and per record",
+    "GCOST55": "conflicts, chunks, cubes and wall per part"
+  },
+  "gate_dependency_rule": "each gate is scored from its own counts; label gates use recounted labels if G_recount passes, else the study labels with the failure stated; an unfinished reference is a GS_ref failure, published as-is",
+  "what_counts_as_failure": "any gated criterion false; any hard kill fails GDET55; AMB and IDU are not soundness failures",
+  "freeze_rule": "no file named in the source freeze is edited after the freeze; new behaviour in new files or a deviation addendum. Caps, d = 5, cube order, the stop rule, workers and case lists are part of the freeze",
+  "runtime_estimate": "same budgets as 054 (observed 1157.8 s; slowest 054 scale20t rate 7472 conflicts/s). Worst case at 050's slowest rate 4503 conflicts/s: scale20t 18 x 454 s on 4 workers = 5 rounds = 2270 s; compat20t 12 x 676 s on 4 workers = 2028 s; cube bookkeeping adds assumption overhead, measured by the smoke. Cut rule: if the smoke projection at its slowest rate exceeds 3300 s, scale20t drops to 4 cases and then compat20t to 4, declared in the pre-run deviation before the freeze. Never raise B20 or C20.",
+  "process": "LEAN, under a standing go only if one is in force and cited; a ledgered build_authorization_055 before any code and before seedcheck_055. Plan locked before data; seedcheck before seeds; no cap calibration; pre-freeze smoke with the real release verifier chain; independent recount; CNF reference audit; api_checks once after the run; main runs once with nohup and is never relaunched; failures published; one fresh-clone verify plus tests",
+  "next_if_pass": "certify/20c becomes certified for declared N <= 20 on noise-free traces (Exact conditional on the declared N). Next: replication on more fresh 20-state worlds, then noise at 20 states (certify/16n front end over certify/20c).",
+  "next_if_fail": "GS20C_gain55 fails with every soundness gate passing: splitting on prefix colours does not make 20 states reachable at 2M conflicts; stop budget and split variants and change the question: a genuinely different idea, i.e. learn the machine with active queries that shorten the trace the solver must explain (L*-style counterexample-guided search with the declared N bound), pre-registered against certify/16e at the same budget. GS20C_sound55, GCUBE55, G_sound or GS_ref fails on a mismatch: certify/20c is unsound; withdraw it and find the cause. GDET55 fails: return 20-state jobs to 1 worker. GCOMPAT20C55 fails: fix the cube encoding at 16 states before scaling. G_RT failure: publish and cut cases, not budget.",
+  "limitations": [
+    "6 cases per part give wide CIs (Wilson 95% for 2/6 is [0.10, 0.70])",
+    "noise-free only at 20 states; noise at 20 states stays Open",
+    "still needs a declared size N",
+    "walls depend on the host; walls never decide a result",
+    "d = 5 is fixed before data, not tuned; another depth could do better or worse (Open)",
+    "the baseline API16E20 is run once per seed"
+  ],
+  "open_items": [
+    "full N-freedom: Open",
+    "certify/16n under correlated noise: Open",
+    "noise at 20 states: Open",
+    "IDF that fixes the start state: Open"
+  ],
+  "claim_scope": "conditional on the declared N: an ID or IDF means unique among machines with at most N states consistent with the trace; IDF identifies the machine from the current state, not the start. Inferred reason: a larger machine can copy the true machine on every visited state and differ only on states the trace never reached, so no finite trace rules it out.",
+  "evidence_labels": "Exact, Observed, Simulated, Inferred, Rejected, Open"
+}
