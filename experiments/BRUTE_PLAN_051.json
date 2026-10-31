@@ -1,0 +1,97 @@
+{
+ "schema": "brute.plan.v1",
+ "study": "BRUTE-0480-SCALE20-ISOLATED-SYMBREAK-NOISE12-051",
+ "version_under_test": "0.48.0",
+ "parent_study": "BRUTE-0470-SCALE20-REPLICATION-NOISE12-050",
+ "status": "preregistered (plan only; no build code, no data for 051)",
+ "branch_taken": "plan 050 next_if_fail (Exact, GATES_050 5dd2299, ledger f3af5bd; 9/15 gated pass; deviation #174 a660de4): 'GDET50 or GQB25 fails on guard firings: B20 is too large for the case guard on this host; re-plan B20 from this run's slowest rate.' GDET50 failed (20/30, scale20 2/12) with the 600 s case guard firing on 29 scale20 records, and GQB25 failed (max chunk 90.5 s, 25 case walls over 600 s) (Exact). Observed in 050: slowest scale20 rate 4503 conflicts/s (11730023, 607.5 s, 8 workers shared with the other parts); scale20 records with no guard firing 9563 to 20323 conflicts/s; per-chunk rate as low as about 550 conflicts/s (90.5 s for 50000); slowest clean 12-state rate 30256 conflicts/s (1500135 conflicts in 49.6 s); the single decided scale20 case needed about 3.25M conflicts; control 11750001 spent B12 = 1500000 (IDU, no guard). Reading (Inferred): re-planning B20 alone, by plan 050's rule, gives B20 about 2.0M, below the 3.25M the one decided case needed, so a budget cut alone would likely make the 20-state gate vacuous; the runtime fix therefore has three parts: B20 and C20 re-planned from the slowest observed rates, scale20 run in its own phase on fewer workers (no shared load), and a structural change (stronger symmetry breaking) so that fewer conflicts are needed",
+ "brand": "charcoal and sage; no purple, neon, emoji or gold",
+ "question": "With B20 re-planned from 050's slowest rate (2000000), C20 re-planned from 050's slowest chunk rate (12000), scale20 run alone on 4 workers, and a new additive certify/16s (certify/16e plus BFS-canonical symmetry breaking), are 12 fresh 20-state worlds run wall-free (0 guard firings), deterministic over two passes, sound (non-vacuously) and decided at least once inside a 3600 s run? Separately, does certify/16n replicate on 12 fresh noisy 12-state worlds, and do 6 fresh controls all reach ID at B12 3000000?",
+ "hypotheses": {
+  "H1": "in an isolated scale20 phase on 4 workers at B20 = 2000000 and C20 = 12000, the 30 s chunk guard and 600 s case guard fire 0 times on every record (wall-free)",
+  "H2": "two independent certify/16s passes give byte-identical canon16s records on 12/12 scale20 cases; controls and noise12 are byte-identical across passes",
+  "H3": "scale20: WRONG = 0, every decided record audited true at bound 20, and at least 1 of 12 decided (non-vacuous); the decided count beyond 1 is reported, not predicted",
+  "H4": "on the 6 control traces, certify/16s returns the same label and the same machine (canonical form) as the part-k certify/16e records (symmetry breaking removes only isomorphic copies)",
+  "H5": "certify/16n (unchanged, FREEZE_050) issues no WRONG certificate on 12 fresh noisy 12-state worlds over two passes (replication of 050's GN12_sound)"
+ },
+ "design": {
+  "api": "no change to certify/16e (FREEZE_049) or certify/16n (FREEZE_050). One additive module brute/api/certify16s.py (certify/16s, Certifier16S): the certify/16e chunked-resume loop over a new encoding module that keeps the a16d variables and first-visit clauses and adds BFS-canonical symmetry breaking (parent and minimum-symbol variables, states numbered in BFS order of the hypothesis automaton; Ulyantsev, Zakirzyanov and Shalyto 2015 style). It is sound because every machine has exactly one BFS-canonical numbering, so the clauses remove only isomorphic copies; uniqueness up to isomorphism is unchanged (Inferred, checked by GCOMPAT16S and by the CNF reference at bound 20). Host-agnostic: no I/O, threads, subprocess or os in brute/; no frozen file edited",
+  "runtime_fix": "(1) B20 and C20 re-planned from 050's slowest observed rates (cap_rule); (2) the main run has two phases: phase A runs only the scale20 jobs on 4 workers, phase B runs controls, compat and noise12 on 8 workers after phase A ends, so 20-state cases share the host only with each other (Inferred: 050's slow cases ran beside 7 other jobs; whether load is the cause is Open and is measured by GRATE51); (3) certify/16s needs fewer conflicts per decision (Inferred, Open; measured by GS20_rate51). The wall guards stay at 600 s per case and 30 s per call, host safety only; records exclude wall fields; any firing is a gate failure, never a label",
+  "cap_rule": "fixed NOW, before any 051 data, from sealed 050 results only (Exact inputs, rule from plan 050 next_if_fail): B20 = 2000000 (4503 conflicts/s x 600 s x 0.75 = 2026350, rounded down to 2000000; worst case 444.2 s); C20 = 12000 (550 conflicts/s x 30 s x 0.75 = 12375, rounded down; worst case 21.8 s per chunk at the slowest chunk rate); B12 for controls = 3000000 (2x 050's B12, because 11750001 spent 1500135 without deciding; worst case 99.2 s at 30256/s); noise12 keeps certify/16n's frozen B12 = 1500000 and C = 50000 (replication, unchanged). Not calibrated, not tuned; the pre-freeze smoke never changes them",
+  "parts": {
+   "s": "fresh scale20 (12), certify/16s passes API16S and API16S_b on all 12, family_bound 20, B20, C20; phase A, 4 workers",
+   "k": "fresh controls (6), clean 12-state worlds, certify/16e (unchanged) passes API16E and API16E_b, B12 3000000, C 50000; phase B",
+   "c": "compatibility: certify/16s at family_bound 12, B12 3000000, C 50000 over the 6 control traces, compared with the part-k API16E records on label and canonical machine; phase B",
+   "n": "fresh noise12 (12), certify/16n passes API16N and API16N_b, family_bound 12, eps = 0.05, eps_bar = 0.10, delta = 0.001, B12 1500000; phase B"
+  },
+  "worlds": "scale20 and controls from the frozen 048/049 generators, same sizes and observation rules; noise12 from the frozen 050 noisy re-read world module",
+  "canon16s": "the canon16e record fields plus the encoding id and the symmetry-breaking clause count; wall fields excluded"
+ },
+ "cases": {
+  "scale20": 12,
+  "control": 6,
+  "compat": 6,
+  "noise12": 12,
+  "jobs": "phase A: scale20 12 x 2 = 24; phase B: controls 6 x 2 = 12, compat 6, noise12 12 x 2 = 24; total 66",
+  "declared_before_data": true
+ },
+ "heldout_ranges": {
+  "scale20": "11830001-11830012",
+  "control": "11850001-11850006",
+  "noise12": "11870001-11870012",
+  "note": "the prefixes 1183, 1185, 1187, 1189 and 1191 had 0 word-bounded tokens of the form prefix+00NN in tracked text at plan time (Observed, git grep, 2026-10-31 EDT). seedcheck_051 scans every tracked file, .gz archives included, before any seed is used. Any hit moves that range to the next unused odd prefix (1193, 1195), declared in the pre-run deviation"
+ },
+ "smoke_range": "11890001-11890006 (pre-freeze smoke and projection only; never gated; never used to set C, B or k)",
+ "criteria": {
+  "GDET51": "headline 1, determinism and wall-freedom: API16S and API16S_b byte-identical on 12/12 scale20 cases; API16E and API16E_b on 6/6 controls; API16N and API16N_b on 12/12 noise12 cases; and 0 wall guard firings on every record",
+  "GFID51": "headline 2, fidelity: every record reproduced exactly when its API is driven observation by observation over its own trace (api_checks, run once after the main run, phase A records on 4 workers)",
+  "GS20_sound51": "headline 3: scale20 WRONG = 0, every decided record audited true at bound 20, AND at least 1/12 decided. 0 decided fails this gate",
+  "GN12_sound51": "headline 4: noise12 WRONG = 0 on both passes (any-WRONG chance at most 24 x 0.001 = 0.024 under the model; Exact bound, conditional on the model)",
+  "GCOMPAT16S": "part c matches part k on 6/6 controls: same label, and for ID/IDF the same machine in canonical form",
+  "GHOST51": "api_checks: frozen certify/14, 16, 16d, 16e and 16n closures unchanged; 0 sockets opened",
+  "G10": "6/6 controls ID on both passes at B12 3000000",
+  "GQB25": "max chunk wall <= 30 s and max case wall <= 600 s on every record",
+  "GS_ref": "every decided record audited by the CNF reference at its family_bound, 0 mismatches; 20/20 mutations caught. Scope: 2400 s for the 12-state records, plus a separate 1800 s per decided scale20 record, run one at a time after the main run and outside G_RT (050's one decided 20-state record was not reached inside 2400 s)",
+  "G_sound": "recount: 0 unsound words",
+  "G_recount": "independent recount reproduces every label",
+  "GTI": "no held-out seed seen before the freeze (seedcheck_051 and tracked-text scan)",
+  "GTEST": "full test suite passes",
+  "G_PROC": "process chain intact (plan, build authorization, seedcheck, smoke, freeze, run start, seal, recount, reference, api checks, tests, gates)",
+  "G_RT": "main run total_elapsed <= 3600 s (phases A and B together)"
+ },
+ "secondary": {
+  "GS20_rate51": "scale20 ID+IDF of 12 with Wilson CI and conflict cost, reported only",
+  "GS20_vs50": "beside 050 (certify/16e, B20 4000000, 8 shared workers: 1/24 [0.01, 0.20]), reported only; different cases, so not a paired comparison",
+  "GRATE51": "scale20 conflicts/s per record and per chunk in the isolated phase beside 050's 4503/s minimum, reported only",
+  "GN12_rate": "noise12 ID+IDF of 12 with Wilson CI, k and readings per observation, reported only",
+  "GCOST51": "conflicts, chunks, budget-spent records and wall per part and key, reported only"
+ },
+ "gate_dependency_rule": "each gate is scored from its own counts. GS20_sound51 and GN12_sound51 use the recounted labels if G_recount passes, else the study labels with the failure stated. A reference that does not finish is a GS_ref failure, published as-is",
+ "what_counts_as_failure": "any gated criterion false. A budget-spent record is unknown, not a soundness failure, but 12/12 budget-spent fails GS20_sound51 on non-vacuity. Any wall guard firing is a GDET51 and GQB25 failure",
+ "freeze_rule": "no file named in the source freeze is edited after the freeze; new behaviour goes in new files or a deviation addendum. B20, C20, B12 values, the guards, eps, eps_bar, delta, the k rule, the phase and worker split and the case lists are part of the freeze",
+ "runtime_estimate": "declared now, worst case (every case spends its whole B at the slowest 050 rate). Phase A: 24 jobs x (2000000 / 4503 + 10 s) = 24 x 454.2 s = 10901 job-seconds on 4 workers = 6 rounds, about 2725 s. Phase B: controls 12 x (3000000 / 30256 + 10) = 12 x 109.2 = 1310; compat 6 x 109.2 = 655; noise12 24 x (1500000 / 30256 + 10) = 24 x 59.6 = 1430; total 3395 job-seconds on 8 workers, LPT about 425 s plus at most one 109 s tail, about 534 s. Total about 3259 s, below 3600 s. The certify/16s rate per conflict is Open (new clauses); the smoke measures it but cannot change B or C. Cut rule, declared now: if the pre-freeze worst-case projection (with the smoke's certify/16s rate if slower than 4503/s) is above 3600 s, the noise12 second pass drops to 6 cases first, then part c to 3 cases, stated in the pre-run deviation; never the scale20 part, never after the freeze",
+ "process": "LEAN, under a standing go only if one is in force and cited; a ledgered build_authorization_051 is required before any code, ledgered BEFORE seedcheck_051. Plan locked before data; seedcheck before seeds; no cap calibration (B, C and k fixed here); independent recount; CNF reference audit; api_checks once after the main run; pre-freeze smoke on 11890001-11890006 with the real release verifier chain; one main run (phase A then phase B, one process), no tuning, no reruns, no relaunch if interrupted (the resume clause is not approved); failures published; one fresh-clone verify plus tests",
+ "next_if_pass": "all headline gates pass: certify/16s becomes certified for declared N <= 20 at B20 2000000 and C20 12000 (exact, conditional on the declared N and noise-free readings), and certify/16e keeps N <= 16; certify/16n becomes certified for declared N <= 12 under iid flips with eps <= 0.10 at failure probability <= delta (two fresh replications, 050 and 051, with WRONG 0). Next: a noise study at 16 states and a scale-24 probe with certify/16s",
+ "next_if_fail": "GDET51 or GQB25 fails on guard firings in the isolated phase: wall time is not controllable by conflicts on this host even alone; next, scale20 gets its own version with 1 worker and a conflict-only stop, and no 20-state claim until 0 firings. GDET51 fails with 0 guard firings: certify/16s or the phase split is not deterministic; find the source, ship nothing new. GCOMPAT16S or GFID51 fails: symmetry breaking or replay is unfaithful; fix it, ship nothing new. GS20_sound51 or GN12_sound51 fails on WRONG: soundness first; do not scale further. GS20_sound51 fails on non-vacuity only (0/12 decided, WRONG 0): 20 states stay out of reach at 2000000 conflicts even with BFS symmetry breaking; next, a different encoding or search (for example an APTA or state-merging lower bound), not more budget. G10 fails at 3000000: the clean 12-state generator makes hard controls; report it and choose controls by a declared rule. GS_ref fails on time only: give the 20-state reference its own version. G_RT fails: publish it; the noise study gets its own version",
+ "limitations": [
+  "12 scale20 and 12 noise12 cases give wide CIs",
+  "still needs a declared size N",
+  "noise model is iid flips with a known bound eps_bar; adversarial or correlated noise is not covered",
+  "walls still depend on the host; only guard firings are gated",
+  "the isolated phase removes shared load from other parts but not from the 4 scale20 workers themselves",
+  "the certify/16s rate per conflict is not known before the smoke",
+  "B20 2000000 is below the 3.25M the one 050 decided case needed (Observed), so the decided count may be 0",
+  "lowobs12 not covered"
+ ],
+ "open_items": [
+  "full N-freedom: Open",
+  "whether shared load caused 050's slow scale20 rates: Open",
+  "whether BFS symmetry breaking lowers the conflicts needed at 20 states: Open",
+  "whether B20 2000000 decides any 20-state world with certify/16s: Open",
+  "noise at 16 states: Open",
+  "whether C20 12000 is wall-free on other hosts: Open",
+  "whether certify/16n holds under correlated noise: Open"
+ ],
+ "claim_scope": "conditional on the declared N: an ID or IDF means unique among machines with at most N states consistent with the (majority-corrected, for certify/16n) trace. Inferred reason: a larger machine can copy the true machine on every visited state and differ only where the trace never reaches, so a size bound is inherent. certify/16n claims are further conditional on the iid noise model with eps <= eps_bar and hold with probability >= 1 - delta",
+ "evidence_labels": "Exact, Observed, Simulated, Inferred, Rejected, Open"
+}
