@@ -1,8 +1,21 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.47.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.48.0 release in progress)._
 
 ## Current version and state
+
+<!-- V0480 -->
+- **v0.48.0: RELEASE IN PROGRESS** 2026-10-31 (EDT). Built on branch `plan/v0.48.0` (BRUTE_PLAN_051: new certify/16s, BFS-form symmetry breaking over the certify/16e chunked search, C20 12000, B20 2000000, bound 20, on 12 fresh 20-state worlds run twice in an isolated phase A on 4 workers; 6 controls run twice; 6 part-c compatibility cases (certify/16s at bound 12 vs certify/16e); certify/16n replication on 12 fresh noisy 12-state worlds run twice; 66 jobs, 60 min cap).
+  - **Run complete (Observed).** 66/66 jobs, 1656.2 s of 3600 s (phase A 1636.8 s, phase B 19.4 s), normal exit 13:39 EDT, run once; 6 checkpoint snapshots; nothing relaunched; resume clause not approved, not used. The run, the reference and api_checks each ran once across agent interruptions and were committed as-is (#176 item 2).
+  - **PASS (9/15 gated):** GN12_sound51 (WRONG 0, 0 majority errors; API16N 11/12 [0.65, 0.99]), GHOST51, GS_ref (38/38 audited, 0 mismatches, 20/20 mutations, complete), G_sound (608 words, 0 unsound), G_recount, GTI, GTEST (79 gated tests), G_PROC, G_RT (1656.2 s).
+  - **FAIL (6):** GDET51 26/30 [0.70, 0.95] (scale20 8/12; the 30 s chunk guard fired on 5 scale20 records); GFID51 25/30 [0.66, 0.93] (API16S 7/12); GS20_sound51 (0/12 decided [0.00, 0.24], WRONG 0; 11 IDU budget spent, 1 AMB); GCOMPAT16S 5/6 [0.44, 0.97] (11850004 IDF both sides, isomorphic with a different start state); G10 4/6 ID (2 IDF); GQB25 (5 chunks over 30 s, max 54.3 s; 0 cases over 600 s).
+  - **Reading (Inferred):** isolation on 4 workers did not bound chunk walls at 20 states; symmetry breaking at B20 2M decides nothing there. IDF does not fix the start state, so the frozen compat rule is stricter than the label. Soundness held everywhere it was checked. noise12 replicated (11/12 in 050 and 051).
+  - **Claim scope (Exact; reason Inferred):** conditional on the declared N; a larger machine can copy the true machine on every visited state. Nothing new is certified: certify/16e stays certified only for N <= 16 (v0.46.0); certify/16s and certify/16n are not certified.
+  - **API:** certify/16s new (brute/api/certify16s.py), uncertified; certify/16n, 16e, 16d, 16 and 14 unchanged.
+  - **Branch taken:** noise12 replicated, so v0.49.0 (BRUTE_PLAN_052, plan only, on `plan/v0.49.0`) puts certifying certify/16n first, as instructed; the plan 051 next_if_fail scale20 items (1 worker, conflict-only stop; a different encoding rather than more budget) are secondary.
+  - **Deviations:** #175 (pre-run), #176 (post-run) and #176 addendum 1.
+  - **Chain:** plan `e510673` -> seedcheck `2aa2832` -> smoke and #175 `8326099` -> freeze `9c53632` -> run start `fc02fe0` -> seal `b4cc653` -> recount `8c8afad` -> reference `c2ae74b` -> api checks `44a5bb7` -> tests `e941117` -> gates `e7138c5` -> #176 `47a2e25` -> addendum `4a45a7c` -> RELEASE.json `ffab70a` -> docs `a1ac90c`.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched. The user's computer was offline; network went through the box.
 
 <!-- V0470 -->
 - **v0.47.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.47.0 (annotated tag object `90f06e8` at `a5ac2e8`, ledger release_050 `0486732`). Fresh-clone verify of the tag passed: study 045 to 050 restored, verify_release_0470 passed, 92/92 tests. Built on branch `plan/v0.47.0` (BRUTE_PLAN_050: certify/16e at B20 4000000, C 50000 on 24 fresh 20-state worlds, 12 run twice, plus 6 controls; new certify/16n, an anytime majority-vote front end, eps 0.05, eps_bar 0.10, delta 0.001, on 12 fresh noisy 12-state worlds run twice and 6 eps-0 compatibility cases; 78 jobs, 60 min cap).
