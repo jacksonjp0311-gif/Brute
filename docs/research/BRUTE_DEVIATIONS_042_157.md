@@ -28,8 +28,8 @@ an observation made before any main record was run. Labels: Exact, Observed, Sim
    (its last-round M1/s1, from the record); s1 always comes from the record. Mutations seeded random.Random(420), 20 per run.
 6. **GT16 reading (Exact).** Per main case with calls in both arms, r = mean(A16 call walls) / mean(A14 call walls); statistic
    mean(r); seed bootstrap random.Random(42), 10000 resamples. H3 read: upper CI < 2. Secondary only.
-7. **G_PROC reading (Exact).** preregistration, seedcheck, source_freeze, run_start, run_end, recount (all _042) must appear as a
-   subsequence of the ledger; extra events (erratum, build authorization, deviations) are allowed.
+7. **G_PROC reading (Exact).** preregistration, build_authorization, seedcheck, source_freeze, run_start, run_end (all _042, in that
+   order) must appear as a subsequence of the ledger; extra events (erratum, deviation) are allowed.
 8. **Gate independence (Exact).** Each gate reads its own inputs; G10 and G_sound do not depend on G_recount passing (the 041
    lesson). G16 and GPERM17 use recount labels if G_recount passes, else study labels with the failure stated (plan rule).
 9. **Commit-order check (Exact).** verify_release_0390.chain keeps the 0380a rule: a build_authorization_042 entry may name the
