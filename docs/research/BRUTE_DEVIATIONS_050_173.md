@@ -33,7 +33,9 @@ Inferred, Rejected, Open.
    byte-identical canon16n). API16N_c (part c): eps 0, reads 1 on the 6 control traces; GCOMPAT16N requires canon16e(API16N_c) byte-
    equal to the main control API16E record. Per-bit majority errors on the prefix raise a VerificationError ('API16D prefix masks
    differ') inside the frozen 047 prefix check; the runner catches it and records label WRONG, stop 'majority_error' (counted as WRONG
-   by GN12_sound; Exact). Active-phase majority errors are counted in majority_errors and the recount flags any nonzero count.
+   by GN12_sound; Exact). Active-phase majority errors are counted in majority_errors; recount_050 recomputes the count from the votes and the clean
+   truth and flags any disagreement with the record; GN12_sound reports the total and gates on WRONG (an active-phase majority
+   error that still ends in a label consistent with the truth is reported, not failed; the reference audit decides soundness).
    The arm field 'delta' keeps its 047 meaning (family-bound offset, None); the majority failure probability is 'noise_delta'
    (renamed at 354e688, before any 050 main seed was used, because the 047 recount checks 'delta'; Exact).
 6. **Fidelity for API16N (Exact).** api_checks_050 replays each API16N record through a fresh Certifier16N, rebuilding the readings
