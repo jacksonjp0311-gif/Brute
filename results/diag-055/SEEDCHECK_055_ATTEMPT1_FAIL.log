@@ -1,0 +1,96 @@
+  12290001,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   12250001,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   12250007,
+   "scale20t",
+   "refused"
+  ],
+  [
+   "target",
+   12270001,
+   "scale20t",
+   "refused"
+  ],
+  [
+   "target",
+   12270007,
+   "compat20t",
+   "refused"
+  ],
+  [
+   "target",
+   12250001,
+   "compat20t",
+   "refused"
+  ],
+  [
+   "target",
+   12170001,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   12190001,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   12290007,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   12289999,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   12249999,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   12310001,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   12210001,
+   null,
+   "refused"
+  ]
+ ],
+ "cases_by_key": {
+  "scale20t": 6,
+  "compat20t": 6
+ },
+ "total_cases": 12,
+ "eps_by_key": {
+  "scale20t": 0.0,
+  "compat20t": 0.0
+ },
+ "PASS": false
+}
+Traceback (most recent call last):
+  File "/workspace/brute/scripts/check_seeds_055.py", line 117, in <module>
+    if __name__=='__main__':sys.exit(main(sys.argv[1:]))
+                                     ~~~~^^^^^^^^^^^^^^
+  File "/workspace/brute/scripts/check_seeds_055.py", line 113, in main
+    if not ok:raise VerificationError('seed check failed')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments.brute_common.VerificationError: seed check failed
