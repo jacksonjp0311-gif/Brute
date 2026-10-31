@@ -1,0 +1,962 @@
+{
+  "all_gated_pass": false,
+  "amended_by": "experiments/BRUTE_PLAN_054a.json",
+  "caps": {
+    "compat20t": [
+      50000,
+      3000000
+    ],
+    "scale20t": [
+      50000,
+      2000000
+    ]
+  },
+  "certified_20t_N20": false,
+  "claim": "certify/20t ID/IDF is exact on noise-free traces conditional on true size <= the declared N (here N <= 20); IDF identifies the machine from the current state, not the start. Inferred reason the condition is needed: a larger machine can copy the true machine on every visited state",
+  "failed": [
+    "GS20T_gain54"
+  ],
+  "gates": {
+    "GCOMPAT20T54": {
+      "observed": {
+        "ci95": [
+          0.6096657120978346,
+          1.0
+        ],
+        "columns": [
+          "seed",
+          "equal",
+          "label_20t",
+          "label_16e",
+          "machine_equal",
+          "canon16e_equal (H4, informational)"
+        ],
+        "equal": 6,
+        "of": 6,
+        "per_case": [
+          [
+            12190001,
+            true,
+            "ID",
+            "ID",
+            true,
+            true
+          ],
+          [
+            12190002,
+            true,
+            "ID",
+            "ID",
+            true,
+            false
+          ],
+          [
+            12190003,
+            true,
+            "ID",
+            "ID",
+            true,
+            false
+          ],
+          [
+            12190004,
+            true,
+            "IDF",
+            "IDF",
+            true,
+            true
+          ],
+          [
+            12190005,
+            true,
+            "ID",
+            "ID",
+            true,
+            true
+          ],
+          [
+            12190006,
+            true,
+            "ID",
+            "ID",
+            true,
+            true
+          ]
+        ],
+        "rule": "plan 052 rule, unchanged: same label; ID: same machine from start state 0; IDF: future_match on both and the same machine from the current state s1",
+        "source": "RECOUNT_054"
+      },
+      "pass": true
+    },
+    "GDET54": {
+      "observed": {
+        "ci95": [
+          0.6096657120978346,
+          1.0
+        ],
+        "columns": [
+          "seed",
+          "canon16e_equal",
+          "conflicts_equal",
+          "pass1",
+          "pass2",
+          "conflicts_pass1",
+          "conflicts_pass2"
+        ],
+        "hard_kills": [],
+        "identical": 6,
+        "of": 6,
+        "per_case": [
+          [
+            12170001,
+            true,
+            true,
+            "IDU",
+            "IDU",
+            2000448,
+            2000448
+          ],
+          [
+            12170002,
+            true,
+            true,
+            "IDU",
+            "IDU",
+            2000053,
+            2000053
+          ],
+          [
+            12170003,
+            true,
+            true,
+            "IDU",
+            "IDU",
+            2023343,
+            2023343
+          ],
+          [
+            12170004,
+            true,
+            true,
+            "IDU",
+            "IDU",
+            2000021,
+            2000021
+          ],
+          [
+            12170005,
+            true,
+            true,
+            "IDU",
+            "IDU",
+            2000050,
+            2000050
+          ],
+          [
+            12170006,
+            true,
+            true,
+            "IDU",
+            "IDU",
+            2003490,
+            2003490
+          ]
+        ],
+        "records_checked_for_kill": 30,
+        "rule": "canon16e and conflicts_spent identical on every scale20t case; 0 hard kills (wall_guard) on every record"
+      },
+      "pass": true
+    },
+    "GFID54": {
+      "observed": {
+        "bound": true,
+        "ci95": [
+          0.8241207763533424,
+          1.0
+        ],
+        "exact": 18,
+        "exact_per_arm": {
+          "API16E": 6,
+          "API16E20": 6,
+          "API20T": 12,
+          "API20T_b": 6
+        },
+        "expected": 18,
+        "failures": {},
+        "of": 18,
+        "per_key": {
+          "compat20t": 12,
+          "scale20t": 18
+        },
+        "reported_16e": {
+          "cases": 12,
+          "exact": 12
+        }
+      },
+      "pass": true
+    },
+    "GHOST54": {
+      "observed": {
+        "bound_to_freeze_054": true,
+        "closures_unchanged": {
+          "brute.api.certify16e": true,
+          "brute.api.certify16n": true,
+          "brute.api.certify16s": true
+        },
+        "frozen_api_unchanged": true,
+        "no_network_run": {
+          "loop": [
+            "brute.certify/20t",
+            "ID",
+            16,
+            58,
+            698653
+          ],
+          "socket_attempts": 0
+        },
+        "socket_attempts": 0
+      },
+      "pass": true
+    },
+    "GS20T_gain54": {
+      "observed": {
+        "API16E20_ID_IDF": 0,
+        "API20T_ID_IDF": 0,
+        "API20T_b_ID_IDF": 0,
+        "ci95_API16E20": [
+          3.384324554477539e-17,
+          0.39033428790216534
+        ],
+        "ci95_API20T": [
+          3.384324554477539e-17,
+          0.39033428790216534
+        ],
+        "ci95_API20T_b": [
+          3.384324554477539e-17,
+          0.39033428790216534
+        ],
+        "label_source": "recount",
+        "min_ID_IDF": 2,
+        "of": 6,
+        "rule": "API20T (pass 1) ID+IDF >= 2 and strictly more than API16E20 on the same seeds"
+      },
+      "pass": false
+    },
+    "GS20T_sound54": {
+      "observed": {
+        "WRONG": [],
+        "label_source": "recount",
+        "per_case": [
+          [
+            12170001,
+            "IDU",
+            "IDU",
+            "IDU"
+          ],
+          [
+            12170002,
+            "IDU",
+            "IDU",
+            "IDU"
+          ],
+          [
+            12170003,
+            "IDU",
+            "IDU",
+            "IDU"
+          ],
+          [
+            12170004,
+            "IDU",
+            "IDU",
+            "AMB"
+          ],
+          [
+            12170005,
+            "IDU",
+            "IDU",
+            "IDU"
+          ],
+          [
+            12170006,
+            "IDU",
+            "IDU",
+            "IDU"
+          ]
+        ],
+        "per_case_compat": [
+          [
+            12190001,
+            "ID",
+            "ID"
+          ],
+          [
+            12190002,
+            "ID",
+            "ID"
+          ],
+          [
+            12190003,
+            "ID",
+            "ID"
+          ],
+          [
+            12190004,
+            "IDF",
+            "IDF"
+          ],
+          [
+            12190005,
+            "ID",
+            "ID"
+          ],
+          [
+            12190006,
+            "ID",
+            "ID"
+          ]
+        ],
+        "records": 30
+      },
+      "pass": true
+    },
+    "GS_ref": {
+      "observed": {
+        "PASS": true,
+        "audited": 6,
+        "block": "main",
+        "complete": true,
+        "decided": 6,
+        "elapsed_informational": {
+          "r12": 421.0948918119975
+        },
+        "k_spent_as_amb": 0,
+        "mismatch_count": 0,
+        "mutations": 20,
+        "not_audited": [],
+        "not_reached": 12,
+        "of": 20,
+        "per_arm": {
+          "API20T": {
+            "audited": 6,
+            "decided": 6,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 12
+          },
+          "API20T_b": {
+            "audited": 0,
+            "decided": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 6
+          }
+        },
+        "per_key": {
+          "compat20t": {
+            "audited": 6,
+            "decided": 6,
+            "mismatches": 0
+          },
+          "scale20t": {
+            "audited": 0,
+            "decided": 0,
+            "mismatches": 0
+          }
+        },
+        "records": 18,
+        "scope": {
+          "budget_12_s": 2400.0,
+          "key_order": [
+            "scale20t",
+            "compat20t"
+          ],
+          "order": [
+            "API20T",
+            "API20T_b"
+          ],
+          "workers_12": 8
+        },
+        "vacuous": false,
+        "verdicts_checked": 12
+      },
+      "pass": true
+    },
+    "GTEST": {
+      "observed": {
+        "gated": {
+          "test_certify16": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16d": {
+            "returncode": 0,
+            "tests": 11
+          },
+          "test_certify16e": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16n": {
+            "returncode": 0,
+            "tests": 10
+          },
+          "test_certify16s": {
+            "returncode": 0,
+            "tests": 3
+          },
+          "test_certify20t": {
+            "returncode": 0,
+            "tests": 5
+          },
+          "test_release_0510": {
+            "returncode": 0,
+            "tests": 10
+          },
+          "test_scalesearch4_0260": {
+            "returncode": 0,
+            "tests": 14
+          },
+          "test_scripts_054": {
+            "returncode": 0,
+            "tests": 7
+          }
+        },
+        "reported": {
+          "test_release_0500": {
+            "returncode": 0,
+            "tests": 10
+          },
+          "test_scripts_053": {
+            "returncode": 0,
+            "tests": 10
+          }
+        }
+      },
+      "pass": true
+    },
+    "GTI": {
+      "observed": {
+        "all_tokens_allowed": true,
+        "frozen_in_054": true,
+        "gz_files_decompressed": null,
+        "prior_range_count": 370,
+        "seedcheck_pass": true,
+        "total_cases": 12
+      },
+      "pass": true
+    },
+    "G_PROC": {
+      "observed": {
+        "clauses": {
+          "commit_order_file": true,
+          "ledger_times_non_decreasing": true,
+          "ledger_times_parse": true,
+          "main_sealed": true,
+          "order": true
+        },
+        "events": [
+          "preregistration_054",
+          "preregistration_054a",
+          "build_authorization_054",
+          "seedcheck_054",
+          "prefreeze_smoke_054",
+          "deviation_181",
+          "source_freeze_054",
+          "run_start_054",
+          "run_end_054",
+          "recount_054",
+          "reference_054",
+          "api_checks_054",
+          "tests_054"
+        ],
+        "required_order": [
+          "preregistration_054",
+          "build_authorization_054",
+          "seedcheck_054",
+          "prefreeze_smoke_054",
+          "source_freeze_054",
+          "run_start_054",
+          "run_end_054",
+          "recount_054",
+          "reference_054",
+          "api_checks_054",
+          "tests_054"
+        ]
+      },
+      "pass": true
+    },
+    "G_RT": {
+      "observed": {
+        "cap_s": 3600,
+        "cases": 12,
+        "elapsed_s": 1157.7597195920098,
+        "n_compat20t": 6,
+        "n_scale20t": 6
+      },
+      "pass": true
+    },
+    "G_recount": {
+      "observed": {
+        "PASS": true,
+        "amb_rule_applied": 1,
+        "cases": 12,
+        "compat_equal": 6,
+        "labels": {
+          "compat20t": {
+            "API16E": {
+              "AMB": 0,
+              "ID": 5,
+              "IDF": 1,
+              "IDU": 0,
+              "WRONG": 0
+            },
+            "API20T": {
+              "AMB": 0,
+              "ID": 5,
+              "IDF": 1,
+              "IDU": 0,
+              "WRONG": 0
+            }
+          },
+          "scale20t": {
+            "API16E20": {
+              "AMB": 1,
+              "ID": 0,
+              "IDF": 0,
+              "IDU": 5,
+              "WRONG": 0
+            },
+            "API20T": {
+              "AMB": 0,
+              "ID": 0,
+              "IDF": 0,
+              "IDU": 6,
+              "WRONG": 0
+            },
+            "API20T_b": {
+              "AMB": 0,
+              "ID": 0,
+              "IDF": 0,
+              "IDU": 6,
+              "WRONG": 0
+            }
+          }
+        },
+        "misfires": {
+          "API16E": 0,
+          "API16E20": 0,
+          "API20T": 0,
+          "API20T_b": 0
+        },
+        "mismatches": {},
+        "mismatching_cases": 0,
+        "recounted": 12,
+        "truth_inconsistent": 0,
+        "words_checked": 389,
+        "words_unsound": 0
+      },
+      "pass": true
+    },
+    "G_sound": {
+      "observed": {
+        "WRONG": [],
+        "recount_bound": true,
+        "recount_truth_inconsistent": 0,
+        "recount_words_checked": 389,
+        "recount_words_unsound": 0,
+        "words_checked": 389,
+        "words_unsound": 0
+      },
+      "pass": true
+    }
+  },
+  "label_source": "recount",
+  "n_compat20t": 6,
+  "n_scale20t": 6,
+  "not_exercised": [],
+  "process": "lean",
+  "reports": {
+    "labels": {
+      "API16E/compat20t": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.4364971778135299,
+            0.9699466302516934
+          ],
+          "n": 6,
+          "x": 5
+        },
+        "IDF": {
+          "ci95": [
+            0.030053369748306632,
+            0.5635028221864702
+          ],
+          "n": 6,
+          "x": 1
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "API16E20/scale20t": {
+        "AMB": {
+          "ci95": [
+            0.030053369748306632,
+            0.5635028221864702
+          ],
+          "n": 6,
+          "x": 1
+        },
+        "ID": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.4364971778135299,
+            0.9699466302516934
+          ],
+          "n": 6,
+          "x": 5
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "API20T/compat20t": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.4364971778135299,
+            0.9699466302516934
+          ],
+          "n": 6,
+          "x": 5
+        },
+        "IDF": {
+          "ci95": [
+            0.030053369748306632,
+            0.5635028221864702
+          ],
+          "n": 6,
+          "x": 1
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "API20T/scale20t": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "n": 6,
+          "x": 6
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "API20T_b/scale20t": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "n": 6,
+          "x": 6
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      }
+    }
+  },
+  "schema": "brute.gates.v51_0",
+  "sealed_input_verified": true,
+  "secondary": {
+    "GCOST54": {
+      "observed": {
+        "API16E/compat20t": {
+          "arm_wall_s": 258.0,
+          "budget_spent": 0,
+          "calls": 230,
+          "capped_calls": 0,
+          "chunks": 302,
+          "conflicts": 5243781,
+          "records": 6
+        },
+        "API16E20/scale20t": {
+          "arm_wall_s": 1196.1,
+          "budget_spent": 5,
+          "calls": 342,
+          "capped_calls": 101,
+          "chunks": 428,
+          "conflicts": 11697402,
+          "records": 6
+        },
+        "API20T/compat20t": {
+          "arm_wall_s": 239.3,
+          "budget_spent": 0,
+          "calls": 238,
+          "capped_calls": 0,
+          "chunks": 300,
+          "conflicts": 4856720,
+          "records": 6
+        },
+        "API20T/scale20t": {
+          "arm_wall_s": 1511.7,
+          "budget_spent": 6,
+          "calls": 386,
+          "capped_calls": 125,
+          "chunks": 449,
+          "conflicts": 12027405,
+          "records": 6
+        },
+        "API20T_b/scale20t": {
+          "arm_wall_s": 1609.6,
+          "budget_spent": 6,
+          "calls": 386,
+          "capped_calls": 125,
+          "chunks": 449,
+          "conflicts": 12027405,
+          "records": 6
+        }
+      },
+      "pass": null,
+      "rule": "reported: wall, calls, chunks, capped calls, conflicts, budget-spent records per arm/key"
+    },
+    "GS20T_paired54": {
+      "columns": [
+        "seed",
+        "API20T_label",
+        "API20T_conflicts",
+        "API16E20_label",
+        "API16E20_conflicts"
+      ],
+      "observed": [
+        [
+          12170001,
+          "IDU",
+          2000448,
+          "IDU",
+          2007551
+        ],
+        [
+          12170002,
+          "IDU",
+          2000053,
+          "IDU",
+          2000053
+        ],
+        [
+          12170003,
+          "IDU",
+          2023343,
+          "IDU",
+          2000027
+        ],
+        [
+          12170004,
+          "IDU",
+          2000021,
+          "AMB",
+          1686301
+        ],
+        [
+          12170005,
+          "IDU",
+          2000050,
+          "IDU",
+          2001004
+        ],
+        [
+          12170006,
+          "IDU",
+          2003490,
+          "IDU",
+          2002466
+        ]
+      ],
+      "pass": null,
+      "rule": "reported"
+    },
+    "GS20T_rate54": {
+      "observed": {
+        "API16E20": {
+          "ID_IDF": 0,
+          "arm_wall_s": 1196.1,
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "conflicts": 11697402,
+          "conflicts_per_decided_case": null,
+          "conflicts_per_s": 9779.5,
+          "max_case_wall_s": 278.556,
+          "max_chunk_wall_s": 13.303,
+          "of": 6
+        },
+        "API20T": {
+          "ID_IDF": 0,
+          "arm_wall_s": 1511.7,
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "conflicts": 12027405,
+          "conflicts_per_decided_case": null,
+          "conflicts_per_s": 7956.1,
+          "max_case_wall_s": 358.618,
+          "max_chunk_wall_s": 20.437,
+          "of": 6
+        },
+        "API20T_b": {
+          "ID_IDF": 0,
+          "arm_wall_s": 1609.6,
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "conflicts": 12027405,
+          "conflicts_per_decided_case": null,
+          "conflicts_per_s": 7472.2,
+          "max_case_wall_s": 377.462,
+          "max_chunk_wall_s": 22.971,
+          "of": 6
+        }
+      },
+      "pass": null,
+      "rule": "reported: ID+IDF with Wilson CIs, conflicts per decided case, conflicts/s, max chunk and case wall (informational)"
+    }
+  },
+  "sound_not_certified_20t": true,
+  "stop": {
+    "hard_kill_s": 900.0,
+    "stop_rule": "conflict-only (no hook; 900 s case kill as safety net)"
+  },
+  "study": "BRUTE-0510-SCALE20-TREECOLOR-054",
+  "workers": {
+    "compat20t": 4,
+    "scale20t": 4,
+    "total": 8
+  }
+}
