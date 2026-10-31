@@ -1,5 +1,27 @@
 # Brute changelog
 
+## v0.42.0: an N-free stop for A16: bounded rival search at n_min+1 (A16_nf1) and n_min+2 (A16_nf2) against the declared-N stop (A16_N) on fresh 16-state worlds (study BRUTE-0420-A16-NFREE-STOP-045, LEAN process)
+
+**10 of 12 gates pass (GNF_bound, GNF_misfire, GLO_sem, GQB20, G_sound, GS_ref, GTI, G_PROC, G_RT, G_recount). GNF_agree and G10 FAIL. Secondary GREP16b and GNF_cost reported only.** All 54 arm jobs (18 cases) ran once and were sealed (443.0 s of 3600 s). *Observed*
+
+Claim scope (*Exact*): an nf label means "unique among machines with at most n_min+delta states consistent with the trace". It is a bounded claim, not full N-freedom.
+
+### Timeline (EDT, 2026-10-31)
+
+- Plan `27d7946` (preregistration ledger `bdd1a84`, 04:42:26; build authorization `887980b`, 04:44:55); seedcheck `8162b85` PASS (ledger `077682b`, 04:50:12); nfstop18 `401938a`; runner and tooling `fcf7757`..`8bfecda`; prefreeze smoke `11e600b` (LPT projection 447.5 s, worst case 1250 s); #163 `047b5a8`; source freeze `e7f5b03` (164 files, ledger `e2ebff5`, 05:10:24).
+- Run start (ledger `ce28a01`, 05:10:36); runner to about 05:18:04; snapshots `ec3f718`, `c70c6c3`; seal `eff7182` (ledger `1c0ef0b`); recount `9ced331` (PASS, ledger `a853a5d`); reference `f1eae80` (ledger `f7c61da`); tests `61fa56b` (ledger `f66f105`); gates `81b3a76` (ledger `3f8d199`); #164 (ledger `f2f61a9`).
+
+### Results (recount labels; Wilson 95% in GATES_045.json)
+
+| key | A16_N ID+IDF | A16_nf1 ID+IDF | A16_nf2 ID+IDF | WRONG |
+|---|---|---|---|---|
+| scale16 (12) | 10 [0.55, 0.95] (ID 9, IDF 1) | 0 [0.00, 0.24] (AMB 5, unknown 7) | 0 [0.00, 0.24] (AMB 4, unknown 8) | 0 |
+| control (6) | 6 ID | 6 IDF | 6 IDF | 0 |
+
+- GNF_agree FAIL (nf2 0/12, bar 8/12; agree 0/10 [0.00, 0.28]). G10 FAIL (nf arms IDF, not ID, on controls; predicted in #163). GNF_bound PASS (21 nf decided records audited at n_min+delta, 0 mismatches, 20/20 mutations). GNF_misfire PASS (0/6 [0.00, 0.39] each). GQB20 max call 9.225 / 9.337 / 9.331 s (bound 10.5 s), 0 hard kills, 4170 calls. G_sound 902 words, 0 unsound. GS_ref 37 decided, all audited, 0 mismatches. *Observed*
+- GNF_cost: summed scale16 arm wall A16_N 538 s, nf1 1362.7 s, nf2 1374.1 s (rival phase 379, 1105, 1168 s). GREP16b: A16_N 10/12 replicates 043 (9/12). *Observed*
+- Deviations #163 (pre-run), #164 (post-run). Next: plan 045 next_if_fail clause 3, certify/16 with A16_N as v0.43.0.
+
 ## v0.41.0: lowobs audit: a longer per-call cap (A16_c30) and an experiment-first schedule (A16_xf) against the 043 setting (A16_c9) on fresh one-bit-observation 12-state worlds (study BRUTE-0410-A16-LOWOBS-AUDIT-044, LEAN process)
 
 **9 of 11 gates pass (GLO_sem, GQB19, G_sound, G10, GS_ref, GTI, G_PROC, G_RT, G_recount). GLO_cap and GLO_pol FAIL. Secondary GC9, GLO_cause2 and GPH19 reported only.** All 54 arm jobs (18 cases) ran once and were sealed (490.4 s of 3600 s). *Observed*

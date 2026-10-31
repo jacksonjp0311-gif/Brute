@@ -3,7 +3,7 @@
 </p>
 
 <p align="center"><b>Exact geometric reasoning about hidden worlds. Brute keeps every explanation the evidence still allows, and it certifies an answer only when all of them agree. Otherwise it says "I don't know."</b><br>
-<sub>Brute v0.41.0 · built on BGR v0.90.0 (BITWORK — Geometric Reasoning) · research preview · not general intelligence</sub></p>
+<sub>Brute v0.42.0 · built on BGR v0.90.0 (BITWORK — Geometric Reasoning) · research preview · not general intelligence</sub></p>
 
 ---
 
@@ -17,6 +17,7 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 | **The SAT engine makes the same decision as brute-force enumeration on all 25,344 steps** (v0.5.0, GX1), and the constraint region matches enumeration on 1.25 M items (v0.4.0, GR1/GR1b) | `results/study-007/`, `results/study-006/` | *Observed* |
 | **Second-encoding cross-check, 288/288 breadth cases: 0 mismatching traces in 1,358,721 SAT queries, 0 unknowns, 0 witness failures.** This was an incremental CaDiCaL re-run of the v0.6.0 cross-check: 310 s on 4 workers, against ~8.8 h for 46 cases before. It is post-release verification and does not change the frozen GX2′ FAIL | branch [`verify/xcheck-incremental`](https://github.com/jacksonjp0311-gif/Brute/tree/verify/xcheck-incremental), `results/verify-xcheck-incremental/` | *Observed* |
 | **v0.8.0 ran every pre-registered stream inside a hard 2 h cap** with an independent watchdog: the whole study finished in 1,970 s (cap 7,200 s), the second implementation agreed on 648/648 + 144/144 mandatory traces and caught 20/20 injected mutations, and in-cap test isolation passed (294 tests). The kill drill stopped 8 process groups in 0.239 s | `results/study-010/GATES_010.json` (G11, GX2_010, GTI, G_RT ii/iii) | *Observed* |
+| **v0.42.0: an N-free stop (bounded rival search at n_min+delta) is sound but weaker than the declared-N stop (GNF_bound PASS, GNF_misfire PASS, GNF_agree FAIL, G10 FAIL; 10 of 12 gated; LEAN process).** On 12 fresh 16-state worlds A16_nf2 decided 0/12 [0.00, 0.24] while A16_N decided 10/12 [0.55, 0.95]; on 6 controls the nf arms ended IDF (not ID). Every nf label was audited true at its bound (21 records, 0 mismatches, 20/20 mutations); 0 misfires. The claim is bounded: unique among machines with at most n_min+delta states, not full N-freedom. 18 fresh cases x 3 arms sealed in 443.0 s. WRONG 0; 902 words, 0 unsound | `results/study-045/GATES_045.json` | *Observed* |
 | **v0.41.0: neither a longer per-call cap nor an experiment-first schedule makes A16 identify one-bit-observation worlds (GLO_cap FAIL, GLO_pol FAIL; 9 of 11 gated; LEAN process).** On 12 fresh one-bit 12-state worlds the 043 setting (9 s cap, 240 s budget) identified 0/12 [0, 0.24] again; a 30 s cap with a 600 s budget identified 2/12 [0.05, 0.45] and a 32-experiment-first schedule 2/12 [0.05, 0.45]. Each gain of 2 met the gain bar; each total missed the 3/12 bar. Most runs still stopped unknown in the least-model search. 18 fresh cases x 3 arms sealed in 490.4 s. WRONG 0; 83 certified words, 0 unsound; controls 6/6 in every arm. 1 hard kill (recorded unknown) in 1068 calls | `results/study-044/GATES_044.json` | *Observed* |
 | **v0.40.0: A16 does not identify one-bit-observation worlds, but its 16-state result replicates (GLO FAIL, GREP16 PASS; 10 of 11 gated; LEAN process).** On 12 fresh one-bit 12-state worlds A16 and frozen A14 both identified 0/12 [0, 0.24]: every run stopped unknown after a call hit the 9.0 s cap, mostly before any experiment (longest run 62.6 s of 240 s; at most 16 of 128 experiments used). On 12 fresh clean 16-state worlds A16 identified 9/12 [0.47, 0.91] against A14 1/12 [0.01, 0.35]. 30 fresh cases x 2 arms sealed in 159.7 s. WRONG 0; 354 certified words, 0 unsound; controls 6/6. Max call 9.596 s (bound 10.5 s), 0 hard kills. A16/A14 call wall 0.81 [0.72, 0.90] | `results/study-043/GATES_043.json` | *Observed* |
 | **v0.39.0: apartness clauses plus the cube split (A16) identify clean 16-state worlds from Brute's own experiments: 8/12 [0.39, 0.86] against frozen A14 0/12 [0, 0.24] (G16 PASS; 11 of 11 gated; LEAN process).** 30 fresh cases x 2 arms sealed in 240.1 s. WRONG 0 in both arms; 311 certified words, 0 unsound. On fresh 12-state permutation worlds A16 matched A14 on all 11 A14 decisions [0.74, 1.00] and decided the twelfth; controls 6/6. Max call 9.515 s (bound 10.5 s), 0 hard kills. A16 calls were on average cheaper than A14 calls: ratio 0.82 [0.71, 0.95]. 3 of 12 16-state worlds stayed unknown and 1 ended AMB | `results/study-042/GATES_042.json` | *Observed* |
@@ -58,7 +59,8 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 
 | Version | Study | Gates | What it added | Key result |
 | --- | --- | --- | --- | --- |
-| **v0.41.0** (current) | BRUTE-0410-A16-LOWOBS-AUDIT-044, LEAN: 18 fresh cases (one-bit lowobs12, controls) x arms A16_c9, A16_c30 (30 s cap, 600 s budget) and A16_xf (experiment-first), hard per-call cap, 60 min cap, all sealed | **9 / 11** | study wrapper brute/lowobspolicy17 (A16_xf); A16 and API unchanged (certify/14) | GLO_cap FAIL: c30 2/12 vs c9 0/12; GLO_pol FAIL: xf 2/12; WRONG 0 *Observed* |
+| **v0.42.0** (current) | BRUTE-0420-A16-NFREE-STOP-045, LEAN: 18 fresh cases (scale16, controls) x arms A16_N (declared N), A16_nf1 and A16_nf2 (bounded rival search at n_min+1, n_min+2), hard per-call cap, 60 min cap, all sealed | **10 / 12** | study wrapper brute/nfstop18 (A16_nf); A16 and API unchanged (certify/14) | GNF_agree FAIL: nf2 0/12 vs N 10/12; G10 FAIL (nf IDF on controls); GNF_bound PASS; WRONG 0 *Observed* |
+| **v0.41.0** | BRUTE-0410-A16-LOWOBS-AUDIT-044, LEAN: 18 fresh cases (one-bit lowobs12, controls) x arms A16_c9, A16_c30 (30 s cap, 600 s budget) and A16_xf (experiment-first), hard per-call cap, 60 min cap, all sealed | **9 / 11** | study wrapper brute/lowobspolicy17 (A16_xf); A16 and API unchanged (certify/14) | GLO_cap FAIL: c30 2/12 vs c9 0/12; GLO_pol FAIL: xf 2/12; WRONG 0 *Observed* |
 | **v0.40.0** | BRUTE-0400-A16-LOWOBS-043, LEAN: 30 fresh cases (one-bit lowobs12, clean scale16 replication, controls) x arms A16 and frozen A14, hard per-call cap, 30 min cap, all sealed | **10 / 11** | world dispatch worlds_043, recount adapter, seedcheck adjudication check_seeds_043b; A16 and API unchanged (certify/14) | GLO FAIL: lowobs12 A16 0/12, A14 0/12 (all capped unknown); GREP16 PASS: scale16 A16 ID 9/12, A14 1/12; WRONG 0 *Observed* |
 | **v0.39.0** | BRUTE-0390-A16-SCALE16-042, LEAN: 30 fresh cases (clean scale16, perm12, controls) x arms A16 and frozen A14, hard per-call cap, 30 min cap, all sealed | **11 / 11** | arm A16 (brute/scalesearch16: apartness clauses + cube split on capped queries, no clique); AMB-at-stop recount; API unchanged (certify/14) | G16 PASS: scale16 A16 ID 8/12, A14 0/12; GPERM17 11/11; WRONG 0; call ratio 0.82 [0.71, 0.95] *Observed* |
 | **v0.38.0** | BRUTE-0380-ENCODING-AUDIT-041, LEAN: 240 replays of sealed 039/040 traces under E0-E4 plus 18 fresh cases (perm12, controls), hard per-call cap, 30 min cap, all sealed | **8 / 13** | encoding-audit variants E0-E4 (brute/encaudit16) and a hard-kill per-call cap (experiments/solver_proxy_041); API unchanged (certify/14) | GAUD_loc: fixed-colour clique; E3/E0 call wall 16.1x [5.13, 31.74]; part c decided E1 10/12, E4 12/12, E0 2/12; GPERM16 10/11; G_recount FAIL (AMB gap) *Observed* |
@@ -151,6 +153,7 @@ Details: [`docs/ROADMAP_TO_GI.md`](docs/ROADMAP_TO_GI.md) (gated steps toward ge
 git clone https://github.com/jacksonjp0311-gif/Brute.git && cd Brute
 python -m pip install -r requirements.txt
 for k in 004 005 006 007 008 009 010 011 012 013 014 015 016 017; do python scripts/study${k}_storage.py restore; done   # rebuild sealed traces, checked against SEAL.json
+python scripts/study045_storage.py restore && PYTHONPATH=. python scripts/verify_release_0420.py   # v0.42.0 (lean short verify)
 python scripts/study044_storage.py restore && PYTHONPATH=. python scripts/verify_release_0410.py   # v0.41.0 (lean short verify)
 python scripts/study043_storage.py restore && PYTHONPATH=. python scripts/verify_release_0400.py   # v0.40.0 (lean short verify)
 python scripts/study042_storage.py restore && PYTHONPATH=. python scripts/verify_release_0390.py   # v0.39.0 (lean short verify)
@@ -669,6 +672,13 @@ C (frozen v0.1.1, passive, `GATES.json` G6 `C_v011_coverage_post`) for context: 
 Findings and their math: [`docs/research/DISCOVERIES.md`](docs/research/DISCOVERIES.md) D11–D16. Study-005 deviations: [`BRUTE_DEVIATIONS_005.md`](docs/research/BRUTE_DEVIATIONS_005.md).
 
 ## What Brute can't do yet
+
+New in v0.42.0:
+
+- **Its soundness still needs the declared size N for a full claim.** The N-free stop only proves uniqueness among machines with at most n_min+delta states (delta 1 or 2); larger rivals are not ruled out. *Exact.*
+- **The N-free stop decides almost nothing on 16-state worlds.** A16_nf2 decided 0 of 12 (A16_N 10 of 12): with n_min at the true size, rivals above 16 states either keep existing until K runs out or time out at the 9 s cap. *Observed* (mechanism *Inferred / Open*).
+- **It cannot reach a start-state ID without N.** On controls both nf arms ended IDF, never ID. *Observed.*
+- **brute/nfstop18 is a study arm, not an API.** brute.certify/14 is still the latest certified API; certify/16 with A16_N is the next plan (v0.43.0). *Exact.*
 
 New in v0.41.0:
 
