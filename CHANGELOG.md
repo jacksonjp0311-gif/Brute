@@ -1,5 +1,25 @@
 # Brute changelog
 
+## v0.39.0: arm A16 (apartness clauses plus the cube split, no fixed-colour clique) against frozen A14 on fresh clean 16-state worlds (study BRUTE-0390-A16-SCALE16-042, LEAN process)
+
+**11 of 11 gates pass (G16, G16_sem, GPERM17, GQB17, G_sound, G10, GS_ref, GTI, G_PROC, G_RT, G_recount). Secondary GT16, GRR041 and GPH17 reported only.** All 60 arm jobs (30 cases) ran once and were sealed (240.1 s of 1800 s). *Observed*
+
+### Timeline (EDT, 2026-10-31)
+
+- Plan `c5cf6bd` (preregistration ledger `92c2085`, 01:30:47); erratum 1 `29ef4d5` (ledger `9bb7b2e`); build authorization (ledger `2c1ed4b`, 01:32:21); seedcheck `8247cf7` (ledger `c0f381b`, 01:38:29); A16 `fa3da46`; common and runner `0f4a56a`; recount `9cd9409`; reference `e5af6e0`; gates `4cfd873`, fix `8445e48`; release tooling `538622b`..`c8eedf1`; freeze tooling `d708dea`; tests `da9a212`; prefreeze smoke `6c40060`, `9d9fb8e`, result `e6ea45d` (LPT projection 128.2 s, no cut); recount_041b `b6f67f2`; #157 `28b7269`, `6ef93ad` (ledger `4c060b3`); source freeze `4af660b` (ledger `ae64fea`).
+- Run start (ledger `405f17b`, 02:06:30); runner to about 02:10:35; snapshot `a6603b9`; seal `719953c` (ledger `d0e1bd3`); recount `ca43ced` (PASS, ledger `24767aa`); reference `6af5717` (ledger `0354cb1`); tests `f33750b` (ledger `35e9d62`); RECOUNT_041B `4655c34`; gates `d774d8c` (ledger `cbed51f`); #158 `4302227` (ledger `d86ba08`).
+
+### Results (recount labels; Wilson 95% in GATES_042.json)
+
+| key | A16 ID | A16 AMB | A16 IDU | A14 ID | A14 AMB | A14 IDU | WRONG |
+|---|---|---|---|---|---|---|---|
+| scale16 (12) | 8 [0.39, 0.86] | 1 | 3 [0.09, 0.53] | 0 [0, 0.24] | 1 | 11 [0.65, 0.99] | 0 |
+| perm12 (12) | 12 [0.76, 1.00] | 0 | 0 | 11 [0.65, 0.99] | 0 | 1 | 0 |
+| control (6) | 6 [0.61, 1.00] | 0 | 0 | 6 [0.61, 1.00] | 0 | 0 | 0 |
+
+- G16 PASS (A16 8/12 >= 6, gain 8 >= 3). GPERM17 11/11 agree [0.74, 1.00]. GQB17 max 9.515 s, 0 kills, 1494 calls. G_sound 311 words, 0 unsound. GS_ref 9 decided, 0 mismatches, 20/20 mutations. IDF 0 everywhere. *Observed*
+- Secondary: GT16 call wall A16/A14 0.82 [0.71, 0.95] (scale16 0.73 [0.62, 0.85]); GRR041 re-recount of sealed 041 with the AMB rule: 25 BAD_stop -> AMB, 0 mismatching cases. Deviations #157, #158.
+
 ## v0.38.0: an encoding audit of A15 (five encodings E0-E4 replayed on sealed traces, hard per-call cap) and a fresh GINC15 replication (study BRUTE-0380-ENCODING-AUDIT-041, LEAN process)
 
 **8 of 13 gates pass (GAUD_loc, GAUD_stab, GAUD_time, GQB16, GS_ref, GTI, G_PROC, G_RT). GAUD_sem, G10, G_sound, G_recount and GPERM16 FAIL. Secondary GCLS16 and GPH16 reported only.** All 294 jobs (240 replays, 18 fresh cases) ran once and were sealed (157.4 s of 1800 s). *Observed*
