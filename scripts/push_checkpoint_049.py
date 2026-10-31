@@ -1,4 +1,4 @@
-"""Durable checkpoint pusher for study-049 (plan 048; as 047; deviation #126 item 5, reused by #169). New file.
+"""Durable checkpoint pusher for study-049 (plan 049; as 048; deviation #126 item 5, reused by #171). New file.
 Host-side process, separate from the runner and from the core API. Every PERIOD seconds, while the runner PID is alive,
 it copies results/study-049/main/CHECKPOINT.jsonl (complete lines only) into a deterministic gzip at
 results/study-049/snapshots/ckpt_snapshot.jsonl.gz, commits only that path and pushes the branch without force
