@@ -1,0 +1,226 @@
+{
+  "PASS": true,
+  "arm": "A16",
+  "block": "main",
+  "decided": 9,
+  "elapsed_informational": 446.5012704260007,
+  "k_spent_as_amb": 1,
+  "key": "scale16",
+  "mismatch_count": 0,
+  "mismatches": [],
+  "mutation_test": {
+    "detected": 20,
+    "items": [
+      {
+        "detected": true,
+        "id": "main/scale16/10810001/A16",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale16/10810007/A16",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale16/10810005/A16",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale16/10810002/A16",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/scale16/10810012/A16",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale16/10810007/A16",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale16/10810010/A16",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale16/10810012/A16",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/scale16/10810009/A16",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale16/10810005/A16",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale16/10810002/A16",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale16/10810003/A16",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/scale16/10810002/A16",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale16/10810005/A16",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale16/10810010/A16",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale16/10810002/A16",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/scale16/10810010/A16",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale16/10810001/A16",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale16/10810009/A16",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale16/10810001/A16",
+        "kind": "s1"
+      }
+    ],
+    "mutations": 20,
+    "pass": true
+  },
+  "not_reached": 3,
+  "per_record": [
+    {
+      "decided": true,
+      "id": "main/scale16/10810001/A16",
+      "label": "ID",
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "decided": true,
+      "id": "main/scale16/10810002/A16",
+      "label": "AMB",
+      "mismatches": [],
+      "stop_recorded": "K_spent",
+      "verdicts_checked": 2
+    },
+    {
+      "decided": true,
+      "id": "main/scale16/10810003/A16",
+      "label": "ID",
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "decided": true,
+      "id": "main/scale16/10810004/A16",
+      "label": "ID",
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "decided": true,
+      "id": "main/scale16/10810005/A16",
+      "label": "ID",
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "decided": true,
+      "id": "main/scale16/10810007/A16",
+      "label": "ID",
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "decided": true,
+      "id": "main/scale16/10810009/A16",
+      "label": "ID",
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "decided": true,
+      "id": "main/scale16/10810010/A16",
+      "label": "ID",
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "decided": true,
+      "id": "main/scale16/10810012/A16",
+      "label": "ID",
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "decided": false,
+      "id": "main/scale16/10810006/A16",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/scale16/10810008/A16",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "decided": false,
+      "id": "main/scale16/10810011/A16",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    }
+  ],
+  "records": 12,
+  "schema": "brute.reference.v39_0",
+  "study_results_sha256": "25181d9285aaac67ee58b20f89cfd6fe883253a8c65779a4c457b1c0cba941f8",
+  "verdicts_checked": 18,
+  "walls_informational": {
+    "main/scale16/10810001/A16": 132.1,
+    "main/scale16/10810002/A16": 16.8,
+    "main/scale16/10810003/A16": 64.4,
+    "main/scale16/10810004/A16": 242.9,
+    "main/scale16/10810005/A16": 167.9,
+    "main/scale16/10810007/A16": 16.4,
+    "main/scale16/10810009/A16": 10.9,
+    "main/scale16/10810010/A16": 341.1,
+    "main/scale16/10810012/A16": 151.2
+  }
+}
