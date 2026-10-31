@@ -6,6 +6,7 @@ clauses, cube split on capped queries; least machine, rival searches at every si
 budget, per-call cap) exposed step by step. The host owns the world and the clock; this module only proposes experiments:
     c = Certifier16(initial, num_actions=3, family_bound=16)       # initial: the first reading, a pair of bits 0 / 1 / None
     c.observe(action, reading)                                       # passive prefix, one call per step
+    c.current()                                                      # state (no solver call)
     w = c.propose()                                                  # next experiment word (list of actions) or None when stopped
     for a in w: c.observe(a, world.step(a))                          # the host executes the word action by action
     c.result()                                                       # {'api': 'brute.certify/16', 'label', 'model', 'n_min', ...}
@@ -93,6 +94,12 @@ class Certifier16:
             return
         if self.P is not None:raise ValueError('after the first propose() only the proposed word may be observed')
         self.acts.append(action);self.masks.append(mk)
+
+    def current(self):
+        """The certifier's state without running a solver: steps, experiments used, the pending word and how much of it is seen."""
+        return {'api':API,'search':'a16','steps':len(self.acts),'used':self.used,'family_bound':self.N,'K':self.K,
+                'pending':None if self._pending is None else list(self._pending),'pending_seen':len(self._obs),
+                'n_lo':self.n_lo,'stopped':self.stop is not None,'stop':self.stop,'rounds':len(self.rounds)}
 
     def propose(self):
         """Run the stop check on the current trace. Returns the next word to execute, or None once stopped."""
