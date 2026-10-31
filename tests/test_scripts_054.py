@@ -41,6 +41,7 @@ class Runner(unittest.TestCase):
         c2=copy.deepcopy(c);c2['arms']['API20T']['label']='WRONG';self.assertNotEqual(recount_case(c2)[1],[])
         b=c['arms']['API16E'];r=compat_rule(a,b,a['label'],b['label']);self.assertEqual(r['label_equal'],a['label']==b['label'])
         self.assertEqual(a['hook_arms'],0)
+        self.assertEqual(a['api']['api'],'brute.certify/20t');self.assertEqual(a['api']['label'],a['label'])   # full api_result kept for GFID54 replay (#181)
 
 
 class Gates(unittest.TestCase):

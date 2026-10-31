@@ -80,7 +80,7 @@ def run_fresh(seed,key,arm):
     a['max_chunks']=res['max_chunks'];a['chunks_total']=res['chunks_total'];a['chunk_wall_max']=res['chunk_wall_max']
     a['case_wall_informational']=res['case_wall'];a['calls_total']=sum(len(x['call_conflicts']) for x in res['rounds'])
     a['stop_rule']=STOP_RULE;check(a['hook_arms']==0,'a wall hook was armed (conflict-only stop violated)');a['hard_kill_s']=HARD_KILL_S
-    a['api']=res['api_result']['api'];a['sizes']=list(res.get('sizes') or [])
+    a['api']=res['api_result'];a['sizes']=list(res.get('sizes') or [])
     return {'schema':SCHEMA_CASE,'key':key,'family':fam,'seed':seed,'eps':0.0,'n':w.n,'k':w.k,'N':N,
             'group':arm,'arms':{arm:a},'truth_reachable':len(S47.canonical_bfs(w.transitions,w.emissions,w.start)[1])}
 
