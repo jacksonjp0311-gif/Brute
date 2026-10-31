@@ -87,10 +87,11 @@ def compat():
     tests={}
     for m in COMPAT_TESTS:
         p=subprocess.run([sys.executable,'-m','unittest','-q',m],cwd=ROOT,capture_output=True,text=True,timeout=600)
-        tail=p.stderr.strip().splitlines()[-3:];tests[m]={'returncode':p.returncode,'tail':tail}
+        import re;ran=re.findall(r'^Ran (\d+) tests?',p.stderr,re.M)
+        tests[m]={'returncode':p.returncode,'tests':int(ran[-1]) if ran else 0,'ok':p.stderr.strip().endswith('OK')}
     return {'sample_sha256':sha(SAMPLE),'cases':cases,'s4_cases':sum(c['search']=='s4' for c in cases),
-            'all_byte_equal':all(c['byte_equal'] for c in cases),'tests':tests,'tests_pass':all(v['returncode']==0 for v in tests.values()),
-            'PASS':all(c['byte_equal'] for c in cases) and any(c['search']=='s4' for c in cases) and all(v['returncode']==0 for v in tests.values())}
+            'all_byte_equal':all(c['byte_equal'] for c in cases),'tests':tests,'tests_pass':all(v['returncode']==0 and v['tests']>0 for v in tests.values()),
+            'PASS':all(c['byte_equal'] for c in cases) and any(c['search']=='s4' for c in cases) and all(v['returncode']==0 and v['tests']>0 for v in tests.values())}
 
 
 def ghost():
