@@ -1,5 +1,26 @@
 # Brute changelog
 
+## v0.38.0: an encoding audit of A15 (five encodings E0-E4 replayed on sealed traces, hard per-call cap) and a fresh GINC15 replication (study BRUTE-0380-ENCODING-AUDIT-041, LEAN process)
+
+**8 of 13 gates pass (GAUD_loc, GAUD_stab, GAUD_time, GQB16, GS_ref, GTI, G_PROC, G_RT). GAUD_sem, G10, G_sound, G_recount and GPERM16 FAIL. Secondary GCLS16 and GPH16 reported only.** All 294 jobs (240 replays, 18 fresh cases) ran once and were sealed (157.4 s of 1800 s). *Observed*
+
+### Timeline (EDT, 2026-10-31)
+
+- Plan `18cc782` (preregistration ledger `7f96b72`, 00:11:14); seedcheck `ada2447` (ledger `ad779d5`, 00:19:12); build authorization (ledger `55c87e4`, 00:19:23); encaudit16 `2317f61`; solver proxy `a647be6`; common `5bb6385`; runner `e34a624`; tests `fd0a628`, `7fccafc`; recount `8e46c45`; reference `2839145`; test runner `cb5e04f`; gates `5041256`; prefreeze script `27f9c6f`; storage `4dd310c`; release tooling `bb26a0c`; freeze tooling `0f2febb`; pre-freeze sealed-smoke gates `bb29ed4` (projection 565.1 s, no reduction); #154 `27e70eb`; source freeze `a649dd2` (ledger `2d9021f`).
+- Run start (ledger `a24ceb5`, 00:35:49); runner to about 00:38:28; snapshot `2b71565`; seal `5221d1c` (ledger `1799529`); recount `d9e27fd` (FAIL, ledger `ec8bf54`); reference `2fcb46c` (ledger `c7827c8`); tests `4aaab70` (ledger `373c6c9`); gates `40d1484`; #155 `67371f6`.
+
+### Results (Wilson / bootstrap 95% in GATES_041.json)
+
+| part | E0 (A14) | E1 apartness | E2 clique | E3 (A15) | E4 (A15_cube) |
+|---|---|---|---|---|---|
+| a: 30 sealed 039 A14 decisions, decided | 30/30 | 30/30 | 28/30 | 28/30 | 28/30 |
+| b: 2 GINC15 traces x 3 repeats, decided | 6/6 | 6/6 | 3/6 | 0/6 | 0/6 |
+| c: 12 sealed 040 scale16 traces, decided | 2/12 | 10/12 | 10/12 | 10/12 | 12/12 |
+| mean per-trace call-wall ratio vs E0 (a, c) | 1 | 1.11 [1.01, 1.24] | 4.18 [2.53, 6.46] | 16.11 [5.13, 31.74] | 10.41 [4.13, 20.78] |
+
+- GAUD_loc PASS: the fixed-colour clique (E2) reproduces the GINC15 loss in 3/3 repeats; E1 matches E0 in 3/3. GAUD_stab 10/10 [0.72, 1.00]. GQB16 max 10.012 s, 15 hard kills. Fresh: every arm ID 11/12 perm12 [0.65, 0.99] and 6/6 controls; GPERM16 10/11 agree [0.62, 0.98] (10710005). *Observed*
+- G_recount FAIL: 25 part-c replays stop AMB, which the frozen recount does not cover; GAUD_sem, G10, G_sound fail through it (#155). Deviations #154, #155.
+
 ## v0.37.0: an apartness-clique SAT encoding (A15) and a per-size cube split on capped queries (A15_cube) for clean active identification at 16 and 14 states and a one-bit-observation family (study BRUTE-0370-APART-CUBE-040, LEAN process)
 
 **7 of 12 gates pass (G10, GREP15, GS_ref, G_PROC, G_RT, G_recount, G_sound). GC15_headline FAILS on c and d (a and b pass); GFAM15, GINC15, GQB15 and GTI FAIL. Secondary GCAP15 and GSYM15 reported only.** All 42 cases (126 jobs) ran once and were sealed (374.1 s of 1800 s). *Observed*

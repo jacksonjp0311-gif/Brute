@@ -1,48 +1,51 @@
 {
-  "version": "0.37.0",
+  "version": "0.38.0",
   "name": "Brute",
   "forked_from": "BGR v0.90.0 (tag bgr-v0.90.0-fork)",
-  "mission": "general intelligence research toward a geometric reasoning system; this release tests an apartness-clique SAT encoding (A15) and a per-size cube split on capped queries (A15_cube) for clean (B = 0) active identification at 16 and 14 states and a one-bit-observation family (lowobs12); LEAN process: 42 cases, 30 min cap; not general intelligence",
-  "study": "BRUTE-0370-APART-CUBE-040",
-  "preregistration": "experiments/BRUTE_PLAN_040.json",
-  "preregistration_commit": "401172b",
-  "process": "LEAN (standing go t133s553, ledger 76b30d5; preregistration ledger a9219a1, build authorization ledger 43b9592, 23:08:41 EDT): plan locked before data; seedcheck before any seed (7d4317b, ledger 7de9f3a); independent recount; CNF reference audit of A15_cube on scale14 with 20 mutations; pre-freeze sealed-smoke gates test (d80c798; projection 391.6 s, no runtime amendment); GINC15 failure observed and recorded before the freeze (#152 item 8), not tuned; failures published; one fresh-clone verify plus tests",
-  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_040.json",
-  "source_freeze_commit": "9001029",
-  "release_freeze": "none: release tooling is inside the source freeze (deviation #126 item 8, kept by #128 to #153)",
-  "run_start": "23:37:20 EDT 2026-10-30 (ledger f0cf26d); 8 workers",
-  "run_end": "complete 42/42 cases, 126/126 jobs, 374.1 s of 1800 s, normal exit about 23:43:37 EDT (ledger c14e217); 2 checkpoint snapshots pushed (66b9a3a, c2f4f3a); nothing relaunched; resume clause not approved and not used",
-  "seal_commit": "b1da397",
-  "gates_commit": "bfae53d",
-  "results_dir": "results/study-040",
+  "mission": "general intelligence research toward a geometric reasoning system; this release audits which part of the A15 encoding (apartness clauses, fixed-colour clique, cube split) costs decisions, by replaying sealed traces under five encodings E0-E4 with a hard per-call cap, and replicates the GINC15 loss on fresh perm12 worlds; LEAN process: 240 replays + 18 fresh cases, 30 min cap; not general intelligence",
+  "study": "BRUTE-0380-ENCODING-AUDIT-041",
+  "preregistration": "experiments/BRUTE_PLAN_041.json",
+  "preregistration_commit": "18cc782",
+  "process": "LEAN (standing go t133s553, ledger 76b30d5; preregistration ledger 7f96b72, 00:11:14 EDT; seedcheck ada2447, ledger ad779d5, 00:19:12 EDT; build authorization ledger 55c87e4, 00:19:23 EDT): plan locked before data; seedcheck before any seed; hard per-call cap (child process, SIGKILL 1 s after the 9 s cap, #154 item 1); independent recount; CNF reference audit of E1/E2 on part c with 20 mutations; pre-freeze sealed-smoke gates test (bb29ed4; projection 565.1 s, no reduction); failures published; one fresh-clone verify plus tests",
+  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_041.json",
+  "source_freeze_commit": "a649dd2",
+  "release_freeze": "none: release tooling is inside the source freeze (deviation #126 item 8, kept by #128 to #154)",
+  "run_start": "00:35:49 EDT 2026-10-31 (ledger a24ceb5); 8 workers",
+  "run_end": "complete 294/294 jobs (240 replays, 18 fresh cases), 157.4 s of 1800 s, normal exit about 00:38:28 EDT (ledger 1799529); 1 checkpoint snapshot pushed (2b71565); nothing relaunched; resume clause not approved and not used",
+  "seal_commit": "5221d1c",
+  "gates_commit": "40d1484",
+  "results_dir": "results/study-041",
   "case_count": {
-    "sealed": 42,
-    "expected": 42,
+    "sealed_replays": 240,
+    "expected_replays": 240,
+    "sealed_cases": 18,
+    "expected_cases": 18,
     "complete": true
   },
   "gates_passed": [
-    "G10",
-    "GREP15",
+    "GAUD_loc",
+    "GAUD_stab",
+    "GAUD_time",
+    "GQB16",
     "GS_ref",
+    "GTI",
     "G_PROC",
-    "G_RT",
+    "G_RT"
+  ],
+  "gates_failed": [
+    "G10",
+    "GAUD_sem",
+    "GPERM16",
     "G_recount",
     "G_sound"
   ],
-  "gates_failed": [
-    "GC15_headline",
-    "GFAM15",
-    "GINC15",
-    "GQB15",
-    "GTI"
-  ],
   "gates_not_exercised": [],
   "secondary": {
-    "GCAP15": null,
-    "GSYM15": null
+    "GCLS16": null,
+    "GPH16": null
   },
-  "headline": "7 of 12 gates pass (G10, GREP15, GS_ref, G_PROC, G_RT, G_recount, G_sound); GC15_headline FAILS on c and d (a and b pass), GFAM15, GINC15, GQB15 and GTI FAIL. a: recounted WRONG 0 for A15 and A15_cube on all 42 cases. b: ID+IDF(A15_cube, scale16) 7/12 Wilson [0.32,0.81] (bar 4; A14 4/12 [0.14,0.61]). c: paired ID(A15_cube)-ID(A14) scale16 +0.083 seed-bootstrap [-0.167,0.333] (bar +0.25, CI lower > 0). d: A15_cube capped cases on scale16 9/12 [0.47,0.91] (bar 6; literal reading, #152 item 4); its cube split made 153 calls there (0 SAT, 144 UNSAT, 9 capped) and rescued 4 capped cases. GREP15 scale14 9 vs A14 9. GFAM15 lowobs12 0/12 [0,0.24] for every arm (exercised: 14.8 extra actions). GINC15 3/60 sealed-039 checks unknown where A14 decided (caps, no contradicting verdict). GQB15 max call 11.014 s (bar 10.5). G_RT 374.1 s of 1800 s. Branches fired: GINC15 failed -> encoding audit, not a new arm; GFAM15 failed while b passed -> gain family-specific",
-  "api": "unchanged: brute.certify/14 is the latest API; A15 and A15_cube are brute/scalesearch15 (no API gate in plan 040)",
+  "headline": "8 of 13 gates pass (GAUD_loc, GAUD_stab, GAUD_time, GQB16, GS_ref, GTI, G_PROC, G_RT); GAUD_sem, G10, G_sound, G_recount and GPERM16 FAIL. G_recount FAILS: the frozen recount has no rule for a stop-check replay that ends AMB (25 part-c replays), and GAUD_sem, G10 and G_sound require the recount, so they fail with it although their own conditions hold (0 contradictions, 0 WRONG, 0 unsound words of 21, controls 6/6 ID; #155). GAUD_loc names the fixed-colour clique: E2 reproduces the GINC15 loss in 3/3 repeats, E1 (apartness only) matches A14 in 3/3. GAUD_time: E3/E0 per-trace median call-wall ratio mean 16.11, seed-bootstrap [5.13, 31.74] (median 1.70; E1 1.11 [1.01, 1.24], E2 4.18 [2.53, 6.46], E4 10.41 [4.13, 20.78]). GAUD_stab 10/10 cells identical [0.72, 1.00]. GPERM16: on fresh perm12 A15 and A15_cube agree with A14 on 10/11 A14 decisions [0.62, 0.98] (10710005 unknown): GINC15 replicates. GQB16 max call 10.012 s (bound 10.5 s) under the hard-kill cap (15 kills). Part c (sealed 040 scale16 traces) decided: E0 2/12 [0.05, 0.45], E1/E2/E3 10/12 [0.55, 0.95], E4 12/12 [0.76, 1.00]. G_RT 157.4 s of 1800 s",
+  "api": "unchanged: brute.certify/14 is the latest API; E0-E4 are brute/encaudit16 (audit variants, no API gate in plan 041); A15/A15_cube withdrawn from later studies by the literal plan 041 GAUD_sem branch",
   "deviations": [
     "docs/research/BRUTE_DEVIATIONS_026_123.md",
     "docs/research/BRUTE_DEVIATIONS_026_124.md",
@@ -72,7 +75,9 @@
     "docs/research/BRUTE_DEVIATIONS_039_150.md",
     "docs/research/BRUTE_DEVIATIONS_039_151.md",
     "docs/research/BRUTE_DEVIATIONS_040_152.md",
-    "docs/research/BRUTE_DEVIATIONS_040_153.md"
+    "docs/research/BRUTE_DEVIATIONS_040_153.md",
+    "docs/research/BRUTE_DEVIATIONS_041_154.md",
+    "docs/research/BRUTE_DEVIATIONS_041_155.md"
   ],
-  "verify": "python scripts/study040_storage.py restore && PYTHONPATH=. python scripts/verify_release_0370.py"
+  "verify": "python scripts/study041_storage.py restore && PYTHONPATH=. python scripts/verify_release_0380.py"
 }
