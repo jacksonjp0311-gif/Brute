@@ -1,11 +1,19 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.38.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.39.0 release in progress)._
 
 ## Current version and state
 
+<!-- V0390 -->
+- **v0.39.0: release in progress** 2026-10-31 (EDT). Built on branch `plan/v0.39.0` (BRUTE_PLAN_042, A16 vs frozen A14 on fresh scale16; LEAN; STANDING GO t133s553, build authorization ledger `2c1ed4b`).
+  - **Run complete (Observed).** 60/60 arm jobs (30 cases), 240.1 s of 1800 s, normal exit about 02:10:35 EDT, run once; 1 checkpoint snapshot (`a6603b9`); nothing relaunched; resume clause not approved, not used. Hard per-call cap: 0 kills, max call 9.515 s. Box clock about 5 s ahead of GitHub's Date header at 02:24 EDT.
+  - **PASS (11/11):** G16 (A16 scale16 ID 8/12 [0.39, 0.86], A14 0/12 [0, 0.24], gain 8), G16_sem, GPERM17 (11/11 [0.74, 1.00]), GQB17, G_sound (311 words, 0 unsound), G10, GS_ref (9 decided, 0 mismatches, 20/20 mutations), GTI, G_PROC, G_RT, G_recount. Secondary GT16 0.82 [0.71, 0.95], GRR041, GPH17 reported only.
+  - **Deviations:** #157 (pre-run), #158 (post-run: reference path error before any check, interrupted commit chain, next step vs next_if_pass).
+  - **Chain:** plan `c5cf6bd` -> erratum `29ef4d5` -> authorization `2c1ed4b` -> seedcheck `8247cf7` -> A16 `fa3da46` -> common/runner `0f4a56a` -> recount `9cd9409` -> reference `e5af6e0` -> gates `4cfd873`/`8445e48` -> tooling `538622b`..`c8eedf1`/`d708dea` -> tests `da9a212` -> pre-freeze smoke `e6ea45d` -> #157 `6ef93ad` -> freeze `4af660b` -> run start `405f17b` -> seal `719953c` -> recount `ca43ced` -> reference `6af5717` -> tests `f33750b` -> gates `d774d8c` -> #158 `4302227` -> RELEASE.json and docs `e657553`.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
+
 <!-- V0380 -->
-- **v0.38.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.38.0 (tag v0.38.0 -> e33a542, ledger release_041). Built on branch `plan/v0.38.0` (BRUTE_PLAN_041, ENCODING AUDIT; LEAN; STANDING GO t133s553, build authorization ledger `55c87e4`). Next: BRUTE_PLAN_042 (v0.39.0, plan only).
+- **v0.38.0: RELEASED** (previous) 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.38.0 (tag v0.38.0 -> e33a542, ledger release_041). Built on branch `plan/v0.38.0` (BRUTE_PLAN_041, ENCODING AUDIT; LEAN; STANDING GO t133s553, build authorization ledger `55c87e4`). Next: BRUTE_PLAN_042 (v0.39.0, plan only).
   - **Run complete (Observed).** 294/294 jobs (240 replays, 18 fresh cases), 157.4 s of 1800 s, normal exit about 00:38:28 EDT, run once; 1 checkpoint snapshot (`2b71565`); nothing relaunched; resume clause not approved, not used. Hard per-call cap: 15 kills, max call 10.012 s. Box clock about 10 s ahead of GitHub's Date header at 00:35 EDT.
   - **PASS (8/13):** GAUD_loc (fixed-colour clique: E2 loses the GINC15 decisions 3/3 repeats, E1 matches A14 3/3), GAUD_stab (10/10 [0.72, 1.00]), GAUD_time (E3/E0 mean 16.11 [5.13, 31.74]), GQB16, GS_ref (E1/E2 part c, 20 decided, 0 mismatches, 20/20 mutations), GTI, G_PROC, G_RT. **FAIL:** G_recount (25 AMB replays not covered by the frozen recount), GAUD_sem, G10, G_sound (each requires the recount; own conditions hold), GPERM16 (10/11 [0.62, 0.98], 10710005).
   - **Deviations:** #154 (pre-run), #155 (post-run), #156 (release-time: the frozen verify_release_0380 fails its commit-order item because the build authorization names the plan it authorizes; verify with the addendum verify_release_0380a).
