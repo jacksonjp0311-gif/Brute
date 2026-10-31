@@ -1,5 +1,31 @@
 # Brute changelog
 
+## v0.45.0: brute.certify/16d re-run at a small per-call conflict cap (C 50000): wall-free and deterministic, but it decides no hard world (study BRUTE-0450-CERTIFY16D-WALLFREE-SCALE20-048, LEAN process)
+
+**13 of 14 gated pass (GDET48, GWALL_r, GFID48, GS20_sound (vacuous), GHOST48, G10, GQB23, GS_ref, G_sound, G_recount, GTI, G_PROC, G_RT). GAPI16D_fresh48 FAIL on count only. Secondary GREP16e, GS20_rate, GR_class and GCOST48 reported only.** All 70 jobs (52 fresh arm jobs on 26 cases, 18 replays of sealed 046 A16_N traces) ran once and were sealed (107.0 s of 3600 s). certify/16d stays uncertified; certify/14 stays the latest certified API.
+
+Claim scope (*Exact*; reason *Inferred*): a certify/16d ID or IDF is exact only conditional on noise-free readings and a true size at most the declared N (family_bound). A larger machine can copy the true machine on every visited state, so a size bound is inherent. No N <= 20 claim (GS20_sound vacuous).
+
+### Timeline (EDT, 2026-10-31)
+
+- Plan `4dea7ef` (preregistration 08:02:01; build authorization 08:03:04); seedcheck `91dd25e` PASS (08:08:39); pre-freeze smoke `1711d95` (PASS; worst-case projection 1753.6 s, N20 = 8, no cut); deviation #169 `65f06c8`; source freeze `9baedb4` (250 files; ledger 08:20:05).
+- Run start (ledger `0c0d67c`, 08:20:42); one snapshot `7078d94`; seal `7e2825f` (ledger `175ff06`, 08:25:23); recount `c38edc2`; reference `30c1aca`; api checks `4d122b2`; tests `ecca8a4`; gates `73250f3`; deviation #170 `0733c57`.
+
+### Results (recount labels; Wilson 95% in GATES_048.json)
+
+| part | certify/16d (API16D, two passes) | WRONG |
+|---|---|---|
+| determinism, 26 fresh cases | canon16d identical 26/26 [0.87, 1.00]; 0 guard firings on 70 records | 0 |
+| fresh scale16 (12) ID+IDF | 0 [0.00, 0.24] (IDU 10, AMB 2) | 0 |
+| fresh scale20 (8) ID+IDF | 0 [0.00, 0.32] (IDU 8) | 0 |
+| fresh control (6) | 6 ID both passes | 0 |
+| self-replay | 26/26 [0.87, 1.00] | 0 |
+| part r: 18 sealed 046 A16_N traces | scale16 0 decided (sealed A16_N 7); controls 6 ID; classes none 8, cap-timing 4, word-divergence 6, infidelity 0 | 0 |
+
+- GAPI16D_fresh48 FAIL: 0/12 against bar 7/12 and 047's 10/12 [0.55, 0.95] at C 294000. Reading (*Inferred*): the per-call cap binds, not B: the largest record spent 541496 of 1500000 conflicts (36 %), and every IDU stopped on a capped call.
+- GQB23: max call wall 5.95 s (part a), 6.40 s (r), 7.79 s (d); bound 30 s. GS_ref: 16 decided, 16 audited, 0 mismatches, 20/20 mutations (45.0 s of 2400 s).
+- Deviations #169 (pre-run), #170 (post-run). Next: plan 048 next_if_fail clause "GAPI16D_fresh48 fails on count only ... re-plan B"; v0.46.0 (BRUTE_PLAN_049, plan only).
+
 ## v0.44.0: brute.certify/16d, a deterministic conflict-count cap for the declared-N identifier, tested for determinism, fidelity and fresh 16-state worlds (study BRUTE-0440-CERTIFY16D-SCALE20-047, LEAN process)
 
 **12 of 14 exercised gates pass (GFID16D, GFID_wall, GAPI16D_fresh, GAPI16_compat, GHOST16D, G10, GS_ref, G_sound, G_recount, GTI, G_PROC, G_RT). GDET and GQB22 FAIL. GS20_sound not run (part d cut). Secondary GREP16d, GCAP_class and GAPI_cost reported only.** All 126 jobs (54 fresh arm jobs on 18 cases, 72 replays) ran once and were sealed (661.6 s of 3600 s). certify/16d ships as an additive, uncertified API; certify/14 is still the latest certified API. *Observed*
