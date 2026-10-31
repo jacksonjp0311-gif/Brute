@@ -1,0 +1,1116 @@
+{
+  "all_gated_pass": false,
+  "failed": [
+    "GLO"
+  ],
+  "gates": {
+    "G10": {
+      "observed": {
+        "cases": [
+          [
+            10960001,
+            {
+              "A14": "ID",
+              "A16": "ID"
+            }
+          ],
+          [
+            10960002,
+            {
+              "A14": "ID",
+              "A16": "ID"
+            }
+          ],
+          [
+            10960003,
+            {
+              "A14": "ID",
+              "A16": "ID"
+            }
+          ],
+          [
+            10960004,
+            {
+              "A14": "ID",
+              "A16": "ID"
+            }
+          ],
+          [
+            10960005,
+            {
+              "A14": "ID",
+              "A16": "ID"
+            }
+          ],
+          [
+            10960006,
+            {
+              "A14": "ID",
+              "A16": "ID"
+            }
+          ]
+        ],
+        "rule": "every arm ID on every control"
+      },
+      "pass": true
+    },
+    "GLO": {
+      "observed": {
+        "A14_ID_IDF": 0,
+        "A14_ci95": [
+          2.1025014877572554e-17,
+          0.24249400665524087
+        ],
+        "A16_ID_IDF": 0,
+        "A16_ci95": [
+          2.1025014877572554e-17,
+          0.24249400665524087
+        ],
+        "gain": 0,
+        "label_source": "recount",
+        "of": 12,
+        "per_case": [
+          [
+            10910001,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10910002,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10910003,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10910004,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10910005,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10910006,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10910007,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10910008,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10910009,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10910010,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10910011,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10910012,
+            "IDU",
+            "IDU"
+          ]
+        ],
+        "rule": "A16 ID+IDF >= 4/12 and A16 - A14 (ID+IDF) >= 3"
+      },
+      "pass": false
+    },
+    "GLO_sem": {
+      "observed": {
+        "ID_models_differ": [],
+        "ID_vs_IDF_reported": [],
+        "WRONG": [],
+        "n_min_differs": [],
+        "rule": "WRONG 0 in both arms; both ID/IDF => same n_min; both ID => same canonical model"
+      },
+      "pass": true
+    },
+    "GQB18": {
+      "observed": {
+        "bound_s": 10.5,
+        "calls_logged": 1643,
+        "hard_kills": 0,
+        "max_by_arm_phase": {
+          "A14/least": 9.12,
+          "A14/rival": 9.166,
+          "A16/cube": 9.596,
+          "A16/least": 9.478,
+          "A16/rival": 9.207
+        },
+        "max_s": 9.595989376000944,
+        "over_calls": [],
+        "over_queries": []
+      },
+      "pass": true
+    },
+    "GREP16": {
+      "observed": {
+        "A14_ID": 1,
+        "A14_ci95": [
+          0.014865094404917095,
+          0.35387991114111694
+        ],
+        "A16_ID": 9,
+        "A16_ci95": [
+          0.46769466506643437,
+          0.9110583316059452
+        ],
+        "label_source": "recount",
+        "of": 12,
+        "per_case": [
+          [
+            10920001,
+            "ID",
+            "IDU"
+          ],
+          [
+            10920002,
+            "ID",
+            "IDU"
+          ],
+          [
+            10920003,
+            "ID",
+            "IDU"
+          ],
+          [
+            10920004,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10920005,
+            "IDU",
+            "IDU"
+          ],
+          [
+            10920006,
+            "ID",
+            "IDU"
+          ],
+          [
+            10920007,
+            "ID",
+            "ID"
+          ],
+          [
+            10920008,
+            "ID",
+            "IDU"
+          ],
+          [
+            10920009,
+            "ID",
+            "IDU"
+          ],
+          [
+            10920010,
+            "ID",
+            "IDU"
+          ],
+          [
+            10920011,
+            "IDF",
+            "IDU"
+          ],
+          [
+            10920012,
+            "ID",
+            "IDU"
+          ]
+        ],
+        "rule": "A16 ID >= 6/12 on scale16_rep"
+      },
+      "pass": true
+    },
+    "GS_ref": {
+      "observed": {
+        "PASS": true,
+        "arm": "A16",
+        "block": "main",
+        "decided": 10,
+        "decided_by_key": {
+          "lowobs12": 0,
+          "scale16_rep": 10
+        },
+        "k_spent_as_amb": 0,
+        "key": [
+          "lowobs12",
+          "scale16_rep"
+        ],
+        "mismatch_count": 0,
+        "mutations": 20,
+        "not_reached": 14,
+        "of": 20,
+        "records": 24,
+        "records_by_key": {
+          "lowobs12": 12,
+          "scale16_rep": 12
+        },
+        "verdicts_checked": 20
+      },
+      "pass": true
+    },
+    "GTI": {
+      "observed": {
+        "gated": {
+          "test_release_0400": {
+            "returncode": 0,
+            "tests": 8
+          },
+          "test_scripts_043": {
+            "returncode": 0,
+            "tests": 9
+          },
+          "test_worlds_043": {
+            "returncode": 0,
+            "tests": 5
+          }
+        },
+        "reported": {
+          "test_encaudit16_0380": {
+            "returncode": 0,
+            "tests": 7
+          },
+          "test_scalesearch14_0360": {
+            "returncode": 0,
+            "tests": 7
+          },
+          "test_scalesearch16_0390": {
+            "returncode": 0,
+            "tests": 5
+          }
+        }
+      },
+      "pass": true
+    },
+    "G_PROC": {
+      "observed": {
+        "clauses": {
+          "commit_order_file": true,
+          "ledger_times_non_decreasing": true,
+          "ledger_times_parse": true,
+          "main_sealed": true,
+          "order": true
+        },
+        "events": [
+          "preregistration_043",
+          "build_authorization_043",
+          "seedcheck_043",
+          "seedcheck_043b",
+          "deviation_159",
+          "source_freeze_043",
+          "run_start_043",
+          "run_end_043"
+        ],
+        "required_order": [
+          "preregistration_043",
+          "build_authorization_043",
+          "seedcheck_043",
+          "seedcheck_043b",
+          "source_freeze_043",
+          "run_start_043",
+          "run_end_043"
+        ]
+      },
+      "pass": true
+    },
+    "G_RT": {
+      "observed": {
+        "cap_s": 1800,
+        "cases": 30,
+        "elapsed_s": 159.69484742899658
+      },
+      "pass": true
+    },
+    "G_recount": {
+      "observed": {
+        "PASS": true,
+        "amb_rule_applied": 0,
+        "cases": 30,
+        "labels_main": {
+          "A14": {
+            "AMB": 0,
+            "ID": 7,
+            "IDF": 0,
+            "IDU": 23,
+            "WRONG": 0
+          },
+          "A16": {
+            "AMB": 0,
+            "ID": 15,
+            "IDF": 1,
+            "IDU": 14,
+            "WRONG": 0
+          }
+        },
+        "mismatching_cases": 0,
+        "truth_inconsistent": 0,
+        "words_checked": 354,
+        "words_unsound": 0
+      },
+      "pass": true
+    },
+    "G_sound": {
+      "observed": {
+        "recount_bound": true,
+        "recount_truth_inconsistent": 0,
+        "recount_words_checked": 354,
+        "recount_words_unsound": 0,
+        "words_checked": 354,
+        "words_unsound": 0
+      },
+      "pass": true
+    }
+  },
+  "label_source": "recount",
+  "not_exercised": [],
+  "process": "lean",
+  "reports": {
+    "fresh_labels": {
+      "A14/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "n": 6,
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "A14/lowobs12": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.7575059933447591,
+            1.0
+          ],
+          "n": 12,
+          "x": 12
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "A14/scale16_rep": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.646120088858883,
+            0.9851349055950828
+          ],
+          "n": 12,
+          "x": 11
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "A16/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.6096657120978346,
+            1.0
+          ],
+          "n": 6,
+          "x": 6
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "A16/lowobs12": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.7575059933447591,
+            1.0
+          ],
+          "n": 12,
+          "x": 12
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "A16/scale16_rep": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.46769466506643437,
+            0.9110583316059452
+          ],
+          "n": 12,
+          "x": 9
+        },
+        "IDF": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "IDU": {
+          "ci95": [
+            0.04696514218385378,
+            0.44803086225297345
+          ],
+          "n": 12,
+          "x": 2
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      }
+    }
+  },
+  "schema": "brute.gates.v40_0",
+  "sealed_input_verified": true,
+  "secondary": {
+    "GLO_cause": {
+      "observed": {
+        "10910001/A14": {
+          "capped_calls": 1,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.005808860994875,
+          "stop": "unknown",
+          "used": 0
+        },
+        "10910001/A16": {
+          "capped_calls": 4,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.59595446199819,
+          "stop": "unknown",
+          "used": 0
+        },
+        "10910002/A14": {
+          "capped_calls": 1,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.002994551003212,
+          "stop": "unknown",
+          "used": 0
+        },
+        "10910002/A16": {
+          "capped_calls": 2,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.090999288004241,
+          "stop": "unknown",
+          "used": 0
+        },
+        "10910003/A14": {
+          "capped_calls": 1,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.004894000994682,
+          "stop": "unknown",
+          "used": 0
+        },
+        "10910003/A16": {
+          "capped_calls": 2,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.087749767000787,
+          "stop": "unknown",
+          "used": 0
+        },
+        "10910004/A14": {
+          "capped_calls": 1,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.031990454001061,
+          "stop": "unknown",
+          "used": 0
+        },
+        "10910004/A16": {
+          "capped_calls": 3,
+          "label": "IDU",
+          "last_phase": "future",
+          "n_min": 11,
+          "n_rounds": 5,
+          "query_max_s": 9.133515426001395,
+          "stop": "unknown",
+          "used": 10
+        },
+        "10910005/A14": {
+          "capped_calls": 1,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.031831764994422,
+          "stop": "unknown",
+          "used": 0
+        },
+        "10910005/A16": {
+          "capped_calls": 2,
+          "label": "IDU",
+          "last_phase": "future",
+          "n_min": 12,
+          "n_rounds": 4,
+          "query_max_s": 9.027005361000192,
+          "stop": "unknown",
+          "used": 12
+        },
+        "10910006/A14": {
+          "capped_calls": 1,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.014690108997456,
+          "stop": "unknown",
+          "used": 0
+        },
+        "10910006/A16": {
+          "capped_calls": 2,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 2,
+          "query_max_s": 9.314964580997184,
+          "stop": "unknown",
+          "used": 6
+        },
+        "10910007/A14": {
+          "capped_calls": 1,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.11955960400519,
+          "stop": "unknown",
+          "used": 0
+        },
+        "10910007/A16": {
+          "capped_calls": 2,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.12922417200025,
+          "stop": "unknown",
+          "used": 0
+        },
+        "10910008/A14": {
+          "capped_calls": 1,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.007757985003991,
+          "stop": "unknown",
+          "used": 0
+        },
+        "10910008/A16": {
+          "capped_calls": 3,
+          "label": "IDU",
+          "last_phase": "future",
+          "n_min": 12,
+          "n_rounds": 4,
+          "query_max_s": 9.349585864998517,
+          "stop": "unknown",
+          "used": 11
+        },
+        "10910009/A14": {
+          "capped_calls": 1,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.008884007998859,
+          "stop": "unknown",
+          "used": 0
+        },
+        "10910009/A16": {
+          "capped_calls": 2,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.242467632000626,
+          "stop": "unknown",
+          "used": 0
+        },
+        "10910010/A14": {
+          "capped_calls": 1,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.11834987000475,
+          "stop": "unknown",
+          "used": 0
+        },
+        "10910010/A16": {
+          "capped_calls": 2,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.219815204000042,
+          "stop": "unknown",
+          "used": 0
+        },
+        "10910011/A14": {
+          "capped_calls": 1,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.012368306997814,
+          "stop": "unknown",
+          "used": 0
+        },
+        "10910011/A16": {
+          "capped_calls": 4,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 7,
+          "query_max_s": 9.207333403996017,
+          "stop": "unknown",
+          "used": 16
+        },
+        "10910012/A14": {
+          "capped_calls": 1,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.004939475998981,
+          "stop": "unknown",
+          "used": 0
+        },
+        "10910012/A16": {
+          "capped_calls": 2,
+          "label": "IDU",
+          "last_phase": "least",
+          "n_min": null,
+          "n_rounds": 1,
+          "query_max_s": 9.258858840999892,
+          "stop": "unknown",
+          "used": 0
+        }
+      },
+      "pass": null,
+      "rule": "reported: per lowobs12 case and arm, the stop and what bound it (read by plan 043 next_if_fail only)"
+    },
+    "GPH18": {
+      "observed": {
+        "A14/control/least": {
+          "calls": 12,
+          "capped": 0
+        },
+        "A14/control/rival": {
+          "calls": 12,
+          "capped": 0
+        },
+        "A14/lowobs12/least": {
+          "calls": 114,
+          "capped": 12
+        },
+        "A14/scale16_rep/least": {
+          "calls": 285,
+          "capped": 5
+        },
+        "A14/scale16_rep/rival": {
+          "calls": 141,
+          "capped": 6
+        },
+        "A16/control/least": {
+          "calls": 12,
+          "capped": 0
+        },
+        "A16/control/rival": {
+          "calls": 12,
+          "capped": 0
+        },
+        "A16/lowobs12/cube": {
+          "calls": 160,
+          "capped": 15
+        },
+        "A16/lowobs12/least": {
+          "calls": 141,
+          "capped": 11
+        },
+        "A16/lowobs12/rival": {
+          "calls": 21,
+          "capped": 4
+        },
+        "A16/scale16_rep/cube": {
+          "calls": 143,
+          "capped": 2
+        },
+        "A16/scale16_rep/least": {
+          "calls": 359,
+          "capped": 2
+        },
+        "A16/scale16_rep/rival": {
+          "calls": 231,
+          "capped": 8
+        }
+      },
+      "pass": null,
+      "rule": "reported: calls / capped calls by phase"
+    },
+    "GT17": {
+      "observed": {
+        "H3_upper_below_2": true,
+        "by_key": {
+          "control": {
+            "cases": 6,
+            "ci95": [
+              1.0494,
+              1.2365
+            ],
+            "mean_ratio": 1.1323
+          },
+          "lowobs12": {
+            "cases": 12,
+            "ci95": [
+              0.7999,
+              0.9717
+            ],
+            "mean_ratio": 0.8835
+          },
+          "scale16_rep": {
+            "cases": 12,
+            "ci95": [
+              0.4896,
+              0.6591
+            ],
+            "mean_ratio": 0.5699
+          }
+        },
+        "cases": 30,
+        "ci95_seed_bootstrap": [
+          0.7179,
+          0.901
+        ],
+        "dropped": [],
+        "mean_ratio": 0.8078,
+        "per_case": [
+          [
+            "main/lowobs12/10910001",
+            1.0349
+          ],
+          [
+            "main/lowobs12/10910002",
+            1.0247
+          ],
+          [
+            "main/lowobs12/10910003",
+            0.766
+          ],
+          [
+            "main/lowobs12/10910004",
+            1.0543
+          ],
+          [
+            "main/lowobs12/10910005",
+            0.7419
+          ],
+          [
+            "main/lowobs12/10910006",
+            1.1954
+          ],
+          [
+            "main/lowobs12/10910007",
+            0.8656
+          ],
+          [
+            "main/lowobs12/10910008",
+            0.7761
+          ],
+          [
+            "main/lowobs12/10910009",
+            0.8451
+          ],
+          [
+            "main/lowobs12/10910010",
+            0.7891
+          ],
+          [
+            "main/lowobs12/10910011",
+            0.8636
+          ],
+          [
+            "main/lowobs12/10910012",
+            0.6457
+          ],
+          [
+            "main/scale16_rep/10920001",
+            0.7099
+          ],
+          [
+            "main/scale16_rep/10920002",
+            0.3644
+          ],
+          [
+            "main/scale16_rep/10920003",
+            0.7759
+          ],
+          [
+            "main/scale16_rep/10920004",
+            0.8882
+          ],
+          [
+            "main/scale16_rep/10920005",
+            0.4426
+          ],
+          [
+            "main/scale16_rep/10920006",
+            0.4927
+          ],
+          [
+            "main/scale16_rep/10920007",
+            0.4478
+          ],
+          [
+            "main/scale16_rep/10920008",
+            0.6835
+          ],
+          [
+            "main/scale16_rep/10920009",
+            0.4691
+          ],
+          [
+            "main/scale16_rep/10920010",
+            0.5437
+          ],
+          [
+            "main/scale16_rep/10920011",
+            0.5108
+          ],
+          [
+            "main/scale16_rep/10920012",
+            0.5102
+          ],
+          [
+            "main/control/10960001",
+            1.1559
+          ],
+          [
+            "main/control/10960002",
+            1.1113
+          ],
+          [
+            "main/control/10960003",
+            1.1138
+          ],
+          [
+            "main/control/10960004",
+            1.0796
+          ],
+          [
+            "main/control/10960005",
+            0.9726
+          ],
+          [
+            "main/control/10960006",
+            1.3608
+          ]
+        ]
+      },
+      "pass": null,
+      "rule": "reported: per-case mean call wall A16 / A14, mean over cases, seed-bootstrap 95% CI"
+    }
+  },
+  "study": "BRUTE-0400-A16-LOWOBS-043"
+}
