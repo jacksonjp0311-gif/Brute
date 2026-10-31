@@ -1,0 +1,512 @@
+{
+  "PASS": true,
+  "label": "Observed",
+  "note": "PASS here means the tooling ran end to end on a sealed block (recount, reference and gates run; gates reproduce); gate outcomes on smoke are recorded, not required",
+  "purpose": "Pre-freeze smoke-gates test for study-041 (plan 041 process: \"pre-freeze gates test on a sealed smoke block\"). New file;",
+  "recount": {
+    "PASS": true,
+    "cases": 6,
+    "labels": {
+      "A14": {
+        "AMB": 0,
+        "ID": 6,
+        "IDF": 0,
+        "IDU": 0,
+        "WRONG": 0
+      },
+      "A15": {
+        "AMB": 0,
+        "ID": 6,
+        "IDF": 0,
+        "IDU": 0,
+        "WRONG": 0
+      },
+      "A15_cube": {
+        "AMB": 0,
+        "ID": 6,
+        "IDF": 0,
+        "IDU": 0,
+        "WRONG": 0
+      }
+    },
+    "mismatching_cases": 0,
+    "replay_labels": {
+      "E0": {
+        "IDF": 1,
+        "IDU": 1
+      },
+      "E1": {
+        "IDF": 1,
+        "IDU": 1
+      },
+      "E2": {
+        "IDU": 2
+      },
+      "E3": {
+        "IDF": 1,
+        "IDU": 1
+      },
+      "E4": {
+        "IDF": 1,
+        "IDU": 1
+      }
+    },
+    "replays": 10,
+    "words_checked": 32
+  },
+  "recount_rc": 0,
+  "reference_on_smoke": {
+    "PASS": true,
+    "decided": 1,
+    "mismatch_count": 0,
+    "mutations": 20,
+    "not_reached": 3,
+    "of": 20,
+    "records": 4,
+    "verdicts_checked": 2,
+    "wall_s_informational": 2.7
+  },
+  "reference_rc": 0,
+  "runtime_projection": {
+    "cap_s": 1800,
+    "caveat": "smoke traces are scale14 (part 1 has scale12 / perm12 / control and scale16); scale16 replays may be slower",
+    "drop_E1_E2_from_part_a": false,
+    "full_plan": {
+      "ideal_parallel_s": 564.9,
+      "jobs": 294,
+      "lpt_makespan_s": 565.1,
+      "serial_s": 4519.1
+    },
+    "label": "Inferred",
+    "mean_fresh_wall_by_arm_key": {
+      "A14/control": 0.05,
+      "A14/perm12": 2.55,
+      "A15/control": 0.05,
+      "A15/perm12": 0.92,
+      "A15_cube/control": 0.05,
+      "A15_cube/perm12": 0.92
+    },
+    "mean_replay_wall_by_variant": {
+      "E0": 10.0,
+      "E1": 8.4,
+      "E2": 9.7,
+      "E3": 9.2,
+      "E4": 55.7
+    },
+    "reduced_part_a_without_E1_E2": {
+      "ideal_parallel_s": 496.7,
+      "jobs": 234,
+      "lpt_makespan_s": 496.7,
+      "serial_s": 3973.4
+    },
+    "smoke_total_elapsed_s": 102.53914496600191,
+    "threshold_s": 1500,
+    "workers": 8
+  },
+  "smoke_cases": [
+    [
+      "perm12",
+      10780001,
+      {
+        "A14": "ID",
+        "A15": "ID",
+        "A15_cube": "ID"
+      },
+      {
+        "A14": 9,
+        "A15": 9,
+        "A15_cube": 9
+      },
+      {
+        "A14": 0.29,
+        "A15": 0.23,
+        "A15_cube": 0.23
+      }
+    ],
+    [
+      "perm12",
+      10780002,
+      {
+        "A14": "ID",
+        "A15": "ID",
+        "A15_cube": "ID"
+      },
+      {
+        "A14": 6,
+        "A15": 6,
+        "A15_cube": 6
+      },
+      {
+        "A14": 1.38,
+        "A15": 0.45,
+        "A15_cube": 0.45
+      }
+    ],
+    [
+      "perm12",
+      10780003,
+      {
+        "A14": "ID",
+        "A15": "ID",
+        "A15_cube": "ID"
+      },
+      {
+        "A14": 12,
+        "A15": 13,
+        "A15_cube": 13
+      },
+      {
+        "A14": 0.36,
+        "A15": 0.3,
+        "A15_cube": 0.29
+      }
+    ],
+    [
+      "perm12",
+      10780004,
+      {
+        "A14": "ID",
+        "A15": "ID",
+        "A15_cube": "ID"
+      },
+      {
+        "A14": 6,
+        "A15": 6,
+        "A15_cube": 6
+      },
+      {
+        "A14": 3.74,
+        "A15": 1.02,
+        "A15_cube": 1.0
+      }
+    ],
+    [
+      "control",
+      10780005,
+      {
+        "A14": "ID",
+        "A15": "ID",
+        "A15_cube": "ID"
+      },
+      {
+        "A14": 0,
+        "A15": 0,
+        "A15_cube": 0
+      },
+      {
+        "A14": 0.03,
+        "A15": 0.04,
+        "A15_cube": 0.03
+      }
+    ],
+    [
+      "control",
+      10780006,
+      {
+        "A14": "ID",
+        "A15": "ID",
+        "A15_cube": "ID"
+      },
+      {
+        "A14": 0,
+        "A15": 0,
+        "A15_cube": 0
+      },
+      {
+        "A14": 0.03,
+        "A15": 0.03,
+        "A15_cube": 0.03
+      }
+    ]
+  ],
+  "smoke_gate_status": {
+    "G10": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GAUD_loc": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GAUD_sem": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GAUD_stab": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GAUD_time": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GPERM16": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GQB16": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GS_ref": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GTI": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (TEST_SUITE_041 missing)"
+    },
+    "G_PROC": {
+      "pass": false
+    },
+    "G_RT": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "G_recount": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "G_sound": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    }
+  },
+  "smoke_replays": [
+    [
+      "039",
+      "scale14",
+      10520001,
+      "E0",
+      "unknown",
+      null,
+      [
+        "unknown",
+        null
+      ],
+      10,
+      1,
+      9.09,
+      0,
+      14.5
+    ],
+    [
+      "039",
+      "scale14",
+      10520001,
+      "E1",
+      "unknown",
+      null,
+      [
+        "unknown",
+        null
+      ],
+      10,
+      1,
+      9.01,
+      0,
+      10.7
+    ],
+    [
+      "039",
+      "scale14",
+      10520001,
+      "E2",
+      "unknown",
+      null,
+      [
+        "unknown",
+        null
+      ],
+      4,
+      1,
+      9.11,
+      0,
+      10.2
+    ],
+    [
+      "039",
+      "scale14",
+      10520001,
+      "E3",
+      "unknown",
+      null,
+      [
+        "unknown",
+        null
+      ],
+      4,
+      1,
+      9.01,
+      0,
+      9.4
+    ],
+    [
+      "039",
+      "scale14",
+      10520001,
+      "E4",
+      "unknown",
+      null,
+      [
+        "unknown",
+        null
+      ],
+      30,
+      11,
+      9.29,
+      0,
+      102.5
+    ],
+    [
+      "039",
+      "scale14",
+      10520002,
+      "E0",
+      "IDF",
+      14,
+      [
+        "IDF",
+        14
+      ],
+      13,
+      0,
+      4.44,
+      0,
+      5.4
+    ],
+    [
+      "039",
+      "scale14",
+      10520002,
+      "E1",
+      "IDF",
+      14,
+      [
+        "IDF",
+        14
+      ],
+      13,
+      0,
+      4.89,
+      0,
+      6.2
+    ],
+    [
+      "039",
+      "scale14",
+      10520002,
+      "E2",
+      "unknown",
+      14,
+      [
+        "IDF",
+        14
+      ],
+      4,
+      1,
+      9.01,
+      0,
+      9.3
+    ],
+    [
+      "039",
+      "scale14",
+      10520002,
+      "E3",
+      "IDF",
+      14,
+      [
+        "IDF",
+        14
+      ],
+      5,
+      0,
+      8.72,
+      0,
+      9.1
+    ],
+    [
+      "039",
+      "scale14",
+      10520002,
+      "E4",
+      "IDF",
+      14,
+      [
+        "IDF",
+        14
+      ],
+      5,
+      0,
+      8.42,
+      0,
+      8.8
+    ]
+  ],
+  "smoke_sealed_input_verified": true,
+  "synthetic": {
+    "GAUD_loc_reading": "one",
+    "GAUD_time_E3": [
+      1.0642,
+      3.5693
+    ],
+    "crashed": false,
+    "gate_status": {
+      "G10": {
+        "pass": false
+      },
+      "GAUD_loc": {
+        "pass": true
+      },
+      "GAUD_sem": {
+        "pass": true
+      },
+      "GAUD_stab": {
+        "pass": true
+      },
+      "GAUD_time": {
+        "pass": true
+      },
+      "GPERM16": {
+        "pass": true
+      },
+      "GQB16": {
+        "pass": true
+      },
+      "GS_ref": {
+        "pass": false
+      },
+      "GTI": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (TEST_SUITE_041 missing)"
+      },
+      "G_PROC": {
+        "pass": false
+      },
+      "G_RT": {
+        "pass": true
+      },
+      "G_recount": {
+        "pass": true
+      },
+      "G_sound": {
+        "pass": true
+      }
+    },
+    "note": "synthetic copies (parts a / c / b from the 10 smoke replays; G10 and GS_ref fail here by their fixed counts (6 controls; 24 records over 12 traces), GTI and G_PROC by design: no TEST_SUITE_041, no 041 run events)",
+    "recount_rc": 0,
+    "reference_rc": 0,
+    "reports_keys": [
+      "fresh_labels",
+      "replay_decided",
+      "time_ratios"
+    ],
+    "reproduces": true,
+    "sealed_input_verified": true,
+    "secondary": [
+      "GCLS16",
+      "GPH16"
+    ]
+  }
+}
