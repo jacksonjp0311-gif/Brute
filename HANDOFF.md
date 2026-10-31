@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.51.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.51.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0510 -->
-- **v0.51.0: release in progress** 2026-10-31 (EDT), study BRUTE-0510-SCALE20-TREECOLOR-054 (plan 054 `29e8697` + pre-data amendment 054a `76c1e29`), branch `plan/v0.51.0`.
+- **v0.51.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.51.0 (annotated tag object `c42533d` at `e680edd`, ledger release_054 `37626e8`). Fresh-clone verify of the tag passed: study 045 to 054 restored, verify_release_0510 passed, 104/104 tests in 11 modules. Study BRUTE-0510-SCALE20-TREECOLOR-054 (plan 054 `29e8697` + pre-data amendment 054a `76c1e29`), branch `plan/v0.51.0`.
   - **Run complete (Observed).** 30/30 jobs, 12 cases, 1157.8 s of 3600 s, launched about 17:53:02 EDT, normal exit about 18:12 EDT, run once; 4 checkpoint snapshots; nothing relaunched. No cut: N20T 6, NC20T 6.
   - **PASS (12/13 gated):** GDET54 6/6 [0.61, 1.00] (identical conflicts, 0 hard kills); GFID54 18/18 [0.82, 1.00]; GS20T_sound54 (WRONG 0/30 [0.00, 0.11]); GCOMPAT20T54 6/6 [0.61, 1.00]; GHOST54; GS_ref (6/6 decided audited, 0 mismatches, 20/20 mutations, 421 s); G_sound (389 words, 0 unsound); G_recount; GTI; GTEST (104 tests); G_PROC; G_RT (1157.8 s).
   - **FAIL:** GS20T_gain54: certify/20t ID+IDF 0/6 [0.00, 0.39] in both passes vs certify/16e at bound 20 0/6 [0.00, 0.39]. certified_20t_N20 false; sound_not_certified_20t true.
