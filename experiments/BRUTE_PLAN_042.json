@@ -1,0 +1,116 @@
+{
+  "branch_taken": "plan 041 GAUD_loc pass branch: build one combined arm from the pieces that kept decisions (apartness, cube split) and drop the clique; A15 and A15_cube stay withdrawn (literal GAUD_sem branch of plan 041)",
+  "brand": "charcoal and sage; no purple, neon, emoji or gold",
+  "cases": {
+    "arms": 2,
+    "control": 6,
+    "declared_before_data": true,
+    "jobs": 60,
+    "perm12": 12,
+    "scale16": 12,
+    "total_fresh": 30
+  },
+  "criteria": {
+    "G10": "every arm ID on each of the 6 controls (recounted labels; does not depend on G_recount passing)",
+    "G16": "headline: fresh scale16 ID counts (recounted labels): A16 ID >= 6/12 AND A16 ID - A14 ID >= 3; Wilson 95% CIs reported",
+    "G16_sem": "no decided A16 label contradicts A14 on any fresh case; WRONG 0 in every arm",
+    "GPERM17": "no loss: on every fresh perm12 case where A14 decides, A16 gives A14's stop label and n_min; zero exceptions",
+    "GQB17": "max logged call wall <= 10.5 s",
+    "GS_ref": "CNF reference audit of A16 on every decided scale16 case: 0 mismatches and all mutations detected",
+    "GTI": "gated test files ok in a fresh clone",
+    "G_PROC": "ledger order as declared (preregistration, build_authorization, seedcheck, source_freeze, run_start, run_end)",
+    "G_RT": "main run <= 1800 s",
+    "G_recount": "the independent recount, with the AMB-at-stop rule, reproduces every label; 0 mismatches",
+    "G_sound": "0 unsound separating words in study and recount; 0 truth inconsistencies (does not depend on G_recount passing; scored from its own counts)"
+  },
+  "design": {
+    "arms": {
+      "A14": "brute/scalesearch14 as frozen (reference)",
+      "A16": "new file brute/scalesearch16.py: the frozen E1 clause builder (brute/encaudit16) plus the frozen per-size cube split from brute/scalesearch15, applied to capped queries; no fixed colours"
+    },
+    "budgets": "the 040 scale16 action budget and n_max 16 for both arms (copied, not tuned)",
+    "note": "A16 is a candidate method; if it passes it becomes brute.certify/16 in a separate API study",
+    "part0_rerecount": "new file scripts/recount_041b.py: the 041 recount with one added rule, AMB at stop is a valid label iff an independent reference SAT query finds a second machine of size n_min consistent with the trace whose future on the stop word differs; applied once to the sealed 041 data and reported; it changes no 041 gate",
+    "per_call_cap": "hard cap as in 041 (child process, soft interrupt at 9.0 s, SIGKILL 1.0 s later); a killed call reads unknown"
+  },
+  "diagnosis_041": {
+    "located": "GAUD_loc PASS (Observed): the fixed-colour clique (E2) reproduces the GINC15 decision loss in 3/3 repeats; apartness only (E1) matches A14 in 3/3",
+    "recount_gap": "G_recount failed: the frozen lab14 rule has no AMB-at-stop branch (25 records, #155)",
+    "scale16_replay": "part c decided: E0 2/12 [0.05, 0.45], E1 10/12 [0.55, 0.95], E4 12/12 [0.76, 1.00]; mostly AMB, i.e. the sealed 040 traces do not pin the machine (Observed)",
+    "soundness": "0 WRONG, 0 unsound separating words of 21 (study and recount), 0 truth inconsistencies, controls 6/6 ID in every arm; G10 and G_sound failed only through the G_recount dependency (Exact); no soundness work is required first",
+    "time": "GAUD_time (Observed): mean per-trace call-wall ratio vs E0: E1 1.11 [1.01, 1.24], E2 4.18 [2.53, 6.46], E3 16.11 [5.13, 31.74], E4 10.41 [4.13, 20.78]; the clique is the dominant cost and the apartness clauses are cheap",
+    "verifier_gap": "the frozen verify_release_0380 rejects the build authorization back-reference in COMMIT_ORDER_041 (#156)"
+  },
+  "freeze_rule": "no file named in the source freeze is edited after the freeze; new behaviour goes in new files or a deviation addendum",
+  "gate_dependency_rule": "each gate is scored from its own counts; G_recount failing is reported but does not fail G_sound, G10 or G16_sem (lesson of #155); G16 and GPERM17 use recounted labels only if G_recount passes, else study labels with the failure stated",
+  "heldout_ranges": {
+    "control": [
+      10860001,
+      10860002,
+      10860003,
+      10860004,
+      10860005,
+      10860006
+    ],
+    "note": "fresh 108x00NN ranges; pre-plan scan (Observed, 2026-10-31 EDT): no word-bounded 108[0-9]00NN token in tracked uncompressed text; the full scan including .gz archives is seedcheck_042's job",
+    "perm12": [
+      10820001,
+      10820002,
+      10820003,
+      10820004,
+      10820005,
+      10820006,
+      10820007,
+      10820008,
+      10820009,
+      10820010,
+      10820011,
+      10820012
+    ],
+    "scale16": [
+      10810001,
+      10810002,
+      10810003,
+      10810004,
+      10810005,
+      10810006,
+      10810007,
+      10810008,
+      10810009,
+      10810010,
+      10810011,
+      10810012
+    ]
+  },
+  "hypotheses": {
+    "H1": "A16 identifies (ID) more fresh scale16 machines than A14 under the same budgets",
+    "H2": "A16 loses no A14 decision on fresh perm12",
+    "H3": "A16 call wall stays within 2x of A14 (E1 cost 1.11x plus the cube split)"
+  },
+  "limitations": [
+    "12 scale16 cases give wide CIs (Wilson at 6/12 is about [0.25, 0.75])",
+    "clean worlds only",
+    "budgets copied from 040, not tuned"
+  ],
+  "next_if_fail": "if G16 fails with GPERM17 passing: the cost of scale16 is in the experiment budget, not the encoding; plan a budget audit. If GPERM17 fails: A16 is withdrawn and the cube split is audited alone. If G_sound shows a true unsound word: soundness first, nothing else",
+  "next_if_pass": "API study for brute.certify/16 (A16), then a scale-20 replication",
+  "open_items": [
+    "lowobs (one-bit observations) at 12 states: Open, not in this study",
+    "noise at 12 states: Open, not in this study",
+    "soundness still assumes the declared size N"
+  ],
+  "parent_study": "BRUTE-0380-ENCODING-AUDIT-041",
+  "process": "LEAN (standing go t133s553, ledger 76b30d5; a ledgered build_authorization_042 citing it is required before any code; it is ledgered BEFORE seedcheck_042): plan locked before data; seedcheck_042 before seeds; independent recount with an AMB-at-stop rule; CNF reference audit; pre-freeze gates AND release-verifier test on a sealed smoke block that contains at least one record of every stop the runner can emit (ID, IDF, AMB, K_spent, unknown) and the real commit-order file; single main run, never relaunched or resumed; failures published",
+  "question": "Does one arm A16 (E1 apartness clauses + first-visit symmetry clauses + the per-size cube split on capped queries, no fixed-colour clique) identify fresh clean 16-state machines from its own active experiments, without losing any decision A14 makes at 12 states?",
+  "runtime_estimate": "Open: set by the pre-freeze projection; if the LPT projection exceeds 1800 s, scale16 is cut to the first 8 seeds before the freeze (rule declared now; no other cut)",
+  "schema": "brute.plan.v1",
+  "secondary": {
+    "GRR041": "part 0 re-recount of sealed 041: mismatches under the AMB rule, reported only",
+    "GT16": "A16/A14 mean per-case call-wall ratio with seed-bootstrap 95% CI (H3 read: upper bound < 2)"
+  },
+  "smoke_range": "10880001-10880006 (pre-freeze smoke only; never gated); the smoke must also include sealed 041 part-c replays that end AMB",
+  "status": "preregistered (plan only; no build code, no data for 042)",
+  "study": "BRUTE-0390-A16-SCALE16-042",
+  "version_under_test": "0.39.0",
+  "what_counts_as_failure": "any gated criterion false; a killed call is unknown, not a failure of soundness"
+}
