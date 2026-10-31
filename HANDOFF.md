@@ -1,8 +1,20 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.44.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.45.0 release in progress)._
 
 ## Current version and state
+
+<!-- V0450 -->
+- **v0.45.0: RELEASE IN PROGRESS** 2026-10-31 (EDT). Built on branch `plan/v0.45.0` (BRUTE_PLAN_048, certify/16d at C 50000, B 1500000 for 16 states and 1000000 for 20; two independent passes on 26 fresh cases (12 scale16, 8 scale20, 6 controls) plus 18 API16D replays of sealed 046 A16_N traces; LEAN; STANDING GO t133s553, build authorization at plan commit `4dea7ef`).
+  - **Run complete (Observed).** 70/70 jobs (52 fresh arm jobs on 26 cases, 18 replays), 107.0 s of 3600 s, normal exit, run once; 1 checkpoint snapshot (`7078d94`); nothing relaunched; resume clause not approved, not used.
+  - **PASS (13/14 gated):** GDET48 (26/26 [0.87, 1.00], 0 guard firings on 70 records), GWALL_r (0/18), GFID48 (26/26 [0.87, 1.00]), GS20_sound (vacuous: 0 of 8 decided, WRONG 0), GHOST48, G10 (6/6 ID both arms), GQB23 (max call 7.79 s), GS_ref (16/16 audited, 0 mismatches, 20/20), G_sound, G_recount, GTI, G_PROC, G_RT. **FAIL:** GAPI16D_fresh48 on count only (scale16 ID+IDF 0/12 [0.00, 0.24], bar 7/12; WRONG 0).
+  - **Reading (Inferred):** the per-call cap binds, not B (largest record 36 % of B; every IDU stopped on a capped call).
+  - **Claim scope (Exact; reason Inferred):** conditional on the declared N; no N <= 20 claim (GS20_sound vacuous).
+  - **API:** certify/16d unchanged and uncertified; certify/14 still the latest certified API.
+  - **Branch taken:** plan 048 next_if_fail "GAPI16D_fresh48 fails on count only ... re-plan B". v0.46.0 is BRUTE_PLAN_049 (plan only) on `plan/v0.46.0`.
+  - **Deviations:** #169 (pre-run), #170 (post-run).
+  - **Chain:** plan `4dea7ef` -> seedcheck `91dd25e` -> smoke `1711d95` -> #169 `65f06c8` -> freeze `9baedb4` -> run start `0c0d67c` -> seal `7e2825f` -> recount `c38edc2` -> reference `30c1aca` -> api checks `4d122b2` -> tests `ecca8a4` -> gates `73250f3` -> #170 `0733c57` -> RELEASE.json `291c632`.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched. The user's computer was offline; network went through the box.
 
 <!-- V0440 -->
 - **v0.44.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.44.0 (annotated tag object `40ac1d0` at `0e6ee96`, ledger release_047). Fresh-clone verify of the tag passed: study 045, 046 and 047 raw data restored, verify_release_0440 (6 links, 0 exceptions, GATES_047 reproduces) and 77 tests in 8 modules. Box clock 1 s from GitHub's Date header at 07:59:16 EDT. Built on branch `plan/v0.44.0` (BRUTE_PLAN_047, certify/16d: per-call conflict cap C 294000, case budget B 7840000; two independent passes, A16_N self-replay, certify/16 and certify/16d over sealed 045/046 traces, fresh scale16 plus controls; scale-20 cut before the freeze by the declared rule; LEAN; STANDING GO t133s553, build authorization at plan commit `168e821`).
