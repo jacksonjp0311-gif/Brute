@@ -1,0 +1,38 @@
+{
+ "schema": "brute.seedcheck_b.v41",
+ "source": "results/diag-044/SEEDCHECK_044.json",
+ "declared": [
+  [
+   "results/diag-043/SEEDCHECK_043.json",
+   10930001
+  ]
+ ],
+ "written": "after the seedcheck_044 scan (post-scan rule; #161 item 2)",
+ "clause_1_other_clauses": true,
+ "clause_2_listed_equals_declared": true,
+ "clause_3_only_refused_probe_items": true,
+ "clause_4_probe_file_blob": "949fa17c82173371bbbe67e208db5f1761dc1063",
+ "hits": [
+  {
+   "file": "results/diag-043/SEEDCHECK_043.json",
+   "token": 10930001,
+   "paths": [
+    [
+     "negative_controls",
+     17,
+     1
+    ]
+   ],
+   "items": [
+    [
+     "target",
+     10930001,
+     null,
+     "refused"
+    ]
+   ],
+   "allowed": true
+  }
+ ],
+ "PASS": true
+}
