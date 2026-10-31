@@ -1,0 +1,215 @@
+{
+  "N": 14,
+  "PASS": true,
+  "arm_audited": "A15_cube",
+  "cases": 12,
+  "decided": 9,
+  "elapsed_informational": 315.45601494600123,
+  "family": "scale14",
+  "mismatch_count": 0,
+  "mismatches": [],
+  "mutation_test": {
+    "detected": 20,
+    "items": [
+      {
+        "detected": true,
+        "key": "scale14/10620012",
+        "kind": "label"
+      },
+      {
+        "detected": true,
+        "key": "scale14/10620002",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "key": "scale14/10620006",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "key": "scale14/10620007",
+        "kind": "word"
+      },
+      {
+        "detected": true,
+        "key": "scale14/10620003",
+        "kind": "label"
+      },
+      {
+        "detected": true,
+        "key": "scale14/10620006",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "key": "scale14/10620007",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "key": "scale14/10620007",
+        "kind": "word"
+      },
+      {
+        "detected": true,
+        "key": "scale14/10620006",
+        "kind": "label"
+      },
+      {
+        "detected": true,
+        "key": "scale14/10620007",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "key": "scale14/10620006",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "key": "scale14/10620001",
+        "kind": "word"
+      },
+      {
+        "detected": true,
+        "key": "scale14/10620011",
+        "kind": "label"
+      },
+      {
+        "detected": true,
+        "key": "scale14/10620007",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "key": "scale14/10620007",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "key": "scale14/10620006",
+        "kind": "word"
+      },
+      {
+        "detected": true,
+        "key": "scale14/10620001",
+        "kind": "label"
+      },
+      {
+        "detected": true,
+        "key": "scale14/10620011",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "key": "scale14/10620002",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "key": "scale14/10620003",
+        "kind": "word"
+      }
+    ],
+    "mutations": 20,
+    "pass": true
+  },
+  "not_reached": 3,
+  "per_case": [
+    {
+      "decided": true,
+      "key": "scale14/10620001",
+      "label": "ID",
+      "mismatches": [],
+      "verdicts_checked": 4,
+      "wall_informational": 56.95232047800528
+    },
+    {
+      "decided": true,
+      "key": "scale14/10620002",
+      "label": "ID",
+      "mismatches": [],
+      "verdicts_checked": 10,
+      "wall_informational": 192.37800521000463
+    },
+    {
+      "decided": true,
+      "key": "scale14/10620003",
+      "label": "ID",
+      "mismatches": [],
+      "verdicts_checked": 6,
+      "wall_informational": 8.755368656995415
+    },
+    {
+      "decided": true,
+      "key": "scale14/10620004",
+      "label": "ID",
+      "mismatches": [],
+      "verdicts_checked": 10,
+      "wall_informational": 31.255653856002027
+    },
+    {
+      "decided": false,
+      "key": "scale14/10620005",
+      "mismatches": [],
+      "wall_informational": 0.00043257599463686347
+    },
+    {
+      "decided": true,
+      "key": "scale14/10620006",
+      "label": "ID",
+      "mismatches": [],
+      "verdicts_checked": 19,
+      "wall_informational": 99.80431731200224
+    },
+    {
+      "decided": true,
+      "key": "scale14/10620007",
+      "label": "ID",
+      "mismatches": [],
+      "verdicts_checked": 33,
+      "wall_informational": 148.4886073029993
+    },
+    {
+      "decided": true,
+      "key": "scale14/10620008",
+      "label": "IDF",
+      "mismatches": [],
+      "verdicts_checked": 10,
+      "wall_informational": 73.36512682899775
+    },
+    {
+      "decided": false,
+      "key": "scale14/10620009",
+      "mismatches": [],
+      "wall_informational": 0.0005420259985839948
+    },
+    {
+      "decided": false,
+      "key": "scale14/10620010",
+      "mismatches": [],
+      "wall_informational": 0.00019195999630028382
+    },
+    {
+      "decided": true,
+      "key": "scale14/10620011",
+      "label": "ID",
+      "mismatches": [],
+      "verdicts_checked": 8,
+      "wall_informational": 25.83115184000053
+    },
+    {
+      "decided": true,
+      "key": "scale14/10620012",
+      "label": "ID",
+      "mismatches": [],
+      "verdicts_checked": 23,
+      "wall_informational": 306.5755816250021
+    }
+  ],
+  "schema": "brute.reference.v37_0",
+  "study_results_sha256": "ff56ca411cee6d7a221eca2c38d97d7bd516b8927ff52ff3c5110d802bd89300",
+  "verdicts_checked": 123,
+  "words_checked": 175
+}
