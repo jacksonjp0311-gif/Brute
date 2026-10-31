@@ -1,0 +1,123 @@
+{
+  "PASS": true,
+  "certify16_sha256": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1",
+  "compat": {
+    "PASS": true,
+    "all_byte_equal": true,
+    "cases": [
+      {
+        "byte_equal": true,
+        "name": "D_s4_fb3",
+        "search": "s4"
+      },
+      {
+        "byte_equal": true,
+        "name": "D_s4_fb4",
+        "search": "s4"
+      },
+      {
+        "byte_equal": true,
+        "name": "D2_s4_fb3",
+        "search": "s4"
+      },
+      {
+        "byte_equal": true,
+        "name": "D_s3_fb3",
+        "search": "s3"
+      },
+      {
+        "byte_equal": true,
+        "name": "D_region",
+        "search": "region"
+      }
+    ],
+    "s4_cases": 3,
+    "sample_sha256": "a455fb0f5311042d921265783ff09146c08573493eca14aa6e8689a3f30a96ae",
+    "tests": {
+      "tests.test_scalesearch4_0260": {
+        "ok": true,
+        "returncode": 0,
+        "tests": 14
+      }
+    },
+    "tests_pass": true
+  },
+  "ghost": {
+    "PASS": true,
+    "closure": [
+      "brute.active",
+      "brute.align",
+      "brute.anytimemargin",
+      "brute.api.certify",
+      "brute.api.certify10",
+      "brute.api.certify11",
+      "brute.api.certify12",
+      "brute.api.certify13",
+      "brute.api.certify14",
+      "brute.api.certify16",
+      "brute.api.certify8",
+      "brute.api.certify9",
+      "brute.bettingregion",
+      "brute.boundedtransfer",
+      "brute.breadth",
+      "brute.changepoint",
+      "brute.core.learner",
+      "brute.driftsound",
+      "brute.encaudit16",
+      "brute.fallback",
+      "brute.lrregion",
+      "brute.noisyregion",
+      "brute.region",
+      "brute.region_learner",
+      "brute.resume",
+      "brute.scalebetting",
+      "brute.scalesearch",
+      "brute.scalesearch10",
+      "brute.scalesearch14",
+      "brute.scalesearch15",
+      "brute.scalesearch16",
+      "brute.scalesearch3",
+      "brute.scalesearch4",
+      "brute.scalesearch5",
+      "brute.scalesearch7",
+      "brute.scalesearch8",
+      "brute.scalesearch9",
+      "brute.seqmargin",
+      "brute.stitchedregion",
+      "brute.syncevent",
+      "brute.transfer"
+    ],
+    "closure_flagged_reported": {},
+    "network_pass": true,
+    "new_flagged": {},
+    "newly_imported": [
+      "brute.api.certify16",
+      "brute.encaudit16",
+      "brute.scalesearch10",
+      "brute.scalesearch14",
+      "brute.scalesearch15",
+      "brute.scalesearch16",
+      "brute.scalesearch5",
+      "brute.scalesearch7",
+      "brute.scalesearch8",
+      "brute.scalesearch9"
+    ],
+    "no_network_returncode": 0,
+    "no_network_run": {
+      "loop": [
+        "brute.certify/16",
+        "ID",
+        3,
+        0
+      ],
+      "one_shot": [
+        "brute.certify/16",
+        "ID",
+        3
+      ],
+      "socket_attempts": 0
+    },
+    "static_pass": true
+  },
+  "schema": "brute.api-checks.v43"
+}
