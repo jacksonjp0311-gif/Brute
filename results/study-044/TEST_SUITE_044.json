@@ -1,0 +1,122 @@
+{
+ "gated_modules": [
+  "test_lowobspolicy17",
+  "test_scripts_044",
+  "test_release_0410"
+ ],
+ "modules": [
+  "test_lowobspolicy17",
+  "test_scripts_044",
+  "test_release_0410",
+  "test_worlds_043",
+  "test_scalesearch16_0390",
+  "test_scripts_043"
+ ],
+ "passed": true,
+ "per_module": {
+  "test_lowobspolicy17": {
+   "results": {
+    "test_active17xf_runs_schedule_then_active16": "ok",
+    "test_deadline_cuts_schedule": "ok",
+    "test_host_agnostic": "ok",
+    "test_schedule_k2_tail_seeded": "ok",
+    "test_schedule_k3_no_tail": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_active17xf_runs_schedule_then_active16 (tests.test_lowobspolicy17.TXF.test_active17xf_runs_schedule_then_active16) ... ok\ntest_deadline_cuts_schedule (tests.test_lowobspolicy17.TXF.test_deadline_cuts_schedule) ... ok\ntest_host_agnostic (tests.test_lowobspolicy17.TXF.test_host_agnostic) ... ok\ntest_schedule_k2_tail_seeded (tests.test_lowobspolicy17.TXF.test_schedule_k2_tail_seeded) ... ok\ntest_schedule_k3_no_tail (tests.test_lowobspolicy17.TXF.test_schedule_k3_no_tail) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.010s\n\nOK\n",
+   "tests": 5,
+   "wall_informational": 0.1
+  },
+  "test_release_0410": {
+   "results": {
+    "test_chain_authorization_exception": "ok",
+    "test_gate_list_mismatch": "ok",
+    "test_missing_key": "ok",
+    "test_release_ok": "ok",
+    "test_release_version": "ok",
+    "test_run_tests_default_is_scratch": "ok",
+    "test_run_tests_refuses_overwrite": "ok",
+    "test_secondary_mismatch": "ok",
+    "test_wrong_version": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "release_version (tests.test_release_0410.TestRelease0410.test_release_version) ... ok\ntest_run_tests_default_is_scratch (tests.test_release_0410.TestRelease0410.test_run_tests_default_is_scratch) ... ok\ntest_run_tests_refuses_overwrite (tests.test_release_0410.TestRelease0410.test_run_tests_refuses_overwrite) ... ok\ntest_secondary_mismatch (tests.test_release_0410.TestRelease0410.test_secondary_mismatch) ... ok\ntest_wrong_version (tests.test_release_0410.TestRelease0410.test_wrong_version) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.071s\n\nOK\n",
+   "tests": 9,
+   "wall_informational": 0.1
+  },
+  "test_scalesearch16_0390": {
+   "results": {
+    "test_active16_valid": "ok",
+    "test_cube_path_forced": "ok",
+    "test_host_agnostic": "ok",
+    "test_proxy_equals_native": "ok",
+    "test_stop_check16_equals_frozen": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_active16_valid (tests.test_scalesearch16_0390.TA16.test_active16_valid) ... ok\ntest_cube_path_forced (tests.test_scalesearch16_0390.TA16.test_cube_path_forced) ... ok\ntest_host_agnostic (tests.test_scalesearch16_0390.TA16.test_host_agnostic) ... ok\ntest_proxy_equals_native (tests.test_scalesearch16_0390.TA16.test_proxy_equals_native) ... ok\ntest_stop_check16_equals_frozen (tests.test_scalesearch16_0390.TA16.test_stop_check16_equals_frozen) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.287s\n\nOK\n",
+   "tests": 5,
+   "wall_informational": 0.4
+  },
+  "test_scripts_043": {
+   "results": {
+    "test_amb_rule_refuses_missing_future": "ok",
+    "test_boot_seeded": "ok",
+    "test_check_job_refuses_foreign_seed": "ok",
+    "test_freeze_list": "ok",
+    "test_fresh_and_recount": "ok",
+    "test_incomplete_input": "ok",
+    "test_jobs_main": "ok",
+    "test_jobs_smoke": "ok",
+    "test_replay_recount_041_record": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "_scripts_043.Runner.test_amb_rule_refuses_missing_future) ... ok\ntest_check_job_refuses_foreign_seed (tests.test_scripts_043.Runner.test_check_job_refuses_foreign_seed) ... ok\ntest_fresh_and_recount (tests.test_scripts_043.Runner.test_fresh_and_recount) ... ok\ntest_jobs_main (tests.test_scripts_043.Runner.test_jobs_main) ... ok\ntest_jobs_smoke (tests.test_scripts_043.Runner.test_jobs_smoke) ... ok\ntest_replay_recount_041_record (tests.test_scripts_043.Runner.test_replay_recount_041_record) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.241s\n\nOK\n",
+   "tests": 9,
+   "wall_informational": 0.4
+  },
+  "test_scripts_044": {
+   "results": {
+    "test_arm_settings": "ok",
+    "test_check_job_refuses_foreign_seed": "ok",
+    "test_freeze_list": "ok",
+    "test_fresh_and_recount": "ok",
+    "test_incomplete_input": "ok",
+    "test_jobs_main": "ok",
+    "test_jobs_main_cut": "ok",
+    "test_jobs_smoke": "ok",
+    "test_recount_schedule_independent": "ok",
+    "test_replay_recount_041_record": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "h_and_recount (tests.test_scripts_044.Runner.test_fresh_and_recount) ... ok\ntest_jobs_main (tests.test_scripts_044.Runner.test_jobs_main) ... ok\ntest_jobs_main_cut (tests.test_scripts_044.Runner.test_jobs_main_cut) ... ok\ntest_jobs_smoke (tests.test_scripts_044.Runner.test_jobs_smoke) ... ok\ntest_recount_schedule_independent (tests.test_scripts_044.Runner.test_recount_schedule_independent) ... ok\ntest_replay_recount_041_record (tests.test_scripts_044.Runner.test_replay_recount_041_record) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.314s\n\nOK\n",
+   "tests": 10,
+   "wall_informational": 0.5
+  },
+  "test_worlds_043": {
+   "results": {
+    "test_dispatch_equals_frozen_generators": "ok",
+    "test_erratum_adjudication": "ok",
+    "test_lowobs_one_bit": "ok",
+    "test_sizes": "ok",
+    "test_unknown_family": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_dispatch_equals_frozen_generators (tests.test_worlds_043.Worlds043.test_dispatch_equals_frozen_generators) ... ok\ntest_erratum_adjudication (tests.test_worlds_043.Worlds043.test_erratum_adjudication) ... ok\ntest_lowobs_one_bit (tests.test_worlds_043.Worlds043.test_lowobs_one_bit) ... ok\ntest_sizes (tests.test_worlds_043.Worlds043.test_sizes) ... ok\ntest_unknown_family (tests.test_worlds_043.Worlds043.test_unknown_family) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.009s\n\nOK\n",
+   "tests": 5,
+   "wall_informational": 0.2
+  }
+ },
+ "process": "lean",
+ "reported_modules": [
+  "test_worlds_043",
+  "test_scalesearch16_0390",
+  "test_scripts_043"
+ ],
+ "schema": "brute.test-suite-044.v1"
+}
