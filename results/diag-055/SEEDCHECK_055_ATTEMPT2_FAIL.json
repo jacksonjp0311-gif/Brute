@@ -1,0 +1,718 @@
+{
+ "schema": "brute.seedcheck.v52",
+ "v0520_ranges": {
+  "target/scale20t": [
+   12250001,
+   12250006
+  ],
+  "target/compat20t": [
+   12270001,
+   12270006
+  ],
+  "smoke": [
+   12290001,
+   12290006
+  ]
+ },
+ "prior_files": [
+  "PLAN.json",
+  "BRUTE_PLAN_002.json",
+  "BRUTE_PLAN_003.json",
+  "BRUTE_PLAN_004.json",
+  "BRUTE_PLAN_005.json",
+  "BRUTE_PLAN_006.json",
+  "BRUTE_PLAN_007.json",
+  "BRUTE_PLAN_008.json",
+  "BRUTE_PLAN_009.json",
+  "BRUTE_PLAN_010.json",
+  "BRUTE_PLAN_011.json",
+  "BRUTE_PLAN_012.json",
+  "BRUTE_PLAN_013.json",
+  "BRUTE_PLAN_014.json",
+  "BRUTE_PLAN_015.json",
+  "BRUTE_PLAN_016.json",
+  "BRUTE_PLAN_017.json",
+  "BRUTE_PLAN_018.json",
+  "BRUTE_PLAN_019.json",
+  "BRUTE_PLAN_020.json",
+  "BRUTE_PLAN_021.json",
+  "BRUTE_PLAN_022.json",
+  "BRUTE_PLAN_023.json",
+  "BRUTE_PLAN_024.json",
+  "BRUTE_PLAN_025.json",
+  "BRUTE_PLAN_025_A1.json",
+  "BRUTE_PLAN_025_A2.json",
+  "BRUTE_PLAN_026.json",
+  "BRUTE_PLAN_027.json",
+  "BRUTE_PLAN_028.json",
+  "BRUTE_PLAN_029.json",
+  "BRUTE_PLAN_029_A1.json",
+  "BRUTE_PLAN_030.json",
+  "BRUTE_PLAN_031.json",
+  "BRUTE_PLAN_032.json",
+  "BRUTE_PLAN_033.json",
+  "BRUTE_PLAN_034.json",
+  "BRUTE_PLAN_035.json",
+  "BRUTE_PLAN_036.json",
+  "BRUTE_PLAN_037.json",
+  "BRUTE_PLAN_038.json",
+  "BRUTE_PLAN_039.json",
+  "BRUTE_PLAN_040.json",
+  "BRUTE_PLAN_041.json",
+  "BRUTE_PLAN_042.json",
+  "BRUTE_PLAN_043.json",
+  "BRUTE_PLAN_044.json",
+  "BRUTE_PLAN_045.json",
+  "BRUTE_PLAN_046.json",
+  "BRUTE_PLAN_047.json",
+  "BRUTE_PLAN_048.json",
+  "BRUTE_PLAN_049.json",
+  "BRUTE_PLAN_050.json",
+  "BRUTE_PLAN_051.json",
+  "BRUTE_PLAN_052.json",
+  "BRUTE_PLAN_053.json",
+  "BRUTE_PLAN_054.json",
+  "BRUTE_PLAN_054a.json"
+ ],
+ "prior_range_count": 374,
+ "rules_declared_before_scan": [
+  "J (cpu_jiffies, smoke only)",
+  "K (refused negative_controls probe in a SEEDCHECK file)",
+  "L (055 smoke-range token in study-055 own tooling source; #183, after attempt 1)"
+ ],
+ "pairwise_overlaps": [],
+ "prior_overlaps": [],
+ "token_scan": {
+  "files_scanned": 2729,
+  "gz_files_decompressed": 187,
+  "standalone_tokens_in_055_ranges": [
+   [
+    "experiments/brute_study_055.py",
+    12290001
+   ],
+   [
+    "experiments/brute_study_055.py",
+    12290003
+   ],
+   [
+    "results/RESEARCH_LEDGER.jsonl",
+    12290001
+   ],
+   [
+    "results/RESEARCH_LEDGER.jsonl",
+    12290003
+   ],
+   [
+    "scripts/api_checks_055.py",
+    12290003
+   ],
+   [
+    "scripts/prefreeze_smoke_055.py",
+    12290001
+   ],
+   [
+    "scripts/prefreeze_smoke_055.py",
+    12290003
+   ],
+   [
+    "tests/test_scripts_055.py",
+    12250001
+   ],
+   [
+    "tests/test_scripts_055.py",
+    12250006
+   ],
+   [
+    "tests/test_scripts_055.py",
+    12270001
+   ],
+   [
+    "tests/test_scripts_055.py",
+    12270006
+   ],
+   [
+    "tests/test_scripts_055.py",
+    12290001
+   ],
+   [
+    "tests/test_scripts_055.py",
+    12290004
+   ]
+  ],
+  "occurrences_any_in_055_ranges": 28,
+  "standalone_11_12_prefix_token_count": 10043,
+  "rule_j": [
+   {
+    "file": "experiments/brute_study_055.py",
+    "token": 12290001,
+    "ranges": [
+     "smoke"
+    ],
+    "smoke_only": true,
+    "hits": [
+     {
+      "line": 17,
+      "paths": [],
+      "allowed": false
+     }
+    ],
+    "allowed": false
+   },
+   {
+    "file": "experiments/brute_study_055.py",
+    "token": 12290003,
+    "ranges": [
+     "smoke"
+    ],
+    "smoke_only": true,
+    "hits": [
+     {
+      "line": 17,
+      "paths": [],
+      "allowed": false
+     }
+    ],
+    "allowed": false
+   },
+   {
+    "file": "results/RESEARCH_LEDGER.jsonl",
+    "token": 12290001,
+    "ranges": [
+     "smoke"
+    ],
+    "smoke_only": true,
+    "hits": [
+     {
+      "line": 1083,
+      "paths": [],
+      "allowed": false
+     }
+    ],
+    "allowed": false
+   },
+   {
+    "file": "results/RESEARCH_LEDGER.jsonl",
+    "token": 12290003,
+    "ranges": [
+     "smoke"
+    ],
+    "smoke_only": true,
+    "hits": [
+     {
+      "line": 1083,
+      "paths": [],
+      "allowed": false
+     }
+    ],
+    "allowed": false
+   },
+   {
+    "file": "scripts/api_checks_055.py",
+    "token": 12290003,
+    "ranges": [
+     "smoke"
+    ],
+    "smoke_only": true,
+    "hits": [
+     {
+      "line": 8,
+      "paths": [],
+      "allowed": false
+     },
+     {
+      "line": 41,
+      "paths": [],
+      "allowed": false
+     }
+    ],
+    "allowed": false
+   },
+   {
+    "file": "scripts/prefreeze_smoke_055.py",
+    "token": 12290001,
+    "ranges": [
+     "smoke"
+    ],
+    "smoke_only": true,
+    "hits": [
+     {
+      "line": 3,
+      "paths": [],
+      "allowed": false
+     }
+    ],
+    "allowed": false
+   },
+   {
+    "file": "scripts/prefreeze_smoke_055.py",
+    "token": 12290003,
+    "ranges": [
+     "smoke"
+    ],
+    "smoke_only": true,
+    "hits": [
+     {
+      "line": 4,
+      "paths": [],
+      "allowed": false
+     }
+    ],
+    "allowed": false
+   },
+   {
+    "file": "tests/test_scripts_055.py",
+    "token": 12250001,
+    "ranges": [
+     "target/scale20t"
+    ],
+    "smoke_only": false,
+    "hits": [
+     {
+      "line": 11,
+      "paths": [],
+      "allowed": false
+     },
+     {
+      "line": 32,
+      "paths": [],
+      "allowed": false
+     },
+     {
+      "line": 33,
+      "paths": [],
+      "allowed": false
+     }
+    ],
+    "allowed": false
+   },
+   {
+    "file": "tests/test_scripts_055.py",
+    "token": 12250006,
+    "ranges": [
+     "target/scale20t"
+    ],
+    "smoke_only": false,
+    "hits": [
+     {
+      "line": 11,
+      "paths": [],
+      "allowed": false
+     }
+    ],
+    "allowed": false
+   },
+   {
+    "file": "tests/test_scripts_055.py",
+    "token": 12270001,
+    "ranges": [
+     "target/compat20t"
+    ],
+    "smoke_only": false,
+    "hits": [
+     {
+      "line": 11,
+      "paths": [],
+      "allowed": false
+     },
+     {
+      "line": 33,
+      "paths": [],
+      "allowed": false
+     }
+    ],
+    "allowed": false
+   },
+   {
+    "file": "tests/test_scripts_055.py",
+    "token": 12270006,
+    "ranges": [
+     "target/compat20t"
+    ],
+    "smoke_only": false,
+    "hits": [
+     {
+      "line": 11,
+      "paths": [],
+      "allowed": false
+     }
+    ],
+    "allowed": false
+   },
+   {
+    "file": "tests/test_scripts_055.py",
+    "token": 12290001,
+    "ranges": [
+     "smoke"
+    ],
+    "smoke_only": true,
+    "hits": [
+     {
+      "line": 27,
+      "paths": [],
+      "allowed": false
+     }
+    ],
+    "allowed": false
+   },
+   {
+    "file": "tests/test_scripts_055.py",
+    "token": 12290004,
+    "ranges": [
+     "smoke"
+    ],
+    "smoke_only": true,
+    "hits": [
+     {
+      "line": 27,
+      "paths": [],
+      "allowed": false
+     }
+    ],
+    "allowed": false
+   }
+  ],
+  "rule_k": [
+   {
+    "file": "experiments/brute_study_055.py",
+    "token": 12290001,
+    "seedcheck_file": false,
+    "paths": [],
+    "allowed": false
+   },
+   {
+    "file": "experiments/brute_study_055.py",
+    "token": 12290003,
+    "seedcheck_file": false,
+    "paths": [],
+    "allowed": false
+   },
+   {
+    "file": "results/RESEARCH_LEDGER.jsonl",
+    "token": 12290001,
+    "seedcheck_file": false,
+    "paths": [],
+    "allowed": false
+   },
+   {
+    "file": "results/RESEARCH_LEDGER.jsonl",
+    "token": 12290003,
+    "seedcheck_file": false,
+    "paths": [],
+    "allowed": false
+   },
+   {
+    "file": "scripts/api_checks_055.py",
+    "token": 12290003,
+    "seedcheck_file": false,
+    "paths": [],
+    "allowed": false
+   },
+   {
+    "file": "scripts/prefreeze_smoke_055.py",
+    "token": 12290001,
+    "seedcheck_file": false,
+    "paths": [],
+    "allowed": false
+   },
+   {
+    "file": "scripts/prefreeze_smoke_055.py",
+    "token": 12290003,
+    "seedcheck_file": false,
+    "paths": [],
+    "allowed": false
+   },
+   {
+    "file": "tests/test_scripts_055.py",
+    "token": 12250001,
+    "seedcheck_file": false,
+    "paths": [],
+    "allowed": false
+   },
+   {
+    "file": "tests/test_scripts_055.py",
+    "token": 12250006,
+    "seedcheck_file": false,
+    "paths": [],
+    "allowed": false
+   },
+   {
+    "file": "tests/test_scripts_055.py",
+    "token": 12270001,
+    "seedcheck_file": false,
+    "paths": [],
+    "allowed": false
+   },
+   {
+    "file": "tests/test_scripts_055.py",
+    "token": 12270006,
+    "seedcheck_file": false,
+    "paths": [],
+    "allowed": false
+   },
+   {
+    "file": "tests/test_scripts_055.py",
+    "token": 12290001,
+    "seedcheck_file": false,
+    "paths": [],
+    "allowed": false
+   },
+   {
+    "file": "tests/test_scripts_055.py",
+    "token": 12290004,
+    "seedcheck_file": false,
+    "paths": [],
+    "allowed": false
+   }
+  ],
+  "rule_l": [
+   {
+    "file": "experiments/brute_study_055.py",
+    "token": 12290001,
+    "ranges": [
+     "smoke"
+    ],
+    "smoke_only": true,
+    "own_study_source": true,
+    "allowed": true
+   },
+   {
+    "file": "experiments/brute_study_055.py",
+    "token": 12290003,
+    "ranges": [
+     "smoke"
+    ],
+    "smoke_only": true,
+    "own_study_source": true,
+    "allowed": true
+   },
+   {
+    "file": "results/RESEARCH_LEDGER.jsonl",
+    "token": 12290001,
+    "ranges": [
+     "smoke"
+    ],
+    "smoke_only": true,
+    "own_study_source": false,
+    "allowed": false
+   },
+   {
+    "file": "results/RESEARCH_LEDGER.jsonl",
+    "token": 12290003,
+    "ranges": [
+     "smoke"
+    ],
+    "smoke_only": true,
+    "own_study_source": false,
+    "allowed": false
+   },
+   {
+    "file": "scripts/api_checks_055.py",
+    "token": 12290003,
+    "ranges": [
+     "smoke"
+    ],
+    "smoke_only": true,
+    "own_study_source": true,
+    "allowed": true
+   },
+   {
+    "file": "scripts/prefreeze_smoke_055.py",
+    "token": 12290001,
+    "ranges": [
+     "smoke"
+    ],
+    "smoke_only": true,
+    "own_study_source": true,
+    "allowed": true
+   },
+   {
+    "file": "scripts/prefreeze_smoke_055.py",
+    "token": 12290003,
+    "ranges": [
+     "smoke"
+    ],
+    "smoke_only": true,
+    "own_study_source": true,
+    "allowed": true
+   },
+   {
+    "file": "tests/test_scripts_055.py",
+    "token": 12250001,
+    "ranges": [
+     "target/scale20t"
+    ],
+    "smoke_only": false,
+    "own_study_source": true,
+    "allowed": false
+   },
+   {
+    "file": "tests/test_scripts_055.py",
+    "token": 12250006,
+    "ranges": [
+     "target/scale20t"
+    ],
+    "smoke_only": false,
+    "own_study_source": true,
+    "allowed": false
+   },
+   {
+    "file": "tests/test_scripts_055.py",
+    "token": 12270001,
+    "ranges": [
+     "target/compat20t"
+    ],
+    "smoke_only": false,
+    "own_study_source": true,
+    "allowed": false
+   },
+   {
+    "file": "tests/test_scripts_055.py",
+    "token": 12270006,
+    "ranges": [
+     "target/compat20t"
+    ],
+    "smoke_only": false,
+    "own_study_source": true,
+    "allowed": false
+   },
+   {
+    "file": "tests/test_scripts_055.py",
+    "token": 12290001,
+    "ranges": [
+     "smoke"
+    ],
+    "smoke_only": true,
+    "own_study_source": true,
+    "allowed": true
+   },
+   {
+    "file": "tests/test_scripts_055.py",
+    "token": 12290004,
+    "ranges": [
+     "smoke"
+    ],
+    "smoke_only": true,
+    "own_study_source": true,
+    "allowed": true
+   }
+  ],
+  "allowed": [
+   true,
+   true,
+   false,
+   false,
+   true,
+   true,
+   true,
+   false,
+   false,
+   false,
+   false,
+   true,
+   true
+  ]
+ },
+ "all_tokens_allowed": false,
+ "negative_controls": [
+  [
+   "target",
+   12299001,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   12299001,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   12290001,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   12250001,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   12250007,
+   "scale20t",
+   "refused"
+  ],
+  [
+   "target",
+   12270001,
+   "scale20t",
+   "refused"
+  ],
+  [
+   "target",
+   12270007,
+   "compat20t",
+   "refused"
+  ],
+  [
+   "target",
+   12250001,
+   "compat20t",
+   "refused"
+  ],
+  [
+   "target",
+   12170001,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   12190001,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   12290007,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   12289999,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   12249999,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   12310001,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   12210001,
+   null,
+   "refused"
+  ]
+ ],
+ "cases_by_key": {
+  "scale20t": 6,
+  "compat20t": 6
+ },
+ "total_cases": 12,
+ "eps_by_key": {
+  "scale20t": 0.0,
+  "compat20t": 0.0
+ },
+ "PASS": false
+}
