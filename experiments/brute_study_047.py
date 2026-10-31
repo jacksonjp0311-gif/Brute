@@ -48,7 +48,7 @@ N_DECLARED=dict(W.SIZES)
 KEY_ORDER=('scale16','control','scale20')
 ARMS=('API16D','API16D_b','A16_N','API16');D_ARMS=('API16D','API16D_b');WALL_ARMS=('A16_N','API16')
 FRESH_ARMS={'scale16':('API16D','A16_N'),'control':('API16D','A16_N'),'scale20':('API16D',)}
-CUT_D=False   # pre-freeze cut rule (plan runtime_estimate): set True in the pre-run deviation if the projection exceeds 3600 s
+CUT_D=True    # pre-freeze cut rule (plan runtime_estimate): set True in the pre-run deviation if the projection exceeds 3600 s
 CAP_S=9.0;BUDGET_S=240.0;GUARD_CASE_S=C16D.GUARD_CASE_S;GUARD_CALL_S=C16D.GUARD_CALL_S
 Q_BOUND={'A16_N':CAP_S+1.5,'API16':CAP_S+1.5,'API16D':GUARD_CALL_S,'API16D_b':GUARD_CALL_S}
 check(S16.QUERY_S14==9.0 and S16.BUDGET14==240 and S16.K14==128 and C16.A16_MAX_BOUND==16 and C16D.A16D_MAX_BOUND==20
