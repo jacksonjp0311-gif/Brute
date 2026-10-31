@@ -1,5 +1,26 @@
 # Brute changelog
 
+## v0.37.0: an apartness-clique SAT encoding (A15) and a per-size cube split on capped queries (A15_cube) for clean active identification at 16 and 14 states and a one-bit-observation family (study BRUTE-0370-APART-CUBE-040, LEAN process)
+
+**7 of 12 gates pass (G10, GREP15, GS_ref, G_PROC, G_RT, G_recount, G_sound). GC15_headline FAILS on c and d (a and b pass); GFAM15, GINC15, GQB15 and GTI FAIL. Secondary GCAP15 and GSYM15 reported only.** All 42 cases (126 jobs) ran once and were sealed (374.1 s of 1800 s). *Observed*
+
+### Timeline (EDT, 2026-10-30)
+
+- Plan `401172b` (preregistration ledger `a9219a1`, 23:08:30); build authorization (ledger `43b9592`, 23:08:41); seedcheck `7d4317b` (ledger `7de9f3a`); scalesearch15 `349a77b`; worlds `69eaf29`; common `117af5e`; runner `aba4b63`; tooling `a1e9563`, `c01b646`, `67d3960`; tests `610a592`, `7c51f35`; pre-freeze sealed-smoke gates `d80c798` (projection 391.6 s, no amendment); #152 `06c41d0`; source freeze `9001029` (ledger `efe3520`).
+- Run start (ledger `f0cf26d`, 23:37:20); runner to about 23:43:37; snapshots `66b9a3a`, `c2f4f3a`; seal `b1da397` (ledger `c14e217`); recount `68bda8d`; reference `fc93389` (finished during an agent interruption, checked complete, not rerun); tests `1a092da`; gates `bfae53d`; #153 `798a93e`.
+
+### Results (ID / IDF / AMB / WRONG / IDU per 12 cases; Wilson 95% in GATES_040.json)
+
+| family | A15_cube | A15 | A14 |
+|---|---|---|---|
+| scale16 | 3/4/0/0/5 | 1/2/0/0/9 | 2/2/0/0/8 |
+| scale14 | 8/1/0/0/3 | 6/1/0/0/5 | 8/1/0/0/3 |
+| lowobs12 | 0/0/0/0/12 | 0/0/0/0/12 | 0/0/0/0/12 |
+| control (6) | 6/0/0/0/0 | 6/0/0/0/0 | 6/0/0/0/0 |
+
+- b: ID+IDF(A15_cube, scale16) 7/12 [0.32, 0.81] (bar 4). c: ID(A15_cube)-ID(A14) scale16 +0.083 [-0.167, 0.333] (bar +0.25, CI lower > 0). d: capped cases 9/12 [0.47, 0.91] (bar 6). GREP15 scale14 9 vs 9 [0.47, 0.91]. GFAM15 0/12 [0, 0.24]. GINC15 3/60. GQB15 max 11.014 s. *Observed*
+- Branches fired (Inferred): GINC15 failed, so an encoding audit, not a new arm; GFAM15 failed while b passed, so the gain is family-specific. Deviations #152, #153.
+
 ## v0.36.0: one incremental SAT instance per candidate size (A14) for clean active identification at 12, 14 and 16 states plus a second world family (study BRUTE-0360-CLEAN-SCALE-039, LEAN process)
 
 **12 of 13 gates pass (GFAM14, GREP14, GCH14, GINC14, GQB14, G_sound, G10, GS_ref, GTI, G_PROC, G_RT, G_recount). GC14_headline FAILS on b and c (a and d pass). Secondary GK14 and GACT14 reported only.** All 54 cases (162 jobs) ran once and were sealed (309.6 s of 1800 s). *Observed*

@@ -1,49 +1,48 @@
 {
-  "version": "0.36.0",
+  "version": "0.37.0",
   "name": "Brute",
   "forked_from": "BGR v0.90.0 (tag bgr-v0.90.0-fork)",
-  "mission": "general intelligence research toward a geometric reasoning system; this release scales the clean (B = 0) active-identification line with one incremental SAT instance per candidate size (A14) to 14 and 16 states and a second world family (permutation automata); LEAN process: 54 cases, 30 min cap; not general intelligence",
-  "study": "BRUTE-0360-CLEAN-SCALE-039",
-  "preregistration": "experiments/BRUTE_PLAN_039.json",
-  "preregistration_commit": "d2ebf63",
-  "process": "LEAN (standing go t133s553, ledger 76b30d5; build authorization ledger 0f90554, 22:11:22 EDT): plan locked before data; seedcheck before any seed (a7212f9, ledger 2587d4c); independent recount; CNF reference audit of A14 on scale14 with 20 mutations; pre-freeze sealed-smoke gates test (3979ecb; projection 312.1 s, no runtime amendment); failures published; one fresh-clone verify plus tests",
-  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_039.json",
-  "source_freeze_commit": "afc8eff",
-  "release_freeze": "none: release tooling is inside the source freeze (deviation #126 item 8, kept by #128 to #151)",
-  "run_start": "22:36:33 EDT 2026-10-30 (ledger aef5112); runner pid 556558, 8 workers",
-  "run_end": "complete 54/54 cases, 162/162 jobs, 309.6 s of 1800 s, normal exit about 22:41:47 EDT (ledger 33608a0); 2 checkpoint snapshots pushed (0d20c04, 963501f); nothing relaunched; resume clause not approved and not used",
-  "seal_commit": "44f79e3",
-  "gates_commit": "12ab5d2",
-  "results_dir": "results/study-039",
+  "mission": "general intelligence research toward a geometric reasoning system; this release tests an apartness-clique SAT encoding (A15) and a per-size cube split on capped queries (A15_cube) for clean (B = 0) active identification at 16 and 14 states and a one-bit-observation family (lowobs12); LEAN process: 42 cases, 30 min cap; not general intelligence",
+  "study": "BRUTE-0370-APART-CUBE-040",
+  "preregistration": "experiments/BRUTE_PLAN_040.json",
+  "preregistration_commit": "401172b",
+  "process": "LEAN (standing go t133s553, ledger 76b30d5; preregistration ledger a9219a1, build authorization ledger 43b9592, 23:08:41 EDT): plan locked before data; seedcheck before any seed (7d4317b, ledger 7de9f3a); independent recount; CNF reference audit of A15_cube on scale14 with 20 mutations; pre-freeze sealed-smoke gates test (d80c798; projection 391.6 s, no runtime amendment); GINC15 failure observed and recorded before the freeze (#152 item 8), not tuned; failures published; one fresh-clone verify plus tests",
+  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_040.json",
+  "source_freeze_commit": "9001029",
+  "release_freeze": "none: release tooling is inside the source freeze (deviation #126 item 8, kept by #128 to #153)",
+  "run_start": "23:37:20 EDT 2026-10-30 (ledger f0cf26d); 8 workers",
+  "run_end": "complete 42/42 cases, 126/126 jobs, 374.1 s of 1800 s, normal exit about 23:43:37 EDT (ledger c14e217); 2 checkpoint snapshots pushed (66b9a3a, c2f4f3a); nothing relaunched; resume clause not approved and not used",
+  "seal_commit": "b1da397",
+  "gates_commit": "bfae53d",
+  "results_dir": "results/study-040",
   "case_count": {
-    "sealed": 54,
-    "expected": 54,
+    "sealed": 42,
+    "expected": 42,
     "complete": true
   },
   "gates_passed": [
     "G10",
-    "GCH14",
-    "GFAM14",
-    "GINC14",
-    "GQB14",
-    "GREP14",
+    "GREP15",
     "GS_ref",
-    "GTI",
     "G_PROC",
     "G_RT",
     "G_recount",
     "G_sound"
   ],
   "gates_failed": [
-    "GC14_headline"
+    "GC15_headline",
+    "GFAM15",
+    "GINC15",
+    "GQB15",
+    "GTI"
   ],
   "gates_not_exercised": [],
   "secondary": {
-    "GACT14": null,
-    "GK14": null
+    "GCAP15": null,
+    "GSYM15": null
   },
-  "headline": "12 of 13 gates pass; the headline GC14 FAILS on b and c (a and d pass). a: recounted WRONG 0 for A14 and A14_k64 on all 54 cases. b: ID+IDF(A14, scale16) 0/12 Wilson [0.00,0.24] (bar 4): every scale16 A14 case IDU with the n = 16 rival query capped (K_spent 0). c: ID(A14)-ID(A9) scale16 -0.083 [-0.25,0.00] (bar +0.25). d: ID+IDF(A14, scale14) 8/12 [0.39,0.86] (bar 6). GFAM14 perm12 12/12 ID [0.76,1.00] (A14 used 0.67 actions on average: nearly passive). GREP14 scale12 12 vs A9 11. GCH14 pooled ID(A14)-ID(A14_random) +0.292 [0.125,0.458]. GINC14 307 verdicts 0 mismatches. GQB14 max 9.563 s (bar 10.5). G_RT 309.6 s of 1800 s. Branches fired: caps dominant at 16 states (per-size cube split or symmetry-free fixed-start encoding); d passes and b fails, so 14 states is the current ceiling of this encoding",
-  "api": "unchanged: brute.certify/14 is the latest API; A14 is brute/scalesearch14 (no API gate in plan 039)",
+  "headline": "7 of 12 gates pass (G10, GREP15, GS_ref, G_PROC, G_RT, G_recount, G_sound); GC15_headline FAILS on c and d (a and b pass), GFAM15, GINC15, GQB15 and GTI FAIL. a: recounted WRONG 0 for A15 and A15_cube on all 42 cases. b: ID+IDF(A15_cube, scale16) 7/12 Wilson [0.32,0.81] (bar 4; A14 4/12 [0.14,0.61]). c: paired ID(A15_cube)-ID(A14) scale16 +0.083 seed-bootstrap [-0.167,0.333] (bar +0.25, CI lower > 0). d: A15_cube capped cases on scale16 9/12 [0.47,0.91] (bar 6; literal reading, #152 item 4); its cube split made 153 calls there (0 SAT, 144 UNSAT, 9 capped) and rescued 4 capped cases. GREP15 scale14 9 vs A14 9. GFAM15 lowobs12 0/12 [0,0.24] for every arm (exercised: 14.8 extra actions). GINC15 3/60 sealed-039 checks unknown where A14 decided (caps, no contradicting verdict). GQB15 max call 11.014 s (bar 10.5). G_RT 374.1 s of 1800 s. Branches fired: GINC15 failed -> encoding audit, not a new arm; GFAM15 failed while b passed -> gain family-specific",
+  "api": "unchanged: brute.certify/14 is the latest API; A15 and A15_cube are brute/scalesearch15 (no API gate in plan 040)",
   "deviations": [
     "docs/research/BRUTE_DEVIATIONS_026_123.md",
     "docs/research/BRUTE_DEVIATIONS_026_124.md",
@@ -71,7 +70,9 @@
     "docs/research/BRUTE_DEVIATIONS_038_148.md",
     "docs/research/BRUTE_DEVIATIONS_038_149.md",
     "docs/research/BRUTE_DEVIATIONS_039_150.md",
-    "docs/research/BRUTE_DEVIATIONS_039_151.md"
+    "docs/research/BRUTE_DEVIATIONS_039_151.md",
+    "docs/research/BRUTE_DEVIATIONS_040_152.md",
+    "docs/research/BRUTE_DEVIATIONS_040_153.md"
   ],
-  "verify": "python scripts/study039_storage.py restore && PYTHONPATH=. python scripts/verify_release_0360.py"
+  "verify": "python scripts/study040_storage.py restore && PYTHONPATH=. python scripts/verify_release_0370.py"
 }
