@@ -1,0 +1,96 @@
+{
+ "schema": "brute.plan.v1",
+ "study": "BRUTE-0440-CERTIFY16D-SCALE20-047",
+ "version_under_test": "0.44.0",
+ "parent_study": "BRUTE-0430-CERTIFY16-046",
+ "status": "preregistered (plan only; no build code, no data for 047)",
+ "branch_taken": "plan 046 next_if_fail, first clause (Exact, GATES_046 71995fb, ledger ec4c702): GAPI16_replay fails (same 17/18 [0.742, 0.990]; scale16 11130006 IDU vs sealed ID with identical words, n_min 16 and model, capped calls 5 vs 3). The clause reads: the wrapper is not faithful; fix fidelity before anything else and re-plan. GAPI16_fresh also failed on count (API16 ID+IDF 6/12 [0.254, 0.746]; A16_N 7/12; agree 11/12; WRONG 0). The maintainer asked for an ambitious plan: fix fidelity AND, if feasible, add the scale-20 step that plan 046 next_if_pass would have led to",
+ "brand": "charcoal and sage; no purple, neon, emoji or gold",
+ "question": "Is the 046 replay difference caused by the wall-clock per-call cap rather than by the wrapper? Does a new deterministic-cap interface brute.certify/16d (each call capped by a fixed conflict count rather than wall time) make the A16 declared-N identifier byte-reproducible and faithful? And does it stay sound, and decide cases, on fresh 16-state worlds and a first set of fresh 20-state worlds?",
+ "hypotheses": {
+  "H1": "cap nondeterminism, not wrapper infidelity: when frozen A16_N replays its own sealed traces, its labels change only on cases with at least one capped call; API16 and A16_N agree on every replay where neither side hits the cap",
+  "H2": "with a fixed per-call conflict cap, two independent passes of certify/16d over the same cases give byte-identical records (labels, models, words, capped counts)",
+  "H3": "certify/16d is faithful: driving it observation by observation over its own recorded traces reproduces every record exactly, and on sealed 045/046 traces with no capped call it gives the same label, n_min and model as the sealed record",
+  "H4": "on fresh scale16 worlds certify/16d issues no WRONG certificate and decides at least as many cases as A16_N decided in 046 (7/12)",
+  "H5": "scale-20 (exploratory): at family_bound 20 and the same per-case budget, certify/16d stays sound (WRONG 0) on fresh 20-state worlds; the decided count is reported, not predicted"
+ },
+ "design": {
+  "api": "new file brute/api/certify16d.py (additive; certify16.py, certify14.py and every frozen file untouched, imported only): Certifier16D(initial, num_actions, family_bound<=20, search='a16d', conflict_cap=C, budget_conflicts=B) with the certify/16 methods (current, observe, propose, result, close) and a one-shot certify16d(...). The A16 loop is unchanged; only the cap changes: each SAT call stops after C conflicts (a fixed number, checked chunk by chunk with no clock), and the case budget is B total conflicts. A wall-clock safety stop (30 s per call, 600 s per case) is kept only as a host guard. If it fires, the record is flagged 'wall_guard' and counts against GDET. Returns {'api': 'brute.certify/16d', 'label', 'model', 'n_min', 'family_bound', 'calls', 'conflicts', 'capped', 'wall_guard'}. Host-agnostic as in 046",
+  "cap_rule": "C and B are fixed BEFORE the source freeze by a declared rule. C = the median number of conflicts the frozen A16_N solver completes in 9.0 s on the pre-freeze smoke range (11570001-11570006 only, never gated), rounded down to a multiple of the chunk size. B = 240/9 x C. Both values are ledgered with the smoke result. No sealed or held-out data is used to choose them",
+  "scale20": "new world family scale20 (20-state reachable minimal machines, 3 actions, 2 output bits, generated exactly as scale16 with n=20). It lives in a new generator file. The frozen generators are untouched. Declared bound N=20. A16_MAX_BOUND in certify16 is not changed; certify16d has its own bound of 20",
+  "arms": {
+   "API16D": "certify/16d driven only through its public interface (conflict cap C, budget B, K=128, declared N=16 on scale16/control and N=20 on scale20)",
+   "API16D_b": "the same arm run as a second independent pass in a separate process with a different job order (determinism check only)",
+   "A16_N": "frozen brute/scalesearch16 study arm, 046 settings (wall cap 9.0 s, 240 s), on fresh scale16 and control only (reference)",
+   "API16": "frozen certify/16 (046 wall cap), used in the part-a replays only"
+  },
+  "parts": {
+   "a_diagnose": "replays, reported and classified rather than gated, except GFID_wall: (a1) frozen A16_N replays the 18 sealed 045 A16_N traces (self-replay); (a2) API16 replays the 18 sealed 046 A16_N fresh records; (a3) API16D replays the 18 sealed 045 and 18 sealed 046 A16_N traces. Each difference is put in one class. 'cap-timing': same words and model, only the capped counts and the label differ, with a capped call on at least one side. 'word-divergence': the words differ after a capped call. 'infidelity': any difference with no capped call on either side",
+   "b_determinism": "18 fresh cases (12 scale16, 6 control) run by API16D and API16D_b",
+   "c_fresh": "the same 18 fresh cases run by A16_N once (reference arm). The API16D records are those from part b",
+   "d_scale20": "12 fresh scale20 worlds, API16D only, run once"
+  },
+  "claim": "certify/16d ID/IDF is exact conditional on noise-free readings and true size <= the declared N (family_bound); reason (Inferred): a larger machine can copy the true machine on every visited state, so some size bound is inherent",
+  "unchanged": "encoding, clauses, cube split, rival query, distinguishing-word rule, K, labels and recount rule are those of 043/045/046"
+ },
+ "cases": {
+  "replay_045": 18,
+  "replay_046": 18,
+  "scale16": 12,
+  "control": 6,
+  "scale20": 12,
+  "fresh_jobs": "18 x 3 arms (API16D, API16D_b, A16_N) + 12 scale20 = 66",
+  "replay_jobs": "18 (a1) + 18 (a2) + 36 (a3) = 72",
+  "declared_before_data": true
+ },
+ "heldout_ranges": {
+  "scale16": "11430001-11430012",
+  "control": "11470001-11470006",
+  "scale20": "11490001-11490012",
+  "note": "the candidate prefixes 1143, 1147 and 1149 had 0 word-bounded tokens of the form prefix+00NN in tracked text at plan time (Observed, git grep, 2026-10-31 EDT). seedcheck_047 scans every tracked file, .gz archives included, before any seed is used. Any hit moves that range to the next unused odd prefix (1151, 1153), declared in the pre-run deviation"
+ },
+ "smoke_range": "11570001-11570006 (pre-freeze smoke and cap calibration only; never gated)",
+ "criteria": {
+  "GDET": "headline 1, determinism: API16D and API16D_b give byte-identical canonical records (label, n_min, model, every proposed word, per-call conflicts and capped flags) on 18/18 fresh cases, and wall_guard fires 0 times",
+  "GFID16D": "headline 2, fidelity: (i) API16D driven observation by observation over its own part-b traces reproduces 18/18 records exactly; and (ii) in part a3, every sealed trace with no capped call in the sealed record or the replay gets the same label, n_min and canonical model (0 infidelity-class differences)",
+  "GFID_wall": "headline 3, diagnosis of 046: in parts a1 and a2, 0 differences fall in the infidelity class (cap-timing and word-divergence differences are counted and published, not failed)",
+  "GAPI16D_fresh": "headline 4: fresh scale16: API16D WRONG = 0 and API16D ID+IDF >= 7/12 (the A16_N 046 count; Wilson 95% CI reported). API16D and A16_N agreement is reported. A capped unknown on one side is not a WRONG",
+  "GS20_sound": "headline 5 (scale-20): API16D WRONG = 0 on the 12 fresh scale20 worlds, and every decided scale20 case passes the CNF reference audit at bound 20. ID+IDF is reported with its CI, ungated. If part d is cut under the runtime rule, this gate is 'not run' (not a pass)",
+  "GAPI16_compat": "certify/16 and certify/14 outputs unchanged: the frozen certify16 and certify14 test modules pass, and the 046 compat sample is reproduced byte for byte",
+  "GHOST16D": "host-agnostic: a static check of brute/api/certify16d.py and anything it newly imports (including the scale20 generator if it is under brute/) finds no os, subprocess, threading, multiprocessing, socket, time-of-day or file I/O; it runs with no network",
+  "G10": "API16D, API16D_b and A16_N each ID on the 6 fresh controls",
+  "GQB22": "A16_N max logged call wall <= 10.5 s; API16D max logged call wall <= 30 s guard (reported with the conflict counts)",
+  "GS_ref": "CNF reference audit (bound 16 or 20) of every decided fresh case in each arm: 0 mismatches, 20 mutations detected",
+  "G_sound": "0 unsound separating words in study and recount; 0 truth inconsistencies",
+  "G_recount": "the independent recount reproduces every fresh label (scale16, control, scale20); 0 mismatches",
+  "GTI": "gated test files pass in a fresh clone (after every needed storage restore, the 045 and 046 raw data included, as documented)",
+  "G_PROC": "ledger order preregistration, build_authorization, seedcheck, cap_calibration, source_freeze, run_start, run_end (all _047), checked as a subsequence",
+  "G_RT": "main run (replays plus fresh) <= 3600 s"
+ },
+ "secondary": {
+  "GREP16d": "A16_N scale16 ID+IDF beside 043 (9/12), 045 (10/12) and 046 (7/12), reported only",
+  "GCAP_class": "counts of the cap-timing, word-divergence and infidelity classes in parts a1-a3, reported only",
+  "GS20_rate": "API16D scale20 ID+IDF with Wilson CI and its wall and conflict cost, reported only",
+  "GAPI_cost": "API16D conflicts and wall against A16_N, reported only"
+ },
+ "gate_dependency_rule": "each gate is scored from its own counts. GAPI16D_fresh and GS20_sound use the recounted labels if G_recount passes, else the study labels with the failure stated. GS20_sound is not run if part d is cut",
+ "what_counts_as_failure": "any gated criterion false. A capped call is unknown, not a failure of soundness. A wall_guard firing is a GDET failure",
+ "freeze_rule": "no file named in the source freeze is edited after the freeze; new behaviour goes in new files or a deviation addendum. C and B are part of the freeze",
+ "runtime_estimate": "Open, set by the pre-freeze LPT projection with 8 workers. Worst case: fresh scale16/control 54 x 240 s / 8 = 1620 s; scale20 12 x 240 s / 8 = 360 s; replays bounded by the sealed walls (045 and 046 A16_N, about 538 s and 655 s summed on scale16, so about 4 x 650 / 8 = 330 s). Total about 2310 s, below 3600 s. Cut rule, declared now: if the pre-freeze worst-case projection is above 3600 s, part d (scale20) is dropped before the freeze in the pre-run deviation, and nothing else is cut",
+ "process": "LEAN (standing go t133s553, ledger 76b30d5). A ledgered build_authorization_047 citing it is required before any code, ledgered BEFORE seedcheck_047. Plan locked before data; seedcheck before seeds; cap calibration on smoke only, ledgered before the freeze; independent recount; CNF reference audit; pre-freeze smoke with the real release verifier chain; one main run, no tuning, no reruns, no relaunch if interrupted (the resume clause is not approved); failures published; one fresh-clone verify plus tests",
+ "next_if_pass": "all headline gates pass: certify/16d becomes the latest certified API (exact conditional on declared N); next, a scale-20 replication with 24 worlds and a noise study at 12 states",
+ "next_if_fail": "GDET fails: the conflict cap is not deterministic on this solver; find the nondeterminism source before anything else. GFID16D fails: the wrapper itself is unfaithful; fix it, ship nothing new. GFID_wall fails (infidelity in a1/a2): certify/16 has a wrapper bug; publish an erratum for v0.43.0. GAPI16D_fresh fails on WRONG: soundness first. GAPI16D_fresh fails on count only: record it; the conflict cap trades decided cases for determinism; re-plan the cap rule. GS20_sound fails: soundness at 20 first; do not scale further",
+ "limitations": [
+  "12 scale16 and 12 scale20 cases give wide CIs",
+  "still needs a declared size N",
+  "clean worlds only; noise and lowobs12 not covered",
+  "a conflict cap makes results host-independent in count, but walls still depend on the host",
+  "scale20 is a first exploratory set: its decided count has no prior to compare against"
+ ],
+ "open_items": [
+  "full N-freedom: Open (045 bounded stop sound but decided 0/12)",
+  "noise at 12 states: Open",
+  "lowobs12 beyond A16: Open",
+  "whether cap-timing fully explains the 046 replay difference: tested here (parts a1-a3)"
+ ]
+}
