@@ -1,20 +1,20 @@
 {
-  "version": "0.39.0",
+  "version": "0.40.0",
   "name": "Brute",
   "forked_from": "BGR v0.90.0 (tag bgr-v0.90.0-fork)",
-  "mission": "general intelligence research toward a geometric reasoning system; this release tests arm A16 (apartness clauses plus the cube split on capped queries, no fixed-colour clique) against frozen A14 on fresh clean 16-state worlds, fresh perm12 worlds and controls, with a hard per-call cap and an AMB-at-stop recount; LEAN process: 30 cases x 2 arms, 30 min cap; not general intelligence",
-  "study": "BRUTE-0390-A16-SCALE16-042",
-  "preregistration": "experiments/BRUTE_PLAN_042.json",
-  "preregistration_commit": "c5cf6bd",
-  "process": "LEAN (standing go t133s553, ledger 76b30d5; preregistration ledger 92c2085, 01:30:47 EDT; erratum 1 29ef4d5, ledger 9bb7b2e (10870058 cpu counter); build authorization ledger 2c1ed4b, 01:32:21 EDT; seedcheck 8247cf7, ledger c0f381b, 01:38:29 EDT): plan locked before data; seedcheck before any seed; hard per-call cap (9 s, SIGKILL 1 s later); independent recount with the AMB-at-stop rule; CNF reference audit of A16 scale16 with 20 mutations; pre-freeze smoke covering every stop kind and the real release verifier chain (e6ea45d; LPT projection 128.2 s, no cut); failures published; one fresh-clone verify plus tests",
-  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_042.json",
-  "source_freeze_commit": "4af660b",
+  "mission": "general intelligence research toward a geometric reasoning system; this release tests arm A16 (unchanged from v0.39.0) against frozen A14 on fresh one-bit-observation 12-state worlds (lowobs12), a fresh replication on clean 16-state worlds and controls, with a hard per-call cap; LEAN process: 30 cases x 2 arms, 30 min cap; not general intelligence",
+  "study": "BRUTE-0400-A16-LOWOBS-043",
+  "preregistration": "experiments/BRUTE_PLAN_043.json",
+  "preregistration_commit": "d9b8538",
+  "process": "LEAN (standing go t133s553, ledger 76b30d5; preregistration ledger 7892e6c, 02:28:04 EDT; build authorization ledger 817d2ac, 02:28:56 EDT; seedcheck 486d6ab FAILED (ledger 9226c54, 02:39:48 EDT: smoke-range cpu counter 10980005), adjudicated by the new check_seeds_043b b0a20c2 PASS (ledger fcffb76, 02:40:31 EDT), deviation #159 item 1): plan locked before data; seedcheck before any seed; hard per-call cap (9 s, SIGKILL 1 s later); independent recount; CNF reference audit of A16 lowobs12 + scale16_rep with 20 mutations; pre-freeze smoke covering every stop kind and the real release verifier chain (65ce3fe; LPT projection 219.4 s, no cut); failures published; one fresh-clone verify plus tests",
+  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_043.json",
+  "source_freeze_commit": "2408c8f",
   "release_freeze": "none: release tooling is inside the source freeze (deviation #126 item 8, kept by #128 to #154)",
-  "run_start": "02:06:30 EDT 2026-10-31 (ledger 405f17b); 8 workers",
-  "run_end": "complete 60/60 arm jobs (30 cases), 240.1 s of 1800 s, normal exit about 02:10:35 EDT (ledger d0e1bd3); 1 checkpoint snapshot pushed (a6603b9); nothing relaunched; resume clause not approved and not used",
-  "seal_commit": "719953c",
-  "gates_commit": "d774d8c",
-  "results_dir": "results/study-042",
+  "run_start": "02:49:04 EDT 2026-10-31 (ledger 4490ba8); 8 workers",
+  "run_end": "complete 60/60 arm jobs (30 cases), 159.7 s of 1800 s, normal exit about 02:51:49 EDT (ledger 340be32); 1 checkpoint snapshot pushed (e7bae0d); nothing relaunched; resume clause not approved and not used",
+  "seal_commit": "122f7a1",
+  "gates_commit": "ccff3bf",
+  "results_dir": "results/study-043",
   "case_count": {
     "sealed_cases": 30,
     "expected_cases": 30,
@@ -24,10 +24,9 @@
   },
   "gates_passed": [
     "G10",
-    "G16",
-    "G16_sem",
-    "GPERM17",
-    "GQB17",
+    "GLO_sem",
+    "GQB18",
+    "GREP16",
     "GS_ref",
     "GTI",
     "G_PROC",
@@ -35,15 +34,17 @@
     "G_recount",
     "G_sound"
   ],
-  "gates_failed": [],
+  "gates_failed": [
+    "GLO"
+  ],
   "gates_not_exercised": [],
   "secondary": {
-    "GPH17": null,
-    "GRR041": null,
-    "GT16": null
+    "GLO_cause": null,
+    "GPH18": null,
+    "GT17": null
   },
-  "headline": "11 of 11 gates pass (G16, G16_sem, GPERM17, GQB17, G_sound, G10, GS_ref, GTI, G_PROC, G_RT, G_recount). G16 PASS: on 12 fresh clean 16-state worlds A16 identified 8/12 [0.39, 0.86] against frozen A14 0/12 [0, 0.24] (gain 8, bar 3; bar ID >= 6). A16 scale16: ID 8, AMB 1, IDU 3, WRONG 0; A14 scale16: AMB 1, IDU 11. GPERM17: on fresh perm12 A16 equals A14 on 11/11 A14 decisions [0.74, 1.00] (A16 12/12 ID, A14 11/12). Controls 6/6 ID both arms. WRONG 0 everywhere; 311 words, 0 unsound. GQB17 max call 9.515 s (bound 10.5 s), 0 hard kills in 1494 calls. GS_ref 9 decided, 0 mismatches, 20/20 mutations. Secondary GT16: call wall A16/A14 0.82 [0.71, 0.95]. G_RT 240.1 s of 1800 s",
-  "api": "unchanged: brute.certify/14 is the latest API; A16 is brute/scalesearch16 (study arm, no API gate in plan 042)",
+  "headline": "10 of 11 gates pass (GREP16, GLO_sem, GQB18, G_sound, G10, GS_ref, GTI, G_PROC, G_RT, G_recount); GLO FAILS. GLO: on 12 fresh one-bit-observation 12-state worlds A16 identified 0/12 [0, 0.24] (ID+IDF), frozen A14 0/12 [0, 0.24] (bar >= 4/12 and gain >= 3). All 24 lowobs arm runs stopped unknown after a call hit the 9.0 s cap, mostly in the first least-model search (A14 12/12 with 0 experiments; A16 7/12 with 0 experiments, at most 16 of K=128 used; longest arm 62.6 s of the 240 s budget). GREP16 PASS: on 12 fresh clean 16-state worlds A16 identified 9/12 [0.47, 0.91] against A14 1/12 [0.01, 0.35] (bar ID >= 6), replicating v0.39.0's 8/12. Controls 6/6 ID both arms. WRONG 0 everywhere; 354 words, 0 unsound. GQB18 max call 9.596 s (bound 10.5 s), 0 hard kills in 1643 calls. GS_ref 10 decided (all scale16_rep), 0 mismatches, 20/20 mutations. Secondary GT17: call wall A16/A14 0.81 [0.72, 0.90]. G_RT 159.7 s of 1800 s",
+  "api": "unchanged: brute.certify/14 is the latest API; A16 is brute/scalesearch16 (study arm, unchanged from v0.39.0; no API gate in plan 043)",
   "deviations": [
     "docs/research/BRUTE_DEVIATIONS_026_123.md",
     "docs/research/BRUTE_DEVIATIONS_026_124.md",
@@ -78,8 +79,10 @@
     "docs/research/BRUTE_DEVIATIONS_041_155.md",
     "docs/research/BRUTE_DEVIATIONS_041_156.md",
     "docs/research/BRUTE_DEVIATIONS_042_157.md",
-    "docs/research/BRUTE_DEVIATIONS_042_158.md"
+    "docs/research/BRUTE_DEVIATIONS_042_158.md",
+    "docs/research/BRUTE_DEVIATIONS_043_159.md",
+    "docs/research/BRUTE_DEVIATIONS_043_160.md"
   ],
-  "verify": "python scripts/study042_storage.py restore && PYTHONPATH=. python scripts/verify_release_0390.py",
-  "verify_note": "the chain check allows one build-authorization back-reference (the 0380a rule, declared before data in #157 item 9); on this tree it passes with 1 exception"
+  "verify": "python scripts/study043_storage.py restore && PYTHONPATH=. python scripts/verify_release_0400.py",
+  "verify_note": "the chain check keeps the 0380a rule (one build-authorization back-reference allowed); on this tree build_authorization_043 names the same commit as preregistration_043, so it passes with 0 exceptions (deviation #159 item 8)"
 }

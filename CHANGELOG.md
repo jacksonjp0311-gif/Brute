@@ -1,5 +1,26 @@
 # Brute changelog
 
+## v0.40.0: arm A16 against frozen A14 on fresh one-bit-observation 12-state worlds, plus a fresh 16-state replication (study BRUTE-0400-A16-LOWOBS-043, LEAN process)
+
+**10 of 11 gates pass (GREP16, GLO_sem, GQB18, G_sound, G10, GS_ref, GTI, G_PROC, G_RT, G_recount). GLO FAILS. Secondary GT17, GPH18 and GLO_cause reported only.** All 60 arm jobs (30 cases) ran once and were sealed (159.7 s of 1800 s). *Observed*
+
+### Timeline (EDT, 2026-10-31)
+
+- Plan `d9b8538` (preregistration ledger `7892e6c`, 02:28:04); build authorization (ledger `817d2ac`, 02:28:56); worlds_043 and check_seeds_043 `8e4e6ad`; seedcheck `486d6ab` FAILED (ledger `9226c54`, 02:39:48: smoke-range cpu counter 10980005); adjudication check_seeds_043b `b0a20c2` PASS (ledger `fcffb76`, 02:40:31); code `28f76a4`; tests and freeze tooling `b448616`; prefreeze smoke `65ce3fe` (LPT projection 219.4 s, no cut); #159 `6be601a` (ledger `f6a9e38`); source freeze `2408c8f` (ledger `48ec02f`).
+- Run start (ledger `4490ba8`, 02:49:04); runner to about 02:51:49; snapshot `e7bae0d`; seal `122f7a1` (ledger `340be32`); recount `73fb1b7` (PASS, ledger `3961019`); reference `3e11414` (ledger `efa259a`); tests `fb365a1` (ledger `26b2f17`); gates `ccff3bf` (ledger `5621cba`); #160 `1351860` (ledger `8280bc7`).
+
+### Results (recount labels; Wilson 95% in GATES_043.json)
+
+| key | A16 ID | A16 IDF | A16 IDU | A14 ID | A14 IDU | WRONG |
+|---|---|---|---|---|---|---|
+| lowobs12 (12) | 0 [0, 0.24] | 0 | 12 | 0 [0, 0.24] | 12 | 0 |
+| scale16_rep (12) | 9 [0.47, 0.91] | 1 | 2 | 1 [0.01, 0.35] | 11 | 0 |
+| control (6) | 6 [0.61, 1.00] | 0 | 0 | 6 [0.61, 1.00] | 0 | 0 |
+
+- GLO FAIL (A16 ID+IDF 0/12, bar 4; gain 0, bar 3). GREP16 PASS (A16 ID 9/12 >= 6). GQB18 max 9.596 s, 0 kills, 1643 calls. G_sound 354 words, 0 unsound. GS_ref 10 decided (lowobs12 0, scale16_rep 10), 0 mismatches, 20/20 mutations. *Observed*
+- GLO_cause: all 24 lowobs12 arm runs stopped unknown after a 9.0 s capped call; A14 12/12 in the first least-model search with 0 experiments; A16 7/12 with 0 experiments, at most 16 of K=128 used, longest run 62.6 s of 240 s. *Observed*
+- Secondary: GT17 call wall A16/A14 0.81 [0.72, 0.90]. Deviations #159 (seedcheck erratum and adjudication, recount adapter, GS_ref scope, prefreeze PASS term), #160 (post-run).
+
 ## v0.39.0: arm A16 (apartness clauses plus the cube split, no fixed-colour clique) against frozen A14 on fresh clean 16-state worlds (study BRUTE-0390-A16-SCALE16-042, LEAN process)
 
 **11 of 11 gates pass (G16, G16_sem, GPERM17, GQB17, G_sound, G10, GS_ref, GTI, G_PROC, G_RT, G_recount). Secondary GT16, GRR041 and GPH17 reported only.** All 60 arm jobs (30 cases) ran once and were sealed (240.1 s of 1800 s). *Observed*
