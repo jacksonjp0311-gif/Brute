@@ -1,0 +1,128 @@
+{
+  "schema": "brute.plan/1",
+  "study": "BRUTE-0350-INCREMENTAL-LEASTB-038",
+  "version_under_test": "0.35.0",
+  "parent_study": "BRUTE-0340-SOUND-NOISY-STOP-037",
+  "status": "preregistered (plan only; no build authorized, no code, no data)",
+  "branch_taken": "Plan 037 next_if_fail, b branch: 'if b fails with the first probe still capped, replace the per-B UNSAT chain with an incremental totalizer or MaxSAT least-B solve'. Study 037 (Observed): GR12_headline a passed (WRONG 0 on 42 gated cases), b failed (IDU(A11_r3)-IDU(A12_r3) noisy12 0.00 [0,0]; A12_r3 first probe still capped on 6/12), c failed without AMB (ID+IDF(A12_r5) 0/12, 1 AMB), d failed (-0.42 [-0.67,-0.17]); GNR12 failed (20 clean12 label differences, B_max confirmation capped on 10/12 clean12 for A12_r5). The a branch does not fire (a passed); the c-with-AMB branch does not fire (c failed through IDU, not AMB). The pass branch (16 states) is not taken. This plan tests one change: an incremental cardinality solve for both the least-B search and the B_max confirmation; no 16-state cases",
+  "process": "LEAN (standing go t133s553 covers each next locked version; a ledgered build_authorization_038 citing it is still required before any code): plan locked before data; seedcheck_038 before seeds are drawn; independent recount; CNF reference audit; pre-freeze gates test on a sealed smoke block; failures published; evidence labels; one run, no tuning, no reruns, no resume",
+  "question": "At 12 states under 5% reading noise, does replacing the per-B fresh UNSAT chain and the separate B_max confirmation with one incremental SAT instance per step (flip variables summed by a totalizer; budgets set by assumptions on the totalizer outputs, learned clauses kept across budgets and across steps) bring the capped queries under the 9 s timer, so that the sound stop from A12 keeps WRONG 0 while recovering identifications?",
+  "motivation": "Study 037 (Observed): the sound stop removed the 036 least-B WRONG (GSAFE12 Exact: the sealed 036 trace now gives AMB) but the B_max confirmation query timed out on 10/12 clean12 cases (e.g. 10330001 at 9.0 s) and 5/12 noisy12 cases for A12_r5, and on 9/12 noisy8 cases for A12_r3, turning ID into IDU. Upward doubling halved first-probe caps (6/12 vs 12/12) but did not move IDU. Inferred: each budget and each confirmation rebuilds and re-solves a near-identical CNF from scratch; the cost is the repeated encoding and lost learning, not the budget order",
+  "hypotheses": {
+    "H1_sound": "A13 arms give WRONG 0 on every clean and within-budget noisy case; GSAFE12 is re-run as an Exact unit test on the sealed 036 trace of noisy_scale8 10210002 and must still give no ID at B 1",
+    "H2_cap": "A13 confirmation queries are capped on fewer cases than A12: capped confirmations (A12_r5 + A12_r3, all gated cases) - capped (A13_r5 + A13_r3) >= 6, and A13_r5 confirmation capped on <= 2/12 clean12",
+    "H3_noisy": "paired IDU(A12_r3, noisy12) - IDU(A13_r3, noisy12) >= +0.25 with seed-bootstrap 95% CI lower bound > 0",
+    "H4_clean": "on clean12 and controls every A13 arm has B_final 0 and the same label as A11_r3 (frozen), i.e. the 037 GNR12 failure is removed"
+  },
+  "design": {
+    "arms": {
+      "A13_r5": "new file brute/scalesearch13.py: A12 (frozen scalesearch12) logic with r = 5, B_max(5) = 2. One change: per step, a single incremental CNF over the fused trace with one flip variable per read position, a totalizer over the flip variables, and budgets enforced by assumptions on the totalizer outputs. Least-B: assume <= 0, 1, 2, ... upward until SAT (unit increments, since each probe reuses the instance). Confirmation: same instance plus the start-state-distinct rival clauses guarded by an activation literal, under assumption <= B_max. Learned clauses persist across budgets and across steps (clauses only added as the trace grows). Stop rule and labels identical to A12",
+      "A13_r3": "A13 with r = 3, B_max(3) = 6",
+      "A12_r5": "frozen brute/scalesearch12 r = 5 control",
+      "A12_r3": "frozen brute/scalesearch12 r = 3 control",
+      "A11_r3": "frozen brute/scalesearch11 r = 3 reference for the GNR13 label comparison",
+      "S7": "frozen single-read baseline, B_max 27 (as in 037)"
+    },
+    "solver": "same SAT backend as 037; query cap 9.0 s per solve call; Q_BOUND 10.5 s (an incremental call is one query)",
+    "fixed": "K, reads per step (r3 = 3, r5 = 5), declared bound N, eps, timers and world family (worlds_026) identical to 037; nothing tuned on 038 data",
+    "fallback_not_used": "a MaxSAT least-B solve is the named alternative; it is not an arm here (one change per study)"
+  },
+  "heldout_ranges": {
+    "note": "fresh 104x00NN ranges; pre-plan scan (Observed, 2026-10-30 20:56 EDT): 0 word-bounded tokens 1040-1049 followed by 00NN in tracked text and 0 in the tracked .gz archives. Drawn only after a ledgered seedcheck_038",
+    "noisy_scale8": [
+      10410001,
+      10410002,
+      10410003,
+      10410004,
+      10410005,
+      10410006,
+      10410007,
+      10410008,
+      10410009,
+      10410010,
+      10410011,
+      10410012
+    ],
+    "noisy_scale12": [
+      10420001,
+      10420002,
+      10420003,
+      10420004,
+      10420005,
+      10420006,
+      10420007,
+      10420008,
+      10420009,
+      10420010,
+      10420011,
+      10420012
+    ],
+    "clean_scale12": [
+      10430001,
+      10430002,
+      10430003,
+      10430004,
+      10430005,
+      10430006,
+      10430007,
+      10430008,
+      10430009,
+      10430010,
+      10430011,
+      10430012
+    ],
+    "control": [
+      10460001,
+      10460002,
+      10460003,
+      10460004,
+      10460005,
+      10460006
+    ]
+  },
+  "cases": {
+    "declared_before_data": true,
+    "noisy_scale8": 12,
+    "noisy_scale12": 12,
+    "clean_scale12": 12,
+    "control": 6,
+    "eps_noisy": 0.05,
+    "eps_clean": 0,
+    "total": 42
+  },
+  "criteria": {
+    "GR13_headline": {
+      "a": "WRONG = 0 for A13_r5 and A13_r3 on every clean case and every within-budget noisy case",
+      "b": "IDU(A12_r3, noisy_scale12) - IDU(A13_r3, noisy_scale12) >= +0.25 (3/12), paired seed-bootstrap 95% CI lower bound > 0",
+      "c": "ID + IDF (A13_r5, noisy_scale12) >= 5/12",
+      "d": "capped confirmation queries: A13_r5 on clean_scale12 <= 2/12"
+    },
+    "GSAFE13": "Exact unit test (inside GTI): on the sealed 036 fused trace of noisy_scale8 10210002 the A13 incremental confirmation at B_max is SAT for a start-state-distinct rival (A13 does not claim ID at B 1), and gives the same verdict as the frozen A12 confirmation",
+    "GINC13": "Exact unit test (inside GTI): on every 037 sealed fused trace in the REFERENCE_037 audit set, the A13 incremental least B equals the A12 fresh-chain least B wherever A12 was not capped",
+    "GNR13": "on clean_scale12 and control cases every A13 arm has B_final 0 and the same label as A11_r3",
+    "GQB13": "max single query wall <= 10.5 s for every arm",
+    "G_sound": "every executed separating word re-simulated on the truth; 0 unsound words",
+    "G10": "as in 037",
+    "GS_ref": "independent CNF reference audit of A13 decided budgets and confirmation items, 0 mismatches, mutation tests all caught",
+    "GTI": "pre-freeze test suite passes on the frozen source (run_tests on its scratch default)",
+    "G_PROC": "ledger order build_authorization_038 < seedcheck_038 < freeze < run_start < run_end < recount < gates",
+    "G_RT": "runtime within the estimate or published as a deviation",
+    "G_recount": "independent recount matches the sealed labels",
+    "secondary_reported": "capped least-B probes by arm; confirmation capped counts by arm and slice; reads and B_final means with bootstrap CIs"
+  },
+  "runtime_estimate": "about 400-800 s on 8 workers (037: 443 s for 42 cases and 6 arms; A13 replaces A12_r3_nostop and should cut capped calls). If the pre-freeze projection exceeds 1500 s, A11_r3 is reduced to clean12 and controls only (it is needed only for GNR13) by a ledgered pre-run deviation before the freeze, never after (Inferred)",
+  "what_counts_as_failure": "any GR13 clause, GSAFE13, GINC13, GNR13, GQB13, G_sound, G10 or GS_ref failing, or any A13 WRONG on a clean or within-budget case; failures are published, not tuned",
+  "next_if_pass": "v0.36.0: A13_r5 at 16 states or a more general world family as the headline (the 037 pass branch, deferred)",
+  "next_if_fail": "if a fails, the incremental encoding changed semantics: GINC13 localises it, and the fix is an encoding audit, not a new arm; if b or d fail with confirmations still capped, replace the totalizer with a core-guided MaxSAT least-B solve and a cheaper confirmation (bounded-length rival search per word length); if c fails with AMB, the confirmation's separating words cost too many actions against K; if GNR13 fails with B_final 0 and no caps, the sound stop itself is too strict on clean data and the stop rule needs revisiting",
+  "limitations": [
+    "repeated reads assume independent per-read noise; correlated or sticky noise is untested",
+    "the declared bound N and the noise rate are priors the arms are given",
+    "r in {3,5}, K, B_max, timers fixed in advance",
+    "no 16-state cases",
+    "one world family (worlds_026), one hardware profile, one author",
+    "the sound stop is sound only relative to B_max(r)",
+    "incremental solving makes per-query wall time depend on prior steps; GQB13 bounds each call, not the step"
+  ],
+  "brand": "charcoal and sage; no purple, neon, emoji or gold",
+  "freeze_rule": "BRUTE_SOURCE_FREEZE_038 before run_start_038; frozen and ledger-hashed files are never edited; scalesearch11 and scalesearch12 stay frozen and A13 is a new file (brute/scalesearch13.py)"
+}
