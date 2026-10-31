@@ -1,0 +1,87 @@
+{
+ "schema": "brute.plan.v1",
+ "study": "BRUTE-0490-CERTIFY16N-NOISE12-052",
+ "version_under_test": "0.49.0",
+ "parent_study": "BRUTE-0480-SCALE20-ISOLATED-SYMBREAK-NOISE12-051",
+ "status": "preregistered (plan only; no build code, no data for 052)",
+ "branch_taken": "user instruction 2026-10-31 14:24 EDT: 'If noise12 replicated, prioritise certifying certify/16n.' noise12 replicated (Exact, GATES_051 e7138c5): GN12_sound51 PASS, API16N ID+IDF 11/12 [0.65, 0.99], passes identical 12/12, WRONG 0, 0 majority errors, as in 050 (GN12_sound PASS, 11/12). Both releases failed their gate sets on scale20 parts, so certify/16n was never certified. Plan 051 next_if_fail items for scale20 (guard firings: own version, 1 worker, conflict-only stop; non-vacuity: a different encoding, not more budget) and G10 (choose controls by a declared rule) are deferred: no scale20 part runs here, so a 20-state failure cannot block the certify/16n decision. Deviation #176 (47a2e25) and addendum 1 (4a45a7c)",
+ "brand": "charcoal and sage; no purple, neon, emoji or gold",
+ "question": "Is certify/16n (unchanged, FREEZE_050) sound, deterministic, wall-free and faithful on 24 fresh noisy 12-state worlds at eps 0.05 run twice and on 12 fresh worlds at the design bound eps 0.10, with eps-0 compatibility to certify/16e on 6 controls, so that it can be certified for declared N <= 12 under iid flips with eps <= eps_bar = 0.10 at failure probability <= delta = 0.001 per record?",
+ "hypotheses": {
+  "H1": "certify/16n issues no WRONG certificate on 24 fresh eps-0.05 worlds over two passes and 12 fresh eps-0.10 worlds (60 records; any-WRONG chance <= 60 x 0.001 = 0.06 under the model)",
+  "H2": "two passes give byte-identical canon16n records on 24/24 eps-0.05 cases, with 0 wall guard firings on every record",
+  "H3": "every record is reproduced exactly when certify/16n is driven observation by observation over its own trace (api_checks, run once)",
+  "H4": "at eps 0 certify/16n equals certify/16e (canon16e) on 6/6 controls",
+  "H5": "eps-0.05 ID+IDF is at least 8/24; the eps-0.10 count is reported, not predicted"
+ },
+ "design": {
+  "api": "no new API and no change to certify/16n (FREEZE_050), certify/16e (FREEZE_049) or certify/16s (FREEZE_051). Study code only: new runner, recount, reference, api_checks and gates files for 052. Host-agnostic core unchanged",
+  "parts": {
+   "noise12": "24 fresh clean 12-state worlds (generator as 050/051), iid flips eps 0.05, eps_bar 0.10, delta 0.001, arms API16N and API16N_b",
+   "noise12_bar": "12 fresh worlds, iid flips eps 0.10 (at eps_bar), arm API16N once",
+   "compat": "6 fresh clean 12-state controls: API16N at eps 0 vs API16E, labels and canonical machines compared"
+  },
+  "caps": "B12 1500000, C 50000 (as 050/051 noise12); controls B12 3000000; 30 s chunk guard and 600 s case guard kept, every firing gated",
+  "workers": 8,
+  "labels": "ID, IDF (identified from the current state, not the start), AMB, IDU, WRONG; scored against the clean truth"
+ },
+ "cases": {
+  "noise12": 24,
+  "noise12_bar": 12,
+  "compat": 6,
+  "jobs": "noise12 24 x 2 = 48; noise12_bar 12; compat 6 x 2 = 12 (API16N eps 0 and API16E); total 72",
+  "declared_before_data": true
+ },
+ "heldout_ranges": {
+  "noise12": "11930001-11930024",
+  "noise12_bar": "11950001-11950012",
+  "compat": "11970001-11970006",
+  "note": "prefixes 1193, 1195, 1197 and 1203 had 0 word-bounded tokens prefix+00NN in tracked text at plan time; 1199 and 1201 had hits and are skipped (Observed, git grep, 2026-10-31 EDT). seedcheck_052 scans every tracked file, .gz included, before any seed is used; a hit moves that range to the next unused odd prefix, declared in the pre-run deviation"
+ },
+ "smoke_range": "12030001-12030006 (pre-freeze smoke and projection only; never gated; never used to set B, C or k)",
+ "criteria": {
+  "GDET52": "canon16n(API16N) == canon16n(API16N_b) on 24/24 noise12 cases AND 0 wall guard firings on every record",
+  "GFID52": "api_checks fidelity exact on all 36 API16N noisy records and 6 eps-0 compat records, bound to the sealed RESULTS sha",
+  "GN12_sound52": "WRONG 0 on all 48 noise12 records and 12 noise12_bar records, labels against the clean truth; non-vacuity: eps-0.05 API16N ID+IDF >= 8/24",
+  "GCOMPAT16N52": "6/6 controls: API16N at eps 0 gives the same label as API16E; for ID the same canonical machine from the start state; for IDF the same machine up to isomorphism with matching future from the current state (rule declared now, before data, from 051's diagnostic)",
+  "GHOST52": "no network, closures of certify/16n, 16e and 16s unchanged",
+  "GQB26": "every chunk <= 30 s and every case <= 600 s",
+  "GS_ref": "CNF reference audits every decided record at bound 12 with 0 mismatches and 20/20 mutations caught; complete",
+  "G_sound": "every certified word is consistent with the truth",
+  "G_recount": "independent recount matches every label",
+  "GTI": "seedcheck PASS and no target token in prior text",
+  "GTEST": "official tests pass",
+  "G_PROC": "ledger order and times",
+  "G_RT": "total run <= 3600 s"
+ },
+ "secondary": {
+  "GN12_rate52": "ID+IDF of 24 (eps 0.05) and of 12 (eps 0.10) with Wilson CIs, reads per observation, k range",
+  "GN12_pool": "pooled WRONG and ID+IDF over 050, 051, 052 eps-0.05 records, reported only; different cases, not a paired comparison",
+  "GCOST52": "conflicts, chunks, wall per part"
+ },
+ "gate_dependency_rule": "each gate is scored from its own counts; label gates use recounted labels if G_recount passes, else the study labels with the failure stated; an unfinished reference is a GS_ref failure, published as-is",
+ "what_counts_as_failure": "any gated criterion false; any wall guard firing fails GDET52 and GQB26; AMB and IDU are not soundness failures",
+ "freeze_rule": "no file named in the source freeze is edited after the freeze; new behaviour in new files or a deviation addendum. Caps, guards, eps, eps_bar, delta, the k rule, workers and case lists are part of the freeze",
+ "runtime_estimate": "worst case at 051's slowest clean 12-state rate 29194 conflicts/s (smoke 051): noise12 48 x (1500000/29194 + 10) = 48 x 61.4 = 2947; noise12_bar 12 x 61.4 = 737; compat 12 x (3000000/29194 + 10) = 12 x 112.8 = 1354; total 5038 job-seconds on 8 workers, LPT about 630 s plus one 113 s tail, about 743 s, below 3600 s. Observed 051 noise12 max case wall 12.1 s. Cut rule: if the pre-freeze projection exceeds 3600 s, noise12_bar drops to 6 cases, never noise12, never after the freeze",
+ "process": "LEAN, under a standing go only if one is in force and cited; a ledgered build_authorization_052 before any code and before seedcheck_052. Plan locked before data; seedcheck before seeds; no cap calibration; independent recount; CNF reference audit; api_checks once after the run; pre-freeze smoke on 12030001-12030006 with the real release verifier chain; one main run, no tuning, no reruns, no relaunch (resume clause not approved); failures published; one fresh-clone verify plus tests",
+ "next_if_pass": "all gated pass: certify/16n becomes certified for declared N <= 12 under iid flips with eps <= 0.10 at per-record failure probability <= 0.001 (Exact conditional on the model and declared N); certify/16e keeps N <= 16. Next: noise at 16 states with certify/16n over certify/16e, and scale20 in its own version (1 worker, conflict-only stop)",
+ "next_if_fail": "GN12_sound52 fails on WRONG: certify/16n is unsound under its own model; withdraw it from any claim and find the cause. GN12_sound52 fails on non-vacuity only: report; next, the k rule or B12 gets its own version. GDET52 or GQB26 fails on guard firings: wall time binds even at 12 states; next, a conflict-only stop. GDET52 fails with 0 firings or GFID52 fails: certify/16n is not deterministic or not faithful; find the source, ship nothing new. GCOMPAT16N52 fails: the eps-0 path differs from certify/16e; fix it. GS_ref fails on time only: the reference gets its own version. G_RT fails: publish it",
+ "limitations": [
+  "24 + 12 noisy cases give wide CIs",
+  "still needs a declared size N",
+  "iid flips with a known bound only; correlated or adversarial noise not covered",
+  "delta is per record; the model bound over 60 records is 0.06",
+  "walls depend on the host; only guard firings are gated",
+  "no 20-state part: scale20 claims are untouched",
+  "lowobs12 not covered"
+ ],
+ "open_items": [
+  "full N-freedom: Open",
+  "certify/16n under correlated noise: Open",
+  "noise at 16 states: Open",
+  "scale20 with 1 worker and a conflict-only stop: Open",
+  "a different 20-state encoding or search: Open"
+ ],
+ "claim_scope": "conditional on the declared N: an ID or IDF means unique among machines with at most N states consistent with the majority-corrected trace; IDF identifies the machine from the current state, not the start. Inferred reason: a larger machine can copy the true machine on every visited state and differ only where the trace never reaches, so a size bound is inherent. Further conditional on iid flips with eps <= eps_bar; holds with probability >= 1 - delta per record",
+ "evidence_labels": "Exact, Observed, Simulated, Inferred, Rejected, Open"
+}
