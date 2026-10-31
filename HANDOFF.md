@@ -1,11 +1,20 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.39.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.40.0 release in progress)._
 
 ## Current version and state
 
+<!-- V0400 -->
+- **v0.40.0: release in progress** 2026-10-31 (EDT). Built on branch `plan/v0.40.0` (BRUTE_PLAN_043, A16 vs frozen A14 on fresh lowobs12 plus a scale16 replication; LEAN; STANDING GO t133s553, build authorization ledger `817d2ac`). Maintainer order: lowobs first; certify/16 after the N-free stop.
+  - **Run complete (Observed).** 60/60 arm jobs (30 cases), 159.7 s of 1800 s, normal exit about 02:51:49 EDT, run once; 1 checkpoint snapshot (`e7bae0d`); nothing relaunched; resume clause not approved, not used. Hard per-call cap: 0 kills, max call 9.596 s. Box clock about 2 s ahead of GitHub's Date header at 02:59 EDT.
+  - **PASS (10/11):** GREP16 (A16 scale16_rep ID 9/12 [0.47, 0.91], A14 1/12 [0.01, 0.35]), GLO_sem, GQB18, G_sound (354 words, 0 unsound), G10, GS_ref (10 decided, 0 mismatches, 20/20), GTI, G_PROC, G_RT, G_recount. **FAIL:** GLO (lowobs12 A16 ID+IDF 0/12 [0, 0.24], A14 0/12, gain 0). Secondary GT17 0.81 [0.72, 0.90], GPH18, GLO_cause reported only.
+  - **Branch taken:** next_if_fail (GLO fails, GREP16 passes): a lowobs budget/K audit using GLO_cause, not a new encoding. The N-free stop waits.
+  - **Deviations:** #159 (pre-run: seedcheck erratum adjudicated by check_seeds_043b, recount adapter, GS_ref scope, prefreeze PASS term), #160 (post-run).
+  - **Chain:** plan `d9b8538` -> authorization `817d2ac` -> worlds/seedcheck code `8e4e6ad` -> seedcheck `486d6ab` (FAILED) -> 043b `b0a20c2` -> code `28f76a4` -> tests/freeze tooling `b448616` -> pre-freeze smoke `65ce3fe` -> #159 `6be601a` -> freeze `2408c8f` -> run start `4490ba8` -> seal `122f7a1` -> recount `73fb1b7` -> reference `3e11414` -> tests `fb365a1` -> gates `ccff3bf` -> #160 `1351860` -> RELEASE.json and docs.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched.
+
 <!-- V0390 -->
-- **v0.39.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.39.0 (annotated tag `675e20d` -> `384e401`, ledger release_042 `9330d99`). main fast-forwarded `9f7558c..` the HANDOFF RELEASED ledger commit. Built on branch `plan/v0.39.0` (BRUTE_PLAN_042, A16 vs frozen A14 on fresh scale16; LEAN; STANDING GO t133s553, build authorization ledger `2c1ed4b`). Next: BRUTE_PLAN_043 (v0.40.0, plan only).
+- **v0.39.0: RELEASED** (previous) 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.39.0 (annotated tag `675e20d` -> `384e401`, ledger release_042 `9330d99`). main fast-forwarded `9f7558c..` the HANDOFF RELEASED ledger commit. Built on branch `plan/v0.39.0` (BRUTE_PLAN_042, A16 vs frozen A14 on fresh scale16; LEAN; STANDING GO t133s553, build authorization ledger `2c1ed4b`). Next: BRUTE_PLAN_043 (v0.40.0, plan only).
   - **Run complete (Observed).** 60/60 arm jobs (30 cases), 240.1 s of 1800 s, normal exit about 02:10:35 EDT, run once; 1 checkpoint snapshot (`a6603b9`); nothing relaunched; resume clause not approved, not used. Hard per-call cap: 0 kills, max call 9.515 s. Box clock about 5 s ahead of GitHub's Date header at 02:24 EDT.
   - **PASS (11/11):** G16 (A16 scale16 ID 8/12 [0.39, 0.86], A14 0/12 [0, 0.24], gain 8), G16_sem, GPERM17 (11/11 [0.74, 1.00]), GQB17, G_sound (311 words, 0 unsound), G10, GS_ref (9 decided, 0 mismatches, 20/20 mutations), GTI, G_PROC, G_RT, G_recount. Secondary GT16 0.82 [0.71, 0.95], GRR041, GPH17 reported only.
   - **Fresh clone (Observed, ledger `2e762dd`, about 02:28 EDT):** restore + verify_release_0390 passed (chain 7 links, 1 authorization exception); run_tests_0390 passed 5 modules, 36 tests (scratch output). Release notes written fresh from GATES_042.
