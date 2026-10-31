@@ -50,7 +50,13 @@ Inferred, Rejected, Open.
     r_min(12 states) = 30256/s as declared (the plan substitutes only the certify/16s rate; the smoke's 12-state rate is reported,
     not used). Total = LPT(phase A, 4 workers) + LPT(phase B, 8 workers). The first of (N12B, NCOMPAT) = (12, 6), (6, 6), (6, 3)
     with total <= 3600 s is required; never scale20, never after the freeze.
-11. **Cut decision (Observed; filled from the smoke before the freeze).** CUT_DECISION_PLACEHOLDER
+11. **Cut decision (Observed; filled from the smoke before the freeze).** No cut. The smoke (seeds 11890001-11890006, started 12:57 EDT) gave a slowest
+    certify/16s rate of 8485.3 conflicts/s (faster than 4503/s, so r_min stays 4503/s) and a slowest 12-state rate of 29193.9/s
+    (reported; even at that rate the decision would not change, Inferred). Worst-case total for (12, 6): phase A 2724.9 s + phase B
+    456.6 s = 3181.5 s <= 3600 s, so (N12B, NCOMPAT) = (12, 6), equal to the runner (cut_consistent true; results/diag-051/
+    PREFREEZE_SMOKE_GATES_051.json, PASS true). Smoke Observed: both scale20 smoke cases IDU at B20 (2001132 and 2011098 conflicts,
+    217-236 s, 0 guard firings), so 0 of 2 decided (Inferred: GS20_sound51 may fail in the main run; it is published as is, B20 is
+    not changed); controls ID 4/4, noise12 ID / IDF 4/4 with 0 majority errors, part c ID 2/2 compatible, determinism 6/6.
 12. **Claim scope (Inferred).** Every ID / IDF is conditional on the declared N (20 for scale20, 12 otherwise) and, for noise12, on
     the iid-flip model with eps <= eps_bar. Without the size bound no finite trace suffices: a larger machine can copy the true
     machine on every visited state and differ only on states the trace never reached.
