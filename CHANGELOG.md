@@ -1,5 +1,27 @@
 # Brute changelog
 
+## v0.36.0: one incremental SAT instance per candidate size (A14) for clean active identification at 12, 14 and 16 states plus a second world family (study BRUTE-0360-CLEAN-SCALE-039, LEAN process)
+
+**12 of 13 gates pass (GFAM14, GREP14, GCH14, GINC14, GQB14, G_sound, G10, GS_ref, GTI, G_PROC, G_RT, G_recount). GC14_headline FAILS on b and c (a and d pass). Secondary GK14 and GACT14 reported only.** All 54 cases (162 jobs) ran once and were sealed (309.6 s of 1800 s). *Observed*
+
+### Timeline (EDT, 2026-10-30)
+
+- Plan `d2ebf63`; build authorization (ledger `0f90554`, 22:11:22, standing go t133s553, ledger 76b30d5); seedcheck `a7212f9` (ledger `2587d4c`); release tooling `46a8a0c`, `24f3e4c`; freeze tooling `cc1acdf`; gates fix `02e7a20`; script tests and smoke `a1fdafe`; pre-freeze sealed-smoke gates `3979ecb` (22:26, projection 312.1 s, no amendment); #150 `cc0a495`; source freeze `afc8eff` (ledger `c066e4c`).
+- Run start (ledger `aef5112`, 22:36:33); runner to about 22:41:47; snapshots `0d20c04`, `963501f`; seal `44f79e3` (ledger `33608a0`); recount `879d6ac`; reference `cd54bae`; tests `66c8652`; gates `12ab5d2`; #151 `12815da`.
+
+### Results (ID / IDF / AMB / WRONG / IDU per 12 cases; Wilson 95% in GATES_039.json)
+
+| family | A14 | A14_k64 | A14_random | A9 (frozen) |
+|---|---|---|---|---|
+| scale16 | 0/0/0/0/12 | 0/0/0/0/12 | 0/0/4/0/8 | 1/0/0/0/11 |
+| scale14 | 7/1/0/0/4 | 7/1/0/0/4 | 0/0/10/0/2 | 7/1/0/0/4 |
+| scale12 | 10/2/0/0/0 | 9/2/1/0/0 | 0/0/12/0/0 | 9/2/1/0/0 |
+| perm12 | 12/0/0/0/0 | 12/0/0/0/0 | 10/0/2/0/0 | 12/0/0/0/0 |
+| control (6) | 6/0/0/0/0 | 6/0/0/0/0 | 6/0/0/0/0 | 6/0/0/0/0 |
+
+- b: ID+IDF(A14, scale16) 0/12 [0.00, 0.24] (bar 4); capped 12/12. c: ID(A14)-ID(A9) scale16 -0.083 [-0.25, 0.00]. d: scale14 8/12 [0.39, 0.86]. GCH14 +0.292 [0.125, 0.458]. GQB14 max 9.563 s. *Observed*
+- Branches fired (Inferred): caps dominant at n = 16 (per-size cube split or symmetry-free fixed-start encoding); 14 states is the current ceiling. Deviations #150, #151.
+
 ## v0.35.0: an incremental totalizer (A13: one incremental SAT instance per step for the least-B search, and a single-query B_max confirmation at n = N) for active identification on noisy traces (study BRUTE-0350-INCREMENTAL-LEASTB-038, LEAN process)
 
 **10 of 12 gates pass (GSAFE13, GINC13, GQB13, G_sound, G10, GS_ref, GTI, G_PROC, G_RT, G_recount). GR13_headline FAILS on b, c and d (a passes); GNR13 FAILS. Secondary GH2 and GPR13 fail.** All 42 cases ran once and were sealed (451.0 s of 1800 s). *Observed*
