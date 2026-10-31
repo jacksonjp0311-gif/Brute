@@ -1,0 +1,928 @@
+{
+  "PASS": true,
+  "api_checks": {
+    "PASS": true,
+    "ghost": {
+      "PASS50": true,
+      "certify16e_closure_049": [
+        "brute.active",
+        "brute.align",
+        "brute.anytimemargin",
+        "brute.api",
+        "brute.api.certify",
+        "brute.api.certify10",
+        "brute.api.certify11",
+        "brute.api.certify12",
+        "brute.api.certify13",
+        "brute.api.certify14",
+        "brute.api.certify16",
+        "brute.api.certify16d",
+        "brute.api.certify16e",
+        "brute.api.certify8",
+        "brute.api.certify9",
+        "brute.bettingregion",
+        "brute.boundedtransfer",
+        "brute.breadth",
+        "brute.changepoint",
+        "brute.core.learner",
+        "brute.driftsound",
+        "brute.encaudit16",
+        "brute.fallback",
+        "brute.lrregion",
+        "brute.noisyregion",
+        "brute.region",
+        "brute.region_learner",
+        "brute.resume",
+        "brute.scalebetting",
+        "brute.scalesearch",
+        "brute.scalesearch10",
+        "brute.scalesearch14",
+        "brute.scalesearch15",
+        "brute.scalesearch16",
+        "brute.scalesearch3",
+        "brute.scalesearch4",
+        "brute.scalesearch5",
+        "brute.scalesearch7",
+        "brute.scalesearch8",
+        "brute.scalesearch9",
+        "brute.seqmargin",
+        "brute.stitchedregion",
+        "brute.syncevent",
+        "brute.transfer"
+      ],
+      "certify16e_closure_unchanged": true,
+      "frozen_api_sha256": {
+        "brute/api/certify14.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_047.json",
+          "frozen": "0c789ee206e8341ac610d00980c24976e5c027af5a02a5af4edb3c9068818ac6",
+          "now": "0c789ee206e8341ac610d00980c24976e5c027af5a02a5af4edb3c9068818ac6"
+        },
+        "brute/api/certify16.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_047.json",
+          "frozen": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1",
+          "now": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1"
+        },
+        "brute/api/certify16d.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_047.json",
+          "frozen": "98406b659e8abcbe9252da66da49b90317bdc544e1052711d8ec99a482992d25",
+          "now": "98406b659e8abcbe9252da66da49b90317bdc544e1052711d8ec99a482992d25"
+        },
+        "brute/api/certify16e.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_049.json",
+          "frozen": "99a6f3315d0ac7f9944dd6519fc968200543dc9ec50a991657dd33766a7112fb",
+          "now": "99a6f3315d0ac7f9944dd6519fc968200543dc9ec50a991657dd33766a7112fb"
+        }
+      },
+      "frozen_api_unchanged": true,
+      "network_pass": true,
+      "new_flagged": {},
+      "newly_imported": [
+        "brute.api.certify16n"
+      ],
+      "no_network_returncode": 0,
+      "no_network_run": {
+        "loop": [
+          "brute.certify/16n",
+          "ID",
+          12,
+          56,
+          12637
+        ],
+        "socket_attempts": 0
+      },
+      "socket_attempts": 0,
+      "static_pass": true
+    }
+  },
+  "api_checks_rc": 0,
+  "label": "Observed",
+  "note": "PASS here means the tooling ran end to end on a sealed block, gates reproduce, the self-replay is exact, the cut order was applied as declared and the real commit-order check passes; gate outcomes on smoke are recorded, not required",
+  "purpose": "Pre-freeze smoke-gates, runtime projection and cut order for study-050 (plan 050 runtime_estimate; pre-run deviation #173).",
+  "recount": {
+    "PASS": true,
+    "compat_equal": 0,
+    "labels": {
+      "control": {},
+      "noise12": {},
+      "scale20": {}
+    },
+    "labels_c": {
+      "API16N_c": {
+        "AMB": 1,
+        "ID": 0,
+        "IDF": 1,
+        "IDU": 0,
+        "WRONG": 0
+      }
+    },
+    "majority_errors": 0,
+    "misfires": {
+      "API16E": 0,
+      "API16E_b": 0,
+      "API16N": 0,
+      "API16N_b": 0,
+      "API16N_c": 0
+    },
+    "mismatching_cases": 0,
+    "truth_inconsistent": 0,
+    "words_checked": 298,
+    "words_unsound": 0
+  },
+  "recount_rc": 0,
+  "reference_rc": 0,
+  "reference_smoke": {
+    "PASS": true,
+    "audited": 10,
+    "complete": true,
+    "decided": 10,
+    "elapsed_informational": 469.1257495609898,
+    "mismatch_count": 0,
+    "mutations": 20,
+    "of": 20,
+    "per_key": {
+      "control": {
+        "audited": 4,
+        "decided": 4,
+        "mismatches": 0
+      },
+      "noise12": {
+        "audited": 4,
+        "decided": 4,
+        "mismatches": 0
+      },
+      "scale20": {
+        "audited": 2,
+        "decided": 2,
+        "mismatches": 0
+      }
+    },
+    "records": 12,
+    "scope": {
+      "budget_s": 2400.0,
+      "key_order": [
+        "scale20",
+        "control",
+        "noise12"
+      ],
+      "order": [
+        "API16E",
+        "API16E_b",
+        "API16N",
+        "API16N_b",
+        "API16N_c"
+      ],
+      "workers": 8
+    },
+    "vacuous": false
+  },
+  "release_ok_synthetic": true,
+  "runtime_projection": {
+    "candidates": {
+      "N12B=12,N20B=12": {
+        "jobs": 78,
+        "mean_lpt_s": 1408.8,
+        "worst_case_lpt_s": 3498.3,
+        "worst_serial_s": 26587.7
+      },
+      "N12B=6,N20B=12": {
+        "jobs": 72,
+        "mean_lpt_s": 1408.8,
+        "worst_case_lpt_s": 3264.9,
+        "worst_serial_s": 25187.6
+      },
+      "N12B=6,N20B=6": {
+        "jobs": 66,
+        "mean_lpt_s": 1127.0,
+        "worst_case_lpt_s": 2799.0,
+        "worst_serial_s": 22389.8
+      }
+    },
+    "cap_s": 3600,
+    "caveat": "two smoke seeds per key; the worst case assumes every job spends its whole B at r_min (or hits the 600 s case guard)",
+    "cut_applied": false,
+    "cut_consistent": true,
+    "cut_exhausted": false,
+    "label": "Inferred",
+    "mean_wall_by_key": {
+      "c/control": 10.38,
+      "control": 12.14,
+      "noise12": 2.38,
+      "scale20": 281.76
+    },
+    "r_min": {
+      "12": 6716.0,
+      "scale20": 8766.0
+    },
+    "rate_declared": {
+      "12": 6716.0,
+      "scale20": 8766.0
+    },
+    "required": {
+      "N12B": 12,
+      "N20B": 12
+    },
+    "runner": {
+      "N12B": 12,
+      "N20B": 12
+    },
+    "smoke_slowest_rate": {
+      "12": 13011.0,
+      "scale20": 10449.2
+    },
+    "workers": 8,
+    "worst_per_job_s": {
+      "control": 233.3,
+      "noise12": 233.3,
+      "scale20": 466.3
+    }
+  },
+  "smoke_determinism": [
+    [
+      "scale20",
+      11810001,
+      true
+    ],
+    [
+      "scale20",
+      11810002,
+      true
+    ],
+    [
+      "control",
+      11810003,
+      true
+    ],
+    [
+      "control",
+      11810004,
+      true
+    ],
+    [
+      "noise12",
+      11810005,
+      true
+    ],
+    [
+      "noise12",
+      11810006,
+      true
+    ]
+  ],
+  "smoke_part_c_compat": [
+    [
+      11810003,
+      true
+    ],
+    [
+      11810004,
+      true
+    ]
+  ],
+  "smoke_record_columns": [
+    "block",
+    "key",
+    "seed",
+    "arm: label, stop, conflicts, chunks, case wall s, max chunk wall s, wall_guard, majority_errors, reads_total"
+  ],
+  "smoke_records": [
+    [
+      "smoke",
+      "scale20",
+      11810001,
+      {
+        "API16E": [
+          "IDU",
+          "unknown",
+          4000910,
+          113,
+          382.89,
+          11.974,
+          0,
+          null,
+          null
+        ],
+        "API16E_b": [
+          "IDU",
+          "unknown",
+          4000910,
+          113,
+          375.8,
+          11.57,
+          0,
+          null,
+          null
+        ]
+      }
+    ],
+    [
+      "smoke",
+      "scale20",
+      11810002,
+      {
+        "API16E": [
+          "ID",
+          "ID",
+          2412828,
+          119,
+          185.24,
+          10.384,
+          0,
+          null,
+          null
+        ],
+        "API16E_b": [
+          "ID",
+          "ID",
+          2412828,
+          119,
+          183.07,
+          10.113,
+          0,
+          null,
+          null
+        ]
+      }
+    ],
+    [
+      "smoke",
+      "control",
+      11810003,
+      {
+        "API16E": [
+          "IDF",
+          "IDF",
+          32089,
+          47,
+          2.47,
+          0.538,
+          0,
+          null,
+          null
+        ],
+        "API16E_b": [
+          "IDF",
+          "IDF",
+          32089,
+          47,
+          2.32,
+          0.535,
+          0,
+          null,
+          null
+        ]
+      }
+    ],
+    [
+      "smoke",
+      "control",
+      11810004,
+      {
+        "API16E": [
+          "AMB",
+          "K_spent",
+          806683,
+          115,
+          18.61,
+          1.359,
+          0,
+          null,
+          null
+        ],
+        "API16E_b": [
+          "AMB",
+          "K_spent",
+          806683,
+          115,
+          25.12,
+          1.968,
+          0,
+          null,
+          null
+        ]
+      }
+    ],
+    [
+      "smoke",
+      "noise12",
+      11810005,
+      {
+        "API16N": [
+          "ID",
+          "ID",
+          60548,
+          33,
+          2.79,
+          0.879,
+          0,
+          0,
+          12637
+        ],
+        "API16N_b": [
+          "ID",
+          "ID",
+          60548,
+          33,
+          2.76,
+          0.883,
+          0,
+          0,
+          12637
+        ]
+      }
+    ],
+    [
+      "smoke",
+      "noise12",
+      11810006,
+      {
+        "API16N": [
+          "ID",
+          "ID",
+          43674,
+          31,
+          2.01,
+          0.631,
+          0,
+          0,
+          10662
+        ],
+        "API16N_b": [
+          "ID",
+          "ID",
+          43674,
+          31,
+          1.86,
+          0.636,
+          0,
+          0,
+          10662
+        ]
+      }
+    ],
+    [
+      "c",
+      "control",
+      11810003,
+      {
+        "API16N_c": [
+          "IDF",
+          "IDF",
+          32089,
+          47,
+          2.25,
+          0.532,
+          0,
+          0,
+          237
+        ]
+      }
+    ],
+    [
+      "c",
+      "control",
+      11810004,
+      {
+        "API16N_c": [
+          "AMB",
+          "K_spent",
+          806683,
+          115,
+          18.49,
+          1.022,
+          0,
+          0,
+          302
+        ]
+      }
+    ]
+  ],
+  "smoke_wall_guard_records": [],
+  "stops_present": {
+    "ID": 6,
+    "IDF": 3,
+    "K_spent": 3,
+    "unknown": 2
+  },
+  "synthetic": {
+    "G10": {
+      "cases": [
+        [
+          11810003,
+          {
+            "API16E": "IDF",
+            "API16E_b": "IDF"
+          }
+        ],
+        [
+          11810004,
+          {
+            "API16E": "AMB",
+            "API16E_b": "AMB"
+          }
+        ]
+      ]
+    },
+    "GCOMPAT16N": {
+      "ci95": [
+        0.3423802275066531,
+        1.0
+      ],
+      "equal": 2,
+      "of": 2,
+      "per_case": [
+        [
+          11810003,
+          true
+        ],
+        [
+          11810004,
+          true
+        ]
+      ],
+      "rule": "part c (eps 0, reads 1) canon16e byte-identical to the part-k API16E record on 6/6; comparison from RECOUNT_050"
+    },
+    "GDET50": {
+      "ci95": [
+        0.6096657120978346,
+        1.0
+      ],
+      "columns": [
+        "key",
+        "seed",
+        "canon_equal",
+        "pass1",
+        "pass2"
+      ],
+      "control": [
+        2,
+        2
+      ],
+      "identical": 6,
+      "noise12": [
+        2,
+        12
+      ],
+      "of": 6,
+      "per_case": [
+        [
+          "scale20",
+          11810001,
+          true,
+          "IDU",
+          "IDU"
+        ],
+        [
+          "scale20",
+          11810002,
+          true,
+          "ID",
+          "ID"
+        ],
+        [
+          "control",
+          11810003,
+          true,
+          "IDF",
+          "IDF"
+        ],
+        [
+          "control",
+          11810004,
+          true,
+          "AMB",
+          "AMB"
+        ],
+        [
+          "noise12",
+          11810005,
+          true,
+          "ID",
+          "ID"
+        ],
+        [
+          "noise12",
+          11810006,
+          true,
+          "ID",
+          "ID"
+        ]
+      ],
+      "records_checked_for_guard": 14,
+      "rule": "canon16e identical (scale20 N20B, control 6), canon16n identical (noise12 N12B); wall_guard 0 on every record",
+      "scale20": [
+        2,
+        12
+      ],
+      "wall_guard_fired": []
+    },
+    "GFID50": {
+      "bound": true,
+      "ci95": [
+        0.6096657120978346,
+        1.0
+      ],
+      "exact": 6,
+      "exact_per_arm": {
+        "API16E": 4,
+        "API16N": 2
+      },
+      "expected": 6,
+      "failures": {},
+      "of": 6,
+      "per_key": {
+        "control": 2,
+        "noise12": 2,
+        "scale20": 2
+      }
+    },
+    "GN12_sound": {
+      "API16N_ID_IDF": 2,
+      "WRONG": [],
+      "ci95": [
+        0.3423802275066531,
+        1.0
+      ],
+      "label_source": "recount",
+      "majority_errors": 0,
+      "model_bound": "P(any WRONG over 24 records) <= 24 x 0.001 = 0.024 (Exact, conditional on the iid model)",
+      "of": 2,
+      "per_case": [
+        [
+          11810005,
+          "ID",
+          "ID",
+          12637,
+          0,
+          "ID"
+        ],
+        [
+          11810006,
+          "ID",
+          "ID",
+          10662,
+          0,
+          "ID"
+        ]
+      ],
+      "records": 4,
+      "reference_noise12": {
+        "audited": 4,
+        "decided": 4,
+        "mismatches": 0
+      }
+    },
+    "GQB25": {
+      "case_bound_s": 600.0,
+      "chunk_bound_s": 30.0,
+      "max_case_wall_s": {
+        "API16E/main/control": 18.615,
+        "API16E/main/scale20": 382.892,
+        "API16E_b/main/control": 25.125,
+        "API16E_b/main/scale20": 375.804,
+        "API16N/main/noise12": 2.788,
+        "API16N_b/main/noise12": 2.763,
+        "API16N_c/c/control": 18.494
+      },
+      "max_chunk_wall_s": {
+        "API16E/main/control": 1.359,
+        "API16E/main/scale20": 11.974,
+        "API16E_b/main/control": 1.968,
+        "API16E_b/main/scale20": 11.57,
+        "API16N/main/noise12": 0.879,
+        "API16N_b/main/noise12": 0.883,
+        "API16N_c/c/control": 1.022
+      },
+      "over_case": [],
+      "over_chunk": []
+    },
+    "GS20_sound50": {
+      "API16E_ID_IDF": 1,
+      "WRONG": [],
+      "ci95": [
+        0.09453120573423071,
+        0.9054687942657693
+      ],
+      "decided_records": 2,
+      "label_source": "recount",
+      "non_vacuous": true,
+      "of": 2,
+      "per_case": [
+        [
+          11810001,
+          "IDU",
+          "unknown",
+          4000910,
+          "IDU"
+        ],
+        [
+          11810002,
+          "ID",
+          "ID",
+          2412828,
+          "ID"
+        ]
+      ],
+      "reference_bound": true,
+      "reference_scale20": {
+        "audited": 2,
+        "decided": 2,
+        "mismatches": 0
+      },
+      "rule": "scale20 WRONG 0; every decided scale20 record audited at bound 20 with 0 mismatches; >= 1/24 API16E decided (0 decided FAILS)"
+    },
+    "GS_ref": {
+      "PASS": true,
+      "audited": 10,
+      "block": "main",
+      "complete": true,
+      "decided": 10,
+      "elapsed_informational": 465.12671205999504,
+      "k_spent_as_amb": 2,
+      "mismatch_count": 0,
+      "mutations": 20,
+      "not_audited": [],
+      "not_reached": 2,
+      "of": 20,
+      "per_arm": {
+        "API16E": {
+          "audited": 3,
+          "decided": 3,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 4
+        },
+        "API16E_b": {
+          "audited": 3,
+          "decided": 3,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 4
+        },
+        "API16N": {
+          "audited": 2,
+          "decided": 2,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 2
+        },
+        "API16N_b": {
+          "audited": 2,
+          "decided": 2,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 2
+        },
+        "API16N_c": {
+          "audited": 0,
+          "decided": 0,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 0
+        }
+      },
+      "per_key": {
+        "control": {
+          "audited": 4,
+          "decided": 4,
+          "mismatches": 0
+        },
+        "noise12": {
+          "audited": 4,
+          "decided": 4,
+          "mismatches": 0
+        },
+        "scale20": {
+          "audited": 2,
+          "decided": 2,
+          "mismatches": 0
+        }
+      },
+      "records": 12,
+      "scope": {
+        "budget_s": 2400.0,
+        "key_order": [
+          "scale20",
+          "control",
+          "noise12"
+        ],
+        "order": [
+          "API16E",
+          "API16E_b",
+          "API16N",
+          "API16N_b",
+          "API16N_c"
+        ],
+        "workers": 8
+      },
+      "vacuous": false,
+      "verdicts_checked": 20
+    },
+    "cases": {
+      "compat": 2,
+      "control": 2,
+      "noise12": 2,
+      "scale20": 2
+    },
+    "fidelity_self_replay": {
+      "PASS": true,
+      "cases": 6,
+      "exact": 6,
+      "exact_per_arm": {
+        "API16E": 4,
+        "API16N": 2
+      },
+      "expected": 6,
+      "per_key": {
+        "control": 2,
+        "noise12": 2,
+        "scale20": 2
+      },
+      "study_results_sha256": "ae0df78a3c761b6646b5a8a7496b68433a1ed09f13c15678aa944c2fcd20a95a"
+    },
+    "gate_status": {
+      "G10": {
+        "pass": false
+      },
+      "GCOMPAT16N": {
+        "pass": true
+      },
+      "GDET50": {
+        "pass": true
+      },
+      "GFID50": {
+        "pass": true
+      },
+      "GHOST50": {
+        "pass": false
+      },
+      "GN12_sound": {
+        "pass": true
+      },
+      "GQB25": {
+        "pass": true
+      },
+      "GS20_sound50": {
+        "pass": true
+      },
+      "GS_ref": {
+        "pass": true
+      },
+      "GTEST": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (TEST_SUITE_050 missing)"
+      },
+      "GTI": {
+        "pass": false
+      },
+      "G_PROC": {
+        "pass": false
+      },
+      "G_RT": {
+        "pass": true
+      },
+      "G_recount": {
+        "pass": true
+      },
+      "G_sound": {
+        "pass": true
+      }
+    },
+    "label_source": "recount",
+    "note": "synthetic: smoke cases as main with the smoke case counts; GHOST50 fails by design (no 050 freeze yet and no study API_CHECKS), GTI, GTEST, G_PROC and G_RT by design",
+    "recount_rc": 0,
+    "reference_rc": 0,
+    "reproduces": true,
+    "sealed_input_verified": true,
+    "secondary": [
+      "GCOST50",
+      "GN12_rate",
+      "GS20_rate50",
+      "GS20_vs49"
+    ]
+  },
+  "verifier_chain": {
+    "authorization_exceptions": 0,
+    "entries": [
+      [
+        "preregistration_050",
+        "dd1c41f"
+      ],
+      [
+        "build_authorization_050",
+        "dd1c41f"
+      ],
+      [
+        "seedcheck_050",
+        "d02f816"
+      ]
+    ],
+    "head": "354e688",
+    "links": 5,
+    "passed": true
+  }
+}

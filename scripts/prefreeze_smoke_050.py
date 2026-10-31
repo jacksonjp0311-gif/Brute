@@ -9,11 +9,12 @@ eps_bar, delta or k. It
      freeze), recounted, referenced, self-replayed (GFID50 fidelity) and gated twice with the smoke case counts (dumps must be
      identical); exercises verify_release_0470.release_ok;
   4. runs verify_release_0470.chain on the repository (ledger since preregistration_050; HEAD stands in for freeze and seal);
-  5. runtime projection (Inferred), plan 050 runtime_estimate: r_min(scale20) = min(slowest smoke scale20 conflict rate over records
-     with case wall >= 1 s, the declared 3528/s); every scale20 job worst min(600 s, B20 / r_min + 10 s); control, noise12 and part c
-     jobs at max(10 x their smoke mean, 60 s) (12 states at B12: smoke cases decide in seconds; the factor is a declared margin, not
-     a fit); LPT on 8 workers. Declared cut order: the first of (N12B 12, N20B 12), (6, 12), (6, 6) whose worst-case LPT <= 3600 s,
-     else (6, 6) with cut_exhausted; the runner's (N12B, N20B) must equal it (cut_consistent).
+  5. runtime projection (Inferred), plan 050 runtime_estimate (#167 item 13 worst case, every case spends its whole B):
+     r_min(scale20) = min(slowest smoke scale20 conflict rate over records with case wall >= 1 s, the declared 8766/s);
+     r_min(12 states) = min(slowest smoke control / noise12 / part c rate over records with case wall >= 1 s, the declared 6716/s);
+     every job worst min(600 s, B / r_min + 10 s) (controls and part c by the same rule: conservative against the plan's
+     "about 60 s"); LPT on 8 workers. Declared cut order: the first of (N12B 12, N20B 12), (6, 12), (6, 6) whose worst-case LPT
+     <= 3600 s, else (6, 6) with cut_exhausted true; the runner's (N12B, N20B) must equal it (cut_consistent).
 Writes results/diag-050/PREFREEZE_SMOKE_GATES_050.json (refuses overwrite). Observed only: no gate decision, no tuning.
   PYTHONPATH=. python scripts/prefreeze_smoke_050.py /tmp/s50/smoke"""
 import copy,json,shutil,subprocess,sys,tempfile
@@ -29,7 +30,7 @@ from scripts import verify_release_0470 as V
 from scripts import api_checks_050 as AC
 from scripts.recount_050 import main as recount
 from scripts.run_reference_050 import main as reference
-OUT=ROOT/'results/diag-050/PREFREEZE_SMOKE_GATES_050.json';CAP=3600;GUARD=600.0;RATE_DECL=3528.0;MARGIN=10.0;FLOOR=60.0
+OUT=ROOT/'results/diag-050/PREFREEZE_SMOKE_GATES_050.json';CAP=3600;GUARD=600.0;RATE_DECL={'scale20':8766.0,'12':6716.0}
 STEPS=((12,12),(6,12),(6,6))
 
 
@@ -47,25 +48,26 @@ def _jobs(n12b,n20b):
 
 
 def projection(res,workers=8):
-    fv={};rate=[]
+    fv={};rate={'scale20':[],'12':[]}
     for c in res['cases']:
         for g,w in c['group_walls_informational'].items():fv.setdefault(('c/' if c['block']=='c' else '')+c['key'],[]).append(w)
-        if c['key']=='scale20':
-            for a,x in c['arms'].items():
-                w=x.get('case_wall_informational')
-                if w and w>=1.0:rate.append(x['conflicts_spent']/w)
-    fm={k:sum(x)/len(x) for k,x in fv.items()};smin=min(rate) if rate else None;rmin=min(v for v in (smin,RATE_DECL) if v is not None)
+        for a,x in c['arms'].items():
+            w=x.get('case_wall_informational')
+            if w and w>=1.0:rate['scale20' if c['key']=='scale20' else '12'].append(x['conflicts_spent']/w)
+    fm={k:sum(x)/len(x) for k,x in fv.items()};smin={k:(min(v) if v else None) for k,v in rate.items()}
+    rmin={k:min(v for v in (smin[k],RATE_DECL[k]) if v is not None) for k in RATE_DECL}
     def mean(j):return fm.get(('c/' if j[0]=='c' else '')+j[1],0.0)
-    def worst(j):return min(GUARD,budget_for(j[1])/rmin+10.0) if j[1]=='scale20' else max(MARGIN*mean(j),FLOOR)
-    out={'label':'Inferred','mean_wall_by_key':{k:round(v,2) for k,v in sorted(fm.items())},'smoke_slowest_scale20_rate':None if smin is None else round(smin,1),
-         'rate_declared_scale20':RATE_DECL,'r_min_scale20':round(rmin,1),'small_job_rule':f'max({MARGIN} x smoke mean, {FLOOR} s)','workers':workers,'cap_s':CAP,'candidates':{}}
+    def worst(j):return min(GUARD,budget_for(j[1])/rmin['scale20' if j[1]=='scale20' else '12']+10.0)
+    out={'label':'Inferred','mean_wall_by_key':{k:round(v,2) for k,v in sorted(fm.items())},'smoke_slowest_rate':{k:(None if v is None else round(v,1)) for k,v in smin.items()},
+         'rate_declared':RATE_DECL,'r_min':{k:round(v,1) for k,v in rmin.items()},'worst_per_job_s':{k:round(worst(('main',k,0,'')),1) for k in ('scale20','noise12','control')},
+         'workers':workers,'cap_s':CAP,'candidates':{}}
     for n12b,n20b in STEPS:
         J=_jobs(n12b,n20b);w=[mean(j) for j in J];x=[worst(j) for j in J]
         out['candidates'][f'N12B={n12b},N20B={n20b}']={'jobs':len(J),'mean_lpt_s':round(_lpt(w,workers),1),'worst_serial_s':round(sum(x),1),'worst_case_lpt_s':round(_lpt(x,workers),1)}
     ok=[s for s in STEPS if out['candidates'][f'N12B={s[0]},N20B={s[1]}']['worst_case_lpt_s']<=CAP];req=ok[0] if ok else STEPS[-1]
     out['required']={'N12B':req[0],'N20B':req[1]};out['cut_exhausted']=not ok;out['runner']={'N12B':ST.N12B,'N20B':ST.N20B}
     out['cut_consistent']=req==(ST.N12B,ST.N20B);out['cut_applied']=req!=STEPS[0]
-    out['caveat']='two smoke seeds per key; the worst case assumes every scale20 job exhausts B20 at r_min (or hits the 600 s case guard); 12-state jobs use a declared margin over smoke'
+    out['caveat']='two smoke seeds per key; the worst case assumes every job spends its whole B at r_min (or hits the 600 s case guard)'
     return out
 
 
