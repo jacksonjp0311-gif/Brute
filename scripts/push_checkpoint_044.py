@@ -4,7 +4,7 @@ it copies results/study-044/main/CHECKPOINT.jsonl (complete lines only) into a d
 results/study-044/snapshots/ckpt_snapshot.jsonl.gz, commits only that path and pushes the branch without force
 (env -u GITHUB_TOKEN -u GH_TOKEN). It never edits the checkpoint, never relaunches the runner and stops when the runner
 exits (after one final snapshot). Log: results/study-044/snapshots/PUSH_LOG.txt (informational).
-  python scripts/push_checkpoint_043.py --pid PID [--period 300]"""
+  python scripts/push_checkpoint_044.py --pid PID [--period 300]"""
 from __future__ import annotations
 import argparse,gzip,io,os,subprocess,sys,time
 from pathlib import Path
