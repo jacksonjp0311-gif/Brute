@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.43.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.43.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0430 -->
-- **v0.43.0: RELEASE IN PROGRESS** 2026-10-31 (EDT). Built on branch `plan/v0.43.0` (BRUTE_PLAN_046, certify/16: API16 wrapping A16_N, replay of the 18 sealed 045 A16_N cases plus fresh scale16 and controls; LEAN; STANDING GO t133s553, build authorization ledger `d09da5e` at plan commit `7d691cc`).
+- **v0.43.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.43.0 (annotated tag object `8c48343` at `a9b6045`, ledger release_046 `526983d`). Fresh-clone verify of the tag passed (ledger `f8e4bf9`): verify_release_0430 (5 links, 0 exceptions, GATES_046 reproduces) and 43 gated tests. The tests needed the study 045 raw data restored in the clone first. Box clock 0 s from GitHub's Date header at 06:26:00 EDT. Built on branch `plan/v0.43.0` (BRUTE_PLAN_046, certify/16: API16 wrapping A16_N, replay of the 18 sealed 045 A16_N cases plus fresh scale16 and controls; LEAN; STANDING GO t133s553, build authorization ledger `d09da5e` at plan commit `7d691cc`).
   - **Run complete (Observed).** 54/54 jobs (36 fresh arm jobs on 18 cases, 18 replays), 319.8 s of 3600 s, normal exit about 06:08:56 EDT, run once; 2 checkpoint snapshots (`70e10f2`, `8dd4720`); nothing relaunched; resume clause not approved, not used. 2 hard kills in 2592 calls; max calls 10.033 / 10.015 s.
   - **PASS (10/12):** GAPI14_compat, GHOST16, G10 (12/12 ID), GQB21, GS_ref (25 decided, all audited, 0 mismatches, 20/20), G_sound (638 words, 0 unsound), G_recount, GTI, G_PROC, G_RT. **FAIL:** GAPI16_replay (same 17/18 [0.74, 0.99]; 11130006 IDU vs sealed ID with identical words and model, capped 5 vs 3) and GAPI16_fresh (API16 6/12 [0.25, 0.75], bar 8; A16_N 7/12; agree 11/12; WRONG 0). Secondary GREP16c, GAPI_cost reported only.
   - **Claim scope (Exact; reason Inferred):** certify/16 ID/IDF is conditional on the declared N; a larger machine can copy the true one on every visited state, so a size bound is inherent.
