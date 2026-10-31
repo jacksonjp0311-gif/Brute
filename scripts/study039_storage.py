@@ -1,4 +1,4 @@
-"""Storage for the sealed study-039 outputs (same scheme as scripts/study039_storage.py, which stays frozen; new file).
+"""Storage for the sealed study-039 outputs (same scheme as scripts/study038_storage.py, which stays frozen; new file).
 
 Large raw files (each block's RESULTS.json / SCIENTIFIC.json) are git-ignored; the committed form is a
 deterministic gzip (level 9, mtime 0, no file name) of the exact sealed bytes. Restored bytes are checked against the
