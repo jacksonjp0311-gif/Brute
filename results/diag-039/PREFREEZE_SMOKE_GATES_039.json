@@ -1,0 +1,551 @@
+{
+  "PASS": true,
+  "label": "Observed",
+  "note": "PASS here means the tooling ran end to end on a sealed block (recount reproduces, gates reproduce); the reference result is recorded, not required",
+  "purpose": "Pre-freeze smoke-gates test for study-039 (plan 039 process: \"pre-freeze gates test on a sealed smoke block\"; the #129",
+  "recount": {
+    "PASS": true,
+    "cases": 12,
+    "labels": {
+      "A14": {
+        "AMB": 0,
+        "ID": 7,
+        "IDF": 2,
+        "IDU": 3,
+        "WRONG": 0
+      },
+      "A14_k64": {
+        "AMB": 4,
+        "ID": 6,
+        "IDF": 0,
+        "IDU": 2,
+        "WRONG": 0
+      },
+      "A14_random": {
+        "AMB": 5,
+        "ID": 4,
+        "IDF": 0,
+        "IDU": 3,
+        "WRONG": 0
+      },
+      "A9": {
+        "AMB": 3,
+        "ID": 5,
+        "IDF": 1,
+        "IDU": 3,
+        "WRONG": 0
+      }
+    },
+    "mismatching_cases": 0,
+    "words_checked": 321,
+    "words_unsound": 0
+  },
+  "recount_rc": 0,
+  "reference_on_smoke": {
+    "PASS": true,
+    "cases": 3,
+    "decided": 3,
+    "mismatch_count": 0,
+    "mutations": 20,
+    "not_reached": 0,
+    "of": 20,
+    "verdicts_checked": 59,
+    "wall_s_informational": 143.0,
+    "words_checked": 45,
+    "workers": 3
+  },
+  "reference_rc": 0,
+  "relabelled": {
+    "check_returncode": 0,
+    "check_stdout": "GATES_039 reproduces",
+    "crashed": false,
+    "gate_status": {
+      "G10": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+      },
+      "GC14_headline": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+      },
+      "GCH14": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+      },
+      "GFAM14": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+      },
+      "GINC14": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (TEST_SUITE_039 missing)"
+      },
+      "GQB14": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+      },
+      "GREP14": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+      },
+      "GS_ref": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+      },
+      "GTI": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (TEST_SUITE_039 missing)"
+      },
+      "G_PROC": {
+        "pass": false
+      },
+      "G_RT": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+      },
+      "G_recount": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+      },
+      "G_sound": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+      }
+    },
+    "recount_rc": 0,
+    "reports_keys": [
+      "contrasts",
+      "cost",
+      "group_wall_mean_s",
+      "inc_guards",
+      "labels",
+      "labels_per_seed",
+      "n_min",
+      "query_max_s",
+      "stops",
+      "truth_reachable"
+    ],
+    "sealed_input_verified": true,
+    "secondary": {
+      "GACT14": null,
+      "GK14": null
+    }
+  },
+  "runtime_projection": {
+    "cap_s": 1800,
+    "full_plan": {
+      "ideal_parallel_s": 311.7,
+      "jobs": 162,
+      "lpt_makespan_s": 312.1,
+      "serial_s": 2493.3
+    },
+    "label": "Inferred",
+    "mean_group_wall_by_group_key": {
+      "A14/control": 0.0,
+      "A14/perm12": 2.6,
+      "A14/scale12": 10.1,
+      "A14/scale14": 15.4,
+      "A14/scale16": 40.9,
+      "A14_k64/control": 0.0,
+      "A14_k64/perm12": 1.3,
+      "A14_k64/scale12": 7.2,
+      "A14_k64/scale14": 11.3,
+      "A14_k64/scale16": 21.1,
+      "A9/control": 0.0,
+      "A9/perm12": 1.7,
+      "A9/scale12": 10.4,
+      "A9/scale14": 29.1,
+      "A9/scale16": 56.5
+    },
+    "reduce_A14_k64": false,
+    "reduced_A14_k64_scale16_only": {
+      "ideal_parallel_s": 281.9,
+      "jobs": 120,
+      "lpt_makespan_s": 282.5,
+      "serial_s": 2255.4
+    },
+    "smoke_total_elapsed_s": 127.42512579100003,
+    "threshold_s": 1500,
+    "workers": 8
+  },
+  "smoke_cases": [
+    [
+      "scale16",
+      10590001,
+      {
+        "A14": "IDU",
+        "A14_k64": "AMB",
+        "A14_random": "IDU",
+        "A9": "IDU"
+      },
+      {
+        "A14": 66,
+        "A14_k64": 59,
+        "A14_random": 66,
+        "A9": 31
+      },
+      {
+        "A14": 9.03,
+        "A14_k64": 5.86,
+        "A14_random": 9.01,
+        "A9": 10.04
+      },
+      {
+        "A14": 60.3,
+        "A14_k64": 30.8,
+        "A9": 62.1
+      }
+    ],
+    [
+      "scale16",
+      10590002,
+      {
+        "A14": "IDU",
+        "A14_k64": "IDU",
+        "A14_random": "IDU",
+        "A9": "IDU"
+      },
+      {
+        "A14": 0,
+        "A14_k64": 0,
+        "A14_random": 0,
+        "A9": 0
+      },
+      {
+        "A14": 9.01,
+        "A14_k64": 9.03,
+        "A14_random": 9.0,
+        "A9": 10.16
+      },
+      {
+        "A14": 22.7,
+        "A14_k64": 11.3,
+        "A9": 12.9
+      }
+    ],
+    [
+      "scale16",
+      10590003,
+      {
+        "A14": "IDU",
+        "A14_k64": "IDU",
+        "A14_random": "IDU",
+        "A9": "IDU"
+      },
+      {
+        "A14": 27,
+        "A14_k64": 27,
+        "A14_random": 27,
+        "A9": 36
+      },
+      {
+        "A14": 9.12,
+        "A14_k64": 9.01,
+        "A14_random": 9.15,
+        "A9": 10.0
+      },
+      {
+        "A14": 39.6,
+        "A14_k64": 21.3,
+        "A9": 94.6
+      }
+    ],
+    [
+      "scale14",
+      10590004,
+      {
+        "A14": "IDF",
+        "A14_k64": "AMB",
+        "A14_random": "AMB",
+        "A9": "AMB"
+      },
+      {
+        "A14": 117,
+        "A14_k64": 60,
+        "A14_random": 117,
+        "A9": 64
+      },
+      {
+        "A14": 4.28,
+        "A14_k64": 1.27,
+        "A14_random": 0.25,
+        "A9": 2.48
+      },
+      {
+        "A14": 13.4,
+        "A14_k64": 5.7,
+        "A9": 27.7
+      }
+    ],
+    [
+      "scale14",
+      10590005,
+      {
+        "A14": "ID",
+        "A14_k64": "ID",
+        "A14_random": "AMB",
+        "A9": "AMB"
+      },
+      {
+        "A14": 54,
+        "A14_k64": 54,
+        "A14_random": 54,
+        "A9": 63
+      },
+      {
+        "A14": 2.97,
+        "A14_k64": 2.96,
+        "A14_random": 1.12,
+        "A9": 1.9
+      },
+      {
+        "A14": 21.5,
+        "A14_k64": 19.2,
+        "A9": 38.8
+      }
+    ],
+    [
+      "scale14",
+      10590006,
+      {
+        "A14": "ID",
+        "A14_k64": "ID",
+        "A14_random": "AMB",
+        "A9": "ID"
+      },
+      {
+        "A14": 15,
+        "A14_k64": 15,
+        "A14_random": 15,
+        "A9": 13
+      },
+      {
+        "A14": 3.52,
+        "A14_k64": 3.45,
+        "A14_random": 1.66,
+        "A9": 6.19
+      },
+      {
+        "A14": 11.4,
+        "A14_k64": 9.0,
+        "A9": 20.8
+      }
+    ],
+    [
+      "scale12",
+      10590007,
+      {
+        "A14": "IDF",
+        "A14_k64": "AMB",
+        "A14_random": "AMB",
+        "A9": "IDF"
+      },
+      {
+        "A14": 69,
+        "A14_k64": 64,
+        "A14_random": 69,
+        "A9": 38
+      },
+      {
+        "A14": 2.75,
+        "A14_k64": 0.94,
+        "A14_random": 0.76,
+        "A9": 4.24
+      },
+      {
+        "A14": 14.2,
+        "A14_k64": 10.1,
+        "A9": 14.1
+      }
+    ],
+    [
+      "scale12",
+      10590008,
+      {
+        "A14": "ID",
+        "A14_k64": "AMB",
+        "A14_random": "AMB",
+        "A9": "AMB"
+      },
+      {
+        "A14": 82,
+        "A14_k64": 64,
+        "A14_random": 82,
+        "A9": 64
+      },
+      {
+        "A14": 0.55,
+        "A14_k64": 0.53,
+        "A14_random": 0.14,
+        "A9": 0.42
+      },
+      {
+        "A14": 5.9,
+        "A14_k64": 4.4,
+        "A9": 6.8
+      }
+    ],
+    [
+      "perm12",
+      10590009,
+      {
+        "A14": "ID",
+        "A14_k64": "ID",
+        "A14_random": "ID",
+        "A9": "ID"
+      },
+      {
+        "A14": 0,
+        "A14_k64": 0,
+        "A14_random": 0,
+        "A9": 0
+      },
+      {
+        "A14": 0.3,
+        "A14_k64": 0.29,
+        "A14_random": 0.3,
+        "A9": 0.32
+      },
+      {
+        "A14": 1.5,
+        "A14_k64": 0.7,
+        "A9": 0.8
+      }
+    ],
+    [
+      "perm12",
+      10590010,
+      {
+        "A14": "ID",
+        "A14_k64": "ID",
+        "A14_random": "ID",
+        "A9": "ID"
+      },
+      {
+        "A14": 0,
+        "A14_k64": 0,
+        "A14_random": 0,
+        "A9": 0
+      },
+      {
+        "A14": 0.4,
+        "A14_k64": 0.4,
+        "A14_random": 0.4,
+        "A9": 1.12
+      },
+      {
+        "A14": 2.0,
+        "A14_k64": 1.0,
+        "A9": 2.7
+      }
+    ],
+    [
+      "perm12",
+      10590011,
+      {
+        "A14": "ID",
+        "A14_k64": "ID",
+        "A14_random": "ID",
+        "A9": "ID"
+      },
+      {
+        "A14": 0,
+        "A14_k64": 0,
+        "A14_random": 0,
+        "A9": 0
+      },
+      {
+        "A14": 1.27,
+        "A14_k64": 1.29,
+        "A14_random": 1.27,
+        "A9": 0.75
+      },
+      {
+        "A14": 4.4,
+        "A14_k64": 2.2,
+        "A9": 1.8
+      }
+    ],
+    [
+      "control",
+      10590012,
+      {
+        "A14": "ID",
+        "A14_k64": "ID",
+        "A14_random": "ID",
+        "A9": "ID"
+      },
+      {
+        "A14": 0,
+        "A14_k64": 0,
+        "A14_random": 0,
+        "A9": 0
+      },
+      {
+        "A14": 0.0,
+        "A14_k64": 0.0,
+        "A14_random": 0.0,
+        "A9": 0.0
+      },
+      {
+        "A14": 0.0,
+        "A14_k64": 0.0,
+        "A9": 0.0
+      }
+    ]
+  ],
+  "smoke_gate_status": {
+    "G10": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GC14_headline": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GCH14": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GFAM14": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GINC14": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (TEST_SUITE_039 missing)"
+    },
+    "GQB14": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GREP14": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GS_ref": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "GTI": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (TEST_SUITE_039 missing)"
+    },
+    "G_PROC": {
+      "pass": false
+    },
+    "G_RT": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "G_recount": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    },
+    "G_sound": {
+      "pass": false,
+      "reason": "INCOMPLETE_INPUT (main missing, partial, missing arms or not matching its seal)"
+    }
+  },
+  "smoke_sealed_input_verified": true
+}
