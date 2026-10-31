@@ -17,7 +17,9 @@ NEW=['brute/api/certify20c.py','brute/release_version_0520.py','experiments/brut
      'scripts/check_seeds_055.py','scripts/api_checks_055.py','scripts/recount_055.py','scripts/run_reference_055.py','scripts/cube_audit_055.py','scripts/make_gates_055.py',
      'scripts/make_freeze_055.py','scripts/push_checkpoint_055.py','scripts/study055_storage.py','scripts/verify_release_0520.py',
      'scripts/run_tests_0520.py','scripts/prefreeze_smoke_055.py','tests/test_certify20c.py','tests/test_scripts_055.py','tests/test_release_0520.py',
-     'docs/research/BRUTE_DEVIATIONS_055_183.md','results/diag-055/SEEDCHECK_055.json','results/diag-055/PREFREEZE_SMOKE_GATES_055.json']
+     'docs/research/BRUTE_DEVIATIONS_055_183.md','results/diag-055/SEEDCHECK_055.json','results/diag-055/PREFREEZE_SMOKE_GATES_055.json',
+     'scripts/check_seeds_055_at.py','results/diag-055/SEEDCHECK_055_ATTEMPT1_FAIL.json','results/diag-055/SEEDCHECK_055_ATTEMPT2_FAIL.json',
+     'results/diag-055/API_CHECKS_055_PREFREEZE_RECHECK.json']
 FILES=list(FILES_054)+['experiments/BRUTE_PLAN_054.json','experiments/BRUTE_PLAN_054a.json','experiments/COMMIT_ORDER_054.json','experiments/BRUTE_SOURCE_FREEZE_054.json',
        'docs/research/BRUTE_DEVIATIONS_054_181.md','docs/research/BRUTE_DEVIATIONS_054_182.md',
        'results/study-054/main/SEAL.json','results/study-054/main/RECOUNT_054.json','results/study-054/main/REFERENCE_054.json',
