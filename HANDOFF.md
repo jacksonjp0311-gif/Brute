@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.34.0 IN PROGRESS)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-30 (v0.34.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0340 -->
-- **v0.34.0: IN PROGRESS** (release steps pending) on branch `plan/v0.34.0` (BRUTE_PLAN_037, SOUND NOISY STOP; LEAN; STANDING GO t133s553, build authorization ledger `b789fb9`).
+- **v0.34.0: RELEASED** 2026-10-30 as tag `v0.34.0` (annotated `6593ee9` -> `ce937d9`, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.34.0). main was fast-forwarded `94bd491..ce937d9`. A fresh clone of the tag restored, verified (commit chain 6) and passed 8/8 test modules (57 tests) with the test output on its scratch default; ledger `7318c5a`. Built on branch `plan/v0.34.0` (BRUTE_PLAN_037, SOUND NOISY STOP; LEAN; STANDING GO t133s553, build authorization ledger `b789fb9`).
   - **Run complete (Observed).** 42/42 cases, 443.1 s of 1800 s, normal exit, run once. 2 checkpoint snapshots were pushed (`4bb4b36`, `e2b381c`). Nothing was relaunched. The resume clause was NOT approved and was not needed. The box clock read about 5 s ahead of GitHub's Date header at 20:39:09 EDT.
   - **PASS (9/11):** GSAFE12 (Exact: sealed 036 WRONG trace now AMB), GQB12 (max 10.332 s), G_sound (678 words, 0 unsound), G10, GS_ref (240 decided, 225 at raised B, 54 confirmation items, 0 mismatches, mutations 20/20), GTI (8 modules, 57 tests), G_PROC, G_RT, G_recount. **FAIL:** GR12_headline (a passes; b: IDU(A11_r3) - IDU(A12_r3) noisy12 0.00 [0, 0]; c: ID+IDF(A12_r5) 0/12; d: ID(A12_r5) - ID(A11_r5) -0.42 [-0.67, -0.17]), GNR12 (20 clean12 label differences: B_max confirmation capped). Secondary GPR12 passes.
   - **Headline numbers (Observed).** noisy12: A12_r5 0/0/1/0/11; A12_r3 0/0/0/0/12; A12_r3_nostop 1/0/0/0/11; A11_r3 0/0/0/0/12; A11_r5 5/0/1/0/6; S7 IDU 12. noisy8: A12_r5 4/7/0/0/1. clean12: A12_r5 and A12_r3 0/0/1/0/11; A12_r3_nostop = A11_r3 8/2/1/0/1. Controls ID 6/6 for every arm.
