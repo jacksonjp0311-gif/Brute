@@ -43,3 +43,21 @@ Labels: Exact, Observed, Simulated, Inferred, Rejected, Open. Times are box-loca
    (noisy_scale8). No 038 seed was used before the smoke. Nothing was tuned.
 9. **Clock (Observed).** Box clock vs GitHub's Date header at build authorization: 20:58:21 EDT vs 00:58:15 GMT (box about
    6 s ahead).
+10. **Pre-freeze smoke (Observed).** Smoke block (7 cases, seeds 10490001-10490007, output under /tmp, 8 workers for 7 jobs)
+    started 21:21:43 EDT and took 334 s (slowest case clean_scale12 10490004, 333.8 s). prefreeze_smoke_038 PASS
+    (results/diag-038/PREFREEZE_SMOKE_GATES_038.json, commit 54d49a2): recount_038 PASS (7 cases, 113 words, 0 unsound,
+    0 mismatching cases), run_reference_038 on the 2 noisy_scale8 smoke cases PASS (18 decided items, 16 at B > 0, 0
+    mismatches, mutations 20/20), the relabelled sealed block gates and make_gates_038 --check reproduces. Smoke labels
+    (Observed, not a result): control ID for all arms; noisy_scale8 A13_r5 ID 2/2 (A12_r5 1/2), A13_r3 IDU 2/2;
+    noisy_scale12 IDU for every arm on both cases (A13_r5 and A12_r5 with one capped confirmation each); clean_scale12
+    A11_r3 ID 2/2, every A12 and A13 arm IDU. Max query walls 9.01-9.38 s (<= 10.5). Nothing was tuned.
+11. **Clean12 B_max confirmation vs the 9.0 s cap (Observed; task item 3).** On both clean_scale12 smoke cases the A13_r5
+    and A13_r3 confirmation (one future-mode query at n = 12, B_max 2 / 6, after the least-B search found B 0 at T 184 and
+    T 201) did NOT finish under the cap: verdict 'unknown', walls 9.01 and 9.03 s (A13_r5), 9.01 and 9.01 s (A13_r3).
+    A12_r5 / A12_r3 also capped (their n = 1..12 loop reached n = 10 with walls 2.5-4.6 s at n = 9 and 9.0 s at n = 10).
+    So the clean12 B_max confirmation clearly does not finish under the cap at these trace lengths; A13 confirmations on
+    clean_scale12 will likely be capped (Inferred), putting GR13 d (<= 2/12 capped) and GNR13 at risk. As instructed,
+    this is recorded only: the locked gates, the cap, K and the arms are unchanged.
+12. **Runtime rule (Inferred).** Greedy makespan projection for the 42-case main block on 8 workers: 574 s (ideal 552 s,
+    serial 4415 s; mean case wall clean_scale12 219 s, noisy_scale12 81 s, noisy_scale8 68 s, control 0.7 s), under the
+    plan's 1500 s threshold, so A11_r3 is not reduced; no arm is changed.
