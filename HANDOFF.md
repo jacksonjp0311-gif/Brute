@@ -1,8 +1,19 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.50.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.51.0 release in progress)._
 
 ## Current version and state
+
+<!-- V0510 -->
+- **v0.51.0: release in progress** 2026-10-31 (EDT), study BRUTE-0510-SCALE20-TREECOLOR-054 (plan 054 `29e8697` + pre-data amendment 054a `76c1e29`), branch `plan/v0.51.0`.
+  - **Run complete (Observed).** 30/30 jobs, 12 cases, 1157.8 s of 3600 s, launched about 17:53:02 EDT, normal exit about 18:12 EDT, run once; 4 checkpoint snapshots; nothing relaunched. No cut: N20T 6, NC20T 6.
+  - **PASS (12/13 gated):** GDET54 6/6 [0.61, 1.00] (identical conflicts, 0 hard kills); GFID54 18/18 [0.82, 1.00]; GS20T_sound54 (WRONG 0/30 [0.00, 0.11]); GCOMPAT20T54 6/6 [0.61, 1.00]; GHOST54; GS_ref (6/6 decided audited, 0 mismatches, 20/20 mutations, 421 s); G_sound (389 words, 0 unsound); G_recount; GTI; GTEST (104 tests); G_PROC; G_RT (1157.8 s).
+  - **FAIL:** GS20T_gain54: certify/20t ID+IDF 0/6 [0.00, 0.39] in both passes vs certify/16e at bound 20 0/6 [0.00, 0.39]. certified_20t_N20 false; sound_not_certified_20t true.
+  - **API:** new brute.certify/20t (brute/api/certify20t.py) published sound but not certified; certify/16n and certify/16e unchanged.
+  - **Branch taken (plan 054a next_if_fail, gain):** v0.52.0 tries cube-and-conquer over distinguishing-word prefixes with a deterministic cube order at the same budget.
+  - **Deviations:** #181 (pre-run, incl. the clique decision), #182 (post-run).
+  - **Chain:** plan `29e8697` -> 054a `76c1e29` -> smoke attempt 1 `2df545e` (FAIL, published) -> fix `32b3bae` -> smoke2 `aa1a9d2` -> #181 `2ff49a1` -> freeze `6762f86` -> run start `3c5013f` -> seal `eb695ff` -> recount `a0573e7` -> reference `e02c307` -> api checks `968cb1c` -> tests `d69000a` -> gates `6d9574f` -> #182 `d523486` -> RELEASE.json `01e7811`
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched. The user's computer was offline; network went through the box.
 
 <!-- V0500 -->
 - **v0.50.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.50.0 (annotated tag object `ef3e49b` at `a92831d`, ledger release_053 `0a42894`). Fresh-clone verify of the tag passed: study 045 to 053 restored, verify_release_0500 passed, 103/103 tests (84 gated, 19 reported; ledger fresh_clone_verify_053 `b384e23`). Built on branch `plan/v0.50.0` (BRUTE_PLAN_053: certify/16n at declared bound 16, eps 0.05 and eps_bar 0.10, delta 0.001, C 50000, B 1500000; compat against certify/16e at bound 16; non-blocking part B: certify/16e at 20 states with a conflict-only stop on 1 worker).
