@@ -1,0 +1,1972 @@
+{
+  "all_gated_pass": false,
+  "budget_conflicts": null,
+  "caps": {
+    "control": [
+      50000,
+      3000000
+    ],
+    "noise12": [
+      50000,
+      1500000
+    ],
+    "scale20": [
+      12000,
+      2000000
+    ]
+  },
+  "claim": "certify/16s and certify/16e ID/IDF is exact conditional on noise-free readings and true size <= the declared N (family_bound); certify/16n ID/IDF is exact conditional on every majority being correct (probability >= 1 - delta under iid flips with eps <= eps_bar) and true size <= N",
+  "conflict_cap": null,
+  "failed": [
+    "GDET51",
+    "GFID51",
+    "GS20_sound51",
+    "GCOMPAT16S",
+    "G10",
+    "GQB25"
+  ],
+  "gates": {
+    "G10": {
+      "observed": {
+        "cases": [
+          [
+            11850001,
+            {
+              "API16E": "IDF",
+              "API16E_b": "IDF"
+            }
+          ],
+          [
+            11850002,
+            {
+              "API16E": "ID",
+              "API16E_b": "ID"
+            }
+          ],
+          [
+            11850003,
+            {
+              "API16E": "ID",
+              "API16E_b": "ID"
+            }
+          ],
+          [
+            11850004,
+            {
+              "API16E": "IDF",
+              "API16E_b": "IDF"
+            }
+          ],
+          [
+            11850005,
+            {
+              "API16E": "ID",
+              "API16E_b": "ID"
+            }
+          ],
+          [
+            11850006,
+            {
+              "API16E": "ID",
+              "API16E_b": "ID"
+            }
+          ]
+        ]
+      },
+      "pass": false
+    },
+    "GCOMPAT16S": {
+      "observed": {
+        "ci95": [
+          0.4364971778135299,
+          0.9699466302516934
+        ],
+        "columns": [
+          "seed",
+          "equal",
+          "label_16s_c",
+          "label_16e_k",
+          "machine_equal"
+        ],
+        "equal": 5,
+        "of": 6,
+        "per_case": [
+          [
+            11850001,
+            true,
+            "IDF",
+            "IDF",
+            true
+          ],
+          [
+            11850002,
+            true,
+            "ID",
+            "ID",
+            true
+          ],
+          [
+            11850003,
+            true,
+            "ID",
+            "ID",
+            true
+          ],
+          [
+            11850004,
+            false,
+            "IDF",
+            "IDF",
+            false
+          ],
+          [
+            11850005,
+            true,
+            "ID",
+            "ID",
+            true
+          ],
+          [
+            11850006,
+            true,
+            "ID",
+            "ID",
+            true
+          ]
+        ],
+        "rule": "part c (certify/16s at bound 12) label equal to the part-k API16E record and, for ID / IDF, the same machine in canonical BFS form; from RECOUNT_051"
+      },
+      "pass": false
+    },
+    "GDET51": {
+      "observed": {
+        "ci95": [
+          0.703186733179637,
+          0.9469034451594526
+        ],
+        "columns": [
+          "key",
+          "seed",
+          "canon_equal",
+          "pass1",
+          "pass2"
+        ],
+        "control": [
+          6,
+          6
+        ],
+        "identical": 26,
+        "noise12": [
+          12,
+          12
+        ],
+        "of": 30,
+        "per_case": [
+          [
+            "scale20",
+            11830001,
+            true,
+            "AMB",
+            "AMB"
+          ],
+          [
+            "scale20",
+            11830002,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale20",
+            11830003,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale20",
+            11830004,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale20",
+            11830005,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale20",
+            11830006,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale20",
+            11830007,
+            false,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale20",
+            11830008,
+            false,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale20",
+            11830009,
+            false,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale20",
+            11830010,
+            false,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale20",
+            11830011,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale20",
+            11830012,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "control",
+            11850001,
+            true,
+            "IDF",
+            "IDF"
+          ],
+          [
+            "control",
+            11850002,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "control",
+            11850003,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "control",
+            11850004,
+            true,
+            "IDF",
+            "IDF"
+          ],
+          [
+            "control",
+            11850005,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "control",
+            11850006,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "noise12",
+            11870001,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "noise12",
+            11870002,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "noise12",
+            11870003,
+            true,
+            "IDF",
+            "IDF"
+          ],
+          [
+            "noise12",
+            11870004,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "noise12",
+            11870005,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "noise12",
+            11870006,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "noise12",
+            11870007,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "noise12",
+            11870008,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "noise12",
+            11870009,
+            true,
+            "AMB",
+            "AMB"
+          ],
+          [
+            "noise12",
+            11870010,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "noise12",
+            11870011,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            "noise12",
+            11870012,
+            true,
+            "ID",
+            "ID"
+          ]
+        ],
+        "records_checked_for_guard": 66,
+        "rule": "canon16s identical (scale20 12), canon16e identical (control 6), canon16n identical (noise12 N12B); wall_guard 0 on every record",
+        "scale20": [
+          8,
+          12
+        ],
+        "wall_guard_fired": [
+          [
+            "main/scale20/11830007",
+            "API16S",
+            [
+              "call"
+            ]
+          ],
+          [
+            "main/scale20/11830008",
+            "API16S",
+            [
+              "call"
+            ]
+          ],
+          [
+            "main/scale20/11830009",
+            "API16S",
+            [
+              "call"
+            ]
+          ],
+          [
+            "main/scale20/11830010",
+            "API16S",
+            [
+              "call"
+            ]
+          ],
+          [
+            "main/scale20/11830010",
+            "API16S_b",
+            [
+              "call"
+            ]
+          ]
+        ]
+      },
+      "pass": false
+    },
+    "GFID51": {
+      "observed": {
+        "bound": true,
+        "ci95": [
+          0.6643564949358397,
+          0.9266345762815145
+        ],
+        "exact": 25,
+        "exact_per_arm": {
+          "API16E": 6,
+          "API16N": 12,
+          "API16S": 7
+        },
+        "expected": 30,
+        "failures": {
+          "scale20/11830006/API16S": {
+            "diffs": [
+              "api_result",
+              [
+                3,
+                "capped"
+              ],
+              [
+                3,
+                "call_conflicts"
+              ],
+              [
+                3,
+                "call_capped"
+              ],
+              [
+                3,
+                "call_chunks"
+              ],
+              [
+                3,
+                "chunk_conflicts"
+              ]
+            ],
+            "exact": false
+          },
+          "scale20/11830007/API16S": {
+            "diffs": [
+              "api_result",
+              [
+                0,
+                "call_conflicts"
+              ],
+              [
+                0,
+                "call_chunks"
+              ],
+              [
+                0,
+                "chunk_conflicts"
+              ]
+            ],
+            "exact": false
+          },
+          "scale20/11830008/API16S": {
+            "diffs": [
+              [
+                "word_beyond_or_differs_from_trace",
+                0
+              ]
+            ],
+            "exact": false
+          },
+          "scale20/11830009/API16S": {
+            "diffs": [
+              "api_result",
+              [
+                11,
+                "capped"
+              ],
+              [
+                11,
+                "call_conflicts"
+              ],
+              [
+                11,
+                "call_capped"
+              ],
+              [
+                11,
+                "call_chunks"
+              ],
+              [
+                11,
+                "chunk_conflicts"
+              ],
+              [
+                13,
+                "capped"
+              ],
+              [
+                13,
+                "call_conflicts"
+              ],
+              [
+                13,
+                "call_capped"
+              ],
+              [
+                13,
+                "call_chunks"
+              ],
+              [
+                13,
+                "chunk_conflicts"
+              ]
+            ],
+            "exact": false
+          },
+          "scale20/11830010/API16S": {
+            "diffs": [
+              "api_result",
+              [
+                0,
+                "capped"
+              ],
+              [
+                0,
+                "call_conflicts"
+              ],
+              [
+                0,
+                "call_capped"
+              ],
+              [
+                0,
+                "call_chunks"
+              ],
+              [
+                0,
+                "chunk_conflicts"
+              ]
+            ],
+            "exact": false
+          }
+        },
+        "of": 30,
+        "per_key": {
+          "control": 6,
+          "noise12": 12,
+          "scale20": 12
+        }
+      },
+      "pass": false
+    },
+    "GHOST51": {
+      "observed": {
+        "bound_to_freeze_051": true,
+        "closures_unchanged": {
+          "brute.api.certify16e": true,
+          "brute.api.certify16n": true
+        },
+        "frozen_api_unchanged": true,
+        "new_flagged": {},
+        "newly_imported_vs_certify16e": [
+          "brute.api.certify16s"
+        ],
+        "no_network_run": {
+          "loop": [
+            "brute.certify/16s",
+            "ID",
+            12,
+            22,
+            81586
+          ],
+          "socket_attempts": 0
+        },
+        "socket_attempts": 0
+      },
+      "pass": true
+    },
+    "GN12_sound51": {
+      "observed": {
+        "API16N_ID_IDF": 11,
+        "WRONG": [],
+        "ci95": [
+          0.646120088858883,
+          0.9851349055950828
+        ],
+        "label_source": "recount",
+        "majority_errors": 0,
+        "model_bound": "P(any WRONG over 24 records) <= 24 x 0.001 = 0.024 (Exact, conditional on the iid model)",
+        "of": 12,
+        "per_case": [
+          [
+            11870001,
+            "ID",
+            "ID",
+            11075,
+            0,
+            "ID"
+          ],
+          [
+            11870002,
+            "ID",
+            "ID",
+            9305,
+            0,
+            "ID"
+          ],
+          [
+            11870003,
+            "IDF",
+            "IDF",
+            11844,
+            0,
+            "IDF"
+          ],
+          [
+            11870004,
+            "ID",
+            "ID",
+            10072,
+            0,
+            "ID"
+          ],
+          [
+            11870005,
+            "ID",
+            "ID",
+            11016,
+            0,
+            "ID"
+          ],
+          [
+            11870006,
+            "ID",
+            "ID",
+            10957,
+            0,
+            "ID"
+          ],
+          [
+            11870007,
+            "ID",
+            "ID",
+            9954,
+            0,
+            "ID"
+          ],
+          [
+            11870008,
+            "ID",
+            "ID",
+            11311,
+            0,
+            "ID"
+          ],
+          [
+            11870009,
+            "AMB",
+            "K_spent",
+            16972,
+            0,
+            "AMB"
+          ],
+          [
+            11870010,
+            "ID",
+            "ID",
+            9718,
+            0,
+            "ID"
+          ],
+          [
+            11870011,
+            "ID",
+            "ID",
+            9600,
+            0,
+            "ID"
+          ],
+          [
+            11870012,
+            "ID",
+            "ID",
+            9600,
+            0,
+            "ID"
+          ]
+        ],
+        "records": 24,
+        "reference_noise12": {
+          "audited": 24,
+          "decided": 24,
+          "mismatches": 0
+        }
+      },
+      "pass": true
+    },
+    "GQB25": {
+      "observed": {
+        "case_bound_s": 600.0,
+        "chunk_bound_s": 30.0,
+        "max_case_wall_s": {
+          "API16E/main/control": 2.384,
+          "API16E_b/main/control": 2.627,
+          "API16N/main/noise12": 12.1,
+          "API16N_b/main/noise12": 11.465,
+          "API16S/main/scale20": 352.152,
+          "API16S_b/main/scale20": 332.712,
+          "API16S_c/c/control": 3.323
+        },
+        "max_chunk_wall_s": {
+          "API16E/main/control": 1.363,
+          "API16E_b/main/control": 1.284,
+          "API16N/main/noise12": 1.816,
+          "API16N_b/main/noise12": 1.655,
+          "API16S/main/scale20": 54.25,
+          "API16S_b/main/scale20": 33.724,
+          "API16S_c/c/control": 1.293
+        },
+        "over_case": [],
+        "over_chunk": [
+          [
+            "main/scale20/11830007/API16S",
+            50.679
+          ],
+          [
+            "main/scale20/11830008/API16S",
+            54.25
+          ],
+          [
+            "main/scale20/11830009/API16S",
+            51.453
+          ],
+          [
+            "main/scale20/11830010/API16S",
+            49.02
+          ],
+          [
+            "main/scale20/11830010/API16S_b",
+            33.724
+          ]
+        ]
+      },
+      "pass": false
+    },
+    "GS20_sound51": {
+      "observed": {
+        "API16S_ID_IDF": 0,
+        "WRONG": [],
+        "ci95": [
+          2.1025014877572554e-17,
+          0.24249400665524087
+        ],
+        "decided_records": 2,
+        "label_source": "recount",
+        "non_vacuous": false,
+        "of": 12,
+        "per_case": [
+          [
+            11830001,
+            "AMB",
+            "K_spent",
+            1890124,
+            "AMB"
+          ],
+          [
+            11830002,
+            "IDU",
+            "unknown",
+            2000467,
+            "IDU"
+          ],
+          [
+            11830003,
+            "IDU",
+            "unknown",
+            2000063,
+            "IDU"
+          ],
+          [
+            11830004,
+            "IDU",
+            "unknown",
+            2001226,
+            "IDU"
+          ],
+          [
+            11830005,
+            "IDU",
+            "unknown",
+            2003482,
+            "IDU"
+          ],
+          [
+            11830006,
+            "IDU",
+            "unknown",
+            2000107,
+            "IDU"
+          ],
+          [
+            11830007,
+            "IDU",
+            "unknown",
+            2000485,
+            "IDU"
+          ],
+          [
+            11830008,
+            "IDU",
+            "unknown",
+            2000204,
+            "IDU"
+          ],
+          [
+            11830009,
+            "IDU",
+            "unknown",
+            2003501,
+            "IDU"
+          ],
+          [
+            11830010,
+            "IDU",
+            "unknown",
+            2011730,
+            "IDU"
+          ],
+          [
+            11830011,
+            "IDU",
+            "unknown",
+            2005238,
+            "IDU"
+          ],
+          [
+            11830012,
+            "IDU",
+            "unknown",
+            2006720,
+            "IDU"
+          ]
+        ],
+        "reference_bound": true,
+        "reference_scale20": {
+          "audited": 2,
+          "decided": 2,
+          "mismatches": 0
+        },
+        "rule": "scale20 WRONG 0; every decided scale20 record audited at bound 20 with 0 mismatches; >= 1/12 API16S decided (0 decided FAILS)"
+      },
+      "pass": false
+    },
+    "GS_ref": {
+      "observed": {
+        "PASS": true,
+        "audited": 38,
+        "block": "main",
+        "complete": true,
+        "decided": 38,
+        "elapsed_informational": {
+          "r12": 29.125265178008704,
+          "s20": {
+            "main/scale20/11830001/API16S": 387.1,
+            "main/scale20/11830001/API16S_b": 402.9
+          }
+        },
+        "k_spent_as_amb": 4,
+        "mismatch_count": 0,
+        "mutations": 20,
+        "not_audited": [],
+        "not_reached": 22,
+        "of": 20,
+        "per_arm": {
+          "API16E": {
+            "audited": 6,
+            "decided": 6,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 6
+          },
+          "API16E_b": {
+            "audited": 6,
+            "decided": 6,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 6
+          },
+          "API16N": {
+            "audited": 12,
+            "decided": 12,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 12
+          },
+          "API16N_b": {
+            "audited": 12,
+            "decided": 12,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 12
+          },
+          "API16S": {
+            "audited": 1,
+            "decided": 1,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 12
+          },
+          "API16S_b": {
+            "audited": 1,
+            "decided": 1,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 12
+          }
+        },
+        "per_key": {
+          "control": {
+            "audited": 12,
+            "decided": 12,
+            "mismatches": 0
+          },
+          "noise12": {
+            "audited": 24,
+            "decided": 24,
+            "mismatches": 0
+          },
+          "scale20": {
+            "audited": 2,
+            "decided": 2,
+            "mismatches": 0
+          }
+        },
+        "records": 60,
+        "scope": {
+          "budget_12_s": 2400.0,
+          "budget_20_s_per_record": 1800.0,
+          "key_order": [
+            "scale20",
+            "control",
+            "noise12"
+          ],
+          "order": [
+            "API16S",
+            "API16S_b",
+            "API16E",
+            "API16E_b",
+            "API16N",
+            "API16N_b"
+          ],
+          "workers_12": 8,
+          "workers_20": 1
+        },
+        "vacuous": false,
+        "verdicts_checked": 72
+      },
+      "pass": true
+    },
+    "GTEST": {
+      "observed": {
+        "gated": {
+          "test_certify16": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16d": {
+            "returncode": 0,
+            "tests": 11
+          },
+          "test_certify16e": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16n": {
+            "returncode": 0,
+            "tests": 10
+          },
+          "test_certify16s": {
+            "returncode": 0,
+            "tests": 3
+          },
+          "test_release_0480": {
+            "returncode": 0,
+            "tests": 9
+          },
+          "test_scalesearch4_0260": {
+            "returncode": 0,
+            "tests": 14
+          },
+          "test_scripts_051": {
+            "returncode": 0,
+            "tests": 8
+          }
+        },
+        "reported": {
+          "test_release_0470": {
+            "returncode": 0,
+            "tests": 9
+          },
+          "test_scripts_050": {
+            "returncode": 0,
+            "tests": 8
+          }
+        }
+      },
+      "pass": true
+    },
+    "GTI": {
+      "observed": {
+        "all_tokens_allowed": true,
+        "frozen_in_051": true,
+        "prior_range_count": 354,
+        "seedcheck_pass": true,
+        "total_cases": 30
+      },
+      "pass": true
+    },
+    "G_PROC": {
+      "observed": {
+        "clauses": {
+          "commit_order_file": true,
+          "ledger_times_non_decreasing": true,
+          "ledger_times_parse": true,
+          "main_sealed": true,
+          "order": true
+        },
+        "events": [
+          "preregistration_051",
+          "build_authorization_051",
+          "seedcheck_051",
+          "prefreeze_smoke_051",
+          "source_freeze_051",
+          "run_start_051",
+          "run_end_051",
+          "recount_051",
+          "reference_051",
+          "api_checks_051",
+          "tests_051"
+        ],
+        "required_order": [
+          "preregistration_051",
+          "build_authorization_051",
+          "seedcheck_051",
+          "prefreeze_smoke_051",
+          "source_freeze_051",
+          "run_start_051",
+          "run_end_051",
+          "recount_051",
+          "reference_051",
+          "api_checks_051",
+          "tests_051"
+        ]
+      },
+      "pass": true
+    },
+    "G_RT": {
+      "observed": {
+        "cap_s": 3600,
+        "cases": 30,
+        "compat": 6,
+        "elapsed_s": 1656.179404303999,
+        "n_noise12_b": 12,
+        "phase_a_elapsed_informational": 1636.7550896920002,
+        "phase_b_elapsed_informational": 19.423320831003366
+      },
+      "pass": true
+    },
+    "G_recount": {
+      "observed": {
+        "PASS": true,
+        "amb_rule_applied": 4,
+        "cases": 36,
+        "compat_equal": 5,
+        "labels": {
+          "control": {
+            "API16E": {
+              "AMB": 0,
+              "ID": 4,
+              "IDF": 2,
+              "IDU": 0,
+              "WRONG": 0
+            },
+            "API16E_b": {
+              "AMB": 0,
+              "ID": 4,
+              "IDF": 2,
+              "IDU": 0,
+              "WRONG": 0
+            }
+          },
+          "noise12": {
+            "API16N": {
+              "AMB": 1,
+              "ID": 10,
+              "IDF": 1,
+              "IDU": 0,
+              "WRONG": 0
+            },
+            "API16N_b": {
+              "AMB": 1,
+              "ID": 10,
+              "IDF": 1,
+              "IDU": 0,
+              "WRONG": 0
+            }
+          },
+          "scale20": {
+            "API16S": {
+              "AMB": 1,
+              "ID": 0,
+              "IDF": 0,
+              "IDU": 11,
+              "WRONG": 0
+            },
+            "API16S_b": {
+              "AMB": 1,
+              "ID": 0,
+              "IDF": 0,
+              "IDU": 11,
+              "WRONG": 0
+            }
+          }
+        },
+        "labels_c": {
+          "API16S_c": {
+            "AMB": 0,
+            "ID": 4,
+            "IDF": 2,
+            "IDU": 0,
+            "WRONG": 0
+          }
+        },
+        "majority_errors": 0,
+        "misfires": {
+          "API16E": 0,
+          "API16E_b": 0,
+          "API16N": 0,
+          "API16N_b": 0,
+          "API16S": 0,
+          "API16S_b": 0,
+          "API16S_c": 0
+        },
+        "mismatches": {},
+        "mismatching_cases": 0,
+        "recounted": 36,
+        "truth_inconsistent": 0,
+        "words_checked": 608,
+        "words_unsound": 0
+      },
+      "pass": true
+    },
+    "G_sound": {
+      "observed": {
+        "recount_bound": true,
+        "recount_truth_inconsistent": 0,
+        "recount_words_checked": 608,
+        "recount_words_unsound": 0,
+        "words_checked": 608,
+        "words_unsound": 0
+      },
+      "pass": true
+    }
+  },
+  "label_source": "recount",
+  "n_compat": 6,
+  "n_noise12_b": 12,
+  "noise": {
+    "arms": {
+      "API16N": [
+        0.05,
+        null
+      ],
+      "API16N_b": [
+        0.05,
+        null
+      ]
+    },
+    "delta": 0.001,
+    "eps_bar": 0.1
+  },
+  "not_exercised": [],
+  "process": "lean",
+  "reports": {
+    "labels": {
+      "API16E/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.299993315138392,
+            0.9032285888942195
+          ],
+          "n": 6,
+          "x": 4
+        },
+        "IDF": {
+          "ci95": [
+            0.09677141110578043,
+            0.7000066848616079
+          ],
+          "n": 6,
+          "x": 2
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "API16E_b/control": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.299993315138392,
+            0.9032285888942195
+          ],
+          "n": 6,
+          "x": 4
+        },
+        "IDF": {
+          "ci95": [
+            0.09677141110578043,
+            0.7000066848616079
+          ],
+          "n": 6,
+          "x": 2
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "API16N/noise12": {
+        "AMB": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "ID": {
+          "ci95": [
+            0.5519691377470266,
+            0.9530348578161463
+          ],
+          "n": 12,
+          "x": 10
+        },
+        "IDF": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "IDU": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "API16N_b/noise12": {
+        "AMB": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "ID": {
+          "ci95": [
+            0.5519691377470266,
+            0.9530348578161463
+          ],
+          "n": 12,
+          "x": 10
+        },
+        "IDF": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "IDU": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "API16S/scale20": {
+        "AMB": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.646120088858883,
+            0.9851349055950828
+          ],
+          "n": 12,
+          "x": 11
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "API16S_b/scale20": {
+        "AMB": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.646120088858883,
+            0.9851349055950828
+          ],
+          "n": 12,
+          "x": 11
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      }
+    }
+  },
+  "schema": "brute.gates.v48_0",
+  "sealed_input_verified": true,
+  "secondary": {
+    "GCOST51": {
+      "observed": {
+        "API16E/main/control": {
+          "arm_wall_s": 9.0,
+          "budget_spent": 0,
+          "calls": 156,
+          "capped_calls": 0,
+          "chunks": 157,
+          "conflicts": 367028,
+          "reads": 0,
+          "records": 6
+        },
+        "API16E_b/main/control": {
+          "arm_wall_s": 10.0,
+          "budget_spent": 0,
+          "calls": 156,
+          "capped_calls": 0,
+          "chunks": 157,
+          "conflicts": 367028,
+          "reads": 0,
+          "records": 6
+        },
+        "API16N/main/noise12": {
+          "arm_wall_s": 34.9,
+          "budget_spent": 0,
+          "calls": 358,
+          "capped_calls": 0,
+          "chunks": 363,
+          "conflicts": 1402268,
+          "reads": 131424,
+          "records": 12
+        },
+        "API16N_b/main/noise12": {
+          "arm_wall_s": 33.1,
+          "budget_spent": 0,
+          "calls": 358,
+          "capped_calls": 0,
+          "chunks": 363,
+          "conflicts": 1402268,
+          "reads": 131424,
+          "records": 12
+        },
+        "API16S/main/scale20": {
+          "arm_wall_s": 3020.0,
+          "budget_spent": 11,
+          "calls": 687,
+          "capped_calls": 217,
+          "chunks": 2027,
+          "conflicts": 23923347,
+          "reads": 0,
+          "records": 12
+        },
+        "API16S_b/main/scale20": {
+          "arm_wall_s": 2969.6,
+          "budget_spent": 11,
+          "calls": 677,
+          "capped_calls": 215,
+          "chunks": 2019,
+          "conflicts": 23913290,
+          "reads": 0,
+          "records": 12
+        },
+        "API16S_c/c/control": {
+          "arm_wall_s": 11.3,
+          "budget_spent": 0,
+          "calls": 146,
+          "capped_calls": 0,
+          "chunks": 147,
+          "conflicts": 407484,
+          "reads": 0,
+          "records": 6
+        }
+      },
+      "pass": null,
+      "rule": "reported: wall, calls, chunks, capped calls, conflicts, budget-spent records, reads per arm/block/key"
+    },
+    "GN12_rate": {
+      "observed": {
+        "ID_IDF": 11,
+        "ci95": [
+          0.646120088858883,
+          0.9851349055950828
+        ],
+        "k_range": [
+          27,
+          63
+        ],
+        "observations": 2456,
+        "of": 12,
+        "reads_per_observation": 53.51,
+        "reads_total": 131424
+      },
+      "pass": null,
+      "rule": "reported"
+    },
+    "GRATE51": {
+      "observed": {
+        "API16E/main/control": {
+          "arm_wall_s": 9.0,
+          "chunk_conflicts": 367028,
+          "chunk_wall_s": 6.9,
+          "conflicts": 367028,
+          "conflicts_per_s_chunk": 53270.2,
+          "conflicts_per_s_record": 40953.5,
+          "per_record": [
+            [
+              "main/control/11850001",
+              44845.5
+            ],
+            [
+              "main/control/11850002",
+              54405.2
+            ],
+            [
+              "main/control/11850003",
+              40686.1
+            ],
+            [
+              "main/control/11850004",
+              30574.0
+            ],
+            [
+              "main/control/11850005",
+              43247.6
+            ],
+            [
+              "main/control/11850006",
+              44401.8
+            ]
+          ],
+          "records": 6
+        },
+        "API16E_b/main/control": {
+          "arm_wall_s": 10.0,
+          "chunk_conflicts": 367028,
+          "chunk_wall_s": 7.5,
+          "conflicts": 367028,
+          "conflicts_per_s_chunk": 48780.4,
+          "conflicts_per_s_record": 36794.9,
+          "per_record": [
+            [
+              "main/control/11850001",
+              43655.8
+            ],
+            [
+              "main/control/11850002",
+              53746.7
+            ],
+            [
+              "main/control/11850003",
+              35752.6
+            ],
+            [
+              "main/control/11850004",
+              27744.0
+            ],
+            [
+              "main/control/11850005",
+              35769.9
+            ],
+            [
+              "main/control/11850006",
+              37702.6
+            ]
+          ],
+          "records": 6
+        },
+        "API16N/main/noise12": {
+          "arm_wall_s": 34.9,
+          "chunk_conflicts": 1402268,
+          "chunk_wall_s": 29.6,
+          "conflicts": 1402268,
+          "conflicts_per_s_chunk": 47306.3,
+          "conflicts_per_s_record": 40141.1,
+          "per_record": [
+            [
+              "main/noise12/11870001",
+              36465.7
+            ],
+            [
+              "main/noise12/11870002",
+              38402.7
+            ],
+            [
+              "main/noise12/11870003",
+              30202.2
+            ],
+            [
+              "main/noise12/11870004",
+              43338.3
+            ],
+            [
+              "main/noise12/11870005",
+              29367.8
+            ],
+            [
+              "main/noise12/11870006",
+              40733.8
+            ],
+            [
+              "main/noise12/11870007",
+              49507.4
+            ],
+            [
+              "main/noise12/11870008",
+              32096.4
+            ],
+            [
+              "main/noise12/11870009",
+              47387.4
+            ],
+            [
+              "main/noise12/11870010",
+              43891.2
+            ],
+            [
+              "main/noise12/11870011",
+              35736.2
+            ],
+            [
+              "main/noise12/11870012",
+              48234.5
+            ]
+          ],
+          "records": 12
+        },
+        "API16N_b/main/noise12": {
+          "arm_wall_s": 33.1,
+          "chunk_conflicts": 1402268,
+          "chunk_wall_s": 27.9,
+          "conflicts": 1402268,
+          "conflicts_per_s_chunk": 50200.4,
+          "conflicts_per_s_record": 42397.4,
+          "per_record": [
+            [
+              "main/noise12/11870001",
+              45853.9
+            ],
+            [
+              "main/noise12/11870002",
+              40184.8
+            ],
+            [
+              "main/noise12/11870003",
+              33151.1
+            ],
+            [
+              "main/noise12/11870004",
+              45046.2
+            ],
+            [
+              "main/noise12/11870005",
+              32138.1
+            ],
+            [
+              "main/noise12/11870006",
+              41319.1
+            ],
+            [
+              "main/noise12/11870007",
+              53500.4
+            ],
+            [
+              "main/noise12/11870008",
+              32922.3
+            ],
+            [
+              "main/noise12/11870009",
+              50011.0
+            ],
+            [
+              "main/noise12/11870010",
+              38814.4
+            ],
+            [
+              "main/noise12/11870011",
+              37709.7
+            ],
+            [
+              "main/noise12/11870012",
+              48988.0
+            ]
+          ],
+          "records": 12
+        },
+        "API16S/main/scale20": {
+          "arm_wall_s": 3020.0,
+          "chunk_conflicts": 23923347,
+          "chunk_wall_s": 3003.4,
+          "conflicts": 23923347,
+          "conflicts_per_s_chunk": 7965.3,
+          "conflicts_per_s_record": 7921.8,
+          "per_record": [
+            [
+              "main/scale20/11830001",
+              6566.4
+            ],
+            [
+              "main/scale20/11830002",
+              8510.7
+            ],
+            [
+              "main/scale20/11830003",
+              9887.1
+            ],
+            [
+              "main/scale20/11830004",
+              14281.3
+            ],
+            [
+              "main/scale20/11830005",
+              18530.4
+            ],
+            [
+              "main/scale20/11830006",
+              8868.6
+            ],
+            [
+              "main/scale20/11830007",
+              6567.6
+            ],
+            [
+              "main/scale20/11830008",
+              6002.2
+            ],
+            [
+              "main/scale20/11830009",
+              6886.7
+            ],
+            [
+              "main/scale20/11830010",
+              5712.7
+            ],
+            [
+              "main/scale20/11830011",
+              8344.7
+            ],
+            [
+              "main/scale20/11830012",
+              6694.2
+            ]
+          ],
+          "records": 12
+        },
+        "API16S_b/main/scale20": {
+          "arm_wall_s": 2969.6,
+          "chunk_conflicts": 23913290,
+          "chunk_wall_s": 2952.8,
+          "conflicts": 23913290,
+          "conflicts_per_s_chunk": 8098.6,
+          "conflicts_per_s_record": 8052.6,
+          "per_record": [
+            [
+              "main/scale20/11830001",
+              6423.5
+            ],
+            [
+              "main/scale20/11830002",
+              8382.4
+            ],
+            [
+              "main/scale20/11830003",
+              9622.9
+            ],
+            [
+              "main/scale20/11830004",
+              13848.1
+            ],
+            [
+              "main/scale20/11830005",
+              17758.8
+            ],
+            [
+              "main/scale20/11830006",
+              8659.9
+            ],
+            [
+              "main/scale20/11830007",
+              7669.5
+            ],
+            [
+              "main/scale20/11830008",
+              6411.0
+            ],
+            [
+              "main/scale20/11830009",
+              7447.0
+            ],
+            [
+              "main/scale20/11830010",
+              6011.6
+            ],
+            [
+              "main/scale20/11830011",
+              7620.1
+            ],
+            [
+              "main/scale20/11830012",
+              6631.1
+            ]
+          ],
+          "records": 12
+        },
+        "API16S_c/c/control": {
+          "arm_wall_s": 11.3,
+          "chunk_conflicts": 407484,
+          "chunk_wall_s": 9.0,
+          "conflicts": 407484,
+          "conflicts_per_s_chunk": 45143.1,
+          "conflicts_per_s_record": 36033.6,
+          "per_record": [
+            [
+              "c/control/11850001",
+              35183.0
+            ],
+            [
+              "c/control/11850002",
+              48321.0
+            ],
+            [
+              "c/control/11850003",
+              39853.4
+            ],
+            [
+              "c/control/11850004",
+              31831.4
+            ],
+            [
+              "c/control/11850005",
+              34639.7
+            ],
+            [
+              "c/control/11850006",
+              35471.9
+            ]
+          ],
+          "records": 6
+        }
+      },
+      "pass": null,
+      "rule": "reported: conflicts per second per record (arm wall) and per chunk (chunk walls), per arm/block/key; informational timing"
+    },
+    "GS20_rate51": {
+      "observed": {
+        "ID_IDF": 0,
+        "ci95": [
+          2.1025014877572554e-17,
+          0.24249400665524087
+        ],
+        "cost": {
+          "API16S/main/scale20": {
+            "arm_wall_s": 3020.0,
+            "budget_spent": 11,
+            "calls": 687,
+            "capped_calls": 217,
+            "chunks": 2027,
+            "conflicts": 23923347,
+            "reads": 0,
+            "records": 12
+          },
+          "API16S_b/main/scale20": {
+            "arm_wall_s": 2969.6,
+            "budget_spent": 11,
+            "calls": 677,
+            "capped_calls": 215,
+            "chunks": 2019,
+            "conflicts": 23913290,
+            "reads": 0,
+            "records": 12
+          }
+        },
+        "of": 12
+      },
+      "pass": null,
+      "rule": "reported"
+    },
+    "GS20_vs50": {
+      "observed": {
+        "050_API16E_B20_4000000": [
+          1,
+          24
+        ],
+        "050_ci95": [
+          0.0073934561655057815,
+          0.20241806478655938
+        ],
+        "051_API16S_ID_IDF": [
+          0,
+          12
+        ],
+        "051_ci95": [
+          2.1025014877572554e-17,
+          0.24249400665524087
+        ]
+      },
+      "pass": null,
+      "rule": "reported: certify/16s scale20 decided rate at C20 12000 / B20 2000000 beside 050 certify/16e (1/24 at 4000000)"
+    }
+  },
+  "study": "BRUTE-0480-SCALE20-ISOLATED-SYMBREAK-NOISE12-051",
+  "workers": {
+    "A": 4,
+    "B": 8
+  }
+}
