@@ -1,0 +1,118 @@
+{
+  "branch_taken": "plan 042 G16 PASS (Observed: A16 scale16 ID 8/12 [0.39, 0.86] vs A14 0/12; GPERM17 11/11; G_sound 0 unsound). Plan 042 next_if_pass names an API study for brute.certify/16 then a scale-20 replication; James's v0.39.0 order (2026-10-31 01:32 EDT) asks for a generality step instead (lowobs or the N-free stop). This plan takes lowobs; the certify/16 API study, the scale-20 replication and the N-free stop are deferred, not dropped (#158 item 6)",
+  "brand": "charcoal and sage; no purple, neon, emoji or gold",
+  "cases": {
+    "arms": 2,
+    "control": 6,
+    "declared_before_data": true,
+    "jobs": 60,
+    "lowobs12": 12,
+    "scale16_rep": 12,
+    "total_fresh": 30
+  },
+  "criteria": {
+    "G10": "every arm ID on each of the 6 controls",
+    "GLO": "headline: fresh lowobs12 (recounted labels): A16 ID+IDF >= 4/12 AND A16 ID+IDF - A14 ID+IDF >= 3; Wilson 95% CIs reported",
+    "GLO_sem": "WRONG 0 in every arm on every fresh case; both decided => same n_min and canonical model",
+    "GQB18": "max logged call wall <= 10.5 s",
+    "GREP16": "replication: fresh scale16_rep A16 ID >= 6/12 (the 042 bar); Wilson 95% CI reported",
+    "GS_ref": "CNF reference audit of A16 on every decided lowobs12 case: 0 mismatches and all 20 mutations detected",
+    "GTI": "gated test files ok in a fresh clone",
+    "G_PROC": "ledger order as declared (preregistration, build_authorization, seedcheck, source_freeze, run_start, run_end; all _043), checked as a subsequence",
+    "G_RT": "main run <= 1800 s",
+    "G_recount": "the independent recount reproduces every label; 0 mismatches",
+    "G_sound": "0 unsound separating words in study and recount; 0 truth inconsistencies (scored from its own counts)"
+  },
+  "design": {
+    "arms": {
+      "A14": "brute/scalesearch14 as frozen (reference)",
+      "A16": "brute/scalesearch16 as frozen at 4af660b (no change)"
+    },
+    "budgets": "the 040 lowobs12 and 042 scale16 action budgets and n_max, copied, not tuned; K=128, BUDGET=240 s",
+    "per_call_cap": "hard cap as in 042 (soft interrupt 9.0 s, SIGKILL 1.0 s later); a killed call reads unknown",
+    "recount": "the 042 recount (with the AMB-at-stop rule) reused unchanged; new file only if the lowobs emission alphabet needs an adapter, declared in the pre-run deviation",
+    "worlds": "lowobs12 from the frozen experiments/worlds_040.py generator (uniform random transitions, k = 3, start uniform, emissions over the reduced code set) and scale16 from the 042 generator, both unchanged; controls as in 042"
+  },
+  "diagnosis_042": {
+    "headline": "G16 PASS: A16 scale16 ID 8 / AMB 1 / IDU 3, A14 AMB 1 / IDU 11; WRONG 0 (Observed)",
+    "lowobs_history": "study 040 lowobs12: IDU 12/12 for every arm (A14, A15, A15_cube) (Observed); mechanism Open",
+    "no_loss": "GPERM17 11/11 [0.74, 1.00]; A16 perm12 12/12 (Observed)",
+    "soundness": "311 words, 0 unsound; controls 6/6 both arms (Observed)",
+    "time": "GT16 call wall A16/A14 0.82 [0.71, 0.95]; GQB17 max 9.515 s, 0 kills (Observed)"
+  },
+  "freeze_rule": "no file named in the source freeze is edited after the freeze; new behaviour goes in new files or a deviation addendum",
+  "gate_dependency_rule": "each gate is scored from its own counts; GLO and GREP16 use recounted labels if G_recount passes, else study labels with the failure stated",
+  "heldout_ranges": {
+    "control": [
+      10960001,
+      10960002,
+      10960003,
+      10960004,
+      10960005,
+      10960006
+    ],
+    "lowobs12": [
+      10910001,
+      10910002,
+      10910003,
+      10910004,
+      10910005,
+      10910006,
+      10910007,
+      10910008,
+      10910009,
+      10910010,
+      10910011,
+      10910012
+    ],
+    "note": "fresh 109x00NN ranges; seedcheck_043 scans every tracked file including .gz archives before any seed is used and lists any erratum",
+    "scale16_rep": [
+      10920001,
+      10920002,
+      10920003,
+      10920004,
+      10920005,
+      10920006,
+      10920007,
+      10920008,
+      10920009,
+      10920010,
+      10920011,
+      10920012
+    ]
+  },
+  "hypotheses": {
+    "H1": "A16 decides (ID+IDF) more fresh lowobs12 machines than A14",
+    "H2": "A16 holds its scale16 identification rate on fresh seeds",
+    "H3": "A16 stays sound under one-bit observations (0 WRONG, 0 unsound words)"
+  },
+  "limitations": [
+    "12 cases per family give wide CIs",
+    "clean worlds only; noise at 12 states stays Open",
+    "soundness still assumes the declared size N",
+    "budgets copied, not tuned"
+  ],
+  "next_if_fail": "if GLO fails with GREP16 passing: one-bit observations need a different experiment policy, not a new encoding; plan a lowobs budget/K audit using GLO_cause. If GREP16 fails: the 042 scale16 result did not replicate; audit it before any generality step. If G_sound shows a true unsound word: soundness first, nothing else",
+  "next_if_pass": "if GLO and GREP16 pass: the N-free stop (soundness without the declared size N) as v0.41.0, then the deferred certify/16 API study",
+  "open_items": [
+    "N-free stop: Open, deferred to v0.41.0",
+    "certify/16 API study: deferred",
+    "scale-20 replication: deferred",
+    "noise at 12 states: Open"
+  ],
+  "parent_study": "BRUTE-0390-A16-SCALE16-042",
+  "process": "LEAN (standing go t133s553, ledger 76b30d5; a ledgered build_authorization_043 citing it is required before any code; it is ledgered BEFORE seedcheck_043): plan locked before data; seedcheck before seeds; independent recount; CNF reference audit; pre-freeze smoke with every stop kind and the real release verifier chain; one main run, no tuning, no reruns; failures published; one fresh-clone verify plus tests",
+  "question": "Does A16, unchanged, carry its clean 16-state gain to a second observation model, one-bit observations at 12 states (lowobs12), where every arm identified 0/12 in study 040, while holding the scale16 result on fresh seeds?",
+  "runtime_estimate": "Open: set by the pre-freeze LPT projection; if it exceeds 1800 s, scale16_rep is cut to its first 6 seeds before the freeze (rule declared now; no other cut)",
+  "schema": "brute.plan.v1",
+  "secondary": {
+    "GLO_cause": "per lowobs12 case: final stop and whether K was spent, the cap was hit, or the trace stayed ambiguous (reported only, to locate the failure if GLO fails)",
+    "GPH18": "calls and capped calls by arm and phase",
+    "GT17": "A16/A14 mean per-case call-wall ratio, seed-bootstrap 95% CI"
+  },
+  "smoke_range": "10980001-10980006 (pre-freeze smoke only; never gated); the smoke must contain at least one record of every stop kind (ID, IDF, AMB, K_spent, unknown) and run the real release verifier chain",
+  "status": "preregistered (plan only; no build code, no data for 043)",
+  "study": "BRUTE-0400-A16-LOWOBS-043",
+  "version_under_test": "0.40.0",
+  "what_counts_as_failure": "any gated criterion false; a killed call is unknown, not a failure of soundness"
+}
