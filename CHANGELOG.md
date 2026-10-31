@@ -1,5 +1,31 @@
 # Brute changelog
 
+## v0.50.0: brute.certify/16n certified for declared N <= 16 under iid flips with eps <= 0.10; conflict-only stop makes 20-state runs repeat exactly (study BRUTE-0500-NOISE16-SCALE20-CONFLICTSTOP-053, LEAN process)
+
+**13 of 13 gated pass (GDET53, GFID53, GN16_sound53, GCOMPAT16N53, GHOST53, GQB27, GS_ref, G_sound, G_recount, GTI, GTEST, G_PROC, G_RT). Non-blocking GS20C_det53 and GS20C_sound53 pass. Secondary GCOST53, GN16_rate53, GS20C_rate53 reported.** certify/16n (code unchanged since v0.47.0) is certified for declared N <= 16 under iid flips with eps <= eps_bar = 0.10 at per-record failure probability <= delta = 0.001, C 50000, B 1500000 (*Exact* conditional on the model and the declared N).
+
+Part B (*Observed*, non-blocking): certify/16e at 20 states with a conflict-only stop on 1 worker gave identical passes on 3/3 cases (identical conflict counts, 0 hard kills), but decided 0/3 at B20 2000000. N20C was cut from 6 to 3 by the declared projection rule (#179 item 5).
+
+Claim scope (*Exact*; reason *Inferred*): an ID or IDF is exact only conditional on every majority being correct (probability >= 1 - delta under iid flips with eps <= eps_bar) and a true size at most the declared N. A larger machine can copy the true machine on every visited state, so no finite test separates them.
+
+### Timeline (EDT, 2026-10-31)
+
+- Plan `045ca29` (preregistration 15:01:29, ledger `317b125`; build authorization 15:02:24, ledger `e941937`); seedcheck `c887582` PASS (15:08:45); pre-freeze smoke `d3837a0` PASS (projection at 4503 c/s: part A worst 2724.9 s, no cut; part B cut to N20C 3); deviation #179 `cb95e5f`; source freeze `535aa05` (395 files, ledger `42d6e2f`).
+- Run start 15:49:39 (ledger `0c685bd`); 4 snapshots `e98c4e8` to `7cddeda`; seal `93a4226` (ledger `1ded628`; 1048.2 s); recount `5e89d4a`; reference `80f699c` (complete); api checks `e366cb1` (PASS); tests `0e04c33`; gates `8725569`; deviation #180 `18e9156`; RELEASE.json `8fb46f0`.
+
+### Results (recount labels; Wilson 95% in GATES_053.json)
+
+| part | result | WRONG |
+|---|---|---|
+| noise16, 12 fresh run twice (API16N16, eps 0.05) ID+IDF | 7 [0.32, 0.81] (ID 7, IDU 4 budget spent, AMB 1); passes canon-equal 12/12 [0.76, 1.00]; 0 majority errors; 54.3 reads per observation | 0 |
+| noise16_bar, 6 fresh (API16N16_bar, eps 0.10) ID+IDF | 4 [0.30, 0.90] (ID 4, IDU 1, AMB 1) | 0 |
+| compat16, certify/16n at eps 0 vs certify/16e at bound 16 (GCOMPAT16N53) | 6/6 [0.61, 1.00] (4 ID same machine; 1 IDU and 1 AMB on both sides) | 0 |
+| self-replay (GFID53) | 42/42 [0.92, 1.00]; part B 6/6 reported | 0 |
+| scale20c, 3 fresh run twice (API16E20, conflict-only stop; non-blocking) | identical 3/3 [0.44, 1.00]; decided 0/3 (2 IDU, 1 AMB) | 0 of 6 |
+
+- GQB27 (part A): max chunk 9.0 s, max case 165.9 s, 0 guard firings. GS_ref: 31/31 decided audited, 0 mismatches, 20/20 mutations, complete (782 s).
+- Deviations #179 (pre-run) and #180 (post-run). Next: v0.51.0 (BRUTE_PLAN_054, plan only): raise decisions at 20 states with a different encoding or search, keeping the conflict-only stop.
+
 ## v0.49.0: brute.certify/16n certified for declared N <= 12 under iid flips with eps <= 0.10 (study BRUTE-0490-CERTIFY16N-NOISE12-052, LEAN process)
 
 **13 of 13 gated pass (GDET52, GFID52, GN12_sound52, GCOMPAT16N52, GHOST52, GQB26, GS_ref, G_sound, G_recount, GTI, GTEST, G_PROC, G_RT). Secondary GCOST52, GN12_rate52, GN12_pool reported.** certify/16n (code unchanged since v0.47.0) is certified for declared N <= 12 under iid flips with eps <= eps_bar = 0.10 at per-record failure probability <= delta = 0.001 (C 50000, B 1500000). certify/16e stays certified for N <= 16 (v0.46.0).
