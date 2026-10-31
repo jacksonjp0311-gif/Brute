@@ -1,5 +1,30 @@
 # Brute changelog
 
+## v0.44.0: brute.certify/16d, a deterministic conflict-count cap for the declared-N identifier, tested for determinism, fidelity and fresh 16-state worlds (study BRUTE-0440-CERTIFY16D-SCALE20-047, LEAN process)
+
+**12 of 14 exercised gates pass (GFID16D, GFID_wall, GAPI16D_fresh, GAPI16_compat, GHOST16D, G10, GS_ref, G_sound, G_recount, GTI, G_PROC, G_RT). GDET and GQB22 FAIL. GS20_sound not run (part d cut). Secondary GREP16d, GCAP_class and GAPI_cost reported only.** All 126 jobs (54 fresh arm jobs on 18 cases, 72 replays) ran once and were sealed (661.6 s of 3600 s). certify/16d ships as an additive, uncertified API; certify/14 is still the latest certified API. *Observed*
+
+Claim scope (*Exact*; reason *Inferred*): a certify/16d ID or IDF is exact only conditional on noise-free readings and a true size at most the declared N (family_bound). A larger machine can copy the true machine on every visited state, so a size bound is inherent.
+
+### Timeline (EDT, 2026-10-31)
+
+- Plan `168e821` (preregistration 06:41:57; build authorization 06:42:53); seedcheck `2cf91a6` PASS (06:50:16); cap calibration `d615dcc` (C 294000, B 7840000; 06:52:34); cut rule applied `44e4380` (part d dropped: worst case 4836.2 s with it); pre-freeze smoke `5351043` (PASS); deviation #167 `ecdd3ac`; source freeze `bfd3a5b` (225 files, ledger `a6fe216`, 07:21:21).
+- Run start (ledger `8dffef4`, 07:21:29); session interrupted during the run, run waited on, not relaunched; snapshots `0ddf98b`, `c3eea46`, `865fc83`; seal `89ea522` (ledger `8b12597`, 07:34:25); recount `4968e1a`; reference `f1843ce`; api checks `7a81e0b`; tests `85865b3`; gates `c0b59d5`; deviation #168 `2bdb78a`.
+
+### Results (recount labels; Wilson 95% in GATES_047.json)
+
+| part | certify/16d (API16D) | A16_N | WRONG |
+|---|---|---|---|
+| two independent passes, 18 fresh cases | canon16d identical 18/18 [0.82, 1.00] | n/a | 0 |
+| fresh scale16 (12) ID+IDF | 10 [0.55, 0.95] (ID 7, IDF 3, AMB 1, IDU 1) | 8 [0.39, 0.86] (ID 7, IDF 1, IDU 4) | 0 |
+| fresh control (6) | 6 ID | 6 ID | 0 |
+| self-replay / uncapped sealed replays | 18/18 [0.82, 1.00] / 19/19 [0.83, 1.00] | a1 same 16/18, 0 infidelity | 0 |
+
+- GDET FAIL: the 30 s wall guard fired 7 times on 3 a3_046 replay records (11230004, 11230008, 11230009; all IDU both sides). Reading: C is too large for the slowest calls under load (*Inferred*; *Open*).
+- GQB22 FAIL: A16_N max call 16.718 s (bound 10.5 s; 7 hard kills), API16D 43.778 s (guard 30 s).
+- GS_ref: 48 decided, 48 audited, 0 mismatches, 20/20 mutations (517 s of 1800 s). G_sound 1498 words, 0 unsound.
+- Deviations #167 (pre-run), #168 (post-run). Next: plan 047 next_if_fail GDET clause; v0.45.0 (BRUTE_PLAN_048, plan only).
+
 ## v0.43.0: brute.certify/16, an additive host-agnostic API wrapping the declared-N arm A16_N, tested by replay of sealed 045 records and on fresh 16-state worlds (study BRUTE-0430-CERTIFY16-046, LEAN process)
 
 **10 of 12 gates pass (GAPI14_compat, GHOST16, G10, GQB21, GS_ref, G_sound, G_recount, GTI, G_PROC, G_RT). GAPI16_replay and GAPI16_fresh FAIL. Secondary GREP16c and GAPI_cost reported only.** All 54 jobs (36 fresh arm jobs on 18 cases, 18 replays) ran once and were sealed (319.8 s of 3600 s). certify/16 ships as an additive, uncertified API; certify/14 is unchanged and still the latest certified API. *Observed*
