@@ -107,7 +107,7 @@ def main(argv=None):
         x,b2=replay_check(c,rp[k]['API16'],S);rpc[k]=x;b=b+b2
         if b:bad[k]=b
     for c in res['cases']:
-        k=f"{c['block']}/{c['key']}/{c['seed']}";per[k],b=recount_case(c)
+        k=f"{c['block']}/{c['key']}/{c['seed']}"+(f"/{c['probe']}" if c.get('probe') else '');per[k],b=recount_case(c)
         if b:bad[k]=b
     main_=[v for k,v in per.items() if k.startswith('main/')];allv=list(per.values())+list(rp.values())
     out={'schema':'brute.recount.v43_0','results_sha256':sha(d/'RESULTS.json'),'replays':len(rp),'cases':len(per),
