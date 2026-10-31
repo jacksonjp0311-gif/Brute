@@ -1,8 +1,20 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.45.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.46.0 release in progress)._
 
 ## Current version and state
+
+<!-- V0460 -->
+- **v0.46.0: RELEASE IN PROGRESS** 2026-10-31 (EDT). Built on branch `plan/v0.46.0` (BRUTE_PLAN_049, certify/16e: chunked continuation of capped SAT calls, chunk C 50000, B 1500000 for 16 states and 1000000 for 20; two independent passes on 26 fresh cases (12 scale16, 8 scale20, 6 controls), 26 API16E replays and 26 max_chunks-1 compatibility replays of sealed 048 traces; LEAN process, 60 min cap).
+  - **Run complete (Observed).** 104/104 jobs, 606.8 s of 3600 s, normal exit, run once; 3 checkpoint snapshots; nothing relaunched; resume clause not approved, not used. The reference audit and api_checks finished on their own across an agent interruption and were committed as-is (#172 item 2).
+  - **PASS (15/15 gated):** GDET49 (26/26 [0.87, 1.00], 0 guard firings), GFID49 (26/26), GCOMPAT16D (26/26 byte-equal to sealed 048), GAPI16E_fresh49 (7/12 [0.32, 0.81], bar 7), GS20_sound49 (vacuous: 0 of 8 decided, WRONG 0), GR49_sound (0 contradictions), GHOST49, G10 (6/6), GQB24 (max chunk 14.4 s, max case 153.2 s), GS_ref (28/28 audited, 0 mismatches, 20/20), G_sound, G_recount, GTI, G_PROC, G_RT.
+  - **Reading (Inferred):** resumption recovers decisions the fixed cap lost (0/12 -> 7/12) at no soundness cost, but the margin is thin; at 20 states B binds (all 8 spent it).
+  - **Claim scope (Exact; reason Inferred):** conditional on the declared N; certify/16e certified for N <= 16 under these caps; no N <= 20 claim (GS20_sound49 vacuous).
+  - **API:** certify/16e new (brute/api/certify16e.py), certified N <= 16; certify/16d and certify/16 unchanged and uncertified.
+  - **Branch taken:** plan 049 next_if_pass. v0.47.0 is BRUTE_PLAN_050 (plan only) on `plan/v0.47.0`.
+  - **Deviations:** #171 (pre-run), #172 (post-run).
+  - **Chain:** plan `611dc9e` -> seedcheck `c458de5` -> smoke `7143e71` -> #171 `1ad259b` -> freeze `66e6778` -> run start `3dae68c` -> seal `11fb943` -> recount `e08c8af` -> reference `fa677b8` -> api checks `e9bd777` -> tests `656eae4` -> gates `9b1285c` -> #172 `7be8984` -> RELEASE.json `5bbbb4c`.
+  - **No CI:** no `.github`, no workflows. The `brute-bridge` worktree and BGR-v0.90.0 were not touched. The user's computer was offline; network went through the box.
 
 <!-- V0450 -->
 - **v0.45.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.45.0 (annotated tag object `5fdf32a` at `b332e94`, ledger release_048 `3bd8155`). Fresh-clone verify of the tag passed: study 045, 046, 047 and 048 raw data restored, verify_release_0450 (5 links, 0 exceptions, GATES_048 reproduces) and 71 tests in 7 modules, 0 failures. Box clock about 8 s ahead of GitHub's Date header at 08:31:23 EDT. Built on branch `plan/v0.45.0` (BRUTE_PLAN_048, certify/16d at C 50000, B 1500000 for 16 states and 1000000 for 20; two independent passes on 26 fresh cases (12 scale16, 8 scale20, 6 controls) plus 18 API16D replays of sealed 046 A16_N traces; LEAN; STANDING GO t133s553, build authorization at plan commit `4dea7ef`).
