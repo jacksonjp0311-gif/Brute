@@ -1,5 +1,32 @@
 # Brute changelog
 
+## v0.46.0: brute.certify/16e, chunked continuation of capped SAT calls, certified for N <= 16 (study BRUTE-0460-CERTIFY16E-RESUME-SCALE20-049, LEAN process)
+
+**15 of 15 gated pass (GDET49, GFID49, GCOMPAT16D, GAPI16E_fresh49, GS20_sound49 (vacuous), GR49_sound, GHOST49, G10, GQB24, GS_ref, G_sound, G_recount, GTI, G_PROC, G_RT). Secondary GCOST49, GREP16f, GR_gain and GS20_rate49 reported only.** All 104 jobs (52 fresh arm jobs on 26 cases, 26 part-r and 26 part-c replays of sealed 048 traces) ran once and were sealed (606.8 s of 3600 s). certify/16e is certified for N <= 16 under C 50000 and B 1500000; not for N <= 20.
+
+Claim scope (*Exact*; reason *Inferred*): a certify/16e ID or IDF is exact only conditional on noise-free readings and a true size at most the declared N (family_bound). A larger machine can copy the true machine on every visited state, so a size bound is inherent. No N <= 20 claim (GS20_sound49 vacuous).
+
+### Timeline (EDT, 2026-10-31)
+
+- Plan `611dc9e` (preregistration 08:33:50; build authorization 08:34:43); seedcheck `c458de5` PASS (08:40:15); pre-freeze smoke `7143e71` (PASS; worst-case projection 2047.1 s, R20 True, N20 8, no cut); deviation #171 `1ad259b`; source freeze `66e6778` (278 files; ledger 09:00:31).
+- Run start (ledger `3dae68c`, 09:00:43); snapshots `93550e6`, `e8b7bbe`, `e39383a`; seal `11fb943` (ledger `02b7332`, 09:13:17); recount `e08c8af`; reference `fa677b8`; api checks `e9bd777`; tests `656eae4`; gates `9b1285c`; deviation #172 `7be8984`.
+
+### Results (recount labels; Wilson 95% in GATES_049.json)
+
+| part | certify/16e (API16E, two passes) | WRONG |
+|---|---|---|
+| determinism, 26 fresh cases | canon16e identical 26/26 [0.87, 1.00]; 0 guard firings | 0 |
+| fresh scale16 (12) ID+IDF | 7 [0.32, 0.81] (ID 6, IDF 1, IDU 4, AMB 1) | 0 |
+| fresh scale20 (8) ID+IDF | 0 [0.00, 0.32] (IDU 8, all budget-spent) | 0 |
+| fresh control (6) | 6 ID both passes | 0 |
+| self-replay | 26/26 [0.87, 1.00] | 0 |
+| part r: API16E on 26 sealed 048 traces | gain 5 (scale16); 0 contradictions; classes none 11, cap-timing 5, word-divergence 10, infidelity 0 | 0 |
+| part c: max_chunks 1 on the same 26 | canon16d byte-equal to sealed 048 on 26/26 [0.87, 1.00] | 0 |
+
+- GQB24: max chunk wall 14.4 s (bound 30 s), max case wall 153.2 s (bound 600 s). GS_ref: 28 decided, 28 audited, 0 mismatches, 20/20 mutations (333.1 s of 2400 s).
+- The reference audit and api_checks finished on their own across an agent interruption and were committed as-is, not rerun (#172 item 2).
+- Deviations #171 (pre-run), #172 (post-run). Next: plan 049 next_if_pass; v0.47.0 (BRUTE_PLAN_050, plan only).
+
 ## v0.45.0: brute.certify/16d re-run at a small per-call conflict cap (C 50000): wall-free and deterministic, but it decides no hard world (study BRUTE-0450-CERTIFY16D-WALLFREE-SCALE20-048, LEAN process)
 
 **13 of 14 gated pass (GDET48, GWALL_r, GFID48, GS20_sound (vacuous), GHOST48, G10, GQB23, GS_ref, G_sound, G_recount, GTI, G_PROC, G_RT). GAPI16D_fresh48 FAIL on count only. Secondary GREP16e, GS20_rate, GR_class and GCOST48 reported only.** All 70 jobs (52 fresh arm jobs on 26 cases, 18 replays of sealed 046 A16_N traces) ran once and were sealed (107.0 s of 3600 s). certify/16d stays uncertified; certify/14 stays the latest certified API.
