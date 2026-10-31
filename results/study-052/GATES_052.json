@@ -1,0 +1,1305 @@
+{
+  "all_gated_pass": true,
+  "caps": {
+    "compat": [
+      50000,
+      3000000
+    ],
+    "noise12": [
+      50000,
+      1500000
+    ],
+    "noise12_bar": [
+      50000,
+      1500000
+    ]
+  },
+  "claim": "certify/16n ID/IDF is exact conditional on every majority being correct (probability >= 1 - delta per record under iid flips with eps <= eps_bar) and true size <= the declared N; IDF identifies the machine from the current state, not the start",
+  "failed": [],
+  "gates": {
+    "GCOMPAT16N52": {
+      "observed": {
+        "canon16e_equal": 6,
+        "ci95": [
+          0.6096657120978346,
+          1.0
+        ],
+        "columns": [
+          "seed",
+          "equal",
+          "label_16n_eps0",
+          "label_16e",
+          "machine_equal",
+          "canon16e_equal (H4, informational)"
+        ],
+        "equal": 6,
+        "of": 6,
+        "per_case": [
+          [
+            11970001,
+            true,
+            "ID",
+            "ID",
+            true,
+            true
+          ],
+          [
+            11970002,
+            true,
+            "IDF",
+            "IDF",
+            true,
+            true
+          ],
+          [
+            11970003,
+            true,
+            "ID",
+            "ID",
+            true,
+            true
+          ],
+          [
+            11970004,
+            true,
+            "ID",
+            "ID",
+            true,
+            true
+          ],
+          [
+            11970005,
+            true,
+            "IDF",
+            "IDF",
+            true,
+            true
+          ],
+          [
+            11970006,
+            true,
+            "ID",
+            "ID",
+            true,
+            true
+          ]
+        ],
+        "rule": "plan 052: same label; ID: same machine from start state 0; IDF: future_match on both and the same machine from the current state s1. Introduced after 051 GCOMPAT16S / G10 IDF failures; applied only to 052 data, not retroactively",
+        "source": "RECOUNT_052"
+      },
+      "pass": true
+    },
+    "GDET52": {
+      "observed": {
+        "ci95": [
+          0.8620237953250198,
+          1.0
+        ],
+        "columns": [
+          "seed",
+          "canon16n_equal",
+          "pass1",
+          "pass2"
+        ],
+        "identical": 24,
+        "of": 24,
+        "per_case": [
+          [
+            11930001,
+            true,
+            "IDF",
+            "IDF"
+          ],
+          [
+            11930002,
+            true,
+            "IDF",
+            "IDF"
+          ],
+          [
+            11930003,
+            true,
+            "IDF",
+            "IDF"
+          ],
+          [
+            11930004,
+            true,
+            "IDF",
+            "IDF"
+          ],
+          [
+            11930005,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            11930006,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            11930007,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            11930008,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            11930009,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            11930010,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            11930011,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            11930012,
+            true,
+            "IDF",
+            "IDF"
+          ],
+          [
+            11930013,
+            true,
+            "IDF",
+            "IDF"
+          ],
+          [
+            11930014,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            11930015,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            11930016,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            11930017,
+            true,
+            "IDF",
+            "IDF"
+          ],
+          [
+            11930018,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            11930019,
+            true,
+            "IDF",
+            "IDF"
+          ],
+          [
+            11930020,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            11930021,
+            true,
+            "IDF",
+            "IDF"
+          ],
+          [
+            11930022,
+            true,
+            "IDF",
+            "IDF"
+          ],
+          [
+            11930023,
+            true,
+            "IDF",
+            "IDF"
+          ],
+          [
+            11930024,
+            true,
+            "ID",
+            "ID"
+          ]
+        ],
+        "records_checked_for_guard": 72,
+        "rule": "canon16n identical on 24/24 noise12 cases; wall_guard 0 on every record",
+        "wall_guard_fired": []
+      },
+      "pass": true
+    },
+    "GFID52": {
+      "observed": {
+        "bound": true,
+        "ci95": [
+          0.9493488274035422,
+          1.0
+        ],
+        "exact": 72,
+        "exact_per_arm": {
+          "API16E": 6,
+          "API16N": 24,
+          "API16N_b": 24,
+          "API16N_bar": 12,
+          "API16N_c": 6
+        },
+        "expected": 72,
+        "failures": {},
+        "of": 72,
+        "per_key": {
+          "compat": 12,
+          "noise12": 48,
+          "noise12_bar": 12
+        }
+      },
+      "pass": true
+    },
+    "GHOST52": {
+      "observed": {
+        "bound_to_freeze_050": true,
+        "closures_unchanged": {
+          "brute.api.certify16e": true,
+          "brute.api.certify16n": true,
+          "brute.api.certify16s": true
+        },
+        "frozen_api_unchanged": true,
+        "in_freeze_052": true,
+        "no_network_run": {
+          "loop": [
+            "brute.certify/16n",
+            "ID",
+            12,
+            5,
+            56627
+          ],
+          "socket_attempts": 0
+        },
+        "socket_attempts": 0
+      },
+      "pass": true
+    },
+    "GN12_sound52": {
+      "observed": {
+        "API16N_ID_IDF": 23,
+        "API16N_bar_ID_IDF": 12,
+        "WRONG": [],
+        "bar_ci95": [
+          0.7575059933447591,
+          1.0
+        ],
+        "bar_of": 12,
+        "ci95": [
+          0.7975819352134406,
+          0.9926065438344941
+        ],
+        "label_source": "recount",
+        "majority_errors": 0,
+        "min_ID_IDF": 8,
+        "model_bound": "P(any WRONG over 60 records) <= that count x 0.001 (Exact, conditional on the iid model)",
+        "non_vacuous": true,
+        "of": 24,
+        "per_case": [
+          [
+            11930001,
+            "IDF",
+            "IDF",
+            11665,
+            0,
+            "IDF"
+          ],
+          [
+            11930002,
+            "IDF",
+            "IDF",
+            12454,
+            0,
+            "IDF"
+          ],
+          [
+            11930003,
+            "IDF",
+            "IDF",
+            12698,
+            0,
+            "IDF"
+          ],
+          [
+            11930004,
+            "IDF",
+            "IDF",
+            10662,
+            0,
+            "IDF"
+          ],
+          [
+            11930005,
+            "ID",
+            "ID",
+            9718,
+            0,
+            "ID"
+          ],
+          [
+            11930006,
+            "ID",
+            "ID",
+            9895,
+            0,
+            "ID"
+          ],
+          [
+            11930007,
+            "ID",
+            "ID",
+            9777,
+            0,
+            "ID"
+          ],
+          [
+            11930008,
+            "ID",
+            "ID",
+            9836,
+            0,
+            "ID"
+          ],
+          [
+            11930009,
+            "ID",
+            "ID",
+            12942,
+            0,
+            "ID"
+          ],
+          [
+            11930010,
+            "ID",
+            "ID",
+            10367,
+            0,
+            "ID"
+          ],
+          [
+            11930011,
+            "ID",
+            "ID",
+            10780,
+            0,
+            "ID"
+          ],
+          [
+            11930012,
+            "IDF",
+            "IDF",
+            11016,
+            0,
+            "IDF"
+          ],
+          [
+            11930013,
+            "IDF",
+            "IDF",
+            10308,
+            0,
+            "IDF"
+          ],
+          [
+            11930014,
+            "ID",
+            "ID",
+            12515,
+            0,
+            "ID"
+          ],
+          [
+            11930015,
+            "IDU",
+            "unknown",
+            12698,
+            0,
+            "IDU"
+          ],
+          [
+            11930016,
+            "ID",
+            "ID",
+            12454,
+            0,
+            "ID"
+          ],
+          [
+            11930017,
+            "IDF",
+            "IDF",
+            14162,
+            0,
+            "IDF"
+          ],
+          [
+            11930018,
+            "ID",
+            "ID",
+            10780,
+            0,
+            "ID"
+          ],
+          [
+            11930019,
+            "IDF",
+            "IDF",
+            12027,
+            0,
+            "IDF"
+          ],
+          [
+            11930020,
+            "ID",
+            "ID",
+            9718,
+            0,
+            "ID"
+          ],
+          [
+            11930021,
+            "IDF",
+            "IDF",
+            11429,
+            0,
+            "IDF"
+          ],
+          [
+            11930022,
+            "IDF",
+            "IDF",
+            10780,
+            0,
+            "IDF"
+          ],
+          [
+            11930023,
+            "IDF",
+            "IDF",
+            10072,
+            0,
+            "IDF"
+          ],
+          [
+            11930024,
+            "ID",
+            "ID",
+            14955,
+            0,
+            "ID"
+          ]
+        ],
+        "per_case_bar": [
+          [
+            11950001,
+            "IDF",
+            "IDF",
+            9954,
+            0
+          ],
+          [
+            11950002,
+            "IDF",
+            "IDF",
+            14223,
+            0
+          ],
+          [
+            11950003,
+            "IDF",
+            "IDF",
+            11252,
+            0
+          ],
+          [
+            11950004,
+            "ID",
+            "ID",
+            10780,
+            0
+          ],
+          [
+            11950005,
+            "IDF",
+            "IDF",
+            14528,
+            0
+          ],
+          [
+            11950006,
+            "IDF",
+            "IDF",
+            9954,
+            0
+          ],
+          [
+            11950007,
+            "IDF",
+            "IDF",
+            10367,
+            0
+          ],
+          [
+            11950008,
+            "ID",
+            "ID",
+            9600,
+            0
+          ],
+          [
+            11950009,
+            "ID",
+            "ID",
+            13430,
+            0
+          ],
+          [
+            11950010,
+            "ID",
+            "ID",
+            10249,
+            0
+          ],
+          [
+            11950011,
+            "IDF",
+            "IDF",
+            10013,
+            0
+          ],
+          [
+            11950012,
+            "ID",
+            "ID",
+            10013,
+            0
+          ]
+        ],
+        "records": 60,
+        "reference_noise12": {
+          "audited": 46,
+          "decided": 46,
+          "mismatches": 0
+        },
+        "reference_noise12_bar": {
+          "audited": 12,
+          "decided": 12,
+          "mismatches": 0
+        }
+      },
+      "pass": true
+    },
+    "GQB26": {
+      "observed": {
+        "case_bound_s": 600.0,
+        "chunk_bound_s": 30.0,
+        "max_case_wall_s": {
+          "API16E/compat": 7.018,
+          "API16N/noise12": 35.169,
+          "API16N_b/noise12": 34.384,
+          "API16N_bar/noise12_bar": 47.668,
+          "API16N_c/compat": 6.958
+        },
+        "max_chunk_wall_s": {
+          "API16E/compat": 1.526,
+          "API16N/noise12": 1.705,
+          "API16N_b/noise12": 1.83,
+          "API16N_bar/noise12_bar": 7.609,
+          "API16N_c/compat": 1.449
+        },
+        "over_case": [],
+        "over_chunk": []
+      },
+      "pass": true
+    },
+    "GS_ref": {
+      "observed": {
+        "PASS": true,
+        "audited": 70,
+        "block": "main",
+        "complete": true,
+        "decided": 70,
+        "elapsed_informational": {
+          "r12": 128.0526446379954
+        },
+        "k_spent_as_amb": 0,
+        "mismatch_count": 0,
+        "mutations": 20,
+        "not_audited": [],
+        "not_reached": 2,
+        "of": 20,
+        "per_arm": {
+          "API16E": {
+            "audited": 6,
+            "decided": 6,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 6
+          },
+          "API16N": {
+            "audited": 23,
+            "decided": 23,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 24
+          },
+          "API16N_b": {
+            "audited": 23,
+            "decided": 23,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 24
+          },
+          "API16N_bar": {
+            "audited": 12,
+            "decided": 12,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 12
+          },
+          "API16N_c": {
+            "audited": 6,
+            "decided": 6,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 6
+          }
+        },
+        "per_key": {
+          "compat": {
+            "audited": 12,
+            "decided": 12,
+            "mismatches": 0
+          },
+          "noise12": {
+            "audited": 46,
+            "decided": 46,
+            "mismatches": 0
+          },
+          "noise12_bar": {
+            "audited": 12,
+            "decided": 12,
+            "mismatches": 0
+          }
+        },
+        "records": 72,
+        "scope": {
+          "budget_12_s": 2400.0,
+          "key_order": [
+            "noise12",
+            "noise12_bar",
+            "compat"
+          ],
+          "order": [
+            "API16N",
+            "API16N_b",
+            "API16N_bar",
+            "API16N_c",
+            "API16E"
+          ],
+          "workers_12": 8
+        },
+        "vacuous": false,
+        "verdicts_checked": 140
+      },
+      "pass": true
+    },
+    "GTEST": {
+      "observed": {
+        "gated": {
+          "test_certify16": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16d": {
+            "returncode": 0,
+            "tests": 11
+          },
+          "test_certify16e": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16n": {
+            "returncode": 0,
+            "tests": 10
+          },
+          "test_certify16s": {
+            "returncode": 0,
+            "tests": 3
+          },
+          "test_release_0490": {
+            "returncode": 0,
+            "tests": 9
+          },
+          "test_scalesearch4_0260": {
+            "returncode": 0,
+            "tests": 14
+          },
+          "test_scripts_052": {
+            "returncode": 0,
+            "tests": 10
+          }
+        },
+        "reported": {
+          "test_release_0480": {
+            "returncode": 0,
+            "tests": 9
+          },
+          "test_scripts_051": {
+            "returncode": 0,
+            "tests": 8
+          }
+        }
+      },
+      "pass": true
+    },
+    "GTI": {
+      "observed": {
+        "all_tokens_allowed": true,
+        "frozen_in_052": true,
+        "prior_range_count": 359,
+        "seedcheck_pass": true,
+        "total_cases": 42
+      },
+      "pass": true
+    },
+    "G_PROC": {
+      "observed": {
+        "clauses": {
+          "commit_order_file": true,
+          "ledger_times_non_decreasing": true,
+          "ledger_times_parse": true,
+          "main_sealed": true,
+          "order": true
+        },
+        "events": [
+          "preregistration_052",
+          "build_authorization_052",
+          "seedcheck_052",
+          "prefreeze_smoke_052",
+          "source_freeze_052",
+          "run_start_052",
+          "run_end_052",
+          "recount_052",
+          "reference_052",
+          "api_checks_052",
+          "tests_052"
+        ],
+        "required_order": [
+          "preregistration_052",
+          "build_authorization_052",
+          "seedcheck_052",
+          "prefreeze_smoke_052",
+          "source_freeze_052",
+          "run_start_052",
+          "run_end_052",
+          "recount_052",
+          "reference_052",
+          "api_checks_052",
+          "tests_052"
+        ]
+      },
+      "pass": true
+    },
+    "G_RT": {
+      "observed": {
+        "cap_s": 3600,
+        "cases": 42,
+        "elapsed_s": 70.84571222899831,
+        "n_noise12_bar": 12
+      },
+      "pass": true
+    },
+    "G_recount": {
+      "observed": {
+        "PASS": true,
+        "amb_rule_applied": 0,
+        "cases": 42,
+        "compat_equal": 6,
+        "labels": {
+          "compat": {
+            "API16E": {
+              "AMB": 0,
+              "ID": 4,
+              "IDF": 2,
+              "IDU": 0,
+              "WRONG": 0
+            },
+            "API16N_c": {
+              "AMB": 0,
+              "ID": 4,
+              "IDF": 2,
+              "IDU": 0,
+              "WRONG": 0
+            }
+          },
+          "noise12": {
+            "API16N": {
+              "AMB": 0,
+              "ID": 12,
+              "IDF": 11,
+              "IDU": 1,
+              "WRONG": 0
+            },
+            "API16N_b": {
+              "AMB": 0,
+              "ID": 12,
+              "IDF": 11,
+              "IDU": 1,
+              "WRONG": 0
+            }
+          },
+          "noise12_bar": {
+            "API16N_bar": {
+              "AMB": 0,
+              "ID": 5,
+              "IDF": 7,
+              "IDU": 0,
+              "WRONG": 0
+            }
+          }
+        },
+        "majority_errors": 0,
+        "misfires": {
+          "API16E": 0,
+          "API16N": 0,
+          "API16N_b": 0,
+          "API16N_bar": 0,
+          "API16N_c": 0
+        },
+        "mismatches": {},
+        "mismatching_cases": 0,
+        "recounted": 42,
+        "truth_inconsistent": 0,
+        "words_checked": 687,
+        "words_unsound": 0
+      },
+      "pass": true
+    },
+    "G_sound": {
+      "observed": {
+        "compat_WRONG": [],
+        "recount_bound": true,
+        "recount_truth_inconsistent": 0,
+        "recount_words_checked": 687,
+        "recount_words_unsound": 0,
+        "words_checked": 687,
+        "words_unsound": 0
+      },
+      "pass": true
+    }
+  },
+  "label_source": "recount",
+  "n_noise12_bar": 12,
+  "noise": {
+    "arms": {
+      "API16N": [
+        0.05,
+        null
+      ],
+      "API16N_b": [
+        0.05,
+        null
+      ],
+      "API16N_bar": [
+        0.1,
+        null
+      ],
+      "API16N_c": [
+        0.0,
+        1
+      ]
+    },
+    "delta": 0.001,
+    "eps_bar": 0.1
+  },
+  "not_exercised": [],
+  "process": "lean",
+  "reports": {
+    "labels": {
+      "API16E/compat": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.299993315138392,
+            0.9032285888942195
+          ],
+          "n": 6,
+          "x": 4
+        },
+        "IDF": {
+          "ci95": [
+            0.09677141110578043,
+            0.7000066848616079
+          ],
+          "n": 6,
+          "x": 2
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "API16N/noise12": {
+        "AMB": {
+          "ci95": [
+            1.1962983316807505e-17,
+            0.1379762046749802
+          ],
+          "n": 24,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.31427425819573357,
+            0.6857257418042665
+          ],
+          "n": 24,
+          "x": 12
+        },
+        "IDF": {
+          "ci95": [
+            0.2789133373121098,
+            0.6492513464108051
+          ],
+          "n": 24,
+          "x": 11
+        },
+        "IDU": {
+          "ci95": [
+            0.0073934561655057815,
+            0.20241806478655938
+          ],
+          "n": 24,
+          "x": 1
+        },
+        "WRONG": {
+          "ci95": [
+            1.1962983316807505e-17,
+            0.1379762046749802
+          ],
+          "n": 24,
+          "x": 0
+        }
+      },
+      "API16N_b/noise12": {
+        "AMB": {
+          "ci95": [
+            1.1962983316807505e-17,
+            0.1379762046749802
+          ],
+          "n": 24,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.31427425819573357,
+            0.6857257418042665
+          ],
+          "n": 24,
+          "x": 12
+        },
+        "IDF": {
+          "ci95": [
+            0.2789133373121098,
+            0.6492513464108051
+          ],
+          "n": 24,
+          "x": 11
+        },
+        "IDU": {
+          "ci95": [
+            0.0073934561655057815,
+            0.20241806478655938
+          ],
+          "n": 24,
+          "x": 1
+        },
+        "WRONG": {
+          "ci95": [
+            1.1962983316807505e-17,
+            0.1379762046749802
+          ],
+          "n": 24,
+          "x": 0
+        }
+      },
+      "API16N_bar/noise12_bar": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.19326031365875665,
+            0.6804886874504503
+          ],
+          "n": 12,
+          "x": 5
+        },
+        "IDF": {
+          "ci95": [
+            0.3195113125495498,
+            0.8067396863412435
+          ],
+          "n": 12,
+          "x": 7
+        },
+        "IDU": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "API16N_c/compat": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.299993315138392,
+            0.9032285888942195
+          ],
+          "n": 6,
+          "x": 4
+        },
+        "IDF": {
+          "ci95": [
+            0.09677141110578043,
+            0.7000066848616079
+          ],
+          "n": 6,
+          "x": 2
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      }
+    }
+  },
+  "schema": "brute.gates.v49_0",
+  "sealed_input_verified": true,
+  "secondary": {
+    "GCOST52": {
+      "observed": {
+        "API16E/compat": {
+          "arm_wall_s": 16.4,
+          "budget_spent": 0,
+          "calls": 144,
+          "capped_calls": 0,
+          "chunks": 148,
+          "conflicts": 576916,
+          "reads": 0,
+          "records": 6
+        },
+        "API16N/noise12": {
+          "arm_wall_s": 95.4,
+          "budget_spent": 1,
+          "calls": 813,
+          "capped_calls": 12,
+          "chunks": 838,
+          "conflicts": 3695930,
+          "reads": 273708,
+          "records": 24
+        },
+        "API16N_b/noise12": {
+          "arm_wall_s": 92.1,
+          "budget_spent": 1,
+          "calls": 813,
+          "capped_calls": 12,
+          "chunks": 838,
+          "conflicts": 3695930,
+          "reads": 273708,
+          "records": 24
+        },
+        "API16N_bar/noise12_bar": {
+          "arm_wall_s": 90.9,
+          "budget_spent": 0,
+          "calls": 370,
+          "capped_calls": 0,
+          "chunks": 388,
+          "conflicts": 2416578,
+          "reads": 134363,
+          "records": 12
+        },
+        "API16N_c/compat": {
+          "arm_wall_s": 16.7,
+          "budget_spent": 0,
+          "calls": 144,
+          "capped_calls": 0,
+          "chunks": 148,
+          "conflicts": 576916,
+          "reads": 1185,
+          "records": 6
+        }
+      },
+      "pass": null,
+      "rule": "reported: wall, calls, chunks, capped calls, conflicts, budget-spent records, reads per arm/key"
+    },
+    "GN12_pool": {
+      "observed": {
+        "by_study": {
+          "050": {
+            "API16N_ID_IDF": 11,
+            "WRONG": 0,
+            "gate_pass": true,
+            "of": 12,
+            "records": 24
+          },
+          "051": {
+            "API16N_ID_IDF": 11,
+            "WRONG": 0,
+            "gate_pass": true,
+            "of": 12,
+            "records": 24
+          },
+          "052": {
+            "API16N_ID_IDF": 23,
+            "WRONG": 0,
+            "of": 24,
+            "records": 48
+          }
+        },
+        "pooled_ID_IDF": 45,
+        "pooled_WRONG": 0,
+        "pooled_WRONG_ci95": [
+          3.335957940936178e-18,
+          0.038475587857675686
+        ],
+        "pooled_ci95": [
+          0.8316456194505364,
+          0.9785167670916106
+        ],
+        "pooled_of": 48,
+        "pooled_records": 96
+      },
+      "pass": null,
+      "rule": "reported only: eps-0.05 API16N records of 050, 051, 052; different cases, not a paired comparison"
+    },
+    "GN12_rate52": {
+      "observed": {
+        "eps_0.05": {
+          "ID_IDF": 23,
+          "ci95": [
+            0.7975819352134406,
+            0.9926065438344941
+          ],
+          "k_range": [
+            27,
+            61
+          ],
+          "observations": 5096,
+          "of": 24,
+          "reads_per_observation": 53.71,
+          "reads_total": 273708
+        },
+        "eps_0.10": {
+          "ID_IDF": 12,
+          "ci95": [
+            0.7575059933447591,
+            1.0
+          ],
+          "k_range": [
+            27,
+            61
+          ],
+          "observations": 2505,
+          "of": 12,
+          "reads_per_observation": 53.64,
+          "reads_total": 134363
+        }
+      },
+      "pass": null,
+      "rule": "reported"
+    }
+  },
+  "study": "BRUTE-0490-CERTIFY16N-NOISE12-052",
+  "workers": 8
+}
