@@ -77,7 +77,9 @@
     "docs/research/BRUTE_DEVIATIONS_040_152.md",
     "docs/research/BRUTE_DEVIATIONS_040_153.md",
     "docs/research/BRUTE_DEVIATIONS_041_154.md",
-    "docs/research/BRUTE_DEVIATIONS_041_155.md"
+    "docs/research/BRUTE_DEVIATIONS_041_155.md",
+    "docs/research/BRUTE_DEVIATIONS_041_156.md"
   ],
-  "verify": "python scripts/study041_storage.py restore && PYTHONPATH=. python scripts/verify_release_0380.py"
+  "verify": "python scripts/study041_storage.py restore && PYTHONPATH=. python scripts/verify_release_0380a.py",
+  "verify_note": "the frozen scripts/verify_release_0380.py fails its commit-order item (ada2447 -> 18cc782, the build authorization names the plan it authorizes); deviation #156 adds verify_release_0380a.py, which runs the frozen items 1-4 unchanged and allows only that back-reference"
 }

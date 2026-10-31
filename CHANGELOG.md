@@ -19,7 +19,7 @@
 | mean per-trace call-wall ratio vs E0 (a, c) | 1 | 1.11 [1.01, 1.24] | 4.18 [2.53, 6.46] | 16.11 [5.13, 31.74] | 10.41 [4.13, 20.78] |
 
 - GAUD_loc PASS: the fixed-colour clique (E2) reproduces the GINC15 loss in 3/3 repeats; E1 matches E0 in 3/3. GAUD_stab 10/10 [0.72, 1.00]. GQB16 max 10.012 s, 15 hard kills. Fresh: every arm ID 11/12 perm12 [0.65, 0.99] and 6/6 controls; GPERM16 10/11 agree [0.62, 0.98] (10710005). *Observed*
-- G_recount FAIL: 25 part-c replays stop AMB, which the frozen recount does not cover; GAUD_sem, G10, G_sound fail through it (#155). Deviations #154, #155.
+- G_recount FAIL: 25 part-c replays stop AMB, which the frozen recount does not cover; GAUD_sem, G10, G_sound fail through it (#155). The frozen verify_release_0380 fails its commit-order item (the build authorization names the plan it authorizes); verify with the addendum verify_release_0380a (#156). Deviations #154, #155, #156.
 
 ## v0.37.0: an apartness-clique SAT encoding (A15) and a per-size cube split on capped queries (A15_cube) for clean active identification at 16 and 14 states and a one-bit-observation family (study BRUTE-0370-APART-CUBE-040, LEAN process)
 
