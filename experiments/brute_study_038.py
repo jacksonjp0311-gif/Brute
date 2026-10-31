@@ -16,6 +16,8 @@ Arms, in this order, each with its own 120 s budget:
   A12_r3         frozen, r 3, doubling probe, sound stop, B_max 6 (control);
   A11_r3         brute.scalesearch11.active11 (frozen), r 3, bisection, B_max 6 (GNR13 reference);
   S7             scalesearch10.identify10 on the single-read passive prefix, B 27, n_max 16 (context).
+Confirmation walls (deviation #148, informational): the last c query walls of a round that ran a B_max confirmation, c = the
+number of confirmation verdicts (one per solve; a verdict set by the deadline before a solve would shift this by one).
 Base trace: position t is read r times (the step's read, then r - 1 re-reads) and fused by per-bit majority; executed words
 likewise; K = 64 counts steps. within_budget (per arm): the truth's flips over the fused trace <= the arm's B_max.
   PYTHONPATH=. python experiments/brute_study_038.py --block main --workers 8
@@ -111,6 +113,8 @@ def _active_record(w,res,T0,bmax):
                   truth_flips=truth_flips(w,tr.acts[:T],tr.readings[:T+1]))
         if 'confirm' in x:
             C=x['confirm'];rr['confirm']={'verdict':C['verdict'],'B_max':C['B_max'],'future':_verd(C['future']),'start':_verd(C['start'])}
+            nc=sum(len(y['verdicts']) for y in (C['future'],C['start']) if y)
+            rr['confirm']['walls_informational']=list(x['query_walls'][-nc:]) if nc else []
         if x['M1'] is not None:rr['M1_fits']=bool(S10.fits(x['M1'],sub,B))
         if 'word' in x:
             Bw=bmax if 'confirm' in x else B
