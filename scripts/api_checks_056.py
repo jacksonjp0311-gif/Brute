@@ -25,6 +25,7 @@ from scripts import api_checks_046 as A46
 from scripts.api_checks_050 import ROUND_FIELDS
 OUT=ROOT/'results/study-056/API_CHECKS_056.json'
 CLOSURE_054=ROOT/'results/study-054/API_CHECKS_054.json'
+CLOSURE_055=ROOT/'results/study-055/API_CHECKS_055.json'
 FROZEN={'brute/api/certify14.py':'experiments/BRUTE_SOURCE_FREEZE_047.json','brute/api/certify16.py':'experiments/BRUTE_SOURCE_FREEZE_047.json',
         'brute/api/certify16d.py':'experiments/BRUTE_SOURCE_FREEZE_047.json','brute/api/certify16e.py':'experiments/BRUTE_SOURCE_FREEZE_049.json',
         'brute/api/certify16n.py':'experiments/BRUTE_SOURCE_FREEZE_050.json','brute/api/certify16s.py':'experiments/BRUTE_SOURCE_FREEZE_051.json',
