@@ -1,0 +1,653 @@
+{
+  "PASS": true,
+  "audited": 16,
+  "block": "main",
+  "complete": true,
+  "decided": 16,
+  "elapsed_informational": {
+    "r12": 1002.2813680479885
+  },
+  "k_spent_as_amb": 15,
+  "misfires": [],
+  "mismatch_count": 0,
+  "mismatches": [],
+  "mutation_test": {
+    "detected": 20,
+    "items": [
+      {
+        "detected": true,
+        "id": "main/scale20t/12330002/API20L",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20t/12330001/API20L_b",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12350001/API20L",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20t/12330005/API20L",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20t/12330002/API20L_b",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20t/12330002/API20L",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12350006/API20L",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20t/12330001/API20L_b",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12350003/API20L",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12350002/API20L",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12350006/API20L",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20t/12330006/API20L_b",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20t/12330006/API20L",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20t/12330002/API20L",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20t/12330002/API20L",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20t/12330002/API20L_b",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20t/12330005/API20L_b",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20t/12330003/API20L",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20t/12330005/API20L",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12350001/API20L",
+        "kind": "s1"
+      }
+    ],
+    "mutations": 20,
+    "pass": true
+  },
+  "not_audited": [],
+  "not_reached": 2,
+  "per_arm": {
+    "API20L": {
+      "audited": 11,
+      "decided": 11,
+      "misfires": 0,
+      "mismatches": 0,
+      "records": 12
+    },
+    "API20L_b": {
+      "audited": 5,
+      "decided": 5,
+      "misfires": 0,
+      "mismatches": 0,
+      "records": 6
+    }
+  },
+  "per_key": {
+    "compat20t": {
+      "audited": 6,
+      "decided": 6,
+      "mismatches": 0
+    },
+    "scale20t": {
+      "audited": 10,
+      "decided": 10,
+      "mismatches": 0
+    }
+  },
+  "per_record": [
+    {
+      "N_audited": 20,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": false,
+      "id": "main/scale20t/12330001/API20L",
+      "label": "AMB",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "K_spent",
+      "verdicts_checked": 1
+    },
+    {
+      "N_audited": 20,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": false,
+      "id": "main/scale20t/12330002/API20L",
+      "label": "AMB",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "K_spent",
+      "verdicts_checked": 1
+    },
+    {
+      "N_audited": 20,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": false,
+      "id": "main/scale20t/12330003/API20L",
+      "label": "AMB",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "K_spent",
+      "verdicts_checked": 1
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12330004/API20L",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "N_audited": 20,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": false,
+      "id": "main/scale20t/12330005/API20L",
+      "label": "AMB",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "K_spent",
+      "verdicts_checked": 1
+    },
+    {
+      "N_audited": 20,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": false,
+      "id": "main/scale20t/12330006/API20L",
+      "label": "AMB",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "K_spent",
+      "verdicts_checked": 1
+    },
+    {
+      "N_audited": 16,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": false,
+      "id": "main/compat20t/12350001/API20L",
+      "label": "AMB",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "K_spent",
+      "verdicts_checked": 1
+    },
+    {
+      "N_audited": 16,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/compat20t/12350002/API20L",
+      "label": "IDF",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "IDF",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 16,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": false,
+      "id": "main/compat20t/12350003/API20L",
+      "label": "AMB",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "K_spent",
+      "verdicts_checked": 1
+    },
+    {
+      "N_audited": 16,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": false,
+      "id": "main/compat20t/12350004/API20L",
+      "label": "AMB",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "K_spent",
+      "verdicts_checked": 1
+    },
+    {
+      "N_audited": 16,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": false,
+      "id": "main/compat20t/12350005/API20L",
+      "label": "AMB",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "K_spent",
+      "verdicts_checked": 1
+    },
+    {
+      "N_audited": 16,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": false,
+      "id": "main/compat20t/12350006/API20L",
+      "label": "AMB",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "K_spent",
+      "verdicts_checked": 1
+    },
+    {
+      "N_audited": 20,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": false,
+      "id": "main/scale20t/12330001/API20L_b",
+      "label": "AMB",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "K_spent",
+      "verdicts_checked": 1
+    },
+    {
+      "N_audited": 20,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": false,
+      "id": "main/scale20t/12330002/API20L_b",
+      "label": "AMB",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "K_spent",
+      "verdicts_checked": 1
+    },
+    {
+      "N_audited": 20,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": false,
+      "id": "main/scale20t/12330003/API20L_b",
+      "label": "AMB",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "K_spent",
+      "verdicts_checked": 1
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12330004/API20L_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "N_audited": 20,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": false,
+      "id": "main/scale20t/12330005/API20L_b",
+      "label": "AMB",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "K_spent",
+      "verdicts_checked": 1
+    },
+    {
+      "N_audited": 20,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": false,
+      "id": "main/scale20t/12330006/API20L_b",
+      "label": "AMB",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "K_spent",
+      "verdicts_checked": 1
+    }
+  ],
+  "records": 18,
+  "schema": "brute.reference.v53_0",
+  "scope": {
+    "budget_12_s": 2400.0,
+    "key_order": [
+      "scale20t",
+      "compat20t"
+    ],
+    "order": [
+      "API20L",
+      "API20L_b"
+    ],
+    "workers_12": 8
+  },
+  "study_results_sha256": "52041a4fbfd7abeeb5086951aab503db73b1e8cb942b68a625572bead553c5a5",
+  "table_audit": {
+    "PASS": true,
+    "counterexamples_checked": 9,
+    "entries": 1467,
+    "mismatch_records": [],
+    "per_record": [
+      {
+        "basis_pairwise_apart": true,
+        "columns": 0,
+        "counterexamples": 0,
+        "counterexamples_checked": 0,
+        "entries": 65,
+        "fill_steps": 128,
+        "hypotheses": 1,
+        "id": "main/scale20t/12330001/API20L",
+        "mismatches": [],
+        "pass": true,
+        "rows": 11
+      },
+      {
+        "basis_pairwise_apart": true,
+        "columns": 0,
+        "counterexamples": 0,
+        "counterexamples_checked": 0,
+        "entries": 65,
+        "fill_steps": 128,
+        "hypotheses": 1,
+        "id": "main/scale20t/12330001/API20L_b",
+        "mismatches": [],
+        "pass": true,
+        "rows": 11
+      },
+      {
+        "basis_pairwise_apart": true,
+        "columns": 3,
+        "counterexamples": 0,
+        "counterexamples_checked": 0,
+        "entries": 68,
+        "fill_steps": 127,
+        "hypotheses": 1,
+        "id": "main/scale20t/12330002/API20L",
+        "mismatches": [],
+        "pass": true,
+        "rows": 11
+      },
+      {
+        "basis_pairwise_apart": true,
+        "columns": 3,
+        "counterexamples": 0,
+        "counterexamples_checked": 0,
+        "entries": 68,
+        "fill_steps": 127,
+        "hypotheses": 1,
+        "id": "main/scale20t/12330002/API20L_b",
+        "mismatches": [],
+        "pass": true,
+        "rows": 11
+      },
+      {
+        "basis_pairwise_apart": true,
+        "columns": 3,
+        "counterexamples": 0,
+        "counterexamples_checked": 0,
+        "entries": 87,
+        "fill_steps": 128,
+        "hypotheses": 1,
+        "id": "main/scale20t/12330003/API20L",
+        "mismatches": [],
+        "pass": true,
+        "rows": 15
+      },
+      {
+        "basis_pairwise_apart": true,
+        "columns": 3,
+        "counterexamples": 0,
+        "counterexamples_checked": 0,
+        "entries": 87,
+        "fill_steps": 128,
+        "hypotheses": 1,
+        "id": "main/scale20t/12330003/API20L_b",
+        "mismatches": [],
+        "pass": true,
+        "rows": 15
+      },
+      {
+        "basis_pairwise_apart": true,
+        "columns": 2,
+        "counterexamples": 0,
+        "counterexamples_checked": 0,
+        "entries": 121,
+        "fill_steps": 128,
+        "hypotheses": 1,
+        "id": "main/scale20t/12330004/API20L",
+        "mismatches": [],
+        "pass": true,
+        "rows": 13
+      },
+      {
+        "basis_pairwise_apart": true,
+        "columns": 2,
+        "counterexamples": 0,
+        "counterexamples_checked": 0,
+        "entries": 121,
+        "fill_steps": 128,
+        "hypotheses": 1,
+        "id": "main/scale20t/12330004/API20L_b",
+        "mismatches": [],
+        "pass": true,
+        "rows": 13
+      },
+      {
+        "basis_pairwise_apart": true,
+        "columns": 4,
+        "counterexamples": 0,
+        "counterexamples_checked": 0,
+        "entries": 100,
+        "fill_steps": 128,
+        "hypotheses": 1,
+        "id": "main/scale20t/12330005/API20L",
+        "mismatches": [],
+        "pass": true,
+        "rows": 17
+      },
+      {
+        "basis_pairwise_apart": true,
+        "columns": 4,
+        "counterexamples": 0,
+        "counterexamples_checked": 0,
+        "entries": 100,
+        "fill_steps": 128,
+        "hypotheses": 1,
+        "id": "main/scale20t/12330005/API20L_b",
+        "mismatches": [],
+        "pass": true,
+        "rows": 17
+      },
+      {
+        "basis_pairwise_apart": true,
+        "columns": 3,
+        "counterexamples": 0,
+        "counterexamples_checked": 0,
+        "entries": 40,
+        "fill_steps": 127,
+        "hypotheses": 1,
+        "id": "main/scale20t/12330006/API20L",
+        "mismatches": [],
+        "pass": true,
+        "rows": 12
+      },
+      {
+        "basis_pairwise_apart": true,
+        "columns": 3,
+        "counterexamples": 0,
+        "counterexamples_checked": 0,
+        "entries": 40,
+        "fill_steps": 127,
+        "hypotheses": 1,
+        "id": "main/scale20t/12330006/API20L_b",
+        "mismatches": [],
+        "pass": true,
+        "rows": 12
+      },
+      {
+        "basis_pairwise_apart": true,
+        "columns": 1,
+        "counterexamples": 0,
+        "counterexamples_checked": 0,
+        "entries": 129,
+        "fill_steps": 128,
+        "hypotheses": 1,
+        "id": "main/compat20t/12350001/API20L",
+        "mismatches": [],
+        "pass": true,
+        "rows": 9
+      },
+      {
+        "basis_pairwise_apart": true,
+        "columns": 3,
+        "counterexamples": 9,
+        "counterexamples_checked": 9,
+        "entries": 30,
+        "fill_steps": 24,
+        "hypotheses": 10,
+        "id": "main/compat20t/12350002/API20L",
+        "mismatches": [],
+        "pass": true,
+        "rows": 10
+      },
+      {
+        "basis_pairwise_apart": true,
+        "columns": 2,
+        "counterexamples": 0,
+        "counterexamples_checked": 0,
+        "entries": 129,
+        "fill_steps": 128,
+        "hypotheses": 1,
+        "id": "main/compat20t/12350003/API20L",
+        "mismatches": [],
+        "pass": true,
+        "rows": 12
+      },
+      {
+        "basis_pairwise_apart": true,
+        "columns": 2,
+        "counterexamples": 0,
+        "counterexamples_checked": 0,
+        "entries": 65,
+        "fill_steps": 126,
+        "hypotheses": 1,
+        "id": "main/compat20t/12350004/API20L",
+        "mismatches": [],
+        "pass": true,
+        "rows": 11
+      },
+      {
+        "basis_pairwise_apart": true,
+        "columns": 3,
+        "counterexamples": 0,
+        "counterexamples_checked": 0,
+        "entries": 55,
+        "fill_steps": 128,
+        "hypotheses": 1,
+        "id": "main/compat20t/12350005/API20L",
+        "mismatches": [],
+        "pass": true,
+        "rows": 11
+      },
+      {
+        "basis_pairwise_apart": true,
+        "columns": 3,
+        "counterexamples": 0,
+        "counterexamples_checked": 0,
+        "entries": 97,
+        "fill_steps": 128,
+        "hypotheses": 1,
+        "id": "main/compat20t/12350006/API20L",
+        "mismatches": [],
+        "pass": true,
+        "rows": 9
+      }
+    ],
+    "records": 18
+  },
+  "vacuous": false,
+  "verdicts_checked": 17,
+  "walls_informational": {
+    "main/compat20t/12350001/API20L": 27.9,
+    "main/compat20t/12350002/API20L": 520.4,
+    "main/compat20t/12350003/API20L": 6.4,
+    "main/compat20t/12350004/API20L": 10.6,
+    "main/compat20t/12350005/API20L": 31.9,
+    "main/compat20t/12350006/API20L": 2.1,
+    "main/scale20t/12330001/API20L": 49.9,
+    "main/scale20t/12330001/API20L_b": 54.8,
+    "main/scale20t/12330002/API20L": 487.4,
+    "main/scale20t/12330002/API20L_b": 481.3,
+    "main/scale20t/12330003/API20L": 132.9,
+    "main/scale20t/12330003/API20L_b": 126.4,
+    "main/scale20t/12330005/API20L": 122.1,
+    "main/scale20t/12330005/API20L_b": 112.1,
+    "main/scale20t/12330006/API20L": 901.5,
+    "main/scale20t/12330006/API20L_b": 879.6
+  }
+}

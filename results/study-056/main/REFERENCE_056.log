@@ -1,0 +1,80 @@
+{
+ "schema": "brute.reference.v53_0",
+ "study_results_sha256": "52041a4fbfd7abeeb5086951aab503db73b1e8cb942b68a625572bead553c5a5",
+ "block": "main",
+ "scope": {
+  "budget_12_s": 2400.0,
+  "workers_12": 8,
+  "order": [
+   "API20L",
+   "API20L_b"
+  ],
+  "key_order": [
+   "scale20t",
+   "compat20t"
+  ]
+ },
+ "records": 18,
+ "decided": 16,
+ "audited": 16,
+ "not_audited": [],
+ "not_reached": 2,
+ "complete": true,
+ "per_arm": {
+  "API20L": {
+   "records": 12,
+   "decided": 11,
+   "audited": 11,
+   "mismatches": 0,
+   "misfires": 0
+  },
+  "API20L_b": {
+   "records": 6,
+   "decided": 5,
+   "audited": 5,
+   "mismatches": 0,
+   "misfires": 0
+  }
+ },
+ "per_key": {
+  "scale20t": {
+   "decided": 10,
+   "audited": 10,
+   "mismatches": 0
+  },
+  "compat20t": {
+   "decided": 6,
+   "audited": 6,
+   "mismatches": 0
+  }
+ },
+ "k_spent_as_amb": 15,
+ "verdicts_checked": 17,
+ "mismatch_count": 0,
+ "misfires": [],
+ "walls_informational": {
+  "main/scale20t/12330001/API20L": 49.9,
+  "main/scale20t/12330002/API20L": 487.4,
+  "main/scale20t/12330003/API20L": 132.9,
+  "main/scale20t/12330005/API20L": 122.1,
+  "main/scale20t/12330006/API20L": 901.5,
+  "main/compat20t/12350001/API20L": 27.9,
+  "main/compat20t/12350002/API20L": 520.4,
+  "main/compat20t/12350003/API20L": 6.4,
+  "main/compat20t/12350004/API20L": 10.6,
+  "main/compat20t/12350005/API20L": 31.9,
+  "main/compat20t/12350006/API20L": 2.1,
+  "main/scale20t/12330001/API20L_b": 54.8,
+  "main/scale20t/12330002/API20L_b": 481.3,
+  "main/scale20t/12330003/API20L_b": 126.4,
+  "main/scale20t/12330005/API20L_b": 112.1,
+  "main/scale20t/12330006/API20L_b": 879.6
+ },
+ "elapsed_informational": {
+  "r12": 1002.2813680479885
+ },
+ "vacuous": false,
+ "PASS": true
+} 
+table_audit {'records': 18, 'entries': 1467, 'counterexamples_checked': 9, 'mismatch_records': [], 'PASS': True} 
+mutations 20 / 20
