@@ -1,0 +1,698 @@
+{
+  "PASS": true,
+  "amb_rule_applied": 16,
+  "cases": 12,
+  "compat": {
+    "main/compat20t/12350001": {
+      "control_label": "ID",
+      "equal": false,
+      "label": "AMB",
+      "label_equal": false,
+      "machine_equal": null,
+      "rule": "label equality only",
+      "rule_name": "compat_rule_056"
+    },
+    "main/compat20t/12350002": {
+      "control_label": "IDF",
+      "equal": true,
+      "future_match": [
+        true,
+        true
+      ],
+      "label": "IDF",
+      "label_equal": true,
+      "machine_equal": true,
+      "rule": "future_match at each own stop step and unpointed-isomorphic minimised parts from each current state",
+      "rule_name": "compat_rule_056",
+      "unpointed_iso": true
+    },
+    "main/compat20t/12350003": {
+      "control_label": "ID",
+      "equal": false,
+      "label": "AMB",
+      "label_equal": false,
+      "machine_equal": null,
+      "rule": "label equality only",
+      "rule_name": "compat_rule_056"
+    },
+    "main/compat20t/12350004": {
+      "control_label": "IDU",
+      "equal": false,
+      "label": "AMB",
+      "label_equal": false,
+      "machine_equal": null,
+      "rule": "label equality only",
+      "rule_name": "compat_rule_056"
+    },
+    "main/compat20t/12350005": {
+      "control_label": "ID",
+      "equal": false,
+      "label": "AMB",
+      "label_equal": false,
+      "machine_equal": null,
+      "rule": "label equality only",
+      "rule_name": "compat_rule_056"
+    },
+    "main/compat20t/12350006": {
+      "control_label": "AMB",
+      "equal": true,
+      "label": "AMB",
+      "label_equal": true,
+      "machine_equal": null,
+      "rule": "label equality only",
+      "rule_name": "compat_rule_056"
+    }
+  },
+  "compat_equal": 2,
+  "labels": {
+    "compat20t": {
+      "API16E": {
+        "AMB": 1,
+        "ID": 3,
+        "IDF": 1,
+        "IDU": 1,
+        "WRONG": 0
+      },
+      "API20L": {
+        "AMB": 5,
+        "ID": 0,
+        "IDF": 1,
+        "IDU": 0,
+        "WRONG": 0
+      }
+    },
+    "scale20t": {
+      "API16E20": {
+        "AMB": 0,
+        "ID": 1,
+        "IDF": 0,
+        "IDU": 5,
+        "WRONG": 0
+      },
+      "API20L": {
+        "AMB": 5,
+        "ID": 0,
+        "IDF": 0,
+        "IDU": 1,
+        "WRONG": 0
+      },
+      "API20L_b": {
+        "AMB": 5,
+        "ID": 0,
+        "IDF": 0,
+        "IDU": 1,
+        "WRONG": 0
+      }
+    }
+  },
+  "misfires": {
+    "API16E": 0,
+    "API16E20": 0,
+    "API20L": 0,
+    "API20L_b": 0
+  },
+  "mismatches": {},
+  "mismatching_cases": 0,
+  "per_case": {
+    "main/compat20t/12350001": {
+      "API16E": {
+        "N_eff": 16,
+        "T_final": 196,
+        "canonical_match": true,
+        "future_match": true,
+        "label": "ID",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 20,
+        "words_checked": 7,
+        "words_executed_length": 20,
+        "words_unsound": 0
+      },
+      "API20L": {
+        "N_eff": 16,
+        "T_final": 304,
+        "amb_rule": {
+          "L": 31,
+          "n_star": 16
+        },
+        "canonical_match": false,
+        "fill_steps": 128,
+        "future_match": false,
+        "label": "AMB",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 128,
+        "used_ok_056": true,
+        "words_checked": 1,
+        "words_executed_length": 0,
+        "words_unsound": 0
+      }
+    },
+    "main/compat20t/12350002": {
+      "API16E": {
+        "N_eff": 16,
+        "T_final": 229,
+        "canonical_match": true,
+        "future_match": true,
+        "label": "IDF",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 53,
+        "words_checked": 12,
+        "words_executed_length": 53,
+        "words_unsound": 0
+      },
+      "API20L": {
+        "N_eff": 16,
+        "T_final": 234,
+        "canonical_match": true,
+        "fill_steps": 24,
+        "future_match": true,
+        "label": "IDF",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 58,
+        "used_ok_056": true,
+        "words_checked": 9,
+        "words_executed_length": 34,
+        "words_unsound": 0
+      }
+    },
+    "main/compat20t/12350003": {
+      "API16E": {
+        "N_eff": 16,
+        "T_final": 242,
+        "canonical_match": true,
+        "future_match": true,
+        "label": "ID",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 66,
+        "words_checked": 18,
+        "words_executed_length": 66,
+        "words_unsound": 0
+      },
+      "API20L": {
+        "N_eff": 16,
+        "T_final": 304,
+        "amb_rule": {
+          "L": 30,
+          "n_star": 15
+        },
+        "canonical_match": false,
+        "fill_steps": 128,
+        "future_match": false,
+        "label": "AMB",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 128,
+        "used_ok_056": true,
+        "words_checked": 1,
+        "words_executed_length": 0,
+        "words_unsound": 0
+      }
+    },
+    "main/compat20t/12350004": {
+      "API16E": {
+        "N_eff": 16,
+        "T_final": 281,
+        "canonical_match": true,
+        "future_match": true,
+        "label": "IDU",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 105,
+        "words_checked": 35,
+        "words_executed_length": 105,
+        "words_unsound": 0
+      },
+      "API20L": {
+        "N_eff": 16,
+        "T_final": 302,
+        "amb_rule": {
+          "L": 30,
+          "n_star": 15
+        },
+        "canonical_match": false,
+        "fill_steps": 126,
+        "future_match": false,
+        "label": "AMB",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 126,
+        "used_ok_056": true,
+        "words_checked": 1,
+        "words_executed_length": 0,
+        "words_unsound": 0
+      }
+    },
+    "main/compat20t/12350005": {
+      "API16E": {
+        "N_eff": 16,
+        "T_final": 193,
+        "canonical_match": true,
+        "future_match": true,
+        "label": "ID",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 17,
+        "words_checked": 5,
+        "words_executed_length": 17,
+        "words_unsound": 0
+      },
+      "API20L": {
+        "N_eff": 16,
+        "T_final": 304,
+        "amb_rule": {
+          "L": 31,
+          "n_star": 16
+        },
+        "canonical_match": false,
+        "fill_steps": 128,
+        "future_match": false,
+        "label": "AMB",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 128,
+        "used_ok_056": true,
+        "words_checked": 1,
+        "words_executed_length": 0,
+        "words_unsound": 0
+      }
+    },
+    "main/compat20t/12350006": {
+      "API16E": {
+        "N_eff": 16,
+        "T_final": 303,
+        "amb_rule": {
+          "L": 31,
+          "n_star": 16
+        },
+        "canonical_match": false,
+        "future_match": false,
+        "label": "AMB",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 127,
+        "words_checked": 31,
+        "words_executed_length": 127,
+        "words_unsound": 0
+      },
+      "API20L": {
+        "N_eff": 16,
+        "T_final": 304,
+        "amb_rule": {
+          "L": 28,
+          "n_star": 13
+        },
+        "canonical_match": false,
+        "fill_steps": 128,
+        "future_match": false,
+        "label": "AMB",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 128,
+        "used_ok_056": true,
+        "words_checked": 1,
+        "words_executed_length": 0,
+        "words_unsound": 0
+      }
+    },
+    "main/scale20t/12330001": {
+      "API16E20": {
+        "N_eff": 20,
+        "T_final": 288,
+        "canonical_match": true,
+        "future_match": true,
+        "label": "IDU",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 112,
+        "words_checked": 36,
+        "words_executed_length": 112,
+        "words_unsound": 0
+      },
+      "API20L": {
+        "N_eff": 20,
+        "T_final": 304,
+        "amb_rule": {
+          "L": 38,
+          "n_star": 19
+        },
+        "canonical_match": false,
+        "fill_steps": 128,
+        "future_match": false,
+        "label": "AMB",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 128,
+        "used_ok_056": true,
+        "words_checked": 1,
+        "words_executed_length": 0,
+        "words_unsound": 0
+      },
+      "API20L_b": {
+        "N_eff": 20,
+        "T_final": 304,
+        "amb_rule": {
+          "L": 38,
+          "n_star": 19
+        },
+        "canonical_match": false,
+        "fill_steps": 128,
+        "future_match": false,
+        "label": "AMB",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 128,
+        "used_ok_056": true,
+        "words_checked": 1,
+        "words_executed_length": 0,
+        "words_unsound": 0
+      }
+    },
+    "main/scale20t/12330002": {
+      "API16E20": {
+        "N_eff": 20,
+        "T_final": 176,
+        "canonical_match": false,
+        "future_match": false,
+        "label": "IDU",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 0,
+        "words_checked": 0,
+        "words_executed_length": 0,
+        "words_unsound": 0
+      },
+      "API20L": {
+        "N_eff": 20,
+        "T_final": 303,
+        "amb_rule": {
+          "L": 38,
+          "n_star": 19
+        },
+        "canonical_match": false,
+        "fill_steps": 127,
+        "future_match": false,
+        "label": "AMB",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 127,
+        "used_ok_056": true,
+        "words_checked": 1,
+        "words_executed_length": 0,
+        "words_unsound": 0
+      },
+      "API20L_b": {
+        "N_eff": 20,
+        "T_final": 303,
+        "amb_rule": {
+          "L": 38,
+          "n_star": 19
+        },
+        "canonical_match": false,
+        "fill_steps": 127,
+        "future_match": false,
+        "label": "AMB",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 127,
+        "used_ok_056": true,
+        "words_checked": 1,
+        "words_executed_length": 0,
+        "words_unsound": 0
+      }
+    },
+    "main/scale20t/12330003": {
+      "API16E20": {
+        "N_eff": 20,
+        "T_final": 264,
+        "canonical_match": true,
+        "future_match": true,
+        "label": "IDU",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 88,
+        "words_checked": 24,
+        "words_executed_length": 88,
+        "words_unsound": 0
+      },
+      "API20L": {
+        "N_eff": 20,
+        "T_final": 304,
+        "amb_rule": {
+          "L": 38,
+          "n_star": 19
+        },
+        "canonical_match": false,
+        "fill_steps": 128,
+        "future_match": false,
+        "label": "AMB",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 128,
+        "used_ok_056": true,
+        "words_checked": 1,
+        "words_executed_length": 0,
+        "words_unsound": 0
+      },
+      "API20L_b": {
+        "N_eff": 20,
+        "T_final": 304,
+        "amb_rule": {
+          "L": 38,
+          "n_star": 19
+        },
+        "canonical_match": false,
+        "fill_steps": 128,
+        "future_match": false,
+        "label": "AMB",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 128,
+        "used_ok_056": true,
+        "words_checked": 1,
+        "words_executed_length": 0,
+        "words_unsound": 0
+      }
+    },
+    "main/scale20t/12330004": {
+      "API16E20": {
+        "N_eff": 20,
+        "T_final": 188,
+        "canonical_match": false,
+        "future_match": false,
+        "label": "IDU",
+        "misfire": false,
+        "model_consistent": false,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 12,
+        "words_checked": 3,
+        "words_executed_length": 12,
+        "words_unsound": 0
+      },
+      "API20L": {
+        "N_eff": 20,
+        "T_final": 304,
+        "canonical_match": false,
+        "fill_steps": 128,
+        "future_match": false,
+        "label": "IDU",
+        "misfire": false,
+        "model_consistent": false,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 128,
+        "used_ok_056": true,
+        "words_checked": 0,
+        "words_executed_length": 0,
+        "words_unsound": 0
+      },
+      "API20L_b": {
+        "N_eff": 20,
+        "T_final": 304,
+        "canonical_match": false,
+        "fill_steps": 128,
+        "future_match": false,
+        "label": "IDU",
+        "misfire": false,
+        "model_consistent": false,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 128,
+        "used_ok_056": true,
+        "words_checked": 0,
+        "words_executed_length": 0,
+        "words_unsound": 0
+      }
+    },
+    "main/scale20t/12330005": {
+      "API16E20": {
+        "N_eff": 20,
+        "T_final": 254,
+        "canonical_match": true,
+        "future_match": true,
+        "label": "ID",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 78,
+        "words_checked": 24,
+        "words_executed_length": 78,
+        "words_unsound": 0
+      },
+      "API20L": {
+        "N_eff": 20,
+        "T_final": 304,
+        "amb_rule": {
+          "L": 39,
+          "n_star": 20
+        },
+        "canonical_match": false,
+        "fill_steps": 128,
+        "future_match": false,
+        "label": "AMB",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 128,
+        "used_ok_056": true,
+        "words_checked": 1,
+        "words_executed_length": 0,
+        "words_unsound": 0
+      },
+      "API20L_b": {
+        "N_eff": 20,
+        "T_final": 304,
+        "amb_rule": {
+          "L": 39,
+          "n_star": 20
+        },
+        "canonical_match": false,
+        "fill_steps": 128,
+        "future_match": false,
+        "label": "AMB",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 128,
+        "used_ok_056": true,
+        "words_checked": 1,
+        "words_executed_length": 0,
+        "words_unsound": 0
+      }
+    },
+    "main/scale20t/12330006": {
+      "API16E20": {
+        "N_eff": 20,
+        "T_final": 199,
+        "canonical_match": false,
+        "future_match": false,
+        "label": "IDU",
+        "misfire": false,
+        "model_consistent": false,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 23,
+        "words_checked": 7,
+        "words_executed_length": 23,
+        "words_unsound": 0
+      },
+      "API20L": {
+        "N_eff": 20,
+        "T_final": 303,
+        "amb_rule": {
+          "L": 37,
+          "n_star": 18
+        },
+        "canonical_match": false,
+        "fill_steps": 127,
+        "future_match": false,
+        "label": "AMB",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 127,
+        "used_ok_056": true,
+        "words_checked": 1,
+        "words_executed_length": 0,
+        "words_unsound": 0
+      },
+      "API20L_b": {
+        "N_eff": 20,
+        "T_final": 303,
+        "amb_rule": {
+          "L": 37,
+          "n_star": 18
+        },
+        "canonical_match": false,
+        "fill_steps": 127,
+        "future_match": false,
+        "label": "AMB",
+        "misfire": false,
+        "model_consistent": true,
+        "truth_consistent_final": true,
+        "truth_inconsistent_rounds": 0,
+        "used": 127,
+        "used_ok_056": true,
+        "words_checked": 1,
+        "words_executed_length": 0,
+        "words_unsound": 0
+      }
+    }
+  },
+  "recounted": 12,
+  "results_sha256": "52041a4fbfd7abeeb5086951aab503db73b1e8cb942b68a625572bead553c5a5",
+  "schema": "brute.recount.v53_0",
+  "truth_inconsistent": 0,
+  "words_checked": 226,
+  "words_unsound": 0
+}
