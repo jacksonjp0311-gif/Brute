@@ -1,0 +1,140 @@
+{"schema": "brute.recount.v53_0", "results_sha256": "d36182537f7865ff4fe0a7beec58ef4efe797f7cc231ae6be4020cbe4d72e71f", "cases": 4, "recounted": 4, "labels": {"scale20t": {"API20L": {"ID": 0, "IDF": 0, "AMB": 1, "WRONG": 0, "IDU": 1}, "API20L_b": {"ID": 0, "IDF": 0, "AMB": 1, "WRONG": 0, "IDU": 1}, "API16E20": {"ID": 0, "IDF": 0, "AMB": 0, "WRONG": 0, "IDU": 2}}, "compat20t": {"API20L": {"ID": 0, "IDF": 0, "AMB": 2, "WRONG": 0, "IDU": 0}, "API16E": {"ID": 1, "IDF": 1, "AMB": 0, "WRONG": 0, "IDU": 0}}}, "compat": {"smoke/compat20t/12370003": {"label": "AMB", "control_label": "ID", "label_equal": false, "rule_name": "compat_rule_056", "rule": "label equality only", "machine_equal": null, "equal": false}, "smoke/compat20t/12370004": {"label": "AMB", "control_label": "IDF", "label_equal": false, "rule_name": "compat_rule_056", "rule": "label equality only", "machine_equal": null, "equal": false}}, "compat_equal": 0, "misfires": {"API20L": 0, "API20L_b": 0, "API16E20": 0, "API16E": 0}, "amb_rule_applied": 4, "words_unsound": 0, "words_checked": 81, "truth_inconsistent": 0, "mismatching_cases": 0, "mismatches": {}, "PASS": true}
+{
+ "schema": "brute.reference.v53_0",
+ "study_results_sha256": "d36182537f7865ff4fe0a7beec58ef4efe797f7cc231ae6be4020cbe4d72e71f",
+ "block": "smoke",
+ "scope": {
+  "budget_12_s": 2400.0,
+  "workers_12": 8,
+  "order": [
+   "API20L",
+   "API20L_b"
+  ],
+  "key_order": [
+   "scale20t",
+   "compat20t"
+  ]
+ },
+ "records": 6,
+ "decided": 4,
+ "audited": 4,
+ "not_audited": [],
+ "not_reached": 2,
+ "complete": true,
+ "per_arm": {
+  "API20L": {
+   "records": 4,
+   "decided": 3,
+   "audited": 3,
+   "mismatches": 0,
+   "misfires": 0
+  },
+  "API20L_b": {
+   "records": 2,
+   "decided": 1,
+   "audited": 1,
+   "mismatches": 0,
+   "misfires": 0
+  }
+ },
+ "per_key": {
+  "scale20t": {
+   "decided": 2,
+   "audited": 2,
+   "mismatches": 0
+  },
+  "compat20t": {
+   "decided": 2,
+   "audited": 2,
+   "mismatches": 0
+  }
+ },
+ "k_spent_as_amb": 4,
+ "verdicts_checked": 4,
+ "mismatch_count": 0,
+ "misfires": [],
+ "walls_informational": {
+  "smoke/scale20t/12370001/API20L": 220.4,
+  "smoke/compat20t/12370003/API20L": 36.8,
+  "smoke/compat20t/12370004/API20L": 211.9,
+  "smoke/scale20t/12370001/API20L_b": 220.8
+ },
+ "elapsed_informational": {
+  "r12": 221.77079914300703
+ },
+ "vacuous": false,
+ "PASS": true
+} 
+table_audit {'records': 6, 'entries': 596, 'counterexamples_checked': 10, 'mismatch_records': [], 'PASS': True} 
+mutations 20 / 20
+{"schema": "brute.recount.v53_0", "results_sha256": "510ee37f7caad2a03b24cba82dbbfe7e2606e6af878b941ced5c6457cb53f5e2", "cases": 4, "recounted": 4, "labels": {"scale20t": {"API20L": {"ID": 0, "IDF": 0, "AMB": 1, "WRONG": 0, "IDU": 1}, "API20L_b": {"ID": 0, "IDF": 0, "AMB": 1, "WRONG": 0, "IDU": 1}, "API16E20": {"ID": 0, "IDF": 0, "AMB": 0, "WRONG": 0, "IDU": 2}}, "compat20t": {"API20L": {"ID": 0, "IDF": 0, "AMB": 2, "WRONG": 0, "IDU": 0}, "API16E": {"ID": 1, "IDF": 1, "AMB": 0, "WRONG": 0, "IDU": 0}}}, "compat": {"main/compat20t/12370003": {"label": "AMB", "control_label": "ID", "label_equal": false, "rule_name": "compat_rule_056", "rule": "label equality only", "machine_equal": null, "equal": false}, "main/compat20t/12370004": {"label": "AMB", "control_label": "IDF", "label_equal": false, "rule_name": "compat_rule_056", "rule": "label equality only", "machine_equal": null, "equal": false}}, "compat_equal": 0, "misfires": {"API20L": 0, "API20L_b": 0, "API16E20": 0, "API16E": 0}, "amb_rule_applied": 4, "words_unsound": 0, "words_checked": 81, "truth_inconsistent": 0, "mismatching_cases": 0, "mismatches": {}, "PASS": true}
+{
+ "schema": "brute.reference.v53_0",
+ "study_results_sha256": "510ee37f7caad2a03b24cba82dbbfe7e2606e6af878b941ced5c6457cb53f5e2",
+ "block": "main",
+ "scope": {
+  "budget_12_s": 2400.0,
+  "workers_12": 8,
+  "order": [
+   "API20L",
+   "API20L_b"
+  ],
+  "key_order": [
+   "scale20t",
+   "compat20t"
+  ]
+ },
+ "records": 6,
+ "decided": 4,
+ "audited": 4,
+ "not_audited": [],
+ "not_reached": 2,
+ "complete": true,
+ "per_arm": {
+  "API20L": {
+   "records": 4,
+   "decided": 3,
+   "audited": 3,
+   "mismatches": 0,
+   "misfires": 0
+  },
+  "API20L_b": {
+   "records": 2,
+   "decided": 1,
+   "audited": 1,
+   "mismatches": 0,
+   "misfires": 0
+  }
+ },
+ "per_key": {
+  "scale20t": {
+   "decided": 2,
+   "audited": 2,
+   "mismatches": 0
+  },
+  "compat20t": {
+   "decided": 2,
+   "audited": 2,
+   "mismatches": 0
+  }
+ },
+ "k_spent_as_amb": 4,
+ "verdicts_checked": 4,
+ "mismatch_count": 0,
+ "misfires": [],
+ "walls_informational": {
+  "main/scale20t/12370001/API20L": 143.8,
+  "main/compat20t/12370003/API20L": 37.8,
+  "main/compat20t/12370004/API20L": 135.9,
+  "main/scale20t/12370001/API20L_b": 143.7
+ },
+ "elapsed_informational": {
+  "r12": 144.07017936299962
+ },
+ "vacuous": false,
+ "PASS": true
+} 
+table_audit {'records': 6, 'entries': 596, 'counterexamples_checked': 10, 'mismatch_records': [], 'PASS': True} 
+mutations 20 / 20
+{"label": "Observed", "purpose": "Pre-freeze smoke-gates, runtime projection and cut order for study-056 (plan 056 runtime_estimate; pre-run", "stops_present": {"ID": 1, "IDF": 1, "K_spent": 4, "unknown": 4}, "smoke_record_columns": ["block", "key", "seed", "arm: label, stop, conflicts, chunks, case wall s, max chunk wall s, wall_guard, n_min, api"], "smoke_wall_guard_records": [], "smoke_determinism": [["scale20t", 12370001, true], ["scale20t", 12370002, true]], "hook_arms": {"scale20t/12370001/API16E20": 0, "scale20t/12370001/API20L": 0, "scale20t/12370001/API20L_b": 0, "scale20t/12370002/API16E20": 0, "scale20t/12370002/API20L": 0, "scale20t/12370002/API20L_b": 0, "compat20t/12370003/API16E": 0, "compat20t/12370003/API20L": 0, "compat20t/12370004/API16E": 0, "compat20t/12370004/API20L": 0}, "smoke_table": {"scale20t/12370001/API20L": {"rows": 16, "n_columns": 2, "hypotheses": 1, "counterexamples": 0, "fill_steps": 126}, "scale20t/12370001/API20L_b": {"rows": 16, "n_columns": 2, "hypotheses": 1, "counterexamples": 0, "fill_steps": 126}, "scale20t/12370002/API20L": {"rows": 13, "n_columns": 3, "hypotheses": 1, "counterexamples": 0, "fill_steps": 128}, "scale20t/12370002/API20L_b": {"rows": 13, "n_columns": 3, "hypotheses": 1, "counterexamples": 0, "fill_steps": 128}, "compat20t/12370003/API20L": {"rows": 14, "n_columns": 2, "hypotheses": 1, "counterexamples": 0, "fill_steps": 128}, "compat20t/12370004/API20L": {"rows": 11, "n_columns": 3, "hypotheses": 11, "counterexamples": 10, "fill_steps": 93}}, "runtime_projection": {"label": "Inferred", "mean_wall_by_key": {"compat20t": 23.04, "scale20t": 176.01}, "smoke_slowest_rate": 6334.4, "rate_declared": 4503.0, "r_min": 4503.0, "worst_per_job_s": {"scale20t": 454.1, "compat20t": 676.2}, "workers": {"scale20t": 4, "compat20t": 4}, "cap_s": 3300.0, "candidates": {"N20L=6,NC20L=6": {"scale20t": {"jobs": 18, "worst_s": 2270.7, "mean_s": 880.1}, "compat20t": {"jobs": 12, "worst_s": 2028.7, "mean_s": 69.1}, "worst_run_s": 2270.7, "mean_run_s": 880.1}, "N20L=6,NC20L=4": {"scale20t": {"jobs": 18, "worst_s": 2270.7, "mean_s": 880.1}, "compat20t": {"jobs": 8, "worst_s": 1352.4, "mean_s": 46.1}, "worst_run_s": 2270.7, "mean_run_s": 880.1}, "N20L=4,NC20L=6": {"scale20t": {"jobs": 12, "worst_s": 1362.4, "mean_s": 528.0}, "compat20t": {"jobs": 12, "worst_s": 2028.7, "mean_s": 69.1}, "worst_run_s": 2028.7, "mean_run_s": 528.0}, "N20L=4,NC20L=4": {"scale20t": {"jobs": 12, "worst_s": 1362.4, "mean_s": 528.0}, "compat20t": {"jobs": 8, "worst_s": 1352.4, "mean_s": 46.1}, "worst_run_s": 1362.4, "mean_run_s": 528.0}}, "required": {"N20L": 6, "NC20L": 6}, "chosen_projection": {"scale20t": {"jobs": 18, "worst_s": 2270.7, "mean_s": 880.1}, "compat20t": {"jobs": 12, "worst_s": 2028.7, "mean_s": 69.1}, "worst_run_s": 2270.7, "mean_run_s": 880.1}, "cut_exhausted": false, "runner": {"N20L": 6, "NC20L": 6}, "cut_consistent": true, "cut_applied": {"scale20t": false, "compat20t": false}, "projected_main_worst_s": 2270.7, "caveat": "two smoke seeds per key; the worst case assumes every job spends its whole B at r_min; the two pools run concurrently"}, "recount_rc": 0, "smoke_compat": [[12370003, {"control_label": "ID", "equal": false, "label": "AMB", "label_equal": false, "machine_equal": null, "rule": "label equality only", "rule_name": "compat_rule_056"}], [12370004, {"control_label": "IDF", "equal": false, "label": "AMB", "label_equal": false, "machine_equal": null, "rule": "label equality only", "rule_name": "compat_rule_056"}]], "recount": {"labels": {"compat20t": {"API16E": {"AMB": 0, "ID": 1, "IDF": 1, "IDU": 0, "WRONG": 0}, "API20L": {"AMB": 2, "ID": 0, "IDF": 0, "IDU": 0, "WRONG": 0}}, "scale20t": {"API16E20": {"AMB": 0, "ID": 0, "IDF": 0, "IDU": 2, "WRONG": 0}, "API20L": {"AMB": 1, "ID": 0, "IDF": 0, "IDU": 1, "WRONG": 0}, "API20L_b": {"AMB": 1, "ID": 0, "IDF": 0, "IDU": 1, "WRONG": 0}}}, "compat_equal": 0, "misfires": {"API16E": 0, "API16E20": 0, "API20L": 0, "API20L_b": 0}, "words_checked": 81, "words_unsound": 0, "truth_inconsistent": 0, "mismatching_cases": 0, "PASS": true}, "reference_rc": 0, "reference_smoke": {"records": 6, "decided": 4, "audited": 4, "complete": true, "per_key": {"compat20t": {"audited": 2, "decided": 2, "mismatches": 0}, "scale20t": {"audited": 2, "decided": 2, "mismatches": 0}}, "mismatch_count": 0, "vacuous": false, "PASS": true, "elapsed_informational": {"r12": 221.77079914300703}, "scope": {"budget_12_s": 2400.0, "key_order": ["scale20t", "compat20t"], "order": ["API20L", "API20L_b"], "workers_12": 8}, "mutations": 20, "of": 20}, "api_checks_rc": 0, "api_checks": {"PASS": true, "ghost": {"PASS56": true, "closures_055": {"brute.api.certify16e": ["brute.active", "brute.align", "brute.anytimemargin", "brute.api", "brute.api.certify", "brute.api.certify10", "brute.api.certify11", "brute.api.certify12", "brute.api.certify13", "brute.api.certify14", "brute.api.certify16", "brute.api.certify16d", "brute.api.certify16e", "brute.api.certify8", "brute.api.certify9", "brute.bettingregion", "brute.boundedtransfer", "brute.breadth", "brute.changepoint", "brute.core.learner", "brute.driftsound", "brute.encaudit16", "brute.fallback", "brute.lrregion", "brute.noisyregion", "brute.region", "brute.region_learner", "brute.resume", "brute.scalebetting", "brute.scalesearch", "brute.scalesearch10", "brute.scalesearch14", "brute.scalesearch15", "brute.scalesearch16", "brute.scalesearch3", "brute.scalesearch4", "brute.scalesearch5", "brute.scalesearch7", "brute.scalesearch8", "brute.scalesearch9", "brute.seqmargin", "brute.stitchedregion", "brute.syncevent", "brute.transfer"], "brute.api.certify16n": ["brute.active", "brute.align", "brute.anytimemargin", "brute.api", "brute.api.certify", "brute.api.certify10", "brute.api.certify11", "brute.api.certify12", "brute.api.certify13", "brute.api.certify14", "brute.api.certify16", "brute.api.certify16d", "brute.api.certify16e", "brute.api.certify16n", "brute.api.certify8", "brute.api.certify9", "brute.bettingregion
+{"GDET56": {"pass": true}, "GFID56": {"pass": true}, "GS20L_sound56": {"pass": true}, "GS20L_gain56": {"pass": false}, "GCOMPAT20L56": {"pass": false}, "GHOST56": {"pass": false}, "GS_ref": {"pass": true}, "GTABLE56": {"pass": true}, "G_sound": {"pass": true}, "G_recount": {"pass": true}, "GTI": {"pass": false}, "GTEST": {"pass": false, "reason": "INCOMPLETE_INPUT (TEST_SUITE_056 missing)"}, "G_PROC": {"pass": false}, "G_RT": {"pass": true}}
