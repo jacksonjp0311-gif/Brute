@@ -1,0 +1,81 @@
+{"schema": "brute.recount.v53_0", "results_sha256": "64866895158f3380c7c0074e421ba57581d84b840390db266cda9fdaaa10783e", "cases": 4, "recounted": 4, "labels": {"scale20t": {"API20L": {"ID": 0, "IDF": 0, "AMB": 1, "WRONG": 0, "IDU": 1}, "API20L_b": {"ID": 0, "IDF": 0, "AMB": 1, "WRONG": 0, "IDU": 1}, "API16E20": {"ID": 0, "IDF": 0, "AMB": 0, "WRONG": 0, "IDU": 2}}, "compat20t": {"API20L": {"ID": 0, "IDF": 0, "AMB": 2, "WRONG": 0, "IDU": 0}, "API16E": {"ID": 1, "IDF": 1, "AMB": 0, "WRONG": 0, "IDU": 0}}}, "compat": {"smoke/compat20t/12370003": {"label": "AMB", "control_label": "ID", "label_equal": false, "rule_name": "compat_rule_056", "rule": "label equality only", "machine_equal": null, "equal": false}, "smoke/compat20t/12370004": {"label": "AMB", "control_label": "IDF", "label_equal": false, "rule_name": "compat_rule_056", "rule": "label equality only", "machine_equal": null, "equal": false}}, "compat_equal": 0, "misfires": {"API20L": 0, "API20L_b": 0, "API16E20": 0, "API16E": 0}, "amb_rule_applied": 4, "words_unsound": 0, "words_checked": 81, "truth_inconsistent": 0, "mismatching_cases": 0, "mismatches": {}, "PASS": true}
+{
+ "schema": "brute.reference.v53_0",
+ "study_results_sha256": "64866895158f3380c7c0074e421ba57581d84b840390db266cda9fdaaa10783e",
+ "block": "smoke",
+ "scope": {
+  "budget_12_s": 2400.0,
+  "workers_12": 8,
+  "order": [
+   "API20L",
+   "API20L_b"
+  ],
+  "key_order": [
+   "scale20t",
+   "compat20t"
+  ]
+ },
+ "records": 6,
+ "decided": 4,
+ "audited": 4,
+ "not_audited": [],
+ "not_reached": 2,
+ "complete": true,
+ "per_arm": {
+  "API20L": {
+   "records": 4,
+   "decided": 3,
+   "audited": 3,
+   "mismatches": 3,
+   "misfires": 0
+  },
+  "API20L_b": {
+   "records": 2,
+   "decided": 1,
+   "audited": 1,
+   "mismatches": 1,
+   "misfires": 0
+  }
+ },
+ "per_key": {
+  "scale20t": {
+   "decided": 2,
+   "audited": 2,
+   "mismatches": 2
+  },
+  "compat20t": {
+   "decided": 2,
+   "audited": 2,
+   "mismatches": 2
+  }
+ },
+ "k_spent_as_amb": 4,
+ "verdicts_checked": 0,
+ "mismatch_count": 4,
+ "misfires": [],
+ "walls_informational": {
+  "smoke/scale20t/12370001/API20L": 82.1,
+  "smoke/compat20t/12370003/API20L": 25.8,
+  "smoke/compat20t/12370004/API20L": 78.4,
+  "smoke/scale20t/12370001/API20L_b": 82.9
+ },
+ "elapsed_informational": {
+  "r12": 83.04944794600306
+ },
+ "vacuous": false,
+ "PASS": false
+} 
+table_audit {'records': 6, 'entries': 596, 'counterexamples_checked': 10, 'mismatch_records': [], 'PASS': True} 
+mutations 20 / 20
+api_checks_056 failed: Traceback (most recent call last):
+  File "/workspace/brute/scripts/api_checks_056.py", line 131, in <module>
+    if __name__=='__main__':sys.exit(main())
+                                     ~~~~^^
+  File "/workspace/brute/scripts/api_checks_056.py", line 122, in main
+    out={'schema':'brute.api-checks.v53','certify20l_sha256':sha(ROOT/'brute/api/certify20l.py'),'compat':A47.compat(),'ghost':ghost()}
+                                                                                                                               ~~~~~^^
+  File "/workspace/brute/scripts/api_checks_056.py", line 55, in ghost
+    C={m:A46.closure(m) for m in MODS};prev=load(CLOSURE_055)['ghost']['closures']
+                                                 ^^^^^^^^^^^
+NameError: name 'CLOSURE_055' is not defined. Did you mean: 'CLOSURE_054'?
+
