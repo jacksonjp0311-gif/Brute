@@ -1,26 +1,20 @@
 {
-  "version": "0.51.0",
+  "version": "0.52.0",
   "name": "Brute",
   "forked_from": "BGR v0.90.0 (tag bgr-v0.90.0-fork)",
-  "mission": "general intelligence research toward a geometric reasoning system; this release tests brute.certify/20t (certify/16e with the rival asked once at size N; BRUTE_PLAN_054 as amended pre-data by 054a, fixed-colour clique dropped) at declared N <= 20 on 6 fresh noise-free 20-state worlds run twice, against certify/16e at bound 20 on the same seeds, plus a 6-case compatibility check against certify/16e at bound 16; conflict-only stop, 900 s case kill; LEAN process: 30 jobs on 4 + 4 workers, 60 min cap; result: sound but not certified (gain gate failed); not general intelligence",
-  "study": "BRUTE-0510-SCALE20-TREECOLOR-054",
-  "preregistration": "experiments/BRUTE_PLAN_054.json",
-  "preregistration_commit": "29e8697",
-  "amendment": {
-    "file": "experiments/BRUTE_PLAN_054a.json",
-    "commit": "76c1e29",
-    "ledger_event": "preregistration_054a",
-    "note": "pre-data amendment: fixed-colour clique dropped per study-041 (E2 4.18x [2.53, 6.46], #154/#155, A16 #157); certify/20t = certify/16e with the rival asked once at size N"
-  },
-  "process": "LEAN (standing go t133s553, ledger 76b30d5; preregistration 16:49:41 EDT (29e8697), amendment 054a 16:52:11 EDT (76c1e29); build authorization 16:52:28 EDT; seedcheck_054 PASS 16:57:35 EDT): plan locked before data; caps fixed by the plan; seedcheck before any target seed; pre-freeze smoke with the real release verifier chain (attempt 1 FAIL published at 2df545e: runner stored only the api name, fixed at 32b3bae; smoke2 PASS aa1a9d2; projection worst 2270.7 s, no cut); pre-run deviation #181; independent recount; CNF reference audit of every decided API20T record with 20 mutations (complete); api_checks once after the run (PASS); failures published; one fresh-clone verify plus tests",
-  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_054.json",
-  "source_freeze_commit": "6762f86",
-  "release_freeze": "none: release tooling is inside the source freeze (deviation #126 item 8, kept by #128 to #181)",
-  "run_start": "17:53:02 EDT 2026-10-31 (ledger 3c5013f); scale20t 18 jobs on 4 workers, compat20t 12 jobs on 4 workers; PID 1428450",
-  "run_end": "complete 30/30 jobs (6 scale20t x 3 arms, 6 compat20t x 2 arms), 1157.8 s of 3600 s, normal exit about 18:12 EDT (ledger 2ad16ac); 4 checkpoint snapshots (f0fea94 to 94c52b0); not relaunched",
-  "seal_commit": "eb695ff",
-  "gates_commit": "6d9574f",
-  "results_dir": "results/study-054",
+  "mission": "general intelligence research toward a geometric reasoning system; this release tests brute.certify/20c (certify/16e with capped queries split into cubes over restricted-growth colourings of trace positions 0..4, apartness-pruned; BRUTE_PLAN_055, no amendment) at declared N <= 20 on 6 fresh noise-free 20-state worlds run twice, against certify/16e at bound 20 on the same seeds, plus a 6-case compatibility check against certify/16e at bound 16; conflict-only stop, 900 s case kill; LEAN process: 30 jobs on 4 + 4 workers, 60 min cap; result: not certified (gain, compatibility and process gates failed; soundness held); not general intelligence",
+  "study": "BRUTE-0520-SCALE20-CUBECONQUER-055",
+  "preregistration": "experiments/BRUTE_PLAN_055.json",
+  "preregistration_commit": "d26472c",
+  "process": "LEAN (standing go t133s553; preregistration 18:48:42 EDT (d26472c, ledger dc2b69c); build authorization 18:49:43 EDT (ledger e8ac749); certify/20c 7fd27d5; seedcheck_055 two published failures (99eec3f, d1baa1f) then PASS at the 054 check point 9e21079 (ledger 0584065); pre-freeze smoke attempt 1 PASS false on the ghost loop only (e4d0278, ledger 6d7b208; fixed 15d68f1; ghost recheck PASS 829e0dd); not rerun by instruction; pre-run deviation #183; independent recount; CNF reference audit of every decided API20C record with 20 mutations and an independent cube audit (complete); api_checks once after the run (PASS); failures published; one fresh-clone verify plus tests",
+  "source_freeze": "experiments/BRUTE_SOURCE_FREEZE_055.json",
+  "source_freeze_commit": "b0d07ac",
+  "release_freeze": "none: release tooling is inside the source freeze (deviation #126 item 8, kept by #128 to #183)",
+  "run_start": "about 19:57:00 EDT 2026-10-31 (ledger 7828a0b at 19:57:15); scale20t 18 jobs on 4 workers, compat20t 12 jobs on 4 workers; PID 1508257",
+  "run_end": "complete 30/30 jobs (6 scale20t x 3 arms, 6 compat20t x 2 arms), 1370.7 s of 3600 s, normal exit about 20:26 EDT (ledger e495c9d); 6 checkpoint snapshots (8454916 to dcc77e7); not relaunched",
+  "seal_commit": "339045e",
+  "gates_commit": "8a680bc",
+  "results_dir": "results/study-055",
   "case_count": {
     "sealed_cases": 12,
     "expected_cases": 12,
@@ -34,30 +28,32 @@
     "complete": true
   },
   "gates_passed": [
-    "GCOMPAT20T54",
-    "GDET54",
-    "GFID54",
-    "GHOST54",
-    "GS20T_sound54",
+    "GCUBE55",
+    "GDET55",
+    "GFID55",
+    "GHOST55",
+    "GS20C_sound55",
     "GS_ref",
     "GTEST",
     "GTI",
-    "G_PROC",
     "G_RT",
     "G_recount",
     "G_sound"
   ],
   "gates_failed": [
-    "GS20T_gain54"
+    "GCOMPAT20C55",
+    "GS20C_gain55",
+    "G_PROC"
   ],
   "gates_not_exercised": [],
   "secondary": {
-    "GCOST54": null,
-    "GS20T_paired54": null,
-    "GS20T_rate54": null
+    "GCOST55": null,
+    "GCUBE_stats55": null,
+    "GS20C_paired55": null,
+    "GS20C_rate55": null
   },
-  "headline": "12 of 13 gated pass; GS20T_gain54 FAILS; certified_20t_N20 false; sound_not_certified_20t true. certify/20t at 20 states (B20 2M, C20 50000): ID+IDF 0/6 [0.00, 0.39] in both passes, the same as certify/16e at bound 20 (0/6 [0.00, 0.39]: 5 IDU budget spent, 1 AMB K_spent); every record spent about 2.0M conflicts. Two passes canon-equal with identical conflict counts 6/6 [0.61, 1.00], 0 hard kills. WRONG 0 of 30 records. Compatibility with certify/16e at bound 16: 6/6 [0.61, 1.00] (5 ID, 1 IDF; plan 052 rule). Self-replay exact 18/18 gated [0.82, 1.00] (+12/12 reported). Reference complete: 6/6 decided API20T audited, 0 mismatches, 20/20 mutations. Every ID / IDF is conditional on the declared N",
-  "api": "certify/20t (brute/api/certify20t.py, new, sha 8975cf73...) is published SOUND BUT NOT CERTIFIED: no decision gain at 20 states; nothing at 20 states is certified; certify/16n unchanged (certified for declared N <= 16 under iid flips with eps <= 0.10, v0.50.0); certify/16e unchanged (certified for N <= 16, not for N <= 20); certify/16s, certify/16d, certify/16 unchanged and uncertified; certify/14 unchanged",
+  "headline": "11 of 14 gated pass; GS20C_gain55, GCOMPAT20C55 and G_PROC FAIL; certified_20c_N20 false; sound_not_certified_20c false. certify/20c at 20 states (B 2M, C 50000): ID+IDF 0/6 [0.00, 0.39] in both passes, the same as certify/16e at bound 20 (0/6 [0.00, 0.39], all budget spent). Two passes canon20c-equal with identical conflicts 6/6 [0.61, 1.00], 0 hard kills. WRONG 0 of 30 records [0.00, 0.11]. Compatibility with certify/16e at bound 16: 4/6 [0.30, 0.90] (two IDF cases stop at different steps; #184 item 5). G_PROC: no ledger event named prefreeze_smoke_055 (prefreeze not rerun by instruction). Self-replay exact 18/18 gated [0.82, 1.00] (+12/12 reported). Reference complete: 5/5 decided API20C audited, 0 mismatches, 20/20 mutations; cube audit 4848 cubes, 820 pruned all UNSAT. Every ID / IDF is conditional on the declared N",
+  "api": "certify/20c (brute/api/certify20c.py, new, sha 48304db7...) is published SOUND BUT NOT CERTIFIED: no decision gain at 20 states and compatibility 4/6 under the 052 IDF rule; nothing at 20 states is certified; certify/20t unchanged (sound, not certified, v0.51.0); certify/16n unchanged (certified for declared N <= 16 under iid flips with eps <= 0.10, v0.50.0); certify/16e unchanged (certified for N <= 16, not for N <= 20); certify/16s, certify/16d, certify/16 unchanged and uncertified; certify/14 unchanged",
   "deviations": [
     "docs/research/BRUTE_DEVIATIONS_026_123.md",
     "docs/research/BRUTE_DEVIATIONS_026_124.md",
@@ -117,23 +113,34 @@
     "docs/research/BRUTE_DEVIATIONS_053_179.md",
     "docs/research/BRUTE_DEVIATIONS_053_180.md",
     "docs/research/BRUTE_DEVIATIONS_054_181.md",
-    "docs/research/BRUTE_DEVIATIONS_054_182.md"
+    "docs/research/BRUTE_DEVIATIONS_054_182.md",
+    "docs/research/BRUTE_DEVIATIONS_055_183.md",
+    "docs/research/BRUTE_DEVIATIONS_055_184.md"
   ],
-  "verify": "for n in 045 046 047 048 049 050 051 052 053 054; do python scripts/study${n}_storage.py restore; done && PYTHONPATH=. python scripts/verify_release_0510.py && PYTHONPATH=. python scripts/run_tests_0510.py",
-  "verify_note": "the chain check keeps the 0380a rule (one build-authorization back-reference allowed); the gated tests need the study 045 to 054 raw data restored first (each studyNNN_storage.py restore)",
-  "claim_scope": "conditional on the declared N: a certify/20t ID or IDF on a noise-free trace means unique among machines with at most N states consistent with the trace; IDF identifies the machine from the current state, not the start. Inferred reason: a larger machine can copy the true machine on every visited state and differ only elsewhere, so no finite test separates them. No 20-state certification is claimed",
+  "verify": "for n in 045 046 047 048 049 050 051 052 053 054 055; do python scripts/study${n}_storage.py restore; done && PYTHONPATH=. python scripts/verify_release_0520.py && PYTHONPATH=. python scripts/run_tests_0520.py",
+  "verify_note": "the chain check keeps the 0380a rule (one build-authorization back-reference allowed); the gated tests need the study 045 to 055 raw data restored first (each studyNNN_storage.py restore)",
+  "claim_scope": "conditional on the declared N: a certify/20c ID or IDF on a noise-free trace means unique among machines with at most N states consistent with the trace; IDF identifies the machine from the current state, not the start. Inferred reason: a larger machine can copy the true machine on every visited state and differ only elsewhere, so no finite test separates them. No 20-state certification is claimed",
   "reference": {
-    "commit": "e02c307",
-    "decided": 6,
-    "audited": 6,
+    "commit": "0a68276",
+    "decided": 5,
+    "audited": 5,
     "complete": true,
     "not_audited": [],
     "mismatches": 0,
     "mutations": "20/20",
-    "elapsed_s": 421.1,
-    "scope": "every decided API20T / API20T_b record (scale20t 0 decided; compat20t 6)"
+    "elapsed_s": 428.1,
+    "cube_audit": {
+      "records": 18,
+      "queries": 109,
+      "cubes": 4848,
+      "pruned": 820,
+      "pruned_checked_unsat": 820,
+      "mismatch_records": []
+    },
+    "scope": "every decided API20C / API20C_b record (scale20t 0 decided; compat20t 5)"
   },
-  "idf_rule_statement": "plan 052 IDF-equivalence rule reused unchanged for study-054 compat20t (one IDF, 12190004, equal under the rule)",
-  "certified_20t_N20": false,
-  "sound_not_certified_20t": true
+  "idf_rule_statement": "plan 052 IDF-equivalence rule reused unchanged for study-055 compat20t; two IDF cases (12270003, 12270005) not equal under it; arms stopped at different steps (#184 item 5)",
+  "next": "v0.53.0 (BRUTE_PLAN_056, plan only): L*-style counterexample-guided active learning bounded by N, against certify/16e at the same budget",
+  "certified_20c_N20": false,
+  "sound_not_certified_20c": false
 }
