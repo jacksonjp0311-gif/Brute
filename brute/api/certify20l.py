@@ -21,7 +21,8 @@ certify/20l is a no-reset, table-driven (L*-style) active learner over certify/1
   * Equivalence check (no least-machine SAT search): certify/16e's rival query, scalesearch14.search14 on the same Pool16E
     incremental instances and chunked conflict-counted solve, at sizes len(basis)..N with M1 = H and s1 = H's state after the
     trace. If H contradicts the trace, M1 is instead the least SAT machine consistent with the trace at sizes len(basis)..N
-    (#185 repair, conflicts counted; M1_source 'sat_repair'; no machine or budget spent -> unknown), so every round's M1 and
+    (#185 repair, conflicts counted; M1_source 'sat_repair'; no machine or budget spent -> unknown; n_min is then least14's size, the
+    least consistent size, and the rival searches start there; with a consistent H, n_min = len(basis) exactly), so every round's M1 and
     every published model is consistent with the trace. 'future' SAT -> AMB round; the counterexample is distinguishing_word(H, s1, M2, s2), proposed next (it counts against
     K; too long -> K_spent); its observations add apartness and so rows or cells. 'future' UNSAT at every size and 'start'
     UNSAT -> ID; 'start' SAT -> IDF; budget spent -> unknown (IDU). Labels are certify/16e's (LABEL_OF_STOP).
@@ -195,17 +196,18 @@ class Certifier20L(Certifier16E):
                 rec['call_chunks']=[x[0] for x in log];rec['chunk_conflicts']=[list(x[1]) for x in log];rec['chunk_walls']=[list(x[2]) for x in log]
                 self.table.append({'T':len(self.acts),'kind':'check','rows':n,'missing':len(miss),'conflicts':len(conf),'check':'unknown','M1_source':src})
                 return self._finish20('unknown',r)
-            H=M;s1=simulate(H[0],H[1],self.acts,self.masks)[1]
+            H=M;s1=simulate(H[0],H[1],self.acts,self.masks)[1];nm=n2   # least14 searched up from len(basis): n2 is the least size
+        else:nm=n   # H itself is consistent with len(basis) states, the lower bound: n_min = len(basis) exactly
         d,e=H
-        r={'stop':None,'n_min':n,'model':H,'s1':s1,'future':None,'start':None}
-        F=search14(o,self.P,self.masks,self.acts,n,self.N,H,s1,'future',INF);r['future']=F
+        r={'stop':None,'n_min':nm,'model':H,'s1':s1,'future':None,'start':None}
+        F=search14(o,self.P,self.masks,self.acts,nm,self.N,H,s1,'future',INF);r['future']=F
         if F['unknown']:st='unknown'
         elif F['found']:st='AMB'
         else:
-            S=search14(o,self.P,self.masks,self.acts,n,self.N,H,s1,'start',INF);r['start']=S
+            S=search14(o,self.P,self.masks,self.acts,nm,self.N,H,s1,'start',INF);r['start']=S
             st='unknown' if S['unknown'] else ('IDF' if S['found'] else 'ID')
         r['stop']=st
-        rec={'T':len(self.acts),'n_min':n,'M1':H,'s1':s1,'future':F,'start':r['start'],'query_walls':list(o.query_walls),
+        rec={'T':len(self.acts),'n_min':nm,'M1':H,'s1':s1,'future':F,'start':r['start'],'query_walls':list(o.query_walls),
              'call_conflicts':list(o.call_conflicts),'call_capped':list(o.call_capped),'capped':o.capped,'check':st,
              'table_rows':n,'table_missing':len(miss),'table_conflicts':len(conf),'M1_source':src}
         log=self.case.calls_log[nc:]

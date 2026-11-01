@@ -45,6 +45,9 @@ class Runner(unittest.TestCase):
         self.assertEqual(a['api']['api'],'brute.certify/20l');self.assertEqual(a['api']['label'],a['label'])   # full api_result kept for GFID56 replay
         from scripts import table_audit_056 as TA
         x=TA.audit_arm(c,'API20L');self.assertTrue(x['pass'],x['mismatches'])
+        from scripts import run_reference_056  # noqa: F401  (binds the 056 names)
+        from scripts import run_reference_047 as R47
+        self.assertEqual(R47._audit(R47.view(c,'API20L'))[0]['mismatches'],[])   # #185: n_min is the least consistent size (GS_ref)
         c3=copy.deepcopy(c);t=c3['arms']['API20L']['table'];t['hypotheses']=(t.get('hypotheses') or 0)+1;self.assertFalse(TA.audit_arm(c3,'API20L')['pass'])
 
 
