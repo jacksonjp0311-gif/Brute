@@ -1,0 +1,98 @@
+{
+  "schema": "brute.plan.v1",
+  "study": "BRUTE-0530-SCALE20-LSTAR-056",
+  "version_under_test": "0.53.0",
+  "parent_study": "BRUTE-0520-SCALE20-CUBECONQUER-055",
+  "written": "2026-10-31T21:29:05-04:00 (EDT)",
+  "status": "preregistered (plan only; no build code, no seed use, no data). Build needs a ledgered build_authorization_056 under a standing go in force and cited",
+  "branch_taken": "plan 055 next_if_fail, gain branch (Exact, GATES_055 8a680bc: 11/14 gated pass; GS20C_gain55, GCOMPAT20C55 and G_PROC FAIL; every soundness gate passes: WRONG 0/30, GS_ref 0 mismatches, GCUBE55 all pruned cubes UNSAT, G_sound 0 unsound; certified_20c_N20 false, sound_not_certified_20c false, see addendum 50a7c18). certify/20c 0/6, certify/20c_b 0/6 and certify/16e 0/6 at B20 2000000 on scale20t: splitting the capped queries into cubes does not make 20 states reachable at 2M conflicts. Per next_if_fail, budget and split variants stop and the question changes: L*-style counterexample-guided active learning with the declared N bound, against certify/16e at the SAME budget. Plan 055 next_if_fail also says 'GCOMPAT20C55 fails: fix the cube encoding at 16 states before scaling'; v0.53.0 drops cubes, so that branch is closed without a fix (Inferred: nothing of the cube encoding is carried forward), and the compat question is carried into this plan as items compat_rule_056 and recheck_12270005.",
+  "brand": "charcoal and sage; no purple, neon, emoji or gold",
+  "question": "Does certify/20l (an L*-style learner that chooses its own actions to fill an observation table and to execute counterexample words, and that issues ID / IDF only through certify/16e's UNSAT rival proofs at the declared N) decide more fresh noise-free 20-state worlds than certify/16e at the same conflict budget (B20 2000000, C20 50000), while staying sound, deterministic under a conflict-only stop, faithful, and compatible with certify/16e at bound 16?",
+  "hypotheses": {
+    "H1": "certify/20l issues no WRONG certificate on 6 fresh 20-state worlds over two passes (12 records) or on 6 clean 16-state controls",
+    "H2": "with a conflict-only stop on a 4-worker pool, the two certify/20l passes give byte-identical canonical records on 6/6 cases with identical conflict counts and 0 hard kills",
+    "H3": "every certify/20l record is reproduced exactly by api_checks driving certify/20l observation by observation (run once)",
+    "H4": "at bound 16 certify/20l gives the same label as certify/16e on 6/6 fresh clean 16-state controls and, under compat_rule_056, the same machine. Inferred risk declared pre-data: certify/20l chooses different actions than certify/16e, so the traces and stop steps will differ (as in 055)",
+    "H5": "certify/20l ID+IDF >= 2/6 on scale20t and strictly more than certify/16e at bound 20 on the same seeds. Inferred risk declared pre-data: the final UNSAT rival proof at N = 20 may itself exceed 2M conflicts even when the hypothesis is right; in that case the learner only moves the hardness from the least-machine search to the proof"
+  },
+  "design": {
+    "api": "one new module brute/api/certify20l.py (certify/20l), same observe / propose / result interface, labels and K as certify/16e. certify/16n, certify/16e, certify/16s, certify/20t and certify/20c and every earlier module are imported only, never edited. Host-agnostic: no I/O, threads, subprocess or os.",
+    "learner": "no-reset L* (Rivest-Schapire style, because the world has no reset and a run is one walk): a homing word h, fixed before data as the shortest word over the 3 actions that the learner's table distinguishes after each step, starts each table round; rows are access words from the current homed state, columns are distinguishing suffixes; the learner proposes the next word needed to fill a missing table cell. When the table is closed and consistent it gives a hypothesis H with at most N states; if it has more than N rows the case stops AMB with the table published (no claim).",
+    "equivalence": "no oracle: the equivalence check is certify/16e's rival query at size N on the trace so far (another machine with <= N states consistent with the trace that differs from H on the future, or on the start). SAT -> the rival's shortest distinguishing word from the current state is the counterexample; the learner proposes it next and adds its suffixes as columns (Rivest-Schapire split). UNSAT on 'future' -> IDF; UNSAT on 'future' and 'start' -> ID, labels exactly as certify/16e.",
+    "solver": "CaDiCaL through the same incremental pool as certify/16e, chunks of C20 = 50000 conflicts, one case budget B20 = 2000000 summed over every SAT call (B 3000000 at bound 16 for compat); budget spent -> IDU; no least-machine SAT search (H comes from the table, the size lower bound is the number of table rows)",
+    "determinism": "homing word, column order, cell-fill order (shortest-lex) and counterexample choice (shortest, then lex) are fixed before data; no wall time, randomness or solver statistics affect any choice",
+    "soundness": "Exact argument, checked by tests and GS_ref: every ID / IDF is issued only on an UNSAT rival proof over all machines with <= N states consistent with the full trace, the same claim as certify/16e; the table only chooses actions and the candidate H. A wrong H can cost budget, never a WRONG label",
+    "stop": "conflict-only stop for all arms; 900 s per-case hard kill as a safety net (any kill fails GDET56)",
+    "arms": {
+      "scale20t": "API20L pass 1, API20L_b pass 2 (certify/20l, bound 20), API16E20 (certify/16e, bound 20, control) on the same 6 seeds",
+      "compat20t": "API20L vs API16E at bound 16 on 6 fresh clean 16-state controls"
+    },
+    "workers": "4 + 4 (scale20t pool and compat20t pool concurrently), as 054 and 055",
+    "worlds": "experiments/worlds_050 generators, unchanged"
+  },
+  "cases": {
+    "scale20t": 6,
+    "compat20t": 6,
+    "jobs": "scale20t 6 x 3 = 18; compat20t 6 x 2 = 12; total 30",
+    "declared_before_data": true
+  },
+  "heldout_ranges": {
+    "scale20t": "12330001-12330006",
+    "compat20t": "12350001-12350006",
+    "note": "at plan time (git grep -I -w over tracked text) prefix 1231 had 6 tokens prefix+00NN so it is skipped; 1233, 1235, 1237 had 0. seedcheck_056 scans every tracked file, .gz included, before any seed; a hit moves the part to the next unused odd prefix (1239, then 1241) by a ledgered deviation before data"
+  },
+  "smoke_range": "12370001-12370006 (pre-freeze smoke and projection only; never gated; never used to set B, C, the homing word or any order)",
+  "compat_rule_056": "stop-step-aligned IDF rule, pre-registered here and applied only to GCOMPAT20L56 (never to study 055): two arms are equal iff they give the same label and (ID) the same canonical machine from state 0, or (IDF) each arm's machine future_matches the clean truth from the true state at that arm's OWN stop step, and the minimised parts reachable from each arm's current state are isomorphic as unpointed machines (same machine up to which state is current). Reason (Observed in 055 #184 item 5): the arms stop at different steps, so comparing 'the same machine from the current state s1' compares states reached at different times",
+  "recheck_12270005": "read-only re-check on the sealed 055 data (RESULTS sha aaab8ab2..., no solver rerun, no new seed): apply compat_rule_056 to 055 compat pairs 12270003 and 12270005 and report the result (12270003 expected equal, Inferred, since its machines are identical from state 0; 12270005 Open). Reported, never gated, never changes GATES_055, GCOMPAT20C55 or any 055 file",
+  "criteria": {
+    "GDET56": "canon(API20L) == canon(API20L_b) byte-identical on 6/6 scale20t cases, identical conflict counts, 0 hard kills on every record",
+    "GFID56": "api_checks fidelity exact on all 12 API20L scale20t records and 6 API20L compat20t records, bound to the sealed RESULTS sha",
+    "GS20L_sound56": "WRONG 0 on all scale20t records (API20L, API20L_b, API16E20) and all compat20t records, against the clean truth",
+    "GS20L_gain56": "API20L (pass 1) ID+IDF >= 2/6 on scale20t AND > API16E20 ID+IDF on the same 6 seeds (Wilson CIs reported)",
+    "GCOMPAT20L56": "6/6 controls equal under compat_rule_056",
+    "GTABLE56": "on every API20L record the table, hypothesis sequence and every proposed word reproduce from the trace alone, and every counterexample word is checked to distinguish H from the SAT rival",
+    "GHOST56": "no network; frozen API files and the 16e / 16n / 16s / 20t / 20c closures unchanged; certify20l sha bound to BRUTE_SOURCE_FREEZE_056",
+    "GS_ref": "independent CaDiCaL reference audits every decided API20L record at its bound with 20 mutations, within 2400 s on 8 workers; vacuous only if no API20L record is decided (reported)",
+    "G_sound": "0 unsound words on every record (study and recount); 0 WRONG",
+    "G_recount": "independent recount agrees",
+    "GTI": "SEEDCHECK_056 PASS and its sha frozen",
+    "GTEST": "gated test modules pass (incl. L* on small known machines against brute force, and a no-WRONG test with a deliberately wrong hypothesis)",
+    "G_PROC": "ledger events preregistration_056, build_authorization_056, seedcheck_056, prefreeze_smoke_056, source_freeze_056, run_start_056, run_end_056, recount_056, reference_056, api_checks_056, tests_056 in order (exact names; see process_naming_rule); commit-order file; main sealed",
+    "G_RT": "main elapsed <= 3600 s"
+  },
+  "process_naming_rule": "lesson from 055 G_PROC (Exact): the gate needs the exact event name. Every pre-freeze smoke attempt is ledgered as prefreeze_smoke_056_attemptK; the one the freeze relies on is ALSO ledgered as prefreeze_smoke_056 (same receipt) before the freeze. If an instruction forbids a further smoke after a failed attempt, G_PROC fails and is published; no event is added after the fact",
+  "certification_rule": "certify/20l becomes certified for declared N <= 20 on noise-free traces iff every gated criterion passes, GS20L_gain56 included. If every gate except GS20L_gain56 passes, certify/20l is published as sound but not certified. If any other gate fails as well, certify/20l has no certification status. Nothing at 20 states is certified unless certified_20l_N20 is true. certify/16n, certify/16e, certify/20t and certify/20c and their status are not changed.",
+  "status_wording_rule": "lesson from 055 (addendum 50a7c18): every status phrase in RELEASE.json, README, CHANGELOG, HANDOFF, the tag message and the release notes is derived from the two GATES_056 flags: certified -> 'certified'; sound_not_certified -> 'sound but not certified'; neither -> 'not certified, no certification status' plus the list of failing gates. A release test checks the phrases against the flags",
+  "secondary": {
+    "GS20L_rate56": "ID+IDF of 6 per arm with Wilson CIs, conflicts per decided case, conflicts/s",
+    "GS20L_paired56": "per-seed paired table API20L vs API16E20: label, steps and conflicts spent",
+    "GTABLE_stats56": "table rows, columns, hypotheses, counterexamples, steps per record",
+    "GCOST56": "conflicts, SAT calls and wall per part",
+    "RECHECK_055": "recheck_12270005 result"
+  },
+  "gate_dependency_rule": "each gate is scored from its own counts; label gates use recounted labels if G_recount passes, else the study labels with the failure stated; an unfinished reference is a GS_ref failure, published as-is",
+  "what_counts_as_failure": "any gated criterion false; any hard kill fails GDET56; AMB and IDU are not soundness failures",
+  "freeze_rule": "no file named in the source freeze is edited after the freeze; new behaviour in new files or a deviation addendum. Caps, the homing word, every order, the stop rule, workers and case lists are part of the freeze",
+  "runtime_estimate": "same budgets as 055 (observed 1370.7 s; slowest 055 scale20t rate 6010 conflicts/s). Worst case at 4503 conflicts/s: scale20t 18 x 444 s on 4 workers = 5 rounds = 2220 s; compat20t 12 x 666 s on 4 workers = 2000 s; table bookkeeping is pure Python, measured by the smoke. Cut rule: if the smoke projection at its slowest rate exceeds 3300 s, scale20t drops to 4 cases and then compat20t to 4, declared in the pre-run deviation before the freeze. Never raise B20 or C20.",
+  "process": "LEAN, under a standing go only if one is in force and cited; a ledgered build_authorization_056 before any code and before seedcheck_056. Plan locked before data; seedcheck before seeds; no cap calibration; pre-freeze smoke with the real release verifier chain; independent recount; CNF reference audit; api_checks once after the run; main runs once with nohup and is never relaunched; failures published; one fresh-clone verify plus tests. No CI (no .github, no workflows)",
+  "next_if_pass": "certify/20l becomes certified for declared N <= 20 on noise-free traces (Exact conditional on the declared N). Next: replication on more fresh 20-state worlds, then noise at 20 states (certify/16n front end over certify/20l).",
+  "next_if_fail": "GS20L_gain56 fails with every soundness gate passing: report where the budget went (GTABLE_stats56, GCOST56). If the final rival proof is what runs out, the next question is a cheaper proof of uniqueness at N = 20 (e.g. proof by the table's distinguishing words plus a smaller SAT residue), pre-registered against certify/16e at the same budget; if the table is what runs out, publish 20 states as out of reach at 2M conflicts for this family and move to noise at 16 states. Any soundness gate (GS20L_sound56, GTABLE56, G_sound, GS_ref) fails on a mismatch: certify/20l is unsound; withdraw it and find the cause. GDET56 fails: return 20-state jobs to 1 worker. GCOMPAT20L56 fails under compat_rule_056: diagnose at 16 states before scaling. G_RT failure: publish and cut cases, not budget.",
+  "limitations": [
+    "6 cases per part give wide CIs (Wilson 95% for 2/6 is [0.10, 0.70])",
+    "noise-free only at 20 states; noise at 20 states stays Open",
+    "still needs a declared size N",
+    "no-reset learning relies on a homing word fixed before data; another choice could do better or worse (Open)",
+    "walls depend on the host; walls never decide a result",
+    "the baseline API16E20 is run once per seed",
+    "compat_rule_056 is new; it is not applied to 055 except in the reported recheck"
+  ],
+  "open_items": [
+    "full N-freedom: Open",
+    "certify/16n under correlated noise: Open",
+    "noise at 20 states: Open",
+    "IDF that fixes the start state: Open",
+    "055 compat seed 12270005 under an aligned rule: Open until recheck_12270005"
+  ],
+  "claim_scope": "conditional on the declared N: an ID or IDF means unique among machines with at most N states consistent with the trace; IDF identifies the machine from the current state, not the start. Inferred reason: a larger machine can copy the true machine on every visited state and differ only on states the trace never reached, so no finite trace rules it out.",
+  "evidence_labels": "Exact, Observed, Simulated, Inferred, Rejected, Open"
+}
