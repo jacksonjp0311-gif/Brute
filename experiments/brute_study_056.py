@@ -134,7 +134,7 @@ def _job(x):return run_job(*x)
 
 
 def _lab(c):
-    return ' '.join(f'{a}={v["label"]}/{v["stop"]} g={v["wall_guard"]} ch={v.get("chunks_total")} cf={v["conflicts_spent"]} rows={len((v.get("table") or {}).get("basis") or [])} cx={len((v.get("table") or {}).get("counterexamples") or [])}' for a,v in c['arms'].items())
+    return ' '.join(f'{a}={v["label"]}/{v["stop"]} g={v["wall_guard"]} ch={v.get("chunks_total")} cf={v["conflicts_spent"]} rows={len((v.get("table") or {}).get("basis") or [])} cx={(v.get("table") or {}).get("counterexamples") or 0}' for a,v in c['arms'].items())
 
 
 def run_jobs(jobs,plan,ckpt,log=print):
