@@ -150,8 +150,9 @@ def main(argv=None):
                  and (fs.get('gated') or {}).get('exact')==(fs.get('gated') or {}).get('cases')==nT
                  and (fs.get('reported') or {}).get('exact')==(fs.get('reported') or {}).get('cases')==nrec-nT
                  and out['api_checks_rc']==0 and pj['cut_consistent'] and all(x[2] for x in det) and all(v==0 for v in out['hook_arms'].values())
-                 and all(x[1]['equal'] for x in out['smoke_compat'])
+                 and len(out['smoke_compat'])>0 and all(x[1].get('rule_name')=='compat_rule_056' and x[1].get('label') and x[1].get('control_label') for x in out['smoke_compat'])
                  and out['release_ok_synthetic'] is True and vc['passed'] and vc.get('authorization_exceptions')==0)
+    out['smoke_compat_equal']=sum(bool(x[1]['equal']) for x in out['smoke_compat'])  # recorded, not required (plan 056 smoke_range: never gated; #185 Fix E)
     out['note']='PASS here means the tooling ran end to end on a sealed block, gates reproduce, the self-replay is exact, the cut order was applied as declared and the real commit-order check passes; gate outcomes on smoke are recorded, not required'
     write_new(OUT,out);print(json.dumps({k:v for k,v in out.items() if k not in ('smoke_records','synthetic')},default=str)[:6000])
     print(json.dumps(sy['gate_status']));return 0 if out['PASS'] else 1
