@@ -1,5 +1,30 @@
 # Brute changelog
 
+## v0.52.0: brute.certify/20c is sound but not certified; no decision gain at 20 states, compatibility 4/6 (study BRUTE-0520-SCALE20-CUBECONQUER-055, LEAN process)
+
+**11 of 14 gated pass (GDET55, GFID55, GS20C_sound55, GCUBE55, GHOST55, GS_ref, G_sound, G_recount, GTI, GTEST, G_RT); GS20C_gain55, GCOMPAT20C55 and G_PROC FAIL. Secondary GCOST55, GCUBE_stats55, GS20C_rate55, GS20C_paired55 reported. certified_20c_N20 false; sound_not_certified_20c false.** certify/20c (new: certify/16e with capped queries split into cubes over restricted-growth colourings of trace positions 0..4, apartness-pruned) decided 0/6 fresh 20-state worlds [0.00, 0.39] in both passes, the same as certify/16e at bound 20 (0/6 [0.00, 0.39], all budget spent). At 16 states it matched certify/16e on 4/6 [0.30, 0.90] under the plan 052 rule: the two IDF cases stopped at different steps (#184 item 5). G_PROC failed because no ledger event is named prefreeze_smoke_055 (the prefreeze was ledgered as attempt 1 plus a ghost recheck and not rerun, by instruction). Nothing at 20 states is certified; certify/20t, certify/16n and certify/16e are unchanged.
+
+Claim scope (*Exact*; reason *Inferred*): an ID or IDF is exact only conditional on a true size at most the declared N. A larger machine can copy the true machine on every visited state, so no finite test separates them.
+
+### Timeline (EDT, 2026-10-31)
+
+- Plan `d26472c` (preregistration 18:48:42, ledger `dc2b69c`); build authorization 18:49:43 (ledger `e8ac749`); certify/20c `7fd27d5`; seedcheck attempts 1 and 2 FAIL published (`99eec3f`, `d1baa1f`), attempt 3 PASS `9e21079` (19:22); pre-freeze smoke attempt 1 `e4d0278` (PASS false on the ghost loop only; fixed `15d68f1`; ghost recheck PASS `829e0dd`); deviation #183 `4c03497`; source freeze `b0d07ac` (463 files, 19:56:48).
+- Run start about 19:57:00 (ledger `7828a0b`); 6 snapshots `8454916` to `dcc77e7`; seal `339045e` (ledger `e495c9d`; 1370.7 s); recount `769c81c`; reference `0a68276` (complete); api checks `e7ee538` (PASS); tests `4db7a8e`; gates `8a680bc`; deviation #184 `d744815`; RELEASE.json `75ff4ba`.
+
+### Results (recount labels; Wilson 95% in GATES_055.json)
+
+| part | result | WRONG |
+|---|---|---|
+| scale20t, 6 fresh run twice (API20C / API20C_b, certify/20c, bound 20) ID+IDF | 0/6 [0.00, 0.39] both passes (6 IDU budget spent); canon20c-equal with identical conflicts 6/6 [0.61, 1.00]; 0 hard kills | 0 of 12 |
+| scale20t control (API16E20, certify/16e, bound 20) ID+IDF | 0/6 [0.00, 0.39] (6 IDU) | 0 of 6 |
+| compat20t, certify/20c vs certify/16e at bound 16 (GCOMPAT20C55) | 4/6 [0.30, 0.90] (3 ID same machine, 1 IDU both; 2 IDF not equal under the 052 rule) | 0 of 12 |
+| self-replay (GFID55) | 18/18 gated [0.82, 1.00]; 12/12 reported | 0 |
+| cube audit (GCUBE55) | 18 records, 109 capped queries, 4848 cubes, 820 pruned and all 820 checked UNSAT, 0 mismatches | - |
+
+- GS_ref: 5/5 decided API20C records (all compat20t) audited, 0 mismatches, 20/20 mutations, complete (428 s). Rates: API20C about 9.12k conflicts/s, API16E20 7.01k. 125 cubes open at stop.
+- Deviations #183 (pre-run) and #184 (post-run). The request called the pre-run deviation #184; it is #183, and #184 is the post-run record.
+- Next: v0.53.0 (BRUTE_PLAN_056, plan only), plan 055 next_if_fail gain branch: L*-style counterexample-guided active learning bounded by N, against certify/16e at the same budget.
+
 ## v0.51.0: brute.certify/20t is sound but not certified; no decision gain at 20 states (study BRUTE-0510-SCALE20-TREECOLOR-054, LEAN process)
 
 **12 of 13 gated pass (GDET54, GFID54, GS20T_sound54, GCOMPAT20T54, GHOST54, GS_ref, G_sound, G_recount, GTI, GTEST, G_PROC, G_RT); GS20T_gain54 FAILS. Secondary GCOST54, GS20T_rate54, GS20T_paired54 reported. certified_20t_N20 false; sound_not_certified_20t true.** certify/20t (new: certify/16e with the rival asked once at size N; the plan 054 fixed-colour clique was dropped pre-data by amendment 054a per study-041) decided 0/6 fresh 20-state worlds [0.00, 0.39] in both passes, the same as certify/16e at bound 20 (0/6 [0.00, 0.39]; 5 IDU budget spent, 1 AMB K_spent). Nothing at 20 states is certified; certify/16n and certify/16e are unchanged.
