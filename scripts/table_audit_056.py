@@ -6,7 +6,9 @@ through the frozen run_reference_047 trace), the observation table is replayed e
            rows / missing / conflicts; a fill entry's word and kind must equal certify20l.fill_word, and the word must be what the
            walk then did (acts[T:T+len(word)]); a rows_exceed_N entry must have rows > N;
   checks:  each check entry is matched, in order, to the record's next round; that round's M1 must equal the recomputed H and its
-           s1 H's state after the prefix; a counterexample word must be the next actions of the walk and must distinguish H from
+           s1 H's state after the prefix (M1_source 'table'), unless H contradicts the prefix: then (#185 repair, M1_source
+           'sat_repair') M1 must be consistent with the prefix, of size len(basis)..N, s1 its state after the prefix (or M1 None
+           with check 'unknown'); the counterexample is checked against that M1; a counterexample word must be the next actions of the walk and must distinguish H from
            the SAT rival (scalesearch8.run_word from (H, s1) and (M2, s2) give different readings: checked here);
   basis:   the final basis rows are pairwise apart, recomputed here by explicit word search independent of scalesearch15 (some
            l >= 0 with equal actions for i < l and disjoint readings at t+l, u+l), so every consistent machine has >= rows states;
@@ -18,6 +20,7 @@ from experiments import worlds_050 as W50
 from scripts import run_reference_047 as R47
 from brute.api import certify20l as L
 from brute.scalesearch8 import run_word
+from brute.scalesearch import simulate
 R47.ORDER=('API20L','API20L_b');R47.DELTA={a:None for a in R47.ORDER};R47.KEYS=('scale20t','compat20t');R47.W43=W50
 
 
@@ -54,16 +57,28 @@ def audit_arm(c,arm):
         if ent['kind']!='check':bad.append((i,'kind',ent['kind']));continue
         hyps+=1
         if j>=len(rounds):bad.append((i,'no_round'));continue
-        r=rounds[j];j+=1;s1=0
-        for x in ac:s1=H[0][s1][x]
-        if _j(r.get('M1'))!=_j([list(map(list,H[0])),list(H[1])]) or r.get('s1')!=s1:bad.append((i,'H_differs'))
+        r=rounds[j];j+=1;ok,s1,_=simulate(H[0],H[1],ac,m)
+        if ok:
+            if r.get('M1_source')!='table' or ent.get('M1_source')!='table':bad.append((i,'M1_source'))
+            if _j(r.get('M1'))!=_j([list(map(list,H[0])),list(H[1])]) or r.get('s1')!=s1:bad.append((i,'H_differs'))
+        else:
+            # #185 repair: H contradicts the prefix, so the round's M1 must be a trace-consistent machine of size len(basis)..N
+            if r.get('M1_source')!='sat_repair' or ent.get('M1_source')!='sat_repair':bad.append((i,'M1_source'))
+            M1=r.get('M1')
+            if M1 is None:
+                if r.get('check')!='unknown':bad.append((i,'repair_none_not_unknown'))
+                H=None
+            else:
+                ok2,s1r,_=simulate(M1[0],M1[1],ac,m)
+                if not ok2 or r.get('s1')!=s1r or not len(B)<=len(M1[0])<=N:bad.append((i,'repair_M1_invalid'))
+                H=M1;s1=s1r
         if r.get('check')!=ent.get('check'):bad.append((i,'check_label'))
         if 'counterexample' in ent:
             cw=ent['counterexample'];cex+=1
             if r.get('word')!=cw:bad.append((i,'cex_not_round_word'))
             if list(acts[T:T+len(cw)])!=cw:bad.append((i,'cex_not_walked'))
             M2=r.get('M2');s2=r.get('s2')
-            if M2 is None or run_word(H[0],H[1],s1,cw)==run_word(M2[0],M2[1],s2,cw):bad.append((i,'cex_does_not_distinguish'))
+            if M2 is None or H is None or run_word(H[0],H[1],s1,cw)==run_word(M2[0],M2[1],s2,cw):bad.append((i,'cex_does_not_distinguish'))
     if j!=len(rounds):bad.append(('rounds_unmatched',len(rounds)-j))
     pa=all(apart_word(masks,acts,B[x],B[y]) is not None for x in range(len(B)) for y in range(x+1,len(B)))
     if not pa:bad.append(('basis_not_pairwise_apart',))

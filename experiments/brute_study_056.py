@@ -83,6 +83,7 @@ def run_fresh(seed,key,arm):
         check(rr['call_conflicts']==x['call_conflicts'],'round alignment')
         rr['call_chunks']=list(x['call_chunks']);rr['chunk_conflicts']=[list(y) for y in x['chunk_conflicts']]
         rr['chunk_walls_informational']=[list(y) for y in x['chunk_walls']]
+        if arm in T_ARMS:rr['M1_source']=x.get('M1_source');rr.update({'repair':x['repair']} if 'repair' in x else {})   # #185 M1 repair provenance
     a['max_chunks']=res['max_chunks'];a['chunks_total']=res['chunks_total'];a['chunk_wall_max']=res['chunk_wall_max']
     a['case_wall_informational']=res['case_wall'];a['calls_total']=sum(len(x['call_conflicts']) for x in res['rounds'])
     a['stop_rule']=STOP_RULE;check(a['hook_arms']==0,'a wall hook was armed (conflict-only stop violated)');a['hard_kill_s']=HARD_KILL_S

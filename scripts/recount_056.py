@@ -1,5 +1,5 @@
 """G_recount for study-056 (BRUTE_PLAN_056; pre-run deviation #185). New file; built from scripts/recount_055.py
-(frozen). The per-case logic is the frozen scripts/recount_047.py recount_case, imported unchanged, with its module names ORDER /
+(frozen). The per-case logic is the frozen scripts/recount_047.py recount_case, imported unchanged (one #185 reading for the 20l arms: used = round words + table fill_steps, see recount_case), with its module names ORDER /
 DELTA / W43 bound in this process to the 056 arms (every arm at its record's bound N: 20 in scale20t, 16 in compat20t) and to
 experiments/worlds_050. Compat (GCOMPAT20L56 input): compat_rule_056, pre-registered in plan 056 and applied only here (never to study
 055 except the read-only recheck_12270005 in make_gates_056): per compat20t seed the recounted labels of API20L and API16E are equal and
@@ -19,7 +19,20 @@ from experiments.brute_common_056 import ALL_ARMS
 from scripts.recount_052 import rooted
 from scripts import recount_047 as R47
 R47.ORDER=ALL_ARMS;R47.DELTA={a:None for a in ALL_ARMS};R47.W43=W50
-recount_case=R47.recount_case;_counts=R47._counts;KEYS=('scale20t','compat20t')
+_counts=R47._counts;KEYS=('scale20t','compat20t');T_ARMS=('API20L','API20L_b')
+
+
+def recount_case(c):
+    """recount_047.recount_case (frozen) with one #185 reading for the certify/20l arms: their walk also executes table-filling
+    words (logged in the table, replayed and checked walked by GTABLE56), so used = executed round words + table fill_steps.
+    The 047 'used_vs_words' item is dropped for an API20L / API20L_b arm exactly when that sum holds, and kept otherwise."""
+    out,bad=R47.recount_case(c)
+    for arm in T_ARMS:
+        if arm not in out:continue
+        a=c['arms'][arm];fs=(a.get('table') or {}).get('fill_steps') or 0;rec=out[arm];rec['fill_steps']=fs
+        rec['used_ok_056']=rec['words_executed_length']+fs==a['used']
+        if rec['used_ok_056']:bad=[b for b in bad if b!=(arm,'used_vs_words')]
+    return out,bad
 
 
 def minimise(m,s):

@@ -20,7 +20,9 @@ certify/20l is a no-reset, table-driven (L*-style) active learner over certify/1
     A filling word that does not fit in K goes straight to the equivalence check.
   * Equivalence check (no least-machine SAT search): certify/16e's rival query, scalesearch14.search14 on the same Pool16E
     incremental instances and chunked conflict-counted solve, at sizes len(basis)..N with M1 = H and s1 = H's state after the
-    trace. 'future' SAT -> AMB round; the counterexample is distinguishing_word(H, s1, M2, s2), proposed next (it counts against
+    trace. If H contradicts the trace, M1 is instead the least SAT machine consistent with the trace at sizes len(basis)..N
+    (#185 repair, conflicts counted; M1_source 'sat_repair'; no machine or budget spent -> unknown), so every round's M1 and
+    every published model is consistent with the trace. 'future' SAT -> AMB round; the counterexample is distinguishing_word(H, s1, M2, s2), proposed next (it counts against
     K; too long -> K_spent); its observations add apartness and so rows or cells. 'future' UNSAT at every size and 'start'
     UNSAT -> ID; 'start' SAT -> IDF; budget spent -> unknown (IDU). Labels are certify/16e's (LABEL_OF_STOP).
 Soundness (Exact argument): an ID / IDF is issued only when every machine with at most N states consistent with the full trace
@@ -38,7 +40,8 @@ from brute.api import certify16e as E
 from brute.api.certify16d import _Owner16D,INF,A16D_MAX_BOUND
 from brute.api.certify16e import Certifier16E,Pool16E,counted16d
 from brute.scalesearch8 import distinguishing_word,run_word
-from brute.scalesearch14 import search14
+from brute.scalesearch import simulate
+from brute.scalesearch14 import search14,least14
 from brute.scalesearch15 import apart_matrix
 from brute.scalesearch16 import _ex
 
@@ -177,8 +180,23 @@ class Certifier20L(Certifier16E):
         return self._check(H,n,miss,conf)
 
     def _check(self,H,n,miss,conf):
-        nc=len(self.case.calls_log);o=_Owner16D(self.case);self.hyps+=1;d,e=H;s1=0
-        for a in self.acts:s1=d[s1][a]
+        nc=len(self.case.calls_log);o=_Owner16D(self.case);self.hyps+=1
+        ok,s1,_=simulate(H[0],H[1],self.acts,self.masks);src='table'
+        if not ok:
+            # #185 repair: H contradicts the trace, so it may not stand as a round's M1 (the recount contract needs M1 consistent).
+            # M1 = the least SAT machine consistent with the trace at sizes len(basis)..N, conflicts counted in the same budget.
+            st0,n2,M=least14(o,self.P,self.masks,self.acts,self.N,INF,n);src='sat_repair'
+            if st0!='ok':
+                r={'stop':'unknown','n_min':n,'model':None,'s1':None,'future':None,'start':None,'repair':st0}
+                self.rounds.append({'T':len(self.acts),'n_min':n,'M1':None,'s1':None,'future':None,'start':None,'M1_source':src,'repair':st0,
+                                    'query_walls':list(o.query_walls),'call_conflicts':list(o.call_conflicts),'call_capped':list(o.call_capped),
+                                    'capped':o.capped,'check':'unknown','table_rows':n,'table_missing':len(miss),'table_conflicts':len(conf)})
+                log=self.case.calls_log[nc:];rec=self.rounds[-1]
+                rec['call_chunks']=[x[0] for x in log];rec['chunk_conflicts']=[list(x[1]) for x in log];rec['chunk_walls']=[list(x[2]) for x in log]
+                self.table.append({'T':len(self.acts),'kind':'check','rows':n,'missing':len(miss),'conflicts':len(conf),'check':'unknown','M1_source':src})
+                return self._finish20('unknown',r)
+            H=M;s1=simulate(H[0],H[1],self.acts,self.masks)[1]
+        d,e=H
         r={'stop':None,'n_min':n,'model':H,'s1':s1,'future':None,'start':None}
         F=search14(o,self.P,self.masks,self.acts,n,self.N,H,s1,'future',INF);r['future']=F
         if F['unknown']:st='unknown'
@@ -189,10 +207,10 @@ class Certifier20L(Certifier16E):
         r['stop']=st
         rec={'T':len(self.acts),'n_min':n,'M1':H,'s1':s1,'future':F,'start':r['start'],'query_walls':list(o.query_walls),
              'call_conflicts':list(o.call_conflicts),'call_capped':list(o.call_capped),'capped':o.capped,'check':st,
-             'table_rows':n,'table_missing':len(miss),'table_conflicts':len(conf)}
+             'table_rows':n,'table_missing':len(miss),'table_conflicts':len(conf),'M1_source':src}
         log=self.case.calls_log[nc:]
         rec['call_chunks']=[x[0] for x in log];rec['chunk_conflicts']=[list(x[1]) for x in log];rec['chunk_walls']=[list(x[2]) for x in log]
-        self.rounds.append(rec);self.table.append({'T':len(self.acts),'kind':'check','rows':n,'missing':len(miss),'conflicts':len(conf),'check':st})
+        self.rounds.append(rec);self.table.append({'T':len(self.acts),'kind':'check','rows':n,'missing':len(miss),'conflicts':len(conf),'check':st,'M1_source':src})
         if st!='AMB':return self._finish20(st,r)
         M2=F['M2'];s2=F['s2'];w=distinguishing_word(d,e,s1,M2[0],M2[1],s2);rec.update(word=w,M2=M2,s2=s2)
         if w is None:raise AssertionError('certify20l: SAT M2 has no distinguishing word')
