@@ -1,0 +1,1813 @@
+{
+  "PASS": true,
+  "audited": 5,
+  "block": "main",
+  "complete": true,
+  "cube_audit": {
+    "PASS": true,
+    "cubes": 4848,
+    "mismatch_records": [],
+    "per_record": [
+      {
+        "closed_unsat": 47,
+        "conflict_sum_ok": true,
+        "cubes": 54,
+        "id": "main/scale20t/12250001/API20C",
+        "mismatches": [],
+        "open_at_stop": 7,
+        "pass": true,
+        "per_query": [
+          {
+            "T": 176,
+            "closed": 27,
+            "cubes": 27,
+            "n": 17,
+            "open": 0,
+            "phase": "least",
+            "pruned": 25,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 176,
+            "closed": 20,
+            "cubes": 27,
+            "n": 18,
+            "open": 7,
+            "phase": "least",
+            "pruned": 25,
+            "sat": null,
+            "why": "budget"
+          }
+        ],
+        "pruned": 50,
+        "pruned_checked_unsat": 50,
+        "queries": 2,
+        "sat_cubes": 0
+      },
+      {
+        "closed_unsat": 47,
+        "conflict_sum_ok": true,
+        "cubes": 54,
+        "id": "main/scale20t/12250001/API20C_b",
+        "mismatches": [],
+        "open_at_stop": 7,
+        "pass": true,
+        "per_query": [
+          {
+            "T": 176,
+            "closed": 27,
+            "cubes": 27,
+            "n": 17,
+            "open": 0,
+            "phase": "least",
+            "pruned": 25,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 176,
+            "closed": 20,
+            "cubes": 27,
+            "n": 18,
+            "open": 7,
+            "phase": "least",
+            "pruned": 25,
+            "sat": null,
+            "why": "budget"
+          }
+        ],
+        "pruned": 50,
+        "pruned_checked_unsat": 50,
+        "queries": 2,
+        "sat_cubes": 0
+      },
+      {
+        "closed_unsat": 230,
+        "conflict_sum_ok": true,
+        "cubes": 260,
+        "id": "main/scale20t/12250002/API20C",
+        "mismatches": [],
+        "open_at_stop": 14,
+        "pass": true,
+        "per_query": [
+          {
+            "T": 176,
+            "closed": 52,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 176,
+            "closed": 50,
+            "cubes": 52,
+            "n": 17,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": 51,
+            "why": null
+          },
+          {
+            "T": 182,
+            "closed": 38,
+            "cubes": 52,
+            "n": 17,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": 38,
+            "why": null
+          },
+          {
+            "T": 193,
+            "closed": 52,
+            "cubes": 52,
+            "n": 17,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 193,
+            "closed": 38,
+            "cubes": 52,
+            "n": 18,
+            "open": 14,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": "budget"
+          }
+        ],
+        "pruned": 0,
+        "pruned_checked_unsat": 0,
+        "queries": 5,
+        "sat_cubes": 2
+      },
+      {
+        "closed_unsat": 230,
+        "conflict_sum_ok": true,
+        "cubes": 260,
+        "id": "main/scale20t/12250002/API20C_b",
+        "mismatches": [],
+        "open_at_stop": 14,
+        "pass": true,
+        "per_query": [
+          {
+            "T": 176,
+            "closed": 52,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 176,
+            "closed": 50,
+            "cubes": 52,
+            "n": 17,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": 51,
+            "why": null
+          },
+          {
+            "T": 182,
+            "closed": 38,
+            "cubes": 52,
+            "n": 17,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": 38,
+            "why": null
+          },
+          {
+            "T": 193,
+            "closed": 52,
+            "cubes": 52,
+            "n": 17,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 193,
+            "closed": 38,
+            "cubes": 52,
+            "n": 18,
+            "open": 14,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": "budget"
+          }
+        ],
+        "pruned": 0,
+        "pruned_checked_unsat": 0,
+        "queries": 5,
+        "sat_cubes": 2
+      },
+      {
+        "closed_unsat": 188,
+        "conflict_sum_ok": true,
+        "cubes": 259,
+        "id": "main/scale20t/12250003/API20C",
+        "mismatches": [],
+        "open_at_stop": 37,
+        "pass": true,
+        "per_query": [
+          {
+            "T": 176,
+            "closed": 37,
+            "cubes": 37,
+            "n": 18,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 183,
+            "closed": 34,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": 31,
+            "why": null
+          },
+          {
+            "T": 184,
+            "closed": 23,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": 23,
+            "why": null
+          },
+          {
+            "T": 203,
+            "closed": 23,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": 23,
+            "why": null
+          },
+          {
+            "T": 205,
+            "closed": 37,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 205,
+            "closed": 34,
+            "cubes": 37,
+            "n": 20,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": 23,
+            "why": null
+          },
+          {
+            "T": 210,
+            "closed": 0,
+            "cubes": 37,
+            "n": 19,
+            "open": 37,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": null,
+            "why": "budget"
+          }
+        ],
+        "pruned": 105,
+        "pruned_checked_unsat": 105,
+        "queries": 7,
+        "sat_cubes": 4
+      },
+      {
+        "closed_unsat": 188,
+        "conflict_sum_ok": true,
+        "cubes": 259,
+        "id": "main/scale20t/12250003/API20C_b",
+        "mismatches": [],
+        "open_at_stop": 37,
+        "pass": true,
+        "per_query": [
+          {
+            "T": 176,
+            "closed": 37,
+            "cubes": 37,
+            "n": 18,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 183,
+            "closed": 34,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": 31,
+            "why": null
+          },
+          {
+            "T": 184,
+            "closed": 23,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": 23,
+            "why": null
+          },
+          {
+            "T": 203,
+            "closed": 23,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": 23,
+            "why": null
+          },
+          {
+            "T": 205,
+            "closed": 37,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 205,
+            "closed": 34,
+            "cubes": 37,
+            "n": 20,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": 23,
+            "why": null
+          },
+          {
+            "T": 210,
+            "closed": 0,
+            "cubes": 37,
+            "n": 19,
+            "open": 37,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": null,
+            "why": "budget"
+          }
+        ],
+        "pruned": 105,
+        "pruned_checked_unsat": 105,
+        "queries": 7,
+        "sat_cubes": 4
+      },
+      {
+        "closed_unsat": 397,
+        "conflict_sum_ok": true,
+        "cubes": 407,
+        "id": "main/scale20t/12250004/API20C",
+        "mismatches": [],
+        "open_at_stop": 1,
+        "pass": true,
+        "per_query": [
+          {
+            "T": 176,
+            "closed": 37,
+            "cubes": 37,
+            "n": 17,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 176,
+            "closed": 37,
+            "cubes": 37,
+            "n": 18,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 176,
+            "closed": 35,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": 32,
+            "why": null
+          },
+          {
+            "T": 184,
+            "closed": 36,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": 36,
+            "why": null
+          },
+          {
+            "T": 184,
+            "closed": 36,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": 36,
+            "why": null
+          },
+          {
+            "T": 187,
+            "closed": 36,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": 36,
+            "why": null
+          },
+          {
+            "T": 192,
+            "closed": 36,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": 36,
+            "why": null
+          },
+          {
+            "T": 199,
+            "closed": 36,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": 36,
+            "why": null
+          },
+          {
+            "T": 199,
+            "closed": 36,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": 36,
+            "why": null
+          },
+          {
+            "T": 210,
+            "closed": 36,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": 36,
+            "why": null
+          },
+          {
+            "T": 217,
+            "closed": 36,
+            "cubes": 37,
+            "n": 19,
+            "open": 1,
+            "phase": "least",
+            "pruned": 15,
+            "sat": null,
+            "why": "budget"
+          }
+        ],
+        "pruned": 165,
+        "pruned_checked_unsat": 165,
+        "queries": 11,
+        "sat_cubes": 8
+      },
+      {
+        "closed_unsat": 397,
+        "conflict_sum_ok": true,
+        "cubes": 407,
+        "id": "main/scale20t/12250004/API20C_b",
+        "mismatches": [],
+        "open_at_stop": 1,
+        "pass": true,
+        "per_query": [
+          {
+            "T": 176,
+            "closed": 37,
+            "cubes": 37,
+            "n": 17,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 176,
+            "closed": 37,
+            "cubes": 37,
+            "n": 18,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 176,
+            "closed": 35,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": 32,
+            "why": null
+          },
+          {
+            "T": 184,
+            "closed": 36,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": 36,
+            "why": null
+          },
+          {
+            "T": 184,
+            "closed": 36,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": 36,
+            "why": null
+          },
+          {
+            "T": 187,
+            "closed": 36,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": 36,
+            "why": null
+          },
+          {
+            "T": 192,
+            "closed": 36,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": 36,
+            "why": null
+          },
+          {
+            "T": 199,
+            "closed": 36,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": 36,
+            "why": null
+          },
+          {
+            "T": 199,
+            "closed": 36,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": 36,
+            "why": null
+          },
+          {
+            "T": 210,
+            "closed": 36,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": 36,
+            "why": null
+          },
+          {
+            "T": 217,
+            "closed": 36,
+            "cubes": 37,
+            "n": 19,
+            "open": 1,
+            "phase": "least",
+            "pruned": 15,
+            "sat": null,
+            "why": "budget"
+          }
+        ],
+        "pruned": 165,
+        "pruned_checked_unsat": 165,
+        "queries": 11,
+        "sat_cubes": 8
+      },
+      {
+        "closed_unsat": 152,
+        "conflict_sum_ok": true,
+        "cubes": 185,
+        "id": "main/scale20t/12250005/API20C",
+        "mismatches": [],
+        "open_at_stop": 1,
+        "pass": true,
+        "per_query": [
+          {
+            "T": 176,
+            "closed": 37,
+            "cubes": 37,
+            "n": 18,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 176,
+            "closed": 34,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": 9,
+            "why": null
+          },
+          {
+            "T": 180,
+            "closed": 9,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": 9,
+            "why": null
+          },
+          {
+            "T": 187,
+            "closed": 36,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": 36,
+            "why": null
+          },
+          {
+            "T": 216,
+            "closed": 36,
+            "cubes": 37,
+            "n": 19,
+            "open": 1,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": null,
+            "why": "budget"
+          }
+        ],
+        "pruned": 75,
+        "pruned_checked_unsat": 75,
+        "queries": 5,
+        "sat_cubes": 3
+      },
+      {
+        "closed_unsat": 152,
+        "conflict_sum_ok": true,
+        "cubes": 185,
+        "id": "main/scale20t/12250005/API20C_b",
+        "mismatches": [],
+        "open_at_stop": 1,
+        "pass": true,
+        "per_query": [
+          {
+            "T": 176,
+            "closed": 37,
+            "cubes": 37,
+            "n": 18,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 176,
+            "closed": 34,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": 9,
+            "why": null
+          },
+          {
+            "T": 180,
+            "closed": 9,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "least",
+            "pruned": 15,
+            "sat": 9,
+            "why": null
+          },
+          {
+            "T": 187,
+            "closed": 36,
+            "cubes": 37,
+            "n": 19,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": 36,
+            "why": null
+          },
+          {
+            "T": 216,
+            "closed": 36,
+            "cubes": 37,
+            "n": 19,
+            "open": 1,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": null,
+            "why": "budget"
+          }
+        ],
+        "pruned": 75,
+        "pruned_checked_unsat": 75,
+        "queries": 5,
+        "sat_cubes": 3
+      },
+      {
+        "closed_unsat": 154,
+        "conflict_sum_ok": true,
+        "cubes": 156,
+        "id": "main/scale20t/12250006/API20C",
+        "mismatches": [],
+        "open_at_stop": 2,
+        "pass": true,
+        "per_query": [
+          {
+            "T": 176,
+            "closed": 52,
+            "cubes": 52,
+            "n": 17,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 176,
+            "closed": 52,
+            "cubes": 52,
+            "n": 18,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 176,
+            "closed": 50,
+            "cubes": 52,
+            "n": 19,
+            "open": 2,
+            "phase": "least",
+            "pruned": 0,
+            "sat": null,
+            "why": "budget"
+          }
+        ],
+        "pruned": 0,
+        "pruned_checked_unsat": 0,
+        "queries": 3,
+        "sat_cubes": 0
+      },
+      {
+        "closed_unsat": 154,
+        "conflict_sum_ok": true,
+        "cubes": 156,
+        "id": "main/scale20t/12250006/API20C_b",
+        "mismatches": [],
+        "open_at_stop": 2,
+        "pass": true,
+        "per_query": [
+          {
+            "T": 176,
+            "closed": 52,
+            "cubes": 52,
+            "n": 17,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 176,
+            "closed": 52,
+            "cubes": 52,
+            "n": 18,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 176,
+            "closed": 50,
+            "cubes": 52,
+            "n": 19,
+            "open": 2,
+            "phase": "least",
+            "pruned": 0,
+            "sat": null,
+            "why": "budget"
+          }
+        ],
+        "pruned": 0,
+        "pruned_checked_unsat": 0,
+        "queries": 3,
+        "sat_cubes": 0
+      },
+      {
+        "closed_unsat": 142,
+        "conflict_sum_ok": true,
+        "cubes": 156,
+        "id": "main/compat20t/12270001/API20C",
+        "mismatches": [],
+        "open_at_stop": 0,
+        "pass": true,
+        "per_query": [
+          {
+            "T": 230,
+            "closed": 38,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": 38,
+            "why": null
+          },
+          {
+            "T": 278,
+            "closed": 52,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 278,
+            "closed": 52,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          }
+        ],
+        "pruned": 0,
+        "pruned_checked_unsat": 0,
+        "queries": 3,
+        "sat_cubes": 1
+      },
+      {
+        "closed_unsat": 824,
+        "conflict_sum_ok": true,
+        "cubes": 832,
+        "id": "main/compat20t/12270002/API20C",
+        "mismatches": [],
+        "open_at_stop": 1,
+        "pass": true,
+        "per_query": [
+          {
+            "T": 176,
+            "closed": 52,
+            "cubes": 52,
+            "n": 14,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 176,
+            "closed": 50,
+            "cubes": 52,
+            "n": 15,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": 51,
+            "why": null
+          },
+          {
+            "T": 199,
+            "closed": 52,
+            "cubes": 52,
+            "n": 15,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 199,
+            "closed": 50,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": 51,
+            "why": null
+          },
+          {
+            "T": 202,
+            "closed": 52,
+            "cubes": 52,
+            "n": 15,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 203,
+            "closed": 52,
+            "cubes": 52,
+            "n": 15,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 206,
+            "closed": 52,
+            "cubes": 52,
+            "n": 15,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 207,
+            "closed": 52,
+            "cubes": 52,
+            "n": 15,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 208,
+            "closed": 52,
+            "cubes": 52,
+            "n": 15,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 208,
+            "closed": 50,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": 51,
+            "why": null
+          },
+          {
+            "T": 212,
+            "closed": 52,
+            "cubes": 52,
+            "n": 15,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 216,
+            "closed": 52,
+            "cubes": 52,
+            "n": 15,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 221,
+            "closed": 52,
+            "cubes": 52,
+            "n": 15,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 227,
+            "closed": 51,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": 51,
+            "why": null
+          },
+          {
+            "T": 245,
+            "closed": 52,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 245,
+            "closed": 51,
+            "cubes": 52,
+            "n": 16,
+            "open": 1,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": "budget"
+          }
+        ],
+        "pruned": 0,
+        "pruned_checked_unsat": 0,
+        "queries": 16,
+        "sat_cubes": 4
+      },
+      {
+        "closed_unsat": 268,
+        "conflict_sum_ok": true,
+        "cubes": 364,
+        "id": "main/compat20t/12270003/API20C",
+        "mismatches": [],
+        "open_at_stop": 0,
+        "pass": true,
+        "per_query": [
+          {
+            "T": 184,
+            "closed": 52,
+            "cubes": 52,
+            "n": 15,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 184,
+            "closed": 18,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": 18,
+            "why": null
+          },
+          {
+            "T": 204,
+            "closed": 40,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": 41,
+            "why": null
+          },
+          {
+            "T": 209,
+            "closed": 40,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": 41,
+            "why": null
+          },
+          {
+            "T": 225,
+            "closed": 18,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": 18,
+            "why": null
+          },
+          {
+            "T": 252,
+            "closed": 52,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 252,
+            "closed": 48,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": 49,
+            "why": null
+          }
+        ],
+        "pruned": 0,
+        "pruned_checked_unsat": 0,
+        "queries": 7,
+        "sat_cubes": 5
+      },
+      {
+        "closed_unsat": 250,
+        "conflict_sum_ok": true,
+        "cubes": 260,
+        "id": "main/compat20t/12270004/API20C",
+        "mismatches": [],
+        "open_at_stop": 0,
+        "pass": true,
+        "per_query": [
+          {
+            "T": 176,
+            "closed": 52,
+            "cubes": 52,
+            "n": 15,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 176,
+            "closed": 46,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": 48,
+            "why": null
+          },
+          {
+            "T": 184,
+            "closed": 48,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": 48,
+            "why": null
+          },
+          {
+            "T": 189,
+            "closed": 52,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 189,
+            "closed": 52,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          }
+        ],
+        "pruned": 0,
+        "pruned_checked_unsat": 0,
+        "queries": 5,
+        "sat_cubes": 2
+      },
+      {
+        "closed_unsat": 351,
+        "conflict_sum_ok": true,
+        "cubes": 520,
+        "id": "main/compat20t/12270005/API20C",
+        "mismatches": [],
+        "open_at_stop": 0,
+        "pass": true,
+        "per_query": [
+          {
+            "T": 176,
+            "closed": 52,
+            "cubes": 52,
+            "n": 14,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 176,
+            "closed": 52,
+            "cubes": 52,
+            "n": 15,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 176,
+            "closed": 47,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": 51,
+            "why": null
+          },
+          {
+            "T": 181,
+            "closed": 47,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": 14,
+            "why": null
+          },
+          {
+            "T": 186,
+            "closed": 47,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": 51,
+            "why": null
+          },
+          {
+            "T": 189,
+            "closed": 13,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": 14,
+            "why": null
+          },
+          {
+            "T": 189,
+            "closed": 13,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": 14,
+            "why": null
+          },
+          {
+            "T": 192,
+            "closed": 14,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "least",
+            "pruned": 0,
+            "sat": 14,
+            "why": null
+          },
+          {
+            "T": 209,
+            "closed": 52,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 209,
+            "closed": 14,
+            "cubes": 52,
+            "n": 16,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 0,
+            "sat": 14,
+            "why": null
+          }
+        ],
+        "pruned": 0,
+        "pruned_checked_unsat": 0,
+        "queries": 10,
+        "sat_cubes": 7
+      },
+      {
+        "closed_unsat": 74,
+        "conflict_sum_ok": true,
+        "cubes": 74,
+        "id": "main/compat20t/12270006/API20C",
+        "mismatches": [],
+        "open_at_stop": 0,
+        "pass": true,
+        "per_query": [
+          {
+            "T": 218,
+            "closed": 37,
+            "cubes": 37,
+            "n": 16,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": null,
+            "why": null
+          },
+          {
+            "T": 218,
+            "closed": 37,
+            "cubes": 37,
+            "n": 16,
+            "open": 0,
+            "phase": "rival",
+            "pruned": 15,
+            "sat": null,
+            "why": null
+          }
+        ],
+        "pruned": 30,
+        "pruned_checked_unsat": 30,
+        "queries": 2,
+        "sat_cubes": 0
+      }
+    ],
+    "pruned": 820,
+    "pruned_checked_unsat": 820,
+    "queries": 109,
+    "records": 18
+  },
+  "decided": 5,
+  "elapsed_informational": {
+    "r12": 428.09480935000465
+  },
+  "k_spent_as_amb": 0,
+  "misfires": [],
+  "mismatch_count": 0,
+  "mismatches": [],
+  "mutation_test": {
+    "detected": 20,
+    "items": [
+      {
+        "detected": true,
+        "id": "main/compat20t/12270001/API20C",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12270004/API20C",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12270003/API20C",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12270001/API20C",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12270005/API20C",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12270005/API20C",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12270001/API20C",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12270006/API20C",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12270004/API20C",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12270001/API20C",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12270003/API20C",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12270006/API20C",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12270006/API20C",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12270001/API20C",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12270005/API20C",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12270001/API20C",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12270006/API20C",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12270006/API20C",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12270003/API20C",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/compat20t/12270001/API20C",
+        "kind": "s1"
+      }
+    ],
+    "mutations": 20,
+    "pass": true
+  },
+  "not_audited": [],
+  "not_reached": 13,
+  "per_arm": {
+    "API20C": {
+      "audited": 5,
+      "decided": 5,
+      "misfires": 0,
+      "mismatches": 0,
+      "records": 12
+    },
+    "API20C_b": {
+      "audited": 0,
+      "decided": 0,
+      "misfires": 0,
+      "mismatches": 0,
+      "records": 6
+    }
+  },
+  "per_key": {
+    "compat20t": {
+      "audited": 5,
+      "decided": 5,
+      "mismatches": 0
+    },
+    "scale20t": {
+      "audited": 0,
+      "decided": 0,
+      "mismatches": 0
+    }
+  },
+  "per_record": [
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12250001/API20C",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12250002/API20C",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12250003/API20C",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12250004/API20C",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12250005/API20C",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12250006/API20C",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "N_audited": 16,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/compat20t/12270001/API20C",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/compat20t/12270002/API20C",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "N_audited": 16,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/compat20t/12270003/API20C",
+      "label": "IDF",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "IDF",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 16,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/compat20t/12270004/API20C",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 16,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/compat20t/12270005/API20C",
+      "label": "IDF",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "IDF",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 16,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/compat20t/12270006/API20C",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12250001/API20C_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12250002/API20C_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12250003/API20C_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12250004/API20C_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12250005/API20C_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20t/12250006/API20C_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    }
+  ],
+  "records": 18,
+  "schema": "brute.reference.v52_0",
+  "scope": {
+    "budget_12_s": 2400.0,
+    "key_order": [
+      "scale20t",
+      "compat20t"
+    ],
+    "order": [
+      "API20C",
+      "API20C_b"
+    ],
+    "workers_12": 8
+  },
+  "study_results_sha256": "aaab8ab2ae1c14ea9b41fbe752b5e46edca4de14d532be9fab3183a05c535d46",
+  "vacuous": false,
+  "verdicts_checked": 10,
+  "walls_informational": {
+    "main/compat20t/12270001/API20C": 134.0,
+    "main/compat20t/12270003/API20C": 178.0,
+    "main/compat20t/12270004/API20C": 274.2,
+    "main/compat20t/12270005/API20C": 427.8,
+    "main/compat20t/12270006/API20C": 43.0
+  }
+}
