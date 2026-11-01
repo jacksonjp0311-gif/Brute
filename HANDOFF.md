@@ -1,15 +1,15 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.52.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-10-31 (v0.52.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0520 -->
-- **v0.52.0: release in progress** 2026-10-31 (EDT), study BRUTE-0520-SCALE20-CUBECONQUER-055 (plan 055 `d26472c`, no amendment), branch `plan/v0.52.0`.
+- **v0.52.0: RELEASED** 2026-10-31 (EDT), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.52.0 (annotated tag object `317c4fc` at `d1e5285`, ledger release_055 `c0acad5`). Fresh-clone verify of the tag passed: study 045 to 055 restored, verify_release_0520 passed, 113/113 tests in 12 modules (ledger fresh_clone_verify_055 `404d7d0`). Study BRUTE-0520-SCALE20-CUBECONQUER-055 (plan 055 `d26472c`, no amendment), branch `plan/v0.52.0`.
   - **Run complete (Observed).** 30/30 jobs, 12 cases, 1370.7 s of 3600 s, launched about 19:57:00 EDT, normal exit about 20:26 EDT, run once; 6 checkpoint snapshots; nothing relaunched. No cut: N20C 6, NC20C 6.
   - **PASS (11/14 gated):** GDET55 6/6 [0.61, 1.00] (identical conflicts, 0 hard kills); GFID55 18/18 [0.82, 1.00]; GS20C_sound55 (WRONG 0/30 [0.00, 0.11]); GCUBE55 (4848 cubes, 820 pruned, all UNSAT); GHOST55; GS_ref (5/5 decided audited, 0 mismatches, 20/20 mutations, 428 s); G_sound (343 words, 0 unsound); G_recount; GTI; GTEST (113 tests); G_RT (1370.7 s).
   - **FAIL:** GS20C_gain55: certify/20c ID+IDF 0/6 [0.00, 0.39] in both passes vs certify/16e at bound 20 0/6 [0.00, 0.39]. GCOMPAT20C55: 4/6 [0.30, 0.90] (two IDF cases stop at different steps; #184 item 5). G_PROC: no ledger event named prefreeze_smoke_055 (prefreeze not rerun by instruction). certified_20c_N20 false; sound_not_certified_20c false.
-  - **API:** new brute.certify/20c (brute/api/certify20c.py) published sound but not certified; certify/20t, certify/16n and certify/16e unchanged.
+  - **API:** new brute.certify/20c (brute/api/certify20c.py) has NO certification status: sound_not_certified_20c is false because GCOMPAT20C55 and G_PROC fail as well as the gain gate. The "sound but not certified" wording in RELEASE.json, README, CHANGELOG, the tag message and the release notes is withdrawn by docs/research/BRUTE_ADDENDUM_055_STATUS.md (`50a7c18`, ledger `66ed70b`). No soundness gate failed (WRONG 0/30, GS_ref 0 mismatches). certify/20t, certify/16n and certify/16e unchanged.
   - **Branch taken (plan 055 next_if_fail, gain):** v0.53.0 (plan 056) learns the machine with L*-style counterexample-guided active queries bounded by N, against certify/16e at the same budget; it pre-registers a stop-step-aligned IDF compat rule and a read-only re-check of 12270005.
   - **Deviations:** #183 (pre-run; the request's "#184 pre-run" is #183), #184 (post-run).
   - **Chain:** plan `d26472c` -> certify/20c `7fd27d5` -> seedcheck FAIL `99eec3f`, FAIL `d1baa1f`, PASS `9e21079` -> smoke attempt 1 `e4d0278` (PASS false, published) -> fix `15d68f1` -> ghost recheck `829e0dd` -> #183 `4c03497` -> freeze `b0d07ac` -> run start `7828a0b` -> seal `339045e` -> recount `769c81c` -> reference `0a68276` -> api checks `e7ee538` -> tests `4db7a8e` -> gates `8a680bc` -> #184 `d744815` -> RELEASE.json `75ff4ba` -> README/CHANGELOG `1ccd28b`
