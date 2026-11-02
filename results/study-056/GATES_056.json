@@ -1,0 +1,1217 @@
+{
+  "all_gated_pass": false,
+  "caps": {
+    "compat20t": [
+      50000,
+      3000000
+    ],
+    "scale20t": [
+      50000,
+      2000000
+    ]
+  },
+  "certified_20l_N20": false,
+  "claim": "certify/20l ID/IDF is exact on noise-free traces conditional on true size <= the declared N (here N <= 20); IDF identifies the machine from the current state, not the start. Inferred reason the condition is needed: a larger machine can copy the true machine on every visited state",
+  "failed": [
+    "GS20L_gain56",
+    "GCOMPAT20L56"
+  ],
+  "gates": {
+    "GCOMPAT20L56": {
+      "observed": {
+        "ci95": [
+          0.09677141110578043,
+          0.7000066848616079
+        ],
+        "columns": [
+          "seed",
+          "equal",
+          "label_20l",
+          "label_16e",
+          "machine_equal",
+          "future_match (IDF)",
+          "unpointed_iso (IDF)"
+        ],
+        "equal": 2,
+        "of": 6,
+        "per_case": [
+          [
+            12350001,
+            false,
+            "AMB",
+            "ID",
+            null,
+            null,
+            null
+          ],
+          [
+            12350002,
+            true,
+            "IDF",
+            "IDF",
+            true,
+            [
+              true,
+              true
+            ],
+            true
+          ],
+          [
+            12350003,
+            false,
+            "AMB",
+            "ID",
+            null,
+            null,
+            null
+          ],
+          [
+            12350004,
+            false,
+            "AMB",
+            "IDU",
+            null,
+            null,
+            null
+          ],
+          [
+            12350005,
+            false,
+            "AMB",
+            "ID",
+            null,
+            null,
+            null
+          ],
+          [
+            12350006,
+            true,
+            "AMB",
+            "AMB",
+            null,
+            null,
+            null
+          ]
+        ],
+        "rule": "compat_rule_056 (plan 056, introduced after the 055 compat failure, not retroactive): same label; ID: same machine from start state 0; IDF: each arm future_matches the truth at its OWN stop step and the minimised parts reachable from each current state are isomorphic as unpointed machines",
+        "source": "RECOUNT_056"
+      },
+      "pass": false
+    },
+    "GDET56": {
+      "observed": {
+        "ci95": [
+          0.6096657120978346,
+          1.0
+        ],
+        "columns": [
+          "seed",
+          "canon20l_equal",
+          "conflicts_equal",
+          "pass1",
+          "pass2",
+          "conflicts_pass1",
+          "conflicts_pass2"
+        ],
+        "hard_kills": [],
+        "identical": 6,
+        "of": 6,
+        "per_case": [
+          [
+            12330001,
+            true,
+            true,
+            "AMB",
+            "AMB",
+            100430,
+            100430
+          ],
+          [
+            12330002,
+            true,
+            true,
+            "AMB",
+            "AMB",
+            674290,
+            674290
+          ],
+          [
+            12330003,
+            true,
+            true,
+            "AMB",
+            "AMB",
+            266311,
+            266311
+          ],
+          [
+            12330004,
+            true,
+            true,
+            "IDU",
+            "IDU",
+            2001464,
+            2001464
+          ],
+          [
+            12330005,
+            true,
+            true,
+            "AMB",
+            "AMB",
+            329330,
+            329330
+          ],
+          [
+            12330006,
+            true,
+            true,
+            "AMB",
+            "AMB",
+            1219641,
+            1219641
+          ]
+        ],
+        "records_checked_for_kill": 30,
+        "rule": "canon20l (canon16e plus the table) and conflicts_spent identical on every scale20t case; 0 hard kills (wall_guard) on every record"
+      },
+      "pass": true
+    },
+    "GFID56": {
+      "observed": {
+        "bound": true,
+        "ci95": [
+          0.8241207763533424,
+          1.0
+        ],
+        "exact": 18,
+        "exact_per_arm": {
+          "API16E": 6,
+          "API16E20": 6,
+          "API20L": 12,
+          "API20L_b": 6
+        },
+        "expected": 18,
+        "failures": {},
+        "of": 18,
+        "per_key": {
+          "compat20t": 12,
+          "scale20t": 18
+        },
+        "reported_16e": {
+          "cases": 12,
+          "exact": 12
+        }
+      },
+      "pass": true
+    },
+    "GHOST56": {
+      "observed": {
+        "bound_to_freeze_056": true,
+        "closures_unchanged": {
+          "brute.api.certify16e": true,
+          "brute.api.certify16n": true,
+          "brute.api.certify16s": true,
+          "brute.api.certify20c": true,
+          "brute.api.certify20t": true
+        },
+        "frozen_api_unchanged": true,
+        "no_network_run": {
+          "loop": [
+            "brute.certify/20l",
+            "AMB",
+            16,
+            128,
+            85633
+          ],
+          "socket_attempts": 0
+        },
+        "socket_attempts": 0
+      },
+      "pass": true
+    },
+    "GS20L_gain56": {
+      "observed": {
+        "API16E20_ID_IDF": 1,
+        "API20L_ID_IDF": 0,
+        "API20L_b_ID_IDF": 0,
+        "ci95_API16E20": [
+          0.030053369748306632,
+          0.5635028221864702
+        ],
+        "ci95_API20L": [
+          3.384324554477539e-17,
+          0.39033428790216534
+        ],
+        "ci95_API20L_b": [
+          3.384324554477539e-17,
+          0.39033428790216534
+        ],
+        "label_source": "recount",
+        "min_ID_IDF": 2,
+        "of": 6,
+        "rule": "API20L (pass 1) ID+IDF >= 2 and strictly more than API16E20 on the same seeds"
+      },
+      "pass": false
+    },
+    "GS20L_sound56": {
+      "observed": {
+        "WRONG": [],
+        "label_source": "recount",
+        "per_case": [
+          [
+            12330001,
+            "AMB",
+            "AMB",
+            "IDU"
+          ],
+          [
+            12330002,
+            "AMB",
+            "AMB",
+            "IDU"
+          ],
+          [
+            12330003,
+            "AMB",
+            "AMB",
+            "IDU"
+          ],
+          [
+            12330004,
+            "IDU",
+            "IDU",
+            "IDU"
+          ],
+          [
+            12330005,
+            "AMB",
+            "AMB",
+            "ID"
+          ],
+          [
+            12330006,
+            "AMB",
+            "AMB",
+            "IDU"
+          ]
+        ],
+        "per_case_compat": [
+          [
+            12350001,
+            "AMB",
+            "ID"
+          ],
+          [
+            12350002,
+            "IDF",
+            "IDF"
+          ],
+          [
+            12350003,
+            "AMB",
+            "ID"
+          ],
+          [
+            12350004,
+            "AMB",
+            "IDU"
+          ],
+          [
+            12350005,
+            "AMB",
+            "ID"
+          ],
+          [
+            12350006,
+            "AMB",
+            "AMB"
+          ]
+        ],
+        "records": 30
+      },
+      "pass": true
+    },
+    "GS_ref": {
+      "observed": {
+        "PASS": true,
+        "audited": 16,
+        "block": "main",
+        "complete": true,
+        "decided": 16,
+        "elapsed_informational": {
+          "r12": 1002.2813680479885
+        },
+        "k_spent_as_amb": 15,
+        "mismatch_count": 0,
+        "mutations": 20,
+        "not_audited": [],
+        "not_reached": 2,
+        "of": 20,
+        "per_arm": {
+          "API20L": {
+            "audited": 11,
+            "decided": 11,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 12
+          },
+          "API20L_b": {
+            "audited": 5,
+            "decided": 5,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 6
+          }
+        },
+        "per_key": {
+          "compat20t": {
+            "audited": 6,
+            "decided": 6,
+            "mismatches": 0
+          },
+          "scale20t": {
+            "audited": 10,
+            "decided": 10,
+            "mismatches": 0
+          }
+        },
+        "records": 18,
+        "scope": {
+          "budget_12_s": 2400.0,
+          "key_order": [
+            "scale20t",
+            "compat20t"
+          ],
+          "order": [
+            "API20L",
+            "API20L_b"
+          ],
+          "workers_12": 8
+        },
+        "vacuous": false,
+        "verdicts_checked": 17
+      },
+      "pass": true
+    },
+    "GTABLE56": {
+      "observed": {
+        "bound": true,
+        "counterexamples_checked": 9,
+        "entries": 1467,
+        "expected": 18,
+        "mismatch_records": [],
+        "records": 18,
+        "source": "REFERENCE_056 table_audit (scripts/table_audit_056)"
+      },
+      "pass": true
+    },
+    "GTEST": {
+      "observed": {
+        "gated": {
+          "test_certify16": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16d": {
+            "returncode": 0,
+            "tests": 11
+          },
+          "test_certify16e": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16n": {
+            "returncode": 0,
+            "tests": 10
+          },
+          "test_certify16s": {
+            "returncode": 0,
+            "tests": 3
+          },
+          "test_certify20c": {
+            "returncode": 0,
+            "tests": 9
+          },
+          "test_certify20l": {
+            "returncode": 0,
+            "tests": 10
+          },
+          "test_certify20t": {
+            "returncode": 0,
+            "tests": 5
+          },
+          "test_release_0530": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_scalesearch4_0260": {
+            "returncode": 0,
+            "tests": 14
+          },
+          "test_scripts_056": {
+            "returncode": 0,
+            "tests": 9
+          }
+        },
+        "reported": {
+          "test_release_0520": {
+            "returncode": 0,
+            "tests": 10
+          },
+          "test_scripts_055": {
+            "returncode": 0,
+            "tests": 10
+          }
+        }
+      },
+      "pass": true
+    },
+    "GTI": {
+      "observed": {
+        "all_tokens_allowed": true,
+        "frozen_in_056": true,
+        "gz_files_decompressed": null,
+        "prior_range_count": 378,
+        "seedcheck_pass": true,
+        "total_cases": 12
+      },
+      "pass": true
+    },
+    "G_PROC": {
+      "observed": {
+        "clauses": {
+          "commit_order_file": true,
+          "ledger_times_non_decreasing": true,
+          "ledger_times_parse": true,
+          "main_sealed": true,
+          "order": true
+        },
+        "events": [
+          "preregistration_056",
+          "build_authorization_056",
+          "seedcheck_056",
+          "prefreeze_smoke_056_attempt1",
+          "prefreeze_smoke_056_attempt2",
+          "prefreeze_smoke_056_attempt3",
+          "prefreeze_smoke_056_attempt4",
+          "prefreeze_smoke_056",
+          "deviation_185",
+          "source_freeze_056",
+          "run_start_056",
+          "run_end_056",
+          "recount_056",
+          "reference_056",
+          "api_checks_056",
+          "tests_056"
+        ],
+        "required_order": [
+          "preregistration_056",
+          "build_authorization_056",
+          "seedcheck_056",
+          "prefreeze_smoke_056",
+          "source_freeze_056",
+          "run_start_056",
+          "run_end_056",
+          "recount_056",
+          "reference_056",
+          "api_checks_056",
+          "tests_056"
+        ]
+      },
+      "pass": true
+    },
+    "G_RT": {
+      "observed": {
+        "cap_s": 3600,
+        "cases": 12,
+        "elapsed_s": 695.8346482699853,
+        "n_compat20t": 6,
+        "n_scale20t": 6
+      },
+      "pass": true
+    },
+    "G_recount": {
+      "observed": {
+        "PASS": true,
+        "amb_rule_applied": 16,
+        "cases": 12,
+        "compat_equal": 2,
+        "labels": {
+          "compat20t": {
+            "API16E": {
+              "AMB": 1,
+              "ID": 3,
+              "IDF": 1,
+              "IDU": 1,
+              "WRONG": 0
+            },
+            "API20L": {
+              "AMB": 5,
+              "ID": 0,
+              "IDF": 1,
+              "IDU": 0,
+              "WRONG": 0
+            }
+          },
+          "scale20t": {
+            "API16E20": {
+              "AMB": 0,
+              "ID": 1,
+              "IDF": 0,
+              "IDU": 5,
+              "WRONG": 0
+            },
+            "API20L": {
+              "AMB": 5,
+              "ID": 0,
+              "IDF": 0,
+              "IDU": 1,
+              "WRONG": 0
+            },
+            "API20L_b": {
+              "AMB": 5,
+              "ID": 0,
+              "IDF": 0,
+              "IDU": 1,
+              "WRONG": 0
+            }
+          }
+        },
+        "misfires": {
+          "API16E": 0,
+          "API16E20": 0,
+          "API20L": 0,
+          "API20L_b": 0
+        },
+        "mismatches": {},
+        "mismatching_cases": 0,
+        "recounted": 12,
+        "truth_inconsistent": 0,
+        "words_checked": 226,
+        "words_unsound": 0
+      },
+      "pass": true
+    },
+    "G_sound": {
+      "observed": {
+        "WRONG": [],
+        "recount_bound": true,
+        "recount_truth_inconsistent": 0,
+        "recount_words_checked": 226,
+        "recount_words_unsound": 0,
+        "words_checked": 226,
+        "words_unsound": 0
+      },
+      "pass": true
+    }
+  },
+  "label_source": "recount",
+  "n_compat20t": 6,
+  "n_scale20t": 6,
+  "not_exercised": [],
+  "process": "lean",
+  "reports": {
+    "labels": {
+      "API16E/compat20t": {
+        "AMB": {
+          "ci95": [
+            0.030053369748306632,
+            0.5635028221864702
+          ],
+          "n": 6,
+          "x": 1
+        },
+        "ID": {
+          "ci95": [
+            0.1876163064826506,
+            0.8123836935173494
+          ],
+          "n": 6,
+          "x": 3
+        },
+        "IDF": {
+          "ci95": [
+            0.030053369748306632,
+            0.5635028221864702
+          ],
+          "n": 6,
+          "x": 1
+        },
+        "IDU": {
+          "ci95": [
+            0.030053369748306632,
+            0.5635028221864702
+          ],
+          "n": 6,
+          "x": 1
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "API16E20/scale20t": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.030053369748306632,
+            0.5635028221864702
+          ],
+          "n": 6,
+          "x": 1
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.4364971778135299,
+            0.9699466302516934
+          ],
+          "n": 6,
+          "x": 5
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "API20L/compat20t": {
+        "AMB": {
+          "ci95": [
+            0.4364971778135299,
+            0.9699466302516934
+          ],
+          "n": 6,
+          "x": 5
+        },
+        "ID": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            0.030053369748306632,
+            0.5635028221864702
+          ],
+          "n": 6,
+          "x": 1
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "API20L/scale20t": {
+        "AMB": {
+          "ci95": [
+            0.4364971778135299,
+            0.9699466302516934
+          ],
+          "n": 6,
+          "x": 5
+        },
+        "ID": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.030053369748306632,
+            0.5635028221864702
+          ],
+          "n": 6,
+          "x": 1
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "API20L_b/scale20t": {
+        "AMB": {
+          "ci95": [
+            0.4364971778135299,
+            0.9699466302516934
+          ],
+          "n": 6,
+          "x": 5
+        },
+        "ID": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.030053369748306632,
+            0.5635028221864702
+          ],
+          "n": 6,
+          "x": 1
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      }
+    }
+  },
+  "schema": "brute.gates.v53_0",
+  "sealed_input_verified": true,
+  "secondary": {
+    "GCOST56": {
+      "observed": {
+        "API16E/compat20t": {
+          "arm_wall_s": 266.9,
+          "budget_spent": 1,
+          "calls": 339,
+          "capped_calls": 17,
+          "chunks": 419,
+          "conflicts": 6276235,
+          "counterexamples": 0,
+          "hypotheses": 0,
+          "records": 6,
+          "steps": 388
+        },
+        "API16E20/scale20t": {
+          "arm_wall_s": 1304.9,
+          "budget_spent": 5,
+          "calls": 388,
+          "capped_calls": 101,
+          "chunks": 466,
+          "conflicts": 11585588,
+          "counterexamples": 0,
+          "hypotheses": 0,
+          "records": 6,
+          "steps": 313
+        },
+        "API20L/compat20t": {
+          "arm_wall_s": 101.2,
+          "budget_spent": 0,
+          "calls": 115,
+          "capped_calls": 0,
+          "chunks": 134,
+          "conflicts": 1460581,
+          "counterexamples": 9,
+          "hypotheses": 15,
+          "records": 6,
+          "steps": 696
+        },
+        "API20L/scale20t": {
+          "arm_wall_s": 572.2,
+          "budget_spent": 1,
+          "calls": 65,
+          "capped_calls": 20,
+          "chunks": 120,
+          "conflicts": 4591466,
+          "counterexamples": 0,
+          "hypotheses": 6,
+          "records": 6,
+          "steps": 766
+        },
+        "API20L_b/scale20t": {
+          "arm_wall_s": 555.9,
+          "budget_spent": 1,
+          "calls": 65,
+          "capped_calls": 20,
+          "chunks": 120,
+          "conflicts": 4591466,
+          "counterexamples": 0,
+          "hypotheses": 6,
+          "records": 6,
+          "steps": 766
+        }
+      },
+      "pass": null,
+      "rule": "reported: wall, calls, chunks, capped calls, conflicts, hypotheses, counterexamples, steps, budget-spent records per arm/key"
+    },
+    "GS20L_paired56": {
+      "columns": [
+        "seed",
+        "API20L_label",
+        "API20L_steps",
+        "API20L_conflicts",
+        "API16E20_label",
+        "API16E20_steps",
+        "API16E20_conflicts"
+      ],
+      "observed": [
+        [
+          12330001,
+          "AMB",
+          128,
+          100430,
+          "IDU",
+          112,
+          2072429
+        ],
+        [
+          12330002,
+          "AMB",
+          127,
+          674290,
+          "IDU",
+          0,
+          2005519
+        ],
+        [
+          12330003,
+          "AMB",
+          128,
+          266311,
+          "IDU",
+          88,
+          2023810
+        ],
+        [
+          12330004,
+          "IDU",
+          128,
+          2001464,
+          "IDU",
+          12,
+          2000798
+        ],
+        [
+          12330005,
+          "AMB",
+          128,
+          329330,
+          "ID",
+          78,
+          1477205
+        ],
+        [
+          12330006,
+          "AMB",
+          127,
+          1219641,
+          "IDU",
+          23,
+          2005827
+        ]
+      ],
+      "pass": null,
+      "rule": "reported"
+    },
+    "GS20L_rate56": {
+      "observed": {
+        "API16E20": {
+          "ID_IDF": 1,
+          "arm_wall_s": 1304.9,
+          "ci95": [
+            0.030053369748306632,
+            0.5635028221864702
+          ],
+          "conflicts": 11585588,
+          "conflicts_per_decided_case": 1477205.0,
+          "conflicts_per_s": 8878.3,
+          "max_case_wall_s": 296.589,
+          "max_chunk_wall_s": 26.685,
+          "of": 6
+        },
+        "API20L": {
+          "ID_IDF": 0,
+          "arm_wall_s": 572.2,
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "conflicts": 4591466,
+          "conflicts_per_decided_case": null,
+          "conflicts_per_s": 8024.8,
+          "max_case_wall_s": 291.507,
+          "max_chunk_wall_s": 26.343,
+          "of": 6
+        },
+        "API20L_b": {
+          "ID_IDF": 0,
+          "arm_wall_s": 555.9,
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "conflicts": 4591466,
+          "conflicts_per_decided_case": null,
+          "conflicts_per_s": 8260.0,
+          "max_case_wall_s": 278.12,
+          "max_chunk_wall_s": 12.811,
+          "of": 6
+        }
+      },
+      "pass": null,
+      "rule": "reported: ID+IDF with Wilson CIs, conflicts per decided case, conflicts/s, max chunk and case wall (informational)"
+    },
+    "GTABLE_stats56": {
+      "observed": {
+        "main/compat20t/12350001/API20L": {
+          "columns": 1,
+          "counterexamples": 0,
+          "entries": 129,
+          "fill_steps": 128,
+          "hypotheses": 1,
+          "rows": 9
+        },
+        "main/compat20t/12350002/API20L": {
+          "columns": 3,
+          "counterexamples": 9,
+          "entries": 30,
+          "fill_steps": 24,
+          "hypotheses": 10,
+          "rows": 10
+        },
+        "main/compat20t/12350003/API20L": {
+          "columns": 2,
+          "counterexamples": 0,
+          "entries": 129,
+          "fill_steps": 128,
+          "hypotheses": 1,
+          "rows": 12
+        },
+        "main/compat20t/12350004/API20L": {
+          "columns": 2,
+          "counterexamples": 0,
+          "entries": 65,
+          "fill_steps": 126,
+          "hypotheses": 1,
+          "rows": 11
+        },
+        "main/compat20t/12350005/API20L": {
+          "columns": 3,
+          "counterexamples": 0,
+          "entries": 55,
+          "fill_steps": 128,
+          "hypotheses": 1,
+          "rows": 11
+        },
+        "main/compat20t/12350006/API20L": {
+          "columns": 3,
+          "counterexamples": 0,
+          "entries": 97,
+          "fill_steps": 128,
+          "hypotheses": 1,
+          "rows": 9
+        },
+        "main/scale20t/12330001/API20L": {
+          "columns": 0,
+          "counterexamples": 0,
+          "entries": 65,
+          "fill_steps": 128,
+          "hypotheses": 1,
+          "rows": 11
+        },
+        "main/scale20t/12330001/API20L_b": {
+          "columns": 0,
+          "counterexamples": 0,
+          "entries": 65,
+          "fill_steps": 128,
+          "hypotheses": 1,
+          "rows": 11
+        },
+        "main/scale20t/12330002/API20L": {
+          "columns": 3,
+          "counterexamples": 0,
+          "entries": 68,
+          "fill_steps": 127,
+          "hypotheses": 1,
+          "rows": 11
+        },
+        "main/scale20t/12330002/API20L_b": {
+          "columns": 3,
+          "counterexamples": 0,
+          "entries": 68,
+          "fill_steps": 127,
+          "hypotheses": 1,
+          "rows": 11
+        },
+        "main/scale20t/12330003/API20L": {
+          "columns": 3,
+          "counterexamples": 0,
+          "entries": 87,
+          "fill_steps": 128,
+          "hypotheses": 1,
+          "rows": 15
+        },
+        "main/scale20t/12330003/API20L_b": {
+          "columns": 3,
+          "counterexamples": 0,
+          "entries": 87,
+          "fill_steps": 128,
+          "hypotheses": 1,
+          "rows": 15
+        },
+        "main/scale20t/12330004/API20L": {
+          "columns": 2,
+          "counterexamples": 0,
+          "entries": 121,
+          "fill_steps": 128,
+          "hypotheses": 1,
+          "rows": 13
+        },
+        "main/scale20t/12330004/API20L_b": {
+          "columns": 2,
+          "counterexamples": 0,
+          "entries": 121,
+          "fill_steps": 128,
+          "hypotheses": 1,
+          "rows": 13
+        },
+        "main/scale20t/12330005/API20L": {
+          "columns": 4,
+          "counterexamples": 0,
+          "entries": 100,
+          "fill_steps": 128,
+          "hypotheses": 1,
+          "rows": 17
+        },
+        "main/scale20t/12330005/API20L_b": {
+          "columns": 4,
+          "counterexamples": 0,
+          "entries": 100,
+          "fill_steps": 128,
+          "hypotheses": 1,
+          "rows": 17
+        },
+        "main/scale20t/12330006/API20L": {
+          "columns": 3,
+          "counterexamples": 0,
+          "entries": 40,
+          "fill_steps": 127,
+          "hypotheses": 1,
+          "rows": 12
+        },
+        "main/scale20t/12330006/API20L_b": {
+          "columns": 3,
+          "counterexamples": 0,
+          "entries": 40,
+          "fill_steps": 127,
+          "hypotheses": 1,
+          "rows": 12
+        }
+      },
+      "pass": null,
+      "rule": "reported: table entries, rows, columns, hypotheses, counterexamples and fill steps per record",
+      "totals": {
+        "columns": 44,
+        "counterexamples": 9,
+        "entries": 1467,
+        "fill_steps": 2194,
+        "hypotheses": 27,
+        "rows": 220
+      }
+    },
+    "RECHECK_055": {
+      "bound_to_055_seal": true,
+      "observed": {
+        "12270003": {
+          "control_label": "IDF",
+          "equal": true,
+          "future_match": [
+            true,
+            true
+          ],
+          "label": "IDF",
+          "machine_equal": true,
+          "rule": "future_match at each own stop step and unpointed-isomorphic minimised parts from each current state",
+          "unpointed_iso": true
+        },
+        "12270005": {
+          "control_label": "IDF",
+          "equal": true,
+          "future_match": [
+            true,
+            true
+          ],
+          "label": "IDF",
+          "machine_equal": true,
+          "rule": "future_match at each own stop step and unpointed-isomorphic minimised parts from each current state",
+          "unpointed_iso": true
+        }
+      },
+      "pass": null,
+      "results_sha256": "aaab8ab2ae1c14ea9b41fbe752b5e46edca4de14d532be9fab3183a05c535d46",
+      "rule": "reported only: compat_rule_056 applied read-only to sealed 055 compat pairs 12270003 and 12270005; never gated; changes no 055 file"
+    }
+  },
+  "sound_not_certified_20l": false,
+  "status_phrase": "not certified, no certification status (failing gates: GS20L_gain56, GCOMPAT20L56)",
+  "stop": {
+    "hard_kill_s": 900.0,
+    "stop_rule": "conflict-only (no hook; 900 s case kill as safety net)"
+  },
+  "study": "BRUTE-0530-SCALE20-LSTAR-056",
+  "workers": {
+    "compat20t": 4,
+    "scale20t": 4,
+    "total": 8
+  }
+}
