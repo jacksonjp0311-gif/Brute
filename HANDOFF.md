@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.53.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.53.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0530 -->
-- **v0.53.0: RELEASING** on branch `plan/v0.53.0`. Study BRUTE-0530-SCALE20-LSTAR-056 (plan 056 `16e0793`). Status from GATES_056: certify/20l is not certified, no certification status (failing gates: GS20L_gain56, GCOMPAT20L56).
+- **v0.53.0: RELEASED** 2026-11-02 (EST), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.53.0 (annotated tag object `e769801` at `f121380`, ledger release_056 `a97b50c`). Fresh-clone verify of the tag passed: study 045 to 056 restored, verify_release_0530 passed, 127/127 tests in 13 modules (ledger fresh_clone_verify_056 `71517dc`). `main` fast-forwarded to this RELEASED note. Branch `plan/v0.53.0`. Study BRUTE-0530-SCALE20-LSTAR-056 (plan 056 `16e0793`). Status from GATES_056: certify/20l is not certified, no certification status (failing gates: GS20L_gain56, GCOMPAT20L56).
   - **Run complete (Observed).** 30/30 jobs, 12 cases, 695.8 s of 3600 s, launched once 00:53:57 EDT 2026-11-01, exit about 01:11 EDT; 3 snapshots; nothing relaunched. No cut: N20L 6, NC20L 6.
   - **PASS (12/14 gated):** GDET56 6/6 [0.61, 1.00]; GFID56 18/18 [0.82, 1.00]; GS20L_sound56 (WRONG 0/30 [0.00, 0.11]); GHOST56; GS_ref (16/16 decided audited, 15 K_spent as AMB, 0 mismatches, 20/20 mutations); GTABLE56 (18 records, 1467 entries, 0 mismatches); G_sound (226 words, 0 unsound); G_recount; GTI; GTEST (127 tests, 13 modules); G_PROC; G_RT.
   - **FAIL:** GS20L_gain56: certify/20l 0/6 [0.00, 0.39] both passes vs certify/16e at bound 20 1/6 [0.03, 0.56] (12330005). GCOMPAT20L56: 2/6 [0.10, 0.70]. The table runs out: 17 of 18 records spent 126-128 of K 128 with 1 hypothesis, 0 counterexamples.
