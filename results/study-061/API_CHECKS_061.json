@@ -1,0 +1,612 @@
+{
+  "PASS": true,
+  "certify32b_sha256": "31c7b438dd4e804027c1afb2b96c2fe6a810a4c93ccbffce5a4f34c2952ea91f",
+  "compat": {
+    "PASS": true,
+    "sample_046": {
+      "PASS": true,
+      "all_byte_equal": true,
+      "cases": [
+        {
+          "byte_equal": true,
+          "name": "D_s4_fb3",
+          "search": "s4"
+        },
+        {
+          "byte_equal": true,
+          "name": "D_s4_fb4",
+          "search": "s4"
+        },
+        {
+          "byte_equal": true,
+          "name": "D2_s4_fb3",
+          "search": "s4"
+        },
+        {
+          "byte_equal": true,
+          "name": "D_s3_fb3",
+          "search": "s3"
+        },
+        {
+          "byte_equal": true,
+          "name": "D_region",
+          "search": "region"
+        }
+      ],
+      "s4_cases": 3,
+      "sample_sha256": "a455fb0f5311042d921265783ff09146c08573493eca14aa6e8689a3f30a96ae",
+      "tests": {
+        "tests.test_scalesearch4_0260": {
+          "ok": true,
+          "returncode": 0,
+          "tests": 14
+        }
+      },
+      "tests_pass": true
+    },
+    "tests": {
+      "tests.test_certify16": {
+        "ok": true,
+        "returncode": 0,
+        "tests": 12
+      },
+      "tests.test_scalesearch4_0260": {
+        "ok": true,
+        "returncode": 0,
+        "tests": 14
+      }
+    },
+    "tests_pass": true
+  },
+  "equiv": {
+    "PASS": true,
+    "accepted_bounds": [
+      [
+        21,
+        "accepted"
+      ],
+      [
+        22,
+        "accepted"
+      ],
+      [
+        23,
+        "accepted"
+      ],
+      [
+        24,
+        "accepted"
+      ],
+      [
+        25,
+        "accepted"
+      ],
+      [
+        26,
+        "accepted"
+      ],
+      [
+        27,
+        "accepted"
+      ],
+      [
+        28,
+        "accepted"
+      ],
+      [
+        29,
+        "accepted"
+      ],
+      [
+        30,
+        "accepted"
+      ],
+      [
+        31,
+        "accepted"
+      ],
+      [
+        32,
+        "accepted"
+      ]
+    ],
+    "cases": [
+      {
+        "equal": true,
+        "label": "IDF",
+        "n": 3,
+        "oneshot_equal": true,
+        "oneshot_label": "AMB",
+        "read_bits": 2,
+        "seed": 6020
+      },
+      {
+        "equal": true,
+        "label": "IDF",
+        "n": 4,
+        "oneshot_equal": true,
+        "oneshot_label": "AMB",
+        "read_bits": 2,
+        "seed": 6021
+      },
+      {
+        "equal": true,
+        "label": "AMB",
+        "n": 5,
+        "oneshot_equal": true,
+        "oneshot_label": "AMB",
+        "read_bits": 2,
+        "seed": 6022
+      },
+      {
+        "equal": true,
+        "label": "AMB",
+        "n": 6,
+        "oneshot_equal": true,
+        "oneshot_label": "AMB",
+        "read_bits": 2,
+        "seed": 6023
+      },
+      {
+        "equal": true,
+        "label": "IDF",
+        "n": 3,
+        "oneshot_equal": true,
+        "oneshot_label": "AMB",
+        "read_bits": 2,
+        "seed": 6024
+      },
+      {
+        "equal": true,
+        "label": "AMB",
+        "n": 4,
+        "oneshot_equal": true,
+        "oneshot_label": "AMB",
+        "read_bits": 2,
+        "seed": 6025
+      },
+      {
+        "equal": true,
+        "label": "IDF",
+        "n": 3,
+        "oneshot_equal": true,
+        "oneshot_label": "AMB",
+        "read_bits": 3,
+        "seed": 6030
+      },
+      {
+        "equal": true,
+        "label": "IDF",
+        "n": 4,
+        "oneshot_equal": true,
+        "oneshot_label": "AMB",
+        "read_bits": 3,
+        "seed": 6031
+      },
+      {
+        "equal": true,
+        "label": "AMB",
+        "n": 5,
+        "oneshot_equal": true,
+        "oneshot_label": "AMB",
+        "read_bits": 3,
+        "seed": 6032
+      },
+      {
+        "equal": true,
+        "label": "AMB",
+        "n": 6,
+        "oneshot_equal": true,
+        "oneshot_label": "AMB",
+        "read_bits": 3,
+        "seed": 6033
+      },
+      {
+        "equal": true,
+        "label": "AMB",
+        "n": 3,
+        "oneshot_equal": true,
+        "oneshot_label": "AMB",
+        "read_bits": 3,
+        "seed": 6034
+      },
+      {
+        "equal": true,
+        "label": "IDF",
+        "n": 4,
+        "oneshot_equal": true,
+        "oneshot_label": "AMB",
+        "read_bits": 3,
+        "seed": 6035
+      },
+      {
+        "equal": true,
+        "label": "IDF",
+        "n": 3,
+        "oneshot_equal": true,
+        "oneshot_label": "AMB",
+        "read_bits": 4,
+        "seed": 6040
+      },
+      {
+        "equal": true,
+        "label": "IDF",
+        "n": 4,
+        "oneshot_equal": true,
+        "oneshot_label": "AMB",
+        "read_bits": 4,
+        "seed": 6041
+      },
+      {
+        "equal": true,
+        "label": "AMB",
+        "n": 5,
+        "oneshot_equal": true,
+        "oneshot_label": "AMB",
+        "read_bits": 4,
+        "seed": 6042
+      },
+      {
+        "equal": true,
+        "label": "AMB",
+        "n": 6,
+        "oneshot_equal": true,
+        "oneshot_label": "AMB",
+        "read_bits": 4,
+        "seed": 6043
+      },
+      {
+        "equal": true,
+        "label": "AMB",
+        "n": 3,
+        "oneshot_equal": true,
+        "oneshot_label": "AMB",
+        "read_bits": 4,
+        "seed": 6044
+      },
+      {
+        "equal": true,
+        "label": "IDF",
+        "n": 4,
+        "oneshot_equal": true,
+        "oneshot_label": "AMB",
+        "read_bits": 4,
+        "seed": 6045
+      }
+    ],
+    "refusals": [
+      [
+        "0",
+        "{}",
+        "refused"
+      ],
+      [
+        "33",
+        "{}",
+        "refused"
+      ],
+      [
+        "-1",
+        "{}",
+        "refused"
+      ],
+      [
+        "True",
+        "{}",
+        "refused"
+      ],
+      [
+        "24.0",
+        "{}",
+        "refused"
+      ],
+      [
+        "'24'",
+        "{}",
+        "refused"
+      ],
+      [
+        "24",
+        "{'read_bits': 5}",
+        "refused"
+      ],
+      [
+        "24",
+        "{'read_bits': True}",
+        "refused"
+      ]
+    ]
+  },
+  "fidelity": {
+    "PASS": true,
+    "decided_records": 8,
+    "exact": 8,
+    "per_case": {
+      "scale24w/12610101/S24": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale24w/12610101/S24b": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale24w/12610102/S24": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale24w/12610102/S24b": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale24w/12610103/S24": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale24w/12610104/S24": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale24w/12610105/S24": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale24w/12610106/S24": {
+        "diffs": [],
+        "exact": true
+      }
+    },
+    "study_results_sha256": "05f88710724eca2fa6c9acebdffaa739c7d037321fcf9b26bc46ba3c26363337",
+    "vacuous": false,
+    "workers": 8
+  },
+  "ghost": {
+    "PASS61": true,
+    "a16d_max_bound_unpatched": true,
+    "certify32b_closure": {
+      "brute.active": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.align": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.anytimemargin": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify10": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify11": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify12": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify13": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify14": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify16": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify16d": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify16e": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify20b": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify32b": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify8": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify9": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.bettingregion": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.boundedtransfer": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.breadth": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.changepoint": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.core.learner": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.driftsound": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.encaudit16": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.fallback": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.lrregion": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.noisyregion": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.region": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.region_learner": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.resume": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalebetting": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch10": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch14": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch15": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch16": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch3": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch4": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch5": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch7": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch8": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch9": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.seqmargin": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.stitchedregion": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.syncevent": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.transfer": {
+        "bad_calls": [],
+        "bad_imports": []
+      }
+    },
+    "certify32b_static_ok": true,
+    "frozen_api_sha256": {
+      "brute/api/certify14.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_060.json",
+        "frozen": "0c789ee206e8341ac610d00980c24976e5c027af5a02a5af4edb3c9068818ac6",
+        "now": "0c789ee206e8341ac610d00980c24976e5c027af5a02a5af4edb3c9068818ac6"
+      },
+      "brute/api/certify16.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_060.json",
+        "frozen": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1",
+        "now": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1"
+      },
+      "brute/api/certify16d.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_060.json",
+        "frozen": "98406b659e8abcbe9252da66da49b90317bdc544e1052711d8ec99a482992d25",
+        "now": "98406b659e8abcbe9252da66da49b90317bdc544e1052711d8ec99a482992d25"
+      },
+      "brute/api/certify16e.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_060.json",
+        "frozen": "99a6f3315d0ac7f9944dd6519fc968200543dc9ec50a991657dd33766a7112fb",
+        "now": "99a6f3315d0ac7f9944dd6519fc968200543dc9ec50a991657dd33766a7112fb"
+      },
+      "brute/api/certify16n.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_060.json",
+        "frozen": "46dc1ee28144e9f59af6db85e86d12ffd1b04c69cb8d12cbd85fd790ac95d19a",
+        "now": "46dc1ee28144e9f59af6db85e86d12ffd1b04c69cb8d12cbd85fd790ac95d19a"
+      },
+      "brute/api/certify20b.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_060.json",
+        "frozen": "7930f897679d19fec8e9519430509e1eb560970229c1e0db983e10dfa15e55e7",
+        "now": "7930f897679d19fec8e9519430509e1eb560970229c1e0db983e10dfa15e55e7"
+      },
+      "brute/api/certify20n.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_060.json",
+        "frozen": "c011b068314264bd6cac016202c875ec299c46f5be5373146c0794b5964fb95a",
+        "now": "c011b068314264bd6cac016202c875ec299c46f5be5373146c0794b5964fb95a"
+      },
+      "brute/api/certify32b.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_060.json",
+        "frozen": "31c7b438dd4e804027c1afb2b96c2fe6a810a4c93ccbffce5a4f34c2952ea91f",
+        "now": "31c7b438dd4e804027c1afb2b96c2fe6a810a4c93ccbffce5a4f34c2952ea91f"
+      }
+    },
+    "frozen_api_unchanged": true,
+    "network_pass": true,
+    "no_network_returncode": 0,
+    "no_network_run": {
+      "loop": [
+        "brute.certify/32b",
+        "IDU",
+        22,
+        61,
+        2000183,
+        4,
+        24
+      ],
+      "socket_attempts": 0
+    },
+    "socket_attempts": 0
+  },
+  "schema": "brute.api-checks.v58"
+}
