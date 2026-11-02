@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.55.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.55.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0550 -->
-- **v0.55.0: release in progress** 2026-11-02 (EST). TARGET CHANGE: certify/20b (brute/api/certify20b.py, certify/16e with read_bits 2-4) is certified (read_bits 3 and 4, N <= 20) on noise-free traces. **2-bit readings at 20 states stay Open.**
+- **v0.55.0: RELEASED** 2026-11-02 (EST), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.55.0 (annotated tag object `c64fcfc` at `a3203cb`, ledger release_058 `6993d86`). Fresh-clone verify of the tag passed (G_RT): studies 045 to 058 restored, verify_release_0550 passed, 106/106 tests in 10 modules. TARGET CHANGE: certify/20b (brute/api/certify20b.py, certify/16e with read_bits 2-4) is certified (read_bits 3 and 4, N <= 20) on noise-free traces. **2-bit readings at 20 states stay Open.**
   - **Run complete (Observed).** 60/60 jobs, 12 cases; launched once with nohup 11:16:41 EST (pid 1832133), sealed 11:50:13 EST; never relaunched. No cut: N58 12 (smoke projection 2507.5 s worst).
   - **PASS (10/10 gated):** GS58_sound (WRONG 0/60); GB_gain58 B4 11/12 [0.65, 0.99] vs B2R 0/12 [0.00, 0.24] (McNemar p 0.00098); GB3_58 B3 4/12 [0.14, 0.61] (p 0.125); GDET58 12/12 [0.76, 1.00]; GFID58 (26/26 exact replay); GHOST58; GS_ref (26/26 audited, 0 mismatches, 20/20 mutations); G_recount; GTEST; G_PROC. G_RT at release.
   - **Blunt reading:** more bits per state makes the frozen solver decide; it does not solve 2-bit worlds (B2 0/12, B2R 0/12). Result is budget-sensitive (0.60-1.68M of 2M conflicts). One B4 miss: 12530010.
