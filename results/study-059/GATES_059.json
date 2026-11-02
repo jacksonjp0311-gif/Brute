@@ -1,0 +1,1718 @@
+{
+  "all_gated_pass": true,
+  "arm_noise": {
+    "C4": [
+      0.0,
+      null
+    ],
+    "N4_05": [
+      0.05,
+      0.1
+    ],
+    "N4_10": [
+      0.1,
+      0.15
+    ],
+    "N4_10b": [
+      0.1,
+      0.15
+    ],
+    "NEG4": [
+      0.25,
+      0.1
+    ]
+  },
+  "caps": [
+    50000,
+    2000000,
+    400
+  ],
+  "certified_noisy_readbits4_N20": true,
+  "claim": "certify/20n ID/IDF is exact conditional on every majority reading being correct and on true size <= the declared N (here N <= 20); under iid bit flips with eps <= eps_bar and state-preserving re-reads all majorities are correct with probability >= 1 - delta (0.001). IDF identifies the machine from the current state, not the start. Inferred reason the size condition is needed: a larger machine can copy the true machine on every visited state",
+  "delta": 0.001,
+  "failed": [],
+  "framing": "TARGET CHANGE: wide 4-bit readings on random emissions, now with iid reading noise; 2-bit readings at 20 states stay Open",
+  "gates": {
+    "GDET59": {
+      "observed": {
+        "ci95": [
+          0.7575059933447591,
+          1.0
+        ],
+        "columns": [
+          "seed",
+          "canon59_equal",
+          "N4_10",
+          "N4_10b"
+        ],
+        "identical": 12,
+        "of": 12,
+        "per_case": [
+          [
+            12590001,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            12590002,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            12590003,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            12590004,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            12590005,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            12590006,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            12590007,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            12590008,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            12590009,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            12590010,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            12590011,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            12590012,
+            true,
+            "ID",
+            "ID"
+          ]
+        ],
+        "records_checked": 60,
+        "wall_guard_firings": []
+      },
+      "pass": true
+    },
+    "GFID59": {
+      "observed": {
+        "bound": true,
+        "decided_in_gates": 55,
+        "equiv_cases": [
+          {
+            "equal": true,
+            "label": "IDF",
+            "n": 3,
+            "part": "a",
+            "read_bits": 2,
+            "seed": 5920
+          },
+          {
+            "equal": true,
+            "label": "IDF",
+            "n": 4,
+            "part": "a",
+            "read_bits": 2,
+            "seed": 5921
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 5,
+            "part": "a",
+            "read_bits": 2,
+            "seed": 5922
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 6,
+            "part": "a",
+            "read_bits": 2,
+            "seed": 5923
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 3,
+            "part": "a",
+            "read_bits": 2,
+            "seed": 5924
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 4,
+            "part": "a",
+            "read_bits": 2,
+            "seed": 5925
+          },
+          {
+            "equal": true,
+            "label": "IDF",
+            "n": 3,
+            "part": "a",
+            "read_bits": 3,
+            "seed": 5930
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 4,
+            "part": "a",
+            "read_bits": 3,
+            "seed": 5931
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 5,
+            "part": "a",
+            "read_bits": 3,
+            "seed": 5932
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 6,
+            "part": "a",
+            "read_bits": 3,
+            "seed": 5933
+          },
+          {
+            "equal": true,
+            "label": "IDF",
+            "n": 3,
+            "part": "a",
+            "read_bits": 3,
+            "seed": 5934
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 4,
+            "part": "a",
+            "read_bits": 3,
+            "seed": 5935
+          },
+          {
+            "equal": true,
+            "label": "IDF",
+            "n": 3,
+            "part": "a",
+            "read_bits": 4,
+            "seed": 5940
+          },
+          {
+            "equal": true,
+            "label": "IDF",
+            "n": 4,
+            "part": "a",
+            "read_bits": 4,
+            "seed": 5941
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 5,
+            "part": "a",
+            "read_bits": 4,
+            "seed": 5942
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 6,
+            "part": "a",
+            "read_bits": 4,
+            "seed": 5943
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 3,
+            "part": "a",
+            "read_bits": 4,
+            "seed": 5944
+          },
+          {
+            "equal": true,
+            "label": "IDF",
+            "n": 4,
+            "part": "a",
+            "read_bits": 4,
+            "seed": 5945
+          },
+          {
+            "equal": true,
+            "label": "IDF",
+            "n": 3,
+            "part": "b",
+            "read_bits": 2,
+            "seed": 5990
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 4,
+            "part": "b",
+            "read_bits": 2,
+            "seed": 5991
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 5,
+            "part": "b",
+            "read_bits": 2,
+            "seed": 5992
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 6,
+            "part": "b",
+            "read_bits": 2,
+            "seed": 5993
+          },
+          {
+            "equal": true,
+            "label": "IDF",
+            "n": 3,
+            "part": "b",
+            "read_bits": 2,
+            "seed": 5994
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 4,
+            "part": "b",
+            "read_bits": 2,
+            "seed": 5995
+          }
+        ],
+        "failures": {},
+        "fidelity_exact": 55,
+        "no_network_run": {
+          "loop": [
+            "brute.certify/20n",
+            "ID",
+            20,
+            48,
+            1588699,
+            4,
+            16447
+          ],
+          "socket_attempts": 0
+        },
+        "of_decided": 55,
+        "refusals": [
+          [
+            "[(0, 0, 0, 0), (0, 0, 0, 0)]",
+            "{}",
+            "refused"
+          ],
+          [
+            "[(0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0,",
+            "{}",
+            "refused"
+          ],
+          [
+            "[(0, 2, 0, 0), (0, 2, 0, 0), (0, 2, 0, 0",
+            "{}",
+            "refused"
+          ],
+          [
+            "[(True, 0, 0, 0), (True, 0, 0, 0), (True",
+            "{}",
+            "refused"
+          ],
+          [
+            "(0, 0, 0, 0)",
+            "{}",
+            "refused"
+          ],
+          [
+            "[(0, 0, 0, 0)]",
+            "{'read_bits': 5, 'reads': 1}",
+            "refused"
+          ],
+          [
+            "[(0, 0, 0, 0)]",
+            "{'read_bits': True, 'reads': 1}",
+            "refused"
+          ],
+          [
+            "[(0, 0, 0, 0)]",
+            "{'eps_bar': 0.0, 'reads': 1}",
+            "refused"
+          ],
+          [
+            "[(0, 0, 0, 0)]",
+            "{'eps_bar': 0.5, 'reads': 1}",
+            "refused"
+          ],
+          [
+            "[(0, 0, 0, 0)]",
+            "{'eps_bar': True, 'reads': 1}",
+            "refused"
+          ],
+          [
+            "[(0, 0, 0, 0), (0, 0, 0, 0)]",
+            "{'reads': 2}",
+            "refused"
+          ],
+          [
+            "[(0, 0, 0, 0)]",
+            "{'delta': 0, 'reads': 1}",
+            "refused"
+          ],
+          [
+            "observe",
+            "[(0, 1)]",
+            "refused"
+          ],
+          [
+            "observe",
+            "[(0, 1, 0, 2)]",
+            "refused"
+          ],
+          [
+            "observe",
+            "[(0, 1, 0, 1), (0, 1, 0, 1), (0, 1, 0, 1",
+            "refused"
+          ],
+          [
+            "observe",
+            "[(0, 1, 0, None)]",
+            "refused"
+          ],
+          [
+            "observe",
+            "(0, 1, 0, 1)",
+            "refused"
+          ]
+        ],
+        "vacuous": false
+      },
+      "pass": true
+    },
+    "GHOST59": {
+      "observed": {
+        "bound_to_freeze_059": true,
+        "frozen_api_unchanged": true,
+        "no_network_run": {
+          "loop": [
+            "brute.certify/20n",
+            "ID",
+            20,
+            48,
+            1588699,
+            4,
+            16447
+          ],
+          "socket_attempts": 0
+        },
+        "socket_attempts": 0,
+        "static_ok": true
+      },
+      "pass": true
+    },
+    "GMAJ59": {
+      "observed": {
+        "NEG4_majority_errors_reported": 0,
+        "majority_errors": {
+          "N4_05": 0,
+          "N4_10": 0,
+          "N4_10b": 0
+        },
+        "observations": {
+          "N4_05": 2741,
+          "N4_10": 2741,
+          "N4_10b": 2741
+        },
+        "source": "recount"
+      },
+      "pass": true
+    },
+    "GN05_59": {
+      "observed": {
+        "N4_05_ID_IDF": 11,
+        "ci95_N4_05": [
+          0.646120088858883,
+          0.9851349055950828
+        ],
+        "label_source": "recount",
+        "of": 12,
+        "rule": "N4_05 ID+IDF >= 6 of 12"
+      },
+      "pass": true
+    },
+    "GN_keep59": {
+      "observed": {
+        "C4_ID_IDF": 11,
+        "N4_10_ID_IDF": 11,
+        "ci95_C4": [
+          0.646120088858883,
+          0.9851349055950828
+        ],
+        "ci95_N4_10": [
+          0.646120088858883,
+          0.9851349055950828
+        ],
+        "discordant": [
+          0,
+          0
+        ],
+        "label_source": "recount",
+        "mcnemar_p_reported": 1.0,
+        "of": 12,
+        "rule": "N4_10 ID+IDF >= 6 of 12 and N4_10 >= C4 - 2"
+      },
+      "pass": true
+    },
+    "GS59_sound": {
+      "observed": {
+        "WRONG": [],
+        "columns": [
+          "seed",
+          "C4",
+          "N4_05",
+          "N4_10",
+          "N4_10b",
+          "NEG4"
+        ],
+        "gated_records": 48,
+        "label_source": "recount",
+        "per_case": [
+          [
+            12590001,
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID"
+          ],
+          [
+            12590002,
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID"
+          ],
+          [
+            12590003,
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID"
+          ],
+          [
+            12590004,
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID"
+          ],
+          [
+            12590005,
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID"
+          ],
+          [
+            12590006,
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID"
+          ],
+          [
+            12590007,
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU"
+          ],
+          [
+            12590008,
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID"
+          ],
+          [
+            12590009,
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID"
+          ],
+          [
+            12590010,
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID"
+          ],
+          [
+            12590011,
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID"
+          ],
+          [
+            12590012,
+            "ID",
+            "ID",
+            "ID",
+            "ID",
+            "ID"
+          ]
+        ]
+      },
+      "pass": true
+    },
+    "GS_ref": {
+      "observed": {
+        "PASS": true,
+        "audited": 55,
+        "block": "main",
+        "complete": true,
+        "decided": 55,
+        "elapsed_informational": 61.05180629299139,
+        "k_spent_as_amb": 0,
+        "misfires": [],
+        "mismatch_count": 0,
+        "mutations": 20,
+        "not_audited": [],
+        "not_reached": 5,
+        "of": 20,
+        "per_arm": {
+          "C4": {
+            "audited": 11,
+            "decided": 11,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 12
+          },
+          "N4_05": {
+            "audited": 11,
+            "decided": 11,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 12
+          },
+          "N4_10": {
+            "audited": 11,
+            "decided": 11,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 12
+          },
+          "N4_10b": {
+            "audited": 11,
+            "decided": 11,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 12
+          },
+          "NEG4": {
+            "audited": 11,
+            "decided": 11,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 12
+          }
+        },
+        "records": 60,
+        "scope": {
+          "budget_s": 1800.0,
+          "key_order": [
+            "scale20n"
+          ],
+          "order": [
+            "C4",
+            "N4_05",
+            "N4_10",
+            "N4_10b",
+            "NEG4"
+          ],
+          "workers": 8
+        },
+        "vacuous": false,
+        "verdicts_checked": 110
+      },
+      "pass": true
+    },
+    "GTEST": {
+      "observed": {
+        "gated": {
+          "test_certify16": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16d": {
+            "returncode": 0,
+            "tests": 11
+          },
+          "test_certify16e": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16n": {
+            "returncode": 0,
+            "tests": 10
+          },
+          "test_certify20b": {
+            "returncode": 0,
+            "tests": 6
+          },
+          "test_certify20n": {
+            "returncode": 0,
+            "tests": 8
+          },
+          "test_cover20": {
+            "returncode": 0,
+            "tests": 8
+          },
+          "test_release_0560": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_scalesearch4_0260": {
+            "returncode": 0,
+            "tests": 14
+          },
+          "test_scripts_059": {
+            "returncode": 0,
+            "tests": 11
+          }
+        },
+        "reported": {
+          "test_release_0550": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_scripts_058": {
+            "returncode": 0,
+            "tests": 10
+          }
+        }
+      },
+      "pass": true
+    },
+    "G_PROC": {
+      "observed": {
+        "clauses": {
+          "commit_order_file": true,
+          "ledger_times_non_decreasing": true,
+          "ledger_times_parse": true,
+          "main_sealed": true,
+          "order": true
+        },
+        "events": [
+          "preregistration_059",
+          "build_authorization_059",
+          "seedcheck_059",
+          "prefreeze_smoke_059_attempt1",
+          "prefreeze_smoke_059",
+          "deviation_192",
+          "freeze_059",
+          "main_run_059"
+        ],
+        "required_order": [
+          "preregistration_059",
+          "build_authorization_059",
+          "seedcheck_059",
+          "prefreeze_smoke_059",
+          "deviation_192",
+          "freeze_059",
+          "main_run_059"
+        ]
+      },
+      "pass": true
+    },
+    "G_recount": {
+      "observed": {
+        "PASS": true,
+        "cases": 12,
+        "decided_by_arm": {
+          "C4": 11,
+          "N4_05": 11,
+          "N4_10": 11,
+          "N4_10b": 11,
+          "NEG4": 11
+        },
+        "mismatches": [],
+        "records": 60,
+        "study_decided_by_arm": {
+          "C4": 11,
+          "N4_05": 11,
+          "N4_10": 11,
+          "N4_10b": 11,
+          "NEG4": 11
+        },
+        "wrong_by_arm": {
+          "C4": 0,
+          "N4_05": 0,
+          "N4_10": 0,
+          "N4_10b": 0,
+          "NEG4": 0
+        }
+      },
+      "pass": true
+    }
+  },
+  "label_source": "recount",
+  "n59": 12,
+  "not_exercised": [],
+  "process": "lean",
+  "reports": {
+    "labels": {
+      "C4": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.646120088858883,
+            0.9851349055950828
+          ],
+          "n": 12,
+          "x": 11
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "NOFIT": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "N4_05": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.646120088858883,
+            0.9851349055950828
+          ],
+          "n": 12,
+          "x": 11
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "NOFIT": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "N4_10": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.646120088858883,
+            0.9851349055950828
+          ],
+          "n": 12,
+          "x": 11
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "NOFIT": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "N4_10b": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.646120088858883,
+            0.9851349055950828
+          ],
+          "n": 12,
+          "x": 11
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "NOFIT": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "NEG4": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.646120088858883,
+            0.9851349055950828
+          ],
+          "n": 12,
+          "x": 11
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "NOFIT": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      }
+    }
+  },
+  "schema": "brute.gates.v56_0",
+  "sealed_input_verified": true,
+  "secondary": {
+    "GCOST59": {
+      "elapsed_s": 385.5236294979986,
+      "observed": {
+        "C4": {
+          "budget_spent": 1,
+          "chunks": 810,
+          "conflicts": 15042549,
+          "k_max": 1,
+          "reads_total": 2741,
+          "records": 12,
+          "steps": 617,
+          "wall_s": 565.5
+        },
+        "N4_05": {
+          "budget_spent": 1,
+          "chunks": 810,
+          "conflicts": 15042549,
+          "k_max": 63,
+          "reads_total": 154255,
+          "records": 12,
+          "steps": 617,
+          "wall_s": 559.4
+        },
+        "N4_10": {
+          "budget_spent": 1,
+          "chunks": 810,
+          "conflicts": 15042549,
+          "k_max": 81,
+          "reads_total": 200685,
+          "records": 12,
+          "steps": 617,
+          "wall_s": 558.1
+        },
+        "N4_10b": {
+          "budget_spent": 1,
+          "chunks": 810,
+          "conflicts": 15042549,
+          "k_max": 81,
+          "reads_total": 200685,
+          "records": 12,
+          "steps": 617,
+          "wall_s": 573.8
+        },
+        "NEG4": {
+          "budget_spent": 1,
+          "chunks": 810,
+          "conflicts": 15042549,
+          "k_max": 63,
+          "reads_total": 154255,
+          "records": 12,
+          "steps": 617,
+          "wall_s": 561.4
+        }
+      },
+      "pass": null,
+      "rule": "reported (walls informational)"
+    },
+    "GSTATS59": {
+      "columns": [
+        "seed",
+        "C4 [label, n_min, extra_actions, rounds, conflicts, majority_errors]",
+        "N4_05 [label, n_min, extra_actions, rounds, conflicts, majority_errors]",
+        "N4_10 [label, n_min, extra_actions, rounds, conflicts, majority_errors]",
+        "N4_10b [label, n_min, extra_actions, rounds, conflicts, majority_errors]",
+        "NEG4 [label, n_min, extra_actions, rounds, conflicts, majority_errors]"
+      ],
+      "observed": [
+        [
+          12590001,
+          [
+            "ID",
+            20,
+            67,
+            24,
+            1454870,
+            0
+          ],
+          [
+            "ID",
+            20,
+            67,
+            24,
+            1454870,
+            0
+          ],
+          [
+            "ID",
+            20,
+            67,
+            24,
+            1454870,
+            0
+          ],
+          [
+            "ID",
+            20,
+            67,
+            24,
+            1454870,
+            0
+          ],
+          [
+            "ID",
+            20,
+            67,
+            24,
+            1454870,
+            0
+          ]
+        ],
+        [
+          12590002,
+          [
+            "ID",
+            20,
+            68,
+            21,
+            1065459,
+            0
+          ],
+          [
+            "ID",
+            20,
+            68,
+            21,
+            1065459,
+            0
+          ],
+          [
+            "ID",
+            20,
+            68,
+            21,
+            1065459,
+            0
+          ],
+          [
+            "ID",
+            20,
+            68,
+            21,
+            1065459,
+            0
+          ],
+          [
+            "ID",
+            20,
+            68,
+            21,
+            1065459,
+            0
+          ]
+        ],
+        [
+          12590003,
+          [
+            "ID",
+            20,
+            34,
+            12,
+            1455481,
+            0
+          ],
+          [
+            "ID",
+            20,
+            34,
+            12,
+            1455481,
+            0
+          ],
+          [
+            "ID",
+            20,
+            34,
+            12,
+            1455481,
+            0
+          ],
+          [
+            "ID",
+            20,
+            34,
+            12,
+            1455481,
+            0
+          ],
+          [
+            "ID",
+            20,
+            34,
+            12,
+            1455481,
+            0
+          ]
+        ],
+        [
+          12590004,
+          [
+            "ID",
+            20,
+            40,
+            11,
+            804458,
+            0
+          ],
+          [
+            "ID",
+            20,
+            40,
+            11,
+            804458,
+            0
+          ],
+          [
+            "ID",
+            20,
+            40,
+            11,
+            804458,
+            0
+          ],
+          [
+            "ID",
+            20,
+            40,
+            11,
+            804458,
+            0
+          ],
+          [
+            "ID",
+            20,
+            40,
+            11,
+            804458,
+            0
+          ]
+        ],
+        [
+          12590005,
+          [
+            "ID",
+            20,
+            52,
+            18,
+            1558784,
+            0
+          ],
+          [
+            "ID",
+            20,
+            52,
+            18,
+            1558784,
+            0
+          ],
+          [
+            "ID",
+            20,
+            52,
+            18,
+            1558784,
+            0
+          ],
+          [
+            "ID",
+            20,
+            52,
+            18,
+            1558784,
+            0
+          ],
+          [
+            "ID",
+            20,
+            52,
+            18,
+            1558784,
+            0
+          ]
+        ],
+        [
+          12590006,
+          [
+            "ID",
+            20,
+            68,
+            22,
+            1088473,
+            0
+          ],
+          [
+            "ID",
+            20,
+            68,
+            22,
+            1088473,
+            0
+          ],
+          [
+            "ID",
+            20,
+            68,
+            22,
+            1088473,
+            0
+          ],
+          [
+            "ID",
+            20,
+            68,
+            22,
+            1088473,
+            0
+          ],
+          [
+            "ID",
+            20,
+            68,
+            22,
+            1088473,
+            0
+          ]
+        ],
+        [
+          12590007,
+          [
+            "IDU",
+            19,
+            47,
+            17,
+            2000111,
+            0
+          ],
+          [
+            "IDU",
+            19,
+            47,
+            17,
+            2000111,
+            0
+          ],
+          [
+            "IDU",
+            19,
+            47,
+            17,
+            2000111,
+            0
+          ],
+          [
+            "IDU",
+            19,
+            47,
+            17,
+            2000111,
+            0
+          ],
+          [
+            "IDU",
+            19,
+            47,
+            17,
+            2000111,
+            0
+          ]
+        ],
+        [
+          12590008,
+          [
+            "ID",
+            20,
+            47,
+            16,
+            767441,
+            0
+          ],
+          [
+            "ID",
+            20,
+            47,
+            16,
+            767441,
+            0
+          ],
+          [
+            "ID",
+            20,
+            47,
+            16,
+            767441,
+            0
+          ],
+          [
+            "ID",
+            20,
+            47,
+            16,
+            767441,
+            0
+          ],
+          [
+            "ID",
+            20,
+            47,
+            16,
+            767441,
+            0
+          ]
+        ],
+        [
+          12590009,
+          [
+            "ID",
+            20,
+            56,
+            19,
+            703584,
+            0
+          ],
+          [
+            "ID",
+            20,
+            56,
+            19,
+            703584,
+            0
+          ],
+          [
+            "ID",
+            20,
+            56,
+            19,
+            703584,
+            0
+          ],
+          [
+            "ID",
+            20,
+            56,
+            19,
+            703584,
+            0
+          ],
+          [
+            "ID",
+            20,
+            56,
+            19,
+            703584,
+            0
+          ]
+        ],
+        [
+          12590010,
+          [
+            "ID",
+            20,
+            53,
+            18,
+            1600480,
+            0
+          ],
+          [
+            "ID",
+            20,
+            53,
+            18,
+            1600480,
+            0
+          ],
+          [
+            "ID",
+            20,
+            53,
+            18,
+            1600480,
+            0
+          ],
+          [
+            "ID",
+            20,
+            53,
+            18,
+            1600480,
+            0
+          ],
+          [
+            "ID",
+            20,
+            53,
+            18,
+            1600480,
+            0
+          ]
+        ],
+        [
+          12590011,
+          [
+            "ID",
+            20,
+            46,
+            16,
+            1371762,
+            0
+          ],
+          [
+            "ID",
+            20,
+            46,
+            16,
+            1371762,
+            0
+          ],
+          [
+            "ID",
+            20,
+            46,
+            16,
+            1371762,
+            0
+          ],
+          [
+            "ID",
+            20,
+            46,
+            16,
+            1371762,
+            0
+          ],
+          [
+            "ID",
+            20,
+            46,
+            16,
+            1371762,
+            0
+          ]
+        ],
+        [
+          12590012,
+          [
+            "ID",
+            20,
+            39,
+            14,
+            1171646,
+            0
+          ],
+          [
+            "ID",
+            20,
+            39,
+            14,
+            1171646,
+            0
+          ],
+          [
+            "ID",
+            20,
+            39,
+            14,
+            1171646,
+            0
+          ],
+          [
+            "ID",
+            20,
+            39,
+            14,
+            1171646,
+            0
+          ],
+          [
+            "ID",
+            20,
+            39,
+            14,
+            1171646,
+            0
+          ]
+        ]
+      ],
+      "pass": null,
+      "rule": "reported"
+    },
+    "MCNEMAR59": {
+      "observed": {
+        "N4_05_vs_C4": {
+          "discordant": [
+            0,
+            0
+          ],
+          "p": 1.0
+        },
+        "N4_10_vs_C4": {
+          "discordant": [
+            0,
+            0
+          ],
+          "p": 1.0
+        }
+      },
+      "pass": null,
+      "rule": "reported: exact two-sided McNemar"
+    },
+    "NEG4_report": {
+      "observed": {
+        "ID_IDF": 11,
+        "WRONG_seeds": [],
+        "labels": {
+          "AMB": 0,
+          "ID": 11,
+          "IDF": 0,
+          "IDU": 1,
+          "NOFIT": 0,
+          "WRONG": 0
+        },
+        "majority_errors": 0
+      },
+      "pass": null,
+      "rule": "reported; a WRONG here shows the noise assumption matters, not a soundness failure"
+    },
+    "SEEDCHECK59": {
+      "observed": {
+        "frozen_in_059": true,
+        "seedcheck_pass": true
+      },
+      "pass": null
+    }
+  },
+  "sound_not_certified_noisy": false,
+  "status_phrase": "certified (read_bits 4, iid bit noise eps <= eps_bar <= 0.15, N <= 20)",
+  "stop": {
+    "hard_kill_s": 900.0,
+    "stop_rule": "conflict-only (no hook; 900 s case kill as safety net)"
+  },
+  "study": "BRUTE-0560-NOISYWIDE-059",
+  "workers": 8
+}
