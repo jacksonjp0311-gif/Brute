@@ -1,0 +1,864 @@
+{
+  "PASS": true,
+  "all_arms_present": true,
+  "api_checks": {
+    "PASS": true,
+    "equiv": {
+      "PASS": true,
+      "cases": [
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 3,
+          "seed": 5800
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 4,
+          "seed": 5801
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 5,
+          "seed": 5802
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 6,
+          "seed": 5803
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 3,
+          "seed": 5804
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 4,
+          "seed": 5805
+        }
+      ],
+      "refusals": [
+        [
+          "(0, 0, 0)",
+          "{'read_bits': 2}",
+          "refused"
+        ],
+        [
+          "(0, 1)",
+          "{'read_bits': 3}",
+          "refused"
+        ],
+        [
+          "(0, 2, 0)",
+          "{'read_bits': 3}",
+          "refused"
+        ],
+        [
+          "(True, 0)",
+          "{'read_bits': 2}",
+          "refused"
+        ],
+        [
+          "(0, 0)",
+          "{'read_bits': 5}",
+          "refused"
+        ],
+        [
+          "(0, 0)",
+          "{'read_bits': 1}",
+          "refused"
+        ],
+        [
+          "(0, 0)",
+          "{'read_bits': True}",
+          "refused"
+        ],
+        [
+          "[0, 0, 0, 0, 0]",
+          "{'read_bits': 4}",
+          "refused"
+        ],
+        [
+          "observe",
+          "(0, 1)",
+          "refused"
+        ],
+        [
+          "observe",
+          "(0, 1, 2)",
+          "refused"
+        ],
+        [
+          "observe",
+          "(0, 1, 0, 1)",
+          "refused"
+        ]
+      ]
+    },
+    "ghost": {
+      "PASS58": true,
+      "certify20b_static_ok": true,
+      "frozen_api_sha256": {
+        "brute/api/certify14.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_047.json",
+          "frozen": "0c789ee206e8341ac610d00980c24976e5c027af5a02a5af4edb3c9068818ac6",
+          "now": "0c789ee206e8341ac610d00980c24976e5c027af5a02a5af4edb3c9068818ac6"
+        },
+        "brute/api/certify16.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_047.json",
+          "frozen": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1",
+          "now": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1"
+        },
+        "brute/api/certify16d.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_047.json",
+          "frozen": "98406b659e8abcbe9252da66da49b90317bdc544e1052711d8ec99a482992d25",
+          "now": "98406b659e8abcbe9252da66da49b90317bdc544e1052711d8ec99a482992d25"
+        },
+        "brute/api/certify16e.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_049.json",
+          "frozen": "99a6f3315d0ac7f9944dd6519fc968200543dc9ec50a991657dd33766a7112fb",
+          "now": "99a6f3315d0ac7f9944dd6519fc968200543dc9ec50a991657dd33766a7112fb"
+        }
+      },
+      "frozen_api_unchanged": true,
+      "network_pass": true,
+      "no_network_returncode": 0,
+      "no_network_run": {
+        "loop": [
+          "brute.certify/20b",
+          "IDU",
+          19,
+          36,
+          2001885,
+          4
+        ],
+        "socket_attempts": 0
+      },
+      "socket_attempts": 0
+    }
+  },
+  "api_checks_rc": 0,
+  "label": "Observed",
+  "note": "PASS here means the tooling ran end to end on a sealed block, gates reproduce, the self-replay is exact, the cut rule was applied as declared and the real commit-order check passes; GB_gain58 / GB3_58 outcomes on smoke are recorded, not required",
+  "purpose": "Pre-freeze smoke-gates, runtime projection and cut check for study-058 (plan 058 runtime_estimate; pre-run deviation #190).",
+  "recount": {
+    "PASS": true,
+    "cases": 2,
+    "decided_by_arm": {
+      "B2": 0,
+      "B2R": 0,
+      "B3": 1,
+      "B4": 2,
+      "B4_b": 2
+    },
+    "mismatches": [],
+    "records": 10,
+    "study_decided_by_arm": {
+      "B2": 0,
+      "B2R": 0,
+      "B3": 1,
+      "B4": 2,
+      "B4_b": 2
+    },
+    "wrong": 0
+  },
+  "recount_rc": 0,
+  "reference_rc": 0,
+  "reference_smoke": {
+    "PASS": true,
+    "audited": 5,
+    "complete": true,
+    "decided": 5,
+    "elapsed_informational": 28.034182953997515,
+    "mismatch_count": 0,
+    "mutations": 20,
+    "of": 20,
+    "per_arm": {
+      "B2": {
+        "audited": 0,
+        "decided": 0,
+        "idf_future_mismatch": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 2
+      },
+      "B2R": {
+        "audited": 0,
+        "decided": 0,
+        "idf_future_mismatch": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 2
+      },
+      "B3": {
+        "audited": 1,
+        "decided": 1,
+        "idf_future_mismatch": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 2
+      },
+      "B4": {
+        "audited": 2,
+        "decided": 2,
+        "idf_future_mismatch": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 2
+      },
+      "B4_b": {
+        "audited": 2,
+        "decided": 2,
+        "idf_future_mismatch": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 2
+      }
+    },
+    "records": 10,
+    "scope": {
+      "budget_s": 1800.0,
+      "key_order": [
+        "scale20b"
+      ],
+      "order": [
+        "B4",
+        "B3",
+        "B2R",
+        "B2",
+        "B4_b"
+      ],
+      "workers": 8
+    },
+    "vacuous": false
+  },
+  "release_ok_synthetic": true,
+  "runtime_projection": {
+    "candidates": {
+      "N58=12": {
+        "jobs": 60,
+        "smoke_mean_run_s": 1234.8,
+        "worst_run_s": 2507.5
+      },
+      "N58=8": {
+        "jobs": 40,
+        "smoke_mean_run_s": 771.8,
+        "worst_run_s": 1567.2
+      }
+    },
+    "cap_s": 3300.0,
+    "caveat": "two smoke seeds; the worst case assumes every job spends its whole B at the slowest smoke rate",
+    "chosen_projection": {
+      "jobs": 60,
+      "smoke_mean_run_s": 1234.8,
+      "worst_run_s": 2507.5
+    },
+    "cut_applied": false,
+    "cut_consistent": true,
+    "cut_exhausted": false,
+    "label": "Inferred",
+    "projected_main_worst_s": 2507.5,
+    "required": {
+      "N58": 12
+    },
+    "runner": {
+      "N58": 12
+    },
+    "smoke_job_walls_s": [
+      54.0,
+      58.4,
+      59.7,
+      67.2,
+      69.6,
+      147.3,
+      238.0,
+      266.7,
+      276.5,
+      306.2
+    ],
+    "smoke_rate_max": 24983.3,
+    "smoke_slowest_rate": 6591.0,
+    "workers": 8,
+    "worst_per_job_s": 313.4
+  },
+  "smoke_determinism": [
+    [
+      12550001,
+      true
+    ],
+    [
+      12550002,
+      true
+    ]
+  ],
+  "smoke_record_columns": [
+    "seed",
+    "arm: label, stop, n_min, used, n_rounds, conflicts_spent, wall_guard, distinct_codes, case wall s"
+  ],
+  "smoke_records": [
+    [
+      12550001,
+      {
+        "B2": [
+          "IDU",
+          "unknown",
+          19,
+          0,
+          1,
+          2007961,
+          0,
+          4,
+          276.5
+        ],
+        "B2R": [
+          "IDU",
+          "unknown",
+          null,
+          5,
+          3,
+          2018415,
+          0,
+          4,
+          306.2
+        ],
+        "B3": [
+          "IDU",
+          "unknown",
+          20,
+          53,
+          21,
+          2009567,
+          0,
+          7,
+          147.3
+        ],
+        "B4": [
+          "ID",
+          "ID",
+          20,
+          40,
+          14,
+          1293119,
+          0,
+          13,
+          58.4
+        ],
+        "B4_b": [
+          "ID",
+          "ID",
+          20,
+          40,
+          14,
+          1293119,
+          0,
+          13,
+          54.0
+        ]
+      }
+    ],
+    [
+      12550002,
+      {
+        "B2": [
+          "IDU",
+          "unknown",
+          null,
+          0,
+          1,
+          2009322,
+          0,
+          4,
+          238.0
+        ],
+        "B2R": [
+          "IDU",
+          "unknown",
+          19,
+          0,
+          1,
+          2000083,
+          0,
+          4,
+          266.7
+        ],
+        "B3": [
+          "ID",
+          "ID",
+          20,
+          61,
+          20,
+          1560121,
+          0,
+          7,
+          69.6
+        ],
+        "B4": [
+          "ID",
+          "ID",
+          20,
+          39,
+          14,
+          1490388,
+          0,
+          12,
+          67.2
+        ],
+        "B4_b": [
+          "ID",
+          "ID",
+          20,
+          39,
+          14,
+          1490388,
+          0,
+          12,
+          59.7
+        ]
+      }
+    ]
+  ],
+  "smoke_wall_guard_records": [],
+  "stops_present": {
+    "ID": 5,
+    "unknown": 5
+  },
+  "synthetic": {
+    "GB3_58": {
+      "B2R_ID_IDF": 0,
+      "B3_ID_IDF": 1,
+      "ci95_B2R": [
+        0.0,
+        0.6576197724933469
+      ],
+      "ci95_B3": [
+        0.09453120573423071,
+        0.9054687942657693
+      ],
+      "discordant": [
+        1,
+        0
+      ],
+      "label_source": "recount",
+      "mcnemar_p_reported": 1.0,
+      "of": 2,
+      "rule": "B3 ID+IDF >= 4 of 12 and B3 > B2R"
+    },
+    "GB_gain58": {
+      "B2R_ID_IDF": 0,
+      "B4_ID_IDF": 2,
+      "ci95_B2R": [
+        0.0,
+        0.6576197724933469
+      ],
+      "ci95_B4": [
+        0.3423802275066531,
+        1.0
+      ],
+      "discordant": [
+        2,
+        0
+      ],
+      "label_source": "recount",
+      "mcnemar_p_reported": 0.5,
+      "of": 2,
+      "rule": "B4 ID+IDF >= 6 of 12 and B4 - B2R >= 4 on the same seeds"
+    },
+    "GDET58": {
+      "ci95": [
+        0.3423802275066531,
+        1.0
+      ],
+      "columns": [
+        "seed",
+        "canon58_equal",
+        "pass1",
+        "pass2"
+      ],
+      "identical": 2,
+      "of": 2,
+      "per_case": [
+        [
+          12550001,
+          true,
+          "ID",
+          "ID"
+        ],
+        [
+          12550002,
+          true,
+          "ID",
+          "ID"
+        ]
+      ],
+      "records_checked": 10,
+      "wall_guard_firings": []
+    },
+    "GFID58": {
+      "bound": true,
+      "decided_in_gates": 5,
+      "equiv_bits2_vs_16e": [
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 3,
+          "seed": 5800
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 4,
+          "seed": 5801
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 5,
+          "seed": 5802
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 6,
+          "seed": 5803
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 3,
+          "seed": 5804
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 4,
+          "seed": 5805
+        }
+      ],
+      "failures": {},
+      "fidelity_exact": 5,
+      "no_network_run": {
+        "loop": [
+          "brute.certify/20b",
+          "IDU",
+          19,
+          36,
+          2001885,
+          4
+        ],
+        "socket_attempts": 0
+      },
+      "of_decided": 5,
+      "refusals": [
+        [
+          "(0, 0, 0)",
+          "{'read_bits': 2}",
+          "refused"
+        ],
+        [
+          "(0, 1)",
+          "{'read_bits': 3}",
+          "refused"
+        ],
+        [
+          "(0, 2, 0)",
+          "{'read_bits': 3}",
+          "refused"
+        ],
+        [
+          "(True, 0)",
+          "{'read_bits': 2}",
+          "refused"
+        ],
+        [
+          "(0, 0)",
+          "{'read_bits': 5}",
+          "refused"
+        ],
+        [
+          "(0, 0)",
+          "{'read_bits': 1}",
+          "refused"
+        ],
+        [
+          "(0, 0)",
+          "{'read_bits': True}",
+          "refused"
+        ],
+        [
+          "[0, 0, 0, 0, 0]",
+          "{'read_bits': 4}",
+          "refused"
+        ],
+        [
+          "observe",
+          "(0, 1)",
+          "refused"
+        ],
+        [
+          "observe",
+          "(0, 1, 2)",
+          "refused"
+        ],
+        [
+          "observe",
+          "(0, 1, 0, 1)",
+          "refused"
+        ]
+      ],
+      "vacuous": false
+    },
+    "GS58_sound": {
+      "WRONG": [],
+      "columns": [
+        "seed",
+        "B2",
+        "B2R",
+        "B3",
+        "B4",
+        "B4_b"
+      ],
+      "label_source": "recount",
+      "per_case": [
+        [
+          12550001,
+          "IDU",
+          "IDU",
+          "IDU",
+          "ID",
+          "ID"
+        ],
+        [
+          12550002,
+          "IDU",
+          "IDU",
+          "ID",
+          "ID",
+          "ID"
+        ]
+      ],
+      "records": 10
+    },
+    "GS_ref": {
+      "PASS": true,
+      "audited": 5,
+      "block": "main",
+      "complete": true,
+      "decided": 5,
+      "elapsed_informational": 31.033740471990313,
+      "k_spent_as_amb": 0,
+      "mismatch_count": 0,
+      "mutations": 20,
+      "not_audited": [],
+      "not_reached": 5,
+      "of": 20,
+      "per_arm": {
+        "B2": {
+          "audited": 0,
+          "decided": 0,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 2
+        },
+        "B2R": {
+          "audited": 0,
+          "decided": 0,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 2
+        },
+        "B3": {
+          "audited": 1,
+          "decided": 1,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 2
+        },
+        "B4": {
+          "audited": 2,
+          "decided": 2,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 2
+        },
+        "B4_b": {
+          "audited": 2,
+          "decided": 2,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 2
+        }
+      },
+      "records": 10,
+      "scope": {
+        "budget_s": 1800.0,
+        "key_order": [
+          "scale20b"
+        ],
+        "order": [
+          "B4",
+          "B3",
+          "B2R",
+          "B2",
+          "B4_b"
+        ],
+        "workers": 8
+      },
+      "vacuous": false,
+      "verdicts_checked": 10
+    },
+    "cases": 2,
+    "certified_readbits_N20": false,
+    "fidelity_failures": {},
+    "fidelity_self_replay": {
+      "PASS": true,
+      "decided_records": 5,
+      "exact": 5,
+      "study_results_sha256": "d7ad6ca65134bf6ffad5e91e1d929345e299e6f658538d3532aaa9456e9a7b54",
+      "vacuous": false,
+      "workers": 8
+    },
+    "gate_status": {
+      "GB3_58": {
+        "pass": false
+      },
+      "GB_gain58": {
+        "pass": false
+      },
+      "GDET58": {
+        "pass": true
+      },
+      "GFID58": {
+        "pass": true
+      },
+      "GHOST58": {
+        "pass": false
+      },
+      "GS58_sound": {
+        "pass": true
+      },
+      "GS_ref": {
+        "pass": true
+      },
+      "GTEST": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (TEST_SUITE_058 missing)"
+      },
+      "G_PROC": {
+        "pass": false
+      },
+      "G_recount": {
+        "pass": true
+      }
+    },
+    "label_source": "recount",
+    "note": "synthetic: smoke cases as main with the smoke case count; GHOST58 (no 058 freeze yet), GTEST and G_PROC fail by design; GB_gain58 / GB3_58 on 2 smoke seeds are recorded, not required",
+    "recount_rc": 0,
+    "reference_rc": 0,
+    "reproduces": true,
+    "sealed_input_verified": true,
+    "secondary": {
+      "COST58": {
+        "B2": {
+          "budget_spent": 2,
+          "chunks": 103,
+          "conflicts": 4017283,
+          "records": 2,
+          "steps": 0,
+          "wall_s": 514.5
+        },
+        "B2R": {
+          "budget_spent": 2,
+          "chunks": 107,
+          "conflicts": 4018498,
+          "records": 2,
+          "steps": 5,
+          "wall_s": 572.9
+        },
+        "B3": {
+          "budget_spent": 1,
+          "chunks": 166,
+          "conflicts": 3569688,
+          "records": 2,
+          "steps": 114,
+          "wall_s": 216.9
+        },
+        "B4": {
+          "budget_spent": 0,
+          "chunks": 125,
+          "conflicts": 2783507,
+          "records": 2,
+          "steps": 79,
+          "wall_s": 125.6
+        },
+        "B4_b": {
+          "budget_spent": 0,
+          "chunks": 125,
+          "conflicts": 2783507,
+          "records": 2,
+          "steps": 79,
+          "wall_s": 113.6
+        }
+      },
+      "MCNEMAR58": {
+        "B2R_vs_B2": {
+          "discordant": [
+            0,
+            0
+          ],
+          "p": 1.0
+        },
+        "B3_vs_B2R": {
+          "discordant": [
+            1,
+            0
+          ],
+          "p": 1.0
+        },
+        "B4_vs_B2R": {
+          "discordant": [
+            2,
+            0
+          ],
+          "p": 0.5
+        }
+      },
+      "SEEDCHECK58": {
+        "frozen_in_058": false,
+        "seedcheck_pass": true
+      }
+    },
+    "sound_not_certified_readbits": false,
+    "status_phrase": "not certified, no certification status (failing gates: GB_gain58, GB3_58, GHOST58, GTEST, G_PROC)"
+  },
+  "verifier_chain": {
+    "authorization_exceptions": 0,
+    "entries": [
+      [
+        "preregistration_058",
+        "ee52a61"
+      ],
+      [
+        "build_authorization_058",
+        "b959bf7"
+      ],
+      [
+        "seedcheck_058",
+        "c25053c"
+      ]
+    ],
+    "head": "8305ed4",
+    "links": 5,
+    "passed": true
+  }
+}
