@@ -1,8 +1,17 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.54.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.55.0 release in progress)._
 
 ## Current version and state
+
+<!-- V0550 -->
+- **v0.55.0: release in progress** 2026-11-02 (EST). TARGET CHANGE: certify/20b (brute/api/certify20b.py, certify/16e with read_bits 2-4) is certified (read_bits 3 and 4, N <= 20) on noise-free traces. **2-bit readings at 20 states stay Open.**
+  - **Run complete (Observed).** 60/60 jobs, 12 cases; launched once with nohup 11:16:41 EST (pid 1832133), sealed 11:50:13 EST; never relaunched. No cut: N58 12 (smoke projection 2507.5 s worst).
+  - **PASS (10/10 gated):** GS58_sound (WRONG 0/60); GB_gain58 B4 11/12 [0.65, 0.99] vs B2R 0/12 [0.00, 0.24] (McNemar p 0.00098); GB3_58 B3 4/12 [0.14, 0.61] (p 0.125); GDET58 12/12 [0.76, 1.00]; GFID58 (26/26 exact replay); GHOST58; GS_ref (26/26 audited, 0 mismatches, 20/20 mutations); G_recount; GTEST; G_PROC. G_RT at release.
+  - **Blunt reading:** more bits per state makes the frozen solver decide; it does not solve 2-bit worlds (B2 0/12, B2R 0/12). Result is budget-sensitive (0.60-1.68M of 2M conflicts). One B4 miss: 12530010.
+  - **Deviations:** #190 (pre-run), #191 (post-run).
+  - **Chain:** plan `ee52a61` -> seedcheck `c25053c` -> smoke `509098c` -> #190 `e1aeed2` -> freeze `846709d` -> main_run `d8cc97e` -> seal `8f7ff0d` -> recount `a1d905d` -> reference `36e9e1f` -> tests `21f6209` -> api checks `a33fc77` -> gates `3d3da7b` -> #191 `707ff18` -> RELEASE.json `ee9daaf` -> docs `8893b2b`
+  - **No CI.** brute-bridge and BGR-v0.90.0 untouched. The user's computer was offline; network went through the box.
 
 <!-- V0540 -->
 - **v0.54.0: RELEASED** 2026-11-02 (EST), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.54.0 (annotated tag object `d1c5480` at `2f4ed29`, ledger release_057 `3af6568`). Fresh-clone verify of the tag passed: study 045 to 057 restored, verify_release_0540 passed, 136/136 tests in 14 modules (ledger fresh_clone_verify_057 `0b789c1`). `main` fast-forwarded to this RELEASED note. Study BRUTE-0540-SCALE20-COVERFIRST-057 (plan 057 `a8dfa1d`), LEAN, standing go t133s553 and t139s684. Status from GATES_057: **sound but not certified** (certified_20v_N20 false, sound_not_certified_20v true).
