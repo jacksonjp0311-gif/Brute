@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.59.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.59.0 released)._
 
 ## Current version and state
 
 <!-- V0590 -->
-- **v0.59.0: release in progress** 2026-11-02 (EST) on plan/v0.59.0 (gates 6e75d3e, RELEASE.json 63540b7). Status from the flags: "sound but no 2-bit gain".
+- **v0.59.0: RELEASED** 2026-11-02 18:52 EST, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.59.0 (annotated tag object acc2f7e at 5fff4cc; gates 6e75d3e, RELEASE.json 63540b7). Fresh-clone verify passed (verify_release_0590 true, 135/135 tests). Status from the flags: "sound but no 2-bit gain".
   - **Run complete (Observed).** 8/8 jobs, 3 cases; launched once with nohup 18:08:44 EST (ledger b61e881, pid 2089976), sealed 18:40:19 EST (seal 3a22432, runner 1894.5 s); never relaunched. Cut by #198 before the freeze: N_SEEDS 3, N_W2B 2.
   - **FAIL: GW62** (W2 0/3 [0.00, 0.56] = B2 0/3; W2 - B2 = 0; discordant 0). **PASS (8/9 gated):** GS62_sound (WRONG 0/8 [0.00, 0.32]); GDET62 2/2 [0.34, 1.00]; GFID62 (vacuous); GHOST62; GS_ref (vacuous, 0 decided); G_recount; GTEST (135 tests); G_PROC.
   - **Blunt reading:** windows cost rounds per budget (10-19 vs 21-44); W2 twice never fixed a least size. 2-bit at 20 states stays Open. n = 3.
