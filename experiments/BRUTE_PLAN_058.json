@@ -1,0 +1,111 @@
+{
+ "schema": "brute.plan.v1",
+ "study": "BRUTE-0550-READBITS-058",
+ "version_under_test": "0.55.0",
+ "parent_study": "BRUTE-0540-SCALE20-COVERFIRST-057",
+ "written": "2026-11-02T10:50:00-05:00 (EST)",
+ "status": "preregistered (plan only; no build code, no fresh seed use, no data). Build needs a ledgered build_authorization_058 citing the standing go t133s553 and t139s684",
+ "standing_go": [
+  "t133s553",
+  "t139s684 (James, Nov 2 2026: keep going version after version until something valuable turns up; stop only when he says so)"
+ ],
+ "branch_taken": "plan 057 next_if_fail (Exact, GATES_057: 12/14; GPRE57 and GX_gain57 fail; COV_X 0/12, COV_O 1/12, LEN_R 0/12). James (Nov 2 10:02 EST): 'step back: 7 versions have failed at 20 states. Pick the idea most likely to produce a real capability gain. Possibly that means changing the target rather than grinding scale-20.'",
+ "step_back": {
+  "record": "Exact: studies 050-057 (7 versions) ran certify/16e-family identifiers on fresh noise-free 20-state, 3-action, 2-bit-reading worlds; across them only a handful of records decided (050 11730008 at 4M conflicts, 056 12330005, 057 COV_O on one seed). Every soundness gate passed; every gain gate failed.",
+  "candidates": {
+   "size_free_guarantee": "Rejected: no finite trace rules out every larger machine (Inferred: a larger machine can copy the true machine on every visited state and differ only on states the trace never reached). A guarantee with no declared N is impossible from data alone; the guarantee stays conditional on the declared N.",
+   "noise_at_20_states": "Rejected for 058: it would sit on top of an identifier that already fails noise-free at 20 states with 2-bit readings; a noisy version can only decide less.",
+   "forecast_certificate_20f": "Rejected on pre-plan evidence (Observed, results/diag-058/preplan_probes): proving that every <=20-state rival agrees on a fixed short word was SAT or did not finish within ~3M conflicts on sealed 057 traces; it costs about as much as identification.",
+   "more_scale20_grinding": "Rejected: 7 versions of explorers, budgets and search changes on the same 2-bit target gave no gain.",
+   "reading_width": "CHOSEN. Pre-plan probe (Observed, sealed 057 seeds, frozen active14, wall-clock deadline, labels not truth-checked): the same 20-state transition graphs with random 4-bit readings were identified on 4/4 seeds in 36-64 s and with 3-bit readings on 3/4. Inference: hardness at 20 states is driven by information per step, not by state count alone; a sensor with more output bits is a real capability Brute does not have (certify/16e accepts only 2-bit readings)."
+  },
+  "honest_framing": "This is a TARGET CHANGE (richer observations), not progress on 2-bit 20-state worlds. With 16 codes for 20 states most states are told apart by their reading; a B4 pass shows Brute can certify 20-state machines when the sensor is wide, nothing more. 2-bit scale-20 stays Open."
+ },
+ "brand": "charcoal and sage; no purple, neon, emoji or gold",
+ "question": "(A, gain) Does certify/20b (certify/16e with a configurable reading width) decide fresh noise-free 20-state worlds at B 2000000, C 50000 when the readings carry 4 bits, versus the same transition graphs with random 2-bit readings? (B) Does 3 bits already help? (C) Is certify/20b at read_bits 2 exactly certify/16e?",
+ "hypotheses": {
+  "H1": "no arm issues a WRONG certificate on 60 records (12 fresh seeds x 5 arms), ID checked from the start state and IDF from the current state against the truth",
+  "H2": "B4 decides (ID+IDF) >= 6/12 and >= 4 more than B2R on the same seeds",
+  "H3": "B3 decides >= 4/12 and more than B2R",
+  "H4": "B4 and B4_b give byte-identical canonical records (conflict-counted, host-independent)",
+  "H5": "certify/20b at read_bits 2 gives the same record as certify/16e on the same input"
+ },
+ "design": {
+  "api": "one new module brute/api/certify20b.py (brute.certify/20b): Certifier20B(initial, num_actions, family_bound, read_bits in {2,3,4}, ...), a subclass of certify/16e. Readings are tuples of read_bits entries 0/1/None; m = 2**read_bits codes. Everything else (conflict-counted chunked resume, stop rule, labels, K, encoding) is certify/16e's frozen code, imported, never edited. Host-agnostic: no I/O, threads, subprocess or os.",
+  "worlds": "experiments/worlds_058.py: for seed s, the transitions, start and passive prefix (worlds_026 actions, eps 0) are exactly worlds_050 scale20 for s. Emissions: family scale20 = the original 2-bit emissions; scale20rB (B in 2,3,4) = [rng.randrange(2**B) for q in range(20)] with rng = random.Random(s*11+580+B). Reading of code c with B bits: bit j = (c>>(B-1-j))&1.",
+  "arms": {
+   "B2": "scale20 (original 2-bit emissions), read_bits 2: the 057 API16E20 baseline setup at K 400",
+   "B2R": "scale20r2 (random 2-bit emissions), read_bits 2: the control for the emission RNG",
+   "B3": "scale20r3, read_bits 3",
+   "B4": "scale20r4, read_bits 4",
+   "B4_b": "B4 again, second pass in reversed seed order (determinism)"
+  },
+  "caps": {
+   "C": 50000,
+   "B": 2000000,
+   "K": 400,
+   "family_bound": 20,
+   "max_chunks": null
+  },
+  "K_note": "K 400 (not 128) because the pre-plan probe used up to 151 extra actions at 3-4 bits; declared before data, same for every arm",
+  "stop_rule": "conflict-only (no host hook); 900 s case guard as a safety net only; any firing fails GDET58",
+  "workers": "one 8-worker pool, max_tasks_per_child 1; job order per seed B4, B3, B2R, B2, then B4_b in reversed seed order",
+  "truth_label": "ID correct iff the model is behaviour-equal to the truth from the start state; IDF correct iff the model from s1 is behaviour-equal to the truth from the true current state; else WRONG. AMB, K_spent and unknown are undecided, not soundness failures"
+ },
+ "cases": {
+  "scale20b": 12,
+  "jobs": "12 seeds x 5 arms = 60",
+  "declared_before_data": true
+ },
+ "heldout_ranges": {
+  "scale20b": "12530001-12530012",
+  "note": "at plan time (git grep -I -w over tracked text) prefix 1245 has 2 hits (057 negative controls) and 1251 has 1 (12510002); 1253 has 0. seedcheck_058 scans every tracked file, .gz included, before any fresh seed; a hit moves the part to the next unused odd prefix (1257, then 1259) by a ledgered deviation before data"
+ },
+ "smoke_range": "12550001-12550006 (pre-freeze smoke and projection only; never gated; never used to set B, C, K or any order)",
+ "criteria": {
+  "GS58_sound": "WRONG 0 on all 60 records against the clean truth (truth_label above)",
+  "GB_gain58": "B4 ID+IDF >= 6/12 AND B4 - B2R >= 4 on the same 12 seeds (Wilson 95% CIs and exact McNemar reported)",
+  "GB3_58": "B3 ID+IDF >= 4/12 AND B3 > B2R",
+  "GDET58": "B4 and B4_b canonical records byte-identical on 12/12 seeds and no wall guard fired in any record",
+  "GFID58": "api_checks_058 (once, after the run): certify/20b read_bits 2 equals certify/16e record-for-record on 6 small worlds; every decided main record replays to the same result through the public interface; malformed readings (wrong length, non-bit, bool) are refused; read_bits outside 2..4 refused; no network use",
+  "GHOST58": "AST scan of brute/api/certify20b.py: no os, io, threading, subprocess, socket or multiprocessing import or open() call",
+  "GS_ref": "plain-CNF reference (experiments/v0300_reference.py and v0310_reference.py, CaDiCaL, no shared code with brute/) with m = 2**read_bits per arm audits every decided record of the main block: n_min, consistency, s1, stored verdicts, completeness at N 20 and the stop label; 1800 s total budget on 8 workers; 20 seeded mutations (random.Random(580)) must all be detected; an unfinished audit is a failure",
+  "G_recount": "independent recount (scripts/recount_058.py, no brute/ search code): rebuild every trace from worlds_058, check recorded masks, consistency of the final model, truth labels and the arm counts",
+  "GTEST": "full test suite (scripts/run_tests_0550.py) passes, including certify20b tests",
+  "G_PROC": "ledger order: preregistration_058, build_authorization_058, seedcheck_058, prefreeze smoke, deviation #190, freeze_058 before main_run_058",
+  "G_RT": "release tooling: verify_release_0550 passes in the repo and in a fresh clone of the tag"
+ },
+ "process_naming_rule": "every pre-freeze smoke attempt is ledgered as prefreeze_smoke_058_attemptK; the one the freeze relies on is ALSO ledgered as prefreeze_smoke_058 before the freeze",
+ "certification_rule": "certify/20b becomes certified for read_bits 3 and 4 at declared N <= 20 on noise-free traces iff every gated criterion passes. If every gate except GB_gain58 and/or GB3_58 passes, certify/20b is published as sound but not certified. If any other gate fails it has no certification status. certify/16e and earlier statuses are unchanged. 2-bit 20-state worlds stay Open whatever happens.",
+ "status_wording_rule": "every status phrase in RELEASE.json, README, CHANGELOG, HANDOFF, the tag message and the release notes is derived from the two GATES_058 flags: certified -> 'certified'; sound_not_certified -> 'sound but not certified'; neither -> 'not certified, no certification status' plus the failing gates",
+ "secondary": {
+  "GSTATS58": "per-seed table: label per arm, extra actions, rounds, conflicts, distinct codes among the 20 states",
+  "GCOST58": "conflicts and wall per arm",
+  "MCNEMAR58": "exact two-sided McNemar p for B4 vs B2R and B3 vs B2R",
+  "B2_vs_B2R": "original vs random 2-bit emissions (reported, not gated)"
+ },
+ "gate_dependency_rule": "each gate is scored from its own counts; label gates use recounted labels if G_recount passes, else the study labels with the failure stated; an unfinished reference is a GS_ref failure, published as-is",
+ "what_counts_as_failure": "any gated criterion false; any wall-guard firing fails GDET58; AMB, K_spent and unknown are not soundness failures",
+ "freeze_rule": "no file named in the source freeze is edited after the freeze; new behaviour in new files or a deviation addendum. Caps, K, the emission RNG, read widths, every order, the stop rule, workers and case lists are part of the freeze",
+ "runtime_estimate": "probe: 3-4 bit cases 36-200 s at one job each; 2-bit cases run to B (057: 97-297 s per job with 8 concurrent). 60 jobs on 8 workers at <= 300 s: 8 rounds = 2400 s worst. Cut rule: if the smoke projection at its slowest rate exceeds 3300 s, the seed count drops 12 -> 8 (first 8 seeds), declared in the pre-run deviation before the freeze. Never raise B or C.",
+ "process": "LEAN under the standing go (t133s553, t139s684), a ledgered build_authorization_058 before any code and before seedcheck_058. Plan locked before data; seedcheck before fresh seeds; no cap calibration on fresh seeds; pre-freeze smoke; independent recount; CNF reference audit; api_checks once after the run; main runs once with nohup and is never relaunched; failures published",
+ "preplan_evidence_disclosure": "the reading-width probe and the forecast probe (results/diag-058/preplan_probes, Observed) were run on sealed study-057 seeds before this plan and motivated the choice of target and K; they are exploratory and never gated. The fresh seeds 12530001-12530012 were not touched",
+ "next_if_pass": "certify/20b certified for 3-4 bit readings at declared N <= 20. Next: noise at 20 states on wide readings (now on an identifier that decides), and the minimum width per state count.",
+ "next_if_fail": "if B4 fails: reading width is not enough at this budget and the 058 inference is Rejected; next returns to proof cost. If B4 passes and B3 fails: publish the width threshold; next measures it on more seeds.",
+ "limitations": [
+  "12 seeds give wide CIs",
+  "random emissions are a modelling choice; real sensors may correlate readings with states differently",
+  "a wide-reading pass says nothing about 2-bit 20-state worlds, which stay Open",
+  "noise-free only",
+  "still needs a declared size N",
+  "K 400 and the target were chosen after a probe on sealed seeds"
+ ],
+ "open_items": [
+  "2-bit 20-state worlds: Open",
+  "full N-freedom: Open (impossible from finite data without a size bound; Inferred)",
+  "noise at 20 states: Open",
+  "IDF that fixes the start state: Open"
+ ],
+ "claim_scope": "conditional on the declared N: an ID or IDF means unique among machines with at most N states consistent with the trace; IDF identifies the machine from the current state, not the start. Inferred reason: a larger machine can copy the true machine on every visited state and differ only on states the trace never reached, so no finite trace rules it out. Never 'first decided 20-state world'. Results are for random 3- and 4-bit readings only.",
+ "evidence_labels": "Exact, Observed, Simulated, Inferred, Rejected, Open"
+}
