@@ -1,8 +1,19 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.53.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.54.0 release in progress)._
 
 ## Current version and state
+
+<!-- V0540 -->
+- **v0.54.0: release in progress** on `plan/v0.54.0`. Study BRUTE-0540-SCALE20-COVERFIRST-057 (plan 057 `a8dfa1d`), LEAN, standing go t133s553 and t139s684. Status from GATES_057: **sound but not certified** (certified_20v_N20 false, sound_not_certified_20v true).
+  - **Run complete (Observed).** 60/60 jobs, 12 cases, 1936.5 s of 3600 s, launched once with nohup 09:01:55 EST (pid 1742858), exit about 09:34 EST; 7 snapshots; nothing relaunched.
+  - **PASS (12/14 gated):** GS57_sound (WRONG 0/60); GMATCH57 12/12; GDET57 12/12 [0.76, 1.00]; GFID57 12/12 [0.76, 1.00]; GHOST57; G_sound (527 words, 0 unsound); GS_ref (5 audited, 0 mismatches, 20/20 mutations); G_recount; GTI57; GTEST (136 tests, 14 modules); G_PROC; G_RT.
+  - **FAIL:** GX_gain57: COV_X 0/12 [0.00, 0.24] vs certify/16e 0/12. GPRE57: COV_O 1/12 [0.01, 0.35] (12410008 ID) vs LEN_R 0/12; needed >= 3 and a lead of 2 (McNemar p 1.00).
+  - **Blunt reading:** the coverage-first method decided nothing. COV_O is an oracle that reads the true machine (not deployable); it reached full reachable coverage on 12/12 worlds and still decided only 1. Coverage is not sufficient; the v0.53.0 lead is refuted as a cause.
+  - **Next:** v0.55.0 (plan 058) changes the target: certify next-observation forecasts at declared N = 20 without identifying the machine.
+  - **Deviations:** #188 (pre-run), #189 (post-run). Corrections to ledger-hashed text are listed in CHANGELOG v0.54.0 (api checks ended 10:04:51 EST, not 10:11; 3 of 102 decided, not "4 of about 70").
+  - **Chain:** plan `a8dfa1d` -> seedcheck `263bd6b` -> smoke `79d6a9d` -> #188 `cdcc9de` -> freeze `3db1525` -> run start `2a2f9a8` -> seal `9f9b477` -> recount `cfdc43c` -> reference `fd3695c` -> api checks `f4e8300` -> tests `3bd09eb` -> gates `7718a2a` -> #189 `a8a4aa8` -> RELEASE.json `5347a97` -> README/CHANGELOG `e2a2739`
+  - **No CI.** brute-bridge and BGR-v0.90.0 untouched. The user's computer was offline; network went through the box.
 
 <!-- V0530 -->
 - **v0.53.0: RELEASED** 2026-11-02 (EST), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.53.0 (annotated tag object `e769801` at `f121380`, ledger release_056 `a97b50c`). Fresh-clone verify of the tag passed: study 045 to 056 restored, verify_release_0530 passed, 127/127 tests in 13 modules (ledger fresh_clone_verify_056 `71517dc`). `main` fast-forwarded to this RELEASED note. Branch `plan/v0.53.0`. Study BRUTE-0530-SCALE20-LSTAR-056 (plan 056 `16e0793`). Status from GATES_056: certify/20l is not certified, no certification status (failing gates: GS20L_gain56, GCOMPAT20L56).
