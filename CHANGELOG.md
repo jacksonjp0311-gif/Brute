@@ -1,5 +1,28 @@
 # Brute changelog
 
+## v0.59.0: FAILURE, published. Probe-word windows (brute.certify/20w) decide 0 of 3 fresh 2-bit 20-state worlds, the same as the frozen certify/20b; 2-bit readings at 20 states stay Open (study BRUTE-0590-WINDOW2B20-062, LEAN process)
+
+**8 of 9 gated pass (GS62_sound, GDET62, GFID62, GHOST62, GS_ref, G_recount, GTEST, G_PROC); GW62 FAILS; G_RT checked at release. certified_readbits2_N20_windows false, sound_no_2bit_gain true. Status: sound but no 2-bit gain.**
+
+Blunt summary. This was back on the hard problem: original 2-bit readings, 20 states, declared N 20. The idea was a policy change: append a fixed probe word [0, 1] to every proposed experiment so the trace covers more. It did not help. W2 decided 0 of 3 fresh worlds at 8M conflicts, exactly like the frozen certify/20b (0 of 3). The windows made each round dearer, so W2 got through fewer rounds (10-19 against 21-44) and twice never even fixed a least size. Nothing was wrong (0 of 8 records), and the second pass was identical. The sample is small (3 worlds, cut from 12 to fit the 60 min cap), and both audits were vacuous because nothing was decided.
+
+Claim scope (*Exact*; reason *Inferred*): an ID or IDF is exact only conditional on noise-free readings and a true size at most the declared N = 20. A larger machine can copy the true machine on every visited state. No ID or IDF was issued in this study.
+
+### Timeline (EST, 2026-11-02)
+
+- Plan `43d877d`; budget probe `afa4f2e` (B62 8M by the rule: W2 decided 1/4 sealed 058 seeds at 8M); build authorization `f9fea49`; seedcheck `0bafcfd`; tooling `6827f7e`-`0b3b091`; pre-freeze smoke `6099c63` (attempt 1 killed by the agent's own timeout, attempt 2 PASS); deviation #198 `0a4572a`; source freeze `4f9fbcc` (686 files).
+- Main run launched once with nohup 18:08:44 (ledger `b61e881`); sealed 18:40:19, seal `3a22432` (runner 1894.5 s); recount `69bd25e`; reference `7ced8b5` (vacuous); tests `2c3bf0a`; api checks `80b4186`; gates `6e75d3e`; deviation #199 `869a0dc`; RELEASE.json `63540b7`.
+
+### Results (recount labels; Wilson 95% in GATES_062.json)
+
+| arm (B 8M, K 400, 2-bit original readings, N 20) | ID+IDF | WRONG | n_min reached | rounds |
+|---|---|---|---|---|
+| B2 (frozen certify/20b, 3 worlds) | 0/3 [0.00, 0.56] | 0 | 19, 19, 19 | 21-44 |
+| W2 (certify/20w windows, 3 worlds) | 0/3 [0.00, 0.56] | 0 | none, 18, none | 10-19 |
+| W2b (second pass, 2 worlds) | identical 0/2 | 0 | same as W2 | same |
+
+W2 - B2 = 0, discordant 0/0, exact McNemar p = 1.0. WRONG 0/8 [0.00, 0.32]. All 8 records IDU (budget spent). Reference and replay vacuous (0 decided); tests 135/135 (14 modules). Deviations #198 (pre-run) and #199 (post-run, 11 items).
+
 ## v0.58.0: TARGET CHANGE (budget). The frozen brute.certify/32b at 24M conflicts is certified for random 4-bit readings at N <= 24 with B61; 32 states and 2-bit at 20 states stay Open (study BRUTE-0580-BUDGET24W-061, LEAN process)
 
 **9 of 9 gated pass (GS61_sound, GN24_61, GDET61, GFID61, GHOST61, GS_ref, G_recount, GTEST, G_PROC); G_RT checked at release. certified_readbits4_N24 true. Status: certified (read_bits 4, N <= 24, B61).**
