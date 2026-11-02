@@ -1,0 +1,1007 @@
+{
+  "all_gated_pass": true,
+  "arm_spec": {
+    "S24": [
+      "scale24w",
+      "scale24r4",
+      24
+    ],
+    "S24b": [
+      "scale24w",
+      "scale24r4",
+      24
+    ],
+    "S32": [
+      "scale32w",
+      "scale32r4",
+      32
+    ]
+  },
+  "caps": [
+    50000,
+    24000000,
+    400
+  ],
+  "certified_readbits4_N24": true,
+  "claim": "certify/32b ID/IDF is exact conditional on noise-free readings and on true size <= the declared N (here N <= 24 at B61; S32 at N <= 32 reported, no certification status). IDF identifies the machine from the current state, not the start. Inferred reason the size condition is needed: a larger machine can copy the true machine on every visited state",
+  "failed": [],
+  "framing": "TARGET CHANGE (still): wide 4-bit readings on random emissions; budget study of the frozen certify/32b at B61, declared N 24 (gated) and 32 (reported); 2-bit readings at 20 states stay Open",
+  "gates": {
+    "GDET61": {
+      "observed": {
+        "ci95": [
+          0.3423802275066531,
+          1.0
+        ],
+        "columns": [
+          "seed",
+          "canon61_equal",
+          "S24",
+          "S24b"
+        ],
+        "identical": 2,
+        "of": 2,
+        "per_case": [
+          [
+            12610101,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            12610102,
+            true,
+            "ID",
+            "ID"
+          ]
+        ],
+        "wall_guard_firings_S24": [],
+        "wall_guard_firings_S32_reported": []
+      },
+      "pass": true
+    },
+    "GFID61": {
+      "observed": {
+        "accepted_bounds": [
+          [
+            21,
+            "accepted"
+          ],
+          [
+            22,
+            "accepted"
+          ],
+          [
+            23,
+            "accepted"
+          ],
+          [
+            24,
+            "accepted"
+          ],
+          [
+            25,
+            "accepted"
+          ],
+          [
+            26,
+            "accepted"
+          ],
+          [
+            27,
+            "accepted"
+          ],
+          [
+            28,
+            "accepted"
+          ],
+          [
+            29,
+            "accepted"
+          ],
+          [
+            30,
+            "accepted"
+          ],
+          [
+            31,
+            "accepted"
+          ],
+          [
+            32,
+            "accepted"
+          ]
+        ],
+        "bound": true,
+        "decided_in_gates": 8,
+        "equiv_cases": [
+          {
+            "equal": true,
+            "label": "IDF",
+            "n": 3,
+            "oneshot_equal": true,
+            "oneshot_label": "AMB",
+            "read_bits": 2,
+            "seed": 6020
+          },
+          {
+            "equal": true,
+            "label": "IDF",
+            "n": 4,
+            "oneshot_equal": true,
+            "oneshot_label": "AMB",
+            "read_bits": 2,
+            "seed": 6021
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 5,
+            "oneshot_equal": true,
+            "oneshot_label": "AMB",
+            "read_bits": 2,
+            "seed": 6022
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 6,
+            "oneshot_equal": true,
+            "oneshot_label": "AMB",
+            "read_bits": 2,
+            "seed": 6023
+          },
+          {
+            "equal": true,
+            "label": "IDF",
+            "n": 3,
+            "oneshot_equal": true,
+            "oneshot_label": "AMB",
+            "read_bits": 2,
+            "seed": 6024
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 4,
+            "oneshot_equal": true,
+            "oneshot_label": "AMB",
+            "read_bits": 2,
+            "seed": 6025
+          },
+          {
+            "equal": true,
+            "label": "IDF",
+            "n": 3,
+            "oneshot_equal": true,
+            "oneshot_label": "AMB",
+            "read_bits": 3,
+            "seed": 6030
+          },
+          {
+            "equal": true,
+            "label": "IDF",
+            "n": 4,
+            "oneshot_equal": true,
+            "oneshot_label": "AMB",
+            "read_bits": 3,
+            "seed": 6031
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 5,
+            "oneshot_equal": true,
+            "oneshot_label": "AMB",
+            "read_bits": 3,
+            "seed": 6032
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 6,
+            "oneshot_equal": true,
+            "oneshot_label": "AMB",
+            "read_bits": 3,
+            "seed": 6033
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 3,
+            "oneshot_equal": true,
+            "oneshot_label": "AMB",
+            "read_bits": 3,
+            "seed": 6034
+          },
+          {
+            "equal": true,
+            "label": "IDF",
+            "n": 4,
+            "oneshot_equal": true,
+            "oneshot_label": "AMB",
+            "read_bits": 3,
+            "seed": 6035
+          },
+          {
+            "equal": true,
+            "label": "IDF",
+            "n": 3,
+            "oneshot_equal": true,
+            "oneshot_label": "AMB",
+            "read_bits": 4,
+            "seed": 6040
+          },
+          {
+            "equal": true,
+            "label": "IDF",
+            "n": 4,
+            "oneshot_equal": true,
+            "oneshot_label": "AMB",
+            "read_bits": 4,
+            "seed": 6041
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 5,
+            "oneshot_equal": true,
+            "oneshot_label": "AMB",
+            "read_bits": 4,
+            "seed": 6042
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 6,
+            "oneshot_equal": true,
+            "oneshot_label": "AMB",
+            "read_bits": 4,
+            "seed": 6043
+          },
+          {
+            "equal": true,
+            "label": "AMB",
+            "n": 3,
+            "oneshot_equal": true,
+            "oneshot_label": "AMB",
+            "read_bits": 4,
+            "seed": 6044
+          },
+          {
+            "equal": true,
+            "label": "IDF",
+            "n": 4,
+            "oneshot_equal": true,
+            "oneshot_label": "AMB",
+            "read_bits": 4,
+            "seed": 6045
+          }
+        ],
+        "failures": {},
+        "fidelity_exact": 8,
+        "no_network_run": {
+          "loop": [
+            "brute.certify/32b",
+            "IDU",
+            22,
+            61,
+            2000183,
+            4,
+            24
+          ],
+          "socket_attempts": 0
+        },
+        "of_decided": 8,
+        "refusals": [
+          [
+            "0",
+            "{}",
+            "refused"
+          ],
+          [
+            "33",
+            "{}",
+            "refused"
+          ],
+          [
+            "-1",
+            "{}",
+            "refused"
+          ],
+          [
+            "True",
+            "{}",
+            "refused"
+          ],
+          [
+            "24.0",
+            "{}",
+            "refused"
+          ],
+          [
+            "'24'",
+            "{}",
+            "refused"
+          ],
+          [
+            "24",
+            "{'read_bits': 5}",
+            "refused"
+          ],
+          [
+            "24",
+            "{'read_bits': True}",
+            "refused"
+          ]
+        ],
+        "vacuous": false
+      },
+      "pass": true
+    },
+    "GHOST61": {
+      "observed": {
+        "a16d_max_bound_unpatched": true,
+        "bound_to_freeze_060": true,
+        "frozen_api_unchanged": true,
+        "no_network_run": {
+          "loop": [
+            "brute.certify/32b",
+            "IDU",
+            22,
+            61,
+            2000183,
+            4,
+            24
+          ],
+          "socket_attempts": 0
+        },
+        "socket_attempts": 0,
+        "static_ok": true
+      },
+      "pass": true
+    },
+    "GN24_61": {
+      "observed": {
+        "S24_ID_IDF": 6,
+        "S24b_ID_IDF_reported": 2,
+        "ci95_S24": [
+          0.6096657120978346,
+          1.0
+        ],
+        "label_source": "recount",
+        "of": 6,
+        "rule": "S24 ID+IDF >= 5 of 6 (plan 10 of 12, scaled ceil(10 n24 / 12) by #196)"
+      },
+      "pass": true
+    },
+    "GS61_sound": {
+      "observed": {
+        "WRONG": [],
+        "columns": [
+          "key",
+          "seed",
+          "S24",
+          "S24b",
+          "S32"
+        ],
+        "label_source": "recount",
+        "per_case": [
+          [
+            "scale24w",
+            12610101,
+            "ID",
+            "ID",
+            null
+          ],
+          [
+            "scale24w",
+            12610102,
+            "ID",
+            "ID",
+            null
+          ],
+          [
+            "scale24w",
+            12610103,
+            "IDF",
+            null,
+            null
+          ],
+          [
+            "scale24w",
+            12610104,
+            "ID",
+            null,
+            null
+          ],
+          [
+            "scale24w",
+            12610105,
+            "ID",
+            null,
+            null
+          ],
+          [
+            "scale24w",
+            12610106,
+            "ID",
+            null,
+            null
+          ]
+        ],
+        "records": 8
+      },
+      "pass": true
+    },
+    "GS_ref": {
+      "observed": {
+        "PASS": true,
+        "audited": 8,
+        "block": "main",
+        "complete": true,
+        "decided": 8,
+        "elapsed_informational": 142.05868501699297,
+        "k_spent_as_amb": 0,
+        "misfires": [],
+        "mismatch_count": 0,
+        "mutations": 20,
+        "not_audited": [],
+        "not_reached": 0,
+        "of": 20,
+        "per_arm": {
+          "S24": {
+            "audited": 6,
+            "decided": 6,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 6
+          },
+          "S24b": {
+            "audited": 2,
+            "decided": 2,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 2
+          },
+          "S32": {
+            "audited": 0,
+            "decided": 0,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 0
+          }
+        },
+        "records": 8,
+        "scope": {
+          "budget_s": 3600.0,
+          "key_order": [
+            "scale24w",
+            "scale32w"
+          ],
+          "order": [
+            "S24",
+            "S24b",
+            "S32"
+          ],
+          "workers": 8
+        },
+        "vacuous": false,
+        "verdicts_checked": 16
+      },
+      "pass": true
+    },
+    "GTEST": {
+      "observed": {
+        "gated": {
+          "test_certify16": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16d": {
+            "returncode": 0,
+            "tests": 11
+          },
+          "test_certify16e": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16n": {
+            "returncode": 0,
+            "tests": 10
+          },
+          "test_certify20b": {
+            "returncode": 0,
+            "tests": 6
+          },
+          "test_certify20n": {
+            "returncode": 0,
+            "tests": 8
+          },
+          "test_certify32b": {
+            "returncode": 0,
+            "tests": 5
+          },
+          "test_cover20": {
+            "returncode": 0,
+            "tests": 8
+          },
+          "test_release_0580": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_scalesearch4_0260": {
+            "returncode": 0,
+            "tests": 14
+          },
+          "test_scripts_061": {
+            "returncode": 0,
+            "tests": 10
+          }
+        },
+        "reported": {
+          "test_release_0570": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_scripts_060": {
+            "returncode": 0,
+            "tests": 10
+          }
+        }
+      },
+      "pass": true
+    },
+    "G_PROC": {
+      "observed": {
+        "clauses": {
+          "commit_order_file": true,
+          "ledger_times_non_decreasing": true,
+          "ledger_times_parse": true,
+          "main_sealed": true,
+          "order": true
+        },
+        "events": [
+          "preregistration_061",
+          "budget_probe_061",
+          "build_authorization_061",
+          "seedcheck_061",
+          "prefreeze_smoke_061_attempt1",
+          "prefreeze_smoke_061",
+          "deviation_196",
+          "freeze_061",
+          "main_run_061"
+        ],
+        "required_order": [
+          "preregistration_061",
+          "budget_probe_061",
+          "build_authorization_061",
+          "seedcheck_061",
+          "prefreeze_smoke_061",
+          "deviation_196",
+          "freeze_061",
+          "main_run_061"
+        ]
+      },
+      "pass": true
+    },
+    "G_recount": {
+      "observed": {
+        "PASS": true,
+        "cases": 6,
+        "decided_by_arm": {
+          "S24": 6,
+          "S24b": 2,
+          "S32": 0
+        },
+        "mismatches": [],
+        "records": 8,
+        "study_decided_by_arm": {
+          "S24": 6,
+          "S24b": 2,
+          "S32": 0
+        },
+        "wrong_by_arm": {
+          "S24": 0,
+          "S24b": 0,
+          "S32": 0
+        }
+      },
+      "pass": true
+    }
+  },
+  "label_source": "recount",
+  "n24": 6,
+  "n24b": 2,
+  "n32": 0,
+  "not_exercised": [],
+  "process": "lean",
+  "reports": {
+    "labels": {
+      "S24": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.4364971778135299,
+            0.9699466302516934
+          ],
+          "n": 6,
+          "x": 5
+        },
+        "IDF": {
+          "ci95": [
+            0.030053369748306632,
+            0.5635028221864702
+          ],
+          "n": 6,
+          "x": 1
+        },
+        "IDU": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "NOFIT": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "S24b": {
+        "AMB": {
+          "ci95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "n": 2,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.3423802275066531,
+            1.0
+          ],
+          "n": 2,
+          "x": 2
+        },
+        "IDF": {
+          "ci95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "n": 2,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "n": 2,
+          "x": 0
+        },
+        "NOFIT": {
+          "ci95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "n": 2,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "n": 2,
+          "x": 0
+        }
+      },
+      "S32": {
+        "AMB": {
+          "ci95": null,
+          "n": 0,
+          "x": 0
+        },
+        "ID": {
+          "ci95": null,
+          "n": 0,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": null,
+          "n": 0,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": null,
+          "n": 0,
+          "x": 0
+        },
+        "NOFIT": {
+          "ci95": null,
+          "n": 0,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": null,
+          "n": 0,
+          "x": 0
+        }
+      }
+    }
+  },
+  "schema": "brute.gates.v58_0",
+  "sealed_input_verified": true,
+  "secondary": {
+    "GCOST61": {
+      "elapsed_s": 1316.241329343,
+      "observed": {
+        "S24": {
+          "budget_spent": 0,
+          "chunks": 1081,
+          "conflicts": 38010146,
+          "decided_conflicts": [
+            3205964,
+            3672481,
+            4436949,
+            4735661,
+            6833126,
+            15125965
+          ],
+          "records": 6,
+          "steps": 620,
+          "wall_s": 2758.4
+        },
+        "S24b": {
+          "budget_spent": 0,
+          "chunks": 536,
+          "conflicts": 19861626,
+          "decided_conflicts": [
+            4735661,
+            15125965
+          ],
+          "records": 2,
+          "steps": 323,
+          "wall_s": 1575.6
+        }
+      },
+      "pass": null,
+      "rule": "reported (walls informational)"
+    },
+    "GSTATS61": {
+      "columns": [
+        "key",
+        "seed",
+        "per arm [label, n_min, true_size, extra_actions, rounds, conflicts]"
+      ],
+      "observed": [
+        [
+          "scale24w",
+          12610101,
+          [
+            "ID",
+            24,
+            24,
+            258,
+            54,
+            15125965
+          ],
+          [
+            "ID",
+            24,
+            24,
+            258,
+            54,
+            15125965
+          ]
+        ],
+        [
+          "scale24w",
+          12610102,
+          [
+            "ID",
+            24,
+            24,
+            65,
+            19,
+            4735661
+          ],
+          [
+            "ID",
+            24,
+            24,
+            65,
+            19,
+            4735661
+          ]
+        ],
+        [
+          "scale24w",
+          12610103,
+          [
+            "IDF",
+            24,
+            24,
+            99,
+            29,
+            3205964
+          ]
+        ],
+        [
+          "scale24w",
+          12610104,
+          [
+            "ID",
+            24,
+            24,
+            51,
+            17,
+            6833126
+          ]
+        ],
+        [
+          "scale24w",
+          12610105,
+          [
+            "ID",
+            24,
+            24,
+            101,
+            36,
+            4436949
+          ]
+        ],
+        [
+          "scale24w",
+          12610106,
+          [
+            "ID",
+            24,
+            24,
+            46,
+            15,
+            3672481
+          ]
+        ]
+      ],
+      "pass": null,
+      "rule": "reported"
+    },
+    "PROBE61": {
+      "observed": {
+        "B61": 24000000,
+        "B61_rule_met": false,
+        "summary": {
+          "n24_B16M": {
+            "conflicts": [
+              16000181,
+              16000061,
+              8710161,
+              15207350
+            ],
+            "decided": 2,
+            "guard": 0,
+            "labels": [
+              "IDU",
+              "IDU",
+              "ID",
+              "ID"
+            ],
+            "max_wall_s": 1365.2,
+            "of": 4,
+            "wrong": 0
+          },
+          "n24_B24M": {
+            "conflicts": [
+              24000202,
+              22281994,
+              8710161,
+              15207350
+            ],
+            "decided": 2,
+            "guard": 1,
+            "labels": [
+              "IDU",
+              "IDU",
+              "ID",
+              "ID"
+            ],
+            "max_wall_s": 2105.3,
+            "of": 4,
+            "wrong": 0
+          },
+          "n32_B16M": {
+            "conflicts": [
+              9783265,
+              16001207
+            ],
+            "decided": 0,
+            "guard": 1,
+            "labels": [
+              "IDU",
+              "IDU"
+            ],
+            "max_wall_s": 2158.2,
+            "of": 2,
+            "wrong": 0
+          },
+          "n32_B24M": {
+            "conflicts": [
+              9783265,
+              24003470
+            ],
+            "decided": 0,
+            "guard": 1,
+            "labels": [
+              "IDU",
+              "IDU"
+            ],
+            "max_wall_s": 2168.2,
+            "of": 2,
+            "wrong": 0
+          }
+        }
+      },
+      "pass": null,
+      "rule": "exploratory, non-fresh seeds; not gate evidence"
+    },
+    "S32_report": {
+      "observed": {
+        "ID_IDF": 0,
+        "ci95": null,
+        "labels": {
+          "AMB": 0,
+          "ID": 0,
+          "IDF": 0,
+          "IDU": 0,
+          "NOFIT": 0,
+          "WRONG": 0
+        },
+        "of": 0,
+        "wall_guard_firings": []
+      },
+      "pass": null,
+      "rule": "reported; S32 decisions are not gated (expected Open at this budget)"
+    },
+    "SEEDCHECK61": {
+      "observed": {
+        "frozen_in_061": true,
+        "seedcheck_pass": true
+      },
+      "pass": null
+    }
+  },
+  "sound_not_certified_N24": false,
+  "status_phrase": "certified (read_bits 4, N <= 24, B61)",
+  "stop": {
+    "hard_kill_s": 3000,
+    "stop_rule": "conflict-only (no hook; 3000 s case kill as safety net)"
+  },
+  "study": "BRUTE-0580-BUDGET24W-061",
+  "workers": 8
+}
