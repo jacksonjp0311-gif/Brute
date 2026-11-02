@@ -1,0 +1,105 @@
+{
+ "schema": "brute.plan.v1",
+ "study": "BRUTE-0540-SCALE20-COVERFIRST-057",
+ "version_under_test": "0.54.0",
+ "parent_study": "BRUTE-0530-SCALE20-LSTAR-056",
+ "written": "2026-11-02T08:26:45-05:00 (EST)",
+ "status": "preregistered (plan only; no build code, no fresh seed use, no data). Build needs a ledgered build_authorization_057 citing the standing go t133s553 and t139s684",
+ "standing_go": [
+  "t133s553",
+  "t139s684 (James, Nov 2 2026: keep going version after version until something valuable turns up; stop only when he says so)"
+ ],
+ "branch_taken": "plan 056 next_if_fail (Exact, GATES_056: 12/14 gated pass; GS20L_gain56 and GCOMPAT20L56 fail; every soundness gate passes). Exploratory lead (Observed, scripts/world_features_056.py on sealed 050/054/055/056 data, never gated): of 42 certify/16e records at 20 states, both decided ones (050 11730008 at 4M, 056 12330005 at 2M) are among the 6 with 0 unexercised truth transitions on their final trace; the other 36 decided 0. Caveat: coverage was measured on each run's own final trace, so it can be an effect of a run that progressed, not a cause. This study tests it as a cause, with a length-matched control.",
+ "brand": "charcoal and sage; no purple, neon, emoji or gold",
+ "question": "(A, pre-check) Does handing certify/16e a trace that exercises every reachable truth transition make it decide more fresh noise-free 20-state worlds at B20 2000000, C20 50000 than handing it a trace of exactly the same length that does not, i.e. does coverage predict a decision beyond trace length? (B, gain) Does a truth-free coverage-first explorer (cover20) followed by certify/16e decide more of the same worlds than certify/16e alone at the same budget, while staying sound, deterministic and faithful?",
+ "hypotheses": {
+  "H1": "no arm issues a WRONG certificate on 12 fresh 20-state worlds (60 records)",
+  "H2": "COV_O (oracle covering extension, then certify/16e) decides >= 2 more of the 12 seeds than LEN_R (seeded random extension of the same length, then certify/16e), and >= 3/12 in all",
+  "H3": "COV_X (cover20 then certify/16e) decides >= 2/12 and more than API16E20 on the same seeds",
+  "H4": "COV_X and COV_X_b give byte-identical canonical records on 12/12 seeds with identical conflict counts and 0 hard kills",
+  "H5": "every COV_X record is reproduced exactly by api_checks driving cover20 and certify/16e observation by observation"
+ },
+ "design": {
+  "api": "one new module brute/api/cover20.py (brute.cover20/1): a truth-free, host-agnostic coverage explorer with observe(action, observation) / propose() -> next action or None. Pure Python; no I/O, threads, subprocess or os. certify/16e and every earlier module are imported only, never edited. The composite 'certify/20v' = cover20 extension, then certify/16e on the whole trace through its public interface.",
+  "cover20_policy": "context = the last h=1 (action, observation) pair plus the current observation; propose the action with the fewest prior uses in the current context (ties: lowest action index); counts include the passive prefix; stop after STEPS=120 proposed steps. h and STEPS were chosen before any fresh data from a truth-coverage calibration on already-sealed seeds only (050 11730001-24, 054 12170001-06, 055 12250001-06, 056 12330001-06; no solver run; Observed: mean 3.64 unexercised pairs left, 3/42 full coverage at h=1, 120 steps; the best of h in {0,1,2,3} x steps in {60,90,120}). Expected (Inferred) to cover fully only rarely; the plan does not assume it does.",
+  "oracle_walk": "harness-level, truth-using construction for the pre-check only, never an API: from the true state after the prefix, repeatedly walk the shortest path (BFS, actions in index order) to the nearest state with an unexercised action and take its lowest unexercised action, until every (state, action) pair reachable from the post-prefix state is exercised. The certifier never sees the truth, only the resulting trace. Labelled 'oracle-planned, not deployable' everywhere. Calibration on sealed seeds (Observed): extension length 6-98, median 27.",
+  "length_matched_control": "LEN_R: the same seed's passive prefix plus L random actions, L = the COV_O extension length on that seed exactly, actions from random.Random(seed*7+57).randrange(3). Its hand-off coverage is recorded (Exact); calibration on sealed seeds (Observed): 0/42 random extensions of that length cover fully, mean 7.5 pairs left.",
+  "arms": {
+   "API16E20": "certify/16e alone at bound 20 on the passive prefix (the 056 baseline), once",
+   "COV_O": "passive prefix + oracle covering extension, then certify/16e at bound 20 (pre-check)",
+   "LEN_R": "passive prefix + length-matched random extension, then certify/16e at bound 20 (pre-check control)",
+   "COV_X": "passive prefix + cover20 extension (120 steps), then certify/16e at bound 20",
+   "COV_X_b": "COV_X again, second pass in reversed seed order (determinism)"
+  },
+  "world": "worlds_047 'scale20' via experiments/worlds_050.world(seed,'scale20'), n 20, k 3, eps 0; passive prefix trajectory(w,seed,0.0) (176 steps)",
+  "caps": {
+   "C20": 50000,
+   "B20": 2000000,
+   "family_bound": 20,
+   "K": "S47.K as in 056",
+   "max_chunks": null
+  },
+  "stop_rule": "conflict-only (hook None; certify/16e case guard = 900 s hard kill as a safety net only; any firing fails GDET57)",
+  "workers": "one 8-worker ProcessPoolExecutor, max_tasks_per_child=1, job order: COV_O, LEN_R, API16E20, COV_X by seed, then COV_X_b in reversed seed order",
+  "extension_bookkeeping": "each record keeps ext_len, ext_acts and hand-off unexercised count (truth_pairs_unexercised_handoff, plus reachable-only count); certify/16e 'used' counts only its own word steps, so extra_acts = extension + words"
+ },
+ "cases": {
+  "scale20v": 12,
+  "jobs": "12 seeds x 5 arms = 60",
+  "declared_before_data": true
+ },
+ "heldout_ranges": {
+  "scale20v": "12410001-12410012",
+  "note": "at plan time (git grep -I -w over tracked text) prefix 1239 has 2 standalone hits (a 056 negative control and an HB sentinel) so it is skipped; 1241 has 0. seedcheck_057 scans every tracked file, .gz included, before any fresh seed; a hit moves the part to the next unused odd prefix (1247, then 1249) by a ledgered deviation before data"
+ },
+ "smoke_range": "12430001-12430006 (pre-freeze smoke and projection only; never gated; never used to set B, C, h, STEPS or any order)",
+ "criteria": {
+  "GS57_sound": "WRONG 0 on all 60 records against the clean truth",
+  "GMATCH57": "construction validity, 12/12 seeds: COV_O hand-off has 0 unexercised truth pairs reachable from the post-prefix state, and LEN_R extension length == COV_O extension length",
+  "GPRE57": "pre-check: COV_O ID+IDF >= 3/12 AND COV_O ID+IDF - LEN_R ID+IDF >= 2 on the same 12 seeds (Wilson CIs and exact McNemar on discordant pairs reported, not gated)",
+  "GX_gain57": "COV_X (pass 1) ID+IDF >= 2/12 AND > API16E20 ID+IDF on the same 12 seeds (Wilson CIs reported)",
+  "GDET57": "canon(COV_X) == canon(COV_X_b) byte-identical on 12/12 seeds, identical conflict counts and extension actions, 0 hard kills on every record",
+  "GFID57": "api_checks fidelity exact on all 12 COV_X records (cover20 re-proposes the recorded extension from the recorded observations; certify/16e reproduces the api result and every round's ROUND_FIELDS), bound to the sealed RESULTS sha; other arms not replayed",
+  "GHOST57": "cover20 has no I/O, threads, subprocess, os or socket imports (static check); certify/16e and earlier frozen API files unchanged (sha vs their freezes); a socket-disabled subprocess completes one cover20 + certify/16e loop on a smoke seed with 0 socket attempts",
+  "G_sound": "every executed certify/16e word is sound (0 unsound)",
+  "GS_ref": "independent CaDiCaL reference audit of every decided record of every arm at bound 20 (frozen run_reference_047 machinery), 0 mismatches, mutation test passes; vacuous if nothing decided; unfinished = fail",
+  "G_recount": "independent recount (frozen recount_047.recount_case) of every record; for extension arms the 'used' item reads used = word steps and len(extra_acts) = ext_len + used",
+  "GTI57": "0 truth-inconsistent rounds and final models",
+  "GTEST": "test suite passes (run_tests_0540 --official)",
+  "G_PROC": "ledger events in order: preregistration_057, build_authorization_057, seedcheck_057, prefreeze_smoke_057_attemptK..., prefreeze_smoke_057, deviation_188, source_freeze_057, run_start_057, run_end_057, recount_057, reference_057, api_checks_057, tests_057",
+  "G_RT": "main run wall <= 3600 s"
+ },
+ "process_naming_rule": "every pre-freeze smoke attempt is ledgered as prefreeze_smoke_057_attemptK; the one the freeze relies on is ALSO ledgered as prefreeze_smoke_057 (same receipt) before the freeze",
+ "certification_rule": "certify/20v (cover20 then certify/16e) becomes certified for declared N <= 20 on noise-free traces iff every gated criterion passes, GPRE57 and GX_gain57 included. If every gate except GPRE57 and/or GX_gain57 passes, certify/20v is published as sound but not certified. If any other gate fails, it has no certification status. certify/16e and earlier statuses are not changed. The oracle walk is never certified (not an API).",
+ "status_wording_rule": "every status phrase in RELEASE.json, README, CHANGELOG, HANDOFF, the tag message and the release notes is derived from the two GATES_057 flags: certified -> 'certified'; sound_not_certified -> 'sound but not certified'; neither -> 'not certified, no certification status' plus the list of failing gates. A release test checks the phrases against the flags",
+ "secondary": {
+  "GPRE_stats57": "per-seed paired table COV_O vs LEN_R vs API16E20 vs COV_X: label, ext_len, hand-off and final unexercised pairs, rounds, conflicts",
+  "GCOVX57": "cover20 hand-off coverage distribution",
+  "GCOST57": "conflicts and wall per arm",
+  "MCNEMAR57": "exact two-sided McNemar p on COV_O vs LEN_R and COV_X vs API16E20"
+ },
+ "gate_dependency_rule": "each gate is scored from its own counts; label gates use recounted labels if G_recount passes, else the study labels with the failure stated; an unfinished reference is a GS_ref failure, published as-is",
+ "what_counts_as_failure": "any gated criterion false; any hard kill fails GDET57; AMB and IDU are not soundness failures",
+ "freeze_rule": "no file named in the source freeze is edited after the freeze; new behaviour in new files or a deviation addendum. Caps, h, STEPS, the oracle walk rule, the random control's RNG, every order, the stop rule, workers and case lists are part of the freeze",
+ "runtime_estimate": "056 API16E20 jobs took 97-297 s each with 8 concurrent jobs. 60 jobs on 8 workers at <= 300 s: 8 rounds = 2400 s worst. Cut rule: if the smoke projection at its slowest rate exceeds 3300 s, the seed count drops 12 -> 8 (first 8 seeds), declared in the pre-run deviation before the freeze. Never raise B20 or C20.",
+ "process": "LEAN under the standing go (t133s553, t139s684), a ledgered build_authorization_057 before any code and before seedcheck_057. Plan locked before data; seedcheck before fresh seeds; no cap calibration; pre-freeze smoke with the real release verifier chain; independent recount; CNF reference audit; api_checks once after the run; main runs once with nohup and is never relaunched; failures published; one fresh-clone verify plus tests. No CI (no .github, no workflows)",
+ "next_if_pass": "GPRE57 and GX_gain57 pass: certify/20v certified for declared N <= 20 (conditional on N). Next: replication on more fresh seeds and a better truth-free explorer.",
+ "next_if_fail": "GPRE57 fails (oracle coverage does not beat the length-matched control): coverage is published as not causal at this budget (the 056 lead is then an effect of progress), and the next question returns to proof cost at N = 20. GPRE57 passes but GX_gain57 fails: coverage matters but cover20 does not reach it; the next question is a better truth-free explorer (e.g. hypothesis-guided by certify/16e's n_min model) pre-registered against COV_O as the ceiling. Any soundness gate fails on a mismatch: withdraw and fix first.",
+ "limitations": [
+  "12 seeds give wide CIs (Wilson 95% for 3/12 is [0.09, 0.53])",
+  "the oracle walk uses the truth; it measures a ceiling, not a deployable method",
+  "the length-matched control matches length, not which transitions are covered or the order",
+  "noise-free only; noise at 20 states stays Open",
+  "still needs a declared size N",
+  "h and STEPS were set on already-sealed seeds' coverage only; another choice could do better (Open)",
+  "walls depend on the host; walls never decide a result"
+ ],
+ "open_items": [
+  "full N-freedom: Open",
+  "noise at 20 states: Open",
+  "IDF that fixes the start state: Open",
+  "a truth-free explorer that reaches full coverage reliably: Open"
+ ],
+ "claim_scope": "conditional on the declared N: an ID or IDF means unique among machines with at most N states consistent with the trace; IDF identifies the machine from the current state, not the start. Inferred reason: a larger machine can copy the true machine on every visited state and differ only on states the trace never reached, so no finite trace rules it out. Not 'first decided 20-state world': study 050 decided 11730008 as ID at 4M and 056 decided 12330005 at 2M.",
+ "evidence_labels": "Exact, Observed, Simulated, Inferred, Rejected, Open"
+}
