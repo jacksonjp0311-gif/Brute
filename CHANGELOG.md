@@ -1,5 +1,30 @@
 # Brute changelog
 
+## v0.56.0: TARGET CHANGE. brute.certify/20n is certified for random 4-bit readings under iid bit noise (eps <= eps_bar <= 0.15) at N <= 20; 2-bit at 20 states stays Open (study BRUTE-0560-NOISYWIDE-059, LEAN process)
+
+**11 of 11 gated pass (GS59_sound, GN05_59, GN_keep59, GMAJ59, GDET59, GFID59, GHOST59, GS_ref, G_recount, GTEST, G_PROC); G_RT checked at release. certified_noisy_readbits4_N20 true. Status: certified (read_bits 4, iid bit noise eps <= eps_bar <= 0.15, N <= 20).**
+
+Blunt summary. This extends the v0.55.0 target change (wide random readings) with iid reading noise; it is not progress on 2-bit readings. certify/20n reads each observation repeatedly and takes a bit-wise majority before handing the trace to the frozen certify/20b. At eps 0.05 and 0.10 it decided 11/12 fresh worlds, exactly the noise-free control, because the majority made 0 errors in 2741 observations per arm. The price is reads: 154,255 (eps 0.05) and 200,685 (eps 0.10) against 2741. The negative control (eps 0.25 with eps_bar 0.10) also made 0 majority errors, so it is weak.
+
+Claim scope (*Exact*; reason *Inferred*): an ID or IDF is exact only conditional on a true size at most the declared N = 20 and on iid noise with eps <= eps_bar (failure probability at most delta = 0.001, union bound). A larger machine can copy the true machine on every visited state.
+
+### Timeline (EST, 2026-11-02)
+
+- Plan `37aea67`; seedcheck `f7b0c41`; tooling `f372d22`-`6d98166`; pre-freeze smoke attempt 1 PASS `f506b4c`; deviation #192 `9088f71`; source freeze `0b73c4f` (589 files).
+- Main run launched once with nohup 12:33:56 (ledger `5b5085c`); sealed about 12:40, seal `f507271` (runner 385.5 s); recount `28f9b9b`; reference `ba960d1` (12:42:23-12:43:25, 61 s); tests `2f9283d`; api checks `d3faa3f` (second attempt 12:45:07; the first was aborted by the tool shell with no output, #193 item 2); gates `b4ac3ed`; deviation #193 `a82e05d`; RELEASE.json `e1fec38`.
+
+### Results (recount labels; Wilson 95% in GATES_059.json)
+
+| arm (bound 20, B 2M, K 400, 4-bit random readings) | ID+IDF | WRONG | majority errors | reads |
+|---|---|---|---|---|
+| C4 (noise-free, certify/20b) | 11/12 [0.65, 0.99] | 0 | n/a | 2,741 |
+| N4_05 (eps 0.05, eps_bar 0.10) | 11/12 [0.65, 0.99] | 0 | 0 | 154,255 (k max 63) |
+| N4_10 (eps 0.10, eps_bar 0.15) | 11/12 [0.65, 0.99]; McNemar vs C4 p = 1.00 | 0 | 0 | 200,685 (k max 81) |
+| N4_10b (second pass) | identical to N4_10 12/12 [0.76, 1.00] | 0 | 0 | 200,685 |
+| NEG4 (eps 0.25 vs eps_bar 0.10, not gated) | 11/12 | 0 | 0 | 154,255 |
+
+WRONG 0/48 gated [0.00, 0.074], 0/60 overall. 12590007 stayed IDU in every arm (n_min 19, 2.0M conflicts). Every arm used 15,042,549 conflicts; decided records used 0.70-1.60M. Deviations #192 (pre-run, 11 items) and #193 (post-run, 8 items).
+
 ## v0.55.0: TARGET CHANGE. brute.certify/20b is certified for random 3- and 4-bit readings at N <= 20; 2-bit at 20 states stays Open (study BRUTE-0550-READBITS-058, LEAN process)
 
 **10 of 10 gated pass (GS58_sound, GB_gain58, GB3_58, GDET58, GFID58, GHOST58, GS_ref, G_recount, GTEST, G_PROC); G_RT checked at release. certified_readbits_N20 true. Status: certified (read_bits 3 and 4, N <= 20).**
