@@ -1,0 +1,994 @@
+{
+  "PASS": true,
+  "all_arms_present": true,
+  "api_checks": {
+    "PASS": true,
+    "ghost": {
+      "PASS57": true,
+      "closures_unchanged": {
+        "brute.api.certify14": true,
+        "brute.api.certify16": true,
+        "brute.api.certify16d": true,
+        "brute.api.certify16e": true,
+        "brute.api.certify16n": true,
+        "brute.api.certify16s": true,
+        "brute.api.certify20c": true,
+        "brute.api.certify20l": true,
+        "brute.api.certify20t": true
+      },
+      "cover20_closure": {
+        "brute.api.cover20": {
+          "bad_calls": [],
+          "bad_imports": []
+        }
+      },
+      "cover20_static_ok": true,
+      "frozen_api_sha256": {
+        "brute/api/certify14.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_047.json",
+          "frozen": "0c789ee206e8341ac610d00980c24976e5c027af5a02a5af4edb3c9068818ac6",
+          "now": "0c789ee206e8341ac610d00980c24976e5c027af5a02a5af4edb3c9068818ac6"
+        },
+        "brute/api/certify16.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_047.json",
+          "frozen": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1",
+          "now": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1"
+        },
+        "brute/api/certify16d.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_047.json",
+          "frozen": "98406b659e8abcbe9252da66da49b90317bdc544e1052711d8ec99a482992d25",
+          "now": "98406b659e8abcbe9252da66da49b90317bdc544e1052711d8ec99a482992d25"
+        },
+        "brute/api/certify16e.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_049.json",
+          "frozen": "99a6f3315d0ac7f9944dd6519fc968200543dc9ec50a991657dd33766a7112fb",
+          "now": "99a6f3315d0ac7f9944dd6519fc968200543dc9ec50a991657dd33766a7112fb"
+        },
+        "brute/api/certify16n.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_050.json",
+          "frozen": "46dc1ee28144e9f59af6db85e86d12ffd1b04c69cb8d12cbd85fd790ac95d19a",
+          "now": "46dc1ee28144e9f59af6db85e86d12ffd1b04c69cb8d12cbd85fd790ac95d19a"
+        },
+        "brute/api/certify16s.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_051.json",
+          "frozen": "2793a75ade79c9ebb83e707c350a8ba414b8372cf1de81dd52e3e5bd04cae35b",
+          "now": "2793a75ade79c9ebb83e707c350a8ba414b8372cf1de81dd52e3e5bd04cae35b"
+        },
+        "brute/api/certify20c.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_055.json",
+          "frozen": "48304db74271e113ae92e2d0cc00a1d165586f7e9491f1ee7716a679f048208e",
+          "now": "48304db74271e113ae92e2d0cc00a1d165586f7e9491f1ee7716a679f048208e"
+        },
+        "brute/api/certify20l.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_056.json",
+          "frozen": "1cfe06540e95c9b744c48bfeaa830e9726e9700e582d71b20849e1a6c6407216",
+          "now": "1cfe06540e95c9b744c48bfeaa830e9726e9700e582d71b20849e1a6c6407216"
+        },
+        "brute/api/certify20t.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_054.json",
+          "frozen": "8975cf73946bf19e568c21a764f9a018d02637df34d1c54fd90378112fb854a6",
+          "now": "8975cf73946bf19e568c21a764f9a018d02637df34d1c54fd90378112fb854a6"
+        }
+      },
+      "frozen_api_unchanged": true,
+      "network_pass": true,
+      "no_network_returncode": 0,
+      "no_network_run": {
+        "loop": [
+          "brute.certify/16e",
+          "IDU",
+          null,
+          0,
+          2000659,
+          120
+        ],
+        "socket_attempts": 0
+      },
+      "socket_attempts": 0
+    }
+  },
+  "api_checks_rc": 0,
+  "hook_arms": {
+    "12430001/API16E20": 0,
+    "12430001/COV_O": 0,
+    "12430001/COV_X": 0,
+    "12430001/COV_X_b": 0,
+    "12430001/LEN_R": 0,
+    "12430002/API16E20": 0,
+    "12430002/COV_O": 0,
+    "12430002/COV_X": 0,
+    "12430002/COV_X_b": 0,
+    "12430002/LEN_R": 0
+  },
+  "label": "Observed",
+  "note": "PASS here means the tooling ran end to end on a sealed block, gates reproduce, coverage matching and the COV_X self-replay are exact, the cut rule was applied as declared and the real commit-order check passes; GPRE57 / GX_gain57 outcomes on smoke are recorded, not required",
+  "purpose": "Pre-freeze smoke-gates, runtime projection and cut check for study-057 (plan 057 runtime_estimate; pre-run deviation #188).",
+  "recount": {
+    "PASS": true,
+    "coverage": {
+      "smoke/scale20v/12430001": {
+        "API16E20": {
+          "ext_len": 0,
+          "ext_ok": true,
+          "final": 2,
+          "final_reachable": 2,
+          "handoff": 15,
+          "handoff_reachable": 15,
+          "oracle_len": 45
+        },
+        "COV_O": {
+          "ext_len": 45,
+          "ext_ok": true,
+          "final": 0,
+          "final_reachable": 0,
+          "handoff": 0,
+          "handoff_reachable": 0,
+          "oracle_len": 45
+        },
+        "COV_X": {
+          "ext_len": 120,
+          "ext_ok": true,
+          "final": 1,
+          "final_reachable": 1,
+          "handoff": 1,
+          "handoff_reachable": 1,
+          "oracle_len": 45
+        },
+        "COV_X_b": {
+          "ext_len": 120,
+          "ext_ok": true,
+          "final": 1,
+          "final_reachable": 1,
+          "handoff": 1,
+          "handoff_reachable": 1,
+          "oracle_len": 45
+        },
+        "LEN_R": {
+          "ext_len": 45,
+          "ext_ok": true,
+          "final": 2,
+          "final_reachable": 2,
+          "handoff": 12,
+          "handoff_reachable": 12,
+          "oracle_len": 45
+        }
+      },
+      "smoke/scale20v/12430002": {
+        "API16E20": {
+          "ext_len": 0,
+          "ext_ok": true,
+          "final": 7,
+          "final_reachable": 7,
+          "handoff": 7,
+          "handoff_reachable": 7,
+          "oracle_len": 24
+        },
+        "COV_O": {
+          "ext_len": 24,
+          "ext_ok": true,
+          "final": 0,
+          "final_reachable": 0,
+          "handoff": 0,
+          "handoff_reachable": 0,
+          "oracle_len": 24
+        },
+        "COV_X": {
+          "ext_len": 120,
+          "ext_ok": true,
+          "final": 2,
+          "final_reachable": 2,
+          "handoff": 3,
+          "handoff_reachable": 3,
+          "oracle_len": 24
+        },
+        "COV_X_b": {
+          "ext_len": 120,
+          "ext_ok": true,
+          "final": 2,
+          "final_reachable": 2,
+          "handoff": 3,
+          "handoff_reachable": 3,
+          "oracle_len": 24
+        },
+        "LEN_R": {
+          "ext_len": 24,
+          "ext_ok": true,
+          "final": 4,
+          "final_reachable": 4,
+          "handoff": 7,
+          "handoff_reachable": 7,
+          "oracle_len": 24
+        }
+      }
+    },
+    "labels": {
+      "scale20v": {
+        "API16E20": {
+          "AMB": 0,
+          "ID": 0,
+          "IDF": 0,
+          "IDU": 2,
+          "WRONG": 0
+        },
+        "COV_O": {
+          "AMB": 0,
+          "ID": 0,
+          "IDF": 0,
+          "IDU": 2,
+          "WRONG": 0
+        },
+        "COV_X": {
+          "AMB": 0,
+          "ID": 0,
+          "IDF": 0,
+          "IDU": 2,
+          "WRONG": 0
+        },
+        "COV_X_b": {
+          "AMB": 0,
+          "ID": 0,
+          "IDF": 0,
+          "IDU": 2,
+          "WRONG": 0
+        },
+        "LEN_R": {
+          "AMB": 0,
+          "ID": 0,
+          "IDF": 0,
+          "IDU": 2,
+          "WRONG": 0
+        }
+      }
+    },
+    "misfires": {
+      "API16E20": 0,
+      "COV_O": 0,
+      "COV_X": 0,
+      "COV_X_b": 0,
+      "LEN_R": 0
+    },
+    "mismatches": {},
+    "mismatching_cases": 0,
+    "truth_inconsistent": 0,
+    "words_checked": 64,
+    "words_unsound": 0
+  },
+  "recount_rc": 0,
+  "reference_rc": 0,
+  "reference_smoke": {
+    "PASS": true,
+    "audited": 0,
+    "complete": true,
+    "decided": 0,
+    "elapsed_informational": {
+      "r12": 0.016387573996325955
+    },
+    "mismatch_count": 0,
+    "mutations": 0,
+    "of": 0,
+    "per_arm": {
+      "API16E20": {
+        "audited": 0,
+        "decided": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 2
+      },
+      "COV_O": {
+        "audited": 0,
+        "decided": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 2
+      },
+      "COV_X": {
+        "audited": 0,
+        "decided": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 2
+      },
+      "COV_X_b": {
+        "audited": 0,
+        "decided": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 2
+      },
+      "LEN_R": {
+        "audited": 0,
+        "decided": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 2
+      }
+    },
+    "records": 10,
+    "scope": {
+      "budget_12_s": 2400.0,
+      "key_order": [
+        "scale20v"
+      ],
+      "order": [
+        "API16E20",
+        "COV_O",
+        "LEN_R",
+        "COV_X",
+        "COV_X_b"
+      ],
+      "workers_12": 8
+    },
+    "vacuous": true
+  },
+  "release_ok_synthetic": true,
+  "runtime_projection": {
+    "candidates": {
+      "N57=12": {
+        "jobs": 60,
+        "smoke_mean_run_s": 2094.8,
+        "worst_run_s": 2620.2
+      },
+      "N57=8": {
+        "jobs": 40,
+        "smoke_mean_run_s": 1309.2,
+        "worst_run_s": 1637.6
+      }
+    },
+    "cap_s": 3300.0,
+    "caveat": "two smoke seeds; the worst case assumes every job spends its whole B at the slowest smoke rate",
+    "chosen_projection": {
+      "jobs": 60,
+      "smoke_mean_run_s": 2094.8,
+      "worst_run_s": 2620.2
+    },
+    "cut_applied": false,
+    "cut_consistent": true,
+    "cut_exhausted": false,
+    "label": "Inferred",
+    "projected_main_worst_s": 2620.2,
+    "required": {
+      "N57": 12
+    },
+    "runner": {
+      "N57": 12
+    },
+    "smoke_job_walls_s": [
+      175.0,
+      210.2,
+      245.5,
+      250.2,
+      252.9,
+      278.9,
+      293.2,
+      294.8,
+      300.3,
+      317.6
+    ],
+    "smoke_rate_max": 11431.4,
+    "smoke_slowest_rate": 6298.7,
+    "workers": 8,
+    "worst_per_job_s": 327.5
+  },
+  "smoke_determinism": [
+    [
+      12430001,
+      true
+    ],
+    [
+      12430002,
+      true
+    ]
+  ],
+  "smoke_record_columns": [
+    "seed",
+    "arm: label, stop, conflicts_spent, ext_len, truth_pairs_unexercised_handoff_reachable, truth_pairs_unexercised_final_reachable, n_rounds, wall_guard, hook_arms, case wall s"
+  ],
+  "smoke_records": [
+    [
+      12430001,
+      {
+        "API16E20": [
+          "IDU",
+          "unknown",
+          2000174,
+          0,
+          15,
+          2,
+          30,
+          0,
+          0,
+          175.0
+        ],
+        "COV_O": [
+          "IDU",
+          "unknown",
+          2005749,
+          45,
+          0,
+          0,
+          1,
+          0,
+          0,
+          293.2
+        ],
+        "COV_X": [
+          "IDU",
+          "unknown",
+          2000255,
+          120,
+          1,
+          1,
+          1,
+          0,
+          0,
+          317.6
+        ],
+        "COV_X_b": [
+          "IDU",
+          "unknown",
+          2000255,
+          120,
+          1,
+          1,
+          1,
+          0,
+          0,
+          300.3
+        ],
+        "LEN_R": [
+          "IDU",
+          "unknown",
+          2000268,
+          45,
+          12,
+          2,
+          30,
+          0,
+          0,
+          210.2
+        ]
+      }
+    ],
+    [
+      12430002,
+      {
+        "API16E20": [
+          "IDU",
+          "unknown",
+          2000009,
+          0,
+          7,
+          7,
+          1,
+          0,
+          0,
+          245.5
+        ],
+        "COV_O": [
+          "IDU",
+          "unknown",
+          2000027,
+          24,
+          0,
+          0,
+          1,
+          0,
+          0,
+          250.1
+        ],
+        "COV_X": [
+          "IDU",
+          "unknown",
+          2002696,
+          120,
+          3,
+          2,
+          2,
+          0,
+          0,
+          294.8
+        ],
+        "COV_X_b": [
+          "IDU",
+          "unknown",
+          2002696,
+          120,
+          3,
+          2,
+          2,
+          0,
+          0,
+          278.8
+        ],
+        "LEN_R": [
+          "IDU",
+          "unknown",
+          2000261,
+          24,
+          7,
+          4,
+          5,
+          0,
+          0,
+          252.9
+        ]
+      }
+    ]
+  ],
+  "smoke_wall_guard_records": [],
+  "stops_present": {
+    "unknown": 10
+  },
+  "synthetic": {
+    "GDET57": {
+      "ci95": [
+        0.3423802275066531,
+        1.0
+      ],
+      "columns": [
+        "seed",
+        "canon57_equal",
+        "conflicts_equal",
+        "ext_equal",
+        "pass1",
+        "pass2"
+      ],
+      "hard_kills": [],
+      "identical": 2,
+      "of": 2,
+      "per_case": [
+        [
+          12430001,
+          true,
+          true,
+          true,
+          "IDU",
+          "IDU"
+        ],
+        [
+          12430002,
+          true,
+          true,
+          true,
+          "IDU",
+          "IDU"
+        ]
+      ],
+      "records_checked_for_kill": 10
+    },
+    "GFID57": {
+      "bound": true,
+      "ci95": [
+        0.3423802275066531,
+        1.0
+      ],
+      "exact": 2,
+      "expected": 2,
+      "failures": {},
+      "of": 2
+    },
+    "GMATCH57": {
+      "columns": [
+        "seed",
+        "COV_O_ext_len",
+        "COV_O_handoff_reachable_unexercised",
+        "LEN_R_ext_len",
+        "LEN_R_handoff_reachable_unexercised",
+        "valid"
+      ],
+      "of": 2,
+      "per_case": [
+        [
+          12430001,
+          45,
+          0,
+          45,
+          12,
+          true
+        ],
+        [
+          12430002,
+          24,
+          0,
+          24,
+          7,
+          true
+        ]
+      ],
+      "source": "RECOUNT_057 coverage (recomputed from the world)",
+      "valid": 2
+    },
+    "GPRE57": {
+      "COV_O_ID_IDF": 0,
+      "LEN_R_ID_IDF": 0,
+      "ci95_COV_O": [
+        0.0,
+        0.6576197724933469
+      ],
+      "ci95_LEN_R": [
+        0.0,
+        0.6576197724933469
+      ],
+      "discordant": [
+        0,
+        0
+      ],
+      "label_source": "recount",
+      "mcnemar_p_reported": 1.0,
+      "of": 2,
+      "rule": "COV_O ID+IDF >= 3 and COV_O - LEN_R >= 2 on the same seeds (COV_O is oracle-planned, not deployable)"
+    },
+    "GS57_sound": {
+      "WRONG": [],
+      "columns": [
+        "seed",
+        "API16E20",
+        "COV_O",
+        "LEN_R",
+        "COV_X",
+        "COV_X_b"
+      ],
+      "label_source": "recount",
+      "per_case": [
+        [
+          12430001,
+          "IDU",
+          "IDU",
+          "IDU",
+          "IDU",
+          "IDU"
+        ],
+        [
+          12430002,
+          "IDU",
+          "IDU",
+          "IDU",
+          "IDU",
+          "IDU"
+        ]
+      ],
+      "records": 10
+    },
+    "GS_ref": {
+      "PASS": true,
+      "audited": 0,
+      "block": "main",
+      "complete": true,
+      "decided": 0,
+      "elapsed_informational": {
+        "r12": 0.013690335006685928
+      },
+      "k_spent_as_amb": 0,
+      "mismatch_count": 0,
+      "mutations": 0,
+      "not_audited": [],
+      "not_reached": 10,
+      "of": 0,
+      "per_arm": {
+        "API16E20": {
+          "audited": 0,
+          "decided": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 2
+        },
+        "COV_O": {
+          "audited": 0,
+          "decided": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 2
+        },
+        "COV_X": {
+          "audited": 0,
+          "decided": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 2
+        },
+        "COV_X_b": {
+          "audited": 0,
+          "decided": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 2
+        },
+        "LEN_R": {
+          "audited": 0,
+          "decided": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 2
+        }
+      },
+      "records": 10,
+      "scope": {
+        "budget_12_s": 2400.0,
+        "key_order": [
+          "scale20v"
+        ],
+        "order": [
+          "API16E20",
+          "COV_O",
+          "LEN_R",
+          "COV_X",
+          "COV_X_b"
+        ],
+        "workers_12": 8
+      },
+      "vacuous": true,
+      "verdicts_checked": 0
+    },
+    "GTI57": {
+      "bound": true,
+      "truth_inconsistent": 0
+    },
+    "GX_gain57": {
+      "API16E20_ID_IDF": 0,
+      "COV_X_ID_IDF": 0,
+      "COV_X_b_ID_IDF": 0,
+      "ci95_API16E20": [
+        0.0,
+        0.6576197724933469
+      ],
+      "ci95_COV_X": [
+        0.0,
+        0.6576197724933469
+      ],
+      "ci95_COV_X_b": [
+        0.0,
+        0.6576197724933469
+      ],
+      "label_source": "recount",
+      "of": 2,
+      "rule": "COV_X (pass 1) ID+IDF >= 2 and strictly more than API16E20 on the same seeds"
+    },
+    "G_sound": {
+      "WRONG": [],
+      "recount_bound": true,
+      "recount_words_checked": 64,
+      "recount_words_unsound": 0,
+      "words_checked": 64,
+      "words_unsound": 0
+    },
+    "cases": 2,
+    "certified_20v_N20": false,
+    "fidelity_failures": {},
+    "fidelity_self_replay": {
+      "PASS": true,
+      "cases": 2,
+      "exact": 2,
+      "expected": 2,
+      "gated": {
+        "cases": 2,
+        "exact": 2
+      },
+      "study_results_sha256": "8a7249f2a8c15d9e71a4a9ebafdb593d91f83edca269563e33cfdba0e527a440",
+      "workers": 8
+    },
+    "gate_status": {
+      "GDET57": {
+        "pass": true
+      },
+      "GFID57": {
+        "pass": true
+      },
+      "GHOST57": {
+        "pass": false
+      },
+      "GMATCH57": {
+        "pass": true
+      },
+      "GPRE57": {
+        "pass": false
+      },
+      "GS57_sound": {
+        "pass": true
+      },
+      "GS_ref": {
+        "pass": true
+      },
+      "GTEST": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (TEST_SUITE_057 missing)"
+      },
+      "GTI57": {
+        "pass": true
+      },
+      "GX_gain57": {
+        "pass": false
+      },
+      "G_PROC": {
+        "pass": false
+      },
+      "G_RT": {
+        "pass": true
+      },
+      "G_recount": {
+        "pass": true
+      },
+      "G_sound": {
+        "pass": true
+      }
+    },
+    "label_source": "recount",
+    "note": "synthetic: smoke cases as main with the smoke case count; GHOST57 (no 057 freeze yet), GTEST and G_PROC may fail by design; GPRE57 and GX_gain57 on 2 smoke seeds are recorded, not required",
+    "recount_rc": 0,
+    "reference_rc": 0,
+    "reproduces": true,
+    "sealed_input_verified": true,
+    "secondary": {
+      "GCOST57": {
+        "API16E20": {
+          "arm_wall_s": 420.4,
+          "budget_spent": 2,
+          "calls": 131,
+          "chunks": 160,
+          "conflicts": 4000183,
+          "records": 2,
+          "steps": 79
+        },
+        "COV_O": {
+          "arm_wall_s": 543.3,
+          "budget_spent": 2,
+          "calls": 74,
+          "chunks": 103,
+          "conflicts": 4005776,
+          "records": 2,
+          "steps": 69
+        },
+        "COV_X": {
+          "arm_wall_s": 612.4,
+          "budget_spent": 2,
+          "calls": 76,
+          "chunks": 105,
+          "conflicts": 4002951,
+          "records": 2,
+          "steps": 244
+        },
+        "COV_X_b": {
+          "arm_wall_s": 579.2,
+          "budget_spent": 2,
+          "calls": 76,
+          "chunks": 105,
+          "conflicts": 4002951,
+          "records": 2,
+          "steps": 244
+        },
+        "LEN_R": {
+          "arm_wall_s": 463.1,
+          "budget_spent": 2,
+          "calls": 138,
+          "chunks": 160,
+          "conflicts": 4000529,
+          "records": 2,
+          "steps": 186
+        }
+      },
+      "GCOVX57": {
+        "full": 0,
+        "handoff_reachable_unexercised": [
+          1,
+          3
+        ],
+        "mean": 2.0,
+        "of": 2
+      },
+      "GPRE_stats57": [
+        [
+          12430001,
+          [
+            "IDU",
+            0,
+            15,
+            2,
+            30,
+            2000174
+          ],
+          [
+            "IDU",
+            45,
+            0,
+            0,
+            1,
+            2005749
+          ],
+          [
+            "IDU",
+            45,
+            12,
+            2,
+            30,
+            2000268
+          ],
+          [
+            "IDU",
+            120,
+            1,
+            1,
+            1,
+            2000255
+          ]
+        ],
+        [
+          12430002,
+          [
+            "IDU",
+            0,
+            7,
+            7,
+            1,
+            2000009
+          ],
+          [
+            "IDU",
+            24,
+            0,
+            0,
+            1,
+            2000027
+          ],
+          [
+            "IDU",
+            24,
+            7,
+            4,
+            5,
+            2000261
+          ],
+          [
+            "IDU",
+            120,
+            3,
+            2,
+            2,
+            2002696
+          ]
+        ]
+      ],
+      "MCNEMAR57": {
+        "COV_O_vs_LEN_R": {
+          "discordant": [
+            0,
+            0
+          ],
+          "p": 1.0
+        },
+        "COV_X_vs_API16E20": {
+          "discordant": [
+            0,
+            0
+          ],
+          "p": 1.0
+        }
+      },
+      "SEEDCHECK57": {
+        "frozen_in_057": false,
+        "seedcheck_pass": true,
+        "total_cases": 12
+      }
+    },
+    "sound_not_certified_20v": false,
+    "status_phrase": "not certified, no certification status (failing gates: GPRE57, GX_gain57, GHOST57, GTEST, G_PROC)"
+  },
+  "verifier_chain": {
+    "authorization_exceptions": 0,
+    "entries": [
+      [
+        "preregistration_057",
+        "a8dfa1d"
+      ],
+      [
+        "build_authorization_057",
+        "ccae49d"
+      ],
+      [
+        "seedcheck_057",
+        "263bd6b"
+      ]
+    ],
+    "head": "1e452a9",
+    "links": 5,
+    "passed": true
+  }
+}
