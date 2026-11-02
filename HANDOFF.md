@@ -1,8 +1,16 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.58.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.59.0 release in progress)._
 
 ## Current version and state
+
+<!-- V0590 -->
+- **v0.59.0: release in progress** 2026-11-02 (EST) on plan/v0.59.0 (gates 6e75d3e, RELEASE.json 63540b7). Status from the flags: "sound but no 2-bit gain".
+  - **Run complete (Observed).** 8/8 jobs, 3 cases; launched once with nohup 18:08:44 EST (ledger b61e881, pid 2089976), sealed 18:40:19 EST (seal 3a22432, runner 1894.5 s); never relaunched. Cut by #198 before the freeze: N_SEEDS 3, N_W2B 2.
+  - **FAIL: GW62** (W2 0/3 [0.00, 0.56] = B2 0/3; W2 - B2 = 0; discordant 0). **PASS (8/9 gated):** GS62_sound (WRONG 0/8 [0.00, 0.32]); GDET62 2/2 [0.34, 1.00]; GFID62 (vacuous); GHOST62; GS_ref (vacuous, 0 decided); G_recount; GTEST (135 tests); G_PROC.
+  - **Blunt reading:** windows cost rounds per budget (10-19 vs 21-44); W2 twice never fixed a least size. 2-bit at 20 states stays Open. n = 3.
+  - **No CI.** brute-bridge and BGR-v0.90.0 untouched. The user's computer was offline; network went through the box.
+  - **Deviations:** #198 (pre-run), #199 (post-run). **Next:** plan 063 (v0.60.0): clique-anchored symmetry breaking with exact max-clique re-pinning, chosen by a sealed-seed probe.
 
 <!-- V0580 -->
 - **v0.58.0: RELEASED** 2026-11-02 (EST), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.58.0 (annotated tag object `6cd9597` at `4cfc2ca`, ledger release_0580 `972ea11`). Fresh-clone verify of the tag passed (G_RT): studies 045 to 061 restored, verify_release_0580 passed, 130 tests pass. Study BRUTE-0580-BUDGET24W-061. TARGET CHANGE (budget): the frozen certify/32b at B61 = 24M conflicts, random 4-bit readings, declared N 24.
