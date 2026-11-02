@@ -1,5 +1,28 @@
 # Brute changelog
 
+## v0.57.0: TARGET CHANGE. brute.certify/32b is certified for random 4-bit readings at N <= 24; 32 states and 2-bit at 20 states stay Open (study BRUTE-0570-SCALE24W-060, LEAN process)
+
+**9 of 9 gated pass (GS60_sound, GN24_60, GDET60, GFID60, GHOST60, GS_ref, G_recount, GTEST, G_PROC); G_RT checked at release. certified_readbits4_N24 true. Status: certified (read_bits 4, N <= 24).**
+
+Blunt summary. This raises the declared size for the v0.55.0 target (wide random readings); it is not progress on 2-bit readings. certify/32b is certify/20b with the declared bound allowed up to 32. At 24 states and an 8M conflict budget it decided 8 of 12 fresh worlds; the other 4 ran out of budget. At 32 states it decided none of 6.
+
+Claim scope (*Exact*; reason *Inferred*): an ID or IDF is exact only conditional on noise-free readings and a true size at most the declared N = 24. A larger machine can copy the true machine on every visited state.
+
+### Timeline (EST, 2026-11-02)
+
+- Budget probe `a6d1eb0` (exploratory); plan `1893218`; seedcheck `7f086d7`; tooling `d41f3dc`-`d13ef5a`; pre-freeze smoke attempt 1 PASS `ef69a9a`; deviation #194 `13f3b53`; source freeze `caa854f` (624 files).
+- Main run launched once with nohup 13:58:06 (ledger `6d7d02b`); sealed about 14:34, seal `ac95e8c` (runner 2075.9 s); recount `38da546`; reference `442cff4` (94 s); tests `31f3c17` (the launching tool call was aborted, the complete output was kept and not rerun, #195 item 3); api checks `fde59e8`; gates `da88bdd`; deviation #195 `61fa36f`; RELEASE.json `537df2b`.
+
+### Results (recount labels; Wilson 95% in GATES_060.json)
+
+| arm (B 8M, K 400, 4-bit random readings) | ID+IDF | WRONG | decided conflicts |
+|---|---|---|---|
+| S24 (bound 24, 12 worlds) | 8/12 (7 ID, 1 IDF) [0.39, 0.86] | 0 | 2.86-5.59M |
+| S24b (second pass) | identical to S24 12/12 [0.76, 1.00] | 0 | same |
+| S32 (bound 32, 6 worlds, reported) | 0/6 [0.00, 0.39] | 0 | n/a |
+
+WRONG 0/30 [0.00, 0.11]. IDU at 24 states: 12600101, 12600102, 12600103, 12600109 (n_min 23, 23, 24, 23 at 8M). Reference 16/16 audited, 0 mismatches, 20/20 mutations; replay 16/16 exact. Deviations #194 (pre-run, 12 items) and #195 (post-run, 9 items).
+
 ## v0.56.0: TARGET CHANGE. brute.certify/20n is certified for random 4-bit readings under iid bit noise (eps <= eps_bar <= 0.15) at N <= 20; 2-bit at 20 states stays Open (study BRUTE-0560-NOISYWIDE-059, LEAN process)
 
 **11 of 11 gated pass (GS59_sound, GN05_59, GN_keep59, GMAJ59, GDET59, GFID59, GHOST59, GS_ref, G_recount, GTEST, G_PROC); G_RT checked at release. certified_noisy_readbits4_N20 true. Status: certified (read_bits 4, iid bit noise eps <= eps_bar <= 0.15, N <= 20).**
