@@ -1,0 +1,104 @@
+{
+ "schema": "brute.plan.v1",
+ "study": "BRUTE-0580-BUDGET24W-061",
+ "version_under_test": "0.58.0",
+ "parent_study": "BRUTE-0570-SCALE24W-060",
+ "written": "2026-11-02 (EST), after the v0.57.0 release",
+ "status": "preregistered (plan only; no build code, no fresh seed use, no data). Build needs a ledgered build_authorization_061 citing the standing go t133s553 and t139s684, and the budget probe below must be committed and ledgered (budget_probe_061) before build_authorization_061",
+ "standing_go": [
+  "t133s553",
+  "t139s684 (James, Nov 2 2026: keep going version after version until something valuable turns up; stop only when he says so)"
+ ],
+ "branch_taken": "plan 060 next_if_pass (Exact, GATES_060: 9/9 gated pass, certified (read_bits 4, N <= 24)). Plan 060 named three next steps: noise at 24 states, 32 states with a budget/encoding step, or 3-bit at 24. This plan takes the budget step because 060 left 4/12 24-state worlds IDU at the 8M budget (n_min 23-24) and 0/6 at 32 states; the conflict need is the open measurement that sizes both the 24-state rate and any 32-state attempt.",
+ "choice": {
+  "budget_24": "CHOSEN (gated headline). Raise B at 24 states to B61 (rule below) and test whether the decision rate rises above 060's 8/12.",
+  "budget_32": "SECONDARY (reported). Same B61 at 32 states on 4 fresh seeds; soundness gated, decisions reported (likely Open).",
+  "noise_at_24": "Deferred: study 059 showed 0 majority errors at eps <= 0.10, so a noisy 24-state wrapper would mostly retest the majority rule; it is a later step.",
+  "readbits3_at_24": "Deferred."
+ },
+ "honest_framing": "STILL A TARGET CHANGE (wide 4-bit readings on random emissions). 2-bit readings at 20 states stay Open. This is a budget study of the same solver (certify/32b, frozen at v0.57.0), not a new algorithm. The guarantee stays conditional on the declared N (Inferred: a larger machine can copy the true machine on every visited state) and on noise-free readings.",
+ "brand": "charcoal and sage; no purple, neon, emoji or gold",
+ "question": "(A) With B = B61 (> 8M), does brute.certify/32b at declared bound 24 decide (ID+IDF) at least 10 of 12 fresh 24-state worlds with random noise-free 4-bit readings at C 50000, K 400? (B) Does it stay sound (WRONG 0) at 24 and 32 states? (C) What is the conflict need of 24-state worlds (distribution of decided conflicts) and does any 32-state world decide at B61 (reported)?",
+ "hypotheses": {
+  "H1": "no record is WRONG",
+  "H2": "S24 decides (ID+IDF) >= 10/12 at B61",
+  "H3": "S24 and S24b give byte-identical canonical records on the 6 S24b seeds",
+  "H4 (reported)": "S32 decides 0-1 of 4 at B61"
+ },
+ "budget_probe_rule": "Before build_authorization_061, run an exploratory probe (scripts/probe_061.py, a new file) of certify/32b on NON-fresh sealed 060 seeds only: the four 060 S24 IDU seeds 12600101, 12600102, 12600103, 12600109 at bound 24, and 060 S32 seeds 12600201-12600202 at bound 32, each at B in {16M, 24M}, 8 workers, the probe capped at 60 min wall. B61 is the smallest probed B that decides >= 3 of the 4 24-state probe seeds. If neither does, B61 = 24M and the plan is still run (the gate then likely fails and is published). The probe result, B61 and the projected runtime are committed and ledgered as budget_probe_061; nothing in the probe is gate evidence.",
+ "design": {
+  "api": "no new API. brute.certify/32b (brute/api/certify32b.py) frozen at v0.57.0 is imported only, never edited.",
+  "worlds": "experiments/worlds_060.py unchanged (worlds_026 transitions, worlds_058 random 4-bit emissions, worlds_026 passive prefix); new seeds only",
+  "arms": {
+   "S24": "key scale24w, declared bound 24, 12 fresh seeds (gated)",
+   "S24b": "S24 again on the first 6 seeds in reversed order (determinism)",
+   "S32": "key scale32w, declared bound 32, 4 fresh seeds (soundness gated; decisions reported)"
+  },
+  "caps": {
+   "C": 50000,
+   "B": "B61 (fixed by budget_probe_rule before build authorization)",
+   "K": 400,
+   "read_bits": 4,
+   "max_chunks": null
+  },
+  "stop": "conflict-only; per-case hard kill sized from the probe (recorded in the pre-run deviation before the freeze); 30 s per-call guard; a guard firing in S24/S24b fails GDET61",
+  "order": "one 8-worker pool, max_tasks_per_child 1; S32 first, then S24 ascending, then S24b descending"
+ },
+ "cases": {
+  "scale24w": 12,
+  "scale24w_b": 6,
+  "scale32w": 4,
+  "jobs": "12 S24 + 6 S24b + 4 S32 = 22",
+  "declared_before_data": true
+ },
+ "heldout_ranges": {
+  "scale24w": "12610101-12610112",
+  "scale32w": "12610201-12610204",
+  "note": "seedcheck_061 scans every tracked file, .gz included, before any fresh seed; a hit moves the part by a ledgered deviation before data"
+ },
+ "smoke_range": "12610301-12610306 (pre-freeze smoke and the no-network check only; never gated; never used to set B, C, K or any order)",
+ "criteria": {
+  "GS61_sound": "WRONG 0 on every record of S24, S24b and S32 (22 records)",
+  "GN24_61": "S24 ID+IDF >= 10/12 (Wilson 95% CI reported) [soft: failure alone gives 'sound but not certified at B61']",
+  "GDET61": "S24 and S24b canonical records byte-identical on 6/6 seeds and no wall guard fired in S24/S24b",
+  "GFID61": "every decided main record replays exactly through the public interface (api_checks_061, once, after the run), bound to the sealed RESULTS sha; a no-network run makes 0 socket attempts",
+  "GHOST61": "certify32b and every frozen api file sha equal BRUTE_SOURCE_FREEZE_060; certify16d.A16D_MAX_BOUND still 20",
+  "GS_ref": "independent CNF reference audits every decided record (0 mismatches, 20/20 mutations) within 3600 s",
+  "G_recount": "independent recount of labels from sealed records, 0 mismatches",
+  "GTEST": "official test suite once, all gated modules pass",
+  "G_PROC": "ledger order preregistration_061 < budget_probe_061 < build_authorization_061 < seedcheck_061 < prefreeze_smoke_061 < deviation_196 < freeze_061 < main_run_061"
+ },
+ "certification_rule": "certify/32b at read_bits 4, N <= 24 is already certified by v0.57.0 at B 8M. This study certifies the claim 'decides >= 10/12 at B61' iff every gate passes; if only GN24_61 fails it is published as 'sound but not certified at B61' and the v0.57.0 status is unchanged. N 25..32 gets no certification status. 2-bit 20-state worlds stay Open whatever happens.",
+ "status_wording_rule": "every status phrase is derived from the GATES_061 flags: certified -> 'certified (read_bits 4, N <= 24, B61)'; sound_not_certified -> 'sound but not certified at B61'; neither -> 'not certified, no certification status' plus the failing gates",
+ "secondary": {
+  "S32_report": "S32 labels, ID+IDF with Wilson CI",
+  "GCOST61": "conflicts, wall, decided-conflict distribution per arm, compared with 060 at 8M",
+  "GSTATS61": "per-seed table",
+  "SEEDCHECK61": "seedcheck pass",
+  "PROBE61": "budget probe result and B61 (exploratory)"
+ },
+ "runtime_estimate": "Inferred from 060 (Observed): 24-state IDU jobs took 376-599 s at 8M; at 16M an IDU job may take about 2x. 32-state jobs took 507-1955 s at 8M. The pre-freeze smoke projects LPT over 8 workers; cut rule declared in deviation #196 before the freeze: if the projection exceeds 3300 s, S32 drops 4 -> 0, then S24b 6 -> 3. S24 is never cut. Never raise B or C after the probe.",
+ "process": "LEAN under the standing go, as in plan 060: plan locked before data; probe on sealed seeds only; build authorization; seedcheck; pre-freeze smoke; pre-run deviation #196; freeze; main runs once with nohup and is never relaunched; recount; reference; tests once; api_checks once; gates; post-run deviation #197; failures published",
+ "process_naming_rule": "every pre-freeze smoke attempt is ledgered as prefreeze_smoke_061_attemptK; the one the freeze relies on also as prefreeze_smoke_061; the release ledger event is release_0580 (release_061 may collide with older names)",
+ "freeze_rule": "no file named in the source freeze is edited after the freeze; caps (with B61), K, read_bits, orders, stop rule, workers, arm spec and case lists are part of the freeze",
+ "what_counts_as_failure": "any gated criterion false; a wall-guard firing in S24/S24b fails GDET61; AMB, K_spent and unknown are not soundness failures; S32 decisions never fail a gate (a WRONG in S32 fails GS61_sound)",
+ "next_if_pass": "24-state need measured; next: noise at 24 states over certify/32b, or an encoding step for 32 states if S32 stayed Open",
+ "next_if_fail": "if GS61_sound fails: publish; audit the bound lift. If only GN24_61 fails: the 24-state need exceeds B61 on fresh seeds; next is an encoding or query-order step rather than more budget",
+ "limitations": [
+  "12 seeds give wide CIs (10/12 has Wilson [0.55, 0.95])",
+  "B61 is chosen on 4 non-fresh seeds that were IDU at 8M (selected hard cases)",
+  "same solver as v0.57.0; a pass is budget evidence, not a new algorithm",
+  "random 4-bit emissions only; noise-free",
+  "S24b runs 6 seeds",
+  "still needs a declared size N"
+ ],
+ "open_items": [
+  "2-bit 20-state worlds: Open",
+  "N 25..32 decisions: Open",
+  "noise at N > 20: Open",
+  "full N-freedom: Open (impossible from finite data without a size bound; Inferred)",
+  "IDF that fixes the start state: Open"
+ ],
+ "claim_scope": "conditional on the declared N and noise-free readings: an ID or IDF means unique among machines with at most N states consistent with the trace. Inferred reason for N: a larger machine can copy the true machine on every visited state. Never 'first decided 20-state world'. Random 4-bit readings only.",
+ "evidence_labels": "Exact, Observed, Simulated, Inferred, Rejected, Open"
+}
