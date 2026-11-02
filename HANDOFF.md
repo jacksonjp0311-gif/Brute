@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.56.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.56.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0560 -->
-- **v0.56.0: release in progress** 2026-11-02 (EST) on branch plan/v0.56.0. TARGET CHANGE: certify/20n (brute/api/certify20n.py, repeat-read majority over the frozen certify/20b) is certified (read_bits 4, iid bit noise eps <= eps_bar <= 0.15, N <= 20). **2-bit readings at 20 states stay Open.**
+- **v0.56.0: RELEASED** 2026-11-02 (EST), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.56.0 (annotated tag object `3aecca5` at `aefed08`, ledger release_059 `ea97b17`). Fresh-clone verify of the tag passed (G_RT): studies 045 to 059 restored, verify_release_0560 passed, 126/126 tests in 12 modules. TARGET CHANGE: certify/20n (brute/api/certify20n.py, repeat-read majority over the frozen certify/20b) is certified (read_bits 4, iid bit noise eps <= eps_bar <= 0.15, N <= 20). **2-bit readings at 20 states stay Open.**
   - **Run complete (Observed).** 60/60 jobs, 12 cases; launched once with nohup 12:33:56 EST (ledger 5b5085c), sealed about 12:40 EST (seal f507271); never relaunched. No cut: N59 12.
   - **PASS (11/11 gated):** GS59_sound (WRONG 0/48 gated [0.00, 0.074]); GN05_59 N4_05 11/12 [0.65, 0.99]; GN_keep59 N4_10 11/12 = C4 11/12 (McNemar p 1.00); GMAJ59 (0 majority errors); GDET59 12/12 [0.76, 1.00]; GFID59; GHOST59; GS_ref (55/55 audited, 0 mismatches, 20/20 mutations); G_recount; GTEST; G_PROC.
   - **Blunt reading:** the majority front end made 0 errors, so the solver saw clean traces; cost is 56-73x more reads. NEG4 (eps 0.25 vs eps_bar 0.10) also had 0 majority errors: weak negative control. One miss in every arm: 12590007.
