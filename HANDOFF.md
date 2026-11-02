@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.54.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.54.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0540 -->
-- **v0.54.0: release in progress** on `plan/v0.54.0`. Study BRUTE-0540-SCALE20-COVERFIRST-057 (plan 057 `a8dfa1d`), LEAN, standing go t133s553 and t139s684. Status from GATES_057: **sound but not certified** (certified_20v_N20 false, sound_not_certified_20v true).
+- **v0.54.0: RELEASED** 2026-11-02 (EST), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.54.0 (annotated tag object `d1c5480` at `2f4ed29`, ledger release_057 `3af6568`). Fresh-clone verify of the tag passed: study 045 to 057 restored, verify_release_0540 passed, 136/136 tests in 14 modules (ledger fresh_clone_verify_057 `0b789c1`). `main` fast-forwarded to this RELEASED note. Study BRUTE-0540-SCALE20-COVERFIRST-057 (plan 057 `a8dfa1d`), LEAN, standing go t133s553 and t139s684. Status from GATES_057: **sound but not certified** (certified_20v_N20 false, sound_not_certified_20v true).
   - **Run complete (Observed).** 60/60 jobs, 12 cases, 1936.5 s of 3600 s, launched once with nohup 09:01:55 EST (pid 1742858), exit about 09:34 EST; 7 snapshots; nothing relaunched.
   - **PASS (12/14 gated):** GS57_sound (WRONG 0/60); GMATCH57 12/12; GDET57 12/12 [0.76, 1.00]; GFID57 12/12 [0.76, 1.00]; GHOST57; G_sound (527 words, 0 unsound); GS_ref (5 audited, 0 mismatches, 20/20 mutations); G_recount; GTI57; GTEST (136 tests, 14 modules); G_PROC; G_RT.
   - **FAIL:** GX_gain57: COV_X 0/12 [0.00, 0.24] vs certify/16e 0/12. GPRE57: COV_O 1/12 [0.01, 0.35] (12410008 ID) vs LEN_R 0/12; needed >= 3 and a lead of 2 (McNemar p 1.00).
