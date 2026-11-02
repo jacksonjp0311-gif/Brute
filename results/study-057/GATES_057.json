@@ -1,0 +1,1489 @@
+{
+  "all_gated_pass": false,
+  "caps": [
+    50000,
+    2000000
+  ],
+  "certified_20v_N20": false,
+  "claim": "certify/20v (cover20 then certify/16e) ID/IDF is exact on noise-free traces conditional on true size <= the declared N (here N <= 20); IDF identifies the machine from the current state, not the start. Inferred reason the condition is needed: a larger machine can copy the true machine on every visited state. The oracle walk (COV_O) is never certified",
+  "cover": {
+    "api": "brute.cover20/1",
+    "h": 1,
+    "steps": 120
+  },
+  "failed": [
+    "GPRE57",
+    "GX_gain57"
+  ],
+  "gates": {
+    "GDET57": {
+      "observed": {
+        "ci95": [
+          0.7575059933447591,
+          1.0
+        ],
+        "columns": [
+          "seed",
+          "canon57_equal",
+          "conflicts_equal",
+          "ext_equal",
+          "pass1",
+          "pass2"
+        ],
+        "hard_kills": [],
+        "identical": 12,
+        "of": 12,
+        "per_case": [
+          [
+            12410001,
+            true,
+            true,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            12410002,
+            true,
+            true,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            12410003,
+            true,
+            true,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            12410004,
+            true,
+            true,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            12410005,
+            true,
+            true,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            12410006,
+            true,
+            true,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            12410007,
+            true,
+            true,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            12410008,
+            true,
+            true,
+            true,
+            "AMB",
+            "AMB"
+          ],
+          [
+            12410009,
+            true,
+            true,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            12410010,
+            true,
+            true,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            12410011,
+            true,
+            true,
+            true,
+            "IDU",
+            "IDU"
+          ],
+          [
+            12410012,
+            true,
+            true,
+            true,
+            "IDU",
+            "IDU"
+          ]
+        ],
+        "records_checked_for_kill": 60
+      },
+      "pass": true
+    },
+    "GFID57": {
+      "observed": {
+        "bound": true,
+        "ci95": [
+          0.7575059933447591,
+          1.0
+        ],
+        "exact": 12,
+        "expected": 12,
+        "failures": {},
+        "of": 12
+      },
+      "pass": true
+    },
+    "GHOST57": {
+      "observed": {
+        "bound_to_freeze_057": true,
+        "closures_unchanged": {
+          "brute.api.certify14": true,
+          "brute.api.certify16": true,
+          "brute.api.certify16d": true,
+          "brute.api.certify16e": true,
+          "brute.api.certify16n": true,
+          "brute.api.certify16s": true,
+          "brute.api.certify20c": true,
+          "brute.api.certify20l": true,
+          "brute.api.certify20t": true
+        },
+        "cover20_static_ok": true,
+        "frozen_api_unchanged": true,
+        "no_network_run": {
+          "loop": [
+            "brute.certify/16e",
+            "IDU",
+            null,
+            0,
+            2000659,
+            120
+          ],
+          "socket_attempts": 0
+        },
+        "socket_attempts": 0
+      },
+      "pass": true
+    },
+    "GMATCH57": {
+      "observed": {
+        "columns": [
+          "seed",
+          "COV_O_ext_len",
+          "COV_O_handoff_reachable_unexercised",
+          "LEN_R_ext_len",
+          "LEN_R_handoff_reachable_unexercised",
+          "valid"
+        ],
+        "of": 12,
+        "per_case": [
+          [
+            12410001,
+            84,
+            0,
+            84,
+            13,
+            true
+          ],
+          [
+            12410002,
+            30,
+            0,
+            30,
+            9,
+            true
+          ],
+          [
+            12410003,
+            28,
+            0,
+            28,
+            5,
+            true
+          ],
+          [
+            12410004,
+            22,
+            0,
+            22,
+            5,
+            true
+          ],
+          [
+            12410005,
+            16,
+            0,
+            16,
+            6,
+            true
+          ],
+          [
+            12410006,
+            22,
+            0,
+            22,
+            8,
+            true
+          ],
+          [
+            12410007,
+            26,
+            0,
+            26,
+            7,
+            true
+          ],
+          [
+            12410008,
+            65,
+            0,
+            65,
+            13,
+            true
+          ],
+          [
+            12410009,
+            24,
+            0,
+            24,
+            5,
+            true
+          ],
+          [
+            12410010,
+            22,
+            0,
+            22,
+            7,
+            true
+          ],
+          [
+            12410011,
+            24,
+            0,
+            24,
+            6,
+            true
+          ],
+          [
+            12410012,
+            24,
+            0,
+            24,
+            6,
+            true
+          ]
+        ],
+        "source": "RECOUNT_057 coverage (recomputed from the world)",
+        "valid": 12
+      },
+      "pass": true
+    },
+    "GPRE57": {
+      "observed": {
+        "COV_O_ID_IDF": 1,
+        "LEN_R_ID_IDF": 0,
+        "ci95_COV_O": [
+          0.014865094404917095,
+          0.35387991114111694
+        ],
+        "ci95_LEN_R": [
+          2.1025014877572554e-17,
+          0.24249400665524087
+        ],
+        "discordant": [
+          1,
+          0
+        ],
+        "label_source": "recount",
+        "mcnemar_p_reported": 1.0,
+        "of": 12,
+        "rule": "COV_O ID+IDF >= 3 and COV_O - LEN_R >= 2 on the same seeds (COV_O is oracle-planned, not deployable)"
+      },
+      "pass": false
+    },
+    "GS57_sound": {
+      "observed": {
+        "WRONG": [],
+        "columns": [
+          "seed",
+          "API16E20",
+          "COV_O",
+          "LEN_R",
+          "COV_X",
+          "COV_X_b"
+        ],
+        "label_source": "recount",
+        "per_case": [
+          [
+            12410001,
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU"
+          ],
+          [
+            12410002,
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU"
+          ],
+          [
+            12410003,
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU"
+          ],
+          [
+            12410004,
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU"
+          ],
+          [
+            12410005,
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU"
+          ],
+          [
+            12410006,
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU"
+          ],
+          [
+            12410007,
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU"
+          ],
+          [
+            12410008,
+            "AMB",
+            "ID",
+            "AMB",
+            "AMB",
+            "AMB"
+          ],
+          [
+            12410009,
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU"
+          ],
+          [
+            12410010,
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU"
+          ],
+          [
+            12410011,
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU"
+          ],
+          [
+            12410012,
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU",
+            "IDU"
+          ]
+        ],
+        "records": 60
+      },
+      "pass": true
+    },
+    "GS_ref": {
+      "observed": {
+        "PASS": true,
+        "audited": 5,
+        "block": "main",
+        "complete": true,
+        "decided": 5,
+        "elapsed_informational": {
+          "r12": 484.1071575859969
+        },
+        "k_spent_as_amb": 4,
+        "mismatch_count": 0,
+        "mutations": 20,
+        "not_audited": [],
+        "not_reached": 55,
+        "of": 20,
+        "per_arm": {
+          "API16E20": {
+            "audited": 1,
+            "decided": 1,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 12
+          },
+          "COV_O": {
+            "audited": 1,
+            "decided": 1,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 12
+          },
+          "COV_X": {
+            "audited": 1,
+            "decided": 1,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 12
+          },
+          "COV_X_b": {
+            "audited": 1,
+            "decided": 1,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 12
+          },
+          "LEN_R": {
+            "audited": 1,
+            "decided": 1,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 12
+          }
+        },
+        "records": 60,
+        "scope": {
+          "budget_12_s": 2400.0,
+          "key_order": [
+            "scale20v"
+          ],
+          "order": [
+            "API16E20",
+            "COV_O",
+            "LEN_R",
+            "COV_X",
+            "COV_X_b"
+          ],
+          "workers_12": 8
+        },
+        "vacuous": false,
+        "verdicts_checked": 6
+      },
+      "pass": true
+    },
+    "GTEST": {
+      "observed": {
+        "gated": {
+          "test_certify16": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16d": {
+            "returncode": 0,
+            "tests": 11
+          },
+          "test_certify16e": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16n": {
+            "returncode": 0,
+            "tests": 10
+          },
+          "test_certify16s": {
+            "returncode": 0,
+            "tests": 3
+          },
+          "test_certify20c": {
+            "returncode": 0,
+            "tests": 9
+          },
+          "test_certify20l": {
+            "returncode": 0,
+            "tests": 10
+          },
+          "test_certify20t": {
+            "returncode": 0,
+            "tests": 5
+          },
+          "test_cover20": {
+            "returncode": 0,
+            "tests": 8
+          },
+          "test_release_0540": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_scalesearch4_0260": {
+            "returncode": 0,
+            "tests": 14
+          },
+          "test_scripts_057": {
+            "returncode": 0,
+            "tests": 9
+          }
+        },
+        "reported": {
+          "test_release_0530": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_scripts_056": {
+            "returncode": 0,
+            "tests": 9
+          }
+        }
+      },
+      "pass": true
+    },
+    "GTI57": {
+      "observed": {
+        "bound": true,
+        "truth_inconsistent": 0
+      },
+      "pass": true
+    },
+    "GX_gain57": {
+      "observed": {
+        "API16E20_ID_IDF": 0,
+        "COV_X_ID_IDF": 0,
+        "COV_X_b_ID_IDF": 0,
+        "ci95_API16E20": [
+          2.1025014877572554e-17,
+          0.24249400665524087
+        ],
+        "ci95_COV_X": [
+          2.1025014877572554e-17,
+          0.24249400665524087
+        ],
+        "ci95_COV_X_b": [
+          2.1025014877572554e-17,
+          0.24249400665524087
+        ],
+        "label_source": "recount",
+        "of": 12,
+        "rule": "COV_X (pass 1) ID+IDF >= 2 and strictly more than API16E20 on the same seeds"
+      },
+      "pass": false
+    },
+    "G_PROC": {
+      "observed": {
+        "clauses": {
+          "commit_order_file": true,
+          "ledger_times_non_decreasing": true,
+          "ledger_times_parse": true,
+          "main_sealed": true,
+          "order": true
+        },
+        "events": [
+          "preregistration_057",
+          "build_authorization_057",
+          "seedcheck_057",
+          "prefreeze_smoke_057_attempt1",
+          "prefreeze_smoke_057",
+          "deviation_188",
+          "source_freeze_057",
+          "run_start_057",
+          "run_end_057",
+          "recount_057",
+          "reference_057",
+          "api_checks_057",
+          "tests_057"
+        ],
+        "required_order": [
+          "preregistration_057",
+          "build_authorization_057",
+          "seedcheck_057",
+          "prefreeze_smoke_057",
+          "deviation_188",
+          "source_freeze_057",
+          "run_start_057",
+          "run_end_057",
+          "recount_057",
+          "reference_057",
+          "api_checks_057",
+          "tests_057"
+        ]
+      },
+      "pass": true
+    },
+    "G_RT": {
+      "observed": {
+        "cap_s": 3600,
+        "cases": 12,
+        "elapsed_s": 1936.4773435459938,
+        "n57": 12
+      },
+      "pass": true
+    },
+    "G_recount": {
+      "observed": {
+        "PASS": true,
+        "amb_rule_applied": 4,
+        "cases": 12,
+        "labels": {
+          "scale20v": {
+            "API16E20": {
+              "AMB": 1,
+              "ID": 0,
+              "IDF": 0,
+              "IDU": 11,
+              "WRONG": 0
+            },
+            "COV_O": {
+              "AMB": 0,
+              "ID": 1,
+              "IDF": 0,
+              "IDU": 11,
+              "WRONG": 0
+            },
+            "COV_X": {
+              "AMB": 1,
+              "ID": 0,
+              "IDF": 0,
+              "IDU": 11,
+              "WRONG": 0
+            },
+            "COV_X_b": {
+              "AMB": 1,
+              "ID": 0,
+              "IDF": 0,
+              "IDU": 11,
+              "WRONG": 0
+            },
+            "LEN_R": {
+              "AMB": 1,
+              "ID": 0,
+              "IDF": 0,
+              "IDU": 11,
+              "WRONG": 0
+            }
+          }
+        },
+        "misfires": {
+          "API16E20": 0,
+          "COV_O": 0,
+          "COV_X": 0,
+          "COV_X_b": 0,
+          "LEN_R": 0
+        },
+        "mismatches": {},
+        "mismatching_cases": 0,
+        "recounted": 12,
+        "truth_inconsistent": 0,
+        "words_checked": 527,
+        "words_unsound": 0
+      },
+      "pass": true
+    },
+    "G_sound": {
+      "observed": {
+        "WRONG": [],
+        "recount_bound": true,
+        "recount_words_checked": 527,
+        "recount_words_unsound": 0,
+        "words_checked": 527,
+        "words_unsound": 0
+      },
+      "pass": true
+    }
+  },
+  "label_source": "recount",
+  "n57": 12,
+  "not_exercised": [],
+  "process": "lean",
+  "reports": {
+    "labels": {
+      "API16E20": {
+        "AMB": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.646120088858883,
+            0.9851349055950828
+          ],
+          "n": 12,
+          "x": 11
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "COV_O": {
+        "AMB": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.646120088858883,
+            0.9851349055950828
+          ],
+          "n": 12,
+          "x": 11
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "COV_X": {
+        "AMB": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.646120088858883,
+            0.9851349055950828
+          ],
+          "n": 12,
+          "x": 11
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "COV_X_b": {
+        "AMB": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.646120088858883,
+            0.9851349055950828
+          ],
+          "n": 12,
+          "x": 11
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      },
+      "LEN_R": {
+        "AMB": {
+          "ci95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ],
+          "n": 12,
+          "x": 1
+        },
+        "ID": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.646120088858883,
+            0.9851349055950828
+          ],
+          "n": 12,
+          "x": 11
+        },
+        "WRONG": {
+          "ci95": [
+            2.1025014877572554e-17,
+            0.24249400665524087
+          ],
+          "n": 12,
+          "x": 0
+        }
+      }
+    }
+  },
+  "schema": "brute.gates.v54_0",
+  "sealed_input_verified": true,
+  "secondary": {
+    "GCOST57": {
+      "observed": {
+        "API16E20": {
+          "arm_wall_s": 2306.0,
+          "budget_spent": 11,
+          "calls": 725,
+          "chunks": 872,
+          "conflicts": 22535143,
+          "records": 12,
+          "steps": 550
+        },
+        "COV_O": {
+          "arm_wall_s": 3339.6,
+          "budget_spent": 11,
+          "calls": 475,
+          "chunks": 660,
+          "conflicts": 23887611,
+          "records": 12,
+          "steps": 503
+        },
+        "COV_X": {
+          "arm_wall_s": 3056.8,
+          "budget_spent": 11,
+          "calls": 610,
+          "chunks": 769,
+          "conflicts": 22849286,
+          "records": 12,
+          "steps": 1805
+        },
+        "COV_X_b": {
+          "arm_wall_s": 2950.2,
+          "budget_spent": 11,
+          "calls": 610,
+          "chunks": 769,
+          "conflicts": 22849286,
+          "records": 12,
+          "steps": 1805
+        },
+        "LEN_R": {
+          "arm_wall_s": 2705.1,
+          "budget_spent": 11,
+          "calls": 717,
+          "chunks": 866,
+          "conflicts": 22771395,
+          "records": 12,
+          "steps": 926
+        }
+      },
+      "pass": null,
+      "rule": "reported (walls informational)"
+    },
+    "GCOVX57": {
+      "observed": {
+        "full": 1,
+        "handoff_reachable_unexercised": [
+          10,
+          4,
+          5,
+          5,
+          0,
+          1,
+          3,
+          16,
+          1,
+          2,
+          2,
+          3
+        ],
+        "mean": 4.333,
+        "of": 12
+      },
+      "pass": null,
+      "rule": "reported: cover20 hand-off coverage"
+    },
+    "GPRE_stats57": {
+      "columns": [
+        "seed",
+        "API16E20 [label, ext_len, handoff_reach_unex, final_reach_unex, rounds, conflicts]",
+        "COV_O [label, ext_len, handoff_reach_unex, final_reach_unex, rounds, conflicts]",
+        "LEN_R [label, ext_len, handoff_reach_unex, final_reach_unex, rounds, conflicts]",
+        "COV_X [label, ext_len, handoff_reach_unex, final_reach_unex, rounds, conflicts]"
+      ],
+      "observed": [
+        [
+          12410001,
+          [
+            "IDU",
+            0,
+            18,
+            14,
+            20,
+            2000094
+          ],
+          [
+            "IDU",
+            84,
+            0,
+            0,
+            8,
+            2000586
+          ],
+          [
+            "IDU",
+            84,
+            13,
+            10,
+            18,
+            2000006
+          ],
+          [
+            "IDU",
+            120,
+            10,
+            3,
+            22,
+            2024043
+          ]
+        ],
+        [
+          12410002,
+          [
+            "IDU",
+            0,
+            11,
+            4,
+            12,
+            2001625
+          ],
+          [
+            "IDU",
+            30,
+            0,
+            0,
+            1,
+            2000032
+          ],
+          [
+            "IDU",
+            30,
+            9,
+            9,
+            1,
+            2000950
+          ],
+          [
+            "IDU",
+            120,
+            4,
+            4,
+            1,
+            2000247
+          ]
+        ],
+        [
+          12410003,
+          [
+            "IDU",
+            0,
+            10,
+            1,
+            27,
+            2008467
+          ],
+          [
+            "IDU",
+            28,
+            0,
+            0,
+            9,
+            2002721
+          ],
+          [
+            "IDU",
+            28,
+            5,
+            0,
+            19,
+            2002751
+          ],
+          [
+            "IDU",
+            120,
+            5,
+            1,
+            9,
+            2000839
+          ]
+        ],
+        [
+          12410004,
+          [
+            "IDU",
+            0,
+            6,
+            2,
+            12,
+            2001242
+          ],
+          [
+            "IDU",
+            22,
+            0,
+            0,
+            1,
+            2000012
+          ],
+          [
+            "IDU",
+            22,
+            5,
+            3,
+            12,
+            2000678
+          ],
+          [
+            "IDU",
+            120,
+            5,
+            1,
+            10,
+            2001036
+          ]
+        ],
+        [
+          12410005,
+          [
+            "IDU",
+            0,
+            6,
+            6,
+            1,
+            2005106
+          ],
+          [
+            "IDU",
+            16,
+            0,
+            0,
+            1,
+            2004480
+          ],
+          [
+            "IDU",
+            16,
+            6,
+            6,
+            1,
+            2004544
+          ],
+          [
+            "IDU",
+            120,
+            0,
+            0,
+            1,
+            2003604
+          ]
+        ],
+        [
+          12410006,
+          [
+            "IDU",
+            0,
+            8,
+            2,
+            14,
+            2023807
+          ],
+          [
+            "IDU",
+            22,
+            0,
+            0,
+            3,
+            2000030
+          ],
+          [
+            "IDU",
+            22,
+            8,
+            2,
+            17,
+            2001981
+          ],
+          [
+            "IDU",
+            120,
+            1,
+            0,
+            5,
+            2016006
+          ]
+        ],
+        [
+          12410007,
+          [
+            "IDU",
+            0,
+            7,
+            4,
+            13,
+            2000691
+          ],
+          [
+            "IDU",
+            26,
+            0,
+            0,
+            1,
+            2000567
+          ],
+          [
+            "IDU",
+            26,
+            7,
+            3,
+            11,
+            2000667
+          ],
+          [
+            "IDU",
+            120,
+            3,
+            3,
+            1,
+            2000189
+          ]
+        ],
+        [
+          12410008,
+          [
+            "AMB",
+            0,
+            16,
+            8,
+            30,
+            486225
+          ],
+          [
+            "ID",
+            65,
+            0,
+            0,
+            5,
+            1869819
+          ],
+          [
+            "AMB",
+            65,
+            13,
+            2,
+            28,
+            709767
+          ],
+          [
+            "AMB",
+            120,
+            16,
+            3,
+            39,
+            785963
+          ]
+        ],
+        [
+          12410009,
+          [
+            "IDU",
+            0,
+            5,
+            4,
+            15,
+            2002621
+          ],
+          [
+            "IDU",
+            24,
+            0,
+            0,
+            1,
+            2006072
+          ],
+          [
+            "IDU",
+            24,
+            5,
+            0,
+            23,
+            2001472
+          ],
+          [
+            "IDU",
+            120,
+            1,
+            0,
+            8,
+            2000617
+          ]
+        ],
+        [
+          12410010,
+          [
+            "IDU",
+            0,
+            8,
+            4,
+            18,
+            2001464
+          ],
+          [
+            "IDU",
+            22,
+            0,
+            0,
+            5,
+            2001387
+          ],
+          [
+            "IDU",
+            22,
+            7,
+            3,
+            22,
+            2046697
+          ],
+          [
+            "IDU",
+            120,
+            2,
+            0,
+            8,
+            2003088
+          ]
+        ],
+        [
+          12410011,
+          [
+            "IDU",
+            0,
+            6,
+            4,
+            6,
+            2001627
+          ],
+          [
+            "IDU",
+            24,
+            0,
+            0,
+            2,
+            2001239
+          ],
+          [
+            "IDU",
+            24,
+            6,
+            1,
+            11,
+            2001058
+          ],
+          [
+            "IDU",
+            120,
+            2,
+            2,
+            1,
+            2009186
+          ]
+        ],
+        [
+          12410012,
+          [
+            "IDU",
+            0,
+            7,
+            7,
+            1,
+            2002174
+          ],
+          [
+            "IDU",
+            24,
+            0,
+            0,
+            1,
+            2000666
+          ],
+          [
+            "IDU",
+            24,
+            6,
+            6,
+            1,
+            2000824
+          ],
+          [
+            "IDU",
+            120,
+            3,
+            3,
+            1,
+            2004468
+          ]
+        ]
+      ],
+      "pass": null,
+      "rule": "reported"
+    },
+    "MCNEMAR57": {
+      "observed": {
+        "COV_O_vs_LEN_R": {
+          "discordant": [
+            1,
+            0
+          ],
+          "p": 1.0
+        },
+        "COV_X_vs_API16E20": {
+          "discordant": [
+            0,
+            0
+          ],
+          "p": 1.0
+        }
+      },
+      "pass": null,
+      "rule": "reported: exact two-sided McNemar"
+    },
+    "SEEDCHECK57": {
+      "observed": {
+        "frozen_in_057": true,
+        "seedcheck_pass": true,
+        "total_cases": 12
+      },
+      "pass": null
+    }
+  },
+  "sound_not_certified_20v": true,
+  "status_phrase": "sound but not certified",
+  "stop": {
+    "hard_kill_s": 900.0,
+    "stop_rule": "conflict-only (no hook; 900 s case kill as safety net)"
+  },
+  "study": "BRUTE-0540-SCALE20-COVERFIRST-057",
+  "workers": 8
+}
