@@ -1,0 +1,638 @@
+{
+  "PASS": true,
+  "audited": 5,
+  "block": "main",
+  "complete": true,
+  "decided": 5,
+  "elapsed_informational": {
+    "r12": 484.1071575859969
+  },
+  "k_spent_as_amb": 4,
+  "misfires": [],
+  "mismatch_count": 0,
+  "mismatches": [],
+  "mutation_test": {
+    "detected": 20,
+    "items": [
+      {
+        "detected": true,
+        "id": "main/scale20v/12410008/API16E20",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20v/12410008/LEN_R",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20v/12410008/COV_O",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20v/12410008/API16E20",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20v/12410008/COV_X",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20v/12410008/API16E20",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20v/12410008/LEN_R",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20v/12410008/LEN_R",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20v/12410008/COV_O",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20v/12410008/COV_O",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20v/12410008/LEN_R",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20v/12410008/COV_X",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20v/12410008/COV_O",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20v/12410008/API16E20",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20v/12410008/API16E20",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20v/12410008/COV_X",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20v/12410008/COV_X",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20v/12410008/API16E20",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20v/12410008/COV_X_b",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20v/12410008/COV_X",
+        "kind": "s1"
+      }
+    ],
+    "mutations": 20,
+    "pass": true
+  },
+  "not_audited": [],
+  "not_reached": 55,
+  "per_arm": {
+    "API16E20": {
+      "audited": 1,
+      "decided": 1,
+      "misfires": 0,
+      "mismatches": 0,
+      "records": 12
+    },
+    "COV_O": {
+      "audited": 1,
+      "decided": 1,
+      "misfires": 0,
+      "mismatches": 0,
+      "records": 12
+    },
+    "COV_X": {
+      "audited": 1,
+      "decided": 1,
+      "misfires": 0,
+      "mismatches": 0,
+      "records": 12
+    },
+    "COV_X_b": {
+      "audited": 1,
+      "decided": 1,
+      "misfires": 0,
+      "mismatches": 0,
+      "records": 12
+    },
+    "LEN_R": {
+      "audited": 1,
+      "decided": 1,
+      "misfires": 0,
+      "mismatches": 0,
+      "records": 12
+    }
+  },
+  "per_record": [
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410001/API16E20",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410002/API16E20",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410003/API16E20",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410004/API16E20",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410005/API16E20",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410006/API16E20",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410007/API16E20",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "N_audited": 20,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": false,
+      "id": "main/scale20v/12410008/API16E20",
+      "label": "AMB",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "K_spent",
+      "verdicts_checked": 1
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410009/API16E20",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410010/API16E20",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410011/API16E20",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410012/API16E20",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410001/COV_O",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410002/COV_O",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410003/COV_O",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410004/COV_O",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410005/COV_O",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410006/COV_O",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410007/COV_O",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "N_audited": 20,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale20v/12410008/COV_O",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410009/COV_O",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410010/COV_O",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410011/COV_O",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410012/COV_O",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410001/LEN_R",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410002/LEN_R",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410003/LEN_R",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410004/LEN_R",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410005/LEN_R",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410006/LEN_R",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410007/LEN_R",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "N_audited": 20,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": false,
+      "id": "main/scale20v/12410008/LEN_R",
+      "label": "AMB",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "K_spent",
+      "verdicts_checked": 1
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410009/LEN_R",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410010/LEN_R",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410011/LEN_R",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410012/LEN_R",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410001/COV_X",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410002/COV_X",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410003/COV_X",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410004/COV_X",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410005/COV_X",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410006/COV_X",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410007/COV_X",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "N_audited": 20,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": false,
+      "id": "main/scale20v/12410008/COV_X",
+      "label": "AMB",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "K_spent",
+      "verdicts_checked": 1
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410009/COV_X",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410010/COV_X",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410011/COV_X",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410012/COV_X",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410001/COV_X_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410002/COV_X_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410003/COV_X_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410004/COV_X_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410005/COV_X_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410006/COV_X_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410007/COV_X_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "N_audited": 20,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": false,
+      "id": "main/scale20v/12410008/COV_X_b",
+      "label": "AMB",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "K_spent",
+      "verdicts_checked": 1
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410009/COV_X_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410010/COV_X_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410011/COV_X_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20v/12410012/COV_X_b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    }
+  ],
+  "records": 60,
+  "schema": "brute.reference.v54_0",
+  "scope": {
+    "budget_12_s": 2400.0,
+    "key_order": [
+      "scale20v"
+    ],
+    "order": [
+      "API16E20",
+      "COV_O",
+      "LEN_R",
+      "COV_X",
+      "COV_X_b"
+    ],
+    "workers_12": 8
+  },
+  "study_results_sha256": "9928e382280442be6c987cc016c3776482243a0bbaebc6d392b7120c37f7ccf0",
+  "vacuous": false,
+  "verdicts_checked": 6,
+  "walls_informational": {
+    "main/scale20v/12410008/API16E20": 90.4,
+    "main/scale20v/12410008/COV_O": 483.4,
+    "main/scale20v/12410008/COV_X": 78.3,
+    "main/scale20v/12410008/COV_X_b": 80.3,
+    "main/scale20v/12410008/LEN_R": 57.3
+  }
+}
