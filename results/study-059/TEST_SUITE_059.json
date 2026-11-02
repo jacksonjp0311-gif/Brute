@@ -1,0 +1,271 @@
+{
+ "gated_modules": [
+  "test_certify20n",
+  "test_scripts_059",
+  "test_release_0560",
+  "test_certify20b",
+  "test_certify16n",
+  "test_cover20",
+  "test_certify16e",
+  "test_certify16d",
+  "test_certify16",
+  "test_scalesearch4_0260"
+ ],
+ "modules": [
+  "test_certify20n",
+  "test_scripts_059",
+  "test_release_0560",
+  "test_certify20b",
+  "test_certify16n",
+  "test_cover20",
+  "test_certify16e",
+  "test_certify16d",
+  "test_certify16",
+  "test_scalesearch4_0260",
+  "test_scripts_058",
+  "test_release_0550"
+ ],
+ "passed": true,
+ "per_module": {
+  "test_certify16": {
+   "results": {
+    "test_api_checks_closure": "ok",
+    "test_argument_checks": "ok",
+    "test_certify14_sample_byte_equal": "ok",
+    "test_constants": "ok",
+    "test_delegation_is_certify14": "ok",
+    "test_host_agnostic_static": "ok",
+    "test_loop_control_ID": "ok",
+    "test_observe_rules": "ok",
+    "test_one_shot_ambiguous_is_AMB": "ok",
+    "test_one_shot_matches_loop_on_passive": "ok",
+    "test_soundness_is_conditional_on_N": "ok",
+    "test_stop_kinds_K_spent_and_unknown": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "l_ID) ... ok\ntest_observe_rules (tests.test_certify16.API.test_observe_rules) ... ok\ntest_one_shot_ambiguous_is_AMB (tests.test_certify16.API.test_one_shot_ambiguous_is_AMB) ... ok\ntest_one_shot_matches_loop_on_passive (tests.test_certify16.API.test_one_shot_matches_loop_on_passive) ... ok\ntest_soundness_is_conditional_on_N (tests.test_certify16.API.test_soundness_is_conditional_on_N) ... ok\ntest_stop_kinds_K_spent_and_unknown (tests.test_certify16.API.test_stop_kinds_K_spent_and_unknown) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 0.235s\n\nOK\n",
+   "tests": 12,
+   "wall_informational": 0.5
+  },
+  "test_certify16d": {
+   "results": {
+    "test_K_spent_is_AMB": "ok",
+    "test_api_checks_closure": "ok",
+    "test_argument_checks": "ok",
+    "test_case_wall_guard_fires": "ok",
+    "test_constants": "ok",
+    "test_host_agnostic_static": "ok",
+    "test_loop_control_ID": "ok",
+    "test_observe_rules": "ok",
+    "test_record_is_conflict_deterministic": "ok",
+    "test_soundness_is_conditional_on_N": "ok",
+    "test_spent_budget_is_unknown": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "16d.API.test_host_agnostic_static) ... ok\ntest_loop_control_ID (tests.test_certify16d.API.test_loop_control_ID) ... ok\ntest_observe_rules (tests.test_certify16d.API.test_observe_rules) ... ok\ntest_record_is_conflict_deterministic (tests.test_certify16d.API.test_record_is_conflict_deterministic) ... ok\ntest_soundness_is_conditional_on_N (tests.test_certify16d.API.test_soundness_is_conditional_on_N) ... ok\ntest_spent_budget_is_unknown (tests.test_certify16d.API.test_spent_budget_is_unknown) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.228s\n\nOK\n",
+   "tests": 11,
+   "wall_informational": 0.4
+  },
+  "test_certify16e": {
+   "results": {
+    "test_K_spent_is_AMB": "ok",
+    "test_api_checks_closure": "ok",
+    "test_argument_checks": "ok",
+    "test_case_wall_guard_fires": "ok",
+    "test_constants": "ok",
+    "test_host_agnostic_static": "ok",
+    "test_loop_control_ID": "ok",
+    "test_max_chunks_1_equals_certify16d": "ok",
+    "test_record_is_conflict_deterministic": "ok",
+    "test_resume_passes_the_chunk_cap": "ok",
+    "test_soundness_mentions_resume_and_N": "ok",
+    "test_spent_budget_is_unknown": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "uals_certify16d (tests.test_certify16e.API.test_max_chunks_1_equals_certify16d) ... ok\ntest_record_is_conflict_deterministic (tests.test_certify16e.API.test_record_is_conflict_deterministic) ... ok\ntest_resume_passes_the_chunk_cap (tests.test_certify16e.API.test_resume_passes_the_chunk_cap) ... ok\ntest_soundness_mentions_resume_and_N (tests.test_certify16e.API.test_soundness_mentions_resume_and_N) ... ok\ntest_spent_budget_is_unknown (tests.test_certify16e.API.test_spent_budget_is_unknown) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 0.287s\n\nOK\n",
+   "tests": 12,
+   "wall_informational": 0.5
+  },
+  "test_certify16n": {
+   "results": {
+    "test_api_checks_closure": "ok",
+    "test_argument_checks": "ok",
+    "test_constants": "ok",
+    "test_host_agnostic_static": "ok",
+    "test_majority": "ok",
+    "test_noisy_loop_ID_and_deterministic": "ok",
+    "test_noisy_world_reread_preserves_state": "ok",
+    "test_reads1_eps0_equals_certify16e": "ok",
+    "test_reads_for": "ok",
+    "test_wrong_read_count_refused": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "ity) ... ok\ntest_noisy_loop_ID_and_deterministic (tests.test_certify16n.API.test_noisy_loop_ID_and_deterministic) ... ok\ntest_noisy_world_reread_preserves_state (tests.test_certify16n.API.test_noisy_world_reread_preserves_state) ... ok\ntest_reads1_eps0_equals_certify16e (tests.test_certify16n.API.test_reads1_eps0_equals_certify16e) ... ok\ntest_reads_for (tests.test_certify16n.API.test_reads_for) ... ok\ntest_wrong_read_count_refused (tests.test_certify16n.API.test_wrong_read_count_refused) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.308s\n\nOK\n",
+   "tests": 10,
+   "wall_informational": 0.5
+  },
+  "test_certify20b": {
+   "results": {
+    "test_bits2_equals_16e": "ok",
+    "test_host_agnostic": "ok",
+    "test_one_shot": "ok",
+    "test_reading_of": "ok",
+    "test_refusals": "ok",
+    "test_wide_sound": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_bits2_equals_16e (tests.test_certify20b.TestCertify20B.test_bits2_equals_16e) ... ok\ntest_host_agnostic (tests.test_certify20b.TestCertify20B.test_host_agnostic) ... ok\ntest_one_shot (tests.test_certify20b.TestCertify20B.test_one_shot) ... ok\ntest_reading_of (tests.test_certify20b.TestCertify20B.test_reading_of) ... ok\ntest_refusals (tests.test_certify20b.TestCertify20B.test_refusals) ... ok\ntest_wide_sound (tests.test_certify20b.TestCertify20B.test_wide_sound) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 2.147s\n\nOK\n",
+   "tests": 6,
+   "wall_informational": 2.3
+  },
+  "test_certify20n": {
+   "results": {
+    "test_bits2_equals_16n": "ok",
+    "test_host_agnostic": "ok",
+    "test_k_rule": "ok",
+    "test_majority": "ok",
+    "test_noisy_sound": "ok",
+    "test_reads1_equals_20b": "ok",
+    "test_refusals": "ok",
+    "test_result_fields": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": ".test_host_agnostic) ... ok\ntest_k_rule (tests.test_certify20n.TestCertify20N.test_k_rule) ... ok\ntest_majority (tests.test_certify20n.TestCertify20N.test_majority) ... ok\ntest_noisy_sound (tests.test_certify20n.TestCertify20N.test_noisy_sound) ... ok\ntest_reads1_equals_20b (tests.test_certify20n.TestCertify20N.test_reads1_equals_20b) ... ok\ntest_refusals (tests.test_certify20n.TestCertify20N.test_refusals) ... ok\ntest_result_fields (tests.test_certify20n.TestCertify20N.test_result_fields) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 1.794s\n\nOK\n",
+   "tests": 8,
+   "wall_informational": 2.0
+  },
+  "test_cover20": {
+   "results": {
+    "test_constants": "ok",
+    "test_context_h1": "ok",
+    "test_helper_deterministic": "ok",
+    "test_helper_length_check": "ok",
+    "test_least_used_lowest_index": "ok",
+    "test_prefix_counts": "ok",
+    "test_pure": "ok",
+    "test_refuses_mismatch": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_helper_deterministic (tests.test_cover20.TestCover20.test_helper_deterministic) ... ok\ntest_helper_length_check (tests.test_cover20.TestCover20.test_helper_length_check) ... ok\ntest_least_used_lowest_index (tests.test_cover20.TestCover20.test_least_used_lowest_index) ... ok\ntest_prefix_counts (tests.test_cover20.TestCover20.test_prefix_counts) ... ok\ntest_pure (tests.test_cover20.TestCover20.test_pure) ... ok\ntest_refuses_mismatch (tests.test_cover20.TestCover20.test_refuses_mismatch) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.001s\n\nOK\n",
+   "tests": 8,
+   "wall_informational": 0.2
+  },
+  "test_release_0550": {
+   "results": {
+    "test_chain_authorization_exception": "ok",
+    "test_flag_mismatch": "ok",
+    "test_gate_list_mismatch": "ok",
+    "test_missing_key": "ok",
+    "test_release_ok": "ok",
+    "test_release_version": "ok",
+    "test_run_tests_default_is_scratch": "ok",
+    "test_run_tests_refuses_overwrite": "ok",
+    "test_secondary_mismatch": "ok",
+    "test_status_phrase_mismatch": "ok",
+    "test_status_wording_rule": "ok",
+    "test_wrong_version": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "st_run_tests_refuses_overwrite (tests.test_release_0550.TestRelease0550.test_run_tests_refuses_overwrite) ... ok\ntest_secondary_mismatch (tests.test_release_0550.TestRelease0550.test_secondary_mismatch) ... ok\ntest_status_phrase_mismatch (tests.test_release_0550.TestRelease0550.test_status_phrase_mismatch) ... ok\ntest_status_wording_rule (tests.test_release_0550.TestRelease0550.test_status_wording_rule) ... ok\ntest_wrong_version (tests.test_release_0550.TestRelease0550.test_wrong_version) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 0.191s\n\nOK\n",
+   "tests": 12,
+   "wall_informational": 0.3
+  },
+  "test_release_0560": {
+   "results": {
+    "test_chain_authorization_exception": "ok",
+    "test_flag_mismatch": "ok",
+    "test_gate_list_mismatch": "ok",
+    "test_missing_key": "ok",
+    "test_release_ok": "ok",
+    "test_release_version": "ok",
+    "test_run_tests_default_is_scratch": "ok",
+    "test_run_tests_refuses_overwrite": "ok",
+    "test_secondary_mismatch": "ok",
+    "test_status_phrase_mismatch": "ok",
+    "test_status_wording_rule": "ok",
+    "test_wrong_version": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "st_run_tests_refuses_overwrite (tests.test_release_0560.TestRelease0560.test_run_tests_refuses_overwrite) ... ok\ntest_secondary_mismatch (tests.test_release_0560.TestRelease0560.test_secondary_mismatch) ... ok\ntest_status_phrase_mismatch (tests.test_release_0560.TestRelease0560.test_status_phrase_mismatch) ... ok\ntest_status_wording_rule (tests.test_release_0560.TestRelease0560.test_status_wording_rule) ... ok\ntest_wrong_version (tests.test_release_0560.TestRelease0560.test_wrong_version) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 0.294s\n\nOK\n",
+   "tests": 12,
+   "wall_informational": 0.4
+  },
+  "test_scalesearch4_0260": {
+   "results": {
+    "test_cycle3_identified": "ok",
+    "test_deadline_respected": "ok",
+    "test_hard_query_cap": "ok",
+    "test_identify_trace_lower_bound": "ok",
+    "test_masked_and_contradicted": "ok",
+    "test_no_io": "ok",
+    "test_nowit_and_nosym": "ok",
+    "test_nowit_has_no_pool": "ok",
+    "test_older_unchanged": "ok",
+    "test_pool_machines_consistent": "ok",
+    "test_random_small": "ok",
+    "test_refusals": "ok",
+    "test_s4_equals_s3": "ok",
+    "test_variants_agree_on_world": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "gree_on_world) ... ok\ntest_no_io (tests.test_scalesearch4_0260.HostAgnostic.test_no_io) ... ok\ntest_cycle3_identified (tests.test_scalesearch4_0260.Identify.test_cycle3_identified) ... ok\ntest_identify_trace_lower_bound (tests.test_scalesearch4_0260.Identify.test_identify_trace_lower_bound) ... ok\ntest_nowit_has_no_pool (tests.test_scalesearch4_0260.Witnesses.test_nowit_has_no_pool) ... ok\ntest_pool_machines_consistent (tests.test_scalesearch4_0260.Witnesses.test_pool_machines_consistent) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 1.473s\n\nOK\n",
+   "tests": 14,
+   "wall_informational": 1.6
+  },
+  "test_scripts_058": {
+   "results": {
+    "test_caps_fixed": "ok",
+    "test_check_job_refuses_foreign": "ok",
+    "test_freeze_list": "ok",
+    "test_incomplete_input": "ok",
+    "test_jobs_main": "ok",
+    "test_jobs_smoke": "ok",
+    "test_proc_order": "ok",
+    "test_record_recount_small_caps": "ok",
+    "test_truth_label": "ok",
+    "test_worlds": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "est_caps_fixed) ... ok\ntest_check_job_refuses_foreign (tests.test_scripts_058.Runner.test_check_job_refuses_foreign) ... ok\ntest_jobs_main (tests.test_scripts_058.Runner.test_jobs_main) ... ok\ntest_jobs_smoke (tests.test_scripts_058.Runner.test_jobs_smoke) ... ok\ntest_record_recount_small_caps (tests.test_scripts_058.Runner.test_record_recount_small_caps) ... ok\ntest_truth_label (tests.test_scripts_058.Runner.test_truth_label) ... ok\ntest_worlds (tests.test_scripts_058.Runner.test_worlds) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 1.999s\n\nOK\n",
+   "tests": 10,
+   "wall_informational": 2.2
+  },
+  "test_scripts_059": {
+   "results": {
+    "test_caps_fixed": "ok",
+    "test_check_job_refuses_foreign": "ok",
+    "test_freeze_list": "ok",
+    "test_incomplete_input": "ok",
+    "test_jobs_main": "ok",
+    "test_jobs_smoke": "ok",
+    "test_k_rule_independent": "ok",
+    "test_proc_order": "ok",
+    "test_record_recount_small_caps": "ok",
+    "test_truth_label": "ok",
+    "test_worlds_and_noise": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "_foreign) ... ok\ntest_jobs_main (tests.test_scripts_059.Runner.test_jobs_main) ... ok\ntest_jobs_smoke (tests.test_scripts_059.Runner.test_jobs_smoke) ... ok\ntest_k_rule_independent (tests.test_scripts_059.Runner.test_k_rule_independent) ... ok\ntest_record_recount_small_caps (tests.test_scripts_059.Runner.test_record_recount_small_caps) ... ok\ntest_truth_label (tests.test_scripts_059.Runner.test_truth_label) ... ok\ntest_worlds_and_noise (tests.test_scripts_059.Runner.test_worlds_and_noise) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 1.915s\n\nOK\n",
+   "tests": 11,
+   "wall_informational": 2.2
+  }
+ },
+ "process": "lean",
+ "reported_modules": [
+  "test_scripts_058",
+  "test_release_0550"
+ ],
+ "schema": "brute.test-suite-059.v1"
+}
