@@ -1,0 +1,22 @@
+size 4 False 0 0.0
+size 5 False 2 0.0
+size 6 False 7 0.0
+size 7 False 12 0.1
+size 8 False 27 0.1
+size 9 False 70 0.1
+size 10 False 225 0.1
+size 11 False 826 0.2
+size 12 False 2444 0.3
+size 13 False 5107 0.5
+size 14 False 9375 0.8
+size 15 False 27196 1.9
+size 16 False 64790 4.9
+size 17 False 176830 16.0
+size 18 None 300017 36.1
+size 19 None 300209 56.3
+size 20 None 300010 74.7
+Traceback (most recent call last):
+  File "/tmp/s58/proto3.py", line 15, in <module>
+    d,e=M;ok,s,_=simulate(d,e,acts,masks)
+    ^^^
+TypeError: cannot unpack non-iterable NoneType object
