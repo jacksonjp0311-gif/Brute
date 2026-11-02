@@ -1,5 +1,28 @@
 # Brute changelog
 
+## v0.58.0: TARGET CHANGE (budget). The frozen brute.certify/32b at 24M conflicts is certified for random 4-bit readings at N <= 24 with B61; 32 states and 2-bit at 20 states stay Open (study BRUTE-0580-BUDGET24W-061, LEAN process)
+
+**9 of 9 gated pass (GS61_sound, GN24_61, GDET61, GFID61, GHOST61, GS_ref, G_recount, GTEST, G_PROC); G_RT checked at release. certified_readbits4_N24 true. Status: certified (read_bits 4, N <= 24, B61).**
+
+Blunt summary. v0.57.0 left 4 of 12 24-state worlds undecided at 8M conflicts. This release keeps the solver frozen and raises the budget to 24M. All 6 fresh worlds were decided, one of them needing 15.1M conflicts. The sample is small (cut from 12 to 6 so the run fits the 60 min cap), and in the probe two of the old hard seeds stayed undecided even at 24M. This is not progress on 2-bit readings.
+
+Claim scope (*Exact*; reason *Inferred*): an ID or IDF is exact only conditional on noise-free readings and a true size at most the declared N = 24. A larger machine can copy the true machine on every visited state.
+
+### Timeline (EST, 2026-11-02)
+
+- Plan `359ae41`; budget probe `d1bd376` (15:00-15:40, B61 24M by the rule fallback); build authorization `00a8cfb`; seedcheck `85fcae7`; tooling `f11daa6`-`d686ce3`; pre-freeze smoke attempt 1 PASS `d1d7dda`; deviation #196 `f64f6dc`; source freeze `4b2c182` (654 files).
+- Main run launched once with nohup 16:00:54 (ledger `b05153d`); sealed about 16:22, seal `61ec5eb` (runner 1316.2 s); recount `a45224a`; reference `4e3806c` (142 s); tests `1e69713`; api checks `4cbf2e7`; gates `ccfc49f`; deviation #197 `a17ef54`; RELEASE.json `cc6c961`.
+
+### Results (recount labels; Wilson 95% in GATES_061.json)
+
+| arm (B 24M, K 400, 4-bit random readings) | ID+IDF | WRONG | decided conflicts |
+|---|---|---|---|
+| S24 (bound 24, 6 worlds) | 6/6 (5 ID, 1 IDF) [0.61, 1.00] | 0 | 3.21-15.13M |
+| S24b (second pass, 2 worlds) | identical 2/2 [0.34, 1.00] | 0 | same |
+| S32 | dropped by #196 (probe 0/2 at 24M) | n/a | n/a |
+
+WRONG 0/8 [0.00, 0.32]. Reference 8/8 audited, 0 mismatches, 20/20 mutations; replay 8/8 exact; tests 130/130 (13 modules). Deviations #196 (pre-run) and #197 (post-run, 10 items).
+
 ## v0.57.0: TARGET CHANGE. brute.certify/32b is certified for random 4-bit readings at N <= 24; 32 states and 2-bit at 20 states stay Open (study BRUTE-0570-SCALE24W-060, LEAN process)
 
 **9 of 9 gated pass (GS60_sound, GN24_60, GDET60, GFID60, GHOST60, GS_ref, G_recount, GTEST, G_PROC); G_RT checked at release. certified_readbits4_N24 true. Status: certified (read_bits 4, N <= 24).**
