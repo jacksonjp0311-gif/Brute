@@ -1,0 +1,100 @@
+{
+ "schema": "brute.plan.v1",
+ "study": "BRUTE-0590-WINDOW2B20-062",
+ "version_under_test": "0.59.0",
+ "parent_study": "BRUTE-0580-BUDGET24W-061",
+ "written": "2026-11-02 (EST), after the v0.58.0 release",
+ "status": "preregistered (plan only; no build code, no fresh seed use, no data). Build needs a ledgered build_authorization_062 citing the standing go t133s553 and t139s684, after a committed and ledgered exploratory probe (budget_probe_062) on sealed seeds only",
+ "standing_go": [
+  "t133s553",
+  "t139s684 (James, Nov 2 2026: keep going version after version until something valuable turns up; stop only when he says so)"
+ ],
+ "branch_taken": "v0.58.0 RELEASED (all 9 gated pass): the frozen certify/32b at B61 24M decided 6/6 fresh 24-state 4-bit worlds [0.61, 1.00], WRONG 0/8; one needed 15.1M conflicts; in the 061 probe two hard 060 seeds stayed IDU at 24M and 32 states decided 0/2. Budget keeps buying 4-bit decisions at 24 states at rising cost, but it has never moved 2-bit readings (058: B2 0/12, B2R 0/12 at 2M). Plan 062 therefore returns to the Open problem with a policy step (probe-word windows), keeping B2 as the budget-matched control.",
+ "choice": {
+  "window_policy": "CHOSEN (gated headline). A new action policy, certify/20w: after the passive prefix, every exploration step is followed by one fixed probe word p (length 2, declared below), so each window start state gets a comparable multi-step reading signature of 3 readings x 2 bits = 6 bits. The frozen certify/20b solver at read_bits 2 is used unchanged; only the actions differ.",
+  "entropy_actions": "REJECTED for this cycle (Inferred). Choosing each action to maximise the predicted reading entropy over the candidate pool mainly buys new coverage and rival disagreement; study 057 already showed that full reachable coverage (COV_O, an oracle) decided 1/12 at 20 states. It stays a candidate if windows fail.",
+  "budget_only": "REJECTED as the headline (Observed): probe 061 decided the same 2/4 hard 24-state seeds at 16M and 24M; study 058 decided 0/12 2-bit 20-state worlds (B2, B2R) at 2M. More conflicts alone has shown no gain at the margin. Kept as a control: B2 runs at the same B as W2."
+ },
+ "why_windows": "Study 058 (Exact, GATES_058) is the strongest lever measured so far: the same solver at 20 states decided B4 11/12 vs B2R 0/12, so bits per state, not budget or coverage, is what moved it. A 2-bit world cannot be given wider readings, but a fixed probe word read from many states gives the solver the same kind of evidence: two window starts whose 6-bit signatures differ must be different states (apartness), which grows the clique the frozen encoding already uses (certify/16e Pool16E) and cuts the symmetric search. Inferred, not shown: the windows move the state, so a signature belongs to the window start; nothing about soundness changes because certify/20b accepts any action sequence.",
+ "honest_framing": "BACK ON THE HARD PROBLEM: 2-bit readings at 20 states, the problem every release since v0.55.0 has left Open. This is a policy change (which actions are taken), not a new solver or encoding. A pass would be the first 2-bit 20-state decisions by this solver under a declared N; it is not 'first decided 20-state world'. The guarantee stays conditional on the declared N (Inferred: a larger machine can copy the true machine on every visited state) and on noise-free readings.",
+ "brand": "charcoal and sage; no purple, neon, emoji or gold",
+ "question": "(A) At declared N 20, original 2-bit emissions (worlds_058 scale20), C 50000, K 400, B62, does certify/20w (probe-word windows) decide (ID+IDF) at least 4 of 12 fresh worlds and at least 3 more than certify/20b with its usual policy on the same seeds? (B) Is it sound (WRONG 0)? (C) How large is the apartness clique with and without windows (reported)?",
+ "hypotheses": {
+  "H1": "no record is WRONG",
+  "H2": "W2 decides >= 4/12",
+  "H3": "W2 - B2 >= 3 on the same seeds",
+  "H4": "W2 and W2b give byte-identical canonical records on the determinism seeds",
+  "H5 (reported)": "W2 clique size exceeds B2 clique size on most seeds"
+ },
+ "budget_probe_rule": "Before build_authorization_062, an exploratory probe (scripts/probe_062.py, new file) runs B2 and W2 on sealed study-058 seeds 12530001-12530004 at B in {2M, 8M}, 8 workers, capped at 60 min. B62 is the smallest probed B at which W2 decides >= 1/4; if none, B62 = 8M. The probe also sizes the hard kill. Probe results are never evidence for any gate.",
+ "design": {
+  "api": "one new module brute/api/certify20w.py (brute.certify/20w): Certifier20W wraps the frozen Certifier20B(read_bits=2, family_bound=20) and changes only propose(): it returns the frozen proposal followed by the probe word p. observe() and result() are the frozen ones, so every trace is a valid certify/20b trace. Host-agnostic: no I/O, threads, subprocess or os. certify20b, certify16e, certify16d and every earlier api file are imported only.",
+  "probe_word": "p = (0, 1) for num_actions 3, declared now (no tuning on any seed). A second word is not tried in this study.",
+  "worlds": "experiments/worlds_058.py family scale20 (original 2-bit emissions), unchanged; new seeds only",
+  "arms": {
+   "B2": "certify/20b read_bits 2, its usual policy (gated control)",
+   "W2": "certify/20w (gated headline)",
+   "W2b": "W2 again in reversed seed order on the first 6 seeds (determinism)"
+  },
+  "caps": {
+   "C": 50000,
+   "B": "B62 from the probe (2M or 8M)",
+   "K": 400,
+   "family_bound": 20
+  },
+  "K_note": "K counts every executed action, window actions included, so W2 gets no extra actions over B2",
+  "stop_rule": "conflict-only; per-case hard kill sized from the probe, declared in the pre-run deviation; 30 s per-call guard",
+  "workers": "one 8-worker pool, max_tasks_per_child 1"
+ },
+ "cases": {
+  "scale20w2": 12,
+  "scale20w2_b": 6,
+  "jobs": "12 B2 + 12 W2 + 6 W2b = 30",
+  "declared_before_data": true
+ },
+ "heldout_ranges": {
+  "scale20w2": "12620101-12620112",
+  "note": "seedcheck_062 scans every tracked file before any fresh seed; a hit moves the range by a ledgered deviation before data"
+ },
+ "smoke_range": "12620301-12620306 (pre-freeze smoke and the no-network check only; never gated)",
+ "criteria": {
+  "GS62_sound": "WRONG 0 on every record (30)",
+  "GW62": "W2 ID+IDF >= 4/12 AND W2 - B2 >= 3 on the same seeds (Wilson 95% CIs and exact McNemar reported) [headline]",
+  "GDET62": "W2 and W2b canonical records byte-identical on 6/6 seeds; no wall guard or case kill in W2/W2b",
+  "GFID62": "api_checks_062: certify/20w with an empty probe word equals certify/20b record-for-record on small worlds; every decided main record replays exactly; malformed input refused; no network",
+  "GHOST62": "AST scan of brute/api/certify20w.py (no os, io, threading, subprocess, socket, multiprocessing, open); frozen api shas unchanged against BRUTE_SOURCE_FREEZE_061 or its parent",
+  "GS_ref": "plain-CNF reference audit of every decided record (m = 4), seeded mutations all detected",
+  "G_recount": "independent recount from worlds_058 and the recorded actions",
+  "GTEST": "full suite once",
+  "G_PROC": "preregistration_062 < budget_probe_062 < build_authorization_062 < seedcheck_062 < prefreeze_smoke_062 < deviation_198 < freeze_062 < main_run_062"
+ },
+ "certification_rule": "certified (read_bits 2, N <= 20, windows) iff every gate passes; if only GW62 fails the result is 'sound but no 2-bit gain' and 2-bit 20-state worlds stay Open",
+ "status_wording_rule": "status phrases come from the GATES_062 flags only",
+ "secondary": {
+  "CLIQUE62": "apartness clique size per arm and seed",
+  "GCOST62": "conflicts and walls per arm",
+  "PROBE62": "probe result (exploratory)"
+ },
+ "runtime_estimate": "Inferred from 058 (2-bit jobs ran to B 2M in 97-297 s with 8 concurrent): at 8M about 4x. 30 jobs on 8 workers; cut rule declared in the pre-run deviation before the freeze: drop W2b 6 -> 2, then seeds 12 -> 8 (all arms). The main run stays capped at about 60 min. Never raise B or C after the probe.",
+ "process": "LEAN under the standing go, as in plans 060 and 061",
+ "process_naming_rule": "prefreeze_smoke_062_attemptK plus prefreeze_smoke_062; release ledger event release_0590",
+ "freeze_rule": "no file named in the source freeze is edited after the freeze; caps, probe word, orders, stop rule, workers and case lists are frozen",
+ "what_counts_as_failure": "any gated criterion false; a case kill in W2/W2b fails GDET62; IDU, AMB, K_spent are not soundness failures",
+ "next_if_pass": "2-bit 20-state decisions exist under windows: next, longer or adaptive probe words, then noise, then 24 states at 2 bits",
+ "next_if_fail": "if GS62_sound fails: publish and audit certify/20w. If only GW62 fails: windows from one fixed word do not help; next is entropy-chosen actions (rejected above) or an encoding step that adds window signatures as explicit apartness clauses",
+ "limitations": [
+  "12 seeds give wide CIs",
+  "one probe word, declared without tuning",
+  "2-bit original emissions only; noise-free",
+  "the solver is unchanged; a gain is a policy gain",
+  "still needs a declared size N"
+ ],
+ "open_items": [
+  "2-bit 20-state worlds: Open until GW62 passes",
+  "N 25..32 at 4 bits: Open",
+  "noise at N > 20: Open",
+  "full N-freedom: Open (impossible without a size bound; Inferred)"
+ ],
+ "claim_scope": "conditional on the declared N and noise-free readings; never 'first decided 20-state world'",
+ "evidence_labels": "Exact, Observed, Simulated, Inferred, Rejected, Open"
+}
