@@ -1,5 +1,33 @@
 # Brute changelog
 
+## v0.53.0: brute.certify/20l is not certified, no certification status (failing gates: GS20L_gain56, GCOMPAT20L56); soundness held (study BRUTE-0530-SCALE20-LSTAR-056, LEAN process)
+
+**12 of 14 gated pass (GDET56, GFID56, GS20L_sound56, GHOST56, GS_ref, GTABLE56, G_sound, G_recount, GTI, GTEST, G_PROC, G_RT); GS20L_gain56 and GCOMPAT20L56 FAIL. Secondary GCOST56, GS20L_paired56, GS20L_rate56, GTABLE_stats56, RECHECK_055 reported. certified_20l_N20 false; sound_not_certified_20l false.** certify/20l (new: L*-style counterexample-guided active learning bounded by N, table budget K 128) decided 0/6 fresh 20-state worlds [0.00, 0.39] in both passes; certify/16e at bound 20 decided 1/6 [0.03, 0.56] (12330005 ID). The table is what runs out: 17 of 18 API20L records spent 126-128 of K 128 on table filling with one hypothesis and no counterexample. Per plan next_if_fail, 20 states are published as out of reach for certify/20l at 2M conflicts on this family. 12330005 is not the first decided 20-state world: study 050 (v0.47.0) decided 11730008 as ID at B 4M.
+
+Claim scope (*Exact*; reason *Inferred*): an ID or IDF is exact only conditional on a true size at most the declared N. A larger machine can copy the true machine on every visited state, so no finite test separates them.
+
+Fix E disclosure (*Exact*): Fix E (`aa266bb`) loosened the pre-freeze smoke compat-equality clause and was made after smoke attempt 3 failed on it. The smoke is never gated under plan 056, so it hid nothing gated. The smoke compat results were AMB vs ID (12370003) and AMB vs IDF (12370004): an early warning that GCOMPAT20L56 would likely fail in main. It did (2/6). compat_rule_056 was introduced after the 055 compat failure and is not retroactive.
+
+### Timeline (EDT until 02:00 EDT 2026-11-01, then EST)
+
+- Plan `16e0793` (preregistration 21:29 EDT 2026-10-31, ledger `002a69a`); build authorization (ledger `6fd32fb`); seedcheck (ledger `e9ee97c`); pre-freeze smoke attempts 1-3 PASS false, published (ledger `54ca8fb`, `5935618`, `59bc103`); Fix E `aa266bb`; attempt 4 PASS `f6b2801` (00:02 EDT; ledger `af3e92a`, prefreeze_smoke_056 `d74de10`); deviation #185 `aa77f04`; source freeze `bf24a96` (496 files).
+- Run start 00:53:57 EDT 2026-11-01 (ledger `6a51e28`), launched once; 3 snapshots `198fd32` to `c5c8c10`; seal `4bf2056` (ledger `eed51f3`; 695.8 s); recount `9ffd0e0`; reference `5c0c423` (complete, 1002 s); api checks `41d98a5` (PASS); world-feature diag `282b14f` (exploratory); tests `0a33012` (run once from about 01:53 EDT, written 01:00 EST, committed 2026-11-02 EST after an interruption); gates `6f0dc9e`; deviation #187 `6d031c9`; RELEASE.json `1a64b3b`.
+
+### Results (recount labels; Wilson 95% in GATES_056.json)
+
+| part | result | WRONG |
+|---|---|---|
+| scale20t, 6 fresh run twice (API20L / API20L_b, certify/20l, bound 20) ID+IDF | 0/6 [0.00, 0.39] both passes (5 AMB K spent, 1 IDU); identical conflicts 6/6 [0.61, 1.00]; 0 hard kills | 0 of 12 |
+| scale20t control (API16E20, certify/16e, bound 20) ID+IDF | 1/6 [0.03, 0.56] (12330005 ID, 5 IDU) | 0 of 6 |
+| compat20t, certify/20l vs certify/16e at bound 16 (GCOMPAT20L56) | 2/6 [0.10, 0.70] (12350002 IDF same machine; 12350006 AMB both; 4 AMB vs decided) | 0 of 12 |
+| self-replay (GFID56) | 18/18 gated [0.82, 1.00]; 12/12 reported | 0 |
+| table audit (GTABLE56) | 18 records, 1467 entries, 9 counterexamples, 0 mismatches | - |
+
+- GS_ref: 16/16 decided API20L / API20L_b records audited (15 K_spent counted as AMB), 0 mismatches, 20/20 mutations, complete. 226 words checked, 0 unsound.
+- Exploratory lead (*Observed*, not gated, not pre-registered; `results/diag-056/WORLD_FEATURES_056.json`): of 42 certify/16e records at 20 states (studies 050-056), the only 2 decided are both among the 6 with 0 unexercised transitions; the other 36 decided 0. Measured on the run's own trace (*Inferred* caveat: may be effect, not cause).
+- Deviations #185 (pre-run) and #187 (post-run). There is no #186 file: the request called the pre-run deviation #186. #185 item 6 cites item 17 for the K finding; it is item 18. #187 item 4 says the AMB/K_spent records number 16; they number 15 (15 AMB + 2 IDU of 17). Both files are ledger-hashed and left as written. Ledger notes for tests_056, gates_056 and deviation_187 carry an 'EDT' word beside a -05:00 timestamp; the offset is correct, the word is not.
+- Next: open. No v0.54.0 plan is pre-registered; whether to continue is the owner's decision.
+
 ## v0.52.0: brute.certify/20c is sound but not certified; no decision gain at 20 states, compatibility 4/6 (study BRUTE-0520-SCALE20-CUBECONQUER-055, LEAN process)
 
 **11 of 14 gated pass (GDET55, GFID55, GS20C_sound55, GCUBE55, GHOST55, GS_ref, G_sound, G_recount, GTI, GTEST, G_RT); GS20C_gain55, GCOMPAT20C55 and G_PROC FAIL. Secondary GCOST55, GCUBE_stats55, GS20C_rate55, GS20C_paired55 reported. certified_20c_N20 false; sound_not_certified_20c false.** certify/20c (new: certify/16e with capped queries split into cubes over restricted-growth colourings of trace positions 0..4, apartness-pruned) decided 0/6 fresh 20-state worlds [0.00, 0.39] in both passes, the same as certify/16e at bound 20 (0/6 [0.00, 0.39], all budget spent). At 16 states it matched certify/16e on 4/6 [0.30, 0.90] under the plan 052 rule: the two IDF cases stopped at different steps (#184 item 5). G_PROC failed because no ledger event is named prefreeze_smoke_055 (the prefreeze was ledgered as attempt 1 plus a ghost recheck and not rerun, by instruction). Nothing at 20 states is certified; certify/20t, certify/16n and certify/16e are unchanged.
