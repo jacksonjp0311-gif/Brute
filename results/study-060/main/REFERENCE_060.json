@@ -1,0 +1,503 @@
+{
+  "PASS": true,
+  "audited": 16,
+  "block": "main",
+  "complete": true,
+  "decided": 16,
+  "elapsed_informational": 94.05980858099065,
+  "k_spent_as_amb": 0,
+  "misfires": [],
+  "mismatch_count": 0,
+  "mismatches": [],
+  "mutation_test": {
+    "detected": 20,
+    "items": [
+      {
+        "detected": true,
+        "id": "main/scale24w/12600104/S24b",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24w/12600107/S24b",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24w/12600111/S24b",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24w/12600108/S24b",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24w/12600111/S24b",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24w/12600110/S24b",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24w/12600105/S24",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24w/12600108/S24b",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24w/12600107/S24b",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24w/12600106/S24b",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24w/12600107/S24",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24w/12600107/S24",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24w/12600108/S24",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24w/12600105/S24",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24w/12600108/S24b",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24w/12600104/S24",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24w/12600110/S24b",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24w/12600105/S24b",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24w/12600106/S24",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24w/12600104/S24",
+        "kind": "s1"
+      }
+    ],
+    "mutations": 20,
+    "pass": true
+  },
+  "not_audited": [],
+  "not_reached": 14,
+  "per_arm": {
+    "S24": {
+      "audited": 8,
+      "decided": 8,
+      "idf_future_mismatch": 0,
+      "misfires": 0,
+      "mismatches": 0,
+      "records": 12
+    },
+    "S24b": {
+      "audited": 8,
+      "decided": 8,
+      "idf_future_mismatch": 0,
+      "misfires": 0,
+      "mismatches": 0,
+      "records": 12
+    },
+    "S32": {
+      "audited": 0,
+      "decided": 0,
+      "idf_future_mismatch": 0,
+      "misfires": 0,
+      "mismatches": 0,
+      "records": 6
+    }
+  },
+  "per_key": {
+    "scale24w": {
+      "audited": 16,
+      "decided": 16,
+      "mismatches": 0
+    },
+    "scale32w": {
+      "audited": 0,
+      "decided": 0,
+      "mismatches": 0
+    }
+  },
+  "per_record": [
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale24w/12600101/S24",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale24w/12600102/S24",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale24w/12600103/S24",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "N_audited": 24,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale24w/12600104/S24",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 24,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale24w/12600105/S24",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 24,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale24w/12600106/S24",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 24,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale24w/12600107/S24",
+      "label": "IDF",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "IDF",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 24,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale24w/12600108/S24",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale24w/12600109/S24",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "N_audited": 24,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale24w/12600110/S24",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 24,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale24w/12600111/S24",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 24,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale24w/12600112/S24",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale24w/12600101/S24b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale24w/12600102/S24b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale24w/12600103/S24b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "N_audited": 24,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale24w/12600104/S24b",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 24,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale24w/12600105/S24b",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 24,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale24w/12600106/S24b",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 24,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale24w/12600107/S24b",
+      "label": "IDF",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "IDF",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 24,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale24w/12600108/S24b",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale24w/12600109/S24b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "N_audited": 24,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale24w/12600110/S24b",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 24,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale24w/12600111/S24b",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 24,
+      "audited": true,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale24w/12600112/S24b",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale32w/12600201/S32",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale32w/12600202/S32",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale32w/12600203/S32",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale32w/12600204/S32",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale32w/12600205/S32",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale32w/12600206/S32",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    }
+  ],
+  "records": 30,
+  "schema": "brute.reference.v44_0",
+  "scope": {
+    "budget_s": 3600.0,
+    "key_order": [
+      "scale24w",
+      "scale32w"
+    ],
+    "order": [
+      "S24",
+      "S24b",
+      "S32"
+    ],
+    "workers": 8
+  },
+  "study_results_sha256": "89ee3fab974526fdb7c38742ec830f5702e90e3cccb4ac4435a3ad7bd2311fbd",
+  "vacuous": false,
+  "verdicts_checked": 32,
+  "walls_informational": {
+    "main/scale24w/12600104/S24": 81.0,
+    "main/scale24w/12600104/S24b": 79.0,
+    "main/scale24w/12600105/S24": 20.1,
+    "main/scale24w/12600105/S24b": 19.8,
+    "main/scale24w/12600106/S24": 15.2,
+    "main/scale24w/12600106/S24b": 14.5,
+    "main/scale24w/12600107/S24": 32.2,
+    "main/scale24w/12600107/S24b": 31.1,
+    "main/scale24w/12600108/S24": 33.2,
+    "main/scale24w/12600108/S24b": 33.6,
+    "main/scale24w/12600110/S24": 14.1,
+    "main/scale24w/12600110/S24b": 14.5,
+    "main/scale24w/12600111/S24": 44.4,
+    "main/scale24w/12600111/S24b": 43.2,
+    "main/scale24w/12600112/S24": 27.0,
+    "main/scale24w/12600112/S24b": 27.8
+  }
+}
