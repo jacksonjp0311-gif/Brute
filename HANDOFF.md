@@ -1,8 +1,15 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.57.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.58.0 release in progress)._
 
 ## Current version and state
+
+<!-- V0580 -->
+- **v0.58.0: release in progress** 2026-11-02 (EST) on plan/v0.58.0 (study BRUTE-0580-BUDGET24W-061). TARGET CHANGE (budget): the frozen certify/32b at B61 = 24M conflicts, random 4-bit readings, declared N 24.
+  - **Run complete (Observed).** 8/8 jobs, 6 cases; launched once with nohup 16:00:54 EST (ledger b05153d, pid 2010248), sealed about 16:22 EST (seal 61ec5eb, runner 1316.2 s); never relaunched. Cut by #196 before the freeze: N32 0, N24 6, N24B 2.
+  - **PASS (9/9 gated):** GS61_sound (WRONG 0/8 [0.00, 0.32]); GN24_61 S24 6/6 [0.61, 1.00] >= 5; GDET61 2/2 [0.34, 1.00]; GFID61 8/8 exact; GHOST61; GS_ref (8/8 audited, 0 mismatches, 20/20 mutations, 142 s); G_recount; GTEST (130 tests); G_PROC. Status: certified (read_bits 4, N <= 24, B61).
+  - **Blunt reading:** small sample; decided records used 3.21-15.13M conflicts; the probe's two hard 060 seeds stayed IDU at 24M. 2-bit at 20 states and N 32 stay Open.
+  - **Deviations:** #196 (pre-run), #197 (post-run). **Next:** plan 062 (v0.59.0): probe-word windows (certify/20w) on 2-bit readings at 20 states.
 
 <!-- V0570 -->
 - **v0.57.0: RELEASED** 2026-11-02 (EST), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.57.0 (annotated tag object `cb17897` at `f037212`, ledger release_0570 `82c1528`). Fresh-clone verify of the tag passed (G_RT): studies 045 to 060 restored, verify_release_0570 passed, 131/131 tests in 13 modules. TARGET CHANGE: certify/32b (brute/api/certify32b.py, certify/20b with the declared bound raised to 32, no global patch) is certified (read_bits 4, N <= 24) on noise-free random 4-bit readings. **32 states stay Open; 2-bit readings at 20 states stay Open.**
