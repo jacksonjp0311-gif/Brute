@@ -1,0 +1,1287 @@
+{
+  "PASS": true,
+  "all_arms_present": true,
+  "api_checks": {
+    "PASS": true,
+    "equiv": {
+      "PASS": true,
+      "cases": [
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 3,
+          "part": "a",
+          "read_bits": 2,
+          "seed": 5920
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 4,
+          "part": "a",
+          "read_bits": 2,
+          "seed": 5921
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 5,
+          "part": "a",
+          "read_bits": 2,
+          "seed": 5922
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 6,
+          "part": "a",
+          "read_bits": 2,
+          "seed": 5923
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 3,
+          "part": "a",
+          "read_bits": 2,
+          "seed": 5924
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 4,
+          "part": "a",
+          "read_bits": 2,
+          "seed": 5925
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 3,
+          "part": "a",
+          "read_bits": 3,
+          "seed": 5930
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 4,
+          "part": "a",
+          "read_bits": 3,
+          "seed": 5931
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 5,
+          "part": "a",
+          "read_bits": 3,
+          "seed": 5932
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 6,
+          "part": "a",
+          "read_bits": 3,
+          "seed": 5933
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 3,
+          "part": "a",
+          "read_bits": 3,
+          "seed": 5934
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 4,
+          "part": "a",
+          "read_bits": 3,
+          "seed": 5935
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 3,
+          "part": "a",
+          "read_bits": 4,
+          "seed": 5940
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 4,
+          "part": "a",
+          "read_bits": 4,
+          "seed": 5941
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 5,
+          "part": "a",
+          "read_bits": 4,
+          "seed": 5942
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 6,
+          "part": "a",
+          "read_bits": 4,
+          "seed": 5943
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 3,
+          "part": "a",
+          "read_bits": 4,
+          "seed": 5944
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 4,
+          "part": "a",
+          "read_bits": 4,
+          "seed": 5945
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 3,
+          "part": "b",
+          "read_bits": 2,
+          "seed": 5990
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 4,
+          "part": "b",
+          "read_bits": 2,
+          "seed": 5991
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 5,
+          "part": "b",
+          "read_bits": 2,
+          "seed": 5992
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 6,
+          "part": "b",
+          "read_bits": 2,
+          "seed": 5993
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 3,
+          "part": "b",
+          "read_bits": 2,
+          "seed": 5994
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 4,
+          "part": "b",
+          "read_bits": 2,
+          "seed": 5995
+        }
+      ],
+      "refusals": [
+        [
+          "[(0, 0, 0, 0), (0, 0, 0, 0)]",
+          "{}",
+          "refused"
+        ],
+        [
+          "[(0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0,",
+          "{}",
+          "refused"
+        ],
+        [
+          "[(0, 2, 0, 0), (0, 2, 0, 0), (0, 2, 0, 0",
+          "{}",
+          "refused"
+        ],
+        [
+          "[(True, 0, 0, 0), (True, 0, 0, 0), (True",
+          "{}",
+          "refused"
+        ],
+        [
+          "(0, 0, 0, 0)",
+          "{}",
+          "refused"
+        ],
+        [
+          "[(0, 0, 0, 0)]",
+          "{'read_bits': 5, 'reads': 1}",
+          "refused"
+        ],
+        [
+          "[(0, 0, 0, 0)]",
+          "{'read_bits': True, 'reads': 1}",
+          "refused"
+        ],
+        [
+          "[(0, 0, 0, 0)]",
+          "{'eps_bar': 0.0, 'reads': 1}",
+          "refused"
+        ],
+        [
+          "[(0, 0, 0, 0)]",
+          "{'eps_bar': 0.5, 'reads': 1}",
+          "refused"
+        ],
+        [
+          "[(0, 0, 0, 0)]",
+          "{'eps_bar': True, 'reads': 1}",
+          "refused"
+        ],
+        [
+          "[(0, 0, 0, 0), (0, 0, 0, 0)]",
+          "{'reads': 2}",
+          "refused"
+        ],
+        [
+          "[(0, 0, 0, 0)]",
+          "{'delta': 0, 'reads': 1}",
+          "refused"
+        ],
+        [
+          "observe",
+          "[(0, 1)]",
+          "refused"
+        ],
+        [
+          "observe",
+          "[(0, 1, 0, 2)]",
+          "refused"
+        ],
+        [
+          "observe",
+          "[(0, 1, 0, 1), (0, 1, 0, 1), (0, 1, 0, 1",
+          "refused"
+        ],
+        [
+          "observe",
+          "[(0, 1, 0, None)]",
+          "refused"
+        ],
+        [
+          "observe",
+          "(0, 1, 0, 1)",
+          "refused"
+        ]
+      ]
+    },
+    "ghost": {
+      "PASS59": true,
+      "certify20n_static_ok": true,
+      "frozen_api_sha256": {
+        "brute/api/certify14.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_058.json",
+          "frozen": "0c789ee206e8341ac610d00980c24976e5c027af5a02a5af4edb3c9068818ac6",
+          "now": "0c789ee206e8341ac610d00980c24976e5c027af5a02a5af4edb3c9068818ac6"
+        },
+        "brute/api/certify16.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_058.json",
+          "frozen": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1",
+          "now": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1"
+        },
+        "brute/api/certify16d.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_058.json",
+          "frozen": "98406b659e8abcbe9252da66da49b90317bdc544e1052711d8ec99a482992d25",
+          "now": "98406b659e8abcbe9252da66da49b90317bdc544e1052711d8ec99a482992d25"
+        },
+        "brute/api/certify16e.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_058.json",
+          "frozen": "99a6f3315d0ac7f9944dd6519fc968200543dc9ec50a991657dd33766a7112fb",
+          "now": "99a6f3315d0ac7f9944dd6519fc968200543dc9ec50a991657dd33766a7112fb"
+        },
+        "brute/api/certify16n.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_058.json",
+          "frozen": "46dc1ee28144e9f59af6db85e86d12ffd1b04c69cb8d12cbd85fd790ac95d19a",
+          "now": "46dc1ee28144e9f59af6db85e86d12ffd1b04c69cb8d12cbd85fd790ac95d19a"
+        },
+        "brute/api/certify20b.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_058.json",
+          "frozen": "7930f897679d19fec8e9519430509e1eb560970229c1e0db983e10dfa15e55e7",
+          "now": "7930f897679d19fec8e9519430509e1eb560970229c1e0db983e10dfa15e55e7"
+        }
+      },
+      "frozen_api_unchanged": true,
+      "network_pass": true,
+      "no_network_returncode": 0,
+      "no_network_run": {
+        "loop": [
+          "brute.certify/20n",
+          "ID",
+          20,
+          48,
+          1588699,
+          4,
+          16447
+        ],
+        "socket_attempts": 0
+      },
+      "socket_attempts": 0
+    }
+  },
+  "api_checks_rc": 0,
+  "label": "Observed",
+  "note": "PASS here means the tooling ran end to end on a sealed block, gates reproduce, the self-replay is exact, the cut rule was applied as declared and the real commit-order check passes; GN_keep59 / GN05_59 / GMAJ59 outcomes on smoke are recorded, not required",
+  "purpose": "Pre-freeze smoke-gates, runtime projection and cut check for study-059 (plan 059 runtime_estimate; pre-run deviation #192).",
+  "recount": {
+    "PASS": true,
+    "cases": 2,
+    "decided_by_arm": {
+      "C4": 2,
+      "N4_05": 2,
+      "N4_10": 2,
+      "N4_10b": 2,
+      "NEG4": 2
+    },
+    "mismatches": [],
+    "records": 10,
+    "study_decided_by_arm": {
+      "C4": 2,
+      "N4_05": 2,
+      "N4_10": 2,
+      "N4_10b": 2,
+      "NEG4": 2
+    },
+    "wrong_by_arm": {
+      "C4": 0,
+      "N4_05": 0,
+      "N4_10": 0,
+      "N4_10b": 0,
+      "NEG4": 0
+    }
+  },
+  "recount_rc": 0,
+  "reference_rc": 0,
+  "reference_smoke": {
+    "PASS": true,
+    "audited": 10,
+    "complete": true,
+    "decided": 10,
+    "elapsed_informational": 14.033232774992939,
+    "mismatch_count": 0,
+    "mutations": 20,
+    "of": 20,
+    "per_arm": {
+      "C4": {
+        "audited": 2,
+        "decided": 2,
+        "idf_future_mismatch": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 2
+      },
+      "N4_05": {
+        "audited": 2,
+        "decided": 2,
+        "idf_future_mismatch": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 2
+      },
+      "N4_10": {
+        "audited": 2,
+        "decided": 2,
+        "idf_future_mismatch": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 2
+      },
+      "N4_10b": {
+        "audited": 2,
+        "decided": 2,
+        "idf_future_mismatch": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 2
+      },
+      "NEG4": {
+        "audited": 2,
+        "decided": 2,
+        "idf_future_mismatch": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 2
+      }
+    },
+    "records": 10,
+    "scope": {
+      "budget_s": 1800.0,
+      "key_order": [
+        "scale20n"
+      ],
+      "order": [
+        "C4",
+        "N4_05",
+        "N4_10",
+        "N4_10b",
+        "NEG4"
+      ],
+      "workers": 8
+    },
+    "vacuous": false
+  },
+  "release_ok_synthetic": true,
+  "runtime_projection": {
+    "candidates": {
+      "N59=12": {
+        "jobs": 60,
+        "smoke_mean_run_s": 432.6,
+        "worst_run_s": 729.5
+      },
+      "N59=8": {
+        "jobs": 40,
+        "smoke_mean_run_s": 270.4,
+        "worst_run_s": 455.9
+      }
+    },
+    "cap_s": 3300.0,
+    "caveat": "two smoke seeds; the worst case assumes every job spends its whole B at the slowest smoke rate",
+    "chosen_projection": {
+      "jobs": 60,
+      "smoke_mean_run_s": 432.6,
+      "worst_run_s": 729.5
+    },
+    "cut_applied": false,
+    "cut_consistent": true,
+    "cut_exhausted": false,
+    "label": "Inferred",
+    "projected_main_worst_s": 729.5,
+    "required": {
+      "N59": 12
+    },
+    "runner": {
+      "N59": 12
+    },
+    "smoke_job_walls_s": [
+      34.8,
+      36.0,
+      36.4,
+      36.5,
+      36.7,
+      69.9,
+      72.3,
+      72.4,
+      72.4,
+      73.3
+    ],
+    "smoke_rate_max": 34299.1,
+    "smoke_slowest_rate": 24635.5,
+    "workers": 8,
+    "worst_per_job_s": 91.2
+  },
+  "smoke_determinism": [
+    [
+      12590051,
+      true
+    ],
+    [
+      12590052,
+      true
+    ]
+  ],
+  "smoke_record_columns": [
+    "seed",
+    "arm: label, stop, n_min, used, n_rounds, conflicts_spent, wall_guard, reads_total, maj_errors, case wall s"
+  ],
+  "smoke_records": [
+    [
+      12590051,
+      {
+        "C4": [
+          "ID",
+          "ID",
+          20,
+          26,
+          9,
+          1193197,
+          0,
+          203,
+          0,
+          36.7
+        ],
+        "N4_05": [
+          "ID",
+          "ID",
+          20,
+          26,
+          9,
+          1193197,
+          0,
+          11273,
+          0,
+          36.5
+        ],
+        "N4_10": [
+          "ID",
+          "ID",
+          20,
+          26,
+          9,
+          1193197,
+          0,
+          14665,
+          0,
+          36.4
+        ],
+        "N4_10b": [
+          "ID",
+          "ID",
+          20,
+          26,
+          9,
+          1193197,
+          0,
+          14665,
+          0,
+          34.8
+        ],
+        "NEG4": [
+          "ID",
+          "ID",
+          20,
+          26,
+          9,
+          1193197,
+          0,
+          11273,
+          0,
+          36.0
+        ]
+      }
+    ],
+    [
+      12590052,
+      {
+        "C4": [
+          "ID",
+          "ID",
+          20,
+          57,
+          18,
+          1806560,
+          0,
+          234,
+          0,
+          73.3
+        ],
+        "N4_05": [
+          "ID",
+          "ID",
+          20,
+          57,
+          18,
+          1806560,
+          0,
+          13206,
+          0,
+          72.4
+        ],
+        "N4_10": [
+          "ID",
+          "ID",
+          20,
+          57,
+          18,
+          1806560,
+          0,
+          17176,
+          0,
+          72.3
+        ],
+        "N4_10b": [
+          "ID",
+          "ID",
+          20,
+          57,
+          18,
+          1806560,
+          0,
+          17176,
+          0,
+          69.9
+        ],
+        "NEG4": [
+          "ID",
+          "ID",
+          20,
+          57,
+          18,
+          1806560,
+          0,
+          13206,
+          0,
+          72.3
+        ]
+      }
+    ]
+  ],
+  "smoke_wall_guard_records": [],
+  "stops_present": {
+    "ID": 10
+  },
+  "synthetic": {
+    "GDET59": {
+      "ci95": [
+        0.3423802275066531,
+        1.0
+      ],
+      "columns": [
+        "seed",
+        "canon59_equal",
+        "N4_10",
+        "N4_10b"
+      ],
+      "identical": 2,
+      "of": 2,
+      "per_case": [
+        [
+          12590051,
+          true,
+          "ID",
+          "ID"
+        ],
+        [
+          12590052,
+          true,
+          "ID",
+          "ID"
+        ]
+      ],
+      "records_checked": 10,
+      "wall_guard_firings": []
+    },
+    "GFID59": {
+      "bound": true,
+      "decided_in_gates": 10,
+      "equiv_cases": [
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 3,
+          "part": "a",
+          "read_bits": 2,
+          "seed": 5920
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 4,
+          "part": "a",
+          "read_bits": 2,
+          "seed": 5921
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 5,
+          "part": "a",
+          "read_bits": 2,
+          "seed": 5922
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 6,
+          "part": "a",
+          "read_bits": 2,
+          "seed": 5923
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 3,
+          "part": "a",
+          "read_bits": 2,
+          "seed": 5924
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 4,
+          "part": "a",
+          "read_bits": 2,
+          "seed": 5925
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 3,
+          "part": "a",
+          "read_bits": 3,
+          "seed": 5930
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 4,
+          "part": "a",
+          "read_bits": 3,
+          "seed": 5931
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 5,
+          "part": "a",
+          "read_bits": 3,
+          "seed": 5932
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 6,
+          "part": "a",
+          "read_bits": 3,
+          "seed": 5933
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 3,
+          "part": "a",
+          "read_bits": 3,
+          "seed": 5934
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 4,
+          "part": "a",
+          "read_bits": 3,
+          "seed": 5935
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 3,
+          "part": "a",
+          "read_bits": 4,
+          "seed": 5940
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 4,
+          "part": "a",
+          "read_bits": 4,
+          "seed": 5941
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 5,
+          "part": "a",
+          "read_bits": 4,
+          "seed": 5942
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 6,
+          "part": "a",
+          "read_bits": 4,
+          "seed": 5943
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 3,
+          "part": "a",
+          "read_bits": 4,
+          "seed": 5944
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 4,
+          "part": "a",
+          "read_bits": 4,
+          "seed": 5945
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 3,
+          "part": "b",
+          "read_bits": 2,
+          "seed": 5990
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 4,
+          "part": "b",
+          "read_bits": 2,
+          "seed": 5991
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 5,
+          "part": "b",
+          "read_bits": 2,
+          "seed": 5992
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 6,
+          "part": "b",
+          "read_bits": 2,
+          "seed": 5993
+        },
+        {
+          "equal": true,
+          "label": "IDF",
+          "n": 3,
+          "part": "b",
+          "read_bits": 2,
+          "seed": 5994
+        },
+        {
+          "equal": true,
+          "label": "AMB",
+          "n": 4,
+          "part": "b",
+          "read_bits": 2,
+          "seed": 5995
+        }
+      ],
+      "failures": {},
+      "fidelity_exact": 10,
+      "no_network_run": {
+        "loop": [
+          "brute.certify/20n",
+          "ID",
+          20,
+          48,
+          1588699,
+          4,
+          16447
+        ],
+        "socket_attempts": 0
+      },
+      "of_decided": 10,
+      "refusals": [
+        [
+          "[(0, 0, 0, 0), (0, 0, 0, 0)]",
+          "{}",
+          "refused"
+        ],
+        [
+          "[(0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0,",
+          "{}",
+          "refused"
+        ],
+        [
+          "[(0, 2, 0, 0), (0, 2, 0, 0), (0, 2, 0, 0",
+          "{}",
+          "refused"
+        ],
+        [
+          "[(True, 0, 0, 0), (True, 0, 0, 0), (True",
+          "{}",
+          "refused"
+        ],
+        [
+          "(0, 0, 0, 0)",
+          "{}",
+          "refused"
+        ],
+        [
+          "[(0, 0, 0, 0)]",
+          "{'read_bits': 5, 'reads': 1}",
+          "refused"
+        ],
+        [
+          "[(0, 0, 0, 0)]",
+          "{'read_bits': True, 'reads': 1}",
+          "refused"
+        ],
+        [
+          "[(0, 0, 0, 0)]",
+          "{'eps_bar': 0.0, 'reads': 1}",
+          "refused"
+        ],
+        [
+          "[(0, 0, 0, 0)]",
+          "{'eps_bar': 0.5, 'reads': 1}",
+          "refused"
+        ],
+        [
+          "[(0, 0, 0, 0)]",
+          "{'eps_bar': True, 'reads': 1}",
+          "refused"
+        ],
+        [
+          "[(0, 0, 0, 0), (0, 0, 0, 0)]",
+          "{'reads': 2}",
+          "refused"
+        ],
+        [
+          "[(0, 0, 0, 0)]",
+          "{'delta': 0, 'reads': 1}",
+          "refused"
+        ],
+        [
+          "observe",
+          "[(0, 1)]",
+          "refused"
+        ],
+        [
+          "observe",
+          "[(0, 1, 0, 2)]",
+          "refused"
+        ],
+        [
+          "observe",
+          "[(0, 1, 0, 1), (0, 1, 0, 1), (0, 1, 0, 1",
+          "refused"
+        ],
+        [
+          "observe",
+          "[(0, 1, 0, None)]",
+          "refused"
+        ],
+        [
+          "observe",
+          "(0, 1, 0, 1)",
+          "refused"
+        ]
+      ],
+      "vacuous": false
+    },
+    "GMAJ59": {
+      "NEG4_majority_errors_reported": 0,
+      "majority_errors": {
+        "N4_05": 0,
+        "N4_10": 0,
+        "N4_10b": 0
+      },
+      "observations": {
+        "N4_05": 437,
+        "N4_10": 437,
+        "N4_10b": 437
+      },
+      "source": "recount"
+    },
+    "GN05_59": {
+      "N4_05_ID_IDF": 2,
+      "ci95_N4_05": [
+        0.3423802275066531,
+        1.0
+      ],
+      "label_source": "recount",
+      "of": 2,
+      "rule": "N4_05 ID+IDF >= 6 of 12"
+    },
+    "GN_keep59": {
+      "C4_ID_IDF": 2,
+      "N4_10_ID_IDF": 2,
+      "ci95_C4": [
+        0.3423802275066531,
+        1.0
+      ],
+      "ci95_N4_10": [
+        0.3423802275066531,
+        1.0
+      ],
+      "discordant": [
+        0,
+        0
+      ],
+      "label_source": "recount",
+      "mcnemar_p_reported": 1.0,
+      "of": 2,
+      "rule": "N4_10 ID+IDF >= 6 of 12 and N4_10 >= C4 - 2"
+    },
+    "GS59_sound": {
+      "WRONG": [],
+      "columns": [
+        "seed",
+        "C4",
+        "N4_05",
+        "N4_10",
+        "N4_10b",
+        "NEG4"
+      ],
+      "gated_records": 8,
+      "label_source": "recount",
+      "per_case": [
+        [
+          12590051,
+          "ID",
+          "ID",
+          "ID",
+          "ID",
+          "ID"
+        ],
+        [
+          12590052,
+          "ID",
+          "ID",
+          "ID",
+          "ID",
+          "ID"
+        ]
+      ]
+    },
+    "GS_ref": {
+      "PASS": true,
+      "audited": 10,
+      "block": "main",
+      "complete": true,
+      "decided": 10,
+      "elapsed_informational": 15.033603054995183,
+      "k_spent_as_amb": 0,
+      "misfires": [],
+      "mismatch_count": 0,
+      "mutations": 20,
+      "not_audited": [],
+      "not_reached": 0,
+      "of": 20,
+      "per_arm": {
+        "C4": {
+          "audited": 2,
+          "decided": 2,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 2
+        },
+        "N4_05": {
+          "audited": 2,
+          "decided": 2,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 2
+        },
+        "N4_10": {
+          "audited": 2,
+          "decided": 2,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 2
+        },
+        "N4_10b": {
+          "audited": 2,
+          "decided": 2,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 2
+        },
+        "NEG4": {
+          "audited": 2,
+          "decided": 2,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 2
+        }
+      },
+      "records": 10,
+      "scope": {
+        "budget_s": 1800.0,
+        "key_order": [
+          "scale20n"
+        ],
+        "order": [
+          "C4",
+          "N4_05",
+          "N4_10",
+          "N4_10b",
+          "NEG4"
+        ],
+        "workers": 8
+      },
+      "vacuous": false,
+      "verdicts_checked": 20
+    },
+    "cases": 2,
+    "certified_noisy_readbits4_N20": false,
+    "fidelity_failures": {},
+    "fidelity_self_replay": {
+      "PASS": true,
+      "decided_records": 10,
+      "exact": 10,
+      "study_results_sha256": "f947bb124a5fff98142850d06e6b9e1cac647c141ae57fc6975981bb34929cf6",
+      "vacuous": false,
+      "workers": 8
+    },
+    "gate_status": {
+      "GDET59": {
+        "pass": true
+      },
+      "GFID59": {
+        "pass": true
+      },
+      "GHOST59": {
+        "pass": false
+      },
+      "GMAJ59": {
+        "pass": true
+      },
+      "GN05_59": {
+        "pass": false
+      },
+      "GN_keep59": {
+        "pass": false
+      },
+      "GS59_sound": {
+        "pass": true
+      },
+      "GS_ref": {
+        "pass": true
+      },
+      "GTEST": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (TEST_SUITE_059 missing)"
+      },
+      "G_PROC": {
+        "pass": false
+      },
+      "G_recount": {
+        "pass": true
+      }
+    },
+    "label_source": "recount",
+    "note": "synthetic: smoke cases as main with the smoke case count; GHOST59 (no 059 freeze yet), GTEST and G_PROC fail by design; GN_keep59 / GN05_59 on 2 smoke seeds are recorded, not required",
+    "recount_rc": 0,
+    "reference_rc": 0,
+    "reproduces": true,
+    "sealed_input_verified": true,
+    "secondary": {
+      "GCOST59": {
+        "C4": {
+          "budget_spent": 0,
+          "chunks": 127,
+          "conflicts": 2999757,
+          "k_max": 1,
+          "reads_total": 437,
+          "records": 2,
+          "steps": 83,
+          "wall_s": 110.0
+        },
+        "N4_05": {
+          "budget_spent": 0,
+          "chunks": 127,
+          "conflicts": 2999757,
+          "k_max": 63,
+          "reads_total": 24479,
+          "records": 2,
+          "steps": 83,
+          "wall_s": 108.8
+        },
+        "N4_10": {
+          "budget_spent": 0,
+          "chunks": 127,
+          "conflicts": 2999757,
+          "k_max": 81,
+          "reads_total": 31841,
+          "records": 2,
+          "steps": 83,
+          "wall_s": 108.8
+        },
+        "N4_10b": {
+          "budget_spent": 0,
+          "chunks": 127,
+          "conflicts": 2999757,
+          "k_max": 81,
+          "reads_total": 31841,
+          "records": 2,
+          "steps": 83,
+          "wall_s": 104.7
+        },
+        "NEG4": {
+          "budget_spent": 0,
+          "chunks": 127,
+          "conflicts": 2999757,
+          "k_max": 63,
+          "reads_total": 24479,
+          "records": 2,
+          "steps": 83,
+          "wall_s": 108.4
+        }
+      },
+      "MCNEMAR59": {
+        "N4_05_vs_C4": {
+          "discordant": [
+            0,
+            0
+          ],
+          "p": 1.0
+        },
+        "N4_10_vs_C4": {
+          "discordant": [
+            0,
+            0
+          ],
+          "p": 1.0
+        }
+      },
+      "NEG4_report": {
+        "ID_IDF": 2,
+        "WRONG_seeds": [],
+        "labels": {
+          "AMB": 0,
+          "ID": 2,
+          "IDF": 0,
+          "IDU": 0,
+          "NOFIT": 0,
+          "WRONG": 0
+        },
+        "majority_errors": 0
+      },
+      "SEEDCHECK59": {
+        "frozen_in_059": false,
+        "seedcheck_pass": true
+      }
+    },
+    "sound_not_certified_noisy": false,
+    "status_phrase": "not certified, no certification status (failing gates: GN_keep59, GN05_59, GHOST59, GTEST, G_PROC)"
+  },
+  "verifier_chain": {
+    "authorization_exceptions": 0,
+    "entries": [
+      [
+        "preregistration_059",
+        "37aea67"
+      ],
+      [
+        "build_authorization_059",
+        "f5bc938"
+      ],
+      [
+        "seedcheck_059",
+        "f7b0c41"
+      ]
+    ],
+    "head": "6d98166",
+    "links": 5,
+    "passed": true
+  }
+}
