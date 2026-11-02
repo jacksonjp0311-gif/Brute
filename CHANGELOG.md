@@ -1,5 +1,30 @@
 # Brute changelog
 
+## v0.55.0: TARGET CHANGE. brute.certify/20b is certified for random 3- and 4-bit readings at N <= 20; 2-bit at 20 states stays Open (study BRUTE-0550-READBITS-058, LEAN process)
+
+**10 of 10 gated pass (GS58_sound, GB_gain58, GB3_58, GDET58, GFID58, GHOST58, GS_ref, G_recount, GTEST, G_PROC); G_RT checked at release. certified_readbits_N20 true. Status: certified (read_bits 3 and 4, N <= 20).**
+
+Blunt summary. This is a target change, not progress on the old problem. Each of the 20 states now emits a random 3- or 4-bit reading instead of 2 bits; the transition graphs are the same worlds_050 scale20 graphs. With 4 bits, certify/20b (frozen certify/16e plus a reading width) decided 11/12 fresh worlds [0.65, 0.99]; with 3 bits 4/12 [0.14, 0.61]; with random 2 bits 0/12 [0.00, 0.24] and with the original 2 bits 0/12. 2-bit readings at 20 states stay Open.
+
+Claim scope (*Exact*; reason *Inferred*): an ID or IDF is exact only conditional on a true size at most the declared N = 20. A larger machine can copy the true machine on every visited state.
+
+### Timeline (EST, 2026-11-02)
+
+- Plan `ee52a61`; seedcheck `c25053c`; tooling `9867e2e`-`8305ed4`; pre-freeze smoke attempt 1 PASS `509098c`; deviation #190 `e1aeed2`; source freeze `846709d` (558 files).
+- Main run launched once with nohup 11:16:41 (ledger `d8cc97e`); sealed 11:50:13, seal `8f7ff0d`; recount `a1d905d`; reference `36e9e1f` (45 s); tests `21f6209` (11:59:07-11:59:20); api checks `a33fc77` (11:59:07-12:03:23); gates `3d3da7b`; deviation #191 `707ff18`; RELEASE.json `ee9daaf`.
+
+### Results (recount labels; Wilson 95% in GATES_058.json)
+
+| arm (certify/20b at bound 20, B 2M, K 400) | ID+IDF | WRONG |
+|---|---|---|
+| B2 (original 2-bit readings) | 0/12 [0.00, 0.24] | 0 |
+| B2R (random 2-bit) | 0/12 [0.00, 0.24] | 0 |
+| B3 (random 3-bit) | 4/12 [0.14, 0.61] (3 ID, 1 IDF); McNemar vs B2R p = 0.125 | 0 |
+| B4 (random 4-bit) | 11/12 [0.65, 0.99] (9 ID, 2 IDF); McNemar vs B2R p = 0.00098 | 0 |
+| B4_b (second pass) | identical to B4 12/12 [0.76, 1.00] | 0 |
+
+Decided 4-bit records used 0.60-1.68M of the 2M conflicts (budget-sensitive). Readings collide (10-14 distinct codes among 20 states at 4 bits). Deviations #190 (pre-run) and #191 (post-run; notes a launch-time discrepancy in a status message and an informational elapsed field).
+
 ## v0.54.0: brute.certify/20v is sound but not certified; coverage-first decided 0/12 (study BRUTE-0540-SCALE20-COVERFIRST-057, LEAN process)
 
 **12 of 14 gated pass (GS57_sound, GMATCH57, GDET57, GFID57, GHOST57, G_sound, GS_ref, G_recount, GTI57, GTEST, G_PROC, G_RT); GPRE57 and GX_gain57 FAIL. Secondary GPRE_stats57, GCOVX57, GCOST57, MCNEMAR57, SEEDCHECK57 reported. certified_20v_N20 false; sound_not_certified_20v true.**
