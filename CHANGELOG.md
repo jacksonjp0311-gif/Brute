@@ -1,5 +1,34 @@
 # Brute changelog
 
+## v0.54.0: brute.certify/20v is sound but not certified; coverage-first decided 0/12 (study BRUTE-0540-SCALE20-COVERFIRST-057, LEAN process)
+
+**12 of 14 gated pass (GS57_sound, GMATCH57, GDET57, GFID57, GHOST57, G_sound, GS_ref, G_recount, GTI57, GTEST, G_PROC, G_RT); GPRE57 and GX_gain57 FAIL. Secondary GPRE_stats57, GCOVX57, GCOST57, MCNEMAR57, SEEDCHECK57 reported. certified_20v_N20 false; sound_not_certified_20v true.**
+
+Blunt summary. The coverage-first method (COV_X: cover20 walks to exercise transitions without seeing the truth, then certify/16e decides) decided 0 of 12 fresh 20-state worlds [0.00, 0.24]. Plain certify/16e decided 0/12. Only one arm decided anything: COV_O, on one world (12410008, ID). COV_O is an oracle: it reads the true machine and walks until every reachable transition has been exercised. It is not an API and cannot be deployed. It reached full coverage on all 12 worlds and still spent the whole 2M-conflict budget on 11. The length-matched random control LEN_R decided 0/12; 1 vs 0 is no evidence (McNemar p = 1.00). This refutes the v0.53.0 coverage lead as a sufficient cause: those decided runs had full coverage because they were decided, not the other way round. Per plan next_if_fail, coverage is published as not causal at this budget.
+
+Claim scope (*Exact*; reason *Inferred*): an ID or IDF is exact only conditional on a true size at most the declared N. A larger machine can copy the true machine on every visited state, so no finite test separates them.
+
+### Timeline (EST, 2026-11-02)
+
+- Plan `a8dfa1d` (preregistration 08:26); build authorization `ccae49d`; seedcheck `263bd6b`; pre-freeze smoke attempt 1 PASS `79d6a9d`; deviation #188 `cdcc9de`; source freeze `3db1525` (527 files, ledger `ea1af1a`).
+- Run start 09:01:55 (ledger `2a2f9a8`), launched once with nohup; 7 snapshots `8591b45` to `28cba98`; seal `9f9b477` (ledger `c5e3fc9`; 60/60 jobs, 1936.5 s); recount `cfdc43c`; reference `fd3695c` (complete, 484 s); api checks `f4e8300` (09:50:28-10:04:51); tests `3bd09eb` (09:51:40-09:54:54, concurrent with api checks); gates `7718a2a`; deviation #189 `a8a4aa8`; RELEASE.json `5347a97`.
+
+### Results (recount labels; Wilson 95% in GATES_057.json)
+
+| arm (certify/16e at bound 20, B 2M) | ID+IDF | other | WRONG |
+|---|---|---|---|
+| API16E20 (no extension) | 0/12 [0.00, 0.24] | 1 AMB K spent, 11 IDU | 0 |
+| COV_O (oracle full-coverage walk, not an API) | 1/12 [0.01, 0.35] (12410008 ID) | 11 IDU | 0 |
+| LEN_R (random walk, COV_O's length) | 0/12 [0.00, 0.24] | 1 AMB K spent, 11 IDU | 0 |
+| COV_X (cover20 walk, pass 1) | 0/12 [0.00, 0.24] | 1 AMB K spent, 11 IDU | 0 |
+| COV_X_b (pass 2) | 0/12, byte-identical to COV_X 12/12 [0.76, 1.00] | as COV_X | 0 |
+
+- GMATCH57 12/12: COV_O hand-off left 0 reachable unexercised pairs on every seed; LEN_R lengths matched. cover20 left a mean 4.3 (full on 1/12).
+- GS_ref: 5 records audited (1 ID, 4 K spent as AMB), 0 mismatches, 20/20 mutations. G_sound 527 words, 0 unsound. GFID57 12/12 exact. 0 socket attempts.
+- Corrections to ledger-hashed text, left as written: the api_checks_057 commit, its ledger note and #189 item 3 say api checks ran until 10:11 EST; they ended 10:04:51 EST. #189 item 10 says "4 of about 70" records decided at 20 states; the count is 3 of 102 (2 of 42 in studies 050-056, 1 of 60 here). The run_start_057 note carries its timestamp twice (#189 item 2).
+- No 'first' claim: 12410008 is not the first decided 20-state world (050 11730008, 056 12330005).
+- Next: v0.55.0 changes the target: certify forecasts of the next observations at declared N = 20 without identifying the machine (plan 058).
+
 ## v0.53.0: brute.certify/20l is not certified, no certification status (failing gates: GS20L_gain56, GCOMPAT20L56); soundness held (study BRUTE-0530-SCALE20-LSTAR-056, LEAN process)
 
 **12 of 14 gated pass (GDET56, GFID56, GS20L_sound56, GHOST56, GS_ref, GTABLE56, G_sound, G_recount, GTI, GTEST, G_PROC, G_RT); GS20L_gain56 and GCOMPAT20L56 FAIL. Secondary GCOST56, GS20L_paired56, GS20L_rate56, GTABLE_stats56, RECHECK_055 reported. certified_20l_N20 false; sound_not_certified_20l false.** certify/20l (new: L*-style counterexample-guided active learning bounded by N, table budget K 128) decided 0/6 fresh 20-state worlds [0.00, 0.39] in both passes; certify/16e at bound 20 decided 1/6 [0.03, 0.56] (12330005 ID). The table is what runs out: 17 of 18 API20L records spent 126-128 of K 128 on table filling with one hypothesis and no counterexample. Per plan next_if_fail, 20 states are published as out of reach for certify/20l at 2M conflicts on this family. 12330005 is not the first decided 20-state world: study 050 (v0.47.0) decided 11730008 as ID at B 4M.
