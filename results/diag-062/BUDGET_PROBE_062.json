@@ -1,0 +1,377 @@
+{
+ "B62": 8000000,
+ "B62_rule": "smallest probed B at which W2 decides >= 1 of 4; else 8M",
+ "B62_rule_met": true,
+ "C": 50000,
+ "K": 400,
+ "N": 20,
+ "api": "brute.certify/20b",
+ "elapsed_informational": 2273.2,
+ "guard_case_s": 2400.0,
+ "label": "Observed",
+ "probe_word": [
+  0,
+  1
+ ],
+ "purpose": "budget probe for BRUTE_PLAN_062 (budget_probe_rule); not evidence for any gate",
+ "records": [
+  {
+   "B": 2000000,
+   "arm": "B2",
+   "conflicts_spent": 2000011,
+   "extra_actions": 0,
+   "label": "IDU",
+   "n_min": null,
+   "n_rounds": 1,
+   "seed": 12530001,
+   "stop": "unknown",
+   "used": 0,
+   "wall_guard": 0,
+   "wall_s_informational": 262.2
+  },
+  {
+   "B": 2000000,
+   "arm": "B2",
+   "conflicts_spent": 2007710,
+   "extra_actions": 0,
+   "label": "IDU",
+   "n_min": null,
+   "n_rounds": 1,
+   "seed": 12530002,
+   "stop": "unknown",
+   "used": 0,
+   "wall_guard": 0,
+   "wall_s_informational": 397.5
+  },
+  {
+   "B": 2000000,
+   "arm": "B2",
+   "conflicts_spent": 2012144,
+   "extra_actions": 98,
+   "label": "IDU",
+   "n_min": 19,
+   "n_rounds": 31,
+   "seed": 12530003,
+   "stop": "unknown",
+   "used": 98,
+   "wall_guard": 0,
+   "wall_s_informational": 288.1
+  },
+  {
+   "B": 2000000,
+   "arm": "B2",
+   "conflicts_spent": 2000788,
+   "extra_actions": 48,
+   "label": "IDU",
+   "n_min": 17,
+   "n_rounds": 15,
+   "seed": 12530004,
+   "stop": "unknown",
+   "used": 48,
+   "wall_guard": 0,
+   "wall_s_informational": 148.3
+  },
+  {
+   "B": 8000000,
+   "arm": "B2",
+   "conflicts_spent": 8000101,
+   "extra_actions": 0,
+   "label": "IDU",
+   "n_min": null,
+   "n_rounds": 1,
+   "seed": 12530001,
+   "stop": "unknown",
+   "used": 0,
+   "wall_guard": 0,
+   "wall_s_informational": 1930.0
+  },
+  {
+   "B": 8000000,
+   "arm": "B2",
+   "conflicts_spent": 8004490,
+   "extra_actions": 21,
+   "label": "IDU",
+   "n_min": null,
+   "n_rounds": 9,
+   "seed": 12530002,
+   "stop": "unknown",
+   "used": 21,
+   "wall_guard": 0,
+   "wall_s_informational": 2041.6
+  },
+  {
+   "B": 8000000,
+   "arm": "B2",
+   "conflicts_spent": 8000293,
+   "extra_actions": 166,
+   "label": "IDU",
+   "n_min": 19,
+   "n_rounds": 45,
+   "seed": 12530003,
+   "stop": "unknown",
+   "used": 166,
+   "wall_guard": 0,
+   "wall_s_informational": 844.6
+  },
+  {
+   "B": 8000000,
+   "arm": "B2",
+   "conflicts_spent": 8000293,
+   "extra_actions": 60,
+   "label": "IDU",
+   "n_min": 19,
+   "n_rounds": 18,
+   "seed": 12530004,
+   "stop": "unknown",
+   "used": 60,
+   "wall_guard": 0,
+   "wall_s_informational": 1686.1
+  },
+  {
+   "B": 2000000,
+   "arm": "W2",
+   "conflicts_spent": 2000011,
+   "extra_actions": 0,
+   "label": "IDU",
+   "n_min": null,
+   "n_rounds": 1,
+   "seed": 12530001,
+   "stop": "unknown",
+   "used": 0,
+   "wall_guard": 0,
+   "wall_s_informational": 256.2
+  },
+  {
+   "B": 2000000,
+   "arm": "W2",
+   "conflicts_spent": 2007710,
+   "extra_actions": 0,
+   "label": "IDU",
+   "n_min": null,
+   "n_rounds": 1,
+   "seed": 12530002,
+   "stop": "unknown",
+   "used": 0,
+   "wall_guard": 0,
+   "wall_s_informational": 300.0
+  },
+  {
+   "B": 2000000,
+   "arm": "W2",
+   "conflicts_spent": 2001312,
+   "extra_actions": 150,
+   "label": "IDU",
+   "n_min": 19,
+   "n_rounds": 24,
+   "seed": 12530003,
+   "stop": "unknown",
+   "used": 150,
+   "wall_guard": 0,
+   "wall_s_informational": 167.6
+  },
+  {
+   "B": 2000000,
+   "arm": "W2",
+   "conflicts_spent": 2000122,
+   "extra_actions": 73,
+   "label": "IDU",
+   "n_min": 18,
+   "n_rounds": 12,
+   "seed": 12530004,
+   "stop": "unknown",
+   "used": 73,
+   "wall_guard": 0,
+   "wall_s_informational": 254.2
+  },
+  {
+   "B": 8000000,
+   "arm": "W2",
+   "conflicts_spent": 8000101,
+   "extra_actions": 0,
+   "label": "IDU",
+   "n_min": null,
+   "n_rounds": 1,
+   "seed": 12530001,
+   "stop": "unknown",
+   "used": 0,
+   "wall_guard": 0,
+   "wall_s_informational": 1931.4
+  },
+  {
+   "B": 8000000,
+   "arm": "W2",
+   "conflicts_spent": 8000106,
+   "extra_actions": 16,
+   "label": "IDU",
+   "n_min": null,
+   "n_rounds": 5,
+   "seed": 12530002,
+   "stop": "unknown",
+   "used": 16,
+   "wall_guard": 0,
+   "wall_s_informational": 2041.2
+  },
+  {
+   "B": 8000000,
+   "arm": "W2",
+   "conflicts_spent": 5640260,
+   "extra_actions": 199,
+   "label": "ID",
+   "n_min": 20,
+   "n_rounds": 31,
+   "seed": 12530003,
+   "stop": "ID",
+   "used": 199,
+   "wall_guard": 0,
+   "wall_s_informational": 581.1
+  },
+  {
+   "B": 8000000,
+   "arm": "W2",
+   "conflicts_spent": 8002038,
+   "extra_actions": 88,
+   "label": "IDU",
+   "n_min": null,
+   "n_rounds": 15,
+   "seed": 12530004,
+   "stop": "unknown",
+   "used": 88,
+   "wall_guard": 0,
+   "wall_s_informational": 2051.2
+  }
+ ],
+ "schema": "brute.probe.v59_0",
+ "seed_note": "sealed study-058 main seeds; spent, never fresh evidence",
+ "seeds_non_fresh": [
+  12530001,
+  12530002,
+  12530003,
+  12530004
+ ],
+ "summary": {
+  "B2_B2M": {
+   "conflicts": [
+    2000011,
+    2007710,
+    2012144,
+    2000788
+   ],
+   "decided": 0,
+   "guard": 0,
+   "labels": [
+    "IDU",
+    "IDU",
+    "IDU",
+    "IDU"
+   ],
+   "max_wall_s": 397.5,
+   "n_min": [
+    null,
+    null,
+    19,
+    17
+   ],
+   "of": 4,
+   "used": [
+    0,
+    0,
+    98,
+    48
+   ],
+   "wrong": 0
+  },
+  "B2_B8M": {
+   "conflicts": [
+    8000101,
+    8004490,
+    8000293,
+    8000293
+   ],
+   "decided": 0,
+   "guard": 0,
+   "labels": [
+    "IDU",
+    "IDU",
+    "IDU",
+    "IDU"
+   ],
+   "max_wall_s": 2041.6,
+   "n_min": [
+    null,
+    null,
+    19,
+    19
+   ],
+   "of": 4,
+   "used": [
+    0,
+    21,
+    166,
+    60
+   ],
+   "wrong": 0
+  },
+  "W2_B2M": {
+   "conflicts": [
+    2000011,
+    2007710,
+    2001312,
+    2000122
+   ],
+   "decided": 0,
+   "guard": 0,
+   "labels": [
+    "IDU",
+    "IDU",
+    "IDU",
+    "IDU"
+   ],
+   "max_wall_s": 300.0,
+   "n_min": [
+    null,
+    null,
+    19,
+    18
+   ],
+   "of": 4,
+   "used": [
+    0,
+    0,
+    150,
+    73
+   ],
+   "wrong": 0
+  },
+  "W2_B8M": {
+   "conflicts": [
+    8000101,
+    8000106,
+    5640260,
+    8002038
+   ],
+   "decided": 1,
+   "guard": 0,
+   "labels": [
+    "IDU",
+    "IDU",
+    "ID",
+    "IDU"
+   ],
+   "max_wall_s": 2051.2,
+   "n_min": [
+    null,
+    null,
+    20,
+    null
+   ],
+   "of": 4,
+   "used": [
+    0,
+    16,
+    199,
+    88
+   ],
+   "wrong": 0
+  }
+ }
+}
