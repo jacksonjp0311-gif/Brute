@@ -1,0 +1,266 @@
+{
+ "B61": 24000000,
+ "B61_rule": "smallest probed B deciding >= 3 of 4 n24 seeds; else 24M",
+ "B61_rule_met": false,
+ "C": 50000,
+ "K": 400,
+ "api": "brute.certify/32b",
+ "elapsed_informational": 2429.4,
+ "guard_case_s": 2100.0,
+ "label": "Observed",
+ "purpose": "budget probe for BRUTE_PLAN_061 (budget_probe_rule); not evidence for any gate",
+ "records": [
+  {
+   "B": 16000000,
+   "conflicts_spent": 16000181,
+   "extra_actions": 104,
+   "label": "IDU",
+   "n": 24,
+   "n_min": 23,
+   "n_rounds": 32,
+   "seed": 12600101,
+   "stop": "unknown",
+   "used": 104,
+   "wall_guard": 0,
+   "wall_s_informational": 1002.7
+  },
+  {
+   "B": 16000000,
+   "conflicts_spent": 16000061,
+   "extra_actions": 98,
+   "label": "IDU",
+   "n": 24,
+   "n_min": 23,
+   "n_rounds": 33,
+   "seed": 12600102,
+   "stop": "unknown",
+   "used": 98,
+   "wall_guard": 0,
+   "wall_s_informational": 1365.2
+  },
+  {
+   "B": 16000000,
+   "conflicts_spent": 8710161,
+   "extra_actions": 59,
+   "label": "ID",
+   "n": 24,
+   "n_min": 24,
+   "n_rounds": 20,
+   "seed": 12600103,
+   "stop": "ID",
+   "used": 59,
+   "wall_guard": 0,
+   "wall_s_informational": 423.2
+  },
+  {
+   "B": 16000000,
+   "conflicts_spent": 15207350,
+   "extra_actions": 91,
+   "label": "ID",
+   "n": 24,
+   "n_min": 24,
+   "n_rounds": 30,
+   "seed": 12600109,
+   "stop": "ID",
+   "used": 91,
+   "wall_guard": 0,
+   "wall_s_informational": 1004.0
+  },
+  {
+   "B": 24000000,
+   "conflicts_spent": 24000202,
+   "extra_actions": 112,
+   "label": "IDU",
+   "n": 24,
+   "n_min": 24,
+   "n_rounds": 36,
+   "seed": 12600101,
+   "stop": "unknown",
+   "used": 112,
+   "wall_guard": 0,
+   "wall_s_informational": 1681.9
+  },
+  {
+   "B": 24000000,
+   "conflicts_spent": 22281994,
+   "extra_actions": 105,
+   "label": "IDU",
+   "n": 24,
+   "n_min": 23,
+   "n_rounds": 36,
+   "seed": 12600102,
+   "stop": "unknown",
+   "used": 105,
+   "wall_guard": 24,
+   "wall_s_informational": 2105.3
+  },
+  {
+   "B": 24000000,
+   "conflicts_spent": 8710161,
+   "extra_actions": 59,
+   "label": "ID",
+   "n": 24,
+   "n_min": 24,
+   "n_rounds": 20,
+   "seed": 12600103,
+   "stop": "ID",
+   "used": 59,
+   "wall_guard": 0,
+   "wall_s_informational": 421.5
+  },
+  {
+   "B": 24000000,
+   "conflicts_spent": 15207350,
+   "extra_actions": 91,
+   "label": "ID",
+   "n": 24,
+   "n_min": 24,
+   "n_rounds": 30,
+   "seed": 12600109,
+   "stop": "ID",
+   "used": 91,
+   "wall_guard": 0,
+   "wall_s_informational": 1013.9
+  },
+  {
+   "B": 16000000,
+   "conflicts_spent": 9783265,
+   "extra_actions": 140,
+   "label": "IDU",
+   "n": 32,
+   "n_min": 32,
+   "n_rounds": 47,
+   "seed": 12600201,
+   "stop": "unknown",
+   "used": 140,
+   "wall_guard": 33,
+   "wall_s_informational": 2158.2
+  },
+  {
+   "B": 16000000,
+   "conflicts_spent": 16001207,
+   "extra_actions": 116,
+   "label": "IDU",
+   "n": 32,
+   "n_min": 31,
+   "n_rounds": 36,
+   "seed": 12600202,
+   "stop": "unknown",
+   "used": 116,
+   "wall_guard": 0,
+   "wall_s_informational": 1071.6
+  },
+  {
+   "B": 24000000,
+   "conflicts_spent": 9783265,
+   "extra_actions": 140,
+   "label": "IDU",
+   "n": 32,
+   "n_min": 32,
+   "n_rounds": 47,
+   "seed": 12600201,
+   "stop": "unknown",
+   "used": 140,
+   "wall_guard": 33,
+   "wall_s_informational": 2168.2
+  },
+  {
+   "B": 24000000,
+   "conflicts_spent": 24003470,
+   "extra_actions": 117,
+   "label": "IDU",
+   "n": 32,
+   "n_min": 31,
+   "n_rounds": 37,
+   "seed": 12600202,
+   "stop": "unknown",
+   "used": 117,
+   "wall_guard": 0,
+   "wall_s_informational": 1858.3
+  }
+ ],
+ "schema": "brute.probe.v58_0",
+ "seed_note": "sealed study-060 main seeds; spent, never fresh evidence",
+ "seeds_non_fresh": {
+  "n24": [
+   12600101,
+   12600102,
+   12600103,
+   12600109
+  ],
+  "n32": [
+   12600201,
+   12600202
+  ]
+ },
+ "summary": {
+  "n24_B16M": {
+   "conflicts": [
+    16000181,
+    16000061,
+    8710161,
+    15207350
+   ],
+   "decided": 2,
+   "guard": 0,
+   "labels": [
+    "IDU",
+    "IDU",
+    "ID",
+    "ID"
+   ],
+   "max_wall_s": 1365.2,
+   "of": 4,
+   "wrong": 0
+  },
+  "n24_B24M": {
+   "conflicts": [
+    24000202,
+    22281994,
+    8710161,
+    15207350
+   ],
+   "decided": 2,
+   "guard": 1,
+   "labels": [
+    "IDU",
+    "IDU",
+    "ID",
+    "ID"
+   ],
+   "max_wall_s": 2105.3,
+   "of": 4,
+   "wrong": 0
+  },
+  "n32_B16M": {
+   "conflicts": [
+    9783265,
+    16001207
+   ],
+   "decided": 0,
+   "guard": 1,
+   "labels": [
+    "IDU",
+    "IDU"
+   ],
+   "max_wall_s": 2158.2,
+   "of": 2,
+   "wrong": 0
+  },
+  "n32_B24M": {
+   "conflicts": [
+    9783265,
+    24003470
+   ],
+   "decided": 0,
+   "guard": 1,
+   "labels": [
+    "IDU",
+    "IDU"
+   ],
+   "max_wall_s": 2168.2,
+   "of": 2,
+   "wrong": 0
+  }
+ }
+}
