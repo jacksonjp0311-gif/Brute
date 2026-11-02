@@ -1,8 +1,15 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.56.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.57.0 release in progress)._
 
 ## Current version and state
+
+<!-- V0570 -->
+- **v0.57.0: RELEASE IN PROGRESS** 2026-11-02 (EST) on plan/v0.57.0. TARGET CHANGE: certify/32b (brute/api/certify32b.py, certify/20b with the declared bound raised to 32, no global patch) is certified (read_bits 4, N <= 24) on noise-free random 4-bit readings. **32 states stay Open; 2-bit readings at 20 states stay Open.**
+  - **Run complete (Observed).** 30/30 jobs, 18 cases; launched once with nohup 13:58:06 EST (ledger 6d7d02b, pid 1931849), sealed about 14:34 EST (seal ac95e8c, runner 2075.9 s); never relaunched. No cut: N24 12, N32 6.
+  - **PASS (9/9 gated):** GS60_sound (WRONG 0/30 [0.00, 0.11]); GN24_60 S24 8/12 [0.39, 0.86] >= 6; GDET60 12/12 [0.76, 1.00]; GFID60 16/16 exact; GHOST60; GS_ref (16/16 audited, 0 mismatches, 20/20 mutations); G_recount; GTEST (131 tests); G_PROC. Gates da88bdd.
+  - **Blunt reading:** 4 of 12 24-state worlds hit the 8M budget (n_min 23-24); decided ones used 2.86-5.59M. S32 0/6 [0.00, 0.39] (reported, Open).
+  - **Deviations:** #194 (pre-run), #195 (post-run; aborted tool call around the tests, output kept, not rerun). **Next:** plan 061 (v0.58.0) on plan/v0.58.0.
 
 <!-- V0560 -->
 - **v0.56.0: RELEASED** 2026-11-02 (EST), https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.56.0 (annotated tag object `3aecca5` at `aefed08`, ledger release_059 `ea97b17`). Fresh-clone verify of the tag passed (G_RT): studies 045 to 059 restored, verify_release_0560 passed, 126/126 tests in 12 modules. TARGET CHANGE: certify/20n (brute/api/certify20n.py, repeat-read majority over the frozen certify/20b) is certified (read_bits 4, iid bit noise eps <= eps_bar <= 0.15, N <= 20). **2-bit readings at 20 states stay Open.**
