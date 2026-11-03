@@ -1,0 +1,1502 @@
+{
+  "all_gated_pass": true,
+  "arm_noise": {
+    "C20": [
+      0.0,
+      null
+    ],
+    "C24": [
+      0.0,
+      null
+    ],
+    "S24": [
+      0.3,
+      0.35
+    ],
+    "S30": [
+      0.3,
+      0.35
+    ],
+    "S30b": [
+      0.3,
+      0.35
+    ]
+  },
+  "caps": [
+    50000,
+    8000000,
+    400
+  ],
+  "certified_readbits2_N20_eps030_seq": true,
+  "certified_readbits2_N24_eps030_seq": true,
+  "claim": "certify/20s and certify/32s ID/IDF are exact conditional on every settled reading being correct and on true size <= the declared bound (20 or 24); under iid bit flips with eps <= eps_bar and state-preserving re-reads every settled reading is correct with probability >= 1 - delta (0.001) over the whole trace. IDF identifies the machine from the current state, not the start. Inferred reason the size condition is needed: a larger machine can copy the true machine on every visited state",
+  "failed": [],
+  "framing": "NOISE x SIZE TEST: the sequential per-bit re-read front end at eps 0.30 on 2-bit 20-state worlds (certify/20s on certify/20p) and 24-state worlds (certify/32s on certify/32p), with a 600 s per-job process kill",
+  "gates": {
+    "GDET66": {
+      "observed": {
+        "columns": [
+          "seed",
+          "canon66_equal_both_finished",
+          "S30",
+          "S30b"
+        ],
+        "identical": 1,
+        "of": 1,
+        "per_case": [
+          [
+            12660101,
+            true,
+            "ID",
+            "ID"
+          ]
+        ],
+        "wall_guard_firings_reported": []
+      },
+      "pass": true
+    },
+    "GEQ66": {
+      "observed": {
+        "columns": [
+          "key",
+          "seed",
+          "arm",
+          "inner_equal_control"
+        ],
+        "equal": 9,
+        "of": 9,
+        "pairs_S24_C24": 2,
+        "pairs_S30_C20": 6,
+        "per_record": [
+          [
+            "scale20",
+            12660101,
+            "S30",
+            true
+          ],
+          [
+            "scale20",
+            12660101,
+            "S30b",
+            true
+          ],
+          [
+            "scale20",
+            12660102,
+            "S30",
+            true
+          ],
+          [
+            "scale20",
+            12660103,
+            "S30",
+            true
+          ],
+          [
+            "scale20",
+            12660104,
+            "S30",
+            true
+          ],
+          [
+            "scale20",
+            12660105,
+            "S30",
+            true
+          ],
+          [
+            "scale20",
+            12660106,
+            "S30",
+            true
+          ],
+          [
+            "scale24",
+            12660202,
+            "S24",
+            true
+          ],
+          [
+            "scale24",
+            12660204,
+            "S24",
+            true
+          ]
+        ],
+        "rule": "all equal; >= 4 S30/C20 pairs and >= 2 S24/C24 pairs"
+      },
+      "pass": true
+    },
+    "GFID66": {
+      "observed": {
+        "bound": true,
+        "decided_noisy_in_gates": 6,
+        "equiv": {
+          "PASS": true,
+          "cases": [
+            {
+              "identical": true,
+              "label_32p": "IDU",
+              "label_32s": "IDU",
+              "seed": 12660301,
+              "sha256": "219a9015e1a2de3ada55ee1ad1d458a42d0270315fd5b830d716a681142656e8"
+            },
+            {
+              "identical": true,
+              "label_32p": "IDU",
+              "label_32s": "IDU",
+              "seed": 12660302,
+              "sha256": "fe31d15b46a435436f550fa0144a8273694b19d9fe0c350d14099fd3cdc2d4bb"
+            }
+          ],
+          "identical": 2
+        },
+        "equiv20": {
+          "PASS": true,
+          "identical": true,
+          "label_20s": "ID",
+          "label_32s": "ID",
+          "seed": 12660302
+        },
+        "failures": {},
+        "fidelity_exact": 6,
+        "of_decided": 6,
+        "threshold": {
+          "PASS": true,
+          "checked": 1500,
+          "disagreements": []
+        },
+        "vacuous": false
+      },
+      "pass": true
+    },
+    "GHOST66": {
+      "observed": {
+        "bound_to_freeze_066": true,
+        "no_network_run": {
+          "loop": [
+            "brute.certify/32s",
+            "brute.certify/32p",
+            "IDU",
+            24,
+            80,
+            2002661,
+            20967,
+            24
+          ],
+          "socket_attempts": 0
+        },
+        "socket_attempts": 0,
+        "static_ok": true
+      },
+      "pass": true
+    },
+    "GLIVE66": {
+      "observed": {
+        "cap_s": 2400.0,
+        "jobs": 21,
+        "killed": 4,
+        "missing_job_keys": null,
+        "records": 21,
+        "sealed_complete": true,
+        "total_elapsed_s": 996.2394447780098
+      },
+      "pass": true
+    },
+    "GMAJ66": {
+      "observed": {
+        "finished_noisy_records": 9,
+        "noisy_observations": 2630,
+        "nonzero": [],
+        "settled_bit_errors_total": 0,
+        "source": "recount"
+      },
+      "pass": true
+    },
+    "GN24_66": {
+      "observed": {
+        "C24_ID_IDF": 1,
+        "S24_ID_IDF": 1,
+        "ci95_C24": [
+          0.045587260809700575,
+          0.6993581574175981
+        ],
+        "ci95_S24": [
+          0.045587260809700575,
+          0.6993581574175981
+        ],
+        "label_source": "recount",
+        "of": 4,
+        "rule": "S24 >= C24 - 1 and >= 1"
+      },
+      "pass": true
+    },
+    "GN66": {
+      "observed": {
+        "C20_ID_IDF": 4,
+        "S30_ID_IDF": 4,
+        "ci95_C20": [
+          0.299993315138392,
+          0.9032285888942195
+        ],
+        "ci95_S30": [
+          0.299993315138392,
+          0.9032285888942195
+        ],
+        "label_source": "recount",
+        "of": 6,
+        "rule": "S30 >= 3 of 6 and >= C20 - 1"
+      },
+      "pass": true
+    },
+    "GREAD66": {
+      "observed": {
+        "per_arm": {
+          "S24": {
+            "finished_records": 2,
+            "fixed_rule_reads": 239137,
+            "ok": true,
+            "ratio": 0.2075964823511209,
+            "reads": 49644
+          },
+          "S30": {
+            "finished_records": 6,
+            "fixed_rule_reads": 690503,
+            "ok": true,
+            "ratio": 0.21289263044476273,
+            "reads": 147003
+          }
+        },
+        "rule": "reads <= 0.35 x fixed rule, S30 and S24"
+      },
+      "pass": true
+    },
+    "GS66_sound": {
+      "observed": {
+        "KILL": [
+          [
+            "main/scale24/12660201",
+            "C24"
+          ],
+          [
+            "main/scale24/12660201",
+            "S24"
+          ],
+          [
+            "main/scale24/12660203",
+            "C24"
+          ],
+          [
+            "main/scale24/12660203",
+            "S24"
+          ]
+        ],
+        "WRONG": [],
+        "columns": [
+          "key",
+          "seed",
+          "C20",
+          "S30",
+          "S30b",
+          "C24",
+          "S24"
+        ],
+        "finished": 17,
+        "label_source": "recount",
+        "per_case": [
+          [
+            "scale20",
+            12660101,
+            "ID",
+            "ID",
+            "ID",
+            null,
+            null
+          ],
+          [
+            "scale20",
+            12660102,
+            "IDU",
+            "IDU",
+            null,
+            null,
+            null
+          ],
+          [
+            "scale20",
+            12660103,
+            "IDU",
+            "IDU",
+            null,
+            null,
+            null
+          ],
+          [
+            "scale20",
+            12660104,
+            "ID",
+            "ID",
+            null,
+            null,
+            null
+          ],
+          [
+            "scale20",
+            12660105,
+            "ID",
+            "ID",
+            null,
+            null,
+            null
+          ],
+          [
+            "scale20",
+            12660106,
+            "ID",
+            "ID",
+            null,
+            null,
+            null
+          ],
+          [
+            "scale24",
+            12660201,
+            null,
+            null,
+            null,
+            "KILL",
+            "KILL"
+          ],
+          [
+            "scale24",
+            12660202,
+            null,
+            null,
+            null,
+            "ID",
+            "ID"
+          ],
+          [
+            "scale24",
+            12660203,
+            null,
+            null,
+            null,
+            "KILL",
+            "KILL"
+          ],
+          [
+            "scale24",
+            12660204,
+            null,
+            null,
+            null,
+            "IDU",
+            "IDU"
+          ]
+        ],
+        "records": 21
+      },
+      "pass": true
+    },
+    "GS_ref66": {
+      "observed": {
+        "PASS": true,
+        "audited": 11,
+        "block": "main",
+        "complete": true,
+        "decided": 11,
+        "elapsed_informational": 9.03099915801431,
+        "k_spent_as_amb": 0,
+        "misfires": [],
+        "mismatch_count": 0,
+        "mutations": 20,
+        "not_audited": [],
+        "not_reached": 10,
+        "of": 20,
+        "per_arm": {
+          "C20": {
+            "audited": 4,
+            "decided": 4,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 6
+          },
+          "C24": {
+            "audited": 1,
+            "decided": 1,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 4
+          },
+          "S24": {
+            "audited": 1,
+            "decided": 1,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 4
+          },
+          "S30": {
+            "audited": 4,
+            "decided": 4,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 6
+          },
+          "S30b": {
+            "audited": 1,
+            "decided": 1,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 1
+          }
+        },
+        "per_key": {
+          "scale20": {
+            "audited": 9,
+            "decided": 9,
+            "mismatches": 0
+          },
+          "scale24": {
+            "audited": 2,
+            "decided": 2,
+            "mismatches": 0
+          }
+        },
+        "records": 21,
+        "scope": {
+          "budget_s": 1800.0,
+          "key_order": [
+            "scale20",
+            "scale24"
+          ],
+          "order": [
+            "C24",
+            "S24",
+            "C20",
+            "S30",
+            "S30b"
+          ],
+          "workers": 6
+        },
+        "vacuous": false,
+        "verdicts_checked": 22
+      },
+      "pass": true
+    },
+    "GTEST66": {
+      "observed": {
+        "gated": {
+          "test_certify16": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16d": {
+            "returncode": 0,
+            "tests": 11
+          },
+          "test_certify16e": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16n": {
+            "returncode": 0,
+            "tests": 10
+          },
+          "test_certify20b": {
+            "returncode": 0,
+            "tests": 6
+          },
+          "test_certify20n": {
+            "returncode": 0,
+            "tests": 8
+          },
+          "test_certify20p": {
+            "returncode": 0,
+            "tests": 8
+          },
+          "test_certify20s": {
+            "returncode": 0,
+            "tests": 8
+          },
+          "test_certify32b": {
+            "returncode": 0,
+            "tests": 5
+          },
+          "test_certify32p": {
+            "returncode": 0,
+            "tests": 6
+          },
+          "test_certify32s": {
+            "returncode": 0,
+            "tests": 5
+          },
+          "test_cover20": {
+            "returncode": 0,
+            "tests": 8
+          },
+          "test_release_0630": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_scalesearch4_0260": {
+            "returncode": 0,
+            "tests": 14
+          },
+          "test_scripts_066": {
+            "returncode": 0,
+            "tests": 11
+          }
+        },
+        "reported": {
+          "test_certify20w": {
+            "returncode": 0,
+            "tests": 6
+          },
+          "test_release_0620": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_scripts_065": {
+            "returncode": 0,
+            "tests": 11
+          }
+        }
+      },
+      "pass": true
+    },
+    "G_PROC66": {
+      "observed": {
+        "clauses": {
+          "commit_order_file": true,
+          "ledger_times_non_decreasing": true,
+          "ledger_times_parse": true,
+          "main_sealed": true,
+          "order": true
+        },
+        "events": [
+          "preregistration_066",
+          "build_authorization_066",
+          "seedcheck_066",
+          "prefreeze_smoke_066",
+          "deviation_206",
+          "freeze_066",
+          "main_run_066"
+        ],
+        "required_order": [
+          "preregistration_066",
+          "build_authorization_066",
+          "seedcheck_066",
+          "prefreeze_smoke_066",
+          "deviation_206",
+          "freeze_066",
+          "main_run_066"
+        ]
+      },
+      "pass": true
+    },
+    "G_recount66": {
+      "observed": {
+        "PASS": true,
+        "cases": 10,
+        "decided_by_arm": {
+          "C20": 4,
+          "C24": 1,
+          "S24": 1,
+          "S30": 4,
+          "S30b": 1
+        },
+        "killed": 4,
+        "mismatches": [],
+        "records": 21,
+        "settled_bit_errors": 0,
+        "study_decided_by_arm": {
+          "C20": 4,
+          "C24": 1,
+          "S24": 1,
+          "S30": 4,
+          "S30b": 1
+        },
+        "wrong": 0
+      },
+      "pass": true
+    }
+  },
+  "label_source": "recount",
+  "n20": 6,
+  "n24": 4,
+  "n_s30b": 1,
+  "node_cap": 200000,
+  "not_exercised": [],
+  "process": "lean",
+  "reports": {
+    "labels": {
+      "C20": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.299993315138392,
+            0.9032285888942195
+          ],
+          "n": 6,
+          "x": 4
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.09677141110578043,
+            0.7000066848616079
+          ],
+          "n": 6,
+          "x": 2
+        },
+        "KILL": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "NOFIT": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "C24": {
+        "AMB": {
+          "ci95": [
+            0.0,
+            0.4898908364545973
+          ],
+          "n": 4,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.045587260809700575,
+            0.6993581574175981
+          ],
+          "n": 4,
+          "x": 1
+        },
+        "IDF": {
+          "ci95": [
+            0.0,
+            0.4898908364545973
+          ],
+          "n": 4,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.045587260809700575,
+            0.6993581574175981
+          ],
+          "n": 4,
+          "x": 1
+        },
+        "KILL": {
+          "ci95": [
+            0.15003898915214947,
+            0.8499610108478506
+          ],
+          "n": 4,
+          "x": 2
+        },
+        "NOFIT": {
+          "ci95": [
+            0.0,
+            0.4898908364545973
+          ],
+          "n": 4,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            0.0,
+            0.4898908364545973
+          ],
+          "n": 4,
+          "x": 0
+        }
+      },
+      "S24": {
+        "AMB": {
+          "ci95": [
+            0.0,
+            0.4898908364545973
+          ],
+          "n": 4,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.045587260809700575,
+            0.6993581574175981
+          ],
+          "n": 4,
+          "x": 1
+        },
+        "IDF": {
+          "ci95": [
+            0.0,
+            0.4898908364545973
+          ],
+          "n": 4,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.045587260809700575,
+            0.6993581574175981
+          ],
+          "n": 4,
+          "x": 1
+        },
+        "KILL": {
+          "ci95": [
+            0.15003898915214947,
+            0.8499610108478506
+          ],
+          "n": 4,
+          "x": 2
+        },
+        "NOFIT": {
+          "ci95": [
+            0.0,
+            0.4898908364545973
+          ],
+          "n": 4,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            0.0,
+            0.4898908364545973
+          ],
+          "n": 4,
+          "x": 0
+        }
+      },
+      "S30": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.299993315138392,
+            0.9032285888942195
+          ],
+          "n": 6,
+          "x": 4
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.09677141110578043,
+            0.7000066848616079
+          ],
+          "n": 6,
+          "x": 2
+        },
+        "KILL": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "NOFIT": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "S30b": {
+        "AMB": {
+          "ci95": [
+            0.0,
+            0.7934506856227626
+          ],
+          "n": 1,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.20654931437723742,
+            1.0
+          ],
+          "n": 1,
+          "x": 1
+        },
+        "IDF": {
+          "ci95": [
+            0.0,
+            0.7934506856227626
+          ],
+          "n": 1,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.0,
+            0.7934506856227626
+          ],
+          "n": 1,
+          "x": 0
+        },
+        "KILL": {
+          "ci95": [
+            0.0,
+            0.7934506856227626
+          ],
+          "n": 1,
+          "x": 0
+        },
+        "NOFIT": {
+          "ci95": [
+            0.0,
+            0.7934506856227626
+          ],
+          "n": 1,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            0.0,
+            0.7934506856227626
+          ],
+          "n": 1,
+          "x": 0
+        }
+      }
+    }
+  },
+  "schema": "brute.gates.v63_0",
+  "sealed_input_verified": true,
+  "secondary": {
+    "GCOST66": {
+      "elapsed_s": 996.2394447780098,
+      "observed": {
+        "C20": {
+          "budget_spent": 2,
+          "conflicts": 25483270,
+          "killed": 0,
+          "records": 6,
+          "steps": 707,
+          "wall_guard": 0,
+          "wall_s": 1091.8
+        },
+        "C24": {
+          "budget_spent": 1,
+          "conflicts": 12056262,
+          "killed": 2,
+          "records": 4,
+          "steps": 257,
+          "wall_guard": 0,
+          "wall_s": 1868.9
+        },
+        "S24": {
+          "budget_spent": 1,
+          "conflicts": 12056262,
+          "killed": 2,
+          "records": 4,
+          "steps": 257,
+          "wall_guard": 0,
+          "wall_s": 1854.1
+        },
+        "S30": {
+          "budget_spent": 2,
+          "conflicts": 25483270,
+          "killed": 0,
+          "records": 6,
+          "steps": 707,
+          "wall_guard": 0,
+          "wall_s": 1093.4
+        },
+        "S30b": {
+          "budget_spent": 0,
+          "conflicts": 1231512,
+          "killed": 0,
+          "records": 1,
+          "steps": 73,
+          "wall_guard": 0,
+          "wall_s": 47.1
+        }
+      },
+      "pass": null,
+      "rule": "reported (walls informational)"
+    },
+    "GSTATS66": {
+      "columns": [
+        "key",
+        "seed",
+        "per arm [arm, label, n_min, extra_actions, rounds, conflicts]"
+      ],
+      "observed": [
+        [
+          "scale20",
+          12660101,
+          [
+            "C20",
+            "ID",
+            20,
+            73,
+            26,
+            1231512
+          ],
+          [
+            "S30",
+            "ID",
+            20,
+            73,
+            26,
+            1231512
+          ],
+          [
+            "S30b",
+            "ID",
+            20,
+            73,
+            26,
+            1231512
+          ]
+        ],
+        [
+          "scale20",
+          12660102,
+          [
+            "C20",
+            "IDU",
+            18,
+            92,
+            34,
+            8000374
+          ],
+          [
+            "S30",
+            "IDU",
+            18,
+            92,
+            34,
+            8000374
+          ]
+        ],
+        [
+          "scale20",
+          12660103,
+          [
+            "C20",
+            "IDU",
+            18,
+            66,
+            20,
+            8000192
+          ],
+          [
+            "S30",
+            "IDU",
+            18,
+            66,
+            20,
+            8000192
+          ]
+        ],
+        [
+          "scale20",
+          12660104,
+          [
+            "C20",
+            "ID",
+            20,
+            148,
+            49,
+            647901
+          ],
+          [
+            "S30",
+            "ID",
+            20,
+            148,
+            49,
+            647901
+          ]
+        ],
+        [
+          "scale20",
+          12660105,
+          [
+            "C20",
+            "ID",
+            20,
+            134,
+            44,
+            2445893
+          ],
+          [
+            "S30",
+            "ID",
+            20,
+            134,
+            44,
+            2445893
+          ]
+        ],
+        [
+          "scale20",
+          12660106,
+          [
+            "C20",
+            "ID",
+            20,
+            194,
+            52,
+            5157398
+          ],
+          [
+            "S30",
+            "ID",
+            20,
+            194,
+            52,
+            5157398
+          ]
+        ],
+        [
+          "scale24",
+          12660201,
+          [
+            "C24",
+            "KILL",
+            null,
+            0,
+            null,
+            null
+          ],
+          [
+            "S24",
+            "KILL",
+            null,
+            0,
+            null,
+            null
+          ]
+        ],
+        [
+          "scale24",
+          12660202,
+          [
+            "C24",
+            "ID",
+            24,
+            126,
+            40,
+            4056144
+          ],
+          [
+            "S24",
+            "ID",
+            24,
+            126,
+            40,
+            4056144
+          ]
+        ],
+        [
+          "scale24",
+          12660203,
+          [
+            "C24",
+            "KILL",
+            null,
+            0,
+            null,
+            null
+          ],
+          [
+            "S24",
+            "KILL",
+            null,
+            0,
+            null,
+            null
+          ]
+        ],
+        [
+          "scale24",
+          12660204,
+          [
+            "C24",
+            "IDU",
+            20,
+            131,
+            33,
+            8000118
+          ],
+          [
+            "S24",
+            "IDU",
+            20,
+            131,
+            33,
+            8000118
+          ]
+        ]
+      ],
+      "pass": null,
+      "rule": "reported"
+    },
+    "KILLS66": {
+      "observed": {
+        "by_arm": {
+          "C20": 0,
+          "C24": 2,
+          "S24": 2,
+          "S30": 0,
+          "S30b": 0
+        },
+        "kill_walls": [
+          [
+            "main/scale24/12660201",
+            "C24",
+            600.4205744240026
+          ],
+          [
+            "main/scale24/12660201",
+            "S24",
+            600.438004672993
+          ],
+          [
+            "main/scale24/12660203",
+            "C24",
+            600.430330711999
+          ],
+          [
+            "main/scale24/12660203",
+            "S24",
+            600.4464157879993
+          ]
+        ],
+        "killed": [
+          [
+            "main/scale24/12660201",
+            "C24"
+          ],
+          [
+            "main/scale24/12660201",
+            "S24"
+          ],
+          [
+            "main/scale24/12660203",
+            "C24"
+          ],
+          [
+            "main/scale24/12660203",
+            "S24"
+          ]
+        ]
+      },
+      "pass": null,
+      "rule": "reported"
+    },
+    "MC66": {
+      "observed": {
+        "note": "reported only; per-bit wrong-barrier rate of the +-1 walk at threshold m_t",
+        "rows": [
+          {
+            "bound_eps_bar": 0.00017111471023167392,
+            "eps": 0.1,
+            "eps_bar": 0.15,
+            "exact_at_eps": 1.6934801016088065e-05,
+            "m": 5,
+            "mean_reads": 6.24678,
+            "rate": 2e-05,
+            "t": 1,
+            "trials": 100000,
+            "wrong": 2
+          },
+          {
+            "bound_eps_bar": 2.9290266333289887e-08,
+            "eps": 0.1,
+            "eps_bar": 0.15,
+            "exact_at_eps": 2.8679719899699167e-10,
+            "m": 10,
+            "mean_reads": 12.50592,
+            "rate": 0.0,
+            "t": 100,
+            "trials": 100000,
+            "wrong": 0
+          },
+          {
+            "bound_eps_bar": 9.121536487212163e-10,
+            "eps": 0.1,
+            "eps_bar": 0.15,
+            "exact_at_eps": 3.540706161459616e-12,
+            "m": 12,
+            "mean_reads": 15.00282,
+            "rate": 0.0,
+            "t": 500,
+            "trials": 100000,
+            "wrong": 0
+          },
+          {
+            "bound_eps_bar": 0.00015239256324291365,
+            "eps": 0.2,
+            "eps_bar": 0.25,
+            "exact_at_eps": 1.5258556235409006e-05,
+            "m": 8,
+            "mean_reads": 13.32388,
+            "rate": 1e-05,
+            "t": 1,
+            "trials": 100000,
+            "wrong": 1
+          },
+          {
+            "bound_eps_bar": 2.323057258575924e-08,
+            "eps": 0.2,
+            "eps_bar": 0.25,
+            "exact_at_eps": 2.3283064359965952e-10,
+            "m": 16,
+            "mean_reads": 26.65182,
+            "rate": 0.0,
+            "t": 100,
+            "trials": 100000,
+            "wrong": 0
+          },
+          {
+            "bound_eps_bar": 8.603915964974579e-10,
+            "eps": 0.2,
+            "eps_bar": 0.25,
+            "exact_at_eps": 3.637978807078478e-12,
+            "m": 19,
+            "mean_reads": 31.66798,
+            "rate": 0.0,
+            "t": 500,
+            "trials": 100000,
+            "wrong": 0
+          },
+          {
+            "bound_eps_bar": 0.00017222287150062284,
+            "eps": 0.3,
+            "eps_bar": 0.35,
+            "exact_at_eps": 7.052156526704938e-06,
+            "m": 14,
+            "mean_reads": 35.02432,
+            "rate": 3e-05,
+            "t": 1,
+            "trials": 100000,
+            "wrong": 3
+          },
+          {
+            "bound_eps_bar": 2.967093573530246e-08,
+            "eps": 0.3,
+            "eps_bar": 0.35,
+            "exact_at_eps": 4.973361313064914e-11,
+            "m": 28,
+            "mean_reads": 69.96566,
+            "rate": 0.0,
+            "t": 100,
+            "trials": 100000,
+            "wrong": 0
+          },
+          {
+            "bound_eps_bar": 7.232016057341559e-10,
+            "eps": 0.3,
+            "eps_bar": 0.35,
+            "exact_at_eps": 3.0816924898669094e-13,
+            "m": 34,
+            "mean_reads": 85.00374,
+            "rate": 0.0,
+            "t": 500,
+            "trials": 100000,
+            "wrong": 0
+          }
+        ]
+      },
+      "pass": null,
+      "rule": "reported"
+    },
+    "READS66": {
+      "observed": {
+        "columns": [
+          "seed",
+          "observations",
+          "reads",
+          "fixed_rule_reads",
+          "max_reads_one_obs",
+          "last_threshold"
+        ],
+        "per_arm": {
+          "S24": {
+            "finished_records": 2,
+            "fixed_rule_reads": 239137,
+            "ok": true,
+            "ratio": 0.2075964823511209,
+            "reads": 49644
+          },
+          "S30": {
+            "finished_records": 6,
+            "fixed_rule_reads": 690503,
+            "ok": true,
+            "ratio": 0.21289263044476273,
+            "reads": 147003
+          }
+        },
+        "per_record": {
+          "S24": [
+            [
+              12660202,
+              303,
+              24169,
+              118481,
+              141,
+              32
+            ],
+            [
+              12660204,
+              308,
+              25475,
+              120656,
+              148,
+              32
+            ]
+          ],
+          "S30": [
+            [
+              12660101,
+              250,
+              20315,
+              95644,
+              136,
+              31
+            ],
+            [
+              12660102,
+              269,
+              21563,
+              103777,
+              152,
+              32
+            ],
+            [
+              12660103,
+              243,
+              19996,
+              92663,
+              166,
+              31
+            ],
+            [
+              12660104,
+              325,
+              27547,
+              128083,
+              169,
+              32
+            ],
+            [
+              12660105,
+              311,
+              26303,
+              121963,
+              176,
+              32
+            ],
+            [
+              12660106,
+              371,
+              31279,
+              148373,
+              160,
+              33
+            ]
+          ],
+          "S30b": [
+            [
+              12660101,
+              250,
+              20315,
+              95644,
+              136,
+              31
+            ]
+          ]
+        }
+      },
+      "pass": null,
+      "rule": "reported"
+    },
+    "SEEDCHECK66": {
+      "observed": {
+        "frozen_in_066": true,
+        "seedcheck_pass": true
+      },
+      "pass": null
+    }
+  },
+  "status_phrase": "certified (read_bits 2, N <= 24, iid bit noise eps <= 0.30, delta 0.001, sequential re-reads)",
+  "stop": {
+    "hard_kill_s": 1800.0,
+    "job_kill_s": 600.0,
+    "main_cap_s": 2400.0,
+    "stop_rule": "conflict-only (no hook; 1800 s in-process case guard as safety net; runner SIGKILL at 600 s wall per job -> KILL record)"
+  },
+  "study": "BRUTE-0630-SEQNOISE24-066",
+  "workers": 7
+}
