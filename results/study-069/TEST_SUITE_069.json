@@ -1,0 +1,96 @@
+{
+ "gated_modules": [
+  "test_certify32r",
+  "test_scripts_069",
+  "test_release_keys_0650",
+  "test_release_0650",
+  "test_certify20s"
+ ],
+ "head": "b9c727f4edeb0f1c7e8e59cdd51e54cbc15f55b8",
+ "passed": true,
+ "per_module": {
+  "test_certify20s": {
+   "results": {
+    "test_equals_20p_at_eps_bar_zero": "ok",
+    "test_exact_stopping_sequence": "ok",
+    "test_host_agnostic": "ok",
+    "test_noisy_equals_clean_and_sound": "ok",
+    "test_read_cap": "ok",
+    "test_result_fields": "ok",
+    "test_settle": "ok",
+    "test_threshold_exact": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "fy20s.T20S.test_exact_stopping_sequence) ... ok\ntest_host_agnostic (tests.test_certify20s.T20S.test_host_agnostic) ... ok\ntest_noisy_equals_clean_and_sound (tests.test_certify20s.T20S.test_noisy_equals_clean_and_sound) ... ok\ntest_read_cap (tests.test_certify20s.T20S.test_read_cap) ... ok\ntest_result_fields (tests.test_certify20s.T20S.test_result_fields) ... ok\ntest_settle (tests.test_certify20s.T20S.test_settle) ... ok\ntest_threshold_exact (tests.test_certify20s.T20S.test_threshold_exact) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 7.208s\n\nOK\n",
+   "tests": 8,
+   "wall_informational": 7.4
+  },
+  "test_certify32r": {
+   "results": {
+    "test_determinism": "ok",
+    "test_equivalent_witness": "ok",
+    "test_errors": "ok",
+    "test_exceeds_n": "ok",
+    "test_guarantee_is_conditional_on_N": "ok",
+    "test_learns_truths": "ok",
+    "test_noisy_equals_clean": "ok",
+    "test_qcap": "ok",
+    "test_random_machines": "ok",
+    "test_soundness_flags": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "s.test_certify32r.T.test_exceeds_n) ... ok\ntest_guarantee_is_conditional_on_N (tests.test_certify32r.T.test_guarantee_is_conditional_on_N) ... ok\ntest_learns_truths (tests.test_certify32r.T.test_learns_truths) ... ok\ntest_noisy_equals_clean (tests.test_certify32r.T.test_noisy_equals_clean) ... ok\ntest_qcap (tests.test_certify32r.T.test_qcap) ... ok\ntest_random_machines (tests.test_certify32r.T.test_random_machines) ... ok\ntest_soundness_flags (tests.test_certify32r.T.test_soundness_flags) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 3.900s\n\nOK\n",
+   "tests": 10,
+   "wall_informational": 4.1
+  },
+  "test_release_0650": {
+   "results": {
+    "test_constants": "ok",
+    "test_release_if_present": "skipped 'RELEASE.json not yet 0.65.0'"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_constants (tests.test_release_0650.T.test_constants) ... ok\ntest_release_if_present (tests.test_release_0650.T.test_release_if_present) ... skipped 'RELEASE.json not yet 0.65.0'\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK (skipped=1)\n",
+   "tests": 2,
+   "wall_informational": 0.1
+  },
+  "test_release_keys_0650": {
+   "results": {
+    "test_every_read_key_is_required": "ok",
+    "test_status_phrase_fact": "ok",
+    "test_would_have_caught_0640": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_every_read_key_is_required (tests.test_release_keys_0650.T.test_every_read_key_is_required) ... ok\ntest_status_phrase_fact (tests.test_release_keys_0650.T.test_status_phrase_fact) ... ok\ntest_would_have_caught_0640 (tests.test_release_keys_0650.T.test_would_have_caught_0640) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.004s\n\nOK\n",
+   "tests": 3,
+   "wall_informational": 0.1
+  },
+  "test_scripts_069": {
+   "results": {
+    "test_ast_checks": "ok",
+    "test_fresh_object_per_reset": "ok",
+    "test_jobs_and_canon": "ok",
+    "test_readings": "ok",
+    "test_recount_labels": "ok",
+    "test_truth_vs_live": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_ast_checks (tests.test_scripts_069.T.test_ast_checks) ... ok\ntest_fresh_object_per_reset (tests.test_scripts_069.T.test_fresh_object_per_reset) ... ok\ntest_jobs_and_canon (tests.test_scripts_069.T.test_jobs_and_canon) ... ok\ntest_readings (tests.test_scripts_069.T.test_readings) ... ok\ntest_recount_labels (tests.test_scripts_069.T.test_recount_labels) ... ok\ntest_truth_vs_live (tests.test_scripts_069.T.test_truth_vs_live) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.011s\n\nOK\n",
+   "tests": 6,
+   "wall_informational": 0.2
+  }
+ },
+ "process": "lean",
+ "schema": "brute.test-suite-069.v1",
+ "test_file_sha256": {
+  "tests/test_certify20s.py": "7dff8056ec6dc378f10de6b0a62a8c86f839e5c223208fe723b0864e31a7b94a",
+  "tests/test_certify32r.py": "2d9064570f7e7524f93acc4954aa595c135b615939c70ecca401ed43d0fc84b5",
+  "tests/test_release_0650.py": "68a0bb2983f5f782e58705e2604972174941cd5cc0a4856a8470e5026e573154",
+  "tests/test_release_keys_0650.py": "875620e6dd27344eb40f92157de8f098ce3435a69a3cefb6040cf49c79428caa",
+  "tests/test_scripts_069.py": "df49e986f6b4b1d779e5b7748cf61a210f55ba761a665824033383a9642c7717"
+ }
+}
