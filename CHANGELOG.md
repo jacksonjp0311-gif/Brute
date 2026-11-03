@@ -1,5 +1,28 @@
 # Brute changelog
 
+## v0.63.0: CERTIFIED (14 of 14 gates) for 2-bit readings at N <= 24 under iid bit noise eps <= 0.30 (delta 0.001, sequential re-reads). New brute.certify/32s; process-level 600 s job kill (study BRUTE-0630-SEQNOISE24-066, LEAN process)
+
+**14 of 14 gated pass (GS66_sound, GLIVE66, GMAJ66, GEQ66, GN66, GN24_66, GREAD66, GDET66, GFID66, GHOST66, GS_ref66, G_recount66, GTEST66, G_PROC66). Status: certified (read_bits 2, N <= 24, iid bit noise eps <= 0.30, delta 0.001, sequential re-reads).**
+
+Blunt summary. The third and last of the agreed 2-3 test versions (noise and size together). Noise is handled: at 30% iid bit flips every finished noisy record equalled its noise-free control (9/9), with 0 settled-bit errors over 2630 observations, at 0.213x (20 states) and 0.208x (24 states) of the fixed rule's reads. Size is not: coverage is the unchanged SAT side's, 4/6 at 20 states and 1/4 at 24 states, and 2 of the 4 24-state worlds hit the 600 s job kill. The liveness fix worked: the run completed in 996 s. Small sample; the 24-state certificate is thin. See deviations #206 and #207.
+
+### Timeline (EST, 2026-11-03)
+
+- Plan `3954159`; build authorization `aba356b`; seedcheck `198d7a6`; build `c543ba0`; pre-freeze smoke PASS `3877950`; deviation #206 `71a4f6a`; source freeze `2578574`.
+- Main run launched once 10:13:15 (ledger `cd7afdd`); sealed complete 10:29:52, seal `6a62a2d`; recount `0eeacdf`; reference `6092a86`; tests `7e09cdf`; api checks `056dc23`; gates `c56cff2`; deviation #207 `5eb003a`; RELEASE.json `8880ece`.
+
+### Results (recount labels; B 8M, K 400, 2-bit)
+
+| arm | records | ID+IDF | Wilson 95% | KILL | settled-bit errors | reads vs fixed rule |
+|---|---|---|---|---|---|---|
+| C20 (certify/20p, noise-free, N 20) | 6 | 4 | [0.30, 0.90] | 0 | - | - |
+| S30 (certify/20s, eps 0.30, N 20) | 6 | 4 | [0.30, 0.90] | 0 | 0 | 147003 vs 690503 (0.213x) |
+| S30b (repeat, 1 world) | 1 | 1 | identical to S30 | 0 | 0 | same |
+| C24 (certify/32p, noise-free, N 24) | 4 | 1 | [0.05, 0.70] | 2 | - | - |
+| S24 (certify/32s, eps 0.30, N 24) | 4 | 1 | [0.05, 0.70] | 2 | 0 | 49644 vs 239137 (0.208x) |
+
+WRONG 0 of 17 finished. Reference 11/11 decided audited, 0 mismatches, 20/20 mutations, 9 s; replay fidelity 6/6 exact; 165 tests across 18 modules pass.
+
 ## v0.62.0: NOT CERTIFIED (3 of 13 gates). Sequential per-bit re-reads (brute.certify/20s) at eps 0.10-0.30 on 2-bit 20-state worlds; main run hit its 2400 s cap and was sealed partial (study BRUTE-0620-SEQNOISE2B20-065, LEAN process)
 
 **3 of 13 gates pass (GHOST65, GTEST65, G_PROC65). The 10 data gates (GS65_sound, GMAJ65, GEQ65, GN65, GN_low65, GREAD65, GDET65, GFID65, GS_ref65, G_recount65) fail INCOMPLETE_INPUT because the sealed main is partial. Status: not certified.**

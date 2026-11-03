@@ -1,8 +1,16 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-03 EST (v0.62.0 RELEASED, not certified; v0.63.0 in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-03 EST (v0.63.0 release in progress)._
 
 ## Current version and state
+
+<!-- V0630 -->
+- **v0.63.0: release in progress** 2026-11-03 EST (gates c56cff2, deviation #207 5eb003a, RELEASE.json 8880ece). Study BRUTE-0630-SEQNOISE24-066. **CERTIFIED, 14 of 14 gates: read_bits 2, N <= 24, iid bit noise eps <= 0.30, delta 0.001, sequential re-reads.**
+  - **Run complete (Exact).** Launched once 10:13:15 EST (setsid nohup, pid 2405899, ledger cd7afdd); sealed complete 10:29:52 (seal 6a62a2d), 21/21 jobs, 4 KILL at 600 s (12660201, 12660203 in C24 and S24). Never relaunched.
+  - **Results:** S30 4/6 = C20 4/6; S24 1/4 = C24 1/4; GEQ 9/9; 0 settled-bit errors / 2630 observations; reads 0.213x / 0.208x; reference 11/11, 0 mismatches; WRONG 0/17.
+  - **Two agent sessions** coordinated through /tmp/s66/STATE.txt (deviation #207 item 2); no duplicate step.
+  - **No CI.** The user's computer was offline; network went through the box. GITHUB_TOKEN in the box env is invalid: run git/gh as env -u GITHUB_TOKEN -u GH_TOKEN.
+  - **Deviations:** #206 (pre-run), #207 (post-run). **Next:** plan 067 (v0.64.0) on plan/v0.64.0; the black-box-tool vs real-world choice is James's.
 
 <!-- V0620 -->
 - **v0.62.0: RELEASED (NOT CERTIFIED)** 2026-11-03 EST, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.62.0 (annotated tag object 6f49598 at e3f9f4a; fresh-clone verify ledgered fresh_clone_verify_065, 158/158 tests; gates 4c781c6, deviation #205 52ae4db, RELEASE.json c296dfb). Study BRUTE-0620-SEQNOISE2B20-065. **NOT CERTIFIED, 3 of 13 gates.**
