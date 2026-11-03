@@ -150,7 +150,7 @@ def equiv():
     ref_ok=ref==[[0,'refused'],[33,'refused'],[21,'ACCEPTED'],[24,'ACCEPTED'],[32,'ACCEPTED']]
     smoke_ok=sm['20p'][0]==sm['32p'][0]
     return {'cases':rows,'bounds':ref,'smoke_world_identical':smoke_ok,'smoke_labels':{k:v[1] for k,v in sm.items()},
-            'smoke_sha256':{k:__import__('hashlib').sha256(v[0].encode()).hexdigest() for k,v in sm.items()},
+            'smoke_sha256':{k:__import__('hashlib').sha256(v[0] if isinstance(v[0],bytes) else v[0].encode()).hexdigest() for k,v in sm.items()},
             'decided_32p_n5':sum(r['stop_32p_n5'] in ('ID','IDF') for r in rows),
             'PASS':all(r['identical_at_n1'] and r['sound_32p_n5'] and r['k_ok'] for r in rows) and ref_ok and smoke_ok
                    and sum(r['stop_20p'] in ('ID','IDF') for r in rows)>0,
