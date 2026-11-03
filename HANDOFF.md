@@ -1,8 +1,16 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.59.0 released)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.60.0 release in progress)._
 
 ## Current version and state
+
+<!-- V0600 -->
+- **v0.60.0: release in progress** 2026-11-02 EST (gates 1534a3a, RELEASE.json 28884b8, docs deec1e7). Study BRUTE-0600-ANCHOR2B20-063. Status from the flags: "not certified, no certification status (failing gates: GS_ref63)".
+  - **Run complete (Observed).** 14/14 jobs, 6 cases; launched once with nohup 19:43:57 EST (ledger fbd42d0, pid 2153785), sealed about 20:19 EST (seal 9b0eb06, runner 2152 s); never relaunched. Cut by #200 before the freeze: N_SEEDS 6, N_P2B 2. The executor session was interrupted about 20:08 EST; the run was not touched and nothing was rerun.
+  - **PASS: GP63** (P2 4/6 [0.30, 0.90] vs B2 1/6 [0.03, 0.56]; P2 - B2 = 3; discordant 3/0; McNemar p 0.25). **FAIL: GS_ref63** (CNF reference audited 2 of 7 decided records in 1800 s, 0 mismatches, 20/20 mutations, incomplete). **PASS (8/9 gated):** GS63_sound (WRONG 0/14); GP63; GDET63 2/2; GFID63 7/7 exact; GHOST63; G_recount63; GTEST63 (143 tests); G_PROC63.
+  - **Blunt reading:** first observed 2-bit 20-state gain (encoding change, exact max-clique anchor 15-19 states); not certified because the unanchored independent audit is too slow. n = 6.
+  - **No CI.** brute-bridge and BGR-v0.90.0 untouched. The user's computer was offline; network went through the box.
+  - **Deviations:** #200 (pre-run), #201 (post-run). **Next:** plan 064 (v0.61.0): plan 063 next_if_pass (24 states at 2 bits), with a reference audit able to finish.
 
 <!-- V0590 -->
 - **v0.59.0: RELEASED** 2026-11-02 18:52 EST, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.59.0 (annotated tag object acc2f7e at 5fff4cc; gates 6e75d3e, RELEASE.json 63540b7). Fresh-clone verify passed (verify_release_0590 true, 135/135 tests). Status from the flags: "sound but no 2-bit gain".
