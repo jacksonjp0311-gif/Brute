@@ -1,0 +1,354 @@
+{
+ "PASS": true,
+ "agreement_with_frozen_reference": {
+  "main/scale20p2/12630104/B2": {
+   "new_label": "ID",
+   "new_mismatches": [],
+   "old_label": "ID",
+   "old_mismatches": []
+  },
+  "main/scale20p2/12630104/P2": {
+   "new_label": "ID",
+   "new_mismatches": [],
+   "old_label": "ID",
+   "old_mismatches": []
+  }
+ },
+ "audited": 7,
+ "block": "main",
+ "complete": true,
+ "decided": 7,
+ "elapsed_informational": 17.01792091099196,
+ "input_sha256_matches_sealed": true,
+ "k_spent_as_amb": 0,
+ "label": "Observed",
+ "misfires": [],
+ "mismatch_count": 0,
+ "mismatches": [],
+ "mutation_test": {
+  "detected": 20,
+  "items": [
+   {
+    "detected": true,
+    "id": "main/scale20p2/12630103/P2",
+    "kind": "stop"
+   },
+   {
+    "detected": true,
+    "id": "main/scale20p2/12630101/P2",
+    "kind": "n_min"
+   },
+   {
+    "detected": true,
+    "id": "main/scale20p2/12630104/P2",
+    "kind": "verdict"
+   },
+   {
+    "detected": true,
+    "id": "main/scale20p2/12630101/P2",
+    "kind": "s1"
+   },
+   {
+    "detected": true,
+    "id": "main/scale20p2/12630101/P2b",
+    "kind": "stop"
+   },
+   {
+    "detected": true,
+    "id": "main/scale20p2/12630101/P2",
+    "kind": "n_min"
+   },
+   {
+    "detected": true,
+    "id": "main/scale20p2/12630103/P2",
+    "kind": "verdict"
+   },
+   {
+    "detected": true,
+    "id": "main/scale20p2/12630101/P2",
+    "kind": "s1"
+   },
+   {
+    "detected": true,
+    "id": "main/scale20p2/12630103/P2",
+    "kind": "stop"
+   },
+   {
+    "detected": true,
+    "id": "main/scale20p2/12630103/P2",
+    "kind": "n_min"
+   },
+   {
+    "detected": true,
+    "id": "main/scale20p2/12630104/P2",
+    "kind": "verdict"
+   },
+   {
+    "detected": true,
+    "id": "main/scale20p2/12630103/P2",
+    "kind": "s1"
+   },
+   {
+    "detected": true,
+    "id": "main/scale20p2/12630102/P2b",
+    "kind": "stop"
+   },
+   {
+    "detected": true,
+    "id": "main/scale20p2/12630104/B2",
+    "kind": "n_min"
+   },
+   {
+    "detected": true,
+    "id": "main/scale20p2/12630102/P2b",
+    "kind": "verdict"
+   },
+   {
+    "detected": true,
+    "id": "main/scale20p2/12630104/P2",
+    "kind": "s1"
+   },
+   {
+    "detected": true,
+    "id": "main/scale20p2/12630104/P2",
+    "kind": "stop"
+   },
+   {
+    "detected": true,
+    "id": "main/scale20p2/12630102/P2",
+    "kind": "n_min"
+   },
+   {
+    "detected": true,
+    "id": "main/scale20p2/12630102/P2b",
+    "kind": "verdict"
+   },
+   {
+    "detected": true,
+    "id": "main/scale20p2/12630102/P2b",
+    "kind": "s1"
+   }
+  ],
+  "mutations": 20,
+  "pass": true
+ },
+ "not_audited": [],
+ "not_reached": 7,
+ "per_arm": {
+  "B2": {
+   "audited": 1,
+   "decided": 1,
+   "idf_future_mismatch": 0,
+   "misfires": 0,
+   "mismatches": 0,
+   "records": 6
+  },
+  "P2": {
+   "audited": 4,
+   "decided": 4,
+   "idf_future_mismatch": 0,
+   "misfires": 0,
+   "mismatches": 0,
+   "records": 6
+  },
+  "P2b": {
+   "audited": 2,
+   "decided": 2,
+   "idf_future_mismatch": 0,
+   "misfires": 0,
+   "mismatches": 0,
+   "records": 2
+  }
+ },
+ "per_key": {
+  "scale20p2": {
+   "audited": 7,
+   "decided": 7,
+   "mismatches": 0
+  }
+ },
+ "per_record": [
+  {
+   "audited": false,
+   "decided": false,
+   "id": "main/scale20p2/12630101/B2",
+   "mismatches": [],
+   "stop_recorded": "unknown"
+  },
+  {
+   "audited": false,
+   "decided": false,
+   "id": "main/scale20p2/12630102/B2",
+   "mismatches": [],
+   "stop_recorded": "unknown"
+  },
+  {
+   "audited": false,
+   "decided": false,
+   "id": "main/scale20p2/12630103/B2",
+   "mismatches": [],
+   "stop_recorded": "unknown"
+  },
+  {
+   "N_audited": 20,
+   "audited": true,
+   "clique_source": "own",
+   "clique_used": 19,
+   "counted": [],
+   "decided": true,
+   "future_match_ref": true,
+   "id": "main/scale20p2/12630104/B2",
+   "label": "ID",
+   "misfire": [],
+   "mismatches": [],
+   "stop_recorded": "ID",
+   "verdicts_checked": 2
+  },
+  {
+   "audited": false,
+   "decided": false,
+   "id": "main/scale20p2/12630105/B2",
+   "mismatches": [],
+   "stop_recorded": "unknown"
+  },
+  {
+   "audited": false,
+   "decided": false,
+   "id": "main/scale20p2/12630106/B2",
+   "mismatches": [],
+   "stop_recorded": "unknown"
+  },
+  {
+   "N_audited": 20,
+   "audited": true,
+   "clique_source": "hint_verified",
+   "clique_used": 18,
+   "counted": [],
+   "decided": true,
+   "future_match_ref": true,
+   "id": "main/scale20p2/12630101/P2",
+   "label": "ID",
+   "misfire": [],
+   "mismatches": [],
+   "stop_recorded": "ID",
+   "verdicts_checked": 2
+  },
+  {
+   "N_audited": 20,
+   "audited": true,
+   "clique_source": "hint_verified",
+   "clique_used": 17,
+   "counted": [],
+   "decided": true,
+   "future_match_ref": true,
+   "id": "main/scale20p2/12630102/P2",
+   "label": "ID",
+   "misfire": [],
+   "mismatches": [],
+   "stop_recorded": "ID",
+   "verdicts_checked": 2
+  },
+  {
+   "N_audited": 20,
+   "audited": true,
+   "clique_source": "hint_verified",
+   "clique_used": 16,
+   "counted": [],
+   "decided": true,
+   "future_match_ref": true,
+   "id": "main/scale20p2/12630103/P2",
+   "label": "ID",
+   "misfire": [],
+   "mismatches": [],
+   "stop_recorded": "ID",
+   "verdicts_checked": 2
+  },
+  {
+   "N_audited": 20,
+   "audited": true,
+   "clique_source": "hint_verified",
+   "clique_used": 19,
+   "counted": [],
+   "decided": true,
+   "future_match_ref": true,
+   "id": "main/scale20p2/12630104/P2",
+   "label": "ID",
+   "misfire": [],
+   "mismatches": [],
+   "stop_recorded": "ID",
+   "verdicts_checked": 2
+  },
+  {
+   "audited": false,
+   "decided": false,
+   "id": "main/scale20p2/12630105/P2",
+   "mismatches": [],
+   "stop_recorded": "unknown"
+  },
+  {
+   "audited": false,
+   "decided": false,
+   "id": "main/scale20p2/12630106/P2",
+   "mismatches": [],
+   "stop_recorded": "unknown"
+  },
+  {
+   "N_audited": 20,
+   "audited": true,
+   "clique_source": "hint_verified",
+   "clique_used": 18,
+   "counted": [],
+   "decided": true,
+   "future_match_ref": true,
+   "id": "main/scale20p2/12630101/P2b",
+   "label": "ID",
+   "misfire": [],
+   "mismatches": [],
+   "stop_recorded": "ID",
+   "verdicts_checked": 2
+  },
+  {
+   "N_audited": 20,
+   "audited": true,
+   "clique_source": "hint_verified",
+   "clique_used": 17,
+   "counted": [],
+   "decided": true,
+   "future_match_ref": true,
+   "id": "main/scale20p2/12630102/P2b",
+   "label": "ID",
+   "misfire": [],
+   "mismatches": [],
+   "stop_recorded": "ID",
+   "verdicts_checked": 2
+  }
+ ],
+ "purpose": "exploratory diagnostic for plan 064; not evidence for any gate",
+ "records": 14,
+ "schema": "brute.diag.refpin.v61_0",
+ "scope": {
+  "budget_s": 1800.0,
+  "key_order": [
+   "scale20p2"
+  ],
+  "order": [
+   "B2",
+   "P2",
+   "P2b"
+  ],
+  "workers": 4
+ },
+ "script_sha256": "ba31264a563de1d4e20bc2fea1580cadd4ddbb6810582aa6677b1493a3d91547",
+ "study_results_sha256": "64dad5773b2b515da1b7f9d01abef3f590be793359b08d52fae1187112e8dbc9",
+ "vacuous": false,
+ "verdicts_checked": 14,
+ "walls_informational": {
+  "main/scale20p2/12630101/P2": 2.1,
+  "main/scale20p2/12630101/P2b": 2.0,
+  "main/scale20p2/12630102/P2": 8.2,
+  "main/scale20p2/12630102/P2b": 8.2,
+  "main/scale20p2/12630103/P2": 16.9,
+  "main/scale20p2/12630104/B2": 1.7,
+  "main/scale20p2/12630104/P2": 1.7
+ }
+}
