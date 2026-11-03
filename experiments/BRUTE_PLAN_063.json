@@ -1,0 +1,97 @@
+{
+  "schema": "brute.plan.v1",
+  "study": "BRUTE-0600-ANCHOR2B20-063",
+  "version_under_test": "0.60.0",
+  "parent_study": "BRUTE-0590-WINDOW2B20-062",
+  "written": "2026-11-02 (EST), after the v0.59.0 release",
+  "status": "preregistered (plan only; no build code, no fresh seed use, no data). Build needs a ledgered build_authorization_063 citing the standing go t133s553 and t139s684",
+  "standing_go": [
+    "t133s553",
+    "t139s684 (James, Nov 2 2026: keep going version after version until something valuable turns up; stop only when he says so)"
+  ],
+  "branch_taken": "v0.59.0 RELEASED with a published failure: probe-word windows (certify/20w) decided 0/3 fresh 2-bit 20-state worlds at 8M, same as B2 0/3 (GW62 FAIL, 'sound but no 2-bit gain'). Per the user (18:43 EST) the next step is a real-capability attack on 2-bit readings at 20 states, not budget-only and not entropy actions.",
+  "choice": {
+    "clique_anchored_symmetry_breaking": "CHOSEN (gated headline, arm P2). A new encoding, certify/20p: every round, compute the EXACT maximum apartness clique C of the observed positions (branch and bound, node cap declared); pin x[c_i]=i for the sorted clique; keep first-visit symmetry clauses only for non-clique positions and states q > |C| over non-clique earlier positions; make n < |C| UNSAT with one contradiction clause; keep apartness pair clauses; rebuild the pool when the max clique grows. Exactness: any model can be relabelled so the clique gets 0..|C|-1 and the rest appear in first-visit order (Inferred, relabelling argument; checked by the CNF reference audit and the replay fidelity gate).",
+    "why": "The frozen pool (A16, after the 041 audit) has NO fixed colours: PoolE1.lower() is 1 and symmetry breaking is first-visit only, so every size below the clique needs a pigeonhole-like UNSAT proof. CLIQUE_DIAG_063 (exploratory) shows the exact max clique on the sealed 062 records is 17-18 against the greedy 16. Pinning it removes the |C|! relabellings and makes small sizes trivial.",
+    "rejected": {
+      "budget_only": "user excluded; B2 0/8 at 2M and 8M on 058 seeds (BUDGET_PROBE_062)",
+      "entropy_actions": "user excluded",
+      "L2 (lower bound raised to the exact clique only)": "reported in the probe as an ablation; not gated",
+      "learned_distinguishing_sequences / decomposition": "larger builds with no sealed-seed evidence yet; kept as next_if_fail"
+    }
+  },
+  "capability_probe": {
+    "script": "scripts/probe_063.py",
+    "output": "results/diag-063/CAPABILITY_PROBE_063.json",
+    "seeds": "sealed 12620101-03 (062 main) and 12530003 (058); spent, never fresh",
+    "settings": "B 8M, C 50000, K 400, N 20, node cap 200000, 6 workers, guard 2400 s per case",
+    "disclosure": "the probe was launched at 18:49 EST before its script was committed; it records its own sha256, and the committed file was checked against that hash. Exploratory, not gate evidence.",
+    "P2_result_observed": "P2 3/4 decided on sealed seeds at B 8M (12620103 IDF 945,775 conflicts 30 s; 12530003 ID 3,719,010 146 s; 12620102 ID 7,514,827 271 s; 12620101 IDU 8,000,111); L2 0/4 IDU n_min 19 (ablation: raising the lower bound alone does not help). B2 left all four IDU at 8M (062 and BUDGET_PROBE_062); W2 decided only 12530003."
+  },
+  "honest_framing": "Still the hard problem: 2-bit readings at 20 states. This is an encoding change (symmetry breaking), not a policy change and not more budget. A pass would be 2-bit 20-state decisions by this solver under a declared N; never 'first decided 20-state world'. The guarantee stays conditional on the declared N.",
+  "brand": "charcoal and sage; no purple, neon, emoji or gold",
+  "question": "(A) At declared N 20, original 2-bit emissions (worlds_058 scale20), C 50000, K 400, B 8M, does certify/20p decide (ID+IDF) at least 3 of 8 fresh worlds and at least 2 more than the frozen certify/20b (B2) on the same seeds? (B) Is it sound (WRONG 0)? (C) Is it deterministic?",
+  "hypotheses": {
+    "H1": "no record is WRONG",
+    "H2": "P2 decides >= 3/8",
+    "H3": "P2 - B2 >= 2 on the same seeds",
+    "H4": "P2 and P2b give byte-identical canonical records on the determinism seeds",
+    "H5 (reported)": "P2 final clique size and repin count per seed"
+  },
+  "design": {
+    "api": "one new module brute/api/certify20p.py (brute.certify/20p), host-agnostic (no I/O, threads, subprocess or os): Certifier20P reuses the frozen Certifier20B policy (propose unchanged) and swaps the pool for Pool63 (clique-anchored H63) with an exact max-clique routine and re-pin on clique growth. observe()/result() keep the frozen record schema plus clique and repin fields.",
+    "arms": {
+      "P2": "certify/20p, read_bits 2, family_bound 20",
+      "B2": "frozen certify/20b, same settings (control)",
+      "P2b": "second P2 pass on determinism seeds"
+    },
+    "fidelity": "api_checks_063 replays every ID/IDF trace and checks the CNF reference audit on decided cases"
+  },
+  "cases": {
+    "scale20p2": 8,
+    "scale20p2_b": 3,
+    "jobs": "8 B2 + 8 P2 + 3 P2b = 19",
+    "declared_before_data": true
+  },
+  "heldout_ranges": {
+    "scale20p2": "12630101-12630108",
+    "note": "seedcheck_063 scans every tracked file before any fresh seed; a hit moves the range by a ledgered deviation before data"
+  },
+  "smoke_range": "12630301-12630306 (pre-freeze smoke and the no-network check only; never gated)",
+  "criteria": {
+    "GS63_sound": "WRONG 0 on every record (19)",
+    "GP63": "P2 ID+IDF >= 3/8 AND P2 - B2 >= 2 on the same seeds (Wilson 95% CIs and exact McNemar reported) [headline]",
+    "GDET63": "P2 and P2b canonical records byte-identical on 3/3; no wall guard or case kill in P2/P2b",
+    "GFID63": "api_checks_063 replay fidelity on every decided trace",
+    "GHOST63": "no network during the run",
+    "GS_ref63": "CNF reference audit agrees on every decided case",
+    "G_recount63": "independent recount matches",
+    "GTEST63": "all tests pass",
+    "G_PROC63": "process events in the ledger in order"
+  },
+  "certification_rule": "certified (read_bits 2, N <= 20, clique-anchored) iff every gate passes; if only GP63 fails the result is 'sound but no 2-bit gain' and 2-bit 20-state worlds stay Open",
+  "status_wording_rule": "status phrases come from the GATES_063 flags only",
+  "runtime_estimate": "Inferred from the probe (P2 decided cases in 30-271 s at 6 workers) and 062 (B2 8M jobs run near the full budget). 19 jobs on 6 workers; cut rule declared in a pre-run deviation before the freeze: drop P2b 3 -> 2, then seeds 8 -> 6 (all arms). Main run capped at about 60 min, run once, never relaunched. Never raise B or C after the probe",
+  "process": "LEAN under the standing go, as in plans 060-062",
+  "process_naming_rule": "prefreeze_smoke_063_attemptK plus prefreeze_smoke_063; release ledger event release_0600",
+  "freeze_rule": "no file named in the source freeze is edited after the freeze; caps, node cap, orders, stop rule, workers and case lists are frozen",
+  "what_counts_as_failure": "any gated criterion false; a case kill in P2/P2b fails GDET63; IDU, AMB, K_spent are not soundness failures",
+  "next_if_pass": "2-bit 20-state decisions exist under clique anchoring: next, 24 states at 2 bits, then noise",
+  "next_if_fail": "if GS63_sound fails: publish and audit certify/20p. If only GP63 fails: learned distinguishing sequences or decomposition",
+  "limitations": [
+    "8 seeds give wide CIs",
+    "the probe ran on sealed seeds only and before preregistration (disclosed)",
+    "2-bit original emissions only; noise-free",
+    "exact clique search has a node cap; a capped search falls back to the best clique found (still sound, weaker)",
+    "still needs a declared size N"
+  ],
+  "open_items": [
+    "2-bit 20-state worlds: Open until GP63 passes",
+    "N 25..32 at 4 bits: Open",
+    "noise at N > 20: Open",
+    "full N-freedom: Open (impossible without a size bound; Inferred)"
+  ],
+  "drafting_disclosure": "drafted by the agent under the standing go; not reviewed by the user before preregistration",
+  "claim_scope": "conditional on the declared N and noise-free readings; never 'first decided 20-state world'",
+  "evidence_labels": "Exact, Observed, Simulated, Inferred, Rejected, Open"
+}
