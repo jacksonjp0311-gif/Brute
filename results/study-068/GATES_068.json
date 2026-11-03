@@ -1,0 +1,133 @@
+{
+  "failed": [
+    "GDEC68",
+    "GMATCH68",
+    "GTEST68"
+  ],
+  "gates": {
+    "GDEC68": {
+      "decided_of_3": {
+        "U3/C": 0,
+        "U3/S": 0,
+        "U4/C": 0,
+        "U4/S": 0,
+        "W16/C": 0,
+        "W16/S": 0
+      },
+      "labels": {
+        "U3:12680101:C": "IDU",
+        "U3:12680101:S": "IDU",
+        "U3:12680101:Sb": "IDU",
+        "U3:12680102:C": "AMB",
+        "U3:12680102:S": "AMB",
+        "U3:12680103:C": "IDU",
+        "U3:12680103:S": "IDU",
+        "U4:12680101:C": "AMB",
+        "U4:12680101:S": "AMB",
+        "U4:12680102:C": "AMB",
+        "U4:12680102:S": "AMB",
+        "U4:12680103:C": "AMB",
+        "U4:12680103:S": "AMB",
+        "W16:12680101:C": "AMB",
+        "W16:12680101:S": "AMB",
+        "W16:12680102:C": "AMB",
+        "W16:12680102:S": "AMB",
+        "W16:12680103:C": "AMB",
+        "W16:12680103:S": "AMB"
+      },
+      "pass": false
+    },
+    "GDET68": {
+      "pass": true
+    },
+    "GEQ68": {
+      "equal": 10,
+      "pairs": 10,
+      "pass": true
+    },
+    "GFID68": {
+      "adapter_ast_violations": [],
+      "checked": 19,
+      "pass": true,
+      "replay_mismatch": []
+    },
+    "GHOST68": {
+      "pass": true,
+      "tree_run": "6990cc42a10f52ba7be967f31abc46473cf1add1",
+      "tree_v0630": "6990cc42a10f52ba7be967f31abc46473cf1add1"
+    },
+    "GLIVE68": {
+      "elapsed_s": 348.7,
+      "pass": true,
+      "records": 19
+    },
+    "GMAJ68": {
+      "bit_errors": 0,
+      "fixed_reads_total": 1748315,
+      "pass": true,
+      "reads_total": 373261
+    },
+    "GMATCH68": {
+      "pass": false,
+      "per_target": {
+        "U3": {
+          "covered": 0,
+          "n_min_mismatch": [],
+          "pass": false,
+          "reachable": 6
+        },
+        "U4": {
+          "covered": 0,
+          "n_min_mismatch": [],
+          "pass": false,
+          "reachable": 7
+        },
+        "W16": {
+          "covered": 0,
+          "n_min_mismatch": [],
+          "pass": false,
+          "reachable": 7
+        }
+      }
+    },
+    "GS68_sound": {
+      "finished": 19,
+      "pass": true,
+      "wrong": 0
+    },
+    "GTEST68": {
+      "pass": false
+    },
+    "G_PROC68": {
+      "chain": [
+        "69088e4",
+        "b98cfa5",
+        "8fce3dd",
+        "bb1ce88",
+        "5d3f56a",
+        "bab02fc",
+        "337e8fb"
+      ],
+      "missing": [],
+      "pass": true,
+      "truth_unchanged": true
+    },
+    "G_recount68": {
+      "pass": true
+    }
+  },
+  "passed": [
+    "GDET68",
+    "GEQ68",
+    "GFID68",
+    "GHOST68",
+    "GLIVE68",
+    "GMAJ68",
+    "GS68_sound",
+    "G_PROC68",
+    "G_recount68"
+  ],
+  "results_sha256": "2d1841535cd3f2e5c1bc861ee89a77c820db36fa8d43467d7510c09d8f6f4ff4",
+  "status": "not certified (failing gates: GDEC68, GMATCH68, GTEST68)",
+  "study": "BRUTE-0640-REALDECODER-068"
+}
