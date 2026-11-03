@@ -4,6 +4,14 @@ _Kept current on the working branch during a release and on `main` at release. L
 
 ## Current version and state
 
+<!-- V0660 -->
+- **v0.66.0 (study BRUTE-0660-RESETFREE-070): NOT CERTIFIED, 3 of 11 gates.** Plan 070 781f67b. Build authorization 07ded24, citing t143s742, t133s553 and t139s684. Source freeze 8020b64.
+  - **Run (Exact).** Launched once at 12:51:57 EST (ledger 2feca93) and sealed incomplete at 13:10:36 (seal 8329c19). It produced 44/51 records; the kernel OOM killer SIGKILLed 7 certify/32h jobs, and none was retried. Every data gate is INCOMPLETE_INPUT. Gates 789996e; deviation #210 495897f.
+  - **Textbook vs Brute:** arm T (baseline/32t) is the textbook Rivest-Schapire homing learner using L* and Vasilevskii-Chow. Arm B (certify/32h) is Brute's SAT version space fed homing-based tests; it does not assume h is homing.
+  - **Exploratory (not gated):** on the sealed records at tight N, B decided 4/5 targets with 0 WRONG and fewer steps than T. At N 12, T decided 5/5 and B decided 0/3.
+  - **What Brute can't do yet:** reset-free certification (Open); a loose declared N; bounded memory; real noise.
+  - **No CI.** The user's computer was offline, so network access went through the box. Run git and gh as `env -u GITHUB_TOKEN -u GH_TOKEN`. The agent drafted this; James has not reviewed it.
+
 <!-- V0650 -->
 - **v0.65.0: RELEASED 2026-11-03 at about 12:07 EST** (tag v0.65.0 at 2cb52ab, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.65.0; ledger release_0650 6980cf3; fresh-clone verify and 29/29 tests passed). Study BRUTE-0650-RESETDECODER-069. Plan 069 b5bdff8; hand truth e927063; build authorization 29c7b8d, citing t143s742, t133s553 and t139s684. **CERTIFIED WITH RESETS, 14 of 14 gates.** New brute.certify/32r combines L* with a Vasilevskii-Chow N-complete suite and uses a fresh decoder object per word.
   - **Run (Exact).** Launched once at 11:47:19 EST (ledger 3fb782c). Sealed complete at 12:01:31 (seal b6d9381): 31/31 records, 0 KILL, 851 s.

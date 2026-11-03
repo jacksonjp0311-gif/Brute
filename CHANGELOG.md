@@ -1,5 +1,41 @@
 # Brute changelog
 
+## v0.66.0: NOT CERTIFIED (3 of 11 gates; main run incomplete, 7 of 51 jobs OOM-killed). Reset-free brute.certify/32h (Brute's SAT version space fed homing-based tests) against the textbook baseline brute.baseline/32t (study BRUTE-0660-RESETFREE-070, LEAN process)
+
+**Passed: GHOST70, GTEST70 and G_PROC70. Failed: GLIVE70, plus GS70_sound, GDEC70, GBASE70, GNORESET70, GFID70, GDET70 and G_recount70, which all fail INCOMPLETE_INPUT. Status: not certified.**
+
+Honest framing first:
+
+- **Nothing is certified.** The kernel OOM killer SIGKILLed 7 of the 51 jobs (all certify/32h: EJ B on 2 seeds, W16 / U4 / EJ B2, U4 / EJ B12). They were not retried. Memory was not budgeted in the plan. Reset-free certification stays Open.
+- **What is textbook and what is Brute's.** The textbook baseline arm T (brute.baseline/32t) uses homing sequences (Rivest-Schapire 1993), L* and the Vasilevskii-Chow suite shape (1973/1978). Its ID assumes that h homes the target, which is not checked. Brute's arm B (brute.certify/32h) is the unchanged certify/32p SAT version space over the single reset-free trajectory, and its certificate assumes only the declared N and clean readings.
+- **The gain is narrow.** At tight N (true+1), B needed fewer decoder steps than T. At N 12, T decided everything and B decided nothing. Tight N is not like-for-like with v0.64.0's 0/18 at N 12.
+
+### Timeline (EST, 2026-11-03)
+
+- Plan `781f67b` (ledger `d48ad9f`); build authorization `07ded24`, citing t143s742, t133s553 and t139s684; source freeze `8020b64`.
+- Main run launched once at 12:51:57 (ledger `2feca93`). Sealed incomplete at 13:10:36 (seal `8329c19`): 44/51 records, 967 s.
+- Recount `057f486`: 0 WRONG. Official tests `8ccc04b`: passed. Gates `789996e`. Exploratory `35544a6`. Deviation #210 `495897f`.
+
+### Sealed records (exploratory, not gated; recount labels against the hand truth)
+
+| Target | B at true+1 (decided / sealed, steps) | T at true+1 | B at N 12 | T at N 12 |
+| --- | --- | --- | --- | --- |
+| U3 (6) | 3/3 IDF, 806-1622 | 3/3 ID, 3741-8507 | IDU | ID, 1.46M |
+| U4 (7) | 3/3 IDF, 2038-2836 | 3/3 ID, 8481-12846 | OOM | ID, 1.09M |
+| W16 (7) | 3/3 IDF, 403 | 3/3 ID, 7781-8621 | IDU | ID, 0.89M |
+| EJ (13, stretch) | 1/1 IDF, 7318 (2 OOM) | 3/3 ID, 13810-17988 | OOM (N 16) | ID, 0.19M (N 16) |
+| GB (8, held out) | 3/3 IDF, 2850-4076 | 3/3 ID, 5580-5587 | IDU | ID, 0.21M |
+
+The sealed records had 0 WRONG and 0 TRACE_MISMATCH. Every replay on one fresh decoder was exact (4.2M steps), and Bb = B.
+
+### What Brute can't do yet
+
+- Certify a real decoder reset-free under the frozen rules: the run was incomplete.
+- Decide at a loose declared N: N 12 was IDU or OOM.
+- Bound its own memory: certify/32h reached 5 GB per job.
+- Handle real noise.
+- Scale to larger targets.
+
 ## v0.65.0: CERTIFIED WITH RESETS (14 of 14 gates). New brute.certify/32r: L* with a Vasilevskii-Chow N-complete test suite on real CPython 3.13.5 decoders, a fresh decoder object per query word (study BRUTE-0650-RESETDECODER-069, LEAN process)
 
 **14 of 14 gates pass (GS69_sound, GDEC69, GMATCH69, GSTRETCH69, GHELD69, GMAJ69, GEQ69, GDET69, GFID69, GHOST69, GLIVE69, G_recount69, GTEST69, G_PROC69). Status: certified with resets on real software (CPython 3.13.5 incremental utf-8, utf-16-le, euc_jp and gb18030 decoders; read_bits 2, N <= 12 (euc_jp N <= 16), injected iid bit noise eps <= 0.30, delta 0.001; resets via fresh decoder objects).**
