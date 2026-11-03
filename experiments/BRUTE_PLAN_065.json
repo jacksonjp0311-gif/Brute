@@ -1,0 +1,115 @@
+{
+  "schema": "brute.plan.v1",
+  "study": "BRUTE-0620-SEQNOISE2B20-065",
+  "version_under_test": "0.62.0",
+  "parent_study": "BRUTE-0610-SCALE2B24-064",
+  "written": "2026-11-03 ~05:05 EST, after the v0.61.0 gates (11/11 pass; local tag v0.61.0 58ca245 at c8a3911; push pending a valid GitHub credential)",
+  "status": "preregistered (plan only; no build code committed, no fresh seed use, no data). Build needs a ledgered build_authorization_065 citing the standing go t133s553 and t139s684",
+  "standing_go": [
+    "t133s553",
+    "t139s684 (James, Nov 2 2026: keep going version after version until something valuable turns up; stop only when he says so)"
+  ],
+  "agreed_direction": "James, Nov 2 2026 20:10 EST: after v0.60.0 spend 2-3 versions testing how far the new method goes at larger sizes and with noise, prefer good ideas over budget bumps, then choose deliberately between a black-box certification tool and a messier real-world problem. v0.61.0 was the size version; this is the noise version.",
+  "branch_taken": "plan 064 PASSED every gate (certified read_bits 2, N <= 24, clique-anchored; P24 2/6, P20 4/6 on fresh seeds 12640101-06). Per the agreed direction the next of the 2-3 test versions is noise. 24 states decided only 2/6, so noise is measured at 20 states where certify/20p decided 4/6 in both 063 and 064. Expected C20 coverage on the fresh 065 seeds is therefore about 4/6, which is what GN65 can at most reach.",
+  "choice": {
+    "sequential_rereads": "CHOSEN (the idea). certify/20s: a random-walk (SPRT) stopping rule per bit instead of certify/20n's fixed odd k. Bit j of observation t is re-read until its lead |#ones - #zeros| first reaches m_t, the smallest m with read_bits * r^m/(1+r^m) <= delta*6/(pi^2 t^2), r = eps_bar/(1-eps_bar). Gambler's ruin gives the per-bit error exactly (r_eps^m/(1+r_eps^m), monotone in eps), so the anytime guarantee is the same delta as certify/20n's but the read count is about m/(1-2 eps) per observation instead of log(.)/(2(1/2-eps_bar)^2). Pre-data calculation (no worlds, no seeds; 2000 simulated walks per row, 2 bits, delta 0.001): at eps 0.10/eps_bar 0.15 and t = 150 the fixed rule needs 75 reads, the sequential rule about 15; at eps 0.20/0.25, 145 vs about 32; at eps 0.30/0.35 the fixed rule needs about 400.",
+    "inner_solver": "frozen certify/20p (clique-anchored), declared N 20, 2-bit readings, scale20 worlds; the inner solver is unchanged, so every settled-correct noisy trace equals the noise-free trace and the noisy record must equal the noise-free record (gate GEQ65). Noise is absorbed entirely in the front end.",
+    "how_far": "three noise levels, eps 0.10, 0.20 and 0.30 (eps_bar 0.15, 0.25, 0.35); 0.30 at 2 bits is the stretch and the gated headline",
+    "rejected": {
+      "fixed-k majority (certify/20n rule) as a run arm": "under correct majorities its inner trace equals the noise-free trace, so its decisions equal C20's exactly; only its read count differs and that is a deterministic function of the observation count (Exact). Reported as a counterfactual from certify20n.reads_for on each record's observation count, not run (saves about 20 min of duplicate SAT work)",
+      "budget above 8M": "excluded by the agreed direction",
+      "noise at 24 states": "P24 decided 2/6 noise-free in study-064; noise cannot add decisions, so 20 states is where noise can be measured; 24-32 states with noise is a later version"
+    }
+  },
+  "honest_framing": "The SAT side is unchanged, so this version cannot decide more worlds than noise-free certify/20p; the claim under test is that sequential re-reads remove the noise penalty at far lower read cost, up to eps 0.30 at 2 bits, with the same delta guarantee. A pass extends a certification to noisy 2-bit 20-state worlds; a fail (any settled-bit error, a record mismatch with C20, or reads not below 0.35x of the fixed rule) is published plainly.",
+  "brand": "charcoal and sage; no purple, neon, emoji or gold",
+  "question": "(A) With iid bit flips at eps 0.10, 0.20, 0.30 and certify/20s (delta 0.001), is every settled bit correct and does each noisy record equal the noise-free certify/20p record on the same world? (B) Does the eps 0.30 arm decide >= 3/6 and >= C20 - 1? (C) Are pooled reads per arm <= 0.35x the fixed rule's reads on the same observations? (D) Is every record sound and every decided record audited by the clique-pinned reference? (E) Is S30 deterministic?",
+  "hypotheses": {
+    "H1": "no record is WRONG",
+    "H2": "0 settled-bit errors in all noisy records",
+    "H3": "every noisy record's inner canonical record equals C20's on the same seed",
+    "H4": "S30 ID+IDF >= 3/6 and >= C20 - 1",
+    "H5": "pooled reads <= 0.35x the fixed rule in each noisy arm",
+    "H6": "S30 and S30b canonical records byte-identical",
+    "H7 (reported)": "reads per observation by arm, per-bit settle times, the empirical vs bound error rate"
+  },
+  "design": {
+    "api": "one new module brute/api/certify20s.py (brute.certify/20s), host-agnostic: Certifier20S wraps an unchanged Certifier20P; threshold(t, eps_bar, delta, read_bits), settle(readings, m, read_bits), more(readings), observe(action, readings) where readings must be exactly a stopping sequence; READ_CAP 100000 readings per observation (ValueError beyond). certify/20p, certify/20n and every earlier module are frozen and imported only.",
+    "worlds": "experiments/worlds_065.py: world = worlds_064.world(seed, 'scale20') (2-bit, noise-free emissions, the 063/064 family), passive prefix worlds_026.actions(seed, 0, k). Noise: every bit of every reading is flipped independently with probability eps, drawn from random.Random(seed*13+650+int(round(1000*eps))) in the fixed order (t, read, bit), one random() per bit, flip iff draw < eps; readings are drawn one at a time until certify/20s.more() is False. Re-reads do not move the hidden state.",
+    "arms": {
+      "C20": "frozen certify/20p, noise-free, declared N 20 (the reference arm)",
+      "S10": "certify/20s, eps 0.10, eps_bar 0.15, delta 0.001",
+      "S20": "certify/20s, eps 0.20, eps_bar 0.25, delta 0.001",
+      "S30": "certify/20s, eps 0.30, eps_bar 0.35, delta 0.001 (gated headline)",
+      "S30b": "S30 again on the first seed (determinism)"
+    },
+    "counterfactual": "fixed-rule reads for each noisy record = sum over its observations t of certify20n.reads_for(t, eps_bar, delta, 2) (Exact for the trace actually taken)",
+    "caps": "C 50000, B 8000000, K 400, node cap 200000, max_chunks None, every arm; conflict-only stop with an 1800 s case kill as a safety net (any firing fails GDET65)",
+    "job_order": "C20 ascending, S30 ascending, S20 ascending, S10 ascending, S30b; one 6-worker pool, max_tasks_per_child 1",
+    "reference": "scripts/run_reference_065.py = run_reference_064 (clique-pinned experiments/v0610_reference.py) on each decided record's settled trace; bound N 20; budget 1800 s, 6 workers, 20 seeded mutations (random.Random(650))",
+    "fidelity": "api_checks_065 replays every decided noisy record's raw readings through the public certify/20s interface and gets the same record; certify/20s at eps_bar 0 (m = 1) on clean readings is byte-identical to certify/20p on the smoke worlds; threshold() checked against an independent exact-fraction computation for t 1..500 at each eps_bar; a reported Monte-Carlo check of the per-bit error at m_t"
+  },
+  "cases": {
+    "C20": 6,
+    "S10": 6,
+    "S20": 6,
+    "S30": 6,
+    "S30b": 1,
+    "jobs": "6 C20 + 6 S10 + 6 S20 + 6 S30 + 1 S30b = 25",
+    "declared_before_data": true
+  },
+  "heldout_ranges": {
+    "scale20": "12650101-12650106",
+    "note": "seedcheck_065 scans every tracked file (including packed .gz results) before any fresh seed; a hit moves the range by a ledgered deviation before data"
+  },
+  "smoke_range": "12650301-12650306 (pre-freeze smoke and the no-network check only; never gated)",
+  "criteria": {
+    "GS65_sound": "WRONG 0 on every record (25)",
+    "GMAJ65": "0 settled-bit errors (settled reading != clean reading) over every observation of every noisy record",
+    "GEQ65": "every noisy record's inner canonical record (labels, proposal, n_min, conflicts, queries) equals C20's on the same seed",
+    "GN65": "S30 ID+IDF >= 3/6 and >= C20 - 1 (Wilson 95% CI reported) [headline]",
+    "GN_low65": "S10 and S20 each ID+IDF >= C20 - 1",
+    "GREAD65": "in each of S10, S20, S30 pooled reads <= 0.35 x the fixed rule's reads on the same observations",
+    "GDET65": "S30 and S30b canonical records byte-identical (including raw read counts); no case kill in any arm",
+    "GFID65": "api_checks_065 replay fidelity on every decided noisy record; certify/20s at eps_bar 0 == certify/20p on the smoke worlds; threshold() == the exact-fraction check",
+    "GHOST65": "no network during the no-network run",
+    "GS_ref65": "the clique-pinned reference audits EVERY decided record (complete) with 0 mismatches and 20/20 mutations, within 1800 s on 6 workers",
+    "G_recount65": "independent recount matches",
+    "GTEST65": "all tests pass",
+    "G_PROC65": "process events in the ledger in order"
+  },
+  "certification_rule": "'certified (read_bits 2, N <= 20, iid bit noise eps <= 0.30, delta 0.001, sequential re-reads)' iff every gate passes. If every gate except GN65 passes: 'certified (read_bits 2, N <= 20, iid bit noise eps <= 0.20, delta 0.001, sequential re-reads)'. If GMAJ65, GEQ65, GS_ref65 or GS65_sound fails: no certification.",
+  "process": {
+    "lean": "LEAN (2026-10-29): plan locked before data, exact recount of false certificates, strict stress gate, failures published; main run capped about 30 min (hard kill + sealed partial at 2400 s); no drills, no host-pause probe; one fresh-clone check",
+    "release_tests": "tooling tests on synthetic input only may be committed before the freeze (declared in the pre-run deviation); TEST_SUITE_065 runs once, after the run (deviation #107 rule)",
+    "events": [
+      "preregistration_065",
+      "build_authorization_065",
+      "seedcheck_065",
+      "prefreeze_smoke_065",
+      "deviation_204",
+      "freeze_065",
+      "main_run_065",
+      "run_end_065",
+      "recount_065",
+      "reference_065",
+      "tests_065",
+      "api_checks_065",
+      "gates_065",
+      "release_0620",
+      "fresh_clone_verify_065"
+    ]
+  },
+  "runtime_projection": "C20 = study-064 P20 cost (about 1290 CPU-s for 6 seeds, worst record about 430 s); every noisy arm repeats the same SAT work (GEQ65), so about 4 x 1290 + 430 = 5590 CPU-s over 6 workers, about 950-1300 s wall with the long-record tail; the read front end adds well under 1 s per record. Cut rule if the smoke projection exceeds 2000 s: drop S20 to the first 3 seeds, then S10 to the first 3.",
+  "next_if_pass": "noise at larger sizes (certify/32p with sequential re-reads at 24 states) or the deliberate choice James agreed (black-box certification tool vs a messier real-world problem)",
+  "next_if_fail": "diagnose the failing gate (error rate vs bound, or read cost) on sealed data before any change",
+  "parent_result": {
+    "study": "BRUTE-0610-SCALE2B24-064",
+    "gates": "11/11",
+    "gates_commit": "1b8229b",
+    "P24": "2/6",
+    "P20": "4/6",
+    "P20_record_wall_max_s": 434,
+    "P20_conflicts_decided": "1.47-5.45M"
+  }
+}
