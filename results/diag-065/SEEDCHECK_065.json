@@ -1,0 +1,199 @@
+{
+ "schema": "brute.seedcheck.v62",
+ "v0620_ranges": {
+  "target/scale20": [
+   12650101,
+   12650106
+  ],
+  "smoke": [
+   12650301,
+   12650306
+  ]
+ },
+ "prior_files": [
+  "PLAN.json",
+  "BRUTE_PLAN_002.json",
+  "BRUTE_PLAN_003.json",
+  "BRUTE_PLAN_004.json",
+  "BRUTE_PLAN_005.json",
+  "BRUTE_PLAN_006.json",
+  "BRUTE_PLAN_007.json",
+  "BRUTE_PLAN_008.json",
+  "BRUTE_PLAN_009.json",
+  "BRUTE_PLAN_010.json",
+  "BRUTE_PLAN_011.json",
+  "BRUTE_PLAN_012.json",
+  "BRUTE_PLAN_013.json",
+  "BRUTE_PLAN_014.json",
+  "BRUTE_PLAN_015.json",
+  "BRUTE_PLAN_016.json",
+  "BRUTE_PLAN_017.json",
+  "BRUTE_PLAN_018.json",
+  "BRUTE_PLAN_019.json",
+  "BRUTE_PLAN_020.json",
+  "BRUTE_PLAN_021.json",
+  "BRUTE_PLAN_022.json",
+  "BRUTE_PLAN_023.json",
+  "BRUTE_PLAN_024.json",
+  "BRUTE_PLAN_025.json",
+  "BRUTE_PLAN_025_A1.json",
+  "BRUTE_PLAN_025_A2.json",
+  "BRUTE_PLAN_026.json",
+  "BRUTE_PLAN_027.json",
+  "BRUTE_PLAN_028.json",
+  "BRUTE_PLAN_029.json",
+  "BRUTE_PLAN_029_A1.json",
+  "BRUTE_PLAN_030.json",
+  "BRUTE_PLAN_031.json",
+  "BRUTE_PLAN_032.json",
+  "BRUTE_PLAN_033.json",
+  "BRUTE_PLAN_034.json",
+  "BRUTE_PLAN_035.json",
+  "BRUTE_PLAN_036.json",
+  "BRUTE_PLAN_037.json",
+  "BRUTE_PLAN_038.json",
+  "BRUTE_PLAN_039.json",
+  "BRUTE_PLAN_040.json",
+  "BRUTE_PLAN_041.json",
+  "BRUTE_PLAN_042.json",
+  "BRUTE_PLAN_043.json",
+  "BRUTE_PLAN_044.json",
+  "BRUTE_PLAN_045.json",
+  "BRUTE_PLAN_046.json",
+  "BRUTE_PLAN_047.json",
+  "BRUTE_PLAN_048.json",
+  "BRUTE_PLAN_049.json",
+  "BRUTE_PLAN_050.json",
+  "BRUTE_PLAN_051.json",
+  "BRUTE_PLAN_052.json",
+  "BRUTE_PLAN_053.json",
+  "BRUTE_PLAN_054.json",
+  "BRUTE_PLAN_054a.json",
+  "BRUTE_PLAN_055.json",
+  "BRUTE_PLAN_056.json",
+  "BRUTE_PLAN_057.json",
+  "BRUTE_PLAN_058.json",
+  "BRUTE_PLAN_059.json",
+  "BRUTE_PLAN_060.json",
+  "BRUTE_PLAN_061.json",
+  "BRUTE_PLAN_062.json",
+  "BRUTE_PLAN_063.json",
+  "BRUTE_PLAN_064.json"
+ ],
+ "prior_range_count": 409,
+ "rules_declared_before_scan": [
+  "J (cpu_jiffies, smoke only)",
+  "K (refused negative_controls probe in a SEEDCHECK file)",
+  "L (065 smoke-range token in study-065 own tooling source; carried from 055 #183)",
+  "M (plan-065 preregistration ledger note; declared before the scan)"
+ ],
+ "pairwise_overlaps": [],
+ "prior_overlaps": [],
+ "token_scan": {
+  "files_scanned": 3128,
+  "gz_files_decompressed": 210,
+  "standalone_tokens_in_065_ranges": [],
+  "occurrences_any_in_065_ranges": 0,
+  "standalone_11_12_prefix_token_count": 14339,
+  "rule_j": [],
+  "rule_k": [],
+  "rule_l": [],
+  "rule_m": [],
+  "allowed": []
+ },
+ "all_tokens_allowed": true,
+ "negative_controls": [
+  [
+   "target",
+   12649001,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   12649001,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   12650301,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   12650101,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   12650107,
+   "scale20",
+   "refused"
+  ],
+  [
+   "target",
+   12650100,
+   "scale20",
+   "refused"
+  ],
+  [
+   "target",
+   12640101,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   12640206,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   12630101,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   12650201,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   12650307,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   12650300,
+   null,
+   "refused"
+  ],
+  [
+   "smoke",
+   12640301,
+   null,
+   "refused"
+  ],
+  [
+   "target",
+   12660001,
+   null,
+   "refused"
+  ]
+ ],
+ "cases_by_key": {
+  "scale20": 6
+ },
+ "total_cases": 6,
+ "eps_by_key": {
+  "scale20": "0 (C20), 0.10, 0.20, 0.30 (S arms; noise drawn per reading, not per seed)"
+ },
+ "PASS": true
+}
