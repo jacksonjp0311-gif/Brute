@@ -1,0 +1,349 @@
+{
+  "PASS": true,
+  "audited": 6,
+  "block": "main",
+  "complete": true,
+  "decided": 6,
+  "elapsed_informational": 19.023030607990222,
+  "k_spent_as_amb": 0,
+  "misfires": [],
+  "mismatch_count": 0,
+  "mismatches": [],
+  "mutation_test": {
+    "detected": 20,
+    "items": [
+      {
+        "detected": true,
+        "id": "main/scale24p/12640204/P24",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20p/12640106/P20",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20p/12640103/P20",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20p/12640102/P20",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20p/12640106/P20",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24p/12640206/P24",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20p/12640102/P20",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20p/12640106/P20",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20p/12640102/P20",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20p/12640103/P20",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24p/12640206/P24",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20p/12640102/P20",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24p/12640204/P24",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20p/12640106/P20",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20p/12640106/P20",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24p/12640204/P24",
+        "kind": "s1"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24p/12640206/P24",
+        "kind": "stop"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24p/12640204/P24",
+        "kind": "n_min"
+      },
+      {
+        "detected": true,
+        "id": "main/scale24p/12640204/P24",
+        "kind": "verdict"
+      },
+      {
+        "detected": true,
+        "id": "main/scale20p/12640103/P20",
+        "kind": "s1"
+      }
+    ],
+    "mutations": 20,
+    "pass": true
+  },
+  "not_audited": [],
+  "not_reached": 9,
+  "per_arm": {
+    "B24": {
+      "audited": 0,
+      "decided": 0,
+      "idf_future_mismatch": 0,
+      "misfires": 0,
+      "mismatches": 0,
+      "records": 2
+    },
+    "P20": {
+      "audited": 4,
+      "decided": 4,
+      "idf_future_mismatch": 0,
+      "misfires": 0,
+      "mismatches": 0,
+      "records": 6
+    },
+    "P20b": {
+      "audited": 0,
+      "decided": 0,
+      "idf_future_mismatch": 0,
+      "misfires": 0,
+      "mismatches": 0,
+      "records": 1
+    },
+    "P24": {
+      "audited": 2,
+      "decided": 2,
+      "idf_future_mismatch": 0,
+      "misfires": 0,
+      "mismatches": 0,
+      "records": 6
+    }
+  },
+  "per_key": {
+    "scale20p": {
+      "audited": 4,
+      "decided": 4,
+      "mismatches": 0
+    },
+    "scale24p": {
+      "audited": 2,
+      "decided": 2,
+      "mismatches": 0
+    }
+  },
+  "per_record": [
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale24p/12640201/P24",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale24p/12640202/P24",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale24p/12640203/P24",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "N_audited": 24,
+      "audited": true,
+      "clique_source": "hint_verified",
+      "clique_used": 22,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale24p/12640204/P24",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale24p/12640205/P24",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "N_audited": 24,
+      "audited": true,
+      "clique_source": "hint_verified",
+      "clique_used": 20,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale24p/12640206/P24",
+      "label": "IDF",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "IDF",
+      "verdicts_checked": 2
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale24p/12640201/B24",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale24p/12640202/B24",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20p/12640101/P20",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "N_audited": 20,
+      "audited": true,
+      "clique_source": "hint_verified",
+      "clique_used": 18,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale20p/12640102/P20",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 20,
+      "audited": true,
+      "clique_source": "hint_verified",
+      "clique_used": 20,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale20p/12640103/P20",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20p/12640104/P20",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    },
+    {
+      "N_audited": 20,
+      "audited": true,
+      "clique_source": "hint_verified",
+      "clique_used": 17,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale20p/12640105/P20",
+      "label": "IDF",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "IDF",
+      "verdicts_checked": 2
+    },
+    {
+      "N_audited": 20,
+      "audited": true,
+      "clique_source": "hint_verified",
+      "clique_used": 20,
+      "counted": [],
+      "decided": true,
+      "future_match_ref": true,
+      "id": "main/scale20p/12640106/P20",
+      "label": "ID",
+      "misfire": [],
+      "mismatches": [],
+      "stop_recorded": "ID",
+      "verdicts_checked": 2
+    },
+    {
+      "audited": false,
+      "decided": false,
+      "id": "main/scale20p/12640101/P20b",
+      "mismatches": [],
+      "stop_recorded": "unknown"
+    }
+  ],
+  "records": 15,
+  "schema": "brute.reference.v44_0",
+  "scope": {
+    "budget_s": 1800.0,
+    "key_order": [
+      "scale24p",
+      "scale20p"
+    ],
+    "order": [
+      "P24",
+      "B24",
+      "P20",
+      "P20b"
+    ],
+    "workers": 6
+  },
+  "study_results_sha256": "93ecd4dc834c224caceab02a5dab00fdf637a600082044cb1713b92a9ee1a041",
+  "vacuous": false,
+  "verdicts_checked": 12,
+  "walls_informational": {
+    "main/scale20p/12640102/P20": 3.8,
+    "main/scale20p/12640103/P20": 1.6,
+    "main/scale20p/12640105/P20": 6.6,
+    "main/scale20p/12640106/P20": 1.9,
+    "main/scale24p/12640204/P24": 5.1,
+    "main/scale24p/12640206/P24": 18.7
+  }
+}
