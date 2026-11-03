@@ -1,0 +1,157 @@
+{
+ "schema": "brute.plan.v70",
+ "study": "BRUTE-0660-RESETFREE-070",
+ "version_under_test": "0.66.0",
+ "parent_study": "BRUTE-0650-RESETDECODER-069",
+ "written": "2026-11-03 12:35 EST by Grok Bot (s70), drafted, not reviewed line by line by James; LOCKED at its commit",
+ "status": "LOCKED",
+ "standing_go": "James at 12:09 EST 2026-11-03: lock v0.66.0 as reset-free certification of the same real decoders with a homing sequence in place of resets; Brute's own SAT certify path; a plain textbook baseline arm; gate reset-free decides >= 3 of 5 targets with 0 wrong; hold gb18030 out; build authority cites t143s742, t133s553, t139s684",
+ "honest_framing": [
+  "NO RESETS: one decoder object per job, created once at the start; nothing ever returns the decoder to a known state. This is the harder problem v0.64.0 failed (0/18 at declared N 12) and v0.65.0 side-stepped with resets.",
+  "The DECLARED BOUND IS TIGHT: declared N = true size + 1 (U3 7, U4 8, W16 8, EJ 14, GB 9), chosen from the sizes v0.65.0 certified with resets and from pre-plan pilots. This is a much weaker assumption-free margin than v0.64.0's N 12, so 'versus 0/18' is NOT like-for-like. Arms B12 / T12 rerun both methods at N 12 (one seed, not gated) to show the like-for-like picture, and B2 / T2 at true size + 2.",
+  "What is textbook and what is Brute's: homing sequences (Moore 1956; Kohavi), the Vasilevskii-Chow test-suite shape (1973 / 1978) and the Rivest-Schapire homing-sequence learner (1993) are textbook. Brute contributes the certificate: the label comes only from Brute's SAT version space (certify/32p, unchanged) proving by UNSAT that no machine with <= N states consistent with the whole reset-free trajectory predicts a different future. It does not assume the homing sequence is correct. The textbook baseline's label is conditional on its homing sequence really homing the target, which it cannot check.",
+  "Clean readings only (no noise arm in this study). Small real targets of 6 to 13 states; not a capability leap."
+ ],
+ "question": "Q1: does Brute's SAT version space, fed by homing-based tests, certify the real decoders WITHOUT resets (>= 3 of 5 targets, 0 wrong)? Q2: how does it compare with the plain textbook reset-free method (Rivest-Schapire homing + L* + Vasilevskii-Chow) in decided targets and decoder steps?",
+ "targets": {
+  "U3": [
+   "utf-8",
+   [
+    "0x41",
+    "0x80",
+    "0xE1"
+   ],
+   "main",
+   6
+  ],
+  "U4": [
+   "utf-8",
+   [
+    "0x41",
+    "0x80",
+    "0xF1"
+   ],
+   "main",
+   7
+  ],
+  "W16": [
+   "utf-16-le",
+   [
+    "0x41",
+    "0xD8",
+    "0xDC"
+   ],
+   "main",
+   7
+  ],
+  "EJ": [
+   "euc_jp",
+   [
+    "0x41",
+    "0x8F",
+    "0xA1"
+   ],
+   "stretch",
+   13
+  ],
+  "GB": [
+   "gb18030",
+   [
+    "0x41",
+    "0x81",
+    "0x30"
+   ],
+   "heldout",
+   8
+  ]
+ },
+ "heldout_note": "gb18030 (and euc_jp) were NOT used in any pre-plan pilot of the reset-free method; the pilots ran on the hand-truth SIMULATIONS of U3, U4 and W16 only (never the live decoders)",
+ "target_software": "CPython 3.13.5 (/workspace/bgr/venv/bin/python), unmodified stdlib incremental decoders, errors=replace",
+ "interface": {
+  "public_only": "experiments/targets_070.py: ONE codecs.getincrementaldecoder(codec)('replace') object per job, created in __init__; act(a) is one .decode(bytes([b])) (final=False). No reset method exists; no getstate, setstate, reset, buffer or underscore attribute (GNORESET70 checks the AST: getincrementaldecoder appears exactly once, attributes used only getincrementaldecoder and decode)",
+  "reading": "as plans 068 / 069: 2 bits of the str returned by the latest decode() (non-empty, contains U+FFFD); (0,0) before the first action",
+  "machine": "Moore machine over the target bytes; the job starts at the fresh-decoder state, which the certifiers are NOT told is special (certify/32h treats position 0 as an unknown state)"
+ },
+ "ground_truth": {
+  "file": "experiments/truth_069.py (unchanged, committed and ledgered before v0.65.0; truthcheck c649562)",
+  "use": "only the recount and gates read it"
+ },
+ "api": {
+  "brute": "brute/api/certify32h.py (NEW): brute.certify/32h = the UNCHANGED certify/32p SAT identifier (declared N, clique-anchored symmetry breaking, rival search, separating word) with one change, the experiment policy: after each AMB stop check the proposed word is the engine's separating word followed by a homing-based batch of about batch_steps=400 actions computed from the least machine M1: segments h.p.u.e with h a shortest homing sequence of M1, p a walk in M1 to state t, u in Sigma^d, e in a characterizing set of M1, enumerated depth by depth d = 0..N-n+1 (then repeated) in an order shuffled by random.Random(seed). Labels as certify/32p: ID / IDF (decided), AMB / K_spent (K 40000 steps), IDU (conflict budget or unknown).",
+  "baseline": "brute/api/baseline32t.py (NEW, textbook, NOT Brute's engine): Rivest-Schapire style: homing word h (starts empty); 'reset' := apply h and read its readings sigma; one unchanged certify/32r L* + Vasilevskii-Chow learner per sigma; a reading that contradicts the same learner's tree proves h is not homing, so h := h . (prefix up to the contradiction) and all learners restart. Labels: ID (some learner passed its N-complete suite; CONDITIONAL on h homing the target, unchecked), EXCEEDS_N, QCAP (step cap 3000000 decoder steps).",
+  "host_agnostic": "no I/O, os, subprocess, threads, network or global state in either module (GHOST70 checks the AST)"
+ },
+ "design": {
+  "arms": {
+   "B": "certify/32h at declared N = true + 1, seeds 12700101-03 (GATED)",
+   "T": "baseline32t at the same N, same seeds (GATED for completeness; the comparison is reported)",
+   "Bb": "B again on U3 seed 12700101 (determinism)",
+   "B2": "certify/32h at N = true + 2, seed 12700101 (not gated)",
+   "T2": "baseline32t at N = true + 2, seed 12700101 (not gated)",
+   "B12": "certify/32h at N 12 (EJ 16), seed 12700101 (not gated; like-for-like with v0.64.0)",
+   "T12": "baseline32t at N 12 (EJ 16), seed 12700101 (not gated)"
+  },
+  "declared_N": {
+   "main": {
+    "U3": 7,
+    "U4": 8,
+    "W16": 8,
+    "EJ": 14,
+    "GB": 9
+   },
+   "plus2": {
+    "U3": 8,
+    "U4": 9,
+    "W16": 9,
+    "EJ": 15,
+    "GB": 10
+   },
+   "n12": {
+    "U3": 12,
+    "U4": 12,
+    "W16": 12,
+    "EJ": 16,
+    "GB": 12
+   }
+  },
+  "seeds": [
+   12700101,
+   12700102,
+   12700103
+  ],
+  "jobs": "5 targets x (B, T) x 3 seeds = 30, + Bb 1, + B2, T2, B12, T12 x 5 targets = 20; 51 jobs",
+  "caps": {
+   "certify32h_K_steps": 40000,
+   "conflict_cap": 50000,
+   "budget_conflicts": 50000000,
+   "baseline_step_cap": 3000000,
+   "job_kill_s": 900,
+   "main_cap_s": 3600,
+   "workers": 7
+  },
+  "runner": "experiments/brute_study_070.py; one forked process per job; a job alive at 900 s is SIGKILLed and recorded KILL (complete, undecided); main cap 3600 s then sealed partial; launched ONCE, never relaunched",
+  "smoke": "seed 12700301, arms B and T on every target at the main N, pre-freeze only, never gated, outside results/study-070; caps unchanged by the smoke"
+ },
+ "recount": "scripts/recount_070.py: simulate the hand truth from its start over the record's full action sequence (and check the recorded readings equal it). B IDF: WRONG unless M1 from its final state is Moore-equivalent to the truth from the truth's final state; B ID: also M1 from its position-0 state equivalent to the truth start. T ID: WRONG unless H is equivalent to the truth from the truth state at origin_step (the end of the last h before the deciding learner's last query). EXCEEDS_N: WRONG unless the truth has more than N states. Others keep their label.",
+ "gates": {
+  "GS70_sound": "0 WRONG among the decided (ID / IDF) records of every certify/32h arm (B, Bb, B2, B12)",
+  "GDEC70": "at least 3 of the 5 targets have B decided (ID or IDF, recounted correct) on at least 2 of 3 seeds, at the main declared N (v0.64.0: 0 of 18 at N 12)",
+  "GBASE70": "all 15 T records present (none missing or errored) and recounted; the B-vs-T table (decided per target, decoder steps) is written; the gain is reported, not gated",
+  "GNORESET70": "adapter AST (one getincrementaldecoder call, in __init__; only getincrementaldecoder and decode attributes; no reset) and every non-KILL record has decoder_objects 1",
+  "GFID70": "every non-KILL record's full action sequence replayed on one fresh decoder gives exactly the recorded readings",
+  "GDET70": "Bb equals B on U3 seed 12700101 (wall fields dropped)",
+  "GHOST70": "the only brute/ changes from v0.65.0 are A brute/api/certify32h.py and A brute/api/baseline32t.py, both host-agnostic",
+  "GLIVE70": "the main run sealed complete (no missing or errored job) within 3600 s",
+  "G_recount70": "scripts/recount_070.py --check reproduces RECOUNT_070.json",
+  "GTEST70": "official tests (scripts/run_tests_0660.py --official), run once after every test file is final and committed, all pass",
+  "G_PROC70": "commit chain plan < build_authorization < freeze < run_start < seal, truth_069.py unchanged"
+ },
+ "status_rule": "all 11 pass: 'certified reset-free on real software (CPython 3.13.5 incremental utf-8, utf-16-le, euc_jp and gb18030 decoders; read_bits 2; declared N = true size + 1; clean readings; no resets; Brute SAT version space with homing-based tests)'; else 'not certified (failing gates: ...)'",
+ "process": "LEAN: plan lock -> build_authorization_070 (cites t143s742, t133s553, t139s684) -> build -> smoke -> tests final -> freeze -> run once -> seal -> recount -> official tests -> gates -> deviation -> release -> fresh-clone verify -> fast-forward main -> draft v0.67.0. One worker. Failures are published.",
+ "pre_plan_exploration": "disclosed: pilots /tmp/s70/pilot1.py and pilot2.py ran a prototype of certify/32h and a fixed homing suite on the hand-truth simulations of U3, U4 and W16 (not the live decoders, not EJ or GB): U3 N 7 IDF in 1216 steps; U4 N 8 IDF 2439; W16 N 8 IDF 811; at true + 2 (U3 8, U4 9, W16 9) the incremental rounds slowed past 3 min each and were stopped; a one-shot fixed suite U3 N 8 depth 4 gave IDF in 59 s. These pilots set declared N = true + 1 and batch_steps 400.",
+ "what_this_cannot_show": [
+  "certification at a generous declared N (B12 is expected to be killed)",
+  "real noise",
+  "targets beyond 13 states"
+ ]
+}
