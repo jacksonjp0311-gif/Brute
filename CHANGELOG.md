@@ -1,5 +1,28 @@
 # Brute changelog
 
+## v0.62.0: NOT CERTIFIED (3 of 13 gates). Sequential per-bit re-reads (brute.certify/20s) at eps 0.10-0.30 on 2-bit 20-state worlds; main run hit its 2400 s cap and was sealed partial (study BRUTE-0620-SEQNOISE2B20-065, LEAN process)
+
+**3 of 13 gates pass (GHOST65, GTEST65, G_PROC65). The 10 data gates (GS65_sound, GMAJ65, GEQ65, GN65, GN_low65, GREAD65, GDET65, GFID65, GS_ref65, G_recount65) fail INCOMPLETE_INPUT because the sealed main is partial. Status: not certified.**
+
+Blunt summary. The noise version of the agreed 2-3 version test. The idea worked on every world that finished: at 10%, 20% and 30% bit-flip noise, certify/20s settled every bit correctly and reproduced the noise-free certify/20p record exactly, using about 0.21x the reads of v0.56.0's fixed-k majority rule. But one of the six fresh worlds (12650105) is hard for the unchanged SAT side: its first least-size query ran so slowly that none of its four jobs finished in 58 minutes, the 1800 s per-case kill did not end them, and the 2400 s run cap sealed the study partial. The frozen gate script treats partial input as failure, so this release is not certified. That is a process and runtime failure, not a soundness failure: 0 of 21 records were wrong. See deviation #205.
+
+### Timeline (EST, 2026-11-03)
+
+- Plan `1d92afa` (ledger `1886575`); build authorization `0ffdbe1`; build `3903a0b`; pre-freeze smoke PASS `ac9482c`; deviation #204 `c16fa46`; source freeze `d62bc92`.
+- Main run launched once with nohup 06:47:39 (ledger `340c785`); cap hit 07:46:14, sealed partial 07:46:20, seal commit `4e9e46b`; stall until 08:17; recount `e3a5dcb`; reference `0f5c104`; tests `06f5a2c`; api checks `1154eb4`; gates `4c781c6`; deviation #205 `52ae4db`; RELEASE.json `c296dfb`.
+
+### Results on the 21 finished records (Observed, NOT gated; recount labels)
+
+| arm (B 8M, K 400, 2-bit, declared N 20) | finished | ID+IDF | WRONG | settled-bit errors | reads vs fixed-k rule |
+|---|---|---|---|---|---|
+| C20 (certify/20p, noise-free) | 5 of 6 | 5/5 | 0 | - | - |
+| S10 (eps 0.10) | 5 of 6 | 5/5 | 0 | 0 | 21101 vs 104362 (0.20x) |
+| S20 (eps 0.20) | 5 of 6 | 5/5 | 0 | 0 | 44684 vs 203196 (0.22x) |
+| S30 (eps 0.30) | 5 of 6 | 5/5 | 0 | 0 | 118749 vs 561880 (0.21x) |
+| S30b (repeat, 1 world) | 1 of 1 | identical | 0 | 0 | same as S30 |
+
+Every noisy record equals C20's on the same world (16/16). Reference 21/21 decided audited, 0 mismatches, 20/20 mutations, 24 s; replay fidelity 16/16 exact; tests pass (17 modules). Deviations #204 (pre-run) and #205 (post-run).
+
 ## v0.61.0: CERTIFIED for 2-bit readings at N <= 24. The clique-anchored brute.certify/32p decides 2 of 6 fresh 2-bit 24-state worlds; certify/20p replicates 4 of 6 at 20 states; the clique-pinned reference audits every decided record (study BRUTE-0610-SCALE2B24-064, LEAN process)
 
 **11 of 11 gated pass (GS64_sound, GP24_64, GP20_64, GDET64, GFID64, GXREF64, GHOST64, GS_ref64, G_recount64, GTEST64, G_PROC64); G_RT checked at release. certified_readbits2_N24_clique true, certified_readbits2_N20_clique true. Status: certified (read_bits 2, N <= 24, clique-anchored).**

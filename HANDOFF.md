@@ -1,8 +1,16 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-03 EST (v0.61.0 RELEASED; v0.62.0 in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-03 EST (v0.62.0 release in progress)._
 
 ## Current version and state
+
+<!-- V0620 -->
+- **v0.62.0: release in progress** 2026-11-03 EST (gates 4c781c6, deviation #205 52ae4db, RELEASE.json c296dfb). Study BRUTE-0620-SEQNOISE2B20-065. **NOT CERTIFIED, 3 of 13 gates.**
+  - **Run partial (Exact).** Launched once with nohup 06:47:39 EST (ledger 340c785); capwatch hit the 2400 s cap 07:46:14 and sealed partial 07:46:20 (seal 4e9e46b): 21 of 25 jobs; all 4 jobs on world 12650105 unfinished. Never relaunched. Frozen rule: every data gate FAILS INCOMPLETE_INPUT.
+  - **Observed on the 21 finished records (not gated, n = 5 worlds):** C20/S10/S20/S30 each 5/5 decided, 0 WRONG, 0 settled-bit errors, every noisy record equals C20 (16/16), S30 == S30b; reads vs fixed-k rule 0.20x / 0.22x / 0.21x; reference 21/21, 0 mismatches.
+  - **Open:** the 1800 s per-case wall kill did not end the 12650105 jobs (checked only between 50k-conflict chunks; chunk wall grows 4.4 s -> 8.5 s+ on that world). Stall 07:46-08:17 EST.
+  - **No CI.** Scheduled GitHub Actions stay disabled. The user's computer was offline; network went through the box.
+  - **Deviations:** #204 (pre-run), #205 (post-run). **Next:** plan 066 (v0.63.0) on plan/v0.63.0.
 
 <!-- V0610 -->
 - **v0.61.0: RELEASED** 2026-11-03 06:12 EST, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.61.0 (annotated tag object 58ca245 at c8a3911; gates 1b8229b, RELEASE.json e3c5adb, docs 3a2aa5a; fresh-clone verify ledgered fresh_clone_verify_064, 149/149 tests). Push delayed 05:03 -> 06:11 EST by an invalid GITHUB_TOKEN env var on the box (git/gh now run with that var removed, using the stored gh login). Study BRUTE-0610-SCALE2B24-064. Status from the flags: "certified (read_bits 2, N <= 24, clique-anchored)".
