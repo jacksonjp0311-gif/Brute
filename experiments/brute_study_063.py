@@ -31,8 +31,8 @@ from experiments.brute_common_063 import (PLAN,FREEZE,STUDY_DIR,load,sha,write_n
                                           BOUND,NODE_CAP,KEY,ARM_SPEC,ALL_ARMS,WORKERS,HARD_KILL_S,GUARD_CALL_S,STOP_RULE)
 from scripts.check_seeds_063 import check_run_seeds,target_ranges,SMOKE
 
-N_P2B=3   # set before the freeze from the smoke projection (cut rule 3 -> 2); fixed in #200
-N_SEEDS=8  # set before the freeze from the smoke projection (cut rule 8 -> 6); fixed in #200
+N_P2B=2   # set before the freeze from the smoke projection (cut rule 3 -> 2 applied); fixed in #200
+N_SEEDS=6  # set before the freeze from the smoke projection (cut rule 8 -> 6 applied); fixed in #200
 SCHEMA='brute.study.v60_0';SCHEMA_CASE='brute.case.v60_0'
 SMOKE_FRESH=(SMOKE[0],SMOKE[0]+1)
 SMOKE_B63=2000000   # smoke budget (tooling check only, never gated)
