@@ -1,5 +1,28 @@
 # Brute changelog
 
+## v0.60.0: FIRST 2-BIT GAIN at 20 states, NOT certified. Clique-anchored symmetry breaking (brute.certify/20p) decides 4 of 6 fresh 2-bit 20-state worlds against 1 of 6 for the frozen certify/20b, but the independent reference audit did not finish (study BRUTE-0600-ANCHOR2B20-063, LEAN process)
+
+**8 of 9 gated pass (GS63_sound, GP63, GDET63, GFID63, GHOST63, G_recount63, GTEST63, G_PROC63); GS_ref63 FAILS; G_RT checked at release. certified_readbits2_N20_clique false, sound_no_2bit_gain false. Status: not certified, no certification status (failing gates: GS_ref63).**
+
+Blunt summary. Back on the hard problem: original 2-bit readings, 20 states, declared N 20. The change was in the encoding, not the budget: each round certify/20p finds the exact largest set of states already known to be pairwise distinct and pins them to labels 0..k-1, which removes most of the relabelling symmetry the SAT solver otherwise has to grind through. It worked on the headline: P2 decided 4 of 6 fresh worlds (each in 1.2-2.0M conflicts and under 70 s), the frozen certify/20b decided 1 of 6, and on 5 of 6 worlds B2 used all 8M conflicts (often stuck inside its first solve). This is the first observed 2-bit gain at 20 states in these studies. It is NOT certified: the independent CNF reference, which has no anchoring, audited only 2 of 7 decided records in its 1800 s budget, so GS_ref63 fails and the plan's rule gives no certification status. Nothing was wrong (recount 0 of 14, replay 7/7 exact, audit 0 mismatches on what it reached). n = 6, McNemar p 0.25. The executor session was interrupted at about 20:08 EST mid-run; the run itself was untouched and nothing was rerun (#201).
+
+Claim scope (*Exact*; reason *Inferred*): an ID or IDF is exact only conditional on noise-free readings and a true size at most the declared N = 20. A larger machine can copy the true machine on every visited state.
+
+### Timeline (EST, 2026-11-02)
+
+- Clique diagnostic `4f6718c`; capability probe `0dd7d4c` (P2 3/4 on sealed seeds at 8M); plan `55433b5` (ledger `676c574`); build authorization `22f6bf4`; seedcheck `2f07631` (attempt 1 FAIL published `e62fa8d`); tooling `6c02e14`-`b4badf2`; pre-freeze smoke `f944504`; deviation #200 `88cd0dd`; source freeze `3b38471`.
+- Main run launched once with nohup 19:43:57 (ledger `fbd42d0`); sealed about 20:19, seal `9b0eb06` (runner 2152 s); recount `d9b485b`; reference `2b29949` (incomplete); tests `9d53014`; api checks `a5d52f1`; gates `1534a3a`; deviation #201 `f9b219d`; RELEASE.json `28884b8`.
+
+### Results (recount labels; Wilson 95% in GATES_063.json)
+
+| arm (B 8M, K 400, 2-bit original readings, N 20) | ID+IDF | WRONG | conflicts on decided | undecided |
+|---|---|---|---|---|
+| B2 (frozen certify/20b, 6 worlds) | 1/6 [0.03, 0.56] | 0 | 2.22M | 5, all at 8M, 1-17 rounds |
+| P2 (certify/20p clique anchor, 6 worlds) | 4/6 [0.30, 0.90] | 0 | 1.21-2.01M | 2, n_min 19 at 8M |
+| P2b (second pass, 2 worlds) | identical 2/2 | 0 | same as P2 | 0 |
+
+P2 - B2 = 3, discordant 3/0, exact McNemar p = 0.25. Anchor cliques 15-19 states (greedy 11-16). Reference 2/7 audited, 0 mismatches, 20/20 mutations, incomplete at 1800 s; replay 7/7 exact; tests 143/143 (15 modules). Deviations #200 (pre-run) and #201 (post-run).
+
 ## v0.59.0: FAILURE, published. Probe-word windows (brute.certify/20w) decide 0 of 3 fresh 2-bit 20-state worlds, the same as the frozen certify/20b; 2-bit readings at 20 states stay Open (study BRUTE-0590-WINDOW2B20-062, LEAN process)
 
 **8 of 9 gated pass (GS62_sound, GDET62, GFID62, GHOST62, GS_ref, G_recount, GTEST, G_PROC); GW62 FAILS; G_RT checked at release. certified_readbits2_N20_windows false, sound_no_2bit_gain true. Status: sound but no 2-bit gain.**
