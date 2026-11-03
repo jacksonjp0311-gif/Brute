@@ -1,0 +1,101 @@
+{
+ "gated_modules": [
+  "test_scripts_068",
+  "test_release_0640",
+  "test_certify32p",
+  "test_certify32s",
+  "test_certify20s",
+  "test_certify20b"
+ ],
+ "passed": true,
+ "per_module": {
+  "test_certify20b": {
+   "results": {
+    "test_bits2_equals_16e": "ok",
+    "test_host_agnostic": "ok",
+    "test_one_shot": "ok",
+    "test_reading_of": "ok",
+    "test_refusals": "ok",
+    "test_wide_sound": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_bits2_equals_16e (tests.test_certify20b.TestCertify20B.test_bits2_equals_16e) ... ok\ntest_host_agnostic (tests.test_certify20b.TestCertify20B.test_host_agnostic) ... ok\ntest_one_shot (tests.test_certify20b.TestCertify20B.test_one_shot) ... ok\ntest_reading_of (tests.test_certify20b.TestCertify20B.test_reading_of) ... ok\ntest_refusals (tests.test_certify20b.TestCertify20B.test_refusals) ... ok\ntest_wide_sound (tests.test_certify20b.TestCertify20B.test_wide_sound) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 2.418s\n\nOK\n",
+   "tests": 6,
+   "wall_informational": 2.6
+  },
+  "test_certify20s": {
+   "results": {
+    "test_equals_20p_at_eps_bar_zero": "ok",
+    "test_exact_stopping_sequence": "ok",
+    "test_host_agnostic": "ok",
+    "test_noisy_equals_clean_and_sound": "ok",
+    "test_read_cap": "ok",
+    "test_result_fields": "ok",
+    "test_settle": "ok",
+    "test_threshold_exact": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "fy20s.T20S.test_exact_stopping_sequence) ... ok\ntest_host_agnostic (tests.test_certify20s.T20S.test_host_agnostic) ... ok\ntest_noisy_equals_clean_and_sound (tests.test_certify20s.T20S.test_noisy_equals_clean_and_sound) ... ok\ntest_read_cap (tests.test_certify20s.T20S.test_read_cap) ... ok\ntest_result_fields (tests.test_certify20s.T20S.test_result_fields) ... ok\ntest_settle (tests.test_certify20s.T20S.test_settle) ... ok\ntest_threshold_exact (tests.test_certify20s.T20S.test_threshold_exact) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 7.848s\n\nOK\n",
+   "tests": 8,
+   "wall_informational": 8.0
+  },
+  "test_certify32p": {
+   "results": {
+    "test_bounds": "ok",
+    "test_equals_20p_at_small_bound": "ok",
+    "test_host_agnostic": "ok",
+    "test_k_accounting": "ok",
+    "test_oneshot": "ok",
+    "test_sound_at_loose_bound": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_bounds (tests.test_certify32p.T32P.test_bounds) ... ok\ntest_equals_20p_at_small_bound (tests.test_certify32p.T32P.test_equals_20p_at_small_bound) ... ok\ntest_host_agnostic (tests.test_certify32p.T32P.test_host_agnostic) ... ok\ntest_k_accounting (tests.test_certify32p.T32P.test_k_accounting) ... ok\ntest_oneshot (tests.test_certify32p.T32P.test_oneshot) ... ok\ntest_sound_at_loose_bound (tests.test_certify32p.T32P.test_sound_at_loose_bound) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 16.683s\n\nOK\n",
+   "tests": 6,
+   "wall_informational": 16.8
+  },
+  "test_certify32s": {
+   "results": {
+    "test_bound_above_20": "ok",
+    "test_equals_20s_on_noisy_reads_and_sound": "ok",
+    "test_equals_32p_at_eps_bar_zero": "ok",
+    "test_host_agnostic": "ok",
+    "test_reuses_20s_rules": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_bound_above_20 (tests.test_certify32s.T32S.test_bound_above_20) ... ok\ntest_equals_20s_on_noisy_reads_and_sound (tests.test_certify32s.T32S.test_equals_20s_on_noisy_reads_and_sound) ... ok\ntest_equals_32p_at_eps_bar_zero (tests.test_certify32s.T32S.test_equals_32p_at_eps_bar_zero) ... ok\ntest_host_agnostic (tests.test_certify32s.T32S.test_host_agnostic) ... ok\ntest_reuses_20s_rules (tests.test_certify32s.T32S.test_reuses_20s_rules) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 13.839s\n\nOK\n",
+   "tests": 5,
+   "wall_informational": 14.1
+  },
+  "test_release_0640": {
+   "results": {
+    "test_constants": "ok",
+    "test_release_if_present": "skipped 'RELEASE.json not yet 0.64.0'"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_constants (tests.test_release_0640.T.test_constants) ... ok\ntest_release_if_present (tests.test_release_0640.T.test_release_if_present) ... skipped 'RELEASE.json not yet 0.64.0'\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK (skipped=1)\n",
+   "tests": 2,
+   "wall_informational": 0.1
+  },
+  "test_scripts_068": {
+   "results": {
+    "test_adapter_ast": "ok",
+    "test_reach_and_labels": "ok",
+    "test_readings": "ok",
+    "test_reread_preserves_state": "ok",
+    "test_truth_vs_live": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_adapter_ast (tests.test_scripts_068.T.test_adapter_ast) ... ok\ntest_reach_and_labels (tests.test_scripts_068.T.test_reach_and_labels) ... ok\ntest_readings (tests.test_scripts_068.T.test_readings) ... ok\ntest_reread_preserves_state (tests.test_scripts_068.T.test_reread_preserves_state) ... ok\ntest_truth_vs_live (tests.test_scripts_068.T.test_truth_vs_live) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.004s\n\nOK\n",
+   "tests": 5,
+   "wall_informational": 0.2
+  }
+ },
+ "process": "lean",
+ "schema": "brute.test-suite-068.v1"
+}

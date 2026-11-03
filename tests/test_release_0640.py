@@ -7,7 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 
 class T(unittest.TestCase):
     def test_constants(self):
-        self.assertEqual(V.VERSION,'0.64.0');self.assertIn('status_phrase',V.RELEASE_KEYS);self.assertTrue(V.GATES.endswith('GATES_068.json'))
+        self.assertEqual(V.VERSION,'0.64.0');self.assertIn('gates_failed',V.RELEASE_KEYS);self.assertTrue(V.GATES.endswith('GATES_068.json'))
 
     def test_release_if_present(self):
         R=json.loads((ROOT/'RELEASE.json').read_text())
