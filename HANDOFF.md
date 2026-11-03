@@ -1,8 +1,16 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-03 EST (v0.64.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-03 EST (v0.65.0 release in progress)._
 
 ## Current version and state
+
+<!-- V0650 -->
+- **v0.65.0: release in progress 2026-11-03 EST.** Study BRUTE-0650-RESETDECODER-069. Plan 069 b5bdff8; hand truth e927063; build authorization 29c7b8d, citing t143s742, t133s553 and t139s684. **CERTIFIED WITH RESETS, 14 of 14 gates.** New brute.certify/32r combines L* with a Vasilevskii-Chow N-complete suite and uses a fresh decoder object per word.
+  - **Run (Exact).** Launched once at 11:47:19 EST (ledger 3fb782c). Sealed complete at 12:01:31 (seal b6d9381): 31/31 records, 0 KILL, 851 s.
+  - **Results:** 31/31 ID, 0 WRONG, and every hypothesis equals the truth: U3 6, U4 7, W16 7, EJ 13, GB 8. GEQ 16/16. 0 bit errors. Reads 0.21x. Gates acd1ab3; deviation #209 1d0ded3.
+  - **Honest framing:** resets make the problem easier than reset-free learning. This is a classical N-complete suite, not the SAT engine, and the guarantee is conditional on the declared N. The targets are small and the noise is injected.
+  - **What Brute can't do yet:** reset-free certification of a real decoder (Open); handling real rather than injected noise; any declared N much larger than the true size, because the suite grows as 3^(N-n+1).
+  - **No CI.** The user's computer was offline, so network access went through the box. Run git and gh as `env -u GITHUB_TOKEN -u GH_TOKEN`.
 
 <!-- V0640 -->
 - **v0.64.0: RELEASED 2026-11-03 11:24 EST (tag v0.64.0 at b7f6042, fresh-clone verified).** Study BRUTE-0640-REALDECODER-068 (plan 068 69088e4, hand truth b98cfa5, build authorization 2ebf02c citing t143s742, t133s553, t139s684). **NOT CERTIFIED, 9 of 12 gates** (failing GDEC68, GMATCH68, GTEST68). First contact with real software: CPython 3.13.5 incremental utf-8 / utf-16-le decoders, public interface only.

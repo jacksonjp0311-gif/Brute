@@ -1,5 +1,36 @@
 # Brute changelog
 
+## v0.65.0: CERTIFIED WITH RESETS (14 of 14 gates). New brute.certify/32r: L* with a Vasilevskii-Chow N-complete test suite on real CPython 3.13.5 decoders, a fresh decoder object per query word (study BRUTE-0650-RESETDECODER-069, LEAN process)
+
+**14 of 14 gates pass (GS69_sound, GDEC69, GMATCH69, GSTRETCH69, GHELD69, GMAJ69, GEQ69, GDET69, GFID69, GHOST69, GLIVE69, G_recount69, GTEST69, G_PROC69). Status: certified with resets on real software (CPython 3.13.5 incremental utf-8, utf-16-le, euc_jp and gb18030 decoders; read_bits 2, N <= 12 (euc_jp N <= 16), injected iid bit noise eps <= 0.30, delta 0.001; resets via fresh decoder objects).**
+
+Honest framing first:
+
+- **Resets make the problem easier.** With a reset, every experiment starts from the known start state, and the classical theory of N-complete test suites applies. This version answers the v0.64.0 failure with resets, which is the easier problem. **Reset-free certification stays Open.**
+- **It is not the SAT engine.** The certificate comes from the Vasilevskii-Chow theorem (1973/1978). It is conditional on three things: the declared N, resets returning the start state, and the settled readings being correct. A test pins the limit: euc_jp at N 8 returns a wrong ID.
+- **Small targets, injected noise.** The targets have 6 to 13 Moore states. The noise was injected.
+
+### Timeline (EST, 2026-11-03)
+
+- Plan `b5bdff8` (ledger `b999537`); hand truth `e927063` (ledger `248471e`); build authorization `29c7b8d` (t143s742, t133s553, t139s684).
+- Build `9ff9342`, `376e4db`, `867d7ea`, `8066ff7`; truthcheck `c649562`; source freeze `0cd47ee`.
+- Main run launched once 11:47:19 (ledger `3fb782c`), sealed complete 12:01:31 (seal `b6d9381`).
+- Recount and official tests `a1fb077`; gates `acd1ab3`; deviation #209 `1d0ded3`.
+
+### Results (recount labels against the hand truth; query cap 400000 words)
+
+| target | block | N | true n | C ID | S ID | queries (C) | reads S (total of 3) |
+|---|---|---|---|---|---|---|---|
+| U3 utf-8 41/80/E1 | main | 12 | 6 | 3/3 | 3/3 (+Sb) | 28436-47401 | 26.5M |
+| U4 utf-8 41/80/F1 | main | 12 | 7 | 3/3 | 3/3 | 18234-18263 | 13.3M |
+| W16 utf-16-le 41/D8/DC | main | 12 | 7 | 3/3 | 3/3 | 9113-10937 | 4.9M |
+| EJ euc_jp 41/8F/A1 | stretch | 16 | 13 | 3/3 | 3/3 | 3647-5883 | 2.5M |
+| GB gb18030 41/81/30 | held out | 12 | 8 | 3/3 | 3/3 | 3444-8267 | 2.2M |
+
+Every ID hypothesis is equivalent to the hand truth and has the true size. Noise: 0 settled-bit errors, and every noisy record equals its clean one (16/16, counting Sb). Reads: 59.9M, which is 0.21x the 291.2M the fixed rule would need. Sb = S. Replay: 6200 sampled words re-run on fresh decoders all match. The adapter used only `getincrementaldecoder` and `decode`.
+
+The GTEST68 regression test is `tests/test_release_keys_0650.py`. It derives every RELEASE.json key the verifier reads from the verifier's AST, and checks each one is in the verifier's REQUIRED list. Run against the v0.64.0 verifier, it reports `status_phrase` missing.
+
 ## v0.64.0: NOT CERTIFIED (9 of 12 gates). First contact with real software: CPython 3.13.5 incremental decoders through their public interface, against a hand-written source truth (study BRUTE-0640-REALDECODER-068, LEAN process)
 
 **9 of 12 gates pass (GS68_sound, GMAJ68, GEQ68, GDET68, GFID68, GHOST68, GLIVE68, G_recount68, G_PROC68). Failing: GDEC68 (0 of 18 decided), GMATCH68 (0 truth states covered by a decided record), GTEST68 (a bug in a test assertion; the fixed rerun passes, but the gate stays on the first official run). Status: not certified.**
