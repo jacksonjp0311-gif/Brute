@@ -1,5 +1,29 @@
 # Brute changelog
 
+## v0.61.0: CERTIFIED for 2-bit readings at N <= 24. The clique-anchored brute.certify/32p decides 2 of 6 fresh 2-bit 24-state worlds; certify/20p replicates 4 of 6 at 20 states; the clique-pinned reference audits every decided record (study BRUTE-0610-SCALE2B24-064, LEAN process)
+
+**11 of 11 gated pass (GS64_sound, GP24_64, GP20_64, GDET64, GFID64, GXREF64, GHOST64, GS_ref64, G_recount64, GTEST64, G_PROC64); G_RT checked at release. certified_readbits2_N24_clique true, certified_readbits2_N20_clique true. Status: certified (read_bits 2, N <= 24, clique-anchored).**
+
+Blunt summary. The size version of the agreed 2-3 version test. The v0.60.0 clique anchor was taken from 20 to 24 states at 2-bit readings. It cleared a deliberately modest bar exactly: 2 of 6 fresh 24-state worlds decided (2.8M and 3.5M conflicts), 4 of 6 undecided at 8M. Nothing was wrong (0 of 15), and the independent audit that failed in v0.60.0 now finishes: the clique-pinned reference audited all 6 decided records in 19 s. certify/20p's 4/6 at 20 states replicated on fresh seeds. So the method is sound and scales a little; it does not yet scale well. Process slips are disclosed in #203 (a stalled executor between 02:12 and 04:15 EST, a reference launch with a wrong path that did no work, the run taking 1917 s against the ~30 min target but under the 2400 s cap).
+
+Claim scope (*Exact*; reason *Inferred*): an ID or IDF is exact only conditional on noise-free readings and a true size at most the declared N <= 24. A larger machine can copy the true machine on every visited state.
+
+### Timeline (EST, 2026-11-03)
+
+- Capability probe `66ad164`; reference diagnostic `1c57422`; plan `ab4e77d` (ledger `248c5cd`); build authorization `5ead5ee`; seedcheck `b6aebbf`; build `e4354aa`; pre-freeze smoke attempt 1 crashed (fix `e330a6a`), attempt 2 `652e4d4`; deviation #202 `30765f5`; source freeze `27c30fc`.
+- Main run launched once with nohup 04:17 (ledger `d3a2d9d`); sealed about 04:49, seal `8174302`; recount `8d50e81`; reference `7e683f3`; tests `b2a8a16`; api checks `9dca184`; gates `1b8229b`; deviation #203 `aa0b8af`; RELEASE.json `e3c5adb`.
+
+### Results (recount labels; Wilson 95% in GATES_064.json)
+
+| arm (B 8M, K 400, 2-bit original readings) | ID+IDF | WRONG | conflicts on decided | undecided |
+|---|---|---|---|---|
+| P24 (certify/32p, N 24, 6 worlds) | 2/6 [0.10, 0.70] | 0 | 2.82M, 3.54M | 4, n_min 21-23 at 8M |
+| B24 (frozen certify/32b, N 24, 2 worlds, time-capped) | 0/2 | 0 | - | 2 (one 1800 s case kill) |
+| P20 (certify/20p, N 20, 6 worlds) | 4/6 [0.30, 0.90] | 0 | 1.47-5.45M | 2, n_min 18-19 at 8M |
+| P20b (second pass, 1 world) | identical 1/1 | 0 | same as P20 | 1 |
+
+Reference 6/6 audited, 0 mismatches, 20/20 mutations, complete in 19 s; XREF 1166 checks, 0 disagreements; replay 6/6 exact; tests all pass (16 modules). Deviations #202 (pre-run) and #203 (post-run).
+
 ## v0.60.0: FIRST 2-BIT GAIN at 20 states, NOT certified. Clique-anchored symmetry breaking (brute.certify/20p) decides 4 of 6 fresh 2-bit 20-state worlds against 1 of 6 for the frozen certify/20b, but the independent reference audit did not finish (study BRUTE-0600-ANCHOR2B20-063, LEAN process)
 
 **8 of 9 gated pass (GS63_sound, GP63, GDET63, GFID63, GHOST63, G_recount63, GTEST63, G_PROC63); GS_ref63 FAILS; G_RT checked at release. certified_readbits2_N20_clique false, sound_no_2bit_gain false. Status: not certified, no certification status (failing gates: GS_ref63).**
