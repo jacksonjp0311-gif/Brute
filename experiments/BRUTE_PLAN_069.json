@@ -1,0 +1,146 @@
+{
+ "schema": "brute.plan.v69",
+ "study": "BRUTE-0650-RESETDECODER-069",
+ "version_under_test": "0.65.0",
+ "parent_study": "BRUTE-0640-REALDECODER-068",
+ "written": "2026-11-03 EST by Grok Bot (s69), drafted, not reviewed line by line by James; LOCKED at its commit",
+ "status": "LOCKED",
+ "standing_go": "James chose option A (resets) at 11:26 EST 2026-11-03 on the v0.64.0 report; build authority cites t143s742, t133s553, t139s684",
+ "honest_framing": [
+  "RESETS MAKE THE PROBLEM EASIER than reset-free learning. With a reset every experiment starts from the known start state, and the classical theory of N-complete test suites applies. v0.64.0 failed without resets; this study does not fix reset-free certification, which stays Open.",
+  "The certificate here is NOT Brute's SAT engine. It is a new host-agnostic module, brute.certify/32r: an L*-style learner with a Vasilevskii-Chow N-complete test suite (Vasilevskii 1973, Chow 1978). The guarantee is that theorem, conditional on the declared N, on resets returning the decoder to its start state, and on settled readings being correct.",
+  "These are small real targets of 6 to 13 Moore states, not a capability leap. Noise is injected by the adapter, not real."
+ ],
+ "question": "Q1 (main): do resets fix the v0.64.0 failure on the same three real decoders at the same declared N 12? Q2 (stretch): does it scale to euc_jp (13 states, N 16)? Q3 (held out): gb18030 (8 states, N 12).",
+ "targets": {
+  "U3": [
+   "utf-8",
+   [
+    "0x41",
+    "0x80",
+    "0xE1"
+   ],
+   "main",
+   12
+  ],
+  "U4": [
+   "utf-8",
+   [
+    "0x41",
+    "0x80",
+    "0xF1"
+   ],
+   "main",
+   12
+  ],
+  "W16": [
+   "utf-16-le",
+   [
+    "0x41",
+    "0xD8",
+    "0xDC"
+   ],
+   "main",
+   12
+  ],
+  "EJ": [
+   "euc_jp",
+   [
+    "0x41",
+    "0x8F",
+    "0xA1"
+   ],
+   "stretch",
+   16
+  ],
+  "GB": [
+   "gb18030",
+   [
+    "0x41",
+    "0x81",
+    "0x30"
+   ],
+   "heldout",
+   12
+  ]
+ },
+ "target_software": "CPython 3.13.5 (/workspace/bgr/venv/bin/python), the unmodified stdlib incremental decoders, errors=replace",
+ "interface": {
+  "public_only": "experiments/targets_069.py: each query word gets a FRESH codecs.getincrementaldecoder(codec)('replace') object (the reset), then one .decode(bytes([b])) per letter, final=False. No getstate, setstate, reset, buffer or underscore attribute (GFID69 checks the AST; allowed attributes getincrementaldecoder and decode)",
+  "reading": "as plan 068: 2 bits of the str returned by the latest decode() call (non-empty, contains U+FFFD); (0,0) for a fresh object. Re-reads return the cached last reading (state-preserving).",
+  "machine": "Moore machine over the target bytes, state = (undecoded buffer, class of last output), start = fresh decoder",
+  "read_bits": 2
+ },
+ "api": {
+  "module": "brute/api/certify32r.py (NEW file; no existing brute/ file changes)",
+  "name": "brute.certify/32r",
+  "algorithm": "observation tree keyed by words from reset; L* table (S prefix-closed access words, E suffixes with the empty word first; rows over S and S.Sigma); close by moving a new row into S; hypothesis H = rows of S; then the Vasilevskii-Chow suite S . Sigma^{<= N-n+1} . E, words visited in an order shuffled by random.Random(seed) per depth; the first word on which the tree disagrees with H is a counterexample and ALL its suffixes join E (Maler-Pnueli), then close again. Every queried word is run from a fresh decoder and every prefix reading is recorded.",
+  "labels": {
+   "ID": "H has n <= N states and every suite word agrees: by the Vasilevskii-Chow theorem every machine with at most N states that agrees with the observations is equivalent to H",
+   "EXCEEDS_N": "the table has more than N distinct rows: the target has more than N states (exact refutation of the declaration)",
+   "QCAP": "query cap reached, undecided"
+  },
+  "noise": "arm S: each NEW tree node (one per new prefix) is read one noisy reading at a time until every bit settles at threshold certify20s.threshold(t, eps_bar, delta, 2), t = index of the settled observation (union bound: all settled readings correct with probability >= 1 - delta). Cached nodes are not re-read.",
+  "host_agnostic": "no I/O, os, subprocess, threads, network or global state (GHOST69 checks the AST)"
+ },
+ "design": {
+  "arms": {
+   "C": "certify/32r on clean readings",
+   "S": "certify/32r at injected iid bit noise eps 0.30 (eps_bar 0.35, delta 0.001; worlds_065.Noise)",
+   "Sb": "S again on U3 seed 12690101 (determinism)"
+  },
+  "seeds": [
+   12690101,
+   12690102,
+   12690103
+  ],
+  "fresh_seeds_note": "not the v0.64.0 seeds 1268010x",
+  "jobs": "5 targets x 2 arms x 3 seeds + Sb = 31; main block U3, U4, W16 (18 jobs), stretch EJ (6), held-out GB (6)",
+  "caps": {
+   "query_cap_words": 400000,
+   "job_kill_s": 1200,
+   "main_cap_s": 3600,
+   "workers": 7
+  },
+  "declared_N": {
+   "U3": 12,
+   "U4": 12,
+   "W16": 12,
+   "GB": 12,
+   "EJ": 16
+  },
+  "runner": "experiments/brute_study_069.py; one forked process per job; a job alive at 1200 s is SIGKILLed and recorded KILL (complete, undecided); main cap 3600 s then sealed partial; launched ONCE, never relaunched",
+  "smoke": "seed 12690301, every target and arm, pre-freeze only, never gated, outside results/study-069; the caps above are not changed by the smoke"
+ },
+ "ground_truth": {
+  "file": "experiments/truth_069.py with docs/research/TRUTH_069.md",
+  "rule": "U3/U4/W16 copied unchanged from experiments/truth_068.py (already hand-derived and committed before v0.64.0); EJ and GB written BY HAND from the CPython v3.13.5 source (Modules/cjkcodecs/_codecs_jp.c, _codecs_cn.c, multibytecodec.c, cjkcodecs.h, mappings_jp.h, mappings_cn.h) and committed and ledgered (truth_069) BEFORE build_authorization_069; never edited after",
+  "use": "only the truthcheck, recount and gates read it",
+  "pre_run_check": "scripts/truthcheck_069.py compares the hand truth with the live decoder on every word up to length 7, before the freeze; a disagreement is published and does not change the truth"
+ },
+ "criteria": {
+  "GS69_sound": "WRONG 0: every ID record's hypothesis is equivalent to the hand truth from the start (all 31 records, every block)",
+  "GDEC69": "MAIN block: each of the 6 target-arms (U3, U4, W16 x C, S) labels ID on >= 2 of its 3 seeds",
+  "GMATCH69": "MAIN block, the honest reading: every ID record has n equal to N_TRUE and its hypothesis equals the truth on all reachable states (equivalence, so every truth state is covered); and each main target has at least one ID record",
+  "GSTRETCH69": "EJ: each arm labels ID on >= 2 of 3 seeds",
+  "GHELD69": "GB: each arm labels ID on >= 2 of 3 seeds",
+  "GMAJ69": "0 settled-bit errors over every settled observation of every finished noisy record",
+  "GEQ69": "every finished noisy record has the same label, the same hypothesis (transitions, emissions) and the same E-free canonical answer as the clean record on the same target and seed",
+  "GDET69": "Sb equals S on U3 seed 12690101 (canonical record, no wall fields)",
+  "GFID69": "(a) for every finished record, the readings of 200 recorded words (seeded sample, all if fewer) re-run on fresh decoders equal the recorded clean readings and the hand truth readings; (b) the adapter's AST uses only getincrementaldecoder and decode",
+  "GHOST69": "brute/ at the run commit equals brute/ at tag v0.64.0 except ONE added file brute/api/certify32r.py; its AST imports nothing beyond stdlib math/random/itertools/typing and earlier brute modules, and no os, sys, io, subprocess, socket, threading, multiprocessing, open",
+  "GLIVE69": "every one of the 31 jobs has a record",
+  "G_recount69": "scripts/recount_069.py reproduces every label from RESULTS.json and the hand truth exactly",
+  "GTEST69": "the official test suite (scripts/run_tests_0650.py --official) passes; it is run ONLY after every test file is final and committed, and TEST_SUITE_069.json records the sha256 of every gated test file, which must equal the committed files",
+  "G_PROC69": "commit order plan -> truth -> build_authorization -> truthcheck -> freeze -> run_start -> run_end, each an ancestor of the next"
+ },
+ "tests": {
+  "regression_for_GTEST68": "tests/test_release_keys_0650.py derives, from the AST of scripts/verify_release_0650.py, every RELEASE.json key the verifier reads and checks each is in the verifier's REQUIRED list; it also asserts status_phrase is required but NOT in RELEASE_KEYS (the exact fact the v0.64.0 test got wrong)"
+ },
+ "certification_rule": "iff every gate passes: 'certified with resets on real software (CPython 3.13.5 incremental utf-8, utf-16-le, euc_jp and gb18030 decoders; read_bits 2, N <= 12 (euc_jp N <= 16), injected iid bit noise eps <= 0.30, delta 0.001; resets via fresh decoder objects)'. Otherwise 'not certified' with the failing gates listed. A main-block-only phrase is allowed iff every gate except GSTRETCH69 and GHELD69 passes: 'main block certified with resets (...); stretch/held-out not'. Reset-free certification is Open either way.",
+ "incomplete_rule": "a KILL or QCAP record is complete and undecided; a job with no record fails GLIVE69 and every data gate fails INCOMPLETE_INPUT",
+ "process": "LEAN: plan locked before any run of the new module on a target, hand truth before build, exact recount, failures published, one main run (cap 60 min), one fresh-clone check, no CI. One worker (s69), coordinated through /tmp/s66/STATE.txt",
+ "exploratory_disclosure": "before this plan: (1) black-box state counts for euc_jp/gb18030 from v0.64.0 (/tmp/s67/probe2.py); (2) a scratch probe (/tmp/s69/probe.py) that offered .reset() as a FOURTH action to the frozen reset-free certify/32p: AMB at K 400 on U3, U4, W16, GB. That is why a reset-aware module is needed: a reset the certifier does not know about does not help",
+ "next_if_pass": "v0.66.0: a larger real target with resets, or back to reset-free certification",
+ "next_if_fail": "publish; v0.66.0 diagnoses"
+}
