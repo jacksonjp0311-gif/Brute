@@ -1,0 +1,105 @@
+{
+ "gated_modules": [
+  "test_certify32h",
+  "test_baseline32t",
+  "test_scripts_070",
+  "test_release_keys_0660",
+  "test_release_0660",
+  "test_certify32r"
+ ],
+ "head": "01c746f123cc0993df8a56af10043b37e93000ff",
+ "passed": true,
+ "per_module": {
+  "test_baseline32t": {
+   "results": {
+    "test_h_extends": "ok",
+    "test_interface": "ok",
+    "test_learns_truths": "ok",
+    "test_step_cap": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_h_extends (tests.test_baseline32t.T.test_h_extends) ... ok\ntest_interface (tests.test_baseline32t.T.test_interface) ... ok\ntest_learns_truths (tests.test_baseline32t.T.test_learns_truths) ... ok\ntest_step_cap (tests.test_baseline32t.T.test_step_cap) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.272s\n\nOK\n",
+   "tests": 4,
+   "wall_informational": 0.4
+  },
+  "test_certify32h": {
+   "results": {
+    "test_bad_args": "ok",
+    "test_char_set": "ok",
+    "test_homing_sequences": "ok",
+    "test_reset_free_certifies_u3": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_bad_args (tests.test_certify32h.T.test_bad_args) ... ok\ntest_char_set (tests.test_certify32h.T.test_char_set) ... ok\ntest_homing_sequences (tests.test_certify32h.T.test_homing_sequences) ... ok\ntest_reset_free_certifies_u3 (tests.test_certify32h.T.test_reset_free_certifies_u3) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.878s\n\nOK\n",
+   "tests": 4,
+   "wall_informational": 1.1
+  },
+  "test_certify32r": {
+   "results": {
+    "test_determinism": "ok",
+    "test_equivalent_witness": "ok",
+    "test_errors": "ok",
+    "test_exceeds_n": "ok",
+    "test_guarantee_is_conditional_on_N": "ok",
+    "test_learns_truths": "ok",
+    "test_noisy_equals_clean": "ok",
+    "test_qcap": "ok",
+    "test_random_machines": "ok",
+    "test_soundness_flags": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "s.test_certify32r.T.test_exceeds_n) ... ok\ntest_guarantee_is_conditional_on_N (tests.test_certify32r.T.test_guarantee_is_conditional_on_N) ... ok\ntest_learns_truths (tests.test_certify32r.T.test_learns_truths) ... ok\ntest_noisy_equals_clean (tests.test_certify32r.T.test_noisy_equals_clean) ... ok\ntest_qcap (tests.test_certify32r.T.test_qcap) ... ok\ntest_random_machines (tests.test_certify32r.T.test_random_machines) ... ok\ntest_soundness_flags (tests.test_certify32r.T.test_soundness_flags) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 3.426s\n\nOK\n",
+   "tests": 10,
+   "wall_informational": 3.6
+  },
+  "test_release_0660": {
+   "results": {
+    "test_constants": "ok",
+    "test_release_if_present": "skipped 'RELEASE.json not yet 0.66.0'"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_constants (tests.test_release_0660.T.test_constants) ... ok\ntest_release_if_present (tests.test_release_0660.T.test_release_if_present) ... skipped 'RELEASE.json not yet 0.66.0'\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK (skipped=1)\n",
+   "tests": 2,
+   "wall_informational": 0.1
+  },
+  "test_release_keys_0660": {
+   "results": {
+    "test_every_read_key_is_required": "ok",
+    "test_required_extends_release_keys": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_every_read_key_is_required (tests.test_release_keys_0660.T.test_every_read_key_is_required) ... ok\ntest_required_extends_release_keys (tests.test_release_keys_0660.T.test_required_extends_release_keys) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.002s\n\nOK\n",
+   "tests": 2,
+   "wall_informational": 0.1
+  },
+  "test_scripts_070": {
+   "results": {
+    "test_adapter_has_no_reset": "ok",
+    "test_ast_checks": "ok",
+    "test_jobs_and_canon": "ok",
+    "test_pack": "ok",
+    "test_recount_labels": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_adapter_has_no_reset (tests.test_scripts_070.T.test_adapter_has_no_reset) ... ok\ntest_ast_checks (tests.test_scripts_070.T.test_ast_checks) ... ok\ntest_jobs_and_canon (tests.test_scripts_070.T.test_jobs_and_canon) ... ok\ntest_pack (tests.test_scripts_070.T.test_pack) ... ok\ntest_recount_labels (tests.test_scripts_070.T.test_recount_labels) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.007s\n\nOK\n",
+   "tests": 5,
+   "wall_informational": 0.2
+  }
+ },
+ "process": "lean",
+ "schema": "brute.test-suite-070.v1",
+ "test_file_sha256": {
+  "tests/test_baseline32t.py": "c83441431d084b8a63cdcf7e69eba568dcb5509a04dc6d572d2447b30d7fc051",
+  "tests/test_certify32h.py": "b30ec5338b53c50484d963b4c579728a44ca7ab69d5a0dc3e97fc65c27219b9d",
+  "tests/test_certify32r.py": "2d9064570f7e7524f93acc4954aa595c135b615939c70ecca401ed43d0fc84b5",
+  "tests/test_release_0660.py": "963bae44857142b4991d9a45998b55cb1e86261cd62dc82f2113543699d6ef9d",
+  "tests/test_release_keys_0660.py": "98696d0bafc3c763bf4941f28e6fc5ed884a1a17ecd0bb53bea8000c148e9452",
+  "tests/test_scripts_070.py": "7680aee2b37e4ec0da278123c891db933c0ebcbf67529d804f109652da1f912f"
+ }
+}
