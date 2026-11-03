@@ -1,0 +1,91 @@
+{
+  "contribution_split": {
+    "brute": "SAT version-space certificate over the whole reset-free trajectory; does not assume h is homing (arm B)",
+    "textbook": "homing sequences, Vasilevskii-Chow suite shape, Rivest-Schapire learner (arm T)"
+  },
+  "failed": [
+    "GBASE70",
+    "GDEC70",
+    "GDET70",
+    "GFID70",
+    "GLIVE70",
+    "GNORESET70",
+    "GS70_sound",
+    "G_recount70"
+  ],
+  "gates": {
+    "GBASE70": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GDEC70": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GDET70": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GFID70": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GHOST70": {
+      "diff_vs_v0650": [
+        [
+          "A",
+          "brute/api/baseline32t.py"
+        ],
+        [
+          "A",
+          "brute/api/certify32h.py"
+        ]
+      ],
+      "import_violations": [],
+      "pass": true
+    },
+    "GLIVE70": {
+      "elapsed_s": 966.8,
+      "jobs": 51,
+      "pass": false,
+      "records": 44
+    },
+    "GNORESET70": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GS70_sound": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GTEST70": {
+      "modules": 6,
+      "pass": true,
+      "test_files_match": true
+    },
+    "G_PROC70": {
+      "chain": [
+        "781f67b",
+        "781f67b",
+        "8020b64",
+        "f609622",
+        "8329c19"
+      ],
+      "missing": [],
+      "pass": true,
+      "truth_unchanged": true
+    },
+    "G_recount70": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    }
+  },
+  "passed": [
+    "GHOST70",
+    "GTEST70",
+    "G_PROC70"
+  ],
+  "results_sha256": "c49b422a44ce664b214d1673570d4bf9bca487a1fddeb0dcdca3789e1fa56ca2",
+  "status": "not certified (failing gates: GBASE70, GDEC70, GDET70, GFID70, GLIVE70, GNORESET70, GS70_sound, G_recount70)",
+  "study": "BRUTE-0660-RESETFREE-070"
+}
