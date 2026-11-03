@@ -1,0 +1,587 @@
+{
+  "PASS": true,
+  "certify20s_sha256": "93c25e521ec24e0e91d8f4e0283d3fc686583033a789ccc0398fe4dba539bb2a",
+  "compat": {
+    "PASS": true,
+    "sample_046": {
+      "PASS": true,
+      "all_byte_equal": true,
+      "cases": [
+        {
+          "byte_equal": true,
+          "name": "D_s4_fb3",
+          "search": "s4"
+        },
+        {
+          "byte_equal": true,
+          "name": "D_s4_fb4",
+          "search": "s4"
+        },
+        {
+          "byte_equal": true,
+          "name": "D2_s4_fb3",
+          "search": "s4"
+        },
+        {
+          "byte_equal": true,
+          "name": "D_s3_fb3",
+          "search": "s3"
+        },
+        {
+          "byte_equal": true,
+          "name": "D_region",
+          "search": "region"
+        }
+      ],
+      "s4_cases": 3,
+      "sample_sha256": "a455fb0f5311042d921265783ff09146c08573493eca14aa6e8689a3f30a96ae",
+      "tests": {
+        "tests.test_scalesearch4_0260": {
+          "ok": true,
+          "returncode": 0,
+          "tests": 14
+        }
+      },
+      "tests_pass": true
+    },
+    "tests": {
+      "tests.test_certify16": {
+        "ok": true,
+        "returncode": 0,
+        "tests": 12
+      },
+      "tests.test_scalesearch4_0260": {
+        "ok": true,
+        "returncode": 0,
+        "tests": 14
+      }
+    },
+    "tests_pass": true
+  },
+  "equiv": {
+    "PASS": true,
+    "cases": [
+      {
+        "identical": true,
+        "label_20p": "ID",
+        "label_20s": "ID",
+        "seed": 12650301,
+        "sha256": "5811c6f0b83c0cecad1fa5be7928e0ae89e7c961ffe8039e065702b89fbd65d0"
+      },
+      {
+        "identical": true,
+        "label_20p": "IDF",
+        "label_20s": "IDF",
+        "seed": 12650302,
+        "sha256": "497ba1255f58c39a7de75f259d183a2d8b2f49d78230cf6bec401b1b413749ff"
+      }
+    ],
+    "identical": 2
+  },
+  "fidelity": {
+    "PASS": true,
+    "decided_records": 16,
+    "exact": 16,
+    "per_case": {
+      "scale20/12650101/S10": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/12650101/S20": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/12650101/S30": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/12650101/S30b": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/12650102/S10": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/12650102/S20": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/12650102/S30": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/12650103/S10": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/12650103/S20": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/12650103/S30": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/12650104/S10": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/12650104/S20": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/12650104/S30": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/12650106/S10": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/12650106/S20": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20/12650106/S30": {
+        "diffs": [],
+        "exact": true
+      }
+    },
+    "study_results_sha256": "f1cc45b178396f7e4b57b532be05e903bb687c545aade092201afb1c8b388b74",
+    "vacuous": false,
+    "workers": 6
+  },
+  "ghost": {
+    "PASS": true,
+    "ast_scan": {
+      "PASS": true,
+      "bad_calls": [],
+      "bad_imports": [],
+      "imports": [
+        "__future__",
+        "brute",
+        "math"
+      ]
+    },
+    "certify20s_closure": {
+      "brute.active": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.align": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.anytimemargin": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify10": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify11": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify12": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify13": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify14": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify16": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify16d": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify16e": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify20b": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify20p": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify20s": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify8": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify9": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.bettingregion": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.boundedtransfer": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.breadth": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.changepoint": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.core.learner": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.driftsound": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.encaudit16": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.fallback": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.lrregion": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.noisyregion": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.region": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.region_learner": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.resume": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalebetting": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch10": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch14": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch15": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch16": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch3": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch4": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch5": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch7": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch8": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch9": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.seqmargin": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.stitchedregion": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.syncevent": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.transfer": {
+        "bad_calls": [],
+        "bad_imports": []
+      }
+    },
+    "frozen_api_sha256": {
+      "brute/api/certify.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+        "frozen": "a84c3b133ee450edfa699dfc6af62a51632551475e0b9a4837df794604055615",
+        "now": "a84c3b133ee450edfa699dfc6af62a51632551475e0b9a4837df794604055615"
+      },
+      "brute/api/certify14.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+        "frozen": "0c789ee206e8341ac610d00980c24976e5c027af5a02a5af4edb3c9068818ac6",
+        "now": "0c789ee206e8341ac610d00980c24976e5c027af5a02a5af4edb3c9068818ac6"
+      },
+      "brute/api/certify16.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+        "frozen": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1",
+        "now": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1"
+      },
+      "brute/api/certify16d.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+        "frozen": "98406b659e8abcbe9252da66da49b90317bdc544e1052711d8ec99a482992d25",
+        "now": "98406b659e8abcbe9252da66da49b90317bdc544e1052711d8ec99a482992d25"
+      },
+      "brute/api/certify16e.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+        "frozen": "99a6f3315d0ac7f9944dd6519fc968200543dc9ec50a991657dd33766a7112fb",
+        "now": "99a6f3315d0ac7f9944dd6519fc968200543dc9ec50a991657dd33766a7112fb"
+      },
+      "brute/api/certify16n.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+        "frozen": "46dc1ee28144e9f59af6db85e86d12ffd1b04c69cb8d12cbd85fd790ac95d19a",
+        "now": "46dc1ee28144e9f59af6db85e86d12ffd1b04c69cb8d12cbd85fd790ac95d19a"
+      },
+      "brute/api/certify16s.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+        "frozen": "2793a75ade79c9ebb83e707c350a8ba414b8372cf1de81dd52e3e5bd04cae35b",
+        "now": "2793a75ade79c9ebb83e707c350a8ba414b8372cf1de81dd52e3e5bd04cae35b"
+      },
+      "brute/api/certify20b.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+        "frozen": "7930f897679d19fec8e9519430509e1eb560970229c1e0db983e10dfa15e55e7",
+        "now": "7930f897679d19fec8e9519430509e1eb560970229c1e0db983e10dfa15e55e7"
+      },
+      "brute/api/certify20c.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+        "frozen": "48304db74271e113ae92e2d0cc00a1d165586f7e9491f1ee7716a679f048208e",
+        "now": "48304db74271e113ae92e2d0cc00a1d165586f7e9491f1ee7716a679f048208e"
+      },
+      "brute/api/certify20l.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+        "frozen": "1cfe06540e95c9b744c48bfeaa830e9726e9700e582d71b20849e1a6c6407216",
+        "now": "1cfe06540e95c9b744c48bfeaa830e9726e9700e582d71b20849e1a6c6407216"
+      },
+      "brute/api/certify20n.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+        "frozen": "c011b068314264bd6cac016202c875ec299c46f5be5373146c0794b5964fb95a",
+        "now": "c011b068314264bd6cac016202c875ec299c46f5be5373146c0794b5964fb95a"
+      },
+      "brute/api/certify20p.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+        "frozen": "3645b36a932bb7a1a42ab51be46a9ec1949e385ac5e24f5c2edff5443beda46a",
+        "now": "3645b36a932bb7a1a42ab51be46a9ec1949e385ac5e24f5c2edff5443beda46a"
+      },
+      "brute/api/certify20t.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+        "frozen": "8975cf73946bf19e568c21a764f9a018d02637df34d1c54fd90378112fb854a6",
+        "now": "8975cf73946bf19e568c21a764f9a018d02637df34d1c54fd90378112fb854a6"
+      },
+      "brute/api/certify20w.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+        "frozen": "709fcd7adf115e1cfa543ea8418e10402d86bf32af7dbba0bc4b2d04bab8adcd",
+        "now": "709fcd7adf115e1cfa543ea8418e10402d86bf32af7dbba0bc4b2d04bab8adcd"
+      },
+      "brute/api/certify32b.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+        "frozen": "31c7b438dd4e804027c1afb2b96c2fe6a810a4c93ccbffce5a4f34c2952ea91f",
+        "now": "31c7b438dd4e804027c1afb2b96c2fe6a810a4c93ccbffce5a4f34c2952ea91f"
+      },
+      "brute/api/certify32p.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+        "frozen": "fe79fee305ff41538dcd89e905840f21405cf6eeb145868c68e7143076cea092",
+        "now": "fe79fee305ff41538dcd89e905840f21405cf6eeb145868c68e7143076cea092"
+      },
+      "brute/api/certify8.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+        "frozen": "2d2c6143092397bb702f30c9f854674ee64ec36b3dc5c8041778f66adf73e240",
+        "now": "2d2c6143092397bb702f30c9f854674ee64ec36b3dc5c8041778f66adf73e240"
+      },
+      "brute/api/cover20.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+        "frozen": "c8f07024ba4269baca2e8747ea836693b4dc5909df136babb4ab0ef19683ec7d",
+        "now": "c8f07024ba4269baca2e8747ea836693b4dc5909df136babb4ab0ef19683ec7d"
+      }
+    },
+    "frozen_api_unchanged": true,
+    "network_pass": true,
+    "no_network_returncode": 0,
+    "no_network_run": {
+      "loop": [
+        "brute.certify/20s",
+        "brute.certify/20p",
+        "IDF",
+        20,
+        74,
+        1154228,
+        20530,
+        20
+      ],
+      "socket_attempts": 0
+    },
+    "socket_attempts": 0,
+    "static_ok": true
+  },
+  "montecarlo": {
+    "note": "reported only; per-bit wrong-barrier rate of the +-1 walk at threshold m_t",
+    "rows": [
+      {
+        "bound_eps_bar": 0.00017111471023167392,
+        "eps": 0.1,
+        "eps_bar": 0.15,
+        "exact_at_eps": 1.6934801016088065e-05,
+        "m": 5,
+        "mean_reads": 6.24678,
+        "rate": 2e-05,
+        "t": 1,
+        "trials": 100000,
+        "wrong": 2
+      },
+      {
+        "bound_eps_bar": 2.9290266333289887e-08,
+        "eps": 0.1,
+        "eps_bar": 0.15,
+        "exact_at_eps": 2.8679719899699167e-10,
+        "m": 10,
+        "mean_reads": 12.50592,
+        "rate": 0.0,
+        "t": 100,
+        "trials": 100000,
+        "wrong": 0
+      },
+      {
+        "bound_eps_bar": 9.121536487212163e-10,
+        "eps": 0.1,
+        "eps_bar": 0.15,
+        "exact_at_eps": 3.540706161459616e-12,
+        "m": 12,
+        "mean_reads": 15.00282,
+        "rate": 0.0,
+        "t": 500,
+        "trials": 100000,
+        "wrong": 0
+      },
+      {
+        "bound_eps_bar": 0.00015239256324291365,
+        "eps": 0.2,
+        "eps_bar": 0.25,
+        "exact_at_eps": 1.5258556235409006e-05,
+        "m": 8,
+        "mean_reads": 13.32388,
+        "rate": 1e-05,
+        "t": 1,
+        "trials": 100000,
+        "wrong": 1
+      },
+      {
+        "bound_eps_bar": 2.323057258575924e-08,
+        "eps": 0.2,
+        "eps_bar": 0.25,
+        "exact_at_eps": 2.3283064359965952e-10,
+        "m": 16,
+        "mean_reads": 26.65182,
+        "rate": 0.0,
+        "t": 100,
+        "trials": 100000,
+        "wrong": 0
+      },
+      {
+        "bound_eps_bar": 8.603915964974579e-10,
+        "eps": 0.2,
+        "eps_bar": 0.25,
+        "exact_at_eps": 3.637978807078478e-12,
+        "m": 19,
+        "mean_reads": 31.66798,
+        "rate": 0.0,
+        "t": 500,
+        "trials": 100000,
+        "wrong": 0
+      },
+      {
+        "bound_eps_bar": 0.00017222287150062284,
+        "eps": 0.3,
+        "eps_bar": 0.35,
+        "exact_at_eps": 7.052156526704938e-06,
+        "m": 14,
+        "mean_reads": 35.02432,
+        "rate": 3e-05,
+        "t": 1,
+        "trials": 100000,
+        "wrong": 3
+      },
+      {
+        "bound_eps_bar": 2.967093573530246e-08,
+        "eps": 0.3,
+        "eps_bar": 0.35,
+        "exact_at_eps": 4.973361313064914e-11,
+        "m": 28,
+        "mean_reads": 69.96566,
+        "rate": 0.0,
+        "t": 100,
+        "trials": 100000,
+        "wrong": 0
+      },
+      {
+        "bound_eps_bar": 7.232016057341559e-10,
+        "eps": 0.3,
+        "eps_bar": 0.35,
+        "exact_at_eps": 3.0816924898669094e-13,
+        "m": 34,
+        "mean_reads": 85.00374,
+        "rate": 0.0,
+        "t": 500,
+        "trials": 100000,
+        "wrong": 0
+      }
+    ]
+  },
+  "schema": "brute.api-checks.v62",
+  "threshold": {
+    "PASS": true,
+    "checked": 1500,
+    "disagreements": []
+  }
+}
