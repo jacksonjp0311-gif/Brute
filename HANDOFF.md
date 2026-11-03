@@ -5,6 +5,7 @@ _Kept current on the working branch during a release and on `main` at release. L
 ## Current version and state
 
 <!-- V0660 -->
+- **v0.66.0: RELEASED 2026-11-03 at about 13:28 EST** (tag v0.66.0 at 5f4e6b8, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.66.0; ledger release_0660 72c3c8a; fresh-clone verify passed and 27/27 tests passed). **NOT CERTIFIED.**
 - **v0.66.0 (study BRUTE-0660-RESETFREE-070): NOT CERTIFIED, 3 of 11 gates.** Plan 070 781f67b. Build authorization 07ded24, citing t143s742, t133s553 and t139s684. Source freeze 8020b64.
   - **Run (Exact).** Launched once at 12:51:57 EST (ledger 2feca93) and sealed incomplete at 13:10:36 (seal 8329c19). It produced 44/51 records; the kernel OOM killer SIGKILLed 7 certify/32h jobs, and none was retried. Every data gate is INCOMPLETE_INPUT. Gates 789996e; deviation #210 495897f.
   - **Textbook vs Brute:** arm T (baseline/32t) is the textbook Rivest-Schapire homing learner using L* and Vasilevskii-Chow. Arm B (certify/32h) is Brute's SAT version space fed homing-based tests; it does not assume h is homing.
