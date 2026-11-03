@@ -1,0 +1,122 @@
+{
+  "schema": "brute.plan.v1",
+  "study": "BRUTE-0640-REALDECODER-068",
+  "version_under_test": "0.64.0",
+  "parent_study": "BRUTE-0630-SEQNOISE24-066",
+  "written": "2026-11-03 ~11:10 EST, after James chose option C (the bridge) of plan 067 on card t143s742 at 10:54 EST",
+  "status": "LOCKED preregistration. Plan 067 (unlocked proposal) is not edited; this file supersedes it for v0.64.0. Build needs a ledgered build_authorization_068 citing t143s742, t133s553 and t139s684.",
+  "standing_go": [
+    "t143s742 (James, 10:54 EST Nov 3 2026: 'Go with the bridge: certify real software from the outside, starting with Python's decoder')",
+    "t133s553",
+    "t139s684"
+  ],
+  "honest_framing": "First contact with real software, not a capability leap. The targets are tiny (Inferred from an exploratory black-box probe run before this plan: 6, 7 and 7 states under the reading defined here). The noise is injected by the adapter (iid), so this is not yet the messier real-world problem; it tests whether the certified identifier fits an unmodified real program driven only through its public interface, and whether what it learns matches the program's source.",
+  "question": "Does brute.certify/32p (clean) and brute.certify/32s (iid bit noise eps 0.30) identify the hidden state machine of CPython 3.13.5's incremental decoders, driven only through codecs.getincrementaldecoder(codec)('replace').decode(one byte), with 0 wrong answers against a ground truth written by hand from the CPython source, and does the learned machine match the source on every reachable state?",
+  "target_software": {
+    "python": "the box venv /workspace/bgr/venv/bin/python, CPython 3.13.5 (recorded in every record as sys.version)",
+    "source": "CPython tag v3.13.5: Objects/unicodeobject.c, Objects/stringlib/codecs.h, Modules/_codecsmodule.c, Lib/codecs.py, Lib/encodings/utf_8.py, Lib/encodings/utf_16_le.py (sha256 in docs/research/TRUTH_068.md)"
+  },
+  "targets": {
+    "U3": {
+      "codec": "utf-8",
+      "bytes": [
+        "0x41",
+        "0x80",
+        "0xE1"
+      ],
+      "role": "primary target",
+      "note": "ASCII 'A', a continuation byte, a 3-byte lead byte (not E0/ED, so every continuation byte is a valid second byte)"
+    },
+    "U4": {
+      "codec": "utf-8",
+      "bytes": [
+        "0x41",
+        "0x80",
+        "0xF1"
+      ],
+      "role": "held-out byte set",
+      "note": "as U3 with a 4-byte lead byte (not F0/F4)"
+    },
+    "W16": {
+      "codec": "utf-16-le",
+      "bytes": [
+        "0x41",
+        "0xD8",
+        "0xDC"
+      ],
+      "role": "held-out second real decoder",
+      "note": "one byte per action; a code unit is (second byte << 8) | first byte, so a second byte D8 makes a high surrogate, DC a low surrogate, 41 an ordinary character"
+    }
+  },
+  "interface": {
+    "public_only": "the adapter (experiments/targets_068.py) may call only codecs.getincrementaldecoder(codec)('replace') once per job and .decode(bytes([b])) once per action, final=False; no getstate, setstate, reset, buffer or private attribute (checked by GFID68 on the adapter's AST)",
+    "action": "action i feeds the one byte bytes[i] of the target",
+    "reading": "2 bits from the str returned by the most recent decode() call: bit0 = the str is non-empty, bit1 = the str contains U+FFFD. Before any call the reading is (0, 0). Emission code = 2*bit0 + bit1 (worlds_058.bits order)",
+    "machine": "so the identified Moore machine is the decoder's hidden buffer state combined with the class of its last output (a Mealy-to-Moore view of the decoder); a re-read re-reads the cached last output and does not call the decoder (state-preserving)",
+    "declared_N": 12,
+    "read_bits": 2
+  },
+  "ground_truth": {
+    "file": "experiments/truth_068.py with the derivation docs/research/TRUTH_068.md",
+    "rule": "written by hand from the CPython source before any Brute run on a target; committed and ledgered (truth_068) BEFORE build_authorization_068; never edited after (a change is a new file plus a ledgered deviation and the run labels use the committed file)",
+    "use": "only the recount and gates read it; the runner and the certifiers never import it",
+    "pre_run_check": "scripts/truthcheck_068.py compares the hand truth with the live decoder on every action sequence up to length 7 (no Brute involved); its result is committed before the run; a disagreement is published and does not change the truth"
+  },
+  "design": {
+    "api": "no new API: brute/ is unchanged from v0.63.0 (frozen certify/32p and certify/32s, family_bound 12)",
+    "arms": {
+      "C": "brute.certify/32p on clean readings",
+      "S": "brute.certify/32s at eps 0.30 (eps_bar 0.35, delta 0.001): each observation is read one noisy reading at a time until more() is False (worlds_065.Noise, flips injected by the adapter)",
+      "Sb": "S again on U3 seed 12680101 (determinism)"
+    },
+    "cases": {
+      "per_target_seeds": [
+        "12680101",
+        "12680102",
+        "12680103"
+      ],
+      "jobs": "3 targets x 2 arms x 3 seeds + 1 Sb = 19",
+      "seed_role": "a seed fixes the passive prefix and the noise draws only; the target is deterministic"
+    },
+    "prefix": "40 actions, random.Random(seed*68+680).randrange(3) each, then the certifier's own propose() experiments",
+    "caps": {
+      "C": 50000,
+      "B": 8000000,
+      "K": 400,
+      "node_cap": 200000,
+      "max_chunks": null
+    },
+    "runner": "one forked process per job, at most 7 alive; a job alive at 600 s wall is SIGKILLed and recorded as KILL (complete, undecided); main cap 2400 s then sealed partial, never relaunched",
+    "smoke": "seed 12680301 on every target and arm, pre-freeze only, never gated, outside results/study-068"
+  },
+  "heldout_ranges": {
+    "main": "12680101-12680103",
+    "smoke": "12680301",
+    "seedcheck": "git grep -w finds none of these in tracked files before the run (checked 10:58 EST: 0 hits)"
+  },
+  "criteria": {
+    "GS68_sound": "WRONG 0 on every finished record, labelled against the hand truth (truth_label of study 058: ID needs behaviour equality from the truth start, IDF from the truth state reached at the end)",
+    "GDEC68": "each of the 6 target-arms decides (ID or IDF) on >= 2 of its 3 seeds",
+    "GMAJ68": "0 settled-bit errors over every observation of every finished noisy record",
+    "GEQ68": "every finished noisy record's inner certify/32p record equals the clean record on the same target and seed",
+    "GDET68": "Sb equals S on U3 seed 12680101 (canonical record, no wall fields)",
+    "GFID68": "(a) for every finished record a fresh decoder fed the record's full action sequence reproduces every clean reading the run used, and the hand truth machine produces the same readings; (b) the adapter's AST uses only getincrementaldecoder and decode of the codecs interface (no getstate, setstate, reset, buffer, _buffer_decode, or other underscore attribute)",
+    "GMATCH68": "the honest reading. Per target: every decided record's n_min equals the minimal size of the truth part it covers (ID: the truth reachable from start; IDF: reachable from the truth state at the end), and the union over the target's decided records of covered truth states equals every truth state reachable from the start. The per-target coverage count is reported either way (a transient start state is covered only by an ID record)",
+    "GHOST68": "brute/ at the run commit has the same git tree as brute/ at tag v0.63.0 (no core change; host-agnostic core untouched)",
+    "GLIVE68": "sealed complete: every one of the 19 jobs has a record (finished or KILL) before the 2400 s cap",
+    "G_recount68": "scripts/recount_068.py reproduces from the sealed results (--check) and its labels agree with the runner's",
+    "GTEST68": "scripts/run_tests_0640.py passes",
+    "G_PROC68": "commit order: plan 068 -> truth_068 -> build_authorization_068 -> truthcheck -> source freeze -> run_start -> seal -> gates, each an ancestor of the next, and the truth file unchanged from its truth_068 commit"
+  },
+  "certification_rule": "iff every gate passes: 'certified on real software (CPython 3.13.5 incremental utf-8 decoder, bytes 41/80/E1, held-out 41/80/F1 and utf-16-le 41/D8/DC; read_bits 2, N <= 12, injected iid bit noise eps <= 0.30, delta 0.001, sequential re-reads)'. Otherwise 'not certified' with the failing gates listed. No partial phrase.",
+  "incomplete_rule": "a KILL record is complete and undecided; a job with no record fails GLIVE68 and every data gate fails INCOMPLETE_INPUT",
+  "informational": "reads vs the fixed rule (certify/20n reads_for), job walls, coverage counts; never gated",
+  "process": "LEAN: plan locked before any Brute run on a target, hand truth before build, exact recount, failures published, one main run, one fresh-clone check, no CI. One worker (executor-B), coordinated through /tmp/s66/STATE.txt",
+  "next_if_pass": "v0.65.0 toward a larger real target (draft, unlocked if it needs a judgment call)",
+  "next_if_fail": "diagnose the failing gate on sealed data before any change",
+  "parent_result": {
+    "study": "BRUTE-0630-SEQNOISE24-066",
+    "gates": "14/14",
+    "release": "v0.63.0 at 70dbf77"
+  }
+}
