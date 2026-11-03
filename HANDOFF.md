@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-03 EST (v0.64.0 built, release pending)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-03 EST (v0.64.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0640 -->
-- **v0.64.0: BUILT, release pending.** Study BRUTE-0640-REALDECODER-068 (plan 068 69088e4, hand truth b98cfa5, build authorization 2ebf02c citing t143s742, t133s553, t139s684). **NOT CERTIFIED, 9 of 12 gates** (failing GDEC68, GMATCH68, GTEST68). First contact with real software: CPython 3.13.5 incremental utf-8 / utf-16-le decoders, public interface only.
+- **v0.64.0: RELEASED 2026-11-03 11:24 EST (tag v0.64.0 at b7f6042, fresh-clone verified).** Study BRUTE-0640-REALDECODER-068 (plan 068 69088e4, hand truth b98cfa5, build authorization 2ebf02c citing t143s742, t133s553, t139s684). **NOT CERTIFIED, 9 of 12 gates** (failing GDEC68, GMATCH68, GTEST68). First contact with real software: CPython 3.13.5 incremental utf-8 / utf-16-le decoders, public interface only.
   - **Run (Exact).** Launched once 11:07:03 EST (ledger 09130d3); sealed complete 11:12:55 (seal 337e8fb), 19/19, 0 KILL.
   - **Results:** 0/18 decided; WRONG 0/19; GEQ 10/10; 0 bit errors; least machine = truth future behaviour on 19/19 (diagnosis, not gated). Deviation #208 505008c.
   - **What Brute can't do yet:** certify even a 6-7 state real decoder at declared N 12 without resets in K 400; real (not injected) noise; larger real targets.
