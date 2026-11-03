@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-03 EST (v0.61.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-03 EST (v0.61.0 RELEASED; v0.62.0 in progress)._
 
 ## Current version and state
 
 <!-- V0610 -->
-- **v0.61.0: release in progress** 2026-11-03 EST (gates 1b8229b, RELEASE.json e3c5adb, docs 3a2aa5a). Study BRUTE-0610-SCALE2B24-064. Status from the flags: "certified (read_bits 2, N <= 24, clique-anchored)".
+- **v0.61.0: RELEASED** 2026-11-03 06:12 EST, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.61.0 (annotated tag object 58ca245 at c8a3911; gates 1b8229b, RELEASE.json e3c5adb, docs 3a2aa5a; fresh-clone verify ledgered fresh_clone_verify_064, 149/149 tests). Push delayed 05:03 -> 06:11 EST by an invalid GITHUB_TOKEN env var on the box (git/gh now run with that var removed, using the stored gh login). Study BRUTE-0610-SCALE2B24-064. Status from the flags: "certified (read_bits 2, N <= 24, clique-anchored)".
   - **Run complete (Observed).** 15/15 jobs, 12 cases; launched once with nohup 04:17:17 EST (ledger d3a2d9d), sealed about 04:49 EST (seal 8174302, 1917 s from launch, under the 2400 s cap); never relaunched. Cut by #202 before the freeze: N_P20B 1, N_B24 2.
   - **PASS (11/11 gated):** GS64_sound (WRONG 0/15); GP24_64 (P24 2/6 [0.10, 0.70], bar 2/6); GP20_64 (P20 4/6 [0.30, 0.90]); GDET64 1/1; GFID64 6/6 exact; GXREF64 (1166 checks, 0 disagreements); GHOST64; GS_ref64 (clique-pinned reference 6/6 audited, complete, 19 s, 20/20 mutations); G_recount64; GTEST64; G_PROC64. B24 (frozen certify/32b, time-capped control) 0/2, one 1800 s case kill, reported.
   - **Blunt reading:** the clique anchor is sound at 24 states and the audit gap is closed, but coverage is thin: 4 of 6 24-state worlds undecided at 8M (n_min 21-23). n = 6.
