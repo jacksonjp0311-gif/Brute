@@ -1,0 +1,785 @@
+{
+  "PASS": true,
+  "certify20p_sha256": "3645b36a932bb7a1a42ab51be46a9ec1949e385ac5e24f5c2edff5443beda46a",
+  "compat": {
+    "PASS": true,
+    "sample_046": {
+      "PASS": true,
+      "all_byte_equal": true,
+      "cases": [
+        {
+          "byte_equal": true,
+          "name": "D_s4_fb3",
+          "search": "s4"
+        },
+        {
+          "byte_equal": true,
+          "name": "D_s4_fb4",
+          "search": "s4"
+        },
+        {
+          "byte_equal": true,
+          "name": "D2_s4_fb3",
+          "search": "s4"
+        },
+        {
+          "byte_equal": true,
+          "name": "D_s3_fb3",
+          "search": "s3"
+        },
+        {
+          "byte_equal": true,
+          "name": "D_region",
+          "search": "region"
+        }
+      ],
+      "s4_cases": 3,
+      "sample_sha256": "a455fb0f5311042d921265783ff09146c08573493eca14aa6e8689a3f30a96ae",
+      "tests": {
+        "tests.test_scalesearch4_0260": {
+          "ok": true,
+          "returncode": 0,
+          "tests": 14
+        }
+      },
+      "tests_pass": true
+    },
+    "tests": {
+      "tests.test_certify16": {
+        "ok": true,
+        "returncode": 0,
+        "tests": 12
+      },
+      "tests.test_scalesearch4_0260": {
+        "ok": true,
+        "returncode": 0,
+        "tests": 14
+      }
+    },
+    "tests_pass": true
+  },
+  "equiv": {
+    "PASS": true,
+    "agree_with_20b": [
+      9,
+      9
+    ],
+    "cases": [
+      {
+        "both_decided": false,
+        "first_pin_ok": true,
+        "k_ok": true,
+        "label_20b": "AMB",
+        "label_20p": "AMB",
+        "n": 3,
+        "n_min_equal": null,
+        "oneshot_api": true,
+        "oneshot_sound": true,
+        "pins": 1,
+        "read_bits": 2,
+        "seed": 6320,
+        "sound_20b": true,
+        "sound_20p": true,
+        "stop_20b": "K_spent",
+        "stop_20p": "K_spent"
+      },
+      {
+        "both_decided": false,
+        "first_pin_ok": true,
+        "k_ok": true,
+        "label_20b": "AMB",
+        "label_20p": "AMB",
+        "n": 4,
+        "n_min_equal": null,
+        "oneshot_api": true,
+        "oneshot_sound": true,
+        "pins": 1,
+        "read_bits": 2,
+        "seed": 6321,
+        "sound_20b": true,
+        "sound_20p": true,
+        "stop_20b": "K_spent",
+        "stop_20p": "K_spent"
+      },
+      {
+        "both_decided": false,
+        "first_pin_ok": true,
+        "k_ok": true,
+        "label_20b": "AMB",
+        "label_20p": "AMB",
+        "n": 5,
+        "n_min_equal": null,
+        "oneshot_api": true,
+        "oneshot_sound": true,
+        "pins": 1,
+        "read_bits": 2,
+        "seed": 6322,
+        "sound_20b": true,
+        "sound_20p": true,
+        "stop_20b": "K_spent",
+        "stop_20p": "K_spent"
+      },
+      {
+        "both_decided": false,
+        "first_pin_ok": true,
+        "k_ok": true,
+        "label_20b": "AMB",
+        "label_20p": "AMB",
+        "n": 6,
+        "n_min_equal": null,
+        "oneshot_api": true,
+        "oneshot_sound": true,
+        "pins": 2,
+        "read_bits": 2,
+        "seed": 6323,
+        "sound_20b": true,
+        "sound_20p": true,
+        "stop_20b": "K_spent",
+        "stop_20p": "K_spent"
+      },
+      {
+        "both_decided": true,
+        "first_pin_ok": true,
+        "k_ok": true,
+        "label_20b": "IDF",
+        "label_20p": "IDF",
+        "n": 3,
+        "n_min_equal": true,
+        "oneshot_api": true,
+        "oneshot_sound": true,
+        "pins": 1,
+        "read_bits": 2,
+        "seed": 6324,
+        "sound_20b": true,
+        "sound_20p": true,
+        "stop_20b": "IDF",
+        "stop_20p": "IDF"
+      },
+      {
+        "both_decided": true,
+        "first_pin_ok": true,
+        "k_ok": true,
+        "label_20b": "IDF",
+        "label_20p": "IDF",
+        "n": 4,
+        "n_min_equal": true,
+        "oneshot_api": true,
+        "oneshot_sound": true,
+        "pins": 1,
+        "read_bits": 2,
+        "seed": 6325,
+        "sound_20b": true,
+        "sound_20p": true,
+        "stop_20b": "IDF",
+        "stop_20p": "IDF"
+      },
+      {
+        "both_decided": true,
+        "first_pin_ok": true,
+        "k_ok": true,
+        "label_20b": "IDF",
+        "label_20p": "IDF",
+        "n": 3,
+        "n_min_equal": true,
+        "oneshot_api": true,
+        "oneshot_sound": true,
+        "pins": 1,
+        "read_bits": 3,
+        "seed": 6330,
+        "sound_20b": true,
+        "sound_20p": true,
+        "stop_20b": "IDF",
+        "stop_20p": "IDF"
+      },
+      {
+        "both_decided": true,
+        "first_pin_ok": true,
+        "k_ok": true,
+        "label_20b": "IDF",
+        "label_20p": "IDF",
+        "n": 4,
+        "n_min_equal": true,
+        "oneshot_api": true,
+        "oneshot_sound": true,
+        "pins": 1,
+        "read_bits": 3,
+        "seed": 6331,
+        "sound_20b": true,
+        "sound_20p": true,
+        "stop_20b": "IDF",
+        "stop_20p": "IDF"
+      },
+      {
+        "both_decided": false,
+        "first_pin_ok": true,
+        "k_ok": true,
+        "label_20b": "AMB",
+        "label_20p": "AMB",
+        "n": 5,
+        "n_min_equal": null,
+        "oneshot_api": true,
+        "oneshot_sound": true,
+        "pins": 1,
+        "read_bits": 3,
+        "seed": 6332,
+        "sound_20b": true,
+        "sound_20p": true,
+        "stop_20b": "K_spent",
+        "stop_20p": "K_spent"
+      },
+      {
+        "both_decided": false,
+        "first_pin_ok": true,
+        "k_ok": true,
+        "label_20b": "AMB",
+        "label_20p": "IDF",
+        "n": 6,
+        "n_min_equal": null,
+        "oneshot_api": true,
+        "oneshot_sound": true,
+        "pins": 1,
+        "read_bits": 3,
+        "seed": 6333,
+        "sound_20b": true,
+        "sound_20p": true,
+        "stop_20b": "K_spent",
+        "stop_20p": "IDF"
+      },
+      {
+        "both_decided": true,
+        "first_pin_ok": true,
+        "k_ok": true,
+        "label_20b": "IDF",
+        "label_20p": "IDF",
+        "n": 3,
+        "n_min_equal": true,
+        "oneshot_api": true,
+        "oneshot_sound": true,
+        "pins": 1,
+        "read_bits": 3,
+        "seed": 6334,
+        "sound_20b": true,
+        "sound_20p": true,
+        "stop_20b": "IDF",
+        "stop_20p": "IDF"
+      },
+      {
+        "both_decided": true,
+        "first_pin_ok": true,
+        "k_ok": true,
+        "label_20b": "IDF",
+        "label_20p": "IDF",
+        "n": 4,
+        "n_min_equal": true,
+        "oneshot_api": true,
+        "oneshot_sound": true,
+        "pins": 1,
+        "read_bits": 3,
+        "seed": 6335,
+        "sound_20b": true,
+        "sound_20p": true,
+        "stop_20b": "IDF",
+        "stop_20p": "IDF"
+      },
+      {
+        "both_decided": true,
+        "first_pin_ok": true,
+        "k_ok": true,
+        "label_20b": "IDF",
+        "label_20p": "IDF",
+        "n": 3,
+        "n_min_equal": true,
+        "oneshot_api": true,
+        "oneshot_sound": true,
+        "pins": 1,
+        "read_bits": 4,
+        "seed": 6340,
+        "sound_20b": true,
+        "sound_20p": true,
+        "stop_20b": "IDF",
+        "stop_20p": "IDF"
+      },
+      {
+        "both_decided": false,
+        "first_pin_ok": true,
+        "k_ok": true,
+        "label_20b": "AMB",
+        "label_20p": "AMB",
+        "n": 4,
+        "n_min_equal": null,
+        "oneshot_api": true,
+        "oneshot_sound": true,
+        "pins": 1,
+        "read_bits": 4,
+        "seed": 6341,
+        "sound_20b": true,
+        "sound_20p": true,
+        "stop_20b": "K_spent",
+        "stop_20p": "K_spent"
+      },
+      {
+        "both_decided": false,
+        "first_pin_ok": true,
+        "k_ok": true,
+        "label_20b": "AMB",
+        "label_20p": "AMB",
+        "n": 5,
+        "n_min_equal": null,
+        "oneshot_api": true,
+        "oneshot_sound": true,
+        "pins": 1,
+        "read_bits": 4,
+        "seed": 6342,
+        "sound_20b": true,
+        "sound_20p": true,
+        "stop_20b": "K_spent",
+        "stop_20p": "K_spent"
+      },
+      {
+        "both_decided": false,
+        "first_pin_ok": true,
+        "k_ok": true,
+        "label_20b": "AMB",
+        "label_20p": "AMB",
+        "n": 6,
+        "n_min_equal": null,
+        "oneshot_api": true,
+        "oneshot_sound": true,
+        "pins": 1,
+        "read_bits": 4,
+        "seed": 6343,
+        "sound_20b": true,
+        "sound_20p": true,
+        "stop_20b": "K_spent",
+        "stop_20p": "K_spent"
+      },
+      {
+        "both_decided": true,
+        "first_pin_ok": true,
+        "k_ok": true,
+        "label_20b": "IDF",
+        "label_20p": "IDF",
+        "n": 3,
+        "n_min_equal": true,
+        "oneshot_api": true,
+        "oneshot_sound": true,
+        "pins": 1,
+        "read_bits": 4,
+        "seed": 6344,
+        "sound_20b": true,
+        "sound_20p": true,
+        "stop_20b": "IDF",
+        "stop_20p": "IDF"
+      },
+      {
+        "both_decided": true,
+        "first_pin_ok": true,
+        "k_ok": true,
+        "label_20b": "IDF",
+        "label_20p": "IDF",
+        "n": 4,
+        "n_min_equal": true,
+        "oneshot_api": true,
+        "oneshot_sound": true,
+        "pins": 1,
+        "read_bits": 4,
+        "seed": 6345,
+        "sound_20b": true,
+        "sound_20p": true,
+        "stop_20b": "IDF",
+        "stop_20p": "IDF"
+      }
+    ],
+    "decided_20p": 10,
+    "refusals": [
+      [
+        "0",
+        "{}",
+        "refused"
+      ],
+      [
+        "-1",
+        "{}",
+        "refused"
+      ],
+      [
+        "True",
+        "{}",
+        "refused"
+      ],
+      [
+        "1.5",
+        "{}",
+        "refused"
+      ],
+      [
+        "'5'",
+        "{}",
+        "refused"
+      ],
+      [
+        "None",
+        "{}",
+        "refused"
+      ],
+      [
+        "200000",
+        "{'read_bits': 5}",
+        "refused"
+      ],
+      [
+        "200000",
+        "{'family_bound': 21}",
+        "refused"
+      ],
+      [
+        "200000",
+        "{'family_bound': 0}",
+        "refused"
+      ]
+    ],
+    "sound_vs_truth": [
+      18,
+      18
+    ]
+  },
+  "fidelity": {
+    "PASS": true,
+    "decided_records": 7,
+    "exact": 7,
+    "per_case": {
+      "scale20p2/12630101/P2": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20p2/12630101/P2b": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20p2/12630102/P2": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20p2/12630102/P2b": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20p2/12630103/P2": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20p2/12630104/B2": {
+        "diffs": [],
+        "exact": true
+      },
+      "scale20p2/12630104/P2": {
+        "diffs": [],
+        "exact": true
+      }
+    },
+    "study_results_sha256": "64dad5773b2b515da1b7f9d01abef3f590be793359b08d52fae1187112e8dbc9",
+    "vacuous": false,
+    "workers": 8
+  },
+  "ghost": {
+    "PASS63": true,
+    "a16d_max_bound_unpatched": true,
+    "certify20p_ast_scan": {
+      "PASS": true,
+      "bad_calls": [],
+      "bad_imports": [],
+      "imports": [
+        "__future__",
+        "brute"
+      ]
+    },
+    "certify20p_closure": {
+      "brute.active": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.align": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.anytimemargin": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify10": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify11": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify12": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify13": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify14": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify16": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify16d": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify16e": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify20b": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify20p": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify8": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.api.certify9": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.bettingregion": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.boundedtransfer": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.breadth": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.changepoint": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.core.learner": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.driftsound": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.encaudit16": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.fallback": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.lrregion": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.noisyregion": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.region": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.region_learner": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.resume": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalebetting": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch10": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch14": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch15": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch16": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch3": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch4": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch5": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch7": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch8": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.scalesearch9": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.seqmargin": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.stitchedregion": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.syncevent": {
+        "bad_calls": [],
+        "bad_imports": []
+      },
+      "brute.transfer": {
+        "bad_calls": [],
+        "bad_imports": []
+      }
+    },
+    "certify20p_static_ok": true,
+    "frozen_api_sha256": {
+      "brute/api/certify.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_062.json",
+        "frozen": "a84c3b133ee450edfa699dfc6af62a51632551475e0b9a4837df794604055615",
+        "now": "a84c3b133ee450edfa699dfc6af62a51632551475e0b9a4837df794604055615"
+      },
+      "brute/api/certify14.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_062.json",
+        "frozen": "0c789ee206e8341ac610d00980c24976e5c027af5a02a5af4edb3c9068818ac6",
+        "now": "0c789ee206e8341ac610d00980c24976e5c027af5a02a5af4edb3c9068818ac6"
+      },
+      "brute/api/certify16.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_062.json",
+        "frozen": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1",
+        "now": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1"
+      },
+      "brute/api/certify16d.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_062.json",
+        "frozen": "98406b659e8abcbe9252da66da49b90317bdc544e1052711d8ec99a482992d25",
+        "now": "98406b659e8abcbe9252da66da49b90317bdc544e1052711d8ec99a482992d25"
+      },
+      "brute/api/certify16e.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_062.json",
+        "frozen": "99a6f3315d0ac7f9944dd6519fc968200543dc9ec50a991657dd33766a7112fb",
+        "now": "99a6f3315d0ac7f9944dd6519fc968200543dc9ec50a991657dd33766a7112fb"
+      },
+      "brute/api/certify16n.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_062.json",
+        "frozen": "46dc1ee28144e9f59af6db85e86d12ffd1b04c69cb8d12cbd85fd790ac95d19a",
+        "now": "46dc1ee28144e9f59af6db85e86d12ffd1b04c69cb8d12cbd85fd790ac95d19a"
+      },
+      "brute/api/certify16s.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_062.json",
+        "frozen": "2793a75ade79c9ebb83e707c350a8ba414b8372cf1de81dd52e3e5bd04cae35b",
+        "now": "2793a75ade79c9ebb83e707c350a8ba414b8372cf1de81dd52e3e5bd04cae35b"
+      },
+      "brute/api/certify20b.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_062.json",
+        "frozen": "7930f897679d19fec8e9519430509e1eb560970229c1e0db983e10dfa15e55e7",
+        "now": "7930f897679d19fec8e9519430509e1eb560970229c1e0db983e10dfa15e55e7"
+      },
+      "brute/api/certify20c.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_062.json",
+        "frozen": "48304db74271e113ae92e2d0cc00a1d165586f7e9491f1ee7716a679f048208e",
+        "now": "48304db74271e113ae92e2d0cc00a1d165586f7e9491f1ee7716a679f048208e"
+      },
+      "brute/api/certify20l.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_062.json",
+        "frozen": "1cfe06540e95c9b744c48bfeaa830e9726e9700e582d71b20849e1a6c6407216",
+        "now": "1cfe06540e95c9b744c48bfeaa830e9726e9700e582d71b20849e1a6c6407216"
+      },
+      "brute/api/certify20n.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_062.json",
+        "frozen": "c011b068314264bd6cac016202c875ec299c46f5be5373146c0794b5964fb95a",
+        "now": "c011b068314264bd6cac016202c875ec299c46f5be5373146c0794b5964fb95a"
+      },
+      "brute/api/certify20t.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_062.json",
+        "frozen": "8975cf73946bf19e568c21a764f9a018d02637df34d1c54fd90378112fb854a6",
+        "now": "8975cf73946bf19e568c21a764f9a018d02637df34d1c54fd90378112fb854a6"
+      },
+      "brute/api/certify20w.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_062.json",
+        "frozen": "709fcd7adf115e1cfa543ea8418e10402d86bf32af7dbba0bc4b2d04bab8adcd",
+        "now": "709fcd7adf115e1cfa543ea8418e10402d86bf32af7dbba0bc4b2d04bab8adcd"
+      },
+      "brute/api/certify32b.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_062.json",
+        "frozen": "31c7b438dd4e804027c1afb2b96c2fe6a810a4c93ccbffce5a4f34c2952ea91f",
+        "now": "31c7b438dd4e804027c1afb2b96c2fe6a810a4c93ccbffce5a4f34c2952ea91f"
+      },
+      "brute/api/certify8.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_062.json",
+        "frozen": "2d2c6143092397bb702f30c9f854674ee64ec36b3dc5c8041778f66adf73e240",
+        "now": "2d2c6143092397bb702f30c9f854674ee64ec36b3dc5c8041778f66adf73e240"
+      },
+      "brute/api/cover20.py": {
+        "freeze": "experiments/BRUTE_SOURCE_FREEZE_062.json",
+        "frozen": "c8f07024ba4269baca2e8747ea836693b4dc5909df136babb4ab0ef19683ec7d",
+        "now": "c8f07024ba4269baca2e8747ea836693b4dc5909df136babb4ab0ef19683ec7d"
+      }
+    },
+    "frozen_api_unchanged": true,
+    "network_pass": true,
+    "no_network_returncode": 0,
+    "no_network_run": {
+      "loop": [
+        "brute.certify/20p",
+        "IDF",
+        20,
+        142,
+        974666,
+        2,
+        20,
+        18,
+        4
+      ],
+      "socket_attempts": 0
+    },
+    "socket_attempts": 0
+  },
+  "schema": "brute.api-checks.v60"
+}
