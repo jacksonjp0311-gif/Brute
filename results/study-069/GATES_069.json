@@ -1,0 +1,170 @@
+{
+  "failed": [],
+  "gates": {
+    "GDEC69": {
+      "id_of_3": {
+        "U3/C": 3,
+        "U3/S": 3,
+        "U4/C": 3,
+        "U4/S": 3,
+        "W16/C": 3,
+        "W16/S": 3
+      },
+      "labels": {
+        "EJ:12690101:C": "ID",
+        "EJ:12690101:S": "ID",
+        "EJ:12690102:C": "ID",
+        "EJ:12690102:S": "ID",
+        "EJ:12690103:C": "ID",
+        "EJ:12690103:S": "ID",
+        "GB:12690101:C": "ID",
+        "GB:12690101:S": "ID",
+        "GB:12690102:C": "ID",
+        "GB:12690102:S": "ID",
+        "GB:12690103:C": "ID",
+        "GB:12690103:S": "ID",
+        "U3:12690101:C": "ID",
+        "U3:12690101:S": "ID",
+        "U3:12690101:Sb": "ID",
+        "U3:12690102:C": "ID",
+        "U3:12690102:S": "ID",
+        "U3:12690103:C": "ID",
+        "U3:12690103:S": "ID",
+        "U4:12690101:C": "ID",
+        "U4:12690101:S": "ID",
+        "U4:12690102:C": "ID",
+        "U4:12690102:S": "ID",
+        "U4:12690103:C": "ID",
+        "U4:12690103:S": "ID",
+        "W16:12690101:C": "ID",
+        "W16:12690101:S": "ID",
+        "W16:12690102:C": "ID",
+        "W16:12690102:S": "ID",
+        "W16:12690103:C": "ID",
+        "W16:12690103:S": "ID"
+      },
+      "pass": true
+    },
+    "GDET69": {
+      "pass": true
+    },
+    "GEQ69": {
+      "pairs": 16,
+      "pass": true,
+      "unequal": []
+    },
+    "GFID69": {
+      "adapter_ast_violations": [],
+      "pass": true,
+      "records": 31,
+      "replay_mismatch": [],
+      "words_checked": 6200
+    },
+    "GHELD69": {
+      "id_of_3": {
+        "GB/C": 3,
+        "GB/S": 3
+      },
+      "pass": true
+    },
+    "GHOST69": {
+      "diff_vs_v0640": [
+        [
+          "A",
+          "brute/api/certify32r.py"
+        ]
+      ],
+      "import_violations": [],
+      "pass": true
+    },
+    "GLIVE69": {
+      "elapsed_s": 851.3,
+      "jobs": 31,
+      "pass": true,
+      "records": 31
+    },
+    "GMAJ69": {
+      "bit_errors": 0,
+      "fixed_reads_total": 291160702,
+      "pass": true,
+      "reads_total": 59870723
+    },
+    "GMATCH69": {
+      "pass": true,
+      "per_target": {
+        "U3": {
+          "id_records": 7,
+          "mismatch": [],
+          "n_true": 6,
+          "pass": true
+        },
+        "U4": {
+          "id_records": 6,
+          "mismatch": [],
+          "n_true": 7,
+          "pass": true
+        },
+        "W16": {
+          "id_records": 6,
+          "mismatch": [],
+          "n_true": 7,
+          "pass": true
+        }
+      }
+    },
+    "GS69_sound": {
+      "finished": 31,
+      "pass": true,
+      "wrong": 0
+    },
+    "GSTRETCH69": {
+      "id_of_3": {
+        "EJ/C": 3,
+        "EJ/S": 3
+      },
+      "pass": true
+    },
+    "GTEST69": {
+      "modules": 5,
+      "pass": true,
+      "test_files_match": true
+    },
+    "G_PROC69": {
+      "chain": [
+        "b5bdff8",
+        "e927063",
+        "248471e",
+        "c649562",
+        "0cd47ee",
+        "3fdfd90",
+        "b6d9381"
+      ],
+      "missing": [],
+      "pass": true,
+      "truth_unchanged": true
+    },
+    "G_recount69": {
+      "pass": true
+    }
+  },
+  "passed": [
+    "GDEC69",
+    "GDET69",
+    "GEQ69",
+    "GFID69",
+    "GHELD69",
+    "GHOST69",
+    "GLIVE69",
+    "GMAJ69",
+    "GMATCH69",
+    "GS69_sound",
+    "GSTRETCH69",
+    "GTEST69",
+    "G_PROC69",
+    "G_recount69"
+  ],
+  "reset_free_certification": "Open",
+  "results_sha256": "204e8ad5846f0239b6c490a67989cbf9ad42f611a4d5531610439635a85db1fc",
+  "status": "certified with resets on real software (CPython 3.13.5 incremental utf-8, utf-16-le, euc_jp and gb18030 decoders; read_bits 2, N <= 12 (euc_jp N <= 16), injected iid bit noise eps <= 0.30, delta 0.001; resets via fresh decoder objects)",
+  "study": "BRUTE-0650-RESETDECODER-069"
+}
