@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-03 EST (v0.65.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-03 EST (v0.65.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0650 -->
-- **v0.65.0: release in progress 2026-11-03 EST.** Study BRUTE-0650-RESETDECODER-069. Plan 069 b5bdff8; hand truth e927063; build authorization 29c7b8d, citing t143s742, t133s553 and t139s684. **CERTIFIED WITH RESETS, 14 of 14 gates.** New brute.certify/32r combines L* with a Vasilevskii-Chow N-complete suite and uses a fresh decoder object per word.
+- **v0.65.0: RELEASED 2026-11-03 at about 12:07 EST** (tag v0.65.0 at 2cb52ab, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.65.0; ledger release_0650 6980cf3; fresh-clone verify and 29/29 tests passed). Study BRUTE-0650-RESETDECODER-069. Plan 069 b5bdff8; hand truth e927063; build authorization 29c7b8d, citing t143s742, t133s553 and t139s684. **CERTIFIED WITH RESETS, 14 of 14 gates.** New brute.certify/32r combines L* with a Vasilevskii-Chow N-complete suite and uses a fresh decoder object per word.
   - **Run (Exact).** Launched once at 11:47:19 EST (ledger 3fb782c). Sealed complete at 12:01:31 (seal b6d9381): 31/31 records, 0 KILL, 851 s.
   - **Results:** 31/31 ID, 0 WRONG, and every hypothesis equals the truth: U3 6, U4 7, W16 7, EJ 13, GB 8. GEQ 16/16. 0 bit errors. Reads 0.21x. Gates acd1ab3; deviation #209 1d0ded3.
   - **Honest framing:** resets make the problem easier than reset-free learning. This is a classical N-complete suite, not the SAT engine, and the guarantee is conditional on the declared N. The targets are small and the noise is injected.
