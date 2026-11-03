@@ -1,0 +1,1228 @@
+{
+  "all_gated_pass": false,
+  "arm_spec": {
+    "B2": [
+      "scale20p2",
+      "scale20",
+      20,
+      "certify20b"
+    ],
+    "P2": [
+      "scale20p2",
+      "scale20",
+      20,
+      "certify20p"
+    ],
+    "P2b": [
+      "scale20p2",
+      "scale20",
+      20,
+      "certify20p"
+    ]
+  },
+  "caps": [
+    50000,
+    8000000,
+    400
+  ],
+  "certified_readbits2_N20_clique": false,
+  "claim": "certify/20p and certify/20b ID/IDF are exact conditional on noise-free readings and on true size <= the declared N (here N <= 20). IDF identifies the machine from the current state, not the start. Inferred reason the size condition is needed: a larger machine can copy the true machine on every visited state",
+  "failed": [
+    "GS_ref63"
+  ],
+  "framing": "BACK ON THE HARD PROBLEM: 2-bit readings at 20 states; a pool change (exact max-clique anchor, certify/20p) against the budget-matched frozen certify/20b, declared N 20",
+  "gates": {
+    "GDET63": {
+      "observed": {
+        "ci95": [
+          0.3423802275066531,
+          1.0
+        ],
+        "columns": [
+          "seed",
+          "canon63_equal",
+          "P2",
+          "P2b"
+        ],
+        "identical": 2,
+        "of": 2,
+        "per_case": [
+          [
+            12630101,
+            true,
+            "ID",
+            "ID"
+          ],
+          [
+            12630102,
+            true,
+            "ID",
+            "ID"
+          ]
+        ],
+        "wall_guard_firings_B2_reported": [],
+        "wall_guard_firings_P2_P2b": []
+      },
+      "pass": true
+    },
+    "GFID63": {
+      "observed": {
+        "agree_with_20b": [
+          9,
+          9
+        ],
+        "bound": true,
+        "decided_in_gates": 7,
+        "equiv_cases": [
+          {
+            "both_decided": false,
+            "first_pin_ok": true,
+            "k_ok": true,
+            "label_20b": "AMB",
+            "label_20p": "AMB",
+            "n": 3,
+            "n_min_equal": null,
+            "oneshot_api": true,
+            "oneshot_sound": true,
+            "pins": 1,
+            "read_bits": 2,
+            "seed": 6320,
+            "sound_20b": true,
+            "sound_20p": true,
+            "stop_20b": "K_spent",
+            "stop_20p": "K_spent"
+          },
+          {
+            "both_decided": false,
+            "first_pin_ok": true,
+            "k_ok": true,
+            "label_20b": "AMB",
+            "label_20p": "AMB",
+            "n": 4,
+            "n_min_equal": null,
+            "oneshot_api": true,
+            "oneshot_sound": true,
+            "pins": 1,
+            "read_bits": 2,
+            "seed": 6321,
+            "sound_20b": true,
+            "sound_20p": true,
+            "stop_20b": "K_spent",
+            "stop_20p": "K_spent"
+          },
+          {
+            "both_decided": false,
+            "first_pin_ok": true,
+            "k_ok": true,
+            "label_20b": "AMB",
+            "label_20p": "AMB",
+            "n": 5,
+            "n_min_equal": null,
+            "oneshot_api": true,
+            "oneshot_sound": true,
+            "pins": 1,
+            "read_bits": 2,
+            "seed": 6322,
+            "sound_20b": true,
+            "sound_20p": true,
+            "stop_20b": "K_spent",
+            "stop_20p": "K_spent"
+          },
+          {
+            "both_decided": false,
+            "first_pin_ok": true,
+            "k_ok": true,
+            "label_20b": "AMB",
+            "label_20p": "AMB",
+            "n": 6,
+            "n_min_equal": null,
+            "oneshot_api": true,
+            "oneshot_sound": true,
+            "pins": 2,
+            "read_bits": 2,
+            "seed": 6323,
+            "sound_20b": true,
+            "sound_20p": true,
+            "stop_20b": "K_spent",
+            "stop_20p": "K_spent"
+          },
+          {
+            "both_decided": true,
+            "first_pin_ok": true,
+            "k_ok": true,
+            "label_20b": "IDF",
+            "label_20p": "IDF",
+            "n": 3,
+            "n_min_equal": true,
+            "oneshot_api": true,
+            "oneshot_sound": true,
+            "pins": 1,
+            "read_bits": 2,
+            "seed": 6324,
+            "sound_20b": true,
+            "sound_20p": true,
+            "stop_20b": "IDF",
+            "stop_20p": "IDF"
+          },
+          {
+            "both_decided": true,
+            "first_pin_ok": true,
+            "k_ok": true,
+            "label_20b": "IDF",
+            "label_20p": "IDF",
+            "n": 4,
+            "n_min_equal": true,
+            "oneshot_api": true,
+            "oneshot_sound": true,
+            "pins": 1,
+            "read_bits": 2,
+            "seed": 6325,
+            "sound_20b": true,
+            "sound_20p": true,
+            "stop_20b": "IDF",
+            "stop_20p": "IDF"
+          },
+          {
+            "both_decided": true,
+            "first_pin_ok": true,
+            "k_ok": true,
+            "label_20b": "IDF",
+            "label_20p": "IDF",
+            "n": 3,
+            "n_min_equal": true,
+            "oneshot_api": true,
+            "oneshot_sound": true,
+            "pins": 1,
+            "read_bits": 3,
+            "seed": 6330,
+            "sound_20b": true,
+            "sound_20p": true,
+            "stop_20b": "IDF",
+            "stop_20p": "IDF"
+          },
+          {
+            "both_decided": true,
+            "first_pin_ok": true,
+            "k_ok": true,
+            "label_20b": "IDF",
+            "label_20p": "IDF",
+            "n": 4,
+            "n_min_equal": true,
+            "oneshot_api": true,
+            "oneshot_sound": true,
+            "pins": 1,
+            "read_bits": 3,
+            "seed": 6331,
+            "sound_20b": true,
+            "sound_20p": true,
+            "stop_20b": "IDF",
+            "stop_20p": "IDF"
+          },
+          {
+            "both_decided": false,
+            "first_pin_ok": true,
+            "k_ok": true,
+            "label_20b": "AMB",
+            "label_20p": "AMB",
+            "n": 5,
+            "n_min_equal": null,
+            "oneshot_api": true,
+            "oneshot_sound": true,
+            "pins": 1,
+            "read_bits": 3,
+            "seed": 6332,
+            "sound_20b": true,
+            "sound_20p": true,
+            "stop_20b": "K_spent",
+            "stop_20p": "K_spent"
+          },
+          {
+            "both_decided": false,
+            "first_pin_ok": true,
+            "k_ok": true,
+            "label_20b": "AMB",
+            "label_20p": "IDF",
+            "n": 6,
+            "n_min_equal": null,
+            "oneshot_api": true,
+            "oneshot_sound": true,
+            "pins": 1,
+            "read_bits": 3,
+            "seed": 6333,
+            "sound_20b": true,
+            "sound_20p": true,
+            "stop_20b": "K_spent",
+            "stop_20p": "IDF"
+          },
+          {
+            "both_decided": true,
+            "first_pin_ok": true,
+            "k_ok": true,
+            "label_20b": "IDF",
+            "label_20p": "IDF",
+            "n": 3,
+            "n_min_equal": true,
+            "oneshot_api": true,
+            "oneshot_sound": true,
+            "pins": 1,
+            "read_bits": 3,
+            "seed": 6334,
+            "sound_20b": true,
+            "sound_20p": true,
+            "stop_20b": "IDF",
+            "stop_20p": "IDF"
+          },
+          {
+            "both_decided": true,
+            "first_pin_ok": true,
+            "k_ok": true,
+            "label_20b": "IDF",
+            "label_20p": "IDF",
+            "n": 4,
+            "n_min_equal": true,
+            "oneshot_api": true,
+            "oneshot_sound": true,
+            "pins": 1,
+            "read_bits": 3,
+            "seed": 6335,
+            "sound_20b": true,
+            "sound_20p": true,
+            "stop_20b": "IDF",
+            "stop_20p": "IDF"
+          },
+          {
+            "both_decided": true,
+            "first_pin_ok": true,
+            "k_ok": true,
+            "label_20b": "IDF",
+            "label_20p": "IDF",
+            "n": 3,
+            "n_min_equal": true,
+            "oneshot_api": true,
+            "oneshot_sound": true,
+            "pins": 1,
+            "read_bits": 4,
+            "seed": 6340,
+            "sound_20b": true,
+            "sound_20p": true,
+            "stop_20b": "IDF",
+            "stop_20p": "IDF"
+          },
+          {
+            "both_decided": false,
+            "first_pin_ok": true,
+            "k_ok": true,
+            "label_20b": "AMB",
+            "label_20p": "AMB",
+            "n": 4,
+            "n_min_equal": null,
+            "oneshot_api": true,
+            "oneshot_sound": true,
+            "pins": 1,
+            "read_bits": 4,
+            "seed": 6341,
+            "sound_20b": true,
+            "sound_20p": true,
+            "stop_20b": "K_spent",
+            "stop_20p": "K_spent"
+          },
+          {
+            "both_decided": false,
+            "first_pin_ok": true,
+            "k_ok": true,
+            "label_20b": "AMB",
+            "label_20p": "AMB",
+            "n": 5,
+            "n_min_equal": null,
+            "oneshot_api": true,
+            "oneshot_sound": true,
+            "pins": 1,
+            "read_bits": 4,
+            "seed": 6342,
+            "sound_20b": true,
+            "sound_20p": true,
+            "stop_20b": "K_spent",
+            "stop_20p": "K_spent"
+          },
+          {
+            "both_decided": false,
+            "first_pin_ok": true,
+            "k_ok": true,
+            "label_20b": "AMB",
+            "label_20p": "AMB",
+            "n": 6,
+            "n_min_equal": null,
+            "oneshot_api": true,
+            "oneshot_sound": true,
+            "pins": 1,
+            "read_bits": 4,
+            "seed": 6343,
+            "sound_20b": true,
+            "sound_20p": true,
+            "stop_20b": "K_spent",
+            "stop_20p": "K_spent"
+          },
+          {
+            "both_decided": true,
+            "first_pin_ok": true,
+            "k_ok": true,
+            "label_20b": "IDF",
+            "label_20p": "IDF",
+            "n": 3,
+            "n_min_equal": true,
+            "oneshot_api": true,
+            "oneshot_sound": true,
+            "pins": 1,
+            "read_bits": 4,
+            "seed": 6344,
+            "sound_20b": true,
+            "sound_20p": true,
+            "stop_20b": "IDF",
+            "stop_20p": "IDF"
+          },
+          {
+            "both_decided": true,
+            "first_pin_ok": true,
+            "k_ok": true,
+            "label_20b": "IDF",
+            "label_20p": "IDF",
+            "n": 4,
+            "n_min_equal": true,
+            "oneshot_api": true,
+            "oneshot_sound": true,
+            "pins": 1,
+            "read_bits": 4,
+            "seed": 6345,
+            "sound_20b": true,
+            "sound_20p": true,
+            "stop_20b": "IDF",
+            "stop_20p": "IDF"
+          }
+        ],
+        "failures": {},
+        "fidelity_exact": 7,
+        "no_network_run": {
+          "loop": [
+            "brute.certify/20p",
+            "IDF",
+            20,
+            142,
+            974666,
+            2,
+            20,
+            18,
+            4
+          ],
+          "socket_attempts": 0
+        },
+        "of_decided": 7,
+        "refusals": [
+          [
+            "0",
+            "{}",
+            "refused"
+          ],
+          [
+            "-1",
+            "{}",
+            "refused"
+          ],
+          [
+            "True",
+            "{}",
+            "refused"
+          ],
+          [
+            "1.5",
+            "{}",
+            "refused"
+          ],
+          [
+            "'5'",
+            "{}",
+            "refused"
+          ],
+          [
+            "None",
+            "{}",
+            "refused"
+          ],
+          [
+            "200000",
+            "{'read_bits': 5}",
+            "refused"
+          ],
+          [
+            "200000",
+            "{'family_bound': 21}",
+            "refused"
+          ],
+          [
+            "200000",
+            "{'family_bound': 0}",
+            "refused"
+          ]
+        ],
+        "sound_vs_truth": [
+          18,
+          18
+        ],
+        "vacuous": false
+      },
+      "pass": true
+    },
+    "GHOST63": {
+      "observed": {
+        "a16d_max_bound_unpatched": true,
+        "ast_scan": {
+          "PASS": true,
+          "bad_calls": [],
+          "bad_imports": [],
+          "imports": [
+            "__future__",
+            "brute"
+          ]
+        },
+        "bound_to_freeze_063": true,
+        "frozen_api_unchanged": true,
+        "no_network_run": {
+          "loop": [
+            "brute.certify/20p",
+            "IDF",
+            20,
+            142,
+            974666,
+            2,
+            20,
+            18,
+            4
+          ],
+          "socket_attempts": 0
+        },
+        "socket_attempts": 0,
+        "static_ok": true
+      },
+      "pass": true
+    },
+    "GP63": {
+      "observed": {
+        "B2_ID_IDF": 1,
+        "P2_ID_IDF": 4,
+        "P2_minus_B2": 3,
+        "P2b_ID_IDF_reported": 2,
+        "ci95_B2": [
+          0.030053369748306632,
+          0.5635028221864702
+        ],
+        "ci95_P2": [
+          0.299993315138392,
+          0.9032285888942195
+        ],
+        "discordant_B2_only": 0,
+        "discordant_P2_only": 3,
+        "label_source": "recount",
+        "mcnemar_exact_p": 0.25,
+        "of": 6,
+        "rule": "P2 ID+IDF >= 3 of 6 AND P2 - B2 >= 2 (plan 3 of 8 and 2; scaled ceil(3n/8), ceil(2n/8) by #200)"
+      },
+      "pass": true
+    },
+    "GS63_sound": {
+      "observed": {
+        "WRONG": [],
+        "columns": [
+          "seed",
+          "B2",
+          "P2",
+          "P2b"
+        ],
+        "label_source": "recount",
+        "per_case": [
+          [
+            12630101,
+            "IDU",
+            "ID",
+            "ID"
+          ],
+          [
+            12630102,
+            "IDU",
+            "ID",
+            "ID"
+          ],
+          [
+            12630103,
+            "IDU",
+            "ID",
+            null
+          ],
+          [
+            12630104,
+            "ID",
+            "ID",
+            null
+          ],
+          [
+            12630105,
+            "IDU",
+            "IDU",
+            null
+          ],
+          [
+            12630106,
+            "IDU",
+            "IDU",
+            null
+          ]
+        ],
+        "records": 14
+      },
+      "pass": true
+    },
+    "GS_ref63": {
+      "observed": {
+        "PASS": false,
+        "audited": 2,
+        "block": "main",
+        "complete": false,
+        "decided": 7,
+        "elapsed_informational": 1800.3318453730026,
+        "k_spent_as_amb": 0,
+        "misfires": [],
+        "mismatch_count": 0,
+        "mutations": 20,
+        "not_audited": [
+          "main/scale20p2/12630101/P2",
+          "main/scale20p2/12630102/P2",
+          "main/scale20p2/12630103/P2",
+          "main/scale20p2/12630101/P2b",
+          "main/scale20p2/12630102/P2b"
+        ],
+        "not_reached": 7,
+        "of": 20,
+        "per_arm": {
+          "B2": {
+            "audited": 1,
+            "decided": 1,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 6
+          },
+          "P2": {
+            "audited": 1,
+            "decided": 4,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 6
+          },
+          "P2b": {
+            "audited": 0,
+            "decided": 2,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 2
+          }
+        },
+        "records": 14,
+        "scope": {
+          "budget_s": 1800.0,
+          "key_order": [
+            "scale20p2"
+          ],
+          "order": [
+            "B2",
+            "P2",
+            "P2b"
+          ],
+          "workers": 8
+        },
+        "vacuous": false,
+        "verdicts_checked": 4
+      },
+      "pass": false
+    },
+    "GTEST63": {
+      "observed": {
+        "gated": {
+          "test_certify16": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16d": {
+            "returncode": 0,
+            "tests": 11
+          },
+          "test_certify16e": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16n": {
+            "returncode": 0,
+            "tests": 10
+          },
+          "test_certify20b": {
+            "returncode": 0,
+            "tests": 6
+          },
+          "test_certify20n": {
+            "returncode": 0,
+            "tests": 8
+          },
+          "test_certify20p": {
+            "returncode": 0,
+            "tests": 8
+          },
+          "test_certify32b": {
+            "returncode": 0,
+            "tests": 5
+          },
+          "test_cover20": {
+            "returncode": 0,
+            "tests": 8
+          },
+          "test_release_0600": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_scalesearch4_0260": {
+            "returncode": 0,
+            "tests": 14
+          },
+          "test_scripts_063": {
+            "returncode": 0,
+            "tests": 10
+          }
+        },
+        "reported": {
+          "test_certify20w": {
+            "returncode": 0,
+            "tests": 6
+          },
+          "test_release_0590": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_scripts_062": {
+            "returncode": 0,
+            "tests": 9
+          }
+        }
+      },
+      "pass": true
+    },
+    "G_PROC63": {
+      "observed": {
+        "clauses": {
+          "commit_order_file": true,
+          "ledger_times_non_decreasing": true,
+          "ledger_times_parse": true,
+          "main_sealed": true,
+          "order": true
+        },
+        "events": [
+          "preregistration_063",
+          "build_authorization_063",
+          "seedcheck_063",
+          "prefreeze_smoke_063",
+          "deviation_200",
+          "freeze_063",
+          "main_run_063"
+        ],
+        "required_order": [
+          "preregistration_063",
+          "build_authorization_063",
+          "seedcheck_063",
+          "prefreeze_smoke_063",
+          "deviation_200",
+          "freeze_063",
+          "main_run_063"
+        ]
+      },
+      "pass": true
+    },
+    "G_recount63": {
+      "observed": {
+        "PASS": true,
+        "cases": 6,
+        "decided_by_arm": {
+          "B2": 1,
+          "P2": 4,
+          "P2b": 2
+        },
+        "mismatches": [],
+        "records": 14,
+        "study_decided_by_arm": {
+          "B2": 1,
+          "P2": 4,
+          "P2b": 2
+        },
+        "wrong": 0
+      },
+      "pass": true
+    }
+  },
+  "label_source": "recount",
+  "n_p2b": 2,
+  "n_seeds": 6,
+  "node_cap": 200000,
+  "not_exercised": [],
+  "process": "lean",
+  "reports": {
+    "labels": {
+      "B2": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.030053369748306632,
+            0.5635028221864702
+          ],
+          "n": 6,
+          "x": 1
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.4364971778135299,
+            0.9699466302516934
+          ],
+          "n": 6,
+          "x": 5
+        },
+        "NOFIT": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "P2": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.299993315138392,
+            0.9032285888942195
+          ],
+          "n": 6,
+          "x": 4
+        },
+        "IDF": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.09677141110578043,
+            0.7000066848616079
+          ],
+          "n": 6,
+          "x": 2
+        },
+        "NOFIT": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "P2b": {
+        "AMB": {
+          "ci95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "n": 2,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.3423802275066531,
+            1.0
+          ],
+          "n": 2,
+          "x": 2
+        },
+        "IDF": {
+          "ci95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "n": 2,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "n": 2,
+          "x": 0
+        },
+        "NOFIT": {
+          "ci95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "n": 2,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "n": 2,
+          "x": 0
+        }
+      }
+    }
+  },
+  "schema": "brute.gates.v60_0",
+  "sealed_input_verified": true,
+  "secondary": {
+    "CLIQUE63": {
+      "observed": {
+        "columns": [
+          "seed",
+          "greedy_prefix",
+          "B2_greedy_final",
+          "P2_greedy_final",
+          "P2_anchor_clique_size",
+          "P2_final_clique_len",
+          "P2_pins"
+        ],
+        "of": 6,
+        "per_case": [
+          [
+            12630101,
+            14,
+            14,
+            18,
+            18,
+            18,
+            5
+          ],
+          [
+            12630102,
+            15,
+            15,
+            16,
+            17,
+            17,
+            2
+          ],
+          [
+            12630103,
+            14,
+            15,
+            15,
+            16,
+            16,
+            3
+          ],
+          [
+            12630104,
+            16,
+            19,
+            19,
+            19,
+            19,
+            4
+          ],
+          [
+            12630105,
+            11,
+            11,
+            13,
+            15,
+            15,
+            4
+          ],
+          [
+            12630106,
+            14,
+            14,
+            16,
+            16,
+            16,
+            2
+          ]
+        ]
+      },
+      "pass": null,
+      "rule": "reported: exact anchor clique size and pin count from certify/20p; greedy apartness cliques from frozen apart_matrix / greedy_clique"
+    },
+    "GCOST63": {
+      "elapsed_s": 2151.96032939601,
+      "observed": {
+        "B2": {
+          "budget_spent": 5,
+          "chunks": 956,
+          "conflicts": 42234811,
+          "decided_conflicts": [
+            2222128
+          ],
+          "records": 6,
+          "steps": 156,
+          "wall_s": 9028.0
+        },
+        "P2": {
+          "budget_spent": 2,
+          "chunks": 825,
+          "conflicts": 22177408,
+          "decided_conflicts": [
+            1208468,
+            1372090,
+            1568740,
+            2012314
+          ],
+          "records": 6,
+          "steps": 673,
+          "wall_s": 1419.2
+        },
+        "P2b": {
+          "budget_spent": 0,
+          "chunks": 176,
+          "conflicts": 2777208,
+          "decided_conflicts": [
+            1208468,
+            1568740
+          ],
+          "records": 2,
+          "steps": 188,
+          "wall_s": 107.3
+        }
+      },
+      "pass": null,
+      "rule": "reported (walls informational)"
+    },
+    "GSTATS63": {
+      "columns": [
+        "seed",
+        "per arm [label, n_min, extra_actions, rounds, conflicts]"
+      ],
+      "observed": [
+        [
+          12630101,
+          [
+            "IDU",
+            null,
+            1,
+            2,
+            8000546
+          ],
+          [
+            "ID",
+            20,
+            115,
+            37,
+            1208468
+          ],
+          [
+            "ID",
+            20,
+            115,
+            37,
+            1208468
+          ]
+        ],
+        [
+          12630102,
+          [
+            "IDU",
+            null,
+            0,
+            1,
+            8000433
+          ],
+          [
+            "ID",
+            20,
+            73,
+            22,
+            1568740
+          ],
+          [
+            "ID",
+            20,
+            73,
+            22,
+            1568740
+          ]
+        ],
+        [
+          12630103,
+          [
+            "IDU",
+            null,
+            58,
+            17,
+            8009296
+          ],
+          [
+            "ID",
+            20,
+            184,
+            49,
+            1372090
+          ]
+        ],
+        [
+          12630104,
+          [
+            "ID",
+            20,
+            97,
+            29,
+            2222128
+          ],
+          [
+            "ID",
+            20,
+            126,
+            36,
+            2012314
+          ]
+        ],
+        [
+          12630105,
+          [
+            "IDU",
+            null,
+            0,
+            1,
+            8002361
+          ],
+          [
+            "IDU",
+            19,
+            94,
+            23,
+            8015779
+          ]
+        ],
+        [
+          12630106,
+          [
+            "IDU",
+            null,
+            0,
+            1,
+            8000047
+          ],
+          [
+            "IDU",
+            19,
+            81,
+            26,
+            8000017
+          ]
+        ]
+      ],
+      "pass": null,
+      "rule": "reported"
+    },
+    "PROBE63": {
+      "observed": {
+        "summary": {
+          "L2": {
+            "decided": 0,
+            "labels": [
+              "IDU",
+              "IDU",
+              "IDU",
+              "IDU"
+            ],
+            "n_min": [
+              19,
+              19,
+              19,
+              19
+            ],
+            "of": 4
+          },
+          "P2": {
+            "decided": 3,
+            "labels": [
+              "ID",
+              "IDU",
+              "ID",
+              "IDF"
+            ],
+            "n_min": [
+              20,
+              20,
+              20,
+              20
+            ],
+            "of": 4
+          }
+        }
+      },
+      "pass": null,
+      "rule": "exploratory, sealed non-fresh seeds; not gate evidence"
+    },
+    "SEEDCHECK63": {
+      "observed": {
+        "frozen_in_063": true,
+        "seedcheck_pass": true
+      },
+      "pass": null
+    }
+  },
+  "sound_no_2bit_gain": false,
+  "status_phrase": "not certified, no certification status (failing gates: GS_ref63)",
+  "stop": {
+    "hard_kill_s": 2400.0,
+    "stop_rule": "conflict-only (no hook; 2400 s case kill as safety net)"
+  },
+  "study": "BRUTE-0600-ANCHOR2B20-063",
+  "workers": 6
+}
