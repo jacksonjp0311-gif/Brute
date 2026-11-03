@@ -1,0 +1,119 @@
+{
+ "schema": "brute.plan.v1",
+ "study": "BRUTE-0630-SEQNOISE24-066",
+ "version_under_test": "0.63.0",
+ "parent_study": "BRUTE-0620-SEQNOISE2B20-065",
+ "written": "2026-11-03 ~08:55 EST, after the v0.62.0 release (3/13 gates, NOT certified: main run sealed partial 21/25 at the 2400 s cap; tag v0.62.0 at e3f9f4a; main 9e40e3f)",
+ "status": "preregistered (plan only; no build code committed, no fresh seed use, no data). Build needs a ledgered build_authorization_066 citing the standing go t133s553 and t139s684",
+ "standing_go": [
+  "t133s553",
+  "t139s684 (James, Nov 2 2026: keep going version after version until something valuable turns up; stop only when he says so)"
+ ],
+ "agreed_direction": "James, Nov 2 2026 20:10 EST: after v0.60.0 spend 2-3 versions testing how far the new method goes at larger sizes and with noise, prefer good ideas over budget bumps, then choose deliberately between a black-box certification tool and a messier real-world problem. v0.61.0 was the size version (certified N <= 24), v0.62.0 the noise version (not certified: partial run). This is the third and last test version: noise AND size together, with the liveness defect that sank v0.62.0 fixed by design.",
+ "branch_taken": "plan 065 FAILED 10 of 13 gates, all INCOMPLETE_INPUT: one hard world (12650105) never finished in any arm and the run hit its 2400 s cap. next_if_fail said: diagnose on sealed data before any change. Diagnosis (deviation #205, Observed): the 21 finished records were all sound, every noisy record equalled C20, 0 settled-bit errors, reads 0.20-0.22x the fixed rule. The failure is liveness, not noise: a case was bounded only in conflicts, conflict throughput on that world was several times slower than on the others and fell as the run went on, and the in-process 1800 s case kill did not end the jobs (Open). So the change is to the RUNNER, not to the method: every job gets a hard process-level wall kill, and a killed job is a recorded, undecided outcome (label KILL) instead of missing input.",
+ "choice": {
+  "job_kill": "CHOSEN (the fix). The runner starts each job in its own process and kills it (SIGKILL) at JOB_KILL_S = 600 s wall; the checkpoint then gets a KILL record (label 'KILL', stop 'KILL', undecided, no trace). With 21 jobs on 7 workers the run is bounded by 3 waves x 600 s = 1800 s < the 2400 s cap, so the study is complete by construction. A KILL is host-dependent, so it can only remove decisions, never add one; soundness gates are unaffected. Killed jobs are counted and published.",
+  "noise_at_24": "CHOSEN (the size question). brute.certify/32s = the certify/20s sequential re-read front end on an unchanged certify/32p (declared N 24). The SAT side is unchanged, so noise can at most match C24; the question is whether the equality and the read savings hold at 24 states, eps 0.30.",
+  "confirm_at_20": "the eps 0.30 arm at 20 states again on fresh seeds (gated this time) with its noise-free control, so the v0.62.0 observation becomes a gated result or is refuted",
+  "rejected": {
+   "relaunch or reuse of study-065 data": "never (standing rule); 065 stays sealed partial",
+   "S10 / S20 arms": "observed equal to C20 on 5/5 in 065; eps 0.30 is the hardest level and dominates; dropped to keep the run inside the cap",
+   "budget above 8M": "excluded by the agreed direction (ideas over budget bumps)",
+   "fixing the in-process case guard": "would change a frozen module; the process kill is outside the method and needs no frozen change; the guard question stays Open and is reported"
+  }
+ },
+ "honest_framing": "No new reasoning power: certify/20p and certify/32p are unchanged, so noisy arms cannot decide more than noise-free ones, and 24-state 2-bit coverage was only 2/6 in study-064. A pass means: the noisy identifier is certified at eps <= 0.30 for 2-bit worlds up to 24 states, at about a fifth of the fixed rule's reads, and the runner can no longer be sunk by one hard world. After this version the 2-3 test versions are done and the deliberate choice (black-box tool vs real-world problem) is due.",
+ "brand": "charcoal and sage; no purple, neon, emoji or gold",
+ "question": "(A) With iid bit flips at eps 0.30 (eps_bar 0.35, delta 0.001), is every settled bit correct and does each finished noisy record equal the noise-free record on the same world, at 20 and at 24 states? (B) Does S30 decide >= 3/6 and >= C20 - 1, and S24 >= C24 - 1? (C) Are pooled reads <= 0.35x the fixed rule in S30 and S24? (D) Does the run complete (every job finished or KILL) inside the cap? (E) Is every record sound and every decided record audited? (F) Is S30 deterministic?",
+ "hypotheses": {
+  "H1": "no record is WRONG",
+  "H2": "0 settled-bit errors in all finished noisy records",
+  "H3": "every finished noisy record's inner canonical record equals its control's on the same seed",
+  "H4": "S30 ID+IDF >= 3/6 and >= C20 - 1",
+  "H5": "S24 ID+IDF >= C24 - 1",
+  "H6": "pooled reads <= 0.35x the fixed rule in S30 and in S24",
+  "H7": "S30 == S30b byte-identical",
+  "H8": "the main run completes: 21/21 jobs have a record (finished or KILL), sealed complete",
+  "H9 (reported)": "KILL count by arm, reads per observation, settle times, walls"
+ },
+ "design": {
+  "api": "one new module brute/api/certify32s.py (brute.certify/32s), host-agnostic: Certifier32S is certify/20s's sequential front end on an unchanged Certifier32P (family_bound 1..32); threshold/settle are certify/20s's (imported). certify/20s, certify/20p, certify/32p and every earlier module are frozen and imported only.",
+  "worlds": "experiments/worlds_066.py: 'scale20' = worlds_064.world(seed, 'scale20'); 'scale24' = worlds_064.world(seed, 'scale24') (2-bit, noise-free emissions); passive prefix worlds_026.actions(seed, 0, k); Noise exactly as worlds_065 (random.Random(seed*13+650+int(round(1000*eps))), order (t, read, bit), one random() per bit, flip iff draw < eps).",
+  "arms": {
+   "C20": "frozen certify/20p, noise-free, N 20, scale20",
+   "S30": "frozen certify/20s, eps 0.30, eps_bar 0.35, delta 0.001, N 20, scale20 (gated headline at 20)",
+   "C24": "frozen certify/32p, noise-free, N 24, scale24",
+   "S24": "certify/32s, eps 0.30, eps_bar 0.35, delta 0.001, N 24, scale24 (size question)",
+   "S30b": "S30 again on the first scale20 seed (determinism)"
+  },
+  "counterfactual": "fixed-rule reads per noisy record = sum over its observations t of certify20n.reads_for(t, eps_bar, delta, 2) (Exact for the trace taken)",
+  "caps": "C 50000, B 8000000, K 400, node cap 200000, max_chunks None, every arm; conflict-only stop inside a job; in-process 1800 s case guard unchanged (safety net); runner-level JOB_KILL_S 600 s per job (SIGKILL; KILL record)",
+  "runner": "one process per job (multiprocessing fork), at most 7 running, polled every 0.5 s; a finished job writes its record to a file the parent reads and checkpoints; a job alive at 600 s is killed and checkpointed as KILL. Job order: C24, S24, C20, S30 (seeds ascending), then S30b. MAIN_CAP_S 2400 (capwatch + sealed partial stays as the last resort; with the job kill it should not be reachable).",
+  "reference": "scripts/run_reference_066.py = the clique-pinned experiments/v0610_reference.py on each decided record's settled trace with that record's bound (20 or 24); budget 1800 s, 6 workers, 20 seeded mutations (random.Random(660))",
+  "fidelity": "api_checks_066 replays every decided noisy record's raw readings through the public interface (certify/20s or certify/32s) and gets the same record; certify/32s at eps_bar 0 == certify/32p on the smoke worlds; certify/32s at family_bound 20 == certify/20s on a smoke world"
+ },
+ "cases": {
+  "C20": 6,
+  "S30": 6,
+  "C24": 4,
+  "S24": 4,
+  "S30b": 1,
+  "jobs": "6 C20 + 6 S30 + 4 C24 + 4 S24 + 1 S30b = 21",
+  "declared_before_data": true
+ },
+ "heldout_ranges": {
+  "scale20": "12660101-12660106",
+  "scale24": "12660201-12660204",
+  "note": "seedcheck_066 scans every tracked file (including packed .gz results) before any fresh seed; a hit moves the range by a ledgered deviation before data"
+ },
+ "smoke_range": "12660301-12660306 (pre-freeze smoke and the no-network check only; never gated)",
+ "criteria": {
+  "GS66_sound": "WRONG 0 on every finished record",
+  "GLIVE66": "the main run is sealed complete: every one of the 21 jobs has a record (finished or KILL) and the run ended before MAIN_CAP_S",
+  "GMAJ66": "0 settled-bit errors over every observation of every finished noisy record",
+  "GEQ66": "for every seed where both the noisy record and its control finished, the inner canonical records are equal; at least 4 such pairs at 20 states and at least 2 at 24 states",
+  "GN66": "S30 ID+IDF >= 3/6 and >= C20 - 1 (Wilson 95% CI reported) [headline]",
+  "GN24_66": "S24 ID+IDF >= C24 - 1, and >= 1",
+  "GREAD66": "pooled reads <= 0.35 x the fixed rule's reads on the same observations, separately in S30 and in S24",
+  "GDET66": "S30 and S30b canonical records byte-identical (both finished)",
+  "GFID66": "api_checks_066 replay fidelity on every decided noisy record; certify/32s at eps_bar 0 == certify/32p on the smoke worlds; certify/32s at N 20 == certify/20s on a smoke world",
+  "GHOST66": "no network during the no-network run",
+  "GS_ref66": "the clique-pinned reference audits EVERY decided record (complete) with 0 mismatches and 20/20 mutations, within 1800 s on 6 workers",
+  "G_recount66": "independent recount matches",
+  "GTEST66": "all tests pass",
+  "G_PROC66": "process events in the ledger in order"
+ },
+ "certification_rule": "'certified (read_bits 2, N <= 24, iid bit noise eps <= 0.30, delta 0.001, sequential re-reads)' iff every gate passes. If every gate except GN24_66 passes: 'certified (read_bits 2, N <= 20, iid bit noise eps <= 0.30, delta 0.001, sequential re-reads)'. If GS66_sound, GMAJ66, GEQ66, GS_ref66 or GLIVE66 fails: no certification.",
+ "incomplete_rule": "a KILL record is a complete, undecided outcome (it counts in denominators, never as decided). Only a job with NO record (sealed partial at the cap) is missing input; then GLIVE66 fails and every data gate fails INCOMPLETE_INPUT as in 065.",
+ "process": {
+  "lean": "LEAN (2026-10-29): plan locked before data, exact recount of false certificates, strict stress gate, failures published; main run capped about 30 min (job kill 600 s; hard cap + sealed partial at 2400 s); no drills, no host-pause probe; one fresh-clone check",
+  "release_tests": "tooling tests on synthetic input only may be committed before the freeze (declared in the pre-run deviation); TEST_SUITE_066 runs once, after the run (deviation #107 rule)",
+  "events": [
+   "preregistration_066",
+   "build_authorization_066",
+   "seedcheck_066",
+   "prefreeze_smoke_066",
+   "deviation_206",
+   "freeze_066",
+   "main_run_066",
+   "run_end_066",
+   "recount_066",
+   "reference_066",
+   "tests_066",
+   "api_checks_066",
+   "gates_066",
+   "release_0630",
+   "fresh_clone_verify_066"
+  ]
+ },
+ "runtime_projection": "065 finished 20-state records took 30-74 s (one world never finished); 064 P20 up to 434 s, P24 108-435 s. About 12 x 120 + 8 x 300 + 60 = 3900 CPU-s over 7 workers = about 560 s plus the tail; the job kill bounds the worst case at 3 waves x 600 s = 1800 s. No cut rule is needed; if the smoke shows a single 20-state record above 300 s the smoke is reported, not acted on.",
+ "next_if_pass": "the 2-3 test versions are done: put the deliberate choice to James (package brute as a black-box certification tool with the certified envelope, or aim it at a messier real-world problem)",
+ "next_if_fail": "diagnose the failing gate on sealed data before any change; if GLIVE66 fails the runner fix itself is the defect",
+ "parent_result": {
+  "study": "BRUTE-0620-SEQNOISE2B20-065",
+  "gates": "3/13 (INCOMPLETE_INPUT)",
+  "gates_commit": "4c781c6",
+  "observed_finished": "C20/S10/S20/S30 5/5 each, 0 WRONG, 0 settled-bit errors, reads 0.20-0.22x",
+  "missing": "12650105 all arms"
+ }
+}
