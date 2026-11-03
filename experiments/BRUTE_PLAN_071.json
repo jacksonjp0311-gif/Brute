@@ -1,0 +1,84 @@
+{
+ "schema": "brute.plan.v71",
+ "study": "BRUTE-0670-HYBRID-071",
+ "version_under_test": "0.67.0",
+ "parent_study": "BRUTE-0660-RESETFREE-070",
+ "written": "2026-11-03 EST (agent-drafted, not reviewed by James)",
+ "status": "LOCKED at the plan_071 ledger entry",
+ "standing_go": "t143s742, t133s553, t139s684",
+ "honest_framing": "Arm H is a hybrid. The textbook learner brute.baseline/32t (Rivest-Schapire homing + L* + Vasilevskii-Chow, unchanged) proposes the hypothesis. Its own ID label assumes the homing sequence resynchronises. Brute's new SAT engine brute.certify/32x then tries to certify the hypothesis's current state under the declared state bound N alone (no reset, no resync assumption, clean readings). H's IDF is Brute's contribution; the hypothesis and most of the decoder steps are the textbook method's. The guarantee is conditional on the declared N.",
+ "question": "Can a textbook hypothesis plus a SAT certificate reach the textbook method's N-12 coverage while assuming only N (not resync)?",
+ "targets": [
+  "U3",
+  "U4",
+  "W16",
+  "EJ",
+  "GB"
+ ],
+ "heldout_note": "GB stays held out (no tuning on it; it was not piloted for 32x)",
+ "target_software": "experiments/targets_070.py (unchanged): real CPython incremental decoders, one object per job, no reset, 2-bit readings",
+ "api": {
+  "H": "brute.baseline/32t to its ID/stop, then brute.certify/32x on the SAME decoder stream (32x may run extra rival-splitting experiments on it)",
+  "B": "brute.certify/32h unchanged (070's Brute engine)",
+  "T": "brute.baseline/32t unchanged (textbook)"
+ },
+ "certify32x": {
+  "rival": "any Moore machine with at most N states and 4 reading codes",
+  "encoding": "exactly-one transitions/emissions; leveled apartness ap_j[p][q] between rival state p and hypothesis state q, j up to N+n; one pinned contiguous suffix window [u,L] of the reset-free trace",
+  "symmetry_breaking": "window positions pairwise apart on the trace itself (same actions then different reading; hypothesis only guides the choice) are pinned to distinct rival states under a per-window guard literal",
+  "loop": "SAT: a rival fits the window and ends apart from the hypothesis state q*. If the rival is inconsistent with the full trace, double the window back. If it is consistent but apart, run its separating word as an experiment (K step budget). If a solve is capped, double the window. UNSAT -> IDF. Sound: the window is a relaxation of the full trace",
+  "labels": [
+   "IDF",
+   "IDU (conflict budget)",
+   "K_spent",
+   "HYP_REJECTED",
+   "WINDOW_CAP"
+  ],
+  "params": {
+   "conflict_cap": 50000,
+   "budget_conflicts": 50000000,
+   "K": 40000,
+   "max_window_steps": 100000
+  }
+ },
+ "design": {
+  "N": {
+   "plus1": {
+    "U3": 7,
+    "U4": 8,
+    "W16": 8,
+    "EJ": 14,
+    "GB": 9
+   },
+   "n12": {
+    "U3": 12,
+    "U4": 12,
+    "W16": 12,
+    "EJ": 16,
+    "GB": 12
+   }
+  },
+  "jobs": "H, T at plus1 and n12, B at plus1 only (B at N 12 was IDU or OOM-killed in 070, disclosed). Seed 12710101 (fresh); 25 jobs. Smoke seed 12710301 at plus1 only",
+  "memory": "each job's child sets RLIMIT_AS = 1.8 GiB before running (runner-side, not in brute/). MemoryError or a signal exit -> KILL record (cap_hit true/false). At most 3 workers: 3 x 1.8 = 5.4 GiB, inside the ~6.9 GB the box has available (15.6 GB total). Budget from the pilots: the 070 OOM jobs peaked at 2.7-5.2 GB (now capped); the 32x pilots peaked at 129 MB (U3 N7) and about 2 GiB (U3 N12, out of memory at 19.8M clauses); the 100000-step window cap keeps the N-12 jobs near 1.1 GiB (Inferred from the clause counts)",
+  "time": "SIGKILL at 900 s -> KILL record; main cap 4500 s; the main run happens once"
+ },
+ "gates": {
+  "GHEAD71_plus1": "HEADLINE: H decided (IDF, recounted correct) on at least 4 of 5 targets at plus1 (N = true + 1), 0 wrong, never assuming resync",
+  "GN12_71_attempt": "REPORTED ATTEMPT (the brief's original headline; the pre-lock pilot predicts failure): H decided on at least 4 of 5 targets at n12, 0 wrong",
+  "GS71_sound": "0 WRONG among the decided records of H and B (both N)",
+  "GNORESYNC71": "every H IDF was produced by certify/32x UNSAT under N only (record field assumes_resync false, label IDF from 32x, never 32t's ID); resets 0 and decoder_objects 1 for every non-KILL record",
+  "GBASE71": "all 10 T records present and recounted; the H/B/T table is written; T is the comparison, not gated",
+  "GFID71": "every non-KILL record's action sequence replayed on one fresh decoder gives exactly the recorded readings",
+  "GMEM71": "every record has rlimit_as_bytes 1.8 GiB and workers 3; any cap hit appears as a KILL record",
+  "GHOST71": "the only brute/ change from v0.66.0 is A brute/api/certify32x.py, host-agnostic (imports only __future__ and brute.*)",
+  "GLIVE71": "the main run sealed complete within the main cap",
+  "G_recount71": "scripts/recount_071.py --check reproduces RECOUNT_071.json",
+  "GTEST71": "scripts/run_tests_0670.py --official passes",
+  "G_PROC71": "commit chain plan < build_authorization < freeze < run_start < seal"
+ },
+ "status_rule": "Release v0.67.0 either way. Every gate is reported; failures are published, never forced",
+ "recount": "truth_069 replay: H IDF is correct iff the hypothesis at q* is Moore-equivalent to the truth at its final state; B as 070; T as 070",
+ "pre_plan_exploration": "Observed (scratch /tmp/s71, U3 truth sim, 32t seed 1, NOT gate seeds, disclosed in deviation #211): (1) 32p suffix window: MemoryError at 20000 steps, still running after >6 min at 2000 steps; (2) the first 32x had an unsound stale pin, found and fixed (its fast results discarded); (3) the disjoint-window and unpinned-suffix variants stalled; (4) the trace-apart clique pin gave U3 N7 IDF in 17.6 s, 129 MB, truth-equivalent; U3 N12 ran out of memory (glucose int32 allocator, RLIMIT_AS 2 GiB) at iteration 8, cumulative window 126144 steps, 19.8M clauses, no IDF. U4, W16, EJ and GB were not piloted to a result. Whether H reaches N 12 is Open at lock",
+ "what_this_cannot_show": "No noise; real decoders only (5 small ones); N 12 is still small; one seed per cell; H's reach depends on the hypothesis being right (HYP_REJECTED otherwise)",
+ "headline_change": "The brief asked for the headline 'H decides >=4/5 at N 12'. At lock, the only N-12 pilot (U3) ran out of memory at a 126144-step cumulative window (19.8M clauses, 2 GiB cap) with rivals still fitting, so per the 14:24 EST instruction the headline is the true+1 gate H can honestly attempt. N 12 is still run and reported (GN12_71_attempt) and not re-tuned. A cumulative window cap of 100000 steps makes N-12 jobs stop as WINDOW_CAP under the 1.8 GiB cap instead of being killed"
+}
