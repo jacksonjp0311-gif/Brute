@@ -1,11 +1,19 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-02 EST (v0.60.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-03 EST (v0.61.0 release in progress)._
 
 ## Current version and state
 
+<!-- V0610 -->
+- **v0.61.0: release in progress** 2026-11-03 EST (gates 1b8229b, RELEASE.json e3c5adb, docs 3a2aa5a). Study BRUTE-0610-SCALE2B24-064. Status from the flags: "certified (read_bits 2, N <= 24, clique-anchored)".
+  - **Run complete (Observed).** 15/15 jobs, 12 cases; launched once with nohup 04:17:17 EST (ledger d3a2d9d), sealed about 04:49 EST (seal 8174302, 1917 s from launch, under the 2400 s cap); never relaunched. Cut by #202 before the freeze: N_P20B 1, N_B24 2.
+  - **PASS (11/11 gated):** GS64_sound (WRONG 0/15); GP24_64 (P24 2/6 [0.10, 0.70], bar 2/6); GP20_64 (P20 4/6 [0.30, 0.90]); GDET64 1/1; GFID64 6/6 exact; GXREF64 (1166 checks, 0 disagreements); GHOST64; GS_ref64 (clique-pinned reference 6/6 audited, complete, 19 s, 20/20 mutations); G_recount64; GTEST64; G_PROC64. B24 (frozen certify/32b, time-capped control) 0/2, one 1800 s case kill, reported.
+  - **Blunt reading:** the clique anchor is sound at 24 states and the audit gap is closed, but coverage is thin: 4 of 6 24-state worlds undecided at 8M (n_min 21-23). n = 6.
+  - **No CI.** Scheduled GitHub Actions stay disabled. The user's computer was offline; network went through the box.
+  - **Deviations:** #202 (pre-run), #203 (post-run: stalled executor 02:12-04:15 EST, reference wrong-path launch with no work, 1917 s run). **Next:** plan 065 (v0.62.0): sequential (SPRT) per-bit re-reads at eps 0.10-0.30 on 2-bit 20-state worlds (the noise version of the agreed 2-3 version test).
+
 <!-- V0600 -->
-- **v0.60.0: release in progress** 2026-11-02 EST (gates 1534a3a, RELEASE.json 28884b8, docs deec1e7). Study BRUTE-0600-ANCHOR2B20-063. Status from the flags: "not certified, no certification status (failing gates: GS_ref63)".
+- **v0.60.0: RELEASED** 2026-11-02 20:57 EST, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.60.0 (annotated tag object f873cbf at f89aac8; gates 1534a3a, RELEASE.json 28884b8, docs deec1e7; fresh-clone verify ledgered fresh_clone_verify_063). Study BRUTE-0600-ANCHOR2B20-063. Status from the flags: "not certified, no certification status (failing gates: GS_ref63)".
   - **Run complete (Observed).** 14/14 jobs, 6 cases; launched once with nohup 19:43:57 EST (ledger fbd42d0, pid 2153785), sealed about 20:19 EST (seal 9b0eb06, runner 2152 s); never relaunched. Cut by #200 before the freeze: N_SEEDS 6, N_P2B 2. The executor session was interrupted about 20:08 EST; the run was not touched and nothing was rerun.
   - **PASS: GP63** (P2 4/6 [0.30, 0.90] vs B2 1/6 [0.03, 0.56]; P2 - B2 = 3; discordant 3/0; McNemar p 0.25). **FAIL: GS_ref63** (CNF reference audited 2 of 7 decided records in 1800 s, 0 mismatches, 20/20 mutations, incomplete). **PASS (8/9 gated):** GS63_sound (WRONG 0/14); GP63; GDET63 2/2; GFID63 7/7 exact; GHOST63; G_recount63; GTEST63 (143 tests); G_PROC63.
   - **Blunt reading:** first observed 2-bit 20-state gain (encoding change, exact max-clique anchor 15-19 states); not certified because the unanchored independent audit is too slow. n = 6.
