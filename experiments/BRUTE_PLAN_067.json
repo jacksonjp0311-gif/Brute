@@ -1,0 +1,33 @@
+{
+  "schema": "brute.plan.v1",
+  "study": "BRUTE-0640-REALBOX-067",
+  "version_under_test": "0.64.0",
+  "parent_study": "BRUTE-0630-SEQNOISE24-066",
+  "written": "2026-11-03 ~10:55 EST, after the v0.63.0 release (14/14 gates, CERTIFIED read_bits 2, N <= 24, eps <= 0.30; tag v0.63.0 at 70dbf77; main aabfeda)",
+  "status": "PROPOSAL, NOT LOCKED. The three agreed test versions (v0.61.0 size, v0.62.0 noise, v0.63.0 noise and size) are done, so the direction choice is James's. This file records a recommended bridge design and the two alternatives; it fixes no seed range, no criteria thresholds and no build. It becomes a locked preregistration only through a new plan file (BRUTE_PLAN_067b) after James chooses, or after he says the bridge is fine. No build_authorization_067 may be ledgered before then.",
+  "standing_go": [
+    "t133s553",
+    "t139s684 (James, Nov 2 2026: keep going version after version until something valuable turns up; stop only when he says so)"
+  ],
+  "agreed_direction": "James, Nov 2 2026 20:10 EST: after v0.60.0 spend 2-3 versions testing how far the new method goes at larger sizes and with noise, prefer good ideas over budget bumps, then choose deliberately between a black-box certification tool and a messier real-world problem.",
+  "choice_for_james": {
+    "A_tool": "Package certify/32s as a black-box certification tool: a library entry point and CLI that takes any system exposing reset/act/read, declared N <= 24, read_bits 2, eps_bar, delta, and returns ID/IDF/UNDECIDED with the exact certified envelope printed beside it; plus a conformance suite (the 045-066 worlds as fixtures) and a short operator guide. Low research risk; the product value depends on how often real systems fit the envelope, which is unknown (Open).",
+    "B_real_world": "Aim Brute at a messier real-world problem: hidden state of real software or a real device through its public I/O, where noise is not iid, re-reads may disturb the state and the true size is not known. High value if it works; the current guarantee does not cover those conditions (Exact), so new ideas are needed (for example a size-free stopping argument or a correlated-noise model), not bigger budgets.",
+    "C_bridge_recommended": "First do one small version that serves both: certify the hidden control state of UNMODIFIED real software through its public I/O, inside the current envelope. If James then picks A, the adapter is the tool's first real input; if he picks B, the targets grow from here. Recommended because it tests real-system fit cheaply and pre-empts neither choice (Inferred).",
+    "credit": "The bridge idea was drafted by executor-A (/tmp/s67/PLAN_067_DRAFT.md, about 10:37 EST) and adopted here by executor-B."
+  },
+  "bridge_design_sketch": {
+    "targets": {
+      "T1": "Python stdlib incremental UTF-8 decoder (codecs.getincrementaldecoder('utf-8')('replace')). Actions are byte classes {0x41 ASCII, 0x80 continuation, 0xE1 3-byte lead}; the 2-bit reading is (emitted any char, emitted U+FFFD). Probe (Observed, /tmp/s67/utf8probe.py, suffixes up to length 4): 3 distinct states.",
+      "T2": "Same decoder with 0xF1 (4-byte lead) in place of 0xE1: 4 distinct states (Observed, same probe).",
+      "T3_open": "A larger real target (html.parser.HTMLParser tokenizer states, or a small real protocol state machine) still to be found and measured; required so the bridge is not only tiny worlds (Open)."
+    },
+    "adapter": "a new non-core module (scripts/ or adapters/, not brute/) that wraps the target as reset/act/read; brute/ stays host-agnostic",
+    "ground_truth": "white-box, from the target's source and an independent exhaustive probe, used only by the recount, never by the identifier",
+    "arms": "noise-free certify/32p and certify/32s with iid bit flips at eps 0.30 injected by the adapter, per target; plus one arm with a deliberately disturbing re-read (a read that also feeds a byte) reported as out-of-envelope, never gated",
+    "gates_to_lock_later": "sound vs white-box truth; equality of noisy and noise-free records; 0 settled-bit errors; reads <= 0.35x the fixed rule; reference audit; exact recount; KILL-bounded runner as in 066",
+    "honest_framing": "T1 and T2 are tiny (3 and 4 states), so the bridge tests the real-system path and its I/O fit, not scale. The noise is still injected iid, so it is not yet the messier problem itself."
+  },
+  "what_this_does_not_decide": "which branch Brute takes after the bridge; whether the bridge runs at all if James prefers A or B directly",
+  "next_step": "James picks A, B, or C (the bridge). Then a locked plan file with seed-free target list, frozen gates and a ledgered build_authorization_067."
+}
