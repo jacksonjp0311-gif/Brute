@@ -1,0 +1,263 @@
+{
+ "B": 8000000,
+ "C": 50000,
+ "K": 400,
+ "N": 24,
+ "api": "probe-local _P24 around brute.certify/20p and frozen brute.certify/32b",
+ "decided": 1,
+ "elapsed_informational": 13035.2,
+ "guard_case_s": 2400.0,
+ "label": "Observed",
+ "of": 6,
+ "purpose": "capability probe for plan 064 before locking; not evidence for any gate",
+ "records": [
+  {
+   "B": 8000000,
+   "arm": "B24",
+   "conflicts_spent": 8000549,
+   "final_clique": 0,
+   "label": "IDU",
+   "n_min": null,
+   "n_rounds": 32,
+   "repins": [],
+   "seed": 12610101,
+   "stop": "unknown",
+   "used": 107,
+   "wall_guard": 0,
+   "wall_s_informational": 2117.6
+  },
+  {
+   "B": 8000000,
+   "arm": "B24",
+   "conflicts_spent": 8001080,
+   "final_clique": 0,
+   "label": "IDU",
+   "n_min": null,
+   "n_rounds": 1,
+   "repins": [],
+   "seed": 12610102,
+   "stop": "unknown",
+   "used": 0,
+   "wall_guard": 0,
+   "wall_s_informational": 1777.9
+  },
+  {
+   "B": 8000000,
+   "arm": "P24",
+   "conflicts_spent": 8000649,
+   "final_clique": 20,
+   "label": "IDU",
+   "n_min": 23,
+   "n_rounds": 84,
+   "repins": [
+    [
+     176,
+     null,
+     13,
+     true
+    ],
+    [
+     192,
+     13,
+     15,
+     true
+    ],
+    [
+     203,
+     15,
+     16,
+     true
+    ],
+    [
+     288,
+     16,
+     17,
+     true
+    ],
+    [
+     296,
+     17,
+     18,
+     true
+    ],
+    [
+     322,
+     18,
+     19,
+     true
+    ],
+    [
+     393,
+     19,
+     20,
+     true
+    ]
+   ],
+   "seed": 12610101,
+   "stop": "unknown",
+   "used": 288,
+   "wall_guard": 0,
+   "wall_s_informational": 376.3
+  },
+  {
+   "B": 8000000,
+   "arm": "P24",
+   "conflicts_spent": 8000370,
+   "final_clique": 22,
+   "label": "IDU",
+   "n_min": 24,
+   "n_rounds": 37,
+   "repins": [
+    [
+     176,
+     null,
+     18,
+     true
+    ],
+    [
+     185,
+     18,
+     19,
+     true
+    ],
+    [
+     187,
+     19,
+     20,
+     true
+    ],
+    [
+     222,
+     20,
+     21,
+     true
+    ],
+    [
+     268,
+     21,
+     22,
+     true
+    ]
+   ],
+   "seed": 12610102,
+   "stop": "unknown",
+   "used": 106,
+   "wall_guard": 0,
+   "wall_s_informational": 362.8
+  },
+  {
+   "B": 8000000,
+   "arm": "P24",
+   "conflicts_spent": 8000189,
+   "final_clique": 20,
+   "label": "IDU",
+   "n_min": 23,
+   "n_rounds": 55,
+   "repins": [
+    [
+     176,
+     null,
+     17,
+     true
+    ],
+    [
+     233,
+     17,
+     18,
+     true
+    ],
+    [
+     244,
+     18,
+     19,
+     true
+    ],
+    [
+     327,
+     19,
+     20,
+     true
+    ]
+   ],
+   "seed": 12610103,
+   "stop": "unknown",
+   "used": 162,
+   "wall_guard": 0,
+   "wall_s_informational": 429.4
+  },
+  {
+   "B": 8000000,
+   "arm": "P24",
+   "conflicts_spent": 5721174,
+   "final_clique": 22,
+   "label": "IDF",
+   "n_min": 24,
+   "n_rounds": 46,
+   "repins": [
+    [
+     176,
+     null,
+     20,
+     true
+    ],
+    [
+     192,
+     20,
+     21,
+     true
+    ],
+    [
+     218,
+     21,
+     22,
+     true
+    ]
+   ],
+   "seed": 12610104,
+   "stop": "IDF",
+   "used": 123,
+   "wall_guard": 0,
+   "wall_s_informational": 233.2
+  }
+ ],
+ "schema": "brute.probe.v61_0",
+ "script_sha256": "0f1bd4e7717becf8a56871137884998d695a685bfdde83d03f9d39babbe349d7",
+ "seed_note": "sealed study-061 main 24-state seeds 12610101-04 (4-bit there; here original 2-bit emissions); spent, never fresh",
+ "seeds_non_fresh": [
+  12610101,
+  12610102,
+  12610103,
+  12610104
+ ],
+ "summary": {
+  "B24": {
+   "decided": 0,
+   "labels": [
+    "IDU",
+    "IDU"
+   ],
+   "n_min": [
+    null,
+    null
+   ],
+   "of": 2
+  },
+  "P24": {
+   "decided": 1,
+   "labels": [
+    "IDU",
+    "IDU",
+    "IDU",
+    "IDF"
+   ],
+   "n_min": [
+    23,
+    24,
+    23,
+    24
+   ],
+   "of": 4
+  }
+ },
+ "wrong": 0
+}
