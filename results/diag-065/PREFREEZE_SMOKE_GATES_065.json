@@ -1,0 +1,1144 @@
+{
+  "PASS": true,
+  "all_arms_present": true,
+  "api_checks": {
+    "PASS": true,
+    "equiv": {
+      "PASS": true,
+      "identical": 2
+    },
+    "ghost": {
+      "PASS": true,
+      "ast_scan": {
+        "PASS": true,
+        "bad_calls": [],
+        "bad_imports": [],
+        "imports": [
+          "__future__",
+          "brute",
+          "math"
+        ]
+      },
+      "frozen_api_sha256": {
+        "brute/api/certify.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+          "frozen": "a84c3b133ee450edfa699dfc6af62a51632551475e0b9a4837df794604055615",
+          "now": "a84c3b133ee450edfa699dfc6af62a51632551475e0b9a4837df794604055615"
+        },
+        "brute/api/certify14.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+          "frozen": "0c789ee206e8341ac610d00980c24976e5c027af5a02a5af4edb3c9068818ac6",
+          "now": "0c789ee206e8341ac610d00980c24976e5c027af5a02a5af4edb3c9068818ac6"
+        },
+        "brute/api/certify16.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+          "frozen": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1",
+          "now": "a46ac7dbb4f1550306136c5fd1b3ea3831b4445ec41f366ed72ab64ed072bac1"
+        },
+        "brute/api/certify16d.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+          "frozen": "98406b659e8abcbe9252da66da49b90317bdc544e1052711d8ec99a482992d25",
+          "now": "98406b659e8abcbe9252da66da49b90317bdc544e1052711d8ec99a482992d25"
+        },
+        "brute/api/certify16e.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+          "frozen": "99a6f3315d0ac7f9944dd6519fc968200543dc9ec50a991657dd33766a7112fb",
+          "now": "99a6f3315d0ac7f9944dd6519fc968200543dc9ec50a991657dd33766a7112fb"
+        },
+        "brute/api/certify16n.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+          "frozen": "46dc1ee28144e9f59af6db85e86d12ffd1b04c69cb8d12cbd85fd790ac95d19a",
+          "now": "46dc1ee28144e9f59af6db85e86d12ffd1b04c69cb8d12cbd85fd790ac95d19a"
+        },
+        "brute/api/certify16s.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+          "frozen": "2793a75ade79c9ebb83e707c350a8ba414b8372cf1de81dd52e3e5bd04cae35b",
+          "now": "2793a75ade79c9ebb83e707c350a8ba414b8372cf1de81dd52e3e5bd04cae35b"
+        },
+        "brute/api/certify20b.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+          "frozen": "7930f897679d19fec8e9519430509e1eb560970229c1e0db983e10dfa15e55e7",
+          "now": "7930f897679d19fec8e9519430509e1eb560970229c1e0db983e10dfa15e55e7"
+        },
+        "brute/api/certify20c.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+          "frozen": "48304db74271e113ae92e2d0cc00a1d165586f7e9491f1ee7716a679f048208e",
+          "now": "48304db74271e113ae92e2d0cc00a1d165586f7e9491f1ee7716a679f048208e"
+        },
+        "brute/api/certify20l.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+          "frozen": "1cfe06540e95c9b744c48bfeaa830e9726e9700e582d71b20849e1a6c6407216",
+          "now": "1cfe06540e95c9b744c48bfeaa830e9726e9700e582d71b20849e1a6c6407216"
+        },
+        "brute/api/certify20n.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+          "frozen": "c011b068314264bd6cac016202c875ec299c46f5be5373146c0794b5964fb95a",
+          "now": "c011b068314264bd6cac016202c875ec299c46f5be5373146c0794b5964fb95a"
+        },
+        "brute/api/certify20p.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+          "frozen": "3645b36a932bb7a1a42ab51be46a9ec1949e385ac5e24f5c2edff5443beda46a",
+          "now": "3645b36a932bb7a1a42ab51be46a9ec1949e385ac5e24f5c2edff5443beda46a"
+        },
+        "brute/api/certify20t.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+          "frozen": "8975cf73946bf19e568c21a764f9a018d02637df34d1c54fd90378112fb854a6",
+          "now": "8975cf73946bf19e568c21a764f9a018d02637df34d1c54fd90378112fb854a6"
+        },
+        "brute/api/certify20w.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+          "frozen": "709fcd7adf115e1cfa543ea8418e10402d86bf32af7dbba0bc4b2d04bab8adcd",
+          "now": "709fcd7adf115e1cfa543ea8418e10402d86bf32af7dbba0bc4b2d04bab8adcd"
+        },
+        "brute/api/certify32b.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+          "frozen": "31c7b438dd4e804027c1afb2b96c2fe6a810a4c93ccbffce5a4f34c2952ea91f",
+          "now": "31c7b438dd4e804027c1afb2b96c2fe6a810a4c93ccbffce5a4f34c2952ea91f"
+        },
+        "brute/api/certify32p.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+          "frozen": "fe79fee305ff41538dcd89e905840f21405cf6eeb145868c68e7143076cea092",
+          "now": "fe79fee305ff41538dcd89e905840f21405cf6eeb145868c68e7143076cea092"
+        },
+        "brute/api/certify8.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+          "frozen": "2d2c6143092397bb702f30c9f854674ee64ec36b3dc5c8041778f66adf73e240",
+          "now": "2d2c6143092397bb702f30c9f854674ee64ec36b3dc5c8041778f66adf73e240"
+        },
+        "brute/api/cover20.py": {
+          "freeze": "experiments/BRUTE_SOURCE_FREEZE_064.json",
+          "frozen": "c8f07024ba4269baca2e8747ea836693b4dc5909df136babb4ab0ef19683ec7d",
+          "now": "c8f07024ba4269baca2e8747ea836693b4dc5909df136babb4ab0ef19683ec7d"
+        }
+      },
+      "frozen_api_unchanged": true,
+      "network_pass": true,
+      "no_network_returncode": 0,
+      "no_network_run": {
+        "loop": [
+          "brute.certify/20s",
+          "brute.certify/20p",
+          "IDF",
+          20,
+          74,
+          1154228,
+          20530,
+          20
+        ],
+        "socket_attempts": 0
+      },
+      "socket_attempts": 0,
+      "static_ok": true
+    },
+    "montecarlo": {
+      "note": "reported only; per-bit wrong-barrier rate of the +-1 walk at threshold m_t",
+      "rows": [
+        {
+          "bound_eps_bar": 0.00017111471023167392,
+          "eps": 0.1,
+          "eps_bar": 0.15,
+          "exact_at_eps": 1.6934801016088065e-05,
+          "m": 5,
+          "mean_reads": 6.24678,
+          "rate": 2e-05,
+          "t": 1,
+          "trials": 100000,
+          "wrong": 2
+        },
+        {
+          "bound_eps_bar": 2.9290266333289887e-08,
+          "eps": 0.1,
+          "eps_bar": 0.15,
+          "exact_at_eps": 2.8679719899699167e-10,
+          "m": 10,
+          "mean_reads": 12.50592,
+          "rate": 0.0,
+          "t": 100,
+          "trials": 100000,
+          "wrong": 0
+        },
+        {
+          "bound_eps_bar": 9.121536487212163e-10,
+          "eps": 0.1,
+          "eps_bar": 0.15,
+          "exact_at_eps": 3.540706161459616e-12,
+          "m": 12,
+          "mean_reads": 15.00282,
+          "rate": 0.0,
+          "t": 500,
+          "trials": 100000,
+          "wrong": 0
+        },
+        {
+          "bound_eps_bar": 0.00015239256324291365,
+          "eps": 0.2,
+          "eps_bar": 0.25,
+          "exact_at_eps": 1.5258556235409006e-05,
+          "m": 8,
+          "mean_reads": 13.32388,
+          "rate": 1e-05,
+          "t": 1,
+          "trials": 100000,
+          "wrong": 1
+        },
+        {
+          "bound_eps_bar": 2.323057258575924e-08,
+          "eps": 0.2,
+          "eps_bar": 0.25,
+          "exact_at_eps": 2.3283064359965952e-10,
+          "m": 16,
+          "mean_reads": 26.65182,
+          "rate": 0.0,
+          "t": 100,
+          "trials": 100000,
+          "wrong": 0
+        },
+        {
+          "bound_eps_bar": 8.603915964974579e-10,
+          "eps": 0.2,
+          "eps_bar": 0.25,
+          "exact_at_eps": 3.637978807078478e-12,
+          "m": 19,
+          "mean_reads": 31.66798,
+          "rate": 0.0,
+          "t": 500,
+          "trials": 100000,
+          "wrong": 0
+        },
+        {
+          "bound_eps_bar": 0.00017222287150062284,
+          "eps": 0.3,
+          "eps_bar": 0.35,
+          "exact_at_eps": 7.052156526704938e-06,
+          "m": 14,
+          "mean_reads": 35.02432,
+          "rate": 3e-05,
+          "t": 1,
+          "trials": 100000,
+          "wrong": 3
+        },
+        {
+          "bound_eps_bar": 2.967093573530246e-08,
+          "eps": 0.3,
+          "eps_bar": 0.35,
+          "exact_at_eps": 4.973361313064914e-11,
+          "m": 28,
+          "mean_reads": 69.96566,
+          "rate": 0.0,
+          "t": 100,
+          "trials": 100000,
+          "wrong": 0
+        },
+        {
+          "bound_eps_bar": 7.232016057341559e-10,
+          "eps": 0.3,
+          "eps_bar": 0.35,
+          "exact_at_eps": 3.0816924898669094e-13,
+          "m": 34,
+          "mean_reads": 85.00374,
+          "rate": 0.0,
+          "t": 500,
+          "trials": 100000,
+          "wrong": 0
+        }
+      ]
+    },
+    "threshold": {
+      "PASS": true,
+      "checked": 1500,
+      "disagreements": []
+    }
+  },
+  "api_checks_rc": 0,
+  "label": "Observed",
+  "note": "PASS here means the tooling ran end to end on a sealed block, gates reproduce, the self-replay is exact, every noisy smoke record equals C20 read-free, the cut rule was applied as declared and the real commit-order check passes; GN65 / GN_low65 outcomes on smoke are recorded, not required",
+  "purpose": "Pre-freeze smoke-gates, runtime projection and cut check for study-065 (plan 065 runtime_projection; pre-run deviation #204).",
+  "recount": {
+    "PASS": true,
+    "cases": 1,
+    "decided_by_arm": {
+      "C20": 1,
+      "S10": 1,
+      "S20": 1,
+      "S30": 1,
+      "S30b": 1
+    },
+    "mismatches": [],
+    "records": 5,
+    "settled_bit_errors": 0,
+    "study_decided_by_arm": {
+      "C20": 1,
+      "S10": 1,
+      "S20": 1,
+      "S30": 1,
+      "S30b": 1
+    },
+    "wrong": 0
+  },
+  "recount_rc": 0,
+  "reference_rc": 0,
+  "reference_smoke": {
+    "PASS": true,
+    "audited": 5,
+    "complete": true,
+    "decided": 5,
+    "elapsed_informational": 4.022407723998185,
+    "mismatch_count": 0,
+    "mutations": 20,
+    "of": 20,
+    "per_arm": {
+      "C20": {
+        "audited": 1,
+        "decided": 1,
+        "idf_future_mismatch": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 1
+      },
+      "S10": {
+        "audited": 1,
+        "decided": 1,
+        "idf_future_mismatch": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 1
+      },
+      "S20": {
+        "audited": 1,
+        "decided": 1,
+        "idf_future_mismatch": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 1
+      },
+      "S30": {
+        "audited": 1,
+        "decided": 1,
+        "idf_future_mismatch": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 1
+      },
+      "S30b": {
+        "audited": 1,
+        "decided": 1,
+        "idf_future_mismatch": 0,
+        "misfires": 0,
+        "mismatches": 0,
+        "records": 1
+      }
+    },
+    "records": 5,
+    "scope": {
+      "budget_s": 1800.0,
+      "key_order": [
+        "scale20"
+      ],
+      "order": [
+        "C20",
+        "S10",
+        "S20",
+        "S30",
+        "S30b"
+      ],
+      "workers": 6
+    },
+    "vacuous": false
+  },
+  "release_ok_synthetic": true,
+  "runtime_projection": {
+    "B65": 8000000,
+    "candidates": {
+      "N_S20=3,N_S10=3": {
+        "cpu_s": 6204.9,
+        "jobs": 19,
+        "per_arm": {
+          "C20": 6,
+          "S10": 3,
+          "S20": 3,
+          "S30": 6,
+          "S30b": 1
+        },
+        "projected_run_s": 1105.8
+      },
+      "N_S20=3,N_S10=6": {
+        "cpu_s": 6582.9,
+        "jobs": 22,
+        "per_arm": {
+          "C20": 6,
+          "S10": 6,
+          "S20": 3,
+          "S30": 6,
+          "S30b": 1
+        },
+        "projected_run_s": 1105.8
+      },
+      "N_S20=6,N_S10=6": {
+        "cpu_s": 6960.9,
+        "jobs": 25,
+        "per_arm": {
+          "C20": 6,
+          "S10": 6,
+          "S20": 6,
+          "S30": 6,
+          "S30b": 1
+        },
+        "projected_run_s": 1170.3
+      }
+    },
+    "caveat": "the 065 seeds are fresh, so their walls can differ from the 064 seeds; the 1800 s case kill and the 2400 s main cap (seal-partial) still bound the run",
+    "chosen_projection": {
+      "cpu_s": 6960.9,
+      "jobs": 25,
+      "per_arm": {
+        "C20": 6,
+        "S10": 6,
+        "S20": 6,
+        "S30": 6,
+        "S30b": 1
+      },
+      "projected_run_s": 1170.3
+    },
+    "cut_applied": false,
+    "cut_at_s": 2000.0,
+    "cut_consistent": true,
+    "cut_exhausted": false,
+    "label": "Inferred",
+    "main_cap_s": 2400.0,
+    "per_job_walls_s": [
+      534.5,
+      379.3,
+      314.8,
+      256.5,
+      63.0,
+      58.5
+    ],
+    "projected_main_s": 1170.3,
+    "required": {
+      "N_S10": 6,
+      "N_S20": 6
+    },
+    "runner": {
+      "N_S10": 6,
+      "N_S20": 6,
+      "N_S30B": 1,
+      "N_SEEDS": 6
+    },
+    "sealed_064_P20_walls_s": [
+      427.6,
+      303.5,
+      251.8,
+      205.2,
+      50.4,
+      46.8
+    ],
+    "smoke_walls_B2M_s": {
+      "C20": [
+        71.2
+      ],
+      "S10": [
+        71.3
+      ],
+      "S20": [
+        70.9
+      ],
+      "S30": [
+        71.5
+      ],
+      "S30b": [
+        72.0
+      ]
+    },
+    "source": "sealed results/study-064/main P20 case walls (frozen certify/20p, B 8M, 6 workers, scale20 generator) times 1.25; each arm's n jobs take the n largest (every arm repeats the C20 SAT work, GEQ65)",
+    "workers": 6
+  },
+  "smoke_determinism": [
+    [
+      12650301,
+      true
+    ]
+  ],
+  "smoke_inner_equal_C20": [
+    [
+      12650301,
+      "S10",
+      true
+    ],
+    [
+      12650301,
+      "S20",
+      true
+    ],
+    [
+      12650301,
+      "S30",
+      true
+    ],
+    [
+      12650301,
+      "S30b",
+      true
+    ]
+  ],
+  "smoke_reads": {
+    "S10": [
+      5295,
+      26061,
+      0
+    ],
+    "S20": [
+      11276,
+      50767,
+      0
+    ],
+    "S30": [
+      29845,
+      140403,
+      0
+    ],
+    "S30b": [
+      29845,
+      140403,
+      0
+    ]
+  },
+  "smoke_record_columns": [
+    "key",
+    "seed",
+    "arm: label, stop, n_min, used, n_rounds, conflicts_spent, wall_guard, observations, reads_total, fixed_reads_total, settled_bit_errors, case wall s"
+  ],
+  "smoke_records": [
+    [
+      "scale20",
+      12650301,
+      {
+        "C20": [
+          "ID",
+          "ID",
+          20,
+          176,
+          57,
+          1624044,
+          0,
+          null,
+          null,
+          null,
+          null,
+          71.2
+        ],
+        "S10": [
+          "ID",
+          "ID",
+          20,
+          176,
+          57,
+          1624044,
+          0,
+          353,
+          5295,
+          26061,
+          0,
+          71.3
+        ],
+        "S20": [
+          "ID",
+          "ID",
+          20,
+          176,
+          57,
+          1624044,
+          0,
+          353,
+          11276,
+          50767,
+          0,
+          70.9
+        ],
+        "S30": [
+          "ID",
+          "ID",
+          20,
+          176,
+          57,
+          1624044,
+          0,
+          353,
+          29845,
+          140403,
+          0,
+          71.5
+        ],
+        "S30b": [
+          "ID",
+          "ID",
+          20,
+          176,
+          57,
+          1624044,
+          0,
+          353,
+          29845,
+          140403,
+          0,
+          72.0
+        ]
+      }
+    ]
+  ],
+  "smoke_wall_guard_records": [],
+  "stops_present": {
+    "ID": 5
+  },
+  "synthetic": {
+    "GDET65": {
+      "columns": [
+        "seed",
+        "canon65_equal",
+        "S30",
+        "S30b"
+      ],
+      "identical": 1,
+      "of": 1,
+      "per_case": [
+        [
+          12650301,
+          true,
+          "ID",
+          "ID"
+        ]
+      ],
+      "wall_guard_firings": []
+    },
+    "GEQ65": {
+      "columns": [
+        "seed",
+        "arm",
+        "inner_equal_C20"
+      ],
+      "equal": 4,
+      "of": 4,
+      "per_record": [
+        [
+          12650301,
+          "S10",
+          true
+        ],
+        [
+          12650301,
+          "S20",
+          true
+        ],
+        [
+          12650301,
+          "S30",
+          true
+        ],
+        [
+          12650301,
+          "S30b",
+          true
+        ]
+      ]
+    },
+    "GFID65": {
+      "bound": true,
+      "decided_noisy_in_gates": 4,
+      "equiv": {
+        "PASS": true,
+        "cases": [
+          {
+            "identical": true,
+            "label_20p": "ID",
+            "label_20s": "ID",
+            "seed": 12650301,
+            "sha256": "5811c6f0b83c0cecad1fa5be7928e0ae89e7c961ffe8039e065702b89fbd65d0"
+          },
+          {
+            "identical": true,
+            "label_20p": "IDF",
+            "label_20s": "IDF",
+            "seed": 12650302,
+            "sha256": "497ba1255f58c39a7de75f259d183a2d8b2f49d78230cf6bec401b1b413749ff"
+          }
+        ],
+        "identical": 2
+      },
+      "failures": {},
+      "fidelity_exact": 4,
+      "of_decided": 4,
+      "threshold": {
+        "PASS": true,
+        "checked": 1500,
+        "disagreements": []
+      },
+      "vacuous": false
+    },
+    "GMAJ65": {
+      "noisy_observations": 1412,
+      "noisy_records": 4,
+      "nonzero": [],
+      "settled_bit_errors_total": 0,
+      "source": "recount"
+    },
+    "GN65": {
+      "C20_ID_IDF": 1,
+      "S30_ID_IDF": 1,
+      "ci95_C20": [
+        0.20654931437723742,
+        1.0
+      ],
+      "ci95_S30": [
+        0.20654931437723742,
+        1.0
+      ],
+      "label_source": "recount",
+      "of": 1,
+      "rule": "S30 >= 1 of 1 and >= C20 - 1"
+    },
+    "GREAD65": {
+      "per_arm": {
+        "S10": {
+          "fixed_rule_reads": 26061,
+          "ok": true,
+          "ratio": 0.2031771612754691,
+          "reads": 5295,
+          "records": 1
+        },
+        "S20": {
+          "fixed_rule_reads": 50767,
+          "ok": true,
+          "ratio": 0.2221127898044005,
+          "reads": 11276,
+          "records": 1
+        },
+        "S30": {
+          "fixed_rule_reads": 140403,
+          "ok": true,
+          "ratio": 0.21256668304808302,
+          "reads": 29845,
+          "records": 1
+        }
+      },
+      "rule": "reads <= 0.35 x fixed rule, each arm"
+    },
+    "GS65_sound": {
+      "WRONG": [],
+      "columns": [
+        "seed",
+        "C20",
+        "S10",
+        "S20",
+        "S30",
+        "S30b"
+      ],
+      "label_source": "recount",
+      "per_case": [
+        [
+          12650301,
+          "ID",
+          "ID",
+          "ID",
+          "ID",
+          "ID"
+        ]
+      ],
+      "records": 5
+    },
+    "GS_ref65": {
+      "PASS": true,
+      "audited": 5,
+      "block": "main",
+      "complete": true,
+      "decided": 5,
+      "elapsed_informational": 4.022817780991318,
+      "k_spent_as_amb": 0,
+      "misfires": [],
+      "mismatch_count": 0,
+      "mutations": 20,
+      "not_audited": [],
+      "not_reached": 0,
+      "of": 20,
+      "per_arm": {
+        "C20": {
+          "audited": 1,
+          "decided": 1,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 1
+        },
+        "S10": {
+          "audited": 1,
+          "decided": 1,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 1
+        },
+        "S20": {
+          "audited": 1,
+          "decided": 1,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 1
+        },
+        "S30": {
+          "audited": 1,
+          "decided": 1,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 1
+        },
+        "S30b": {
+          "audited": 1,
+          "decided": 1,
+          "idf_future_mismatch": 0,
+          "misfires": 0,
+          "mismatches": 0,
+          "records": 1
+        }
+      },
+      "records": 5,
+      "scope": {
+        "budget_s": 1800.0,
+        "key_order": [
+          "scale20"
+        ],
+        "order": [
+          "C20",
+          "S10",
+          "S20",
+          "S30",
+          "S30b"
+        ],
+        "workers": 6
+      },
+      "vacuous": false,
+      "verdicts_checked": 10
+    },
+    "cases": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "certified_readbits2_N20_eps020_seq": false,
+    "certified_readbits2_N20_eps030_seq": false,
+    "fidelity_failures": {},
+    "fidelity_self_replay": {
+      "PASS": true,
+      "decided_records": 4,
+      "exact": 4,
+      "study_results_sha256": "166557aebbb0a4b533cd99bf9dc7be36d2f09de78b8bbd2347d747245e0c1925",
+      "vacuous": false,
+      "workers": 6
+    },
+    "gate_status": {
+      "GDET65": {
+        "pass": true
+      },
+      "GEQ65": {
+        "pass": true
+      },
+      "GFID65": {
+        "pass": true
+      },
+      "GHOST65": {
+        "pass": false
+      },
+      "GMAJ65": {
+        "pass": true
+      },
+      "GN65": {
+        "pass": true
+      },
+      "GN_low65": {
+        "pass": true
+      },
+      "GREAD65": {
+        "pass": true
+      },
+      "GS65_sound": {
+        "pass": true
+      },
+      "GS_ref65": {
+        "pass": true
+      },
+      "GTEST65": {
+        "pass": false,
+        "reason": "INCOMPLETE_INPUT (TEST_SUITE_065 missing)"
+      },
+      "G_PROC65": {
+        "pass": false
+      },
+      "G_recount65": {
+        "pass": true
+      }
+    },
+    "label_source": "recount",
+    "note": "synthetic: smoke cases as main with the smoke case counts (1 per arm); GHOST65 (bound to FREEZE_065, absent before the freeze), GTEST65 and G_PROC65 fail by design; GN65 / GN_low65 on 1 smoke seed at B 2M are recorded, not required",
+    "recount_rc": 0,
+    "reference_rc": 0,
+    "reproduces": true,
+    "sealed_input_verified": true,
+    "secondary": {
+      "GCOST65": {
+        "C20": {
+          "budget_spent": 0,
+          "conflicts": 1624044,
+          "records": 1,
+          "steps": 176,
+          "wall_guard": 0,
+          "wall_s": 71.2
+        },
+        "S10": {
+          "budget_spent": 0,
+          "conflicts": 1624044,
+          "records": 1,
+          "steps": 176,
+          "wall_guard": 0,
+          "wall_s": 71.3
+        },
+        "S20": {
+          "budget_spent": 0,
+          "conflicts": 1624044,
+          "records": 1,
+          "steps": 176,
+          "wall_guard": 0,
+          "wall_s": 70.9
+        },
+        "S30": {
+          "budget_spent": 0,
+          "conflicts": 1624044,
+          "records": 1,
+          "steps": 176,
+          "wall_guard": 0,
+          "wall_s": 71.5
+        },
+        "S30b": {
+          "budget_spent": 0,
+          "conflicts": 1624044,
+          "records": 1,
+          "steps": 176,
+          "wall_guard": 0,
+          "wall_s": 72.0
+        }
+      },
+      "MC65": {
+        "note": "reported only; per-bit wrong-barrier rate of the +-1 walk at threshold m_t",
+        "rows": [
+          {
+            "bound_eps_bar": 0.00017111471023167392,
+            "eps": 0.1,
+            "eps_bar": 0.15,
+            "exact_at_eps": 1.6934801016088065e-05,
+            "m": 5,
+            "mean_reads": 6.24678,
+            "rate": 2e-05,
+            "t": 1,
+            "trials": 100000,
+            "wrong": 2
+          },
+          {
+            "bound_eps_bar": 2.9290266333289887e-08,
+            "eps": 0.1,
+            "eps_bar": 0.15,
+            "exact_at_eps": 2.8679719899699167e-10,
+            "m": 10,
+            "mean_reads": 12.50592,
+            "rate": 0.0,
+            "t": 100,
+            "trials": 100000,
+            "wrong": 0
+          },
+          {
+            "bound_eps_bar": 9.121536487212163e-10,
+            "eps": 0.1,
+            "eps_bar": 0.15,
+            "exact_at_eps": 3.540706161459616e-12,
+            "m": 12,
+            "mean_reads": 15.00282,
+            "rate": 0.0,
+            "t": 500,
+            "trials": 100000,
+            "wrong": 0
+          },
+          {
+            "bound_eps_bar": 0.00015239256324291365,
+            "eps": 0.2,
+            "eps_bar": 0.25,
+            "exact_at_eps": 1.5258556235409006e-05,
+            "m": 8,
+            "mean_reads": 13.32388,
+            "rate": 1e-05,
+            "t": 1,
+            "trials": 100000,
+            "wrong": 1
+          },
+          {
+            "bound_eps_bar": 2.323057258575924e-08,
+            "eps": 0.2,
+            "eps_bar": 0.25,
+            "exact_at_eps": 2.3283064359965952e-10,
+            "m": 16,
+            "mean_reads": 26.65182,
+            "rate": 0.0,
+            "t": 100,
+            "trials": 100000,
+            "wrong": 0
+          },
+          {
+            "bound_eps_bar": 8.603915964974579e-10,
+            "eps": 0.2,
+            "eps_bar": 0.25,
+            "exact_at_eps": 3.637978807078478e-12,
+            "m": 19,
+            "mean_reads": 31.66798,
+            "rate": 0.0,
+            "t": 500,
+            "trials": 100000,
+            "wrong": 0
+          },
+          {
+            "bound_eps_bar": 0.00017222287150062284,
+            "eps": 0.3,
+            "eps_bar": 0.35,
+            "exact_at_eps": 7.052156526704938e-06,
+            "m": 14,
+            "mean_reads": 35.02432,
+            "rate": 3e-05,
+            "t": 1,
+            "trials": 100000,
+            "wrong": 3
+          },
+          {
+            "bound_eps_bar": 2.967093573530246e-08,
+            "eps": 0.3,
+            "eps_bar": 0.35,
+            "exact_at_eps": 4.973361313064914e-11,
+            "m": 28,
+            "mean_reads": 69.96566,
+            "rate": 0.0,
+            "t": 100,
+            "trials": 100000,
+            "wrong": 0
+          },
+          {
+            "bound_eps_bar": 7.232016057341559e-10,
+            "eps": 0.3,
+            "eps_bar": 0.35,
+            "exact_at_eps": 3.0816924898669094e-13,
+            "m": 34,
+            "mean_reads": 85.00374,
+            "rate": 0.0,
+            "t": 500,
+            "trials": 100000,
+            "wrong": 0
+          }
+        ]
+      },
+      "READS65": {
+        "columns": [
+          "seed",
+          "observations",
+          "reads",
+          "fixed_rule_reads",
+          "max_reads_one_obs",
+          "last_threshold"
+        ],
+        "per_arm": {
+          "S10": {
+            "fixed_rule_reads": 26061,
+            "ok": true,
+            "ratio": 0.2031771612754691,
+            "reads": 5295,
+            "records": 1
+          },
+          "S20": {
+            "fixed_rule_reads": 50767,
+            "ok": true,
+            "ratio": 0.2221127898044005,
+            "reads": 11276,
+            "records": 1
+          },
+          "S30": {
+            "fixed_rule_reads": 140403,
+            "ok": true,
+            "ratio": 0.21256668304808302,
+            "reads": 29845,
+            "records": 1
+          }
+        },
+        "per_record": {
+          "S10": [
+            [
+              12650301,
+              353,
+              5295,
+              26061,
+              31,
+              12
+            ]
+          ],
+          "S20": [
+            [
+              12650301,
+              353,
+              11276,
+              50767,
+              62,
+              19
+            ]
+          ],
+          "S30": [
+            [
+              12650301,
+              353,
+              29845,
+              140403,
+              176,
+              33
+            ]
+          ],
+          "S30b": [
+            [
+              12650301,
+              353,
+              29845,
+              140403,
+              176,
+              33
+            ]
+          ]
+        }
+      },
+      "SEEDCHECK65": {
+        "frozen_in_065": false,
+        "seedcheck_pass": true
+      }
+    },
+    "status_phrase": "not certified, no certification status (failing gates: GHOST65, GTEST65, G_PROC65)"
+  },
+  "verifier_chain": {
+    "authorization_exceptions": 0,
+    "entries": [
+      [
+        "preregistration_065",
+        "1d92afa"
+      ],
+      [
+        "build_authorization_065",
+        "1d92afa"
+      ],
+      [
+        "seedcheck_065",
+        "c128389"
+      ]
+    ],
+    "head": "3903a0b",
+    "links": 5,
+    "passed": true
+  }
+}
