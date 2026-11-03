@@ -1,0 +1,111 @@
+{
+  "schema": "brute.plan.v1",
+  "study": "BRUTE-0610-SCALE2B24-064",
+  "version_under_test": "0.61.0",
+  "parent_study": "BRUTE-0600-ANCHOR2B20-063",
+  "written": "2026-11-03 (EST), after the v0.60.0 release",
+  "status": "preregistered (plan only; no build code committed, no fresh seed use, no data). Build needs a ledgered build_authorization_064 citing the standing go t133s553 and t139s684",
+  "standing_go": [
+    "t133s553",
+    "t139s684 (James, Nov 2 2026: keep going version after version until something valuable turns up; stop only when he says so)"
+  ],
+  "agreed_direction": "James, Nov 2 2026 20:10 EST: after v0.60.0 spend 2-3 versions testing how far the new method goes at larger sizes and with noise, prefer good ideas over budget bumps, then choose deliberately between a black-box certification tool and a messier real-world problem. This is the first of those versions (size).",
+  "branch_taken": "v0.60.0 RELEASED, not certified: GP63 passed (certify/20p P2 4/6 vs B2 1/6, the first 2-bit 20-state gain) but GS_ref63 failed because the plain-CNF reference audited only 2 of 7 decided records in 1800 s. Plan 063 next_if_pass: 24 states at 2 bits.",
+  "choice": {
+    "scale_test_24": "CHOSEN (gated headline, arm P24). certify/32p = certify/20p with the certify/32b bound change (constructed at min(N, 20), then self.N = N; no other change), declared N 24, original 2-bit emissions, on fresh 24-state worlds. A scale test of the v0.60.0 method, NOT a new encoding and NOT more budget (B 8M as in 063).",
+    "replication_20_with_a_finishable_audit": "CHOSEN (gated, arm P20). Frozen certify/20p at N 20 on fresh 20-state worlds, as in 063, so that 2-bit N <= 20 can be certified with an audit that finishes.",
+    "clique_pinned_reference": "CHOSEN (the GS_ref fix; sized from evidence, not budget). experiments/v0610_reference.py: an independent plain-CNF reference (own apartness, own clique check, own CNF, CaDiCaL; no code shared with brute/) that pins a VERIFIED apartness clique through position 0 to states 0..|C|-1 and keeps first-visit order for the rest. Exact relabelling argument (pairwise apart positions need distinct states). REF_PIN_DIAG_064 (exploratory, sealed 063 copy): 7/7 decided audited in 17 s, 0 mismatches, 20/20 mutations, agreeing with the frozen reference on its 2 audited records; the frozen reference managed 2/7 in 1800 s.",
+    "rejected": {
+      "budget_only (B 16M or more at 24 states)": "excluded by the agreed direction (good ideas over budget bumps)",
+      "a larger budget or more workers for the frozen plain reference": "the 063 failure was the pigeonhole proof below n_min, not the budget; more time does not fix it",
+      "B24 control on all 6 seeds at 8M": "about 1800-2100 s per record (probe); does not fit the 30 min cap. B24 runs on the first 3 24-state seeds as a reported (not gated) control"
+    }
+  },
+  "capability_probe": {
+    "script": "scripts/probe_064.py",
+    "output": "results/diag-064/CAPABILITY_PROBE_064.json",
+    "seeds": "sealed study-061 main 24-state seeds 12610101-04 (4-bit there, original 2-bit emissions here); spent, never fresh",
+    "settings": "B 8M, C 50000, K 400, N 24, 6 workers, guard 2400 s per case",
+    "disclosure": "launched 20:54 EST Nov 2 before the script was committed; its recorded sha256 matches the committed file (66ad164). Exploratory, not gate evidence.",
+    "P24_result_observed": "P24 1/4 decided (12610104 IDF at 5,721,174 conflicts, 233 s); 3 IDU at 8M with n_min 23-24 and final clique 20-22, 363-429 s each. B24 0/2 IDU at 8M (n_min never found), 1778-2118 s each.",
+    "reference_diag": "results/diag-064/REF_PIN_DIAG_064.json (1c57422): see choice.clique_pinned_reference"
+  },
+  "honest_framing": "A size test of the v0.60.0 method, expected to be hard: the probe decided 1 of 4 at 24 states, so the headline gate (2 of 6) is roughly a coin flip under the probe rate. A pass means some 2-bit 24-state worlds are decided by this solver under a declared N 24; a fail is published plainly as 'the method does not yet scale to 24 states at 2 bits at 8M'. The replication arm and the new reference decide whether 2-bit N <= 20 becomes certified.",
+  "brand": "charcoal and sage; no purple, neon, emoji or gold",
+  "question": "(A) At declared N 24, original 2-bit emissions, C 50000, K 400, B 8M, does certify/32p decide (ID+IDF) at least 2 of 6 fresh 24-state worlds? (B) Does frozen certify/20p at N 20 decide at least 3 of 6 fresh 20-state worlds again? (C) Is every record sound (WRONG 0) and does the clique-pinned reference audit every decided record? (D) Is P20 deterministic?",
+  "hypotheses": {
+    "H1": "no record is WRONG",
+    "H2": "P24 decides >= 2/6",
+    "H3": "P20 decides >= 3/6",
+    "H4": "P20 and P20b give byte-identical canonical records on the determinism seeds",
+    "H5": "the clique-pinned reference audits every decided record with 0 mismatches and agrees with the frozen plain reference on small worlds",
+    "H6 (reported)": "P24 vs B24 on the 3 shared seeds (time-capped control); final clique size, repins and conflicts per P record"
+  },
+  "design": {
+    "api": "one new module brute/api/certify32p.py (brute.certify/32p), host-agnostic: Certifier32P(Certifier20P) owns the declared bound 1..32 exactly as certify/32b does for certify/20b; at N <= 20 it is certify/20p exactly. certify/20p, certify/32b and all earlier modules are frozen and imported only.",
+    "worlds": "experiments/worlds_064.py: 'scale20' = worlds_058.world(seed, 'scale20') (the 063 family); 'scale24' = worlds_026.scale_world(seed, 24) with its original 2-bit emissions (minimal and strongly connected as drawn; the probe world). Passive prefix worlds_026.actions(seed, 0, k). Noise-free.",
+    "arms": {
+      "P24": "certify/32p, read_bits 2, declared N 24, scale24 (gated headline)",
+      "B24": "frozen certify/32b, read_bits 2, declared N 24, scale24, first 3 seeds only (reported time-capped control, not gated)",
+      "P20": "frozen certify/20p, read_bits 2, declared N 20, scale20 (gated replication)",
+      "P20b": "P20 again on the first 2 scale20 seeds, reversed order (determinism)"
+    },
+    "caps": "C 50000, B 8000000, K 400, node cap 200000, max_chunks None, every arm; conflict-only stop with a 1800 s case kill as a safety net (a firing in P24, P20 or P20b fails GDET64; B24 firings are reported, its records then end undecided before 8M, disclosed as a time-capped control)",
+    "job_order": "B24 ascending first (longest), then P24 ascending, P20 ascending, P20b descending; one 6-worker pool, max_tasks_per_child 1",
+    "reference": "scripts/run_reference_064.py: the frozen run_reference_047 / run_reference_041 audit machinery with run_reference_041._nmin and exists_different replaced by experiments/v0610_reference.py (pinned; the record's final_clique is only a hint, verified pairwise by the reference's own apartness, else the reference's own greedy clique through position 0 is used). Bound N per record = the arm's declared N. Budget 1800 s, 6 workers, 20 seeded mutations (random.Random(640)).",
+    "fidelity": "api_checks_064 replays every ID/IDF trace through the public interface; checks certify/32p at N 20 is byte-identical to certify/20p on the smoke worlds; cross-checks the pinned reference against the frozen plain reference (n_min and every exists_different verdict) on 150 seeded small random 2-bit traces (random.Random(641)) and on the 2 records the frozen reference audited in study-063"
+  },
+  "cases": {
+    "scale24p": 6,
+    "scale24p_b24": 3,
+    "scale20p": 6,
+    "scale20p_b": 2,
+    "jobs": "6 P24 + 3 B24 + 6 P20 + 2 P20b = 17",
+    "declared_before_data": true
+  },
+  "heldout_ranges": {
+    "scale20p": "12640101-12640106",
+    "scale24p": "12640201-12640206",
+    "note": "seedcheck_064 scans every tracked file before any fresh seed; a hit moves the range by a ledgered deviation before data"
+  },
+  "smoke_range": "12640301-12640306 (pre-freeze smoke and the no-network check only; never gated)",
+  "criteria": {
+    "GS64_sound": "WRONG 0 on every record (17)",
+    "GP24_64": "P24 ID+IDF >= 2/6 (Wilson 95% CI reported) [headline]",
+    "GP20_64": "P20 ID+IDF >= 3/6 (Wilson 95% CI reported)",
+    "GDET64": "P20 and P20b canonical records byte-identical on 2/2; no case kill in P24, P20 or P20b",
+    "GFID64": "api_checks_064 replay fidelity on every decided trace and certify/32p == certify/20p at N 20 on the smoke worlds",
+    "GXREF64": "pinned reference == frozen plain reference on all small-world checks and on the 2 study-063 records (0 disagreements)",
+    "GHOST64": "no network during the no-network run",
+    "GS_ref64": "the clique-pinned reference audits EVERY decided record (complete) with 0 mismatches and 20/20 mutations detected, within 1800 s on 6 workers",
+    "G_recount64": "independent recount matches",
+    "GTEST64": "all tests pass",
+    "G_PROC64": "process events in the ledger in order"
+  },
+  "certification_rule": "'certified (read_bits 2, N <= 24, clique-anchored)' iff every gate passes. 'certified (read_bits 2, N <= 20, clique-anchored)' iff every gate except GP24_64 passes (then 24 states at 2 bits stay Open). If GS64_sound fails: no certification and certify/20p / 32p are audited. If GS_ref64 or GXREF64 fails: no certification status.",
+  "status_wording_rule": "status phrases come from the GATES_064 flags only",
+  "runtime_estimate": "Inferred from the probe and study-063: B24 3 x up to 1800 s on 3 workers; P24 6 x about 230-430 s, P20 6 x about 45-820 s, P20b 2 x the same, on the other workers; projected makespan about 1800-2000 s. Main run capped at 2400 s from launch (then sealed partial, never relaunched). Cut rule (declared now, applied only before the freeze from the smoke projection, disclosed in a pre-run deviation): P20b 2 -> 1, then B24 3 -> 2. Never raise B or C after the probe",
+  "process": "LEAN under the standing go, as in plans 060-063",
+  "process_naming_rule": "prefreeze_smoke_064_attemptK plus prefreeze_smoke_064; release ledger event release_0610",
+  "freeze_rule": "no file named in the source freeze is edited after the freeze; caps, node cap, orders, stop rule, workers and case lists are frozen",
+  "what_counts_as_failure": "any gated criterion false; a case kill in P24/P20/P20b fails GDET64; IDU, AMB, K_spent are not soundness failures",
+  "next_if_pass": "2-bit decisions exist at 24 states: next, noise (iid bit flips) at 2 bits with clique anchoring at 20 states, then 28-32 states",
+  "next_if_fail": "if only GP24_64 fails: noise at 20 states (the second axis of the agreed direction) and, for size, an idea rather than budget (the clique-pinned plain CNF that made the audit 100x faster is a candidate query engine, or decomposition); if GS64_sound fails: publish and audit",
+  "limitations": [
+    "6 seeds per size give wide CIs",
+    "the probe and the reference diagnostic ran on sealed seeds only and before preregistration (disclosed)",
+    "B24 is time-capped (1800 s) and on 3 seeds; it is reported, not gated",
+    "2-bit original emissions only; noise-free",
+    "the pinned reference shares the pinning IDEA with certify/20p (not its code); mitigated by the frozen-reference cross-check GXREF64",
+    "still needs a declared size N"
+  ],
+  "open_items": [
+    "2-bit 24-state worlds: Open until GP24_64 passes",
+    "noise at 2 bits: Open",
+    "N 25..32 at 4 bits: Open",
+    "full N-freedom: Open (impossible without a size bound; Inferred)"
+  ],
+  "drafting_disclosure": "drafted by the agent under the standing go; not reviewed by the user before preregistration",
+  "claim_scope": "conditional on the declared N and noise-free readings; never 'first decided 24-state world'",
+  "evidence_labels": "Exact, Observed, Simulated, Inferred, Rejected, Open"
+}
