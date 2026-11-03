@@ -10,7 +10,7 @@ queried (lower bound |C|, Exact: pairwise apart positions need distinct states) 
 asked. Apartness pair clauses are kept. When the maximum clique grows, the pool is rebuilt on the larger clique (learnt
 clauses are lost; conflicts keep counting against the same budget). The policy (separating words), observe(), the stop rule,
 K, the conflict ledger and the labels are certify/20b's. record() adds 'repins' (step, old size, new size, exact) and
-'guards_closed' (chunk guards of rebuilt pools).
+'guards_closed' (chunk guards of rebuilt pools) and 'final_clique' (the pinned positions).
 Exactness of the pinning (Inferred, relabelling argument): any machine consistent with the trace can be relabelled so the
 clique positions get states 0..|C|-1 in clique order (they are pairwise distinct) and the remaining states appear in first-visit
 order off the clique; so the pinned encoding is satisfiable iff the unpinned one is, at every size n >= |C|.
@@ -111,7 +111,7 @@ class Certifier20P(Certifier20B):
     def __init__(self,initial=None,num_actions=None,family_bound=None,search='a16d',read_bits=2,max_chunks=None,node_cap=NODE_CAP,**kw):
         if isinstance(node_cap,bool) or not isinstance(node_cap,int) or node_cap<1:raise ValueError('node_cap must be a positive int')
         super().__init__(initial,num_actions,family_bound,search,read_bits=read_bits,max_chunks=max_chunks,**kw)
-        self.node_cap=node_cap;self.repins=[];self.guards_closed=0
+        self.node_cap=node_cap;self.repins=[];self.guards_closed=0;self.clique=None
 
     def propose(self):
         if self.stop is not None or self._pending is not None:return super().propose()
@@ -119,15 +119,15 @@ class Certifier20P(Certifier20B):
         mc,exact=max_clique0(A,greedy_clique(A) if cur is None else cur,self.node_cap)
         if self.P is None:
             self.case.t0=B.perf_counter();self.P=Pool63(self.k,self.m,self.solver,self.factory,mc);self.n_lo=self.P.lower(self.masks,self.acts)
-            self.repins.append([len(self.acts),None,len(mc),exact])
+            self.repins.append([len(self.acts),None,len(mc),exact]);self.clique=list(mc)
         elif len(mc)>len(cur):
             self.guards_closed+=self.P.guards();self.P.close()
             self.P=Pool63(self.k,self.m,self.solver,self.factory,mc);self.n_lo=max(self.n_lo,self.P.lower(self.masks,self.acts))
-            self.repins.append([len(self.acts),len(cur),len(mc),exact])
+            self.repins.append([len(self.acts),len(cur),len(mc),exact]);self.clique=list(mc)
         return super().propose()
 
     def record(self):
-        d=dict(super().record());d['repins']=[list(x) for x in self.repins];d['guards_closed']=self.guards_closed;return d
+        d=dict(super().record());d['repins']=[list(x) for x in self.repins];d['guards_closed']=self.guards_closed;d['final_clique']=list(self.clique or []);return d
 
     def current(self):
         d=super().current();d['api']=API;d['clique_size']=None if self.P is None else len(self.P.clique);d['repins']=len(self.repins);return d
