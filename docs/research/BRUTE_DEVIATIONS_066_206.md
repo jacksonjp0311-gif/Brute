@@ -28,6 +28,7 @@ Labels: Exact, Observed, Simulated, Inferred, Rejected, Open.
 5. **Release tests (Exact, deviation #107 rule).** tests/test_certify32s.py, tests/test_scripts_066.py and tests/test_release_0630.py
    are tooling / API tests on synthetic input or the development seed 10051001, committed before the freeze and frozen. TEST_SUITE_066
    runs once, after the run.
-6. **Known risks (Inferred).** GN24_66 needs S24 >= 1 decided and >= C24 - 1; 24-state 2-bit worlds were never decided noise-free by
-   certify/32p at 2 bits in earlier studies within these budgets, so GN24_66 may fail with C24 = S24 = 0 (published as a size limit).
-   GEQ66 needs at least 2 finished 24-state pairs; if kills remove them GEQ66 fails and the version is not certified.
+6. **Known risks (Inferred).** GN24_66 needs S24 >= 1 decided and >= C24 - 1; study-064's noise-free certify/32p decided 2 of 6
+   2-bit 24-state worlds at 8M (P24 ID+IDF 2), so with 4 seeds C24 = S24 = 0 is plausible and GN24_66 may fail (published as a size
+   limit). GEQ66 needs at least 2 finished 24-state pairs; if kills remove them GEQ66 fails and the version is not certified.
+   (Correction before the freeze: the first committed text of this item wrongly said 24-state 2-bit worlds had never been decided.)
