@@ -1,5 +1,28 @@
 # Brute changelog
 
+## v0.64.0: NOT CERTIFIED (9 of 12 gates). First contact with real software: CPython 3.13.5 incremental decoders through their public interface, against a hand-written source truth (study BRUTE-0640-REALDECODER-068, LEAN process)
+
+**9 of 12 gates pass (GS68_sound, GMAJ68, GEQ68, GDET68, GFID68, GHOST68, GLIVE68, G_recount68, G_PROC68). Failing: GDEC68 (0 of 18 decided), GMATCH68 (0 truth states covered by a decided record), GTEST68 (a bug in a test assertion; the fixed rerun passes, but the gate stays on the first official run). Status: not certified.**
+
+Blunt summary. A 6-7 Moore-state decoder is a small real target, not a capability leap. What is new is first contact with real software:
+
+- **What held.** The adapter called only `codecs.getincrementaldecoder(...)('replace')` and `.decode()`, and the replay was exact on 19/19 records. Brute was sound: 0 WRONG against the truth written by hand from the CPython source. Noise was handled: 0 settled-bit errors, the noisy arm matched the clean arm on 10/10 pairs, and it used 0.21x the reads of the fixed rule.
+- **What failed.** Nothing was certified. 13 records ended AMB with K 400 spent and 6 ended IDU with the 8M conflict budget spent.
+- **Why it matters.** The least machine always had the true size and the true future behaviour. Brute had the right answer but could not prove it at declared N 12 without resets. The smoke predicted this failure before the run, and the locked caps were kept. See deviation #208.
+
+### Timeline (EST, 2026-11-03)
+
+- Plan `69088e4` (ledger `f5da76a`); hand truth `b98cfa5`; build authorization `2ebf02c` (t143s742, t133s553, t139s684); adapter and runner `99af776`; truthcheck `bb1ce88`; smoke note `6190a85`; source freeze `5d3f56a`.
+- Main run launched once 11:07:03 (ledger `09130d3`); sealed complete 11:12:55, seal `337e8fb`; recount and tests `fd1b8f2`; gates `61a1ae9`; deviation #208 `505008c`.
+
+### Results (recount labels against the hand truth; B 8M, K 400, declared N 12)
+
+| target | true size | C decided | S decided | stops | settled-bit errors |
+|---|---|---|---|---|---|
+| U3 utf-8 41/80/E1 | 6 | 0/3 | 0/3 | AMB 2, IDU 4 (+Sb IDU) | 0 |
+| U4 utf-8 41/80/F1 | 7 | 0/3 | 0/3 | AMB 6 | 0 |
+| W16 utf-16-le 41/D8/DC | 7 | 0/3 | 0/3 | AMB 6 | 0 |
+
 ## v0.63.0: CERTIFIED (14 of 14 gates) for 2-bit readings at N <= 24 under iid bit noise eps <= 0.30 (delta 0.001, sequential re-reads). New brute.certify/32s; process-level 600 s job kill (study BRUTE-0630-SEQNOISE24-066, LEAN process)
 
 **14 of 14 gated pass (GS66_sound, GLIVE66, GMAJ66, GEQ66, GN66, GN24_66, GREAD66, GDET66, GFID66, GHOST66, GS_ref66, G_recount66, GTEST66, G_PROC66). Status: certified (read_bits 2, N <= 24, iid bit noise eps <= 0.30, delta 0.001, sequential re-reads).**

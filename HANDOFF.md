@@ -1,8 +1,15 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-03 EST (v0.63.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-03 EST (v0.64.0 built, release pending)._
 
 ## Current version and state
+
+<!-- V0640 -->
+- **v0.64.0: BUILT, release pending.** Study BRUTE-0640-REALDECODER-068 (plan 068 69088e4, hand truth b98cfa5, build authorization 2ebf02c citing t143s742, t133s553, t139s684). **NOT CERTIFIED, 9 of 12 gates** (failing GDEC68, GMATCH68, GTEST68). First contact with real software: CPython 3.13.5 incremental utf-8 / utf-16-le decoders, public interface only.
+  - **Run (Exact).** Launched once 11:07:03 EST (ledger 09130d3); sealed complete 11:12:55 (seal 337e8fb), 19/19, 0 KILL.
+  - **Results:** 0/18 decided; WRONG 0/19; GEQ 10/10; 0 bit errors; least machine = truth future behaviour on 19/19 (diagnosis, not gated). Deviation #208 505008c.
+  - **What Brute can't do yet:** certify even a 6-7 state real decoder at declared N 12 without resets in K 400; real (not injected) noise; larger real targets.
+  - **Next:** plan 069 (v0.65.0) drafted UNLOCKED on plan/v0.65.0: needs James's call on resets vs smaller N vs larger K.
 
 <!-- V0630 -->
 - **v0.63.0: RELEASED** 2026-11-03 10:46 EST, tag v0.63.0 (object e55e8e0) at 70dbf77, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.63.0. Fresh-clone verify passed (restore 045-066, verify_release_0630, 165 tests). Gates c56cff2, deviation #207 5eb003a, RELEASE.json 8880ece. Study BRUTE-0630-SEQNOISE24-066. **CERTIFIED, 14 of 14 gates: read_bits 2, N <= 24, iid bit noise eps <= 0.30, delta 0.001, sequential re-reads.**
