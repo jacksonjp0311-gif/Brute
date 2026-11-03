@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-03 EST (v0.63.0 release in progress)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-03 EST (v0.63.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0630 -->
-- **v0.63.0: release in progress** 2026-11-03 EST (gates c56cff2, deviation #207 5eb003a, RELEASE.json 8880ece). Study BRUTE-0630-SEQNOISE24-066. **CERTIFIED, 14 of 14 gates: read_bits 2, N <= 24, iid bit noise eps <= 0.30, delta 0.001, sequential re-reads.**
+- **v0.63.0: RELEASED** 2026-11-03 10:46 EST, tag v0.63.0 (object e55e8e0) at 70dbf77, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.63.0. Fresh-clone verify passed (restore 045-066, verify_release_0630, 165 tests). Gates c56cff2, deviation #207 5eb003a, RELEASE.json 8880ece. Study BRUTE-0630-SEQNOISE24-066. **CERTIFIED, 14 of 14 gates: read_bits 2, N <= 24, iid bit noise eps <= 0.30, delta 0.001, sequential re-reads.**
   - **Run complete (Exact).** Launched once 10:13:15 EST (setsid nohup, pid 2405899, ledger cd7afdd); sealed complete 10:29:52 (seal 6a62a2d), 21/21 jobs, 4 KILL at 600 s (12660201, 12660203 in C24 and S24). Never relaunched.
   - **Results:** S30 4/6 = C20 4/6; S24 1/4 = C24 1/4; GEQ 9/9; 0 settled-bit errors / 2630 observations; reads 0.213x / 0.208x; reference 11/11, 0 mismatches; WRONG 0/17.
   - **Two agent sessions** coordinated through /tmp/s66/STATE.txt (deviation #207 item 2); no duplicate step.
