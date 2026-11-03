@@ -1,0 +1,1425 @@
+{
+  "all_gated_pass": true,
+  "arm_spec": {
+    "B24": [
+      "scale24p",
+      "scale24",
+      24,
+      "certify32b"
+    ],
+    "P20": [
+      "scale20p",
+      "scale20",
+      20,
+      "certify20p"
+    ],
+    "P20b": [
+      "scale20p",
+      "scale20",
+      20,
+      "certify20p"
+    ],
+    "P24": [
+      "scale24p",
+      "scale24",
+      24,
+      "certify32p"
+    ]
+  },
+  "caps": [
+    50000,
+    8000000,
+    400
+  ],
+  "certified_readbits2_N20_clique": true,
+  "certified_readbits2_N24_clique": true,
+  "claim": "certify/32p, certify/32b and certify/20p ID/IDF are exact conditional on noise-free readings and on true size <= the declared N. IDF identifies the machine from the current state, not the start. Inferred reason the size condition is needed: a larger machine can copy the true machine on every visited state",
+  "failed": [],
+  "framing": "SIZE TEST: the v0.60.0 clique-anchored method (certify/32p) on 2-bit 24-state worlds at declared N 24, plus a certify/20p replication at N 20 with a clique-pinned independent reference",
+  "gates": {
+    "GDET64": {
+      "observed": {
+        "columns": [
+          "seed",
+          "canon64_equal",
+          "P20",
+          "P20b"
+        ],
+        "identical": 1,
+        "of": 1,
+        "per_case": [
+          [
+            12640101,
+            true,
+            "IDU",
+            "IDU"
+          ]
+        ],
+        "wall_guard_firings_B24_reported": [
+          [
+            "main/scale24p/12640202",
+            "B24",
+            [
+              "case",
+              "case",
+              "case",
+              "case",
+              "case",
+              "case",
+              "case",
+              "case",
+              "case",
+              "case",
+              "case",
+              "case",
+              "case",
+              "case",
+              "case",
+              "case",
+              "case",
+              "case",
+              "case",
+              "case",
+              "case",
+              "case"
+            ]
+          ]
+        ],
+        "wall_guard_firings_P": []
+      },
+      "pass": true
+    },
+    "GFID64": {
+      "observed": {
+        "bound": true,
+        "bounds": [
+          [
+            0,
+            "refused"
+          ],
+          [
+            33,
+            "refused"
+          ],
+          [
+            21,
+            "ACCEPTED"
+          ],
+          [
+            24,
+            "ACCEPTED"
+          ],
+          [
+            32,
+            "ACCEPTED"
+          ]
+        ],
+        "decided_in_gates": 6,
+        "equiv_cases": [
+          {
+            "identical_at_n1": true,
+            "k_ok": true,
+            "n": 3,
+            "read_bits": 2,
+            "seed": 6420,
+            "sound_32p_n5": true,
+            "stop_20p": "K_spent",
+            "stop_32p": "K_spent",
+            "stop_32p_n5": "K_spent"
+          },
+          {
+            "identical_at_n1": true,
+            "k_ok": true,
+            "n": 4,
+            "read_bits": 2,
+            "seed": 6421,
+            "sound_32p_n5": true,
+            "stop_20p": "IDF",
+            "stop_32p": "IDF",
+            "stop_32p_n5": "K_spent"
+          },
+          {
+            "identical_at_n1": true,
+            "k_ok": true,
+            "n": 5,
+            "read_bits": 2,
+            "seed": 6422,
+            "sound_32p_n5": true,
+            "stop_20p": "K_spent",
+            "stop_32p": "K_spent",
+            "stop_32p_n5": "K_spent"
+          },
+          {
+            "identical_at_n1": true,
+            "k_ok": true,
+            "n": 6,
+            "read_bits": 2,
+            "seed": 6423,
+            "sound_32p_n5": true,
+            "stop_20p": "K_spent",
+            "stop_32p": "K_spent",
+            "stop_32p_n5": "K_spent"
+          },
+          {
+            "identical_at_n1": true,
+            "k_ok": true,
+            "n": 3,
+            "read_bits": 2,
+            "seed": 6424,
+            "sound_32p_n5": true,
+            "stop_20p": "IDF",
+            "stop_32p": "IDF",
+            "stop_32p_n5": "K_spent"
+          },
+          {
+            "identical_at_n1": true,
+            "k_ok": true,
+            "n": 4,
+            "read_bits": 2,
+            "seed": 6425,
+            "sound_32p_n5": true,
+            "stop_20p": "IDF",
+            "stop_32p": "IDF",
+            "stop_32p_n5": "K_spent"
+          },
+          {
+            "identical_at_n1": true,
+            "k_ok": true,
+            "n": 3,
+            "read_bits": 3,
+            "seed": 6430,
+            "sound_32p_n5": true,
+            "stop_20p": "IDF",
+            "stop_32p": "IDF",
+            "stop_32p_n5": "K_spent"
+          },
+          {
+            "identical_at_n1": true,
+            "k_ok": true,
+            "n": 4,
+            "read_bits": 3,
+            "seed": 6431,
+            "sound_32p_n5": true,
+            "stop_20p": "K_spent",
+            "stop_32p": "K_spent",
+            "stop_32p_n5": "K_spent"
+          },
+          {
+            "identical_at_n1": true,
+            "k_ok": true,
+            "n": 5,
+            "read_bits": 3,
+            "seed": 6432,
+            "sound_32p_n5": true,
+            "stop_20p": "IDF",
+            "stop_32p": "IDF",
+            "stop_32p_n5": "K_spent"
+          },
+          {
+            "identical_at_n1": true,
+            "k_ok": true,
+            "n": 6,
+            "read_bits": 3,
+            "seed": 6433,
+            "sound_32p_n5": true,
+            "stop_20p": "K_spent",
+            "stop_32p": "K_spent",
+            "stop_32p_n5": "K_spent"
+          },
+          {
+            "identical_at_n1": true,
+            "k_ok": true,
+            "n": 3,
+            "read_bits": 3,
+            "seed": 6434,
+            "sound_32p_n5": true,
+            "stop_20p": "IDF",
+            "stop_32p": "IDF",
+            "stop_32p_n5": "K_spent"
+          },
+          {
+            "identical_at_n1": true,
+            "k_ok": true,
+            "n": 4,
+            "read_bits": 3,
+            "seed": 6435,
+            "sound_32p_n5": true,
+            "stop_20p": "IDF",
+            "stop_32p": "IDF",
+            "stop_32p_n5": "K_spent"
+          },
+          {
+            "identical_at_n1": true,
+            "k_ok": true,
+            "n": 3,
+            "read_bits": 4,
+            "seed": 6440,
+            "sound_32p_n5": true,
+            "stop_20p": "IDF",
+            "stop_32p": "IDF",
+            "stop_32p_n5": "K_spent"
+          },
+          {
+            "identical_at_n1": true,
+            "k_ok": true,
+            "n": 4,
+            "read_bits": 4,
+            "seed": 6441,
+            "sound_32p_n5": true,
+            "stop_20p": "IDF",
+            "stop_32p": "IDF",
+            "stop_32p_n5": "K_spent"
+          },
+          {
+            "identical_at_n1": true,
+            "k_ok": true,
+            "n": 5,
+            "read_bits": 4,
+            "seed": 6442,
+            "sound_32p_n5": true,
+            "stop_20p": "K_spent",
+            "stop_32p": "K_spent",
+            "stop_32p_n5": "unknown"
+          },
+          {
+            "identical_at_n1": true,
+            "k_ok": true,
+            "n": 6,
+            "read_bits": 4,
+            "seed": 6443,
+            "sound_32p_n5": true,
+            "stop_20p": "K_spent",
+            "stop_32p": "K_spent",
+            "stop_32p_n5": "unknown"
+          },
+          {
+            "identical_at_n1": true,
+            "k_ok": true,
+            "n": 3,
+            "read_bits": 4,
+            "seed": 6444,
+            "sound_32p_n5": true,
+            "stop_20p": "IDF",
+            "stop_32p": "IDF",
+            "stop_32p_n5": "K_spent"
+          },
+          {
+            "identical_at_n1": true,
+            "k_ok": true,
+            "n": 4,
+            "read_bits": 4,
+            "seed": 6445,
+            "sound_32p_n5": true,
+            "stop_20p": "K_spent",
+            "stop_32p": "K_spent",
+            "stop_32p_n5": "K_spent"
+          }
+        ],
+        "failures": {},
+        "fidelity_exact": 6,
+        "no_network_run": {
+          "loop": [
+            "brute.certify/32p",
+            "IDU",
+            null,
+            53,
+            2002336,
+            2,
+            24,
+            19,
+            2
+          ],
+          "socket_attempts": 0
+        },
+        "of_decided": 6,
+        "smoke_labels": {
+          "20p": "ID",
+          "32p": "ID"
+        },
+        "smoke_world_identical": true,
+        "vacuous": false
+      },
+      "pass": true
+    },
+    "GHOST64": {
+      "observed": {
+        "a16d_max_bound_unpatched": true,
+        "ast_scan": {
+          "PASS": true,
+          "bad_calls": [],
+          "bad_imports": [],
+          "imports": [
+            "__future__",
+            "brute"
+          ]
+        },
+        "bound_to_freeze_064": true,
+        "frozen_api_unchanged": true,
+        "no_network_run": {
+          "loop": [
+            "brute.certify/32p",
+            "IDU",
+            null,
+            53,
+            2002336,
+            2,
+            24,
+            19,
+            2
+          ],
+          "socket_attempts": 0
+        },
+        "socket_attempts": 0,
+        "static_ok": true
+      },
+      "pass": true
+    },
+    "GP20_64": {
+      "observed": {
+        "P20_ID_IDF": 4,
+        "P20b_ID_IDF_reported": 0,
+        "ci95_P20": [
+          0.299993315138392,
+          0.9032285888942195
+        ],
+        "label_source": "recount",
+        "of": 6,
+        "rule": "P20 ID+IDF >= 3 of 6 (plan 3 of 6)"
+      },
+      "pass": true
+    },
+    "GP24_64": {
+      "observed": {
+        "B24_reported": {
+          "B24_ID_IDF": 0,
+          "P24_on_same_seeds": 0,
+          "discordant_B24_only": 0,
+          "discordant_P24_only": 0,
+          "mcnemar_exact_p": 1.0,
+          "note": "time-capped control (1800 s case kill), not gated",
+          "of": 2
+        },
+        "P24_ID_IDF": 2,
+        "ci95_P24": [
+          0.09677141110578043,
+          0.7000066848616079
+        ],
+        "label_source": "recount",
+        "of": 6,
+        "rule": "P24 ID+IDF >= 2 of 6 (plan 2 of 6)"
+      },
+      "pass": true
+    },
+    "GS64_sound": {
+      "observed": {
+        "WRONG": [],
+        "columns": [
+          "key",
+          "seed",
+          "P24",
+          "B24",
+          "P20",
+          "P20b"
+        ],
+        "label_source": "recount",
+        "per_case": [
+          [
+            "scale24p",
+            12640201,
+            "IDU",
+            "IDU",
+            null,
+            null
+          ],
+          [
+            "scale24p",
+            12640202,
+            "IDU",
+            "IDU",
+            null,
+            null
+          ],
+          [
+            "scale24p",
+            12640203,
+            "IDU",
+            null,
+            null,
+            null
+          ],
+          [
+            "scale24p",
+            12640204,
+            "ID",
+            null,
+            null,
+            null
+          ],
+          [
+            "scale24p",
+            12640205,
+            "IDU",
+            null,
+            null,
+            null
+          ],
+          [
+            "scale24p",
+            12640206,
+            "IDF",
+            null,
+            null,
+            null
+          ],
+          [
+            "scale20p",
+            12640101,
+            null,
+            null,
+            "IDU",
+            "IDU"
+          ],
+          [
+            "scale20p",
+            12640102,
+            null,
+            null,
+            "ID",
+            null
+          ],
+          [
+            "scale20p",
+            12640103,
+            null,
+            null,
+            "ID",
+            null
+          ],
+          [
+            "scale20p",
+            12640104,
+            null,
+            null,
+            "IDU",
+            null
+          ],
+          [
+            "scale20p",
+            12640105,
+            null,
+            null,
+            "IDF",
+            null
+          ],
+          [
+            "scale20p",
+            12640106,
+            null,
+            null,
+            "ID",
+            null
+          ]
+        ],
+        "records": 15
+      },
+      "pass": true
+    },
+    "GS_ref64": {
+      "observed": {
+        "PASS": true,
+        "audited": 6,
+        "block": "main",
+        "complete": true,
+        "decided": 6,
+        "elapsed_informational": 19.023030607990222,
+        "k_spent_as_amb": 0,
+        "misfires": [],
+        "mismatch_count": 0,
+        "mutations": 20,
+        "not_audited": [],
+        "not_reached": 9,
+        "of": 20,
+        "per_arm": {
+          "B24": {
+            "audited": 0,
+            "decided": 0,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 2
+          },
+          "P20": {
+            "audited": 4,
+            "decided": 4,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 6
+          },
+          "P20b": {
+            "audited": 0,
+            "decided": 0,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 1
+          },
+          "P24": {
+            "audited": 2,
+            "decided": 2,
+            "idf_future_mismatch": 0,
+            "misfires": 0,
+            "mismatches": 0,
+            "records": 6
+          }
+        },
+        "records": 15,
+        "scope": {
+          "budget_s": 1800.0,
+          "key_order": [
+            "scale24p",
+            "scale20p"
+          ],
+          "order": [
+            "P24",
+            "B24",
+            "P20",
+            "P20b"
+          ],
+          "workers": 6
+        },
+        "vacuous": false,
+        "verdicts_checked": 12
+      },
+      "pass": true
+    },
+    "GTEST64": {
+      "observed": {
+        "gated": {
+          "test_certify16": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16d": {
+            "returncode": 0,
+            "tests": 11
+          },
+          "test_certify16e": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_certify16n": {
+            "returncode": 0,
+            "tests": 10
+          },
+          "test_certify20b": {
+            "returncode": 0,
+            "tests": 6
+          },
+          "test_certify20n": {
+            "returncode": 0,
+            "tests": 8
+          },
+          "test_certify20p": {
+            "returncode": 0,
+            "tests": 8
+          },
+          "test_certify32b": {
+            "returncode": 0,
+            "tests": 5
+          },
+          "test_certify32p": {
+            "returncode": 0,
+            "tests": 6
+          },
+          "test_cover20": {
+            "returncode": 0,
+            "tests": 8
+          },
+          "test_release_0610": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_scalesearch4_0260": {
+            "returncode": 0,
+            "tests": 14
+          },
+          "test_scripts_064": {
+            "returncode": 0,
+            "tests": 9
+          }
+        },
+        "reported": {
+          "test_certify20w": {
+            "returncode": 0,
+            "tests": 6
+          },
+          "test_release_0600": {
+            "returncode": 0,
+            "tests": 12
+          },
+          "test_scripts_063": {
+            "returncode": 0,
+            "tests": 10
+          }
+        }
+      },
+      "pass": true
+    },
+    "GXREF64": {
+      "observed": {
+        "PASS": true,
+        "checks": 1166,
+        "disagreements": [],
+        "random_traces": 150,
+        "study063": {
+          "main/scale20p2/12630104/B2": {
+            "N_audited": [
+              20,
+              20
+            ],
+            "future_match_ref": [
+              true,
+              true
+            ],
+            "label": [
+              "ID",
+              "ID"
+            ],
+            "mismatches": [
+              [],
+              []
+            ],
+            "verdicts_checked": [
+              2,
+              2
+            ]
+          },
+          "main/scale20p2/12630104/P2": {
+            "N_audited": [
+              20,
+              20
+            ],
+            "future_match_ref": [
+              true,
+              true
+            ],
+            "label": [
+              "ID",
+              "ID"
+            ],
+            "mismatches": [
+              [],
+              []
+            ],
+            "verdicts_checked": [
+              2,
+              2
+            ]
+          }
+        },
+        "study063_match": true
+      },
+      "pass": true
+    },
+    "G_PROC64": {
+      "observed": {
+        "clauses": {
+          "commit_order_file": true,
+          "ledger_times_non_decreasing": true,
+          "ledger_times_parse": true,
+          "main_sealed": true,
+          "order": true
+        },
+        "events": [
+          "preregistration_064",
+          "build_authorization_064",
+          "seedcheck_064",
+          "prefreeze_smoke_064_attempt1",
+          "prefreeze_smoke_064",
+          "deviation_202",
+          "freeze_064",
+          "main_run_064"
+        ],
+        "required_order": [
+          "preregistration_064",
+          "build_authorization_064",
+          "seedcheck_064",
+          "prefreeze_smoke_064",
+          "deviation_202",
+          "freeze_064",
+          "main_run_064"
+        ]
+      },
+      "pass": true
+    },
+    "G_recount64": {
+      "observed": {
+        "PASS": true,
+        "cases": 12,
+        "decided_by_arm": {
+          "B24": 0,
+          "P20": 4,
+          "P20b": 0,
+          "P24": 2
+        },
+        "mismatches": [],
+        "records": 15,
+        "study_decided_by_arm": {
+          "B24": 0,
+          "P20": 4,
+          "P20b": 0,
+          "P24": 2
+        },
+        "wrong": 0
+      },
+      "pass": true
+    }
+  },
+  "label_source": "recount",
+  "n_b24": 2,
+  "n_p20b": 1,
+  "n_seeds": 6,
+  "node_cap": 200000,
+  "not_exercised": [],
+  "process": "lean",
+  "reports": {
+    "labels": {
+      "B24": {
+        "AMB": {
+          "ci95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "n": 2,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "n": 2,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "n": 2,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.3423802275066531,
+            1.0
+          ],
+          "n": 2,
+          "x": 2
+        },
+        "NOFIT": {
+          "ci95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "n": 2,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "n": 2,
+          "x": 0
+        }
+      },
+      "P20": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.1876163064826506,
+            0.8123836935173494
+          ],
+          "n": 6,
+          "x": 3
+        },
+        "IDF": {
+          "ci95": [
+            0.030053369748306632,
+            0.5635028221864702
+          ],
+          "n": 6,
+          "x": 1
+        },
+        "IDU": {
+          "ci95": [
+            0.09677141110578043,
+            0.7000066848616079
+          ],
+          "n": 6,
+          "x": 2
+        },
+        "NOFIT": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      },
+      "P20b": {
+        "AMB": {
+          "ci95": [
+            0.0,
+            0.7934506856227626
+          ],
+          "n": 1,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.0,
+            0.7934506856227626
+          ],
+          "n": 1,
+          "x": 0
+        },
+        "IDF": {
+          "ci95": [
+            0.0,
+            0.7934506856227626
+          ],
+          "n": 1,
+          "x": 0
+        },
+        "IDU": {
+          "ci95": [
+            0.20654931437723742,
+            1.0
+          ],
+          "n": 1,
+          "x": 1
+        },
+        "NOFIT": {
+          "ci95": [
+            0.0,
+            0.7934506856227626
+          ],
+          "n": 1,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            0.0,
+            0.7934506856227626
+          ],
+          "n": 1,
+          "x": 0
+        }
+      },
+      "P24": {
+        "AMB": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "ID": {
+          "ci95": [
+            0.030053369748306632,
+            0.5635028221864702
+          ],
+          "n": 6,
+          "x": 1
+        },
+        "IDF": {
+          "ci95": [
+            0.030053369748306632,
+            0.5635028221864702
+          ],
+          "n": 6,
+          "x": 1
+        },
+        "IDU": {
+          "ci95": [
+            0.299993315138392,
+            0.9032285888942195
+          ],
+          "n": 6,
+          "x": 4
+        },
+        "NOFIT": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        },
+        "WRONG": {
+          "ci95": [
+            3.384324554477539e-17,
+            0.39033428790216534
+          ],
+          "n": 6,
+          "x": 0
+        }
+      }
+    }
+  },
+  "schema": "brute.gates.v61_0",
+  "sealed_input_verified": true,
+  "secondary": {
+    "CLIQUE64": {
+      "observed": {
+        "columns": [
+          "key",
+          "seed",
+          "arm",
+          "greedy_prefix",
+          "greedy_final",
+          "anchor_clique_size",
+          "final_clique_len",
+          "pins"
+        ],
+        "per_record": [
+          [
+            "scale24p",
+            12640201,
+            "P24",
+            15,
+            17,
+            18,
+            18,
+            3
+          ],
+          [
+            "scale24p",
+            12640202,
+            "P24",
+            16,
+            20,
+            20,
+            20,
+            4
+          ],
+          [
+            "scale24p",
+            12640203,
+            "P24",
+            17,
+            20,
+            21,
+            21,
+            4
+          ],
+          [
+            "scale24p",
+            12640204,
+            "P24",
+            19,
+            22,
+            22,
+            22,
+            3
+          ],
+          [
+            "scale24p",
+            12640205,
+            "P24",
+            15,
+            19,
+            20,
+            20,
+            5
+          ],
+          [
+            "scale24p",
+            12640206,
+            "P24",
+            16,
+            18,
+            20,
+            20,
+            4
+          ],
+          [
+            "scale20p",
+            12640101,
+            "P20",
+            12,
+            15,
+            15,
+            15,
+            4
+          ],
+          [
+            "scale20p",
+            12640102,
+            "P20",
+            14,
+            17,
+            18,
+            18,
+            4
+          ],
+          [
+            "scale20p",
+            12640103,
+            "P20",
+            15,
+            18,
+            20,
+            20,
+            5
+          ],
+          [
+            "scale20p",
+            12640104,
+            "P20",
+            11,
+            16,
+            16,
+            16,
+            6
+          ],
+          [
+            "scale20p",
+            12640105,
+            "P20",
+            11,
+            17,
+            17,
+            17,
+            4
+          ],
+          [
+            "scale20p",
+            12640106,
+            "P20",
+            18,
+            20,
+            20,
+            20,
+            3
+          ]
+        ]
+      },
+      "pass": null,
+      "rule": "reported"
+    },
+    "GCOST64": {
+      "elapsed_s": 1826.333935018978,
+      "observed": {
+        "B24": {
+          "budget_spent": 1,
+          "conflicts": 15810639,
+          "decided_conflicts": [],
+          "decided_walls": [],
+          "records": 2,
+          "steps": 2,
+          "wall_guard": 1,
+          "wall_s": 3399.5
+        },
+        "P20": {
+          "budget_spent": 2,
+          "conflicts": 30106092,
+          "decided_conflicts": [
+            1465591,
+            1761983,
+            5430874,
+            5446343
+          ],
+          "decided_walls": [
+            46.8,
+            50.4,
+            205.2,
+            251.8
+          ],
+          "records": 6,
+          "steps": 1077,
+          "wall_guard": 0,
+          "wall_s": 1285.2
+        },
+        "P20b": {
+          "budget_spent": 1,
+          "conflicts": 8001257,
+          "decided_conflicts": [],
+          "decided_walls": [],
+          "records": 1,
+          "steps": 159,
+          "wall_guard": 0,
+          "wall_s": 434.4
+        },
+        "P24": {
+          "budget_spent": 4,
+          "conflicts": 38374444,
+          "decided_conflicts": [
+            2823136,
+            3543413
+          ],
+          "decided_walls": [
+            107.9,
+            144.5
+          ],
+          "records": 6,
+          "steps": 657,
+          "wall_guard": 0,
+          "wall_s": 1846.0
+        }
+      },
+      "pass": null,
+      "rule": "reported (walls informational)"
+    },
+    "GSTATS64": {
+      "columns": [
+        "key",
+        "seed",
+        "per arm [arm, label, n_min, extra_actions, rounds, conflicts]"
+      ],
+      "observed": [
+        [
+          "scale24p",
+          12640201,
+          [
+            "B24",
+            "IDU",
+            null,
+            0,
+            1,
+            8001671
+          ],
+          [
+            "P24",
+            "IDU",
+            21,
+            102,
+            40,
+            8000592
+          ]
+        ],
+        [
+          "scale24p",
+          12640202,
+          [
+            "B24",
+            "IDU",
+            21,
+            2,
+            2,
+            7808968
+          ],
+          [
+            "P24",
+            "IDU",
+            23,
+            74,
+            26,
+            8007026
+          ]
+        ],
+        [
+          "scale24p",
+          12640203,
+          [
+            "P24",
+            "IDU",
+            23,
+            109,
+            41,
+            8000158
+          ]
+        ],
+        [
+          "scale24p",
+          12640204,
+          [
+            "P24",
+            "ID",
+            24,
+            116,
+            35,
+            2823136
+          ]
+        ],
+        [
+          "scale24p",
+          12640205,
+          [
+            "P24",
+            "IDU",
+            22,
+            135,
+            46,
+            8000119
+          ]
+        ],
+        [
+          "scale24p",
+          12640206,
+          [
+            "P24",
+            "IDF",
+            24,
+            121,
+            40,
+            3543413
+          ]
+        ],
+        [
+          "scale20p",
+          12640101,
+          [
+            "P20",
+            "IDU",
+            18,
+            159,
+            49,
+            8001257
+          ],
+          [
+            "P20b",
+            "IDU",
+            18,
+            159,
+            49,
+            8001257
+          ]
+        ],
+        [
+          "scale20p",
+          12640102,
+          [
+            "P20",
+            "ID",
+            20,
+            155,
+            47,
+            5430874
+          ]
+        ],
+        [
+          "scale20p",
+          12640103,
+          [
+            "P20",
+            "ID",
+            20,
+            125,
+            32,
+            1465591
+          ]
+        ],
+        [
+          "scale20p",
+          12640104,
+          [
+            "P20",
+            "IDU",
+            19,
+            304,
+            86,
+            8000044
+          ]
+        ],
+        [
+          "scale20p",
+          12640105,
+          [
+            "P20",
+            "IDF",
+            20,
+            240,
+            66,
+            5446343
+          ]
+        ],
+        [
+          "scale20p",
+          12640106,
+          [
+            "P20",
+            "ID",
+            20,
+            94,
+            29,
+            1761983
+          ]
+        ]
+      ],
+      "pass": null,
+      "rule": "reported"
+    },
+    "PROBE64": {
+      "observed": {
+        "summary": {
+          "B24": {
+            "decided": 0,
+            "labels": [
+              "IDU",
+              "IDU"
+            ],
+            "n_min": [
+              null,
+              null
+            ],
+            "of": 2
+          },
+          "P24": {
+            "decided": 1,
+            "labels": [
+              "IDU",
+              "IDU",
+              "IDU",
+              "IDF"
+            ],
+            "n_min": [
+              23,
+              24,
+              23,
+              24
+            ],
+            "of": 4
+          }
+        }
+      },
+      "pass": null,
+      "rule": "exploratory, sealed non-fresh seeds; not gate evidence"
+    },
+    "SEEDCHECK64": {
+      "observed": {
+        "frozen_in_064": true,
+        "seedcheck_pass": true
+      },
+      "pass": null
+    }
+  },
+  "status_phrase": "certified (read_bits 2, N <= 24, clique-anchored)",
+  "stop": {
+    "hard_kill_s": 1800.0,
+    "main_cap_s": 2400.0,
+    "stop_rule": "conflict-only (no hook; 1800 s case kill as safety net)"
+  },
+  "study": "BRUTE-0610-SCALE2B24-064",
+  "workers": 6
+}
