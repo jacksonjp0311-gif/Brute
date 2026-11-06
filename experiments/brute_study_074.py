@@ -12,6 +12,7 @@ from pathlib import Path
 from experiments.brute_common import check,sha,load,write_new
 from experiments import targets_074 as TG
 from brute.api import certify34h as C34H
+from brute.api import certify32h as H32
 from brute.api import baseline32t as B32T
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -81,7 +82,7 @@ def run_fresh(name,seed,arm):
                 w=c.propose()
                 if w is None:break
                 for a in w:r=tg.act(a);c.observe(a,r);acts.append(a);reads.append(_code(r))
-            R=c.result();T,E=C34H.H32._norm(R['model']) if R.get('model') else (None,None)
+            R=c.result();T,E=H32._norm(R['model']) if R.get('model') else (None,None)
             out={'api':R['api'],'api_label':R['label'],'stop':R['stop'],'n_min':R['n_min'],'model_T':T,'model_E':E,'s1':R['s1'],
                  'rounds':R['rounds'],'conflicts':R['conflicts'],'capped':R['capped'],'batches':c.batches,'K':K_STEPS}
         finally:c.close()
