@@ -1,0 +1,103 @@
+{
+ "api": {
+  "C": "brute.certify/33h (NEW: brute/apart33.py + brute/api/certify33h.py): certify/32h with bitset apartness, greedy clique, exact max clique and apart pairs. The functions return exactly what the old ones return (tested on random and real traces), so labels, pins, encoding, policy, stop rule and guarantee are certify/32h's",
+  "T": "brute.baseline/32t unchanged (textbook)"
+ },
+ "design": {
+  "N": {
+   "plus1": {
+    "B5": 6,
+    "EJ4": 12,
+    "HK": 6,
+    "HZ": 11,
+    "JO": 5,
+    "KR": 5,
+    "SJ": 4,
+    "U16B": 10,
+    "U32": 8,
+    "U8S": 10
+   },
+   "plus3": {
+    "B5": 8,
+    "EJ4": 14,
+    "HK": 8,
+    "HZ": 13,
+    "JO": 7,
+    "KR": 7,
+    "SJ": 6,
+    "U16B": 12,
+    "U32": 10,
+    "U8S": 12
+   }
+  },
+  "jobs": "C3: C at plus3, 10 targets x seeds 12730101, 12730102 = 20 (headline); C1: C at plus1, 10 targets x seed 12730101 = 10 (regression and held-out at tight N); T3: T at plus3, 10 x 2 = 20 (comparison); 50 jobs. Smoke seed 12730201 (SJ, KR; C1 and T3) is not gated",
+  "memory": "each job's child sets RLIMIT_AS = 2.0 GiB (v0.68.0 used 1.8) and oom_score_adj 1000 (runner side). MemoryError or a signal exit -> KILL record. 3 workers. The box had about 4.8 GB available RAM at the freeze",
+  "time": "SIGKILL at 420 s per job -> KILL record; main cap 3300 s; the main run happens once"
+ },
+ "diagnostic_not_gated": "per-target kill reasons (memory cap versus timeout) at C3 and the last trace length reached, so the next wall can be named from data",
+ "gates": {
+  "GBASE73": "all 20 T3 records present and recounted; the C/T table is written; T is the comparison, not gated beyond presence",
+  "GC1_73": "arm C at tight N (C1) decided on at least 7 of the 10 targets, 0 WRONG (v0.68.0 decided 7 of 8 old targets at tight N)",
+  "GFID73": "every non-KILL record's action sequence replayed on one fresh decoder gives exactly the recorded readings",
+  "GHEAD73": "HEADLINE: arm C at the loose N (C3) decided (IDF, recounted correct) on at least 6 of the 20 cells, covering at least 3 different targets, with 0 WRONG anywhere (v0.68.0 decided 0 of 8)",
+  "GHELD73": "at least 1 of the 4 held-out C3 cells (HZ, JO x 2 seeds) decided, 0 WRONG",
+  "GHOST73": "brute/ differs from tag v0.68.0 at run_start by exactly two ADDED files: brute/apart33.py and brute/api/certify33h.py",
+  "GLIVE73": "the main run sealed complete within the main cap",
+  "GMEM73": "every record has rlimit_as_bytes 2.0 GiB and workers 3; any cap hit appears as a KILL record",
+  "GNORESET73": "adapter AST has no reset, getstate, setstate, buffer or private use; getincrementaldecoder is called once in Target.__init__; every non-KILL record has resets 0 and decoder_objects 1",
+  "GS73_sound": "0 WRONG among decided records of C (C1 and C3) and T",
+  "GSTEP73": "over C3 cells where C and T3 both decided, the median of C decoder steps / T decoder steps is at most 1.0 (reported honestly; at loose N the textbook may need fewer steps)",
+  "GTEST73": "scripts/run_tests_0690.py --official passes (includes test_apart33: bitset functions equal the old ones; test_certify33h: same words, labels and models as certify/32h on SJ, KR, B5)",
+  "GTRUTH73": "scripts/make_truth_073.py --check reproduces experiments/truth_073.json; ledger event truth_073 precedes the run; its sha matches",
+  "G_PROC73": "commit chain truth < plan < build_authorization < freeze < run_start < seal",
+  "G_recount73": "scripts/recount_073.py --check reproduces RECOUNT_073.json"
+ },
+ "heldout": "HZ (hz, 10 states) and JO (johab, 4 states) are new real decoders: no Brute arm touched them before the freeze; their oracle truth was derived before the lock (sizes only, no Brute arm)",
+ "honest_framing": "v0.68.0 showed Brute's SAT engine decides real decoders reset-free at a tight declared N (true+1) but decided 0 of 8 at a loose N (true+3): 7 memory-cap kills and 1 timeout. Pre-plan diagnosis (below) found the first memory wall was NOT the SAT solver: it was the exact maximum-clique preprocessing (brute/api/certify20p.max_clique0), which builds one Python set of about T/1.4 integers per trace position (about 1.4 GB at T = 5700 steps). This version replaces that preprocessing, and only that, by an equal-answer bitset implementation (brute.certify/33h) and measures what loose-N certification then reaches on real software. The next wall (SAT instance size, which grows like trace length x N^2) is expected and is part of what is measured.",
+ "parent_study": "BRUTE-0680-BREADTH-072",
+ "pre_plan_exploration": {
+  "consequence": "The memory limit was raised from 1.8 to 2.0 GiB and the job kill from 240 to 420 s; the gate thresholds (6 of 20 cells, 3 targets) were set from this exploration, which expects KR and probably B5, HK, JO to be reachable and the larger targets not",
+  "diagnosis": "Study 072's B3 jobs died at 53-240 s. Reproduced KR N=7 (seed 12720101, which is a study-072 seed) with a 3 GiB limit: MemoryError at 5700 steps inside max_clique0 (traceback: adj=[{u for u in range(n) if u!=t and ap(t,u)} ...]); about 1.6 GB resident. A profile of 11 rounds (4,482 steps) showed 23.5 s of 51 s in SAT solving and the rest in O(T^2) Python preprocessing.",
+  "fix_check": "With certify/33h on KR N=7 seed 12720101 at a 1.8 GiB limit: decided IDF at 8,554 steps in 212 s with 0.7 GB peak. SJ N=6 (3-state truth) did not finish in 400 s (SAT time). On seed 12730301 (not a gate seed) at 1.8 GiB: B5 N=8 and HK N=8 MemoryError at 8,141 steps, U32 N=10 at 4,901, U16B N=12 at 4,482, EJ4 N=14 at 5,293, U8S N=10 at 4,875 (all inside SAT clause loading: 1.3-2.2 M clauses per size-n instance), U8S N=12 had not finished at 4,056 steps after 89 s. No Brute arm ran on HZ or JO before the freeze, and no truth for HZ or JO was used by any Brute arm"
+ },
+ "question": "With the preprocessing memory wall removed, how many real decoders does Brute decide reset-free at a LOOSE declared N (true minimal size + 3), soundly, and does the change keep tight-N behaviour?",
+ "recount": "truth_073 simulation: C IDF correct iff the model at s1 is Moore-equivalent to the truth at its final state (ID additionally needs every start-consistent state equivalent to truth start); T ID correct iff its hypothesis is equivalent to the truth at origin_step",
+ "schema": "brute.plan.v73",
+ "standing_go": "t143s742, t133s553, t139s684",
+ "status": "LOCKED at the plan_073 ledger entry",
+ "status_rule": "Release v0.69.0 either way. Every gate is reported; failures are published, never forced",
+ "study": "BRUTE-0690-LOOSEN-073",
+ "target_software": "experiments/targets_073.py: real CPython 3.13.5 incremental decoders (the 8 of study 072 with the same bytes, plus hz on 41/7E/7B and johab on 41/84/41), one decoder object per job, no reset, 2-bit readings (non-empty, contains U+FFFD); same interface rules as experiments/targets_072.py",
+ "targets": [
+  "SJ",
+  "KR",
+  "B5",
+  "U32",
+  "U8S",
+  "U16B",
+  "EJ4",
+  "HK",
+  "HZ",
+  "JO"
+ ],
+ "truth": {
+  "file": "experiments/truth_073.json built by scripts/make_truth_073.py (refuses overwrite; ledger event truth_073 before any run)",
+  "method": "the study-072 oracle (BFS over decoder getstate values + Moore minimisation), never used by the runner",
+  "minimal_sizes": {
+   "B5": 5,
+   "EJ4": 11,
+   "HK": 5,
+   "HZ": 10,
+   "JO": 4,
+   "KR": 4,
+   "SJ": 3,
+   "U16B": 9,
+   "U32": 7,
+   "U8S": 9
+  },
+  "note": "the first 8 equal truth_072 (tested)"
+ },
+ "version_under_test": "0.69.0",
+ "what_this_cannot_show": "No noise; real decoders only; sizes 3-10 states; N = true+3 is loose relative to true size but the truth sizes come from an oracle, not from a-priori knowledge; two seeds; the oracle shares CPython with the targets; the 2.0 GiB cap and the 420 s kill are the runner's, not properties of Brute; the guarantee is conditional on N and clean readings",
+ "written": "2026-11-05 EST (agent-drafted, not reviewed by James)"
+}
