@@ -1,5 +1,22 @@
 # Brute changelog
 
+## v0.67.0: NOT CERTIFIED (10 of 12 gates). Hybrid arm H: the textbook hypothesis plus a new SAT certificate brute.certify/32x, reset-free, on real CPython decoders (study BRUTE-0670-HYBRID-071, LEAN process)
+
+**Passed: GLIVE71, GS71_sound, GNORESYNC71, GBASE71, GFID71, GMEM71, GHOST71, G_recount71, GTEST71, G_PROC71. Failed: GHEAD71_plus1 (the headline) and the reported attempt GN12_71_attempt. Status: not certified.**
+
+- **Headline failed.** At N = true+1 the hybrid H decided 3 of 5 targets (U3 3533 steps, U4 13269, W16 7259; all recount-correct, 0 experiments beyond the textbook's own run). EJ and held-out GB hit the 900 s job kill. Needed 4 of 5.
+- **N 12 failed as the pre-lock pilot predicted.** H decided 0 of 5: U3, U4, EJ (N 16) and GB were stopped by the 1.8 GiB memory cap, and W16 stopped at the 100,000-step window cap (17.3M clauses). The textbook decided 5/5 at N 12.
+- **Sound.** 0 WRONG over all 25 sealed records; replay on one fresh decoder exact; no resets; one decoder object per job; H never assumed resynchronisation.
+- **Memory was bounded this time.** Every memory stop is a `memory_cap` KILL record; the kernel killed nothing. The run finished in 1137 s, 25/25 records.
+- **Observed, not gated.** The v0.66.0 engine B, rerun here under the memory cap, decided U3, U4, W16 and GB at true+1 in 810, 2443, 808 and 3670 steps (textbook T: 3533, 13269, 7259, 11469); EJ B hit the memory cap. So at tight N the SAT engine alone used fewer steps than both the textbook and the hybrid. The hybrid did not improve on it.
+- **A 54-hour stall** sat between the plan lock and the run (deviation #211).
+
+### What Brute can't do yet
+
+- Decide EJ (13 states) or held-out GB with the hybrid within 900 s.
+- Decide at a loose declared N (N 12): nothing but the textbook does.
+- Handle noise on real software, or targets beyond about 13 states.
+
 ## v0.66.0: NOT CERTIFIED (3 of 11 gates; main run incomplete, 7 of 51 jobs OOM-killed). Reset-free brute.certify/32h (Brute's SAT version space fed homing-based tests) against the textbook baseline brute.baseline/32t (study BRUTE-0660-RESETFREE-070, LEAN process)
 
 **Passed: GHOST70, GTEST70 and G_PROC70. Failed: GLIVE70, plus GS70_sound, GDEC70, GBASE70, GNORESET70, GFID70, GDET70 and G_recount70, which all fail INCOMPLETE_INPUT. Status: not certified.**
