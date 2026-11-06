@@ -1,0 +1,589 @@
+{
+  "attempt_failed": [
+    "GN12_71_attempt"
+  ],
+  "contribution_split": {
+    "brute": "the SAT certificate certify/32x under the declared N alone (no resync assumption), arm H",
+    "textbook": "the hypothesis (Rivest-Schapire homing + L* + Vasilevskii-Chow, arm T) and most decoder steps"
+  },
+  "failed": [
+    "GHEAD71_plus1",
+    "GN12_71_attempt"
+  ],
+  "gates": {
+    "GBASE71": {
+      "killed": [],
+      "pass": true,
+      "records": 10,
+      "table": {
+        "EJ": {
+          "B": {
+            "N": 14,
+            "iters": [
+              null
+            ],
+            "kill": [
+              "memory_cap"
+            ],
+            "label": [
+              "KILL"
+            ],
+            "steps": [
+              null
+            ],
+            "t_steps": [
+              null
+            ]
+          },
+          "H": {
+            "N": 14,
+            "iters": [
+              null
+            ],
+            "kill": [
+              "timeout"
+            ],
+            "label": [
+              "KILL"
+            ],
+            "steps": [
+              null
+            ],
+            "t_steps": [
+              null
+            ]
+          },
+          "H12": {
+            "N": 16,
+            "iters": [
+              null
+            ],
+            "kill": [
+              "memory_cap"
+            ],
+            "label": [
+              "KILL"
+            ],
+            "steps": [
+              null
+            ],
+            "t_steps": [
+              null
+            ]
+          },
+          "T": {
+            "N": 14,
+            "iters": [
+              null
+            ],
+            "kill": [],
+            "label": [
+              "ID"
+            ],
+            "steps": [
+              25724
+            ],
+            "t_steps": [
+              null
+            ]
+          },
+          "T12": {
+            "N": 16,
+            "iters": [
+              null
+            ],
+            "kill": [],
+            "label": [
+              "ID"
+            ],
+            "steps": [
+              271109
+            ],
+            "t_steps": [
+              null
+            ]
+          }
+        },
+        "GB": {
+          "B": {
+            "N": 9,
+            "iters": [
+              null
+            ],
+            "kill": [],
+            "label": [
+              "IDF"
+            ],
+            "steps": [
+              3670
+            ],
+            "t_steps": [
+              null
+            ]
+          },
+          "H": {
+            "N": 9,
+            "iters": [
+              null
+            ],
+            "kill": [
+              "timeout"
+            ],
+            "label": [
+              "KILL"
+            ],
+            "steps": [
+              null
+            ],
+            "t_steps": [
+              null
+            ]
+          },
+          "H12": {
+            "N": 12,
+            "iters": [
+              null
+            ],
+            "kill": [
+              "memory_cap"
+            ],
+            "label": [
+              "KILL"
+            ],
+            "steps": [
+              null
+            ],
+            "t_steps": [
+              null
+            ]
+          },
+          "T": {
+            "N": 9,
+            "iters": [
+              null
+            ],
+            "kill": [],
+            "label": [
+              "ID"
+            ],
+            "steps": [
+              11469
+            ],
+            "t_steps": [
+              null
+            ]
+          },
+          "T12": {
+            "N": 12,
+            "iters": [
+              null
+            ],
+            "kill": [],
+            "label": [
+              "ID"
+            ],
+            "steps": [
+              406740
+            ],
+            "t_steps": [
+              null
+            ]
+          }
+        },
+        "U3": {
+          "B": {
+            "N": 7,
+            "iters": [
+              null
+            ],
+            "kill": [],
+            "label": [
+              "IDF"
+            ],
+            "steps": [
+              810
+            ],
+            "t_steps": [
+              null
+            ]
+          },
+          "H": {
+            "N": 7,
+            "iters": [
+              7
+            ],
+            "kill": [],
+            "label": [
+              "IDF"
+            ],
+            "steps": [
+              3533
+            ],
+            "t_steps": [
+              3533
+            ]
+          },
+          "H12": {
+            "N": 12,
+            "iters": [
+              null
+            ],
+            "kill": [
+              "memory_cap"
+            ],
+            "label": [
+              "KILL"
+            ],
+            "steps": [
+              null
+            ],
+            "t_steps": [
+              null
+            ]
+          },
+          "T": {
+            "N": 7,
+            "iters": [
+              null
+            ],
+            "kill": [],
+            "label": [
+              "ID"
+            ],
+            "steps": [
+              3533
+            ],
+            "t_steps": [
+              null
+            ]
+          },
+          "T12": {
+            "N": 12,
+            "iters": [
+              null
+            ],
+            "kill": [],
+            "label": [
+              "ID"
+            ],
+            "steps": [
+              1460203
+            ],
+            "t_steps": [
+              null
+            ]
+          }
+        },
+        "U4": {
+          "B": {
+            "N": 8,
+            "iters": [
+              null
+            ],
+            "kill": [],
+            "label": [
+              "IDF"
+            ],
+            "steps": [
+              2443
+            ],
+            "t_steps": [
+              null
+            ]
+          },
+          "H": {
+            "N": 8,
+            "iters": [
+              9
+            ],
+            "kill": [],
+            "label": [
+              "IDF"
+            ],
+            "steps": [
+              13269
+            ],
+            "t_steps": [
+              13269
+            ]
+          },
+          "H12": {
+            "N": 12,
+            "iters": [
+              null
+            ],
+            "kill": [
+              "memory_cap"
+            ],
+            "label": [
+              "KILL"
+            ],
+            "steps": [
+              null
+            ],
+            "t_steps": [
+              null
+            ]
+          },
+          "T": {
+            "N": 8,
+            "iters": [
+              null
+            ],
+            "kill": [],
+            "label": [
+              "ID"
+            ],
+            "steps": [
+              13269
+            ],
+            "t_steps": [
+              null
+            ]
+          },
+          "T12": {
+            "N": 12,
+            "iters": [
+              null
+            ],
+            "kill": [],
+            "label": [
+              "ID"
+            ],
+            "steps": [
+              1620918
+            ],
+            "t_steps": [
+              null
+            ]
+          }
+        },
+        "W16": {
+          "B": {
+            "N": 8,
+            "iters": [
+              null
+            ],
+            "kill": [],
+            "label": [
+              "IDF"
+            ],
+            "steps": [
+              808
+            ],
+            "t_steps": [
+              null
+            ]
+          },
+          "H": {
+            "N": 8,
+            "iters": [
+              8
+            ],
+            "kill": [],
+            "label": [
+              "IDF"
+            ],
+            "steps": [
+              7259
+            ],
+            "t_steps": [
+              7259
+            ]
+          },
+          "H12": {
+            "N": 12,
+            "iters": [
+              8
+            ],
+            "kill": [],
+            "label": [
+              "WINDOW_CAP"
+            ],
+            "steps": [
+              868603
+            ],
+            "t_steps": [
+              868603
+            ]
+          },
+          "T": {
+            "N": 8,
+            "iters": [
+              null
+            ],
+            "kill": [],
+            "label": [
+              "ID"
+            ],
+            "steps": [
+              7259
+            ],
+            "t_steps": [
+              null
+            ]
+          },
+          "T12": {
+            "N": 12,
+            "iters": [
+              null
+            ],
+            "kill": [],
+            "label": [
+              "ID"
+            ],
+            "steps": [
+              868603
+            ],
+            "t_steps": [
+              null
+            ]
+          }
+        }
+      },
+      "textbook_wrong": []
+    },
+    "GFID71": {
+      "pass": true,
+      "records": 18,
+      "replay_mismatch": [],
+      "steps_replayed": 5589222
+    },
+    "GHEAD71_plus1": {
+      "count": 3,
+      "decided": [
+        "U3",
+        "U4",
+        "W16"
+      ],
+      "heldout_GB_decided": false,
+      "of": 5,
+      "pass": false
+    },
+    "GHOST71": {
+      "diff_vs_v0660": [
+        [
+          "A",
+          "brute/api/certify32x.py"
+        ]
+      ],
+      "import_violations": [],
+      "pass": true
+    },
+    "GLIVE71": {
+      "elapsed_s": 1137.3,
+      "jobs": 25,
+      "killed": [
+        "U3:12710101:H12",
+        "U4:12710101:H12",
+        "EJ:12710101:H12",
+        "GB:12710101:H12",
+        "EJ:12710101:H",
+        "GB:12710101:H",
+        "EJ:12710101:B"
+      ],
+      "pass": true,
+      "records": 25
+    },
+    "GMEM71": {
+      "bad": [],
+      "kills": [
+        [
+          "U3:12710101:H12",
+          "memory_cap",
+          true
+        ],
+        [
+          "U4:12710101:H12",
+          "memory_cap",
+          true
+        ],
+        [
+          "EJ:12710101:H12",
+          "memory_cap",
+          true
+        ],
+        [
+          "GB:12710101:H12",
+          "memory_cap",
+          true
+        ],
+        [
+          "EJ:12710101:H",
+          "timeout",
+          false
+        ],
+        [
+          "GB:12710101:H",
+          "timeout",
+          false
+        ],
+        [
+          "EJ:12710101:B",
+          "memory_cap",
+          true
+        ]
+      ],
+      "pass": true,
+      "rlimit_as_bytes": 1932735283,
+      "workers": 3
+    },
+    "GN12_71_attempt": {
+      "count": 0,
+      "decided": [],
+      "of": 5,
+      "pass": false,
+      "reported_attempt": true
+    },
+    "GNORESYNC71": {
+      "adapter_ast_violations": [],
+      "bad_idf": [],
+      "h_idf_records": 3,
+      "pass": true,
+      "records_not_single_object": []
+    },
+    "GS71_sound": {
+      "decided": 7,
+      "pass": true,
+      "wrong": []
+    },
+    "GTEST71": {
+      "modules": 6,
+      "pass": true,
+      "test_files_match": true
+    },
+    "G_PROC71": {
+      "chain": [
+        "93e1dec",
+        "15939c2",
+        "cf34756",
+        "f5f3752",
+        "abe08c9"
+      ],
+      "missing": [],
+      "pass": true,
+      "truth_unchanged": true
+    },
+    "G_recount71": {
+      "pass": true
+    }
+  },
+  "passed": [
+    "GBASE71",
+    "GFID71",
+    "GHOST71",
+    "GLIVE71",
+    "GMEM71",
+    "GNORESYNC71",
+    "GS71_sound",
+    "GTEST71",
+    "G_PROC71",
+    "G_recount71"
+  ],
+  "reported_attempt_gates": [
+    "GN12_71_attempt"
+  ],
+  "results_sha256": "4e7c32724297806b91bca9c8e7f4cef58a7e7a9208ef9e24cdffe5f4bbb1c925",
+  "status": "not certified (failing gates: GHEAD71_plus1, GN12_71_attempt)",
+  "study": "BRUTE-0670-HYBRID-071"
+}
