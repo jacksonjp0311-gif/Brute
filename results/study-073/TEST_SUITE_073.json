@@ -1,0 +1,126 @@
+{
+ "gated_modules": [
+  "test_targets_073",
+  "test_scripts_073",
+  "test_release_keys_0690",
+  "test_release_0690",
+  "test_apart33",
+  "test_certify33h",
+  "test_certify32h",
+  "test_baseline32t"
+ ],
+ "head": "14c0d6fdec72e6f6bb6a60fbf07fe207c53ab46c",
+ "passed": true,
+ "per_module": {
+  "test_apart33": {
+   "results": {
+    "test_edge_traces": "ok",
+    "test_random_traces": "ok",
+    "test_real_machine_traces": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_edge_traces (tests.test_apart33.T.test_edge_traces) ... ok\ntest_random_traces (tests.test_apart33.T.test_random_traces) ... ok\ntest_real_machine_traces (tests.test_apart33.T.test_real_machine_traces) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.146s\n\nOK\n",
+   "tests": 3,
+   "wall_informational": 0.3
+  },
+  "test_baseline32t": {
+   "results": {
+    "test_h_extends": "ok",
+    "test_interface": "ok",
+    "test_learns_truths": "ok",
+    "test_step_cap": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_h_extends (tests.test_baseline32t.T.test_h_extends) ... ok\ntest_interface (tests.test_baseline32t.T.test_interface) ... ok\ntest_learns_truths (tests.test_baseline32t.T.test_learns_truths) ... ok\ntest_step_cap (tests.test_baseline32t.T.test_step_cap) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.088s\n\nOK\n",
+   "tests": 4,
+   "wall_informational": 0.2
+  },
+  "test_certify32h": {
+   "results": {
+    "test_bad_args": "ok",
+    "test_char_set": "ok",
+    "test_homing_sequences": "ok",
+    "test_reset_free_certifies_u3": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_bad_args (tests.test_certify32h.T.test_bad_args) ... ok\ntest_char_set (tests.test_certify32h.T.test_char_set) ... ok\ntest_homing_sequences (tests.test_certify32h.T.test_homing_sequences) ... ok\ntest_reset_free_certifies_u3 (tests.test_certify32h.T.test_reset_free_certifies_u3) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.701s\n\nOK\n",
+   "tests": 4,
+   "wall_informational": 0.8
+  },
+  "test_certify33h": {
+   "results": {
+    "test_bad_args": "ok",
+    "test_certifies_and_interface": "ok",
+    "test_same_as_32h": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_bad_args (tests.test_certify33h.T.test_bad_args) ... ok\ntest_certifies_and_interface (tests.test_certify33h.T.test_certifies_and_interface) ... ok\ntest_same_as_32h (tests.test_certify33h.T.test_same_as_32h) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.709s\n\nOK\n",
+   "tests": 3,
+   "wall_informational": 0.9
+  },
+  "test_release_0690": {
+   "results": {
+    "test_constants": "ok",
+    "test_release_if_present": "skipped 'RELEASE.json not yet 0.69.0'"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_constants (tests.test_release_0690.T.test_constants) ... ok\ntest_release_if_present (tests.test_release_0690.T.test_release_if_present) ... skipped 'RELEASE.json not yet 0.69.0'\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK (skipped=1)\n",
+   "tests": 2,
+   "wall_informational": 0.1
+  },
+  "test_release_keys_0690": {
+   "results": {
+    "test_every_read_key_is_required": "ok",
+    "test_required_extends_release_keys": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_every_read_key_is_required (tests.test_release_keys_0690.T.test_every_read_key_is_required) ... ok\ntest_required_extends_release_keys (tests.test_release_keys_0690.T.test_required_extends_release_keys) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.002s\n\nOK\n",
+   "tests": 2,
+   "wall_informational": 0.0
+  },
+  "test_scripts_073": {
+   "results": {
+    "test_gate_constants": "ok",
+    "test_pack": "ok",
+    "test_recount_labels": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_gate_constants (tests.test_scripts_073.T.test_gate_constants) ... ok\ntest_pack (tests.test_scripts_073.T.test_pack) ... ok\ntest_recount_labels (tests.test_scripts_073.T.test_recount_labels) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nOK\n",
+   "tests": 3,
+   "wall_informational": 0.1
+  },
+  "test_targets_073": {
+   "results": {
+    "test_adapter_has_no_reset": "ok",
+    "test_oracle_reproduces_hand_truths": "ok",
+    "test_sizes_and_jobs": "ok",
+    "test_truth_extends_072": "ok",
+    "test_truth_matches_live_decoder": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_adapter_has_no_reset (tests.test_targets_073.T.test_adapter_has_no_reset) ... ok\ntest_oracle_reproduces_hand_truths (tests.test_targets_073.T.test_oracle_reproduces_hand_truths) ... ok\ntest_sizes_and_jobs (tests.test_targets_073.T.test_sizes_and_jobs) ... ok\ntest_truth_extends_072 (tests.test_targets_073.T.test_truth_extends_072) ... ok\ntest_truth_matches_live_decoder (tests.test_targets_073.T.test_truth_matches_live_decoder) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.011s\n\nOK\n",
+   "tests": 5,
+   "wall_informational": 0.2
+  }
+ },
+ "process": "lean",
+ "schema": "brute.test-suite-073.v1",
+ "test_file_sha256": {
+  "tests/test_apart33.py": "6996f51b33006ff296cb9455480cadb67bda1f74a2c5744c3d2822f7ecc67b7f",
+  "tests/test_baseline32t.py": "c83441431d084b8a63cdcf7e69eba568dcb5509a04dc6d572d2447b30d7fc051",
+  "tests/test_certify32h.py": "b30ec5338b53c50484d963b4c579728a44ca7ab69d5a0dc3e97fc65c27219b9d",
+  "tests/test_certify33h.py": "75ff9f61c1e147b9a580df07db3eaf41f8f5147e43803e440e08a4325cafceb7",
+  "tests/test_release_0690.py": "49761a9912a3a63cabf9ce948ed81acfa44735aaa35bb05b317fe0ec41afa407",
+  "tests/test_release_keys_0690.py": "6a397c980fbde7879114128499d404bf56e892e653e217273c51772a0ae01b17",
+  "tests/test_scripts_073.py": "af2df28175f7eb83f67794e40d64cf3e7e9694a169396d99dc9ad5319f368250",
+  "tests/test_targets_073.py": "98d612f8caaecacff59715f940282d235f490204b71fa13ab0349bd30eb52627"
+ }
+}
