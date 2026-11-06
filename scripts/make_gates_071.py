@@ -65,7 +65,7 @@ def compute():
             if live!=unpack(r['readings']):badf.append(key(r))
         G['GFID71']={'pass':not badf and bool(fin),'replay_mismatch':badf,'records':len(fin),'steps_replayed':sum(r['decoder_calls'] for r in fin)}
         memb=[key(r) for r in recs if r.get('rlimit_as_bytes')!=RLIMIT_AS or r.get('workers')!=WORKERS]
-        G['GMEM71']={'pass':not memb,'bad':memb,'rlimit_as_bytes':RLIMIT_AS,'workers':WORKERS,'kills':[(key(r),r.get('kill_reason'),r.get('cap_hit')) for r in recs if r.get('killed')]}
+        G['GMEM71']={'pass':not memb,'bad':memb,'rlimit_as_bytes':RLIMIT_AS,'workers':WORKERS,'kills':[[key(r),r.get('kill_reason'),r.get('cap_hit')] for r in recs if r.get('killed')]}
         G['G_recount71']={'pass':(M/'RECOUNT_071.json').exists() and load(M/'RECOUNT_071.json')==RC}
     L=ledger();ev={}
     for e in L:
