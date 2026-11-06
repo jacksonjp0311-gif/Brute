@@ -5,7 +5,7 @@ _Kept current on the working branch during a release and on `main` at release. L
 ## Current version and state
 
 <!-- V0670 -->
-- **v0.67.0 (study BRUTE-0670-HYBRID-071): NOT CERTIFIED, 10 of 12 gates (headline GHEAD71_plus1 failed 3/5; N-12 attempt failed 0/5).** Plan 071 93e1dec, build authorization 15939c2 (t143s742, t133s553, t139s684), source freeze cf34756, run_start b308081, seal abe08c9 (25/25, 1137 s), recount deb5b3a (0 wrong), tests 59640f0, gates e8efc60, deviation #211. Process: `git`/`gh` need `env -u GITHUB_TOKEN -u GH_TOKEN` (the env token is invalid; the stored gh login works). Box RAM was only ~2.7 GB available at the run; keep job memory capped (RLIMIT_AS) and run at safe parallelism.
+- **v0.67.0: RELEASED 2026-11-05 (tag v0.67.0 at 62e5fd2, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.67.0; fresh-clone verify and tests passed).** Study BRUTE-0670-HYBRID-071: NOT CERTIFIED, 10 of 12 gates (headline GHEAD71_plus1 failed 3/5; N-12 attempt failed 0/5).** Plan 071 93e1dec, build authorization 15939c2 (t143s742, t133s553, t139s684), source freeze cf34756, run_start b308081, seal abe08c9 (25/25, 1137 s), recount deb5b3a (0 wrong), tests 59640f0, gates e8efc60, deviation #211. Process: `git`/`gh` need `env -u GITHUB_TOKEN -u GH_TOKEN` (the env token is invalid; the stored gh login works). Box RAM was only ~2.7 GB available at the run; keep job memory capped (RLIMIT_AS) and run at safe parallelism.
   - **Finding (Observed, not gated):** arm B (certify/32h, v0.66.0) under a memory cap decided U3, U4, W16, GB at true+1 in 808-3670 steps vs textbook 3533-13269 / 11469; the hybrid H added nothing over the textbook's own steps and timed out on EJ and GB.
 
 <!-- V0660 -->
