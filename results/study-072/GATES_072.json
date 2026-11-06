@@ -1,0 +1,572 @@
+{
+  "contribution_split": {
+    "brute": "arm B: certify/32h, the SAT version-space certificate over the whole reset-free trajectory (unchanged since v0.66.0)",
+    "textbook": "arm T: homing sequences, Vasilevskii-Chow suite shape, Rivest-Schapire learner (comparison only)"
+  },
+  "failed": [],
+  "gates": {
+    "GBASE72": {
+      "b3_decided": 0,
+      "killed": [],
+      "pass": true,
+      "records": 16,
+      "table": {
+        "B5": {
+          "B": [
+            {
+              "N": 6,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12720101,
+              "steps": 403
+            },
+            {
+              "N": 6,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12720102,
+              "steps": 808
+            }
+          ],
+          "B3": [
+            {
+              "N": 8,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12720101,
+              "steps": null
+            }
+          ],
+          "T": [
+            {
+              "N": 6,
+              "kill": null,
+              "label": "ID",
+              "seed": 12720101,
+              "steps": 2729
+            },
+            {
+              "N": 6,
+              "kill": null,
+              "label": "ID",
+              "seed": 12720102,
+              "steps": 2678
+            }
+          ]
+        },
+        "EJ4": {
+          "B": [
+            {
+              "N": 12,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12720101,
+              "steps": 3262
+            },
+            {
+              "N": 12,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12720102,
+              "steps": 2851
+            }
+          ],
+          "B3": [
+            {
+              "N": 14,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12720101,
+              "steps": null
+            }
+          ],
+          "T": [
+            {
+              "N": 12,
+              "kill": null,
+              "label": "ID",
+              "seed": 12720101,
+              "steps": 18539
+            },
+            {
+              "N": 12,
+              "kill": null,
+              "label": "ID",
+              "seed": 12720102,
+              "steps": 15952
+            }
+          ]
+        },
+        "HK": {
+          "B": [
+            {
+              "N": 6,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12720101,
+              "steps": 403
+            },
+            {
+              "N": 6,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12720102,
+              "steps": 808
+            }
+          ],
+          "B3": [
+            {
+              "N": 8,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12720101,
+              "steps": null
+            }
+          ],
+          "T": [
+            {
+              "N": 6,
+              "kill": null,
+              "label": "ID",
+              "seed": 12720101,
+              "steps": 2729
+            },
+            {
+              "N": 6,
+              "kill": null,
+              "label": "ID",
+              "seed": 12720102,
+              "steps": 2678
+            }
+          ]
+        },
+        "KR": {
+          "B": [
+            {
+              "N": 5,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12720101,
+              "steps": 808
+            },
+            {
+              "N": 5,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12720102,
+              "steps": 809
+            }
+          ],
+          "B3": [
+            {
+              "N": 7,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12720101,
+              "steps": null
+            }
+          ],
+          "T": [
+            {
+              "N": 5,
+              "kill": null,
+              "label": "ID",
+              "seed": 12720101,
+              "steps": 904
+            },
+            {
+              "N": 5,
+              "kill": null,
+              "label": "ID",
+              "seed": 12720102,
+              "steps": 916
+            }
+          ]
+        },
+        "SJ": {
+          "B": [
+            {
+              "N": 4,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12720101,
+              "steps": 403
+            },
+            {
+              "N": 4,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12720102,
+              "steps": 403
+            }
+          ],
+          "B3": [
+            {
+              "N": 6,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12720101,
+              "steps": null
+            }
+          ],
+          "T": [
+            {
+              "N": 4,
+              "kill": null,
+              "label": "ID",
+              "seed": 12720101,
+              "steps": 261
+            },
+            {
+              "N": 4,
+              "kill": null,
+              "label": "ID",
+              "seed": 12720102,
+              "steps": 261
+            }
+          ]
+        },
+        "U16B": {
+          "B": [
+            {
+              "N": 10,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12720101,
+              "steps": 1620
+            },
+            {
+              "N": 10,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12720102,
+              "steps": 1622
+            }
+          ],
+          "B3": [
+            {
+              "N": 12,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12720101,
+              "steps": null
+            }
+          ],
+          "T": [
+            {
+              "N": 10,
+              "kill": null,
+              "label": "ID",
+              "seed": 12720101,
+              "steps": 21823
+            },
+            {
+              "N": 10,
+              "kill": null,
+              "label": "ID",
+              "seed": 12720102,
+              "steps": 23085
+            }
+          ]
+        },
+        "U32": {
+          "B": [
+            {
+              "N": 8,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12720101,
+              "steps": 1629
+            },
+            {
+              "N": 8,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12720102,
+              "steps": 2453
+            }
+          ],
+          "B3": [
+            {
+              "N": 10,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12720101,
+              "steps": null
+            }
+          ],
+          "T": [
+            {
+              "N": 8,
+              "kill": null,
+              "label": "ID",
+              "seed": 12720101,
+              "steps": 9729
+            },
+            {
+              "N": 8,
+              "kill": null,
+              "label": "ID",
+              "seed": 12720102,
+              "steps": 22061
+            }
+          ]
+        },
+        "U8S": {
+          "B": [
+            {
+              "N": 10,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12720101,
+              "steps": null
+            },
+            {
+              "N": 10,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12720102,
+              "steps": null
+            }
+          ],
+          "B3": [
+            {
+              "N": 12,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12720101,
+              "steps": null
+            }
+          ],
+          "T": [
+            {
+              "N": 10,
+              "kill": null,
+              "label": "ID",
+              "seed": 12720101,
+              "steps": 154005
+            },
+            {
+              "N": 10,
+              "kill": null,
+              "label": "ID",
+              "seed": 12720102,
+              "steps": 151876
+            }
+          ]
+        }
+      }
+    },
+    "GFID72": {
+      "pass": true,
+      "records": 30,
+      "replay_mismatch": [],
+      "steps_replayed": 448508
+    },
+    "GHEAD72": {
+      "decided_cells": 14,
+      "decided_per_target": {
+        "B5": 2,
+        "EJ4": 2,
+        "HK": 2,
+        "KR": 2,
+        "SJ": 2,
+        "U16B": 2,
+        "U32": 2,
+        "U8S": 0
+      },
+      "heldout_HK_decided_seeds": [
+        12720101,
+        12720102
+      ],
+      "of": 16,
+      "pass": true
+    },
+    "GHOST72": {
+      "diff_vs_v0670": "",
+      "pass": true
+    },
+    "GLIVE72": {
+      "elapsed_s": 375.0,
+      "jobs": 40,
+      "killed": [
+        [
+          "U8S:12720101:B",
+          "memory_cap"
+        ],
+        [
+          "U8S:12720102:B",
+          "memory_cap"
+        ],
+        [
+          "SJ:12720101:B3",
+          "timeout"
+        ],
+        [
+          "KR:12720101:B3",
+          "memory_cap"
+        ],
+        [
+          "B5:12720101:B3",
+          "memory_cap"
+        ],
+        [
+          "U32:12720101:B3",
+          "memory_cap"
+        ],
+        [
+          "U8S:12720101:B3",
+          "memory_cap"
+        ],
+        [
+          "U16B:12720101:B3",
+          "memory_cap"
+        ],
+        [
+          "EJ4:12720101:B3",
+          "memory_cap"
+        ],
+        [
+          "HK:12720101:B3",
+          "memory_cap"
+        ]
+      ],
+      "pass": true,
+      "records": 40
+    },
+    "GMEM72": {
+      "bad": [],
+      "kills": [
+        [
+          "U8S:12720101:B",
+          "memory_cap",
+          true
+        ],
+        [
+          "U8S:12720102:B",
+          "memory_cap",
+          true
+        ],
+        [
+          "SJ:12720101:B3",
+          "timeout",
+          false
+        ],
+        [
+          "KR:12720101:B3",
+          "memory_cap",
+          true
+        ],
+        [
+          "B5:12720101:B3",
+          "memory_cap",
+          true
+        ],
+        [
+          "U32:12720101:B3",
+          "memory_cap",
+          true
+        ],
+        [
+          "U8S:12720101:B3",
+          "memory_cap",
+          true
+        ],
+        [
+          "U16B:12720101:B3",
+          "memory_cap",
+          true
+        ],
+        [
+          "EJ4:12720101:B3",
+          "memory_cap",
+          true
+        ],
+        [
+          "HK:12720101:B3",
+          "memory_cap",
+          true
+        ]
+      ],
+      "pass": true,
+      "rlimit_as_bytes": 1932735283,
+      "workers": 3
+    },
+    "GNORESET72": {
+      "adapter_ast_violations": [],
+      "pass": true,
+      "records": 30,
+      "records_not_single_object": []
+    },
+    "GS72_sound": {
+      "decided_B": 14,
+      "decided_T": 16,
+      "pass": true,
+      "wrong": []
+    },
+    "GSTEP72": {
+      "cells": 14,
+      "median_ratio": 0.17733853327878343,
+      "pass": true,
+      "ratios": {
+        "B5:12720101": 0.148,
+        "B5:12720102": 0.302,
+        "EJ4:12720101": 0.176,
+        "EJ4:12720102": 0.179,
+        "HK:12720101": 0.148,
+        "HK:12720102": 0.302,
+        "KR:12720101": 0.894,
+        "KR:12720102": 0.883,
+        "SJ:12720101": 1.544,
+        "SJ:12720102": 1.544,
+        "U16B:12720101": 0.074,
+        "U16B:12720102": 0.07,
+        "U32:12720101": 0.167,
+        "U32:12720102": 0.111
+      }
+    },
+    "GTEST72": {
+      "modules": 6,
+      "pass": true,
+      "test_files_match": true
+    },
+    "GTRUTH72": {
+      "ledger_sha_matches": true,
+      "pass": true,
+      "reproduced": true
+    },
+    "G_PROC72": {
+      "chain": [
+        "ac1c6a5",
+        "ac1c6a5",
+        "473d372",
+        "cc4e1b0",
+        "5a9656f",
+        "d2c2b20"
+      ],
+      "missing": [],
+      "pass": true
+    },
+    "G_recount72": {
+      "pass": true
+    }
+  },
+  "passed": [
+    "GBASE72",
+    "GFID72",
+    "GHEAD72",
+    "GHOST72",
+    "GLIVE72",
+    "GMEM72",
+    "GNORESET72",
+    "GS72_sound",
+    "GSTEP72",
+    "GTEST72",
+    "GTRUTH72",
+    "G_PROC72",
+    "G_recount72"
+  ],
+  "results_sha256": "72d528b4311b43b1c322cf72ff9ca18ec4abd6248d5ea01e55088b5ff2a07e2c",
+  "status": "certified reset-free on more real software (CPython 3.13.5 incremental shift_jis, euc_kr, big5, utf-32-le, utf-8-sig, utf-16-be, euc_jis_2004 decoders (big5hkscs held out); read_bits 2; declared N = oracle minimal size + 1; clean readings; no resets; Brute SAT version space with homing-based tests (certify/32h, unchanged))",
+  "study": "BRUTE-0680-BREADTH-072"
+}
