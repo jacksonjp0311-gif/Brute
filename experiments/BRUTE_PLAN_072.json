@@ -1,0 +1,54 @@
+{
+ "schema": "brute.plan.v72",
+ "study": "BRUTE-0680-BREADTH-072",
+ "version_under_test": "0.68.0",
+ "parent_study": "BRUTE-0670-HYBRID-071",
+ "written": "2026-11-05 EST (agent-drafted, not reviewed by James)",
+ "status": "LOCKED at the plan_072 ledger entry",
+ "standing_go": "t143s742, t133s553, t139s684",
+ "honest_framing": "v0.67.0's hybrid H added nothing over the textbook learner and timed out on EJ and GB. What did work, observed but not gated, was arm B = brute.certify/32h (v0.66.0, unchanged): under a memory cap it decided 4 of 5 real decoders at true+1 in 808-3670 steps against 3533-13269 / 11469 for the textbook learner. This study tests that observation honestly on NEW real software: 8 more CPython incremental decoders, fresh seeds, two seeds each, with a ground truth that is NOT hand-written but derived by an independent oracle (BFS over real decoder getstate() values + Moore minimisation; it reproduces all 5 hand-written v0.64-0.67 truths). No brute/ code changes. The guarantee is conditional on the declared N (here true+1, a generous declaration), clean readings, and no resets.",
+ "question": "Does Brute's existing SAT engine (certify/32h, unchanged) decide new real decoders reset-free at a tight N, soundly, with fewer decoder steps than the textbook learner (baseline/32t, unchanged)?",
+ "targets": ["SJ", "KR", "B5", "U32", "U8S", "U16B", "EJ4", "HK"],
+ "heldout": "HK (big5hkscs) is held out: no run of any arm touched it before the freeze",
+ "target_software": "experiments/targets_072.py: real CPython 3.13.5 incremental decoders (shift_jis, euc_kr, big5, utf-32-le, utf-8-sig, utf-16-be, euc_jis_2004, big5hkscs) on 3 byte values each; one decoder object per job, no reset, 2-bit readings (non-empty, contains U+FFFD); same interface rules as experiments/targets_070.py",
+ "truth": {
+  "file": "experiments/truth_072.json built by scripts/make_truth_072.py (refuses overwrite; ledger event truth_072 before any run)",
+  "method": "oracle independent of Brute: BFS over decoder states identified by decoder.getstate() plus the last reading, then Moore partition refinement. getstate() is used only by the truth script, never by the runner's adapter",
+  "validation": "the same oracle on the five v0.64-0.67 targets (U3, U4, W16, EJ, GB) is Moore-equivalent from the start state to the hand-written truth_069 on all five (checked in tests)",
+  "minimal_sizes": {"SJ": 3, "KR": 4, "B5": 5, "U32": 7, "U8S": 9, "U16B": 9, "EJ4": 11, "HK": 5},
+  "note": "U32 (42 reachable states), U8S (initial BOM states are never revisited), U16B (21) and EJ4 (13) have transient or non-minimal structure; the Moore minimum is what N is compared with"
+ },
+ "api": {
+  "B": "brute.certify/32h unchanged (v0.66.0)",
+  "T": "brute.baseline/32t unchanged (textbook Rivest-Schapire homing + L* + Vasilevskii-Chow)"
+ },
+ "design": {
+  "N": {
+   "plus1": {"SJ": 4, "KR": 5, "B5": 6, "U32": 8, "U8S": 10, "U16B": 10, "EJ4": 12, "HK": 6},
+   "plus3": {"SJ": 6, "KR": 7, "B5": 8, "U32": 10, "U8S": 12, "U16B": 12, "EJ4": 14, "HK": 8}
+  },
+  "jobs": "plus1: B and T x 8 targets x seeds 12720101, 12720102 = 32 jobs; plus3 (diagnostic, ungated): B x 8 targets x seed 12720101 = 8 jobs; 40 jobs. Smoke seed 12720301 (SJ, KR, plus1, B and T) is not gated",
+  "memory": "each job's child sets RLIMIT_AS = 1.8 GiB and oom_score_adj 1000 (runner-side, not in brute/). MemoryError or a signal exit -> KILL record (cap_hit true/false). 3 workers. The box had about 2.7-5 GB of available RAM at the v0.67.0 run; no job was killed by the kernel then",
+  "time": "SIGKILL at 240 s -> KILL record; main cap 2400 s; the main run happens once"
+ },
+ "gates": {
+  "GHEAD72": "HEADLINE: arm B decided (IDF, recounted correct) on at least 12 of the 16 plus1 cells, 0 WRONG, and the held-out HK decided on at least 1 of its 2 seeds",
+  "GSTEP72": "over plus1 (target, seed) cells where B and T both decided, the median of B decoder steps / T decoder steps is at most 0.5 (v0.67.0 observed 0.11-0.32 on 4 targets, not gated)",
+  "GS72_sound": "0 WRONG among decided records of B (plus1 and plus3) and of T",
+  "GBASE72": "all 16 plus1 T records present and recounted; the B/T table is written; T is the comparison, not gated beyond presence",
+  "GNORESET72": "adapter AST has no reset, getstate, setstate, buffer or private use; getincrementaldecoder is called once in Target.__init__; every non-KILL record has resets 0 and decoder_objects 1",
+  "GFID72": "every non-KILL record's action sequence replayed on one fresh decoder gives exactly the recorded readings",
+  "GMEM72": "every record has rlimit_as_bytes 1.8 GiB and workers 3; any cap hit appears as a KILL record",
+  "GHOST72": "brute/ is byte-identical to tag v0.67.0 (empty git diff at run_start): no engine change in this version",
+  "GTRUTH72": "scripts/make_truth_072.py --check reproduces experiments/truth_072.json; ledger event truth_072 precedes the run; its sha matches",
+  "GLIVE72": "the main run sealed complete within the main cap",
+  "G_recount72": "scripts/recount_072.py --check reproduces RECOUNT_072.json",
+  "GTEST72": "scripts/run_tests_0680.py --official passes",
+  "G_PROC72": "commit chain plan < build_authorization < freeze < run_start < seal"
+ },
+ "diagnostic_not_gated": "B at plus3 (one seed per target): decided count and steps are reported in the table. At N 12 in v0.66.0 B was IDU or out of memory, so failure here is expected for larger targets and is not a gate",
+ "status_rule": "Release v0.68.0 either way. Every gate is reported; failures are published, never forced",
+ "recount": "truth_072 simulation: B IDF correct iff the model at s1 is Moore-equivalent to the truth at its final state (ID additionally needs every start-consistent state equivalent to truth start); T ID correct iff its hypothesis is equivalent to the truth at origin_step; labels as scripts/recount_070.label with truth_072",
+ "what_this_cannot_show": "No noise; real decoders only; sizes 3-11 states; N = true+1 is generous (the truth sizes come from the oracle, not from a-priori knowledge); two seeds per cell; the truth oracle shares CPython with the targets (it is independent of Brute, not of CPython); B's guarantee does not cover loose N",
+ "pre_plan_exploration": "Observed before the lock: the oracle was run on the 8 targets and on the 5 old targets to read sizes and validate against the hand truth. No Brute arm ran on any new target"
+}
