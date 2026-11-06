@@ -1,0 +1,99 @@
+{
+ "gated_modules": [
+  "test_certify32x",
+  "test_certify32h",
+  "test_baseline32t",
+  "test_scripts_071",
+  "test_release_keys_0670",
+  "test_release_0670"
+ ],
+ "head": "f4fd6b53419473240df1574d3f75805080fba862",
+ "passed": true,
+ "per_module": {
+  "test_baseline32t": {
+   "results": {
+    "test_h_extends": "ok",
+    "test_interface": "ok",
+    "test_learns_truths": "ok",
+    "test_step_cap": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_h_extends (tests.test_baseline32t.T.test_h_extends) ... ok\ntest_interface (tests.test_baseline32t.T.test_interface) ... ok\ntest_learns_truths (tests.test_baseline32t.T.test_learns_truths) ... ok\ntest_step_cap (tests.test_baseline32t.T.test_step_cap) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.086s\n\nOK\n",
+   "tests": 4,
+   "wall_informational": 0.2
+  },
+  "test_certify32h": {
+   "results": {
+    "test_bad_args": "ok",
+    "test_char_set": "ok",
+    "test_homing_sequences": "ok",
+    "test_reset_free_certifies_u3": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_bad_args (tests.test_certify32h.T.test_bad_args) ... ok\ntest_char_set (tests.test_certify32h.T.test_char_set) ... ok\ntest_homing_sequences (tests.test_certify32h.T.test_homing_sequences) ... ok\ntest_reset_free_certifies_u3 (tests.test_certify32h.T.test_reset_free_certifies_u3) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.714s\n\nOK\n",
+   "tests": 4,
+   "wall_informational": 0.9
+  },
+  "test_certify32x": {
+   "results": {
+    "test_host_agnostic": "ok",
+    "test_idf_on_true_hypothesis": "ok",
+    "test_sep": "ok",
+    "test_too_small_bound_does_not_certify_wrongly": "ok",
+    "test_wrong_hypothesis_is_never_idf_true": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_host_agnostic (tests.test_certify32x.T.test_host_agnostic) ... ok\ntest_idf_on_true_hypothesis (tests.test_certify32x.T.test_idf_on_true_hypothesis) ... ok\ntest_sep (tests.test_certify32x.T.test_sep) ... ok\ntest_too_small_bound_does_not_certify_wrongly (tests.test_certify32x.T.test_too_small_bound_does_not_certify_wrongly) ... ok\ntest_wrong_hypothesis_is_never_idf_true (tests.test_certify32x.T.test_wrong_hypothesis_is_never_idf_true) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.509s\n\nOK\n",
+   "tests": 5,
+   "wall_informational": 0.6
+  },
+  "test_release_0670": {
+   "results": {
+    "test_constants": "ok",
+    "test_release_if_present": "skipped 'RELEASE.json not yet 0.67.0'"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_constants (tests.test_release_0670.T.test_constants) ... ok\ntest_release_if_present (tests.test_release_0670.T.test_release_if_present) ... skipped 'RELEASE.json not yet 0.67.0'\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK (skipped=1)\n",
+   "tests": 2,
+   "wall_informational": 0.0
+  },
+  "test_release_keys_0670": {
+   "results": {
+    "test_every_read_key_is_required": "ok",
+    "test_required_extends_release_keys": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_every_read_key_is_required (tests.test_release_keys_0670.T.test_every_read_key_is_required) ... ok\ntest_required_extends_release_keys (tests.test_release_keys_0670.T.test_required_extends_release_keys) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.001s\n\nOK\n",
+   "tests": 2,
+   "wall_informational": 0.0
+  },
+  "test_scripts_071": {
+   "results": {
+    "test_gate_helpers": "ok",
+    "test_jobs": "ok",
+    "test_pack_canon": "ok",
+    "test_recount_labels_32x": "ok"
+   },
+   "returncode": 0,
+   "stdout_tail": "",
+   "tail": "test_gate_helpers (tests.test_scripts_071.T.test_gate_helpers) ... ok\ntest_jobs (tests.test_scripts_071.T.test_jobs) ... ok\ntest_pack_canon (tests.test_scripts_071.T.test_pack_canon) ... ok\ntest_recount_labels_32x (tests.test_scripts_071.T.test_recount_labels_32x) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.007s\n\nOK\n",
+   "tests": 4,
+   "wall_informational": 0.1
+  }
+ },
+ "process": "lean",
+ "schema": "brute.test-suite-071.v1",
+ "test_file_sha256": {
+  "tests/test_baseline32t.py": "c83441431d084b8a63cdcf7e69eba568dcb5509a04dc6d572d2447b30d7fc051",
+  "tests/test_certify32h.py": "b30ec5338b53c50484d963b4c579728a44ca7ab69d5a0dc3e97fc65c27219b9d",
+  "tests/test_certify32x.py": "679af8941ee6457fbae4146e7e523ddca0aad0f6ed6f7575f562c984258c7efe",
+  "tests/test_release_0670.py": "9a4bed02c9e99a11d9de779abb5ef2b6ec18669a19c4b1170ea37728d7507c38",
+  "tests/test_release_keys_0670.py": "0be2b532b38124381eef9dadf6a5568f58564e02e1d852bea1d004084b0c274b",
+  "tests/test_scripts_071.py": "1dfa18c0887fb2d2a17c2440c083da990a207c8fb2f60fbad6c3db62dd4b28f1"
+ }
+}
