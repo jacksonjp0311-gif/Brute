@@ -1,5 +1,24 @@
 # Brute changelog
 
+## v0.69.0: NOT CERTIFIED (12 of 15 gates). Loose declared N after removing the clique-preprocess memory wall (study BRUTE-0690-LOOSEN-073, LEAN process)
+
+**Passed: GLIVE73, GS73_sound, GNORESET73, GBASE73, GFID73, GMEM73, GHOST73, GTRUTH73, G_recount73, GTEST73, G_PROC73, GC1_73. Failed: GHEAD73 (headline), GHELD73, GSTEP73. Status: not certified.**
+
+- **Headline failed.** At N = true+3, certify/33h decided 3 of 20 cells (SJ both seeds, KR:12730102), covering 2 targets; needed 6 cells and 3 targets. 0 WRONG.
+- **Held-out failed.** HZ and JO at loose N: 0 of 4 decided (HZ both memory_cap; JO both timeout).
+- **Step ratio failed.** On the 3 cells where C3 and T3 both decided, median C/T decoder steps ≈ 1.030 (threshold ≤ 1.0). KR was 0.633; both SJ cells were about 1.03.
+- **Tight N held.** C1 decided 8 of 10 (GC1_73); U8S and HZ hit memory_cap. Textbook T3 ID 18/20 (HZ both QCAP at ~3e6 steps).
+- **Sound.** 0 WRONG / 0 TRACE_MISMATCH on 50 sealed records; single decoder object; no resets; replay exact on non-KILL records.
+- **Next wall named.** After bitset preprocessing, 14 of 17 remaining C3 cells died on the 2.0 GiB memory_cap inside the SAT/version-space path; 3 timed out at 420 s.
+- **Process.** Main run finished 2026-11-06 07:53 EST (~1980 s); seal committed ~12:12 EST after a ~13.5 h stall from run_start (deviation #213).
+
+### What Brute can't do yet
+
+- Decide 6+ loose-N cells or 3+ targets reset-free on this set.
+- Decide held-out hz / johab at N = true+3 within the caps.
+- Beat the textbook on step count at loose N on the cells it does decide (median).
+- Handle noise on real software, or targets beyond these codecs.
+
 ## v0.68.0: CERTIFIED (13 of 13 gates), narrow scope. The unchanged SAT engine certify/32h decided 14 of 16 true+1 cells on 8 new real CPython decoders, reset-free, 0 wrong (study BRUTE-0680-BREADTH-072, LEAN process)
 
 **Passed: GBASE72, GFID72, GHEAD72, GHOST72, GLIVE72, GMEM72, GNORESET72, GS72_sound, GSTEP72, GTEST72, GTRUTH72, G_PROC72, G_recount72. Failed: none. Status: certified on the stated scope.**

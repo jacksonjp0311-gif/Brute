@@ -1,8 +1,12 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-05 EST (v0.68.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-06 EST (v0.69.0 release docs; not certified)._
 
 ## Current version and state
+
+<!-- V0690 -->
+- **v0.69.0 (study BRUTE-0690-LOOSEN-073): NOT CERTIFIED, 12 of 15 gates (GHEAD73 3/20 cells / 2 targets; GHELD73 0/4; GSTEP73 median≈1.030).** Plan 073 c8f06f5, build authorization 15c6a23 (t143s742, t133s553, t139s684), source freeze 6115d11, run_start 906d4bd, seal ce5e984 (50/50, ~1980 s; late commit after stall), recount 0 wrong, gates 938d7e0, deviation #213. Python for all scripts: `/workspace/bgr/venv/bin/python` (system python has no pysat). `git`/`gh` need `env -u GITHUB_TOKEN -u GH_TOKEN`.
+  - **Finding (Observed):** certify/33h at N=true+3 decided 3/20 cells (SJ×2, KR×1), 0 wrong; tight N 8/10; next wall is SAT/version-space memory at loose N (14 memory_cap, 3 timeout). Next: v0.70.0 / plan 074 (NEXT_ITERATION.md).
 
 <!-- V0680 -->
 - **v0.68.0: RELEASED 2026-11-05 (tag v0.68.0 at 8ccdf1a, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.68.0; fresh-clone verify and tests passed).** Study BRUTE-0680-BREADTH-072: **CERTIFIED (narrow scope), 13 of 13 gates.** Plan 072 ac1c6a5, build authorization 473d372 (t143s742, t133s553, t139s684), source freeze cc4e1b0, run_start 5a9656f, seal d2c2b20 (40/40, 375 s), recount 0 wrong, gates 3e22978, deviation #212. Python for all scripts: `/workspace/bgr/venv/bin/python` (system python has no pysat). `git`/`gh` need `env -u GITHUB_TOKEN -u GH_TOKEN`.
