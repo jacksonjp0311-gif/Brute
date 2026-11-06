@@ -1,0 +1,91 @@
+{
+  "api": {
+    "C": "brute.certify/34h (NEW: certify/33h bitset preprocess + separating-word policy; no homing batch)",
+    "T": "brute.baseline/32t (unchanged)"
+  },
+  "design": {
+    "N": {
+      "plus1": {
+        "B5": 6,
+        "EJ4": 12,
+        "HK": 6,
+        "HZ": 11,
+        "JO": 5,
+        "KR": 5,
+        "SJ": 4,
+        "U16B": 10,
+        "U32": 8,
+        "U8S": 10
+      },
+      "plus3": {
+        "B5": 8,
+        "EJ4": 14,
+        "HK": 8,
+        "HZ": 13,
+        "JO": 7,
+        "KR": 7,
+        "SJ": 6,
+        "U16B": 12,
+        "U32": 10,
+        "U8S": 12
+      }
+    },
+    "jobs": "C3: C at plus3, 10 targets x seeds 12740101, 12740102 = 20 (headline); C1: C at plus1, 10 x seed 12740101 = 10; T3: T at plus3, 10 x 2 = 20; 50 jobs. Smoke seed 12740301 (SJ, KR; C1 and T3) not gated",
+    "memory": "RLIMIT_AS = 2.0 GiB per job child; oom_score_adj 1000; MemoryError/signal -> KILL. 3 workers",
+    "time": "SIGKILL at 420 s per job -> KILL; main cap 3300 s; main run once"
+  },
+  "diagnostic_not_gated": "per-target kill reasons and step counts at C3 vs study 073; wall times with short traces",
+  "gates": {
+    "GBASE74": "all 20 T3 records present and recounted; C/T table written",
+    "GC1_74": "arm C at tight N (C1) decided on at least 7 of 10 targets, 0 WRONG",
+    "GFID74": "every non-KILL record's actions replay to the recorded readings on one fresh decoder",
+    "GHEAD74": "HEADLINE: arm C at loose N (C3) decided (IDF, recounted correct) on at least 6 of 20 cells, covering at least 3 different targets, 0 WRONG",
+    "GHELD74": "at least 1 of 4 held-out C3 cells (HZ, JO x 2) decided, 0 WRONG",
+    "GHOST74": "git diff v0.69.0..run_start -- brute is exactly A brute/api/certify34h.py",
+    "GLIVE74": "main complete within main_cap+60s; RESULTS matches SEAL; all 50 jobs present",
+    "GMEM74": "every record has rlimit_as_bytes and workers as designed; kill reasons recorded",
+    "GNORESET74": "adapter AST ok; every non-KILL record has decoder_objects=1 and resets=0",
+    "GS74_sound": "0 WRONG / 0 TRACE_MISMATCH on all recounted records",
+    "GSTEP74": "over C3 cells where C and T3 both decided, median C/T decoder steps <= 1.0",
+    "GTEST74": "official TEST_SUITE_074 passed; gated test file hashes match",
+    "GTRUTH74": "truth_074 ledger matches file; make_truth_074 --check ok",
+    "G_PROC74": "ledger order truth->plan->build_authorization->freeze->run_start->run_end with ancestor chain",
+    "G_recount74": "RECOUNT_074.json exists and equals recomputation"
+  },
+  "heldout": [
+    "HZ",
+    "JO"
+  ],
+  "honest_framing": "v0.69.0 certify/33h removed the clique-preprocess wall; at N=true+3 it decided 3/20 cells (SJ\u00d72, KR\u00d71), 0 wrong; 14 memory_cap (often pysat int32 allocator) and 3 timeout. Homing batches appended ~400 steps per round and drove T into that SAT wall. The batch was heuristic only (certificate never assumed homing). This version keeps bitset preprocess and drops the batch.",
+  "parent_study": "BRUTE-0690-LOOSEN-073",
+  "pre_plan_exploration": {
+    "consequence": "Gate thresholds stay at 6 of 20 cells / 3 targets (same as 073). Pilot used seed 12730101 (a study-073 gate seed, not a 074 gate seed). Main seeds are 12740101 and 12740102.",
+    "diagnosis": "Study 073 C3 kills: 14 memory_cap (several with MemoryError int32 allocator), 3 timeout. Decided cells used 4052-7329 steps with ~400-step batches. Encoding size grows like T\u00b7N\u00b2.",
+    "fix_check": "Ungated certify/34h pilot on seed 12730101 at 2.0 GiB: B5 N=8 IDF 940 steps ~309 s; HK N=8 IDF 940 steps ~307 s; KR N=7 IDF 744 steps ~66 s; JO N=7 TIMEOUT at 300 s (1027 steps, clique 3). No Brute arm ran on 074 gate seeds 12740101/12740102 or on U32/U8S/U16B/EJ4/HZ before the freeze, except the ungated smoke after freeze."
+  },
+  "process": "LEAN: plan locked before gated data, one main run, exact recount, failures published, one fresh-clone check, no CI, no drills, no host-pause probe",
+  "question": "With the 400-step homing batch removed (certify/34h = bitset preprocess + separating-word policy only), how many real decoders does Brute decide reset-free at a LOOSE declared N (true+3), soundly, and does the change keep tight-N behaviour?",
+  "recount": "scripts/recount_074.py against truth_074.json",
+  "schema": "brute.plan.v74",
+  "standing_go": "t143s742, t133s553, t139s684",
+  "status": "LOCKED",
+  "status_rule": "CERTIFIED iff every gate passes; else not certified with failing gates listed",
+  "study": "BRUTE-0700-CLAUSE-074",
+  "target_software": "CPython 3.13.5 incremental decoders via public interface only, no resets",
+  "targets": [
+    "SJ",
+    "KR",
+    "B5",
+    "U32",
+    "U8S",
+    "U16B",
+    "EJ4",
+    "HK",
+    "HZ",
+    "JO"
+  ],
+  "truth": "experiments/truth_074.json (same oracle machines as truth_073; new schema tag)",
+  "version_under_test": "0.70.0",
+  "what_this_cannot_show": "No noise; sizes 3-10 states; N=true+3 uses oracle sizes; two seeds; 2.0 GiB and 420 s are runner caps; guarantee conditional on N and clean readings; pilot used a 073 seed",
+  "written": "2026-11-06T12:45:00-05:00"
+}
