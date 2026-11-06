@@ -1,0 +1,837 @@
+{
+  "contribution_split": {
+    "brute": "arm C: certify/33h, the SAT version-space certificate over the whole reset-free trajectory (certify/32h with bitset trace preprocessing)",
+    "textbook": "arm T: homing sequences, Vasilevskii-Chow suite shape, Rivest-Schapire learner (comparison only)"
+  },
+  "failed": [
+    "GHEAD73",
+    "GHELD73",
+    "GSTEP73"
+  ],
+  "gates": {
+    "GBASE73": {
+      "c_kills": [
+        [
+          "KR:12730101:C3",
+          "timeout"
+        ],
+        [
+          "B5:12730101:C3",
+          "memory_cap"
+        ],
+        [
+          "U32:12730101:C3",
+          "memory_cap"
+        ],
+        [
+          "U8S:12730101:C3",
+          "memory_cap"
+        ],
+        [
+          "U16B:12730101:C3",
+          "memory_cap"
+        ],
+        [
+          "EJ4:12730101:C3",
+          "memory_cap"
+        ],
+        [
+          "HK:12730101:C3",
+          "memory_cap"
+        ],
+        [
+          "HZ:12730101:C3",
+          "memory_cap"
+        ],
+        [
+          "JO:12730101:C3",
+          "timeout"
+        ],
+        [
+          "B5:12730102:C3",
+          "memory_cap"
+        ],
+        [
+          "U32:12730102:C3",
+          "memory_cap"
+        ],
+        [
+          "U8S:12730102:C3",
+          "memory_cap"
+        ],
+        [
+          "U16B:12730102:C3",
+          "memory_cap"
+        ],
+        [
+          "EJ4:12730102:C3",
+          "memory_cap"
+        ],
+        [
+          "HK:12730102:C3",
+          "memory_cap"
+        ],
+        [
+          "HZ:12730102:C3",
+          "memory_cap"
+        ],
+        [
+          "JO:12730102:C3",
+          "timeout"
+        ],
+        [
+          "U8S:12730101:C1",
+          "memory_cap"
+        ],
+        [
+          "HZ:12730101:C1",
+          "memory_cap"
+        ]
+      ],
+      "killed": [],
+      "pass": true,
+      "records": 20,
+      "t3_decided": 18,
+      "table": {
+        "B5": {
+          "C1": [
+            {
+              "N": 6,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12730101,
+              "steps": 403
+            }
+          ],
+          "C3": [
+            {
+              "N": 8,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12730101,
+              "steps": null
+            },
+            {
+              "N": 8,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12730102,
+              "steps": null
+            }
+          ],
+          "T3": [
+            {
+              "N": 8,
+              "kill": null,
+              "label": "ID",
+              "seed": 12730101,
+              "steps": 31693
+            },
+            {
+              "N": 8,
+              "kill": null,
+              "label": "ID",
+              "seed": 12730102,
+              "steps": 31610
+            }
+          ]
+        },
+        "EJ4": {
+          "C1": [
+            {
+              "N": 12,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12730101,
+              "steps": 4494
+            }
+          ],
+          "C3": [
+            {
+              "N": 14,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12730101,
+              "steps": null
+            },
+            {
+              "N": 14,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12730102,
+              "steps": null
+            }
+          ],
+          "T3": [
+            {
+              "N": 14,
+              "kill": null,
+              "label": "ID",
+              "seed": 12730101,
+              "steps": 221411
+            },
+            {
+              "N": 14,
+              "kill": null,
+              "label": "ID",
+              "seed": 12730102,
+              "steps": 193809
+            }
+          ]
+        },
+        "HK": {
+          "C1": [
+            {
+              "N": 6,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12730101,
+              "steps": 403
+            }
+          ],
+          "C3": [
+            {
+              "N": 8,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12730101,
+              "steps": null
+            },
+            {
+              "N": 8,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12730102,
+              "steps": null
+            }
+          ],
+          "T3": [
+            {
+              "N": 8,
+              "kill": null,
+              "label": "ID",
+              "seed": 12730101,
+              "steps": 31693
+            },
+            {
+              "N": 8,
+              "kill": null,
+              "label": "ID",
+              "seed": 12730102,
+              "steps": 31610
+            }
+          ]
+        },
+        "HZ": {
+          "C1": [
+            {
+              "N": 11,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12730101,
+              "steps": null
+            }
+          ],
+          "C3": [
+            {
+              "N": 13,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12730101,
+              "steps": null
+            },
+            {
+              "N": 13,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12730102,
+              "steps": null
+            }
+          ],
+          "T3": [
+            {
+              "N": 13,
+              "kill": null,
+              "label": "QCAP",
+              "seed": 12730101,
+              "steps": 3000004
+            },
+            {
+              "N": 13,
+              "kill": null,
+              "label": "QCAP",
+              "seed": 12730102,
+              "steps": 3000007
+            }
+          ]
+        },
+        "JO": {
+          "C1": [
+            {
+              "N": 5,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12730101,
+              "steps": 811
+            }
+          ],
+          "C3": [
+            {
+              "N": 7,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12730101,
+              "steps": null
+            },
+            {
+              "N": 7,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12730102,
+              "steps": null
+            }
+          ],
+          "T3": [
+            {
+              "N": 7,
+              "kill": null,
+              "label": "ID",
+              "seed": 12730101,
+              "steps": 6642
+            },
+            {
+              "N": 7,
+              "kill": null,
+              "label": "ID",
+              "seed": 12730102,
+              "steps": 6643
+            }
+          ]
+        },
+        "KR": {
+          "C1": [
+            {
+              "N": 5,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12730101,
+              "steps": 403
+            }
+          ],
+          "C3": [
+            {
+              "N": 7,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12730101,
+              "steps": null
+            },
+            {
+              "N": 7,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12730102,
+              "steps": 7329
+            }
+          ],
+          "T3": [
+            {
+              "N": 7,
+              "kill": null,
+              "label": "ID",
+              "seed": 12730101,
+              "steps": 11664
+            },
+            {
+              "N": 7,
+              "kill": null,
+              "label": "ID",
+              "seed": 12730102,
+              "steps": 11571
+            }
+          ]
+        },
+        "SJ": {
+          "C1": [
+            {
+              "N": 4,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12730101,
+              "steps": 403
+            }
+          ],
+          "C3": [
+            {
+              "N": 6,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12730101,
+              "steps": 4052
+            },
+            {
+              "N": 6,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12730102,
+              "steps": 4065
+            }
+          ],
+          "T3": [
+            {
+              "N": 6,
+              "kill": null,
+              "label": "ID",
+              "seed": 12730101,
+              "steps": 3935
+            },
+            {
+              "N": 6,
+              "kill": null,
+              "label": "ID",
+              "seed": 12730102,
+              "steps": 3936
+            }
+          ]
+        },
+        "U16B": {
+          "C1": [
+            {
+              "N": 10,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12730101,
+              "steps": 1634
+            }
+          ],
+          "C3": [
+            {
+              "N": 12,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12730101,
+              "steps": null
+            },
+            {
+              "N": 12,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12730102,
+              "steps": null
+            }
+          ],
+          "T3": [
+            {
+              "N": 12,
+              "kill": null,
+              "label": "ID",
+              "seed": 12730101,
+              "steps": 204992
+            },
+            {
+              "N": 12,
+              "kill": null,
+              "label": "ID",
+              "seed": 12730102,
+              "steps": 229137
+            }
+          ]
+        },
+        "U32": {
+          "C1": [
+            {
+              "N": 8,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12730101,
+              "steps": 2047
+            }
+          ],
+          "C3": [
+            {
+              "N": 10,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12730101,
+              "steps": null
+            },
+            {
+              "N": 10,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12730102,
+              "steps": null
+            }
+          ],
+          "T3": [
+            {
+              "N": 10,
+              "kill": null,
+              "label": "ID",
+              "seed": 12730101,
+              "steps": 164197
+            },
+            {
+              "N": 10,
+              "kill": null,
+              "label": "ID",
+              "seed": 12730102,
+              "steps": 180541
+            }
+          ]
+        },
+        "U8S": {
+          "C1": [
+            {
+              "N": 10,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12730101,
+              "steps": null
+            }
+          ],
+          "C3": [
+            {
+              "N": 12,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12730101,
+              "steps": null
+            },
+            {
+              "N": 12,
+              "kill": "memory_cap",
+              "label": "KILL",
+              "seed": 12730102,
+              "steps": null
+            }
+          ],
+          "T3": [
+            {
+              "N": 12,
+              "kill": null,
+              "label": "ID",
+              "seed": 12730101,
+              "steps": 1645307
+            },
+            {
+              "N": 12,
+              "kill": null,
+              "label": "ID",
+              "seed": 12730102,
+              "steps": 1655102
+            }
+          ]
+        }
+      }
+    },
+    "GC1_73": {
+      "decided_targets": [
+        "B5",
+        "EJ4",
+        "HK",
+        "JO",
+        "KR",
+        "SJ",
+        "U16B",
+        "U32"
+      ],
+      "needed": 7,
+      "of": 10,
+      "pass": true
+    },
+    "GFID73": {
+      "pass": true,
+      "records": 31,
+      "replay_mismatch": [],
+      "steps_replayed": 10691548
+    },
+    "GHEAD73": {
+      "decided_cells": 3,
+      "decided_per_target": {
+        "B5": 0,
+        "EJ4": 0,
+        "HK": 0,
+        "HZ": 0,
+        "JO": 0,
+        "KR": 1,
+        "SJ": 2,
+        "U16B": 0,
+        "U32": 0,
+        "U8S": 0
+      },
+      "needed": 6,
+      "of": 20,
+      "pass": false,
+      "targets_decided": [
+        "KR",
+        "SJ"
+      ]
+    },
+    "GHELD73": {
+      "heldout_decided_cells": [],
+      "of": 4,
+      "pass": false
+    },
+    "GHOST73": {
+      "allowed": [
+        "A\tbrute/apart33.py",
+        "A\tbrute/api/certify33h.py"
+      ],
+      "diff_vs_v0680": "A\tbrute/apart33.py\nA\tbrute/api/certify33h.py",
+      "pass": true
+    },
+    "GLIVE73": {
+      "elapsed_s": 1979.9,
+      "jobs": 50,
+      "killed": [
+        [
+          "KR:12730101:C3",
+          "timeout"
+        ],
+        [
+          "B5:12730101:C3",
+          "memory_cap"
+        ],
+        [
+          "U32:12730101:C3",
+          "memory_cap"
+        ],
+        [
+          "U8S:12730101:C3",
+          "memory_cap"
+        ],
+        [
+          "U16B:12730101:C3",
+          "memory_cap"
+        ],
+        [
+          "EJ4:12730101:C3",
+          "memory_cap"
+        ],
+        [
+          "HK:12730101:C3",
+          "memory_cap"
+        ],
+        [
+          "HZ:12730101:C3",
+          "memory_cap"
+        ],
+        [
+          "JO:12730101:C3",
+          "timeout"
+        ],
+        [
+          "B5:12730102:C3",
+          "memory_cap"
+        ],
+        [
+          "U32:12730102:C3",
+          "memory_cap"
+        ],
+        [
+          "U8S:12730102:C3",
+          "memory_cap"
+        ],
+        [
+          "U16B:12730102:C3",
+          "memory_cap"
+        ],
+        [
+          "EJ4:12730102:C3",
+          "memory_cap"
+        ],
+        [
+          "HK:12730102:C3",
+          "memory_cap"
+        ],
+        [
+          "HZ:12730102:C3",
+          "memory_cap"
+        ],
+        [
+          "JO:12730102:C3",
+          "timeout"
+        ],
+        [
+          "U8S:12730101:C1",
+          "memory_cap"
+        ],
+        [
+          "HZ:12730101:C1",
+          "memory_cap"
+        ]
+      ],
+      "pass": true,
+      "records": 50
+    },
+    "GMEM73": {
+      "bad": [],
+      "kills": [
+        [
+          "KR:12730101:C3",
+          "timeout",
+          false
+        ],
+        [
+          "B5:12730101:C3",
+          "memory_cap",
+          true
+        ],
+        [
+          "U32:12730101:C3",
+          "memory_cap",
+          true
+        ],
+        [
+          "U8S:12730101:C3",
+          "memory_cap",
+          true
+        ],
+        [
+          "U16B:12730101:C3",
+          "memory_cap",
+          true
+        ],
+        [
+          "EJ4:12730101:C3",
+          "memory_cap",
+          true
+        ],
+        [
+          "HK:12730101:C3",
+          "memory_cap",
+          true
+        ],
+        [
+          "HZ:12730101:C3",
+          "memory_cap",
+          true
+        ],
+        [
+          "JO:12730101:C3",
+          "timeout",
+          false
+        ],
+        [
+          "B5:12730102:C3",
+          "memory_cap",
+          true
+        ],
+        [
+          "U32:12730102:C3",
+          "memory_cap",
+          true
+        ],
+        [
+          "U8S:12730102:C3",
+          "memory_cap",
+          true
+        ],
+        [
+          "U16B:12730102:C3",
+          "memory_cap",
+          true
+        ],
+        [
+          "EJ4:12730102:C3",
+          "memory_cap",
+          true
+        ],
+        [
+          "HK:12730102:C3",
+          "memory_cap",
+          true
+        ],
+        [
+          "HZ:12730102:C3",
+          "memory_cap",
+          true
+        ],
+        [
+          "JO:12730102:C3",
+          "timeout",
+          false
+        ],
+        [
+          "U8S:12730101:C1",
+          "memory_cap",
+          true
+        ],
+        [
+          "HZ:12730101:C1",
+          "memory_cap",
+          true
+        ]
+      ],
+      "pass": true,
+      "rlimit_as_bytes": 2147483648,
+      "workers": 3
+    },
+    "GNORESET73": {
+      "adapter_ast_violations": [],
+      "pass": true,
+      "records": 31,
+      "records_not_single_object": []
+    },
+    "GS73_sound": {
+      "decided_C": 11,
+      "decided_T": 18,
+      "pass": true,
+      "wrong": []
+    },
+    "GSTEP73": {
+      "cells": 3,
+      "median_ratio": 1.029733163913596,
+      "needed_at_most": 1.0,
+      "pass": false,
+      "ratios": {
+        "KR:12730102": 0.633,
+        "SJ:12730101": 1.03,
+        "SJ:12730102": 1.033
+      }
+    },
+    "GTEST73": {
+      "modules": 8,
+      "pass": true,
+      "test_files_match": true
+    },
+    "GTRUTH73": {
+      "ledger_sha_matches": true,
+      "pass": true,
+      "reproduced": true
+    },
+    "G_PROC73": {
+      "chain": [
+        "c8f06f5",
+        "c8f06f5",
+        "15c6a23",
+        "6115d11",
+        "906d4bd",
+        "ce5e984"
+      ],
+      "missing": [],
+      "pass": true
+    },
+    "G_recount73": {
+      "pass": true
+    }
+  },
+  "passed": [
+    "GBASE73",
+    "GC1_73",
+    "GFID73",
+    "GHOST73",
+    "GLIVE73",
+    "GMEM73",
+    "GNORESET73",
+    "GS73_sound",
+    "GTEST73",
+    "GTRUTH73",
+    "G_PROC73",
+    "G_recount73"
+  ],
+  "results_sha256": "107e5b93b1a2f8e0452ef02625089a5429ef12242aedeaef0c62e3fce0d76832",
+  "status": "not certified (failing gates: GHEAD73, GHELD73, GSTEP73)",
+  "study": "BRUTE-0690-LOOSEN-073"
+}
