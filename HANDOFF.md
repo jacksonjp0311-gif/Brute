@@ -4,6 +4,10 @@ _Kept current on the working branch during a release and on `main` at release. L
 
 ## Current version and state
 
+<!-- V0680 -->
+- **v0.68.0 (study BRUTE-0680-BREADTH-072): CERTIFIED (narrow scope), 13 of 13 gates.** Plan 072 ac1c6a5, build authorization 473d372 (t143s742, t133s553, t139s684), source freeze cc4e1b0, run_start 5a9656f, seal d2c2b20 (40/40, 375 s), recount 0 wrong, gates 3e22978, deviation #212. Python for all scripts: `/workspace/bgr/venv/bin/python` (system python has no pysat). `git`/`gh` need `env -u GITHUB_TOKEN -u GH_TOKEN`.
+  - **Finding (Observed):** certify/32h (unchanged) decided 14 of 16 true+1 cells on 8 new real decoders, 0 wrong, held-out HK 2/2, median 0.18 of textbook steps; U8S killed by memory on both seeds; at true+3 it decided 0 of 8 (7 memory-cap kills, 1 timeout). The textbook decided 16 of 16. Next: loose N is the open front (NEXT_ITERATION.md).
+
 <!-- V0670 -->
 - **v0.67.0: RELEASED 2026-11-05 (tag v0.67.0 at 62e5fd2, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.67.0; fresh-clone verify and tests passed).** Study BRUTE-0670-HYBRID-071: NOT CERTIFIED, 10 of 12 gates (headline GHEAD71_plus1 failed 3/5; N-12 attempt failed 0/5).** Plan 071 93e1dec, build authorization 15939c2 (t143s742, t133s553, t139s684), source freeze cf34756, run_start b308081, seal abe08c9 (25/25, 1137 s), recount deb5b3a (0 wrong), tests 59640f0, gates e8efc60, deviation #211. Process: `git`/`gh` need `env -u GITHUB_TOKEN -u GH_TOKEN` (the env token is invalid; the stored gh login works). Box RAM was only ~2.7 GB available at the run; keep job memory capped (RLIMIT_AS) and run at safe parallelism.
   - **Finding (Observed, not gated):** arm B (certify/32h, v0.66.0) under a memory cap decided U3, U4, W16, GB at true+1 in 808-3670 steps vs textbook 3533-13269 / 11469; the hybrid H added nothing over the textbook's own steps and timed out on EJ and GB.

@@ -1,5 +1,22 @@
 # Brute changelog
 
+## v0.68.0: CERTIFIED (13 of 13 gates), narrow scope. The unchanged SAT engine certify/32h decided 14 of 16 true+1 cells on 8 new real CPython decoders, reset-free, 0 wrong (study BRUTE-0680-BREADTH-072, LEAN process)
+
+**Passed: GBASE72, GFID72, GHEAD72, GHOST72, GLIVE72, GMEM72, GNORESET72, GS72_sound, GSTEP72, GTEST72, GTRUTH72, G_PROC72, G_recount72. Failed: none. Status: certified on the stated scope.**
+
+- **Scope.** CPython 3.13.5 incremental shift_jis, euc_kr, big5, utf-32-le, utf-8-sig, utf-16-be and euc_jis_2004 decoders, plus big5hkscs held out; 2-bit readings; clean readings; no resets; declared N = the oracle's minimal size + 1; seeds 12720101 and 12720102. The truth is derived by an oracle (BFS over decoder getstate values + Moore minimisation) that is independent of Brute, not hand-written, and it matched all 5 earlier hand-written truths.
+- **Headline.** Brute's engine (certify/32h, no code change since v0.66.0) decided 14 of 16 cells, all recount-correct, and decided held-out HK on both seeds. U8S (utf-8-sig) was not decided on either seed: it hit the 1.8 GiB memory cap.
+- **Steps.** Median 0.18 of the textbook learner's decoder steps over the 14 cells both decided. It is not uniform: U16B 0.07, U32 0.11-0.17, EJ4 0.18, HK and B5 0.15-0.30, KR 0.89 and SJ 1.54 (Brute used more steps on the two smallest targets).
+- **Sound.** 0 WRONG on 30 decided records (B 14, textbook 16); replay on one fresh decoder exact; no resets; one decoder object per job.
+- **Textbook baseline.** brute.baseline/32t decided 16 of 16 cells, so the textbook is not beaten on decisions, only on steps.
+- **Loose N is still Open.** Diagnostic, ungated: at N = true+3 Brute decided 0 of 8 (7 memory-cap kills, 1 timeout, 53-240 s).
+- **Process.** The run took 375 s and sealed at 21:01 EST; the post-run steps stalled about 75 minutes (deviation #212).
+
+### What Brute can't do yet
+
+- Decide any real decoder at a loose declared N, or utf-8-sig at true+1, within the 1.8 GiB memory cap.
+- Handle noise on real software, or targets beyond about 13 states.
+
 ## v0.67.0: NOT CERTIFIED (10 of 12 gates). Hybrid arm H: the textbook hypothesis plus a new SAT certificate brute.certify/32x, reset-free, on real CPython decoders (study BRUTE-0670-HYBRID-071, LEAN process)
 
 **Passed: GLIVE71, GS71_sound, GNORESYNC71, GBASE71, GFID71, GMEM71, GHOST71, G_recount71, GTEST71, G_PROC71. Failed: GHEAD71_plus1 (the headline) and the reported attempt GN12_71_attempt. Status: not certified.**
