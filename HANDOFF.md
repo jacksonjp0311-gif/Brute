@@ -1,11 +1,11 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-03 EST (v0.65.0 RELEASED)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-05 EST (v0.68.0 RELEASED)._
 
 ## Current version and state
 
 <!-- V0680 -->
-- **v0.68.0 (study BRUTE-0680-BREADTH-072): CERTIFIED (narrow scope), 13 of 13 gates.** Plan 072 ac1c6a5, build authorization 473d372 (t143s742, t133s553, t139s684), source freeze cc4e1b0, run_start 5a9656f, seal d2c2b20 (40/40, 375 s), recount 0 wrong, gates 3e22978, deviation #212. Python for all scripts: `/workspace/bgr/venv/bin/python` (system python has no pysat). `git`/`gh` need `env -u GITHUB_TOKEN -u GH_TOKEN`.
+- **v0.68.0: RELEASED 2026-11-05 (tag v0.68.0 at 8ccdf1a, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.68.0; fresh-clone verify and tests passed).** Study BRUTE-0680-BREADTH-072: **CERTIFIED (narrow scope), 13 of 13 gates.** Plan 072 ac1c6a5, build authorization 473d372 (t143s742, t133s553, t139s684), source freeze cc4e1b0, run_start 5a9656f, seal d2c2b20 (40/40, 375 s), recount 0 wrong, gates 3e22978, deviation #212. Python for all scripts: `/workspace/bgr/venv/bin/python` (system python has no pysat). `git`/`gh` need `env -u GITHUB_TOKEN -u GH_TOKEN`.
   - **Finding (Observed):** certify/32h (unchanged) decided 14 of 16 true+1 cells on 8 new real decoders, 0 wrong, held-out HK 2/2, median 0.18 of textbook steps; U8S killed by memory on both seeds; at true+3 it decided 0 of 8 (7 memory-cap kills, 1 timeout). The textbook decided 16 of 16. Next: loose N is the open front (NEXT_ITERATION.md).
 
 <!-- V0670 -->
