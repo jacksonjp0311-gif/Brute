@@ -1,0 +1,91 @@
+{
+  "api": {
+    "C": "brute.certify/34h (UNCHANGED from v0.70.0)",
+    "T": "brute.baseline/32t (unchanged)"
+  },
+  "design": {
+    "N": {
+      "plus1": {
+        "B5": 6,
+        "EJ4": 12,
+        "HK": 6,
+        "HZ": 11,
+        "JO": 5,
+        "KR": 5,
+        "SJ": 4,
+        "U16B": 10,
+        "U32": 8,
+        "U8S": 10
+      },
+      "plus3": {
+        "B5": 8,
+        "EJ4": 14,
+        "HK": 8,
+        "HZ": 13,
+        "JO": 7,
+        "KR": 7,
+        "SJ": 6,
+        "U16B": 12,
+        "U32": 10,
+        "U8S": 12
+      }
+    },
+    "jobs": "C3: C at plus3, 10 targets x seeds 12750101, 12750102 = 20 (headline); C1: C at plus1, 10 x seed 12750101 = 10; T3: T at plus3, 10 x 2 = 20; 50 jobs. Smoke seed 12750301 (SJ, KR; C1 and T3) not gated",
+    "memory": "RLIMIT_AS = 2.0 GiB per job child; oom_score_adj 1000; MemoryError/signal -> KILL. 3 workers",
+    "time": "SIGKILL at 900 s per job -> KILL (was 420 s in 074); main cap 4800 s (was 3300); main run once"
+  },
+  "diagnostic_not_gated": "per-target kill reasons and step counts at C3 vs study 074; wall times with short traces",
+  "gates": {
+    "GBASE75": "all 20 T3 records present and recounted; C/T table written",
+    "GC1_75": "arm C at tight N (C1) decided on at least 7 of 10 targets, 0 WRONG",
+    "GFID75": "every non-KILL record's actions replay to the recorded readings on one fresh decoder",
+    "GHEAD75": "HEADLINE: arm C at loose N (C3) decided (IDF, recounted correct) on at least 6 of 20 cells, covering at least 3 different targets, 0 WRONG",
+    "GHELD75": "at least 1 of 4 held-out C3 cells (HZ, JO x 2) decided, 0 WRONG",
+    "GHOST75": "git diff v0.70.0..run_start -- brute is empty (no new brute/ file; same certify/34h)",
+    "GLIVE75": "main complete within main_cap+60s; RESULTS matches SEAL; all 50 jobs present",
+    "GMEM75": "every record has rlimit_as_bytes and workers as designed; kill reasons recorded",
+    "GNORESET75": "adapter AST ok; every non-KILL record has decoder_objects=1 and resets=0",
+    "GS75_sound": "0 WRONG / 0 TRACE_MISMATCH on all recounted records",
+    "GSTEP75": "over C3 cells where C and T3 both decided, median C/T decoder steps <= 1.0",
+    "GTEST75": "official TEST_SUITE_075 passed; gated test file hashes match",
+    "GTRUTH75": "truth_075 ledger matches file; make_truth_075 --check ok",
+    "G_PROC75": "ledger order truth->plan->build_authorization->freeze->run_start->run_end with ancestor chain",
+    "G_recount75": "RECOUNT_075.json exists and equals recomputation"
+  },
+  "heldout": [
+    "HZ",
+    "JO"
+  ],
+  "honest_framing": "v0.70.0 certify/34h dropped the homing batch; at N=true+3 it decided 5/20 cells (KR\u00d72, B5\u00d72, HK\u00d71), 0 wrong; 0 memory_cap and 15 timeout at 420 s. Tight N 8/10. GHEAD short by 1 cell; held-out 0/4. Decided cells finished in ~66\u2013310 s. This version keeps the same API and raises the per-job kill 420->900 s (MAIN_CAP 3300->4800) to test whether the timeout wall, not the algorithm, was what stopped the remaining cells.",
+  "parent_study": "BRUTE-0700-CLAUSE-074",
+  "pre_plan_exploration": {
+    "consequence": "Gate thresholds stay at 6 of 20 cells / 3 targets (same as 073/074). Main seeds are 12750101 and 12750102 (new).",
+    "diagnosis": "Study 074 C3 kills: 15/15 remaining were timeout at 420 s, 0 memory_cap. Versus 073: cells 3\u21925, targets 2\u21923, memory_cap 14\u21920, timeout 3\u219215. SJ both seeds were IDF under certify/33h (with batch) in 073 but timeout under certify/34h in 074 \u2014 batch removal traded SJ for B5/HK gains. Decided 074 cells: KR 744 steps, B5/HK 940 steps.",
+    "fix_check": "Ungated certify/34h time-raise pilot (disclosed): see plan note /tmp/s75/pilot if present; otherwise extrapolation from 074 wall times only, with no Brute arm on 075 gate seeds 12750101/12750102 before freeze except ungated smoke after freeze."
+  },
+  "process": "LEAN: plan locked before gated data, one main run, exact recount, failures published, one fresh-clone check, no CI, no drills, no host-pause probe",
+  "question": "With the same certify/34h API and the per-job kill raised from 420 s to 900 s (MAIN_CAP 4800 s), how many real decoders does Brute decide reset-free at a LOOSE declared N (true+3), soundly, and does tight-N hold?",
+  "recount": "scripts/recount_075.py against truth_075.json",
+  "schema": "brute.plan.v75",
+  "standing_go": "t143s742, t133s553, t139s684",
+  "status": "LOCKED",
+  "status_rule": "CERTIFIED iff every gate passes; else not certified with failing gates listed",
+  "study": "BRUTE-0710-TIME-075",
+  "target_software": "CPython 3.13.5 incremental decoders via public interface only, no resets",
+  "targets": [
+    "SJ",
+    "KR",
+    "B5",
+    "U32",
+    "U8S",
+    "U16B",
+    "EJ4",
+    "HK",
+    "HZ",
+    "JO"
+  ],
+  "truth": "experiments/truth_075.json (same oracle machines as truth_074; new schema tag)",
+  "version_under_test": "0.71.0",
+  "what_this_cannot_show": "No noise; sizes 3-10 states; N=true+3 uses oracle sizes; two seeds; 2.0 GiB and 900 s are runner caps; guarantee conditional on N and clean readings; raising time does not prove an algorithmic gain",
+  "written": "2026-11-06T22:30:00-05:00"
+}
