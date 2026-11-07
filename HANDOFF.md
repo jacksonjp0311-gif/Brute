@@ -5,7 +5,7 @@ _Kept current on the working branch during a release and on `main` at release. L
 ## Current version and state
 
 <!-- V0730 -->
-- **v0.73.0 (IN FLIGHT):** study BRUTE-0730-RESUME-077 on `plan/v0.73.0`. Plan locked (certify/34h; wall_guard_case_s=900; resume-safe jobs/). Freeze done; main launching once (one orchestrator resume allowed if parent dies before SEAL). Standing go t143s742 t133s553 t139s684. Python `/workspace/bgr/venv/bin/python`.
+- **v0.73.0 (IN FLIGHT):** study BRUTE-0730-RESUME-077 on `plan/v0.73.0`. Plan 5570dc4, freeze 02aa9c6, run_start bb2b4a9. Main launched once ~2026-11-07 08:30 EST (resume-safe: skip finished jobs/; one orchestrator restart allowed if parent dies before SEAL). wall_guard_case_s=900. Standing go t143s742 t133s553 t139s684. Python `/workspace/bgr/venv/bin/python`. Do not re-run finished job keys.
 
 <!-- V0720 -->
 - **v0.72.0: RELEASED 2026-11-07 (tag v0.72.0 at 11dc971, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.72.0; fresh-clone verify and tests passed).** Study BRUTE-0720-GUARD-076: **NOT CERTIFIED, 4 of 16 gates (INCOMPLETE).** Plan 076 8138c3d, build authorization efd5d21 chain, freeze 8383b25, run_start aafa2ea, incomplete seal e26b8b9 (1/50 recovered from jobs/; parent died), recount 0 wrong, gates e53f859, deviation #216. Measurement fix observed on recovered KR C3 (wall_guard_case_s=900, wall_guard=0). Python `/workspace/bgr/venv/bin/python`. `git`/`gh`: `env -u GITHUB_TOKEN -u GH_TOKEN`.
