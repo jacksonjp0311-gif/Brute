@@ -1,0 +1,109 @@
+{
+  "contribution_split": {
+    "brute": "arm C: certify/34h, the SAT version-space certificate over the whole reset-free trajectory (certify/33h bitset preprocess + separating-word policy, no homing batch)",
+    "textbook": "arm T: homing sequences, Vasilevskii-Chow suite shape, Rivest-Schapire learner (comparison only)"
+  },
+  "failed": [
+    "GBASE76",
+    "GC1_76",
+    "GFID76",
+    "GGUARD76",
+    "GHEAD76",
+    "GHELD76",
+    "GLIVE76",
+    "GMEM76",
+    "GNORESET76",
+    "GS76_sound",
+    "GSTEP76",
+    "G_recount76"
+  ],
+  "gates": {
+    "GBASE76": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GC1_76": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GFID76": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GGUARD76": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GHEAD76": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GHELD76": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GHOST76": {
+      "allowed": [],
+      "diff_vs_v0710": "",
+      "pass": true
+    },
+    "GLIVE76": {
+      "elapsed_s": 0.0,
+      "jobs": 50,
+      "killed": [],
+      "pass": false,
+      "records": 1
+    },
+    "GMEM76": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GNORESET76": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GS76_sound": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GSTEP76": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GTEST76": {
+      "modules": 8,
+      "pass": true,
+      "test_files_match": true
+    },
+    "GTRUTH76": {
+      "ledger_sha_matches": true,
+      "pass": true,
+      "reproduced": true
+    },
+    "G_PROC76": {
+      "chain": [
+        "c993e19b1d6126fe16e15b4101c682c07a5d44a5",
+        "8138c3dc535da90ef7ab2d906b51e1d9c8b78aed",
+        "8cf87c0058ca7829062c37a3a6ccaf89eebb536b",
+        "8383b25e84959f3eacb110208451dbb0bb3d172d",
+        "a36aac67fef3548412fce5c65635093861d2ea94",
+        "e26b8b9233ed884a225dd23fd5d3381acbdb31ac"
+      ],
+      "missing": [],
+      "pass": true
+    },
+    "G_recount76": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    }
+  },
+  "passed": [
+    "GHOST76",
+    "GTEST76",
+    "GTRUTH76",
+    "G_PROC76"
+  ],
+  "results_sha256": "4468e87a312c6ab24b01ebc7438d7d441bd906cd213b4a0a6f4bf86328fea2bb",
+  "status": "not certified (failing gates: GBASE76, GC1_76, GFID76, GGUARD76, GHEAD76, GHELD76, GLIVE76, GMEM76, GNORESET76, GS76_sound, GSTEP76, G_recount76)",
+  "study": "BRUTE-0720-GUARD-076"
+}
