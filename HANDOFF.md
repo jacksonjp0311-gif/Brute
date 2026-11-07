@@ -1,11 +1,12 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-06 EST (v0.70.0 RELEASED, not certified; fresh-clone verified)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-07 EST (v0.71.0 RELEASED, not certified / incomplete; fresh-clone verified)._
 
 ## Current version and state
 
 <!-- V0710 -->
-- **v0.71.0 (IN FLIGHT):** study BRUTE-0710-TIME-075 on `plan/v0.71.0`. Plan locked (same certify/34h; JOB_KILL 900 s, MAIN_CAP 4800 s). Freeze f0649c4, run_start de4c136. Main launched once 2026-11-06 ~22:24 EST. Standing go t143s742 t133s553 t139s684. Do not relaunch main.
+- **v0.71.0: RELEASED 2026-11-07 (tag v0.71.0; fresh-clone verify pending at HANDOFF write / completed in release pipeline).** Study BRUTE-0710-TIME-075: **NOT CERTIFIED, 4 of 15 gates (INCOMPLETE).** Plan 075 05835e1, build authorization 73c3477 (t143s742, t133s553, t139s684), source freeze f0649c4, run_start de4c136, incomplete seal 7730345 (0/50 records; host reboot ~08:08 EST lost `/tmp/brute075_*`), recount 0 records / 0 wrong, gates 7fd7b3c, deviation #215. Python: `/workspace/bgr/venv/bin/python` (symlink to brute-review/venv040 after reboot). `git`/`gh` need `env -u GITHUB_TOKEN -u GH_TOKEN`.
+  - **Finding (Observed):** Plan asked whether JOB_KILL 420→900 s would decide more loose-N cells; **not tested** — (1) incomplete seal after host reboot; (2) inherited certify16d `GUARD_CASE_S=600` fired first (observational IDU ~600–609 s). Frozen runner not edited. Next: v0.72.0 / plan 076 (NEXT_ITERATION.md) — explicit `wall_guard_case_s` = JOB_KILL.
 
 <!-- V0700 -->
 - **v0.70.0: RELEASED 2026-11-06 (tag v0.70.0 at 1a1c145, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.70.0; fresh-clone verify and tests passed).** Study BRUTE-0700-CLAUSE-074: **NOT CERTIFIED, 13 of 15 gates.** Plan 074 b661eb6, build authorization ff22e2e (t143s742, t133s553, t139s684), source freeze 775c18f, run_start cbe8647, seal 60bc767 (50/50, ~3111 s), recount 0 wrong, gates 5e589c1, deviation #214. Python for all scripts: `/workspace/bgr/venv/bin/python` (system python has no pysat). `git`/`gh` need `env -u GITHUB_TOKEN -u GH_TOKEN`.

@@ -1,5 +1,22 @@
 # Brute changelog
 
+## v0.71.0: NOT CERTIFIED (4 of 15 gates). Incomplete — host reboot lost sealed records (study BRUTE-0710-TIME-075, LEAN process)
+
+**Passed: GHOST75, GTEST75, GTRUTH75, G_PROC75. Failed: GLIVE75 and all data gates (INCOMPLETE_INPUT), including G_recount75 by the incomplete rule. Status: not certified.**
+
+- **Incomplete seal.** Main launched once 2026-11-06 ~22:24 EST; box reboot ~2026-11-07 08:08 EST killed the process. `/tmp/brute075_*` per-job JSON gone. Post-mortem seal: `complete=false`, `records=[]`, `missing_job_keys` = all 50. **No main relaunch. No fabricated records from run.log.**
+- **900 s question not tested.** Plan raised JOB_KILL 420→900 s, but certify/34h inherits `GUARD_CASE_S=600` from certify/16d. Observational run.log IDU walls ~600–609 s. Frozen runner not edited (deviation #215).
+- **Observational only (not gated):** 13 C3 log lines before kill — IDF KR×2, B5×2, HK×1; IDU on SJ/U32/U8S/U16B/EJ4/HZ/JO.
+- **Process.** Standing go t143s742, t133s553, t139s684. Lean; failures published.
+
+### What Brute can't do yet
+
+- Recover lost tempdir records or certify from incomplete input.
+- Apply a 900 s engine wall while `GUARD_CASE_S=600` remains the inherited default (measurement bug of plan 075).
+- Decide 6+ loose-N cells reset-free on this set (still Open from v0.70.0's sealed 5/20).
+
+
+
 ## v0.70.0: NOT CERTIFIED (13 of 15 gates). Loose declared N after dropping the homing batch (study BRUTE-0700-CLAUSE-074, LEAN process)
 
 **Passed: GLIVE74, GS74_sound, GNORESET74, GBASE74, GFID74, GMEM74, GHOST74, GTRUTH74, G_recount74, GTEST74, G_PROC74, GC1_74, GSTEP74. Failed: GHEAD74 (headline), GHELD74. Status: not certified.**
