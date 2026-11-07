@@ -1,11 +1,12 @@
 # HANDOFF — pick this project up cold
 
-_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-07 EST (v0.71.0 RELEASED, not certified / incomplete; fresh-clone verified)._
+_Kept current on the working branch during a release and on `main` at release. Last updated 2026-11-07 EST (v0.72.0 RELEASED, not certified / incomplete; fresh-clone verified)._
 
 ## Current version and state
 
 <!-- V0720 -->
-- **v0.72.0 (IN FLIGHT):** study BRUTE-0720-GUARD-076 on `plan/v0.72.0`. Plan locked (same certify/34h; wall_guard_case_s=JOB_KILL_S=900; jobs/ under results/). Freeze 8383b25, run_start aafa2ea. Main launched once ~2026-11-07 08:21 EST. Standing go t143s742 t133s553 t139s684. Do not relaunch main. Python `/workspace/bgr/venv/bin/python`.
+- **v0.72.0: RELEASED 2026-11-07 (tag v0.72.0; fresh-clone verify in pipeline).** Study BRUTE-0720-GUARD-076: **NOT CERTIFIED, 4 of 16 gates (INCOMPLETE).** Plan 076 8138c3d, build authorization efd5d21 chain, freeze 8383b25, run_start aafa2ea, incomplete seal e26b8b9 (1/50 recovered from jobs/; parent died), recount 0 wrong, gates e53f859, deviation #216. Measurement fix observed on recovered KR C3 (wall_guard_case_s=900, wall_guard=0). Python `/workspace/bgr/venv/bin/python`. `git`/`gh`: `env -u GITHUB_TOKEN -u GH_TOKEN`.
+  - **Finding (Observed):** wall_guard_case_s=900 works on the recovered record; orchestrator died mid-run (VM fork / virtio noise). Next: v0.73.0 resume-safe runner (NEXT_ITERATION.md).
 
 <!-- V0710 -->
 - **v0.71.0: RELEASED 2026-11-07 (tag v0.71.0 at 05b5c9e, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.71.0; fresh-clone verify and tests passed).** Study BRUTE-0710-TIME-075: **NOT CERTIFIED, 4 of 15 gates (INCOMPLETE).** Plan 075 05835e1, build authorization 73c3477 (t143s742, t133s553, t139s684), source freeze f0649c4, run_start de4c136, incomplete seal 7730345 (0/50 records; host reboot ~08:08 EST lost `/tmp/brute075_*`), recount 0 records / 0 wrong, gates 7fd7b3c, deviation #215. Python: `/workspace/bgr/venv/bin/python` (symlink to brute-review/venv040 after reboot). `git`/`gh` need `env -u GITHUB_TOKEN -u GH_TOKEN`.

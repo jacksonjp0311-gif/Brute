@@ -1,5 +1,20 @@
 # Brute changelog
 
+## v0.72.0: NOT CERTIFIED (4 of 16 gates). Incomplete — parent died after 1/50 (study BRUTE-0720-GUARD-076, LEAN process)
+
+**Passed: GHOST76, GTEST76, GTRUTH76, G_PROC76. Failed: GLIVE76 and all data gates including GGUARD76 (INCOMPLETE_INPUT). Status: not certified.**
+
+- **Measurement fix shipped.** Runner passes `wall_guard_case_s=JOB_KILL_S=900` into certify/34h (study 075 inherited 600). Per-job JSON under `results/study-076/main/jobs/`.
+- **Incomplete.** Parent vanished after first job; no relaunch. Recovered **KR:12760101:C3 IDF** (~68 s, wall_guard=0, wall_guard_case_s=900). 49 missing. Deviation #216.
+- **Process.** Standing go t143s742, t133s553, t139s684.
+
+### What Brute can't do yet
+
+- Finish a 50-job loose-N run when the box/VM kills the orchestrator mid-flight (needs resume-safe runner).
+- Certify loose-N reset-free on this set (still Open).
+
+
+
 ## v0.71.0: NOT CERTIFIED (4 of 15 gates). Incomplete — host reboot lost sealed records (study BRUTE-0710-TIME-075, LEAN process)
 
 **Passed: GHOST75, GTEST75, GTRUTH75, G_PROC75. Failed: GLIVE75 and all data gates (INCOMPLETE_INPUT), including G_recount75 by the incomplete rule. Status: not certified.**

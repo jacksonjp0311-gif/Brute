@@ -3,7 +3,7 @@
 </p>
 
 <p align="center"><b>Exact geometric reasoning about hidden worlds. Brute keeps every explanation the evidence still allows, and it certifies an answer only when all of them agree. Otherwise it says "I don't know."</b><br>
-<sub>Brute v0.71.0 · built on BGR v0.90.0 (BITWORK — Geometric Reasoning) · research preview · not general intelligence</sub></p>
+<sub>Brute v0.72.0 · built on BGR v0.90.0 (BITWORK — Geometric Reasoning) · research preview · not general intelligence</sub></p>
 
 ---
 
@@ -13,6 +13,7 @@ Brute watches a world it cannot see inside: a hidden finite-state machine that i
 
 | Claim | Evidence | Label |
 | --- | --- | --- |
+| **v0.72.0: NOT CERTIFIED (4 of 16 gates, LEAN process). Incomplete — parent died after 1/50.** Same certify/34h with `wall_guard_case_s=900` (measurement fix for #215). Main launched once; parent vanished after KR:12760101:C3 IDF (~68 s, wall_guard=0); sealed 1/50 from `jobs/`; no relaunch. | `results/study-076/`, deviation #216 | *Observed* |
 | **v0.71.0: NOT CERTIFIED (4 of 15 gates, LEAN process). Incomplete — host reboot.** Same certify/34h; plan raised JOB_KILL 420→900 s. Main launched once; box reboot ~2026-11-07 08:08 EST killed the process; `/tmp/brute075_*` gone; sealed `complete=false`, **0/50 records** (no relaunch, no fabricated records). Also: inherited `GUARD_CASE_S=600` so the advertised 900 s was not the effective engine wall (observational IDU ~600 s). Passed GHOST75/GTEST75/GTRUTH75/G_PROC75 only. | `results/study-075/`, deviation #215 | *Observed* |
 | **0 wrong public certificates in the twelve studies that gated them** (002–013, v0.1.0–v0.11.0): the public-safety gate (C4/G4) and the in- and out-of-family soundness gates (C1/C2, G1/G2) passed for the production arms each plan named (for example J10, J9 and SP8 in 012–013). This is not a claim that every Brute arm is sound. Studies 014–015 ran transfer blocks only and gated no public channel; there the SP8 comparator issued 0 false certificates (015: 288 + 72 ood5 cases, own-trajectory recount; 014: implied by the GS_b containment of SP8 in RG4, which had 0 false). Research arms have issued published false certificates: TRn 167, ATn 3, RG2/RG3, EB 91, DLFn and RSXn 1 each on ood4 seed 8140016 (v0.13.0), and DLFn and RSXLn 2 each on ood4 seed 8240010 (v0.14.0). The v0.5.0 default A5 issued a non-public false certificate one step after a drift (v0.6.0) | `results/study-00*/GATES*.json`, `results/study-01[0-3]/GATES_01*.json` (G1/G2/G4; C1/C2/C4 in study-002); `results/study-015/GATES_015.json` (G_recount) | *Observed* |
 | **The SAT engine makes the same decision as brute-force enumeration on all 25,344 steps** (v0.5.0, GX1), and the constraint region matches enumeration on 1.25 M items (v0.4.0, GR1/GR1b) | `results/study-007/`, `results/study-006/` | *Observed* |
