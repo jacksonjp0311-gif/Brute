@@ -5,7 +5,7 @@ _Kept current on the working branch during a release and on `main` at release. L
 ## Current version and state
 
 <!-- V0720 -->
-- **v0.72.0: RELEASED 2026-11-07 (tag v0.72.0; fresh-clone verify in pipeline).** Study BRUTE-0720-GUARD-076: **NOT CERTIFIED, 4 of 16 gates (INCOMPLETE).** Plan 076 8138c3d, build authorization efd5d21 chain, freeze 8383b25, run_start aafa2ea, incomplete seal e26b8b9 (1/50 recovered from jobs/; parent died), recount 0 wrong, gates e53f859, deviation #216. Measurement fix observed on recovered KR C3 (wall_guard_case_s=900, wall_guard=0). Python `/workspace/bgr/venv/bin/python`. `git`/`gh`: `env -u GITHUB_TOKEN -u GH_TOKEN`.
+- **v0.72.0: RELEASED 2026-11-07 (tag v0.72.0 at 11dc971, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.72.0; fresh-clone verify and tests passed).** Study BRUTE-0720-GUARD-076: **NOT CERTIFIED, 4 of 16 gates (INCOMPLETE).** Plan 076 8138c3d, build authorization efd5d21 chain, freeze 8383b25, run_start aafa2ea, incomplete seal e26b8b9 (1/50 recovered from jobs/; parent died), recount 0 wrong, gates e53f859, deviation #216. Measurement fix observed on recovered KR C3 (wall_guard_case_s=900, wall_guard=0). Python `/workspace/bgr/venv/bin/python`. `git`/`gh`: `env -u GITHUB_TOKEN -u GH_TOKEN`.
   - **Finding (Observed):** wall_guard_case_s=900 works on the recovered record; orchestrator died mid-run (VM fork / virtio noise). Next: v0.73.0 resume-safe runner (NEXT_ITERATION.md).
 
 <!-- V0710 -->
