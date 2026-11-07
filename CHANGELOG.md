@@ -1,5 +1,24 @@
 # Brute changelog
 
+## v0.70.0: NOT CERTIFIED (13 of 15 gates). Loose declared N after dropping the homing batch (study BRUTE-0700-CLAUSE-074, LEAN process)
+
+**Passed: GLIVE74, GS74_sound, GNORESET74, GBASE74, GFID74, GMEM74, GHOST74, GTRUTH74, G_recount74, GTEST74, G_PROC74, GC1_74, GSTEP74. Failed: GHEAD74 (headline), GHELD74. Status: not certified.**
+
+- **Headline failed (close).** At N = true+3, certify/34h decided 5 of 20 cells (KR both seeds, B5 both seeds, HK:12740101), covering 3 targets; needed 6 cells and 3 targets. 0 WRONG. Versus v0.69.0: 3→5 cells, 2→3 targets.
+- **Held-out failed.** HZ and JO at loose N: 0 of 4 decided (all timeout at 420 s).
+- **Step ratio passed.** On the 5 cells where C3 and T3 both decided, median C/T decoder steps ≈ 0.029 (threshold ≤ 1.0). Removing the ~400-step homing batch cut Brute's step count sharply.
+- **Tight N held.** C1 decided 8 of 10 (GC1_74); U8S and HZ hit timeout. Textbook T3 ID 18/20 (HZ both QCAP at ~3e6 steps).
+- **Sound.** 0 WRONG / 0 TRACE_MISMATCH on 50 sealed records; single decoder object; no resets; replay exact on non-KILL records.
+- **Next wall named.** After dropping the homing batch, **0 memory_cap** kills; all 15 remaining C3 cells (and 2 C1) died on the 420 s per-job timeout.
+- **Process.** Main run finished 2026-11-06 22:13:47 EST (~3111 s informational within MAIN_CAP 3300; box pauses stretched wall); seal committed ~22:16 EST after watchdog resume (deviation #214).
+
+### What Brute can't do yet
+
+- Decide 6+ loose-N cells reset-free on this set (short by 1 cell).
+- Decide held-out hz / johab at N = true+3 within the 420 s job kill.
+- Handle noise on real software, or targets beyond these codecs.
+
+
 ## v0.69.0: NOT CERTIFIED (12 of 15 gates). Loose declared N after removing the clique-preprocess memory wall (study BRUTE-0690-LOOSEN-073, LEAN process)
 
 **Passed: GLIVE73, GS73_sound, GNORESET73, GBASE73, GFID73, GMEM73, GHOST73, GTRUTH73, G_recount73, GTEST73, G_PROC73, GC1_73. Failed: GHEAD73 (headline), GHELD73, GSTEP73. Status: not certified.**

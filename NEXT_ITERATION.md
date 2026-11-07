@@ -1,9 +1,13 @@
-# Brute v0.69.0 → v0.70.0: next iteration
+# Brute v0.70.0 → v0.71.0: next iteration
 
-Previous: v0.69.0 study-073 (NOT CERTIFIED, 12/15). certify/33h removed the clique-preprocess memory wall; at N=true+3 it decided 3/20 cells (SJ×2, KR×1), 0 wrong; 14 memory_cap (often pysat int32 allocator) + 3 timeout. Tight N 8/10. Homing batches added ~400 steps/round and drove T into the SAT wall.
+Previous: v0.70.0 study-074 (NOT CERTIFIED, 13/15). certify/34h dropped the ~400-step homing batch; at N=true+3 it decided 5/20 cells (KR×2, B5×2, HK×1), 0 wrong; **0 memory_cap + 15 timeout**. Tight N 8/10. GSTEP74 passed (median C/T ≈ 0.029). Headline short by 1 cell; held-out 0/4.
 
-## Proposal for v0.70.0 (plan 074, to be locked)
+## Proposal for v0.71.0 (plan 075, to be locked)
 
-**certify/34h = certify/33h bitset preprocess + plain separating-word policy (no 400-step homing batch).** Same certificate logic as certify/32p; the batch was heuristic only. Pre-plan pilot (disclosed in the plan; seed 12730101): B5 and HK at N=8 IDF in 940 steps (~310 s); KR IDF in 744 steps; JO still open at 300 s.
+**Attack the timeout wall at loose N without reintroducing the memory wall.** Evidence from 074: removing the batch replaced memory_cap with timeouts and gained +2 cells / +1 target. Decided cells finished in ~66–310 s of compute; 15 C3 cells and 2 C1 cells hit the 420 s SIGKILL with no memory_cap. Options to pre-register (choose one before data):
 
-Question: with the batch removed, how many real decoders does Brute decide reset-free at loose N, soundly, and does tight-N hold?
+- **A (time):** raise per-job kill (e.g. 900 s) and keep MAIN_CAP lean by fewer parallel workers or a staged job set; same certify/34h API.
+- **B (algorithm):** certify/35h — a small additive policy/encoding change aimed at finishing the remaining targets inside 420 s (must not reintroduce the homing-batch step bloat).
+- **C (N ladder):** keep 420 s / 2.0 GiB and test N=true+2 as an intermediate loose rung (new gate thresholds locked before data).
+
+Standing go: t143s742 (C-bridge, real unmodified software), t133s553 (lean), t139s684 (keep going). Prefer the smallest change that can clear GHEAD (≥6/20 cells, ≥3 targets) and ideally GHELD, with 0 wrong. Lock plan 075 BEFORE any gated data.
