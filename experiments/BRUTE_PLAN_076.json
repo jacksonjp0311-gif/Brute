@@ -1,0 +1,93 @@
+{
+  "api": {
+    "C": "brute.certify/34h (UNCHANGED from v0.70.0/v0.71.0); runner passes wall_guard_case_s=JOB_KILL_S",
+    "T": "brute.baseline/32t (unchanged)"
+  },
+  "design": {
+    "N": {
+      "plus1": {
+        "B5": 6,
+        "EJ4": 12,
+        "HK": 6,
+        "HZ": 11,
+        "JO": 5,
+        "KR": 5,
+        "SJ": 4,
+        "U16B": 10,
+        "U32": 8,
+        "U8S": 10
+      },
+      "plus3": {
+        "B5": 8,
+        "EJ4": 14,
+        "HK": 8,
+        "HZ": 13,
+        "JO": 7,
+        "KR": 7,
+        "SJ": 6,
+        "U16B": 12,
+        "U32": 10,
+        "U8S": 12
+      }
+    },
+    "jobs": "C3: C at plus3, 10 targets x seeds 12760101, 12760102 = 20 (headline); C1: C at plus1, 10 x seed 12760101 = 10; T3: T at plus3, 10 x 2 = 20; 50 jobs. Smoke seed 12760301 (SJ, KR; C1 and T3) not gated",
+    "memory": "RLIMIT_AS = 2.0 GiB per job child; oom_score_adj 1000; MemoryError/signal -> KILL. 3 workers",
+    "persistence": "per-job JSON under results/study-076/<block>/jobs/ (not tempfile under /tmp); reboot-survivable seal path",
+    "time": "SIGKILL at 900 s per job -> KILL; wall_guard_case_s=900 on Certifier34H (was inherited 600 in 075); main cap 4800 s; main run once"
+  },
+  "diagnostic_not_gated": "per-target kill reasons and step counts at C3 vs study 074 sealed; wall_guard events if any; compare IDU walls to 900 vs prior observational 600",
+  "gates": {
+    "GBASE76": "all 20 T3 records present and recounted; C/T table written",
+    "GC1_76": "arm C at tight N (C1) decided on at least 7 of 10 targets, 0 WRONG",
+    "GFID76": "every non-KILL record's actions replay to the recorded readings on one fresh decoder",
+    "GGUARD76": "MEASUREMENT: every C-arm record has wall_guard_case_s == job_kill_s == 900; JOB_KILL_S and MAIN_CAP_S in RESULTS match plan",
+    "GHEAD76": "HEADLINE: arm C at loose N (C3) decided (IDF, recounted correct) on at least 6 of 20 cells, covering at least 3 different targets, 0 WRONG",
+    "GHELD76": "at least 1 of 4 held-out C3 cells (HZ, JO x 2) decided, 0 WRONG",
+    "GHOST76": "git diff v0.71.0..run_start -- brute is empty (no new brute/ file; same certify/34h; guard fix is runner-only)",
+    "GLIVE76": "main complete within main_cap+60s; RESULTS matches SEAL; all 50 jobs present",
+    "GMEM76": "every record has rlimit_as_bytes and workers as designed; kill reasons recorded",
+    "GNORESET76": "adapter AST ok; every non-KILL record has decoder_objects=1 and resets=0",
+    "GS76_sound": "0 WRONG / 0 TRACE_MISMATCH on all recounted records",
+    "GSTEP76": "over C3 cells where C and T3 both decided, median C/T decoder steps <= 1.0",
+    "GTEST76": "official TEST_SUITE_076 passed; gated test file hashes match",
+    "GTRUTH76": "truth_076 ledger matches file; make_truth_076 --check ok",
+    "G_PROC76": "ledger order truth->plan->build_authorization->freeze->run_start->run_end with ancestor chain",
+    "G_recount76": "RECOUNT_076.json exists and equals recomputation"
+  },
+  "heldout": [
+    "HZ",
+    "JO"
+  ],
+  "honest_framing": "v0.71.0 (study 075) intended to test JOB_KILL 420->900 s but (1) host reboot lost all sealed records and (2) inherited GUARD_CASE_S=600 fired first, so the 900 s question was never tested (deviation #215). This version keeps certify/34h and JOB_KILL 900 / MAIN_CAP 4800, and applies a MEASUREMENT FIX only: pass wall_guard_case_s=900 into Certifier34H, record it on every C record, and gate that match (GGUARD76). Also persist per-job JSON under results/study-076/main/jobs/ (not /tmp) so a host reboot can still seal recovered records. Not an algorithmic bump; not another pure wall-clock raise beyond 075's intent.",
+  "parent_study": "BRUTE-0710-TIME-075",
+  "pre_plan_exploration": "No gated Brute arm on 076 seeds before lock. Reading of study 075 run.log (observational) and certify16d GUARD_CASE_S=600 source line; no new engine pilot on gate seeds.",
+  "process": "LEAN: plan locked before data; one main run; exact recount; strict stress; publish failures; ~45-60 min target; no CI; scheduled Actions stay disabled",
+  "question": "With the same certify/34h API, JOB_KILL 900 s, and the inherited certify16d case guard explicitly set to wall_guard_case_s=JOB_KILL_S (900) so the advertised kill is the effective engine wall, how many real decoders does Brute decide reset-free at a LOOSE declared N (true+3), soundly, and does tight-N hold?",
+  "recount": "scripts/recount_076.py labels against truth_076; WRONG/TRACE_MISMATCH count as wrong",
+  "schema": "brute.plan.v76",
+  "standing_go": [
+    "t143s742",
+    "t133s553",
+    "t139s684"
+  ],
+  "status": "LOCKED",
+  "status_rule": "CERTIFIED only if every gate passes; else not certified with failing gate list",
+  "study": "BRUTE-0720-GUARD-076",
+  "target_software": "CPython 3.13.5 incremental decoders via public interface only, no resets",
+  "targets": [
+    "SJ",
+    "KR",
+    "B5",
+    "U32",
+    "U8S",
+    "U16B",
+    "EJ4",
+    "HK",
+    "HZ",
+    "JO"
+  ],
+  "truth": "experiments/truth_076.json (oracle BFS+Moore; independent of Brute)",
+  "version_under_test": "0.72.0",
+  "what_this_cannot_show": "No noise; sizes 3-10 states; N=true+3 uses oracle sizes; two seeds; 2.0 GiB and 900 s are runner caps; guarantee conditional on N and clean readings; fixing the guard tests the intended 900 s wall, not a new algorithm",
+  "written": "2026-11-07T08:20:00-05:00"
+}
