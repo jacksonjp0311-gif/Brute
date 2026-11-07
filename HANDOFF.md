@@ -4,6 +4,9 @@ _Kept current on the working branch during a release and on `main` at release. L
 
 ## Current version and state
 
+<!-- V0710 -->
+- **v0.71.0 (IN FLIGHT):** study BRUTE-0710-TIME-075 on `plan/v0.71.0`. Plan locked (same certify/34h; JOB_KILL 900 s, MAIN_CAP 4800 s). Freeze f0649c4, run_start de4c136. Main launched once 2026-11-06 ~22:24 EST. Standing go t143s742 t133s553 t139s684. Do not relaunch main.
+
 <!-- V0700 -->
 - **v0.70.0: RELEASED 2026-11-06 (tag v0.70.0 at 1a1c145, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.70.0; fresh-clone verify and tests passed).** Study BRUTE-0700-CLAUSE-074: **NOT CERTIFIED, 13 of 15 gates.** Plan 074 b661eb6, build authorization ff22e2e (t143s742, t133s553, t139s684), source freeze 775c18f, run_start cbe8647, seal 60bc767 (50/50, ~3111 s), recount 0 wrong, gates 5e589c1, deviation #214. Python for all scripts: `/workspace/bgr/venv/bin/python` (system python has no pysat). `git`/`gh` need `env -u GITHUB_TOKEN -u GH_TOKEN`.
   - **Finding (Observed):** certify/34h at N=true+3 decided 5/20 cells (KR×2, B5×2, HK×1), 0 wrong; tight N 8/10; next wall is the 420 s per-job timeout at loose N (15 timeout, 0 memory_cap). Next: v0.71.0 / plan 075 (NEXT_ITERATION.md).
