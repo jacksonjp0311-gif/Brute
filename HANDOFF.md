@@ -4,6 +4,9 @@ _Kept current on the working branch during a release and on `main` at release. L
 
 ## Current version and state
 
+<!-- V0720 -->
+- **v0.72.0 (IN FLIGHT):** study BRUTE-0720-GUARD-076 on `plan/v0.72.0`. Plan locked (same certify/34h; wall_guard_case_s=JOB_KILL_S=900; jobs/ under results). Freeze 8383b25, run_start pending/just done. Main launched once. Standing go t143s742 t133s553 t139s684. Do not relaunch main.
+
 <!-- V0710 -->
 - **v0.71.0: RELEASED 2026-11-07 (tag v0.71.0 at 05b5c9e, https://github.com/jacksonjp0311-gif/Brute/releases/tag/v0.71.0; fresh-clone verify and tests passed).** Study BRUTE-0710-TIME-075: **NOT CERTIFIED, 4 of 15 gates (INCOMPLETE).** Plan 075 05835e1, build authorization 73c3477 (t143s742, t133s553, t139s684), source freeze f0649c4, run_start de4c136, incomplete seal 7730345 (0/50 records; host reboot ~08:08 EST lost `/tmp/brute075_*`), recount 0 records / 0 wrong, gates 7fd7b3c, deviation #215. Python: `/workspace/bgr/venv/bin/python` (symlink to brute-review/venv040 after reboot). `git`/`gh` need `env -u GITHUB_TOKEN -u GH_TOKEN`.
   - **Finding (Observed):** Plan asked whether JOB_KILL 420→900 s would decide more loose-N cells; **not tested** — (1) incomplete seal after host reboot; (2) inherited certify16d `GUARD_CASE_S=600` fired first (observational IDU ~600–609 s). Frozen runner not edited. Next: v0.72.0 / plan 076 (NEXT_ITERATION.md) — explicit `wall_guard_case_s` = JOB_KILL.
