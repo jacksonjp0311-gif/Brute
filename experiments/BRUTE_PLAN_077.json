@@ -1,0 +1,94 @@
+{
+  "api": {
+    "C": "brute.certify/34h (UNCHANGED); wall_guard_case_s=JOB_KILL_S",
+    "T": "brute.baseline/32t (unchanged)"
+  },
+  "design": {
+    "N": {
+      "plus1": {
+        "B5": 6,
+        "EJ4": 12,
+        "HK": 6,
+        "HZ": 11,
+        "JO": 5,
+        "KR": 5,
+        "SJ": 4,
+        "U16B": 10,
+        "U32": 8,
+        "U8S": 10
+      },
+      "plus3": {
+        "B5": 8,
+        "EJ4": 14,
+        "HK": 8,
+        "HZ": 13,
+        "JO": 7,
+        "KR": 7,
+        "SJ": 6,
+        "U16B": 12,
+        "U32": 10,
+        "U8S": 12
+      }
+    },
+    "jobs": "C3: C at plus3, 10 targets x seeds 12770101, 12770102 = 20; C1: C at plus1, 10 x 12770101; T3: T at plus3, 10 x 2; 50 jobs. Smoke seed 12770301 (SJ, KR; C1,T3) not gated",
+    "memory": "RLIMIT_AS = 2.0 GiB; oom_score_adj 1000; 3 workers",
+    "persistence": "jobs under results/study-077/<block>/jobs/; skip existing JSON; resume does not re-run finished keys",
+    "time": "JOB_KILL 900 s; wall_guard_case_s=900; MAIN_CAP 4800 s per orchestrator invocation; main launched once, one resume restart allowed if parent dies with missing keys"
+  },
+  "diagnostic_not_gated": "resume count; per-target kill reasons; wall_guard events",
+  "gates": {
+    "GBASE77": "all 20 T3 present and recounted; C/T table",
+    "GC1_77": "C1 decided on >=7 of 10 targets, 0 WRONG",
+    "GFID77": "non-KILL actions replay to readings",
+    "GGUARD77": "every C record wall_guard_case_s==job_kill_s==900; RESULTS matches",
+    "GHEAD77": "HEADLINE: C3 IDF recounted correct on >=6 of 20 cells covering >=3 targets, 0 WRONG",
+    "GHELD77": ">=1 of 4 held-out C3 cells decided, 0 WRONG",
+    "GHOST77": "git diff v0.72.0..run_start -- brute is empty",
+    "GLIVE77": "main complete within main_cap+60s (sum of invocations informational); RESULTS matches SEAL; all 50 jobs present",
+    "GMEM77": "rlimit_as_bytes and workers as designed",
+    "GNORESET77": "adapter AST ok; non-KILL decoder_objects=1 resets=0",
+    "GRESUME77": "RESULTS.resume_count in {0,1}; no finished job key was re-executed (job file mtimes/sha match seal inputs); missing_at_resume recorded if resume_count=1",
+    "GS77_sound": "0 WRONG / 0 TRACE_MISMATCH",
+    "GSTEP77": "median C/T steps on joint C3+T3 decided cells <= 1.0",
+    "GTEST77": "TEST_SUITE_077 passed; hashes match",
+    "GTRUTH77": "truth_077 ledger matches; make_truth_077 --check ok",
+    "G_PROC77": "ledger truth->plan->build_authorization->freeze->run_start->run_end ancestor chain",
+    "G_recount77": "RECOUNT_077 equals recomputation"
+  },
+  "heldout": [
+    "HZ",
+    "JO"
+  ],
+  "honest_framing": "v0.72.0 applied wall_guard_case_s=900 but the parent died after 1/50 (deviation #216); the one recovered record showed the measurement fix works. This version keeps the measurement fix and adds a PROCESS fix: persist jobs under results/study-077/main/jobs/, skip keys that already have JSON, allow one orchestrator restart to finish missing keys only (never re-run finished), then seal. Not an algorithmic bump.",
+  "parent_study": "BRUTE-0720-GUARD-076",
+  "pre_plan_exploration": "No gated Brute arm on 077 seeds before lock. Study 076 recovered KR C3 IDF with wall_guard_case_s=900.",
+  "process": "LEAN: plan locked before data; resume-safe main (skip finished jobs/*.json; at most one orchestrator restart to finish missing keys only; never re-run finished); exact recount; publish failures; no CI",
+  "question": "With certify/34h, wall_guard_case_s=JOB_KILL_S=900, and a resume-safe orchestrator that skips finished jobs/*.json (one restart allowed for missing keys only), how many real decoders does Brute decide reset-free at loose N (true+3), soundly, and does tight-N hold?",
+  "recount": "scripts/recount_077.py",
+  "schema": "brute.plan.v77",
+  "standing_go": [
+    "t143s742",
+    "t133s553",
+    "t139s684"
+  ],
+  "status": "LOCKED",
+  "status_rule": "CERTIFIED only if every gate passes",
+  "study": "BRUTE-0730-RESUME-077",
+  "target_software": "CPython 3.13.5 incremental decoders, public interface only, no resets",
+  "targets": [
+    "SJ",
+    "KR",
+    "B5",
+    "U32",
+    "U8S",
+    "U16B",
+    "EJ4",
+    "HK",
+    "HZ",
+    "JO"
+  ],
+  "truth": "experiments/truth_077.json",
+  "version_under_test": "0.73.0",
+  "what_this_cannot_show": "No noise; N uses oracle sizes; two seeds; resume is process resilience not an algorithmic gain; 900 s caps remain",
+  "written": "2026-11-07T08:32:00-05:00"
+}
