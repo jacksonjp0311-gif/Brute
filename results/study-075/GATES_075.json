@@ -1,0 +1,104 @@
+{
+  "contribution_split": {
+    "brute": "arm C: certify/34h, the SAT version-space certificate over the whole reset-free trajectory (certify/33h bitset preprocess + separating-word policy, no homing batch)",
+    "textbook": "arm T: homing sequences, Vasilevskii-Chow suite shape, Rivest-Schapire learner (comparison only)"
+  },
+  "failed": [
+    "GBASE75",
+    "GC1_75",
+    "GFID75",
+    "GHEAD75",
+    "GHELD75",
+    "GLIVE75",
+    "GMEM75",
+    "GNORESET75",
+    "GS75_sound",
+    "GSTEP75",
+    "G_recount75"
+  ],
+  "gates": {
+    "GBASE75": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GC1_75": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GFID75": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GHEAD75": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GHELD75": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GHOST75": {
+      "allowed": [],
+      "diff_vs_v0700": "",
+      "pass": true
+    },
+    "GLIVE75": {
+      "elapsed_s": 0.0,
+      "jobs": 50,
+      "killed": [],
+      "pass": false,
+      "records": 0
+    },
+    "GMEM75": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GNORESET75": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GS75_sound": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GSTEP75": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    },
+    "GTEST75": {
+      "modules": 8,
+      "pass": true,
+      "test_files_match": true
+    },
+    "GTRUTH75": {
+      "ledger_sha_matches": true,
+      "pass": true,
+      "reproduced": true
+    },
+    "G_PROC75": {
+      "chain": [
+        "05835e1",
+        "05835e1",
+        "73c3477",
+        "f0649c4",
+        "de4c136",
+        "773034574d3874892a873e79f6b0386a2654228e"
+      ],
+      "missing": [],
+      "pass": true
+    },
+    "G_recount75": {
+      "pass": false,
+      "why": "INCOMPLETE_INPUT"
+    }
+  },
+  "passed": [
+    "GHOST75",
+    "GTEST75",
+    "GTRUTH75",
+    "G_PROC75"
+  ],
+  "results_sha256": "6e19eb5d9f386de6fb5544974e6649e3e0669fecc435e23440b51654124ca994",
+  "status": "not certified (failing gates: GBASE75, GC1_75, GFID75, GHEAD75, GHELD75, GLIVE75, GMEM75, GNORESET75, GS75_sound, GSTEP75, G_recount75)",
+  "study": "BRUTE-0710-TIME-075"
+}
