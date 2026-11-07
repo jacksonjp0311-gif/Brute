@@ -1,0 +1,15 @@
+# Deviation #214: study 074 (BRUTE-0700-CLAUSE-074), post-run disclosure
+
+Written 2026-11-06 at about 22:20 EST by Grok Bot (watchdog-resumed Brute executor). The agent drafted this note; James has not reviewed it. All times are EST (UTC-5).
+
+1. **Main wall time stretched by box pauses; seal was prompt after completion.** Ledger `run_start_074` was committed at 2026-11-06 ~12:45–12:55 EST (4cf742f / cbe8647). The main run finished at 2026-11-06 22:13:47 EST (`done complete=True`, 50/50 records, `total_elapsed_informational` ~3111 s within MAIN_CAP_S=3300). Box pauses stretched wall time past the compute cap. No study process was running after completion until the watchdog resumed the executor at about 22:15 EST. Seal commit `60bc767` and ledger `run_end_074` followed within a few minutes. No result was changed. The post-completion idle was short (~2 min); the ~9.3 h gap from run_start is wall time of the single launched run, disclosed here.
+2. **Pre-plan exploration (disclosed by the plan).** An ungated certify/34h pilot on study-073 seed 12730101 at 2.0 GiB decided B5/HK/KR and timed out on JO at 300 s. No Brute arm ran on 074 gate seeds 12740101/12740102 or on U32/U8S/U16B/EJ4/HZ before the freeze, except the ungated smoke after freeze (seed 12740301). Gate thresholds stayed at 6 of 20 cells / 3 targets (same as 073).
+3. **Runner fix before freeze (ledgered).** Commit aa5b670 fixed `H32._norm` import for certify/34h records; freeze was rewritten (775c18f) after that fix. Smoke then passed.
+4. **What the sealed run showed (Observed; Exact numbers from RESULTS + RECOUNT; 0 WRONG).**
+   - Arm C3 (certify/34h at N = true+3, 2 seeds × 10 targets = 20 cells): decided IDF on **5 of 20** cells — KR both seeds, B5 both seeds, HK:12740101. Targets decided: KR, B5, HK (3 of 10). Kill reasons on the other 15: **all timeout** (0 memory_cap). Held-out HZ and JO: 0 of 4 decided (all timeout).
+   - Arm C1 (certify/34h at N = true+1, 1 seed × 10): decided IDF on **8 of 10** targets. Kills: U8S and HZ, both timeout.
+   - Arm T3 (baseline/32t at N = true+3): **ID 18/20**, **QCAP 2/20** (HZ both seeds).
+   - Steps C/T on the 5 cells where both C3 and T3 decided: KR ~744/11571 ≈ 0.064; B5/HK ~940/32678 ≈ 0.029; **median ≈ 0.029** (GSTEP74 passes; removing the ~400-step homing batch cut Brute's step count sharply).
+   - Recount: **0 WRONG**, **0 TRACE_MISMATCH**, labels agree on all 50 records.
+5. **Headline implication (Exact).** GHEAD74 needed ≥6 of 20 C3 cells and ≥3 targets with 0 WRONG; Observed 5 cells / 3 targets (targets met, cells short by 1). GHELD74 needed ≥1 held-out C3 cell; Observed 0. Tight-N (GC1_74) held at 8/10. Versus study 073: C3 3→5, targets 2→3, memory_cap 14→0, timeout 3→15. The next wall after dropping the homing batch is the **420 s per-job timeout** at loose N (no memory_cap kills this version).
+6. **What this does not show.** Loose-N certification of 6+ cells; any held-out loose-N decision; noise; resets; targets beyond the ten named codecs; that raising the time cap would decide the timed-out cells.

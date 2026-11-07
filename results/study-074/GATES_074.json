@@ -1,0 +1,813 @@
+{
+  "contribution_split": {
+    "brute": "arm C: certify/34h, the SAT version-space certificate over the whole reset-free trajectory (certify/33h bitset preprocess + separating-word policy, no homing batch)",
+    "textbook": "arm T: homing sequences, Vasilevskii-Chow suite shape, Rivest-Schapire learner (comparison only)"
+  },
+  "failed": [
+    "GHEAD74",
+    "GHELD74"
+  ],
+  "gates": {
+    "GBASE74": {
+      "c_kills": [
+        [
+          "SJ:12740101:C3",
+          "timeout"
+        ],
+        [
+          "U32:12740101:C3",
+          "timeout"
+        ],
+        [
+          "U8S:12740101:C3",
+          "timeout"
+        ],
+        [
+          "U16B:12740101:C3",
+          "timeout"
+        ],
+        [
+          "EJ4:12740101:C3",
+          "timeout"
+        ],
+        [
+          "HZ:12740101:C3",
+          "timeout"
+        ],
+        [
+          "JO:12740101:C3",
+          "timeout"
+        ],
+        [
+          "SJ:12740102:C3",
+          "timeout"
+        ],
+        [
+          "U32:12740102:C3",
+          "timeout"
+        ],
+        [
+          "U8S:12740102:C3",
+          "timeout"
+        ],
+        [
+          "U16B:12740102:C3",
+          "timeout"
+        ],
+        [
+          "EJ4:12740102:C3",
+          "timeout"
+        ],
+        [
+          "HK:12740102:C3",
+          "timeout"
+        ],
+        [
+          "HZ:12740102:C3",
+          "timeout"
+        ],
+        [
+          "JO:12740102:C3",
+          "timeout"
+        ],
+        [
+          "U8S:12740101:C1",
+          "timeout"
+        ],
+        [
+          "HZ:12740101:C1",
+          "timeout"
+        ]
+      ],
+      "killed": [],
+      "pass": true,
+      "records": 20,
+      "t3_decided": 18,
+      "table": {
+        "B5": {
+          "C1": [
+            {
+              "N": 6,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12740101,
+              "steps": 83
+            }
+          ],
+          "C3": [
+            {
+              "N": 8,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12740101,
+              "steps": 940
+            },
+            {
+              "N": 8,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12740102,
+              "steps": 940
+            }
+          ],
+          "T3": [
+            {
+              "N": 8,
+              "kill": null,
+              "label": "ID",
+              "seed": 12740101,
+              "steps": 32678
+            },
+            {
+              "N": 8,
+              "kill": null,
+              "label": "ID",
+              "seed": 12740102,
+              "steps": 32688
+            }
+          ]
+        },
+        "EJ4": {
+          "C1": [
+            {
+              "N": 12,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12740101,
+              "steps": 339
+            }
+          ],
+          "C3": [
+            {
+              "N": 14,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12740101,
+              "steps": null
+            },
+            {
+              "N": 14,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12740102,
+              "steps": null
+            }
+          ],
+          "T3": [
+            {
+              "N": 14,
+              "kill": null,
+              "label": "ID",
+              "seed": 12740101,
+              "steps": 281263
+            },
+            {
+              "N": 14,
+              "kill": null,
+              "label": "ID",
+              "seed": 12740102,
+              "steps": 174702
+            }
+          ]
+        },
+        "HK": {
+          "C1": [
+            {
+              "N": 6,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12740101,
+              "steps": 83
+            }
+          ],
+          "C3": [
+            {
+              "N": 8,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12740101,
+              "steps": 940
+            },
+            {
+              "N": 8,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12740102,
+              "steps": null
+            }
+          ],
+          "T3": [
+            {
+              "N": 8,
+              "kill": null,
+              "label": "ID",
+              "seed": 12740101,
+              "steps": 32678
+            },
+            {
+              "N": 8,
+              "kill": null,
+              "label": "ID",
+              "seed": 12740102,
+              "steps": 32688
+            }
+          ]
+        },
+        "HZ": {
+          "C1": [
+            {
+              "N": 11,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12740101,
+              "steps": null
+            }
+          ],
+          "C3": [
+            {
+              "N": 13,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12740101,
+              "steps": null
+            },
+            {
+              "N": 13,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12740102,
+              "steps": null
+            }
+          ],
+          "T3": [
+            {
+              "N": 13,
+              "kill": null,
+              "label": "QCAP",
+              "seed": 12740101,
+              "steps": 3000005
+            },
+            {
+              "N": 13,
+              "kill": null,
+              "label": "QCAP",
+              "seed": 12740102,
+              "steps": 3000003
+            }
+          ]
+        },
+        "JO": {
+          "C1": [
+            {
+              "N": 5,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12740101,
+              "steps": 193
+            }
+          ],
+          "C3": [
+            {
+              "N": 7,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12740101,
+              "steps": null
+            },
+            {
+              "N": 7,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12740102,
+              "steps": null
+            }
+          ],
+          "T3": [
+            {
+              "N": 7,
+              "kill": null,
+              "label": "ID",
+              "seed": 12740101,
+              "steps": 6643
+            },
+            {
+              "N": 7,
+              "kill": null,
+              "label": "ID",
+              "seed": 12740102,
+              "steps": 6637
+            }
+          ]
+        },
+        "KR": {
+          "C1": [
+            {
+              "N": 5,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12740101,
+              "steps": 60
+            }
+          ],
+          "C3": [
+            {
+              "N": 7,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12740101,
+              "steps": 744
+            },
+            {
+              "N": 7,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12740102,
+              "steps": 744
+            }
+          ],
+          "T3": [
+            {
+              "N": 7,
+              "kill": null,
+              "label": "ID",
+              "seed": 12740101,
+              "steps": 11571
+            },
+            {
+              "N": 7,
+              "kill": null,
+              "label": "ID",
+              "seed": 12740102,
+              "steps": 11636
+            }
+          ]
+        },
+        "SJ": {
+          "C1": [
+            {
+              "N": 4,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12740101,
+              "steps": 127
+            }
+          ],
+          "C3": [
+            {
+              "N": 6,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12740101,
+              "steps": null
+            },
+            {
+              "N": 6,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12740102,
+              "steps": null
+            }
+          ],
+          "T3": [
+            {
+              "N": 6,
+              "kill": null,
+              "label": "ID",
+              "seed": 12740101,
+              "steps": 3936
+            },
+            {
+              "N": 6,
+              "kill": null,
+              "label": "ID",
+              "seed": 12740102,
+              "steps": 3935
+            }
+          ]
+        },
+        "U16B": {
+          "C1": [
+            {
+              "N": 10,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12740101,
+              "steps": 207
+            }
+          ],
+          "C3": [
+            {
+              "N": 12,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12740101,
+              "steps": null
+            },
+            {
+              "N": 12,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12740102,
+              "steps": null
+            }
+          ],
+          "T3": [
+            {
+              "N": 12,
+              "kill": null,
+              "label": "ID",
+              "seed": 12740101,
+              "steps": 213191
+            },
+            {
+              "N": 12,
+              "kill": null,
+              "label": "ID",
+              "seed": 12740102,
+              "steps": 185261
+            }
+          ]
+        },
+        "U32": {
+          "C1": [
+            {
+              "N": 8,
+              "kill": null,
+              "label": "IDF",
+              "seed": 12740101,
+              "steps": 296
+            }
+          ],
+          "C3": [
+            {
+              "N": 10,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12740101,
+              "steps": null
+            },
+            {
+              "N": 10,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12740102,
+              "steps": null
+            }
+          ],
+          "T3": [
+            {
+              "N": 10,
+              "kill": null,
+              "label": "ID",
+              "seed": 12740101,
+              "steps": 134573
+            },
+            {
+              "N": 10,
+              "kill": null,
+              "label": "ID",
+              "seed": 12740102,
+              "steps": 175015
+            }
+          ]
+        },
+        "U8S": {
+          "C1": [
+            {
+              "N": 10,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12740101,
+              "steps": null
+            }
+          ],
+          "C3": [
+            {
+              "N": 12,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12740101,
+              "steps": null
+            },
+            {
+              "N": 12,
+              "kill": "timeout",
+              "label": "KILL",
+              "seed": 12740102,
+              "steps": null
+            }
+          ],
+          "T3": [
+            {
+              "N": 12,
+              "kill": null,
+              "label": "ID",
+              "seed": 12740101,
+              "steps": 1645416
+            },
+            {
+              "N": 12,
+              "kill": null,
+              "label": "ID",
+              "seed": 12740102,
+              "steps": 1645323
+            }
+          ]
+        }
+      }
+    },
+    "GC1_74": {
+      "decided_targets": [
+        "B5",
+        "EJ4",
+        "HK",
+        "JO",
+        "KR",
+        "SJ",
+        "U16B",
+        "U32"
+      ],
+      "needed": 7,
+      "of": 10,
+      "pass": true
+    },
+    "GFID74": {
+      "pass": true,
+      "records": 33,
+      "replay_mismatch": [],
+      "steps_replayed": 10635538
+    },
+    "GHEAD74": {
+      "decided_cells": 5,
+      "decided_per_target": {
+        "B5": 2,
+        "EJ4": 0,
+        "HK": 1,
+        "HZ": 0,
+        "JO": 0,
+        "KR": 2,
+        "SJ": 0,
+        "U16B": 0,
+        "U32": 0,
+        "U8S": 0
+      },
+      "needed": 6,
+      "of": 20,
+      "pass": false,
+      "targets_decided": [
+        "B5",
+        "HK",
+        "KR"
+      ]
+    },
+    "GHELD74": {
+      "heldout_decided_cells": [],
+      "of": 4,
+      "pass": false
+    },
+    "GHOST74": {
+      "allowed": [
+        "A\tbrute/api/certify34h.py"
+      ],
+      "diff_vs_v0690": "A\tbrute/api/certify34h.py",
+      "pass": true
+    },
+    "GLIVE74": {
+      "elapsed_s": 3110.7,
+      "jobs": 50,
+      "killed": [
+        [
+          "SJ:12740101:C3",
+          "timeout"
+        ],
+        [
+          "U32:12740101:C3",
+          "timeout"
+        ],
+        [
+          "U8S:12740101:C3",
+          "timeout"
+        ],
+        [
+          "U16B:12740101:C3",
+          "timeout"
+        ],
+        [
+          "EJ4:12740101:C3",
+          "timeout"
+        ],
+        [
+          "HZ:12740101:C3",
+          "timeout"
+        ],
+        [
+          "JO:12740101:C3",
+          "timeout"
+        ],
+        [
+          "SJ:12740102:C3",
+          "timeout"
+        ],
+        [
+          "U32:12740102:C3",
+          "timeout"
+        ],
+        [
+          "U8S:12740102:C3",
+          "timeout"
+        ],
+        [
+          "U16B:12740102:C3",
+          "timeout"
+        ],
+        [
+          "EJ4:12740102:C3",
+          "timeout"
+        ],
+        [
+          "HK:12740102:C3",
+          "timeout"
+        ],
+        [
+          "HZ:12740102:C3",
+          "timeout"
+        ],
+        [
+          "JO:12740102:C3",
+          "timeout"
+        ],
+        [
+          "U8S:12740101:C1",
+          "timeout"
+        ],
+        [
+          "HZ:12740101:C1",
+          "timeout"
+        ]
+      ],
+      "pass": true,
+      "records": 50
+    },
+    "GMEM74": {
+      "bad": [],
+      "kills": [
+        [
+          "SJ:12740101:C3",
+          "timeout",
+          false
+        ],
+        [
+          "U32:12740101:C3",
+          "timeout",
+          false
+        ],
+        [
+          "U8S:12740101:C3",
+          "timeout",
+          false
+        ],
+        [
+          "U16B:12740101:C3",
+          "timeout",
+          false
+        ],
+        [
+          "EJ4:12740101:C3",
+          "timeout",
+          false
+        ],
+        [
+          "HZ:12740101:C3",
+          "timeout",
+          false
+        ],
+        [
+          "JO:12740101:C3",
+          "timeout",
+          false
+        ],
+        [
+          "SJ:12740102:C3",
+          "timeout",
+          false
+        ],
+        [
+          "U32:12740102:C3",
+          "timeout",
+          false
+        ],
+        [
+          "U8S:12740102:C3",
+          "timeout",
+          false
+        ],
+        [
+          "U16B:12740102:C3",
+          "timeout",
+          false
+        ],
+        [
+          "EJ4:12740102:C3",
+          "timeout",
+          false
+        ],
+        [
+          "HK:12740102:C3",
+          "timeout",
+          false
+        ],
+        [
+          "HZ:12740102:C3",
+          "timeout",
+          false
+        ],
+        [
+          "JO:12740102:C3",
+          "timeout",
+          false
+        ],
+        [
+          "U8S:12740101:C1",
+          "timeout",
+          false
+        ],
+        [
+          "HZ:12740101:C1",
+          "timeout",
+          false
+        ]
+      ],
+      "pass": true,
+      "rlimit_as_bytes": 2147483648,
+      "workers": 3
+    },
+    "GNORESET74": {
+      "adapter_ast_violations": [],
+      "pass": true,
+      "records": 33,
+      "records_not_single_object": []
+    },
+    "GS74_sound": {
+      "decided_C": 13,
+      "decided_T": 18,
+      "pass": true,
+      "wrong": []
+    },
+    "GSTEP74": {
+      "cells": 5,
+      "median_ratio": 0.028765530326213356,
+      "needed_at_most": 1.0,
+      "pass": true,
+      "ratios": {
+        "B5:12740101": 0.029,
+        "B5:12740102": 0.029,
+        "HK:12740101": 0.029,
+        "KR:12740101": 0.064,
+        "KR:12740102": 0.064
+      }
+    },
+    "GTEST74": {
+      "modules": 8,
+      "pass": true,
+      "test_files_match": true
+    },
+    "GTRUTH74": {
+      "ledger_sha_matches": true,
+      "pass": true,
+      "reproduced": true
+    },
+    "G_PROC74": {
+      "chain": [
+        "4962ac8",
+        "b661eb6",
+        "ff22e2e",
+        "775c18f",
+        "cbe8647",
+        "60bc767"
+      ],
+      "missing": [],
+      "pass": true
+    },
+    "G_recount74": {
+      "pass": true
+    }
+  },
+  "passed": [
+    "GBASE74",
+    "GC1_74",
+    "GFID74",
+    "GHOST74",
+    "GLIVE74",
+    "GMEM74",
+    "GNORESET74",
+    "GS74_sound",
+    "GSTEP74",
+    "GTEST74",
+    "GTRUTH74",
+    "G_PROC74",
+    "G_recount74"
+  ],
+  "results_sha256": "53b6ae04543a1135a11a76d081abe6396e4d3af4c916d6cf43d74d8ff6ae8389",
+  "status": "not certified (failing gates: GHEAD74, GHELD74)",
+  "study": "BRUTE-0700-CLAUSE-074"
+}
